@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Ml.V1
     public partial class StudyTrial : Pulumi.CustomResource
     {
         /// <summary>
+        /// The identifier of the client that originally requested this trial.
+        /// </summary>
+        [Output("clientId")]
+        public Output<string> ClientId { get; private set; } = null!;
+
+        /// <summary>
+        /// Time at which the trial's status changed to COMPLETED.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The final measurement containing the objective value.
+        /// </summary>
+        [Output("finalMeasurement")]
+        public Output<Outputs.GoogleCloudMlV1__MeasurementResponse> FinalMeasurement { get; private set; } = null!;
+
+        /// <summary>
+        /// A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
+        /// </summary>
+        [Output("infeasibleReason")]
+        public Output<string> InfeasibleReason { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
+        /// </summary>
+        [Output("measurements")]
+        public Output<ImmutableArray<Outputs.GoogleCloudMlV1__MeasurementResponse>> Measurements { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the trial assigned by the service.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The parameters of the trial.
+        /// </summary>
+        [Output("parameters")]
+        public Output<ImmutableArray<Outputs.GoogleCloudMlV1_Trial_ParameterResponse>> Parameters { get; private set; } = null!;
+
+        /// <summary>
+        /// Time at which the trial was started.
+        /// </summary>
+        [Output("startTime")]
+        public Output<string> StartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The detailed state of a trial.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, the parameters in this trial are not attempted again.
+        /// </summary>
+        [Output("trialInfeasible")]
+        public Output<bool> TrialInfeasible { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a StudyTrial resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,28 +121,10 @@ namespace Pulumi.GoogleCloud.Ml.V1
     public sealed class StudyTrialArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The identifier of the client that originally requested this trial.
-        /// </summary>
-        [Input("clientId")]
-        public Input<string>? ClientId { get; set; }
-
-        /// <summary>
-        /// Output only. Time at which the trial's status changed to COMPLETED.
-        /// </summary>
-        [Input("endTime")]
-        public Input<string>? EndTime { get; set; }
-
-        /// <summary>
         /// The final measurement containing the objective value.
         /// </summary>
         [Input("finalMeasurement")]
         public Input<Inputs.GoogleCloudMlV1__MeasurementArgs>? FinalMeasurement { get; set; }
-
-        /// <summary>
-        /// Output only. A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
-        /// </summary>
-        [Input("infeasibleReason")]
-        public Input<string>? InfeasibleReason { get; set; }
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
@@ -97,12 +140,6 @@ namespace Pulumi.GoogleCloud.Ml.V1
             get => _measurements ?? (_measurements = new InputList<Inputs.GoogleCloudMlV1__MeasurementArgs>());
             set => _measurements = value;
         }
-
-        /// <summary>
-        /// Output only. Name of the trial assigned by the service.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.GoogleCloudMlV1_Trial_ParameterArgs>? _parameters;
@@ -120,12 +157,6 @@ namespace Pulumi.GoogleCloud.Ml.V1
         public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. Time at which the trial was started.
-        /// </summary>
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
-
-        /// <summary>
         /// The detailed state of a trial.
         /// </summary>
         [Input("state")]
@@ -133,12 +164,6 @@ namespace Pulumi.GoogleCloud.Ml.V1
 
         [Input("studiesId", required: true)]
         public Input<string> StudiesId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. If true, the parameters in this trial are not attempted again.
-        /// </summary>
-        [Input("trialInfeasible")]
-        public Input<bool>? TrialInfeasible { get; set; }
 
         [Input("trialsId", required: true)]
         public Input<string> TrialsId { get; set; } = null!;

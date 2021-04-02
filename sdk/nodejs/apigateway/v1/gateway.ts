@@ -34,6 +34,38 @@ export class Gateway extends pulumi.CustomResource {
         return obj['__pulumiType'] === Gateway.__pulumiType;
     }
 
+    /**
+     * Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+     */
+    public readonly apiConfig!: pulumi.Output<string>;
+    /**
+     * Created time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
+     */
+    public /*out*/ readonly defaultHostname!: pulumi.Output<string>;
+    /**
+     * Optional. Display name.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The current state of the Gateway.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Updated time.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Gateway resource with the given unique name, arguments, and options.
@@ -56,17 +88,25 @@ export class Gateway extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["apiConfig"] = args ? args.apiConfig : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["defaultHostname"] = args ? args.defaultHostname : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["gatewaysId"] = args ? args.gatewaysId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["defaultHostname"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["apiConfig"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["defaultHostname"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -84,14 +124,6 @@ export interface GatewayArgs {
      */
     readonly apiConfig?: pulumi.Input<string>;
     /**
-     * Output only. Created time.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
-     * Output only. The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
-     */
-    readonly defaultHostname?: pulumi.Input<string>;
-    /**
      * Optional. Display name.
      */
     readonly displayName?: pulumi.Input<string>;
@@ -101,17 +133,5 @@ export interface GatewayArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. The current state of the Gateway.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. Updated time.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

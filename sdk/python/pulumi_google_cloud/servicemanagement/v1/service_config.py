@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['ServiceConfig']
@@ -74,7 +75,7 @@ class ServiceConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name.
         :param pulumi.Input[str] producer_project_id: The Google project that owns this service.
         :param pulumi.Input[pulumi.InputType['QuotaArgs']] quota: Quota configuration.
-        :param pulumi.Input[pulumi.InputType['SourceInfoArgs']] source_info: Output only. The source information for this configuration if available.
+        :param pulumi.Input[pulumi.InputType['SourceInfoArgs']] source_info: The source information for this configuration if available.
         :param pulumi.Input[pulumi.InputType['SystemParametersArgs']] system_parameters: System parameter configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeArgs']]]] system_types: A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
         :param pulumi.Input[str] title: The product title for this service.
@@ -153,7 +154,241 @@ class ServiceConfig(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["apis"] = None
+        __props__["authentication"] = None
+        __props__["backend"] = None
+        __props__["billing"] = None
+        __props__["config_version"] = None
+        __props__["context"] = None
+        __props__["control"] = None
+        __props__["custom_error"] = None
+        __props__["documentation"] = None
+        __props__["endpoints"] = None
+        __props__["enums"] = None
+        __props__["http"] = None
+        __props__["logging"] = None
+        __props__["logs"] = None
+        __props__["metrics"] = None
+        __props__["monitored_resources"] = None
+        __props__["monitoring"] = None
+        __props__["name"] = None
+        __props__["producer_project_id"] = None
+        __props__["quota"] = None
+        __props__["source_info"] = None
+        __props__["system_parameters"] = None
+        __props__["system_types"] = None
+        __props__["title"] = None
+        __props__["types"] = None
+        __props__["usage"] = None
         return ServiceConfig(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def apis(self) -> pulumi.Output[Sequence['outputs.ApiResponse']]:
+        """
+        A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api needs to be provided by the configuration author, as the remaining fields will be derived from the IDL during the normalization process. It is an error to specify an API interface here which cannot be resolved against the associated IDL files.
+        """
+        return pulumi.get(self, "apis")
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> pulumi.Output['outputs.AuthenticationResponse']:
+        """
+        Auth configuration.
+        """
+        return pulumi.get(self, "authentication")
+
+    @property
+    @pulumi.getter
+    def backend(self) -> pulumi.Output['outputs.BackendResponse']:
+        """
+        API backend configuration.
+        """
+        return pulumi.get(self, "backend")
+
+    @property
+    @pulumi.getter
+    def billing(self) -> pulumi.Output['outputs.BillingResponse']:
+        """
+        Billing configuration.
+        """
+        return pulumi.get(self, "billing")
+
+    @property
+    @pulumi.getter(name="configVersion")
+    def config_version(self) -> pulumi.Output[int]:
+        """
+        Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
+        """
+        return pulumi.get(self, "config_version")
+
+    @property
+    @pulumi.getter
+    def context(self) -> pulumi.Output['outputs.ContextResponse']:
+        """
+        Context configuration.
+        """
+        return pulumi.get(self, "context")
+
+    @property
+    @pulumi.getter
+    def control(self) -> pulumi.Output['outputs.ControlResponse']:
+        """
+        Configuration for the service control plane.
+        """
+        return pulumi.get(self, "control")
+
+    @property
+    @pulumi.getter(name="customError")
+    def custom_error(self) -> pulumi.Output['outputs.CustomErrorResponse']:
+        """
+        Custom error configuration.
+        """
+        return pulumi.get(self, "custom_error")
+
+    @property
+    @pulumi.getter
+    def documentation(self) -> pulumi.Output['outputs.DocumentationResponse']:
+        """
+        Additional API documentation.
+        """
+        return pulumi.get(self, "documentation")
+
+    @property
+    @pulumi.getter
+    def endpoints(self) -> pulumi.Output[Sequence['outputs.EndpointResponse']]:
+        """
+        Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @property
+    @pulumi.getter
+    def enums(self) -> pulumi.Output[Sequence['outputs.EnumResponse']]:
+        """
+        A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+        """
+        return pulumi.get(self, "enums")
+
+    @property
+    @pulumi.getter
+    def http(self) -> pulumi.Output['outputs.HttpResponse']:
+        """
+        HTTP configuration.
+        """
+        return pulumi.get(self, "http")
+
+    @property
+    @pulumi.getter
+    def logging(self) -> pulumi.Output['outputs.LoggingResponse']:
+        """
+        Logging configuration.
+        """
+        return pulumi.get(self, "logging")
+
+    @property
+    @pulumi.getter
+    def logs(self) -> pulumi.Output[Sequence['outputs.LogDescriptorResponse']]:
+        """
+        Defines the logs used by this service.
+        """
+        return pulumi.get(self, "logs")
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> pulumi.Output[Sequence['outputs.MetricDescriptorResponse']]:
+        """
+        Defines the metrics used by this service.
+        """
+        return pulumi.get(self, "metrics")
+
+    @property
+    @pulumi.getter(name="monitoredResources")
+    def monitored_resources(self) -> pulumi.Output[Sequence['outputs.MonitoredResourceDescriptorResponse']]:
+        """
+        Defines the monitored resources used by this service. This is required by the Service.monitoring and Service.logging configurations.
+        """
+        return pulumi.get(self, "monitored_resources")
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> pulumi.Output['outputs.MonitoringResponse']:
+        """
+        Monitoring configuration.
+        """
+        return pulumi.get(self, "monitoring")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="producerProjectId")
+    def producer_project_id(self) -> pulumi.Output[str]:
+        """
+        The Google project that owns this service.
+        """
+        return pulumi.get(self, "producer_project_id")
+
+    @property
+    @pulumi.getter
+    def quota(self) -> pulumi.Output['outputs.QuotaResponse']:
+        """
+        Quota configuration.
+        """
+        return pulumi.get(self, "quota")
+
+    @property
+    @pulumi.getter(name="sourceInfo")
+    def source_info(self) -> pulumi.Output['outputs.SourceInfoResponse']:
+        """
+        The source information for this configuration if available.
+        """
+        return pulumi.get(self, "source_info")
+
+    @property
+    @pulumi.getter(name="systemParameters")
+    def system_parameters(self) -> pulumi.Output['outputs.SystemParametersResponse']:
+        """
+        System parameter configuration.
+        """
+        return pulumi.get(self, "system_parameters")
+
+    @property
+    @pulumi.getter(name="systemTypes")
+    def system_types(self) -> pulumi.Output[Sequence['outputs.TypeResponse']]:
+        """
+        A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
+        """
+        return pulumi.get(self, "system_types")
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Output[str]:
+        """
+        The product title for this service.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def types(self) -> pulumi.Output[Sequence['outputs.TypeResponse']]:
+        """
+        A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+        """
+        return pulumi.get(self, "types")
+
+    @property
+    @pulumi.getter
+    def usage(self) -> pulumi.Output['outputs.UsageResponse']:
+        """
+        Configuration controlling usage of this service.
+        """
+        return pulumi.get(self, "usage")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

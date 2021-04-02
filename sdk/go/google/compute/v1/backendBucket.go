@@ -14,6 +14,25 @@ import (
 // Creates a BackendBucket resource in the specified project using the data included in the request.
 type BackendBucket struct {
 	pulumi.CustomResourceState
+
+	// Cloud Storage bucket name.
+	BucketName pulumi.StringOutput `pulumi:"bucketName"`
+	// Cloud CDN configuration for this BackendBucket.
+	CdnPolicy BackendBucketCdnPolicyResponseOutput `pulumi:"cdnPolicy"`
+	// [Output Only] Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Headers that the HTTP/S load balancer should add to proxied responses.
+	CustomResponseHeaders pulumi.StringArrayOutput `pulumi:"customResponseHeaders"`
+	// An optional textual description of the resource; provided by the client when the resource is created.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// If true, enable Cloud CDN for this BackendBucket.
+	EnableCdn pulumi.BoolOutput `pulumi:"enableCdn"`
+	// Type of the resource.
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// [Output Only] Server-defined URL for the resource.
+	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
 
 // NewBackendBucket registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +70,45 @@ func GetBackendBucket(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BackendBucket resources.
 type backendBucketState struct {
+	// Cloud Storage bucket name.
+	BucketName *string `pulumi:"bucketName"`
+	// Cloud CDN configuration for this BackendBucket.
+	CdnPolicy *BackendBucketCdnPolicyResponse `pulumi:"cdnPolicy"`
+	// [Output Only] Creation timestamp in RFC3339 text format.
+	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// Headers that the HTTP/S load balancer should add to proxied responses.
+	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
+	// An optional textual description of the resource; provided by the client when the resource is created.
+	Description *string `pulumi:"description"`
+	// If true, enable Cloud CDN for this BackendBucket.
+	EnableCdn *bool `pulumi:"enableCdn"`
+	// Type of the resource.
+	Kind *string `pulumi:"kind"`
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	Name *string `pulumi:"name"`
+	// [Output Only] Server-defined URL for the resource.
+	SelfLink *string `pulumi:"selfLink"`
 }
 
 type BackendBucketState struct {
+	// Cloud Storage bucket name.
+	BucketName pulumi.StringPtrInput
+	// Cloud CDN configuration for this BackendBucket.
+	CdnPolicy BackendBucketCdnPolicyResponsePtrInput
+	// [Output Only] Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringPtrInput
+	// Headers that the HTTP/S load balancer should add to proxied responses.
+	CustomResponseHeaders pulumi.StringArrayInput
+	// An optional textual description of the resource; provided by the client when the resource is created.
+	Description pulumi.StringPtrInput
+	// If true, enable Cloud CDN for this BackendBucket.
+	EnableCdn pulumi.BoolPtrInput
+	// Type of the resource.
+	Kind pulumi.StringPtrInput
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	Name pulumi.StringPtrInput
+	// [Output Only] Server-defined URL for the resource.
+	SelfLink pulumi.StringPtrInput
 }
 
 func (BackendBucketState) ElementType() reflect.Type {

@@ -35,6 +35,38 @@ export class SettingDatasource extends pulumi.CustomResource {
         return obj['__pulumiType'] === SettingDatasource.__pulumiType;
     }
 
+    /**
+     * If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any requests to index or delete items in this source. Enabling read-only mode does not stop the processing of previously accepted data.
+     */
+    public readonly disableModifications!: pulumi.Output<boolean>;
+    /**
+     * Disable serving any search or assist results.
+     */
+    public readonly disableServing!: pulumi.Output<boolean>;
+    /**
+     * Required. Display name of the datasource The maximum length is 300 characters.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * List of service accounts that have indexing access.
+     */
+    public readonly indexingServiceAccounts!: pulumi.Output<string[]>;
+    /**
+     * This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.
+     */
+    public readonly itemsVisibility!: pulumi.Output<outputs.cloudsearch.v1.GSuitePrincipalResponse[]>;
+    /**
+     * Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * IDs of the Long Running Operations (LROs) currently running for this schema.
+     */
+    public readonly operationIds!: pulumi.Output<string[]>;
+    /**
+     * A short name or alias for the source. This value will be used to match the 'source' operator. For example, if the short name is *<value>* then queries like *source:<value>* will only return results for this source. The value must be unique across all datasources. The value must only contain alphanumeric characters (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs, drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32 characters.
+     */
+    public readonly shortName!: pulumi.Output<string>;
 
     /**
      * Create a SettingDatasource resource with the given unique name, arguments, and options.
@@ -60,6 +92,14 @@ export class SettingDatasource extends pulumi.CustomResource {
             inputs["operationIds"] = args ? args.operationIds : undefined;
             inputs["shortName"] = args ? args.shortName : undefined;
         } else {
+            inputs["disableModifications"] = undefined /*out*/;
+            inputs["disableServing"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["indexingServiceAccounts"] = undefined /*out*/;
+            inputs["itemsVisibility"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["operationIds"] = undefined /*out*/;
+            inputs["shortName"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -35,6 +35,34 @@ export class Glossary extends pulumi.CustomResource {
         return obj['__pulumiType'] === Glossary.__pulumiType;
     }
 
+    /**
+     * When the glossary creation was finished.
+     */
+    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    /**
+     * The number of entries defined in the glossary.
+     */
+    public /*out*/ readonly entryCount!: pulumi.Output<number>;
+    /**
+     * Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+     */
+    public readonly inputConfig!: pulumi.Output<outputs.translate.v3beta1.GlossaryInputConfigResponse>;
+    /**
+     * Used with equivalent term set glossaries.
+     */
+    public readonly languageCodesSet!: pulumi.Output<outputs.translate.v3beta1.LanguageCodesSetResponse>;
+    /**
+     * Used with unidirectional glossaries.
+     */
+    public readonly languagePair!: pulumi.Output<outputs.translate.v3beta1.LanguageCodePairResponse>;
+    /**
+     * Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * When CreateGlossary was called.
+     */
+    public /*out*/ readonly submitTime!: pulumi.Output<string>;
 
     /**
      * Create a Glossary resource with the given unique name, arguments, and options.
@@ -56,8 +84,6 @@ export class Glossary extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["entryCount"] = args ? args.entryCount : undefined;
             inputs["glossariesId"] = args ? args.glossariesId : undefined;
             inputs["inputConfig"] = args ? args.inputConfig : undefined;
             inputs["languageCodesSet"] = args ? args.languageCodesSet : undefined;
@@ -65,8 +91,17 @@ export class Glossary extends pulumi.CustomResource {
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["submitTime"] = args ? args.submitTime : undefined;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["entryCount"] = undefined /*out*/;
+            inputs["submitTime"] = undefined /*out*/;
         } else {
+            inputs["endTime"] = undefined /*out*/;
+            inputs["entryCount"] = undefined /*out*/;
+            inputs["inputConfig"] = undefined /*out*/;
+            inputs["languageCodesSet"] = undefined /*out*/;
+            inputs["languagePair"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["submitTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -79,14 +114,6 @@ export class Glossary extends pulumi.CustomResource {
  * The set of arguments for constructing a Glossary resource.
  */
 export interface GlossaryArgs {
-    /**
-     * Output only. When the glossary creation was finished.
-     */
-    readonly endTime?: pulumi.Input<string>;
-    /**
-     * Output only. The number of entries defined in the glossary.
-     */
-    readonly entryCount?: pulumi.Input<number>;
     readonly glossariesId: pulumi.Input<string>;
     /**
      * Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
@@ -106,8 +133,4 @@ export interface GlossaryArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. When CreateGlossary was called.
-     */
-    readonly submitTime?: pulumi.Input<string>;
 }

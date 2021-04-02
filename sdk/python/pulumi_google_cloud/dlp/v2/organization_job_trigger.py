@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['OrganizationJobTrigger']
@@ -18,7 +19,6 @@ class OrganizationJobTrigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  job_trigger: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2JobTriggerArgs']]] = None,
                  job_triggers_id: Optional[pulumi.Input[str]] = None,
-                 location_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
@@ -31,7 +31,6 @@ class OrganizationJobTrigger(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2JobTriggerArgs']] job_trigger: Required. The JobTrigger to create.
-        :param pulumi.Input[str] location_id: Deprecated. This field has no effect.
         :param pulumi.Input[str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         if __name__ is not None:
@@ -55,7 +54,6 @@ class OrganizationJobTrigger(pulumi.CustomResource):
             if job_triggers_id is None and not opts.urn:
                 raise TypeError("Missing required property 'job_triggers_id'")
             __props__['job_triggers_id'] = job_triggers_id
-            __props__['location_id'] = location_id
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
@@ -63,6 +61,16 @@ class OrganizationJobTrigger(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
             __props__['trigger_id'] = trigger_id
+            __props__['create_time'] = None
+            __props__['description'] = None
+            __props__['display_name'] = None
+            __props__['errors'] = None
+            __props__['inspect_job'] = None
+            __props__['last_run_time'] = None
+            __props__['name'] = None
+            __props__['status'] = None
+            __props__['triggers'] = None
+            __props__['update_time'] = None
         super(OrganizationJobTrigger, __self__).__init__(
             'google-cloud:dlp/v2:OrganizationJobTrigger',
             resource_name,
@@ -85,7 +93,97 @@ class OrganizationJobTrigger(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["description"] = None
+        __props__["display_name"] = None
+        __props__["errors"] = None
+        __props__["inspect_job"] = None
+        __props__["last_run_time"] = None
+        __props__["name"] = None
+        __props__["status"] = None
+        __props__["triggers"] = None
+        __props__["update_time"] = None
         return OrganizationJobTrigger(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation timestamp of a triggeredJob.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        User provided description (max 256 chars)
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Display name (max 100 chars)
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def errors(self) -> pulumi.Output[Sequence['outputs.GooglePrivacyDlpV2ErrorResponse']]:
+        """
+        A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
+        """
+        return pulumi.get(self, "errors")
+
+    @property
+    @pulumi.getter(name="inspectJob")
+    def inspect_job(self) -> pulumi.Output['outputs.GooglePrivacyDlpV2InspectJobConfigResponse']:
+        """
+        For inspect jobs, a snapshot of the configuration.
+        """
+        return pulumi.get(self, "inspect_job")
+
+    @property
+    @pulumi.getter(name="lastRunTime")
+    def last_run_time(self) -> pulumi.Output[str]:
+        """
+        The timestamp of the last time this trigger executed.
+        """
+        return pulumi.get(self, "last_run_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        Required. A status for this trigger.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def triggers(self) -> pulumi.Output[Sequence['outputs.GooglePrivacyDlpV2TriggerResponse']]:
+        """
+        A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
+        """
+        return pulumi.get(self, "triggers")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The last update timestamp of a triggeredJob.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

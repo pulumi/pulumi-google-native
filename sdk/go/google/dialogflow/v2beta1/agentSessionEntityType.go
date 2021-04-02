@@ -14,6 +14,13 @@ import (
 // Creates a session entity type. If the specified session entity type already exists, overrides the session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.
 type AgentSessionEntityType struct {
 	pulumi.CustomResourceState
+
+	// Required. The collection of entities associated with this session entity type.
+	Entities GoogleCloudDialogflowV2beta1EntityTypeEntityResponseArrayOutput `pulumi:"entities"`
+	// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+	EntityOverrideMode pulumi.StringOutput `pulumi:"entityOverrideMode"`
+	// Required. The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewAgentSessionEntityType registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +64,21 @@ func GetAgentSessionEntityType(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AgentSessionEntityType resources.
 type agentSessionEntityTypeState struct {
+	// Required. The collection of entities associated with this session entity type.
+	Entities []GoogleCloudDialogflowV2beta1EntityTypeEntityResponse `pulumi:"entities"`
+	// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+	EntityOverrideMode *string `pulumi:"entityOverrideMode"`
+	// Required. The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
+	Name *string `pulumi:"name"`
 }
 
 type AgentSessionEntityTypeState struct {
+	// Required. The collection of entities associated with this session entity type.
+	Entities GoogleCloudDialogflowV2beta1EntityTypeEntityResponseArrayInput
+	// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+	EntityOverrideMode pulumi.StringPtrInput
+	// Required. The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
+	Name pulumi.StringPtrInput
 }
 
 func (AgentSessionEntityTypeState) ElementType() reflect.Type {

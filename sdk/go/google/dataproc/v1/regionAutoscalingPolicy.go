@@ -14,6 +14,14 @@ import (
 // Creates new autoscaling policy.
 type RegionAutoscalingPolicy struct {
 	pulumi.CustomResourceState
+
+	BasicAlgorithm BasicAutoscalingAlgorithmResponseOutput `pulumi:"basicAlgorithm"`
+	// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. Describes how the autoscaler will operate for secondary workers.
+	SecondaryWorkerConfig InstanceGroupAutoscalingPolicyConfigResponseOutput `pulumi:"secondaryWorkerConfig"`
+	// Required. Describes how the autoscaler will operate for primary workers.
+	WorkerConfig InstanceGroupAutoscalingPolicyConfigResponseOutput `pulumi:"workerConfig"`
 }
 
 // NewRegionAutoscalingPolicy registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +62,23 @@ func GetRegionAutoscalingPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionAutoscalingPolicy resources.
 type regionAutoscalingPolicyState struct {
+	BasicAlgorithm *BasicAutoscalingAlgorithmResponse `pulumi:"basicAlgorithm"`
+	// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+	Name *string `pulumi:"name"`
+	// Optional. Describes how the autoscaler will operate for secondary workers.
+	SecondaryWorkerConfig *InstanceGroupAutoscalingPolicyConfigResponse `pulumi:"secondaryWorkerConfig"`
+	// Required. Describes how the autoscaler will operate for primary workers.
+	WorkerConfig *InstanceGroupAutoscalingPolicyConfigResponse `pulumi:"workerConfig"`
 }
 
 type RegionAutoscalingPolicyState struct {
+	BasicAlgorithm BasicAutoscalingAlgorithmResponsePtrInput
+	// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+	Name pulumi.StringPtrInput
+	// Optional. Describes how the autoscaler will operate for secondary workers.
+	SecondaryWorkerConfig InstanceGroupAutoscalingPolicyConfigResponsePtrInput
+	// Required. Describes how the autoscaler will operate for primary workers.
+	WorkerConfig InstanceGroupAutoscalingPolicyConfigResponsePtrInput
 }
 
 func (RegionAutoscalingPolicyState) ElementType() reflect.Type {
@@ -67,9 +89,7 @@ type regionAutoscalingPolicyArgs struct {
 	AutoscalingPoliciesId string                     `pulumi:"autoscalingPoliciesId"`
 	BasicAlgorithm        *BasicAutoscalingAlgorithm `pulumi:"basicAlgorithm"`
 	// Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-	Id *string `pulumi:"id"`
-	// Output only. The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
-	Name       *string `pulumi:"name"`
+	Id         *string `pulumi:"id"`
 	ProjectsId string  `pulumi:"projectsId"`
 	RegionsId  string  `pulumi:"regionsId"`
 	// Optional. Describes how the autoscaler will operate for secondary workers.
@@ -83,9 +103,7 @@ type RegionAutoscalingPolicyArgs struct {
 	AutoscalingPoliciesId pulumi.StringInput
 	BasicAlgorithm        BasicAutoscalingAlgorithmPtrInput
 	// Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-	Id pulumi.StringPtrInput
-	// Output only. The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
-	Name       pulumi.StringPtrInput
+	Id         pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
 	RegionsId  pulumi.StringInput
 	// Optional. Describes how the autoscaler will operate for secondary workers.

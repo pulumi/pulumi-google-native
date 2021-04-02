@@ -6,6 +6,7 @@
 from .function import *
 from .function_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

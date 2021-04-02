@@ -34,6 +34,30 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
         return obj['__pulumiType'] === BillingAccountExclusion.__pulumiType;
     }
 
+    /**
+     * The creation timestamp of the exclusion.This field may not be present for older exclusions.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Optional. A description of this exclusion.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
+     */
+    public readonly disabled!: pulumi.Output<boolean>;
+    /**
+     * Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+     */
+    public readonly filter!: pulumi.Output<string>;
+    /**
+     * Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The last update timestamp of the exclusion.This field may not be present for older exclusions.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a BillingAccountExclusion resource with the given unique name, arguments, and options.
@@ -53,14 +77,20 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
                 throw new Error("Missing required property 'exclusionsId'");
             }
             inputs["billingAccountsId"] = args ? args.billingAccountsId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["exclusionsId"] = args ? args.exclusionsId : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["disabled"] = undefined /*out*/;
+            inputs["filter"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -74,10 +104,6 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
  */
 export interface BillingAccountExclusionArgs {
     readonly billingAccountsId: pulumi.Input<string>;
-    /**
-     * Output only. The creation timestamp of the exclusion.This field may not be present for older exclusions.
-     */
-    readonly createTime?: pulumi.Input<string>;
     /**
      * Optional. A description of this exclusion.
      */
@@ -95,8 +121,4 @@ export interface BillingAccountExclusionArgs {
      * Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Output only. The last update timestamp of the exclusion.This field may not be present for older exclusions.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

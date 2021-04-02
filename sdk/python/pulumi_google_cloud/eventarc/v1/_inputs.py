@@ -424,29 +424,13 @@ class PolicyArgs:
 @pulumi.input_type
 class PubsubArgs:
     def __init__(__self__, *,
-                 subscription: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None):
         """
         Represents a Pub/Sub transport.
-        :param pulumi.Input[str] subscription: Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
         :param pulumi.Input[str] topic: Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
         """
-        if subscription is not None:
-            pulumi.set(__self__, "subscription", subscription)
         if topic is not None:
             pulumi.set(__self__, "topic", topic)
-
-    @property
-    @pulumi.getter
-    def subscription(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
-        """
-        return pulumi.get(self, "subscription")
-
-    @subscription.setter
-    def subscription(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "subscription", value)
 
     @property
     @pulumi.getter

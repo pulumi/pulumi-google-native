@@ -215,17 +215,17 @@ class TrustArgs:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Represents a relationship between two domains which makes it possible for users in one domain to be authenticated by a dc in another domain. Refer https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731335(v%3dws.10) If the trust is being changed, it will be placed into the UPDATING state, which indicates that the resource is being reconciled. At this point, Get will reflect an intermediate state.
-        :param pulumi.Input[str] create_time: Output only. The time the instance was created.
-        :param pulumi.Input[str] last_known_trust_connected_heartbeat_time: Output only. The last heartbeat time when the trust was known to be connected.
+        :param pulumi.Input[str] create_time: The time the instance was created.
+        :param pulumi.Input[str] last_known_trust_connected_heartbeat_time: The last heartbeat time when the trust was known to be connected.
         :param pulumi.Input[bool] selective_authentication: The trust authentication type which decides whether the trusted side has forest/domain wide access or selective access to approved set of resources.
-        :param pulumi.Input[str] state: Output only. The current state of this trust.
-        :param pulumi.Input[str] state_description: Output only. Additional information about the current state of this trust, if available.
+        :param pulumi.Input[str] state: The current state of this trust.
+        :param pulumi.Input[str] state_description: Additional information about the current state of this trust, if available.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_dns_ip_addresses: The target dns server ip addresses which can resolve the remote domain involved in trust.
         :param pulumi.Input[str] target_domain_name: The fully qualified target domain name which will be in trust with current domain.
         :param pulumi.Input[str] trust_direction: The trust direction decides the current domain is trusted, trusting or both.
         :param pulumi.Input[str] trust_handshake_secret: Input only, and will not be stored. The trust secret used for handshake with target domain.
         :param pulumi.Input[str] trust_type: The type of trust represented by the trust resource.
-        :param pulumi.Input[str] update_time: Output only. Last update time.
+        :param pulumi.Input[str] update_time: Last update time.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -254,7 +254,7 @@ class TrustArgs:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The time the instance was created.
+        The time the instance was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -266,7 +266,7 @@ class TrustArgs:
     @pulumi.getter(name="lastKnownTrustConnectedHeartbeatTime")
     def last_known_trust_connected_heartbeat_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The last heartbeat time when the trust was known to be connected.
+        The last heartbeat time when the trust was known to be connected.
         """
         return pulumi.get(self, "last_known_trust_connected_heartbeat_time")
 
@@ -290,7 +290,7 @@ class TrustArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The current state of this trust.
+        The current state of this trust.
         """
         return pulumi.get(self, "state")
 
@@ -302,7 +302,7 @@ class TrustArgs:
     @pulumi.getter(name="stateDescription")
     def state_description(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Additional information about the current state of this trust, if available.
+        Additional information about the current state of this trust, if available.
         """
         return pulumi.get(self, "state_description")
 
@@ -374,7 +374,7 @@ class TrustArgs:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Last update time.
+        Last update time.
         """
         return pulumi.get(self, "update_time")
 

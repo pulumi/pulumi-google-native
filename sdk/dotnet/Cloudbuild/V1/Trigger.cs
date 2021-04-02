@@ -16,6 +16,79 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1
     public partial class Trigger : Pulumi.CustomResource
     {
         /// <summary>
+        /// Contents of the build template.
+        /// </summary>
+        [Output("build")]
+        public Output<Outputs.BuildResponse> Build { get; private set; } = null!;
+
+        /// <summary>
+        /// Time when the trigger was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Human-readable description of this trigger.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, the trigger will never automatically execute a build.
+        /// </summary>
+        [Output("disabled")]
+        public Output<bool> Disabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
+        /// </summary>
+        [Output("filename")]
+        public Output<string> Filename { get; private set; } = null!;
+
+        /// <summary>
+        /// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
+        /// </summary>
+        [Output("github")]
+        public Output<Outputs.GitHubEventsConfigResponse> Github { get; private set; } = null!;
+
+        /// <summary>
+        /// ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
+        /// </summary>
+        [Output("ignoredFiles")]
+        public Output<ImmutableArray<string>> IgnoredFiles { get; private set; } = null!;
+
+        /// <summary>
+        /// If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
+        /// </summary>
+        [Output("includedFiles")]
+        public Output<ImmutableArray<string>> IncludedFiles { get; private set; } = null!;
+
+        /// <summary>
+        /// User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
+        /// </summary>
+        [Output("substitutions")]
+        public Output<ImmutableDictionary<string, string>> Substitutions { get; private set; } = null!;
+
+        /// <summary>
+        /// Tags for annotation of a `BuildTrigger`
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
+        /// </summary>
+        [Output("triggerTemplate")]
+        public Output<Outputs.RepoSourceResponse> TriggerTemplate { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Trigger resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -66,12 +139,6 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1
         public Input<Inputs.BuildArgs>? Build { get; set; }
 
         /// <summary>
-        /// Output only. Time when the trigger was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Human-readable description of this trigger.
         /// </summary>
         [Input("description")]
@@ -94,12 +161,6 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1
         /// </summary>
         [Input("github")]
         public Input<Inputs.GitHubEventsConfigArgs>? Github { get; set; }
-
-        /// <summary>
-        /// Output only. Unique identifier of the trigger.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         [Input("ignoredFiles")]
         private InputList<string>? _ignoredFiles;

@@ -35,6 +35,46 @@ export class DatasetHl7V2StoreMessage extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatasetHl7V2StoreMessage.__pulumiType;
     }
 
+    /**
+     * The datetime when the message was created. Set by the server.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Raw message bytes.
+     */
+    public /*out*/ readonly data!: pulumi.Output<string>;
+    /**
+     * User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+     */
+    public /*out*/ readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The message type for this message. MSH-9.1.
+     */
+    public /*out*/ readonly messageType!: pulumi.Output<string>;
+    /**
+     * Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The parsed version of the raw message data.
+     */
+    public /*out*/ readonly parsedData!: pulumi.Output<outputs.healthcare.v1.ParsedDataResponse>;
+    /**
+     * All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
+     */
+    public /*out*/ readonly patientIds!: pulumi.Output<outputs.healthcare.v1.PatientIdResponse[]>;
+    /**
+     * The parsed version of the raw message data schematized according to this store's schemas and type definitions.
+     */
+    public /*out*/ readonly schematizedData!: pulumi.Output<outputs.healthcare.v1.SchematizedDataResponse>;
+    /**
+     * The hospital that this message came from. MSH-4.
+     */
+    public /*out*/ readonly sendFacility!: pulumi.Output<string>;
+    /**
+     * The datetime the sending application sent this message. MSH-7.
+     */
+    public /*out*/ readonly sendTime!: pulumi.Output<string>;
 
     /**
      * Create a DatasetHl7V2StoreMessage resource with the given unique name, arguments, and options.
@@ -68,7 +108,27 @@ export class DatasetHl7V2StoreMessage extends pulumi.CustomResource {
             inputs["message"] = args ? args.message : undefined;
             inputs["messagesId"] = args ? args.messagesId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["data"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["messageType"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["parsedData"] = undefined /*out*/;
+            inputs["patientIds"] = undefined /*out*/;
+            inputs["schematizedData"] = undefined /*out*/;
+            inputs["sendFacility"] = undefined /*out*/;
+            inputs["sendTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["data"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["messageType"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["parsedData"] = undefined /*out*/;
+            inputs["patientIds"] = undefined /*out*/;
+            inputs["schematizedData"] = undefined /*out*/;
+            inputs["sendFacility"] = undefined /*out*/;
+            inputs["sendTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

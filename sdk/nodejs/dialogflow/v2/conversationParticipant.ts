@@ -34,6 +34,18 @@ export class ConversationParticipant extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConversationParticipant.__pulumiType;
     }
 
+    /**
+     * Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
+     */
+    public readonly role!: pulumi.Output<string>;
+    /**
+     * Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
+     */
+    public readonly sipRecordingMediaLabel!: pulumi.Output<string>;
 
     /**
      * Create a ConversationParticipant resource with the given unique name, arguments, and options.
@@ -66,6 +78,9 @@ export class ConversationParticipant extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["sipRecordingMediaLabel"] = args ? args.sipRecordingMediaLabel : undefined;
         } else {
+            inputs["name"] = undefined /*out*/;
+            inputs["role"] = undefined /*out*/;
+            inputs["sipRecordingMediaLabel"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -21,12 +21,6 @@ namespace Pulumi.GoogleCloud.Gkehub.V1.Inputs
         [Input("gkeCluster")]
         public Input<Inputs.GkeClusterArgs>? GkeCluster { get; set; }
 
-        /// <summary>
-        /// Output only. Useful Kubernetes-specific metadata.
-        /// </summary>
-        [Input("kubernetesMetadata")]
-        public Input<Inputs.KubernetesMetadataArgs>? KubernetesMetadata { get; set; }
-
         public MembershipEndpointArgs()
         {
         }

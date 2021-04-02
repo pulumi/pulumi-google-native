@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Composer.V1beta1
     public partial class Environment : Pulumi.CustomResource
     {
         /// <summary>
+        /// Configuration parameters for this environment.
+        /// </summary>
+        [Output("config")]
+        public Output<Outputs.EnvironmentConfigResponse> Config { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which this environment was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be &lt;= 128 bytes in size.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the environment.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which this environment was last modified.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
+        /// </summary>
+        [Output("uuid")]
+        public Output<string> Uuid { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Environment resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -65,12 +108,6 @@ namespace Pulumi.GoogleCloud.Composer.V1beta1
         [Input("config")]
         public Input<Inputs.EnvironmentConfigArgs>? Config { get; set; }
 
-        /// <summary>
-        /// Output only. The time at which this environment was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
         [Input("environmentsId", required: true)]
         public Input<string> EnvironmentsId { get; set; } = null!;
 
@@ -103,18 +140,6 @@ namespace Pulumi.GoogleCloud.Composer.V1beta1
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which this environment was last modified.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
-
-        /// <summary>
-        /// Output only. The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
-        /// </summary>
-        [Input("uuid")]
-        public Input<string>? Uuid { get; set; }
 
         public EnvironmentArgs()
         {

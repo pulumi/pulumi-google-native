@@ -163,6 +163,159 @@ func (o AwsAccessKeyPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// AWS access key (see [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)). For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+type AwsAccessKeyResponse struct {
+	// Required. AWS access key ID.
+	AccessKeyId string `pulumi:"accessKeyId"`
+	// Required. AWS secret access key. This field is not returned in RPC responses.
+	SecretAccessKey string `pulumi:"secretAccessKey"`
+}
+
+// AwsAccessKeyResponseInput is an input type that accepts AwsAccessKeyResponseArgs and AwsAccessKeyResponseOutput values.
+// You can construct a concrete instance of `AwsAccessKeyResponseInput` via:
+//
+//          AwsAccessKeyResponseArgs{...}
+type AwsAccessKeyResponseInput interface {
+	pulumi.Input
+
+	ToAwsAccessKeyResponseOutput() AwsAccessKeyResponseOutput
+	ToAwsAccessKeyResponseOutputWithContext(context.Context) AwsAccessKeyResponseOutput
+}
+
+// AWS access key (see [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)). For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+type AwsAccessKeyResponseArgs struct {
+	// Required. AWS access key ID.
+	AccessKeyId pulumi.StringInput `pulumi:"accessKeyId"`
+	// Required. AWS secret access key. This field is not returned in RPC responses.
+	SecretAccessKey pulumi.StringInput `pulumi:"secretAccessKey"`
+}
+
+func (AwsAccessKeyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsAccessKeyResponse)(nil)).Elem()
+}
+
+func (i AwsAccessKeyResponseArgs) ToAwsAccessKeyResponseOutput() AwsAccessKeyResponseOutput {
+	return i.ToAwsAccessKeyResponseOutputWithContext(context.Background())
+}
+
+func (i AwsAccessKeyResponseArgs) ToAwsAccessKeyResponseOutputWithContext(ctx context.Context) AwsAccessKeyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsAccessKeyResponseOutput)
+}
+
+func (i AwsAccessKeyResponseArgs) ToAwsAccessKeyResponsePtrOutput() AwsAccessKeyResponsePtrOutput {
+	return i.ToAwsAccessKeyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AwsAccessKeyResponseArgs) ToAwsAccessKeyResponsePtrOutputWithContext(ctx context.Context) AwsAccessKeyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsAccessKeyResponseOutput).ToAwsAccessKeyResponsePtrOutputWithContext(ctx)
+}
+
+// AwsAccessKeyResponsePtrInput is an input type that accepts AwsAccessKeyResponseArgs, AwsAccessKeyResponsePtr and AwsAccessKeyResponsePtrOutput values.
+// You can construct a concrete instance of `AwsAccessKeyResponsePtrInput` via:
+//
+//          AwsAccessKeyResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsAccessKeyResponsePtrInput interface {
+	pulumi.Input
+
+	ToAwsAccessKeyResponsePtrOutput() AwsAccessKeyResponsePtrOutput
+	ToAwsAccessKeyResponsePtrOutputWithContext(context.Context) AwsAccessKeyResponsePtrOutput
+}
+
+type awsAccessKeyResponsePtrType AwsAccessKeyResponseArgs
+
+func AwsAccessKeyResponsePtr(v *AwsAccessKeyResponseArgs) AwsAccessKeyResponsePtrInput {
+	return (*awsAccessKeyResponsePtrType)(v)
+}
+
+func (*awsAccessKeyResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsAccessKeyResponse)(nil)).Elem()
+}
+
+func (i *awsAccessKeyResponsePtrType) ToAwsAccessKeyResponsePtrOutput() AwsAccessKeyResponsePtrOutput {
+	return i.ToAwsAccessKeyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *awsAccessKeyResponsePtrType) ToAwsAccessKeyResponsePtrOutputWithContext(ctx context.Context) AwsAccessKeyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsAccessKeyResponsePtrOutput)
+}
+
+// AWS access key (see [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)). For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+type AwsAccessKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (AwsAccessKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsAccessKeyResponse)(nil)).Elem()
+}
+
+func (o AwsAccessKeyResponseOutput) ToAwsAccessKeyResponseOutput() AwsAccessKeyResponseOutput {
+	return o
+}
+
+func (o AwsAccessKeyResponseOutput) ToAwsAccessKeyResponseOutputWithContext(ctx context.Context) AwsAccessKeyResponseOutput {
+	return o
+}
+
+func (o AwsAccessKeyResponseOutput) ToAwsAccessKeyResponsePtrOutput() AwsAccessKeyResponsePtrOutput {
+	return o.ToAwsAccessKeyResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AwsAccessKeyResponseOutput) ToAwsAccessKeyResponsePtrOutputWithContext(ctx context.Context) AwsAccessKeyResponsePtrOutput {
+	return o.ApplyT(func(v AwsAccessKeyResponse) *AwsAccessKeyResponse {
+		return &v
+	}).(AwsAccessKeyResponsePtrOutput)
+}
+
+// Required. AWS access key ID.
+func (o AwsAccessKeyResponseOutput) AccessKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsAccessKeyResponse) string { return v.AccessKeyId }).(pulumi.StringOutput)
+}
+
+// Required. AWS secret access key. This field is not returned in RPC responses.
+func (o AwsAccessKeyResponseOutput) SecretAccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsAccessKeyResponse) string { return v.SecretAccessKey }).(pulumi.StringOutput)
+}
+
+type AwsAccessKeyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AwsAccessKeyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsAccessKeyResponse)(nil)).Elem()
+}
+
+func (o AwsAccessKeyResponsePtrOutput) ToAwsAccessKeyResponsePtrOutput() AwsAccessKeyResponsePtrOutput {
+	return o
+}
+
+func (o AwsAccessKeyResponsePtrOutput) ToAwsAccessKeyResponsePtrOutputWithContext(ctx context.Context) AwsAccessKeyResponsePtrOutput {
+	return o
+}
+
+func (o AwsAccessKeyResponsePtrOutput) Elem() AwsAccessKeyResponseOutput {
+	return o.ApplyT(func(v *AwsAccessKeyResponse) AwsAccessKeyResponse { return *v }).(AwsAccessKeyResponseOutput)
+}
+
+// Required. AWS access key ID.
+func (o AwsAccessKeyResponsePtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsAccessKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. AWS secret access key. This field is not returned in RPC responses.
+func (o AwsAccessKeyResponsePtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsAccessKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
 // An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
 type AwsS3Data struct {
 	// Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
@@ -332,6 +485,178 @@ func (o AwsS3DataPtrOutput) Path() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
+type AwsS3DataResponse struct {
+	// Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+	AwsAccessKey AwsAccessKeyResponse `pulumi:"awsAccessKey"`
+	// Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
+	BucketName string `pulumi:"bucketName"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path string `pulumi:"path"`
+}
+
+// AwsS3DataResponseInput is an input type that accepts AwsS3DataResponseArgs and AwsS3DataResponseOutput values.
+// You can construct a concrete instance of `AwsS3DataResponseInput` via:
+//
+//          AwsS3DataResponseArgs{...}
+type AwsS3DataResponseInput interface {
+	pulumi.Input
+
+	ToAwsS3DataResponseOutput() AwsS3DataResponseOutput
+	ToAwsS3DataResponseOutputWithContext(context.Context) AwsS3DataResponseOutput
+}
+
+// An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
+type AwsS3DataResponseArgs struct {
+	// Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+	AwsAccessKey AwsAccessKeyResponseInput `pulumi:"awsAccessKey"`
+	// Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (AwsS3DataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsS3DataResponse)(nil)).Elem()
+}
+
+func (i AwsS3DataResponseArgs) ToAwsS3DataResponseOutput() AwsS3DataResponseOutput {
+	return i.ToAwsS3DataResponseOutputWithContext(context.Background())
+}
+
+func (i AwsS3DataResponseArgs) ToAwsS3DataResponseOutputWithContext(ctx context.Context) AwsS3DataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsS3DataResponseOutput)
+}
+
+func (i AwsS3DataResponseArgs) ToAwsS3DataResponsePtrOutput() AwsS3DataResponsePtrOutput {
+	return i.ToAwsS3DataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AwsS3DataResponseArgs) ToAwsS3DataResponsePtrOutputWithContext(ctx context.Context) AwsS3DataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsS3DataResponseOutput).ToAwsS3DataResponsePtrOutputWithContext(ctx)
+}
+
+// AwsS3DataResponsePtrInput is an input type that accepts AwsS3DataResponseArgs, AwsS3DataResponsePtr and AwsS3DataResponsePtrOutput values.
+// You can construct a concrete instance of `AwsS3DataResponsePtrInput` via:
+//
+//          AwsS3DataResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsS3DataResponsePtrInput interface {
+	pulumi.Input
+
+	ToAwsS3DataResponsePtrOutput() AwsS3DataResponsePtrOutput
+	ToAwsS3DataResponsePtrOutputWithContext(context.Context) AwsS3DataResponsePtrOutput
+}
+
+type awsS3DataResponsePtrType AwsS3DataResponseArgs
+
+func AwsS3DataResponsePtr(v *AwsS3DataResponseArgs) AwsS3DataResponsePtrInput {
+	return (*awsS3DataResponsePtrType)(v)
+}
+
+func (*awsS3DataResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsS3DataResponse)(nil)).Elem()
+}
+
+func (i *awsS3DataResponsePtrType) ToAwsS3DataResponsePtrOutput() AwsS3DataResponsePtrOutput {
+	return i.ToAwsS3DataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *awsS3DataResponsePtrType) ToAwsS3DataResponsePtrOutputWithContext(ctx context.Context) AwsS3DataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsS3DataResponsePtrOutput)
+}
+
+// An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
+type AwsS3DataResponseOutput struct{ *pulumi.OutputState }
+
+func (AwsS3DataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsS3DataResponse)(nil)).Elem()
+}
+
+func (o AwsS3DataResponseOutput) ToAwsS3DataResponseOutput() AwsS3DataResponseOutput {
+	return o
+}
+
+func (o AwsS3DataResponseOutput) ToAwsS3DataResponseOutputWithContext(ctx context.Context) AwsS3DataResponseOutput {
+	return o
+}
+
+func (o AwsS3DataResponseOutput) ToAwsS3DataResponsePtrOutput() AwsS3DataResponsePtrOutput {
+	return o.ToAwsS3DataResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AwsS3DataResponseOutput) ToAwsS3DataResponsePtrOutputWithContext(ctx context.Context) AwsS3DataResponsePtrOutput {
+	return o.ApplyT(func(v AwsS3DataResponse) *AwsS3DataResponse {
+		return &v
+	}).(AwsS3DataResponsePtrOutput)
+}
+
+// Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+func (o AwsS3DataResponseOutput) AwsAccessKey() AwsAccessKeyResponseOutput {
+	return o.ApplyT(func(v AwsS3DataResponse) AwsAccessKeyResponse { return v.AwsAccessKey }).(AwsAccessKeyResponseOutput)
+}
+
+// Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
+func (o AwsS3DataResponseOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsS3DataResponse) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o AwsS3DataResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsS3DataResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type AwsS3DataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AwsS3DataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsS3DataResponse)(nil)).Elem()
+}
+
+func (o AwsS3DataResponsePtrOutput) ToAwsS3DataResponsePtrOutput() AwsS3DataResponsePtrOutput {
+	return o
+}
+
+func (o AwsS3DataResponsePtrOutput) ToAwsS3DataResponsePtrOutputWithContext(ctx context.Context) AwsS3DataResponsePtrOutput {
+	return o
+}
+
+func (o AwsS3DataResponsePtrOutput) Elem() AwsS3DataResponseOutput {
+	return o.ApplyT(func(v *AwsS3DataResponse) AwsS3DataResponse { return *v }).(AwsS3DataResponseOutput)
+}
+
+// Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+func (o AwsS3DataResponsePtrOutput) AwsAccessKey() AwsAccessKeyResponsePtrOutput {
+	return o.ApplyT(func(v *AwsS3DataResponse) *AwsAccessKeyResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsAccessKey
+	}).(AwsAccessKeyResponsePtrOutput)
+}
+
+// Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
+func (o AwsS3DataResponsePtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsS3DataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o AwsS3DataResponsePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsS3DataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -526,6 +851,197 @@ func (o AzureBlobStorageDataPtrOutput) StorageAccount() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// An AzureBlobStorageData resource can be a data source, but not a data sink. An AzureBlobStorageData resource represents one Azure container. The storage account determines the [Azure endpoint](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#storage-account-endpoints). In an AzureBlobStorageData resource, a blobs's name is the [Azure Blob Storage blob's key name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names).
+type AzureBlobStorageDataResponse struct {
+	// Required. Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+	AzureCredentials AzureCredentialsResponse `pulumi:"azureCredentials"`
+	// Required. The container to transfer from the Azure Storage account.
+	Container string `pulumi:"container"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path string `pulumi:"path"`
+	// Required. The name of the Azure Storage account.
+	StorageAccount string `pulumi:"storageAccount"`
+}
+
+// AzureBlobStorageDataResponseInput is an input type that accepts AzureBlobStorageDataResponseArgs and AzureBlobStorageDataResponseOutput values.
+// You can construct a concrete instance of `AzureBlobStorageDataResponseInput` via:
+//
+//          AzureBlobStorageDataResponseArgs{...}
+type AzureBlobStorageDataResponseInput interface {
+	pulumi.Input
+
+	ToAzureBlobStorageDataResponseOutput() AzureBlobStorageDataResponseOutput
+	ToAzureBlobStorageDataResponseOutputWithContext(context.Context) AzureBlobStorageDataResponseOutput
+}
+
+// An AzureBlobStorageData resource can be a data source, but not a data sink. An AzureBlobStorageData resource represents one Azure container. The storage account determines the [Azure endpoint](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#storage-account-endpoints). In an AzureBlobStorageData resource, a blobs's name is the [Azure Blob Storage blob's key name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names).
+type AzureBlobStorageDataResponseArgs struct {
+	// Required. Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+	AzureCredentials AzureCredentialsResponseInput `pulumi:"azureCredentials"`
+	// Required. The container to transfer from the Azure Storage account.
+	Container pulumi.StringInput `pulumi:"container"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Required. The name of the Azure Storage account.
+	StorageAccount pulumi.StringInput `pulumi:"storageAccount"`
+}
+
+func (AzureBlobStorageDataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBlobStorageDataResponse)(nil)).Elem()
+}
+
+func (i AzureBlobStorageDataResponseArgs) ToAzureBlobStorageDataResponseOutput() AzureBlobStorageDataResponseOutput {
+	return i.ToAzureBlobStorageDataResponseOutputWithContext(context.Background())
+}
+
+func (i AzureBlobStorageDataResponseArgs) ToAzureBlobStorageDataResponseOutputWithContext(ctx context.Context) AzureBlobStorageDataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBlobStorageDataResponseOutput)
+}
+
+func (i AzureBlobStorageDataResponseArgs) ToAzureBlobStorageDataResponsePtrOutput() AzureBlobStorageDataResponsePtrOutput {
+	return i.ToAzureBlobStorageDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AzureBlobStorageDataResponseArgs) ToAzureBlobStorageDataResponsePtrOutputWithContext(ctx context.Context) AzureBlobStorageDataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBlobStorageDataResponseOutput).ToAzureBlobStorageDataResponsePtrOutputWithContext(ctx)
+}
+
+// AzureBlobStorageDataResponsePtrInput is an input type that accepts AzureBlobStorageDataResponseArgs, AzureBlobStorageDataResponsePtr and AzureBlobStorageDataResponsePtrOutput values.
+// You can construct a concrete instance of `AzureBlobStorageDataResponsePtrInput` via:
+//
+//          AzureBlobStorageDataResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureBlobStorageDataResponsePtrInput interface {
+	pulumi.Input
+
+	ToAzureBlobStorageDataResponsePtrOutput() AzureBlobStorageDataResponsePtrOutput
+	ToAzureBlobStorageDataResponsePtrOutputWithContext(context.Context) AzureBlobStorageDataResponsePtrOutput
+}
+
+type azureBlobStorageDataResponsePtrType AzureBlobStorageDataResponseArgs
+
+func AzureBlobStorageDataResponsePtr(v *AzureBlobStorageDataResponseArgs) AzureBlobStorageDataResponsePtrInput {
+	return (*azureBlobStorageDataResponsePtrType)(v)
+}
+
+func (*azureBlobStorageDataResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBlobStorageDataResponse)(nil)).Elem()
+}
+
+func (i *azureBlobStorageDataResponsePtrType) ToAzureBlobStorageDataResponsePtrOutput() AzureBlobStorageDataResponsePtrOutput {
+	return i.ToAzureBlobStorageDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *azureBlobStorageDataResponsePtrType) ToAzureBlobStorageDataResponsePtrOutputWithContext(ctx context.Context) AzureBlobStorageDataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBlobStorageDataResponsePtrOutput)
+}
+
+// An AzureBlobStorageData resource can be a data source, but not a data sink. An AzureBlobStorageData resource represents one Azure container. The storage account determines the [Azure endpoint](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#storage-account-endpoints). In an AzureBlobStorageData resource, a blobs's name is the [Azure Blob Storage blob's key name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names).
+type AzureBlobStorageDataResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureBlobStorageDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBlobStorageDataResponse)(nil)).Elem()
+}
+
+func (o AzureBlobStorageDataResponseOutput) ToAzureBlobStorageDataResponseOutput() AzureBlobStorageDataResponseOutput {
+	return o
+}
+
+func (o AzureBlobStorageDataResponseOutput) ToAzureBlobStorageDataResponseOutputWithContext(ctx context.Context) AzureBlobStorageDataResponseOutput {
+	return o
+}
+
+func (o AzureBlobStorageDataResponseOutput) ToAzureBlobStorageDataResponsePtrOutput() AzureBlobStorageDataResponsePtrOutput {
+	return o.ToAzureBlobStorageDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AzureBlobStorageDataResponseOutput) ToAzureBlobStorageDataResponsePtrOutputWithContext(ctx context.Context) AzureBlobStorageDataResponsePtrOutput {
+	return o.ApplyT(func(v AzureBlobStorageDataResponse) *AzureBlobStorageDataResponse {
+		return &v
+	}).(AzureBlobStorageDataResponsePtrOutput)
+}
+
+// Required. Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+func (o AzureBlobStorageDataResponseOutput) AzureCredentials() AzureCredentialsResponseOutput {
+	return o.ApplyT(func(v AzureBlobStorageDataResponse) AzureCredentialsResponse { return v.AzureCredentials }).(AzureCredentialsResponseOutput)
+}
+
+// Required. The container to transfer from the Azure Storage account.
+func (o AzureBlobStorageDataResponseOutput) Container() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureBlobStorageDataResponse) string { return v.Container }).(pulumi.StringOutput)
+}
+
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o AzureBlobStorageDataResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureBlobStorageDataResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Required. The name of the Azure Storage account.
+func (o AzureBlobStorageDataResponseOutput) StorageAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureBlobStorageDataResponse) string { return v.StorageAccount }).(pulumi.StringOutput)
+}
+
+type AzureBlobStorageDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureBlobStorageDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBlobStorageDataResponse)(nil)).Elem()
+}
+
+func (o AzureBlobStorageDataResponsePtrOutput) ToAzureBlobStorageDataResponsePtrOutput() AzureBlobStorageDataResponsePtrOutput {
+	return o
+}
+
+func (o AzureBlobStorageDataResponsePtrOutput) ToAzureBlobStorageDataResponsePtrOutputWithContext(ctx context.Context) AzureBlobStorageDataResponsePtrOutput {
+	return o
+}
+
+func (o AzureBlobStorageDataResponsePtrOutput) Elem() AzureBlobStorageDataResponseOutput {
+	return o.ApplyT(func(v *AzureBlobStorageDataResponse) AzureBlobStorageDataResponse { return *v }).(AzureBlobStorageDataResponseOutput)
+}
+
+// Required. Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+func (o AzureBlobStorageDataResponsePtrOutput) AzureCredentials() AzureCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageDataResponse) *AzureCredentialsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureCredentials
+	}).(AzureCredentialsResponsePtrOutput)
+}
+
+// Required. The container to transfer from the Azure Storage account.
+func (o AzureBlobStorageDataResponsePtrOutput) Container() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Container
+	}).(pulumi.StringPtrOutput)
+}
+
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o AzureBlobStorageDataResponsePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The name of the Azure Storage account.
+func (o AzureBlobStorageDataResponsePtrOutput) StorageAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBlobStorageDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageAccount
+	}).(pulumi.StringPtrOutput)
+}
+
 // Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 type AzureCredentials struct {
 	// Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
@@ -657,6 +1173,140 @@ func (o AzureCredentialsPtrOutput) SasToken() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SasToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+type AzureCredentialsResponse struct {
+	// Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+	SasToken string `pulumi:"sasToken"`
+}
+
+// AzureCredentialsResponseInput is an input type that accepts AzureCredentialsResponseArgs and AzureCredentialsResponseOutput values.
+// You can construct a concrete instance of `AzureCredentialsResponseInput` via:
+//
+//          AzureCredentialsResponseArgs{...}
+type AzureCredentialsResponseInput interface {
+	pulumi.Input
+
+	ToAzureCredentialsResponseOutput() AzureCredentialsResponseOutput
+	ToAzureCredentialsResponseOutputWithContext(context.Context) AzureCredentialsResponseOutput
+}
+
+// Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+type AzureCredentialsResponseArgs struct {
+	// Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+	SasToken pulumi.StringInput `pulumi:"sasToken"`
+}
+
+func (AzureCredentialsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureCredentialsResponse)(nil)).Elem()
+}
+
+func (i AzureCredentialsResponseArgs) ToAzureCredentialsResponseOutput() AzureCredentialsResponseOutput {
+	return i.ToAzureCredentialsResponseOutputWithContext(context.Background())
+}
+
+func (i AzureCredentialsResponseArgs) ToAzureCredentialsResponseOutputWithContext(ctx context.Context) AzureCredentialsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureCredentialsResponseOutput)
+}
+
+func (i AzureCredentialsResponseArgs) ToAzureCredentialsResponsePtrOutput() AzureCredentialsResponsePtrOutput {
+	return i.ToAzureCredentialsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AzureCredentialsResponseArgs) ToAzureCredentialsResponsePtrOutputWithContext(ctx context.Context) AzureCredentialsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureCredentialsResponseOutput).ToAzureCredentialsResponsePtrOutputWithContext(ctx)
+}
+
+// AzureCredentialsResponsePtrInput is an input type that accepts AzureCredentialsResponseArgs, AzureCredentialsResponsePtr and AzureCredentialsResponsePtrOutput values.
+// You can construct a concrete instance of `AzureCredentialsResponsePtrInput` via:
+//
+//          AzureCredentialsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AzureCredentialsResponsePtrInput interface {
+	pulumi.Input
+
+	ToAzureCredentialsResponsePtrOutput() AzureCredentialsResponsePtrOutput
+	ToAzureCredentialsResponsePtrOutputWithContext(context.Context) AzureCredentialsResponsePtrOutput
+}
+
+type azureCredentialsResponsePtrType AzureCredentialsResponseArgs
+
+func AzureCredentialsResponsePtr(v *AzureCredentialsResponseArgs) AzureCredentialsResponsePtrInput {
+	return (*azureCredentialsResponsePtrType)(v)
+}
+
+func (*azureCredentialsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureCredentialsResponse)(nil)).Elem()
+}
+
+func (i *azureCredentialsResponsePtrType) ToAzureCredentialsResponsePtrOutput() AzureCredentialsResponsePtrOutput {
+	return i.ToAzureCredentialsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *azureCredentialsResponsePtrType) ToAzureCredentialsResponsePtrOutputWithContext(ctx context.Context) AzureCredentialsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureCredentialsResponsePtrOutput)
+}
+
+// Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+type AzureCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureCredentialsResponse)(nil)).Elem()
+}
+
+func (o AzureCredentialsResponseOutput) ToAzureCredentialsResponseOutput() AzureCredentialsResponseOutput {
+	return o
+}
+
+func (o AzureCredentialsResponseOutput) ToAzureCredentialsResponseOutputWithContext(ctx context.Context) AzureCredentialsResponseOutput {
+	return o
+}
+
+func (o AzureCredentialsResponseOutput) ToAzureCredentialsResponsePtrOutput() AzureCredentialsResponsePtrOutput {
+	return o.ToAzureCredentialsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AzureCredentialsResponseOutput) ToAzureCredentialsResponsePtrOutputWithContext(ctx context.Context) AzureCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v AzureCredentialsResponse) *AzureCredentialsResponse {
+		return &v
+	}).(AzureCredentialsResponsePtrOutput)
+}
+
+// Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+func (o AzureCredentialsResponseOutput) SasToken() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureCredentialsResponse) string { return v.SasToken }).(pulumi.StringOutput)
+}
+
+type AzureCredentialsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureCredentialsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureCredentialsResponse)(nil)).Elem()
+}
+
+func (o AzureCredentialsResponsePtrOutput) ToAzureCredentialsResponsePtrOutput() AzureCredentialsResponsePtrOutput {
+	return o
+}
+
+func (o AzureCredentialsResponsePtrOutput) ToAzureCredentialsResponsePtrOutputWithContext(ctx context.Context) AzureCredentialsResponsePtrOutput {
+	return o
+}
+
+func (o AzureCredentialsResponsePtrOutput) Elem() AzureCredentialsResponseOutput {
+	return o.ApplyT(func(v *AzureCredentialsResponse) AzureCredentialsResponse { return *v }).(AzureCredentialsResponseOutput)
+}
+
+// Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+func (o AzureCredentialsResponsePtrOutput) SasToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SasToken
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -832,6 +1482,178 @@ func (o DatePtrOutput) Year() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+type DateResponse struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year int `pulumi:"year"`
+}
+
+// DateResponseInput is an input type that accepts DateResponseArgs and DateResponseOutput values.
+// You can construct a concrete instance of `DateResponseInput` via:
+//
+//          DateResponseArgs{...}
+type DateResponseInput interface {
+	pulumi.Input
+
+	ToDateResponseOutput() DateResponseOutput
+	ToDateResponseOutputWithContext(context.Context) DateResponseOutput
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+type DateResponseArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day pulumi.IntInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month pulumi.IntInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year pulumi.IntInput `pulumi:"year"`
+}
+
+func (DateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DateResponse)(nil)).Elem()
+}
+
+func (i DateResponseArgs) ToDateResponseOutput() DateResponseOutput {
+	return i.ToDateResponseOutputWithContext(context.Background())
+}
+
+func (i DateResponseArgs) ToDateResponseOutputWithContext(ctx context.Context) DateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DateResponseOutput)
+}
+
+func (i DateResponseArgs) ToDateResponsePtrOutput() DateResponsePtrOutput {
+	return i.ToDateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DateResponseArgs) ToDateResponsePtrOutputWithContext(ctx context.Context) DateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DateResponseOutput).ToDateResponsePtrOutputWithContext(ctx)
+}
+
+// DateResponsePtrInput is an input type that accepts DateResponseArgs, DateResponsePtr and DateResponsePtrOutput values.
+// You can construct a concrete instance of `DateResponsePtrInput` via:
+//
+//          DateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DateResponsePtrInput interface {
+	pulumi.Input
+
+	ToDateResponsePtrOutput() DateResponsePtrOutput
+	ToDateResponsePtrOutputWithContext(context.Context) DateResponsePtrOutput
+}
+
+type dateResponsePtrType DateResponseArgs
+
+func DateResponsePtr(v *DateResponseArgs) DateResponsePtrInput {
+	return (*dateResponsePtrType)(v)
+}
+
+func (*dateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DateResponse)(nil)).Elem()
+}
+
+func (i *dateResponsePtrType) ToDateResponsePtrOutput() DateResponsePtrOutput {
+	return i.ToDateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *dateResponsePtrType) ToDateResponsePtrOutputWithContext(ctx context.Context) DateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DateResponsePtrOutput)
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+type DateResponseOutput struct{ *pulumi.OutputState }
+
+func (DateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DateResponse)(nil)).Elem()
+}
+
+func (o DateResponseOutput) ToDateResponseOutput() DateResponseOutput {
+	return o
+}
+
+func (o DateResponseOutput) ToDateResponseOutputWithContext(ctx context.Context) DateResponseOutput {
+	return o
+}
+
+func (o DateResponseOutput) ToDateResponsePtrOutput() DateResponsePtrOutput {
+	return o.ToDateResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DateResponseOutput) ToDateResponsePtrOutputWithContext(ctx context.Context) DateResponsePtrOutput {
+	return o.ApplyT(func(v DateResponse) *DateResponse {
+		return &v
+	}).(DateResponsePtrOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o DateResponseOutput) Day() pulumi.IntOutput {
+	return o.ApplyT(func(v DateResponse) int { return v.Day }).(pulumi.IntOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o DateResponseOutput) Month() pulumi.IntOutput {
+	return o.ApplyT(func(v DateResponse) int { return v.Month }).(pulumi.IntOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o DateResponseOutput) Year() pulumi.IntOutput {
+	return o.ApplyT(func(v DateResponse) int { return v.Year }).(pulumi.IntOutput)
+}
+
+type DateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DateResponse)(nil)).Elem()
+}
+
+func (o DateResponsePtrOutput) ToDateResponsePtrOutput() DateResponsePtrOutput {
+	return o
+}
+
+func (o DateResponsePtrOutput) ToDateResponsePtrOutputWithContext(ctx context.Context) DateResponsePtrOutput {
+	return o
+}
+
+func (o DateResponsePtrOutput) Elem() DateResponseOutput {
+	return o.ApplyT(func(v *DateResponse) DateResponse { return *v }).(DateResponseOutput)
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o DateResponsePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DateResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o DateResponsePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DateResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o DateResponsePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DateResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
 // In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
 type GcsData struct {
 	// Required. Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
@@ -985,6 +1807,159 @@ func (o GcsDataPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
+type GcsDataResponse struct {
+	// Required. Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+	BucketName string `pulumi:"bucketName"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
+	Path string `pulumi:"path"`
+}
+
+// GcsDataResponseInput is an input type that accepts GcsDataResponseArgs and GcsDataResponseOutput values.
+// You can construct a concrete instance of `GcsDataResponseInput` via:
+//
+//          GcsDataResponseArgs{...}
+type GcsDataResponseInput interface {
+	pulumi.Input
+
+	ToGcsDataResponseOutput() GcsDataResponseOutput
+	ToGcsDataResponseOutputWithContext(context.Context) GcsDataResponseOutput
+}
+
+// In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
+type GcsDataResponseArgs struct {
+	// Required. Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (GcsDataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcsDataResponse)(nil)).Elem()
+}
+
+func (i GcsDataResponseArgs) ToGcsDataResponseOutput() GcsDataResponseOutput {
+	return i.ToGcsDataResponseOutputWithContext(context.Background())
+}
+
+func (i GcsDataResponseArgs) ToGcsDataResponseOutputWithContext(ctx context.Context) GcsDataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcsDataResponseOutput)
+}
+
+func (i GcsDataResponseArgs) ToGcsDataResponsePtrOutput() GcsDataResponsePtrOutput {
+	return i.ToGcsDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GcsDataResponseArgs) ToGcsDataResponsePtrOutputWithContext(ctx context.Context) GcsDataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcsDataResponseOutput).ToGcsDataResponsePtrOutputWithContext(ctx)
+}
+
+// GcsDataResponsePtrInput is an input type that accepts GcsDataResponseArgs, GcsDataResponsePtr and GcsDataResponsePtrOutput values.
+// You can construct a concrete instance of `GcsDataResponsePtrInput` via:
+//
+//          GcsDataResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GcsDataResponsePtrInput interface {
+	pulumi.Input
+
+	ToGcsDataResponsePtrOutput() GcsDataResponsePtrOutput
+	ToGcsDataResponsePtrOutputWithContext(context.Context) GcsDataResponsePtrOutput
+}
+
+type gcsDataResponsePtrType GcsDataResponseArgs
+
+func GcsDataResponsePtr(v *GcsDataResponseArgs) GcsDataResponsePtrInput {
+	return (*gcsDataResponsePtrType)(v)
+}
+
+func (*gcsDataResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcsDataResponse)(nil)).Elem()
+}
+
+func (i *gcsDataResponsePtrType) ToGcsDataResponsePtrOutput() GcsDataResponsePtrOutput {
+	return i.ToGcsDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gcsDataResponsePtrType) ToGcsDataResponsePtrOutputWithContext(ctx context.Context) GcsDataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcsDataResponsePtrOutput)
+}
+
+// In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
+type GcsDataResponseOutput struct{ *pulumi.OutputState }
+
+func (GcsDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcsDataResponse)(nil)).Elem()
+}
+
+func (o GcsDataResponseOutput) ToGcsDataResponseOutput() GcsDataResponseOutput {
+	return o
+}
+
+func (o GcsDataResponseOutput) ToGcsDataResponseOutputWithContext(ctx context.Context) GcsDataResponseOutput {
+	return o
+}
+
+func (o GcsDataResponseOutput) ToGcsDataResponsePtrOutput() GcsDataResponsePtrOutput {
+	return o.ToGcsDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GcsDataResponseOutput) ToGcsDataResponsePtrOutputWithContext(ctx context.Context) GcsDataResponsePtrOutput {
+	return o.ApplyT(func(v GcsDataResponse) *GcsDataResponse {
+		return &v
+	}).(GcsDataResponsePtrOutput)
+}
+
+// Required. Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+func (o GcsDataResponseOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GcsDataResponse) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
+func (o GcsDataResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GcsDataResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type GcsDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GcsDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcsDataResponse)(nil)).Elem()
+}
+
+func (o GcsDataResponsePtrOutput) ToGcsDataResponsePtrOutput() GcsDataResponsePtrOutput {
+	return o
+}
+
+func (o GcsDataResponsePtrOutput) ToGcsDataResponsePtrOutputWithContext(ctx context.Context) GcsDataResponsePtrOutput {
+	return o
+}
+
+func (o GcsDataResponsePtrOutput) Elem() GcsDataResponseOutput {
+	return o.ApplyT(func(v *GcsDataResponse) GcsDataResponse { return *v }).(GcsDataResponseOutput)
+}
+
+// Required. Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+func (o GcsDataResponsePtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcsDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
+func (o GcsDataResponsePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcsDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
 // An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will fail. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
 type HttpData struct {
 	// Required. The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
@@ -1116,6 +2091,140 @@ func (o HttpDataPtrOutput) ListUrl() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ListUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will fail. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
+type HttpDataResponse struct {
+	// Required. The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+	ListUrl string `pulumi:"listUrl"`
+}
+
+// HttpDataResponseInput is an input type that accepts HttpDataResponseArgs and HttpDataResponseOutput values.
+// You can construct a concrete instance of `HttpDataResponseInput` via:
+//
+//          HttpDataResponseArgs{...}
+type HttpDataResponseInput interface {
+	pulumi.Input
+
+	ToHttpDataResponseOutput() HttpDataResponseOutput
+	ToHttpDataResponseOutputWithContext(context.Context) HttpDataResponseOutput
+}
+
+// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will fail. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
+type HttpDataResponseArgs struct {
+	// Required. The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+	ListUrl pulumi.StringInput `pulumi:"listUrl"`
+}
+
+func (HttpDataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpDataResponse)(nil)).Elem()
+}
+
+func (i HttpDataResponseArgs) ToHttpDataResponseOutput() HttpDataResponseOutput {
+	return i.ToHttpDataResponseOutputWithContext(context.Background())
+}
+
+func (i HttpDataResponseArgs) ToHttpDataResponseOutputWithContext(ctx context.Context) HttpDataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpDataResponseOutput)
+}
+
+func (i HttpDataResponseArgs) ToHttpDataResponsePtrOutput() HttpDataResponsePtrOutput {
+	return i.ToHttpDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i HttpDataResponseArgs) ToHttpDataResponsePtrOutputWithContext(ctx context.Context) HttpDataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpDataResponseOutput).ToHttpDataResponsePtrOutputWithContext(ctx)
+}
+
+// HttpDataResponsePtrInput is an input type that accepts HttpDataResponseArgs, HttpDataResponsePtr and HttpDataResponsePtrOutput values.
+// You can construct a concrete instance of `HttpDataResponsePtrInput` via:
+//
+//          HttpDataResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type HttpDataResponsePtrInput interface {
+	pulumi.Input
+
+	ToHttpDataResponsePtrOutput() HttpDataResponsePtrOutput
+	ToHttpDataResponsePtrOutputWithContext(context.Context) HttpDataResponsePtrOutput
+}
+
+type httpDataResponsePtrType HttpDataResponseArgs
+
+func HttpDataResponsePtr(v *HttpDataResponseArgs) HttpDataResponsePtrInput {
+	return (*httpDataResponsePtrType)(v)
+}
+
+func (*httpDataResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpDataResponse)(nil)).Elem()
+}
+
+func (i *httpDataResponsePtrType) ToHttpDataResponsePtrOutput() HttpDataResponsePtrOutput {
+	return i.ToHttpDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *httpDataResponsePtrType) ToHttpDataResponsePtrOutputWithContext(ctx context.Context) HttpDataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpDataResponsePtrOutput)
+}
+
+// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will fail. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
+type HttpDataResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpDataResponse)(nil)).Elem()
+}
+
+func (o HttpDataResponseOutput) ToHttpDataResponseOutput() HttpDataResponseOutput {
+	return o
+}
+
+func (o HttpDataResponseOutput) ToHttpDataResponseOutputWithContext(ctx context.Context) HttpDataResponseOutput {
+	return o
+}
+
+func (o HttpDataResponseOutput) ToHttpDataResponsePtrOutput() HttpDataResponsePtrOutput {
+	return o.ToHttpDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (o HttpDataResponseOutput) ToHttpDataResponsePtrOutputWithContext(ctx context.Context) HttpDataResponsePtrOutput {
+	return o.ApplyT(func(v HttpDataResponse) *HttpDataResponse {
+		return &v
+	}).(HttpDataResponsePtrOutput)
+}
+
+// Required. The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+func (o HttpDataResponseOutput) ListUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpDataResponse) string { return v.ListUrl }).(pulumi.StringOutput)
+}
+
+type HttpDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpDataResponse)(nil)).Elem()
+}
+
+func (o HttpDataResponsePtrOutput) ToHttpDataResponsePtrOutput() HttpDataResponsePtrOutput {
+	return o
+}
+
+func (o HttpDataResponsePtrOutput) ToHttpDataResponsePtrOutputWithContext(ctx context.Context) HttpDataResponsePtrOutput {
+	return o
+}
+
+func (o HttpDataResponsePtrOutput) Elem() HttpDataResponseOutput {
+	return o.ApplyT(func(v *HttpDataResponse) HttpDataResponse { return *v }).(HttpDataResponseOutput)
+}
+
+// Required. The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+func (o HttpDataResponsePtrOutput) ListUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ListUrl
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1288,6 +2397,178 @@ func (o NotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.PubsubTopic
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specification to configure notifications published to Cloud Pub/Sub. Notifications will be published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` will contain a TransferOperation resource formatted according to the specified `PayloadFormat`.
+type NotificationConfigResponse struct {
+	// Event types for which a notification is desired. If empty, send notifications for all event types.
+	EventTypes []string `pulumi:"eventTypes"`
+	// Required. The desired format of the notification message payloads.
+	PayloadFormat string `pulumi:"payloadFormat"`
+	// Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+	PubsubTopic string `pulumi:"pubsubTopic"`
+}
+
+// NotificationConfigResponseInput is an input type that accepts NotificationConfigResponseArgs and NotificationConfigResponseOutput values.
+// You can construct a concrete instance of `NotificationConfigResponseInput` via:
+//
+//          NotificationConfigResponseArgs{...}
+type NotificationConfigResponseInput interface {
+	pulumi.Input
+
+	ToNotificationConfigResponseOutput() NotificationConfigResponseOutput
+	ToNotificationConfigResponseOutputWithContext(context.Context) NotificationConfigResponseOutput
+}
+
+// Specification to configure notifications published to Cloud Pub/Sub. Notifications will be published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` will contain a TransferOperation resource formatted according to the specified `PayloadFormat`.
+type NotificationConfigResponseArgs struct {
+	// Event types for which a notification is desired. If empty, send notifications for all event types.
+	EventTypes pulumi.StringArrayInput `pulumi:"eventTypes"`
+	// Required. The desired format of the notification message payloads.
+	PayloadFormat pulumi.StringInput `pulumi:"payloadFormat"`
+	// Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
+}
+
+func (NotificationConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationConfigResponse)(nil)).Elem()
+}
+
+func (i NotificationConfigResponseArgs) ToNotificationConfigResponseOutput() NotificationConfigResponseOutput {
+	return i.ToNotificationConfigResponseOutputWithContext(context.Background())
+}
+
+func (i NotificationConfigResponseArgs) ToNotificationConfigResponseOutputWithContext(ctx context.Context) NotificationConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigResponseOutput)
+}
+
+func (i NotificationConfigResponseArgs) ToNotificationConfigResponsePtrOutput() NotificationConfigResponsePtrOutput {
+	return i.ToNotificationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i NotificationConfigResponseArgs) ToNotificationConfigResponsePtrOutputWithContext(ctx context.Context) NotificationConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigResponseOutput).ToNotificationConfigResponsePtrOutputWithContext(ctx)
+}
+
+// NotificationConfigResponsePtrInput is an input type that accepts NotificationConfigResponseArgs, NotificationConfigResponsePtr and NotificationConfigResponsePtrOutput values.
+// You can construct a concrete instance of `NotificationConfigResponsePtrInput` via:
+//
+//          NotificationConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type NotificationConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToNotificationConfigResponsePtrOutput() NotificationConfigResponsePtrOutput
+	ToNotificationConfigResponsePtrOutputWithContext(context.Context) NotificationConfigResponsePtrOutput
+}
+
+type notificationConfigResponsePtrType NotificationConfigResponseArgs
+
+func NotificationConfigResponsePtr(v *NotificationConfigResponseArgs) NotificationConfigResponsePtrInput {
+	return (*notificationConfigResponsePtrType)(v)
+}
+
+func (*notificationConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationConfigResponse)(nil)).Elem()
+}
+
+func (i *notificationConfigResponsePtrType) ToNotificationConfigResponsePtrOutput() NotificationConfigResponsePtrOutput {
+	return i.ToNotificationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *notificationConfigResponsePtrType) ToNotificationConfigResponsePtrOutputWithContext(ctx context.Context) NotificationConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigResponsePtrOutput)
+}
+
+// Specification to configure notifications published to Cloud Pub/Sub. Notifications will be published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` will contain a TransferOperation resource formatted according to the specified `PayloadFormat`.
+type NotificationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (NotificationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationConfigResponse)(nil)).Elem()
+}
+
+func (o NotificationConfigResponseOutput) ToNotificationConfigResponseOutput() NotificationConfigResponseOutput {
+	return o
+}
+
+func (o NotificationConfigResponseOutput) ToNotificationConfigResponseOutputWithContext(ctx context.Context) NotificationConfigResponseOutput {
+	return o
+}
+
+func (o NotificationConfigResponseOutput) ToNotificationConfigResponsePtrOutput() NotificationConfigResponsePtrOutput {
+	return o.ToNotificationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o NotificationConfigResponseOutput) ToNotificationConfigResponsePtrOutputWithContext(ctx context.Context) NotificationConfigResponsePtrOutput {
+	return o.ApplyT(func(v NotificationConfigResponse) *NotificationConfigResponse {
+		return &v
+	}).(NotificationConfigResponsePtrOutput)
+}
+
+// Event types for which a notification is desired. If empty, send notifications for all event types.
+func (o NotificationConfigResponseOutput) EventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationConfigResponse) []string { return v.EventTypes }).(pulumi.StringArrayOutput)
+}
+
+// Required. The desired format of the notification message payloads.
+func (o NotificationConfigResponseOutput) PayloadFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationConfigResponse) string { return v.PayloadFormat }).(pulumi.StringOutput)
+}
+
+// Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+func (o NotificationConfigResponseOutput) PubsubTopic() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationConfigResponse) string { return v.PubsubTopic }).(pulumi.StringOutput)
+}
+
+type NotificationConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NotificationConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationConfigResponse)(nil)).Elem()
+}
+
+func (o NotificationConfigResponsePtrOutput) ToNotificationConfigResponsePtrOutput() NotificationConfigResponsePtrOutput {
+	return o
+}
+
+func (o NotificationConfigResponsePtrOutput) ToNotificationConfigResponsePtrOutputWithContext(ctx context.Context) NotificationConfigResponsePtrOutput {
+	return o
+}
+
+func (o NotificationConfigResponsePtrOutput) Elem() NotificationConfigResponseOutput {
+	return o.ApplyT(func(v *NotificationConfigResponse) NotificationConfigResponse { return *v }).(NotificationConfigResponseOutput)
+}
+
+// Event types for which a notification is desired. If empty, send notifications for all event types.
+func (o NotificationConfigResponsePtrOutput) EventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationConfigResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EventTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. The desired format of the notification message payloads.
+func (o NotificationConfigResponsePtrOutput) PayloadFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PayloadFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+func (o NotificationConfigResponsePtrOutput) PubsubTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PubsubTopic
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1520,6 +2801,235 @@ func (o ObjectConditionsPtrOutput) MinTimeElapsedSinceLastModification() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Conditions that determine which objects will be transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
+type ObjectConditionsResponse struct {
+	// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
+	ExcludePrefixes []string `pulumi:"excludePrefixes"`
+	// If you specify `include_prefixes`, Storage Transfer Service uses the items in the `include_prefixes` array to determine which objects to include in a transfer. Objects must start with one of the matching `include_prefixes` for inclusion in the transfer. If exclude_prefixes is specified, objects must not start with any of the `exclude_prefixes` specified for inclusion in the transfer. The following are requirements of `include_prefixes`: * Each include-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each include-prefix must omit the leading slash. For example, to include the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include-prefix as `logs/y=2015/requests.gz`. * None of the include-prefix values can be empty, if specified. * Each include-prefix must include a distinct portion of the object namespace. No include-prefix may be a prefix of another include-prefix. The max size of `include_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
+	IncludePrefixes []string `pulumi:"includePrefixes"`
+	// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" will be transferred.
+	LastModifiedBefore string `pulumi:"lastModifiedBefore"`
+	// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. The `last_modified_since` and `last_modified_before` fields can be used together for chunked data processing. For example, consider a script that processes each day's worth of data at a time. For that you'd set each of the fields as follows: * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day
+	LastModifiedSince string `pulumi:"lastModifiedSince"`
+	// If specified, only objects with a "last modification time" on or after `NOW` - `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+	MaxTimeElapsedSinceLastModification string `pulumi:"maxTimeElapsedSinceLastModification"`
+	// If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+	MinTimeElapsedSinceLastModification string `pulumi:"minTimeElapsedSinceLastModification"`
+}
+
+// ObjectConditionsResponseInput is an input type that accepts ObjectConditionsResponseArgs and ObjectConditionsResponseOutput values.
+// You can construct a concrete instance of `ObjectConditionsResponseInput` via:
+//
+//          ObjectConditionsResponseArgs{...}
+type ObjectConditionsResponseInput interface {
+	pulumi.Input
+
+	ToObjectConditionsResponseOutput() ObjectConditionsResponseOutput
+	ToObjectConditionsResponseOutputWithContext(context.Context) ObjectConditionsResponseOutput
+}
+
+// Conditions that determine which objects will be transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
+type ObjectConditionsResponseArgs struct {
+	// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
+	ExcludePrefixes pulumi.StringArrayInput `pulumi:"excludePrefixes"`
+	// If you specify `include_prefixes`, Storage Transfer Service uses the items in the `include_prefixes` array to determine which objects to include in a transfer. Objects must start with one of the matching `include_prefixes` for inclusion in the transfer. If exclude_prefixes is specified, objects must not start with any of the `exclude_prefixes` specified for inclusion in the transfer. The following are requirements of `include_prefixes`: * Each include-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each include-prefix must omit the leading slash. For example, to include the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include-prefix as `logs/y=2015/requests.gz`. * None of the include-prefix values can be empty, if specified. * Each include-prefix must include a distinct portion of the object namespace. No include-prefix may be a prefix of another include-prefix. The max size of `include_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
+	IncludePrefixes pulumi.StringArrayInput `pulumi:"includePrefixes"`
+	// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" will be transferred.
+	LastModifiedBefore pulumi.StringInput `pulumi:"lastModifiedBefore"`
+	// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. The `last_modified_since` and `last_modified_before` fields can be used together for chunked data processing. For example, consider a script that processes each day's worth of data at a time. For that you'd set each of the fields as follows: * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day
+	LastModifiedSince pulumi.StringInput `pulumi:"lastModifiedSince"`
+	// If specified, only objects with a "last modification time" on or after `NOW` - `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+	MaxTimeElapsedSinceLastModification pulumi.StringInput `pulumi:"maxTimeElapsedSinceLastModification"`
+	// If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+	MinTimeElapsedSinceLastModification pulumi.StringInput `pulumi:"minTimeElapsedSinceLastModification"`
+}
+
+func (ObjectConditionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectConditionsResponse)(nil)).Elem()
+}
+
+func (i ObjectConditionsResponseArgs) ToObjectConditionsResponseOutput() ObjectConditionsResponseOutput {
+	return i.ToObjectConditionsResponseOutputWithContext(context.Background())
+}
+
+func (i ObjectConditionsResponseArgs) ToObjectConditionsResponseOutputWithContext(ctx context.Context) ObjectConditionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectConditionsResponseOutput)
+}
+
+func (i ObjectConditionsResponseArgs) ToObjectConditionsResponsePtrOutput() ObjectConditionsResponsePtrOutput {
+	return i.ToObjectConditionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ObjectConditionsResponseArgs) ToObjectConditionsResponsePtrOutputWithContext(ctx context.Context) ObjectConditionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectConditionsResponseOutput).ToObjectConditionsResponsePtrOutputWithContext(ctx)
+}
+
+// ObjectConditionsResponsePtrInput is an input type that accepts ObjectConditionsResponseArgs, ObjectConditionsResponsePtr and ObjectConditionsResponsePtrOutput values.
+// You can construct a concrete instance of `ObjectConditionsResponsePtrInput` via:
+//
+//          ObjectConditionsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ObjectConditionsResponsePtrInput interface {
+	pulumi.Input
+
+	ToObjectConditionsResponsePtrOutput() ObjectConditionsResponsePtrOutput
+	ToObjectConditionsResponsePtrOutputWithContext(context.Context) ObjectConditionsResponsePtrOutput
+}
+
+type objectConditionsResponsePtrType ObjectConditionsResponseArgs
+
+func ObjectConditionsResponsePtr(v *ObjectConditionsResponseArgs) ObjectConditionsResponsePtrInput {
+	return (*objectConditionsResponsePtrType)(v)
+}
+
+func (*objectConditionsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectConditionsResponse)(nil)).Elem()
+}
+
+func (i *objectConditionsResponsePtrType) ToObjectConditionsResponsePtrOutput() ObjectConditionsResponsePtrOutput {
+	return i.ToObjectConditionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *objectConditionsResponsePtrType) ToObjectConditionsResponsePtrOutputWithContext(ctx context.Context) ObjectConditionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectConditionsResponsePtrOutput)
+}
+
+// Conditions that determine which objects will be transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
+type ObjectConditionsResponseOutput struct{ *pulumi.OutputState }
+
+func (ObjectConditionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectConditionsResponse)(nil)).Elem()
+}
+
+func (o ObjectConditionsResponseOutput) ToObjectConditionsResponseOutput() ObjectConditionsResponseOutput {
+	return o
+}
+
+func (o ObjectConditionsResponseOutput) ToObjectConditionsResponseOutputWithContext(ctx context.Context) ObjectConditionsResponseOutput {
+	return o
+}
+
+func (o ObjectConditionsResponseOutput) ToObjectConditionsResponsePtrOutput() ObjectConditionsResponsePtrOutput {
+	return o.ToObjectConditionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ObjectConditionsResponseOutput) ToObjectConditionsResponsePtrOutputWithContext(ctx context.Context) ObjectConditionsResponsePtrOutput {
+	return o.ApplyT(func(v ObjectConditionsResponse) *ObjectConditionsResponse {
+		return &v
+	}).(ObjectConditionsResponsePtrOutput)
+}
+
+// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
+func (o ObjectConditionsResponseOutput) ExcludePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ObjectConditionsResponse) []string { return v.ExcludePrefixes }).(pulumi.StringArrayOutput)
+}
+
+// If you specify `include_prefixes`, Storage Transfer Service uses the items in the `include_prefixes` array to determine which objects to include in a transfer. Objects must start with one of the matching `include_prefixes` for inclusion in the transfer. If exclude_prefixes is specified, objects must not start with any of the `exclude_prefixes` specified for inclusion in the transfer. The following are requirements of `include_prefixes`: * Each include-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each include-prefix must omit the leading slash. For example, to include the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include-prefix as `logs/y=2015/requests.gz`. * None of the include-prefix values can be empty, if specified. * Each include-prefix must include a distinct portion of the object namespace. No include-prefix may be a prefix of another include-prefix. The max size of `include_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
+func (o ObjectConditionsResponseOutput) IncludePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ObjectConditionsResponse) []string { return v.IncludePrefixes }).(pulumi.StringArrayOutput)
+}
+
+// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" will be transferred.
+func (o ObjectConditionsResponseOutput) LastModifiedBefore() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectConditionsResponse) string { return v.LastModifiedBefore }).(pulumi.StringOutput)
+}
+
+// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. The `last_modified_since` and `last_modified_before` fields can be used together for chunked data processing. For example, consider a script that processes each day's worth of data at a time. For that you'd set each of the fields as follows: * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day
+func (o ObjectConditionsResponseOutput) LastModifiedSince() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectConditionsResponse) string { return v.LastModifiedSince }).(pulumi.StringOutput)
+}
+
+// If specified, only objects with a "last modification time" on or after `NOW` - `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+func (o ObjectConditionsResponseOutput) MaxTimeElapsedSinceLastModification() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectConditionsResponse) string { return v.MaxTimeElapsedSinceLastModification }).(pulumi.StringOutput)
+}
+
+// If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+func (o ObjectConditionsResponseOutput) MinTimeElapsedSinceLastModification() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectConditionsResponse) string { return v.MinTimeElapsedSinceLastModification }).(pulumi.StringOutput)
+}
+
+type ObjectConditionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ObjectConditionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectConditionsResponse)(nil)).Elem()
+}
+
+func (o ObjectConditionsResponsePtrOutput) ToObjectConditionsResponsePtrOutput() ObjectConditionsResponsePtrOutput {
+	return o
+}
+
+func (o ObjectConditionsResponsePtrOutput) ToObjectConditionsResponsePtrOutputWithContext(ctx context.Context) ObjectConditionsResponsePtrOutput {
+	return o
+}
+
+func (o ObjectConditionsResponsePtrOutput) Elem() ObjectConditionsResponseOutput {
+	return o.ApplyT(func(v *ObjectConditionsResponse) ObjectConditionsResponse { return *v }).(ObjectConditionsResponseOutput)
+}
+
+// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
+func (o ObjectConditionsResponsePtrOutput) ExcludePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ObjectConditionsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// If you specify `include_prefixes`, Storage Transfer Service uses the items in the `include_prefixes` array to determine which objects to include in a transfer. Objects must start with one of the matching `include_prefixes` for inclusion in the transfer. If exclude_prefixes is specified, objects must not start with any of the `exclude_prefixes` specified for inclusion in the transfer. The following are requirements of `include_prefixes`: * Each include-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each include-prefix must omit the leading slash. For example, to include the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include-prefix as `logs/y=2015/requests.gz`. * None of the include-prefix values can be empty, if specified. * Each include-prefix must include a distinct portion of the object namespace. No include-prefix may be a prefix of another include-prefix. The max size of `include_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
+func (o ObjectConditionsResponsePtrOutput) IncludePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ObjectConditionsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" will be transferred.
+func (o ObjectConditionsResponsePtrOutput) LastModifiedBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectConditionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LastModifiedBefore
+	}).(pulumi.StringPtrOutput)
+}
+
+// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. The `last_modified_since` and `last_modified_before` fields can be used together for chunked data processing. For example, consider a script that processes each day's worth of data at a time. For that you'd set each of the fields as follows: * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day
+func (o ObjectConditionsResponsePtrOutput) LastModifiedSince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectConditionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LastModifiedSince
+	}).(pulumi.StringPtrOutput)
+}
+
+// If specified, only objects with a "last modification time" on or after `NOW` - `max_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+func (o ObjectConditionsResponsePtrOutput) MaxTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectConditionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxTimeElapsedSinceLastModification
+	}).(pulumi.StringPtrOutput)
+}
+
+// If specified, only objects with a "last modification time" before `NOW` - `min_time_elapsed_since_last_modification` and objects that don't have a "last modification time" are transferred. For each TransferOperation started by this TransferJob, `NOW` refers to the start_time of the `TransferOperation`.
+func (o ObjectConditionsResponsePtrOutput) MinTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectConditionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MinTimeElapsedSinceLastModification
+	}).(pulumi.StringPtrOutput)
+}
+
 // Transfers can be scheduled to recur or to run just once.
 type Schedule struct {
 	// The time in UTC that no further transfer operations are scheduled. Combined with schedule_end_date, `end_time_of_day` specifies the end date and time for starting new transfer operations. This field must be greater than or equal to the timestamp corresponding to the combintation of schedule_start_date and start_time_of_day, and is subject to the following: * If `end_time_of_day` is not set and `schedule_end_date` is set, then a default value of `23:59:59` is used for `end_time_of_day`. * If `end_time_of_day` is set and `schedule_end_date` is not set, then INVALID_ARGUMENT is returned.
@@ -1730,6 +3240,216 @@ func (o SchedulePtrOutput) StartTimeOfDay() TimeOfDayPtrOutput {
 	}).(TimeOfDayPtrOutput)
 }
 
+// Transfers can be scheduled to recur or to run just once.
+type ScheduleResponse struct {
+	// The time in UTC that no further transfer operations are scheduled. Combined with schedule_end_date, `end_time_of_day` specifies the end date and time for starting new transfer operations. This field must be greater than or equal to the timestamp corresponding to the combintation of schedule_start_date and start_time_of_day, and is subject to the following: * If `end_time_of_day` is not set and `schedule_end_date` is set, then a default value of `23:59:59` is used for `end_time_of_day`. * If `end_time_of_day` is set and `schedule_end_date` is not set, then INVALID_ARGUMENT is returned.
+	EndTimeOfDay TimeOfDayResponse `pulumi:"endTimeOfDay"`
+	// Interval between the start of each scheduled TransferOperation. If unspecified, the default value is 24 hours. This value may not be less than 1 hour.
+	RepeatInterval string `pulumi:"repeatInterval"`
+	// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run each day at start_time_of_day through `schedule_end_date`.
+	ScheduleEndDate DateResponse `pulumi:"scheduleEndDate"`
+	// Required. The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+	ScheduleStartDate DateResponse `pulumi:"scheduleStartDate"`
+	// The time in UTC that a transfer job is scheduled to run. Transfers may start later than this time. If `start_time_of_day` is not specified: * One-time transfers run immediately. * Recurring transfers run immediately, and each day at midnight UTC, through schedule_end_date. If `start_time_of_day` is specified: * One-time transfers run at the specified time. * Recurring transfers run at the specified time each day, through `schedule_end_date`.
+	StartTimeOfDay TimeOfDayResponse `pulumi:"startTimeOfDay"`
+}
+
+// ScheduleResponseInput is an input type that accepts ScheduleResponseArgs and ScheduleResponseOutput values.
+// You can construct a concrete instance of `ScheduleResponseInput` via:
+//
+//          ScheduleResponseArgs{...}
+type ScheduleResponseInput interface {
+	pulumi.Input
+
+	ToScheduleResponseOutput() ScheduleResponseOutput
+	ToScheduleResponseOutputWithContext(context.Context) ScheduleResponseOutput
+}
+
+// Transfers can be scheduled to recur or to run just once.
+type ScheduleResponseArgs struct {
+	// The time in UTC that no further transfer operations are scheduled. Combined with schedule_end_date, `end_time_of_day` specifies the end date and time for starting new transfer operations. This field must be greater than or equal to the timestamp corresponding to the combintation of schedule_start_date and start_time_of_day, and is subject to the following: * If `end_time_of_day` is not set and `schedule_end_date` is set, then a default value of `23:59:59` is used for `end_time_of_day`. * If `end_time_of_day` is set and `schedule_end_date` is not set, then INVALID_ARGUMENT is returned.
+	EndTimeOfDay TimeOfDayResponseInput `pulumi:"endTimeOfDay"`
+	// Interval between the start of each scheduled TransferOperation. If unspecified, the default value is 24 hours. This value may not be less than 1 hour.
+	RepeatInterval pulumi.StringInput `pulumi:"repeatInterval"`
+	// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run each day at start_time_of_day through `schedule_end_date`.
+	ScheduleEndDate DateResponseInput `pulumi:"scheduleEndDate"`
+	// Required. The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+	ScheduleStartDate DateResponseInput `pulumi:"scheduleStartDate"`
+	// The time in UTC that a transfer job is scheduled to run. Transfers may start later than this time. If `start_time_of_day` is not specified: * One-time transfers run immediately. * Recurring transfers run immediately, and each day at midnight UTC, through schedule_end_date. If `start_time_of_day` is specified: * One-time transfers run at the specified time. * Recurring transfers run at the specified time each day, through `schedule_end_date`.
+	StartTimeOfDay TimeOfDayResponseInput `pulumi:"startTimeOfDay"`
+}
+
+func (ScheduleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleResponse)(nil)).Elem()
+}
+
+func (i ScheduleResponseArgs) ToScheduleResponseOutput() ScheduleResponseOutput {
+	return i.ToScheduleResponseOutputWithContext(context.Background())
+}
+
+func (i ScheduleResponseArgs) ToScheduleResponseOutputWithContext(ctx context.Context) ScheduleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleResponseOutput)
+}
+
+func (i ScheduleResponseArgs) ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput {
+	return i.ToScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ScheduleResponseArgs) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleResponseOutput).ToScheduleResponsePtrOutputWithContext(ctx)
+}
+
+// ScheduleResponsePtrInput is an input type that accepts ScheduleResponseArgs, ScheduleResponsePtr and ScheduleResponsePtrOutput values.
+// You can construct a concrete instance of `ScheduleResponsePtrInput` via:
+//
+//          ScheduleResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ScheduleResponsePtrInput interface {
+	pulumi.Input
+
+	ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput
+	ToScheduleResponsePtrOutputWithContext(context.Context) ScheduleResponsePtrOutput
+}
+
+type scheduleResponsePtrType ScheduleResponseArgs
+
+func ScheduleResponsePtr(v *ScheduleResponseArgs) ScheduleResponsePtrInput {
+	return (*scheduleResponsePtrType)(v)
+}
+
+func (*scheduleResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleResponse)(nil)).Elem()
+}
+
+func (i *scheduleResponsePtrType) ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput {
+	return i.ToScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *scheduleResponsePtrType) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleResponsePtrOutput)
+}
+
+// Transfers can be scheduled to recur or to run just once.
+type ScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (ScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleResponse)(nil)).Elem()
+}
+
+func (o ScheduleResponseOutput) ToScheduleResponseOutput() ScheduleResponseOutput {
+	return o
+}
+
+func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.Context) ScheduleResponseOutput {
+	return o
+}
+
+func (o ScheduleResponseOutput) ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput {
+	return o.ToScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleResponseOutput) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
+	return o.ApplyT(func(v ScheduleResponse) *ScheduleResponse {
+		return &v
+	}).(ScheduleResponsePtrOutput)
+}
+
+// The time in UTC that no further transfer operations are scheduled. Combined with schedule_end_date, `end_time_of_day` specifies the end date and time for starting new transfer operations. This field must be greater than or equal to the timestamp corresponding to the combintation of schedule_start_date and start_time_of_day, and is subject to the following: * If `end_time_of_day` is not set and `schedule_end_date` is set, then a default value of `23:59:59` is used for `end_time_of_day`. * If `end_time_of_day` is set and `schedule_end_date` is not set, then INVALID_ARGUMENT is returned.
+func (o ScheduleResponseOutput) EndTimeOfDay() TimeOfDayResponseOutput {
+	return o.ApplyT(func(v ScheduleResponse) TimeOfDayResponse { return v.EndTimeOfDay }).(TimeOfDayResponseOutput)
+}
+
+// Interval between the start of each scheduled TransferOperation. If unspecified, the default value is 24 hours. This value may not be less than 1 hour.
+func (o ScheduleResponseOutput) RepeatInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleResponse) string { return v.RepeatInterval }).(pulumi.StringOutput)
+}
+
+// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run each day at start_time_of_day through `schedule_end_date`.
+func (o ScheduleResponseOutput) ScheduleEndDate() DateResponseOutput {
+	return o.ApplyT(func(v ScheduleResponse) DateResponse { return v.ScheduleEndDate }).(DateResponseOutput)
+}
+
+// Required. The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+func (o ScheduleResponseOutput) ScheduleStartDate() DateResponseOutput {
+	return o.ApplyT(func(v ScheduleResponse) DateResponse { return v.ScheduleStartDate }).(DateResponseOutput)
+}
+
+// The time in UTC that a transfer job is scheduled to run. Transfers may start later than this time. If `start_time_of_day` is not specified: * One-time transfers run immediately. * Recurring transfers run immediately, and each day at midnight UTC, through schedule_end_date. If `start_time_of_day` is specified: * One-time transfers run at the specified time. * Recurring transfers run at the specified time each day, through `schedule_end_date`.
+func (o ScheduleResponseOutput) StartTimeOfDay() TimeOfDayResponseOutput {
+	return o.ApplyT(func(v ScheduleResponse) TimeOfDayResponse { return v.StartTimeOfDay }).(TimeOfDayResponseOutput)
+}
+
+type ScheduleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleResponse)(nil)).Elem()
+}
+
+func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput {
+	return o
+}
+
+func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
+	return o
+}
+
+func (o ScheduleResponsePtrOutput) Elem() ScheduleResponseOutput {
+	return o.ApplyT(func(v *ScheduleResponse) ScheduleResponse { return *v }).(ScheduleResponseOutput)
+}
+
+// The time in UTC that no further transfer operations are scheduled. Combined with schedule_end_date, `end_time_of_day` specifies the end date and time for starting new transfer operations. This field must be greater than or equal to the timestamp corresponding to the combintation of schedule_start_date and start_time_of_day, and is subject to the following: * If `end_time_of_day` is not set and `schedule_end_date` is set, then a default value of `23:59:59` is used for `end_time_of_day`. * If `end_time_of_day` is set and `schedule_end_date` is not set, then INVALID_ARGUMENT is returned.
+func (o ScheduleResponsePtrOutput) EndTimeOfDay() TimeOfDayResponsePtrOutput {
+	return o.ApplyT(func(v *ScheduleResponse) *TimeOfDayResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.EndTimeOfDay
+	}).(TimeOfDayResponsePtrOutput)
+}
+
+// Interval between the start of each scheduled TransferOperation. If unspecified, the default value is 24 hours. This value may not be less than 1 hour.
+func (o ScheduleResponsePtrOutput) RepeatInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RepeatInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run each day at start_time_of_day through `schedule_end_date`.
+func (o ScheduleResponsePtrOutput) ScheduleEndDate() DateResponsePtrOutput {
+	return o.ApplyT(func(v *ScheduleResponse) *DateResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ScheduleEndDate
+	}).(DateResponsePtrOutput)
+}
+
+// Required. The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+func (o ScheduleResponsePtrOutput) ScheduleStartDate() DateResponsePtrOutput {
+	return o.ApplyT(func(v *ScheduleResponse) *DateResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ScheduleStartDate
+	}).(DateResponsePtrOutput)
+}
+
+// The time in UTC that a transfer job is scheduled to run. Transfers may start later than this time. If `start_time_of_day` is not specified: * One-time transfers run immediately. * Recurring transfers run immediately, and each day at midnight UTC, through schedule_end_date. If `start_time_of_day` is specified: * One-time transfers run at the specified time. * Recurring transfers run at the specified time each day, through `schedule_end_date`.
+func (o ScheduleResponsePtrOutput) StartTimeOfDay() TimeOfDayResponsePtrOutput {
+	return o.ApplyT(func(v *ScheduleResponse) *TimeOfDayResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTimeOfDay
+	}).(TimeOfDayResponsePtrOutput)
+}
+
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
 type TimeOfDay struct {
 	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -1921,6 +3641,197 @@ func (o TimeOfDayPtrOutput) Seconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDayResponse struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds int `pulumi:"seconds"`
+}
+
+// TimeOfDayResponseInput is an input type that accepts TimeOfDayResponseArgs and TimeOfDayResponseOutput values.
+// You can construct a concrete instance of `TimeOfDayResponseInput` via:
+//
+//          TimeOfDayResponseArgs{...}
+type TimeOfDayResponseInput interface {
+	pulumi.Input
+
+	ToTimeOfDayResponseOutput() TimeOfDayResponseOutput
+	ToTimeOfDayResponseOutputWithContext(context.Context) TimeOfDayResponseOutput
+}
+
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDayResponseArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (TimeOfDayResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeOfDayResponse)(nil)).Elem()
+}
+
+func (i TimeOfDayResponseArgs) ToTimeOfDayResponseOutput() TimeOfDayResponseOutput {
+	return i.ToTimeOfDayResponseOutputWithContext(context.Background())
+}
+
+func (i TimeOfDayResponseArgs) ToTimeOfDayResponseOutputWithContext(ctx context.Context) TimeOfDayResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayResponseOutput)
+}
+
+func (i TimeOfDayResponseArgs) ToTimeOfDayResponsePtrOutput() TimeOfDayResponsePtrOutput {
+	return i.ToTimeOfDayResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TimeOfDayResponseArgs) ToTimeOfDayResponsePtrOutputWithContext(ctx context.Context) TimeOfDayResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayResponseOutput).ToTimeOfDayResponsePtrOutputWithContext(ctx)
+}
+
+// TimeOfDayResponsePtrInput is an input type that accepts TimeOfDayResponseArgs, TimeOfDayResponsePtr and TimeOfDayResponsePtrOutput values.
+// You can construct a concrete instance of `TimeOfDayResponsePtrInput` via:
+//
+//          TimeOfDayResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TimeOfDayResponsePtrInput interface {
+	pulumi.Input
+
+	ToTimeOfDayResponsePtrOutput() TimeOfDayResponsePtrOutput
+	ToTimeOfDayResponsePtrOutputWithContext(context.Context) TimeOfDayResponsePtrOutput
+}
+
+type timeOfDayResponsePtrType TimeOfDayResponseArgs
+
+func TimeOfDayResponsePtr(v *TimeOfDayResponseArgs) TimeOfDayResponsePtrInput {
+	return (*timeOfDayResponsePtrType)(v)
+}
+
+func (*timeOfDayResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeOfDayResponse)(nil)).Elem()
+}
+
+func (i *timeOfDayResponsePtrType) ToTimeOfDayResponsePtrOutput() TimeOfDayResponsePtrOutput {
+	return i.ToTimeOfDayResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *timeOfDayResponsePtrType) ToTimeOfDayResponsePtrOutputWithContext(ctx context.Context) TimeOfDayResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayResponsePtrOutput)
+}
+
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDayResponseOutput struct{ *pulumi.OutputState }
+
+func (TimeOfDayResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeOfDayResponse)(nil)).Elem()
+}
+
+func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutput() TimeOfDayResponseOutput {
+	return o
+}
+
+func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutputWithContext(ctx context.Context) TimeOfDayResponseOutput {
+	return o
+}
+
+func (o TimeOfDayResponseOutput) ToTimeOfDayResponsePtrOutput() TimeOfDayResponsePtrOutput {
+	return o.ToTimeOfDayResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TimeOfDayResponseOutput) ToTimeOfDayResponsePtrOutputWithContext(ctx context.Context) TimeOfDayResponsePtrOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) *TimeOfDayResponse {
+		return &v
+	}).(TimeOfDayResponsePtrOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o TimeOfDayResponseOutput) Hours() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Hours }).(pulumi.IntOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o TimeOfDayResponseOutput) Minutes() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Minutes }).(pulumi.IntOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o TimeOfDayResponseOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o TimeOfDayResponseOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type TimeOfDayResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TimeOfDayResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeOfDayResponse)(nil)).Elem()
+}
+
+func (o TimeOfDayResponsePtrOutput) ToTimeOfDayResponsePtrOutput() TimeOfDayResponsePtrOutput {
+	return o
+}
+
+func (o TimeOfDayResponsePtrOutput) ToTimeOfDayResponsePtrOutputWithContext(ctx context.Context) TimeOfDayResponsePtrOutput {
+	return o
+}
+
+func (o TimeOfDayResponsePtrOutput) Elem() TimeOfDayResponseOutput {
+	return o.ApplyT(func(v *TimeOfDayResponse) TimeOfDayResponse { return *v }).(TimeOfDayResponseOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o TimeOfDayResponsePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeOfDayResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o TimeOfDayResponsePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeOfDayResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o TimeOfDayResponsePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeOfDayResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o TimeOfDayResponsePtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeOfDayResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
 // TransferOptions define the actions to be performed on objects in a transfer.
 type TransferOptions struct {
 	// Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.
@@ -2090,6 +4001,178 @@ func (o TransferOptionsPtrOutput) OverwriteObjectsAlreadyExistingInSink() pulumi
 			return nil
 		}
 		return v.OverwriteObjectsAlreadyExistingInSink
+	}).(pulumi.BoolPtrOutput)
+}
+
+// TransferOptions define the actions to be performed on objects in a transfer.
+type TransferOptionsResponse struct {
+	// Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.
+	DeleteObjectsFromSourceAfterTransfer bool `pulumi:"deleteObjectsFromSourceAfterTransfer"`
+	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
+	DeleteObjectsUniqueInSink bool `pulumi:"deleteObjectsUniqueInSink"`
+	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source will be overwritten with the source object.
+	OverwriteObjectsAlreadyExistingInSink bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
+}
+
+// TransferOptionsResponseInput is an input type that accepts TransferOptionsResponseArgs and TransferOptionsResponseOutput values.
+// You can construct a concrete instance of `TransferOptionsResponseInput` via:
+//
+//          TransferOptionsResponseArgs{...}
+type TransferOptionsResponseInput interface {
+	pulumi.Input
+
+	ToTransferOptionsResponseOutput() TransferOptionsResponseOutput
+	ToTransferOptionsResponseOutputWithContext(context.Context) TransferOptionsResponseOutput
+}
+
+// TransferOptions define the actions to be performed on objects in a transfer.
+type TransferOptionsResponseArgs struct {
+	// Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.
+	DeleteObjectsFromSourceAfterTransfer pulumi.BoolInput `pulumi:"deleteObjectsFromSourceAfterTransfer"`
+	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
+	DeleteObjectsUniqueInSink pulumi.BoolInput `pulumi:"deleteObjectsUniqueInSink"`
+	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source will be overwritten with the source object.
+	OverwriteObjectsAlreadyExistingInSink pulumi.BoolInput `pulumi:"overwriteObjectsAlreadyExistingInSink"`
+}
+
+func (TransferOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferOptionsResponse)(nil)).Elem()
+}
+
+func (i TransferOptionsResponseArgs) ToTransferOptionsResponseOutput() TransferOptionsResponseOutput {
+	return i.ToTransferOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i TransferOptionsResponseArgs) ToTransferOptionsResponseOutputWithContext(ctx context.Context) TransferOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferOptionsResponseOutput)
+}
+
+func (i TransferOptionsResponseArgs) ToTransferOptionsResponsePtrOutput() TransferOptionsResponsePtrOutput {
+	return i.ToTransferOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TransferOptionsResponseArgs) ToTransferOptionsResponsePtrOutputWithContext(ctx context.Context) TransferOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferOptionsResponseOutput).ToTransferOptionsResponsePtrOutputWithContext(ctx)
+}
+
+// TransferOptionsResponsePtrInput is an input type that accepts TransferOptionsResponseArgs, TransferOptionsResponsePtr and TransferOptionsResponsePtrOutput values.
+// You can construct a concrete instance of `TransferOptionsResponsePtrInput` via:
+//
+//          TransferOptionsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TransferOptionsResponsePtrInput interface {
+	pulumi.Input
+
+	ToTransferOptionsResponsePtrOutput() TransferOptionsResponsePtrOutput
+	ToTransferOptionsResponsePtrOutputWithContext(context.Context) TransferOptionsResponsePtrOutput
+}
+
+type transferOptionsResponsePtrType TransferOptionsResponseArgs
+
+func TransferOptionsResponsePtr(v *TransferOptionsResponseArgs) TransferOptionsResponsePtrInput {
+	return (*transferOptionsResponsePtrType)(v)
+}
+
+func (*transferOptionsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferOptionsResponse)(nil)).Elem()
+}
+
+func (i *transferOptionsResponsePtrType) ToTransferOptionsResponsePtrOutput() TransferOptionsResponsePtrOutput {
+	return i.ToTransferOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *transferOptionsResponsePtrType) ToTransferOptionsResponsePtrOutputWithContext(ctx context.Context) TransferOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferOptionsResponsePtrOutput)
+}
+
+// TransferOptions define the actions to be performed on objects in a transfer.
+type TransferOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (TransferOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferOptionsResponse)(nil)).Elem()
+}
+
+func (o TransferOptionsResponseOutput) ToTransferOptionsResponseOutput() TransferOptionsResponseOutput {
+	return o
+}
+
+func (o TransferOptionsResponseOutput) ToTransferOptionsResponseOutputWithContext(ctx context.Context) TransferOptionsResponseOutput {
+	return o
+}
+
+func (o TransferOptionsResponseOutput) ToTransferOptionsResponsePtrOutput() TransferOptionsResponsePtrOutput {
+	return o.ToTransferOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TransferOptionsResponseOutput) ToTransferOptionsResponsePtrOutputWithContext(ctx context.Context) TransferOptionsResponsePtrOutput {
+	return o.ApplyT(func(v TransferOptionsResponse) *TransferOptionsResponse {
+		return &v
+	}).(TransferOptionsResponsePtrOutput)
+}
+
+// Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.
+func (o TransferOptionsResponseOutput) DeleteObjectsFromSourceAfterTransfer() pulumi.BoolOutput {
+	return o.ApplyT(func(v TransferOptionsResponse) bool { return v.DeleteObjectsFromSourceAfterTransfer }).(pulumi.BoolOutput)
+}
+
+// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
+func (o TransferOptionsResponseOutput) DeleteObjectsUniqueInSink() pulumi.BoolOutput {
+	return o.ApplyT(func(v TransferOptionsResponse) bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolOutput)
+}
+
+// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source will be overwritten with the source object.
+func (o TransferOptionsResponseOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolOutput {
+	return o.ApplyT(func(v TransferOptionsResponse) bool { return v.OverwriteObjectsAlreadyExistingInSink }).(pulumi.BoolOutput)
+}
+
+type TransferOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TransferOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferOptionsResponse)(nil)).Elem()
+}
+
+func (o TransferOptionsResponsePtrOutput) ToTransferOptionsResponsePtrOutput() TransferOptionsResponsePtrOutput {
+	return o
+}
+
+func (o TransferOptionsResponsePtrOutput) ToTransferOptionsResponsePtrOutputWithContext(ctx context.Context) TransferOptionsResponsePtrOutput {
+	return o
+}
+
+func (o TransferOptionsResponsePtrOutput) Elem() TransferOptionsResponseOutput {
+	return o.ApplyT(func(v *TransferOptionsResponse) TransferOptionsResponse { return *v }).(TransferOptionsResponseOutput)
+}
+
+// Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.
+func (o TransferOptionsResponsePtrOutput) DeleteObjectsFromSourceAfterTransfer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransferOptionsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.DeleteObjectsFromSourceAfterTransfer
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
+func (o TransferOptionsResponsePtrOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransferOptionsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.DeleteObjectsUniqueInSink
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source will be overwritten with the source object.
+func (o TransferOptionsResponsePtrOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransferOptionsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.OverwriteObjectsAlreadyExistingInSink
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -2341,31 +4424,305 @@ func (o TransferSpecPtrOutput) TransferOptions() TransferOptionsPtrOutput {
 	}).(TransferOptionsPtrOutput)
 }
 
+// Configuration for running a transfer.
+type TransferSpecResponse struct {
+	// An AWS S3 data source.
+	AwsS3DataSource AwsS3DataResponse `pulumi:"awsS3DataSource"`
+	// An Azure Blob Storage data source.
+	AzureBlobStorageDataSource AzureBlobStorageDataResponse `pulumi:"azureBlobStorageDataSource"`
+	// A Cloud Storage data sink.
+	GcsDataSink GcsDataResponse `pulumi:"gcsDataSink"`
+	// A Cloud Storage data source.
+	GcsDataSource GcsDataResponse `pulumi:"gcsDataSource"`
+	// An HTTP URL data source.
+	HttpDataSource HttpDataResponse `pulumi:"httpDataSource"`
+	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
+	ObjectConditions ObjectConditionsResponse `pulumi:"objectConditions"`
+	// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
+	TransferOptions TransferOptionsResponse `pulumi:"transferOptions"`
+}
+
+// TransferSpecResponseInput is an input type that accepts TransferSpecResponseArgs and TransferSpecResponseOutput values.
+// You can construct a concrete instance of `TransferSpecResponseInput` via:
+//
+//          TransferSpecResponseArgs{...}
+type TransferSpecResponseInput interface {
+	pulumi.Input
+
+	ToTransferSpecResponseOutput() TransferSpecResponseOutput
+	ToTransferSpecResponseOutputWithContext(context.Context) TransferSpecResponseOutput
+}
+
+// Configuration for running a transfer.
+type TransferSpecResponseArgs struct {
+	// An AWS S3 data source.
+	AwsS3DataSource AwsS3DataResponseInput `pulumi:"awsS3DataSource"`
+	// An Azure Blob Storage data source.
+	AzureBlobStorageDataSource AzureBlobStorageDataResponseInput `pulumi:"azureBlobStorageDataSource"`
+	// A Cloud Storage data sink.
+	GcsDataSink GcsDataResponseInput `pulumi:"gcsDataSink"`
+	// A Cloud Storage data source.
+	GcsDataSource GcsDataResponseInput `pulumi:"gcsDataSource"`
+	// An HTTP URL data source.
+	HttpDataSource HttpDataResponseInput `pulumi:"httpDataSource"`
+	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
+	ObjectConditions ObjectConditionsResponseInput `pulumi:"objectConditions"`
+	// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
+	TransferOptions TransferOptionsResponseInput `pulumi:"transferOptions"`
+}
+
+func (TransferSpecResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferSpecResponse)(nil)).Elem()
+}
+
+func (i TransferSpecResponseArgs) ToTransferSpecResponseOutput() TransferSpecResponseOutput {
+	return i.ToTransferSpecResponseOutputWithContext(context.Background())
+}
+
+func (i TransferSpecResponseArgs) ToTransferSpecResponseOutputWithContext(ctx context.Context) TransferSpecResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferSpecResponseOutput)
+}
+
+func (i TransferSpecResponseArgs) ToTransferSpecResponsePtrOutput() TransferSpecResponsePtrOutput {
+	return i.ToTransferSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TransferSpecResponseArgs) ToTransferSpecResponsePtrOutputWithContext(ctx context.Context) TransferSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferSpecResponseOutput).ToTransferSpecResponsePtrOutputWithContext(ctx)
+}
+
+// TransferSpecResponsePtrInput is an input type that accepts TransferSpecResponseArgs, TransferSpecResponsePtr and TransferSpecResponsePtrOutput values.
+// You can construct a concrete instance of `TransferSpecResponsePtrInput` via:
+//
+//          TransferSpecResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TransferSpecResponsePtrInput interface {
+	pulumi.Input
+
+	ToTransferSpecResponsePtrOutput() TransferSpecResponsePtrOutput
+	ToTransferSpecResponsePtrOutputWithContext(context.Context) TransferSpecResponsePtrOutput
+}
+
+type transferSpecResponsePtrType TransferSpecResponseArgs
+
+func TransferSpecResponsePtr(v *TransferSpecResponseArgs) TransferSpecResponsePtrInput {
+	return (*transferSpecResponsePtrType)(v)
+}
+
+func (*transferSpecResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferSpecResponse)(nil)).Elem()
+}
+
+func (i *transferSpecResponsePtrType) ToTransferSpecResponsePtrOutput() TransferSpecResponsePtrOutput {
+	return i.ToTransferSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *transferSpecResponsePtrType) ToTransferSpecResponsePtrOutputWithContext(ctx context.Context) TransferSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferSpecResponsePtrOutput)
+}
+
+// Configuration for running a transfer.
+type TransferSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (TransferSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferSpecResponse)(nil)).Elem()
+}
+
+func (o TransferSpecResponseOutput) ToTransferSpecResponseOutput() TransferSpecResponseOutput {
+	return o
+}
+
+func (o TransferSpecResponseOutput) ToTransferSpecResponseOutputWithContext(ctx context.Context) TransferSpecResponseOutput {
+	return o
+}
+
+func (o TransferSpecResponseOutput) ToTransferSpecResponsePtrOutput() TransferSpecResponsePtrOutput {
+	return o.ToTransferSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TransferSpecResponseOutput) ToTransferSpecResponsePtrOutputWithContext(ctx context.Context) TransferSpecResponsePtrOutput {
+	return o.ApplyT(func(v TransferSpecResponse) *TransferSpecResponse {
+		return &v
+	}).(TransferSpecResponsePtrOutput)
+}
+
+// An AWS S3 data source.
+func (o TransferSpecResponseOutput) AwsS3DataSource() AwsS3DataResponseOutput {
+	return o.ApplyT(func(v TransferSpecResponse) AwsS3DataResponse { return v.AwsS3DataSource }).(AwsS3DataResponseOutput)
+}
+
+// An Azure Blob Storage data source.
+func (o TransferSpecResponseOutput) AzureBlobStorageDataSource() AzureBlobStorageDataResponseOutput {
+	return o.ApplyT(func(v TransferSpecResponse) AzureBlobStorageDataResponse { return v.AzureBlobStorageDataSource }).(AzureBlobStorageDataResponseOutput)
+}
+
+// A Cloud Storage data sink.
+func (o TransferSpecResponseOutput) GcsDataSink() GcsDataResponseOutput {
+	return o.ApplyT(func(v TransferSpecResponse) GcsDataResponse { return v.GcsDataSink }).(GcsDataResponseOutput)
+}
+
+// A Cloud Storage data source.
+func (o TransferSpecResponseOutput) GcsDataSource() GcsDataResponseOutput {
+	return o.ApplyT(func(v TransferSpecResponse) GcsDataResponse { return v.GcsDataSource }).(GcsDataResponseOutput)
+}
+
+// An HTTP URL data source.
+func (o TransferSpecResponseOutput) HttpDataSource() HttpDataResponseOutput {
+	return o.ApplyT(func(v TransferSpecResponse) HttpDataResponse { return v.HttpDataSource }).(HttpDataResponseOutput)
+}
+
+// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
+func (o TransferSpecResponseOutput) ObjectConditions() ObjectConditionsResponseOutput {
+	return o.ApplyT(func(v TransferSpecResponse) ObjectConditionsResponse { return v.ObjectConditions }).(ObjectConditionsResponseOutput)
+}
+
+// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
+func (o TransferSpecResponseOutput) TransferOptions() TransferOptionsResponseOutput {
+	return o.ApplyT(func(v TransferSpecResponse) TransferOptionsResponse { return v.TransferOptions }).(TransferOptionsResponseOutput)
+}
+
+type TransferSpecResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TransferSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferSpecResponse)(nil)).Elem()
+}
+
+func (o TransferSpecResponsePtrOutput) ToTransferSpecResponsePtrOutput() TransferSpecResponsePtrOutput {
+	return o
+}
+
+func (o TransferSpecResponsePtrOutput) ToTransferSpecResponsePtrOutputWithContext(ctx context.Context) TransferSpecResponsePtrOutput {
+	return o
+}
+
+func (o TransferSpecResponsePtrOutput) Elem() TransferSpecResponseOutput {
+	return o.ApplyT(func(v *TransferSpecResponse) TransferSpecResponse { return *v }).(TransferSpecResponseOutput)
+}
+
+// An AWS S3 data source.
+func (o TransferSpecResponsePtrOutput) AwsS3DataSource() AwsS3DataResponsePtrOutput {
+	return o.ApplyT(func(v *TransferSpecResponse) *AwsS3DataResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsS3DataSource
+	}).(AwsS3DataResponsePtrOutput)
+}
+
+// An Azure Blob Storage data source.
+func (o TransferSpecResponsePtrOutput) AzureBlobStorageDataSource() AzureBlobStorageDataResponsePtrOutput {
+	return o.ApplyT(func(v *TransferSpecResponse) *AzureBlobStorageDataResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureBlobStorageDataSource
+	}).(AzureBlobStorageDataResponsePtrOutput)
+}
+
+// A Cloud Storage data sink.
+func (o TransferSpecResponsePtrOutput) GcsDataSink() GcsDataResponsePtrOutput {
+	return o.ApplyT(func(v *TransferSpecResponse) *GcsDataResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GcsDataSink
+	}).(GcsDataResponsePtrOutput)
+}
+
+// A Cloud Storage data source.
+func (o TransferSpecResponsePtrOutput) GcsDataSource() GcsDataResponsePtrOutput {
+	return o.ApplyT(func(v *TransferSpecResponse) *GcsDataResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GcsDataSource
+	}).(GcsDataResponsePtrOutput)
+}
+
+// An HTTP URL data source.
+func (o TransferSpecResponsePtrOutput) HttpDataSource() HttpDataResponsePtrOutput {
+	return o.ApplyT(func(v *TransferSpecResponse) *HttpDataResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.HttpDataSource
+	}).(HttpDataResponsePtrOutput)
+}
+
+// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
+func (o TransferSpecResponsePtrOutput) ObjectConditions() ObjectConditionsResponsePtrOutput {
+	return o.ApplyT(func(v *TransferSpecResponse) *ObjectConditionsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ObjectConditions
+	}).(ObjectConditionsResponsePtrOutput)
+}
+
+// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
+func (o TransferSpecResponsePtrOutput) TransferOptions() TransferOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *TransferSpecResponse) *TransferOptionsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.TransferOptions
+	}).(TransferOptionsResponsePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AwsAccessKeyOutput{})
 	pulumi.RegisterOutputType(AwsAccessKeyPtrOutput{})
+	pulumi.RegisterOutputType(AwsAccessKeyResponseOutput{})
+	pulumi.RegisterOutputType(AwsAccessKeyResponsePtrOutput{})
 	pulumi.RegisterOutputType(AwsS3DataOutput{})
 	pulumi.RegisterOutputType(AwsS3DataPtrOutput{})
+	pulumi.RegisterOutputType(AwsS3DataResponseOutput{})
+	pulumi.RegisterOutputType(AwsS3DataResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureBlobStorageDataOutput{})
 	pulumi.RegisterOutputType(AzureBlobStorageDataPtrOutput{})
+	pulumi.RegisterOutputType(AzureBlobStorageDataResponseOutput{})
+	pulumi.RegisterOutputType(AzureBlobStorageDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureCredentialsOutput{})
 	pulumi.RegisterOutputType(AzureCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(AzureCredentialsResponseOutput{})
+	pulumi.RegisterOutputType(AzureCredentialsResponsePtrOutput{})
 	pulumi.RegisterOutputType(DateOutput{})
 	pulumi.RegisterOutputType(DatePtrOutput{})
+	pulumi.RegisterOutputType(DateResponseOutput{})
+	pulumi.RegisterOutputType(DateResponsePtrOutput{})
 	pulumi.RegisterOutputType(GcsDataOutput{})
 	pulumi.RegisterOutputType(GcsDataPtrOutput{})
+	pulumi.RegisterOutputType(GcsDataResponseOutput{})
+	pulumi.RegisterOutputType(GcsDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(HttpDataOutput{})
 	pulumi.RegisterOutputType(HttpDataPtrOutput{})
+	pulumi.RegisterOutputType(HttpDataResponseOutput{})
+	pulumi.RegisterOutputType(HttpDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigOutput{})
 	pulumi.RegisterOutputType(NotificationConfigPtrOutput{})
+	pulumi.RegisterOutputType(NotificationConfigResponseOutput{})
+	pulumi.RegisterOutputType(NotificationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ObjectConditionsOutput{})
 	pulumi.RegisterOutputType(ObjectConditionsPtrOutput{})
+	pulumi.RegisterOutputType(ObjectConditionsResponseOutput{})
+	pulumi.RegisterOutputType(ObjectConditionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScheduleOutput{})
 	pulumi.RegisterOutputType(SchedulePtrOutput{})
+	pulumi.RegisterOutputType(ScheduleResponseOutput{})
+	pulumi.RegisterOutputType(ScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(TimeOfDayOutput{})
 	pulumi.RegisterOutputType(TimeOfDayPtrOutput{})
+	pulumi.RegisterOutputType(TimeOfDayResponseOutput{})
+	pulumi.RegisterOutputType(TimeOfDayResponsePtrOutput{})
 	pulumi.RegisterOutputType(TransferOptionsOutput{})
 	pulumi.RegisterOutputType(TransferOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TransferOptionsResponseOutput{})
+	pulumi.RegisterOutputType(TransferOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(TransferSpecOutput{})
 	pulumi.RegisterOutputType(TransferSpecPtrOutput{})
+	pulumi.RegisterOutputType(TransferSpecResponseOutput{})
+	pulumi.RegisterOutputType(TransferSpecResponsePtrOutput{})
 }

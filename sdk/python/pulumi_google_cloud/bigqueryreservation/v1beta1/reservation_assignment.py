@@ -19,10 +19,8 @@ class ReservationAssignment(pulumi.CustomResource):
                  assignments_id: Optional[pulumi.Input[str]] = None,
                  job_type: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  reservations_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -33,8 +31,6 @@ class ReservationAssignment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] assignee: The resource which will use the reservation. E.g. `projects/myproject`, `folders/123`, or `organizations/456`.
         :param pulumi.Input[str] job_type: Which type of jobs will use the reservation.
-        :param pulumi.Input[str] name: Output only. Name of the resource. E.g.: `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
-        :param pulumi.Input[str] state: Output only. State of the assignment.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -61,14 +57,12 @@ class ReservationAssignment(pulumi.CustomResource):
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
             if reservations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'reservations_id'")
             __props__['reservations_id'] = reservations_id
-            __props__['state'] = state
         super(ReservationAssignment, __self__).__init__(
             'google-cloud:bigqueryreservation/v1beta1:ReservationAssignment',
             resource_name,

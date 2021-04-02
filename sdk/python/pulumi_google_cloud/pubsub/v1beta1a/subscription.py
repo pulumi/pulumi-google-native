@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Subscription']
@@ -80,7 +81,43 @@ class Subscription(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["ack_deadline_seconds"] = None
+        __props__["name"] = None
+        __props__["push_config"] = None
+        __props__["topic"] = None
         return Subscription(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="ackDeadlineSeconds")
+    def ack_deadline_seconds(self) -> pulumi.Output[int]:
+        """
+        For either push or pull delivery, the value is the maximum time after a subscriber receives a message before the subscriber should acknowledge or Nack the message. If the Ack deadline for a message passes without an Ack or a Nack, the Pub/Sub system will eventually redeliver the message. If a subscriber acknowledges after the deadline, the Pub/Sub system may accept the Ack, but it is possible that the message has been already delivered again. Multiple Acks to the message are allowed and will succeed. For push delivery, this value is used to set the request timeout for the call to the push endpoint. For pull delivery, this value is used as the initial value for the Ack deadline. It may be overridden for each message using its corresponding ack_id with ModifyAckDeadline. While a message is outstanding (i.e. it has been delivered to a pull subscriber and the subscriber has not yet Acked or Nacked), the Pub/Sub system will not deliver that message to another pull subscriber (on a best-effort basis).
+        """
+        return pulumi.get(self, "ack_deadline_seconds")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the subscription.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pushConfig")
+    def push_config(self) -> pulumi.Output['outputs.PushConfigResponse']:
+        """
+        If push delivery is used with this subscription, this field is used to configure it.
+        """
+        return pulumi.get(self, "push_config")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> pulumi.Output[str]:
+        """
+        The name of the topic from which this subscription is receiving messages.
+        """
+        return pulumi.get(self, "topic")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

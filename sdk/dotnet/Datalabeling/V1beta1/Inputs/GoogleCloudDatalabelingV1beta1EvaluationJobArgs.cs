@@ -25,7 +25,7 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1.Inputs
         private InputList<Inputs.GoogleCloudDatalabelingV1beta1AttemptArgs>? _attempts;
 
         /// <summary>
-        /// Output only. Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
+        /// Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
         /// </summary>
         public InputList<Inputs.GoogleCloudDatalabelingV1beta1AttemptArgs> Attempts
         {
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1.Inputs
         }
 
         /// <summary>
-        /// Output only. Timestamp of when this evaluation job was created.
+        /// Timestamp of when this evaluation job was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1.Inputs
         public Input<string>? ModelVersion { get; set; }
 
         /// <summary>
-        /// Output only. After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
+        /// After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1.Inputs
         public Input<string>? Schedule { get; set; }
 
         /// <summary>
-        /// Output only. Describes the current state of the job.
+        /// Describes the current state of the job.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

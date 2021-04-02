@@ -35,6 +35,30 @@ export class AgentEntityType extends pulumi.CustomResource {
         return obj['__pulumiType'] === AgentEntityType.__pulumiType;
     }
 
+    /**
+     * Optional. Indicates whether the entity type can be automatically expanded.
+     */
+    public readonly autoExpansionMode!: pulumi.Output<string>;
+    /**
+     * Required. The name of the entity type.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Optional. Enables fuzzy entity extraction during classification.
+     */
+    public readonly enableFuzzyExtraction!: pulumi.Output<boolean>;
+    /**
+     * Optional. The collection of entity entries associated with the entity type.
+     */
+    public readonly entities!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2EntityTypeEntityResponse[]>;
+    /**
+     * Required. Indicates the kind of entity type.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
+     */
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a AgentEntityType resource with the given unique name, arguments, and options.
@@ -66,6 +90,12 @@ export class AgentEntityType extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
+            inputs["autoExpansionMode"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["enableFuzzyExtraction"] = undefined /*out*/;
+            inputs["entities"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

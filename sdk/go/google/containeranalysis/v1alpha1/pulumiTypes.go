@@ -137,6 +137,124 @@ func (o ArtifactArrayOutput) Index(i pulumi.IntInput) ArtifactOutput {
 	}).(ArtifactOutput)
 }
 
+// Artifact describes a build product.
+type ArtifactResponse struct {
+	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
+	Checksum string `pulumi:"checksum"`
+	// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
+	Name string `pulumi:"name"`
+	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
+	Names []string `pulumi:"names"`
+}
+
+// ArtifactResponseInput is an input type that accepts ArtifactResponseArgs and ArtifactResponseOutput values.
+// You can construct a concrete instance of `ArtifactResponseInput` via:
+//
+//          ArtifactResponseArgs{...}
+type ArtifactResponseInput interface {
+	pulumi.Input
+
+	ToArtifactResponseOutput() ArtifactResponseOutput
+	ToArtifactResponseOutputWithContext(context.Context) ArtifactResponseOutput
+}
+
+// Artifact describes a build product.
+type ArtifactResponseArgs struct {
+	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
+	Names pulumi.StringArrayInput `pulumi:"names"`
+}
+
+func (ArtifactResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArtifactResponse)(nil)).Elem()
+}
+
+func (i ArtifactResponseArgs) ToArtifactResponseOutput() ArtifactResponseOutput {
+	return i.ToArtifactResponseOutputWithContext(context.Background())
+}
+
+func (i ArtifactResponseArgs) ToArtifactResponseOutputWithContext(ctx context.Context) ArtifactResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArtifactResponseOutput)
+}
+
+// ArtifactResponseArrayInput is an input type that accepts ArtifactResponseArray and ArtifactResponseArrayOutput values.
+// You can construct a concrete instance of `ArtifactResponseArrayInput` via:
+//
+//          ArtifactResponseArray{ ArtifactResponseArgs{...} }
+type ArtifactResponseArrayInput interface {
+	pulumi.Input
+
+	ToArtifactResponseArrayOutput() ArtifactResponseArrayOutput
+	ToArtifactResponseArrayOutputWithContext(context.Context) ArtifactResponseArrayOutput
+}
+
+type ArtifactResponseArray []ArtifactResponseInput
+
+func (ArtifactResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ArtifactResponse)(nil)).Elem()
+}
+
+func (i ArtifactResponseArray) ToArtifactResponseArrayOutput() ArtifactResponseArrayOutput {
+	return i.ToArtifactResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ArtifactResponseArray) ToArtifactResponseArrayOutputWithContext(ctx context.Context) ArtifactResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArtifactResponseArrayOutput)
+}
+
+// Artifact describes a build product.
+type ArtifactResponseOutput struct{ *pulumi.OutputState }
+
+func (ArtifactResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArtifactResponse)(nil)).Elem()
+}
+
+func (o ArtifactResponseOutput) ToArtifactResponseOutput() ArtifactResponseOutput {
+	return o
+}
+
+func (o ArtifactResponseOutput) ToArtifactResponseOutputWithContext(ctx context.Context) ArtifactResponseOutput {
+	return o
+}
+
+// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
+func (o ArtifactResponseOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v ArtifactResponse) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
+func (o ArtifactResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ArtifactResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
+func (o ArtifactResponseOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ArtifactResponse) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+type ArtifactResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ArtifactResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ArtifactResponse)(nil)).Elem()
+}
+
+func (o ArtifactResponseArrayOutput) ToArtifactResponseArrayOutput() ArtifactResponseArrayOutput {
+	return o
+}
+
+func (o ArtifactResponseArrayOutput) ToArtifactResponseArrayOutputWithContext(ctx context.Context) ArtifactResponseArrayOutput {
+	return o
+}
+
+func (o ArtifactResponseArrayOutput) Index(i pulumi.IntInput) ArtifactResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ArtifactResponse {
+		return vs[0].([]ArtifactResponse)[vs[1].(int)]
+	}).(ArtifactResponseOutput)
+}
+
 // Occurrence that represents a single "attestation". The authenticity of an Attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the AttestationAuthority to which this Attestation is attached is primarily useful for look-up (how to find this Attestation if you already know the Authority and artifact to be verified) and intent (which authority was this attestation intended to sign for).
 type Attestation struct {
 	PgpSignedAttestation *PgpSignedAttestation `pulumi:"pgpSignedAttestation"`
@@ -529,6 +647,398 @@ func (o AttestationAuthorityHintPtrOutput) HumanReadableName() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// This submessage provides human-readable hints about the purpose of the AttestationAuthority. Because the name of a Note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should NOT be used to look up AttestationAuthorities in security sensitive contexts, such as when looking up Attestations to verify.
+type AttestationAuthorityHintResponse struct {
+	// The human readable name of this Attestation Authority, for example "qa".
+	HumanReadableName string `pulumi:"humanReadableName"`
+}
+
+// AttestationAuthorityHintResponseInput is an input type that accepts AttestationAuthorityHintResponseArgs and AttestationAuthorityHintResponseOutput values.
+// You can construct a concrete instance of `AttestationAuthorityHintResponseInput` via:
+//
+//          AttestationAuthorityHintResponseArgs{...}
+type AttestationAuthorityHintResponseInput interface {
+	pulumi.Input
+
+	ToAttestationAuthorityHintResponseOutput() AttestationAuthorityHintResponseOutput
+	ToAttestationAuthorityHintResponseOutputWithContext(context.Context) AttestationAuthorityHintResponseOutput
+}
+
+// This submessage provides human-readable hints about the purpose of the AttestationAuthority. Because the name of a Note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should NOT be used to look up AttestationAuthorities in security sensitive contexts, such as when looking up Attestations to verify.
+type AttestationAuthorityHintResponseArgs struct {
+	// The human readable name of this Attestation Authority, for example "qa".
+	HumanReadableName pulumi.StringInput `pulumi:"humanReadableName"`
+}
+
+func (AttestationAuthorityHintResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttestationAuthorityHintResponse)(nil)).Elem()
+}
+
+func (i AttestationAuthorityHintResponseArgs) ToAttestationAuthorityHintResponseOutput() AttestationAuthorityHintResponseOutput {
+	return i.ToAttestationAuthorityHintResponseOutputWithContext(context.Background())
+}
+
+func (i AttestationAuthorityHintResponseArgs) ToAttestationAuthorityHintResponseOutputWithContext(ctx context.Context) AttestationAuthorityHintResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestationAuthorityHintResponseOutput)
+}
+
+func (i AttestationAuthorityHintResponseArgs) ToAttestationAuthorityHintResponsePtrOutput() AttestationAuthorityHintResponsePtrOutput {
+	return i.ToAttestationAuthorityHintResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AttestationAuthorityHintResponseArgs) ToAttestationAuthorityHintResponsePtrOutputWithContext(ctx context.Context) AttestationAuthorityHintResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestationAuthorityHintResponseOutput).ToAttestationAuthorityHintResponsePtrOutputWithContext(ctx)
+}
+
+// AttestationAuthorityHintResponsePtrInput is an input type that accepts AttestationAuthorityHintResponseArgs, AttestationAuthorityHintResponsePtr and AttestationAuthorityHintResponsePtrOutput values.
+// You can construct a concrete instance of `AttestationAuthorityHintResponsePtrInput` via:
+//
+//          AttestationAuthorityHintResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AttestationAuthorityHintResponsePtrInput interface {
+	pulumi.Input
+
+	ToAttestationAuthorityHintResponsePtrOutput() AttestationAuthorityHintResponsePtrOutput
+	ToAttestationAuthorityHintResponsePtrOutputWithContext(context.Context) AttestationAuthorityHintResponsePtrOutput
+}
+
+type attestationAuthorityHintResponsePtrType AttestationAuthorityHintResponseArgs
+
+func AttestationAuthorityHintResponsePtr(v *AttestationAuthorityHintResponseArgs) AttestationAuthorityHintResponsePtrInput {
+	return (*attestationAuthorityHintResponsePtrType)(v)
+}
+
+func (*attestationAuthorityHintResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttestationAuthorityHintResponse)(nil)).Elem()
+}
+
+func (i *attestationAuthorityHintResponsePtrType) ToAttestationAuthorityHintResponsePtrOutput() AttestationAuthorityHintResponsePtrOutput {
+	return i.ToAttestationAuthorityHintResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *attestationAuthorityHintResponsePtrType) ToAttestationAuthorityHintResponsePtrOutputWithContext(ctx context.Context) AttestationAuthorityHintResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestationAuthorityHintResponsePtrOutput)
+}
+
+// This submessage provides human-readable hints about the purpose of the AttestationAuthority. Because the name of a Note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should NOT be used to look up AttestationAuthorities in security sensitive contexts, such as when looking up Attestations to verify.
+type AttestationAuthorityHintResponseOutput struct{ *pulumi.OutputState }
+
+func (AttestationAuthorityHintResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttestationAuthorityHintResponse)(nil)).Elem()
+}
+
+func (o AttestationAuthorityHintResponseOutput) ToAttestationAuthorityHintResponseOutput() AttestationAuthorityHintResponseOutput {
+	return o
+}
+
+func (o AttestationAuthorityHintResponseOutput) ToAttestationAuthorityHintResponseOutputWithContext(ctx context.Context) AttestationAuthorityHintResponseOutput {
+	return o
+}
+
+func (o AttestationAuthorityHintResponseOutput) ToAttestationAuthorityHintResponsePtrOutput() AttestationAuthorityHintResponsePtrOutput {
+	return o.ToAttestationAuthorityHintResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AttestationAuthorityHintResponseOutput) ToAttestationAuthorityHintResponsePtrOutputWithContext(ctx context.Context) AttestationAuthorityHintResponsePtrOutput {
+	return o.ApplyT(func(v AttestationAuthorityHintResponse) *AttestationAuthorityHintResponse {
+		return &v
+	}).(AttestationAuthorityHintResponsePtrOutput)
+}
+
+// The human readable name of this Attestation Authority, for example "qa".
+func (o AttestationAuthorityHintResponseOutput) HumanReadableName() pulumi.StringOutput {
+	return o.ApplyT(func(v AttestationAuthorityHintResponse) string { return v.HumanReadableName }).(pulumi.StringOutput)
+}
+
+type AttestationAuthorityHintResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AttestationAuthorityHintResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttestationAuthorityHintResponse)(nil)).Elem()
+}
+
+func (o AttestationAuthorityHintResponsePtrOutput) ToAttestationAuthorityHintResponsePtrOutput() AttestationAuthorityHintResponsePtrOutput {
+	return o
+}
+
+func (o AttestationAuthorityHintResponsePtrOutput) ToAttestationAuthorityHintResponsePtrOutputWithContext(ctx context.Context) AttestationAuthorityHintResponsePtrOutput {
+	return o
+}
+
+func (o AttestationAuthorityHintResponsePtrOutput) Elem() AttestationAuthorityHintResponseOutput {
+	return o.ApplyT(func(v *AttestationAuthorityHintResponse) AttestationAuthorityHintResponse { return *v }).(AttestationAuthorityHintResponseOutput)
+}
+
+// The human readable name of this Attestation Authority, for example "qa".
+func (o AttestationAuthorityHintResponsePtrOutput) HumanReadableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttestationAuthorityHintResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HumanReadableName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one `AttestationAuthority` for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all attached Attestation Occurrences, even if they don't all live in the same project.
+type AttestationAuthorityResponse struct {
+	Hint AttestationAuthorityHintResponse `pulumi:"hint"`
+}
+
+// AttestationAuthorityResponseInput is an input type that accepts AttestationAuthorityResponseArgs and AttestationAuthorityResponseOutput values.
+// You can construct a concrete instance of `AttestationAuthorityResponseInput` via:
+//
+//          AttestationAuthorityResponseArgs{...}
+type AttestationAuthorityResponseInput interface {
+	pulumi.Input
+
+	ToAttestationAuthorityResponseOutput() AttestationAuthorityResponseOutput
+	ToAttestationAuthorityResponseOutputWithContext(context.Context) AttestationAuthorityResponseOutput
+}
+
+// Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one `AttestationAuthority` for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all attached Attestation Occurrences, even if they don't all live in the same project.
+type AttestationAuthorityResponseArgs struct {
+	Hint AttestationAuthorityHintResponseInput `pulumi:"hint"`
+}
+
+func (AttestationAuthorityResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttestationAuthorityResponse)(nil)).Elem()
+}
+
+func (i AttestationAuthorityResponseArgs) ToAttestationAuthorityResponseOutput() AttestationAuthorityResponseOutput {
+	return i.ToAttestationAuthorityResponseOutputWithContext(context.Background())
+}
+
+func (i AttestationAuthorityResponseArgs) ToAttestationAuthorityResponseOutputWithContext(ctx context.Context) AttestationAuthorityResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestationAuthorityResponseOutput)
+}
+
+func (i AttestationAuthorityResponseArgs) ToAttestationAuthorityResponsePtrOutput() AttestationAuthorityResponsePtrOutput {
+	return i.ToAttestationAuthorityResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AttestationAuthorityResponseArgs) ToAttestationAuthorityResponsePtrOutputWithContext(ctx context.Context) AttestationAuthorityResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestationAuthorityResponseOutput).ToAttestationAuthorityResponsePtrOutputWithContext(ctx)
+}
+
+// AttestationAuthorityResponsePtrInput is an input type that accepts AttestationAuthorityResponseArgs, AttestationAuthorityResponsePtr and AttestationAuthorityResponsePtrOutput values.
+// You can construct a concrete instance of `AttestationAuthorityResponsePtrInput` via:
+//
+//          AttestationAuthorityResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AttestationAuthorityResponsePtrInput interface {
+	pulumi.Input
+
+	ToAttestationAuthorityResponsePtrOutput() AttestationAuthorityResponsePtrOutput
+	ToAttestationAuthorityResponsePtrOutputWithContext(context.Context) AttestationAuthorityResponsePtrOutput
+}
+
+type attestationAuthorityResponsePtrType AttestationAuthorityResponseArgs
+
+func AttestationAuthorityResponsePtr(v *AttestationAuthorityResponseArgs) AttestationAuthorityResponsePtrInput {
+	return (*attestationAuthorityResponsePtrType)(v)
+}
+
+func (*attestationAuthorityResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttestationAuthorityResponse)(nil)).Elem()
+}
+
+func (i *attestationAuthorityResponsePtrType) ToAttestationAuthorityResponsePtrOutput() AttestationAuthorityResponsePtrOutput {
+	return i.ToAttestationAuthorityResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *attestationAuthorityResponsePtrType) ToAttestationAuthorityResponsePtrOutputWithContext(ctx context.Context) AttestationAuthorityResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestationAuthorityResponsePtrOutput)
+}
+
+// Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one `AttestationAuthority` for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all attached Attestation Occurrences, even if they don't all live in the same project.
+type AttestationAuthorityResponseOutput struct{ *pulumi.OutputState }
+
+func (AttestationAuthorityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttestationAuthorityResponse)(nil)).Elem()
+}
+
+func (o AttestationAuthorityResponseOutput) ToAttestationAuthorityResponseOutput() AttestationAuthorityResponseOutput {
+	return o
+}
+
+func (o AttestationAuthorityResponseOutput) ToAttestationAuthorityResponseOutputWithContext(ctx context.Context) AttestationAuthorityResponseOutput {
+	return o
+}
+
+func (o AttestationAuthorityResponseOutput) ToAttestationAuthorityResponsePtrOutput() AttestationAuthorityResponsePtrOutput {
+	return o.ToAttestationAuthorityResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AttestationAuthorityResponseOutput) ToAttestationAuthorityResponsePtrOutputWithContext(ctx context.Context) AttestationAuthorityResponsePtrOutput {
+	return o.ApplyT(func(v AttestationAuthorityResponse) *AttestationAuthorityResponse {
+		return &v
+	}).(AttestationAuthorityResponsePtrOutput)
+}
+func (o AttestationAuthorityResponseOutput) Hint() AttestationAuthorityHintResponseOutput {
+	return o.ApplyT(func(v AttestationAuthorityResponse) AttestationAuthorityHintResponse { return v.Hint }).(AttestationAuthorityHintResponseOutput)
+}
+
+type AttestationAuthorityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AttestationAuthorityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttestationAuthorityResponse)(nil)).Elem()
+}
+
+func (o AttestationAuthorityResponsePtrOutput) ToAttestationAuthorityResponsePtrOutput() AttestationAuthorityResponsePtrOutput {
+	return o
+}
+
+func (o AttestationAuthorityResponsePtrOutput) ToAttestationAuthorityResponsePtrOutputWithContext(ctx context.Context) AttestationAuthorityResponsePtrOutput {
+	return o
+}
+
+func (o AttestationAuthorityResponsePtrOutput) Elem() AttestationAuthorityResponseOutput {
+	return o.ApplyT(func(v *AttestationAuthorityResponse) AttestationAuthorityResponse { return *v }).(AttestationAuthorityResponseOutput)
+}
+
+func (o AttestationAuthorityResponsePtrOutput) Hint() AttestationAuthorityHintResponsePtrOutput {
+	return o.ApplyT(func(v *AttestationAuthorityResponse) *AttestationAuthorityHintResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Hint
+	}).(AttestationAuthorityHintResponsePtrOutput)
+}
+
+// Occurrence that represents a single "attestation". The authenticity of an Attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the AttestationAuthority to which this Attestation is attached is primarily useful for look-up (how to find this Attestation if you already know the Authority and artifact to be verified) and intent (which authority was this attestation intended to sign for).
+type AttestationResponse struct {
+	PgpSignedAttestation PgpSignedAttestationResponse `pulumi:"pgpSignedAttestation"`
+}
+
+// AttestationResponseInput is an input type that accepts AttestationResponseArgs and AttestationResponseOutput values.
+// You can construct a concrete instance of `AttestationResponseInput` via:
+//
+//          AttestationResponseArgs{...}
+type AttestationResponseInput interface {
+	pulumi.Input
+
+	ToAttestationResponseOutput() AttestationResponseOutput
+	ToAttestationResponseOutputWithContext(context.Context) AttestationResponseOutput
+}
+
+// Occurrence that represents a single "attestation". The authenticity of an Attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the AttestationAuthority to which this Attestation is attached is primarily useful for look-up (how to find this Attestation if you already know the Authority and artifact to be verified) and intent (which authority was this attestation intended to sign for).
+type AttestationResponseArgs struct {
+	PgpSignedAttestation PgpSignedAttestationResponseInput `pulumi:"pgpSignedAttestation"`
+}
+
+func (AttestationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttestationResponse)(nil)).Elem()
+}
+
+func (i AttestationResponseArgs) ToAttestationResponseOutput() AttestationResponseOutput {
+	return i.ToAttestationResponseOutputWithContext(context.Background())
+}
+
+func (i AttestationResponseArgs) ToAttestationResponseOutputWithContext(ctx context.Context) AttestationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestationResponseOutput)
+}
+
+func (i AttestationResponseArgs) ToAttestationResponsePtrOutput() AttestationResponsePtrOutput {
+	return i.ToAttestationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AttestationResponseArgs) ToAttestationResponsePtrOutputWithContext(ctx context.Context) AttestationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestationResponseOutput).ToAttestationResponsePtrOutputWithContext(ctx)
+}
+
+// AttestationResponsePtrInput is an input type that accepts AttestationResponseArgs, AttestationResponsePtr and AttestationResponsePtrOutput values.
+// You can construct a concrete instance of `AttestationResponsePtrInput` via:
+//
+//          AttestationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AttestationResponsePtrInput interface {
+	pulumi.Input
+
+	ToAttestationResponsePtrOutput() AttestationResponsePtrOutput
+	ToAttestationResponsePtrOutputWithContext(context.Context) AttestationResponsePtrOutput
+}
+
+type attestationResponsePtrType AttestationResponseArgs
+
+func AttestationResponsePtr(v *AttestationResponseArgs) AttestationResponsePtrInput {
+	return (*attestationResponsePtrType)(v)
+}
+
+func (*attestationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttestationResponse)(nil)).Elem()
+}
+
+func (i *attestationResponsePtrType) ToAttestationResponsePtrOutput() AttestationResponsePtrOutput {
+	return i.ToAttestationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *attestationResponsePtrType) ToAttestationResponsePtrOutputWithContext(ctx context.Context) AttestationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestationResponsePtrOutput)
+}
+
+// Occurrence that represents a single "attestation". The authenticity of an Attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the AttestationAuthority to which this Attestation is attached is primarily useful for look-up (how to find this Attestation if you already know the Authority and artifact to be verified) and intent (which authority was this attestation intended to sign for).
+type AttestationResponseOutput struct{ *pulumi.OutputState }
+
+func (AttestationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttestationResponse)(nil)).Elem()
+}
+
+func (o AttestationResponseOutput) ToAttestationResponseOutput() AttestationResponseOutput {
+	return o
+}
+
+func (o AttestationResponseOutput) ToAttestationResponseOutputWithContext(ctx context.Context) AttestationResponseOutput {
+	return o
+}
+
+func (o AttestationResponseOutput) ToAttestationResponsePtrOutput() AttestationResponsePtrOutput {
+	return o.ToAttestationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AttestationResponseOutput) ToAttestationResponsePtrOutputWithContext(ctx context.Context) AttestationResponsePtrOutput {
+	return o.ApplyT(func(v AttestationResponse) *AttestationResponse {
+		return &v
+	}).(AttestationResponsePtrOutput)
+}
+func (o AttestationResponseOutput) PgpSignedAttestation() PgpSignedAttestationResponseOutput {
+	return o.ApplyT(func(v AttestationResponse) PgpSignedAttestationResponse { return v.PgpSignedAttestation }).(PgpSignedAttestationResponseOutput)
+}
+
+type AttestationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AttestationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttestationResponse)(nil)).Elem()
+}
+
+func (o AttestationResponsePtrOutput) ToAttestationResponsePtrOutput() AttestationResponsePtrOutput {
+	return o
+}
+
+func (o AttestationResponsePtrOutput) ToAttestationResponsePtrOutputWithContext(ctx context.Context) AttestationResponsePtrOutput {
+	return o
+}
+
+func (o AttestationResponsePtrOutput) Elem() AttestationResponseOutput {
+	return o.ApplyT(func(v *AttestationResponse) AttestationResponse { return *v }).(AttestationResponseOutput)
+}
+
+func (o AttestationResponsePtrOutput) PgpSignedAttestation() PgpSignedAttestationResponsePtrOutput {
+	return o.ApplyT(func(v *AttestationResponse) *PgpSignedAttestationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.PgpSignedAttestation
+	}).(PgpSignedAttestationResponsePtrOutput)
+}
+
 // Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the resource_url.
 type Basis struct {
 	// The fingerprint of the base image.
@@ -682,6 +1192,159 @@ func (o BasisPtrOutput) ResourceUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the resource_url.
+type BasisResponse struct {
+	// The fingerprint of the base image.
+	Fingerprint FingerprintResponse `pulumi:"fingerprint"`
+	// The resource_url for the resource representing the basis of associated occurrence images.
+	ResourceUrl string `pulumi:"resourceUrl"`
+}
+
+// BasisResponseInput is an input type that accepts BasisResponseArgs and BasisResponseOutput values.
+// You can construct a concrete instance of `BasisResponseInput` via:
+//
+//          BasisResponseArgs{...}
+type BasisResponseInput interface {
+	pulumi.Input
+
+	ToBasisResponseOutput() BasisResponseOutput
+	ToBasisResponseOutputWithContext(context.Context) BasisResponseOutput
+}
+
+// Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the resource_url.
+type BasisResponseArgs struct {
+	// The fingerprint of the base image.
+	Fingerprint FingerprintResponseInput `pulumi:"fingerprint"`
+	// The resource_url for the resource representing the basis of associated occurrence images.
+	ResourceUrl pulumi.StringInput `pulumi:"resourceUrl"`
+}
+
+func (BasisResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasisResponse)(nil)).Elem()
+}
+
+func (i BasisResponseArgs) ToBasisResponseOutput() BasisResponseOutput {
+	return i.ToBasisResponseOutputWithContext(context.Background())
+}
+
+func (i BasisResponseArgs) ToBasisResponseOutputWithContext(ctx context.Context) BasisResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasisResponseOutput)
+}
+
+func (i BasisResponseArgs) ToBasisResponsePtrOutput() BasisResponsePtrOutput {
+	return i.ToBasisResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BasisResponseArgs) ToBasisResponsePtrOutputWithContext(ctx context.Context) BasisResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasisResponseOutput).ToBasisResponsePtrOutputWithContext(ctx)
+}
+
+// BasisResponsePtrInput is an input type that accepts BasisResponseArgs, BasisResponsePtr and BasisResponsePtrOutput values.
+// You can construct a concrete instance of `BasisResponsePtrInput` via:
+//
+//          BasisResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BasisResponsePtrInput interface {
+	pulumi.Input
+
+	ToBasisResponsePtrOutput() BasisResponsePtrOutput
+	ToBasisResponsePtrOutputWithContext(context.Context) BasisResponsePtrOutput
+}
+
+type basisResponsePtrType BasisResponseArgs
+
+func BasisResponsePtr(v *BasisResponseArgs) BasisResponsePtrInput {
+	return (*basisResponsePtrType)(v)
+}
+
+func (*basisResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasisResponse)(nil)).Elem()
+}
+
+func (i *basisResponsePtrType) ToBasisResponsePtrOutput() BasisResponsePtrOutput {
+	return i.ToBasisResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *basisResponsePtrType) ToBasisResponsePtrOutputWithContext(ctx context.Context) BasisResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasisResponsePtrOutput)
+}
+
+// Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the resource_url.
+type BasisResponseOutput struct{ *pulumi.OutputState }
+
+func (BasisResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasisResponse)(nil)).Elem()
+}
+
+func (o BasisResponseOutput) ToBasisResponseOutput() BasisResponseOutput {
+	return o
+}
+
+func (o BasisResponseOutput) ToBasisResponseOutputWithContext(ctx context.Context) BasisResponseOutput {
+	return o
+}
+
+func (o BasisResponseOutput) ToBasisResponsePtrOutput() BasisResponsePtrOutput {
+	return o.ToBasisResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BasisResponseOutput) ToBasisResponsePtrOutputWithContext(ctx context.Context) BasisResponsePtrOutput {
+	return o.ApplyT(func(v BasisResponse) *BasisResponse {
+		return &v
+	}).(BasisResponsePtrOutput)
+}
+
+// The fingerprint of the base image.
+func (o BasisResponseOutput) Fingerprint() FingerprintResponseOutput {
+	return o.ApplyT(func(v BasisResponse) FingerprintResponse { return v.Fingerprint }).(FingerprintResponseOutput)
+}
+
+// The resource_url for the resource representing the basis of associated occurrence images.
+func (o BasisResponseOutput) ResourceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v BasisResponse) string { return v.ResourceUrl }).(pulumi.StringOutput)
+}
+
+type BasisResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BasisResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasisResponse)(nil)).Elem()
+}
+
+func (o BasisResponsePtrOutput) ToBasisResponsePtrOutput() BasisResponsePtrOutput {
+	return o
+}
+
+func (o BasisResponsePtrOutput) ToBasisResponsePtrOutputWithContext(ctx context.Context) BasisResponsePtrOutput {
+	return o
+}
+
+func (o BasisResponsePtrOutput) Elem() BasisResponseOutput {
+	return o.ApplyT(func(v *BasisResponse) BasisResponse { return *v }).(BasisResponseOutput)
+}
+
+// The fingerprint of the base image.
+func (o BasisResponsePtrOutput) Fingerprint() FingerprintResponsePtrOutput {
+	return o.ApplyT(func(v *BasisResponse) *FingerprintResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Fingerprint
+	}).(FingerprintResponsePtrOutput)
+}
+
+// The resource_url for the resource representing the basis of associated occurrence images.
+func (o BasisResponsePtrOutput) ResourceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BasisResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceUrl
+	}).(pulumi.StringPtrOutput)
+}
+
 // Associates `members` with a `role`.
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -798,6 +1461,124 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Binding {
 		return vs[0].([]Binding)[vs[1].(int)]
 	}).(BindingOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
+// You can construct a concrete instance of `BindingResponseInput` via:
+//
+//          BindingResponseArgs{...}
+type BindingResponseInput interface {
+	pulumi.Input
+
+	ToBindingResponseOutput() BindingResponseOutput
+	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
+}
+
+// Associates `members` with a `role`.
+type BindingResponseArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
+	return i.ToBindingResponseOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
+}
+
+// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
+// You can construct a concrete instance of `BindingResponseArrayInput` via:
+//
+//          BindingResponseArray{ BindingResponseArgs{...} }
+type BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToBindingResponseArrayOutput() BindingResponseArrayOutput
+	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
+}
+
+type BindingResponseArray []BindingResponseInput
+
+func (BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return i.ToBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
+		return vs[0].([]BindingResponse)[vs[1].(int)]
+	}).(BindingResponseOutput)
 }
 
 // Message encapsulating build provenance details.
@@ -950,6 +1731,159 @@ func (o BuildDetailsPtrOutput) ProvenanceBytes() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ProvenanceBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message encapsulating build provenance details.
+type BuildDetailsResponse struct {
+	// The actual provenance
+	Provenance BuildProvenanceResponse `pulumi:"provenance"`
+	// Serialized JSON representation of the provenance, used in generating the `BuildSignature` in the corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
+	ProvenanceBytes string `pulumi:"provenanceBytes"`
+}
+
+// BuildDetailsResponseInput is an input type that accepts BuildDetailsResponseArgs and BuildDetailsResponseOutput values.
+// You can construct a concrete instance of `BuildDetailsResponseInput` via:
+//
+//          BuildDetailsResponseArgs{...}
+type BuildDetailsResponseInput interface {
+	pulumi.Input
+
+	ToBuildDetailsResponseOutput() BuildDetailsResponseOutput
+	ToBuildDetailsResponseOutputWithContext(context.Context) BuildDetailsResponseOutput
+}
+
+// Message encapsulating build provenance details.
+type BuildDetailsResponseArgs struct {
+	// The actual provenance
+	Provenance BuildProvenanceResponseInput `pulumi:"provenance"`
+	// Serialized JSON representation of the provenance, used in generating the `BuildSignature` in the corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
+	ProvenanceBytes pulumi.StringInput `pulumi:"provenanceBytes"`
+}
+
+func (BuildDetailsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildDetailsResponse)(nil)).Elem()
+}
+
+func (i BuildDetailsResponseArgs) ToBuildDetailsResponseOutput() BuildDetailsResponseOutput {
+	return i.ToBuildDetailsResponseOutputWithContext(context.Background())
+}
+
+func (i BuildDetailsResponseArgs) ToBuildDetailsResponseOutputWithContext(ctx context.Context) BuildDetailsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildDetailsResponseOutput)
+}
+
+func (i BuildDetailsResponseArgs) ToBuildDetailsResponsePtrOutput() BuildDetailsResponsePtrOutput {
+	return i.ToBuildDetailsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BuildDetailsResponseArgs) ToBuildDetailsResponsePtrOutputWithContext(ctx context.Context) BuildDetailsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildDetailsResponseOutput).ToBuildDetailsResponsePtrOutputWithContext(ctx)
+}
+
+// BuildDetailsResponsePtrInput is an input type that accepts BuildDetailsResponseArgs, BuildDetailsResponsePtr and BuildDetailsResponsePtrOutput values.
+// You can construct a concrete instance of `BuildDetailsResponsePtrInput` via:
+//
+//          BuildDetailsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BuildDetailsResponsePtrInput interface {
+	pulumi.Input
+
+	ToBuildDetailsResponsePtrOutput() BuildDetailsResponsePtrOutput
+	ToBuildDetailsResponsePtrOutputWithContext(context.Context) BuildDetailsResponsePtrOutput
+}
+
+type buildDetailsResponsePtrType BuildDetailsResponseArgs
+
+func BuildDetailsResponsePtr(v *BuildDetailsResponseArgs) BuildDetailsResponsePtrInput {
+	return (*buildDetailsResponsePtrType)(v)
+}
+
+func (*buildDetailsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildDetailsResponse)(nil)).Elem()
+}
+
+func (i *buildDetailsResponsePtrType) ToBuildDetailsResponsePtrOutput() BuildDetailsResponsePtrOutput {
+	return i.ToBuildDetailsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *buildDetailsResponsePtrType) ToBuildDetailsResponsePtrOutputWithContext(ctx context.Context) BuildDetailsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildDetailsResponsePtrOutput)
+}
+
+// Message encapsulating build provenance details.
+type BuildDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (BuildDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildDetailsResponse)(nil)).Elem()
+}
+
+func (o BuildDetailsResponseOutput) ToBuildDetailsResponseOutput() BuildDetailsResponseOutput {
+	return o
+}
+
+func (o BuildDetailsResponseOutput) ToBuildDetailsResponseOutputWithContext(ctx context.Context) BuildDetailsResponseOutput {
+	return o
+}
+
+func (o BuildDetailsResponseOutput) ToBuildDetailsResponsePtrOutput() BuildDetailsResponsePtrOutput {
+	return o.ToBuildDetailsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BuildDetailsResponseOutput) ToBuildDetailsResponsePtrOutputWithContext(ctx context.Context) BuildDetailsResponsePtrOutput {
+	return o.ApplyT(func(v BuildDetailsResponse) *BuildDetailsResponse {
+		return &v
+	}).(BuildDetailsResponsePtrOutput)
+}
+
+// The actual provenance
+func (o BuildDetailsResponseOutput) Provenance() BuildProvenanceResponseOutput {
+	return o.ApplyT(func(v BuildDetailsResponse) BuildProvenanceResponse { return v.Provenance }).(BuildProvenanceResponseOutput)
+}
+
+// Serialized JSON representation of the provenance, used in generating the `BuildSignature` in the corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
+func (o BuildDetailsResponseOutput) ProvenanceBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildDetailsResponse) string { return v.ProvenanceBytes }).(pulumi.StringOutput)
+}
+
+type BuildDetailsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BuildDetailsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildDetailsResponse)(nil)).Elem()
+}
+
+func (o BuildDetailsResponsePtrOutput) ToBuildDetailsResponsePtrOutput() BuildDetailsResponsePtrOutput {
+	return o
+}
+
+func (o BuildDetailsResponsePtrOutput) ToBuildDetailsResponsePtrOutputWithContext(ctx context.Context) BuildDetailsResponsePtrOutput {
+	return o
+}
+
+func (o BuildDetailsResponsePtrOutput) Elem() BuildDetailsResponseOutput {
+	return o.ApplyT(func(v *BuildDetailsResponse) BuildDetailsResponse { return *v }).(BuildDetailsResponseOutput)
+}
+
+// The actual provenance
+func (o BuildDetailsResponsePtrOutput) Provenance() BuildProvenanceResponsePtrOutput {
+	return o.ApplyT(func(v *BuildDetailsResponse) *BuildProvenanceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Provenance
+	}).(BuildProvenanceResponsePtrOutput)
+}
+
+// Serialized JSON representation of the provenance, used in generating the `BuildSignature` in the corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
+func (o BuildDetailsResponsePtrOutput) ProvenanceBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvenanceBytes
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1315,6 +2249,349 @@ func (o BuildProvenancePtrOutput) TriggerId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
+type BuildProvenanceResponse struct {
+	// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
+	BuildOptions map[string]string `pulumi:"buildOptions"`
+	// Version string of the builder at the time this build was executed.
+	BuilderVersion string `pulumi:"builderVersion"`
+	// Output of the build.
+	BuiltArtifacts []ArtifactResponse `pulumi:"builtArtifacts"`
+	// Commands requested by the build.
+	Commands []CommandResponse `pulumi:"commands"`
+	// Time at which the build was created.
+	CreateTime string `pulumi:"createTime"`
+	// E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the time the build was initiated; this address may not represent the same end-user for all time.
+	Creator string `pulumi:"creator"`
+	// Time at which execution of the build was finished.
+	FinishTime string `pulumi:"finishTime"`
+	// Google Cloud Storage bucket where logs were written.
+	LogsBucket string `pulumi:"logsBucket"`
+	// ID of the project.
+	ProjectId string `pulumi:"projectId"`
+	// Details of the Source input to the build.
+	SourceProvenance SourceResponse `pulumi:"sourceProvenance"`
+	// Time at which execution of the build was started.
+	StartTime string `pulumi:"startTime"`
+	// Trigger identifier if the build was triggered automatically; empty if not.
+	TriggerId string `pulumi:"triggerId"`
+}
+
+// BuildProvenanceResponseInput is an input type that accepts BuildProvenanceResponseArgs and BuildProvenanceResponseOutput values.
+// You can construct a concrete instance of `BuildProvenanceResponseInput` via:
+//
+//          BuildProvenanceResponseArgs{...}
+type BuildProvenanceResponseInput interface {
+	pulumi.Input
+
+	ToBuildProvenanceResponseOutput() BuildProvenanceResponseOutput
+	ToBuildProvenanceResponseOutputWithContext(context.Context) BuildProvenanceResponseOutput
+}
+
+// Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
+type BuildProvenanceResponseArgs struct {
+	// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
+	BuildOptions pulumi.StringMapInput `pulumi:"buildOptions"`
+	// Version string of the builder at the time this build was executed.
+	BuilderVersion pulumi.StringInput `pulumi:"builderVersion"`
+	// Output of the build.
+	BuiltArtifacts ArtifactResponseArrayInput `pulumi:"builtArtifacts"`
+	// Commands requested by the build.
+	Commands CommandResponseArrayInput `pulumi:"commands"`
+	// Time at which the build was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the time the build was initiated; this address may not represent the same end-user for all time.
+	Creator pulumi.StringInput `pulumi:"creator"`
+	// Time at which execution of the build was finished.
+	FinishTime pulumi.StringInput `pulumi:"finishTime"`
+	// Google Cloud Storage bucket where logs were written.
+	LogsBucket pulumi.StringInput `pulumi:"logsBucket"`
+	// ID of the project.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Details of the Source input to the build.
+	SourceProvenance SourceResponseInput `pulumi:"sourceProvenance"`
+	// Time at which execution of the build was started.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// Trigger identifier if the build was triggered automatically; empty if not.
+	TriggerId pulumi.StringInput `pulumi:"triggerId"`
+}
+
+func (BuildProvenanceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildProvenanceResponse)(nil)).Elem()
+}
+
+func (i BuildProvenanceResponseArgs) ToBuildProvenanceResponseOutput() BuildProvenanceResponseOutput {
+	return i.ToBuildProvenanceResponseOutputWithContext(context.Background())
+}
+
+func (i BuildProvenanceResponseArgs) ToBuildProvenanceResponseOutputWithContext(ctx context.Context) BuildProvenanceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildProvenanceResponseOutput)
+}
+
+func (i BuildProvenanceResponseArgs) ToBuildProvenanceResponsePtrOutput() BuildProvenanceResponsePtrOutput {
+	return i.ToBuildProvenanceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BuildProvenanceResponseArgs) ToBuildProvenanceResponsePtrOutputWithContext(ctx context.Context) BuildProvenanceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildProvenanceResponseOutput).ToBuildProvenanceResponsePtrOutputWithContext(ctx)
+}
+
+// BuildProvenanceResponsePtrInput is an input type that accepts BuildProvenanceResponseArgs, BuildProvenanceResponsePtr and BuildProvenanceResponsePtrOutput values.
+// You can construct a concrete instance of `BuildProvenanceResponsePtrInput` via:
+//
+//          BuildProvenanceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BuildProvenanceResponsePtrInput interface {
+	pulumi.Input
+
+	ToBuildProvenanceResponsePtrOutput() BuildProvenanceResponsePtrOutput
+	ToBuildProvenanceResponsePtrOutputWithContext(context.Context) BuildProvenanceResponsePtrOutput
+}
+
+type buildProvenanceResponsePtrType BuildProvenanceResponseArgs
+
+func BuildProvenanceResponsePtr(v *BuildProvenanceResponseArgs) BuildProvenanceResponsePtrInput {
+	return (*buildProvenanceResponsePtrType)(v)
+}
+
+func (*buildProvenanceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildProvenanceResponse)(nil)).Elem()
+}
+
+func (i *buildProvenanceResponsePtrType) ToBuildProvenanceResponsePtrOutput() BuildProvenanceResponsePtrOutput {
+	return i.ToBuildProvenanceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *buildProvenanceResponsePtrType) ToBuildProvenanceResponsePtrOutputWithContext(ctx context.Context) BuildProvenanceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildProvenanceResponsePtrOutput)
+}
+
+// Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
+type BuildProvenanceResponseOutput struct{ *pulumi.OutputState }
+
+func (BuildProvenanceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildProvenanceResponse)(nil)).Elem()
+}
+
+func (o BuildProvenanceResponseOutput) ToBuildProvenanceResponseOutput() BuildProvenanceResponseOutput {
+	return o
+}
+
+func (o BuildProvenanceResponseOutput) ToBuildProvenanceResponseOutputWithContext(ctx context.Context) BuildProvenanceResponseOutput {
+	return o
+}
+
+func (o BuildProvenanceResponseOutput) ToBuildProvenanceResponsePtrOutput() BuildProvenanceResponsePtrOutput {
+	return o.ToBuildProvenanceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BuildProvenanceResponseOutput) ToBuildProvenanceResponsePtrOutputWithContext(ctx context.Context) BuildProvenanceResponsePtrOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) *BuildProvenanceResponse {
+		return &v
+	}).(BuildProvenanceResponsePtrOutput)
+}
+
+// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
+func (o BuildProvenanceResponseOutput) BuildOptions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) map[string]string { return v.BuildOptions }).(pulumi.StringMapOutput)
+}
+
+// Version string of the builder at the time this build was executed.
+func (o BuildProvenanceResponseOutput) BuilderVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.BuilderVersion }).(pulumi.StringOutput)
+}
+
+// Output of the build.
+func (o BuildProvenanceResponseOutput) BuiltArtifacts() ArtifactResponseArrayOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) []ArtifactResponse { return v.BuiltArtifacts }).(ArtifactResponseArrayOutput)
+}
+
+// Commands requested by the build.
+func (o BuildProvenanceResponseOutput) Commands() CommandResponseArrayOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) []CommandResponse { return v.Commands }).(CommandResponseArrayOutput)
+}
+
+// Time at which the build was created.
+func (o BuildProvenanceResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the time the build was initiated; this address may not represent the same end-user for all time.
+func (o BuildProvenanceResponseOutput) Creator() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.Creator }).(pulumi.StringOutput)
+}
+
+// Time at which execution of the build was finished.
+func (o BuildProvenanceResponseOutput) FinishTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.FinishTime }).(pulumi.StringOutput)
+}
+
+// Google Cloud Storage bucket where logs were written.
+func (o BuildProvenanceResponseOutput) LogsBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.LogsBucket }).(pulumi.StringOutput)
+}
+
+// ID of the project.
+func (o BuildProvenanceResponseOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Details of the Source input to the build.
+func (o BuildProvenanceResponseOutput) SourceProvenance() SourceResponseOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) SourceResponse { return v.SourceProvenance }).(SourceResponseOutput)
+}
+
+// Time at which execution of the build was started.
+func (o BuildProvenanceResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Trigger identifier if the build was triggered automatically; empty if not.
+func (o BuildProvenanceResponseOutput) TriggerId() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenanceResponse) string { return v.TriggerId }).(pulumi.StringOutput)
+}
+
+type BuildProvenanceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BuildProvenanceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildProvenanceResponse)(nil)).Elem()
+}
+
+func (o BuildProvenanceResponsePtrOutput) ToBuildProvenanceResponsePtrOutput() BuildProvenanceResponsePtrOutput {
+	return o
+}
+
+func (o BuildProvenanceResponsePtrOutput) ToBuildProvenanceResponsePtrOutputWithContext(ctx context.Context) BuildProvenanceResponsePtrOutput {
+	return o
+}
+
+func (o BuildProvenanceResponsePtrOutput) Elem() BuildProvenanceResponseOutput {
+	return o.ApplyT(func(v *BuildProvenanceResponse) BuildProvenanceResponse { return *v }).(BuildProvenanceResponseOutput)
+}
+
+// Special options applied to this build. This is a catch-all field where build providers can enter any desired additional details.
+func (o BuildProvenanceResponsePtrOutput) BuildOptions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BuildProvenanceResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildOptions
+	}).(pulumi.StringMapOutput)
+}
+
+// Version string of the builder at the time this build was executed.
+func (o BuildProvenanceResponsePtrOutput) BuilderVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BuilderVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output of the build.
+func (o BuildProvenanceResponsePtrOutput) BuiltArtifacts() ArtifactResponseArrayOutput {
+	return o.ApplyT(func(v *BuildProvenanceResponse) []ArtifactResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BuiltArtifacts
+	}).(ArtifactResponseArrayOutput)
+}
+
+// Commands requested by the build.
+func (o BuildProvenanceResponsePtrOutput) Commands() CommandResponseArrayOutput {
+	return o.ApplyT(func(v *BuildProvenanceResponse) []CommandResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Commands
+	}).(CommandResponseArrayOutput)
+}
+
+// Time at which the build was created.
+func (o BuildProvenanceResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// E-mail address of the user who initiated this build. Note that this was the user's e-mail address at the time the build was initiated; this address may not represent the same end-user for all time.
+func (o BuildProvenanceResponsePtrOutput) Creator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Creator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time at which execution of the build was finished.
+func (o BuildProvenanceResponsePtrOutput) FinishTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FinishTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage bucket where logs were written.
+func (o BuildProvenanceResponsePtrOutput) LogsBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LogsBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the project.
+func (o BuildProvenanceResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Details of the Source input to the build.
+func (o BuildProvenanceResponsePtrOutput) SourceProvenance() SourceResponsePtrOutput {
+	return o.ApplyT(func(v *BuildProvenanceResponse) *SourceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceProvenance
+	}).(SourceResponsePtrOutput)
+}
+
+// Time at which execution of the build was started.
+func (o BuildProvenanceResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Trigger identifier if the build was triggered automatically; empty if not.
+func (o BuildProvenanceResponsePtrOutput) TriggerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildProvenanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TriggerId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Message encapsulating the signature of the verified build.
 type BuildSignature struct {
 	// An Id for the key used to sign. This could be either an Id for the key stored in `public_key` (such as the Id or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
@@ -1506,6 +2783,197 @@ func (o BuildSignaturePtrOutput) Signature() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Message encapsulating the signature of the verified build.
+type BuildSignatureResponse struct {
+	// An Id for the key used to sign. This could be either an Id for the key stored in `public_key` (such as the Id or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
+	KeyId string `pulumi:"keyId"`
+	// The type of the key, either stored in `public_key` or referenced in `key_id`
+	KeyType string `pulumi:"keyType"`
+	// Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
+	PublicKey string `pulumi:"publicKey"`
+	// Signature of the related `BuildProvenance`, encoded in a base64 string.
+	Signature string `pulumi:"signature"`
+}
+
+// BuildSignatureResponseInput is an input type that accepts BuildSignatureResponseArgs and BuildSignatureResponseOutput values.
+// You can construct a concrete instance of `BuildSignatureResponseInput` via:
+//
+//          BuildSignatureResponseArgs{...}
+type BuildSignatureResponseInput interface {
+	pulumi.Input
+
+	ToBuildSignatureResponseOutput() BuildSignatureResponseOutput
+	ToBuildSignatureResponseOutputWithContext(context.Context) BuildSignatureResponseOutput
+}
+
+// Message encapsulating the signature of the verified build.
+type BuildSignatureResponseArgs struct {
+	// An Id for the key used to sign. This could be either an Id for the key stored in `public_key` (such as the Id or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// The type of the key, either stored in `public_key` or referenced in `key_id`
+	KeyType pulumi.StringInput `pulumi:"keyType"`
+	// Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+	// Signature of the related `BuildProvenance`, encoded in a base64 string.
+	Signature pulumi.StringInput `pulumi:"signature"`
+}
+
+func (BuildSignatureResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildSignatureResponse)(nil)).Elem()
+}
+
+func (i BuildSignatureResponseArgs) ToBuildSignatureResponseOutput() BuildSignatureResponseOutput {
+	return i.ToBuildSignatureResponseOutputWithContext(context.Background())
+}
+
+func (i BuildSignatureResponseArgs) ToBuildSignatureResponseOutputWithContext(ctx context.Context) BuildSignatureResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildSignatureResponseOutput)
+}
+
+func (i BuildSignatureResponseArgs) ToBuildSignatureResponsePtrOutput() BuildSignatureResponsePtrOutput {
+	return i.ToBuildSignatureResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BuildSignatureResponseArgs) ToBuildSignatureResponsePtrOutputWithContext(ctx context.Context) BuildSignatureResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildSignatureResponseOutput).ToBuildSignatureResponsePtrOutputWithContext(ctx)
+}
+
+// BuildSignatureResponsePtrInput is an input type that accepts BuildSignatureResponseArgs, BuildSignatureResponsePtr and BuildSignatureResponsePtrOutput values.
+// You can construct a concrete instance of `BuildSignatureResponsePtrInput` via:
+//
+//          BuildSignatureResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BuildSignatureResponsePtrInput interface {
+	pulumi.Input
+
+	ToBuildSignatureResponsePtrOutput() BuildSignatureResponsePtrOutput
+	ToBuildSignatureResponsePtrOutputWithContext(context.Context) BuildSignatureResponsePtrOutput
+}
+
+type buildSignatureResponsePtrType BuildSignatureResponseArgs
+
+func BuildSignatureResponsePtr(v *BuildSignatureResponseArgs) BuildSignatureResponsePtrInput {
+	return (*buildSignatureResponsePtrType)(v)
+}
+
+func (*buildSignatureResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildSignatureResponse)(nil)).Elem()
+}
+
+func (i *buildSignatureResponsePtrType) ToBuildSignatureResponsePtrOutput() BuildSignatureResponsePtrOutput {
+	return i.ToBuildSignatureResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *buildSignatureResponsePtrType) ToBuildSignatureResponsePtrOutputWithContext(ctx context.Context) BuildSignatureResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildSignatureResponsePtrOutput)
+}
+
+// Message encapsulating the signature of the verified build.
+type BuildSignatureResponseOutput struct{ *pulumi.OutputState }
+
+func (BuildSignatureResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildSignatureResponse)(nil)).Elem()
+}
+
+func (o BuildSignatureResponseOutput) ToBuildSignatureResponseOutput() BuildSignatureResponseOutput {
+	return o
+}
+
+func (o BuildSignatureResponseOutput) ToBuildSignatureResponseOutputWithContext(ctx context.Context) BuildSignatureResponseOutput {
+	return o
+}
+
+func (o BuildSignatureResponseOutput) ToBuildSignatureResponsePtrOutput() BuildSignatureResponsePtrOutput {
+	return o.ToBuildSignatureResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BuildSignatureResponseOutput) ToBuildSignatureResponsePtrOutputWithContext(ctx context.Context) BuildSignatureResponsePtrOutput {
+	return o.ApplyT(func(v BuildSignatureResponse) *BuildSignatureResponse {
+		return &v
+	}).(BuildSignatureResponsePtrOutput)
+}
+
+// An Id for the key used to sign. This could be either an Id for the key stored in `public_key` (such as the Id or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
+func (o BuildSignatureResponseOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildSignatureResponse) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// The type of the key, either stored in `public_key` or referenced in `key_id`
+func (o BuildSignatureResponseOutput) KeyType() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildSignatureResponse) string { return v.KeyType }).(pulumi.StringOutput)
+}
+
+// Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
+func (o BuildSignatureResponseOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildSignatureResponse) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// Signature of the related `BuildProvenance`, encoded in a base64 string.
+func (o BuildSignatureResponseOutput) Signature() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildSignatureResponse) string { return v.Signature }).(pulumi.StringOutput)
+}
+
+type BuildSignatureResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BuildSignatureResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildSignatureResponse)(nil)).Elem()
+}
+
+func (o BuildSignatureResponsePtrOutput) ToBuildSignatureResponsePtrOutput() BuildSignatureResponsePtrOutput {
+	return o
+}
+
+func (o BuildSignatureResponsePtrOutput) ToBuildSignatureResponsePtrOutputWithContext(ctx context.Context) BuildSignatureResponsePtrOutput {
+	return o
+}
+
+func (o BuildSignatureResponsePtrOutput) Elem() BuildSignatureResponseOutput {
+	return o.ApplyT(func(v *BuildSignatureResponse) BuildSignatureResponse { return *v }).(BuildSignatureResponseOutput)
+}
+
+// An Id for the key used to sign. This could be either an Id for the key stored in `public_key` (such as the Id or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
+func (o BuildSignatureResponsePtrOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildSignatureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the key, either stored in `public_key` or referenced in `key_id`
+func (o BuildSignatureResponsePtrOutput) KeyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildSignatureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
+func (o BuildSignatureResponsePtrOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildSignatureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Signature of the related `BuildProvenance`, encoded in a base64 string.
+func (o BuildSignatureResponsePtrOutput) Signature() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildSignatureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Signature
+	}).(pulumi.StringPtrOutput)
+}
+
 // Note holding the version of the provider's builder and the signature of the provenance message in linked BuildDetails.
 type BuildType struct {
 	// Version of the builder which produced this Note.
@@ -1659,6 +3127,159 @@ func (o BuildTypePtrOutput) Signature() BuildSignaturePtrOutput {
 	}).(BuildSignaturePtrOutput)
 }
 
+// Note holding the version of the provider's builder and the signature of the provenance message in linked BuildDetails.
+type BuildTypeResponse struct {
+	// Version of the builder which produced this Note.
+	BuilderVersion string `pulumi:"builderVersion"`
+	// Signature of the build in Occurrences pointing to the Note containing this `BuilderDetails`.
+	Signature BuildSignatureResponse `pulumi:"signature"`
+}
+
+// BuildTypeResponseInput is an input type that accepts BuildTypeResponseArgs and BuildTypeResponseOutput values.
+// You can construct a concrete instance of `BuildTypeResponseInput` via:
+//
+//          BuildTypeResponseArgs{...}
+type BuildTypeResponseInput interface {
+	pulumi.Input
+
+	ToBuildTypeResponseOutput() BuildTypeResponseOutput
+	ToBuildTypeResponseOutputWithContext(context.Context) BuildTypeResponseOutput
+}
+
+// Note holding the version of the provider's builder and the signature of the provenance message in linked BuildDetails.
+type BuildTypeResponseArgs struct {
+	// Version of the builder which produced this Note.
+	BuilderVersion pulumi.StringInput `pulumi:"builderVersion"`
+	// Signature of the build in Occurrences pointing to the Note containing this `BuilderDetails`.
+	Signature BuildSignatureResponseInput `pulumi:"signature"`
+}
+
+func (BuildTypeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildTypeResponse)(nil)).Elem()
+}
+
+func (i BuildTypeResponseArgs) ToBuildTypeResponseOutput() BuildTypeResponseOutput {
+	return i.ToBuildTypeResponseOutputWithContext(context.Background())
+}
+
+func (i BuildTypeResponseArgs) ToBuildTypeResponseOutputWithContext(ctx context.Context) BuildTypeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildTypeResponseOutput)
+}
+
+func (i BuildTypeResponseArgs) ToBuildTypeResponsePtrOutput() BuildTypeResponsePtrOutput {
+	return i.ToBuildTypeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BuildTypeResponseArgs) ToBuildTypeResponsePtrOutputWithContext(ctx context.Context) BuildTypeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildTypeResponseOutput).ToBuildTypeResponsePtrOutputWithContext(ctx)
+}
+
+// BuildTypeResponsePtrInput is an input type that accepts BuildTypeResponseArgs, BuildTypeResponsePtr and BuildTypeResponsePtrOutput values.
+// You can construct a concrete instance of `BuildTypeResponsePtrInput` via:
+//
+//          BuildTypeResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BuildTypeResponsePtrInput interface {
+	pulumi.Input
+
+	ToBuildTypeResponsePtrOutput() BuildTypeResponsePtrOutput
+	ToBuildTypeResponsePtrOutputWithContext(context.Context) BuildTypeResponsePtrOutput
+}
+
+type buildTypeResponsePtrType BuildTypeResponseArgs
+
+func BuildTypeResponsePtr(v *BuildTypeResponseArgs) BuildTypeResponsePtrInput {
+	return (*buildTypeResponsePtrType)(v)
+}
+
+func (*buildTypeResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildTypeResponse)(nil)).Elem()
+}
+
+func (i *buildTypeResponsePtrType) ToBuildTypeResponsePtrOutput() BuildTypeResponsePtrOutput {
+	return i.ToBuildTypeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *buildTypeResponsePtrType) ToBuildTypeResponsePtrOutputWithContext(ctx context.Context) BuildTypeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildTypeResponsePtrOutput)
+}
+
+// Note holding the version of the provider's builder and the signature of the provenance message in linked BuildDetails.
+type BuildTypeResponseOutput struct{ *pulumi.OutputState }
+
+func (BuildTypeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildTypeResponse)(nil)).Elem()
+}
+
+func (o BuildTypeResponseOutput) ToBuildTypeResponseOutput() BuildTypeResponseOutput {
+	return o
+}
+
+func (o BuildTypeResponseOutput) ToBuildTypeResponseOutputWithContext(ctx context.Context) BuildTypeResponseOutput {
+	return o
+}
+
+func (o BuildTypeResponseOutput) ToBuildTypeResponsePtrOutput() BuildTypeResponsePtrOutput {
+	return o.ToBuildTypeResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BuildTypeResponseOutput) ToBuildTypeResponsePtrOutputWithContext(ctx context.Context) BuildTypeResponsePtrOutput {
+	return o.ApplyT(func(v BuildTypeResponse) *BuildTypeResponse {
+		return &v
+	}).(BuildTypeResponsePtrOutput)
+}
+
+// Version of the builder which produced this Note.
+func (o BuildTypeResponseOutput) BuilderVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildTypeResponse) string { return v.BuilderVersion }).(pulumi.StringOutput)
+}
+
+// Signature of the build in Occurrences pointing to the Note containing this `BuilderDetails`.
+func (o BuildTypeResponseOutput) Signature() BuildSignatureResponseOutput {
+	return o.ApplyT(func(v BuildTypeResponse) BuildSignatureResponse { return v.Signature }).(BuildSignatureResponseOutput)
+}
+
+type BuildTypeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BuildTypeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildTypeResponse)(nil)).Elem()
+}
+
+func (o BuildTypeResponsePtrOutput) ToBuildTypeResponsePtrOutput() BuildTypeResponsePtrOutput {
+	return o
+}
+
+func (o BuildTypeResponsePtrOutput) ToBuildTypeResponsePtrOutputWithContext(ctx context.Context) BuildTypeResponsePtrOutput {
+	return o
+}
+
+func (o BuildTypeResponsePtrOutput) Elem() BuildTypeResponseOutput {
+	return o.ApplyT(func(v *BuildTypeResponse) BuildTypeResponse { return *v }).(BuildTypeResponseOutput)
+}
+
+// Version of the builder which produced this Note.
+func (o BuildTypeResponsePtrOutput) BuilderVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildTypeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BuilderVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Signature of the build in Occurrences pointing to the Note containing this `BuilderDetails`.
+func (o BuildTypeResponsePtrOutput) Signature() BuildSignatureResponsePtrOutput {
+	return o.ApplyT(func(v *BuildTypeResponse) *BuildSignatureResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Signature
+	}).(BuildSignatureResponsePtrOutput)
+}
+
 // Command describes a step performed as part of the build pipeline.
 type Command struct {
 	// Command-line arguments used when executing this Command.
@@ -1804,6 +3425,142 @@ func (o CommandArrayOutput) Index(i pulumi.IntInput) CommandOutput {
 	}).(CommandOutput)
 }
 
+// Command describes a step performed as part of the build pipeline.
+type CommandResponse struct {
+	// Command-line arguments used when executing this Command.
+	Args []string `pulumi:"args"`
+	// Working directory (relative to project source root) used when running this Command.
+	Dir string `pulumi:"dir"`
+	// Environment variables set before running this Command.
+	Env []string `pulumi:"env"`
+	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
+	Name string `pulumi:"name"`
+	// The ID(s) of the Command(s) that this Command depends on.
+	WaitFor []string `pulumi:"waitFor"`
+}
+
+// CommandResponseInput is an input type that accepts CommandResponseArgs and CommandResponseOutput values.
+// You can construct a concrete instance of `CommandResponseInput` via:
+//
+//          CommandResponseArgs{...}
+type CommandResponseInput interface {
+	pulumi.Input
+
+	ToCommandResponseOutput() CommandResponseOutput
+	ToCommandResponseOutputWithContext(context.Context) CommandResponseOutput
+}
+
+// Command describes a step performed as part of the build pipeline.
+type CommandResponseArgs struct {
+	// Command-line arguments used when executing this Command.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Working directory (relative to project source root) used when running this Command.
+	Dir pulumi.StringInput `pulumi:"dir"`
+	// Environment variables set before running this Command.
+	Env pulumi.StringArrayInput `pulumi:"env"`
+	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID(s) of the Command(s) that this Command depends on.
+	WaitFor pulumi.StringArrayInput `pulumi:"waitFor"`
+}
+
+func (CommandResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommandResponse)(nil)).Elem()
+}
+
+func (i CommandResponseArgs) ToCommandResponseOutput() CommandResponseOutput {
+	return i.ToCommandResponseOutputWithContext(context.Background())
+}
+
+func (i CommandResponseArgs) ToCommandResponseOutputWithContext(ctx context.Context) CommandResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommandResponseOutput)
+}
+
+// CommandResponseArrayInput is an input type that accepts CommandResponseArray and CommandResponseArrayOutput values.
+// You can construct a concrete instance of `CommandResponseArrayInput` via:
+//
+//          CommandResponseArray{ CommandResponseArgs{...} }
+type CommandResponseArrayInput interface {
+	pulumi.Input
+
+	ToCommandResponseArrayOutput() CommandResponseArrayOutput
+	ToCommandResponseArrayOutputWithContext(context.Context) CommandResponseArrayOutput
+}
+
+type CommandResponseArray []CommandResponseInput
+
+func (CommandResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommandResponse)(nil)).Elem()
+}
+
+func (i CommandResponseArray) ToCommandResponseArrayOutput() CommandResponseArrayOutput {
+	return i.ToCommandResponseArrayOutputWithContext(context.Background())
+}
+
+func (i CommandResponseArray) ToCommandResponseArrayOutputWithContext(ctx context.Context) CommandResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommandResponseArrayOutput)
+}
+
+// Command describes a step performed as part of the build pipeline.
+type CommandResponseOutput struct{ *pulumi.OutputState }
+
+func (CommandResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommandResponse)(nil)).Elem()
+}
+
+func (o CommandResponseOutput) ToCommandResponseOutput() CommandResponseOutput {
+	return o
+}
+
+func (o CommandResponseOutput) ToCommandResponseOutputWithContext(ctx context.Context) CommandResponseOutput {
+	return o
+}
+
+// Command-line arguments used when executing this Command.
+func (o CommandResponseOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CommandResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Working directory (relative to project source root) used when running this Command.
+func (o CommandResponseOutput) Dir() pulumi.StringOutput {
+	return o.ApplyT(func(v CommandResponse) string { return v.Dir }).(pulumi.StringOutput)
+}
+
+// Environment variables set before running this Command.
+func (o CommandResponseOutput) Env() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CommandResponse) []string { return v.Env }).(pulumi.StringArrayOutput)
+}
+
+// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
+func (o CommandResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CommandResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID(s) of the Command(s) that this Command depends on.
+func (o CommandResponseOutput) WaitFor() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CommandResponse) []string { return v.WaitFor }).(pulumi.StringArrayOutput)
+}
+
+type CommandResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CommandResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommandResponse)(nil)).Elem()
+}
+
+func (o CommandResponseArrayOutput) ToCommandResponseArrayOutput() CommandResponseArrayOutput {
+	return o
+}
+
+func (o CommandResponseArrayOutput) ToCommandResponseArrayOutputWithContext(ctx context.Context) CommandResponseArrayOutput {
+	return o
+}
+
+func (o CommandResponseArrayOutput) Index(i pulumi.IntInput) CommandResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CommandResponse {
+		return vs[0].([]CommandResponse)[vs[1].(int)]
+	}).(CommandResponseOutput)
+}
+
 // An artifact that can be deployed in some runtime.
 type Deployable struct {
 	// Resource URI for the artifact being deployed.
@@ -1938,6 +3695,140 @@ func (o DeployablePtrOutput) ResourceUri() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// An artifact that can be deployed in some runtime.
+type DeployableResponse struct {
+	// Resource URI for the artifact being deployed.
+	ResourceUri []string `pulumi:"resourceUri"`
+}
+
+// DeployableResponseInput is an input type that accepts DeployableResponseArgs and DeployableResponseOutput values.
+// You can construct a concrete instance of `DeployableResponseInput` via:
+//
+//          DeployableResponseArgs{...}
+type DeployableResponseInput interface {
+	pulumi.Input
+
+	ToDeployableResponseOutput() DeployableResponseOutput
+	ToDeployableResponseOutputWithContext(context.Context) DeployableResponseOutput
+}
+
+// An artifact that can be deployed in some runtime.
+type DeployableResponseArgs struct {
+	// Resource URI for the artifact being deployed.
+	ResourceUri pulumi.StringArrayInput `pulumi:"resourceUri"`
+}
+
+func (DeployableResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployableResponse)(nil)).Elem()
+}
+
+func (i DeployableResponseArgs) ToDeployableResponseOutput() DeployableResponseOutput {
+	return i.ToDeployableResponseOutputWithContext(context.Background())
+}
+
+func (i DeployableResponseArgs) ToDeployableResponseOutputWithContext(ctx context.Context) DeployableResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployableResponseOutput)
+}
+
+func (i DeployableResponseArgs) ToDeployableResponsePtrOutput() DeployableResponsePtrOutput {
+	return i.ToDeployableResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DeployableResponseArgs) ToDeployableResponsePtrOutputWithContext(ctx context.Context) DeployableResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployableResponseOutput).ToDeployableResponsePtrOutputWithContext(ctx)
+}
+
+// DeployableResponsePtrInput is an input type that accepts DeployableResponseArgs, DeployableResponsePtr and DeployableResponsePtrOutput values.
+// You can construct a concrete instance of `DeployableResponsePtrInput` via:
+//
+//          DeployableResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DeployableResponsePtrInput interface {
+	pulumi.Input
+
+	ToDeployableResponsePtrOutput() DeployableResponsePtrOutput
+	ToDeployableResponsePtrOutputWithContext(context.Context) DeployableResponsePtrOutput
+}
+
+type deployableResponsePtrType DeployableResponseArgs
+
+func DeployableResponsePtr(v *DeployableResponseArgs) DeployableResponsePtrInput {
+	return (*deployableResponsePtrType)(v)
+}
+
+func (*deployableResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployableResponse)(nil)).Elem()
+}
+
+func (i *deployableResponsePtrType) ToDeployableResponsePtrOutput() DeployableResponsePtrOutput {
+	return i.ToDeployableResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *deployableResponsePtrType) ToDeployableResponsePtrOutputWithContext(ctx context.Context) DeployableResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployableResponsePtrOutput)
+}
+
+// An artifact that can be deployed in some runtime.
+type DeployableResponseOutput struct{ *pulumi.OutputState }
+
+func (DeployableResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployableResponse)(nil)).Elem()
+}
+
+func (o DeployableResponseOutput) ToDeployableResponseOutput() DeployableResponseOutput {
+	return o
+}
+
+func (o DeployableResponseOutput) ToDeployableResponseOutputWithContext(ctx context.Context) DeployableResponseOutput {
+	return o
+}
+
+func (o DeployableResponseOutput) ToDeployableResponsePtrOutput() DeployableResponsePtrOutput {
+	return o.ToDeployableResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DeployableResponseOutput) ToDeployableResponsePtrOutputWithContext(ctx context.Context) DeployableResponsePtrOutput {
+	return o.ApplyT(func(v DeployableResponse) *DeployableResponse {
+		return &v
+	}).(DeployableResponsePtrOutput)
+}
+
+// Resource URI for the artifact being deployed.
+func (o DeployableResponseOutput) ResourceUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeployableResponse) []string { return v.ResourceUri }).(pulumi.StringArrayOutput)
+}
+
+type DeployableResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeployableResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployableResponse)(nil)).Elem()
+}
+
+func (o DeployableResponsePtrOutput) ToDeployableResponsePtrOutput() DeployableResponsePtrOutput {
+	return o
+}
+
+func (o DeployableResponsePtrOutput) ToDeployableResponsePtrOutputWithContext(ctx context.Context) DeployableResponsePtrOutput {
+	return o
+}
+
+func (o DeployableResponsePtrOutput) Elem() DeployableResponseOutput {
+	return o.ApplyT(func(v *DeployableResponse) DeployableResponse { return *v }).(DeployableResponseOutput)
+}
+
+// Resource URI for the artifact being deployed.
+func (o DeployableResponsePtrOutput) ResourceUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeployableResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceUri
+	}).(pulumi.StringArrayOutput)
+}
+
 // The period during which some deployable was active in a runtime.
 type Deployment struct {
 	// Address of the runtime element hosting this deployment.
@@ -1948,7 +3839,7 @@ type Deployment struct {
 	DeployTime *string `pulumi:"deployTime"`
 	// Platform hosting this deployment.
 	Platform *string `pulumi:"platform"`
-	// Output only. Resource URI for the artifact being deployed taken from the deployable field with the same name.
+	// Resource URI for the artifact being deployed taken from the deployable field with the same name.
 	ResourceUri []string `pulumi:"resourceUri"`
 	// End of the lifetime of this deployment.
 	UndeployTime *string `pulumi:"undeployTime"`
@@ -1977,7 +3868,7 @@ type DeploymentArgs struct {
 	DeployTime pulumi.StringPtrInput `pulumi:"deployTime"`
 	// Platform hosting this deployment.
 	Platform pulumi.StringPtrInput `pulumi:"platform"`
-	// Output only. Resource URI for the artifact being deployed taken from the deployable field with the same name.
+	// Resource URI for the artifact being deployed taken from the deployable field with the same name.
 	ResourceUri pulumi.StringArrayInput `pulumi:"resourceUri"`
 	// End of the lifetime of this deployment.
 	UndeployTime pulumi.StringPtrInput `pulumi:"undeployTime"`
@@ -2083,7 +3974,7 @@ func (o DeploymentOutput) Platform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Deployment) *string { return v.Platform }).(pulumi.StringPtrOutput)
 }
 
-// Output only. Resource URI for the artifact being deployed taken from the deployable field with the same name.
+// Resource URI for the artifact being deployed taken from the deployable field with the same name.
 func (o DeploymentOutput) ResourceUri() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Deployment) []string { return v.ResourceUri }).(pulumi.StringArrayOutput)
 }
@@ -2156,7 +4047,7 @@ func (o DeploymentPtrOutput) Platform() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. Resource URI for the artifact being deployed taken from the deployable field with the same name.
+// Resource URI for the artifact being deployed taken from the deployable field with the same name.
 func (o DeploymentPtrOutput) ResourceUri() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Deployment) []string {
 		if v == nil {
@@ -2186,11 +4077,259 @@ func (o DeploymentPtrOutput) UserEmail() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The period during which some deployable was active in a runtime.
+type DeploymentResponse struct {
+	// Address of the runtime element hosting this deployment.
+	Address string `pulumi:"address"`
+	// Configuration used to create this deployment.
+	Config string `pulumi:"config"`
+	// Beginning of the lifetime of this deployment.
+	DeployTime string `pulumi:"deployTime"`
+	// Platform hosting this deployment.
+	Platform string `pulumi:"platform"`
+	// Resource URI for the artifact being deployed taken from the deployable field with the same name.
+	ResourceUri []string `pulumi:"resourceUri"`
+	// End of the lifetime of this deployment.
+	UndeployTime string `pulumi:"undeployTime"`
+	// Identity of the user that triggered this deployment.
+	UserEmail string `pulumi:"userEmail"`
+}
+
+// DeploymentResponseInput is an input type that accepts DeploymentResponseArgs and DeploymentResponseOutput values.
+// You can construct a concrete instance of `DeploymentResponseInput` via:
+//
+//          DeploymentResponseArgs{...}
+type DeploymentResponseInput interface {
+	pulumi.Input
+
+	ToDeploymentResponseOutput() DeploymentResponseOutput
+	ToDeploymentResponseOutputWithContext(context.Context) DeploymentResponseOutput
+}
+
+// The period during which some deployable was active in a runtime.
+type DeploymentResponseArgs struct {
+	// Address of the runtime element hosting this deployment.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Configuration used to create this deployment.
+	Config pulumi.StringInput `pulumi:"config"`
+	// Beginning of the lifetime of this deployment.
+	DeployTime pulumi.StringInput `pulumi:"deployTime"`
+	// Platform hosting this deployment.
+	Platform pulumi.StringInput `pulumi:"platform"`
+	// Resource URI for the artifact being deployed taken from the deployable field with the same name.
+	ResourceUri pulumi.StringArrayInput `pulumi:"resourceUri"`
+	// End of the lifetime of this deployment.
+	UndeployTime pulumi.StringInput `pulumi:"undeployTime"`
+	// Identity of the user that triggered this deployment.
+	UserEmail pulumi.StringInput `pulumi:"userEmail"`
+}
+
+func (DeploymentResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentResponse)(nil)).Elem()
+}
+
+func (i DeploymentResponseArgs) ToDeploymentResponseOutput() DeploymentResponseOutput {
+	return i.ToDeploymentResponseOutputWithContext(context.Background())
+}
+
+func (i DeploymentResponseArgs) ToDeploymentResponseOutputWithContext(ctx context.Context) DeploymentResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentResponseOutput)
+}
+
+func (i DeploymentResponseArgs) ToDeploymentResponsePtrOutput() DeploymentResponsePtrOutput {
+	return i.ToDeploymentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentResponseArgs) ToDeploymentResponsePtrOutputWithContext(ctx context.Context) DeploymentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentResponseOutput).ToDeploymentResponsePtrOutputWithContext(ctx)
+}
+
+// DeploymentResponsePtrInput is an input type that accepts DeploymentResponseArgs, DeploymentResponsePtr and DeploymentResponsePtrOutput values.
+// You can construct a concrete instance of `DeploymentResponsePtrInput` via:
+//
+//          DeploymentResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DeploymentResponsePtrInput interface {
+	pulumi.Input
+
+	ToDeploymentResponsePtrOutput() DeploymentResponsePtrOutput
+	ToDeploymentResponsePtrOutputWithContext(context.Context) DeploymentResponsePtrOutput
+}
+
+type deploymentResponsePtrType DeploymentResponseArgs
+
+func DeploymentResponsePtr(v *DeploymentResponseArgs) DeploymentResponsePtrInput {
+	return (*deploymentResponsePtrType)(v)
+}
+
+func (*deploymentResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentResponse)(nil)).Elem()
+}
+
+func (i *deploymentResponsePtrType) ToDeploymentResponsePtrOutput() DeploymentResponsePtrOutput {
+	return i.ToDeploymentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentResponsePtrType) ToDeploymentResponsePtrOutputWithContext(ctx context.Context) DeploymentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentResponsePtrOutput)
+}
+
+// The period during which some deployable was active in a runtime.
+type DeploymentResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentResponse)(nil)).Elem()
+}
+
+func (o DeploymentResponseOutput) ToDeploymentResponseOutput() DeploymentResponseOutput {
+	return o
+}
+
+func (o DeploymentResponseOutput) ToDeploymentResponseOutputWithContext(ctx context.Context) DeploymentResponseOutput {
+	return o
+}
+
+func (o DeploymentResponseOutput) ToDeploymentResponsePtrOutput() DeploymentResponsePtrOutput {
+	return o.ToDeploymentResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentResponseOutput) ToDeploymentResponsePtrOutputWithContext(ctx context.Context) DeploymentResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentResponse) *DeploymentResponse {
+		return &v
+	}).(DeploymentResponsePtrOutput)
+}
+
+// Address of the runtime element hosting this deployment.
+func (o DeploymentResponseOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentResponse) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Configuration used to create this deployment.
+func (o DeploymentResponseOutput) Config() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentResponse) string { return v.Config }).(pulumi.StringOutput)
+}
+
+// Beginning of the lifetime of this deployment.
+func (o DeploymentResponseOutput) DeployTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentResponse) string { return v.DeployTime }).(pulumi.StringOutput)
+}
+
+// Platform hosting this deployment.
+func (o DeploymentResponseOutput) Platform() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentResponse) string { return v.Platform }).(pulumi.StringOutput)
+}
+
+// Resource URI for the artifact being deployed taken from the deployable field with the same name.
+func (o DeploymentResponseOutput) ResourceUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeploymentResponse) []string { return v.ResourceUri }).(pulumi.StringArrayOutput)
+}
+
+// End of the lifetime of this deployment.
+func (o DeploymentResponseOutput) UndeployTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentResponse) string { return v.UndeployTime }).(pulumi.StringOutput)
+}
+
+// Identity of the user that triggered this deployment.
+func (o DeploymentResponseOutput) UserEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentResponse) string { return v.UserEmail }).(pulumi.StringOutput)
+}
+
+type DeploymentResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentResponse)(nil)).Elem()
+}
+
+func (o DeploymentResponsePtrOutput) ToDeploymentResponsePtrOutput() DeploymentResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentResponsePtrOutput) ToDeploymentResponsePtrOutputWithContext(ctx context.Context) DeploymentResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentResponsePtrOutput) Elem() DeploymentResponseOutput {
+	return o.ApplyT(func(v *DeploymentResponse) DeploymentResponse { return *v }).(DeploymentResponseOutput)
+}
+
+// Address of the runtime element hosting this deployment.
+func (o DeploymentResponsePtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration used to create this deployment.
+func (o DeploymentResponsePtrOutput) Config() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Config
+	}).(pulumi.StringPtrOutput)
+}
+
+// Beginning of the lifetime of this deployment.
+func (o DeploymentResponsePtrOutput) DeployTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeployTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Platform hosting this deployment.
+func (o DeploymentResponsePtrOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Platform
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource URI for the artifact being deployed taken from the deployable field with the same name.
+func (o DeploymentResponsePtrOutput) ResourceUri() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeploymentResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceUri
+	}).(pulumi.StringArrayOutput)
+}
+
+// End of the lifetime of this deployment.
+func (o DeploymentResponsePtrOutput) UndeployTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UndeployTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity of the user that triggered this deployment.
+func (o DeploymentResponsePtrOutput) UserEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserEmail
+	}).(pulumi.StringPtrOutput)
+}
+
 // Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
 type Derived struct {
-	// Output only. This contains the base image URL for the derived image occurrence.
+	// This contains the base image URL for the derived image occurrence.
 	BaseResourceUrl *string `pulumi:"baseResourceUrl"`
-	// Output only. The number of layers by which this image differs from the associated image basis.
+	// The number of layers by which this image differs from the associated image basis.
 	Distance *int `pulumi:"distance"`
 	// The fingerprint of the derived image.
 	Fingerprint *Fingerprint `pulumi:"fingerprint"`
@@ -2211,9 +4350,9 @@ type DerivedInput interface {
 
 // Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
 type DerivedArgs struct {
-	// Output only. This contains the base image URL for the derived image occurrence.
+	// This contains the base image URL for the derived image occurrence.
 	BaseResourceUrl pulumi.StringPtrInput `pulumi:"baseResourceUrl"`
-	// Output only. The number of layers by which this image differs from the associated image basis.
+	// The number of layers by which this image differs from the associated image basis.
 	Distance pulumi.IntPtrInput `pulumi:"distance"`
 	// The fingerprint of the derived image.
 	Fingerprint FingerprintPtrInput `pulumi:"fingerprint"`
@@ -2299,12 +4438,12 @@ func (o DerivedOutput) ToDerivedPtrOutputWithContext(ctx context.Context) Derive
 	}).(DerivedPtrOutput)
 }
 
-// Output only. This contains the base image URL for the derived image occurrence.
+// This contains the base image URL for the derived image occurrence.
 func (o DerivedOutput) BaseResourceUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Derived) *string { return v.BaseResourceUrl }).(pulumi.StringPtrOutput)
 }
 
-// Output only. The number of layers by which this image differs from the associated image basis.
+// The number of layers by which this image differs from the associated image basis.
 func (o DerivedOutput) Distance() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Derived) *int { return v.Distance }).(pulumi.IntPtrOutput)
 }
@@ -2337,7 +4476,7 @@ func (o DerivedPtrOutput) Elem() DerivedOutput {
 	return o.ApplyT(func(v *Derived) Derived { return *v }).(DerivedOutput)
 }
 
-// Output only. This contains the base image URL for the derived image occurrence.
+// This contains the base image URL for the derived image occurrence.
 func (o DerivedPtrOutput) BaseResourceUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Derived) *string {
 		if v == nil {
@@ -2347,7 +4486,7 @@ func (o DerivedPtrOutput) BaseResourceUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The number of layers by which this image differs from the associated image basis.
+// The number of layers by which this image differs from the associated image basis.
 func (o DerivedPtrOutput) Distance() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Derived) *int {
 		if v == nil {
@@ -2375,6 +4514,197 @@ func (o DerivedPtrOutput) LayerInfo() LayerArrayOutput {
 		}
 		return v.LayerInfo
 	}).(LayerArrayOutput)
+}
+
+// Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
+type DerivedResponse struct {
+	// This contains the base image URL for the derived image occurrence.
+	BaseResourceUrl string `pulumi:"baseResourceUrl"`
+	// The number of layers by which this image differs from the associated image basis.
+	Distance int `pulumi:"distance"`
+	// The fingerprint of the derived image.
+	Fingerprint FingerprintResponse `pulumi:"fingerprint"`
+	// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
+	LayerInfo []LayerResponse `pulumi:"layerInfo"`
+}
+
+// DerivedResponseInput is an input type that accepts DerivedResponseArgs and DerivedResponseOutput values.
+// You can construct a concrete instance of `DerivedResponseInput` via:
+//
+//          DerivedResponseArgs{...}
+type DerivedResponseInput interface {
+	pulumi.Input
+
+	ToDerivedResponseOutput() DerivedResponseOutput
+	ToDerivedResponseOutputWithContext(context.Context) DerivedResponseOutput
+}
+
+// Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
+type DerivedResponseArgs struct {
+	// This contains the base image URL for the derived image occurrence.
+	BaseResourceUrl pulumi.StringInput `pulumi:"baseResourceUrl"`
+	// The number of layers by which this image differs from the associated image basis.
+	Distance pulumi.IntInput `pulumi:"distance"`
+	// The fingerprint of the derived image.
+	Fingerprint FingerprintResponseInput `pulumi:"fingerprint"`
+	// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
+	LayerInfo LayerResponseArrayInput `pulumi:"layerInfo"`
+}
+
+func (DerivedResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DerivedResponse)(nil)).Elem()
+}
+
+func (i DerivedResponseArgs) ToDerivedResponseOutput() DerivedResponseOutput {
+	return i.ToDerivedResponseOutputWithContext(context.Background())
+}
+
+func (i DerivedResponseArgs) ToDerivedResponseOutputWithContext(ctx context.Context) DerivedResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DerivedResponseOutput)
+}
+
+func (i DerivedResponseArgs) ToDerivedResponsePtrOutput() DerivedResponsePtrOutput {
+	return i.ToDerivedResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DerivedResponseArgs) ToDerivedResponsePtrOutputWithContext(ctx context.Context) DerivedResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DerivedResponseOutput).ToDerivedResponsePtrOutputWithContext(ctx)
+}
+
+// DerivedResponsePtrInput is an input type that accepts DerivedResponseArgs, DerivedResponsePtr and DerivedResponsePtrOutput values.
+// You can construct a concrete instance of `DerivedResponsePtrInput` via:
+//
+//          DerivedResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DerivedResponsePtrInput interface {
+	pulumi.Input
+
+	ToDerivedResponsePtrOutput() DerivedResponsePtrOutput
+	ToDerivedResponsePtrOutputWithContext(context.Context) DerivedResponsePtrOutput
+}
+
+type derivedResponsePtrType DerivedResponseArgs
+
+func DerivedResponsePtr(v *DerivedResponseArgs) DerivedResponsePtrInput {
+	return (*derivedResponsePtrType)(v)
+}
+
+func (*derivedResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DerivedResponse)(nil)).Elem()
+}
+
+func (i *derivedResponsePtrType) ToDerivedResponsePtrOutput() DerivedResponsePtrOutput {
+	return i.ToDerivedResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *derivedResponsePtrType) ToDerivedResponsePtrOutputWithContext(ctx context.Context) DerivedResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DerivedResponsePtrOutput)
+}
+
+// Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
+type DerivedResponseOutput struct{ *pulumi.OutputState }
+
+func (DerivedResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DerivedResponse)(nil)).Elem()
+}
+
+func (o DerivedResponseOutput) ToDerivedResponseOutput() DerivedResponseOutput {
+	return o
+}
+
+func (o DerivedResponseOutput) ToDerivedResponseOutputWithContext(ctx context.Context) DerivedResponseOutput {
+	return o
+}
+
+func (o DerivedResponseOutput) ToDerivedResponsePtrOutput() DerivedResponsePtrOutput {
+	return o.ToDerivedResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DerivedResponseOutput) ToDerivedResponsePtrOutputWithContext(ctx context.Context) DerivedResponsePtrOutput {
+	return o.ApplyT(func(v DerivedResponse) *DerivedResponse {
+		return &v
+	}).(DerivedResponsePtrOutput)
+}
+
+// This contains the base image URL for the derived image occurrence.
+func (o DerivedResponseOutput) BaseResourceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v DerivedResponse) string { return v.BaseResourceUrl }).(pulumi.StringOutput)
+}
+
+// The number of layers by which this image differs from the associated image basis.
+func (o DerivedResponseOutput) Distance() pulumi.IntOutput {
+	return o.ApplyT(func(v DerivedResponse) int { return v.Distance }).(pulumi.IntOutput)
+}
+
+// The fingerprint of the derived image.
+func (o DerivedResponseOutput) Fingerprint() FingerprintResponseOutput {
+	return o.ApplyT(func(v DerivedResponse) FingerprintResponse { return v.Fingerprint }).(FingerprintResponseOutput)
+}
+
+// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
+func (o DerivedResponseOutput) LayerInfo() LayerResponseArrayOutput {
+	return o.ApplyT(func(v DerivedResponse) []LayerResponse { return v.LayerInfo }).(LayerResponseArrayOutput)
+}
+
+type DerivedResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DerivedResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DerivedResponse)(nil)).Elem()
+}
+
+func (o DerivedResponsePtrOutput) ToDerivedResponsePtrOutput() DerivedResponsePtrOutput {
+	return o
+}
+
+func (o DerivedResponsePtrOutput) ToDerivedResponsePtrOutputWithContext(ctx context.Context) DerivedResponsePtrOutput {
+	return o
+}
+
+func (o DerivedResponsePtrOutput) Elem() DerivedResponseOutput {
+	return o.ApplyT(func(v *DerivedResponse) DerivedResponse { return *v }).(DerivedResponseOutput)
+}
+
+// This contains the base image URL for the derived image occurrence.
+func (o DerivedResponsePtrOutput) BaseResourceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DerivedResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BaseResourceUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of layers by which this image differs from the associated image basis.
+func (o DerivedResponsePtrOutput) Distance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DerivedResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Distance
+	}).(pulumi.IntPtrOutput)
+}
+
+// The fingerprint of the derived image.
+func (o DerivedResponsePtrOutput) Fingerprint() FingerprintResponsePtrOutput {
+	return o.ApplyT(func(v *DerivedResponse) *FingerprintResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Fingerprint
+	}).(FingerprintResponsePtrOutput)
+}
+
+// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
+func (o DerivedResponsePtrOutput) LayerInfo() LayerResponseArrayOutput {
+	return o.ApplyT(func(v *DerivedResponse) []LayerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LayerInfo
+	}).(LayerResponseArrayOutput)
 }
 
 // Identifies all occurrences of this vulnerability in the package for a specific distro/location For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
@@ -2558,6 +4888,187 @@ func (o DetailArrayOutput) Index(i pulumi.IntInput) DetailOutput {
 	}).(DetailOutput)
 }
 
+// Identifies all occurrences of this vulnerability in the package for a specific distro/location For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
+type DetailResponse struct {
+	// The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar. This field can be used as a filter in list requests.
+	CpeUri string `pulumi:"cpeUri"`
+	// A vendor-specific description of this note.
+	Description string `pulumi:"description"`
+	// The fix for this specific package version.
+	FixedLocation VulnerabilityLocationResponse `pulumi:"fixedLocation"`
+	// Whether this Detail is obsolete. Occurrences are expected not to point to obsolete details.
+	IsObsolete bool `pulumi:"isObsolete"`
+	// The max version of the package in which the vulnerability exists.
+	MaxAffectedVersion VersionResponse `pulumi:"maxAffectedVersion"`
+	// The min version of the package in which the vulnerability exists.
+	MinAffectedVersion VersionResponse `pulumi:"minAffectedVersion"`
+	// The name of the package where the vulnerability was found. This field can be used as a filter in list requests.
+	Package string `pulumi:"package"`
+	// The type of package; whether native or non native(ruby gems, node.js packages etc)
+	PackageType string `pulumi:"packageType"`
+	// The severity (eg: distro assigned severity) for this vulnerability.
+	SeverityName string `pulumi:"severityName"`
+	// The source from which the information in this Detail was obtained.
+	Source string `pulumi:"source"`
+}
+
+// DetailResponseInput is an input type that accepts DetailResponseArgs and DetailResponseOutput values.
+// You can construct a concrete instance of `DetailResponseInput` via:
+//
+//          DetailResponseArgs{...}
+type DetailResponseInput interface {
+	pulumi.Input
+
+	ToDetailResponseOutput() DetailResponseOutput
+	ToDetailResponseOutputWithContext(context.Context) DetailResponseOutput
+}
+
+// Identifies all occurrences of this vulnerability in the package for a specific distro/location For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
+type DetailResponseArgs struct {
+	// The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar. This field can be used as a filter in list requests.
+	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
+	// A vendor-specific description of this note.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The fix for this specific package version.
+	FixedLocation VulnerabilityLocationResponseInput `pulumi:"fixedLocation"`
+	// Whether this Detail is obsolete. Occurrences are expected not to point to obsolete details.
+	IsObsolete pulumi.BoolInput `pulumi:"isObsolete"`
+	// The max version of the package in which the vulnerability exists.
+	MaxAffectedVersion VersionResponseInput `pulumi:"maxAffectedVersion"`
+	// The min version of the package in which the vulnerability exists.
+	MinAffectedVersion VersionResponseInput `pulumi:"minAffectedVersion"`
+	// The name of the package where the vulnerability was found. This field can be used as a filter in list requests.
+	Package pulumi.StringInput `pulumi:"package"`
+	// The type of package; whether native or non native(ruby gems, node.js packages etc)
+	PackageType pulumi.StringInput `pulumi:"packageType"`
+	// The severity (eg: distro assigned severity) for this vulnerability.
+	SeverityName pulumi.StringInput `pulumi:"severityName"`
+	// The source from which the information in this Detail was obtained.
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (DetailResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DetailResponse)(nil)).Elem()
+}
+
+func (i DetailResponseArgs) ToDetailResponseOutput() DetailResponseOutput {
+	return i.ToDetailResponseOutputWithContext(context.Background())
+}
+
+func (i DetailResponseArgs) ToDetailResponseOutputWithContext(ctx context.Context) DetailResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DetailResponseOutput)
+}
+
+// DetailResponseArrayInput is an input type that accepts DetailResponseArray and DetailResponseArrayOutput values.
+// You can construct a concrete instance of `DetailResponseArrayInput` via:
+//
+//          DetailResponseArray{ DetailResponseArgs{...} }
+type DetailResponseArrayInput interface {
+	pulumi.Input
+
+	ToDetailResponseArrayOutput() DetailResponseArrayOutput
+	ToDetailResponseArrayOutputWithContext(context.Context) DetailResponseArrayOutput
+}
+
+type DetailResponseArray []DetailResponseInput
+
+func (DetailResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DetailResponse)(nil)).Elem()
+}
+
+func (i DetailResponseArray) ToDetailResponseArrayOutput() DetailResponseArrayOutput {
+	return i.ToDetailResponseArrayOutputWithContext(context.Background())
+}
+
+func (i DetailResponseArray) ToDetailResponseArrayOutputWithContext(ctx context.Context) DetailResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DetailResponseArrayOutput)
+}
+
+// Identifies all occurrences of this vulnerability in the package for a specific distro/location For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
+type DetailResponseOutput struct{ *pulumi.OutputState }
+
+func (DetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DetailResponse)(nil)).Elem()
+}
+
+func (o DetailResponseOutput) ToDetailResponseOutput() DetailResponseOutput {
+	return o
+}
+
+func (o DetailResponseOutput) ToDetailResponseOutputWithContext(ctx context.Context) DetailResponseOutput {
+	return o
+}
+
+// The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar. This field can be used as a filter in list requests.
+func (o DetailResponseOutput) CpeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v DetailResponse) string { return v.CpeUri }).(pulumi.StringOutput)
+}
+
+// A vendor-specific description of this note.
+func (o DetailResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v DetailResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The fix for this specific package version.
+func (o DetailResponseOutput) FixedLocation() VulnerabilityLocationResponseOutput {
+	return o.ApplyT(func(v DetailResponse) VulnerabilityLocationResponse { return v.FixedLocation }).(VulnerabilityLocationResponseOutput)
+}
+
+// Whether this Detail is obsolete. Occurrences are expected not to point to obsolete details.
+func (o DetailResponseOutput) IsObsolete() pulumi.BoolOutput {
+	return o.ApplyT(func(v DetailResponse) bool { return v.IsObsolete }).(pulumi.BoolOutput)
+}
+
+// The max version of the package in which the vulnerability exists.
+func (o DetailResponseOutput) MaxAffectedVersion() VersionResponseOutput {
+	return o.ApplyT(func(v DetailResponse) VersionResponse { return v.MaxAffectedVersion }).(VersionResponseOutput)
+}
+
+// The min version of the package in which the vulnerability exists.
+func (o DetailResponseOutput) MinAffectedVersion() VersionResponseOutput {
+	return o.ApplyT(func(v DetailResponse) VersionResponse { return v.MinAffectedVersion }).(VersionResponseOutput)
+}
+
+// The name of the package where the vulnerability was found. This field can be used as a filter in list requests.
+func (o DetailResponseOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v DetailResponse) string { return v.Package }).(pulumi.StringOutput)
+}
+
+// The type of package; whether native or non native(ruby gems, node.js packages etc)
+func (o DetailResponseOutput) PackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v DetailResponse) string { return v.PackageType }).(pulumi.StringOutput)
+}
+
+// The severity (eg: distro assigned severity) for this vulnerability.
+func (o DetailResponseOutput) SeverityName() pulumi.StringOutput {
+	return o.ApplyT(func(v DetailResponse) string { return v.SeverityName }).(pulumi.StringOutput)
+}
+
+// The source from which the information in this Detail was obtained.
+func (o DetailResponseOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v DetailResponse) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type DetailResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DetailResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DetailResponse)(nil)).Elem()
+}
+
+func (o DetailResponseArrayOutput) ToDetailResponseArrayOutput() DetailResponseArrayOutput {
+	return o
+}
+
+func (o DetailResponseArrayOutput) ToDetailResponseArrayOutputWithContext(ctx context.Context) DetailResponseArrayOutput {
+	return o
+}
+
+func (o DetailResponseArrayOutput) Index(i pulumi.IntInput) DetailResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DetailResponse {
+		return vs[0].([]DetailResponse)[vs[1].(int)]
+	}).(DetailResponseOutput)
+}
+
 // Provides information about the scan status of a discovered resource.
 type Discovered struct {
 	// The status of discovery for the resource.
@@ -2568,7 +5079,7 @@ type Discovered struct {
 	ContinuousAnalysis *string `pulumi:"continuousAnalysis"`
 	// The CPE of the resource being scanned.
 	Cpe *string `pulumi:"cpe"`
-	// Output only. An operation that indicates the status of the current scan. This field is deprecated, do not use.
+	// An operation that indicates the status of the current scan. This field is deprecated, do not use.
 	Operation *OperationType `pulumi:"operation"`
 }
 
@@ -2593,7 +5104,7 @@ type DiscoveredArgs struct {
 	ContinuousAnalysis pulumi.StringPtrInput `pulumi:"continuousAnalysis"`
 	// The CPE of the resource being scanned.
 	Cpe pulumi.StringPtrInput `pulumi:"cpe"`
-	// Output only. An operation that indicates the status of the current scan. This field is deprecated, do not use.
+	// An operation that indicates the status of the current scan. This field is deprecated, do not use.
 	Operation OperationTypePtrInput `pulumi:"operation"`
 }
 
@@ -2695,7 +5206,7 @@ func (o DiscoveredOutput) Cpe() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Discovered) *string { return v.Cpe }).(pulumi.StringPtrOutput)
 }
 
-// Output only. An operation that indicates the status of the current scan. This field is deprecated, do not use.
+// An operation that indicates the status of the current scan. This field is deprecated, do not use.
 func (o DiscoveredOutput) Operation() OperationTypePtrOutput {
 	return o.ApplyT(func(v Discovered) *OperationType { return v.Operation }).(OperationTypePtrOutput)
 }
@@ -2758,7 +5269,7 @@ func (o DiscoveredPtrOutput) Cpe() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. An operation that indicates the status of the current scan. This field is deprecated, do not use.
+// An operation that indicates the status of the current scan. This field is deprecated, do not use.
 func (o DiscoveredPtrOutput) Operation() OperationTypePtrOutput {
 	return o.ApplyT(func(v *Discovered) *OperationType {
 		if v == nil {
@@ -2766,6 +5277,216 @@ func (o DiscoveredPtrOutput) Operation() OperationTypePtrOutput {
 		}
 		return v.Operation
 	}).(OperationTypePtrOutput)
+}
+
+// Provides information about the scan status of a discovered resource.
+type DiscoveredResponse struct {
+	// The status of discovery for the resource.
+	AnalysisStatus string `pulumi:"analysisStatus"`
+	// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
+	AnalysisStatusError StatusResponse `pulumi:"analysisStatusError"`
+	// Whether the resource is continuously analyzed.
+	ContinuousAnalysis string `pulumi:"continuousAnalysis"`
+	// The CPE of the resource being scanned.
+	Cpe string `pulumi:"cpe"`
+	// An operation that indicates the status of the current scan. This field is deprecated, do not use.
+	Operation OperationResponse `pulumi:"operation"`
+}
+
+// DiscoveredResponseInput is an input type that accepts DiscoveredResponseArgs and DiscoveredResponseOutput values.
+// You can construct a concrete instance of `DiscoveredResponseInput` via:
+//
+//          DiscoveredResponseArgs{...}
+type DiscoveredResponseInput interface {
+	pulumi.Input
+
+	ToDiscoveredResponseOutput() DiscoveredResponseOutput
+	ToDiscoveredResponseOutputWithContext(context.Context) DiscoveredResponseOutput
+}
+
+// Provides information about the scan status of a discovered resource.
+type DiscoveredResponseArgs struct {
+	// The status of discovery for the resource.
+	AnalysisStatus pulumi.StringInput `pulumi:"analysisStatus"`
+	// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
+	AnalysisStatusError StatusResponseInput `pulumi:"analysisStatusError"`
+	// Whether the resource is continuously analyzed.
+	ContinuousAnalysis pulumi.StringInput `pulumi:"continuousAnalysis"`
+	// The CPE of the resource being scanned.
+	Cpe pulumi.StringInput `pulumi:"cpe"`
+	// An operation that indicates the status of the current scan. This field is deprecated, do not use.
+	Operation OperationResponseInput `pulumi:"operation"`
+}
+
+func (DiscoveredResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveredResponse)(nil)).Elem()
+}
+
+func (i DiscoveredResponseArgs) ToDiscoveredResponseOutput() DiscoveredResponseOutput {
+	return i.ToDiscoveredResponseOutputWithContext(context.Background())
+}
+
+func (i DiscoveredResponseArgs) ToDiscoveredResponseOutputWithContext(ctx context.Context) DiscoveredResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveredResponseOutput)
+}
+
+func (i DiscoveredResponseArgs) ToDiscoveredResponsePtrOutput() DiscoveredResponsePtrOutput {
+	return i.ToDiscoveredResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DiscoveredResponseArgs) ToDiscoveredResponsePtrOutputWithContext(ctx context.Context) DiscoveredResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveredResponseOutput).ToDiscoveredResponsePtrOutputWithContext(ctx)
+}
+
+// DiscoveredResponsePtrInput is an input type that accepts DiscoveredResponseArgs, DiscoveredResponsePtr and DiscoveredResponsePtrOutput values.
+// You can construct a concrete instance of `DiscoveredResponsePtrInput` via:
+//
+//          DiscoveredResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DiscoveredResponsePtrInput interface {
+	pulumi.Input
+
+	ToDiscoveredResponsePtrOutput() DiscoveredResponsePtrOutput
+	ToDiscoveredResponsePtrOutputWithContext(context.Context) DiscoveredResponsePtrOutput
+}
+
+type discoveredResponsePtrType DiscoveredResponseArgs
+
+func DiscoveredResponsePtr(v *DiscoveredResponseArgs) DiscoveredResponsePtrInput {
+	return (*discoveredResponsePtrType)(v)
+}
+
+func (*discoveredResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscoveredResponse)(nil)).Elem()
+}
+
+func (i *discoveredResponsePtrType) ToDiscoveredResponsePtrOutput() DiscoveredResponsePtrOutput {
+	return i.ToDiscoveredResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *discoveredResponsePtrType) ToDiscoveredResponsePtrOutputWithContext(ctx context.Context) DiscoveredResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveredResponsePtrOutput)
+}
+
+// Provides information about the scan status of a discovered resource.
+type DiscoveredResponseOutput struct{ *pulumi.OutputState }
+
+func (DiscoveredResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveredResponse)(nil)).Elem()
+}
+
+func (o DiscoveredResponseOutput) ToDiscoveredResponseOutput() DiscoveredResponseOutput {
+	return o
+}
+
+func (o DiscoveredResponseOutput) ToDiscoveredResponseOutputWithContext(ctx context.Context) DiscoveredResponseOutput {
+	return o
+}
+
+func (o DiscoveredResponseOutput) ToDiscoveredResponsePtrOutput() DiscoveredResponsePtrOutput {
+	return o.ToDiscoveredResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DiscoveredResponseOutput) ToDiscoveredResponsePtrOutputWithContext(ctx context.Context) DiscoveredResponsePtrOutput {
+	return o.ApplyT(func(v DiscoveredResponse) *DiscoveredResponse {
+		return &v
+	}).(DiscoveredResponsePtrOutput)
+}
+
+// The status of discovery for the resource.
+func (o DiscoveredResponseOutput) AnalysisStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveredResponse) string { return v.AnalysisStatus }).(pulumi.StringOutput)
+}
+
+// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
+func (o DiscoveredResponseOutput) AnalysisStatusError() StatusResponseOutput {
+	return o.ApplyT(func(v DiscoveredResponse) StatusResponse { return v.AnalysisStatusError }).(StatusResponseOutput)
+}
+
+// Whether the resource is continuously analyzed.
+func (o DiscoveredResponseOutput) ContinuousAnalysis() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveredResponse) string { return v.ContinuousAnalysis }).(pulumi.StringOutput)
+}
+
+// The CPE of the resource being scanned.
+func (o DiscoveredResponseOutput) Cpe() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveredResponse) string { return v.Cpe }).(pulumi.StringOutput)
+}
+
+// An operation that indicates the status of the current scan. This field is deprecated, do not use.
+func (o DiscoveredResponseOutput) Operation() OperationResponseOutput {
+	return o.ApplyT(func(v DiscoveredResponse) OperationResponse { return v.Operation }).(OperationResponseOutput)
+}
+
+type DiscoveredResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiscoveredResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscoveredResponse)(nil)).Elem()
+}
+
+func (o DiscoveredResponsePtrOutput) ToDiscoveredResponsePtrOutput() DiscoveredResponsePtrOutput {
+	return o
+}
+
+func (o DiscoveredResponsePtrOutput) ToDiscoveredResponsePtrOutputWithContext(ctx context.Context) DiscoveredResponsePtrOutput {
+	return o
+}
+
+func (o DiscoveredResponsePtrOutput) Elem() DiscoveredResponseOutput {
+	return o.ApplyT(func(v *DiscoveredResponse) DiscoveredResponse { return *v }).(DiscoveredResponseOutput)
+}
+
+// The status of discovery for the resource.
+func (o DiscoveredResponsePtrOutput) AnalysisStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscoveredResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AnalysisStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
+func (o DiscoveredResponsePtrOutput) AnalysisStatusError() StatusResponsePtrOutput {
+	return o.ApplyT(func(v *DiscoveredResponse) *StatusResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AnalysisStatusError
+	}).(StatusResponsePtrOutput)
+}
+
+// Whether the resource is continuously analyzed.
+func (o DiscoveredResponsePtrOutput) ContinuousAnalysis() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscoveredResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ContinuousAnalysis
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CPE of the resource being scanned.
+func (o DiscoveredResponsePtrOutput) Cpe() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscoveredResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cpe
+	}).(pulumi.StringPtrOutput)
+}
+
+// An operation that indicates the status of the current scan. This field is deprecated, do not use.
+func (o DiscoveredResponsePtrOutput) Operation() OperationResponsePtrOutput {
+	return o.ApplyT(func(v *DiscoveredResponse) *OperationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Operation
+	}).(OperationResponsePtrOutput)
 }
 
 // A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis. The occurrence's operation will indicate the status of the analysis. Absence of an occurrence linked to this note for a resource indicates that analysis hasn't started.
@@ -2899,6 +5620,140 @@ func (o DiscoveryPtrOutput) AnalysisKind() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.AnalysisKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis. The occurrence's operation will indicate the status of the analysis. Absence of an occurrence linked to this note for a resource indicates that analysis hasn't started.
+type DiscoveryResponse struct {
+	// The kind of analysis that is handled by this discovery.
+	AnalysisKind string `pulumi:"analysisKind"`
+}
+
+// DiscoveryResponseInput is an input type that accepts DiscoveryResponseArgs and DiscoveryResponseOutput values.
+// You can construct a concrete instance of `DiscoveryResponseInput` via:
+//
+//          DiscoveryResponseArgs{...}
+type DiscoveryResponseInput interface {
+	pulumi.Input
+
+	ToDiscoveryResponseOutput() DiscoveryResponseOutput
+	ToDiscoveryResponseOutputWithContext(context.Context) DiscoveryResponseOutput
+}
+
+// A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis. The occurrence's operation will indicate the status of the analysis. Absence of an occurrence linked to this note for a resource indicates that analysis hasn't started.
+type DiscoveryResponseArgs struct {
+	// The kind of analysis that is handled by this discovery.
+	AnalysisKind pulumi.StringInput `pulumi:"analysisKind"`
+}
+
+func (DiscoveryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryResponse)(nil)).Elem()
+}
+
+func (i DiscoveryResponseArgs) ToDiscoveryResponseOutput() DiscoveryResponseOutput {
+	return i.ToDiscoveryResponseOutputWithContext(context.Background())
+}
+
+func (i DiscoveryResponseArgs) ToDiscoveryResponseOutputWithContext(ctx context.Context) DiscoveryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryResponseOutput)
+}
+
+func (i DiscoveryResponseArgs) ToDiscoveryResponsePtrOutput() DiscoveryResponsePtrOutput {
+	return i.ToDiscoveryResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DiscoveryResponseArgs) ToDiscoveryResponsePtrOutputWithContext(ctx context.Context) DiscoveryResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryResponseOutput).ToDiscoveryResponsePtrOutputWithContext(ctx)
+}
+
+// DiscoveryResponsePtrInput is an input type that accepts DiscoveryResponseArgs, DiscoveryResponsePtr and DiscoveryResponsePtrOutput values.
+// You can construct a concrete instance of `DiscoveryResponsePtrInput` via:
+//
+//          DiscoveryResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DiscoveryResponsePtrInput interface {
+	pulumi.Input
+
+	ToDiscoveryResponsePtrOutput() DiscoveryResponsePtrOutput
+	ToDiscoveryResponsePtrOutputWithContext(context.Context) DiscoveryResponsePtrOutput
+}
+
+type discoveryResponsePtrType DiscoveryResponseArgs
+
+func DiscoveryResponsePtr(v *DiscoveryResponseArgs) DiscoveryResponsePtrInput {
+	return (*discoveryResponsePtrType)(v)
+}
+
+func (*discoveryResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscoveryResponse)(nil)).Elem()
+}
+
+func (i *discoveryResponsePtrType) ToDiscoveryResponsePtrOutput() DiscoveryResponsePtrOutput {
+	return i.ToDiscoveryResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *discoveryResponsePtrType) ToDiscoveryResponsePtrOutputWithContext(ctx context.Context) DiscoveryResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryResponsePtrOutput)
+}
+
+// A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis. The occurrence's operation will indicate the status of the analysis. Absence of an occurrence linked to this note for a resource indicates that analysis hasn't started.
+type DiscoveryResponseOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryResponse)(nil)).Elem()
+}
+
+func (o DiscoveryResponseOutput) ToDiscoveryResponseOutput() DiscoveryResponseOutput {
+	return o
+}
+
+func (o DiscoveryResponseOutput) ToDiscoveryResponseOutputWithContext(ctx context.Context) DiscoveryResponseOutput {
+	return o
+}
+
+func (o DiscoveryResponseOutput) ToDiscoveryResponsePtrOutput() DiscoveryResponsePtrOutput {
+	return o.ToDiscoveryResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DiscoveryResponseOutput) ToDiscoveryResponsePtrOutputWithContext(ctx context.Context) DiscoveryResponsePtrOutput {
+	return o.ApplyT(func(v DiscoveryResponse) *DiscoveryResponse {
+		return &v
+	}).(DiscoveryResponsePtrOutput)
+}
+
+// The kind of analysis that is handled by this discovery.
+func (o DiscoveryResponseOutput) AnalysisKind() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveryResponse) string { return v.AnalysisKind }).(pulumi.StringOutput)
+}
+
+type DiscoveryResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscoveryResponse)(nil)).Elem()
+}
+
+func (o DiscoveryResponsePtrOutput) ToDiscoveryResponsePtrOutput() DiscoveryResponsePtrOutput {
+	return o
+}
+
+func (o DiscoveryResponsePtrOutput) ToDiscoveryResponsePtrOutputWithContext(ctx context.Context) DiscoveryResponsePtrOutput {
+	return o
+}
+
+func (o DiscoveryResponsePtrOutput) Elem() DiscoveryResponseOutput {
+	return o.ApplyT(func(v *DiscoveryResponse) DiscoveryResponse { return *v }).(DiscoveryResponseOutput)
+}
+
+// The kind of analysis that is handled by this discovery.
+func (o DiscoveryResponsePtrOutput) AnalysisKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscoveryResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AnalysisKind
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3045,6 +5900,151 @@ func (o DistributionArrayOutput) Index(i pulumi.IntInput) DistributionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Distribution {
 		return vs[0].([]Distribution)[vs[1].(int)]
 	}).(DistributionOutput)
+}
+
+// This represents a particular channel of distribution for a given package. e.g. Debian's jessie-backports dpkg mirror
+type DistributionResponse struct {
+	// The CPU architecture for which packages in this distribution channel were built
+	Architecture string `pulumi:"architecture"`
+	// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	CpeUri string `pulumi:"cpeUri"`
+	// The distribution channel-specific description of this package.
+	Description string `pulumi:"description"`
+	// The latest available version of this package in this distribution channel.
+	LatestVersion VersionResponse `pulumi:"latestVersion"`
+	// A freeform string denoting the maintainer of this package.
+	Maintainer string `pulumi:"maintainer"`
+	// The distribution channel-specific homepage for this package.
+	Url string `pulumi:"url"`
+}
+
+// DistributionResponseInput is an input type that accepts DistributionResponseArgs and DistributionResponseOutput values.
+// You can construct a concrete instance of `DistributionResponseInput` via:
+//
+//          DistributionResponseArgs{...}
+type DistributionResponseInput interface {
+	pulumi.Input
+
+	ToDistributionResponseOutput() DistributionResponseOutput
+	ToDistributionResponseOutputWithContext(context.Context) DistributionResponseOutput
+}
+
+// This represents a particular channel of distribution for a given package. e.g. Debian's jessie-backports dpkg mirror
+type DistributionResponseArgs struct {
+	// The CPU architecture for which packages in this distribution channel were built
+	Architecture pulumi.StringInput `pulumi:"architecture"`
+	// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
+	// The distribution channel-specific description of this package.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The latest available version of this package in this distribution channel.
+	LatestVersion VersionResponseInput `pulumi:"latestVersion"`
+	// A freeform string denoting the maintainer of this package.
+	Maintainer pulumi.StringInput `pulumi:"maintainer"`
+	// The distribution channel-specific homepage for this package.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (DistributionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributionResponse)(nil)).Elem()
+}
+
+func (i DistributionResponseArgs) ToDistributionResponseOutput() DistributionResponseOutput {
+	return i.ToDistributionResponseOutputWithContext(context.Background())
+}
+
+func (i DistributionResponseArgs) ToDistributionResponseOutputWithContext(ctx context.Context) DistributionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionResponseOutput)
+}
+
+// DistributionResponseArrayInput is an input type that accepts DistributionResponseArray and DistributionResponseArrayOutput values.
+// You can construct a concrete instance of `DistributionResponseArrayInput` via:
+//
+//          DistributionResponseArray{ DistributionResponseArgs{...} }
+type DistributionResponseArrayInput interface {
+	pulumi.Input
+
+	ToDistributionResponseArrayOutput() DistributionResponseArrayOutput
+	ToDistributionResponseArrayOutputWithContext(context.Context) DistributionResponseArrayOutput
+}
+
+type DistributionResponseArray []DistributionResponseInput
+
+func (DistributionResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DistributionResponse)(nil)).Elem()
+}
+
+func (i DistributionResponseArray) ToDistributionResponseArrayOutput() DistributionResponseArrayOutput {
+	return i.ToDistributionResponseArrayOutputWithContext(context.Background())
+}
+
+func (i DistributionResponseArray) ToDistributionResponseArrayOutputWithContext(ctx context.Context) DistributionResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionResponseArrayOutput)
+}
+
+// This represents a particular channel of distribution for a given package. e.g. Debian's jessie-backports dpkg mirror
+type DistributionResponseOutput struct{ *pulumi.OutputState }
+
+func (DistributionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributionResponse)(nil)).Elem()
+}
+
+func (o DistributionResponseOutput) ToDistributionResponseOutput() DistributionResponseOutput {
+	return o
+}
+
+func (o DistributionResponseOutput) ToDistributionResponseOutputWithContext(ctx context.Context) DistributionResponseOutput {
+	return o
+}
+
+// The CPU architecture for which packages in this distribution channel were built
+func (o DistributionResponseOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributionResponse) string { return v.Architecture }).(pulumi.StringOutput)
+}
+
+// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+func (o DistributionResponseOutput) CpeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributionResponse) string { return v.CpeUri }).(pulumi.StringOutput)
+}
+
+// The distribution channel-specific description of this package.
+func (o DistributionResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributionResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The latest available version of this package in this distribution channel.
+func (o DistributionResponseOutput) LatestVersion() VersionResponseOutput {
+	return o.ApplyT(func(v DistributionResponse) VersionResponse { return v.LatestVersion }).(VersionResponseOutput)
+}
+
+// A freeform string denoting the maintainer of this package.
+func (o DistributionResponseOutput) Maintainer() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributionResponse) string { return v.Maintainer }).(pulumi.StringOutput)
+}
+
+// The distribution channel-specific homepage for this package.
+func (o DistributionResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributionResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type DistributionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DistributionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DistributionResponse)(nil)).Elem()
+}
+
+func (o DistributionResponseArrayOutput) ToDistributionResponseArrayOutput() DistributionResponseArrayOutput {
+	return o
+}
+
+func (o DistributionResponseArrayOutput) ToDistributionResponseArrayOutputWithContext(ctx context.Context) DistributionResponseArrayOutput {
+	return o
+}
+
+func (o DistributionResponseArrayOutput) Index(i pulumi.IntInput) DistributionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DistributionResponse {
+		return vs[0].([]DistributionResponse)[vs[1].(int)]
+	}).(DistributionResponseOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -3238,13 +6238,95 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
+// You can construct a concrete instance of `ExprResponseInput` via:
+//
+//          ExprResponseArgs{...}
+type ExprResponseInput interface {
+	pulumi.Input
+
+	ToExprResponseOutput() ExprResponseOutput
+	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
+	return i.ToExprResponseOutputWithContext(context.Background())
+}
+
+func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseOutput struct{ *pulumi.OutputState }
+
+func (ExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
+	return o
+}
+
+func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
 // A set of properties that uniquely identify a given Docker image.
 type Fingerprint struct {
 	// The layer-id of the final layer in the Docker image's v1 representation. This field can be used as a filter in list requests.
 	V1Name *string `pulumi:"v1Name"`
 	// The ordered list of v2 blobs that represent a given image.
 	V2Blob []string `pulumi:"v2Blob"`
-	// Output only. The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
+	// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
 	V2Name *string `pulumi:"v2Name"`
 }
 
@@ -3265,7 +6347,7 @@ type FingerprintArgs struct {
 	V1Name pulumi.StringPtrInput `pulumi:"v1Name"`
 	// The ordered list of v2 blobs that represent a given image.
 	V2Blob pulumi.StringArrayInput `pulumi:"v2Blob"`
-	// Output only. The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
+	// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
 	V2Name pulumi.StringPtrInput `pulumi:"v2Name"`
 }
 
@@ -3357,7 +6439,7 @@ func (o FingerprintOutput) V2Blob() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Fingerprint) []string { return v.V2Blob }).(pulumi.StringArrayOutput)
 }
 
-// Output only. The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
+// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
 func (o FingerprintOutput) V2Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Fingerprint) *string { return v.V2Name }).(pulumi.StringPtrOutput)
 }
@@ -3400,13 +6482,185 @@ func (o FingerprintPtrOutput) V2Blob() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Output only. The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
+// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
 func (o FingerprintPtrOutput) V2Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Fingerprint) *string {
 		if v == nil {
 			return nil
 		}
 		return v.V2Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// A set of properties that uniquely identify a given Docker image.
+type FingerprintResponse struct {
+	// The layer-id of the final layer in the Docker image's v1 representation. This field can be used as a filter in list requests.
+	V1Name string `pulumi:"v1Name"`
+	// The ordered list of v2 blobs that represent a given image.
+	V2Blob []string `pulumi:"v2Blob"`
+	// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
+	V2Name string `pulumi:"v2Name"`
+}
+
+// FingerprintResponseInput is an input type that accepts FingerprintResponseArgs and FingerprintResponseOutput values.
+// You can construct a concrete instance of `FingerprintResponseInput` via:
+//
+//          FingerprintResponseArgs{...}
+type FingerprintResponseInput interface {
+	pulumi.Input
+
+	ToFingerprintResponseOutput() FingerprintResponseOutput
+	ToFingerprintResponseOutputWithContext(context.Context) FingerprintResponseOutput
+}
+
+// A set of properties that uniquely identify a given Docker image.
+type FingerprintResponseArgs struct {
+	// The layer-id of the final layer in the Docker image's v1 representation. This field can be used as a filter in list requests.
+	V1Name pulumi.StringInput `pulumi:"v1Name"`
+	// The ordered list of v2 blobs that represent a given image.
+	V2Blob pulumi.StringArrayInput `pulumi:"v2Blob"`
+	// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
+	V2Name pulumi.StringInput `pulumi:"v2Name"`
+}
+
+func (FingerprintResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FingerprintResponse)(nil)).Elem()
+}
+
+func (i FingerprintResponseArgs) ToFingerprintResponseOutput() FingerprintResponseOutput {
+	return i.ToFingerprintResponseOutputWithContext(context.Background())
+}
+
+func (i FingerprintResponseArgs) ToFingerprintResponseOutputWithContext(ctx context.Context) FingerprintResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FingerprintResponseOutput)
+}
+
+func (i FingerprintResponseArgs) ToFingerprintResponsePtrOutput() FingerprintResponsePtrOutput {
+	return i.ToFingerprintResponsePtrOutputWithContext(context.Background())
+}
+
+func (i FingerprintResponseArgs) ToFingerprintResponsePtrOutputWithContext(ctx context.Context) FingerprintResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FingerprintResponseOutput).ToFingerprintResponsePtrOutputWithContext(ctx)
+}
+
+// FingerprintResponsePtrInput is an input type that accepts FingerprintResponseArgs, FingerprintResponsePtr and FingerprintResponsePtrOutput values.
+// You can construct a concrete instance of `FingerprintResponsePtrInput` via:
+//
+//          FingerprintResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type FingerprintResponsePtrInput interface {
+	pulumi.Input
+
+	ToFingerprintResponsePtrOutput() FingerprintResponsePtrOutput
+	ToFingerprintResponsePtrOutputWithContext(context.Context) FingerprintResponsePtrOutput
+}
+
+type fingerprintResponsePtrType FingerprintResponseArgs
+
+func FingerprintResponsePtr(v *FingerprintResponseArgs) FingerprintResponsePtrInput {
+	return (*fingerprintResponsePtrType)(v)
+}
+
+func (*fingerprintResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FingerprintResponse)(nil)).Elem()
+}
+
+func (i *fingerprintResponsePtrType) ToFingerprintResponsePtrOutput() FingerprintResponsePtrOutput {
+	return i.ToFingerprintResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *fingerprintResponsePtrType) ToFingerprintResponsePtrOutputWithContext(ctx context.Context) FingerprintResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FingerprintResponsePtrOutput)
+}
+
+// A set of properties that uniquely identify a given Docker image.
+type FingerprintResponseOutput struct{ *pulumi.OutputState }
+
+func (FingerprintResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FingerprintResponse)(nil)).Elem()
+}
+
+func (o FingerprintResponseOutput) ToFingerprintResponseOutput() FingerprintResponseOutput {
+	return o
+}
+
+func (o FingerprintResponseOutput) ToFingerprintResponseOutputWithContext(ctx context.Context) FingerprintResponseOutput {
+	return o
+}
+
+func (o FingerprintResponseOutput) ToFingerprintResponsePtrOutput() FingerprintResponsePtrOutput {
+	return o.ToFingerprintResponsePtrOutputWithContext(context.Background())
+}
+
+func (o FingerprintResponseOutput) ToFingerprintResponsePtrOutputWithContext(ctx context.Context) FingerprintResponsePtrOutput {
+	return o.ApplyT(func(v FingerprintResponse) *FingerprintResponse {
+		return &v
+	}).(FingerprintResponsePtrOutput)
+}
+
+// The layer-id of the final layer in the Docker image's v1 representation. This field can be used as a filter in list requests.
+func (o FingerprintResponseOutput) V1Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FingerprintResponse) string { return v.V1Name }).(pulumi.StringOutput)
+}
+
+// The ordered list of v2 blobs that represent a given image.
+func (o FingerprintResponseOutput) V2Blob() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FingerprintResponse) []string { return v.V2Blob }).(pulumi.StringArrayOutput)
+}
+
+// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
+func (o FingerprintResponseOutput) V2Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FingerprintResponse) string { return v.V2Name }).(pulumi.StringOutput)
+}
+
+type FingerprintResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FingerprintResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FingerprintResponse)(nil)).Elem()
+}
+
+func (o FingerprintResponsePtrOutput) ToFingerprintResponsePtrOutput() FingerprintResponsePtrOutput {
+	return o
+}
+
+func (o FingerprintResponsePtrOutput) ToFingerprintResponsePtrOutputWithContext(ctx context.Context) FingerprintResponsePtrOutput {
+	return o
+}
+
+func (o FingerprintResponsePtrOutput) Elem() FingerprintResponseOutput {
+	return o.ApplyT(func(v *FingerprintResponse) FingerprintResponse { return *v }).(FingerprintResponseOutput)
+}
+
+// The layer-id of the final layer in the Docker image's v1 representation. This field can be used as a filter in list requests.
+func (o FingerprintResponsePtrOutput) V1Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FingerprintResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.V1Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ordered list of v2 blobs that represent a given image.
+func (o FingerprintResponsePtrOutput) V2Blob() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FingerprintResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.V2Blob
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
+func (o FingerprintResponsePtrOutput) V2Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FingerprintResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.V2Name
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3562,6 +6816,161 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextPtrOutput) Name() pul
 			return nil
 		}
 		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// An alias to a repo revision.
+type GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse struct {
+	// The alias kind.
+	Kind string `pulumi:"kind"`
+	// The alias name.
+	Name string `pulumi:"name"`
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseArgs and GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseArgs{...}
+type GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput
+}
+
+// An alias to a repo revision.
+type GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseArgs struct {
+	// The alias kind.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The alias name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput)
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput).ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseArgs, GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtr and GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput
+}
+
+type googleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrType GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseArgs
+
+func GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtr(v *GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseArgs) GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrInput {
+	return (*googleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrType)(v)
+}
+
+func (*googleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse)(nil)).Elem()
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput)
+}
+
+// An alias to a repo revision.
+type GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput {
+	return o.ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse {
+		return &v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput)
+}
+
+// The alias kind.
+func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The alias name.
+func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse) GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse {
+		return *v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput)
+}
+
+// The alias kind.
+func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The alias name.
+func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3740,6 +7149,186 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextPtrOutput) 
 			return nil
 		}
 		return v.RevisionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
+type GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse struct {
+	// An alias, which may be a branch or tag.
+	AliasContext GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse `pulumi:"aliasContext"`
+	// The ID of the repo.
+	RepoId GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse `pulumi:"repoId"`
+	// A revision ID.
+	RevisionId string `pulumi:"revisionId"`
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseArgs and GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseArgs{...}
+type GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput
+}
+
+// A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
+type GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseArgs struct {
+	// An alias, which may be a branch or tag.
+	AliasContext GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseInput `pulumi:"aliasContext"`
+	// The ID of the repo.
+	RepoId GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseInput `pulumi:"repoId"`
+	// A revision ID.
+	RevisionId pulumi.StringInput `pulumi:"revisionId"`
+}
+
+func (GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput)
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput).ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseArgs, GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtr and GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput
+}
+
+type googleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrType GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseArgs
+
+func GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtr(v *GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseArgs) GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrInput {
+	return (*googleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrType)(v)
+}
+
+func (*googleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse)(nil)).Elem()
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput)
+}
+
+// A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
+type GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput {
+	return o.ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse {
+		return &v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput)
+}
+
+// An alias, which may be a branch or tag.
+func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput) AliasContext() GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse) GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse {
+		return v.AliasContext
+	}).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput)
+}
+
+// The ID of the repo.
+func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput) RepoId() GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse) GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse {
+		return v.RepoId
+	}).(GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput)
+}
+
+// A revision ID.
+func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput) RevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse) string {
+		return v.RevisionId
+	}).(pulumi.StringOutput)
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse) GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse {
+		return *v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput)
+}
+
+// An alias, which may be a branch or tag.
+func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput) AliasContext() GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AliasContext
+	}).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput)
+}
+
+// The ID of the repo.
+func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput) RepoId() GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.RepoId
+	}).(GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput)
+}
+
+// A revision ID.
+func (o GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput) RevisionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RevisionId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3938,6 +7527,203 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextPtrOutput) Rev
 	}).(pulumi.StringPtrOutput)
 }
 
+// A SourceContext referring to a Gerrit project.
+type GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse struct {
+	// An alias, which may be a branch or tag.
+	AliasContext GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse `pulumi:"aliasContext"`
+	// The full project name within the host. Projects may be nested, so "project/subproject" is a valid project name. The "repo name" is the hostURI/project.
+	GerritProject string `pulumi:"gerritProject"`
+	// The URI of a running Gerrit instance.
+	HostUri string `pulumi:"hostUri"`
+	// A revision (commit) ID.
+	RevisionId string `pulumi:"revisionId"`
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseArgs and GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseArgs{...}
+type GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput
+}
+
+// A SourceContext referring to a Gerrit project.
+type GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseArgs struct {
+	// An alias, which may be a branch or tag.
+	AliasContext GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseInput `pulumi:"aliasContext"`
+	// The full project name within the host. Projects may be nested, so "project/subproject" is a valid project name. The "repo name" is the hostURI/project.
+	GerritProject pulumi.StringInput `pulumi:"gerritProject"`
+	// The URI of a running Gerrit instance.
+	HostUri pulumi.StringInput `pulumi:"hostUri"`
+	// A revision (commit) ID.
+	RevisionId pulumi.StringInput `pulumi:"revisionId"`
+}
+
+func (GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput)
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput).ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseArgs, GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtr and GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput
+}
+
+type googleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrType GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseArgs
+
+func GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtr(v *GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseArgs) GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrInput {
+	return (*googleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrType)(v)
+}
+
+func (*googleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse)(nil)).Elem()
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput)
+}
+
+// A SourceContext referring to a Gerrit project.
+type GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput {
+	return o.ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse {
+		return &v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput)
+}
+
+// An alias, which may be a branch or tag.
+func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput) AliasContext() GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse) GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse {
+		return v.AliasContext
+	}).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput)
+}
+
+// The full project name within the host. Projects may be nested, so "project/subproject" is a valid project name. The "repo name" is the hostURI/project.
+func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput) GerritProject() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse) string {
+		return v.GerritProject
+	}).(pulumi.StringOutput)
+}
+
+// The URI of a running Gerrit instance.
+func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput) HostUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse) string { return v.HostUri }).(pulumi.StringOutput)
+}
+
+// A revision (commit) ID.
+func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput) RevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse) string { return v.RevisionId }).(pulumi.StringOutput)
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse) GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse {
+		return *v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput)
+}
+
+// An alias, which may be a branch or tag.
+func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput) AliasContext() GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AliasContext
+	}).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput)
+}
+
+// The full project name within the host. Projects may be nested, so "project/subproject" is a valid project name. The "repo name" is the hostURI/project.
+func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput) GerritProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GerritProject
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of a running Gerrit instance.
+func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput) HostUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HostUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A revision (commit) ID.
+func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput) RevisionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RevisionId
+	}).(pulumi.StringPtrOutput)
+}
+
 // A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
 type GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext struct {
 	// Required. Git commit hash.
@@ -4090,6 +7876,161 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextPtrOutput) Url() 
 			return nil
 		}
 		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
+type GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse struct {
+	// Required. Git commit hash.
+	RevisionId string `pulumi:"revisionId"`
+	// Git repository URL.
+	Url string `pulumi:"url"`
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseArgs and GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseArgs{...}
+type GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput
+}
+
+// A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
+type GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseArgs struct {
+	// Required. Git commit hash.
+	RevisionId pulumi.StringInput `pulumi:"revisionId"`
+	// Git repository URL.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput)
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput).ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseArgs, GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtr and GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput
+}
+
+type googleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrType GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseArgs
+
+func GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtr(v *GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseArgs) GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrInput {
+	return (*googleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrType)(v)
+}
+
+func (*googleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse)(nil)).Elem()
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput)
+}
+
+// A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
+type GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput {
+	return o.ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse {
+		return &v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput)
+}
+
+// Required. Git commit hash.
+func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput) RevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse) string { return v.RevisionId }).(pulumi.StringOutput)
+}
+
+// Git repository URL.
+func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse) GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse {
+		return *v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput)
+}
+
+// Required. Git commit hash.
+func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput) RevisionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RevisionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Git repository URL.
+func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4248,6 +8189,161 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdPtrOutput) RepoName(
 	}).(pulumi.StringPtrOutput)
 }
 
+// Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
+type GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse struct {
+	// The ID of the project.
+	ProjectId string `pulumi:"projectId"`
+	// The name of the repo. Leave empty for the default repo.
+	RepoName string `pulumi:"repoName"`
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseArgs and GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseArgs{...}
+type GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput
+}
+
+// Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
+type GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseArgs struct {
+	// The ID of the project.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The name of the repo. Leave empty for the default repo.
+	RepoName pulumi.StringInput `pulumi:"repoName"`
+}
+
+func (GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput)
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput).ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseArgs, GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtr and GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput
+}
+
+type googleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrType GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseArgs
+
+func GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtr(v *GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseArgs) GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrInput {
+	return (*googleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrType)(v)
+}
+
+func (*googleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse)(nil)).Elem()
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput)
+}
+
+// Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
+type GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput {
+	return o.ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse) *GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse {
+		return &v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput)
+}
+
+// The ID of the project.
+func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The name of the repo. Leave empty for the default repo.
+func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse) GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse {
+		return *v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput)
+}
+
+// The ID of the project.
+func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the repo. Leave empty for the default repo.
+func (o GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput) RepoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RepoName
+	}).(pulumi.StringPtrOutput)
+}
+
 // A unique identifier for a Cloud Repo.
 type GoogleDevtoolsContaineranalysisV1alpha1RepoId struct {
 	// A combination of a project ID and a repo name.
@@ -4402,6 +8498,163 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdPtrOutput) Uid() pulumi.Str
 			return nil
 		}
 		return v.Uid
+	}).(pulumi.StringPtrOutput)
+}
+
+// A unique identifier for a Cloud Repo.
+type GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse struct {
+	// A combination of a project ID and a repo name.
+	ProjectRepoId GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse `pulumi:"projectRepoId"`
+	// A server-assigned, globally unique identifier.
+	Uid string `pulumi:"uid"`
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseArgs and GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseArgs{...}
+type GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput
+}
+
+// A unique identifier for a Cloud Repo.
+type GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseArgs struct {
+	// A combination of a project ID and a repo name.
+	ProjectRepoId GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseInput `pulumi:"projectRepoId"`
+	// A server-assigned, globally unique identifier.
+	Uid pulumi.StringInput `pulumi:"uid"`
+}
+
+func (GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput)
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput).ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseArgs, GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtr and GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput
+}
+
+type googleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrType GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseArgs
+
+func GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtr(v *GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseArgs) GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrInput {
+	return (*googleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrType)(v)
+}
+
+func (*googleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse)(nil)).Elem()
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput)
+}
+
+// A unique identifier for a Cloud Repo.
+type GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput {
+	return o.ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse) *GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse {
+		return &v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput)
+}
+
+// A combination of a project ID and a repo name.
+func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput) ProjectRepoId() GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse) GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse {
+		return v.ProjectRepoId
+	}).(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput)
+}
+
+// A server-assigned, globally unique identifier.
+func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse) GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse {
+		return *v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput)
+}
+
+// A combination of a project ID and a repo name.
+func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput) ProjectRepoId() GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse) *GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectRepoId
+	}).(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput)
+}
+
+// A server-assigned, globally unique identifier.
+func (o GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uid
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4649,6 +8902,252 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextArrayOutput) Index(i
 	}).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextOutput)
 }
 
+// A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique revision of a single file or directory.
+type GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse struct {
+	// A SourceContext referring to a revision in a Google Cloud Source Repo.
+	CloudRepo GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse `pulumi:"cloudRepo"`
+	// A SourceContext referring to a Gerrit project.
+	Gerrit GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse `pulumi:"gerrit"`
+	// A SourceContext referring to any third party Git repo (e.g., GitHub).
+	Git GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse `pulumi:"git"`
+	// Labels with user defined metadata.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArgs and GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArgs{...}
+type GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput
+}
+
+// A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique revision of a single file or directory.
+type GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArgs struct {
+	// A SourceContext referring to a revision in a Google Cloud Source Repo.
+	CloudRepo GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseInput `pulumi:"cloudRepo"`
+	// A SourceContext referring to a Gerrit project.
+	Gerrit GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseInput `pulumi:"gerrit"`
+	// A SourceContext referring to any third party Git repo (e.g., GitHub).
+	Git GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseInput `pulumi:"git"`
+	// Labels with user defined metadata.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput)
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArgs) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput).ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArgs, GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtr and GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput
+}
+
+type googleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrType GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArgs
+
+func GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtr(v *GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArgs) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrInput {
+	return (*googleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrType)(v)
+}
+
+func (*googleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse)(nil)).Elem()
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrType) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput)
+}
+
+// GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArray and GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayInput` via:
+//
+//          GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArray{ GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArgs{...} }
+type GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput
+	ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutputWithContext(context.Context) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArray []GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseInput
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse)(nil)).Elem()
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArray) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput {
+	return i.ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArray) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput)
+}
+
+// A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique revision of a single file or directory.
+type GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput {
+	return o.ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse {
+		return &v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput)
+}
+
+// A SourceContext referring to a revision in a Google Cloud Source Repo.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput) CloudRepo() GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse) GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse {
+		return v.CloudRepo
+	}).(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput)
+}
+
+// A SourceContext referring to a Gerrit project.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput) Gerrit() GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse) GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse {
+		return v.Gerrit
+	}).(GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput)
+}
+
+// A SourceContext referring to any third party Git repo (e.g., GitHub).
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput) Git() GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse) GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse {
+		return v.Git
+	}).(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput)
+}
+
+// Labels with user defined metadata.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse) map[string]string {
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput) Elem() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse {
+		return *v
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput)
+}
+
+// A SourceContext referring to a revision in a Google Cloud Source Repo.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput) CloudRepo() GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.CloudRepo
+	}).(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput)
+}
+
+// A SourceContext referring to a Gerrit project.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput) Gerrit() GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Gerrit
+	}).(GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput)
+}
+
+// A SourceContext referring to any third party Git repo (e.g., GitHub).
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput) Git() GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse) *GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Git
+	}).(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput)
+}
+
+// Labels with user defined metadata.
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+type GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse)(nil)).Elem()
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput) ToGoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutputWithContext(ctx context.Context) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput {
+	return o
+}
+
+func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput) Index(i pulumi.IntInput) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse {
+		return vs[0].([]GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse)[vs[1].(int)]
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput)
+}
+
 // Container message for hash values.
 type Hash struct {
 	// The type of hash that was performed.
@@ -4802,11 +9301,164 @@ func (o HashPtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Container message for hash values.
+type HashResponse struct {
+	// The type of hash that was performed.
+	Type string `pulumi:"type"`
+	// The hash value.
+	Value string `pulumi:"value"`
+}
+
+// HashResponseInput is an input type that accepts HashResponseArgs and HashResponseOutput values.
+// You can construct a concrete instance of `HashResponseInput` via:
+//
+//          HashResponseArgs{...}
+type HashResponseInput interface {
+	pulumi.Input
+
+	ToHashResponseOutput() HashResponseOutput
+	ToHashResponseOutputWithContext(context.Context) HashResponseOutput
+}
+
+// Container message for hash values.
+type HashResponseArgs struct {
+	// The type of hash that was performed.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The hash value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (HashResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HashResponse)(nil)).Elem()
+}
+
+func (i HashResponseArgs) ToHashResponseOutput() HashResponseOutput {
+	return i.ToHashResponseOutputWithContext(context.Background())
+}
+
+func (i HashResponseArgs) ToHashResponseOutputWithContext(ctx context.Context) HashResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HashResponseOutput)
+}
+
+func (i HashResponseArgs) ToHashResponsePtrOutput() HashResponsePtrOutput {
+	return i.ToHashResponsePtrOutputWithContext(context.Background())
+}
+
+func (i HashResponseArgs) ToHashResponsePtrOutputWithContext(ctx context.Context) HashResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HashResponseOutput).ToHashResponsePtrOutputWithContext(ctx)
+}
+
+// HashResponsePtrInput is an input type that accepts HashResponseArgs, HashResponsePtr and HashResponsePtrOutput values.
+// You can construct a concrete instance of `HashResponsePtrInput` via:
+//
+//          HashResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type HashResponsePtrInput interface {
+	pulumi.Input
+
+	ToHashResponsePtrOutput() HashResponsePtrOutput
+	ToHashResponsePtrOutputWithContext(context.Context) HashResponsePtrOutput
+}
+
+type hashResponsePtrType HashResponseArgs
+
+func HashResponsePtr(v *HashResponseArgs) HashResponsePtrInput {
+	return (*hashResponsePtrType)(v)
+}
+
+func (*hashResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HashResponse)(nil)).Elem()
+}
+
+func (i *hashResponsePtrType) ToHashResponsePtrOutput() HashResponsePtrOutput {
+	return i.ToHashResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *hashResponsePtrType) ToHashResponsePtrOutputWithContext(ctx context.Context) HashResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HashResponsePtrOutput)
+}
+
+// Container message for hash values.
+type HashResponseOutput struct{ *pulumi.OutputState }
+
+func (HashResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HashResponse)(nil)).Elem()
+}
+
+func (o HashResponseOutput) ToHashResponseOutput() HashResponseOutput {
+	return o
+}
+
+func (o HashResponseOutput) ToHashResponseOutputWithContext(ctx context.Context) HashResponseOutput {
+	return o
+}
+
+func (o HashResponseOutput) ToHashResponsePtrOutput() HashResponsePtrOutput {
+	return o.ToHashResponsePtrOutputWithContext(context.Background())
+}
+
+func (o HashResponseOutput) ToHashResponsePtrOutputWithContext(ctx context.Context) HashResponsePtrOutput {
+	return o.ApplyT(func(v HashResponse) *HashResponse {
+		return &v
+	}).(HashResponsePtrOutput)
+}
+
+// The type of hash that was performed.
+func (o HashResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HashResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The hash value.
+func (o HashResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v HashResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type HashResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HashResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HashResponse)(nil)).Elem()
+}
+
+func (o HashResponsePtrOutput) ToHashResponsePtrOutput() HashResponsePtrOutput {
+	return o
+}
+
+func (o HashResponsePtrOutput) ToHashResponsePtrOutputWithContext(ctx context.Context) HashResponsePtrOutput {
+	return o
+}
+
+func (o HashResponsePtrOutput) Elem() HashResponseOutput {
+	return o.ApplyT(func(v *HashResponse) HashResponse { return *v }).(HashResponseOutput)
+}
+
+// The type of hash that was performed.
+func (o HashResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HashResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The hash value.
+func (o HashResponsePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HashResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 // This represents how a particular software package may be installed on a system.
 type Installation struct {
 	// All of the places within the filesystem versions of this package have been found.
 	Location []Location `pulumi:"location"`
-	// Output only. The name of the installed package.
+	// The name of the installed package.
 	Name *string `pulumi:"name"`
 }
 
@@ -4825,7 +9477,7 @@ type InstallationInput interface {
 type InstallationArgs struct {
 	// All of the places within the filesystem versions of this package have been found.
 	Location LocationArrayInput `pulumi:"location"`
-	// Output only. The name of the installed package.
+	// The name of the installed package.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -4912,7 +9564,7 @@ func (o InstallationOutput) Location() LocationArrayOutput {
 	return o.ApplyT(func(v Installation) []Location { return v.Location }).(LocationArrayOutput)
 }
 
-// Output only. The name of the installed package.
+// The name of the installed package.
 func (o InstallationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Installation) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -4945,13 +9597,166 @@ func (o InstallationPtrOutput) Location() LocationArrayOutput {
 	}).(LocationArrayOutput)
 }
 
-// Output only. The name of the installed package.
+// The name of the installed package.
 func (o InstallationPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Installation) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// This represents how a particular software package may be installed on a system.
+type InstallationResponse struct {
+	// All of the places within the filesystem versions of this package have been found.
+	Location []LocationResponse `pulumi:"location"`
+	// The name of the installed package.
+	Name string `pulumi:"name"`
+}
+
+// InstallationResponseInput is an input type that accepts InstallationResponseArgs and InstallationResponseOutput values.
+// You can construct a concrete instance of `InstallationResponseInput` via:
+//
+//          InstallationResponseArgs{...}
+type InstallationResponseInput interface {
+	pulumi.Input
+
+	ToInstallationResponseOutput() InstallationResponseOutput
+	ToInstallationResponseOutputWithContext(context.Context) InstallationResponseOutput
+}
+
+// This represents how a particular software package may be installed on a system.
+type InstallationResponseArgs struct {
+	// All of the places within the filesystem versions of this package have been found.
+	Location LocationResponseArrayInput `pulumi:"location"`
+	// The name of the installed package.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (InstallationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstallationResponse)(nil)).Elem()
+}
+
+func (i InstallationResponseArgs) ToInstallationResponseOutput() InstallationResponseOutput {
+	return i.ToInstallationResponseOutputWithContext(context.Background())
+}
+
+func (i InstallationResponseArgs) ToInstallationResponseOutputWithContext(ctx context.Context) InstallationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstallationResponseOutput)
+}
+
+func (i InstallationResponseArgs) ToInstallationResponsePtrOutput() InstallationResponsePtrOutput {
+	return i.ToInstallationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i InstallationResponseArgs) ToInstallationResponsePtrOutputWithContext(ctx context.Context) InstallationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstallationResponseOutput).ToInstallationResponsePtrOutputWithContext(ctx)
+}
+
+// InstallationResponsePtrInput is an input type that accepts InstallationResponseArgs, InstallationResponsePtr and InstallationResponsePtrOutput values.
+// You can construct a concrete instance of `InstallationResponsePtrInput` via:
+//
+//          InstallationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type InstallationResponsePtrInput interface {
+	pulumi.Input
+
+	ToInstallationResponsePtrOutput() InstallationResponsePtrOutput
+	ToInstallationResponsePtrOutputWithContext(context.Context) InstallationResponsePtrOutput
+}
+
+type installationResponsePtrType InstallationResponseArgs
+
+func InstallationResponsePtr(v *InstallationResponseArgs) InstallationResponsePtrInput {
+	return (*installationResponsePtrType)(v)
+}
+
+func (*installationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstallationResponse)(nil)).Elem()
+}
+
+func (i *installationResponsePtrType) ToInstallationResponsePtrOutput() InstallationResponsePtrOutput {
+	return i.ToInstallationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *installationResponsePtrType) ToInstallationResponsePtrOutputWithContext(ctx context.Context) InstallationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstallationResponsePtrOutput)
+}
+
+// This represents how a particular software package may be installed on a system.
+type InstallationResponseOutput struct{ *pulumi.OutputState }
+
+func (InstallationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstallationResponse)(nil)).Elem()
+}
+
+func (o InstallationResponseOutput) ToInstallationResponseOutput() InstallationResponseOutput {
+	return o
+}
+
+func (o InstallationResponseOutput) ToInstallationResponseOutputWithContext(ctx context.Context) InstallationResponseOutput {
+	return o
+}
+
+func (o InstallationResponseOutput) ToInstallationResponsePtrOutput() InstallationResponsePtrOutput {
+	return o.ToInstallationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o InstallationResponseOutput) ToInstallationResponsePtrOutputWithContext(ctx context.Context) InstallationResponsePtrOutput {
+	return o.ApplyT(func(v InstallationResponse) *InstallationResponse {
+		return &v
+	}).(InstallationResponsePtrOutput)
+}
+
+// All of the places within the filesystem versions of this package have been found.
+func (o InstallationResponseOutput) Location() LocationResponseArrayOutput {
+	return o.ApplyT(func(v InstallationResponse) []LocationResponse { return v.Location }).(LocationResponseArrayOutput)
+}
+
+// The name of the installed package.
+func (o InstallationResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InstallationResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type InstallationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InstallationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstallationResponse)(nil)).Elem()
+}
+
+func (o InstallationResponsePtrOutput) ToInstallationResponsePtrOutput() InstallationResponsePtrOutput {
+	return o
+}
+
+func (o InstallationResponsePtrOutput) ToInstallationResponsePtrOutputWithContext(ctx context.Context) InstallationResponsePtrOutput {
+	return o
+}
+
+func (o InstallationResponsePtrOutput) Elem() InstallationResponseOutput {
+	return o.ApplyT(func(v *InstallationResponse) InstallationResponse { return *v }).(InstallationResponseOutput)
+}
+
+// All of the places within the filesystem versions of this package have been found.
+func (o InstallationResponsePtrOutput) Location() LocationResponseArrayOutput {
+	return o.ApplyT(func(v *InstallationResponse) []LocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(LocationResponseArrayOutput)
+}
+
+// The name of the installed package.
+func (o InstallationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstallationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5062,6 +9867,115 @@ func (o LayerArrayOutput) Index(i pulumi.IntInput) LayerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Layer {
 		return vs[0].([]Layer)[vs[1].(int)]
 	}).(LayerOutput)
+}
+
+// Layer holds metadata specific to a layer of a Docker image.
+type LayerResponse struct {
+	// The recovered arguments to the Dockerfile directive.
+	Arguments string `pulumi:"arguments"`
+	// The recovered Dockerfile directive used to construct this layer.
+	Directive string `pulumi:"directive"`
+}
+
+// LayerResponseInput is an input type that accepts LayerResponseArgs and LayerResponseOutput values.
+// You can construct a concrete instance of `LayerResponseInput` via:
+//
+//          LayerResponseArgs{...}
+type LayerResponseInput interface {
+	pulumi.Input
+
+	ToLayerResponseOutput() LayerResponseOutput
+	ToLayerResponseOutputWithContext(context.Context) LayerResponseOutput
+}
+
+// Layer holds metadata specific to a layer of a Docker image.
+type LayerResponseArgs struct {
+	// The recovered arguments to the Dockerfile directive.
+	Arguments pulumi.StringInput `pulumi:"arguments"`
+	// The recovered Dockerfile directive used to construct this layer.
+	Directive pulumi.StringInput `pulumi:"directive"`
+}
+
+func (LayerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LayerResponse)(nil)).Elem()
+}
+
+func (i LayerResponseArgs) ToLayerResponseOutput() LayerResponseOutput {
+	return i.ToLayerResponseOutputWithContext(context.Background())
+}
+
+func (i LayerResponseArgs) ToLayerResponseOutputWithContext(ctx context.Context) LayerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LayerResponseOutput)
+}
+
+// LayerResponseArrayInput is an input type that accepts LayerResponseArray and LayerResponseArrayOutput values.
+// You can construct a concrete instance of `LayerResponseArrayInput` via:
+//
+//          LayerResponseArray{ LayerResponseArgs{...} }
+type LayerResponseArrayInput interface {
+	pulumi.Input
+
+	ToLayerResponseArrayOutput() LayerResponseArrayOutput
+	ToLayerResponseArrayOutputWithContext(context.Context) LayerResponseArrayOutput
+}
+
+type LayerResponseArray []LayerResponseInput
+
+func (LayerResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LayerResponse)(nil)).Elem()
+}
+
+func (i LayerResponseArray) ToLayerResponseArrayOutput() LayerResponseArrayOutput {
+	return i.ToLayerResponseArrayOutputWithContext(context.Background())
+}
+
+func (i LayerResponseArray) ToLayerResponseArrayOutputWithContext(ctx context.Context) LayerResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LayerResponseArrayOutput)
+}
+
+// Layer holds metadata specific to a layer of a Docker image.
+type LayerResponseOutput struct{ *pulumi.OutputState }
+
+func (LayerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LayerResponse)(nil)).Elem()
+}
+
+func (o LayerResponseOutput) ToLayerResponseOutput() LayerResponseOutput {
+	return o
+}
+
+func (o LayerResponseOutput) ToLayerResponseOutputWithContext(ctx context.Context) LayerResponseOutput {
+	return o
+}
+
+// The recovered arguments to the Dockerfile directive.
+func (o LayerResponseOutput) Arguments() pulumi.StringOutput {
+	return o.ApplyT(func(v LayerResponse) string { return v.Arguments }).(pulumi.StringOutput)
+}
+
+// The recovered Dockerfile directive used to construct this layer.
+func (o LayerResponseOutput) Directive() pulumi.StringOutput {
+	return o.ApplyT(func(v LayerResponse) string { return v.Directive }).(pulumi.StringOutput)
+}
+
+type LayerResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LayerResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LayerResponse)(nil)).Elem()
+}
+
+func (o LayerResponseArrayOutput) ToLayerResponseArrayOutput() LayerResponseArrayOutput {
+	return o
+}
+
+func (o LayerResponseArrayOutput) ToLayerResponseArrayOutputWithContext(ctx context.Context) LayerResponseArrayOutput {
+	return o
+}
+
+func (o LayerResponseArrayOutput) Index(i pulumi.IntInput) LayerResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LayerResponse {
+		return vs[0].([]LayerResponse)[vs[1].(int)]
+	}).(LayerResponseOutput)
 }
 
 // An occurrence of a particular package installation found within a system's filesystem. e.g. glibc was found in /var/lib/dpkg/status
@@ -5180,6 +10094,124 @@ func (o LocationArrayOutput) Index(i pulumi.IntInput) LocationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Location {
 		return vs[0].([]Location)[vs[1].(int)]
 	}).(LocationOutput)
+}
+
+// An occurrence of a particular package installation found within a system's filesystem. e.g. glibc was found in /var/lib/dpkg/status
+type LocationResponse struct {
+	// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	CpeUri string `pulumi:"cpeUri"`
+	// The path from which we gathered that this package/version is installed.
+	Path string `pulumi:"path"`
+	// The version installed at this location.
+	Version VersionResponse `pulumi:"version"`
+}
+
+// LocationResponseInput is an input type that accepts LocationResponseArgs and LocationResponseOutput values.
+// You can construct a concrete instance of `LocationResponseInput` via:
+//
+//          LocationResponseArgs{...}
+type LocationResponseInput interface {
+	pulumi.Input
+
+	ToLocationResponseOutput() LocationResponseOutput
+	ToLocationResponseOutputWithContext(context.Context) LocationResponseOutput
+}
+
+// An occurrence of a particular package installation found within a system's filesystem. e.g. glibc was found in /var/lib/dpkg/status
+type LocationResponseArgs struct {
+	// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
+	// The path from which we gathered that this package/version is installed.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The version installed at this location.
+	Version VersionResponseInput `pulumi:"version"`
+}
+
+func (LocationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationResponse)(nil)).Elem()
+}
+
+func (i LocationResponseArgs) ToLocationResponseOutput() LocationResponseOutput {
+	return i.ToLocationResponseOutputWithContext(context.Background())
+}
+
+func (i LocationResponseArgs) ToLocationResponseOutputWithContext(ctx context.Context) LocationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationResponseOutput)
+}
+
+// LocationResponseArrayInput is an input type that accepts LocationResponseArray and LocationResponseArrayOutput values.
+// You can construct a concrete instance of `LocationResponseArrayInput` via:
+//
+//          LocationResponseArray{ LocationResponseArgs{...} }
+type LocationResponseArrayInput interface {
+	pulumi.Input
+
+	ToLocationResponseArrayOutput() LocationResponseArrayOutput
+	ToLocationResponseArrayOutputWithContext(context.Context) LocationResponseArrayOutput
+}
+
+type LocationResponseArray []LocationResponseInput
+
+func (LocationResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocationResponse)(nil)).Elem()
+}
+
+func (i LocationResponseArray) ToLocationResponseArrayOutput() LocationResponseArrayOutput {
+	return i.ToLocationResponseArrayOutputWithContext(context.Background())
+}
+
+func (i LocationResponseArray) ToLocationResponseArrayOutputWithContext(ctx context.Context) LocationResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationResponseArrayOutput)
+}
+
+// An occurrence of a particular package installation found within a system's filesystem. e.g. glibc was found in /var/lib/dpkg/status
+type LocationResponseOutput struct{ *pulumi.OutputState }
+
+func (LocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationResponse)(nil)).Elem()
+}
+
+func (o LocationResponseOutput) ToLocationResponseOutput() LocationResponseOutput {
+	return o
+}
+
+func (o LocationResponseOutput) ToLocationResponseOutputWithContext(ctx context.Context) LocationResponseOutput {
+	return o
+}
+
+// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+func (o LocationResponseOutput) CpeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationResponse) string { return v.CpeUri }).(pulumi.StringOutput)
+}
+
+// The path from which we gathered that this package/version is installed.
+func (o LocationResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The version installed at this location.
+func (o LocationResponseOutput) Version() VersionResponseOutput {
+	return o.ApplyT(func(v LocationResponse) VersionResponse { return v.Version }).(VersionResponseOutput)
+}
+
+type LocationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LocationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocationResponse)(nil)).Elem()
+}
+
+func (o LocationResponseArrayOutput) ToLocationResponseArrayOutput() LocationResponseArrayOutput {
+	return o
+}
+
+func (o LocationResponseArrayOutput) ToLocationResponseArrayOutputWithContext(ctx context.Context) LocationResponseArrayOutput {
+	return o
+}
+
+func (o LocationResponseArrayOutput) Index(i pulumi.IntInput) LocationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocationResponse {
+		return vs[0].([]LocationResponse)[vs[1].(int)]
+	}).(LocationResponseOutput)
 }
 
 // This resource represents a long-running operation that is the result of a network API call.
@@ -5385,6 +10417,216 @@ func (o OperationTypePtrOutput) Name() pulumi.StringPtrOutput {
 // The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
 func (o OperationTypePtrOutput) Response() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *OperationType) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Response
+	}).(pulumi.StringMapOutput)
+}
+
+// This resource represents a long-running operation that is the result of a network API call.
+type OperationResponse struct {
+	// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
+	Done bool `pulumi:"done"`
+	// The error result of the operation in case of failure or cancellation.
+	Error StatusResponse `pulumi:"error"`
+	// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+	Metadata map[string]string `pulumi:"metadata"`
+	// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+	Name string `pulumi:"name"`
+	// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+	Response map[string]string `pulumi:"response"`
+}
+
+// OperationResponseInput is an input type that accepts OperationResponseArgs and OperationResponseOutput values.
+// You can construct a concrete instance of `OperationResponseInput` via:
+//
+//          OperationResponseArgs{...}
+type OperationResponseInput interface {
+	pulumi.Input
+
+	ToOperationResponseOutput() OperationResponseOutput
+	ToOperationResponseOutputWithContext(context.Context) OperationResponseOutput
+}
+
+// This resource represents a long-running operation that is the result of a network API call.
+type OperationResponseArgs struct {
+	// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
+	Done pulumi.BoolInput `pulumi:"done"`
+	// The error result of the operation in case of failure or cancellation.
+	Error StatusResponseInput `pulumi:"error"`
+	// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+	Response pulumi.StringMapInput `pulumi:"response"`
+}
+
+func (OperationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationResponse)(nil)).Elem()
+}
+
+func (i OperationResponseArgs) ToOperationResponseOutput() OperationResponseOutput {
+	return i.ToOperationResponseOutputWithContext(context.Background())
+}
+
+func (i OperationResponseArgs) ToOperationResponseOutputWithContext(ctx context.Context) OperationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationResponseOutput)
+}
+
+func (i OperationResponseArgs) ToOperationResponsePtrOutput() OperationResponsePtrOutput {
+	return i.ToOperationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i OperationResponseArgs) ToOperationResponsePtrOutputWithContext(ctx context.Context) OperationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationResponseOutput).ToOperationResponsePtrOutputWithContext(ctx)
+}
+
+// OperationResponsePtrInput is an input type that accepts OperationResponseArgs, OperationResponsePtr and OperationResponsePtrOutput values.
+// You can construct a concrete instance of `OperationResponsePtrInput` via:
+//
+//          OperationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type OperationResponsePtrInput interface {
+	pulumi.Input
+
+	ToOperationResponsePtrOutput() OperationResponsePtrOutput
+	ToOperationResponsePtrOutputWithContext(context.Context) OperationResponsePtrOutput
+}
+
+type operationResponsePtrType OperationResponseArgs
+
+func OperationResponsePtr(v *OperationResponseArgs) OperationResponsePtrInput {
+	return (*operationResponsePtrType)(v)
+}
+
+func (*operationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OperationResponse)(nil)).Elem()
+}
+
+func (i *operationResponsePtrType) ToOperationResponsePtrOutput() OperationResponsePtrOutput {
+	return i.ToOperationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *operationResponsePtrType) ToOperationResponsePtrOutputWithContext(ctx context.Context) OperationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationResponsePtrOutput)
+}
+
+// This resource represents a long-running operation that is the result of a network API call.
+type OperationResponseOutput struct{ *pulumi.OutputState }
+
+func (OperationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationResponse)(nil)).Elem()
+}
+
+func (o OperationResponseOutput) ToOperationResponseOutput() OperationResponseOutput {
+	return o
+}
+
+func (o OperationResponseOutput) ToOperationResponseOutputWithContext(ctx context.Context) OperationResponseOutput {
+	return o
+}
+
+func (o OperationResponseOutput) ToOperationResponsePtrOutput() OperationResponsePtrOutput {
+	return o.ToOperationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o OperationResponseOutput) ToOperationResponsePtrOutputWithContext(ctx context.Context) OperationResponsePtrOutput {
+	return o.ApplyT(func(v OperationResponse) *OperationResponse {
+		return &v
+	}).(OperationResponsePtrOutput)
+}
+
+// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
+func (o OperationResponseOutput) Done() pulumi.BoolOutput {
+	return o.ApplyT(func(v OperationResponse) bool { return v.Done }).(pulumi.BoolOutput)
+}
+
+// The error result of the operation in case of failure or cancellation.
+func (o OperationResponseOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v OperationResponse) StatusResponse { return v.Error }).(StatusResponseOutput)
+}
+
+// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+func (o OperationResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OperationResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+func (o OperationResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+func (o OperationResponseOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OperationResponse) map[string]string { return v.Response }).(pulumi.StringMapOutput)
+}
+
+type OperationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OperationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OperationResponse)(nil)).Elem()
+}
+
+func (o OperationResponsePtrOutput) ToOperationResponsePtrOutput() OperationResponsePtrOutput {
+	return o
+}
+
+func (o OperationResponsePtrOutput) ToOperationResponsePtrOutputWithContext(ctx context.Context) OperationResponsePtrOutput {
+	return o
+}
+
+func (o OperationResponsePtrOutput) Elem() OperationResponseOutput {
+	return o.ApplyT(func(v *OperationResponse) OperationResponse { return *v }).(OperationResponseOutput)
+}
+
+// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
+func (o OperationResponsePtrOutput) Done() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OperationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Done
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The error result of the operation in case of failure or cancellation.
+func (o OperationResponsePtrOutput) Error() StatusResponsePtrOutput {
+	return o.ApplyT(func(v *OperationResponse) *StatusResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Error
+	}).(StatusResponsePtrOutput)
+}
+
+// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+func (o OperationResponsePtrOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *OperationResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringMapOutput)
+}
+
+// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+func (o OperationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OperationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+func (o OperationResponsePtrOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *OperationResponse) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -5660,6 +10902,274 @@ func (o PackageIssueArrayOutput) Index(i pulumi.IntInput) PackageIssueOutput {
 	}).(PackageIssueOutput)
 }
 
+// This message wraps a location affected by a vulnerability and its associated fix (if one is available).
+type PackageIssueResponse struct {
+	// The location of the vulnerability.
+	AffectedLocation VulnerabilityLocationResponse `pulumi:"affectedLocation"`
+	// The location of the available fix for vulnerability.
+	FixedLocation VulnerabilityLocationResponse `pulumi:"fixedLocation"`
+	SeverityName  string                        `pulumi:"severityName"`
+}
+
+// PackageIssueResponseInput is an input type that accepts PackageIssueResponseArgs and PackageIssueResponseOutput values.
+// You can construct a concrete instance of `PackageIssueResponseInput` via:
+//
+//          PackageIssueResponseArgs{...}
+type PackageIssueResponseInput interface {
+	pulumi.Input
+
+	ToPackageIssueResponseOutput() PackageIssueResponseOutput
+	ToPackageIssueResponseOutputWithContext(context.Context) PackageIssueResponseOutput
+}
+
+// This message wraps a location affected by a vulnerability and its associated fix (if one is available).
+type PackageIssueResponseArgs struct {
+	// The location of the vulnerability.
+	AffectedLocation VulnerabilityLocationResponseInput `pulumi:"affectedLocation"`
+	// The location of the available fix for vulnerability.
+	FixedLocation VulnerabilityLocationResponseInput `pulumi:"fixedLocation"`
+	SeverityName  pulumi.StringInput                 `pulumi:"severityName"`
+}
+
+func (PackageIssueResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageIssueResponse)(nil)).Elem()
+}
+
+func (i PackageIssueResponseArgs) ToPackageIssueResponseOutput() PackageIssueResponseOutput {
+	return i.ToPackageIssueResponseOutputWithContext(context.Background())
+}
+
+func (i PackageIssueResponseArgs) ToPackageIssueResponseOutputWithContext(ctx context.Context) PackageIssueResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageIssueResponseOutput)
+}
+
+// PackageIssueResponseArrayInput is an input type that accepts PackageIssueResponseArray and PackageIssueResponseArrayOutput values.
+// You can construct a concrete instance of `PackageIssueResponseArrayInput` via:
+//
+//          PackageIssueResponseArray{ PackageIssueResponseArgs{...} }
+type PackageIssueResponseArrayInput interface {
+	pulumi.Input
+
+	ToPackageIssueResponseArrayOutput() PackageIssueResponseArrayOutput
+	ToPackageIssueResponseArrayOutputWithContext(context.Context) PackageIssueResponseArrayOutput
+}
+
+type PackageIssueResponseArray []PackageIssueResponseInput
+
+func (PackageIssueResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PackageIssueResponse)(nil)).Elem()
+}
+
+func (i PackageIssueResponseArray) ToPackageIssueResponseArrayOutput() PackageIssueResponseArrayOutput {
+	return i.ToPackageIssueResponseArrayOutputWithContext(context.Background())
+}
+
+func (i PackageIssueResponseArray) ToPackageIssueResponseArrayOutputWithContext(ctx context.Context) PackageIssueResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageIssueResponseArrayOutput)
+}
+
+// This message wraps a location affected by a vulnerability and its associated fix (if one is available).
+type PackageIssueResponseOutput struct{ *pulumi.OutputState }
+
+func (PackageIssueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageIssueResponse)(nil)).Elem()
+}
+
+func (o PackageIssueResponseOutput) ToPackageIssueResponseOutput() PackageIssueResponseOutput {
+	return o
+}
+
+func (o PackageIssueResponseOutput) ToPackageIssueResponseOutputWithContext(ctx context.Context) PackageIssueResponseOutput {
+	return o
+}
+
+// The location of the vulnerability.
+func (o PackageIssueResponseOutput) AffectedLocation() VulnerabilityLocationResponseOutput {
+	return o.ApplyT(func(v PackageIssueResponse) VulnerabilityLocationResponse { return v.AffectedLocation }).(VulnerabilityLocationResponseOutput)
+}
+
+// The location of the available fix for vulnerability.
+func (o PackageIssueResponseOutput) FixedLocation() VulnerabilityLocationResponseOutput {
+	return o.ApplyT(func(v PackageIssueResponse) VulnerabilityLocationResponse { return v.FixedLocation }).(VulnerabilityLocationResponseOutput)
+}
+
+func (o PackageIssueResponseOutput) SeverityName() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageIssueResponse) string { return v.SeverityName }).(pulumi.StringOutput)
+}
+
+type PackageIssueResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PackageIssueResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PackageIssueResponse)(nil)).Elem()
+}
+
+func (o PackageIssueResponseArrayOutput) ToPackageIssueResponseArrayOutput() PackageIssueResponseArrayOutput {
+	return o
+}
+
+func (o PackageIssueResponseArrayOutput) ToPackageIssueResponseArrayOutputWithContext(ctx context.Context) PackageIssueResponseArrayOutput {
+	return o
+}
+
+func (o PackageIssueResponseArrayOutput) Index(i pulumi.IntInput) PackageIssueResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PackageIssueResponse {
+		return vs[0].([]PackageIssueResponse)[vs[1].(int)]
+	}).(PackageIssueResponseOutput)
+}
+
+// This represents a particular package that is distributed over various channels. e.g. glibc (aka libc6) is distributed by many, at various versions.
+type PackageResponse struct {
+	// The various channels by which a package is distributed.
+	Distribution []DistributionResponse `pulumi:"distribution"`
+	// The name of the package.
+	Name string `pulumi:"name"`
+}
+
+// PackageResponseInput is an input type that accepts PackageResponseArgs and PackageResponseOutput values.
+// You can construct a concrete instance of `PackageResponseInput` via:
+//
+//          PackageResponseArgs{...}
+type PackageResponseInput interface {
+	pulumi.Input
+
+	ToPackageResponseOutput() PackageResponseOutput
+	ToPackageResponseOutputWithContext(context.Context) PackageResponseOutput
+}
+
+// This represents a particular package that is distributed over various channels. e.g. glibc (aka libc6) is distributed by many, at various versions.
+type PackageResponseArgs struct {
+	// The various channels by which a package is distributed.
+	Distribution DistributionResponseArrayInput `pulumi:"distribution"`
+	// The name of the package.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (PackageResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageResponse)(nil)).Elem()
+}
+
+func (i PackageResponseArgs) ToPackageResponseOutput() PackageResponseOutput {
+	return i.ToPackageResponseOutputWithContext(context.Background())
+}
+
+func (i PackageResponseArgs) ToPackageResponseOutputWithContext(ctx context.Context) PackageResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageResponseOutput)
+}
+
+func (i PackageResponseArgs) ToPackageResponsePtrOutput() PackageResponsePtrOutput {
+	return i.ToPackageResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PackageResponseArgs) ToPackageResponsePtrOutputWithContext(ctx context.Context) PackageResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageResponseOutput).ToPackageResponsePtrOutputWithContext(ctx)
+}
+
+// PackageResponsePtrInput is an input type that accepts PackageResponseArgs, PackageResponsePtr and PackageResponsePtrOutput values.
+// You can construct a concrete instance of `PackageResponsePtrInput` via:
+//
+//          PackageResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PackageResponsePtrInput interface {
+	pulumi.Input
+
+	ToPackageResponsePtrOutput() PackageResponsePtrOutput
+	ToPackageResponsePtrOutputWithContext(context.Context) PackageResponsePtrOutput
+}
+
+type packageResponsePtrType PackageResponseArgs
+
+func PackageResponsePtr(v *PackageResponseArgs) PackageResponsePtrInput {
+	return (*packageResponsePtrType)(v)
+}
+
+func (*packageResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageResponse)(nil)).Elem()
+}
+
+func (i *packageResponsePtrType) ToPackageResponsePtrOutput() PackageResponsePtrOutput {
+	return i.ToPackageResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *packageResponsePtrType) ToPackageResponsePtrOutputWithContext(ctx context.Context) PackageResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageResponsePtrOutput)
+}
+
+// This represents a particular package that is distributed over various channels. e.g. glibc (aka libc6) is distributed by many, at various versions.
+type PackageResponseOutput struct{ *pulumi.OutputState }
+
+func (PackageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageResponse)(nil)).Elem()
+}
+
+func (o PackageResponseOutput) ToPackageResponseOutput() PackageResponseOutput {
+	return o
+}
+
+func (o PackageResponseOutput) ToPackageResponseOutputWithContext(ctx context.Context) PackageResponseOutput {
+	return o
+}
+
+func (o PackageResponseOutput) ToPackageResponsePtrOutput() PackageResponsePtrOutput {
+	return o.ToPackageResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PackageResponseOutput) ToPackageResponsePtrOutputWithContext(ctx context.Context) PackageResponsePtrOutput {
+	return o.ApplyT(func(v PackageResponse) *PackageResponse {
+		return &v
+	}).(PackageResponsePtrOutput)
+}
+
+// The various channels by which a package is distributed.
+func (o PackageResponseOutput) Distribution() DistributionResponseArrayOutput {
+	return o.ApplyT(func(v PackageResponse) []DistributionResponse { return v.Distribution }).(DistributionResponseArrayOutput)
+}
+
+// The name of the package.
+func (o PackageResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type PackageResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PackageResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageResponse)(nil)).Elem()
+}
+
+func (o PackageResponsePtrOutput) ToPackageResponsePtrOutput() PackageResponsePtrOutput {
+	return o
+}
+
+func (o PackageResponsePtrOutput) ToPackageResponsePtrOutputWithContext(ctx context.Context) PackageResponsePtrOutput {
+	return o
+}
+
+func (o PackageResponsePtrOutput) Elem() PackageResponseOutput {
+	return o.ApplyT(func(v *PackageResponse) PackageResponse { return *v }).(PackageResponseOutput)
+}
+
+// The various channels by which a package is distributed.
+func (o PackageResponsePtrOutput) Distribution() DistributionResponseArrayOutput {
+	return o.ApplyT(func(v *PackageResponse) []DistributionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Distribution
+	}).(DistributionResponseArrayOutput)
+}
+
+// The name of the package.
+func (o PackageResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PackageResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 // An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.
 type PgpSignedAttestation struct {
 	// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
@@ -5829,6 +11339,178 @@ func (o PgpSignedAttestationPtrOutput) Signature() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Signature
+	}).(pulumi.StringPtrOutput)
+}
+
+// An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.
+type PgpSignedAttestationResponse struct {
+	// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
+	ContentType string `pulumi:"contentType"`
+	// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
+	PgpKeyId string `pulumi:"pgpKeyId"`
+	// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+	Signature string `pulumi:"signature"`
+}
+
+// PgpSignedAttestationResponseInput is an input type that accepts PgpSignedAttestationResponseArgs and PgpSignedAttestationResponseOutput values.
+// You can construct a concrete instance of `PgpSignedAttestationResponseInput` via:
+//
+//          PgpSignedAttestationResponseArgs{...}
+type PgpSignedAttestationResponseInput interface {
+	pulumi.Input
+
+	ToPgpSignedAttestationResponseOutput() PgpSignedAttestationResponseOutput
+	ToPgpSignedAttestationResponseOutputWithContext(context.Context) PgpSignedAttestationResponseOutput
+}
+
+// An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.
+type PgpSignedAttestationResponseArgs struct {
+	// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
+	ContentType pulumi.StringInput `pulumi:"contentType"`
+	// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
+	PgpKeyId pulumi.StringInput `pulumi:"pgpKeyId"`
+	// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+	Signature pulumi.StringInput `pulumi:"signature"`
+}
+
+func (PgpSignedAttestationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PgpSignedAttestationResponse)(nil)).Elem()
+}
+
+func (i PgpSignedAttestationResponseArgs) ToPgpSignedAttestationResponseOutput() PgpSignedAttestationResponseOutput {
+	return i.ToPgpSignedAttestationResponseOutputWithContext(context.Background())
+}
+
+func (i PgpSignedAttestationResponseArgs) ToPgpSignedAttestationResponseOutputWithContext(ctx context.Context) PgpSignedAttestationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgpSignedAttestationResponseOutput)
+}
+
+func (i PgpSignedAttestationResponseArgs) ToPgpSignedAttestationResponsePtrOutput() PgpSignedAttestationResponsePtrOutput {
+	return i.ToPgpSignedAttestationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PgpSignedAttestationResponseArgs) ToPgpSignedAttestationResponsePtrOutputWithContext(ctx context.Context) PgpSignedAttestationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgpSignedAttestationResponseOutput).ToPgpSignedAttestationResponsePtrOutputWithContext(ctx)
+}
+
+// PgpSignedAttestationResponsePtrInput is an input type that accepts PgpSignedAttestationResponseArgs, PgpSignedAttestationResponsePtr and PgpSignedAttestationResponsePtrOutput values.
+// You can construct a concrete instance of `PgpSignedAttestationResponsePtrInput` via:
+//
+//          PgpSignedAttestationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PgpSignedAttestationResponsePtrInput interface {
+	pulumi.Input
+
+	ToPgpSignedAttestationResponsePtrOutput() PgpSignedAttestationResponsePtrOutput
+	ToPgpSignedAttestationResponsePtrOutputWithContext(context.Context) PgpSignedAttestationResponsePtrOutput
+}
+
+type pgpSignedAttestationResponsePtrType PgpSignedAttestationResponseArgs
+
+func PgpSignedAttestationResponsePtr(v *PgpSignedAttestationResponseArgs) PgpSignedAttestationResponsePtrInput {
+	return (*pgpSignedAttestationResponsePtrType)(v)
+}
+
+func (*pgpSignedAttestationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PgpSignedAttestationResponse)(nil)).Elem()
+}
+
+func (i *pgpSignedAttestationResponsePtrType) ToPgpSignedAttestationResponsePtrOutput() PgpSignedAttestationResponsePtrOutput {
+	return i.ToPgpSignedAttestationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *pgpSignedAttestationResponsePtrType) ToPgpSignedAttestationResponsePtrOutputWithContext(ctx context.Context) PgpSignedAttestationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PgpSignedAttestationResponsePtrOutput)
+}
+
+// An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.
+type PgpSignedAttestationResponseOutput struct{ *pulumi.OutputState }
+
+func (PgpSignedAttestationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PgpSignedAttestationResponse)(nil)).Elem()
+}
+
+func (o PgpSignedAttestationResponseOutput) ToPgpSignedAttestationResponseOutput() PgpSignedAttestationResponseOutput {
+	return o
+}
+
+func (o PgpSignedAttestationResponseOutput) ToPgpSignedAttestationResponseOutputWithContext(ctx context.Context) PgpSignedAttestationResponseOutput {
+	return o
+}
+
+func (o PgpSignedAttestationResponseOutput) ToPgpSignedAttestationResponsePtrOutput() PgpSignedAttestationResponsePtrOutput {
+	return o.ToPgpSignedAttestationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PgpSignedAttestationResponseOutput) ToPgpSignedAttestationResponsePtrOutputWithContext(ctx context.Context) PgpSignedAttestationResponsePtrOutput {
+	return o.ApplyT(func(v PgpSignedAttestationResponse) *PgpSignedAttestationResponse {
+		return &v
+	}).(PgpSignedAttestationResponsePtrOutput)
+}
+
+// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
+func (o PgpSignedAttestationResponseOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v PgpSignedAttestationResponse) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
+func (o PgpSignedAttestationResponseOutput) PgpKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v PgpSignedAttestationResponse) string { return v.PgpKeyId }).(pulumi.StringOutput)
+}
+
+// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+func (o PgpSignedAttestationResponseOutput) Signature() pulumi.StringOutput {
+	return o.ApplyT(func(v PgpSignedAttestationResponse) string { return v.Signature }).(pulumi.StringOutput)
+}
+
+type PgpSignedAttestationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PgpSignedAttestationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PgpSignedAttestationResponse)(nil)).Elem()
+}
+
+func (o PgpSignedAttestationResponsePtrOutput) ToPgpSignedAttestationResponsePtrOutput() PgpSignedAttestationResponsePtrOutput {
+	return o
+}
+
+func (o PgpSignedAttestationResponsePtrOutput) ToPgpSignedAttestationResponsePtrOutputWithContext(ctx context.Context) PgpSignedAttestationResponsePtrOutput {
+	return o
+}
+
+func (o PgpSignedAttestationResponsePtrOutput) Elem() PgpSignedAttestationResponseOutput {
+	return o.ApplyT(func(v *PgpSignedAttestationResponse) PgpSignedAttestationResponse { return *v }).(PgpSignedAttestationResponseOutput)
+}
+
+// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
+func (o PgpSignedAttestationResponsePtrOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgpSignedAttestationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ContentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
+func (o PgpSignedAttestationResponsePtrOutput) PgpKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgpSignedAttestationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PgpKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+func (o PgpSignedAttestationResponsePtrOutput) Signature() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PgpSignedAttestationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Signature
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6113,6 +11795,115 @@ func (o RelatedUrlArrayOutput) Index(i pulumi.IntInput) RelatedUrlOutput {
 	}).(RelatedUrlOutput)
 }
 
+// Metadata for any related URL information
+type RelatedUrlResponse struct {
+	// Label to describe usage of the URL
+	Label string `pulumi:"label"`
+	// Specific URL to associate with the note
+	Url string `pulumi:"url"`
+}
+
+// RelatedUrlResponseInput is an input type that accepts RelatedUrlResponseArgs and RelatedUrlResponseOutput values.
+// You can construct a concrete instance of `RelatedUrlResponseInput` via:
+//
+//          RelatedUrlResponseArgs{...}
+type RelatedUrlResponseInput interface {
+	pulumi.Input
+
+	ToRelatedUrlResponseOutput() RelatedUrlResponseOutput
+	ToRelatedUrlResponseOutputWithContext(context.Context) RelatedUrlResponseOutput
+}
+
+// Metadata for any related URL information
+type RelatedUrlResponseArgs struct {
+	// Label to describe usage of the URL
+	Label pulumi.StringInput `pulumi:"label"`
+	// Specific URL to associate with the note
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (RelatedUrlResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RelatedUrlResponse)(nil)).Elem()
+}
+
+func (i RelatedUrlResponseArgs) ToRelatedUrlResponseOutput() RelatedUrlResponseOutput {
+	return i.ToRelatedUrlResponseOutputWithContext(context.Background())
+}
+
+func (i RelatedUrlResponseArgs) ToRelatedUrlResponseOutputWithContext(ctx context.Context) RelatedUrlResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RelatedUrlResponseOutput)
+}
+
+// RelatedUrlResponseArrayInput is an input type that accepts RelatedUrlResponseArray and RelatedUrlResponseArrayOutput values.
+// You can construct a concrete instance of `RelatedUrlResponseArrayInput` via:
+//
+//          RelatedUrlResponseArray{ RelatedUrlResponseArgs{...} }
+type RelatedUrlResponseArrayInput interface {
+	pulumi.Input
+
+	ToRelatedUrlResponseArrayOutput() RelatedUrlResponseArrayOutput
+	ToRelatedUrlResponseArrayOutputWithContext(context.Context) RelatedUrlResponseArrayOutput
+}
+
+type RelatedUrlResponseArray []RelatedUrlResponseInput
+
+func (RelatedUrlResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RelatedUrlResponse)(nil)).Elem()
+}
+
+func (i RelatedUrlResponseArray) ToRelatedUrlResponseArrayOutput() RelatedUrlResponseArrayOutput {
+	return i.ToRelatedUrlResponseArrayOutputWithContext(context.Background())
+}
+
+func (i RelatedUrlResponseArray) ToRelatedUrlResponseArrayOutputWithContext(ctx context.Context) RelatedUrlResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RelatedUrlResponseArrayOutput)
+}
+
+// Metadata for any related URL information
+type RelatedUrlResponseOutput struct{ *pulumi.OutputState }
+
+func (RelatedUrlResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RelatedUrlResponse)(nil)).Elem()
+}
+
+func (o RelatedUrlResponseOutput) ToRelatedUrlResponseOutput() RelatedUrlResponseOutput {
+	return o
+}
+
+func (o RelatedUrlResponseOutput) ToRelatedUrlResponseOutputWithContext(ctx context.Context) RelatedUrlResponseOutput {
+	return o
+}
+
+// Label to describe usage of the URL
+func (o RelatedUrlResponseOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v RelatedUrlResponse) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Specific URL to associate with the note
+func (o RelatedUrlResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v RelatedUrlResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type RelatedUrlResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RelatedUrlResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RelatedUrlResponse)(nil)).Elem()
+}
+
+func (o RelatedUrlResponseArrayOutput) ToRelatedUrlResponseArrayOutput() RelatedUrlResponseArrayOutput {
+	return o
+}
+
+func (o RelatedUrlResponseArrayOutput) ToRelatedUrlResponseArrayOutputWithContext(ctx context.Context) RelatedUrlResponseArrayOutput {
+	return o
+}
+
+func (o RelatedUrlResponseArrayOutput) Index(i pulumi.IntInput) RelatedUrlResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RelatedUrlResponse {
+		return vs[0].([]RelatedUrlResponse)[vs[1].(int)]
+	}).(RelatedUrlResponseOutput)
+}
+
 // RepoSource describes the location of the source in a Google Cloud Source Repository.
 type RepoSource struct {
 	// Name of the branch to build.
@@ -6323,6 +12114,216 @@ func (o RepoSourcePtrOutput) TagName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// RepoSource describes the location of the source in a Google Cloud Source Repository.
+type RepoSourceResponse struct {
+	// Name of the branch to build.
+	BranchName string `pulumi:"branchName"`
+	// Explicit commit SHA to build.
+	CommitSha string `pulumi:"commitSha"`
+	// ID of the project that owns the repo.
+	ProjectId string `pulumi:"projectId"`
+	// Name of the repo.
+	RepoName string `pulumi:"repoName"`
+	// Name of the tag to build.
+	TagName string `pulumi:"tagName"`
+}
+
+// RepoSourceResponseInput is an input type that accepts RepoSourceResponseArgs and RepoSourceResponseOutput values.
+// You can construct a concrete instance of `RepoSourceResponseInput` via:
+//
+//          RepoSourceResponseArgs{...}
+type RepoSourceResponseInput interface {
+	pulumi.Input
+
+	ToRepoSourceResponseOutput() RepoSourceResponseOutput
+	ToRepoSourceResponseOutputWithContext(context.Context) RepoSourceResponseOutput
+}
+
+// RepoSource describes the location of the source in a Google Cloud Source Repository.
+type RepoSourceResponseArgs struct {
+	// Name of the branch to build.
+	BranchName pulumi.StringInput `pulumi:"branchName"`
+	// Explicit commit SHA to build.
+	CommitSha pulumi.StringInput `pulumi:"commitSha"`
+	// ID of the project that owns the repo.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Name of the repo.
+	RepoName pulumi.StringInput `pulumi:"repoName"`
+	// Name of the tag to build.
+	TagName pulumi.StringInput `pulumi:"tagName"`
+}
+
+func (RepoSourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepoSourceResponse)(nil)).Elem()
+}
+
+func (i RepoSourceResponseArgs) ToRepoSourceResponseOutput() RepoSourceResponseOutput {
+	return i.ToRepoSourceResponseOutputWithContext(context.Background())
+}
+
+func (i RepoSourceResponseArgs) ToRepoSourceResponseOutputWithContext(ctx context.Context) RepoSourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepoSourceResponseOutput)
+}
+
+func (i RepoSourceResponseArgs) ToRepoSourceResponsePtrOutput() RepoSourceResponsePtrOutput {
+	return i.ToRepoSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i RepoSourceResponseArgs) ToRepoSourceResponsePtrOutputWithContext(ctx context.Context) RepoSourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepoSourceResponseOutput).ToRepoSourceResponsePtrOutputWithContext(ctx)
+}
+
+// RepoSourceResponsePtrInput is an input type that accepts RepoSourceResponseArgs, RepoSourceResponsePtr and RepoSourceResponsePtrOutput values.
+// You can construct a concrete instance of `RepoSourceResponsePtrInput` via:
+//
+//          RepoSourceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type RepoSourceResponsePtrInput interface {
+	pulumi.Input
+
+	ToRepoSourceResponsePtrOutput() RepoSourceResponsePtrOutput
+	ToRepoSourceResponsePtrOutputWithContext(context.Context) RepoSourceResponsePtrOutput
+}
+
+type repoSourceResponsePtrType RepoSourceResponseArgs
+
+func RepoSourceResponsePtr(v *RepoSourceResponseArgs) RepoSourceResponsePtrInput {
+	return (*repoSourceResponsePtrType)(v)
+}
+
+func (*repoSourceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepoSourceResponse)(nil)).Elem()
+}
+
+func (i *repoSourceResponsePtrType) ToRepoSourceResponsePtrOutput() RepoSourceResponsePtrOutput {
+	return i.ToRepoSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *repoSourceResponsePtrType) ToRepoSourceResponsePtrOutputWithContext(ctx context.Context) RepoSourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepoSourceResponsePtrOutput)
+}
+
+// RepoSource describes the location of the source in a Google Cloud Source Repository.
+type RepoSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (RepoSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepoSourceResponse)(nil)).Elem()
+}
+
+func (o RepoSourceResponseOutput) ToRepoSourceResponseOutput() RepoSourceResponseOutput {
+	return o
+}
+
+func (o RepoSourceResponseOutput) ToRepoSourceResponseOutputWithContext(ctx context.Context) RepoSourceResponseOutput {
+	return o
+}
+
+func (o RepoSourceResponseOutput) ToRepoSourceResponsePtrOutput() RepoSourceResponsePtrOutput {
+	return o.ToRepoSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o RepoSourceResponseOutput) ToRepoSourceResponsePtrOutputWithContext(ctx context.Context) RepoSourceResponsePtrOutput {
+	return o.ApplyT(func(v RepoSourceResponse) *RepoSourceResponse {
+		return &v
+	}).(RepoSourceResponsePtrOutput)
+}
+
+// Name of the branch to build.
+func (o RepoSourceResponseOutput) BranchName() pulumi.StringOutput {
+	return o.ApplyT(func(v RepoSourceResponse) string { return v.BranchName }).(pulumi.StringOutput)
+}
+
+// Explicit commit SHA to build.
+func (o RepoSourceResponseOutput) CommitSha() pulumi.StringOutput {
+	return o.ApplyT(func(v RepoSourceResponse) string { return v.CommitSha }).(pulumi.StringOutput)
+}
+
+// ID of the project that owns the repo.
+func (o RepoSourceResponseOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v RepoSourceResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Name of the repo.
+func (o RepoSourceResponseOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v RepoSourceResponse) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+// Name of the tag to build.
+func (o RepoSourceResponseOutput) TagName() pulumi.StringOutput {
+	return o.ApplyT(func(v RepoSourceResponse) string { return v.TagName }).(pulumi.StringOutput)
+}
+
+type RepoSourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RepoSourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepoSourceResponse)(nil)).Elem()
+}
+
+func (o RepoSourceResponsePtrOutput) ToRepoSourceResponsePtrOutput() RepoSourceResponsePtrOutput {
+	return o
+}
+
+func (o RepoSourceResponsePtrOutput) ToRepoSourceResponsePtrOutputWithContext(ctx context.Context) RepoSourceResponsePtrOutput {
+	return o
+}
+
+func (o RepoSourceResponsePtrOutput) Elem() RepoSourceResponseOutput {
+	return o.ApplyT(func(v *RepoSourceResponse) RepoSourceResponse { return *v }).(RepoSourceResponseOutput)
+}
+
+// Name of the branch to build.
+func (o RepoSourceResponsePtrOutput) BranchName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepoSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BranchName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Explicit commit SHA to build.
+func (o RepoSourceResponsePtrOutput) CommitSha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepoSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CommitSha
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the project that owns the repo.
+func (o RepoSourceResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepoSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the repo.
+func (o RepoSourceResponsePtrOutput) RepoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepoSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RepoName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the tag to build.
+func (o RepoSourceResponsePtrOutput) TagName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepoSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagName
+	}).(pulumi.StringPtrOutput)
+}
+
 //  Resource is an entity that can have metadata. E.g., a Docker image.
 type Resource struct {
 	// The hash of the resource content. E.g., the Docker digest.
@@ -6492,6 +12493,178 @@ func (o ResourcePtrOutput) Uri() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+//  Resource is an entity that can have metadata. E.g., a Docker image.
+type ResourceResponse struct {
+	// The hash of the resource content. E.g., the Docker digest.
+	ContentHash HashResponse `pulumi:"contentHash"`
+	// The name of the resource. E.g., the name of a Docker image - "Debian".
+	Name string `pulumi:"name"`
+	// The unique URI of the resource. E.g., "https://gcr.io/project/image@sha256:foo" for a Docker image.
+	Uri string `pulumi:"uri"`
+}
+
+// ResourceResponseInput is an input type that accepts ResourceResponseArgs and ResourceResponseOutput values.
+// You can construct a concrete instance of `ResourceResponseInput` via:
+//
+//          ResourceResponseArgs{...}
+type ResourceResponseInput interface {
+	pulumi.Input
+
+	ToResourceResponseOutput() ResourceResponseOutput
+	ToResourceResponseOutputWithContext(context.Context) ResourceResponseOutput
+}
+
+//  Resource is an entity that can have metadata. E.g., a Docker image.
+type ResourceResponseArgs struct {
+	// The hash of the resource content. E.g., the Docker digest.
+	ContentHash HashResponseInput `pulumi:"contentHash"`
+	// The name of the resource. E.g., the name of a Docker image - "Debian".
+	Name pulumi.StringInput `pulumi:"name"`
+	// The unique URI of the resource. E.g., "https://gcr.io/project/image@sha256:foo" for a Docker image.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (ResourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceResponse)(nil)).Elem()
+}
+
+func (i ResourceResponseArgs) ToResourceResponseOutput() ResourceResponseOutput {
+	return i.ToResourceResponseOutputWithContext(context.Background())
+}
+
+func (i ResourceResponseArgs) ToResourceResponseOutputWithContext(ctx context.Context) ResourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceResponseOutput)
+}
+
+func (i ResourceResponseArgs) ToResourceResponsePtrOutput() ResourceResponsePtrOutput {
+	return i.ToResourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ResourceResponseArgs) ToResourceResponsePtrOutputWithContext(ctx context.Context) ResourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceResponseOutput).ToResourceResponsePtrOutputWithContext(ctx)
+}
+
+// ResourceResponsePtrInput is an input type that accepts ResourceResponseArgs, ResourceResponsePtr and ResourceResponsePtrOutput values.
+// You can construct a concrete instance of `ResourceResponsePtrInput` via:
+//
+//          ResourceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ResourceResponsePtrInput interface {
+	pulumi.Input
+
+	ToResourceResponsePtrOutput() ResourceResponsePtrOutput
+	ToResourceResponsePtrOutputWithContext(context.Context) ResourceResponsePtrOutput
+}
+
+type resourceResponsePtrType ResourceResponseArgs
+
+func ResourceResponsePtr(v *ResourceResponseArgs) ResourceResponsePtrInput {
+	return (*resourceResponsePtrType)(v)
+}
+
+func (*resourceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceResponse)(nil)).Elem()
+}
+
+func (i *resourceResponsePtrType) ToResourceResponsePtrOutput() ResourceResponsePtrOutput {
+	return i.ToResourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *resourceResponsePtrType) ToResourceResponsePtrOutputWithContext(ctx context.Context) ResourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceResponsePtrOutput)
+}
+
+//  Resource is an entity that can have metadata. E.g., a Docker image.
+type ResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceResponse)(nil)).Elem()
+}
+
+func (o ResourceResponseOutput) ToResourceResponseOutput() ResourceResponseOutput {
+	return o
+}
+
+func (o ResourceResponseOutput) ToResourceResponseOutputWithContext(ctx context.Context) ResourceResponseOutput {
+	return o
+}
+
+func (o ResourceResponseOutput) ToResourceResponsePtrOutput() ResourceResponsePtrOutput {
+	return o.ToResourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ResourceResponseOutput) ToResourceResponsePtrOutputWithContext(ctx context.Context) ResourceResponsePtrOutput {
+	return o.ApplyT(func(v ResourceResponse) *ResourceResponse {
+		return &v
+	}).(ResourceResponsePtrOutput)
+}
+
+// The hash of the resource content. E.g., the Docker digest.
+func (o ResourceResponseOutput) ContentHash() HashResponseOutput {
+	return o.ApplyT(func(v ResourceResponse) HashResponse { return v.ContentHash }).(HashResponseOutput)
+}
+
+// The name of the resource. E.g., the name of a Docker image - "Debian".
+func (o ResourceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The unique URI of the resource. E.g., "https://gcr.io/project/image@sha256:foo" for a Docker image.
+func (o ResourceResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type ResourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceResponse)(nil)).Elem()
+}
+
+func (o ResourceResponsePtrOutput) ToResourceResponsePtrOutput() ResourceResponsePtrOutput {
+	return o
+}
+
+func (o ResourceResponsePtrOutput) ToResourceResponsePtrOutputWithContext(ctx context.Context) ResourceResponsePtrOutput {
+	return o
+}
+
+func (o ResourceResponsePtrOutput) Elem() ResourceResponseOutput {
+	return o.ApplyT(func(v *ResourceResponse) ResourceResponse { return *v }).(ResourceResponseOutput)
+}
+
+// The hash of the resource content. E.g., the Docker digest.
+func (o ResourceResponsePtrOutput) ContentHash() HashResponsePtrOutput {
+	return o.ApplyT(func(v *ResourceResponse) *HashResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ContentHash
+	}).(HashResponsePtrOutput)
+}
+
+// The name of the resource. E.g., the name of a Docker image - "Debian".
+func (o ResourceResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique URI of the resource. E.g., "https://gcr.io/project/image@sha256:foo" for a Docker image.
+func (o ResourceResponsePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6724,6 +12897,237 @@ func (o SourcePtrOutput) StorageSource() StorageSourcePtrOutput {
 	}).(StorageSourcePtrOutput)
 }
 
+// Source describes the location of the source used for the build.
+type SourceResponse struct {
+	// If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
+	AdditionalContexts []GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse `pulumi:"additionalContexts"`
+	// If provided, the input binary artifacts for the build came from this location.
+	ArtifactStorageSource StorageSourceResponse `pulumi:"artifactStorageSource"`
+	// If provided, the source code used for the build came from this location.
+	Context GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse `pulumi:"context"`
+	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
+	FileHashes map[string]string `pulumi:"fileHashes"`
+	// If provided, get source from this location in a Cloud Repo.
+	RepoSource RepoSourceResponse `pulumi:"repoSource"`
+	// If provided, get the source from this location in in Google Cloud Storage.
+	StorageSource StorageSourceResponse `pulumi:"storageSource"`
+}
+
+// SourceResponseInput is an input type that accepts SourceResponseArgs and SourceResponseOutput values.
+// You can construct a concrete instance of `SourceResponseInput` via:
+//
+//          SourceResponseArgs{...}
+type SourceResponseInput interface {
+	pulumi.Input
+
+	ToSourceResponseOutput() SourceResponseOutput
+	ToSourceResponseOutputWithContext(context.Context) SourceResponseOutput
+}
+
+// Source describes the location of the source used for the build.
+type SourceResponseArgs struct {
+	// If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
+	AdditionalContexts GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayInput `pulumi:"additionalContexts"`
+	// If provided, the input binary artifacts for the build came from this location.
+	ArtifactStorageSource StorageSourceResponseInput `pulumi:"artifactStorageSource"`
+	// If provided, the source code used for the build came from this location.
+	Context GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseInput `pulumi:"context"`
+	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
+	FileHashes pulumi.StringMapInput `pulumi:"fileHashes"`
+	// If provided, get source from this location in a Cloud Repo.
+	RepoSource RepoSourceResponseInput `pulumi:"repoSource"`
+	// If provided, get the source from this location in in Google Cloud Storage.
+	StorageSource StorageSourceResponseInput `pulumi:"storageSource"`
+}
+
+func (SourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceResponse)(nil)).Elem()
+}
+
+func (i SourceResponseArgs) ToSourceResponseOutput() SourceResponseOutput {
+	return i.ToSourceResponseOutputWithContext(context.Background())
+}
+
+func (i SourceResponseArgs) ToSourceResponseOutputWithContext(ctx context.Context) SourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceResponseOutput)
+}
+
+func (i SourceResponseArgs) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
+	return i.ToSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SourceResponseArgs) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceResponseOutput).ToSourceResponsePtrOutputWithContext(ctx)
+}
+
+// SourceResponsePtrInput is an input type that accepts SourceResponseArgs, SourceResponsePtr and SourceResponsePtrOutput values.
+// You can construct a concrete instance of `SourceResponsePtrInput` via:
+//
+//          SourceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SourceResponsePtrInput interface {
+	pulumi.Input
+
+	ToSourceResponsePtrOutput() SourceResponsePtrOutput
+	ToSourceResponsePtrOutputWithContext(context.Context) SourceResponsePtrOutput
+}
+
+type sourceResponsePtrType SourceResponseArgs
+
+func SourceResponsePtr(v *SourceResponseArgs) SourceResponsePtrInput {
+	return (*sourceResponsePtrType)(v)
+}
+
+func (*sourceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceResponse)(nil)).Elem()
+}
+
+func (i *sourceResponsePtrType) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
+	return i.ToSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *sourceResponsePtrType) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceResponsePtrOutput)
+}
+
+// Source describes the location of the source used for the build.
+type SourceResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceResponse)(nil)).Elem()
+}
+
+func (o SourceResponseOutput) ToSourceResponseOutput() SourceResponseOutput {
+	return o
+}
+
+func (o SourceResponseOutput) ToSourceResponseOutputWithContext(ctx context.Context) SourceResponseOutput {
+	return o
+}
+
+func (o SourceResponseOutput) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
+	return o.ToSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SourceResponseOutput) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
+	return o.ApplyT(func(v SourceResponse) *SourceResponse {
+		return &v
+	}).(SourceResponsePtrOutput)
+}
+
+// If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
+func (o SourceResponseOutput) AdditionalContexts() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput {
+	return o.ApplyT(func(v SourceResponse) []GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse {
+		return v.AdditionalContexts
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput)
+}
+
+// If provided, the input binary artifacts for the build came from this location.
+func (o SourceResponseOutput) ArtifactStorageSource() StorageSourceResponseOutput {
+	return o.ApplyT(func(v SourceResponse) StorageSourceResponse { return v.ArtifactStorageSource }).(StorageSourceResponseOutput)
+}
+
+// If provided, the source code used for the build came from this location.
+func (o SourceResponseOutput) Context() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput {
+	return o.ApplyT(func(v SourceResponse) GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse { return v.Context }).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput)
+}
+
+// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
+func (o SourceResponseOutput) FileHashes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SourceResponse) map[string]string { return v.FileHashes }).(pulumi.StringMapOutput)
+}
+
+// If provided, get source from this location in a Cloud Repo.
+func (o SourceResponseOutput) RepoSource() RepoSourceResponseOutput {
+	return o.ApplyT(func(v SourceResponse) RepoSourceResponse { return v.RepoSource }).(RepoSourceResponseOutput)
+}
+
+// If provided, get the source from this location in in Google Cloud Storage.
+func (o SourceResponseOutput) StorageSource() StorageSourceResponseOutput {
+	return o.ApplyT(func(v SourceResponse) StorageSourceResponse { return v.StorageSource }).(StorageSourceResponseOutput)
+}
+
+type SourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceResponse)(nil)).Elem()
+}
+
+func (o SourceResponsePtrOutput) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
+	return o
+}
+
+func (o SourceResponsePtrOutput) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
+	return o
+}
+
+func (o SourceResponsePtrOutput) Elem() SourceResponseOutput {
+	return o.ApplyT(func(v *SourceResponse) SourceResponse { return *v }).(SourceResponseOutput)
+}
+
+// If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field.
+func (o SourceResponsePtrOutput) AdditionalContexts() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput {
+	return o.ApplyT(func(v *SourceResponse) []GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalContexts
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput)
+}
+
+// If provided, the input binary artifacts for the build came from this location.
+func (o SourceResponsePtrOutput) ArtifactStorageSource() StorageSourceResponsePtrOutput {
+	return o.ApplyT(func(v *SourceResponse) *StorageSourceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ArtifactStorageSource
+	}).(StorageSourceResponsePtrOutput)
+}
+
+// If provided, the source code used for the build came from this location.
+func (o SourceResponsePtrOutput) Context() GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput {
+	return o.ApplyT(func(v *SourceResponse) *GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Context
+	}).(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput)
+}
+
+// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (.tar.gz), the FileHash will be for the single path to that file.
+func (o SourceResponsePtrOutput) FileHashes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SourceResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.FileHashes
+	}).(pulumi.StringMapOutput)
+}
+
+// If provided, get source from this location in a Cloud Repo.
+func (o SourceResponsePtrOutput) RepoSource() RepoSourceResponsePtrOutput {
+	return o.ApplyT(func(v *SourceResponse) *RepoSourceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.RepoSource
+	}).(RepoSourceResponsePtrOutput)
+}
+
+// If provided, get the source from this location in in Google Cloud Storage.
+func (o SourceResponsePtrOutput) StorageSource() StorageSourceResponsePtrOutput {
+	return o.ApplyT(func(v *SourceResponse) *StorageSourceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageSource
+	}).(StorageSourceResponsePtrOutput)
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type Status struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -6896,6 +13300,178 @@ func (o StatusPtrOutput) Message() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponse struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code int `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message string `pulumi:"message"`
+}
+
+// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
+// You can construct a concrete instance of `StatusResponseInput` via:
+//
+//          StatusResponseArgs{...}
+type StatusResponseInput interface {
+	pulumi.Input
+
+	ToStatusResponseOutput() StatusResponseOutput
+	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponseArgs struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntInput `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (StatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
+	return i.ToStatusResponseOutputWithContext(context.Background())
+}
+
+func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
+}
+
+func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
+}
+
+// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
+// You can construct a concrete instance of `StatusResponsePtrInput` via:
+//
+//          StatusResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type StatusResponsePtrInput interface {
+	pulumi.Input
+
+	ToStatusResponsePtrOutput() StatusResponsePtrOutput
+	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
+}
+
+type statusResponsePtrType StatusResponseArgs
+
+func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
+	return (*statusResponsePtrType)(v)
+}
+
+func (*statusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
+}
+
+func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+		return &v
+	}).(StatusResponsePtrOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type StatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o
+}
+
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o
+}
+
+func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
+	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *StatusResponse) []map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
 // StorageSource describes the location of the source in an archive file in Google Cloud Storage.
 type StorageSource struct {
 	// Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -7065,6 +13641,178 @@ func (o StorageSourcePtrOutput) Object() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+// StorageSource describes the location of the source in an archive file in Google Cloud Storage.
+type StorageSourceResponse struct {
+	// Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+	Bucket string `pulumi:"bucket"`
+	// Google Cloud Storage generation for the object.
+	Generation string `pulumi:"generation"`
+	// Google Cloud Storage object containing source.
+	Object string `pulumi:"object"`
+}
+
+// StorageSourceResponseInput is an input type that accepts StorageSourceResponseArgs and StorageSourceResponseOutput values.
+// You can construct a concrete instance of `StorageSourceResponseInput` via:
+//
+//          StorageSourceResponseArgs{...}
+type StorageSourceResponseInput interface {
+	pulumi.Input
+
+	ToStorageSourceResponseOutput() StorageSourceResponseOutput
+	ToStorageSourceResponseOutputWithContext(context.Context) StorageSourceResponseOutput
+}
+
+// StorageSource describes the location of the source in an archive file in Google Cloud Storage.
+type StorageSourceResponseArgs struct {
+	// Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Google Cloud Storage generation for the object.
+	Generation pulumi.StringInput `pulumi:"generation"`
+	// Google Cloud Storage object containing source.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (StorageSourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageSourceResponse)(nil)).Elem()
+}
+
+func (i StorageSourceResponseArgs) ToStorageSourceResponseOutput() StorageSourceResponseOutput {
+	return i.ToStorageSourceResponseOutputWithContext(context.Background())
+}
+
+func (i StorageSourceResponseArgs) ToStorageSourceResponseOutputWithContext(ctx context.Context) StorageSourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceResponseOutput)
+}
+
+func (i StorageSourceResponseArgs) ToStorageSourceResponsePtrOutput() StorageSourceResponsePtrOutput {
+	return i.ToStorageSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i StorageSourceResponseArgs) ToStorageSourceResponsePtrOutputWithContext(ctx context.Context) StorageSourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceResponseOutput).ToStorageSourceResponsePtrOutputWithContext(ctx)
+}
+
+// StorageSourceResponsePtrInput is an input type that accepts StorageSourceResponseArgs, StorageSourceResponsePtr and StorageSourceResponsePtrOutput values.
+// You can construct a concrete instance of `StorageSourceResponsePtrInput` via:
+//
+//          StorageSourceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type StorageSourceResponsePtrInput interface {
+	pulumi.Input
+
+	ToStorageSourceResponsePtrOutput() StorageSourceResponsePtrOutput
+	ToStorageSourceResponsePtrOutputWithContext(context.Context) StorageSourceResponsePtrOutput
+}
+
+type storageSourceResponsePtrType StorageSourceResponseArgs
+
+func StorageSourceResponsePtr(v *StorageSourceResponseArgs) StorageSourceResponsePtrInput {
+	return (*storageSourceResponsePtrType)(v)
+}
+
+func (*storageSourceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageSourceResponse)(nil)).Elem()
+}
+
+func (i *storageSourceResponsePtrType) ToStorageSourceResponsePtrOutput() StorageSourceResponsePtrOutput {
+	return i.ToStorageSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *storageSourceResponsePtrType) ToStorageSourceResponsePtrOutputWithContext(ctx context.Context) StorageSourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceResponsePtrOutput)
+}
+
+// StorageSource describes the location of the source in an archive file in Google Cloud Storage.
+type StorageSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageSourceResponse)(nil)).Elem()
+}
+
+func (o StorageSourceResponseOutput) ToStorageSourceResponseOutput() StorageSourceResponseOutput {
+	return o
+}
+
+func (o StorageSourceResponseOutput) ToStorageSourceResponseOutputWithContext(ctx context.Context) StorageSourceResponseOutput {
+	return o
+}
+
+func (o StorageSourceResponseOutput) ToStorageSourceResponsePtrOutput() StorageSourceResponsePtrOutput {
+	return o.ToStorageSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o StorageSourceResponseOutput) ToStorageSourceResponsePtrOutputWithContext(ctx context.Context) StorageSourceResponsePtrOutput {
+	return o.ApplyT(func(v StorageSourceResponse) *StorageSourceResponse {
+		return &v
+	}).(StorageSourceResponsePtrOutput)
+}
+
+// Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+func (o StorageSourceResponseOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageSourceResponse) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Google Cloud Storage generation for the object.
+func (o StorageSourceResponseOutput) Generation() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageSourceResponse) string { return v.Generation }).(pulumi.StringOutput)
+}
+
+// Google Cloud Storage object containing source.
+func (o StorageSourceResponseOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageSourceResponse) string { return v.Object }).(pulumi.StringOutput)
+}
+
+type StorageSourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageSourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageSourceResponse)(nil)).Elem()
+}
+
+func (o StorageSourceResponsePtrOutput) ToStorageSourceResponsePtrOutput() StorageSourceResponsePtrOutput {
+	return o
+}
+
+func (o StorageSourceResponsePtrOutput) ToStorageSourceResponsePtrOutputWithContext(ctx context.Context) StorageSourceResponsePtrOutput {
+	return o
+}
+
+func (o StorageSourceResponsePtrOutput) Elem() StorageSourceResponseOutput {
+	return o.ApplyT(func(v *StorageSourceResponse) StorageSourceResponse { return *v }).(StorageSourceResponseOutput)
+}
+
+// Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+func (o StorageSourceResponsePtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage generation for the object.
+func (o StorageSourceResponsePtrOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage object containing source.
+func (o StorageSourceResponsePtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7304,6 +14052,242 @@ func (o UpgradeDistributionArrayOutput) Index(i pulumi.IntInput) UpgradeDistribu
 	}).(UpgradeDistributionOutput)
 }
 
+// The Upgrade Distribution represents metadata about the Upgrade for each operating system (CPE). Some distributions have additional metadata around updates, classifying them into various categories and severities.
+type UpgradeDistributionResponse struct {
+	// The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed.
+	Classification string `pulumi:"classification"`
+	// Required - The specific operating system this metadata applies to. See https://cpe.mitre.org/specification/.
+	CpeUri string `pulumi:"cpeUri"`
+	// The cve that would be resolved by this upgrade.
+	Cve []string `pulumi:"cve"`
+	// The severity as specified by the upstream operating system.
+	Severity string `pulumi:"severity"`
+}
+
+// UpgradeDistributionResponseInput is an input type that accepts UpgradeDistributionResponseArgs and UpgradeDistributionResponseOutput values.
+// You can construct a concrete instance of `UpgradeDistributionResponseInput` via:
+//
+//          UpgradeDistributionResponseArgs{...}
+type UpgradeDistributionResponseInput interface {
+	pulumi.Input
+
+	ToUpgradeDistributionResponseOutput() UpgradeDistributionResponseOutput
+	ToUpgradeDistributionResponseOutputWithContext(context.Context) UpgradeDistributionResponseOutput
+}
+
+// The Upgrade Distribution represents metadata about the Upgrade for each operating system (CPE). Some distributions have additional metadata around updates, classifying them into various categories and severities.
+type UpgradeDistributionResponseArgs struct {
+	// The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed.
+	Classification pulumi.StringInput `pulumi:"classification"`
+	// Required - The specific operating system this metadata applies to. See https://cpe.mitre.org/specification/.
+	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
+	// The cve that would be resolved by this upgrade.
+	Cve pulumi.StringArrayInput `pulumi:"cve"`
+	// The severity as specified by the upstream operating system.
+	Severity pulumi.StringInput `pulumi:"severity"`
+}
+
+func (UpgradeDistributionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeDistributionResponse)(nil)).Elem()
+}
+
+func (i UpgradeDistributionResponseArgs) ToUpgradeDistributionResponseOutput() UpgradeDistributionResponseOutput {
+	return i.ToUpgradeDistributionResponseOutputWithContext(context.Background())
+}
+
+func (i UpgradeDistributionResponseArgs) ToUpgradeDistributionResponseOutputWithContext(ctx context.Context) UpgradeDistributionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeDistributionResponseOutput)
+}
+
+func (i UpgradeDistributionResponseArgs) ToUpgradeDistributionResponsePtrOutput() UpgradeDistributionResponsePtrOutput {
+	return i.ToUpgradeDistributionResponsePtrOutputWithContext(context.Background())
+}
+
+func (i UpgradeDistributionResponseArgs) ToUpgradeDistributionResponsePtrOutputWithContext(ctx context.Context) UpgradeDistributionResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeDistributionResponseOutput).ToUpgradeDistributionResponsePtrOutputWithContext(ctx)
+}
+
+// UpgradeDistributionResponsePtrInput is an input type that accepts UpgradeDistributionResponseArgs, UpgradeDistributionResponsePtr and UpgradeDistributionResponsePtrOutput values.
+// You can construct a concrete instance of `UpgradeDistributionResponsePtrInput` via:
+//
+//          UpgradeDistributionResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type UpgradeDistributionResponsePtrInput interface {
+	pulumi.Input
+
+	ToUpgradeDistributionResponsePtrOutput() UpgradeDistributionResponsePtrOutput
+	ToUpgradeDistributionResponsePtrOutputWithContext(context.Context) UpgradeDistributionResponsePtrOutput
+}
+
+type upgradeDistributionResponsePtrType UpgradeDistributionResponseArgs
+
+func UpgradeDistributionResponsePtr(v *UpgradeDistributionResponseArgs) UpgradeDistributionResponsePtrInput {
+	return (*upgradeDistributionResponsePtrType)(v)
+}
+
+func (*upgradeDistributionResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradeDistributionResponse)(nil)).Elem()
+}
+
+func (i *upgradeDistributionResponsePtrType) ToUpgradeDistributionResponsePtrOutput() UpgradeDistributionResponsePtrOutput {
+	return i.ToUpgradeDistributionResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *upgradeDistributionResponsePtrType) ToUpgradeDistributionResponsePtrOutputWithContext(ctx context.Context) UpgradeDistributionResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeDistributionResponsePtrOutput)
+}
+
+// UpgradeDistributionResponseArrayInput is an input type that accepts UpgradeDistributionResponseArray and UpgradeDistributionResponseArrayOutput values.
+// You can construct a concrete instance of `UpgradeDistributionResponseArrayInput` via:
+//
+//          UpgradeDistributionResponseArray{ UpgradeDistributionResponseArgs{...} }
+type UpgradeDistributionResponseArrayInput interface {
+	pulumi.Input
+
+	ToUpgradeDistributionResponseArrayOutput() UpgradeDistributionResponseArrayOutput
+	ToUpgradeDistributionResponseArrayOutputWithContext(context.Context) UpgradeDistributionResponseArrayOutput
+}
+
+type UpgradeDistributionResponseArray []UpgradeDistributionResponseInput
+
+func (UpgradeDistributionResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UpgradeDistributionResponse)(nil)).Elem()
+}
+
+func (i UpgradeDistributionResponseArray) ToUpgradeDistributionResponseArrayOutput() UpgradeDistributionResponseArrayOutput {
+	return i.ToUpgradeDistributionResponseArrayOutputWithContext(context.Background())
+}
+
+func (i UpgradeDistributionResponseArray) ToUpgradeDistributionResponseArrayOutputWithContext(ctx context.Context) UpgradeDistributionResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeDistributionResponseArrayOutput)
+}
+
+// The Upgrade Distribution represents metadata about the Upgrade for each operating system (CPE). Some distributions have additional metadata around updates, classifying them into various categories and severities.
+type UpgradeDistributionResponseOutput struct{ *pulumi.OutputState }
+
+func (UpgradeDistributionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeDistributionResponse)(nil)).Elem()
+}
+
+func (o UpgradeDistributionResponseOutput) ToUpgradeDistributionResponseOutput() UpgradeDistributionResponseOutput {
+	return o
+}
+
+func (o UpgradeDistributionResponseOutput) ToUpgradeDistributionResponseOutputWithContext(ctx context.Context) UpgradeDistributionResponseOutput {
+	return o
+}
+
+func (o UpgradeDistributionResponseOutput) ToUpgradeDistributionResponsePtrOutput() UpgradeDistributionResponsePtrOutput {
+	return o.ToUpgradeDistributionResponsePtrOutputWithContext(context.Background())
+}
+
+func (o UpgradeDistributionResponseOutput) ToUpgradeDistributionResponsePtrOutputWithContext(ctx context.Context) UpgradeDistributionResponsePtrOutput {
+	return o.ApplyT(func(v UpgradeDistributionResponse) *UpgradeDistributionResponse {
+		return &v
+	}).(UpgradeDistributionResponsePtrOutput)
+}
+
+// The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed.
+func (o UpgradeDistributionResponseOutput) Classification() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeDistributionResponse) string { return v.Classification }).(pulumi.StringOutput)
+}
+
+// Required - The specific operating system this metadata applies to. See https://cpe.mitre.org/specification/.
+func (o UpgradeDistributionResponseOutput) CpeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeDistributionResponse) string { return v.CpeUri }).(pulumi.StringOutput)
+}
+
+// The cve that would be resolved by this upgrade.
+func (o UpgradeDistributionResponseOutput) Cve() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UpgradeDistributionResponse) []string { return v.Cve }).(pulumi.StringArrayOutput)
+}
+
+// The severity as specified by the upstream operating system.
+func (o UpgradeDistributionResponseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeDistributionResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type UpgradeDistributionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UpgradeDistributionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradeDistributionResponse)(nil)).Elem()
+}
+
+func (o UpgradeDistributionResponsePtrOutput) ToUpgradeDistributionResponsePtrOutput() UpgradeDistributionResponsePtrOutput {
+	return o
+}
+
+func (o UpgradeDistributionResponsePtrOutput) ToUpgradeDistributionResponsePtrOutputWithContext(ctx context.Context) UpgradeDistributionResponsePtrOutput {
+	return o
+}
+
+func (o UpgradeDistributionResponsePtrOutput) Elem() UpgradeDistributionResponseOutput {
+	return o.ApplyT(func(v *UpgradeDistributionResponse) UpgradeDistributionResponse { return *v }).(UpgradeDistributionResponseOutput)
+}
+
+// The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed.
+func (o UpgradeDistributionResponsePtrOutput) Classification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpgradeDistributionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Classification
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required - The specific operating system this metadata applies to. See https://cpe.mitre.org/specification/.
+func (o UpgradeDistributionResponsePtrOutput) CpeUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpgradeDistributionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CpeUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The cve that would be resolved by this upgrade.
+func (o UpgradeDistributionResponsePtrOutput) Cve() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *UpgradeDistributionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Cve
+	}).(pulumi.StringArrayOutput)
+}
+
+// The severity as specified by the upstream operating system.
+func (o UpgradeDistributionResponsePtrOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpgradeDistributionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Severity
+	}).(pulumi.StringPtrOutput)
+}
+
+type UpgradeDistributionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (UpgradeDistributionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UpgradeDistributionResponse)(nil)).Elem()
+}
+
+func (o UpgradeDistributionResponseArrayOutput) ToUpgradeDistributionResponseArrayOutput() UpgradeDistributionResponseArrayOutput {
+	return o
+}
+
+func (o UpgradeDistributionResponseArrayOutput) ToUpgradeDistributionResponseArrayOutputWithContext(ctx context.Context) UpgradeDistributionResponseArrayOutput {
+	return o
+}
+
+func (o UpgradeDistributionResponseArrayOutput) Index(i pulumi.IntInput) UpgradeDistributionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UpgradeDistributionResponse {
+		return vs[0].([]UpgradeDistributionResponse)[vs[1].(int)]
+	}).(UpgradeDistributionResponseOutput)
+}
+
 // An Upgrade Note represents a potential upgrade of a package to a given version. For each package version combination (i.e. bash 4.0, bash 4.1, bash 4.1.2), there will be a Upgrade Note.
 type UpgradeNote struct {
 	// Metadata about the upgrade for each specific operating system.
@@ -7476,6 +14460,178 @@ func (o UpgradeNotePtrOutput) Version() VersionPtrOutput {
 	}).(VersionPtrOutput)
 }
 
+// An Upgrade Note represents a potential upgrade of a package to a given version. For each package version combination (i.e. bash 4.0, bash 4.1, bash 4.1.2), there will be a Upgrade Note.
+type UpgradeNoteResponse struct {
+	// Metadata about the upgrade for each specific operating system.
+	Distributions []UpgradeDistributionResponse `pulumi:"distributions"`
+	// Required - The package this Upgrade is for.
+	Package string `pulumi:"package"`
+	// Required - The version of the package in machine + human readable form.
+	Version VersionResponse `pulumi:"version"`
+}
+
+// UpgradeNoteResponseInput is an input type that accepts UpgradeNoteResponseArgs and UpgradeNoteResponseOutput values.
+// You can construct a concrete instance of `UpgradeNoteResponseInput` via:
+//
+//          UpgradeNoteResponseArgs{...}
+type UpgradeNoteResponseInput interface {
+	pulumi.Input
+
+	ToUpgradeNoteResponseOutput() UpgradeNoteResponseOutput
+	ToUpgradeNoteResponseOutputWithContext(context.Context) UpgradeNoteResponseOutput
+}
+
+// An Upgrade Note represents a potential upgrade of a package to a given version. For each package version combination (i.e. bash 4.0, bash 4.1, bash 4.1.2), there will be a Upgrade Note.
+type UpgradeNoteResponseArgs struct {
+	// Metadata about the upgrade for each specific operating system.
+	Distributions UpgradeDistributionResponseArrayInput `pulumi:"distributions"`
+	// Required - The package this Upgrade is for.
+	Package pulumi.StringInput `pulumi:"package"`
+	// Required - The version of the package in machine + human readable form.
+	Version VersionResponseInput `pulumi:"version"`
+}
+
+func (UpgradeNoteResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeNoteResponse)(nil)).Elem()
+}
+
+func (i UpgradeNoteResponseArgs) ToUpgradeNoteResponseOutput() UpgradeNoteResponseOutput {
+	return i.ToUpgradeNoteResponseOutputWithContext(context.Background())
+}
+
+func (i UpgradeNoteResponseArgs) ToUpgradeNoteResponseOutputWithContext(ctx context.Context) UpgradeNoteResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeNoteResponseOutput)
+}
+
+func (i UpgradeNoteResponseArgs) ToUpgradeNoteResponsePtrOutput() UpgradeNoteResponsePtrOutput {
+	return i.ToUpgradeNoteResponsePtrOutputWithContext(context.Background())
+}
+
+func (i UpgradeNoteResponseArgs) ToUpgradeNoteResponsePtrOutputWithContext(ctx context.Context) UpgradeNoteResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeNoteResponseOutput).ToUpgradeNoteResponsePtrOutputWithContext(ctx)
+}
+
+// UpgradeNoteResponsePtrInput is an input type that accepts UpgradeNoteResponseArgs, UpgradeNoteResponsePtr and UpgradeNoteResponsePtrOutput values.
+// You can construct a concrete instance of `UpgradeNoteResponsePtrInput` via:
+//
+//          UpgradeNoteResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type UpgradeNoteResponsePtrInput interface {
+	pulumi.Input
+
+	ToUpgradeNoteResponsePtrOutput() UpgradeNoteResponsePtrOutput
+	ToUpgradeNoteResponsePtrOutputWithContext(context.Context) UpgradeNoteResponsePtrOutput
+}
+
+type upgradeNoteResponsePtrType UpgradeNoteResponseArgs
+
+func UpgradeNoteResponsePtr(v *UpgradeNoteResponseArgs) UpgradeNoteResponsePtrInput {
+	return (*upgradeNoteResponsePtrType)(v)
+}
+
+func (*upgradeNoteResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradeNoteResponse)(nil)).Elem()
+}
+
+func (i *upgradeNoteResponsePtrType) ToUpgradeNoteResponsePtrOutput() UpgradeNoteResponsePtrOutput {
+	return i.ToUpgradeNoteResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *upgradeNoteResponsePtrType) ToUpgradeNoteResponsePtrOutputWithContext(ctx context.Context) UpgradeNoteResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeNoteResponsePtrOutput)
+}
+
+// An Upgrade Note represents a potential upgrade of a package to a given version. For each package version combination (i.e. bash 4.0, bash 4.1, bash 4.1.2), there will be a Upgrade Note.
+type UpgradeNoteResponseOutput struct{ *pulumi.OutputState }
+
+func (UpgradeNoteResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeNoteResponse)(nil)).Elem()
+}
+
+func (o UpgradeNoteResponseOutput) ToUpgradeNoteResponseOutput() UpgradeNoteResponseOutput {
+	return o
+}
+
+func (o UpgradeNoteResponseOutput) ToUpgradeNoteResponseOutputWithContext(ctx context.Context) UpgradeNoteResponseOutput {
+	return o
+}
+
+func (o UpgradeNoteResponseOutput) ToUpgradeNoteResponsePtrOutput() UpgradeNoteResponsePtrOutput {
+	return o.ToUpgradeNoteResponsePtrOutputWithContext(context.Background())
+}
+
+func (o UpgradeNoteResponseOutput) ToUpgradeNoteResponsePtrOutputWithContext(ctx context.Context) UpgradeNoteResponsePtrOutput {
+	return o.ApplyT(func(v UpgradeNoteResponse) *UpgradeNoteResponse {
+		return &v
+	}).(UpgradeNoteResponsePtrOutput)
+}
+
+// Metadata about the upgrade for each specific operating system.
+func (o UpgradeNoteResponseOutput) Distributions() UpgradeDistributionResponseArrayOutput {
+	return o.ApplyT(func(v UpgradeNoteResponse) []UpgradeDistributionResponse { return v.Distributions }).(UpgradeDistributionResponseArrayOutput)
+}
+
+// Required - The package this Upgrade is for.
+func (o UpgradeNoteResponseOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeNoteResponse) string { return v.Package }).(pulumi.StringOutput)
+}
+
+// Required - The version of the package in machine + human readable form.
+func (o UpgradeNoteResponseOutput) Version() VersionResponseOutput {
+	return o.ApplyT(func(v UpgradeNoteResponse) VersionResponse { return v.Version }).(VersionResponseOutput)
+}
+
+type UpgradeNoteResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UpgradeNoteResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradeNoteResponse)(nil)).Elem()
+}
+
+func (o UpgradeNoteResponsePtrOutput) ToUpgradeNoteResponsePtrOutput() UpgradeNoteResponsePtrOutput {
+	return o
+}
+
+func (o UpgradeNoteResponsePtrOutput) ToUpgradeNoteResponsePtrOutputWithContext(ctx context.Context) UpgradeNoteResponsePtrOutput {
+	return o
+}
+
+func (o UpgradeNoteResponsePtrOutput) Elem() UpgradeNoteResponseOutput {
+	return o.ApplyT(func(v *UpgradeNoteResponse) UpgradeNoteResponse { return *v }).(UpgradeNoteResponseOutput)
+}
+
+// Metadata about the upgrade for each specific operating system.
+func (o UpgradeNoteResponsePtrOutput) Distributions() UpgradeDistributionResponseArrayOutput {
+	return o.ApplyT(func(v *UpgradeNoteResponse) []UpgradeDistributionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Distributions
+	}).(UpgradeDistributionResponseArrayOutput)
+}
+
+// Required - The package this Upgrade is for.
+func (o UpgradeNoteResponsePtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpgradeNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required - The version of the package in machine + human readable form.
+func (o UpgradeNoteResponsePtrOutput) Version() VersionResponsePtrOutput {
+	return o.ApplyT(func(v *UpgradeNoteResponse) *VersionResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(VersionResponsePtrOutput)
+}
+
 // An Upgrade Occurrence represents that a specific resource_url could install a specific upgrade. This presence is supplied via local sources (i.e. it is present in the mirror and the running system has noticed its availability).
 type UpgradeOccurrence struct {
 	// Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
@@ -7646,6 +14802,178 @@ func (o UpgradeOccurrencePtrOutput) ParsedVersion() VersionPtrOutput {
 		}
 		return v.ParsedVersion
 	}).(VersionPtrOutput)
+}
+
+// An Upgrade Occurrence represents that a specific resource_url could install a specific upgrade. This presence is supplied via local sources (i.e. it is present in the mirror and the running system has noticed its availability).
+type UpgradeOccurrenceResponse struct {
+	// Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
+	Distribution UpgradeDistributionResponse `pulumi:"distribution"`
+	// Required - The package this Upgrade is for.
+	Package string `pulumi:"package"`
+	// Required - The version of the package in a machine + human readable form.
+	ParsedVersion VersionResponse `pulumi:"parsedVersion"`
+}
+
+// UpgradeOccurrenceResponseInput is an input type that accepts UpgradeOccurrenceResponseArgs and UpgradeOccurrenceResponseOutput values.
+// You can construct a concrete instance of `UpgradeOccurrenceResponseInput` via:
+//
+//          UpgradeOccurrenceResponseArgs{...}
+type UpgradeOccurrenceResponseInput interface {
+	pulumi.Input
+
+	ToUpgradeOccurrenceResponseOutput() UpgradeOccurrenceResponseOutput
+	ToUpgradeOccurrenceResponseOutputWithContext(context.Context) UpgradeOccurrenceResponseOutput
+}
+
+// An Upgrade Occurrence represents that a specific resource_url could install a specific upgrade. This presence is supplied via local sources (i.e. it is present in the mirror and the running system has noticed its availability).
+type UpgradeOccurrenceResponseArgs struct {
+	// Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
+	Distribution UpgradeDistributionResponseInput `pulumi:"distribution"`
+	// Required - The package this Upgrade is for.
+	Package pulumi.StringInput `pulumi:"package"`
+	// Required - The version of the package in a machine + human readable form.
+	ParsedVersion VersionResponseInput `pulumi:"parsedVersion"`
+}
+
+func (UpgradeOccurrenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeOccurrenceResponse)(nil)).Elem()
+}
+
+func (i UpgradeOccurrenceResponseArgs) ToUpgradeOccurrenceResponseOutput() UpgradeOccurrenceResponseOutput {
+	return i.ToUpgradeOccurrenceResponseOutputWithContext(context.Background())
+}
+
+func (i UpgradeOccurrenceResponseArgs) ToUpgradeOccurrenceResponseOutputWithContext(ctx context.Context) UpgradeOccurrenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeOccurrenceResponseOutput)
+}
+
+func (i UpgradeOccurrenceResponseArgs) ToUpgradeOccurrenceResponsePtrOutput() UpgradeOccurrenceResponsePtrOutput {
+	return i.ToUpgradeOccurrenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i UpgradeOccurrenceResponseArgs) ToUpgradeOccurrenceResponsePtrOutputWithContext(ctx context.Context) UpgradeOccurrenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeOccurrenceResponseOutput).ToUpgradeOccurrenceResponsePtrOutputWithContext(ctx)
+}
+
+// UpgradeOccurrenceResponsePtrInput is an input type that accepts UpgradeOccurrenceResponseArgs, UpgradeOccurrenceResponsePtr and UpgradeOccurrenceResponsePtrOutput values.
+// You can construct a concrete instance of `UpgradeOccurrenceResponsePtrInput` via:
+//
+//          UpgradeOccurrenceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type UpgradeOccurrenceResponsePtrInput interface {
+	pulumi.Input
+
+	ToUpgradeOccurrenceResponsePtrOutput() UpgradeOccurrenceResponsePtrOutput
+	ToUpgradeOccurrenceResponsePtrOutputWithContext(context.Context) UpgradeOccurrenceResponsePtrOutput
+}
+
+type upgradeOccurrenceResponsePtrType UpgradeOccurrenceResponseArgs
+
+func UpgradeOccurrenceResponsePtr(v *UpgradeOccurrenceResponseArgs) UpgradeOccurrenceResponsePtrInput {
+	return (*upgradeOccurrenceResponsePtrType)(v)
+}
+
+func (*upgradeOccurrenceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradeOccurrenceResponse)(nil)).Elem()
+}
+
+func (i *upgradeOccurrenceResponsePtrType) ToUpgradeOccurrenceResponsePtrOutput() UpgradeOccurrenceResponsePtrOutput {
+	return i.ToUpgradeOccurrenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *upgradeOccurrenceResponsePtrType) ToUpgradeOccurrenceResponsePtrOutputWithContext(ctx context.Context) UpgradeOccurrenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeOccurrenceResponsePtrOutput)
+}
+
+// An Upgrade Occurrence represents that a specific resource_url could install a specific upgrade. This presence is supplied via local sources (i.e. it is present in the mirror and the running system has noticed its availability).
+type UpgradeOccurrenceResponseOutput struct{ *pulumi.OutputState }
+
+func (UpgradeOccurrenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeOccurrenceResponse)(nil)).Elem()
+}
+
+func (o UpgradeOccurrenceResponseOutput) ToUpgradeOccurrenceResponseOutput() UpgradeOccurrenceResponseOutput {
+	return o
+}
+
+func (o UpgradeOccurrenceResponseOutput) ToUpgradeOccurrenceResponseOutputWithContext(ctx context.Context) UpgradeOccurrenceResponseOutput {
+	return o
+}
+
+func (o UpgradeOccurrenceResponseOutput) ToUpgradeOccurrenceResponsePtrOutput() UpgradeOccurrenceResponsePtrOutput {
+	return o.ToUpgradeOccurrenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o UpgradeOccurrenceResponseOutput) ToUpgradeOccurrenceResponsePtrOutputWithContext(ctx context.Context) UpgradeOccurrenceResponsePtrOutput {
+	return o.ApplyT(func(v UpgradeOccurrenceResponse) *UpgradeOccurrenceResponse {
+		return &v
+	}).(UpgradeOccurrenceResponsePtrOutput)
+}
+
+// Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
+func (o UpgradeOccurrenceResponseOutput) Distribution() UpgradeDistributionResponseOutput {
+	return o.ApplyT(func(v UpgradeOccurrenceResponse) UpgradeDistributionResponse { return v.Distribution }).(UpgradeDistributionResponseOutput)
+}
+
+// Required - The package this Upgrade is for.
+func (o UpgradeOccurrenceResponseOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeOccurrenceResponse) string { return v.Package }).(pulumi.StringOutput)
+}
+
+// Required - The version of the package in a machine + human readable form.
+func (o UpgradeOccurrenceResponseOutput) ParsedVersion() VersionResponseOutput {
+	return o.ApplyT(func(v UpgradeOccurrenceResponse) VersionResponse { return v.ParsedVersion }).(VersionResponseOutput)
+}
+
+type UpgradeOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UpgradeOccurrenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradeOccurrenceResponse)(nil)).Elem()
+}
+
+func (o UpgradeOccurrenceResponsePtrOutput) ToUpgradeOccurrenceResponsePtrOutput() UpgradeOccurrenceResponsePtrOutput {
+	return o
+}
+
+func (o UpgradeOccurrenceResponsePtrOutput) ToUpgradeOccurrenceResponsePtrOutputWithContext(ctx context.Context) UpgradeOccurrenceResponsePtrOutput {
+	return o
+}
+
+func (o UpgradeOccurrenceResponsePtrOutput) Elem() UpgradeOccurrenceResponseOutput {
+	return o.ApplyT(func(v *UpgradeOccurrenceResponse) UpgradeOccurrenceResponse { return *v }).(UpgradeOccurrenceResponseOutput)
+}
+
+// Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
+func (o UpgradeOccurrenceResponsePtrOutput) Distribution() UpgradeDistributionResponsePtrOutput {
+	return o.ApplyT(func(v *UpgradeOccurrenceResponse) *UpgradeDistributionResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Distribution
+	}).(UpgradeDistributionResponsePtrOutput)
+}
+
+// Required - The package this Upgrade is for.
+func (o UpgradeOccurrenceResponsePtrOutput) Package() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpgradeOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Package
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required - The version of the package in a machine + human readable form.
+func (o UpgradeOccurrenceResponsePtrOutput) ParsedVersion() VersionResponsePtrOutput {
+	return o.ApplyT(func(v *UpgradeOccurrenceResponse) *VersionResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ParsedVersion
+	}).(VersionResponsePtrOutput)
 }
 
 // Version contains structured information about the version of the package. For a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/debian-packages-version-convention For a discussion of this in Redhat/Fedora/Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
@@ -7858,15 +15186,225 @@ func (o VersionPtrOutput) Revision() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Version contains structured information about the version of the package. For a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/debian-packages-version-convention For a discussion of this in Redhat/Fedora/Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
+type VersionResponse struct {
+	// Used to correct mistakes in the version numbering scheme.
+	Epoch int `pulumi:"epoch"`
+	// Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
+	Inclusive bool `pulumi:"inclusive"`
+	// Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
+	Kind string `pulumi:"kind"`
+	// The main part of the version name.
+	Name string `pulumi:"name"`
+	// The iteration of the package build from the above version.
+	Revision string `pulumi:"revision"`
+}
+
+// VersionResponseInput is an input type that accepts VersionResponseArgs and VersionResponseOutput values.
+// You can construct a concrete instance of `VersionResponseInput` via:
+//
+//          VersionResponseArgs{...}
+type VersionResponseInput interface {
+	pulumi.Input
+
+	ToVersionResponseOutput() VersionResponseOutput
+	ToVersionResponseOutputWithContext(context.Context) VersionResponseOutput
+}
+
+// Version contains structured information about the version of the package. For a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/debian-packages-version-convention For a discussion of this in Redhat/Fedora/Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
+type VersionResponseArgs struct {
+	// Used to correct mistakes in the version numbering scheme.
+	Epoch pulumi.IntInput `pulumi:"epoch"`
+	// Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
+	Inclusive pulumi.BoolInput `pulumi:"inclusive"`
+	// Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The main part of the version name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The iteration of the package build from the above version.
+	Revision pulumi.StringInput `pulumi:"revision"`
+}
+
+func (VersionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VersionResponse)(nil)).Elem()
+}
+
+func (i VersionResponseArgs) ToVersionResponseOutput() VersionResponseOutput {
+	return i.ToVersionResponseOutputWithContext(context.Background())
+}
+
+func (i VersionResponseArgs) ToVersionResponseOutputWithContext(ctx context.Context) VersionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VersionResponseOutput)
+}
+
+func (i VersionResponseArgs) ToVersionResponsePtrOutput() VersionResponsePtrOutput {
+	return i.ToVersionResponsePtrOutputWithContext(context.Background())
+}
+
+func (i VersionResponseArgs) ToVersionResponsePtrOutputWithContext(ctx context.Context) VersionResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VersionResponseOutput).ToVersionResponsePtrOutputWithContext(ctx)
+}
+
+// VersionResponsePtrInput is an input type that accepts VersionResponseArgs, VersionResponsePtr and VersionResponsePtrOutput values.
+// You can construct a concrete instance of `VersionResponsePtrInput` via:
+//
+//          VersionResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type VersionResponsePtrInput interface {
+	pulumi.Input
+
+	ToVersionResponsePtrOutput() VersionResponsePtrOutput
+	ToVersionResponsePtrOutputWithContext(context.Context) VersionResponsePtrOutput
+}
+
+type versionResponsePtrType VersionResponseArgs
+
+func VersionResponsePtr(v *VersionResponseArgs) VersionResponsePtrInput {
+	return (*versionResponsePtrType)(v)
+}
+
+func (*versionResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VersionResponse)(nil)).Elem()
+}
+
+func (i *versionResponsePtrType) ToVersionResponsePtrOutput() VersionResponsePtrOutput {
+	return i.ToVersionResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *versionResponsePtrType) ToVersionResponsePtrOutputWithContext(ctx context.Context) VersionResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VersionResponsePtrOutput)
+}
+
+// Version contains structured information about the version of the package. For a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/debian-packages-version-convention For a discussion of this in Redhat/Fedora/Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
+type VersionResponseOutput struct{ *pulumi.OutputState }
+
+func (VersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VersionResponse)(nil)).Elem()
+}
+
+func (o VersionResponseOutput) ToVersionResponseOutput() VersionResponseOutput {
+	return o
+}
+
+func (o VersionResponseOutput) ToVersionResponseOutputWithContext(ctx context.Context) VersionResponseOutput {
+	return o
+}
+
+func (o VersionResponseOutput) ToVersionResponsePtrOutput() VersionResponsePtrOutput {
+	return o.ToVersionResponsePtrOutputWithContext(context.Background())
+}
+
+func (o VersionResponseOutput) ToVersionResponsePtrOutputWithContext(ctx context.Context) VersionResponsePtrOutput {
+	return o.ApplyT(func(v VersionResponse) *VersionResponse {
+		return &v
+	}).(VersionResponsePtrOutput)
+}
+
+// Used to correct mistakes in the version numbering scheme.
+func (o VersionResponseOutput) Epoch() pulumi.IntOutput {
+	return o.ApplyT(func(v VersionResponse) int { return v.Epoch }).(pulumi.IntOutput)
+}
+
+// Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
+func (o VersionResponseOutput) Inclusive() pulumi.BoolOutput {
+	return o.ApplyT(func(v VersionResponse) bool { return v.Inclusive }).(pulumi.BoolOutput)
+}
+
+// Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
+func (o VersionResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v VersionResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The main part of the version name.
+func (o VersionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VersionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The iteration of the package build from the above version.
+func (o VersionResponseOutput) Revision() pulumi.StringOutput {
+	return o.ApplyT(func(v VersionResponse) string { return v.Revision }).(pulumi.StringOutput)
+}
+
+type VersionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VersionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VersionResponse)(nil)).Elem()
+}
+
+func (o VersionResponsePtrOutput) ToVersionResponsePtrOutput() VersionResponsePtrOutput {
+	return o
+}
+
+func (o VersionResponsePtrOutput) ToVersionResponsePtrOutputWithContext(ctx context.Context) VersionResponsePtrOutput {
+	return o
+}
+
+func (o VersionResponsePtrOutput) Elem() VersionResponseOutput {
+	return o.ApplyT(func(v *VersionResponse) VersionResponse { return *v }).(VersionResponseOutput)
+}
+
+// Used to correct mistakes in the version numbering scheme.
+func (o VersionResponsePtrOutput) Epoch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VersionResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Epoch
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
+func (o VersionResponsePtrOutput) Inclusive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VersionResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Inclusive
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
+func (o VersionResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VersionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The main part of the version name.
+func (o VersionResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VersionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The iteration of the package build from the above version.
+func (o VersionResponsePtrOutput) Revision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VersionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Revision
+	}).(pulumi.StringPtrOutput)
+}
+
 // Used by Occurrence to point to where the vulnerability exists and how to fix it.
 type VulnerabilityDetails struct {
-	// Output only. The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
+	// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
 	CvssScore *float64 `pulumi:"cvssScore"`
 	// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
 	EffectiveSeverity *string `pulumi:"effectiveSeverity"`
 	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue []PackageIssue `pulumi:"packageIssue"`
-	// Output only. The note provider assigned Severity of the vulnerability.
+	// The note provider assigned Severity of the vulnerability.
 	Severity *string `pulumi:"severity"`
 	// The type of package; whether native or non native(ruby gems, node.js packages etc)
 	Type *string `pulumi:"type"`
@@ -7885,13 +15423,13 @@ type VulnerabilityDetailsInput interface {
 
 // Used by Occurrence to point to where the vulnerability exists and how to fix it.
 type VulnerabilityDetailsArgs struct {
-	// Output only. The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
+	// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
 	CvssScore pulumi.Float64PtrInput `pulumi:"cvssScore"`
 	// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
 	EffectiveSeverity pulumi.StringPtrInput `pulumi:"effectiveSeverity"`
 	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue PackageIssueArrayInput `pulumi:"packageIssue"`
-	// Output only. The note provider assigned Severity of the vulnerability.
+	// The note provider assigned Severity of the vulnerability.
 	Severity pulumi.StringPtrInput `pulumi:"severity"`
 	// The type of package; whether native or non native(ruby gems, node.js packages etc)
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -7975,7 +15513,7 @@ func (o VulnerabilityDetailsOutput) ToVulnerabilityDetailsPtrOutputWithContext(c
 	}).(VulnerabilityDetailsPtrOutput)
 }
 
-// Output only. The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
+// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
 func (o VulnerabilityDetailsOutput) CvssScore() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VulnerabilityDetails) *float64 { return v.CvssScore }).(pulumi.Float64PtrOutput)
 }
@@ -7990,7 +15528,7 @@ func (o VulnerabilityDetailsOutput) PackageIssue() PackageIssueArrayOutput {
 	return o.ApplyT(func(v VulnerabilityDetails) []PackageIssue { return v.PackageIssue }).(PackageIssueArrayOutput)
 }
 
-// Output only. The note provider assigned Severity of the vulnerability.
+// The note provider assigned Severity of the vulnerability.
 func (o VulnerabilityDetailsOutput) Severity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VulnerabilityDetails) *string { return v.Severity }).(pulumi.StringPtrOutput)
 }
@@ -8018,7 +15556,7 @@ func (o VulnerabilityDetailsPtrOutput) Elem() VulnerabilityDetailsOutput {
 	return o.ApplyT(func(v *VulnerabilityDetails) VulnerabilityDetails { return *v }).(VulnerabilityDetailsOutput)
 }
 
-// Output only. The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
+// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
 func (o VulnerabilityDetailsPtrOutput) CvssScore() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *VulnerabilityDetails) *float64 {
 		if v == nil {
@@ -8048,7 +15586,7 @@ func (o VulnerabilityDetailsPtrOutput) PackageIssue() PackageIssueArrayOutput {
 	}).(PackageIssueArrayOutput)
 }
 
-// Output only. The note provider assigned Severity of the vulnerability.
+// The note provider assigned Severity of the vulnerability.
 func (o VulnerabilityDetailsPtrOutput) Severity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VulnerabilityDetails) *string {
 		if v == nil {
@@ -8065,6 +15603,216 @@ func (o VulnerabilityDetailsPtrOutput) Type() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Used by Occurrence to point to where the vulnerability exists and how to fix it.
+type VulnerabilityDetailsResponse struct {
+	// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
+	CvssScore float64 `pulumi:"cvssScore"`
+	// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+	EffectiveSeverity string `pulumi:"effectiveSeverity"`
+	// The set of affected locations and their fixes (if available) within the associated resource.
+	PackageIssue []PackageIssueResponse `pulumi:"packageIssue"`
+	// The note provider assigned Severity of the vulnerability.
+	Severity string `pulumi:"severity"`
+	// The type of package; whether native or non native(ruby gems, node.js packages etc)
+	Type string `pulumi:"type"`
+}
+
+// VulnerabilityDetailsResponseInput is an input type that accepts VulnerabilityDetailsResponseArgs and VulnerabilityDetailsResponseOutput values.
+// You can construct a concrete instance of `VulnerabilityDetailsResponseInput` via:
+//
+//          VulnerabilityDetailsResponseArgs{...}
+type VulnerabilityDetailsResponseInput interface {
+	pulumi.Input
+
+	ToVulnerabilityDetailsResponseOutput() VulnerabilityDetailsResponseOutput
+	ToVulnerabilityDetailsResponseOutputWithContext(context.Context) VulnerabilityDetailsResponseOutput
+}
+
+// Used by Occurrence to point to where the vulnerability exists and how to fix it.
+type VulnerabilityDetailsResponseArgs struct {
+	// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
+	CvssScore pulumi.Float64Input `pulumi:"cvssScore"`
+	// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+	EffectiveSeverity pulumi.StringInput `pulumi:"effectiveSeverity"`
+	// The set of affected locations and their fixes (if available) within the associated resource.
+	PackageIssue PackageIssueResponseArrayInput `pulumi:"packageIssue"`
+	// The note provider assigned Severity of the vulnerability.
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// The type of package; whether native or non native(ruby gems, node.js packages etc)
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (VulnerabilityDetailsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VulnerabilityDetailsResponse)(nil)).Elem()
+}
+
+func (i VulnerabilityDetailsResponseArgs) ToVulnerabilityDetailsResponseOutput() VulnerabilityDetailsResponseOutput {
+	return i.ToVulnerabilityDetailsResponseOutputWithContext(context.Background())
+}
+
+func (i VulnerabilityDetailsResponseArgs) ToVulnerabilityDetailsResponseOutputWithContext(ctx context.Context) VulnerabilityDetailsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityDetailsResponseOutput)
+}
+
+func (i VulnerabilityDetailsResponseArgs) ToVulnerabilityDetailsResponsePtrOutput() VulnerabilityDetailsResponsePtrOutput {
+	return i.ToVulnerabilityDetailsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i VulnerabilityDetailsResponseArgs) ToVulnerabilityDetailsResponsePtrOutputWithContext(ctx context.Context) VulnerabilityDetailsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityDetailsResponseOutput).ToVulnerabilityDetailsResponsePtrOutputWithContext(ctx)
+}
+
+// VulnerabilityDetailsResponsePtrInput is an input type that accepts VulnerabilityDetailsResponseArgs, VulnerabilityDetailsResponsePtr and VulnerabilityDetailsResponsePtrOutput values.
+// You can construct a concrete instance of `VulnerabilityDetailsResponsePtrInput` via:
+//
+//          VulnerabilityDetailsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type VulnerabilityDetailsResponsePtrInput interface {
+	pulumi.Input
+
+	ToVulnerabilityDetailsResponsePtrOutput() VulnerabilityDetailsResponsePtrOutput
+	ToVulnerabilityDetailsResponsePtrOutputWithContext(context.Context) VulnerabilityDetailsResponsePtrOutput
+}
+
+type vulnerabilityDetailsResponsePtrType VulnerabilityDetailsResponseArgs
+
+func VulnerabilityDetailsResponsePtr(v *VulnerabilityDetailsResponseArgs) VulnerabilityDetailsResponsePtrInput {
+	return (*vulnerabilityDetailsResponsePtrType)(v)
+}
+
+func (*vulnerabilityDetailsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VulnerabilityDetailsResponse)(nil)).Elem()
+}
+
+func (i *vulnerabilityDetailsResponsePtrType) ToVulnerabilityDetailsResponsePtrOutput() VulnerabilityDetailsResponsePtrOutput {
+	return i.ToVulnerabilityDetailsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *vulnerabilityDetailsResponsePtrType) ToVulnerabilityDetailsResponsePtrOutputWithContext(ctx context.Context) VulnerabilityDetailsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityDetailsResponsePtrOutput)
+}
+
+// Used by Occurrence to point to where the vulnerability exists and how to fix it.
+type VulnerabilityDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (VulnerabilityDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VulnerabilityDetailsResponse)(nil)).Elem()
+}
+
+func (o VulnerabilityDetailsResponseOutput) ToVulnerabilityDetailsResponseOutput() VulnerabilityDetailsResponseOutput {
+	return o
+}
+
+func (o VulnerabilityDetailsResponseOutput) ToVulnerabilityDetailsResponseOutputWithContext(ctx context.Context) VulnerabilityDetailsResponseOutput {
+	return o
+}
+
+func (o VulnerabilityDetailsResponseOutput) ToVulnerabilityDetailsResponsePtrOutput() VulnerabilityDetailsResponsePtrOutput {
+	return o.ToVulnerabilityDetailsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o VulnerabilityDetailsResponseOutput) ToVulnerabilityDetailsResponsePtrOutputWithContext(ctx context.Context) VulnerabilityDetailsResponsePtrOutput {
+	return o.ApplyT(func(v VulnerabilityDetailsResponse) *VulnerabilityDetailsResponse {
+		return &v
+	}).(VulnerabilityDetailsResponsePtrOutput)
+}
+
+// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
+func (o VulnerabilityDetailsResponseOutput) CvssScore() pulumi.Float64Output {
+	return o.ApplyT(func(v VulnerabilityDetailsResponse) float64 { return v.CvssScore }).(pulumi.Float64Output)
+}
+
+// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+func (o VulnerabilityDetailsResponseOutput) EffectiveSeverity() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityDetailsResponse) string { return v.EffectiveSeverity }).(pulumi.StringOutput)
+}
+
+// The set of affected locations and their fixes (if available) within the associated resource.
+func (o VulnerabilityDetailsResponseOutput) PackageIssue() PackageIssueResponseArrayOutput {
+	return o.ApplyT(func(v VulnerabilityDetailsResponse) []PackageIssueResponse { return v.PackageIssue }).(PackageIssueResponseArrayOutput)
+}
+
+// The note provider assigned Severity of the vulnerability.
+func (o VulnerabilityDetailsResponseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityDetailsResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// The type of package; whether native or non native(ruby gems, node.js packages etc)
+func (o VulnerabilityDetailsResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityDetailsResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type VulnerabilityDetailsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VulnerabilityDetailsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VulnerabilityDetailsResponse)(nil)).Elem()
+}
+
+func (o VulnerabilityDetailsResponsePtrOutput) ToVulnerabilityDetailsResponsePtrOutput() VulnerabilityDetailsResponsePtrOutput {
+	return o
+}
+
+func (o VulnerabilityDetailsResponsePtrOutput) ToVulnerabilityDetailsResponsePtrOutputWithContext(ctx context.Context) VulnerabilityDetailsResponsePtrOutput {
+	return o
+}
+
+func (o VulnerabilityDetailsResponsePtrOutput) Elem() VulnerabilityDetailsResponseOutput {
+	return o.ApplyT(func(v *VulnerabilityDetailsResponse) VulnerabilityDetailsResponse { return *v }).(VulnerabilityDetailsResponseOutput)
+}
+
+// The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
+func (o VulnerabilityDetailsResponsePtrOutput) CvssScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VulnerabilityDetailsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.CvssScore
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
+func (o VulnerabilityDetailsResponsePtrOutput) EffectiveSeverity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EffectiveSeverity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of affected locations and their fixes (if available) within the associated resource.
+func (o VulnerabilityDetailsResponsePtrOutput) PackageIssue() PackageIssueResponseArrayOutput {
+	return o.ApplyT(func(v *VulnerabilityDetailsResponse) []PackageIssueResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PackageIssue
+	}).(PackageIssueResponseArrayOutput)
+}
+
+// The note provider assigned Severity of the vulnerability.
+func (o VulnerabilityDetailsResponsePtrOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Severity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of package; whether native or non native(ruby gems, node.js packages etc)
+func (o VulnerabilityDetailsResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8240,6 +15988,79 @@ func (o VulnerabilityLocationPtrOutput) Version() VersionPtrOutput {
 	}).(VersionPtrOutput)
 }
 
+// The location of the vulnerability
+type VulnerabilityLocationResponse struct {
+	// The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar. This field can be used as a filter in list requests.
+	CpeUri string `pulumi:"cpeUri"`
+	// The package being described.
+	Package string `pulumi:"package"`
+	// The version of the package being described. This field can be used as a filter in list requests.
+	Version VersionResponse `pulumi:"version"`
+}
+
+// VulnerabilityLocationResponseInput is an input type that accepts VulnerabilityLocationResponseArgs and VulnerabilityLocationResponseOutput values.
+// You can construct a concrete instance of `VulnerabilityLocationResponseInput` via:
+//
+//          VulnerabilityLocationResponseArgs{...}
+type VulnerabilityLocationResponseInput interface {
+	pulumi.Input
+
+	ToVulnerabilityLocationResponseOutput() VulnerabilityLocationResponseOutput
+	ToVulnerabilityLocationResponseOutputWithContext(context.Context) VulnerabilityLocationResponseOutput
+}
+
+// The location of the vulnerability
+type VulnerabilityLocationResponseArgs struct {
+	// The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar. This field can be used as a filter in list requests.
+	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
+	// The package being described.
+	Package pulumi.StringInput `pulumi:"package"`
+	// The version of the package being described. This field can be used as a filter in list requests.
+	Version VersionResponseInput `pulumi:"version"`
+}
+
+func (VulnerabilityLocationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VulnerabilityLocationResponse)(nil)).Elem()
+}
+
+func (i VulnerabilityLocationResponseArgs) ToVulnerabilityLocationResponseOutput() VulnerabilityLocationResponseOutput {
+	return i.ToVulnerabilityLocationResponseOutputWithContext(context.Background())
+}
+
+func (i VulnerabilityLocationResponseArgs) ToVulnerabilityLocationResponseOutputWithContext(ctx context.Context) VulnerabilityLocationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityLocationResponseOutput)
+}
+
+// The location of the vulnerability
+type VulnerabilityLocationResponseOutput struct{ *pulumi.OutputState }
+
+func (VulnerabilityLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VulnerabilityLocationResponse)(nil)).Elem()
+}
+
+func (o VulnerabilityLocationResponseOutput) ToVulnerabilityLocationResponseOutput() VulnerabilityLocationResponseOutput {
+	return o
+}
+
+func (o VulnerabilityLocationResponseOutput) ToVulnerabilityLocationResponseOutputWithContext(ctx context.Context) VulnerabilityLocationResponseOutput {
+	return o
+}
+
+// The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar. This field can be used as a filter in list requests.
+func (o VulnerabilityLocationResponseOutput) CpeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityLocationResponse) string { return v.CpeUri }).(pulumi.StringOutput)
+}
+
+// The package being described.
+func (o VulnerabilityLocationResponseOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityLocationResponse) string { return v.Package }).(pulumi.StringOutput)
+}
+
+// The version of the package being described. This field can be used as a filter in list requests.
+func (o VulnerabilityLocationResponseOutput) Version() VersionResponseOutput {
+	return o.ApplyT(func(v VulnerabilityLocationResponse) VersionResponse { return v.Version }).(VersionResponseOutput)
+}
+
 // VulnerabilityType provides metadata about a security vulnerability.
 type VulnerabilityType struct {
 	// The CVSS score for this Vulnerability.
@@ -8412,105 +16233,373 @@ func (o VulnerabilityTypePtrOutput) Severity() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// VulnerabilityType provides metadata about a security vulnerability.
+type VulnerabilityTypeResponse struct {
+	// The CVSS score for this Vulnerability.
+	CvssScore float64 `pulumi:"cvssScore"`
+	// All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
+	Details []DetailResponse `pulumi:"details"`
+	// Note provider assigned impact of the vulnerability
+	Severity string `pulumi:"severity"`
+}
+
+// VulnerabilityTypeResponseInput is an input type that accepts VulnerabilityTypeResponseArgs and VulnerabilityTypeResponseOutput values.
+// You can construct a concrete instance of `VulnerabilityTypeResponseInput` via:
+//
+//          VulnerabilityTypeResponseArgs{...}
+type VulnerabilityTypeResponseInput interface {
+	pulumi.Input
+
+	ToVulnerabilityTypeResponseOutput() VulnerabilityTypeResponseOutput
+	ToVulnerabilityTypeResponseOutputWithContext(context.Context) VulnerabilityTypeResponseOutput
+}
+
+// VulnerabilityType provides metadata about a security vulnerability.
+type VulnerabilityTypeResponseArgs struct {
+	// The CVSS score for this Vulnerability.
+	CvssScore pulumi.Float64Input `pulumi:"cvssScore"`
+	// All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
+	Details DetailResponseArrayInput `pulumi:"details"`
+	// Note provider assigned impact of the vulnerability
+	Severity pulumi.StringInput `pulumi:"severity"`
+}
+
+func (VulnerabilityTypeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VulnerabilityTypeResponse)(nil)).Elem()
+}
+
+func (i VulnerabilityTypeResponseArgs) ToVulnerabilityTypeResponseOutput() VulnerabilityTypeResponseOutput {
+	return i.ToVulnerabilityTypeResponseOutputWithContext(context.Background())
+}
+
+func (i VulnerabilityTypeResponseArgs) ToVulnerabilityTypeResponseOutputWithContext(ctx context.Context) VulnerabilityTypeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityTypeResponseOutput)
+}
+
+func (i VulnerabilityTypeResponseArgs) ToVulnerabilityTypeResponsePtrOutput() VulnerabilityTypeResponsePtrOutput {
+	return i.ToVulnerabilityTypeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i VulnerabilityTypeResponseArgs) ToVulnerabilityTypeResponsePtrOutputWithContext(ctx context.Context) VulnerabilityTypeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityTypeResponseOutput).ToVulnerabilityTypeResponsePtrOutputWithContext(ctx)
+}
+
+// VulnerabilityTypeResponsePtrInput is an input type that accepts VulnerabilityTypeResponseArgs, VulnerabilityTypeResponsePtr and VulnerabilityTypeResponsePtrOutput values.
+// You can construct a concrete instance of `VulnerabilityTypeResponsePtrInput` via:
+//
+//          VulnerabilityTypeResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type VulnerabilityTypeResponsePtrInput interface {
+	pulumi.Input
+
+	ToVulnerabilityTypeResponsePtrOutput() VulnerabilityTypeResponsePtrOutput
+	ToVulnerabilityTypeResponsePtrOutputWithContext(context.Context) VulnerabilityTypeResponsePtrOutput
+}
+
+type vulnerabilityTypeResponsePtrType VulnerabilityTypeResponseArgs
+
+func VulnerabilityTypeResponsePtr(v *VulnerabilityTypeResponseArgs) VulnerabilityTypeResponsePtrInput {
+	return (*vulnerabilityTypeResponsePtrType)(v)
+}
+
+func (*vulnerabilityTypeResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VulnerabilityTypeResponse)(nil)).Elem()
+}
+
+func (i *vulnerabilityTypeResponsePtrType) ToVulnerabilityTypeResponsePtrOutput() VulnerabilityTypeResponsePtrOutput {
+	return i.ToVulnerabilityTypeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *vulnerabilityTypeResponsePtrType) ToVulnerabilityTypeResponsePtrOutputWithContext(ctx context.Context) VulnerabilityTypeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VulnerabilityTypeResponsePtrOutput)
+}
+
+// VulnerabilityType provides metadata about a security vulnerability.
+type VulnerabilityTypeResponseOutput struct{ *pulumi.OutputState }
+
+func (VulnerabilityTypeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VulnerabilityTypeResponse)(nil)).Elem()
+}
+
+func (o VulnerabilityTypeResponseOutput) ToVulnerabilityTypeResponseOutput() VulnerabilityTypeResponseOutput {
+	return o
+}
+
+func (o VulnerabilityTypeResponseOutput) ToVulnerabilityTypeResponseOutputWithContext(ctx context.Context) VulnerabilityTypeResponseOutput {
+	return o
+}
+
+func (o VulnerabilityTypeResponseOutput) ToVulnerabilityTypeResponsePtrOutput() VulnerabilityTypeResponsePtrOutput {
+	return o.ToVulnerabilityTypeResponsePtrOutputWithContext(context.Background())
+}
+
+func (o VulnerabilityTypeResponseOutput) ToVulnerabilityTypeResponsePtrOutputWithContext(ctx context.Context) VulnerabilityTypeResponsePtrOutput {
+	return o.ApplyT(func(v VulnerabilityTypeResponse) *VulnerabilityTypeResponse {
+		return &v
+	}).(VulnerabilityTypeResponsePtrOutput)
+}
+
+// The CVSS score for this Vulnerability.
+func (o VulnerabilityTypeResponseOutput) CvssScore() pulumi.Float64Output {
+	return o.ApplyT(func(v VulnerabilityTypeResponse) float64 { return v.CvssScore }).(pulumi.Float64Output)
+}
+
+// All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
+func (o VulnerabilityTypeResponseOutput) Details() DetailResponseArrayOutput {
+	return o.ApplyT(func(v VulnerabilityTypeResponse) []DetailResponse { return v.Details }).(DetailResponseArrayOutput)
+}
+
+// Note provider assigned impact of the vulnerability
+func (o VulnerabilityTypeResponseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityTypeResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type VulnerabilityTypeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VulnerabilityTypeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VulnerabilityTypeResponse)(nil)).Elem()
+}
+
+func (o VulnerabilityTypeResponsePtrOutput) ToVulnerabilityTypeResponsePtrOutput() VulnerabilityTypeResponsePtrOutput {
+	return o
+}
+
+func (o VulnerabilityTypeResponsePtrOutput) ToVulnerabilityTypeResponsePtrOutputWithContext(ctx context.Context) VulnerabilityTypeResponsePtrOutput {
+	return o
+}
+
+func (o VulnerabilityTypeResponsePtrOutput) Elem() VulnerabilityTypeResponseOutput {
+	return o.ApplyT(func(v *VulnerabilityTypeResponse) VulnerabilityTypeResponse { return *v }).(VulnerabilityTypeResponseOutput)
+}
+
+// The CVSS score for this Vulnerability.
+func (o VulnerabilityTypeResponsePtrOutput) CvssScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VulnerabilityTypeResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.CvssScore
+	}).(pulumi.Float64PtrOutput)
+}
+
+// All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
+func (o VulnerabilityTypeResponsePtrOutput) Details() DetailResponseArrayOutput {
+	return o.ApplyT(func(v *VulnerabilityTypeResponse) []DetailResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(DetailResponseArrayOutput)
+}
+
+// Note provider assigned impact of the vulnerability
+func (o VulnerabilityTypeResponsePtrOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityTypeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Severity
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ArtifactOutput{})
 	pulumi.RegisterOutputType(ArtifactArrayOutput{})
+	pulumi.RegisterOutputType(ArtifactResponseOutput{})
+	pulumi.RegisterOutputType(ArtifactResponseArrayOutput{})
 	pulumi.RegisterOutputType(AttestationOutput{})
 	pulumi.RegisterOutputType(AttestationPtrOutput{})
 	pulumi.RegisterOutputType(AttestationAuthorityOutput{})
 	pulumi.RegisterOutputType(AttestationAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(AttestationAuthorityHintOutput{})
 	pulumi.RegisterOutputType(AttestationAuthorityHintPtrOutput{})
+	pulumi.RegisterOutputType(AttestationAuthorityHintResponseOutput{})
+	pulumi.RegisterOutputType(AttestationAuthorityHintResponsePtrOutput{})
+	pulumi.RegisterOutputType(AttestationAuthorityResponseOutput{})
+	pulumi.RegisterOutputType(AttestationAuthorityResponsePtrOutput{})
+	pulumi.RegisterOutputType(AttestationResponseOutput{})
+	pulumi.RegisterOutputType(AttestationResponsePtrOutput{})
 	pulumi.RegisterOutputType(BasisOutput{})
 	pulumi.RegisterOutputType(BasisPtrOutput{})
+	pulumi.RegisterOutputType(BasisResponseOutput{})
+	pulumi.RegisterOutputType(BasisResponsePtrOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingResponseOutput{})
+	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(BuildDetailsOutput{})
 	pulumi.RegisterOutputType(BuildDetailsPtrOutput{})
+	pulumi.RegisterOutputType(BuildDetailsResponseOutput{})
+	pulumi.RegisterOutputType(BuildDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildProvenanceOutput{})
 	pulumi.RegisterOutputType(BuildProvenancePtrOutput{})
+	pulumi.RegisterOutputType(BuildProvenanceResponseOutput{})
+	pulumi.RegisterOutputType(BuildProvenanceResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildSignatureOutput{})
 	pulumi.RegisterOutputType(BuildSignaturePtrOutput{})
+	pulumi.RegisterOutputType(BuildSignatureResponseOutput{})
+	pulumi.RegisterOutputType(BuildSignatureResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildTypeOutput{})
 	pulumi.RegisterOutputType(BuildTypePtrOutput{})
+	pulumi.RegisterOutputType(BuildTypeResponseOutput{})
+	pulumi.RegisterOutputType(BuildTypeResponsePtrOutput{})
 	pulumi.RegisterOutputType(CommandOutput{})
 	pulumi.RegisterOutputType(CommandArrayOutput{})
+	pulumi.RegisterOutputType(CommandResponseOutput{})
+	pulumi.RegisterOutputType(CommandResponseArrayOutput{})
 	pulumi.RegisterOutputType(DeployableOutput{})
 	pulumi.RegisterOutputType(DeployablePtrOutput{})
+	pulumi.RegisterOutputType(DeployableResponseOutput{})
+	pulumi.RegisterOutputType(DeployableResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentOutput{})
 	pulumi.RegisterOutputType(DeploymentPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentResponsePtrOutput{})
 	pulumi.RegisterOutputType(DerivedOutput{})
 	pulumi.RegisterOutputType(DerivedPtrOutput{})
+	pulumi.RegisterOutputType(DerivedResponseOutput{})
+	pulumi.RegisterOutputType(DerivedResponsePtrOutput{})
 	pulumi.RegisterOutputType(DetailOutput{})
 	pulumi.RegisterOutputType(DetailArrayOutput{})
+	pulumi.RegisterOutputType(DetailResponseOutput{})
+	pulumi.RegisterOutputType(DetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(DiscoveredOutput{})
 	pulumi.RegisterOutputType(DiscoveredPtrOutput{})
+	pulumi.RegisterOutputType(DiscoveredResponseOutput{})
+	pulumi.RegisterOutputType(DiscoveredResponsePtrOutput{})
 	pulumi.RegisterOutputType(DiscoveryOutput{})
 	pulumi.RegisterOutputType(DiscoveryPtrOutput{})
+	pulumi.RegisterOutputType(DiscoveryResponseOutput{})
+	pulumi.RegisterOutputType(DiscoveryResponsePtrOutput{})
 	pulumi.RegisterOutputType(DistributionOutput{})
 	pulumi.RegisterOutputType(DistributionArrayOutput{})
+	pulumi.RegisterOutputType(DistributionResponseOutput{})
+	pulumi.RegisterOutputType(DistributionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(FingerprintOutput{})
 	pulumi.RegisterOutputType(FingerprintPtrOutput{})
+	pulumi.RegisterOutputType(FingerprintResponseOutput{})
+	pulumi.RegisterOutputType(FingerprintResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1AliasContextOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1AliasContextPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1RepoIdOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1RepoIdPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SourceContextOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SourceContextPtrOutput{})
 	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SourceContextArrayOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput{})
 	pulumi.RegisterOutputType(HashOutput{})
 	pulumi.RegisterOutputType(HashPtrOutput{})
+	pulumi.RegisterOutputType(HashResponseOutput{})
+	pulumi.RegisterOutputType(HashResponsePtrOutput{})
 	pulumi.RegisterOutputType(InstallationOutput{})
 	pulumi.RegisterOutputType(InstallationPtrOutput{})
+	pulumi.RegisterOutputType(InstallationResponseOutput{})
+	pulumi.RegisterOutputType(InstallationResponsePtrOutput{})
 	pulumi.RegisterOutputType(LayerOutput{})
 	pulumi.RegisterOutputType(LayerArrayOutput{})
+	pulumi.RegisterOutputType(LayerResponseOutput{})
+	pulumi.RegisterOutputType(LayerResponseArrayOutput{})
 	pulumi.RegisterOutputType(LocationOutput{})
 	pulumi.RegisterOutputType(LocationArrayOutput{})
+	pulumi.RegisterOutputType(LocationResponseOutput{})
+	pulumi.RegisterOutputType(LocationResponseArrayOutput{})
 	pulumi.RegisterOutputType(OperationTypeOutput{})
 	pulumi.RegisterOutputType(OperationTypePtrOutput{})
+	pulumi.RegisterOutputType(OperationResponseOutput{})
+	pulumi.RegisterOutputType(OperationResponsePtrOutput{})
 	pulumi.RegisterOutputType(PackageOutput{})
 	pulumi.RegisterOutputType(PackagePtrOutput{})
 	pulumi.RegisterOutputType(PackageIssueOutput{})
 	pulumi.RegisterOutputType(PackageIssueArrayOutput{})
+	pulumi.RegisterOutputType(PackageIssueResponseOutput{})
+	pulumi.RegisterOutputType(PackageIssueResponseArrayOutput{})
+	pulumi.RegisterOutputType(PackageResponseOutput{})
+	pulumi.RegisterOutputType(PackageResponsePtrOutput{})
 	pulumi.RegisterOutputType(PgpSignedAttestationOutput{})
 	pulumi.RegisterOutputType(PgpSignedAttestationPtrOutput{})
+	pulumi.RegisterOutputType(PgpSignedAttestationResponseOutput{})
+	pulumi.RegisterOutputType(PgpSignedAttestationResponsePtrOutput{})
 	pulumi.RegisterOutputType(PolicyOutput{})
 	pulumi.RegisterOutputType(PolicyPtrOutput{})
 	pulumi.RegisterOutputType(RelatedUrlOutput{})
 	pulumi.RegisterOutputType(RelatedUrlArrayOutput{})
+	pulumi.RegisterOutputType(RelatedUrlResponseOutput{})
+	pulumi.RegisterOutputType(RelatedUrlResponseArrayOutput{})
 	pulumi.RegisterOutputType(RepoSourceOutput{})
 	pulumi.RegisterOutputType(RepoSourcePtrOutput{})
+	pulumi.RegisterOutputType(RepoSourceResponseOutput{})
+	pulumi.RegisterOutputType(RepoSourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceOutput{})
 	pulumi.RegisterOutputType(ResourcePtrOutput{})
+	pulumi.RegisterOutputType(ResourceResponseOutput{})
+	pulumi.RegisterOutputType(ResourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(SourceOutput{})
 	pulumi.RegisterOutputType(SourcePtrOutput{})
+	pulumi.RegisterOutputType(SourceResponseOutput{})
+	pulumi.RegisterOutputType(SourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(StatusOutput{})
 	pulumi.RegisterOutputType(StatusPtrOutput{})
+	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(StorageSourceOutput{})
 	pulumi.RegisterOutputType(StorageSourcePtrOutput{})
+	pulumi.RegisterOutputType(StorageSourceResponseOutput{})
+	pulumi.RegisterOutputType(StorageSourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(UpgradeDistributionOutput{})
 	pulumi.RegisterOutputType(UpgradeDistributionPtrOutput{})
 	pulumi.RegisterOutputType(UpgradeDistributionArrayOutput{})
+	pulumi.RegisterOutputType(UpgradeDistributionResponseOutput{})
+	pulumi.RegisterOutputType(UpgradeDistributionResponsePtrOutput{})
+	pulumi.RegisterOutputType(UpgradeDistributionResponseArrayOutput{})
 	pulumi.RegisterOutputType(UpgradeNoteOutput{})
 	pulumi.RegisterOutputType(UpgradeNotePtrOutput{})
+	pulumi.RegisterOutputType(UpgradeNoteResponseOutput{})
+	pulumi.RegisterOutputType(UpgradeNoteResponsePtrOutput{})
 	pulumi.RegisterOutputType(UpgradeOccurrenceOutput{})
 	pulumi.RegisterOutputType(UpgradeOccurrencePtrOutput{})
+	pulumi.RegisterOutputType(UpgradeOccurrenceResponseOutput{})
+	pulumi.RegisterOutputType(UpgradeOccurrenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(VersionOutput{})
 	pulumi.RegisterOutputType(VersionPtrOutput{})
+	pulumi.RegisterOutputType(VersionResponseOutput{})
+	pulumi.RegisterOutputType(VersionResponsePtrOutput{})
 	pulumi.RegisterOutputType(VulnerabilityDetailsOutput{})
 	pulumi.RegisterOutputType(VulnerabilityDetailsPtrOutput{})
+	pulumi.RegisterOutputType(VulnerabilityDetailsResponseOutput{})
+	pulumi.RegisterOutputType(VulnerabilityDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(VulnerabilityLocationOutput{})
 	pulumi.RegisterOutputType(VulnerabilityLocationPtrOutput{})
+	pulumi.RegisterOutputType(VulnerabilityLocationResponseOutput{})
 	pulumi.RegisterOutputType(VulnerabilityTypeOutput{})
 	pulumi.RegisterOutputType(VulnerabilityTypePtrOutput{})
+	pulumi.RegisterOutputType(VulnerabilityTypeResponseOutput{})
+	pulumi.RegisterOutputType(VulnerabilityTypeResponsePtrOutput{})
 }

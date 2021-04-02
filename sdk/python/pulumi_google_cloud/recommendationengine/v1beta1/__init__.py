@@ -6,6 +6,7 @@
 from .catalog_catalog_item import *
 from .catalog_event_store_prediction_api_key_registration import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

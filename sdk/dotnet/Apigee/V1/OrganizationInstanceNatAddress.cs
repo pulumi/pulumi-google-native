@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationInstanceNatAddress : Pulumi.CustomResource
     {
         /// <summary>
+        /// The static IPV4 address.
+        /// </summary>
+        [Output("ipAddress")]
+        public Output<string> IpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Resource ID of the NAT address.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the nat address.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationInstanceNatAddress resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -63,12 +82,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         public Input<string> InstancesId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The static IPV4 address.
-        /// </summary>
-        [Input("ipAddress")]
-        public Input<string>? IpAddress { get; set; }
-
-        /// <summary>
         /// Required. Resource ID of the NAT address.
         /// </summary>
         [Input("name")]
@@ -79,12 +92,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
 
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. State of the nat address.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         public OrganizationInstanceNatAddressArgs()
         {

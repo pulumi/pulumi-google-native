@@ -35,6 +35,58 @@ export class OrganizationDeveloperApp extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationDeveloperApp.__pulumiType;
     }
 
+    /**
+     * List of API products associated with the developer app.
+     */
+    public readonly apiProducts!: pulumi.Output<string[]>;
+    /**
+     * Developer app family.
+     */
+    public readonly appFamily!: pulumi.Output<string>;
+    /**
+     * ID of the developer app.
+     */
+    public readonly appId!: pulumi.Output<string>;
+    /**
+     * List of attributes for the developer app.
+     */
+    public readonly attributes!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1AttributeResponse[]>;
+    /**
+     * Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
+     */
+    public readonly callbackUrl!: pulumi.Output<string>;
+    /**
+     * Time the developer app was created in milliseconds since epoch.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
+     */
+    public /*out*/ readonly credentials!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1CredentialResponse[]>;
+    /**
+     * ID of the developer.
+     */
+    public readonly developerId!: pulumi.Output<string>;
+    /**
+     * Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+     */
+    public readonly keyExpiresIn!: pulumi.Output<string>;
+    /**
+     * Time the developer app was modified in milliseconds since epoch.
+     */
+    public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
+    /**
+     * Name of the developer app.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
+     */
+    public readonly scopes!: pulumi.Output<string[]>;
+    /**
+     * Status of the credential. Valid values include `approved` or `revoked`.
+     */
+    public readonly status!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationDeveloperApp resource with the given unique name, arguments, and options.
@@ -62,17 +114,30 @@ export class OrganizationDeveloperApp extends pulumi.CustomResource {
             inputs["appsId"] = args ? args.appsId : undefined;
             inputs["attributes"] = args ? args.attributes : undefined;
             inputs["callbackUrl"] = args ? args.callbackUrl : undefined;
-            inputs["createdAt"] = args ? args.createdAt : undefined;
-            inputs["credentials"] = args ? args.credentials : undefined;
             inputs["developerId"] = args ? args.developerId : undefined;
             inputs["developersId"] = args ? args.developersId : undefined;
             inputs["keyExpiresIn"] = args ? args.keyExpiresIn : undefined;
-            inputs["lastModifiedAt"] = args ? args.lastModifiedAt : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["scopes"] = args ? args.scopes : undefined;
             inputs["status"] = args ? args.status : undefined;
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["credentials"] = undefined /*out*/;
+            inputs["lastModifiedAt"] = undefined /*out*/;
         } else {
+            inputs["apiProducts"] = undefined /*out*/;
+            inputs["appFamily"] = undefined /*out*/;
+            inputs["appId"] = undefined /*out*/;
+            inputs["attributes"] = undefined /*out*/;
+            inputs["callbackUrl"] = undefined /*out*/;
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["credentials"] = undefined /*out*/;
+            inputs["developerId"] = undefined /*out*/;
+            inputs["keyExpiresIn"] = undefined /*out*/;
+            inputs["lastModifiedAt"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["scopes"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -107,14 +172,6 @@ export interface OrganizationDeveloperAppArgs {
      */
     readonly callbackUrl?: pulumi.Input<string>;
     /**
-     * Output only. Time the developer app was created in milliseconds since epoch.
-     */
-    readonly createdAt?: pulumi.Input<string>;
-    /**
-     * Output only. Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
-     */
-    readonly credentials?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1Credential>[]>;
-    /**
      * ID of the developer.
      */
     readonly developerId?: pulumi.Input<string>;
@@ -123,10 +180,6 @@ export interface OrganizationDeveloperAppArgs {
      * Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
      */
     readonly keyExpiresIn?: pulumi.Input<string>;
-    /**
-     * Output only. Time the developer app was modified in milliseconds since epoch.
-     */
-    readonly lastModifiedAt?: pulumi.Input<string>;
     /**
      * Name of the developer app.
      */

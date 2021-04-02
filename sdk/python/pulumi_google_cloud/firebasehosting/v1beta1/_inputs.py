@@ -19,7 +19,6 @@ __all__ = [
     'I18nConfigArgs',
     'PreviewConfigArgs',
     'RedirectArgs',
-    'ReleaseArgs',
     'RewriteArgs',
     'ServingConfigArgs',
     'VersionArgs',
@@ -554,110 +553,6 @@ class RedirectArgs:
 
 
 @pulumi.input_type
-class ReleaseArgs:
-    def __init__(__self__, *,
-                 message: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 release_time: Optional[pulumi.Input[str]] = None,
-                 release_user: Optional[pulumi.Input['ActingUserArgs']] = None,
-                 type: Optional[pulumi.Input[str]] = None,
-                 version: Optional[pulumi.Input['VersionArgs']] = None):
-        """
-         A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at a particular time.
-        :param pulumi.Input[str] message: The deploy description when the release was created. The value can be up to 512 characters.
-        :param pulumi.Input[str] name: Output only. The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create).
-        :param pulumi.Input[str] release_time: Output only. The time at which the version is set to be public.
-        :param pulumi.Input['ActingUserArgs'] release_user: Output only. Identifies the user who created the release.
-        :param pulumi.Input[str] type: Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
-        :param pulumi.Input['VersionArgs'] version: Output only. The configuration and content that was released.
-        """
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if release_time is not None:
-            pulumi.set(__self__, "release_time", release_time)
-        if release_user is not None:
-            pulumi.set(__self__, "release_user", release_user)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        The deploy description when the release was created. The value can be up to 512 characters.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create).
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="releaseTime")
-    def release_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The time at which the version is set to be public.
-        """
-        return pulumi.get(self, "release_time")
-
-    @release_time.setter
-    def release_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "release_time", value)
-
-    @property
-    @pulumi.getter(name="releaseUser")
-    def release_user(self) -> Optional[pulumi.Input['ActingUserArgs']]:
-        """
-        Output only. Identifies the user who created the release.
-        """
-        return pulumi.get(self, "release_user")
-
-    @release_user.setter
-    def release_user(self, value: Optional[pulumi.Input['ActingUserArgs']]):
-        pulumi.set(self, "release_user", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter
-    def version(self) -> Optional[pulumi.Input['VersionArgs']]:
-        """
-        Output only. The configuration and content that was released.
-        """
-        return pulumi.get(self, "version")
-
-    @version.setter
-    def version(self, value: Optional[pulumi.Input['VersionArgs']]):
-        pulumi.set(self, "version", value)
-
-
-@pulumi.input_type
 class RewriteArgs:
     def __init__(__self__, *,
                  dynamic_links: Optional[pulumi.Input[bool]] = None,
@@ -900,18 +795,18 @@ class VersionArgs:
         """
         A `Version` is a configuration and a collection of static files which determine how a site is displayed.
         :param pulumi.Input['ServingConfigArgs'] config: The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.
-        :param pulumi.Input[str] create_time: Output only. The time at which the version was created.
-        :param pulumi.Input['ActingUserArgs'] create_user: Output only. Identifies the user who created the version.
-        :param pulumi.Input[str] delete_time: Output only. The time at which the version was `DELETED`.
-        :param pulumi.Input['ActingUserArgs'] delete_user: Output only. Identifies the user who `DELETED` the version.
-        :param pulumi.Input[str] file_count: Output only. The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
-        :param pulumi.Input[str] finalize_time: Output only. The time at which the version was `FINALIZED`.
-        :param pulumi.Input['ActingUserArgs'] finalize_user: Output only. Identifies the user who `FINALIZED` the version.
+        :param pulumi.Input[str] create_time: The time at which the version was created.
+        :param pulumi.Input['ActingUserArgs'] create_user: Identifies the user who created the version.
+        :param pulumi.Input[str] delete_time: The time at which the version was `DELETED`.
+        :param pulumi.Input['ActingUserArgs'] delete_user: Identifies the user who `DELETED` the version.
+        :param pulumi.Input[str] file_count: The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
+        :param pulumi.Input[str] finalize_time: The time at which the version was `FINALIZED`.
+        :param pulumi.Input['ActingUserArgs'] finalize_user: Identifies the user who `FINALIZED` the version.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels used for extra metadata and/or filtering.
         :param pulumi.Input[str] name: The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create).
         :param pulumi.Input['PreviewConfigArgs'] preview: Deprecated in favor of [site channels](sites.channels).
         :param pulumi.Input[str] status: The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
-        :param pulumi.Input[str] version_bytes: Output only. The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
+        :param pulumi.Input[str] version_bytes: The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -956,7 +851,7 @@ class VersionArgs:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The time at which the version was created.
+        The time at which the version was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -968,7 +863,7 @@ class VersionArgs:
     @pulumi.getter(name="createUser")
     def create_user(self) -> Optional[pulumi.Input['ActingUserArgs']]:
         """
-        Output only. Identifies the user who created the version.
+        Identifies the user who created the version.
         """
         return pulumi.get(self, "create_user")
 
@@ -980,7 +875,7 @@ class VersionArgs:
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The time at which the version was `DELETED`.
+        The time at which the version was `DELETED`.
         """
         return pulumi.get(self, "delete_time")
 
@@ -992,7 +887,7 @@ class VersionArgs:
     @pulumi.getter(name="deleteUser")
     def delete_user(self) -> Optional[pulumi.Input['ActingUserArgs']]:
         """
-        Output only. Identifies the user who `DELETED` the version.
+        Identifies the user who `DELETED` the version.
         """
         return pulumi.get(self, "delete_user")
 
@@ -1004,7 +899,7 @@ class VersionArgs:
     @pulumi.getter(name="fileCount")
     def file_count(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
+        The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
         """
         return pulumi.get(self, "file_count")
 
@@ -1016,7 +911,7 @@ class VersionArgs:
     @pulumi.getter(name="finalizeTime")
     def finalize_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The time at which the version was `FINALIZED`.
+        The time at which the version was `FINALIZED`.
         """
         return pulumi.get(self, "finalize_time")
 
@@ -1028,7 +923,7 @@ class VersionArgs:
     @pulumi.getter(name="finalizeUser")
     def finalize_user(self) -> Optional[pulumi.Input['ActingUserArgs']]:
         """
-        Output only. Identifies the user who `FINALIZED` the version.
+        Identifies the user who `FINALIZED` the version.
         """
         return pulumi.get(self, "finalize_user")
 
@@ -1088,7 +983,7 @@ class VersionArgs:
     @pulumi.getter(name="versionBytes")
     def version_bytes(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
+        The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
         """
         return pulumi.get(self, "version_bytes")
 

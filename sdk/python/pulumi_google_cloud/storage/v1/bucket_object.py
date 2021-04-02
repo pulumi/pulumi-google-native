@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['BucketObject']
@@ -168,7 +169,286 @@ class BucketObject(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["acl"] = None
+        __props__["bucket"] = None
+        __props__["cache_control"] = None
+        __props__["component_count"] = None
+        __props__["content_disposition"] = None
+        __props__["content_encoding"] = None
+        __props__["content_language"] = None
+        __props__["content_type"] = None
+        __props__["crc32c"] = None
+        __props__["custom_time"] = None
+        __props__["customer_encryption"] = None
+        __props__["etag"] = None
+        __props__["event_based_hold"] = None
+        __props__["generation"] = None
+        __props__["kind"] = None
+        __props__["kms_key_name"] = None
+        __props__["md5_hash"] = None
+        __props__["media_link"] = None
+        __props__["metadata"] = None
+        __props__["metageneration"] = None
+        __props__["name"] = None
+        __props__["owner"] = None
+        __props__["retention_expiration_time"] = None
+        __props__["self_link"] = None
+        __props__["size"] = None
+        __props__["storage_class"] = None
+        __props__["temporary_hold"] = None
+        __props__["time_created"] = None
+        __props__["time_deleted"] = None
+        __props__["time_storage_class_updated"] = None
+        __props__["updated"] = None
         return BucketObject(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def acl(self) -> pulumi.Output[Sequence['outputs.ObjectAccessControlResponse']]:
+        """
+        Access controls on the object.
+        """
+        return pulumi.get(self, "acl")
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Output[str]:
+        """
+        The name of the bucket containing this object.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="cacheControl")
+    def cache_control(self) -> pulumi.Output[str]:
+        """
+        Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
+        """
+        return pulumi.get(self, "cache_control")
+
+    @property
+    @pulumi.getter(name="componentCount")
+    def component_count(self) -> pulumi.Output[int]:
+        """
+        Number of underlying components that make up this object. Components are accumulated by compose operations.
+        """
+        return pulumi.get(self, "component_count")
+
+    @property
+    @pulumi.getter(name="contentDisposition")
+    def content_disposition(self) -> pulumi.Output[str]:
+        """
+        Content-Disposition of the object data.
+        """
+        return pulumi.get(self, "content_disposition")
+
+    @property
+    @pulumi.getter(name="contentEncoding")
+    def content_encoding(self) -> pulumi.Output[str]:
+        """
+        Content-Encoding of the object data.
+        """
+        return pulumi.get(self, "content_encoding")
+
+    @property
+    @pulumi.getter(name="contentLanguage")
+    def content_language(self) -> pulumi.Output[str]:
+        """
+        Content-Language of the object data.
+        """
+        return pulumi.get(self, "content_language")
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> pulumi.Output[str]:
+        """
+        Content-Type of the object data. If an object is stored without a Content-Type, it is served as application/octet-stream.
+        """
+        return pulumi.get(self, "content_type")
+
+    @property
+    @pulumi.getter
+    def crc32c(self) -> pulumi.Output[str]:
+        """
+        CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte order. For more information about using the CRC32c checksum, see Hashes and ETags: Best Practices.
+        """
+        return pulumi.get(self, "crc32c")
+
+    @property
+    @pulumi.getter(name="customTime")
+    def custom_time(self) -> pulumi.Output[str]:
+        """
+        A timestamp in RFC 3339 format specified by the user for an object.
+        """
+        return pulumi.get(self, "custom_time")
+
+    @property
+    @pulumi.getter(name="customerEncryption")
+    def customer_encryption(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+        """
+        return pulumi.get(self, "customer_encryption")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        HTTP 1.1 Entity tag for the object.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="eventBasedHold")
+    def event_based_hold(self) -> pulumi.Output[bool]:
+        """
+        Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is the loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false.
+        """
+        return pulumi.get(self, "event_based_hold")
+
+    @property
+    @pulumi.getter
+    def generation(self) -> pulumi.Output[str]:
+        """
+        The content generation of this object. Used for object versioning.
+        """
+        return pulumi.get(self, "generation")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        The kind of item this is. For objects, this is always storage#object.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Output[str]:
+        """
+        Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="md5Hash")
+    def md5_hash(self) -> pulumi.Output[str]:
+        """
+        MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see Hashes and ETags: Best Practices.
+        """
+        return pulumi.get(self, "md5_hash")
+
+    @property
+    @pulumi.getter(name="mediaLink")
+    def media_link(self) -> pulumi.Output[str]:
+        """
+        Media download link.
+        """
+        return pulumi.get(self, "media_link")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        User-provided metadata, in key/value pairs.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def metageneration(self) -> pulumi.Output[str]:
+        """
+        The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.
+        """
+        return pulumi.get(self, "metageneration")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the object. Required if not specified by URL parameter.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def owner(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The owner of the object. This will always be the uploader of the object.
+        """
+        return pulumi.get(self, "owner")
+
+    @property
+    @pulumi.getter(name="retentionExpirationTime")
+    def retention_expiration_time(self) -> pulumi.Output[str]:
+        """
+        A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
+        """
+        return pulumi.get(self, "retention_expiration_time")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        The link to this object.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def size(self) -> pulumi.Output[str]:
+        """
+        Content-Length of the data in bytes.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> pulumi.Output[str]:
+        """
+        Storage class of the object.
+        """
+        return pulumi.get(self, "storage_class")
+
+    @property
+    @pulumi.getter(name="temporaryHold")
+    def temporary_hold(self) -> pulumi.Output[bool]:
+        """
+        Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and overwrites. A common use case of this flag is regulatory investigations where objects need to be retained while the investigation is ongoing. Note that unlike event-based hold, temporary hold does not impact retention expiration time of an object.
+        """
+        return pulumi.get(self, "temporary_hold")
+
+    @property
+    @pulumi.getter(name="timeCreated")
+    def time_created(self) -> pulumi.Output[str]:
+        """
+        The creation time of the object in RFC 3339 format.
+        """
+        return pulumi.get(self, "time_created")
+
+    @property
+    @pulumi.getter(name="timeDeleted")
+    def time_deleted(self) -> pulumi.Output[str]:
+        """
+        The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+        """
+        return pulumi.get(self, "time_deleted")
+
+    @property
+    @pulumi.getter(name="timeStorageClassUpdated")
+    def time_storage_class_updated(self) -> pulumi.Output[str]:
+        """
+        The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
+        """
+        return pulumi.get(self, "time_storage_class_updated")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> pulumi.Output[str]:
+        """
+        The modification time of the object metadata in RFC 3339 format.
+        """
+        return pulumi.get(self, "updated")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

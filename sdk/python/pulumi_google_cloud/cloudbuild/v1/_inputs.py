@@ -14,21 +14,17 @@ __all__ = [
     'BuildArgs',
     'BuildOptionsArgs',
     'BuildStepArgs',
-    'BuiltImageArgs',
     'GitHubEventsConfigArgs',
     'InlineSecretArgs',
     'PullRequestFilterArgs',
     'PushFilterArgs',
     'RepoSourceArgs',
-    'ResultsArgs',
     'SecretArgs',
     'SecretManagerSecretArgs',
     'SecretsArgs',
     'SourceArgs',
-    'SourceProvenanceArgs',
     'StorageSourceArgs',
     'StorageSourceManifestArgs',
-    'TimeSpanArgs',
     'VolumeArgs',
 ]
 
@@ -36,20 +32,16 @@ __all__ = [
 class ArtifactObjectsArgs:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
-                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 timing: Optional[pulumi.Input['TimeSpanArgs']] = None):
+                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
         :param pulumi.Input[str] location: Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Path globs used to match files in the build's workspace.
-        :param pulumi.Input['TimeSpanArgs'] timing: Output only. Stores timing information for pushing all artifact objects.
         """
         if location is not None:
             pulumi.set(__self__, "location", location)
         if paths is not None:
             pulumi.set(__self__, "paths", paths)
-        if timing is not None:
-            pulumi.set(__self__, "timing", timing)
 
     @property
     @pulumi.getter
@@ -74,18 +66,6 @@ class ArtifactObjectsArgs:
     @paths.setter
     def paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "paths", value)
-
-    @property
-    @pulumi.getter
-    def timing(self) -> Optional[pulumi.Input['TimeSpanArgs']]:
-        """
-        Output only. Stores timing information for pushing all artifact objects.
-        """
-        return pulumi.get(self, "timing")
-
-    @timing.setter
-    def timing(self, value: Optional[pulumi.Input['TimeSpanArgs']]):
-        pulumi.set(self, "timing", value)
 
 
 @pulumi.input_type
@@ -133,101 +113,51 @@ class BuildArgs:
     def __init__(__self__, *,
                  artifacts: Optional[pulumi.Input['ArtifactsArgs']] = None,
                  available_secrets: Optional[pulumi.Input['SecretsArgs']] = None,
-                 build_trigger_id: Optional[pulumi.Input[str]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 finish_time: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 log_url: Optional[pulumi.Input[str]] = None,
                  logs_bucket: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input['BuildOptionsArgs']] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
                  queue_ttl: Optional[pulumi.Input[str]] = None,
-                 results: Optional[pulumi.Input['ResultsArgs']] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input['SecretArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input['SourceArgs']] = None,
-                 source_provenance: Optional[pulumi.Input['SourceProvenanceArgs']] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
-                 status_detail: Optional[pulumi.Input[str]] = None,
                  steps: Optional[pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 timeout: Optional[pulumi.Input[str]] = None,
-                 timing: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 timeout: Optional[pulumi.Input[str]] = None):
         """
         A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
         :param pulumi.Input['ArtifactsArgs'] artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
         :param pulumi.Input['SecretsArgs'] available_secrets: Secrets and secret environment variables.
-        :param pulumi.Input[str] build_trigger_id: Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
-        :param pulumi.Input[str] create_time: Output only. Time at which the request to create the build was received.
-        :param pulumi.Input[str] finish_time: Output only. Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
-        :param pulumi.Input[str] id: Output only. Unique identifier of the build.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] images: A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
-        :param pulumi.Input[str] log_url: Output only. URL to logs for this build in Google Cloud Console.
         :param pulumi.Input[str] logs_bucket: Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
-        :param pulumi.Input[str] name: Output only. The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.
         :param pulumi.Input['BuildOptionsArgs'] options: Special options for this build.
-        :param pulumi.Input[str] project_id: Output only. ID of the project.
         :param pulumi.Input[str] queue_ttl: TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
-        :param pulumi.Input['ResultsArgs'] results: Output only. Results of the build.
         :param pulumi.Input[Sequence[pulumi.Input['SecretArgs']]] secrets: Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
         :param pulumi.Input[str] service_account: IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
         :param pulumi.Input['SourceArgs'] source: The location of the source files to build.
-        :param pulumi.Input['SourceProvenanceArgs'] source_provenance: Output only. A permanent fixed identifier for source.
-        :param pulumi.Input[str] start_time: Output only. Time at which execution of the build was started.
-        :param pulumi.Input[str] status: Output only. Status of the build.
-        :param pulumi.Input[str] status_detail: Output only. Customer-readable message about the current status.
         :param pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]] steps: Required. The operations to be performed on the workspace.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions data for `Build` resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `Build`. These are not docker tags.
         :param pulumi.Input[str] timeout: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] timing: Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
         """
         if artifacts is not None:
             pulumi.set(__self__, "artifacts", artifacts)
         if available_secrets is not None:
             pulumi.set(__self__, "available_secrets", available_secrets)
-        if build_trigger_id is not None:
-            pulumi.set(__self__, "build_trigger_id", build_trigger_id)
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
-        if finish_time is not None:
-            pulumi.set(__self__, "finish_time", finish_time)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if images is not None:
             pulumi.set(__self__, "images", images)
-        if log_url is not None:
-            pulumi.set(__self__, "log_url", log_url)
         if logs_bucket is not None:
             pulumi.set(__self__, "logs_bucket", logs_bucket)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if options is not None:
             pulumi.set(__self__, "options", options)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
         if queue_ttl is not None:
             pulumi.set(__self__, "queue_ttl", queue_ttl)
-        if results is not None:
-            pulumi.set(__self__, "results", results)
         if secrets is not None:
             pulumi.set(__self__, "secrets", secrets)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if source is not None:
             pulumi.set(__self__, "source", source)
-        if source_provenance is not None:
-            pulumi.set(__self__, "source_provenance", source_provenance)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if status_detail is not None:
-            pulumi.set(__self__, "status_detail", status_detail)
         if steps is not None:
             pulumi.set(__self__, "steps", steps)
         if substitutions is not None:
@@ -236,8 +166,6 @@ class BuildArgs:
             pulumi.set(__self__, "tags", tags)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
-        if timing is not None:
-            pulumi.set(__self__, "timing", timing)
 
     @property
     @pulumi.getter
@@ -264,54 +192,6 @@ class BuildArgs:
         pulumi.set(self, "available_secrets", value)
 
     @property
-    @pulumi.getter(name="buildTriggerId")
-    def build_trigger_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
-        """
-        return pulumi.get(self, "build_trigger_id")
-
-    @build_trigger_id.setter
-    def build_trigger_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "build_trigger_id", value)
-
-    @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Time at which the request to create the build was received.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
-
-    @property
-    @pulumi.getter(name="finishTime")
-    def finish_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
-        """
-        return pulumi.get(self, "finish_time")
-
-    @finish_time.setter
-    def finish_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "finish_time", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Unique identifier of the build.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
     @pulumi.getter
     def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -322,18 +202,6 @@ class BuildArgs:
     @images.setter
     def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "images", value)
-
-    @property
-    @pulumi.getter(name="logUrl")
-    def log_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. URL to logs for this build in Google Cloud Console.
-        """
-        return pulumi.get(self, "log_url")
-
-    @log_url.setter
-    def log_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "log_url", value)
 
     @property
     @pulumi.getter(name="logsBucket")
@@ -349,18 +217,6 @@ class BuildArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
     def options(self) -> Optional[pulumi.Input['BuildOptionsArgs']]:
         """
         Special options for this build.
@@ -370,18 +226,6 @@ class BuildArgs:
     @options.setter
     def options(self, value: Optional[pulumi.Input['BuildOptionsArgs']]):
         pulumi.set(self, "options", value)
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. ID of the project.
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter(name="queueTtl")
@@ -394,18 +238,6 @@ class BuildArgs:
     @queue_ttl.setter
     def queue_ttl(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "queue_ttl", value)
-
-    @property
-    @pulumi.getter
-    def results(self) -> Optional[pulumi.Input['ResultsArgs']]:
-        """
-        Output only. Results of the build.
-        """
-        return pulumi.get(self, "results")
-
-    @results.setter
-    def results(self, value: Optional[pulumi.Input['ResultsArgs']]):
-        pulumi.set(self, "results", value)
 
     @property
     @pulumi.getter
@@ -442,54 +274,6 @@ class BuildArgs:
     @source.setter
     def source(self, value: Optional[pulumi.Input['SourceArgs']]):
         pulumi.set(self, "source", value)
-
-    @property
-    @pulumi.getter(name="sourceProvenance")
-    def source_provenance(self) -> Optional[pulumi.Input['SourceProvenanceArgs']]:
-        """
-        Output only. A permanent fixed identifier for source.
-        """
-        return pulumi.get(self, "source_provenance")
-
-    @source_provenance.setter
-    def source_provenance(self, value: Optional[pulumi.Input['SourceProvenanceArgs']]):
-        pulumi.set(self, "source_provenance", value)
-
-    @property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Time at which execution of the build was started.
-        """
-        return pulumi.get(self, "start_time")
-
-    @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "start_time", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Status of the build.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter(name="statusDetail")
-    def status_detail(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Customer-readable message about the current status.
-        """
-        return pulumi.get(self, "status_detail")
-
-    @status_detail.setter
-    def status_detail(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status_detail", value)
 
     @property
     @pulumi.getter
@@ -538,18 +322,6 @@ class BuildArgs:
     @timeout.setter
     def timeout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "timeout", value)
-
-    @property
-    @pulumi.getter
-    def timing(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
-        """
-        return pulumi.get(self, "timing")
-
-    @timing.setter
-    def timing(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "timing", value)
 
 
 @pulumi.input_type
@@ -761,11 +533,8 @@ class BuildStepArgs:
                  env: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 pull_timing: Optional[pulumi.Input['TimeSpanArgs']] = None,
                  secret_env: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
-                 timing: Optional[pulumi.Input['TimeSpanArgs']] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]]] = None,
                  wait_for: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -776,11 +545,8 @@ class BuildStepArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] env: A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
         :param pulumi.Input[str] id: Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
         :param pulumi.Input[str] name: Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
-        :param pulumi.Input['TimeSpanArgs'] pull_timing: Output only. Stores timing information for pulling this build step's builder image only.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secret_env: A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
-        :param pulumi.Input[str] status: Output only. Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses.
         :param pulumi.Input[str] timeout: Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
-        :param pulumi.Input['TimeSpanArgs'] timing: Output only. Stores timing information for executing this build step.
         :param pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]] volumes: List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] wait_for: The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully.
         """
@@ -796,16 +562,10 @@ class BuildStepArgs:
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if pull_timing is not None:
-            pulumi.set(__self__, "pull_timing", pull_timing)
         if secret_env is not None:
             pulumi.set(__self__, "secret_env", secret_env)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
-        if timing is not None:
-            pulumi.set(__self__, "timing", timing)
         if volumes is not None:
             pulumi.set(__self__, "volumes", volumes)
         if wait_for is not None:
@@ -884,18 +644,6 @@ class BuildStepArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="pullTiming")
-    def pull_timing(self) -> Optional[pulumi.Input['TimeSpanArgs']]:
-        """
-        Output only. Stores timing information for pulling this build step's builder image only.
-        """
-        return pulumi.get(self, "pull_timing")
-
-    @pull_timing.setter
-    def pull_timing(self, value: Optional[pulumi.Input['TimeSpanArgs']]):
-        pulumi.set(self, "pull_timing", value)
-
-    @property
     @pulumi.getter(name="secretEnv")
     def secret_env(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -909,18 +657,6 @@ class BuildStepArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[str]]:
         """
         Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
@@ -930,18 +666,6 @@ class BuildStepArgs:
     @timeout.setter
     def timeout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "timeout", value)
-
-    @property
-    @pulumi.getter
-    def timing(self) -> Optional[pulumi.Input['TimeSpanArgs']]:
-        """
-        Output only. Stores timing information for executing this build step.
-        """
-        return pulumi.get(self, "timing")
-
-    @timing.setter
-    def timing(self, value: Optional[pulumi.Input['TimeSpanArgs']]):
-        pulumi.set(self, "timing", value)
 
     @property
     @pulumi.getter
@@ -966,62 +690,6 @@ class BuildStepArgs:
     @wait_for.setter
     def wait_for(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "wait_for", value)
-
-
-@pulumi.input_type
-class BuiltImageArgs:
-    def __init__(__self__, *,
-                 digest: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 push_timing: Optional[pulumi.Input['TimeSpanArgs']] = None):
-        """
-        An image built by the pipeline.
-        :param pulumi.Input[str] digest: Docker Registry 2.0 digest.
-        :param pulumi.Input[str] name: Name used to push the container image to Google Container Registry, as presented to `docker push`.
-        :param pulumi.Input['TimeSpanArgs'] push_timing: Output only. Stores timing information for pushing the specified image.
-        """
-        if digest is not None:
-            pulumi.set(__self__, "digest", digest)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if push_timing is not None:
-            pulumi.set(__self__, "push_timing", push_timing)
-
-    @property
-    @pulumi.getter
-    def digest(self) -> Optional[pulumi.Input[str]]:
-        """
-        Docker Registry 2.0 digest.
-        """
-        return pulumi.get(self, "digest")
-
-    @digest.setter
-    def digest(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "digest", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name used to push the container image to Google Container Registry, as presented to `docker push`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="pushTiming")
-    def push_timing(self) -> Optional[pulumi.Input['TimeSpanArgs']]:
-        """
-        Output only. Stores timing information for pushing the specified image.
-        """
-        return pulumi.get(self, "push_timing")
-
-    @push_timing.setter
-    def push_timing(self, value: Optional[pulumi.Input['TimeSpanArgs']]):
-        pulumi.set(self, "push_timing", value)
 
 
 @pulumi.input_type
@@ -1401,110 +1069,6 @@ class RepoSourceArgs:
 
 
 @pulumi.input_type
-class ResultsArgs:
-    def __init__(__self__, *,
-                 artifact_manifest: Optional[pulumi.Input[str]] = None,
-                 artifact_timing: Optional[pulumi.Input['TimeSpanArgs']] = None,
-                 build_step_images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 build_step_outputs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input['BuiltImageArgs']]]] = None,
-                 num_artifacts: Optional[pulumi.Input[str]] = None):
-        """
-        Artifacts created by the build pipeline.
-        :param pulumi.Input[str] artifact_manifest: Path to the artifact manifest. Only populated when artifacts are uploaded.
-        :param pulumi.Input['TimeSpanArgs'] artifact_timing: Time to push all non-container artifacts.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] build_step_images: List of build step digests, in the order corresponding to build step indices.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] build_step_outputs: List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
-        :param pulumi.Input[Sequence[pulumi.Input['BuiltImageArgs']]] images: Container images that were built as a part of the build.
-        :param pulumi.Input[str] num_artifacts: Number of artifacts uploaded. Only populated when artifacts are uploaded.
-        """
-        if artifact_manifest is not None:
-            pulumi.set(__self__, "artifact_manifest", artifact_manifest)
-        if artifact_timing is not None:
-            pulumi.set(__self__, "artifact_timing", artifact_timing)
-        if build_step_images is not None:
-            pulumi.set(__self__, "build_step_images", build_step_images)
-        if build_step_outputs is not None:
-            pulumi.set(__self__, "build_step_outputs", build_step_outputs)
-        if images is not None:
-            pulumi.set(__self__, "images", images)
-        if num_artifacts is not None:
-            pulumi.set(__self__, "num_artifacts", num_artifacts)
-
-    @property
-    @pulumi.getter(name="artifactManifest")
-    def artifact_manifest(self) -> Optional[pulumi.Input[str]]:
-        """
-        Path to the artifact manifest. Only populated when artifacts are uploaded.
-        """
-        return pulumi.get(self, "artifact_manifest")
-
-    @artifact_manifest.setter
-    def artifact_manifest(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "artifact_manifest", value)
-
-    @property
-    @pulumi.getter(name="artifactTiming")
-    def artifact_timing(self) -> Optional[pulumi.Input['TimeSpanArgs']]:
-        """
-        Time to push all non-container artifacts.
-        """
-        return pulumi.get(self, "artifact_timing")
-
-    @artifact_timing.setter
-    def artifact_timing(self, value: Optional[pulumi.Input['TimeSpanArgs']]):
-        pulumi.set(self, "artifact_timing", value)
-
-    @property
-    @pulumi.getter(name="buildStepImages")
-    def build_step_images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of build step digests, in the order corresponding to build step indices.
-        """
-        return pulumi.get(self, "build_step_images")
-
-    @build_step_images.setter
-    def build_step_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "build_step_images", value)
-
-    @property
-    @pulumi.getter(name="buildStepOutputs")
-    def build_step_outputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
-        """
-        return pulumi.get(self, "build_step_outputs")
-
-    @build_step_outputs.setter
-    def build_step_outputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "build_step_outputs", value)
-
-    @property
-    @pulumi.getter
-    def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BuiltImageArgs']]]]:
-        """
-        Container images that were built as a part of the build.
-        """
-        return pulumi.get(self, "images")
-
-    @images.setter
-    def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BuiltImageArgs']]]]):
-        pulumi.set(self, "images", value)
-
-    @property
-    @pulumi.getter(name="numArtifacts")
-    def num_artifacts(self) -> Optional[pulumi.Input[str]]:
-        """
-        Number of artifacts uploaded. Only populated when artifacts are uploaded.
-        """
-        return pulumi.get(self, "num_artifacts")
-
-    @num_artifacts.setter
-    def num_artifacts(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "num_artifacts", value)
-
-
-@pulumi.input_type
 class SecretArgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -1681,78 +1245,6 @@ class SourceArgs:
 
 
 @pulumi.input_type
-class SourceProvenanceArgs:
-    def __init__(__self__, *,
-                 file_hashes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 resolved_repo_source: Optional[pulumi.Input['RepoSourceArgs']] = None,
-                 resolved_storage_source: Optional[pulumi.Input['StorageSourceArgs']] = None,
-                 resolved_storage_source_manifest: Optional[pulumi.Input['StorageSourceManifestArgs']] = None):
-        """
-        Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] file_hashes: Output only. Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
-        :param pulumi.Input['RepoSourceArgs'] resolved_repo_source: A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
-        :param pulumi.Input['StorageSourceArgs'] resolved_storage_source: A copy of the build's `source.storage_source`, if exists, with any generations resolved.
-        :param pulumi.Input['StorageSourceManifestArgs'] resolved_storage_source_manifest: A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
-        """
-        if file_hashes is not None:
-            pulumi.set(__self__, "file_hashes", file_hashes)
-        if resolved_repo_source is not None:
-            pulumi.set(__self__, "resolved_repo_source", resolved_repo_source)
-        if resolved_storage_source is not None:
-            pulumi.set(__self__, "resolved_storage_source", resolved_storage_source)
-        if resolved_storage_source_manifest is not None:
-            pulumi.set(__self__, "resolved_storage_source_manifest", resolved_storage_source_manifest)
-
-    @property
-    @pulumi.getter(name="fileHashes")
-    def file_hashes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Output only. Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
-        """
-        return pulumi.get(self, "file_hashes")
-
-    @file_hashes.setter
-    def file_hashes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "file_hashes", value)
-
-    @property
-    @pulumi.getter(name="resolvedRepoSource")
-    def resolved_repo_source(self) -> Optional[pulumi.Input['RepoSourceArgs']]:
-        """
-        A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
-        """
-        return pulumi.get(self, "resolved_repo_source")
-
-    @resolved_repo_source.setter
-    def resolved_repo_source(self, value: Optional[pulumi.Input['RepoSourceArgs']]):
-        pulumi.set(self, "resolved_repo_source", value)
-
-    @property
-    @pulumi.getter(name="resolvedStorageSource")
-    def resolved_storage_source(self) -> Optional[pulumi.Input['StorageSourceArgs']]:
-        """
-        A copy of the build's `source.storage_source`, if exists, with any generations resolved.
-        """
-        return pulumi.get(self, "resolved_storage_source")
-
-    @resolved_storage_source.setter
-    def resolved_storage_source(self, value: Optional[pulumi.Input['StorageSourceArgs']]):
-        pulumi.set(self, "resolved_storage_source", value)
-
-    @property
-    @pulumi.getter(name="resolvedStorageSourceManifest")
-    def resolved_storage_source_manifest(self) -> Optional[pulumi.Input['StorageSourceManifestArgs']]:
-        """
-        A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
-        """
-        return pulumi.get(self, "resolved_storage_source_manifest")
-
-    @resolved_storage_source_manifest.setter
-    def resolved_storage_source_manifest(self, value: Optional[pulumi.Input['StorageSourceManifestArgs']]):
-        pulumi.set(self, "resolved_storage_source_manifest", value)
-
-
-@pulumi.input_type
 class StorageSourceArgs:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
@@ -1862,46 +1354,6 @@ class StorageSourceManifestArgs:
     @object.setter
     def object(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "object", value)
-
-
-@pulumi.input_type
-class TimeSpanArgs:
-    def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None):
-        """
-        Start and end times for a build execution phase.
-        :param pulumi.Input[str] end_time: End of time span.
-        :param pulumi.Input[str] start_time: Start of time span.
-        """
-        if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
-
-    @property
-    @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        End of time span.
-        """
-        return pulumi.get(self, "end_time")
-
-    @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "end_time", value)
-
-    @property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Start of time span.
-        """
-        return pulumi.get(self, "start_time")
-
-    @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type

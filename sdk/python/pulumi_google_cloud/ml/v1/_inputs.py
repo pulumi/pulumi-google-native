@@ -1154,12 +1154,12 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
         Represents the result of a single hyperparameter tuning trial from a training job. The TrainingOutput object that is returned on successful completion of a training job with hyperparameter tuning includes a list of HyperparameterOutput objects, one for each successful trial.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs']]] all_metrics: All recorded object metrics for this trial. This field is not currently populated.
         :param pulumi.Input['GoogleCloudMlV1__BuiltInAlgorithmOutputArgs'] built_in_algorithm_output: Details related to built-in algorithms jobs. Only set for trials of built-in algorithms jobs that have succeeded.
-        :param pulumi.Input[str] end_time: Output only. End time for the trial.
+        :param pulumi.Input[str] end_time: End time for the trial.
         :param pulumi.Input['GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs'] final_metric: The final objective metric seen for this trial.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] hyperparameters: The hyperparameters given to this trial.
         :param pulumi.Input[bool] is_trial_stopped_early: True if the trial is stopped early.
-        :param pulumi.Input[str] start_time: Output only. Start time for the trial.
-        :param pulumi.Input[str] state: Output only. The detailed state of the trial.
+        :param pulumi.Input[str] start_time: Start time for the trial.
+        :param pulumi.Input[str] state: The detailed state of the trial.
         :param pulumi.Input[str] trial_id: The trial id for these results.
         """
         if all_metrics is not None:
@@ -1209,7 +1209,7 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. End time for the trial.
+        End time for the trial.
         """
         return pulumi.get(self, "end_time")
 
@@ -1257,7 +1257,7 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Start time for the trial.
+        Start time for the trial.
         """
         return pulumi.get(self, "start_time")
 
@@ -1269,7 +1269,7 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The detailed state of the trial.
+        The detailed state of the trial.
         """
         return pulumi.get(self, "state")
 
@@ -1498,7 +1498,7 @@ class GoogleCloudMlV1__MeasurementArgs:
                  step_count: Optional[pulumi.Input[str]] = None):
         """
         A message representing a measurement.
-        :param pulumi.Input[str] elapsed_time: Output only. Time that the trial has been running at the point of this measurement.
+        :param pulumi.Input[str] elapsed_time: Time that the trial has been running at the point of this measurement.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_Measurement_MetricArgs']]] metrics: Provides a list of metrics that act as inputs into the objective function.
         :param pulumi.Input[str] step_count: The number of steps a machine learning model has been trained for. Must be non-negative.
         """
@@ -1513,7 +1513,7 @@ class GoogleCloudMlV1__MeasurementArgs:
     @pulumi.getter(name="elapsedTime")
     def elapsed_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Time that the trial has been running at the point of this measurement.
+        Time that the trial has been running at the point of this measurement.
         """
         return pulumi.get(self, "elapsed_time")
 
@@ -2841,8 +2841,6 @@ class GoogleCloudMlV1__VersionArgs:
                  framework: Optional[pulumi.Input[str]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 last_migration_model_id: Optional[pulumi.Input[str]] = None,
-                 last_migration_time: Optional[pulumi.Input[str]] = None,
                  last_use_time: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  manual_scaling: Optional[pulumi.Input['GoogleCloudMlV1__ManualScalingArgs']] = None,
@@ -2860,18 +2858,16 @@ class GoogleCloudMlV1__VersionArgs:
         :param pulumi.Input['GoogleCloudMlV1__AcceleratorConfigArgs'] accelerator_config: Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
         :param pulumi.Input['GoogleCloudMlV1__AutoScalingArgs'] auto_scaling: Automatically scale the number of nodes used to serve the model in response to increases and decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or you will start seeing increases in latency and 429 response codes.
         :param pulumi.Input['GoogleCloudMlV1__ContainerSpecArgs'] container: Optional. Specifies a custom container to use for serving predictions. If you specify this field, then `machineType` is required. If you specify this field, then `deploymentUri` is optional. If you specify this field, then you must not specify `runtimeVersion`, `packageUris`, `framework`, `pythonVersion`, or `predictionClass`.
-        :param pulumi.Input[str] create_time: Output only. The time the version was created.
+        :param pulumi.Input[str] create_time: The time the version was created.
         :param pulumi.Input[str] deployment_uri: The Cloud Storage URI of a directory containing trained model artifacts to be used to create the model version. See the [guide to deploying models](/ai-platform/prediction/docs/deploying-models) for more information. The total number of files under this directory must not exceed 1000. During projects.models.versions.create, AI Platform Prediction copies all files from the specified directory to a location managed by the service. From then on, AI Platform Prediction uses these copies of the model artifacts to serve predictions, not the original files in Cloud Storage, so this location is useful only as a historical record. If you specify container, then this field is optional. Otherwise, it is required. Learn [how to use this field with a custom container](/ai-platform/prediction/docs/custom-container-requirements#artifacts).
         :param pulumi.Input[str] description: Optional. The description specified for the version when it was created.
-        :param pulumi.Input[str] error_message: Output only. The details of a failure or a cancellation.
+        :param pulumi.Input[str] error_message: The details of a failure or a cancellation.
         :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetVersion`, and systems are expected to put that etag in the request to `UpdateVersion` to ensure that their change will be applied to the model as intended.
         :param pulumi.Input['GoogleCloudMlV1__ExplanationConfigArgs'] explanation_config: Optional. Configures explainability features on the model's version. Some explanation features require additional metadata to be loaded as part of the model payload.
         :param pulumi.Input[str] framework: Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
-        :param pulumi.Input[bool] is_default: Output only. If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
+        :param pulumi.Input[bool] is_default: If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
-        :param pulumi.Input[str] last_migration_model_id: Output only. The [AI Platform (Unified) `Model`](https://cloud.google.com/ai-platform-unified/docs/reference/rest/v1beta1/projects.locations.models) ID for the last [model migration](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
-        :param pulumi.Input[str] last_migration_time: Output only. The last time this version was successfully [migrated to AI Platform (Unified)](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
-        :param pulumi.Input[str] last_use_time: Output only. The time the version was last used for prediction.
+        :param pulumi.Input[str] last_use_time: The time the version was last used for prediction.
         :param pulumi.Input[str] machine_type: Optional. The type of machine on which to serve the model. Currently only applies to online prediction service. To learn about valid values for this field, read [Choosing a machine type for online prediction](/ai-platform/prediction/docs/machine-types-online-prediction). If this field is not specified and you are using a [regional endpoint](/ai-platform/prediction/docs/regional-endpoints), then the machine type defaults to `n1-standard-2`. If this field is not specified and you are using the global endpoint (`ml.googleapis.com`), then the machine type defaults to `mls1-c1-m2`.
         :param pulumi.Input['GoogleCloudMlV1__ManualScalingArgs'] manual_scaling: Manually select the number of nodes to use for serving the model. You should generally use `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more predictable billing. Beware that latency and error rates will increase if the traffic exceeds that capability of the system to serve it based on the selected number of nodes.
         :param pulumi.Input[str] name: Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
@@ -2882,7 +2878,7 @@ class GoogleCloudMlV1__VersionArgs:
         :param pulumi.Input['GoogleCloudMlV1__RouteMapArgs'] routes: Optional. Specifies paths on a custom container's HTTP server where AI Platform Prediction sends certain requests. If you specify this field, then you must also specify the `container` field. If you specify the `container` field and do not specify this field, it defaults to the following: ```json { "predict": "/v1/models/MODEL/versions/VERSION:predict", "health": "/v1/models/MODEL/versions/VERSION" } ``` See RouteMap for more details about these default values.
         :param pulumi.Input[str] runtime_version: Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
         :param pulumi.Input[str] service_account: Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
-        :param pulumi.Input[str] state: Output only. The state of a version.
+        :param pulumi.Input[str] state: The state of a version.
         """
         if accelerator_config is not None:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
@@ -2908,10 +2904,6 @@ class GoogleCloudMlV1__VersionArgs:
             pulumi.set(__self__, "is_default", is_default)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if last_migration_model_id is not None:
-            pulumi.set(__self__, "last_migration_model_id", last_migration_model_id)
-        if last_migration_time is not None:
-            pulumi.set(__self__, "last_migration_time", last_migration_time)
         if last_use_time is not None:
             pulumi.set(__self__, "last_use_time", last_use_time)
         if machine_type is not None:
@@ -2977,7 +2969,7 @@ class GoogleCloudMlV1__VersionArgs:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The time the version was created.
+        The time the version was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -3013,7 +3005,7 @@ class GoogleCloudMlV1__VersionArgs:
     @pulumi.getter(name="errorMessage")
     def error_message(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The details of a failure or a cancellation.
+        The details of a failure or a cancellation.
         """
         return pulumi.get(self, "error_message")
 
@@ -3061,7 +3053,7 @@ class GoogleCloudMlV1__VersionArgs:
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[pulumi.Input[bool]]:
         """
-        Output only. If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
+        If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
         """
         return pulumi.get(self, "is_default")
 
@@ -3082,34 +3074,10 @@ class GoogleCloudMlV1__VersionArgs:
         pulumi.set(self, "labels", value)
 
     @property
-    @pulumi.getter(name="lastMigrationModelId")
-    def last_migration_model_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The [AI Platform (Unified) `Model`](https://cloud.google.com/ai-platform-unified/docs/reference/rest/v1beta1/projects.locations.models) ID for the last [model migration](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
-        """
-        return pulumi.get(self, "last_migration_model_id")
-
-    @last_migration_model_id.setter
-    def last_migration_model_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_migration_model_id", value)
-
-    @property
-    @pulumi.getter(name="lastMigrationTime")
-    def last_migration_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The last time this version was successfully [migrated to AI Platform (Unified)](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
-        """
-        return pulumi.get(self, "last_migration_time")
-
-    @last_migration_time.setter
-    def last_migration_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_migration_time", value)
-
-    @property
     @pulumi.getter(name="lastUseTime")
     def last_use_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The time the version was last used for prediction.
+        The time the version was last used for prediction.
         """
         return pulumi.get(self, "last_use_time")
 
@@ -3241,7 +3209,7 @@ class GoogleCloudMlV1__VersionArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The state of a version.
+        The state of a version.
         """
         return pulumi.get(self, "state")
 

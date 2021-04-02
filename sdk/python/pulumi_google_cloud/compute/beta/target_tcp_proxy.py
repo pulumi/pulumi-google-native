@@ -102,7 +102,83 @@ class TargetTcpProxy(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["creation_timestamp"] = None
+        __props__["description"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["proxy_bind"] = None
+        __props__["proxy_header"] = None
+        __props__["self_link"] = None
+        __props__["service"] = None
         return TargetTcpProxy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#targetTcpProxy for target TCP proxies.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="proxyBind")
+    def proxy_bind(self) -> pulumi.Output[bool]:
+        """
+        This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+
+        When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them.
+
+        The default is false.
+        """
+        return pulumi.get(self, "proxy_bind")
+
+    @property
+    @pulumi.getter(name="proxyHeader")
+    def proxy_header(self) -> pulumi.Output[str]:
+        """
+        Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+        """
+        return pulumi.get(self, "proxy_header")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Output[str]:
+        """
+        URL to the BackendService resource.
+        """
+        return pulumi.get(self, "service")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

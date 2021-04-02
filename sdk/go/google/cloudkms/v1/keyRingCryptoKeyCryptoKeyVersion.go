@@ -14,6 +14,33 @@ import (
 // Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
 type KeyRingCryptoKeyCryptoKeyVersion struct {
 	pulumi.CustomResourceState
+
+	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+	Algorithm pulumi.StringOutput `pulumi:"algorithm"`
+	// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
+	Attestation KeyOperationAttestationResponseOutput `pulumi:"attestation"`
+	// The time at which this CryptoKeyVersion was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
+	DestroyEventTime pulumi.StringOutput `pulumi:"destroyEventTime"`
+	// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
+	DestroyTime pulumi.StringOutput `pulumi:"destroyTime"`
+	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsResponseOutput `pulumi:"externalProtectionLevelOptions"`
+	// The time this CryptoKeyVersion's key material was generated.
+	GenerateTime pulumi.StringOutput `pulumi:"generateTime"`
+	// The root cause of an import failure. Only present if state is IMPORT_FAILED.
+	ImportFailureReason pulumi.StringOutput `pulumi:"importFailureReason"`
+	// The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+	ImportJob pulumi.StringOutput `pulumi:"importJob"`
+	// The time at which this CryptoKeyVersion's key material was imported.
+	ImportTime pulumi.StringOutput `pulumi:"importTime"`
+	// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
+	ProtectionLevel pulumi.StringOutput `pulumi:"protectionLevel"`
+	// The current state of the CryptoKeyVersion.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewKeyRingCryptoKeyCryptoKeyVersion registers a new resource with the given unique name, arguments, and options.
@@ -60,9 +87,61 @@ func GetKeyRingCryptoKeyCryptoKeyVersion(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KeyRingCryptoKeyCryptoKeyVersion resources.
 type keyRingCryptoKeyCryptoKeyVersionState struct {
+	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+	Algorithm *string `pulumi:"algorithm"`
+	// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
+	Attestation *KeyOperationAttestationResponse `pulumi:"attestation"`
+	// The time at which this CryptoKeyVersion was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
+	DestroyEventTime *string `pulumi:"destroyEventTime"`
+	// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
+	DestroyTime *string `pulumi:"destroyTime"`
+	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+	ExternalProtectionLevelOptions *ExternalProtectionLevelOptionsResponse `pulumi:"externalProtectionLevelOptions"`
+	// The time this CryptoKeyVersion's key material was generated.
+	GenerateTime *string `pulumi:"generateTime"`
+	// The root cause of an import failure. Only present if state is IMPORT_FAILED.
+	ImportFailureReason *string `pulumi:"importFailureReason"`
+	// The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+	ImportJob *string `pulumi:"importJob"`
+	// The time at which this CryptoKeyVersion's key material was imported.
+	ImportTime *string `pulumi:"importTime"`
+	// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
+	Name *string `pulumi:"name"`
+	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
+	ProtectionLevel *string `pulumi:"protectionLevel"`
+	// The current state of the CryptoKeyVersion.
+	State *string `pulumi:"state"`
 }
 
 type KeyRingCryptoKeyCryptoKeyVersionState struct {
+	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+	Algorithm pulumi.StringPtrInput
+	// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
+	Attestation KeyOperationAttestationResponsePtrInput
+	// The time at which this CryptoKeyVersion was created.
+	CreateTime pulumi.StringPtrInput
+	// The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
+	DestroyEventTime pulumi.StringPtrInput
+	// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
+	DestroyTime pulumi.StringPtrInput
+	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsResponsePtrInput
+	// The time this CryptoKeyVersion's key material was generated.
+	GenerateTime pulumi.StringPtrInput
+	// The root cause of an import failure. Only present if state is IMPORT_FAILED.
+	ImportFailureReason pulumi.StringPtrInput
+	// The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+	ImportJob pulumi.StringPtrInput
+	// The time at which this CryptoKeyVersion's key material was imported.
+	ImportTime pulumi.StringPtrInput
+	// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
+	Name pulumi.StringPtrInput
+	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
+	ProtectionLevel pulumi.StringPtrInput
+	// The current state of the CryptoKeyVersion.
+	State pulumi.StringPtrInput
 }
 
 func (KeyRingCryptoKeyCryptoKeyVersionState) ElementType() reflect.Type {
@@ -70,70 +149,26 @@ func (KeyRingCryptoKeyCryptoKeyVersionState) ElementType() reflect.Type {
 }
 
 type keyRingCryptoKeyCryptoKeyVersionArgs struct {
-	// Output only. The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-	Algorithm *string `pulumi:"algorithm"`
-	// Output only. Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
-	Attestation *KeyOperationAttestation `pulumi:"attestation"`
-	// Output only. The time at which this CryptoKeyVersion was created.
-	CreateTime          *string `pulumi:"createTime"`
-	CryptoKeyVersionsId string  `pulumi:"cryptoKeyVersionsId"`
-	CryptoKeysId        string  `pulumi:"cryptoKeysId"`
-	// Output only. The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
-	DestroyEventTime *string `pulumi:"destroyEventTime"`
-	// Output only. The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
-	DestroyTime *string `pulumi:"destroyTime"`
+	CryptoKeyVersionsId string `pulumi:"cryptoKeyVersionsId"`
+	CryptoKeysId        string `pulumi:"cryptoKeysId"`
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
 	ExternalProtectionLevelOptions *ExternalProtectionLevelOptions `pulumi:"externalProtectionLevelOptions"`
-	// Output only. The time this CryptoKeyVersion's key material was generated.
-	GenerateTime *string `pulumi:"generateTime"`
-	// Output only. The root cause of an import failure. Only present if state is IMPORT_FAILED.
-	ImportFailureReason *string `pulumi:"importFailureReason"`
-	// Output only. The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
-	ImportJob *string `pulumi:"importJob"`
-	// Output only. The time at which this CryptoKeyVersion's key material was imported.
-	ImportTime  *string `pulumi:"importTime"`
-	KeyRingsId  string  `pulumi:"keyRingsId"`
-	LocationsId string  `pulumi:"locationsId"`
-	// Output only. The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	// Output only. The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
-	ProtectionLevel *string `pulumi:"protectionLevel"`
+	KeyRingsId                     string                          `pulumi:"keyRingsId"`
+	LocationsId                    string                          `pulumi:"locationsId"`
+	ProjectsId                     string                          `pulumi:"projectsId"`
 	// The current state of the CryptoKeyVersion.
 	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a KeyRingCryptoKeyCryptoKeyVersion resource.
 type KeyRingCryptoKeyCryptoKeyVersionArgs struct {
-	// Output only. The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-	Algorithm pulumi.StringPtrInput
-	// Output only. Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
-	Attestation KeyOperationAttestationPtrInput
-	// Output only. The time at which this CryptoKeyVersion was created.
-	CreateTime          pulumi.StringPtrInput
 	CryptoKeyVersionsId pulumi.StringInput
 	CryptoKeysId        pulumi.StringInput
-	// Output only. The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
-	DestroyEventTime pulumi.StringPtrInput
-	// Output only. The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
-	DestroyTime pulumi.StringPtrInput
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
 	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsPtrInput
-	// Output only. The time this CryptoKeyVersion's key material was generated.
-	GenerateTime pulumi.StringPtrInput
-	// Output only. The root cause of an import failure. Only present if state is IMPORT_FAILED.
-	ImportFailureReason pulumi.StringPtrInput
-	// Output only. The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
-	ImportJob pulumi.StringPtrInput
-	// Output only. The time at which this CryptoKeyVersion's key material was imported.
-	ImportTime  pulumi.StringPtrInput
-	KeyRingsId  pulumi.StringInput
-	LocationsId pulumi.StringInput
-	// Output only. The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	// Output only. The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
-	ProtectionLevel pulumi.StringPtrInput
+	KeyRingsId                     pulumi.StringInput
+	LocationsId                    pulumi.StringInput
+	ProjectsId                     pulumi.StringInput
 	// The current state of the CryptoKeyVersion.
 	State pulumi.StringPtrInput
 }

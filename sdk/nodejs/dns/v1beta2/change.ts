@@ -35,6 +35,27 @@ export class Change extends pulumi.CustomResource {
         return obj['__pulumiType'] === Change.__pulumiType;
     }
 
+    /**
+     * Which ResourceRecordSets to add?
+     */
+    public readonly additions!: pulumi.Output<outputs.dns.v1beta2.ResourceRecordSetResponse[]>;
+    /**
+     * Which ResourceRecordSets to remove? Must match existing data exactly.
+     */
+    public readonly deletions!: pulumi.Output<outputs.dns.v1beta2.ResourceRecordSetResponse[]>;
+    /**
+     * If the DNS queries for the zone will be served.
+     */
+    public readonly isServing!: pulumi.Output<boolean>;
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * The time that this operation was started by the server (output only). This is in RFC3339 text format.
+     */
+    public readonly startTime!: pulumi.Output<string>;
+    /**
+     * Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
+     */
+    public readonly status!: pulumi.Output<string>;
 
     /**
      * Create a Change resource with the given unique name, arguments, and options.
@@ -67,6 +88,12 @@ export class Change extends pulumi.CustomResource {
             inputs["startTime"] = args ? args.startTime : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
+            inputs["additions"] = undefined /*out*/;
+            inputs["deletions"] = undefined /*out*/;
+            inputs["isServing"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

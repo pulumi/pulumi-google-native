@@ -12,6 +12,7 @@ from .subscription_iam_policy import *
 from .topic import *
 from .topic_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

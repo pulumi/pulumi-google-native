@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Subnetwork']
@@ -138,7 +139,182 @@ class Subnetwork(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["creation_timestamp"] = None
+        __props__["description"] = None
+        __props__["enable_flow_logs"] = None
+        __props__["fingerprint"] = None
+        __props__["gateway_address"] = None
+        __props__["ip_cidr_range"] = None
+        __props__["ipv6_cidr_range"] = None
+        __props__["kind"] = None
+        __props__["log_config"] = None
+        __props__["name"] = None
+        __props__["network"] = None
+        __props__["private_ip_google_access"] = None
+        __props__["private_ipv6_google_access"] = None
+        __props__["purpose"] = None
+        __props__["region"] = None
+        __props__["role"] = None
+        __props__["secondary_ip_ranges"] = None
+        __props__["self_link"] = None
+        __props__["state"] = None
         return Subnetwork(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableFlowLogs")
+    def enable_flow_logs(self) -> pulumi.Output[bool]:
+        """
+        Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is to disable flow logging. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        """
+        return pulumi.get(self, "enable_flow_logs")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> pulumi.Output[str]:
+        """
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
+
+        To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="gatewayAddress")
+    def gateway_address(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The gateway address for default routes to reach destination addresses outside this subnetwork.
+        """
+        return pulumi.get(self, "gateway_address")
+
+    @property
+    @pulumi.getter(name="ipCidrRange")
+    def ip_cidr_range(self) -> pulumi.Output[str]:
+        """
+        The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
+        """
+        return pulumi.get(self, "ip_cidr_range")
+
+    @property
+    @pulumi.getter(name="ipv6CidrRange")
+    def ipv6_cidr_range(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.
+        """
+        return pulumi.get(self, "ipv6_cidr_range")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="logConfig")
+    def log_config(self) -> pulumi.Output['outputs.SubnetworkLogConfigResponse']:
+        """
+        This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
+        """
+        return pulumi.get(self, "log_config")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Output[str]:
+        """
+        The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. Only networks that are in the distributed mode can have subnetworks. This field can be set only at resource creation time.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="privateIpGoogleAccess")
+    def private_ip_google_access(self) -> pulumi.Output[bool]:
+        """
+        Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.
+        """
+        return pulumi.get(self, "private_ip_google_access")
+
+    @property
+    @pulumi.getter(name="privateIpv6GoogleAccess")
+    def private_ipv6_google_access(self) -> pulumi.Output[str]:
+        """
+        The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
+
+        This field can be both set at resource creation time and updated using patch.
+        """
+        return pulumi.get(self, "private_ipv6_google_access")
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> pulumi.Output[str]:
+        """
+        The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        """
+        return pulumi.get(self, "purpose")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Output[str]:
+        """
+        The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter(name="secondaryIpRanges")
+    def secondary_ip_ranges(self) -> pulumi.Output[Sequence['outputs.SubnetworkSecondaryRangeResponse']]:
+        """
+        An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
+        """
+        return pulumi.get(self, "secondary_ip_ranges")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+        """
+        return pulumi.get(self, "state")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -35,6 +35,26 @@ export class Service extends pulumi.CustomResource {
         return obj['__pulumiType'] === Service.__pulumiType;
     }
 
+    /**
+     * The API version for this call such as "serving.knative.dev/v1".
+     */
+    public readonly apiVersion!: pulumi.Output<string>;
+    /**
+     * The kind of resource, in this case "Service".
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
+     */
+    public readonly metadata!: pulumi.Output<outputs.run.v1.ObjectMetaResponse>;
+    /**
+     * Spec holds the desired state of the Service (from the client).
+     */
+    public readonly spec!: pulumi.Output<outputs.run.v1.ServiceSpecResponse>;
+    /**
+     * Status communicates the observed state of the Service (from the controller).
+     */
+    public readonly status!: pulumi.Output<outputs.run.v1.ServiceStatusResponse>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -65,6 +85,11 @@ export class Service extends pulumi.CustomResource {
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
+            inputs["apiVersion"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["metadata"] = undefined /*out*/;
+            inputs["spec"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

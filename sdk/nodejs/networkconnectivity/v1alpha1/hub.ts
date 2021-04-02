@@ -34,6 +34,38 @@ export class Hub extends pulumi.CustomResource {
         return obj['__pulumiType'] === Hub.__pulumiType;
     }
 
+    /**
+     * Time when the Hub was created.
+     */
+    public readonly createTime!: pulumi.Output<string>;
+    /**
+     * Short description of the hub resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * User-defined labels.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Immutable. The name of a Hub resource.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * A list of the URIs of all attached spokes
+     */
+    public /*out*/ readonly spokes!: pulumi.Output<string[]>;
+    /**
+     * The current lifecycle state of this Hub.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.
+     */
+    public /*out*/ readonly uniqueId!: pulumi.Output<string>;
+    /**
+     * Time when the Hub was updated.
+     */
+    public readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Hub resource with the given unique name, arguments, and options.
@@ -58,11 +90,19 @@ export class Hub extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["spokes"] = args ? args.spokes : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["uniqueId"] = args ? args.uniqueId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["spokes"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["uniqueId"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["spokes"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["uniqueId"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -93,18 +133,6 @@ export interface HubArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. A list of the URIs of all attached spokes
-     */
-    readonly spokes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Output only. The current lifecycle state of this Hub.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.
-     */
-    readonly uniqueId?: pulumi.Input<string>;
     /**
      * Time when the Hub was updated.
      */

@@ -14,6 +14,21 @@ import (
 // Creates a new connection.
 type Connection struct {
 	pulumi.CustomResourceState
+
+	// Cloud SQL properties.
+	CloudSql CloudSqlPropertiesResponseOutput `pulumi:"cloudSql"`
+	// The creation timestamp of the connection.
+	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
+	// User provided description.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// User provided display name for the connection.
+	FriendlyName pulumi.StringOutput `pulumi:"friendlyName"`
+	// True, if credential is configured for this connection.
+	HasCredential pulumi.BoolOutput `pulumi:"hasCredential"`
+	// The last update timestamp of the connection.
+	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
+	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewConnection registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +69,37 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
+	// Cloud SQL properties.
+	CloudSql *CloudSqlPropertiesResponse `pulumi:"cloudSql"`
+	// The creation timestamp of the connection.
+	CreationTime *string `pulumi:"creationTime"`
+	// User provided description.
+	Description *string `pulumi:"description"`
+	// User provided display name for the connection.
+	FriendlyName *string `pulumi:"friendlyName"`
+	// True, if credential is configured for this connection.
+	HasCredential *bool `pulumi:"hasCredential"`
+	// The last update timestamp of the connection.
+	LastModifiedTime *string `pulumi:"lastModifiedTime"`
+	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
+	Name *string `pulumi:"name"`
 }
 
 type ConnectionState struct {
+	// Cloud SQL properties.
+	CloudSql CloudSqlPropertiesResponsePtrInput
+	// The creation timestamp of the connection.
+	CreationTime pulumi.StringPtrInput
+	// User provided description.
+	Description pulumi.StringPtrInput
+	// User provided display name for the connection.
+	FriendlyName pulumi.StringPtrInput
+	// True, if credential is configured for this connection.
+	HasCredential pulumi.BoolPtrInput
+	// The last update timestamp of the connection.
+	LastModifiedTime pulumi.StringPtrInput
+	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
+	Name pulumi.StringPtrInput
 }
 
 func (ConnectionState) ElementType() reflect.Type {
@@ -67,17 +110,11 @@ type connectionArgs struct {
 	// Cloud SQL properties.
 	CloudSql      *CloudSqlProperties `pulumi:"cloudSql"`
 	ConnectionsId string              `pulumi:"connectionsId"`
-	// Output only. The creation timestamp of the connection.
-	CreationTime *string `pulumi:"creationTime"`
 	// User provided description.
 	Description *string `pulumi:"description"`
 	// User provided display name for the connection.
 	FriendlyName *string `pulumi:"friendlyName"`
-	// Output only. True, if credential is configured for this connection.
-	HasCredential *bool `pulumi:"hasCredential"`
-	// Output only. The last update timestamp of the connection.
-	LastModifiedTime *string `pulumi:"lastModifiedTime"`
-	LocationsId      string  `pulumi:"locationsId"`
+	LocationsId  string  `pulumi:"locationsId"`
 	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
@@ -88,17 +125,11 @@ type ConnectionArgs struct {
 	// Cloud SQL properties.
 	CloudSql      CloudSqlPropertiesPtrInput
 	ConnectionsId pulumi.StringInput
-	// Output only. The creation timestamp of the connection.
-	CreationTime pulumi.StringPtrInput
 	// User provided description.
 	Description pulumi.StringPtrInput
 	// User provided display name for the connection.
 	FriendlyName pulumi.StringPtrInput
-	// Output only. True, if credential is configured for this connection.
-	HasCredential pulumi.BoolPtrInput
-	// Output only. The last update timestamp of the connection.
-	LastModifiedTime pulumi.StringPtrInput
-	LocationsId      pulumi.StringInput
+	LocationsId  pulumi.StringInput
 	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput

@@ -16,19 +16,12 @@ class Backup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backups_id: Optional[pulumi.Input[str]] = None,
-                 capacity_gb: Optional[pulumi.Input[str]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 download_bytes: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  source_file_share: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
-                 source_instance_tier: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 storage_bytes: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -37,17 +30,10 @@ class Backup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] capacity_gb: Output only. Capacity of the source file share when the backup was created.
-        :param pulumi.Input[str] create_time: Output only. The time when the backup was created.
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
-        :param pulumi.Input[str] download_bytes: Output only. Amount of bytes that will be downloaded if the backup is restored
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
-        :param pulumi.Input[str] name: Output only. The resource name of the backup, in the format projects/{project_id}/locations/{location_id}/backups/{backup_id}.
         :param pulumi.Input[str] source_file_share: Name of the file share in the source Cloud Filestore instance that the backup is created from.
         :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.
-        :param pulumi.Input[str] source_instance_tier: Output only. The service tier of the source Cloud Filestore instance that this backup is created from.
-        :param pulumi.Input[str] state: Output only. The backup state.
-        :param pulumi.Input[str] storage_bytes: Output only. The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,23 +55,23 @@ class Backup(pulumi.CustomResource):
             if backups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'backups_id'")
             __props__['backups_id'] = backups_id
-            __props__['capacity_gb'] = capacity_gb
-            __props__['create_time'] = create_time
             __props__['description'] = description
-            __props__['download_bytes'] = download_bytes
             __props__['labels'] = labels
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
             __props__['source_file_share'] = source_file_share
             __props__['source_instance'] = source_instance
-            __props__['source_instance_tier'] = source_instance_tier
-            __props__['state'] = state
-            __props__['storage_bytes'] = storage_bytes
+            __props__['capacity_gb'] = None
+            __props__['create_time'] = None
+            __props__['download_bytes'] = None
+            __props__['name'] = None
+            __props__['source_instance_tier'] = None
+            __props__['state'] = None
+            __props__['storage_bytes'] = None
         super(Backup, __self__).__init__(
             'google-cloud:file/v1beta1:Backup',
             resource_name,
@@ -108,7 +94,106 @@ class Backup(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["capacity_gb"] = None
+        __props__["create_time"] = None
+        __props__["description"] = None
+        __props__["download_bytes"] = None
+        __props__["labels"] = None
+        __props__["name"] = None
+        __props__["source_file_share"] = None
+        __props__["source_instance"] = None
+        __props__["source_instance_tier"] = None
+        __props__["state"] = None
+        __props__["storage_bytes"] = None
         return Backup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="capacityGb")
+    def capacity_gb(self) -> pulumi.Output[str]:
+        """
+        Capacity of the source file share when the backup was created.
+        """
+        return pulumi.get(self, "capacity_gb")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time when the backup was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="downloadBytes")
+    def download_bytes(self) -> pulumi.Output[str]:
+        """
+        Amount of bytes that will be downloaded if the backup is restored
+        """
+        return pulumi.get(self, "download_bytes")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Resource labels to represent user provided metadata.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the backup, in the format projects/{project_id}/locations/{location_id}/backups/{backup_id}.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="sourceFileShare")
+    def source_file_share(self) -> pulumi.Output[str]:
+        """
+        Name of the file share in the source Cloud Filestore instance that the backup is created from.
+        """
+        return pulumi.get(self, "source_file_share")
+
+    @property
+    @pulumi.getter(name="sourceInstance")
+    def source_instance(self) -> pulumi.Output[str]:
+        """
+        The resource name of the source Cloud Filestore instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+        """
+        return pulumi.get(self, "source_instance")
+
+    @property
+    @pulumi.getter(name="sourceInstanceTier")
+    def source_instance_tier(self) -> pulumi.Output[str]:
+        """
+        The service tier of the source Cloud Filestore instance that this backup is created from.
+        """
+        return pulumi.get(self, "source_instance_tier")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The backup state.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="storageBytes")
+    def storage_bytes(self) -> pulumi.Output[str]:
+        """
+        The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
+        """
+        return pulumi.get(self, "storage_bytes")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

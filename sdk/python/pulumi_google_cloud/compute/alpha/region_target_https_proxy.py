@@ -151,7 +151,196 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["authentication"] = None
+        __props__["authorization"] = None
+        __props__["authorization_policy"] = None
+        __props__["certificate_map"] = None
+        __props__["creation_timestamp"] = None
+        __props__["description"] = None
+        __props__["fingerprint"] = None
+        __props__["http_filters"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["proxy_bind"] = None
+        __props__["quic_override"] = None
+        __props__["region"] = None
+        __props__["self_link"] = None
+        __props__["self_link_with_id"] = None
+        __props__["server_tls_policy"] = None
+        __props__["ssl_certificates"] = None
+        __props__["ssl_policy"] = None
+        __props__["url_map"] = None
         return RegionTargetHttpsProxy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> pulumi.Output[str]:
+        """
+        [Deprecated] Use serverTlsPolicy instead.
+        """
+        return pulumi.get(self, "authentication")
+
+    @property
+    @pulumi.getter
+    def authorization(self) -> pulumi.Output[str]:
+        """
+        [Deprecated] Use authorizationPolicy instead.
+        """
+        return pulumi.get(self, "authorization")
+
+    @property
+    @pulumi.getter(name="authorizationPolicy")
+    def authorization_policy(self) -> pulumi.Output[str]:
+        """
+        Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy.
+        Refer to the AuthorizationPolicy resource for additional details.
+        authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        Note: This field currently has no impact.
+        """
+        return pulumi.get(self, "authorization_policy")
+
+    @property
+    @pulumi.getter(name="certificateMap")
+    def certificate_map(self) -> pulumi.Output[str]:
+        """
+        URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+        """
+        return pulumi.get(self, "certificate_map")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> pulumi.Output[str]:
+        """
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to patch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="httpFilters")
+    def http_filters(self) -> pulumi.Output[Sequence[str]]:
+        """
+        URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list.
+        httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
+        """
+        return pulumi.get(self, "http_filters")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="proxyBind")
+    def proxy_bind(self) -> pulumi.Output[bool]:
+        """
+        This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+
+        When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them.
+
+        The default is false.
+        """
+        return pulumi.get(self, "proxy_bind")
+
+    @property
+    @pulumi.getter(name="quicOverride")
+    def quic_override(self) -> pulumi.Output[str]:
+        """
+        Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE.  
+        - When quic-override is set to NONE, Google manages whether QUIC is used. 
+        - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. 
+        - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
+        - If the quic-override flag is not specified, NONE is implied.
+        """
+        return pulumi.get(self, "quic_override")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for this resource with the resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="serverTlsPolicy")
+    def server_tls_policy(self) -> pulumi.Output[str]:
+        """
+        Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic.
+        serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        If left blank, communications are not encrypted.
+        Note: This field currently has no impact.
+        """
+        return pulumi.get(self, "server_tls_policy")
+
+    @property
+    @pulumi.getter(name="sslCertificates")
+    def ssl_certificates(self) -> pulumi.Output[Sequence[str]]:
+        """
+        URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+        """
+        return pulumi.get(self, "ssl_certificates")
+
+    @property
+    @pulumi.getter(name="sslPolicy")
+    def ssl_policy(self) -> pulumi.Output[str]:
+        """
+        URL of SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the TargetHttpsProxy resource has no SSL policy configured.
+        """
+        return pulumi.get(self, "ssl_policy")
+
+    @property
+    @pulumi.getter(name="urlMap")
+    def url_map(self) -> pulumi.Output[str]:
+        """
+        A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map:  
+        - https://www.googleapis.compute/v1/projects/project/global/urlMaps/url-map 
+        - projects/project/global/urlMaps/url-map 
+        - global/urlMaps/url-map
+        """
+        return pulumi.get(self, "url_map")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

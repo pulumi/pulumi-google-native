@@ -35,6 +35,38 @@ export class WorkflowExecution extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkflowExecution.__pulumiType;
     }
 
+    /**
+     * Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
+     */
+    public readonly argument!: pulumi.Output<string>;
+    /**
+     * Marks the end of execution, successful or not.
+     */
+    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    /**
+     * The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
+     */
+    public /*out*/ readonly error!: pulumi.Output<outputs.workflowexecutions.v1.ErrorResponse>;
+    /**
+     * The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
+     */
+    public /*out*/ readonly result!: pulumi.Output<string>;
+    /**
+     * Marks the beginning of execution.
+     */
+    public /*out*/ readonly startTime!: pulumi.Output<string>;
+    /**
+     * Current state of the execution.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Revision of the workflow this execution is using.
+     */
+    public /*out*/ readonly workflowRevisionId!: pulumi.Output<string>;
 
     /**
      * Create a WorkflowExecution resource with the given unique name, arguments, and options.
@@ -60,18 +92,26 @@ export class WorkflowExecution extends pulumi.CustomResource {
                 throw new Error("Missing required property 'workflowsId'");
             }
             inputs["argument"] = args ? args.argument : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["error"] = args ? args.error : undefined;
             inputs["executionsId"] = args ? args.executionsId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["result"] = args ? args.result : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["workflowRevisionId"] = args ? args.workflowRevisionId : undefined;
             inputs["workflowsId"] = args ? args.workflowsId : undefined;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["error"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["result"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["workflowRevisionId"] = undefined /*out*/;
         } else {
+            inputs["argument"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["error"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["result"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["workflowRevisionId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -88,36 +128,8 @@ export interface WorkflowExecutionArgs {
      * Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
      */
     readonly argument?: pulumi.Input<string>;
-    /**
-     * Output only. Marks the end of execution, successful or not.
-     */
-    readonly endTime?: pulumi.Input<string>;
-    /**
-     * Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
-     */
-    readonly error?: pulumi.Input<inputs.workflowexecutions.v1.Error>;
     readonly executionsId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
-     */
-    readonly result?: pulumi.Input<string>;
-    /**
-     * Output only. Marks the beginning of execution.
-     */
-    readonly startTime?: pulumi.Input<string>;
-    /**
-     * Output only. Current state of the execution.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. Revision of the workflow this execution is using.
-     */
-    readonly workflowRevisionId?: pulumi.Input<string>;
     readonly workflowsId: pulumi.Input<string>;
 }

@@ -14,6 +14,25 @@ import (
 // Creates a Group.
 type Group struct {
 	pulumi.CustomResourceState
+
+	// The time when the `Group` was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// The display name of the `Group`.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Optional. Dynamic group metadata like queries and status.
+	DynamicGroupMetadata DynamicGroupMetadataResponseOutput `pulumi:"dynamicGroupMetadata"`
+	// Required. Immutable. The `EntityKey` of the `Group`.
+	GroupKey EntityKeyResponseOutput `pulumi:"groupKey"`
+	// Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
+	Parent pulumi.StringOutput `pulumi:"parent"`
+	// The time when the `Group` was last updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -48,9 +67,45 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
+	// The time when the `Group` was created.
+	CreateTime *string `pulumi:"createTime"`
+	// An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
+	Description *string `pulumi:"description"`
+	// The display name of the `Group`.
+	DisplayName *string `pulumi:"displayName"`
+	// Optional. Dynamic group metadata like queries and status.
+	DynamicGroupMetadata *DynamicGroupMetadataResponse `pulumi:"dynamicGroupMetadata"`
+	// Required. Immutable. The `EntityKey` of the `Group`.
+	GroupKey *EntityKeyResponse `pulumi:"groupKey"`
+	// Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
+	Labels map[string]string `pulumi:"labels"`
+	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`.
+	Name *string `pulumi:"name"`
+	// Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
+	Parent *string `pulumi:"parent"`
+	// The time when the `Group` was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type GroupState struct {
+	// The time when the `Group` was created.
+	CreateTime pulumi.StringPtrInput
+	// An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
+	Description pulumi.StringPtrInput
+	// The display name of the `Group`.
+	DisplayName pulumi.StringPtrInput
+	// Optional. Dynamic group metadata like queries and status.
+	DynamicGroupMetadata DynamicGroupMetadataResponsePtrInput
+	// Required. Immutable. The `EntityKey` of the `Group`.
+	GroupKey EntityKeyResponsePtrInput
+	// Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
+	Labels pulumi.StringMapInput
+	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`.
+	Name pulumi.StringPtrInput
+	// Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
+	Parent pulumi.StringPtrInput
+	// The time when the `Group` was last updated.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (GroupState) ElementType() reflect.Type {
@@ -58,8 +113,6 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
-	// Output only. The time when the `Group` was created.
-	CreateTime *string `pulumi:"createTime"`
 	// An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
 	Description *string `pulumi:"description"`
 	// The display name of the `Group`.
@@ -71,18 +124,12 @@ type groupArgs struct {
 	GroupsId string     `pulumi:"groupsId"`
 	// Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
 	Labels map[string]string `pulumi:"labels"`
-	// Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`.
-	Name *string `pulumi:"name"`
 	// Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
 	Parent *string `pulumi:"parent"`
-	// Output only. The time when the `Group` was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
-	// Output only. The time when the `Group` was created.
-	CreateTime pulumi.StringPtrInput
 	// An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
 	Description pulumi.StringPtrInput
 	// The display name of the `Group`.
@@ -94,12 +141,8 @@ type GroupArgs struct {
 	GroupsId pulumi.StringInput
 	// Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
 	Labels pulumi.StringMapInput
-	// Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`.
-	Name pulumi.StringPtrInput
 	// Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
 	Parent pulumi.StringPtrInput
-	// Output only. The time when the `Group` was last updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {

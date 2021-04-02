@@ -35,6 +35,46 @@ export class OrganizationWorkload extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationWorkload.__pulumiType;
     }
 
+    /**
+     * Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+     */
+    public readonly billingAccount!: pulumi.Output<string>;
+    /**
+     * Required. Immutable. Compliance Regime associated with this workload.
+     */
+    public readonly complianceRegime!: pulumi.Output<string>;
+    /**
+     * Immutable. The Workload creation timestamp.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+     */
+    public readonly kmsSettings!: pulumi.Output<outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse>;
+    /**
+     * Optional. Labels applied to the workload.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
+     */
+    public readonly provisionedResourcesParent!: pulumi.Output<string>;
+    /**
+     * The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
+     */
+    public /*out*/ readonly resources!: pulumi.Output<outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse[]>;
 
     /**
      * Create a OrganizationWorkload resource with the given unique name, arguments, and options.
@@ -58,7 +98,6 @@ export class OrganizationWorkload extends pulumi.CustomResource {
             }
             inputs["billingAccount"] = args ? args.billingAccount : undefined;
             inputs["complianceRegime"] = args ? args.complianceRegime : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["kmsSettings"] = args ? args.kmsSettings : undefined;
@@ -67,9 +106,20 @@ export class OrganizationWorkload extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["provisionedResourcesParent"] = args ? args.provisionedResourcesParent : undefined;
-            inputs["resources"] = args ? args.resources : undefined;
             inputs["workloadsId"] = args ? args.workloadsId : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["resources"] = undefined /*out*/;
         } else {
+            inputs["billingAccount"] = undefined /*out*/;
+            inputs["complianceRegime"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["kmsSettings"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["provisionedResourcesParent"] = undefined /*out*/;
+            inputs["resources"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -90,10 +140,6 @@ export interface OrganizationWorkloadArgs {
      * Required. Immutable. Compliance Regime associated with this workload.
      */
     readonly complianceRegime?: pulumi.Input<string>;
-    /**
-     * Output only. Immutable. The Workload creation timestamp.
-     */
-    readonly createTime?: pulumi.Input<string>;
     /**
      * Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
      */
@@ -120,9 +166,5 @@ export interface OrganizationWorkloadArgs {
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
      */
     readonly provisionedResourcesParent?: pulumi.Input<string>;
-    /**
-     * Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
-     */
-    readonly resources?: pulumi.Input<pulumi.Input<inputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadResourceInfo>[]>;
     readonly workloadsId: pulumi.Input<string>;
 }

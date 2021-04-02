@@ -34,6 +34,18 @@ export class OrganizationEnvgroupAttachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationEnvgroupAttachment.__pulumiType;
     }
 
+    /**
+     * The time at which the environment group attachment was created as milliseconds since epoch.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Required. ID of the attached environment.
+     */
+    public readonly environment!: pulumi.Output<string>;
+    /**
+     * ID of the environment group attachment.
+     */
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationEnvgroupAttachment resource with the given unique name, arguments, and options.
@@ -56,12 +68,15 @@ export class OrganizationEnvgroupAttachment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'organizationsId'");
             }
             inputs["attachmentsId"] = args ? args.attachmentsId : undefined;
-            inputs["createdAt"] = args ? args.createdAt : undefined;
             inputs["envgroupsId"] = args ? args.envgroupsId : undefined;
             inputs["environment"] = args ? args.environment : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["createdAt"] = undefined /*out*/;
         } else {
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["environment"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -75,10 +90,6 @@ export class OrganizationEnvgroupAttachment extends pulumi.CustomResource {
  */
 export interface OrganizationEnvgroupAttachmentArgs {
     readonly attachmentsId: pulumi.Input<string>;
-    /**
-     * Output only. The time at which the environment group attachment was created as milliseconds since epoch.
-     */
-    readonly createdAt?: pulumi.Input<string>;
     readonly envgroupsId: pulumi.Input<string>;
     /**
      * Required. ID of the attached environment.

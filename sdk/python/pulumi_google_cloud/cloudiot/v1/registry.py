@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Registry']
@@ -100,7 +101,70 @@ class Registry(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["credentials"] = None
+        __props__["event_notification_configs"] = None
+        __props__["http_config"] = None
+        __props__["log_level"] = None
+        __props__["mqtt_config"] = None
+        __props__["name"] = None
+        __props__["state_notification_config"] = None
         return Registry(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def credentials(self) -> pulumi.Output[Sequence['outputs.RegistryCredentialResponse']]:
+        """
+        The credentials used to verify the device credentials. No more than 10 credentials can be bound to a single registry at a time. The verification process occurs at the time of device creation or update. If this field is empty, no verification is performed. Otherwise, the credentials of a newly created device or added credentials of an updated device should be signed with one of these registry credentials. Note, however, that existing devices will never be affected by modifications to this list of credentials: after a device has been successfully created in a registry, it should be able to connect even if its registry credentials are revoked, deleted, or modified.
+        """
+        return pulumi.get(self, "credentials")
+
+    @property
+    @pulumi.getter(name="eventNotificationConfigs")
+    def event_notification_configs(self) -> pulumi.Output[Sequence['outputs.EventNotificationConfigResponse']]:
+        """
+        The configuration for notification of telemetry events received from the device. All telemetry events that were successfully published by the device and acknowledged by Cloud IoT Core are guaranteed to be delivered to Cloud Pub/Sub. If multiple configurations match a message, only the first matching configuration is used. If you try to publish a device telemetry event using MQTT without specifying a Cloud Pub/Sub topic for the device's registry, the connection closes automatically. If you try to do so using an HTTP connection, an error is returned. Up to 10 configurations may be provided.
+        """
+        return pulumi.get(self, "event_notification_configs")
+
+    @property
+    @pulumi.getter(name="httpConfig")
+    def http_config(self) -> pulumi.Output['outputs.HttpConfigResponse']:
+        """
+        The DeviceService (HTTP) configuration for this device registry.
+        """
+        return pulumi.get(self, "http_config")
+
+    @property
+    @pulumi.getter(name="logLevel")
+    def log_level(self) -> pulumi.Output[str]:
+        """
+        **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
+        """
+        return pulumi.get(self, "log_level")
+
+    @property
+    @pulumi.getter(name="mqttConfig")
+    def mqtt_config(self) -> pulumi.Output['outputs.MqttConfigResponse']:
+        """
+        The MQTT configuration for this device registry.
+        """
+        return pulumi.get(self, "mqtt_config")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="stateNotificationConfig")
+    def state_notification_config(self) -> pulumi.Output['outputs.StateNotificationConfigResponse']:
+        """
+        The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
+        """
+        return pulumi.get(self, "state_notification_config")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

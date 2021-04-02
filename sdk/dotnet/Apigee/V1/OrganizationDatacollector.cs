@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationDatacollector : Pulumi.CustomResource
     {
         /// <summary>
+        /// The time at which the data collector was created in milliseconds since the epoch.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// A description of the data collector.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which the Data Collector was last updated in milliseconds since the epoch.
+        /// </summary>
+        [Output("lastModifiedAt")]
+        public Output<string> LastModifiedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the data collector. Must begin with `dc_`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The type of data this data collector will collect.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationDatacollector resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,12 +90,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
 
     public sealed class OrganizationDatacollectorArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. The time at which the data collector was created in milliseconds since the epoch.
-        /// </summary>
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
         [Input("datacollectorsId", required: true)]
         public Input<string> DatacollectorsId { get; set; } = null!;
 
@@ -73,12 +98,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which the Data Collector was last updated in milliseconds since the epoch.
-        /// </summary>
-        [Input("lastModifiedAt")]
-        public Input<string>? LastModifiedAt { get; set; }
 
         /// <summary>
         /// ID of the data collector. Must begin with `dc_`.

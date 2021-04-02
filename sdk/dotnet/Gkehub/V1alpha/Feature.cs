@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Gkehub.V1alpha
     public partial class Feature : Pulumi.CustomResource
     {
         /// <summary>
+        /// When the Feature resource was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// When the Feature resource was deleted.
+        /// </summary>
+        [Output("deleteTime")]
+        public Output<string> DeleteTime { get; private set; } = null!;
+
+        /// <summary>
+        /// GCP labels for this Feature.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
+        /// </summary>
+        [Output("membershipSpecs")]
+        public Output<ImmutableDictionary<string, string>> MembershipSpecs { get; private set; } = null!;
+
+        /// <summary>
+        /// Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
+        /// </summary>
+        [Output("membershipStates")]
+        public Output<ImmutableDictionary<string, string>> MembershipStates { get; private set; } = null!;
+
+        /// <summary>
+        /// The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the Feature resource itself.
+        /// </summary>
+        [Output("resourceState")]
+        public Output<Outputs.FeatureResourceStateResponse> ResourceState { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        /// </summary>
+        [Output("spec")]
+        public Output<Outputs.CommonFeatureSpecResponse> Spec { get; private set; } = null!;
+
+        /// <summary>
+        /// The Hub-wide Feature state.
+        /// </summary>
+        [Output("state")]
+        public Output<Outputs.CommonFeatureStateResponse> State { get; private set; } = null!;
+
+        /// <summary>
+        /// When the Feature resource was last updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Feature resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,18 +120,6 @@ namespace Pulumi.GoogleCloud.Gkehub.V1alpha
 
     public sealed class FeatureArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. When the Feature resource was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Output only. When the Feature resource was deleted.
-        /// </summary>
-        [Input("deleteTime")]
-        public Input<string>? DeleteTime { get; set; }
-
         [Input("featuresId", required: true)]
         public Input<string> FeaturesId { get; set; } = null!;
 
@@ -98,50 +147,14 @@ namespace Pulumi.GoogleCloud.Gkehub.V1alpha
             set => _membershipSpecs = value;
         }
 
-        [Input("membershipStates")]
-        private InputMap<string>? _membershipStates;
-
-        /// <summary>
-        /// Output only. Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
-        /// </summary>
-        public InputMap<string> MembershipStates
-        {
-            get => _membershipStates ?? (_membershipStates = new InputMap<string>());
-            set => _membershipStates = value;
-        }
-
-        /// <summary>
-        /// Output only. The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. State of the Feature resource itself.
-        /// </summary>
-        [Input("resourceState")]
-        public Input<Inputs.FeatureResourceStateArgs>? ResourceState { get; set; }
 
         /// <summary>
         /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
         /// </summary>
         [Input("spec")]
         public Input<Inputs.CommonFeatureSpecArgs>? Spec { get; set; }
-
-        /// <summary>
-        /// Output only. The Hub-wide Feature state.
-        /// </summary>
-        [Input("state")]
-        public Input<Inputs.CommonFeatureStateArgs>? State { get; set; }
-
-        /// <summary>
-        /// Output only. When the Feature resource was last updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public FeatureArgs()
         {

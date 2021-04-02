@@ -89,37 +89,21 @@ class FileShareConfigArgs:
 @pulumi.input_type
 class NetworkConfigArgs:
     def __init__(__self__, *,
-                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  modes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None):
         """
         Network configuration for the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: Output only. IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] modes: Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
         :param pulumi.Input[str] network: The name of the Google Compute Engine [VPC network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected.
         :param pulumi.Input[str] reserved_ip_range: A /29 CIDR block in one of the [internal IP address ranges](https://www.arin.net/knowledge/address_filters.html) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
         """
-        if ip_addresses is not None:
-            pulumi.set(__self__, "ip_addresses", ip_addresses)
         if modes is not None:
             pulumi.set(__self__, "modes", modes)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if reserved_ip_range is not None:
             pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
-
-    @property
-    @pulumi.getter(name="ipAddresses")
-    def ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Output only. IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or IPv6 addresses in the format {block 1}:{block 2}:{block 3}:{block 4}:{block 5}:{block 6}:{block 7}:{block 8}.
-        """
-        return pulumi.get(self, "ip_addresses")
-
-    @ip_addresses.setter
-    def ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "ip_addresses", value)
 
     @property
     @pulumi.getter

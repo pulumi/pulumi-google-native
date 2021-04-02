@@ -34,6 +34,50 @@ export class OrganizationInstance extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationInstance.__pulumiType;
     }
 
+    /**
+     * Time the instance was created in milliseconds since epoch.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Optional. Description of the instance.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+     */
+    public readonly diskEncryptionKeyName!: pulumi.Output<string>;
+    /**
+     * Optional. Display name for the instance.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
+     */
+    public /*out*/ readonly host!: pulumi.Output<string>;
+    /**
+     * Time the instance was last modified in milliseconds since epoch.
+     */
+    public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
+    /**
+     * Required. Compute Engine location where the instance resides.
+     */
+    public readonly location!: pulumi.Output<string>;
+    /**
+     * Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
+     */
+    public readonly peeringCidrRange!: pulumi.Output<string>;
+    /**
+     * Port number of the exposed Apigee endpoint.
+     */
+    public /*out*/ readonly port!: pulumi.Output<string>;
+    /**
+     * State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationInstance resource with the given unique name, arguments, and options.
@@ -52,20 +96,31 @@ export class OrganizationInstance extends pulumi.CustomResource {
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
-            inputs["createdAt"] = args ? args.createdAt : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["diskEncryptionKeyName"] = args ? args.diskEncryptionKeyName : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["host"] = args ? args.host : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
-            inputs["lastModifiedAt"] = args ? args.lastModifiedAt : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["peeringCidrRange"] = args ? args.peeringCidrRange : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["host"] = undefined /*out*/;
+            inputs["lastModifiedAt"] = undefined /*out*/;
+            inputs["port"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["diskEncryptionKeyName"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["host"] = undefined /*out*/;
+            inputs["lastModifiedAt"] = undefined /*out*/;
+            inputs["location"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["peeringCidrRange"] = undefined /*out*/;
+            inputs["port"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -79,10 +134,6 @@ export class OrganizationInstance extends pulumi.CustomResource {
  */
 export interface OrganizationInstanceArgs {
     /**
-     * Output only. Time the instance was created in milliseconds since epoch.
-     */
-    readonly createdAt?: pulumi.Input<string>;
-    /**
      * Optional. Description of the instance.
      */
     readonly description?: pulumi.Input<string>;
@@ -94,15 +145,7 @@ export interface OrganizationInstanceArgs {
      * Optional. Display name for the instance.
      */
     readonly displayName?: pulumi.Input<string>;
-    /**
-     * Output only. Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
-     */
-    readonly host?: pulumi.Input<string>;
     readonly instancesId: pulumi.Input<string>;
-    /**
-     * Output only. Time the instance was last modified in milliseconds since epoch.
-     */
-    readonly lastModifiedAt?: pulumi.Input<string>;
     /**
      * Required. Compute Engine location where the instance resides.
      */
@@ -116,12 +159,4 @@ export interface OrganizationInstanceArgs {
      * Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
      */
     readonly peeringCidrRange?: pulumi.Input<string>;
-    /**
-     * Output only. Port number of the exposed Apigee endpoint.
-     */
-    readonly port?: pulumi.Input<string>;
-    /**
-     * Output only. State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
-     */
-    readonly state?: pulumi.Input<string>;
 }

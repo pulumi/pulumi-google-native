@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Jobs.V3.Inputs
         public Input<string>? CareerSiteUri { get; set; }
 
         /// <summary>
-        /// Output only. Derived details about the company.
+        /// Derived details about the company.
         /// </summary>
         [Input("derivedInfo")]
         public Input<Inputs.CompanyDerivedInfoArgs>? DerivedInfo { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleCloud.Jobs.V3.Inputs
         public Input<string>? Size { get; set; }
 
         /// <summary>
-        /// Output only. Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
+        /// Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }

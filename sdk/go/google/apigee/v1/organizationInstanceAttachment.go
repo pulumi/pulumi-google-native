@@ -14,6 +14,13 @@ import (
 // Creates a new attachment of an environment to an instance. **Note:** Not supported for Apigee hybrid.
 type OrganizationInstanceAttachment struct {
 	pulumi.CustomResourceState
+
+	// Time the attachment was created in milliseconds since epoch.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// ID of the attached environment.
+	Environment pulumi.StringOutput `pulumi:"environment"`
+	// ID of the attachment.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewOrganizationInstanceAttachment registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +61,21 @@ func GetOrganizationInstanceAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationInstanceAttachment resources.
 type organizationInstanceAttachmentState struct {
+	// Time the attachment was created in milliseconds since epoch.
+	CreatedAt *string `pulumi:"createdAt"`
+	// ID of the attached environment.
+	Environment *string `pulumi:"environment"`
+	// ID of the attachment.
+	Name *string `pulumi:"name"`
 }
 
 type OrganizationInstanceAttachmentState struct {
+	// Time the attachment was created in milliseconds since epoch.
+	CreatedAt pulumi.StringPtrInput
+	// ID of the attached environment.
+	Environment pulumi.StringPtrInput
+	// ID of the attachment.
+	Name pulumi.StringPtrInput
 }
 
 func (OrganizationInstanceAttachmentState) ElementType() reflect.Type {
@@ -65,26 +84,18 @@ func (OrganizationInstanceAttachmentState) ElementType() reflect.Type {
 
 type organizationInstanceAttachmentArgs struct {
 	AttachmentsId string `pulumi:"attachmentsId"`
-	// Output only. Time the attachment was created in milliseconds since epoch.
-	CreatedAt *string `pulumi:"createdAt"`
 	// ID of the attached environment.
-	Environment *string `pulumi:"environment"`
-	InstancesId string  `pulumi:"instancesId"`
-	// Output only. ID of the attachment.
-	Name            *string `pulumi:"name"`
+	Environment     *string `pulumi:"environment"`
+	InstancesId     string  `pulumi:"instancesId"`
 	OrganizationsId string  `pulumi:"organizationsId"`
 }
 
 // The set of arguments for constructing a OrganizationInstanceAttachment resource.
 type OrganizationInstanceAttachmentArgs struct {
 	AttachmentsId pulumi.StringInput
-	// Output only. Time the attachment was created in milliseconds since epoch.
-	CreatedAt pulumi.StringPtrInput
 	// ID of the attached environment.
-	Environment pulumi.StringPtrInput
-	InstancesId pulumi.StringInput
-	// Output only. ID of the attachment.
-	Name            pulumi.StringPtrInput
+	Environment     pulumi.StringPtrInput
+	InstancesId     pulumi.StringInput
 	OrganizationsId pulumi.StringInput
 }
 

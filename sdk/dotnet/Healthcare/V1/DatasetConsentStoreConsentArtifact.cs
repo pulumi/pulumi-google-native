@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Healthcare.V1
     public partial class DatasetConsentStoreConsentArtifact : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
+        /// </summary>
+        [Output("consentContentScreenshots")]
+        public Output<ImmutableArray<Outputs.ImageResponse>> ConsentContentScreenshots { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. An string indicating the version of the consent information shown to the user.
+        /// </summary>
+        [Output("consentContentVersion")]
+        public Output<string> ConsentContentVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. A signature from a guardian.
+        /// </summary>
+        [Output("guardianSignature")]
+        public Output<Outputs.SignatureResponse> GuardianSignature { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
+        /// </summary>
+        [Output("metadata")]
+        public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. User's UUID provided by the client.
+        /// </summary>
+        [Output("userId")]
+        public Output<string> UserId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. User's signature.
+        /// </summary>
+        [Output("userSignature")]
+        public Output<Outputs.SignatureResponse> UserSignature { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. A signature from a witness.
+        /// </summary>
+        [Output("witnessSignature")]
+        public Output<Outputs.SignatureResponse> WitnessSignature { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a DatasetConsentStoreConsentArtifact resource with the given unique name, arguments, and options.
         /// </summary>
         ///

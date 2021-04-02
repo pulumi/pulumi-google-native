@@ -35,6 +35,22 @@ export class InstanceDatabaseSession extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceDatabaseSession.__pulumiType;
     }
 
+    /**
+     * The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.
+     */
+    public /*out*/ readonly approximateLastUseTime!: pulumi.Output<string>;
+    /**
+     * The timestamp when the session is created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
+     */
+    public /*out*/ readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The name of the session. This is always system-assigned.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
 
     /**
      * Create a InstanceDatabaseSession resource with the given unique name, arguments, and options.
@@ -64,7 +80,15 @@ export class InstanceDatabaseSession extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["session"] = args ? args.session : undefined;
             inputs["sessionsId"] = args ? args.sessionsId : undefined;
+            inputs["approximateLastUseTime"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         } else {
+            inputs["approximateLastUseTime"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

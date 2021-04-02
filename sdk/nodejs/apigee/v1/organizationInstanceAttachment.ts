@@ -34,6 +34,18 @@ export class OrganizationInstanceAttachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationInstanceAttachment.__pulumiType;
     }
 
+    /**
+     * Time the attachment was created in milliseconds since epoch.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * ID of the attached environment.
+     */
+    public readonly environment!: pulumi.Output<string>;
+    /**
+     * ID of the attachment.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationInstanceAttachment resource with the given unique name, arguments, and options.
@@ -56,12 +68,15 @@ export class OrganizationInstanceAttachment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'organizationsId'");
             }
             inputs["attachmentsId"] = args ? args.attachmentsId : undefined;
-            inputs["createdAt"] = args ? args.createdAt : undefined;
             inputs["environment"] = args ? args.environment : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         } else {
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["environment"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -76,17 +91,9 @@ export class OrganizationInstanceAttachment extends pulumi.CustomResource {
 export interface OrganizationInstanceAttachmentArgs {
     readonly attachmentsId: pulumi.Input<string>;
     /**
-     * Output only. Time the attachment was created in milliseconds since epoch.
-     */
-    readonly createdAt?: pulumi.Input<string>;
-    /**
      * ID of the attached environment.
      */
     readonly environment?: pulumi.Input<string>;
     readonly instancesId: pulumi.Input<string>;
-    /**
-     * Output only. ID of the attachment.
-     */
-    readonly name?: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
 }

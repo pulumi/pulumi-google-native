@@ -34,6 +34,26 @@ export class Site extends pulumi.CustomResource {
         return obj['__pulumiType'] === Site.__pulumiType;
     }
 
+    /**
+     * Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
+     */
+    public readonly appId!: pulumi.Output<string>;
+    /**
+     * The default URL for the Hosting site.
+     */
+    public /*out*/ readonly defaultUrl!: pulumi.Output<string>;
+    /**
+     * Optional. User-specified labels for the Hosting site.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The fully-qualified resource name of the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when Hosting is provisioned for the project. All additional sites are `USER_SITE`.
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Site resource with the given unique name, arguments, and options.
@@ -53,13 +73,18 @@ export class Site extends pulumi.CustomResource {
                 throw new Error("Missing required property 'sitesId'");
             }
             inputs["appId"] = args ? args.appId : undefined;
-            inputs["defaultUrl"] = args ? args.defaultUrl : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["sitesId"] = args ? args.sitesId : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            inputs["defaultUrl"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         } else {
+            inputs["appId"] = undefined /*out*/;
+            inputs["defaultUrl"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -77,21 +102,9 @@ export interface SiteArgs {
      */
     readonly appId?: pulumi.Input<string>;
     /**
-     * Output only. The default URL for the Hosting site.
-     */
-    readonly defaultUrl?: pulumi.Input<string>;
-    /**
      * Optional. User-specified labels for the Hosting site.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Output only. The fully-qualified resource name of the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     readonly sitesId: pulumi.Input<string>;
-    /**
-     * Output only. The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when Hosting is provisioned for the project. All additional sites are `USER_SITE`.
-     */
-    readonly type?: pulumi.Input<string>;
 }

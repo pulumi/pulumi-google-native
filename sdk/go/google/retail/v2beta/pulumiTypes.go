@@ -128,6 +128,124 @@ func (o GoogleCloudRetailV2betaImageArrayOutput) Index(i pulumi.IntInput) Google
 	}).(GoogleCloudRetailV2betaImageOutput)
 }
 
+// Product thumbnail/detail image.
+type GoogleCloudRetailV2betaImageResponse struct {
+	// Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
+	Height int `pulumi:"height"`
+	// Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+	Uri string `pulumi:"uri"`
+	// Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
+	Width int `pulumi:"width"`
+}
+
+// GoogleCloudRetailV2betaImageResponseInput is an input type that accepts GoogleCloudRetailV2betaImageResponseArgs and GoogleCloudRetailV2betaImageResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaImageResponseInput` via:
+//
+//          GoogleCloudRetailV2betaImageResponseArgs{...}
+type GoogleCloudRetailV2betaImageResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaImageResponseOutput() GoogleCloudRetailV2betaImageResponseOutput
+	ToGoogleCloudRetailV2betaImageResponseOutputWithContext(context.Context) GoogleCloudRetailV2betaImageResponseOutput
+}
+
+// Product thumbnail/detail image.
+type GoogleCloudRetailV2betaImageResponseArgs struct {
+	// Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
+	Height pulumi.IntInput `pulumi:"height"`
+	// Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+	Uri pulumi.StringInput `pulumi:"uri"`
+	// Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
+	Width pulumi.IntInput `pulumi:"width"`
+}
+
+func (GoogleCloudRetailV2betaImageResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaImageResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaImageResponseArgs) ToGoogleCloudRetailV2betaImageResponseOutput() GoogleCloudRetailV2betaImageResponseOutput {
+	return i.ToGoogleCloudRetailV2betaImageResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaImageResponseArgs) ToGoogleCloudRetailV2betaImageResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaImageResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaImageResponseOutput)
+}
+
+// GoogleCloudRetailV2betaImageResponseArrayInput is an input type that accepts GoogleCloudRetailV2betaImageResponseArray and GoogleCloudRetailV2betaImageResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaImageResponseArrayInput` via:
+//
+//          GoogleCloudRetailV2betaImageResponseArray{ GoogleCloudRetailV2betaImageResponseArgs{...} }
+type GoogleCloudRetailV2betaImageResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaImageResponseArrayOutput() GoogleCloudRetailV2betaImageResponseArrayOutput
+	ToGoogleCloudRetailV2betaImageResponseArrayOutputWithContext(context.Context) GoogleCloudRetailV2betaImageResponseArrayOutput
+}
+
+type GoogleCloudRetailV2betaImageResponseArray []GoogleCloudRetailV2betaImageResponseInput
+
+func (GoogleCloudRetailV2betaImageResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2betaImageResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaImageResponseArray) ToGoogleCloudRetailV2betaImageResponseArrayOutput() GoogleCloudRetailV2betaImageResponseArrayOutput {
+	return i.ToGoogleCloudRetailV2betaImageResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaImageResponseArray) ToGoogleCloudRetailV2betaImageResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaImageResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaImageResponseArrayOutput)
+}
+
+// Product thumbnail/detail image.
+type GoogleCloudRetailV2betaImageResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaImageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaImageResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaImageResponseOutput) ToGoogleCloudRetailV2betaImageResponseOutput() GoogleCloudRetailV2betaImageResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaImageResponseOutput) ToGoogleCloudRetailV2betaImageResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaImageResponseOutput {
+	return o
+}
+
+// Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
+func (o GoogleCloudRetailV2betaImageResponseOutput) Height() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaImageResponse) int { return v.Height }).(pulumi.IntOutput)
+}
+
+// Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+func (o GoogleCloudRetailV2betaImageResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaImageResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
+func (o GoogleCloudRetailV2betaImageResponseOutput) Width() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaImageResponse) int { return v.Width }).(pulumi.IntOutput)
+}
+
+type GoogleCloudRetailV2betaImageResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaImageResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2betaImageResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaImageResponseArrayOutput) ToGoogleCloudRetailV2betaImageResponseArrayOutput() GoogleCloudRetailV2betaImageResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaImageResponseArrayOutput) ToGoogleCloudRetailV2betaImageResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaImageResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaImageResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaImageResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2betaImageResponse {
+		return vs[0].([]GoogleCloudRetailV2betaImageResponse)[vs[1].(int)]
+	}).(GoogleCloudRetailV2betaImageResponseOutput)
+}
+
 // The price information of a Product.
 type GoogleCloudRetailV2betaPriceInfo struct {
 	// The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
@@ -319,9 +437,204 @@ func (o GoogleCloudRetailV2betaPriceInfoPtrOutput) Price() pulumi.Float64PtrOutp
 	}).(pulumi.Float64PtrOutput)
 }
 
+// The price information of a Product.
+type GoogleCloudRetailV2betaPriceInfoResponse struct {
+	// The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
+	Cost float64 `pulumi:"cost"`
+	// The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). If this field is an unrecognizable currency code, an INVALID_ARGUMENT error is returned.
+	CurrencyCode string `pulumi:"currencyCode"`
+	// Price of the product without any discount. If zero, by default set to be the price.
+	OriginalPrice float64 `pulumi:"originalPrice"`
+	// Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.priceSpecification](https://schema.org/priceSpecification).
+	Price float64 `pulumi:"price"`
+}
+
+// GoogleCloudRetailV2betaPriceInfoResponseInput is an input type that accepts GoogleCloudRetailV2betaPriceInfoResponseArgs and GoogleCloudRetailV2betaPriceInfoResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaPriceInfoResponseInput` via:
+//
+//          GoogleCloudRetailV2betaPriceInfoResponseArgs{...}
+type GoogleCloudRetailV2betaPriceInfoResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaPriceInfoResponseOutput() GoogleCloudRetailV2betaPriceInfoResponseOutput
+	ToGoogleCloudRetailV2betaPriceInfoResponseOutputWithContext(context.Context) GoogleCloudRetailV2betaPriceInfoResponseOutput
+}
+
+// The price information of a Product.
+type GoogleCloudRetailV2betaPriceInfoResponseArgs struct {
+	// The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
+	Cost pulumi.Float64Input `pulumi:"cost"`
+	// The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). If this field is an unrecognizable currency code, an INVALID_ARGUMENT error is returned.
+	CurrencyCode pulumi.StringInput `pulumi:"currencyCode"`
+	// Price of the product without any discount. If zero, by default set to be the price.
+	OriginalPrice pulumi.Float64Input `pulumi:"originalPrice"`
+	// Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.priceSpecification](https://schema.org/priceSpecification).
+	Price pulumi.Float64Input `pulumi:"price"`
+}
+
+func (GoogleCloudRetailV2betaPriceInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaPriceInfoResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaPriceInfoResponseArgs) ToGoogleCloudRetailV2betaPriceInfoResponseOutput() GoogleCloudRetailV2betaPriceInfoResponseOutput {
+	return i.ToGoogleCloudRetailV2betaPriceInfoResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaPriceInfoResponseArgs) ToGoogleCloudRetailV2betaPriceInfoResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaPriceInfoResponseOutput)
+}
+
+func (i GoogleCloudRetailV2betaPriceInfoResponseArgs) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutput() GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
+	return i.ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaPriceInfoResponseArgs) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaPriceInfoResponseOutput).ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2betaPriceInfoResponsePtrInput is an input type that accepts GoogleCloudRetailV2betaPriceInfoResponseArgs, GoogleCloudRetailV2betaPriceInfoResponsePtr and GoogleCloudRetailV2betaPriceInfoResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaPriceInfoResponsePtrInput` via:
+//
+//          GoogleCloudRetailV2betaPriceInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudRetailV2betaPriceInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutput() GoogleCloudRetailV2betaPriceInfoResponsePtrOutput
+	ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(context.Context) GoogleCloudRetailV2betaPriceInfoResponsePtrOutput
+}
+
+type googleCloudRetailV2betaPriceInfoResponsePtrType GoogleCloudRetailV2betaPriceInfoResponseArgs
+
+func GoogleCloudRetailV2betaPriceInfoResponsePtr(v *GoogleCloudRetailV2betaPriceInfoResponseArgs) GoogleCloudRetailV2betaPriceInfoResponsePtrInput {
+	return (*googleCloudRetailV2betaPriceInfoResponsePtrType)(v)
+}
+
+func (*googleCloudRetailV2betaPriceInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaPriceInfoResponse)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2betaPriceInfoResponsePtrType) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutput() GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
+	return i.ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2betaPriceInfoResponsePtrType) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaPriceInfoResponsePtrOutput)
+}
+
+// The price information of a Product.
+type GoogleCloudRetailV2betaPriceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaPriceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaPriceInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) ToGoogleCloudRetailV2betaPriceInfoResponseOutput() GoogleCloudRetailV2betaPriceInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) ToGoogleCloudRetailV2betaPriceInfoResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutput() GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
+	return o.ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaPriceInfoResponse) *GoogleCloudRetailV2betaPriceInfoResponse {
+		return &v
+	}).(GoogleCloudRetailV2betaPriceInfoResponsePtrOutput)
+}
+
+// The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
+func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) Cost() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaPriceInfoResponse) float64 { return v.Cost }).(pulumi.Float64Output)
+}
+
+// The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). If this field is an unrecognizable currency code, an INVALID_ARGUMENT error is returned.
+func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) CurrencyCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaPriceInfoResponse) string { return v.CurrencyCode }).(pulumi.StringOutput)
+}
+
+// Price of the product without any discount. If zero, by default set to be the price.
+func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) OriginalPrice() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaPriceInfoResponse) float64 { return v.OriginalPrice }).(pulumi.Float64Output)
+}
+
+// Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.priceSpecification](https://schema.org/priceSpecification).
+func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) Price() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaPriceInfoResponse) float64 { return v.Price }).(pulumi.Float64Output)
+}
+
+type GoogleCloudRetailV2betaPriceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaPriceInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutput() GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) ToGoogleCloudRetailV2betaPriceInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaPriceInfoResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) Elem() GoogleCloudRetailV2betaPriceInfoResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoResponse) GoogleCloudRetailV2betaPriceInfoResponse { return *v }).(GoogleCloudRetailV2betaPriceInfoResponseOutput)
+}
+
+// The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
+func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) Cost() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Cost
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). If this field is an unrecognizable currency code, an INVALID_ARGUMENT error is returned.
+func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Price of the product without any discount. If zero, by default set to be the price.
+func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) OriginalPrice() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.OriginalPrice
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.priceSpecification](https://schema.org/priceSpecification).
+func (o GoogleCloudRetailV2betaPriceInfoResponsePtrOutput) Price() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfoResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Price
+	}).(pulumi.Float64PtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaImageOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaImageArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaImageResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaImageResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoResponsePtrOutput{})
 }

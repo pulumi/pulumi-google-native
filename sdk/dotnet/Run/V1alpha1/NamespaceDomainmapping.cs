@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Run.V1alpha1
     public partial class NamespaceDomainmapping : Pulumi.CustomResource
     {
         /// <summary>
+        /// The API version for this call such as "domains.cloudrun.com/v1alpha1".
+        /// </summary>
+        [Output("apiVersion")]
+        public Output<string> ApiVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The kind of resource, in this case "DomainMapping".
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Metadata associated with this BuildTemplate.
+        /// </summary>
+        [Output("metadata")]
+        public Output<Outputs.ObjectMetaResponse> Metadata { get; private set; } = null!;
+
+        /// <summary>
+        /// The spec for this DomainMapping.
+        /// </summary>
+        [Output("spec")]
+        public Output<Outputs.DomainMappingSpecResponse> Spec { get; private set; } = null!;
+
+        /// <summary>
+        /// The current status of the DomainMapping.
+        /// </summary>
+        [Output("status")]
+        public Output<Outputs.DomainMappingStatusResponse> Status { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a NamespaceDomainmapping resource with the given unique name, arguments, and options.
         /// </summary>
         ///

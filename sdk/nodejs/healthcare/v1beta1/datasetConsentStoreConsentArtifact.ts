@@ -35,6 +35,38 @@ export class DatasetConsentStoreConsentArtifact extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatasetConsentStoreConsentArtifact.__pulumiType;
     }
 
+    /**
+     * Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
+     */
+    public readonly consentContentScreenshots!: pulumi.Output<outputs.healthcare.v1beta1.ImageResponse[]>;
+    /**
+     * Optional. An string indicating the version of the consent information shown to the user.
+     */
+    public readonly consentContentVersion!: pulumi.Output<string>;
+    /**
+     * Optional. A signature from a guardian.
+     */
+    public readonly guardianSignature!: pulumi.Output<outputs.healthcare.v1beta1.SignatureResponse>;
+    /**
+     * Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
+     */
+    public readonly metadata!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Required. User's UUID provided by the client.
+     */
+    public readonly userId!: pulumi.Output<string>;
+    /**
+     * Optional. User's signature.
+     */
+    public readonly userSignature!: pulumi.Output<outputs.healthcare.v1beta1.SignatureResponse>;
+    /**
+     * Optional. A signature from a witness.
+     */
+    public readonly witnessSignature!: pulumi.Output<outputs.healthcare.v1beta1.SignatureResponse>;
 
     /**
      * Create a DatasetConsentStoreConsentArtifact resource with the given unique name, arguments, and options.
@@ -76,6 +108,14 @@ export class DatasetConsentStoreConsentArtifact extends pulumi.CustomResource {
             inputs["userSignature"] = args ? args.userSignature : undefined;
             inputs["witnessSignature"] = args ? args.witnessSignature : undefined;
         } else {
+            inputs["consentContentScreenshots"] = undefined /*out*/;
+            inputs["consentContentVersion"] = undefined /*out*/;
+            inputs["guardianSignature"] = undefined /*out*/;
+            inputs["metadata"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["userId"] = undefined /*out*/;
+            inputs["userSignature"] = undefined /*out*/;
+            inputs["witnessSignature"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

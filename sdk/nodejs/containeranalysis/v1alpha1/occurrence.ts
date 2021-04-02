@@ -35,6 +35,70 @@ export class Occurrence extends pulumi.CustomResource {
         return obj['__pulumiType'] === Occurrence.__pulumiType;
     }
 
+    /**
+     * Describes an attestation of an artifact.
+     */
+    public readonly attestation!: pulumi.Output<outputs.containeranalysis.v1alpha1.AttestationResponse>;
+    /**
+     * Build details for a verifiable build.
+     */
+    public readonly buildDetails!: pulumi.Output<outputs.containeranalysis.v1alpha1.BuildDetailsResponse>;
+    /**
+     * The time this `Occurrence` was created.
+     */
+    public readonly createTime!: pulumi.Output<string>;
+    /**
+     * Describes the deployment of an artifact on a runtime.
+     */
+    public readonly deployment!: pulumi.Output<outputs.containeranalysis.v1alpha1.DeploymentResponse>;
+    /**
+     * Describes how this resource derives from the basis in the associated note.
+     */
+    public readonly derivedImage!: pulumi.Output<outputs.containeranalysis.v1alpha1.DerivedResponse>;
+    /**
+     * Describes the initial scan status for this resource.
+     */
+    public readonly discovered!: pulumi.Output<outputs.containeranalysis.v1alpha1.DiscoveredResponse>;
+    /**
+     * Describes the installation of a package on the linked resource.
+     */
+    public readonly installation!: pulumi.Output<outputs.containeranalysis.v1alpha1.InstallationResponse>;
+    /**
+     * This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
+     */
+    public readonly noteName!: pulumi.Output<string>;
+    /**
+     * A description of actions that can be taken to remedy the `Note`
+     */
+    public readonly remediation!: pulumi.Output<string>;
+    /**
+     *  The resource for which the `Occurrence` applies.
+     */
+    public readonly resource!: pulumi.Output<outputs.containeranalysis.v1alpha1.ResourceResponse>;
+    /**
+     * The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
+     */
+    public readonly resourceUrl!: pulumi.Output<string>;
+    /**
+     * The time this `Occurrence` was last updated.
+     */
+    public readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Describes an upgrade.
+     */
+    public readonly upgrade!: pulumi.Output<outputs.containeranalysis.v1alpha1.UpgradeOccurrenceResponse>;
+    /**
+     * Details of a security vulnerability note.
+     */
+    public readonly vulnerabilityDetails!: pulumi.Output<outputs.containeranalysis.v1alpha1.VulnerabilityDetailsResponse>;
 
     /**
      * Create a Occurrence resource with the given unique name, arguments, and options.
@@ -72,6 +136,22 @@ export class Occurrence extends pulumi.CustomResource {
             inputs["upgrade"] = args ? args.upgrade : undefined;
             inputs["vulnerabilityDetails"] = args ? args.vulnerabilityDetails : undefined;
         } else {
+            inputs["attestation"] = undefined /*out*/;
+            inputs["buildDetails"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deployment"] = undefined /*out*/;
+            inputs["derivedImage"] = undefined /*out*/;
+            inputs["discovered"] = undefined /*out*/;
+            inputs["installation"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["noteName"] = undefined /*out*/;
+            inputs["remediation"] = undefined /*out*/;
+            inputs["resource"] = undefined /*out*/;
+            inputs["resourceUrl"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
+            inputs["upgrade"] = undefined /*out*/;
+            inputs["vulnerabilityDetails"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -93,7 +173,7 @@ export interface OccurrenceArgs {
      */
     readonly buildDetails?: pulumi.Input<inputs.containeranalysis.v1alpha1.BuildDetails>;
     /**
-     * Output only. The time this `Occurrence` was created.
+     * The time this `Occurrence` was created.
      */
     readonly createTime?: pulumi.Input<string>;
     /**
@@ -113,11 +193,11 @@ export interface OccurrenceArgs {
      */
     readonly installation?: pulumi.Input<inputs.containeranalysis.v1alpha1.Installation>;
     /**
-     * Output only. This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
+     * This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
      */
     readonly kind?: pulumi.Input<string>;
     /**
-     * Output only. The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
+     * The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -139,7 +219,7 @@ export interface OccurrenceArgs {
      */
     readonly resourceUrl?: pulumi.Input<string>;
     /**
-     * Output only. The time this `Occurrence` was last updated.
+     * The time this `Occurrence` was last updated.
      */
     readonly updateTime?: pulumi.Input<string>;
     /**

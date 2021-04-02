@@ -65,12 +65,6 @@ namespace Pulumi.GoogleCloud.Servicenetworking.V1
         [Input("network")]
         public Input<string>? Network { get; set; }
 
-        /// <summary>
-        /// Output only. The name of the VPC Network Peering connection that was created by the service producer.
-        /// </summary>
-        [Input("peering")]
-        public Input<string>? Peering { get; set; }
-
         [Input("reservedPeeringRanges")]
         private InputList<string>? _reservedPeeringRanges;
 
@@ -82,12 +76,6 @@ namespace Pulumi.GoogleCloud.Servicenetworking.V1
             get => _reservedPeeringRanges ?? (_reservedPeeringRanges = new InputList<string>());
             set => _reservedPeeringRanges = value;
         }
-
-        /// <summary>
-        /// Output only. The name of the peering service that's associated with this connection, in the following format: `services/{service name}`.
-        /// </summary>
-        [Input("service")]
-        public Input<string>? Service { get; set; }
 
         [Input("servicesId", required: true)]
         public Input<string> ServicesId { get; set; } = null!;

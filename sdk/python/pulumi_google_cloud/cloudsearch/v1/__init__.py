@@ -6,6 +6,7 @@
 from .setting_datasource import *
 from .setting_searchapplication import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

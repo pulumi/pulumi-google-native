@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['NamespaceDomainmapping']
@@ -87,7 +88,52 @@ class NamespaceDomainmapping(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["api_version"] = None
+        __props__["kind"] = None
+        __props__["metadata"] = None
+        __props__["spec"] = None
+        __props__["status"] = None
         return NamespaceDomainmapping(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> pulumi.Output[str]:
+        """
+        The API version for this call such as "domains.cloudrun.com/v1alpha1".
+        """
+        return pulumi.get(self, "api_version")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        The kind of resource, in this case "DomainMapping".
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Output['outputs.ObjectMetaResponse']:
+        """
+        Metadata associated with this BuildTemplate.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> pulumi.Output['outputs.DomainMappingSpecResponse']:
+        """
+        The spec for this DomainMapping.
+        """
+        return pulumi.get(self, "spec")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output['outputs.DomainMappingStatusResponse']:
+        """
+        The current status of the DomainMapping.
+        """
+        return pulumi.get(self, "status")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -34,6 +34,26 @@ export class FolderBucketView extends pulumi.CustomResource {
         return obj['__pulumiType'] === FolderBucketView.__pulumiType;
     }
 
+    /**
+     * The creation timestamp of the view.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Describes this view.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log id Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+     */
+    public readonly filter!: pulumi.Output<string>;
+    /**
+     * The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The last update timestamp of the view.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a FolderBucketView resource with the given unique name, arguments, and options.
@@ -59,15 +79,20 @@ export class FolderBucketView extends pulumi.CustomResource {
                 throw new Error("Missing required property 'viewsId'");
             }
             inputs["bucketsId"] = args ? args.bucketsId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["foldersId"] = args ? args.foldersId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["viewsId"] = args ? args.viewsId : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["filter"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -82,10 +107,6 @@ export class FolderBucketView extends pulumi.CustomResource {
 export interface FolderBucketViewArgs {
     readonly bucketsId: pulumi.Input<string>;
     /**
-     * Output only. The creation timestamp of the view.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * Describes this view.
      */
     readonly description?: pulumi.Input<string>;
@@ -99,9 +120,5 @@ export interface FolderBucketViewArgs {
      * The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Output only. The last update timestamp of the view.
-     */
-    readonly updateTime?: pulumi.Input<string>;
     readonly viewsId: pulumi.Input<string>;
 }

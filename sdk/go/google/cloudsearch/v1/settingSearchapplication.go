@@ -14,6 +14,23 @@ import (
 // Creates a search application. **Note:** This API requires an admin account to execute.
 type SettingSearchapplication struct {
 	pulumi.CustomResourceState
+
+	// Retrictions applied to the configurations. The maximum number of elements is 10.
+	DataSourceRestrictions DataSourceRestrictionResponseArrayOutput `pulumi:"dataSourceRestrictions"`
+	// The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
+	DefaultFacetOptions FacetOptionsResponseArrayOutput `pulumi:"defaultFacetOptions"`
+	// The default options for sorting the search results
+	DefaultSortOptions SortOptionsResponseOutput `pulumi:"defaultSortOptions"`
+	// Display name of the Search Application. The maximum length is 300 characters.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Name of the Search Application. Format: searchapplications/{application_id}.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
+	OperationIds pulumi.StringArrayOutput `pulumi:"operationIds"`
+	// Configuration for ranking results.
+	ScoringConfig ScoringConfigResponseOutput `pulumi:"scoringConfig"`
+	// Configuration for a sources specified in data_source_restrictions.
+	SourceConfig SourceConfigResponseArrayOutput `pulumi:"sourceConfig"`
 }
 
 // NewSettingSearchapplication registers a new resource with the given unique name, arguments, and options.
@@ -48,9 +65,41 @@ func GetSettingSearchapplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SettingSearchapplication resources.
 type settingSearchapplicationState struct {
+	// Retrictions applied to the configurations. The maximum number of elements is 10.
+	DataSourceRestrictions []DataSourceRestrictionResponse `pulumi:"dataSourceRestrictions"`
+	// The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
+	DefaultFacetOptions []FacetOptionsResponse `pulumi:"defaultFacetOptions"`
+	// The default options for sorting the search results
+	DefaultSortOptions *SortOptionsResponse `pulumi:"defaultSortOptions"`
+	// Display name of the Search Application. The maximum length is 300 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// Name of the Search Application. Format: searchapplications/{application_id}.
+	Name *string `pulumi:"name"`
+	// IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
+	OperationIds []string `pulumi:"operationIds"`
+	// Configuration for ranking results.
+	ScoringConfig *ScoringConfigResponse `pulumi:"scoringConfig"`
+	// Configuration for a sources specified in data_source_restrictions.
+	SourceConfig []SourceConfigResponse `pulumi:"sourceConfig"`
 }
 
 type SettingSearchapplicationState struct {
+	// Retrictions applied to the configurations. The maximum number of elements is 10.
+	DataSourceRestrictions DataSourceRestrictionResponseArrayInput
+	// The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
+	DefaultFacetOptions FacetOptionsResponseArrayInput
+	// The default options for sorting the search results
+	DefaultSortOptions SortOptionsResponsePtrInput
+	// Display name of the Search Application. The maximum length is 300 characters.
+	DisplayName pulumi.StringPtrInput
+	// Name of the Search Application. Format: searchapplications/{application_id}.
+	Name pulumi.StringPtrInput
+	// IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
+	OperationIds pulumi.StringArrayInput
+	// Configuration for ranking results.
+	ScoringConfig ScoringConfigResponsePtrInput
+	// Configuration for a sources specified in data_source_restrictions.
+	SourceConfig SourceConfigResponseArrayInput
 }
 
 func (SettingSearchapplicationState) ElementType() reflect.Type {
@@ -68,8 +117,6 @@ type settingSearchapplicationArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Name of the Search Application. Format: searchapplications/{application_id}.
 	Name *string `pulumi:"name"`
-	// Output only. IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
-	OperationIds []string `pulumi:"operationIds"`
 	// Configuration for ranking results.
 	ScoringConfig        *ScoringConfig `pulumi:"scoringConfig"`
 	SearchapplicationsId string         `pulumi:"searchapplicationsId"`
@@ -89,8 +136,6 @@ type SettingSearchapplicationArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Name of the Search Application. Format: searchapplications/{application_id}.
 	Name pulumi.StringPtrInput
-	// Output only. IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
-	OperationIds pulumi.StringArrayInput
 	// Configuration for ranking results.
 	ScoringConfig        ScoringConfigPtrInput
 	SearchapplicationsId pulumi.StringInput

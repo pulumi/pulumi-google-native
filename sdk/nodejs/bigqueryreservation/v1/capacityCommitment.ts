@@ -35,6 +35,38 @@ export class CapacityCommitment extends pulumi.CustomResource {
         return obj['__pulumiType'] === CapacityCommitment.__pulumiType;
     }
 
+    /**
+     * The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+     */
+    public /*out*/ readonly commitmentEndTime!: pulumi.Output<string>;
+    /**
+     * The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+     */
+    public /*out*/ readonly commitmentStartTime!: pulumi.Output<string>;
+    /**
+     * For FAILED commitment plan, provides the reason of failure.
+     */
+    public /*out*/ readonly failureStatus!: pulumi.Output<outputs.bigqueryreservation.v1.StatusResponse>;
+    /**
+     * The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Capacity commitment commitment plan.
+     */
+    public readonly plan!: pulumi.Output<string>;
+    /**
+     * The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+     */
+    public readonly renewalPlan!: pulumi.Output<string>;
+    /**
+     * Number of slots in this commitment.
+     */
+    public readonly slotCount!: pulumi.Output<string>;
+    /**
+     * State of the commitment.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a CapacityCommitment resource with the given unique name, arguments, and options.
@@ -57,17 +89,25 @@ export class CapacityCommitment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["capacityCommitmentsId"] = args ? args.capacityCommitmentsId : undefined;
-            inputs["commitmentEndTime"] = args ? args.commitmentEndTime : undefined;
-            inputs["commitmentStartTime"] = args ? args.commitmentStartTime : undefined;
-            inputs["failureStatus"] = args ? args.failureStatus : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["plan"] = args ? args.plan : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["renewalPlan"] = args ? args.renewalPlan : undefined;
             inputs["slotCount"] = args ? args.slotCount : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["commitmentEndTime"] = undefined /*out*/;
+            inputs["commitmentStartTime"] = undefined /*out*/;
+            inputs["failureStatus"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["commitmentEndTime"] = undefined /*out*/;
+            inputs["commitmentStartTime"] = undefined /*out*/;
+            inputs["failureStatus"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["plan"] = undefined /*out*/;
+            inputs["renewalPlan"] = undefined /*out*/;
+            inputs["slotCount"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -81,23 +121,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
  */
 export interface CapacityCommitmentArgs {
     readonly capacityCommitmentsId: pulumi.Input<string>;
-    /**
-     * Output only. The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
-     */
-    readonly commitmentEndTime?: pulumi.Input<string>;
-    /**
-     * Output only. The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
-     */
-    readonly commitmentStartTime?: pulumi.Input<string>;
-    /**
-     * Output only. For FAILED commitment plan, provides the reason of failure.
-     */
-    readonly failureStatus?: pulumi.Input<inputs.bigqueryreservation.v1.Status>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
-     */
-    readonly name?: pulumi.Input<string>;
     /**
      * Capacity commitment commitment plan.
      */
@@ -111,8 +135,4 @@ export interface CapacityCommitmentArgs {
      * Number of slots in this commitment.
      */
     readonly slotCount?: pulumi.Input<string>;
-    /**
-     * Output only. State of the commitment.
-     */
-    readonly state?: pulumi.Input<string>;
 }

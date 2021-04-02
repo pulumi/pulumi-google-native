@@ -137,6 +137,124 @@ func (o AttestorPublicKeyArrayOutput) Index(i pulumi.IntInput) AttestorPublicKey
 	}).(AttestorPublicKeyOutput)
 }
 
+// An attestor public key that will be used to verify attestations signed by this attestor.
+type AttestorPublicKeyResponse struct {
+	// ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The BinAuthz API handlers will calculate the ID and fill it in automatically. BinAuthz computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be overwritten by the API-calculated ID.
+	AsciiArmoredPgpPublicKey string `pulumi:"asciiArmoredPgpPublicKey"`
+	// Optional. A descriptive comment. This field may be updated.
+	Comment string `pulumi:"comment"`
+	// A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER encoding of the public key.
+	PkixPublicKey PkixPublicKeyResponse `pulumi:"pkixPublicKey"`
+}
+
+// AttestorPublicKeyResponseInput is an input type that accepts AttestorPublicKeyResponseArgs and AttestorPublicKeyResponseOutput values.
+// You can construct a concrete instance of `AttestorPublicKeyResponseInput` via:
+//
+//          AttestorPublicKeyResponseArgs{...}
+type AttestorPublicKeyResponseInput interface {
+	pulumi.Input
+
+	ToAttestorPublicKeyResponseOutput() AttestorPublicKeyResponseOutput
+	ToAttestorPublicKeyResponseOutputWithContext(context.Context) AttestorPublicKeyResponseOutput
+}
+
+// An attestor public key that will be used to verify attestations signed by this attestor.
+type AttestorPublicKeyResponseArgs struct {
+	// ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The BinAuthz API handlers will calculate the ID and fill it in automatically. BinAuthz computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be overwritten by the API-calculated ID.
+	AsciiArmoredPgpPublicKey pulumi.StringInput `pulumi:"asciiArmoredPgpPublicKey"`
+	// Optional. A descriptive comment. This field may be updated.
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER encoding of the public key.
+	PkixPublicKey PkixPublicKeyResponseInput `pulumi:"pkixPublicKey"`
+}
+
+func (AttestorPublicKeyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttestorPublicKeyResponse)(nil)).Elem()
+}
+
+func (i AttestorPublicKeyResponseArgs) ToAttestorPublicKeyResponseOutput() AttestorPublicKeyResponseOutput {
+	return i.ToAttestorPublicKeyResponseOutputWithContext(context.Background())
+}
+
+func (i AttestorPublicKeyResponseArgs) ToAttestorPublicKeyResponseOutputWithContext(ctx context.Context) AttestorPublicKeyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorPublicKeyResponseOutput)
+}
+
+// AttestorPublicKeyResponseArrayInput is an input type that accepts AttestorPublicKeyResponseArray and AttestorPublicKeyResponseArrayOutput values.
+// You can construct a concrete instance of `AttestorPublicKeyResponseArrayInput` via:
+//
+//          AttestorPublicKeyResponseArray{ AttestorPublicKeyResponseArgs{...} }
+type AttestorPublicKeyResponseArrayInput interface {
+	pulumi.Input
+
+	ToAttestorPublicKeyResponseArrayOutput() AttestorPublicKeyResponseArrayOutput
+	ToAttestorPublicKeyResponseArrayOutputWithContext(context.Context) AttestorPublicKeyResponseArrayOutput
+}
+
+type AttestorPublicKeyResponseArray []AttestorPublicKeyResponseInput
+
+func (AttestorPublicKeyResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AttestorPublicKeyResponse)(nil)).Elem()
+}
+
+func (i AttestorPublicKeyResponseArray) ToAttestorPublicKeyResponseArrayOutput() AttestorPublicKeyResponseArrayOutput {
+	return i.ToAttestorPublicKeyResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AttestorPublicKeyResponseArray) ToAttestorPublicKeyResponseArrayOutputWithContext(ctx context.Context) AttestorPublicKeyResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorPublicKeyResponseArrayOutput)
+}
+
+// An attestor public key that will be used to verify attestations signed by this attestor.
+type AttestorPublicKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (AttestorPublicKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttestorPublicKeyResponse)(nil)).Elem()
+}
+
+func (o AttestorPublicKeyResponseOutput) ToAttestorPublicKeyResponseOutput() AttestorPublicKeyResponseOutput {
+	return o
+}
+
+func (o AttestorPublicKeyResponseOutput) ToAttestorPublicKeyResponseOutputWithContext(ctx context.Context) AttestorPublicKeyResponseOutput {
+	return o
+}
+
+// ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The BinAuthz API handlers will calculate the ID and fill it in automatically. BinAuthz computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be overwritten by the API-calculated ID.
+func (o AttestorPublicKeyResponseOutput) AsciiArmoredPgpPublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AttestorPublicKeyResponse) string { return v.AsciiArmoredPgpPublicKey }).(pulumi.StringOutput)
+}
+
+// Optional. A descriptive comment. This field may be updated.
+func (o AttestorPublicKeyResponseOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v AttestorPublicKeyResponse) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER encoding of the public key.
+func (o AttestorPublicKeyResponseOutput) PkixPublicKey() PkixPublicKeyResponseOutput {
+	return o.ApplyT(func(v AttestorPublicKeyResponse) PkixPublicKeyResponse { return v.PkixPublicKey }).(PkixPublicKeyResponseOutput)
+}
+
+type AttestorPublicKeyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AttestorPublicKeyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AttestorPublicKeyResponse)(nil)).Elem()
+}
+
+func (o AttestorPublicKeyResponseArrayOutput) ToAttestorPublicKeyResponseArrayOutput() AttestorPublicKeyResponseArrayOutput {
+	return o
+}
+
+func (o AttestorPublicKeyResponseArrayOutput) ToAttestorPublicKeyResponseArrayOutputWithContext(ctx context.Context) AttestorPublicKeyResponseArrayOutput {
+	return o
+}
+
+func (o AttestorPublicKeyResponseArrayOutput) Index(i pulumi.IntInput) AttestorPublicKeyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AttestorPublicKeyResponse {
+		return vs[0].([]AttestorPublicKeyResponse)[vs[1].(int)]
+	}).(AttestorPublicKeyResponseOutput)
+}
+
 // Associates `members` with a `role`.
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -253,6 +371,124 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Binding {
 		return vs[0].([]Binding)[vs[1].(int)]
 	}).(BindingOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
+// You can construct a concrete instance of `BindingResponseInput` via:
+//
+//          BindingResponseArgs{...}
+type BindingResponseInput interface {
+	pulumi.Input
+
+	ToBindingResponseOutput() BindingResponseOutput
+	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
+}
+
+// Associates `members` with a `role`.
+type BindingResponseArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
+	return i.ToBindingResponseOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
+}
+
+// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
+// You can construct a concrete instance of `BindingResponseArrayInput` via:
+//
+//          BindingResponseArray{ BindingResponseArgs{...} }
+type BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToBindingResponseArrayOutput() BindingResponseArrayOutput
+	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
+}
+
+type BindingResponseArray []BindingResponseInput
+
+func (BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return i.ToBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
+		return vs[0].([]BindingResponse)[vs[1].(int)]
+	}).(BindingResponseOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -444,6 +680,88 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 		}
 		return v.Title
 	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
+// You can construct a concrete instance of `ExprResponseInput` via:
+//
+//          ExprResponseArgs{...}
+type ExprResponseInput interface {
+	pulumi.Input
+
+	ToExprResponseOutput() ExprResponseOutput
+	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
+	return i.ToExprResponseOutputWithContext(context.Background())
+}
+
+func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseOutput struct{ *pulumi.OutputState }
+
+func (ExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
+	return o
+}
+
+func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
@@ -771,10 +1089,72 @@ func (o PkixPublicKeyPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public keys of this type are typically textually encoded using the PEM format.
+type PkixPublicKeyResponse struct {
+	// A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13
+	PublicKeyPem string `pulumi:"publicKeyPem"`
+	// The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
+	SignatureAlgorithm string `pulumi:"signatureAlgorithm"`
+}
+
+// PkixPublicKeyResponseInput is an input type that accepts PkixPublicKeyResponseArgs and PkixPublicKeyResponseOutput values.
+// You can construct a concrete instance of `PkixPublicKeyResponseInput` via:
+//
+//          PkixPublicKeyResponseArgs{...}
+type PkixPublicKeyResponseInput interface {
+	pulumi.Input
+
+	ToPkixPublicKeyResponseOutput() PkixPublicKeyResponseOutput
+	ToPkixPublicKeyResponseOutputWithContext(context.Context) PkixPublicKeyResponseOutput
+}
+
+// A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public keys of this type are typically textually encoded using the PEM format.
+type PkixPublicKeyResponseArgs struct {
+	// A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13
+	PublicKeyPem pulumi.StringInput `pulumi:"publicKeyPem"`
+	// The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
+	SignatureAlgorithm pulumi.StringInput `pulumi:"signatureAlgorithm"`
+}
+
+func (PkixPublicKeyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PkixPublicKeyResponse)(nil)).Elem()
+}
+
+func (i PkixPublicKeyResponseArgs) ToPkixPublicKeyResponseOutput() PkixPublicKeyResponseOutput {
+	return i.ToPkixPublicKeyResponseOutputWithContext(context.Background())
+}
+
+func (i PkixPublicKeyResponseArgs) ToPkixPublicKeyResponseOutputWithContext(ctx context.Context) PkixPublicKeyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PkixPublicKeyResponseOutput)
+}
+
+// A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public keys of this type are typically textually encoded using the PEM format.
+type PkixPublicKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (PkixPublicKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PkixPublicKeyResponse)(nil)).Elem()
+}
+
+func (o PkixPublicKeyResponseOutput) ToPkixPublicKeyResponseOutput() PkixPublicKeyResponseOutput {
+	return o
+}
+
+func (o PkixPublicKeyResponseOutput) ToPkixPublicKeyResponseOutputWithContext(ctx context.Context) PkixPublicKeyResponseOutput {
+	return o
+}
+
+// A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13
+func (o PkixPublicKeyResponseOutput) PublicKeyPem() pulumi.StringOutput {
+	return o.ApplyT(func(v PkixPublicKeyResponse) string { return v.PublicKeyPem }).(pulumi.StringOutput)
+}
+
+// The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
+func (o PkixPublicKeyResponseOutput) SignatureAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v PkixPublicKeyResponse) string { return v.SignatureAlgorithm }).(pulumi.StringOutput)
+}
+
 // An user owned drydock note references a Drydock ATTESTATION_AUTHORITY Note created by the user.
 type UserOwnedDrydockNote struct {
-	// Output only. This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
-	DelegationServiceAccountEmail *string `pulumi:"delegationServiceAccountEmail"`
 	// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
 	NoteReference *string `pulumi:"noteReference"`
 	// Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
@@ -794,8 +1174,6 @@ type UserOwnedDrydockNoteInput interface {
 
 // An user owned drydock note references a Drydock ATTESTATION_AUTHORITY Note created by the user.
 type UserOwnedDrydockNoteArgs struct {
-	// Output only. This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
-	DelegationServiceAccountEmail pulumi.StringPtrInput `pulumi:"delegationServiceAccountEmail"`
 	// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
 	NoteReference pulumi.StringPtrInput `pulumi:"noteReference"`
 	// Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
@@ -880,11 +1258,6 @@ func (o UserOwnedDrydockNoteOutput) ToUserOwnedDrydockNotePtrOutputWithContext(c
 	}).(UserOwnedDrydockNotePtrOutput)
 }
 
-// Output only. This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
-func (o UserOwnedDrydockNoteOutput) DelegationServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserOwnedDrydockNote) *string { return v.DelegationServiceAccountEmail }).(pulumi.StringPtrOutput)
-}
-
 // Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
 func (o UserOwnedDrydockNoteOutput) NoteReference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserOwnedDrydockNote) *string { return v.NoteReference }).(pulumi.StringPtrOutput)
@@ -913,16 +1286,6 @@ func (o UserOwnedDrydockNotePtrOutput) Elem() UserOwnedDrydockNoteOutput {
 	return o.ApplyT(func(v *UserOwnedDrydockNote) UserOwnedDrydockNote { return *v }).(UserOwnedDrydockNoteOutput)
 }
 
-// Output only. This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
-func (o UserOwnedDrydockNotePtrOutput) DelegationServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UserOwnedDrydockNote) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DelegationServiceAccountEmail
-	}).(pulumi.StringPtrOutput)
-}
-
 // Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
 func (o UserOwnedDrydockNotePtrOutput) NoteReference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserOwnedDrydockNote) *string {
@@ -943,17 +1306,197 @@ func (o UserOwnedDrydockNotePtrOutput) PublicKeys() AttestorPublicKeyArrayOutput
 	}).(AttestorPublicKeyArrayOutput)
 }
 
+// An user owned drydock note references a Drydock ATTESTATION_AUTHORITY Note created by the user.
+type UserOwnedDrydockNoteResponse struct {
+	// This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
+	DelegationServiceAccountEmail string `pulumi:"delegationServiceAccountEmail"`
+	// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
+	NoteReference string `pulumi:"noteReference"`
+	// Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
+	PublicKeys []AttestorPublicKeyResponse `pulumi:"publicKeys"`
+}
+
+// UserOwnedDrydockNoteResponseInput is an input type that accepts UserOwnedDrydockNoteResponseArgs and UserOwnedDrydockNoteResponseOutput values.
+// You can construct a concrete instance of `UserOwnedDrydockNoteResponseInput` via:
+//
+//          UserOwnedDrydockNoteResponseArgs{...}
+type UserOwnedDrydockNoteResponseInput interface {
+	pulumi.Input
+
+	ToUserOwnedDrydockNoteResponseOutput() UserOwnedDrydockNoteResponseOutput
+	ToUserOwnedDrydockNoteResponseOutputWithContext(context.Context) UserOwnedDrydockNoteResponseOutput
+}
+
+// An user owned drydock note references a Drydock ATTESTATION_AUTHORITY Note created by the user.
+type UserOwnedDrydockNoteResponseArgs struct {
+	// This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
+	DelegationServiceAccountEmail pulumi.StringInput `pulumi:"delegationServiceAccountEmail"`
+	// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
+	NoteReference pulumi.StringInput `pulumi:"noteReference"`
+	// Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
+	PublicKeys AttestorPublicKeyResponseArrayInput `pulumi:"publicKeys"`
+}
+
+func (UserOwnedDrydockNoteResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserOwnedDrydockNoteResponse)(nil)).Elem()
+}
+
+func (i UserOwnedDrydockNoteResponseArgs) ToUserOwnedDrydockNoteResponseOutput() UserOwnedDrydockNoteResponseOutput {
+	return i.ToUserOwnedDrydockNoteResponseOutputWithContext(context.Background())
+}
+
+func (i UserOwnedDrydockNoteResponseArgs) ToUserOwnedDrydockNoteResponseOutputWithContext(ctx context.Context) UserOwnedDrydockNoteResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserOwnedDrydockNoteResponseOutput)
+}
+
+func (i UserOwnedDrydockNoteResponseArgs) ToUserOwnedDrydockNoteResponsePtrOutput() UserOwnedDrydockNoteResponsePtrOutput {
+	return i.ToUserOwnedDrydockNoteResponsePtrOutputWithContext(context.Background())
+}
+
+func (i UserOwnedDrydockNoteResponseArgs) ToUserOwnedDrydockNoteResponsePtrOutputWithContext(ctx context.Context) UserOwnedDrydockNoteResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserOwnedDrydockNoteResponseOutput).ToUserOwnedDrydockNoteResponsePtrOutputWithContext(ctx)
+}
+
+// UserOwnedDrydockNoteResponsePtrInput is an input type that accepts UserOwnedDrydockNoteResponseArgs, UserOwnedDrydockNoteResponsePtr and UserOwnedDrydockNoteResponsePtrOutput values.
+// You can construct a concrete instance of `UserOwnedDrydockNoteResponsePtrInput` via:
+//
+//          UserOwnedDrydockNoteResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type UserOwnedDrydockNoteResponsePtrInput interface {
+	pulumi.Input
+
+	ToUserOwnedDrydockNoteResponsePtrOutput() UserOwnedDrydockNoteResponsePtrOutput
+	ToUserOwnedDrydockNoteResponsePtrOutputWithContext(context.Context) UserOwnedDrydockNoteResponsePtrOutput
+}
+
+type userOwnedDrydockNoteResponsePtrType UserOwnedDrydockNoteResponseArgs
+
+func UserOwnedDrydockNoteResponsePtr(v *UserOwnedDrydockNoteResponseArgs) UserOwnedDrydockNoteResponsePtrInput {
+	return (*userOwnedDrydockNoteResponsePtrType)(v)
+}
+
+func (*userOwnedDrydockNoteResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserOwnedDrydockNoteResponse)(nil)).Elem()
+}
+
+func (i *userOwnedDrydockNoteResponsePtrType) ToUserOwnedDrydockNoteResponsePtrOutput() UserOwnedDrydockNoteResponsePtrOutput {
+	return i.ToUserOwnedDrydockNoteResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *userOwnedDrydockNoteResponsePtrType) ToUserOwnedDrydockNoteResponsePtrOutputWithContext(ctx context.Context) UserOwnedDrydockNoteResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserOwnedDrydockNoteResponsePtrOutput)
+}
+
+// An user owned drydock note references a Drydock ATTESTATION_AUTHORITY Note created by the user.
+type UserOwnedDrydockNoteResponseOutput struct{ *pulumi.OutputState }
+
+func (UserOwnedDrydockNoteResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserOwnedDrydockNoteResponse)(nil)).Elem()
+}
+
+func (o UserOwnedDrydockNoteResponseOutput) ToUserOwnedDrydockNoteResponseOutput() UserOwnedDrydockNoteResponseOutput {
+	return o
+}
+
+func (o UserOwnedDrydockNoteResponseOutput) ToUserOwnedDrydockNoteResponseOutputWithContext(ctx context.Context) UserOwnedDrydockNoteResponseOutput {
+	return o
+}
+
+func (o UserOwnedDrydockNoteResponseOutput) ToUserOwnedDrydockNoteResponsePtrOutput() UserOwnedDrydockNoteResponsePtrOutput {
+	return o.ToUserOwnedDrydockNoteResponsePtrOutputWithContext(context.Background())
+}
+
+func (o UserOwnedDrydockNoteResponseOutput) ToUserOwnedDrydockNoteResponsePtrOutputWithContext(ctx context.Context) UserOwnedDrydockNoteResponsePtrOutput {
+	return o.ApplyT(func(v UserOwnedDrydockNoteResponse) *UserOwnedDrydockNoteResponse {
+		return &v
+	}).(UserOwnedDrydockNoteResponsePtrOutput)
+}
+
+// This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
+func (o UserOwnedDrydockNoteResponseOutput) DelegationServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v UserOwnedDrydockNoteResponse) string { return v.DelegationServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
+func (o UserOwnedDrydockNoteResponseOutput) NoteReference() pulumi.StringOutput {
+	return o.ApplyT(func(v UserOwnedDrydockNoteResponse) string { return v.NoteReference }).(pulumi.StringOutput)
+}
+
+// Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
+func (o UserOwnedDrydockNoteResponseOutput) PublicKeys() AttestorPublicKeyResponseArrayOutput {
+	return o.ApplyT(func(v UserOwnedDrydockNoteResponse) []AttestorPublicKeyResponse { return v.PublicKeys }).(AttestorPublicKeyResponseArrayOutput)
+}
+
+type UserOwnedDrydockNoteResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UserOwnedDrydockNoteResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserOwnedDrydockNoteResponse)(nil)).Elem()
+}
+
+func (o UserOwnedDrydockNoteResponsePtrOutput) ToUserOwnedDrydockNoteResponsePtrOutput() UserOwnedDrydockNoteResponsePtrOutput {
+	return o
+}
+
+func (o UserOwnedDrydockNoteResponsePtrOutput) ToUserOwnedDrydockNoteResponsePtrOutputWithContext(ctx context.Context) UserOwnedDrydockNoteResponsePtrOutput {
+	return o
+}
+
+func (o UserOwnedDrydockNoteResponsePtrOutput) Elem() UserOwnedDrydockNoteResponseOutput {
+	return o.ApplyT(func(v *UserOwnedDrydockNoteResponse) UserOwnedDrydockNoteResponse { return *v }).(UserOwnedDrydockNoteResponseOutput)
+}
+
+// This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
+func (o UserOwnedDrydockNoteResponsePtrOutput) DelegationServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserOwnedDrydockNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DelegationServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
+func (o UserOwnedDrydockNoteResponsePtrOutput) NoteReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserOwnedDrydockNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NoteReference
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
+func (o UserOwnedDrydockNoteResponsePtrOutput) PublicKeys() AttestorPublicKeyResponseArrayOutput {
+	return o.ApplyT(func(v *UserOwnedDrydockNoteResponse) []AttestorPublicKeyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKeys
+	}).(AttestorPublicKeyResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AttestorPublicKeyOutput{})
 	pulumi.RegisterOutputType(AttestorPublicKeyArrayOutput{})
+	pulumi.RegisterOutputType(AttestorPublicKeyResponseOutput{})
+	pulumi.RegisterOutputType(AttestorPublicKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingResponseOutput{})
+	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(IamPolicyOutput{})
 	pulumi.RegisterOutputType(IamPolicyPtrOutput{})
 	pulumi.RegisterOutputType(PkixPublicKeyOutput{})
 	pulumi.RegisterOutputType(PkixPublicKeyPtrOutput{})
+	pulumi.RegisterOutputType(PkixPublicKeyResponseOutput{})
 	pulumi.RegisterOutputType(UserOwnedDrydockNoteOutput{})
 	pulumi.RegisterOutputType(UserOwnedDrydockNotePtrOutput{})
+	pulumi.RegisterOutputType(UserOwnedDrydockNoteResponseOutput{})
+	pulumi.RegisterOutputType(UserOwnedDrydockNoteResponsePtrOutput{})
 }

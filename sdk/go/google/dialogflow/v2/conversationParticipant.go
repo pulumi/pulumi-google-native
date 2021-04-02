@@ -14,6 +14,13 @@ import (
 // Creates a new participant in a conversation.
 type ConversationParticipant struct {
 	pulumi.CustomResourceState
+
+	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
+	Role pulumi.StringOutput `pulumi:"role"`
+	// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
+	SipRecordingMediaLabel pulumi.StringOutput `pulumi:"sipRecordingMediaLabel"`
 }
 
 // NewConversationParticipant registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +64,21 @@ func GetConversationParticipant(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConversationParticipant resources.
 type conversationParticipantState struct {
+	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
+	Name *string `pulumi:"name"`
+	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
+	Role *string `pulumi:"role"`
+	// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
+	SipRecordingMediaLabel *string `pulumi:"sipRecordingMediaLabel"`
 }
 
 type ConversationParticipantState struct {
+	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
+	Name pulumi.StringPtrInput
+	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
+	Role pulumi.StringPtrInput
+	// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
+	SipRecordingMediaLabel pulumi.StringPtrInput
 }
 
 func (ConversationParticipantState) ElementType() reflect.Type {

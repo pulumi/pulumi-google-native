@@ -33,18 +33,6 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1.Inputs
             set => _diagnosticInfo = value;
         }
 
-        [Input("differences")]
-        private InputList<Inputs.GoogleCloudDialogflowCxV3beta1TestRunDifferenceArgs>? _differences;
-
-        /// <summary>
-        /// Output only. If this is part of a result conversation turn, the list of differences between the original run and the replay for this output, if any.
-        /// </summary>
-        public InputList<Inputs.GoogleCloudDialogflowCxV3beta1TestRunDifferenceArgs> Differences
-        {
-            get => _differences ?? (_differences = new InputList<Inputs.GoogleCloudDialogflowCxV3beta1TestRunDifferenceArgs>());
-            set => _differences = value;
-        }
-
         [Input("sessionParameters")]
         private InputMap<string>? _sessionParameters;
 

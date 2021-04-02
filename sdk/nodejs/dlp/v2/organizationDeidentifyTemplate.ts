@@ -35,6 +35,30 @@ export class OrganizationDeidentifyTemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationDeidentifyTemplate.__pulumiType;
     }
 
+    /**
+     * The creation timestamp of an inspectTemplate.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The core content of the template.
+     */
+    public /*out*/ readonly deidentifyConfig!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2DeidentifyConfigResponse>;
+    /**
+     * Short description (max 256 chars).
+     */
+    public /*out*/ readonly description!: pulumi.Output<string>;
+    /**
+     * Display name (max 256 chars).
+     */
+    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    /**
+     * The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The last update timestamp of an inspectTemplate.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationDeidentifyTemplate resource with the given unique name, arguments, and options.
@@ -58,11 +82,22 @@ export class OrganizationDeidentifyTemplate extends pulumi.CustomResource {
             }
             inputs["deidentifyTemplate"] = args ? args.deidentifyTemplate : undefined;
             inputs["deidentifyTemplatesId"] = args ? args.deidentifyTemplatesId : undefined;
-            inputs["locationId"] = args ? args.locationId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["templateId"] = args ? args.templateId : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deidentifyConfig"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deidentifyConfig"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -80,10 +115,6 @@ export interface OrganizationDeidentifyTemplateArgs {
      */
     readonly deidentifyTemplate?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2DeidentifyTemplate>;
     readonly deidentifyTemplatesId: pulumi.Input<string>;
-    /**
-     * Deprecated. This field has no effect.
-     */
-    readonly locationId?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
     /**

@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Secretmanager.V1
     public partial class Secret : Pulumi.CustomResource
     {
         /// <summary>
+        /// The time at which the Secret was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the Secret in the format `projects/*/secrets/*`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+        /// </summary>
+        [Output("replication")]
+        public Output<Outputs.ReplicationResponse> Replication { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
+        /// </summary>
+        [Output("rotation")]
+        public Output<Outputs.RotationResponse> Rotation { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        /// </summary>
+        [Output("topics")]
+        public Output<ImmutableArray<Outputs.TopicResponse>> Topics { get; private set; } = null!;
+
+        /// <summary>
+        /// Input only. The TTL for the Secret.
+        /// </summary>
+        [Output("ttl")]
+        public Output<string> Ttl { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Secret resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +109,6 @@ namespace Pulumi.GoogleCloud.Secretmanager.V1
     public sealed class SecretArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The time at which the Secret was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         /// </summary>
         [Input("expireTime")]
@@ -82,12 +125,6 @@ namespace Pulumi.GoogleCloud.Secretmanager.V1
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
-
-        /// <summary>
-        /// Output only. The resource name of the Secret in the format `projects/*/secrets/*`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;

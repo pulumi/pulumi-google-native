@@ -14,6 +14,21 @@ import (
 // Creates a bucket that can be used to store log entries. Once a bucket has been created, the region cannot be changed.
 type OrganizationBucket struct {
 	pulumi.CustomResourceState
+
+	// The creation timestamp of the bucket. This is not set for any of the default buckets.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Describes this bucket.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// The bucket lifecycle state.
+	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
+	// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
+	Locked pulumi.BoolOutput `pulumi:"locked"`
+	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	RetentionDays pulumi.IntOutput `pulumi:"retentionDays"`
+	// The last update timestamp of the bucket.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewOrganizationBucket registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +69,37 @@ func GetOrganizationBucket(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationBucket resources.
 type organizationBucketState struct {
+	// The creation timestamp of the bucket. This is not set for any of the default buckets.
+	CreateTime *string `pulumi:"createTime"`
+	// Describes this bucket.
+	Description *string `pulumi:"description"`
+	// The bucket lifecycle state.
+	LifecycleState *string `pulumi:"lifecycleState"`
+	// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
+	Locked *bool `pulumi:"locked"`
+	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
+	Name *string `pulumi:"name"`
+	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	RetentionDays *int `pulumi:"retentionDays"`
+	// The last update timestamp of the bucket.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type OrganizationBucketState struct {
+	// The creation timestamp of the bucket. This is not set for any of the default buckets.
+	CreateTime pulumi.StringPtrInput
+	// Describes this bucket.
+	Description pulumi.StringPtrInput
+	// The bucket lifecycle state.
+	LifecycleState pulumi.StringPtrInput
+	// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
+	Locked pulumi.BoolPtrInput
+	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
+	Name pulumi.StringPtrInput
+	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	RetentionDays pulumi.IntPtrInput
+	// The last update timestamp of the bucket.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (OrganizationBucketState) ElementType() reflect.Type {
@@ -65,43 +108,27 @@ func (OrganizationBucketState) ElementType() reflect.Type {
 
 type organizationBucketArgs struct {
 	BucketsId string `pulumi:"bucketsId"`
-	// Output only. The creation timestamp of the bucket. This is not set for any of the default buckets.
-	CreateTime *string `pulumi:"createTime"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
-	// Output only. The bucket lifecycle state.
-	LifecycleState *string `pulumi:"lifecycleState"`
-	LocationsId    string  `pulumi:"locationsId"`
+	LocationsId string  `pulumi:"locationsId"`
 	// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
-	Locked *bool `pulumi:"locked"`
-	// Output only. The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Locked          *bool  `pulumi:"locked"`
+	OrganizationsId string `pulumi:"organizationsId"`
 	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
 	RetentionDays *int `pulumi:"retentionDays"`
-	// Output only. The last update timestamp of the bucket.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a OrganizationBucket resource.
 type OrganizationBucketArgs struct {
 	BucketsId pulumi.StringInput
-	// Output only. The creation timestamp of the bucket. This is not set for any of the default buckets.
-	CreateTime pulumi.StringPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
-	// Output only. The bucket lifecycle state.
-	LifecycleState pulumi.StringPtrInput
-	LocationsId    pulumi.StringInput
+	LocationsId pulumi.StringInput
 	// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
-	Locked pulumi.BoolPtrInput
-	// Output only. The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
-	Name            pulumi.StringPtrInput
+	Locked          pulumi.BoolPtrInput
 	OrganizationsId pulumi.StringInput
 	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
 	RetentionDays pulumi.IntPtrInput
-	// Output only. The last update timestamp of the bucket.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (OrganizationBucketArgs) ElementType() reflect.Type {

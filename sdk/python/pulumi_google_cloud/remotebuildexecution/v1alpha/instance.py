@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Instance']
@@ -59,6 +60,11 @@ class Instance(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['feature_policy'] = None
+            __props__['location'] = None
+            __props__['logging_enabled'] = None
+            __props__['name'] = None
+            __props__['state'] = None
         super(Instance, __self__).__init__(
             'google-cloud:remotebuildexecution/v1alpha:Instance',
             resource_name,
@@ -81,7 +87,52 @@ class Instance(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["feature_policy"] = None
+        __props__["location"] = None
+        __props__["logging_enabled"] = None
+        __props__["name"] = None
+        __props__["state"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="featurePolicy")
+    def feature_policy(self) -> pulumi.Output['outputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse']:
+        """
+        The policy to define whether or not RBE features can be used or how they can be used.
+        """
+        return pulumi.get(self, "feature_policy")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        """
+        The location is a GCP region. Currently only `us-central1` is supported.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="loggingEnabled")
+    def logging_enabled(self) -> pulumi.Output[bool]:
+        """
+        Whether stack driver logging is enabled for the instance.
+        """
+        return pulumi.get(self, "logging_enabled")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        State of the instance.
+        """
+        return pulumi.get(self, "state")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

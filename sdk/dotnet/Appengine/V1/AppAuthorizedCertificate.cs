@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Appengine.V1
     public partial class AppAuthorizedCertificate : Pulumi.CustomResource
     {
         /// <summary>
+        /// The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
+        /// </summary>
+        [Output("certificateRawData")]
+        public Output<Outputs.CertificateRawDataResponse> CertificateRawData { get; private set; } = null!;
+
+        /// <summary>
+        /// The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Aggregate count of the domain mappings with this certificate mapped. This count includes domain mappings on applications for which the user does not have VIEWER permissions.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly
+        /// </summary>
+        [Output("domainMappingsCount")]
+        public Output<int> DomainMappingsCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Topmost applicable domains of this certificate. This certificate applies to these domains and their subdomains. Example: example.com.@OutputOnly
+        /// </summary>
+        [Output("domainNames")]
+        public Output<ImmutableArray<string>> DomainNames { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when this certificate expires. To update the renewal time on this certificate, upload an SSL certificate with a different expiration time using AuthorizedCertificates.UpdateAuthorizedCertificate.@OutputOnly
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this certificate is manually administered by the user, this field will be empty.@OutputOnly
+        /// </summary>
+        [Output("managedCertificate")]
+        public Output<Outputs.ManagedCertificateResponse> ManagedCertificate { get; private set; } = null!;
+
+        /// <summary>
+        /// Full path to the AuthorizedCertificate resource in the API. Example: apps/myapp/authorizedCertificates/12345.@OutputOnly
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The full paths to user visible Domain Mapping resources that have this certificate mapped. Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the user does not have VIEWER permissions on all of the applications that have this certificate mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly
+        /// </summary>
+        [Output("visibleDomainMappings")]
+        public Output<ImmutableArray<string>> VisibleDomainMappings { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AppAuthorizedCertificate resource with the given unique name, arguments, and options.
         /// </summary>
         ///

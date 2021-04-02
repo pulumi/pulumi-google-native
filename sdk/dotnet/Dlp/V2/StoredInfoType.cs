@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Dlp.V2
     public partial class StoredInfoType : Pulumi.CustomResource
     {
         /// <summary>
+        /// Current version of the stored info type.
+        /// </summary>
+        [Output("currentVersion")]
+        public Output<Outputs.GooglePrivacyDlpV2StoredInfoTypeVersionResponse> CurrentVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Pending versions of the stored info type. Empty if no versions are pending.
+        /// </summary>
+        [Output("pendingVersions")]
+        public Output<ImmutableArray<Outputs.GooglePrivacyDlpV2StoredInfoTypeVersionResponse>> PendingVersions { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a StoredInfoType resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -64,12 +83,6 @@ namespace Pulumi.GoogleCloud.Dlp.V2
         /// </summary>
         [Input("config")]
         public Input<Inputs.GooglePrivacyDlpV2StoredInfoTypeConfigArgs>? Config { get; set; }
-
-        /// <summary>
-        /// Deprecated. This field has no effect.
-        /// </summary>
-        [Input("locationId")]
-        public Input<string>? LocationId { get; set; }
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;

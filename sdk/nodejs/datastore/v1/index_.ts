@@ -35,6 +35,30 @@ export class Index extends pulumi.CustomResource {
         return obj['__pulumiType'] === Index.__pulumiType;
     }
 
+    /**
+     * Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+     */
+    public readonly ancestor!: pulumi.Output<string>;
+    /**
+     * The resource ID of the index.
+     */
+    public readonly indexId!: pulumi.Output<string>;
+    /**
+     * Required. The entity kind to which this index applies.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Project ID.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
+     * Required. An ordered sequence of property names and their index attributes.
+     */
+    public readonly properties!: pulumi.Output<outputs.datastore.v1.GoogleDatastoreAdminV1IndexedPropertyResponse[]>;
+    /**
+     * The state of the index.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a Index resource with the given unique name, arguments, and options.
@@ -58,8 +82,14 @@ export class Index extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["properties"] = args ? args.properties : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["ancestor"] = undefined /*out*/;
+            inputs["indexId"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["projectId"] = undefined /*out*/;
+            inputs["properties"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -76,24 +106,14 @@ export interface IndexArgs {
      * Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
      */
     readonly ancestor?: pulumi.Input<string>;
-    /**
-     * Output only. The resource ID of the index.
-     */
     readonly indexId: pulumi.Input<string>;
     /**
      * Required. The entity kind to which this index applies.
      */
     readonly kind?: pulumi.Input<string>;
-    /**
-     * Output only. Project ID.
-     */
     readonly projectId: pulumi.Input<string>;
     /**
      * Required. An ordered sequence of property names and their index attributes.
      */
     readonly properties?: pulumi.Input<pulumi.Input<inputs.datastore.v1.GoogleDatastoreAdminV1IndexedProperty>[]>;
-    /**
-     * Output only. The state of the index.
-     */
-    readonly state?: pulumi.Input<string>;
 }

@@ -35,6 +35,22 @@ export class EntryGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === EntryGroup.__pulumiType;
     }
 
+    /**
+     * Timestamps about this EntryGroup. Default value is empty timestamps.
+     */
+    public /*out*/ readonly dataCatalogTimestamps!: pulumi.Output<outputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1SystemTimestampsResponse>;
+    /**
+     * Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
+     */
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a EntryGroup resource with the given unique name, arguments, and options.
@@ -56,14 +72,18 @@ export class EntryGroup extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["dataCatalogTimestamps"] = args ? args.dataCatalogTimestamps : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["entryGroupsId"] = args ? args.entryGroupsId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["dataCatalogTimestamps"] = undefined /*out*/;
         } else {
+            inputs["dataCatalogTimestamps"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -76,10 +96,6 @@ export class EntryGroup extends pulumi.CustomResource {
  * The set of arguments for constructing a EntryGroup resource.
  */
 export interface EntryGroupArgs {
-    /**
-     * Output only. Timestamps about this EntryGroup. Default value is empty timestamps.
-     */
-    readonly dataCatalogTimestamps?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1SystemTimestamps>;
     /**
      * Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.
      */

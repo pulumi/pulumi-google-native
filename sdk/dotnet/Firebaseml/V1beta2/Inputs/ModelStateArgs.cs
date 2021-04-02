@@ -21,12 +21,6 @@ namespace Pulumi.GoogleCloud.Firebaseml.V1beta2.Inputs
         [Input("published")]
         public Input<bool>? Published { get; set; }
 
-        /// <summary>
-        /// Output only. Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models.
-        /// </summary>
-        [Input("validationError")]
-        public Input<Inputs.StatusArgs>? ValidationError { get; set; }
-
         public ModelStateArgs()
         {
         }

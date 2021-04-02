@@ -35,6 +35,30 @@ export class SiteDomain extends pulumi.CustomResource {
         return obj['__pulumiType'] === SiteDomain.__pulumiType;
     }
 
+    /**
+     * Required. The domain name of the association.
+     */
+    public readonly domainName!: pulumi.Output<string>;
+    /**
+     * If set, the domain should redirect with the provided parameters.
+     */
+    public readonly domainRedirect!: pulumi.Output<outputs.firebasehosting.v1beta1.DomainRedirectResponse>;
+    /**
+     * Information about the provisioning of certificates and the health of the DNS resolution for the domain.
+     */
+    public readonly provisioning!: pulumi.Output<outputs.firebasehosting.v1beta1.DomainProvisioningResponse>;
+    /**
+     * Required. The site name of the association.
+     */
+    public readonly site!: pulumi.Output<string>;
+    /**
+     * Additional status of the domain association.
+     */
+    public readonly status!: pulumi.Output<string>;
+    /**
+     * The time at which the domain was last updated.
+     */
+    public readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a SiteDomain resource with the given unique name, arguments, and options.
@@ -62,6 +86,12 @@ export class SiteDomain extends pulumi.CustomResource {
             inputs["status"] = args ? args.status : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
+            inputs["domainName"] = undefined /*out*/;
+            inputs["domainRedirect"] = undefined /*out*/;
+            inputs["provisioning"] = undefined /*out*/;
+            inputs["site"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -84,7 +114,7 @@ export interface SiteDomainArgs {
     readonly domainRedirect?: pulumi.Input<inputs.firebasehosting.v1beta1.DomainRedirect>;
     readonly domainsId: pulumi.Input<string>;
     /**
-     * Output only. Information about the provisioning of certificates and the health of the DNS resolution for the domain.
+     * Information about the provisioning of certificates and the health of the DNS resolution for the domain.
      */
     readonly provisioning?: pulumi.Input<inputs.firebasehosting.v1beta1.DomainProvisioning>;
     /**
@@ -93,11 +123,11 @@ export interface SiteDomainArgs {
     readonly site?: pulumi.Input<string>;
     readonly sitesId: pulumi.Input<string>;
     /**
-     * Output only. Additional status of the domain association.
+     * Additional status of the domain association.
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * Output only. The time at which the domain was last updated.
+     * The time at which the domain was last updated.
      */
     readonly updateTime?: pulumi.Input<string>;
 }

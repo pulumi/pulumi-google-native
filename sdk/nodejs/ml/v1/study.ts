@@ -35,6 +35,26 @@ export class Study extends pulumi.CustomResource {
         return obj['__pulumiType'] === Study.__pulumiType;
     }
 
+    /**
+     * Time at which the study was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
+     */
+    public /*out*/ readonly inactiveReason!: pulumi.Output<string>;
+    /**
+     * The name of a study.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The detailed state of a study.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Required. Configuration of the study.
+     */
+    public readonly studyConfig!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1__StudyConfigResponse>;
 
     /**
      * Create a Study resource with the given unique name, arguments, and options.
@@ -56,15 +76,20 @@ export class Study extends pulumi.CustomResource {
             if ((!args || args.studiesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'studiesId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["inactiveReason"] = args ? args.inactiveReason : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["state"] = args ? args.state : undefined;
             inputs["studiesId"] = args ? args.studiesId : undefined;
             inputs["studyConfig"] = args ? args.studyConfig : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["inactiveReason"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["inactiveReason"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["studyConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -77,24 +102,8 @@ export class Study extends pulumi.CustomResource {
  * The set of arguments for constructing a Study resource.
  */
 export interface StudyArgs {
-    /**
-     * Output only. Time at which the study was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
-     * Output only. A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
-     */
-    readonly inactiveReason?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. The name of a study.
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. The detailed state of a study.
-     */
-    readonly state?: pulumi.Input<string>;
     readonly studiesId: pulumi.Input<string>;
     /**
      * Required. Configuration of the study.

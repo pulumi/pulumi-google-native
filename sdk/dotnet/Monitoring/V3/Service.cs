@@ -16,6 +16,61 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>
+        /// Type used for App Engine services.
+        /// </summary>
+        [Output("appEngine")]
+        public Output<Outputs.AppEngineResponse> AppEngine { get; private set; } = null!;
+
+        /// <summary>
+        /// Type used for Cloud Endpoints services.
+        /// </summary>
+        [Output("cloudEndpoints")]
+        public Output<Outputs.CloudEndpointsResponse> CloudEndpoints { get; private set; } = null!;
+
+        /// <summary>
+        /// Type used for Istio services that live in a Kubernetes cluster.
+        /// </summary>
+        [Output("clusterIstio")]
+        public Output<Outputs.ClusterIstioResponse> ClusterIstio { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom service type.
+        /// </summary>
+        [Output("custom")]
+        public Output<Outputs.CustomResponse> Custom { get; private set; } = null!;
+
+        /// <summary>
+        /// Name used for UI elements listing this Service.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
+        /// </summary>
+        [Output("istioCanonicalService")]
+        public Output<Outputs.IstioCanonicalServiceResponse> IstioCanonicalService { get; private set; } = null!;
+
+        /// <summary>
+        /// Type used for Istio services scoped to an Istio mesh.
+        /// </summary>
+        [Output("meshIstio")]
+        public Output<Outputs.MeshIstioResponse> MeshIstio { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for how to query telemetry on a Service.
+        /// </summary>
+        [Output("telemetry")]
+        public Output<Outputs.TelemetryResponse> Telemetry { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Service resource with the given unique name, arguments, and options.
         /// </summary>
         ///

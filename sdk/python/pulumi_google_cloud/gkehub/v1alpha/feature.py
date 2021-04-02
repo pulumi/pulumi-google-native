@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Feature']
@@ -16,18 +17,11 @@ class Feature(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 delete_time: Optional[pulumi.Input[str]] = None,
                  features_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 membership_states: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 resource_state: Optional[pulumi.Input[pulumi.InputType['FeatureResourceStateArgs']]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['CommonFeatureSpecArgs']]] = None,
-                 state: Optional[pulumi.Input[pulumi.InputType['CommonFeatureStateArgs']]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -36,16 +30,9 @@ class Feature(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. When the Feature resource was created.
-        :param pulumi.Input[str] delete_time: Output only. When the Feature resource was deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] membership_specs: Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] membership_states: Output only. Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
-        :param pulumi.Input[str] name: Output only. The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
-        :param pulumi.Input[pulumi.InputType['FeatureResourceStateArgs']] resource_state: Output only. State of the Feature resource itself.
         :param pulumi.Input[pulumi.InputType['CommonFeatureSpecArgs']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
-        :param pulumi.Input[pulumi.InputType['CommonFeatureStateArgs']] state: Output only. The Hub-wide Feature state.
-        :param pulumi.Input[str] update_time: Output only. When the Feature resource was last updated.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -64,22 +51,22 @@ class Feature(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['create_time'] = create_time
-            __props__['delete_time'] = delete_time
             if features_id is None and not opts.urn:
                 raise TypeError("Missing required property 'features_id'")
             __props__['features_id'] = features_id
             __props__['labels'] = labels
             __props__['membership_specs'] = membership_specs
-            __props__['membership_states'] = membership_states
-            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['resource_state'] = resource_state
             __props__['spec'] = spec
-            __props__['state'] = state
-            __props__['update_time'] = update_time
+            __props__['create_time'] = None
+            __props__['delete_time'] = None
+            __props__['membership_states'] = None
+            __props__['name'] = None
+            __props__['resource_state'] = None
+            __props__['state'] = None
+            __props__['update_time'] = None
         super(Feature, __self__).__init__(
             'google-cloud:gkehub/v1alpha:Feature',
             resource_name,
@@ -102,7 +89,97 @@ class Feature(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["delete_time"] = None
+        __props__["labels"] = None
+        __props__["membership_specs"] = None
+        __props__["membership_states"] = None
+        __props__["name"] = None
+        __props__["resource_state"] = None
+        __props__["spec"] = None
+        __props__["state"] = None
+        __props__["update_time"] = None
         return Feature(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        When the Feature resource was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> pulumi.Output[str]:
+        """
+        When the Feature resource was deleted.
+        """
+        return pulumi.get(self, "delete_time")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        GCP labels for this Feature.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="membershipSpecs")
+    def membership_specs(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
+        """
+        return pulumi.get(self, "membership_specs")
+
+    @property
+    @pulumi.getter(name="membershipStates")
+    def membership_states(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
+        """
+        return pulumi.get(self, "membership_states")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceState")
+    def resource_state(self) -> pulumi.Output['outputs.FeatureResourceStateResponse']:
+        """
+        State of the Feature resource itself.
+        """
+        return pulumi.get(self, "resource_state")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> pulumi.Output['outputs.CommonFeatureSpecResponse']:
+        """
+        Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        """
+        return pulumi.get(self, "spec")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output['outputs.CommonFeatureStateResponse']:
+        """
+        The Hub-wide Feature state.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        When the Feature resource was last updated.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

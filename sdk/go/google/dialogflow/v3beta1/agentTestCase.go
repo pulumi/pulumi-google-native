@@ -14,6 +14,23 @@ import (
 // Creates a test case for the given agent.
 type AgentTestCase struct {
 	pulumi.CustomResourceState
+
+	// When the test was created.
+	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
+	// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// The latest test result.
+	LastTestResult GoogleCloudDialogflowCxV3beta1TestCaseResultResponseOutput `pulumi:"lastTestResult"`
+	// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Additional freeform notes about the test case. Limit of 400 characters.
+	Notes pulumi.StringOutput `pulumi:"notes"`
+	// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
+	TestCaseConversationTurns GoogleCloudDialogflowCxV3beta1ConversationTurnResponseArrayOutput `pulumi:"testCaseConversationTurns"`
+	// Config for the test case.
+	TestConfig GoogleCloudDialogflowCxV3beta1TestConfigResponseOutput `pulumi:"testConfig"`
 }
 
 // NewAgentTestCase registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +74,41 @@ func GetAgentTestCase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AgentTestCase resources.
 type agentTestCaseState struct {
+	// When the test was created.
+	CreationTime *string `pulumi:"creationTime"`
+	// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// The latest test result.
+	LastTestResult *GoogleCloudDialogflowCxV3beta1TestCaseResultResponse `pulumi:"lastTestResult"`
+	// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
+	Name *string `pulumi:"name"`
+	// Additional freeform notes about the test case. Limit of 400 characters.
+	Notes *string `pulumi:"notes"`
+	// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
+	Tags []string `pulumi:"tags"`
+	// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
+	TestCaseConversationTurns []GoogleCloudDialogflowCxV3beta1ConversationTurnResponse `pulumi:"testCaseConversationTurns"`
+	// Config for the test case.
+	TestConfig *GoogleCloudDialogflowCxV3beta1TestConfigResponse `pulumi:"testConfig"`
 }
 
 type AgentTestCaseState struct {
+	// When the test was created.
+	CreationTime pulumi.StringPtrInput
+	// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+	DisplayName pulumi.StringPtrInput
+	// The latest test result.
+	LastTestResult GoogleCloudDialogflowCxV3beta1TestCaseResultResponsePtrInput
+	// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
+	Name pulumi.StringPtrInput
+	// Additional freeform notes about the test case. Limit of 400 characters.
+	Notes pulumi.StringPtrInput
+	// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
+	Tags pulumi.StringArrayInput
+	// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
+	TestCaseConversationTurns GoogleCloudDialogflowCxV3beta1ConversationTurnResponseArrayInput
+	// Config for the test case.
+	TestConfig GoogleCloudDialogflowCxV3beta1TestConfigResponsePtrInput
 }
 
 func (AgentTestCaseState) ElementType() reflect.Type {
@@ -68,8 +117,6 @@ func (AgentTestCaseState) ElementType() reflect.Type {
 
 type agentTestCaseArgs struct {
 	AgentsId string `pulumi:"agentsId"`
-	// Output only. When the test was created.
-	CreationTime *string `pulumi:"creationTime"`
 	// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The latest test result.
@@ -92,8 +139,6 @@ type agentTestCaseArgs struct {
 // The set of arguments for constructing a AgentTestCase resource.
 type AgentTestCaseArgs struct {
 	AgentsId pulumi.StringInput
-	// Output only. When the test was created.
-	CreationTime pulumi.StringPtrInput
 	// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
 	DisplayName pulumi.StringPtrInput
 	// The latest test result.

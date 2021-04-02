@@ -43,17 +43,13 @@ __all__ = [
     'GoogleCloudDialogflowCxV3QueryInputArgs',
     'GoogleCloudDialogflowCxV3ResponseMessageArgs',
     'GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs',
-    'GoogleCloudDialogflowCxV3ResponseMessageEndInteractionArgs',
     'GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs',
-    'GoogleCloudDialogflowCxV3ResponseMessageMixedAudioArgs',
-    'GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentArgs',
     'GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs',
     'GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs',
     'GoogleCloudDialogflowCxV3ResponseMessageTextArgs',
     'GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs',
     'GoogleCloudDialogflowCxV3TestCaseResultArgs',
     'GoogleCloudDialogflowCxV3TestConfigArgs',
-    'GoogleCloudDialogflowCxV3TestRunDifferenceArgs',
     'GoogleCloudDialogflowCxV3TextInputArgs',
     'GoogleCloudDialogflowCxV3TransitionRouteArgs',
     'GoogleCloudDialogflowCxV3VariantsHistoryArgs',
@@ -204,7 +200,6 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs:
     def __init__(__self__, *,
                  current_page: Optional[pulumi.Input['GoogleCloudDialogflowCxV3PageArgs']] = None,
                  diagnostic_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 differences: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3TestRunDifferenceArgs']]]] = None,
                  session_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input['GoogleRpcStatusArgs']] = None,
                  text_responses: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageTextArgs']]]] = None,
@@ -213,7 +208,6 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs:
         The output from the virtual agent.
         :param pulumi.Input['GoogleCloudDialogflowCxV3PageArgs'] current_page: The Page on which the utterance was spoken. Only name and displayName will be set.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] diagnostic_info: Required. Input only. The diagnostic info output for the turn.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3TestRunDifferenceArgs']]] differences: Output only. If this is part of a result conversation turn, the list of differences between the original run and the replay for this output, if any.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] session_parameters: The session parameters available to the bot at this point.
         :param pulumi.Input['GoogleRpcStatusArgs'] status: Response error from the agent in the test result. If set, other output is empty.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageTextArgs']]] text_responses: The text responses from the agent for the turn.
@@ -223,8 +217,6 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs:
             pulumi.set(__self__, "current_page", current_page)
         if diagnostic_info is not None:
             pulumi.set(__self__, "diagnostic_info", diagnostic_info)
-        if differences is not None:
-            pulumi.set(__self__, "differences", differences)
         if session_parameters is not None:
             pulumi.set(__self__, "session_parameters", session_parameters)
         if status is not None:
@@ -257,18 +249,6 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs:
     @diagnostic_info.setter
     def diagnostic_info(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "diagnostic_info", value)
-
-    @property
-    @pulumi.getter
-    def differences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3TestRunDifferenceArgs']]]]:
-        """
-        Output only. If this is part of a result conversation turn, the list of differences between the original run and the replay for this output, if any.
-        """
-        return pulumi.get(self, "differences")
-
-    @differences.setter
-    def differences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3TestRunDifferenceArgs']]]]):
-        pulumi.set(self, "differences", value)
 
     @property
     @pulumi.getter(name="sessionParameters")
@@ -451,22 +431,18 @@ class GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs:
 class GoogleCloudDialogflowCxV3EventHandlerArgs:
     def __init__(__self__, *,
                  event: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  target_flow: Optional[pulumi.Input[str]] = None,
                  target_page: Optional[pulumi.Input[str]] = None,
                  trigger_fulfillment: Optional[pulumi.Input['GoogleCloudDialogflowCxV3FulfillmentArgs']] = None):
         """
         An event handler specifies an event that can be handled during a session. When the specified event happens, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the event, it will be called. * If there is a `target_page` associated with the event, the session will transition into the specified page. * If there is a `target_flow` associated with the event, the session will transition into the specified flow.
         :param pulumi.Input[str] event: Required. The name of the event to handle.
-        :param pulumi.Input[str] name: Output only. The unique identifier of this event handler.
         :param pulumi.Input[str] target_flow: The target flow to transition to. Format: `projects//locations//agents//flows/`.
         :param pulumi.Input[str] target_page: The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
         :param pulumi.Input['GoogleCloudDialogflowCxV3FulfillmentArgs'] trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
         """
         if event is not None:
             pulumi.set(__self__, "event", event)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if target_flow is not None:
             pulumi.set(__self__, "target_flow", target_flow)
         if target_page is not None:
@@ -485,18 +461,6 @@ class GoogleCloudDialogflowCxV3EventHandlerArgs:
     @event.setter
     def event(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "event", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The unique identifier of this event handler.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="targetFlow")
@@ -1631,7 +1595,7 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhraseArgs:
                  repeat_count: Optional[pulumi.Input[int]] = None):
         """
         Represents an example that the agent is trained on to identify the intent.
-        :param pulumi.Input[str] id: Output only. The unique identifier of the training phrase.
+        :param pulumi.Input[str] id: The unique identifier of the training phrase.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArgs']]] parts: Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
         :param pulumi.Input[int] repeat_count: Indicates how many times this example was added to the intent.
         """
@@ -1646,7 +1610,7 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhraseArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The unique identifier of the training phrase.
+        The unique identifier of the training phrase.
         """
         return pulumi.get(self, "id")
 
@@ -2003,9 +1967,7 @@ class GoogleCloudDialogflowCxV3QueryInputArgs:
 class GoogleCloudDialogflowCxV3ResponseMessageArgs:
     def __init__(__self__, *,
                  conversation_success: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs']] = None,
-                 end_interaction: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageEndInteractionArgs']] = None,
                  live_agent_handoff: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs']] = None,
-                 mixed_audio: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageMixedAudioArgs']] = None,
                  output_audio_text: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs']] = None,
                  payload: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  play_audio: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs']] = None,
@@ -2013,9 +1975,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageArgs:
         """
         Represents a response message that can be returned by a conversational agent. Response messages are also used for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is present, then all OutputAudioText responses are linearly concatenated, and the result is used for output audio synthesis. * If the OutputAudioText responses are a mixture of text and SSML, then the concatenated result is treated as SSML; otherwise, the result is treated as either text or SSML as appropriate. The agent designer should ideally use either text or SSML consistently throughout the bot design. * Otherwise, all Text responses are linearly concatenated, and the result is used for output audio synthesis. This approach allows for more sophisticated user experience scenarios, where the text displayed to the user may differ from what is heard.
         :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded.
-        :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageEndInteractionArgs'] end_interaction: Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only when the conversation reaches `END_SESSION` page. It is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
         :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs'] live_agent_handoff: Hands off conversation to a human agent.
-        :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageMixedAudioArgs'] mixed_audio: Output only. An audio response message composed of both the synthesized Dialogflow agent responses and responses defined via play_audio. This message is generated by Dialogflow only and not supposed to be defined by the user.
         :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] payload: Returns a response containing a custom, platform-specific payload.
         :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs'] play_audio: Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
@@ -2023,12 +1983,8 @@ class GoogleCloudDialogflowCxV3ResponseMessageArgs:
         """
         if conversation_success is not None:
             pulumi.set(__self__, "conversation_success", conversation_success)
-        if end_interaction is not None:
-            pulumi.set(__self__, "end_interaction", end_interaction)
         if live_agent_handoff is not None:
             pulumi.set(__self__, "live_agent_handoff", live_agent_handoff)
-        if mixed_audio is not None:
-            pulumi.set(__self__, "mixed_audio", mixed_audio)
         if output_audio_text is not None:
             pulumi.set(__self__, "output_audio_text", output_audio_text)
         if payload is not None:
@@ -2051,18 +2007,6 @@ class GoogleCloudDialogflowCxV3ResponseMessageArgs:
         pulumi.set(self, "conversation_success", value)
 
     @property
-    @pulumi.getter(name="endInteraction")
-    def end_interaction(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageEndInteractionArgs']]:
-        """
-        Output only. A signal that indicates the interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only when the conversation reaches `END_SESSION` page. It is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
-        """
-        return pulumi.get(self, "end_interaction")
-
-    @end_interaction.setter
-    def end_interaction(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageEndInteractionArgs']]):
-        pulumi.set(self, "end_interaction", value)
-
-    @property
     @pulumi.getter(name="liveAgentHandoff")
     def live_agent_handoff(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs']]:
         """
@@ -2073,18 +2017,6 @@ class GoogleCloudDialogflowCxV3ResponseMessageArgs:
     @live_agent_handoff.setter
     def live_agent_handoff(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs']]):
         pulumi.set(self, "live_agent_handoff", value)
-
-    @property
-    @pulumi.getter(name="mixedAudio")
-    def mixed_audio(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageMixedAudioArgs']]:
-        """
-        Output only. An audio response message composed of both the synthesized Dialogflow agent responses and responses defined via play_audio. This message is generated by Dialogflow only and not supposed to be defined by the user.
-        """
-        return pulumi.get(self, "mixed_audio")
-
-    @mixed_audio.setter
-    def mixed_audio(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageMixedAudioArgs']]):
-        pulumi.set(self, "mixed_audio", value)
 
     @property
     @pulumi.getter(name="outputAudioText")
@@ -2160,15 +2092,6 @@ class GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs:
 
 
 @pulumi.input_type
-class GoogleCloudDialogflowCxV3ResponseMessageEndInteractionArgs:
-    def __init__(__self__):
-        """
-        Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
-        """
-        pass
-
-
-@pulumi.input_type
 class GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -2193,115 +2116,19 @@ class GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs:
 
 
 @pulumi.input_type
-class GoogleCloudDialogflowCxV3ResponseMessageMixedAudioArgs:
-    def __init__(__self__, *,
-                 segments: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentArgs']]]] = None):
-        """
-        Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and ones hosted externally at the specified URIs. The external URIs are specified via play_audio. This message is generated by Dialogflow only and not supposed to be defined by the user.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentArgs']]] segments: Segments this audio response is composed of.
-        """
-        if segments is not None:
-            pulumi.set(__self__, "segments", segments)
-
-    @property
-    @pulumi.getter
-    def segments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentArgs']]]]:
-        """
-        Segments this audio response is composed of.
-        """
-        return pulumi.get(self, "segments")
-
-    @segments.setter
-    def segments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentArgs']]]]):
-        pulumi.set(self, "segments", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentArgs:
-    def __init__(__self__, *,
-                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
-                 audio: Optional[pulumi.Input[str]] = None,
-                 uri: Optional[pulumi.Input[str]] = None):
-        """
-        Represents one segment of audio.
-        :param pulumi.Input[bool] allow_playback_interruption: Output only. Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
-        :param pulumi.Input[str] audio: Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
-        :param pulumi.Input[str] uri: Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
-        """
-        if allow_playback_interruption is not None:
-            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
-        if audio is not None:
-            pulumi.set(__self__, "audio", audio)
-        if uri is not None:
-            pulumi.set(__self__, "uri", uri)
-
-    @property
-    @pulumi.getter(name="allowPlaybackInterruption")
-    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Output only. Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
-        """
-        return pulumi.get(self, "allow_playback_interruption")
-
-    @allow_playback_interruption.setter
-    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "allow_playback_interruption", value)
-
-    @property
-    @pulumi.getter
-    def audio(self) -> Optional[pulumi.Input[str]]:
-        """
-        Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
-        """
-        return pulumi.get(self, "audio")
-
-    @audio.setter
-    def audio(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "audio", value)
-
-    @property
-    @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
-        """
-        return pulumi.get(self, "uri")
-
-    @uri.setter
-    def uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uri", value)
-
-
-@pulumi.input_type
 class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs:
     def __init__(__self__, *,
-                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  ssml: Optional[pulumi.Input[str]] = None,
                  text: Optional[pulumi.Input[str]] = None):
         """
         A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
-        :param pulumi.Input[bool] allow_playback_interruption: Output only. Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param pulumi.Input[str] ssml: The SSML text to be synthesized. For more information, see [SSML](/speech/text-to-speech/docs/ssml).
         :param pulumi.Input[str] text: The raw text to be synthesized.
         """
-        if allow_playback_interruption is not None:
-            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
         if ssml is not None:
             pulumi.set(__self__, "ssml", ssml)
         if text is not None:
             pulumi.set(__self__, "text", text)
-
-    @property
-    @pulumi.getter(name="allowPlaybackInterruption")
-    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Output only. Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        return pulumi.get(self, "allow_playback_interruption")
-
-    @allow_playback_interruption.setter
-    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "allow_playback_interruption", value)
 
     @property
     @pulumi.getter
@@ -2331,29 +2158,13 @@ class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs:
     def __init__(__self__, *,
-                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  audio_uri: Optional[pulumi.Input[str]] = None):
         """
         Specifies an audio clip to be played by the client as part of the response.
-        :param pulumi.Input[bool] allow_playback_interruption: Output only. Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param pulumi.Input[str] audio_uri: Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
         """
-        if allow_playback_interruption is not None:
-            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
         if audio_uri is not None:
             pulumi.set(__self__, "audio_uri", audio_uri)
-
-    @property
-    @pulumi.getter(name="allowPlaybackInterruption")
-    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Output only. Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        return pulumi.get(self, "allow_playback_interruption")
-
-    @allow_playback_interruption.setter
-    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "allow_playback_interruption", value)
 
     @property
     @pulumi.getter(name="audioUri")
@@ -2371,29 +2182,13 @@ class GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3ResponseMessageTextArgs:
     def __init__(__self__, *,
-                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
                  text: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The text response message.
-        :param pulumi.Input[bool] allow_playback_interruption: Output only. Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] text: Required. A collection of text responses.
         """
-        if allow_playback_interruption is not None:
-            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
         if text is not None:
             pulumi.set(__self__, "text", text)
-
-    @property
-    @pulumi.getter(name="allowPlaybackInterruption")
-    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Output only. Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
-        """
-        return pulumi.get(self, "allow_playback_interruption")
-
-    @allow_playback_interruption.setter
-    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "allow_playback_interruption", value)
 
     @property
     @pulumi.getter
@@ -2561,46 +2356,6 @@ class GoogleCloudDialogflowCxV3TestConfigArgs:
 
 
 @pulumi.input_type
-class GoogleCloudDialogflowCxV3TestRunDifferenceArgs:
-    def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
-        """
-        The description of differences between original and replayed agent output.
-        :param pulumi.Input[str] description: A description of the diff, showing the actual output vs expected output.
-        :param pulumi.Input[str] type: The type of diff.
-        """
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        A description of the diff, showing the actual output vs expected output.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of diff.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
 class GoogleCloudDialogflowCxV3TextInputArgs:
     def __init__(__self__, *,
                  text: Optional[pulumi.Input[str]] = None):
@@ -2629,7 +2384,6 @@ class GoogleCloudDialogflowCxV3TransitionRouteArgs:
     def __init__(__self__, *,
                  condition: Optional[pulumi.Input[str]] = None,
                  intent: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  target_flow: Optional[pulumi.Input[str]] = None,
                  target_page: Optional[pulumi.Input[str]] = None,
                  trigger_fulfillment: Optional[pulumi.Input['GoogleCloudDialogflowCxV3FulfillmentArgs']] = None):
@@ -2637,7 +2391,6 @@ class GoogleCloudDialogflowCxV3TransitionRouteArgs:
         A transition route specifies a intent that can be matched and/or a data condition that can be evaluated during a session. When a specified transition is matched, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the transition, it will be called. * If there is a `target_page` associated with the transition, the session will transition into the specified page. * If there is a `target_flow` associated with the transition, the session will transition into the specified flow.
         :param pulumi.Input[str] condition: The condition to evaluate against form parameters or session parameters. See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition). At least one of `intent` or `condition` must be specified. When both `intent` and `condition` are specified, the transition can only happen when both are fulfilled.
         :param pulumi.Input[str] intent: The unique identifier of an Intent. Format: `projects//locations//agents//intents/`. Indicates that the transition can only happen when the given intent is matched. At least one of `intent` or `condition` must be specified. When both `intent` and `condition` are specified, the transition can only happen when both are fulfilled.
-        :param pulumi.Input[str] name: Output only. The unique identifier of this transition route.
         :param pulumi.Input[str] target_flow: The target flow to transition to. Format: `projects//locations//agents//flows/`.
         :param pulumi.Input[str] target_page: The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
         :param pulumi.Input['GoogleCloudDialogflowCxV3FulfillmentArgs'] trigger_fulfillment: The fulfillment to call when the condition is satisfied. At least one of `trigger_fulfillment` and `target` must be specified. When both are defined, `trigger_fulfillment` is executed first.
@@ -2646,8 +2399,6 @@ class GoogleCloudDialogflowCxV3TransitionRouteArgs:
             pulumi.set(__self__, "condition", condition)
         if intent is not None:
             pulumi.set(__self__, "intent", intent)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if target_flow is not None:
             pulumi.set(__self__, "target_flow", target_flow)
         if target_page is not None:
@@ -2678,18 +2429,6 @@ class GoogleCloudDialogflowCxV3TransitionRouteArgs:
     @intent.setter
     def intent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "intent", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The unique identifier of this transition route.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="targetFlow")

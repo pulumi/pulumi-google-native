@@ -34,6 +34,18 @@ export class TagTemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === TagTemplate.__pulumiType;
     }
 
+    /**
+     * The display name for this template. Defaults to an empty string.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
+     */
+    public readonly fields!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
+     */
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a TagTemplate resource with the given unique name, arguments, and options.
@@ -62,6 +74,9 @@ export class TagTemplate extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["tagTemplatesId"] = args ? args.tagTemplatesId : undefined;
         } else {
+            inputs["displayName"] = undefined /*out*/;
+            inputs["fields"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

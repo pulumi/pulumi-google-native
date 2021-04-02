@@ -163,6 +163,159 @@ func (o CertificateRawDataPtrOutput) PublicCertificate() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// An SSL certificate obtained from a certificate authority.
+type CertificateRawDataResponse struct {
+	// Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
+	PrivateKey string `pulumi:"privateKey"`
+	// PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+	PublicCertificate string `pulumi:"publicCertificate"`
+}
+
+// CertificateRawDataResponseInput is an input type that accepts CertificateRawDataResponseArgs and CertificateRawDataResponseOutput values.
+// You can construct a concrete instance of `CertificateRawDataResponseInput` via:
+//
+//          CertificateRawDataResponseArgs{...}
+type CertificateRawDataResponseInput interface {
+	pulumi.Input
+
+	ToCertificateRawDataResponseOutput() CertificateRawDataResponseOutput
+	ToCertificateRawDataResponseOutputWithContext(context.Context) CertificateRawDataResponseOutput
+}
+
+// An SSL certificate obtained from a certificate authority.
+type CertificateRawDataResponseArgs struct {
+	// Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
+	PrivateKey pulumi.StringInput `pulumi:"privateKey"`
+	// PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+	PublicCertificate pulumi.StringInput `pulumi:"publicCertificate"`
+}
+
+func (CertificateRawDataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateRawDataResponse)(nil)).Elem()
+}
+
+func (i CertificateRawDataResponseArgs) ToCertificateRawDataResponseOutput() CertificateRawDataResponseOutput {
+	return i.ToCertificateRawDataResponseOutputWithContext(context.Background())
+}
+
+func (i CertificateRawDataResponseArgs) ToCertificateRawDataResponseOutputWithContext(ctx context.Context) CertificateRawDataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateRawDataResponseOutput)
+}
+
+func (i CertificateRawDataResponseArgs) ToCertificateRawDataResponsePtrOutput() CertificateRawDataResponsePtrOutput {
+	return i.ToCertificateRawDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CertificateRawDataResponseArgs) ToCertificateRawDataResponsePtrOutputWithContext(ctx context.Context) CertificateRawDataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateRawDataResponseOutput).ToCertificateRawDataResponsePtrOutputWithContext(ctx)
+}
+
+// CertificateRawDataResponsePtrInput is an input type that accepts CertificateRawDataResponseArgs, CertificateRawDataResponsePtr and CertificateRawDataResponsePtrOutput values.
+// You can construct a concrete instance of `CertificateRawDataResponsePtrInput` via:
+//
+//          CertificateRawDataResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateRawDataResponsePtrInput interface {
+	pulumi.Input
+
+	ToCertificateRawDataResponsePtrOutput() CertificateRawDataResponsePtrOutput
+	ToCertificateRawDataResponsePtrOutputWithContext(context.Context) CertificateRawDataResponsePtrOutput
+}
+
+type certificateRawDataResponsePtrType CertificateRawDataResponseArgs
+
+func CertificateRawDataResponsePtr(v *CertificateRawDataResponseArgs) CertificateRawDataResponsePtrInput {
+	return (*certificateRawDataResponsePtrType)(v)
+}
+
+func (*certificateRawDataResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateRawDataResponse)(nil)).Elem()
+}
+
+func (i *certificateRawDataResponsePtrType) ToCertificateRawDataResponsePtrOutput() CertificateRawDataResponsePtrOutput {
+	return i.ToCertificateRawDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *certificateRawDataResponsePtrType) ToCertificateRawDataResponsePtrOutputWithContext(ctx context.Context) CertificateRawDataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateRawDataResponsePtrOutput)
+}
+
+// An SSL certificate obtained from a certificate authority.
+type CertificateRawDataResponseOutput struct{ *pulumi.OutputState }
+
+func (CertificateRawDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateRawDataResponse)(nil)).Elem()
+}
+
+func (o CertificateRawDataResponseOutput) ToCertificateRawDataResponseOutput() CertificateRawDataResponseOutput {
+	return o
+}
+
+func (o CertificateRawDataResponseOutput) ToCertificateRawDataResponseOutputWithContext(ctx context.Context) CertificateRawDataResponseOutput {
+	return o
+}
+
+func (o CertificateRawDataResponseOutput) ToCertificateRawDataResponsePtrOutput() CertificateRawDataResponsePtrOutput {
+	return o.ToCertificateRawDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CertificateRawDataResponseOutput) ToCertificateRawDataResponsePtrOutputWithContext(ctx context.Context) CertificateRawDataResponsePtrOutput {
+	return o.ApplyT(func(v CertificateRawDataResponse) *CertificateRawDataResponse {
+		return &v
+	}).(CertificateRawDataResponsePtrOutput)
+}
+
+// Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
+func (o CertificateRawDataResponseOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateRawDataResponse) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+// PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+func (o CertificateRawDataResponseOutput) PublicCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateRawDataResponse) string { return v.PublicCertificate }).(pulumi.StringOutput)
+}
+
+type CertificateRawDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateRawDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateRawDataResponse)(nil)).Elem()
+}
+
+func (o CertificateRawDataResponsePtrOutput) ToCertificateRawDataResponsePtrOutput() CertificateRawDataResponsePtrOutput {
+	return o
+}
+
+func (o CertificateRawDataResponsePtrOutput) ToCertificateRawDataResponsePtrOutputWithContext(ctx context.Context) CertificateRawDataResponsePtrOutput {
+	return o
+}
+
+func (o CertificateRawDataResponsePtrOutput) Elem() CertificateRawDataResponseOutput {
+	return o.ApplyT(func(v *CertificateRawDataResponse) CertificateRawDataResponse { return *v }).(CertificateRawDataResponseOutput)
+}
+
+// Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
+func (o CertificateRawDataResponsePtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateRawDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+func (o CertificateRawDataResponsePtrOutput) PublicCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateRawDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PublicCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
 // A certificate managed by App Engine.
 type ManagedCertificate struct {
 	// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
@@ -316,6 +469,159 @@ func (o ManagedCertificatePtrOutput) Status() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A certificate managed by App Engine.
+type ManagedCertificateResponse struct {
+	// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+	LastRenewalTime string `pulumi:"lastRenewalTime"`
+	// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+	Status string `pulumi:"status"`
+}
+
+// ManagedCertificateResponseInput is an input type that accepts ManagedCertificateResponseArgs and ManagedCertificateResponseOutput values.
+// You can construct a concrete instance of `ManagedCertificateResponseInput` via:
+//
+//          ManagedCertificateResponseArgs{...}
+type ManagedCertificateResponseInput interface {
+	pulumi.Input
+
+	ToManagedCertificateResponseOutput() ManagedCertificateResponseOutput
+	ToManagedCertificateResponseOutputWithContext(context.Context) ManagedCertificateResponseOutput
+}
+
+// A certificate managed by App Engine.
+type ManagedCertificateResponseArgs struct {
+	// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+	LastRenewalTime pulumi.StringInput `pulumi:"lastRenewalTime"`
+	// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (ManagedCertificateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedCertificateResponse)(nil)).Elem()
+}
+
+func (i ManagedCertificateResponseArgs) ToManagedCertificateResponseOutput() ManagedCertificateResponseOutput {
+	return i.ToManagedCertificateResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedCertificateResponseArgs) ToManagedCertificateResponseOutputWithContext(ctx context.Context) ManagedCertificateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedCertificateResponseOutput)
+}
+
+func (i ManagedCertificateResponseArgs) ToManagedCertificateResponsePtrOutput() ManagedCertificateResponsePtrOutput {
+	return i.ToManagedCertificateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedCertificateResponseArgs) ToManagedCertificateResponsePtrOutputWithContext(ctx context.Context) ManagedCertificateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedCertificateResponseOutput).ToManagedCertificateResponsePtrOutputWithContext(ctx)
+}
+
+// ManagedCertificateResponsePtrInput is an input type that accepts ManagedCertificateResponseArgs, ManagedCertificateResponsePtr and ManagedCertificateResponsePtrOutput values.
+// You can construct a concrete instance of `ManagedCertificateResponsePtrInput` via:
+//
+//          ManagedCertificateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedCertificateResponsePtrInput interface {
+	pulumi.Input
+
+	ToManagedCertificateResponsePtrOutput() ManagedCertificateResponsePtrOutput
+	ToManagedCertificateResponsePtrOutputWithContext(context.Context) ManagedCertificateResponsePtrOutput
+}
+
+type managedCertificateResponsePtrType ManagedCertificateResponseArgs
+
+func ManagedCertificateResponsePtr(v *ManagedCertificateResponseArgs) ManagedCertificateResponsePtrInput {
+	return (*managedCertificateResponsePtrType)(v)
+}
+
+func (*managedCertificateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedCertificateResponse)(nil)).Elem()
+}
+
+func (i *managedCertificateResponsePtrType) ToManagedCertificateResponsePtrOutput() ManagedCertificateResponsePtrOutput {
+	return i.ToManagedCertificateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *managedCertificateResponsePtrType) ToManagedCertificateResponsePtrOutputWithContext(ctx context.Context) ManagedCertificateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedCertificateResponsePtrOutput)
+}
+
+// A certificate managed by App Engine.
+type ManagedCertificateResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedCertificateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedCertificateResponse)(nil)).Elem()
+}
+
+func (o ManagedCertificateResponseOutput) ToManagedCertificateResponseOutput() ManagedCertificateResponseOutput {
+	return o
+}
+
+func (o ManagedCertificateResponseOutput) ToManagedCertificateResponseOutputWithContext(ctx context.Context) ManagedCertificateResponseOutput {
+	return o
+}
+
+func (o ManagedCertificateResponseOutput) ToManagedCertificateResponsePtrOutput() ManagedCertificateResponsePtrOutput {
+	return o.ToManagedCertificateResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedCertificateResponseOutput) ToManagedCertificateResponsePtrOutputWithContext(ctx context.Context) ManagedCertificateResponsePtrOutput {
+	return o.ApplyT(func(v ManagedCertificateResponse) *ManagedCertificateResponse {
+		return &v
+	}).(ManagedCertificateResponsePtrOutput)
+}
+
+// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+func (o ManagedCertificateResponseOutput) LastRenewalTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedCertificateResponse) string { return v.LastRenewalTime }).(pulumi.StringOutput)
+}
+
+// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+func (o ManagedCertificateResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedCertificateResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type ManagedCertificateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedCertificateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedCertificateResponse)(nil)).Elem()
+}
+
+func (o ManagedCertificateResponsePtrOutput) ToManagedCertificateResponsePtrOutput() ManagedCertificateResponsePtrOutput {
+	return o
+}
+
+func (o ManagedCertificateResponsePtrOutput) ToManagedCertificateResponsePtrOutputWithContext(ctx context.Context) ManagedCertificateResponsePtrOutput {
+	return o
+}
+
+func (o ManagedCertificateResponsePtrOutput) Elem() ManagedCertificateResponseOutput {
+	return o.ApplyT(func(v *ManagedCertificateResponse) ManagedCertificateResponse { return *v }).(ManagedCertificateResponseOutput)
+}
+
+// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+func (o ManagedCertificateResponsePtrOutput) LastRenewalTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedCertificateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LastRenewalTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+func (o ManagedCertificateResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedCertificateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 // A DNS resource record.
 type ResourceRecord struct {
 	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
@@ -432,6 +738,124 @@ func (o ResourceRecordArrayOutput) Index(i pulumi.IntInput) ResourceRecordOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceRecord {
 		return vs[0].([]ResourceRecord)[vs[1].(int)]
 	}).(ResourceRecordOutput)
+}
+
+// A DNS resource record.
+type ResourceRecordResponse struct {
+	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
+	Name string `pulumi:"name"`
+	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+	Rrdata string `pulumi:"rrdata"`
+	// Resource record type. Example: AAAA.
+	Type string `pulumi:"type"`
+}
+
+// ResourceRecordResponseInput is an input type that accepts ResourceRecordResponseArgs and ResourceRecordResponseOutput values.
+// You can construct a concrete instance of `ResourceRecordResponseInput` via:
+//
+//          ResourceRecordResponseArgs{...}
+type ResourceRecordResponseInput interface {
+	pulumi.Input
+
+	ToResourceRecordResponseOutput() ResourceRecordResponseOutput
+	ToResourceRecordResponseOutputWithContext(context.Context) ResourceRecordResponseOutput
+}
+
+// A DNS resource record.
+type ResourceRecordResponseArgs struct {
+	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+	Rrdata pulumi.StringInput `pulumi:"rrdata"`
+	// Resource record type. Example: AAAA.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ResourceRecordResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRecordResponse)(nil)).Elem()
+}
+
+func (i ResourceRecordResponseArgs) ToResourceRecordResponseOutput() ResourceRecordResponseOutput {
+	return i.ToResourceRecordResponseOutputWithContext(context.Background())
+}
+
+func (i ResourceRecordResponseArgs) ToResourceRecordResponseOutputWithContext(ctx context.Context) ResourceRecordResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordResponseOutput)
+}
+
+// ResourceRecordResponseArrayInput is an input type that accepts ResourceRecordResponseArray and ResourceRecordResponseArrayOutput values.
+// You can construct a concrete instance of `ResourceRecordResponseArrayInput` via:
+//
+//          ResourceRecordResponseArray{ ResourceRecordResponseArgs{...} }
+type ResourceRecordResponseArrayInput interface {
+	pulumi.Input
+
+	ToResourceRecordResponseArrayOutput() ResourceRecordResponseArrayOutput
+	ToResourceRecordResponseArrayOutputWithContext(context.Context) ResourceRecordResponseArrayOutput
+}
+
+type ResourceRecordResponseArray []ResourceRecordResponseInput
+
+func (ResourceRecordResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceRecordResponse)(nil)).Elem()
+}
+
+func (i ResourceRecordResponseArray) ToResourceRecordResponseArrayOutput() ResourceRecordResponseArrayOutput {
+	return i.ToResourceRecordResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ResourceRecordResponseArray) ToResourceRecordResponseArrayOutputWithContext(ctx context.Context) ResourceRecordResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordResponseArrayOutput)
+}
+
+// A DNS resource record.
+type ResourceRecordResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceRecordResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRecordResponse)(nil)).Elem()
+}
+
+func (o ResourceRecordResponseOutput) ToResourceRecordResponseOutput() ResourceRecordResponseOutput {
+	return o
+}
+
+func (o ResourceRecordResponseOutput) ToResourceRecordResponseOutputWithContext(ctx context.Context) ResourceRecordResponseOutput {
+	return o
+}
+
+// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
+func (o ResourceRecordResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRecordResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+func (o ResourceRecordResponseOutput) Rrdata() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRecordResponse) string { return v.Rrdata }).(pulumi.StringOutput)
+}
+
+// Resource record type. Example: AAAA.
+func (o ResourceRecordResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRecordResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ResourceRecordResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceRecordResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceRecordResponse)(nil)).Elem()
+}
+
+func (o ResourceRecordResponseArrayOutput) ToResourceRecordResponseArrayOutput() ResourceRecordResponseArrayOutput {
+	return o
+}
+
+func (o ResourceRecordResponseArrayOutput) ToResourceRecordResponseArrayOutputWithContext(ctx context.Context) ResourceRecordResponseArrayOutput {
+	return o
+}
+
+func (o ResourceRecordResponseArrayOutput) Index(i pulumi.IntInput) ResourceRecordResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceRecordResponse {
+		return vs[0].([]ResourceRecordResponse)[vs[1].(int)]
+	}).(ResourceRecordResponseOutput)
 }
 
 // SSL configuration for a DomainMapping resource.
@@ -587,13 +1011,174 @@ func (o SslSettingsPtrOutput) IsManagedCertificate() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// SSL configuration for a DomainMapping resource.
+type SslSettingsResponse struct {
+	// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
+	CertificateId string `pulumi:"certificateId"`
+	// Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.@OutputOnly
+	IsManagedCertificate bool `pulumi:"isManagedCertificate"`
+}
+
+// SslSettingsResponseInput is an input type that accepts SslSettingsResponseArgs and SslSettingsResponseOutput values.
+// You can construct a concrete instance of `SslSettingsResponseInput` via:
+//
+//          SslSettingsResponseArgs{...}
+type SslSettingsResponseInput interface {
+	pulumi.Input
+
+	ToSslSettingsResponseOutput() SslSettingsResponseOutput
+	ToSslSettingsResponseOutputWithContext(context.Context) SslSettingsResponseOutput
+}
+
+// SSL configuration for a DomainMapping resource.
+type SslSettingsResponseArgs struct {
+	// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
+	CertificateId pulumi.StringInput `pulumi:"certificateId"`
+	// Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.@OutputOnly
+	IsManagedCertificate pulumi.BoolInput `pulumi:"isManagedCertificate"`
+}
+
+func (SslSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslSettingsResponse)(nil)).Elem()
+}
+
+func (i SslSettingsResponseArgs) ToSslSettingsResponseOutput() SslSettingsResponseOutput {
+	return i.ToSslSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i SslSettingsResponseArgs) ToSslSettingsResponseOutputWithContext(ctx context.Context) SslSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslSettingsResponseOutput)
+}
+
+func (i SslSettingsResponseArgs) ToSslSettingsResponsePtrOutput() SslSettingsResponsePtrOutput {
+	return i.ToSslSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SslSettingsResponseArgs) ToSslSettingsResponsePtrOutputWithContext(ctx context.Context) SslSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslSettingsResponseOutput).ToSslSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// SslSettingsResponsePtrInput is an input type that accepts SslSettingsResponseArgs, SslSettingsResponsePtr and SslSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `SslSettingsResponsePtrInput` via:
+//
+//          SslSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SslSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToSslSettingsResponsePtrOutput() SslSettingsResponsePtrOutput
+	ToSslSettingsResponsePtrOutputWithContext(context.Context) SslSettingsResponsePtrOutput
+}
+
+type sslSettingsResponsePtrType SslSettingsResponseArgs
+
+func SslSettingsResponsePtr(v *SslSettingsResponseArgs) SslSettingsResponsePtrInput {
+	return (*sslSettingsResponsePtrType)(v)
+}
+
+func (*sslSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslSettingsResponse)(nil)).Elem()
+}
+
+func (i *sslSettingsResponsePtrType) ToSslSettingsResponsePtrOutput() SslSettingsResponsePtrOutput {
+	return i.ToSslSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *sslSettingsResponsePtrType) ToSslSettingsResponsePtrOutputWithContext(ctx context.Context) SslSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslSettingsResponsePtrOutput)
+}
+
+// SSL configuration for a DomainMapping resource.
+type SslSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (SslSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslSettingsResponse)(nil)).Elem()
+}
+
+func (o SslSettingsResponseOutput) ToSslSettingsResponseOutput() SslSettingsResponseOutput {
+	return o
+}
+
+func (o SslSettingsResponseOutput) ToSslSettingsResponseOutputWithContext(ctx context.Context) SslSettingsResponseOutput {
+	return o
+}
+
+func (o SslSettingsResponseOutput) ToSslSettingsResponsePtrOutput() SslSettingsResponsePtrOutput {
+	return o.ToSslSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SslSettingsResponseOutput) ToSslSettingsResponsePtrOutputWithContext(ctx context.Context) SslSettingsResponsePtrOutput {
+	return o.ApplyT(func(v SslSettingsResponse) *SslSettingsResponse {
+		return &v
+	}).(SslSettingsResponsePtrOutput)
+}
+
+// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
+func (o SslSettingsResponseOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v SslSettingsResponse) string { return v.CertificateId }).(pulumi.StringOutput)
+}
+
+// Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.@OutputOnly
+func (o SslSettingsResponseOutput) IsManagedCertificate() pulumi.BoolOutput {
+	return o.ApplyT(func(v SslSettingsResponse) bool { return v.IsManagedCertificate }).(pulumi.BoolOutput)
+}
+
+type SslSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SslSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslSettingsResponse)(nil)).Elem()
+}
+
+func (o SslSettingsResponsePtrOutput) ToSslSettingsResponsePtrOutput() SslSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SslSettingsResponsePtrOutput) ToSslSettingsResponsePtrOutputWithContext(ctx context.Context) SslSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SslSettingsResponsePtrOutput) Elem() SslSettingsResponseOutput {
+	return o.ApplyT(func(v *SslSettingsResponse) SslSettingsResponse { return *v }).(SslSettingsResponseOutput)
+}
+
+// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify no_managed_certificate on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
+func (o SslSettingsResponsePtrOutput) CertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.@OutputOnly
+func (o SslSettingsResponsePtrOutput) IsManagedCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SslSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IsManagedCertificate
+	}).(pulumi.BoolPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CertificateRawDataOutput{})
 	pulumi.RegisterOutputType(CertificateRawDataPtrOutput{})
+	pulumi.RegisterOutputType(CertificateRawDataResponseOutput{})
+	pulumi.RegisterOutputType(CertificateRawDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedCertificateOutput{})
 	pulumi.RegisterOutputType(ManagedCertificatePtrOutput{})
+	pulumi.RegisterOutputType(ManagedCertificateResponseOutput{})
+	pulumi.RegisterOutputType(ManagedCertificateResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceRecordOutput{})
 	pulumi.RegisterOutputType(ResourceRecordArrayOutput{})
+	pulumi.RegisterOutputType(ResourceRecordResponseOutput{})
+	pulumi.RegisterOutputType(ResourceRecordResponseArrayOutput{})
 	pulumi.RegisterOutputType(SslSettingsOutput{})
 	pulumi.RegisterOutputType(SslSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SslSettingsResponseOutput{})
+	pulumi.RegisterOutputType(SslSettingsResponsePtrOutput{})
 }

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['DatasetConsentStoreUserDataMapping']
@@ -16,8 +17,6 @@ class DatasetConsentStoreUserDataMapping(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 archive_time: Optional[pulumi.Input[str]] = None,
-                 archived: Optional[pulumi.Input[bool]] = None,
                  consent_stores_id: Optional[pulumi.Input[str]] = None,
                  data_id: Optional[pulumi.Input[str]] = None,
                  datasets_id: Optional[pulumi.Input[str]] = None,
@@ -35,8 +34,6 @@ class DatasetConsentStoreUserDataMapping(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] archive_time: Output only. Indicates the time when this mapping was archived.
-        :param pulumi.Input[bool] archived: Output only. Indicates whether this mapping is archived.
         :param pulumi.Input[str] data_id: Required. A unique identifier for the mapped resource.
         :param pulumi.Input[str] name: Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttributeArgs']]]] resource_attributes: Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
@@ -59,8 +56,6 @@ class DatasetConsentStoreUserDataMapping(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['archive_time'] = archive_time
-            __props__['archived'] = archived
             if consent_stores_id is None and not opts.urn:
                 raise TypeError("Missing required property 'consent_stores_id'")
             __props__['consent_stores_id'] = consent_stores_id
@@ -80,6 +75,8 @@ class DatasetConsentStoreUserDataMapping(pulumi.CustomResource):
                 raise TypeError("Missing required property 'user_data_mappings_id'")
             __props__['user_data_mappings_id'] = user_data_mappings_id
             __props__['user_id'] = user_id
+            __props__['archive_time'] = None
+            __props__['archived'] = None
         super(DatasetConsentStoreUserDataMapping, __self__).__init__(
             'google-cloud:healthcare/v1:DatasetConsentStoreUserDataMapping',
             resource_name,
@@ -102,7 +99,61 @@ class DatasetConsentStoreUserDataMapping(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["archive_time"] = None
+        __props__["archived"] = None
+        __props__["data_id"] = None
+        __props__["name"] = None
+        __props__["resource_attributes"] = None
+        __props__["user_id"] = None
         return DatasetConsentStoreUserDataMapping(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="archiveTime")
+    def archive_time(self) -> pulumi.Output[str]:
+        """
+        Indicates the time when this mapping was archived.
+        """
+        return pulumi.get(self, "archive_time")
+
+    @property
+    @pulumi.getter
+    def archived(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether this mapping is archived.
+        """
+        return pulumi.get(self, "archived")
+
+    @property
+    @pulumi.getter(name="dataId")
+    def data_id(self) -> pulumi.Output[str]:
+        """
+        Required. A unique identifier for the mapped resource.
+        """
+        return pulumi.get(self, "data_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceAttributes")
+    def resource_attributes(self) -> pulumi.Output[Sequence['outputs.AttributeResponse']]:
+        """
+        Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
+        """
+        return pulumi.get(self, "resource_attributes")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Output[str]:
+        """
+        Required. User's UUID provided by the client.
+        """
+        return pulumi.get(self, "user_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

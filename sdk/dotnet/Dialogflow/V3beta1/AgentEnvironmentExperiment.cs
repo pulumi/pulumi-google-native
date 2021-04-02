@@ -16,6 +16,79 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1
     public partial class AgentEnvironmentExperiment : Pulumi.CustomResource
     {
         /// <summary>
+        /// Creation time of this experiment.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The definition of the experiment.
+        /// </summary>
+        [Output("definition")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3beta1ExperimentDefinitionResponse> Definition { get; private set; } = null!;
+
+        /// <summary>
+        /// The human-readable description of the experiment.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// End time of this experiment.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+        /// </summary>
+        [Output("experimentLength")]
+        public Output<string> ExperimentLength { get; private set; } = null!;
+
+        /// <summary>
+        /// Last update time of this experiment.
+        /// </summary>
+        [Output("lastUpdateTime")]
+        public Output<string> LastUpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Inference result of the experiment.
+        /// </summary>
+        [Output("result")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3beta1ExperimentResultResponse> Result { get; private set; } = null!;
+
+        /// <summary>
+        /// Start time of this experiment.
+        /// </summary>
+        [Output("startTime")]
+        public Output<string> StartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING-&gt;RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING-&gt;CANCELLED or RUNNING-&gt;CANCELLED.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The history of updates to the experiment variants.
+        /// </summary>
+        [Output("variantsHistory")]
+        public Output<ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse>> VariantsHistory { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AgentEnvironmentExperiment resource with the given unique name, arguments, and options.
         /// </summary>
         ///

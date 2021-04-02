@@ -9,6 +9,7 @@ from .service_consumer_iam_policy import *
 from .service_iam_policy import *
 from .service_rollout import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

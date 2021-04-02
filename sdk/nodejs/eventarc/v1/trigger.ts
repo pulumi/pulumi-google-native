@@ -35,6 +35,46 @@ export class Trigger extends pulumi.CustomResource {
         return obj['__pulumiType'] === Trigger.__pulumiType;
     }
 
+    /**
+     * The creation time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Required. Destination specifies where the events should be sent to.
+     */
+    public readonly destination!: pulumi.Output<outputs.eventarc.v1.DestinationResponse>;
+    /**
+     * This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+     */
+    public readonly eventFilters!: pulumi.Output<outputs.eventarc.v1.EventFilterResponse[]>;
+    /**
+     * Optional. User labels attached to the triggers that can be used to group resources.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
+     */
+    public readonly serviceAccount!: pulumi.Output<string>;
+    /**
+     * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+     */
+    public readonly transport!: pulumi.Output<outputs.eventarc.v1.TransportResponse>;
+    /**
+     * Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
+    /**
+     * The last-modified time.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Trigger resource with the given unique name, arguments, and options.
@@ -56,9 +96,7 @@ export class Trigger extends pulumi.CustomResource {
             if ((!args || args.triggersId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'triggersId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["destination"] = args ? args.destination : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
             inputs["eventFilters"] = args ? args.eventFilters : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -67,9 +105,21 @@ export class Trigger extends pulumi.CustomResource {
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["transport"] = args ? args.transport : undefined;
             inputs["triggersId"] = args ? args.triggersId : undefined;
-            inputs["uid"] = args ? args.uid : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["uid"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["destination"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["eventFilters"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["serviceAccount"] = undefined /*out*/;
+            inputs["transport"] = undefined /*out*/;
+            inputs["uid"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -83,17 +133,9 @@ export class Trigger extends pulumi.CustomResource {
  */
 export interface TriggerArgs {
     /**
-     * Output only. The creation time.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * Required. Destination specifies where the events should be sent to.
      */
     readonly destination?: pulumi.Input<inputs.eventarc.v1.Destination>;
-    /**
-     * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
-     */
-    readonly etag?: pulumi.Input<string>;
     /**
      * Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
      */
@@ -117,12 +159,4 @@ export interface TriggerArgs {
      */
     readonly transport?: pulumi.Input<inputs.eventarc.v1.Transport>;
     readonly triggersId: pulumi.Input<string>;
-    /**
-     * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
-     */
-    readonly uid?: pulumi.Input<string>;
-    /**
-     * Output only. The last-modified time.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

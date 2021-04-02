@@ -14,6 +14,23 @@ import (
 // Creates a folder in the resource hierarchy. Returns an `Operation` which can be used to track the progress of the folder creation workflow. Upon success, the `Operation.response` field will be populated with the created Folder. In order to succeed, the addition of this new folder must not violate the folder naming, height, or fanout constraints. + The folder's `display_name` must be distinct from all other folders that share its parent. + The addition of the folder must not cause the active folder hierarchy to exceed a height of 10. Note, the full active + deleted folder hierarchy is allowed to reach a height of 20; this provides additional headroom when moving folders that contain deleted folders. + The addition of the folder must not cause the total number of folders under its parent to exceed 300. If the operation fails due to a folder constraint violation, some errors may be returned by the `CreateFolder` request, with status code `FAILED_PRECONDITION` and an error description. Other folder constraint violations will be communicated in the `Operation`, with the specific `PreconditionFailure` returned in the details list in the `Operation.error` field. The caller must have `resourcemanager.folders.create` permission on the identified parent.
 type Folder struct {
 	pulumi.CustomResourceState
+
+	// Timestamp when the folder was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Timestamp when the folder was requested to be deleted.
+	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// A checksum computed by the server based on the current value of the folder resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
+	Parent pulumi.StringOutput `pulumi:"parent"`
+	// The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
+	State pulumi.StringOutput `pulumi:"state"`
+	// Timestamp when the folder was last modified.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewFolder registers a new resource with the given unique name, arguments, and options.
@@ -48,9 +65,41 @@ func GetFolder(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Folder resources.
 type folderState struct {
+	// Timestamp when the folder was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Timestamp when the folder was requested to be deleted.
+	DeleteTime *string `pulumi:"deleteTime"`
+	// The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
+	DisplayName *string `pulumi:"displayName"`
+	// A checksum computed by the server based on the current value of the folder resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag *string `pulumi:"etag"`
+	// The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
+	Name *string `pulumi:"name"`
+	// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
+	Parent *string `pulumi:"parent"`
+	// The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
+	State *string `pulumi:"state"`
+	// Timestamp when the folder was last modified.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type FolderState struct {
+	// Timestamp when the folder was created.
+	CreateTime pulumi.StringPtrInput
+	// Timestamp when the folder was requested to be deleted.
+	DeleteTime pulumi.StringPtrInput
+	// The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
+	DisplayName pulumi.StringPtrInput
+	// A checksum computed by the server based on the current value of the folder resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+	Etag pulumi.StringPtrInput
+	// The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
+	Name pulumi.StringPtrInput
+	// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
+	Parent pulumi.StringPtrInput
+	// The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
+	State pulumi.StringPtrInput
+	// Timestamp when the folder was last modified.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (FolderState) ElementType() reflect.Type {
@@ -58,44 +107,20 @@ func (FolderState) ElementType() reflect.Type {
 }
 
 type folderArgs struct {
-	// Output only. Timestamp when the folder was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Output only. Timestamp when the folder was requested to be deleted.
-	DeleteTime *string `pulumi:"deleteTime"`
 	// The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
 	DisplayName *string `pulumi:"displayName"`
-	// Output only. A checksum computed by the server based on the current value of the folder resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-	Etag      *string `pulumi:"etag"`
-	FoldersId string  `pulumi:"foldersId"`
-	// Output only. The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
-	Name *string `pulumi:"name"`
+	FoldersId   string  `pulumi:"foldersId"`
 	// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
 	Parent *string `pulumi:"parent"`
-	// Output only. The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
-	State *string `pulumi:"state"`
-	// Output only. Timestamp when the folder was last modified.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Folder resource.
 type FolderArgs struct {
-	// Output only. Timestamp when the folder was created.
-	CreateTime pulumi.StringPtrInput
-	// Output only. Timestamp when the folder was requested to be deleted.
-	DeleteTime pulumi.StringPtrInput
 	// The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
 	DisplayName pulumi.StringPtrInput
-	// Output only. A checksum computed by the server based on the current value of the folder resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-	Etag      pulumi.StringPtrInput
-	FoldersId pulumi.StringInput
-	// Output only. The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
-	Name pulumi.StringPtrInput
+	FoldersId   pulumi.StringInput
 	// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
 	Parent pulumi.StringPtrInput
-	// Output only. The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
-	State pulumi.StringPtrInput
-	// Output only. Timestamp when the folder was last modified.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (FolderArgs) ElementType() reflect.Type {

@@ -14,6 +14,15 @@ import (
 // Uploads a ZIP-formatted shared flow configuration bundle to an organization. If the shared flow already exists, this creates a new revision of it. If the shared flow does not exist, this creates it. Once imported, the shared flow revision must be deployed before it can be accessed at runtime. The size limit of a shared flow bundle is 15 MB.
 type OrganizationSharedflow struct {
 	pulumi.CustomResourceState
+
+	// The id of the most recently created revision for this shared flow.
+	LatestRevisionId pulumi.StringOutput `pulumi:"latestRevisionId"`
+	// Metadata describing the shared flow.
+	MetaData GoogleCloudApigeeV1EntityMetadataResponseOutput `pulumi:"metaData"`
+	// The ID of the shared flow.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// A list of revisions of this shared flow.
+	Revision pulumi.StringArrayOutput `pulumi:"revision"`
 }
 
 // NewOrganizationSharedflow registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +60,25 @@ func GetOrganizationSharedflow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationSharedflow resources.
 type organizationSharedflowState struct {
+	// The id of the most recently created revision for this shared flow.
+	LatestRevisionId *string `pulumi:"latestRevisionId"`
+	// Metadata describing the shared flow.
+	MetaData *GoogleCloudApigeeV1EntityMetadataResponse `pulumi:"metaData"`
+	// The ID of the shared flow.
+	Name *string `pulumi:"name"`
+	// A list of revisions of this shared flow.
+	Revision []string `pulumi:"revision"`
 }
 
 type OrganizationSharedflowState struct {
+	// The id of the most recently created revision for this shared flow.
+	LatestRevisionId pulumi.StringPtrInput
+	// Metadata describing the shared flow.
+	MetaData GoogleCloudApigeeV1EntityMetadataResponsePtrInput
+	// The ID of the shared flow.
+	Name pulumi.StringPtrInput
+	// A list of revisions of this shared flow.
+	Revision pulumi.StringArrayInput
 }
 
 func (OrganizationSharedflowState) ElementType() reflect.Type {

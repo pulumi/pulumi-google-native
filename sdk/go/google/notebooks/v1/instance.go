@@ -14,6 +14,71 @@ import (
 // Creates a new Instance in a given project and location.
 type Instance struct {
 	pulumi.CustomResourceState
+
+	// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+	AcceleratorConfig AcceleratorConfigResponseOutput `pulumi:"acceleratorConfig"`
+	// Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
+	BootDiskSizeGb pulumi.StringOutput `pulumi:"bootDiskSizeGb"`
+	// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+	BootDiskType pulumi.StringOutput `pulumi:"bootDiskType"`
+	// Use a container image to start the notebook instance.
+	ContainerImage ContainerImageResponseOutput `pulumi:"containerImage"`
+	// Instance creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
+	CustomGpuDriverPath pulumi.StringOutput `pulumi:"customGpuDriverPath"`
+	// Input only. The size of the data disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). You can choose the size of the data disk based on how big your notebooks and data are. If not specified, this defaults to 100.
+	DataDiskSizeGb pulumi.StringOutput `pulumi:"dataDiskSizeGb"`
+	// Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+	DataDiskType pulumi.StringOutput `pulumi:"dataDiskType"`
+	// Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
+	DiskEncryption pulumi.StringOutput `pulumi:"diskEncryption"`
+	// Attached disks to notebook instance.
+	Disks DiskResponseArrayOutput `pulumi:"disks"`
+	// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
+	InstallGpuDriver pulumi.BoolOutput `pulumi:"installGpuDriver"`
+	// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
+	InstanceOwners pulumi.StringArrayOutput `pulumi:"instanceOwners"`
+	// Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
+	KmsKey pulumi.StringOutput `pulumi:"kmsKey"`
+	// Labels to apply to this instance. These can be later modified by the setLabels method.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+	MachineType pulumi.StringOutput `pulumi:"machineType"`
+	// Custom metadata to apply to this instance.
+	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
+	// The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
+	Network pulumi.StringOutput `pulumi:"network"`
+	// If true, the notebook instance will not register with the proxy.
+	NoProxyAccess pulumi.BoolOutput `pulumi:"noProxyAccess"`
+	// If true, no public IP will be assigned to this instance.
+	NoPublicIp pulumi.BoolOutput `pulumi:"noPublicIp"`
+	// Input only. If true, the data disk will not be auto deleted when deleting the instance.
+	NoRemoveDataDisk pulumi.BoolOutput `pulumi:"noRemoveDataDisk"`
+	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+	PostStartupScript pulumi.StringOutput `pulumi:"postStartupScript"`
+	// The proxy endpoint that is used to access the Jupyter notebook.
+	ProxyUri pulumi.StringOutput `pulumi:"proxyUri"`
+	// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
+	// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
+	ServiceAccountScopes pulumi.StringArrayOutput `pulumi:"serviceAccountScopes"`
+	// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+	ShieldedInstanceConfig ShieldedInstanceConfigResponseOutput `pulumi:"shieldedInstanceConfig"`
+	// The state of this instance.
+	State pulumi.StringOutput `pulumi:"state"`
+	// The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
+	Subnet pulumi.StringOutput `pulumi:"subnet"`
+	// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// Instance update time.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// The upgrade history of this instance.
+	UpgradeHistory UpgradeHistoryEntryResponseArrayOutput `pulumi:"upgradeHistory"`
+	// Use a Compute Engine VM image to start the notebook instance.
+	VmImage VmImageResponseOutput `pulumi:"vmImage"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +119,137 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+	AcceleratorConfig *AcceleratorConfigResponse `pulumi:"acceleratorConfig"`
+	// Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
+	BootDiskSizeGb *string `pulumi:"bootDiskSizeGb"`
+	// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+	BootDiskType *string `pulumi:"bootDiskType"`
+	// Use a container image to start the notebook instance.
+	ContainerImage *ContainerImageResponse `pulumi:"containerImage"`
+	// Instance creation time.
+	CreateTime *string `pulumi:"createTime"`
+	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
+	CustomGpuDriverPath *string `pulumi:"customGpuDriverPath"`
+	// Input only. The size of the data disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). You can choose the size of the data disk based on how big your notebooks and data are. If not specified, this defaults to 100.
+	DataDiskSizeGb *string `pulumi:"dataDiskSizeGb"`
+	// Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+	DataDiskType *string `pulumi:"dataDiskType"`
+	// Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
+	DiskEncryption *string `pulumi:"diskEncryption"`
+	// Attached disks to notebook instance.
+	Disks []DiskResponse `pulumi:"disks"`
+	// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
+	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
+	// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
+	InstanceOwners []string `pulumi:"instanceOwners"`
+	// Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
+	KmsKey *string `pulumi:"kmsKey"`
+	// Labels to apply to this instance. These can be later modified by the setLabels method.
+	Labels map[string]string `pulumi:"labels"`
+	// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+	MachineType *string `pulumi:"machineType"`
+	// Custom metadata to apply to this instance.
+	Metadata map[string]string `pulumi:"metadata"`
+	// The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+	Name *string `pulumi:"name"`
+	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
+	Network *string `pulumi:"network"`
+	// If true, the notebook instance will not register with the proxy.
+	NoProxyAccess *bool `pulumi:"noProxyAccess"`
+	// If true, no public IP will be assigned to this instance.
+	NoPublicIp *bool `pulumi:"noPublicIp"`
+	// Input only. If true, the data disk will not be auto deleted when deleting the instance.
+	NoRemoveDataDisk *bool `pulumi:"noRemoveDataDisk"`
+	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+	PostStartupScript *string `pulumi:"postStartupScript"`
+	// The proxy endpoint that is used to access the Jupyter notebook.
+	ProxyUri *string `pulumi:"proxyUri"`
+	// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
+	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
+	// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+	ShieldedInstanceConfig *ShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
+	// The state of this instance.
+	State *string `pulumi:"state"`
+	// The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
+	Subnet *string `pulumi:"subnet"`
+	// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+	Tags []string `pulumi:"tags"`
+	// Instance update time.
+	UpdateTime *string `pulumi:"updateTime"`
+	// The upgrade history of this instance.
+	UpgradeHistory []UpgradeHistoryEntryResponse `pulumi:"upgradeHistory"`
+	// Use a Compute Engine VM image to start the notebook instance.
+	VmImage *VmImageResponse `pulumi:"vmImage"`
 }
 
 type InstanceState struct {
+	// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+	AcceleratorConfig AcceleratorConfigResponsePtrInput
+	// Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
+	BootDiskSizeGb pulumi.StringPtrInput
+	// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+	BootDiskType pulumi.StringPtrInput
+	// Use a container image to start the notebook instance.
+	ContainerImage ContainerImageResponsePtrInput
+	// Instance creation time.
+	CreateTime pulumi.StringPtrInput
+	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
+	CustomGpuDriverPath pulumi.StringPtrInput
+	// Input only. The size of the data disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). You can choose the size of the data disk based on how big your notebooks and data are. If not specified, this defaults to 100.
+	DataDiskSizeGb pulumi.StringPtrInput
+	// Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+	DataDiskType pulumi.StringPtrInput
+	// Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
+	DiskEncryption pulumi.StringPtrInput
+	// Attached disks to notebook instance.
+	Disks DiskResponseArrayInput
+	// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
+	InstallGpuDriver pulumi.BoolPtrInput
+	// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
+	InstanceOwners pulumi.StringArrayInput
+	// Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
+	KmsKey pulumi.StringPtrInput
+	// Labels to apply to this instance. These can be later modified by the setLabels method.
+	Labels pulumi.StringMapInput
+	// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+	MachineType pulumi.StringPtrInput
+	// Custom metadata to apply to this instance.
+	Metadata pulumi.StringMapInput
+	// The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+	Name pulumi.StringPtrInput
+	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
+	Network pulumi.StringPtrInput
+	// If true, the notebook instance will not register with the proxy.
+	NoProxyAccess pulumi.BoolPtrInput
+	// If true, no public IP will be assigned to this instance.
+	NoPublicIp pulumi.BoolPtrInput
+	// Input only. If true, the data disk will not be auto deleted when deleting the instance.
+	NoRemoveDataDisk pulumi.BoolPtrInput
+	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+	PostStartupScript pulumi.StringPtrInput
+	// The proxy endpoint that is used to access the Jupyter notebook.
+	ProxyUri pulumi.StringPtrInput
+	// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+	ServiceAccount pulumi.StringPtrInput
+	// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
+	ServiceAccountScopes pulumi.StringArrayInput
+	// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+	ShieldedInstanceConfig ShieldedInstanceConfigResponsePtrInput
+	// The state of this instance.
+	State pulumi.StringPtrInput
+	// The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
+	Subnet pulumi.StringPtrInput
+	// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+	Tags pulumi.StringArrayInput
+	// Instance update time.
+	UpdateTime pulumi.StringPtrInput
+	// The upgrade history of this instance.
+	UpgradeHistory UpgradeHistoryEntryResponseArrayInput
+	// Use a Compute Engine VM image to start the notebook instance.
+	VmImage VmImageResponsePtrInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -72,8 +265,6 @@ type instanceArgs struct {
 	BootDiskType *string `pulumi:"bootDiskType"`
 	// Use a container image to start the notebook instance.
 	ContainerImage *ContainerImage `pulumi:"containerImage"`
-	// Output only. Instance creation time.
-	CreateTime *string `pulumi:"createTime"`
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 	CustomGpuDriverPath *string `pulumi:"customGpuDriverPath"`
 	// Input only. The size of the data disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). You can choose the size of the data disk based on how big your notebooks and data are. If not specified, this defaults to 100.
@@ -82,8 +273,6 @@ type instanceArgs struct {
 	DataDiskType *string `pulumi:"dataDiskType"`
 	// Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
 	DiskEncryption *string `pulumi:"diskEncryption"`
-	// Output only. Attached disks to notebook instance.
-	Disks []Disk `pulumi:"disks"`
 	// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
 	// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
@@ -98,8 +287,6 @@ type instanceArgs struct {
 	MachineType *string `pulumi:"machineType"`
 	// Custom metadata to apply to this instance.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Output only. The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
-	Name *string `pulumi:"name"`
 	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
 	Network *string `pulumi:"network"`
 	// If true, the notebook instance will not register with the proxy.
@@ -111,22 +298,16 @@ type instanceArgs struct {
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript *string `pulumi:"postStartupScript"`
 	ProjectsId        string  `pulumi:"projectsId"`
-	// Output only. The proxy endpoint that is used to access the Jupyter notebook.
-	ProxyUri *string `pulumi:"proxyUri"`
 	// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
 	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
 	// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
 	ShieldedInstanceConfig *ShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
-	// Output only. The state of this instance.
-	State *string `pulumi:"state"`
 	// The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
 	Subnet *string `pulumi:"subnet"`
 	// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
 	Tags []string `pulumi:"tags"`
-	// Output only. Instance update time.
-	UpdateTime *string `pulumi:"updateTime"`
 	// The upgrade history of this instance.
 	UpgradeHistory []UpgradeHistoryEntry `pulumi:"upgradeHistory"`
 	// Use a Compute Engine VM image to start the notebook instance.
@@ -143,8 +324,6 @@ type InstanceArgs struct {
 	BootDiskType pulumi.StringPtrInput
 	// Use a container image to start the notebook instance.
 	ContainerImage ContainerImagePtrInput
-	// Output only. Instance creation time.
-	CreateTime pulumi.StringPtrInput
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 	CustomGpuDriverPath pulumi.StringPtrInput
 	// Input only. The size of the data disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). You can choose the size of the data disk based on how big your notebooks and data are. If not specified, this defaults to 100.
@@ -153,8 +332,6 @@ type InstanceArgs struct {
 	DataDiskType pulumi.StringPtrInput
 	// Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
 	DiskEncryption pulumi.StringPtrInput
-	// Output only. Attached disks to notebook instance.
-	Disks DiskArrayInput
 	// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver pulumi.BoolPtrInput
 	// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
@@ -169,8 +346,6 @@ type InstanceArgs struct {
 	MachineType pulumi.StringPtrInput
 	// Custom metadata to apply to this instance.
 	Metadata pulumi.StringMapInput
-	// Output only. The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
-	Name pulumi.StringPtrInput
 	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
 	Network pulumi.StringPtrInput
 	// If true, the notebook instance will not register with the proxy.
@@ -182,22 +357,16 @@ type InstanceArgs struct {
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript pulumi.StringPtrInput
 	ProjectsId        pulumi.StringInput
-	// Output only. The proxy endpoint that is used to access the Jupyter notebook.
-	ProxyUri pulumi.StringPtrInput
 	// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
 	ServiceAccount pulumi.StringPtrInput
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
 	ServiceAccountScopes pulumi.StringArrayInput
 	// Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
 	ShieldedInstanceConfig ShieldedInstanceConfigPtrInput
-	// Output only. The state of this instance.
-	State pulumi.StringPtrInput
 	// The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
 	Subnet pulumi.StringPtrInput
 	// Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
 	Tags pulumi.StringArrayInput
-	// Output only. Instance update time.
-	UpdateTime pulumi.StringPtrInput
 	// The upgrade history of this instance.
 	UpgradeHistory UpgradeHistoryEntryArrayInput
 	// Use a Compute Engine VM image to start the notebook instance.

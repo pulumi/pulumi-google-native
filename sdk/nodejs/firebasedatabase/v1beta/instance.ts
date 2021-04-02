@@ -34,6 +34,26 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
+    /**
+     * Immutable. The globally unique hostname of the database.
+     */
+    public readonly databaseUrl!: pulumi.Output<string>;
+    /**
+     * The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
+     */
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * The database's lifecycle state. Read-only.
+     */
+    public readonly state!: pulumi.Output<string>;
+    /**
+     * The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+     */
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -64,6 +84,11 @@ export class Instance extends pulumi.CustomResource {
             inputs["state"] = args ? args.state : undefined;
             inputs["type"] = args ? args.type : undefined;
         } else {
+            inputs["databaseUrl"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

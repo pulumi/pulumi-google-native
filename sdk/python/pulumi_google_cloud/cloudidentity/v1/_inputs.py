@@ -11,27 +11,21 @@ from ... import _utilities, _tables
 __all__ = [
     'DynamicGroupMetadataArgs',
     'DynamicGroupQueryArgs',
-    'DynamicGroupStatusArgs',
     'EntityKeyArgs',
     'ExpiryDetailArgs',
-    'GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs',
     'MembershipRoleArgs',
 ]
 
 @pulumi.input_type
 class DynamicGroupMetadataArgs:
     def __init__(__self__, *,
-                 queries: Optional[pulumi.Input[Sequence[pulumi.Input['DynamicGroupQueryArgs']]]] = None,
-                 status: Optional[pulumi.Input['DynamicGroupStatusArgs']] = None):
+                 queries: Optional[pulumi.Input[Sequence[pulumi.Input['DynamicGroupQueryArgs']]]] = None):
         """
         Dynamic group metadata like queries and status.
         :param pulumi.Input[Sequence[pulumi.Input['DynamicGroupQueryArgs']]] queries: Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
-        :param pulumi.Input['DynamicGroupStatusArgs'] status: Output only. Status of the dynamic group.
         """
         if queries is not None:
             pulumi.set(__self__, "queries", queries)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -44,18 +38,6 @@ class DynamicGroupMetadataArgs:
     @queries.setter
     def queries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DynamicGroupQueryArgs']]]]):
         pulumi.set(self, "queries", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['DynamicGroupStatusArgs']]:
-        """
-        Output only. Status of the dynamic group.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['DynamicGroupStatusArgs']]):
-        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
@@ -96,46 +78,6 @@ class DynamicGroupQueryArgs:
     @resource_type.setter
     def resource_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_type", value)
-
-
-@pulumi.input_type
-class DynamicGroupStatusArgs:
-    def __init__(__self__, *,
-                 status: Optional[pulumi.Input[str]] = None,
-                 status_time: Optional[pulumi.Input[str]] = None):
-        """
-        The current status of a dynamic group along with timestamp.
-        :param pulumi.Input[str] status: Status of the dynamic group.
-        :param pulumi.Input[str] status_time: The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
-        """
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if status_time is not None:
-            pulumi.set(__self__, "status_time", status_time)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        Status of the dynamic group.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter(name="statusTime")
-    def status_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
-        """
-        return pulumi.get(self, "status_time")
-
-    @status_time.setter
-    def status_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status_time", value)
 
 
 @pulumi.input_type
@@ -200,78 +142,6 @@ class ExpiryDetailArgs:
     @expire_time.setter
     def expire_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "expire_time", value)
-
-
-@pulumi.input_type
-class GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs:
-    def __init__(__self__, *,
-                 enabled_unknown_sources: Optional[pulumi.Input[bool]] = None,
-                 owner_profile_account: Optional[pulumi.Input[bool]] = None,
-                 ownership_privilege: Optional[pulumi.Input[str]] = None,
-                 supports_work_profile: Optional[pulumi.Input[bool]] = None):
-        """
-        Resource representing the Android specific attributes of a Device.
-        :param pulumi.Input[bool] enabled_unknown_sources: Whether applications from unknown sources can be installed on device.
-        :param pulumi.Input[bool] owner_profile_account: Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
-        :param pulumi.Input[str] ownership_privilege: Ownership privileges on device.
-        :param pulumi.Input[bool] supports_work_profile: Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
-        """
-        if enabled_unknown_sources is not None:
-            pulumi.set(__self__, "enabled_unknown_sources", enabled_unknown_sources)
-        if owner_profile_account is not None:
-            pulumi.set(__self__, "owner_profile_account", owner_profile_account)
-        if ownership_privilege is not None:
-            pulumi.set(__self__, "ownership_privilege", ownership_privilege)
-        if supports_work_profile is not None:
-            pulumi.set(__self__, "supports_work_profile", supports_work_profile)
-
-    @property
-    @pulumi.getter(name="enabledUnknownSources")
-    def enabled_unknown_sources(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether applications from unknown sources can be installed on device.
-        """
-        return pulumi.get(self, "enabled_unknown_sources")
-
-    @enabled_unknown_sources.setter
-    def enabled_unknown_sources(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enabled_unknown_sources", value)
-
-    @property
-    @pulumi.getter(name="ownerProfileAccount")
-    def owner_profile_account(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
-        """
-        return pulumi.get(self, "owner_profile_account")
-
-    @owner_profile_account.setter
-    def owner_profile_account(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "owner_profile_account", value)
-
-    @property
-    @pulumi.getter(name="ownershipPrivilege")
-    def ownership_privilege(self) -> Optional[pulumi.Input[str]]:
-        """
-        Ownership privileges on device.
-        """
-        return pulumi.get(self, "ownership_privilege")
-
-    @ownership_privilege.setter
-    def ownership_privilege(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ownership_privilege", value)
-
-    @property
-    @pulumi.getter(name="supportsWorkProfile")
-    def supports_work_profile(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
-        """
-        return pulumi.get(self, "supports_work_profile")
-
-    @supports_work_profile.setter
-    def supports_work_profile(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "supports_work_profile", value)
 
 
 @pulumi.input_type

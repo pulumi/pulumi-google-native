@@ -14,6 +14,17 @@ import (
 // Creates a new Hosting Site in the specified parent Firebase project. Note that Hosting sites can take several minutes to propagate through Firebase systems.
 type Site struct {
 	pulumi.CustomResourceState
+
+	// Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
+	AppId pulumi.StringOutput `pulumi:"appId"`
+	// The default URL for the Hosting site.
+	DefaultUrl pulumi.StringOutput `pulumi:"defaultUrl"`
+	// Optional. User-specified labels for the Hosting site.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The fully-qualified resource name of the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when Hosting is provisioned for the project. All additional sites are `USER_SITE`.
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewSite registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +62,29 @@ func GetSite(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Site resources.
 type siteState struct {
+	// Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
+	AppId *string `pulumi:"appId"`
+	// The default URL for the Hosting site.
+	DefaultUrl *string `pulumi:"defaultUrl"`
+	// Optional. User-specified labels for the Hosting site.
+	Labels map[string]string `pulumi:"labels"`
+	// The fully-qualified resource name of the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+	Name *string `pulumi:"name"`
+	// The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when Hosting is provisioned for the project. All additional sites are `USER_SITE`.
+	Type *string `pulumi:"type"`
 }
 
 type SiteState struct {
+	// Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
+	AppId pulumi.StringPtrInput
+	// The default URL for the Hosting site.
+	DefaultUrl pulumi.StringPtrInput
+	// Optional. User-specified labels for the Hosting site.
+	Labels pulumi.StringMapInput
+	// The fully-qualified resource name of the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+	Name pulumi.StringPtrInput
+	// The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when Hosting is provisioned for the project. All additional sites are `USER_SITE`.
+	Type pulumi.StringPtrInput
 }
 
 func (SiteState) ElementType() reflect.Type {
@@ -63,32 +94,20 @@ func (SiteState) ElementType() reflect.Type {
 type siteArgs struct {
 	// Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
 	AppId *string `pulumi:"appId"`
-	// Output only. The default URL for the Hosting site.
-	DefaultUrl *string `pulumi:"defaultUrl"`
 	// Optional. User-specified labels for the Hosting site.
-	Labels map[string]string `pulumi:"labels"`
-	// Output only. The fully-qualified resource name of the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	SitesId    string  `pulumi:"sitesId"`
-	// Output only. The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when Hosting is provisioned for the project. All additional sites are `USER_SITE`.
-	Type *string `pulumi:"type"`
+	Labels     map[string]string `pulumi:"labels"`
+	ProjectsId string            `pulumi:"projectsId"`
+	SitesId    string            `pulumi:"sitesId"`
 }
 
 // The set of arguments for constructing a Site resource.
 type SiteArgs struct {
 	// Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
 	AppId pulumi.StringPtrInput
-	// Output only. The default URL for the Hosting site.
-	DefaultUrl pulumi.StringPtrInput
 	// Optional. User-specified labels for the Hosting site.
-	Labels pulumi.StringMapInput
-	// Output only. The fully-qualified resource name of the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
-	Name       pulumi.StringPtrInput
+	Labels     pulumi.StringMapInput
 	ProjectsId pulumi.StringInput
 	SitesId    pulumi.StringInput
-	// Output only. The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when Hosting is provisioned for the project. All additional sites are `USER_SITE`.
-	Type pulumi.StringPtrInput
 }
 
 func (SiteArgs) ElementType() reflect.Type {

@@ -14,8 +14,6 @@ import (
 type ModelStateType struct {
 	// Indicates if this model has been published.
 	Published *bool `pulumi:"published"`
-	// Output only. Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models.
-	ValidationError *Status `pulumi:"validationError"`
 }
 
 // ModelStateTypeInput is an input type that accepts ModelStateTypeArgs and ModelStateTypeOutput values.
@@ -33,8 +31,6 @@ type ModelStateTypeInput interface {
 type ModelStateTypeArgs struct {
 	// Indicates if this model has been published.
 	Published pulumi.BoolPtrInput `pulumi:"published"`
-	// Output only. Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models.
-	ValidationError StatusPtrInput `pulumi:"validationError"`
 }
 
 func (ModelStateTypeArgs) ElementType() reflect.Type {
@@ -120,11 +116,6 @@ func (o ModelStateTypeOutput) Published() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ModelStateType) *bool { return v.Published }).(pulumi.BoolPtrOutput)
 }
 
-// Output only. Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models.
-func (o ModelStateTypeOutput) ValidationError() StatusPtrOutput {
-	return o.ApplyT(func(v ModelStateType) *Status { return v.ValidationError }).(StatusPtrOutput)
-}
-
 type ModelStateTypePtrOutput struct{ *pulumi.OutputState }
 
 func (ModelStateTypePtrOutput) ElementType() reflect.Type {
@@ -153,307 +144,450 @@ func (o ModelStateTypePtrOutput) Published() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Output only. Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models.
-func (o ModelStateTypePtrOutput) ValidationError() StatusPtrOutput {
-	return o.ApplyT(func(v *ModelStateType) *Status {
-		if v == nil {
-			return nil
-		}
-		return v.ValidationError
-	}).(StatusPtrOutput)
+// State common to all model types. Includes publishing and validation information.
+type ModelStateResponse struct {
+	// Indicates if this model has been published.
+	Published bool `pulumi:"published"`
+	// Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models.
+	ValidationError StatusResponse `pulumi:"validationError"`
 }
 
-// This resource represents a long-running operation that is the result of a network API call.
-type Operation struct {
-	// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-	Done *bool `pulumi:"done"`
-	// The error result of the operation in case of failure or cancellation.
-	Error *Status `pulumi:"error"`
-	// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-	Metadata map[string]string `pulumi:"metadata"`
-	// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-	Name *string `pulumi:"name"`
-	// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-	Response map[string]string `pulumi:"response"`
-}
-
-// OperationInput is an input type that accepts OperationArgs and OperationOutput values.
-// You can construct a concrete instance of `OperationInput` via:
+// ModelStateResponseInput is an input type that accepts ModelStateResponseArgs and ModelStateResponseOutput values.
+// You can construct a concrete instance of `ModelStateResponseInput` via:
 //
-//          OperationArgs{...}
-type OperationInput interface {
+//          ModelStateResponseArgs{...}
+type ModelStateResponseInput interface {
 	pulumi.Input
 
-	ToOperationOutput() OperationOutput
-	ToOperationOutputWithContext(context.Context) OperationOutput
+	ToModelStateResponseOutput() ModelStateResponseOutput
+	ToModelStateResponseOutputWithContext(context.Context) ModelStateResponseOutput
 }
 
-// This resource represents a long-running operation that is the result of a network API call.
-type OperationArgs struct {
-	// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-	Done pulumi.BoolPtrInput `pulumi:"done"`
-	// The error result of the operation in case of failure or cancellation.
-	Error StatusPtrInput `pulumi:"error"`
-	// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-	Response pulumi.StringMapInput `pulumi:"response"`
+// State common to all model types. Includes publishing and validation information.
+type ModelStateResponseArgs struct {
+	// Indicates if this model has been published.
+	Published pulumi.BoolInput `pulumi:"published"`
+	// Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models.
+	ValidationError StatusResponseInput `pulumi:"validationError"`
 }
 
-func (OperationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Operation)(nil)).Elem()
+func (ModelStateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelStateResponse)(nil)).Elem()
 }
 
-func (i OperationArgs) ToOperationOutput() OperationOutput {
-	return i.ToOperationOutputWithContext(context.Background())
+func (i ModelStateResponseArgs) ToModelStateResponseOutput() ModelStateResponseOutput {
+	return i.ToModelStateResponseOutputWithContext(context.Background())
 }
 
-func (i OperationArgs) ToOperationOutputWithContext(ctx context.Context) OperationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationOutput)
+func (i ModelStateResponseArgs) ToModelStateResponseOutputWithContext(ctx context.Context) ModelStateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelStateResponseOutput)
 }
 
-// OperationArrayInput is an input type that accepts OperationArray and OperationArrayOutput values.
-// You can construct a concrete instance of `OperationArrayInput` via:
+func (i ModelStateResponseArgs) ToModelStateResponsePtrOutput() ModelStateResponsePtrOutput {
+	return i.ToModelStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ModelStateResponseArgs) ToModelStateResponsePtrOutputWithContext(ctx context.Context) ModelStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelStateResponseOutput).ToModelStateResponsePtrOutputWithContext(ctx)
+}
+
+// ModelStateResponsePtrInput is an input type that accepts ModelStateResponseArgs, ModelStateResponsePtr and ModelStateResponsePtrOutput values.
+// You can construct a concrete instance of `ModelStateResponsePtrInput` via:
 //
-//          OperationArray{ OperationArgs{...} }
-type OperationArrayInput interface {
-	pulumi.Input
-
-	ToOperationArrayOutput() OperationArrayOutput
-	ToOperationArrayOutputWithContext(context.Context) OperationArrayOutput
-}
-
-type OperationArray []OperationInput
-
-func (OperationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Operation)(nil)).Elem()
-}
-
-func (i OperationArray) ToOperationArrayOutput() OperationArrayOutput {
-	return i.ToOperationArrayOutputWithContext(context.Background())
-}
-
-func (i OperationArray) ToOperationArrayOutputWithContext(ctx context.Context) OperationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationArrayOutput)
-}
-
-// This resource represents a long-running operation that is the result of a network API call.
-type OperationOutput struct{ *pulumi.OutputState }
-
-func (OperationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Operation)(nil)).Elem()
-}
-
-func (o OperationOutput) ToOperationOutput() OperationOutput {
-	return o
-}
-
-func (o OperationOutput) ToOperationOutputWithContext(ctx context.Context) OperationOutput {
-	return o
-}
-
-// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-func (o OperationOutput) Done() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Operation) *bool { return v.Done }).(pulumi.BoolPtrOutput)
-}
-
-// The error result of the operation in case of failure or cancellation.
-func (o OperationOutput) Error() StatusPtrOutput {
-	return o.ApplyT(func(v Operation) *Status { return v.Error }).(StatusPtrOutput)
-}
-
-// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-func (o OperationOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Operation) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
-}
-
-// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-func (o OperationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Operation) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-func (o OperationOutput) Response() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Operation) map[string]string { return v.Response }).(pulumi.StringMapOutput)
-}
-
-type OperationArrayOutput struct{ *pulumi.OutputState }
-
-func (OperationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Operation)(nil)).Elem()
-}
-
-func (o OperationArrayOutput) ToOperationArrayOutput() OperationArrayOutput {
-	return o
-}
-
-func (o OperationArrayOutput) ToOperationArrayOutputWithContext(ctx context.Context) OperationArrayOutput {
-	return o
-}
-
-func (o OperationArrayOutput) Index(i pulumi.IntInput) OperationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Operation {
-		return vs[0].([]Operation)[vs[1].(int)]
-	}).(OperationOutput)
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type Status struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code *int `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details []map[string]string `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message *string `pulumi:"message"`
-}
-
-// StatusInput is an input type that accepts StatusArgs and StatusOutput values.
-// You can construct a concrete instance of `StatusInput` via:
-//
-//          StatusArgs{...}
-type StatusInput interface {
-	pulumi.Input
-
-	ToStatusOutput() StatusOutput
-	ToStatusOutputWithContext(context.Context) StatusOutput
-}
-
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusArgs struct {
-	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntPtrInput `pulumi:"code"`
-	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-	Details pulumi.StringMapArrayInput `pulumi:"details"`
-	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-}
-
-func (StatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Status)(nil)).Elem()
-}
-
-func (i StatusArgs) ToStatusOutput() StatusOutput {
-	return i.ToStatusOutputWithContext(context.Background())
-}
-
-func (i StatusArgs) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusOutput)
-}
-
-func (i StatusArgs) ToStatusPtrOutput() StatusPtrOutput {
-	return i.ToStatusPtrOutputWithContext(context.Background())
-}
-
-func (i StatusArgs) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusOutput).ToStatusPtrOutputWithContext(ctx)
-}
-
-// StatusPtrInput is an input type that accepts StatusArgs, StatusPtr and StatusPtrOutput values.
-// You can construct a concrete instance of `StatusPtrInput` via:
-//
-//          StatusArgs{...}
+//          ModelStateResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type StatusPtrInput interface {
+type ModelStateResponsePtrInput interface {
 	pulumi.Input
 
-	ToStatusPtrOutput() StatusPtrOutput
-	ToStatusPtrOutputWithContext(context.Context) StatusPtrOutput
+	ToModelStateResponsePtrOutput() ModelStateResponsePtrOutput
+	ToModelStateResponsePtrOutputWithContext(context.Context) ModelStateResponsePtrOutput
 }
 
-type statusPtrType StatusArgs
+type modelStateResponsePtrType ModelStateResponseArgs
 
-func StatusPtr(v *StatusArgs) StatusPtrInput {
-	return (*statusPtrType)(v)
+func ModelStateResponsePtr(v *ModelStateResponseArgs) ModelStateResponsePtrInput {
+	return (*modelStateResponsePtrType)(v)
 }
 
-func (*statusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Status)(nil)).Elem()
+func (*modelStateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelStateResponse)(nil)).Elem()
 }
 
-func (i *statusPtrType) ToStatusPtrOutput() StatusPtrOutput {
-	return i.ToStatusPtrOutputWithContext(context.Background())
+func (i *modelStateResponsePtrType) ToModelStateResponsePtrOutput() ModelStateResponsePtrOutput {
+	return i.ToModelStateResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *statusPtrType) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusPtrOutput)
+func (i *modelStateResponsePtrType) ToModelStateResponsePtrOutputWithContext(ctx context.Context) ModelStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ModelStateResponsePtrOutput)
 }
 
-// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusOutput struct{ *pulumi.OutputState }
+// State common to all model types. Includes publishing and validation information.
+type ModelStateResponseOutput struct{ *pulumi.OutputState }
 
-func (StatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Status)(nil)).Elem()
+func (ModelStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelStateResponse)(nil)).Elem()
 }
 
-func (o StatusOutput) ToStatusOutput() StatusOutput {
+func (o ModelStateResponseOutput) ToModelStateResponseOutput() ModelStateResponseOutput {
 	return o
 }
 
-func (o StatusOutput) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
+func (o ModelStateResponseOutput) ToModelStateResponseOutputWithContext(ctx context.Context) ModelStateResponseOutput {
 	return o
 }
 
-func (o StatusOutput) ToStatusPtrOutput() StatusPtrOutput {
-	return o.ToStatusPtrOutputWithContext(context.Background())
+func (o ModelStateResponseOutput) ToModelStateResponsePtrOutput() ModelStateResponsePtrOutput {
+	return o.ToModelStateResponsePtrOutputWithContext(context.Background())
 }
 
-func (o StatusOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return o.ApplyT(func(v Status) *Status {
+func (o ModelStateResponseOutput) ToModelStateResponsePtrOutputWithContext(ctx context.Context) ModelStateResponsePtrOutput {
+	return o.ApplyT(func(v ModelStateResponse) *ModelStateResponse {
 		return &v
-	}).(StatusPtrOutput)
+	}).(ModelStateResponsePtrOutput)
 }
 
-// The status code, which should be an enum value of google.rpc.Code.
-func (o StatusOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Status) *int { return v.Code }).(pulumi.IntPtrOutput)
+// Indicates if this model has been published.
+func (o ModelStateResponseOutput) Published() pulumi.BoolOutput {
+	return o.ApplyT(func(v ModelStateResponse) bool { return v.Published }).(pulumi.BoolOutput)
 }
 
-// A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v Status) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+// Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models.
+func (o ModelStateResponseOutput) ValidationError() StatusResponseOutput {
+	return o.ApplyT(func(v ModelStateResponse) StatusResponse { return v.ValidationError }).(StatusResponseOutput)
 }
 
-// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Status) *string { return v.Message }).(pulumi.StringPtrOutput)
+type ModelStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ModelStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelStateResponse)(nil)).Elem()
 }
 
-type StatusPtrOutput struct{ *pulumi.OutputState }
-
-func (StatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Status)(nil)).Elem()
-}
-
-func (o StatusPtrOutput) ToStatusPtrOutput() StatusPtrOutput {
+func (o ModelStateResponsePtrOutput) ToModelStateResponsePtrOutput() ModelStateResponsePtrOutput {
 	return o
 }
 
-func (o StatusPtrOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
+func (o ModelStateResponsePtrOutput) ToModelStateResponsePtrOutputWithContext(ctx context.Context) ModelStateResponsePtrOutput {
 	return o
 }
 
-func (o StatusPtrOutput) Elem() StatusOutput {
-	return o.ApplyT(func(v *Status) Status { return *v }).(StatusOutput)
+func (o ModelStateResponsePtrOutput) Elem() ModelStateResponseOutput {
+	return o.ApplyT(func(v *ModelStateResponse) ModelStateResponse { return *v }).(ModelStateResponseOutput)
 }
 
-// The status code, which should be an enum value of google.rpc.Code.
-func (o StatusPtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Status) *int {
+// Indicates if this model has been published.
+func (o ModelStateResponsePtrOutput) Published() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ModelStateResponse) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.Code
+		return &v.Published
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models.
+func (o ModelStateResponsePtrOutput) ValidationError() StatusResponsePtrOutput {
+	return o.ApplyT(func(v *ModelStateResponse) *StatusResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ValidationError
+	}).(StatusResponsePtrOutput)
+}
+
+// This resource represents a long-running operation that is the result of a network API call.
+type OperationResponse struct {
+	// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
+	Done bool `pulumi:"done"`
+	// The error result of the operation in case of failure or cancellation.
+	Error StatusResponse `pulumi:"error"`
+	// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+	Metadata map[string]string `pulumi:"metadata"`
+	// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+	Name string `pulumi:"name"`
+	// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+	Response map[string]string `pulumi:"response"`
+}
+
+// OperationResponseInput is an input type that accepts OperationResponseArgs and OperationResponseOutput values.
+// You can construct a concrete instance of `OperationResponseInput` via:
+//
+//          OperationResponseArgs{...}
+type OperationResponseInput interface {
+	pulumi.Input
+
+	ToOperationResponseOutput() OperationResponseOutput
+	ToOperationResponseOutputWithContext(context.Context) OperationResponseOutput
+}
+
+// This resource represents a long-running operation that is the result of a network API call.
+type OperationResponseArgs struct {
+	// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
+	Done pulumi.BoolInput `pulumi:"done"`
+	// The error result of the operation in case of failure or cancellation.
+	Error StatusResponseInput `pulumi:"error"`
+	// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+	Response pulumi.StringMapInput `pulumi:"response"`
+}
+
+func (OperationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationResponse)(nil)).Elem()
+}
+
+func (i OperationResponseArgs) ToOperationResponseOutput() OperationResponseOutput {
+	return i.ToOperationResponseOutputWithContext(context.Background())
+}
+
+func (i OperationResponseArgs) ToOperationResponseOutputWithContext(ctx context.Context) OperationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationResponseOutput)
+}
+
+// OperationResponseArrayInput is an input type that accepts OperationResponseArray and OperationResponseArrayOutput values.
+// You can construct a concrete instance of `OperationResponseArrayInput` via:
+//
+//          OperationResponseArray{ OperationResponseArgs{...} }
+type OperationResponseArrayInput interface {
+	pulumi.Input
+
+	ToOperationResponseArrayOutput() OperationResponseArrayOutput
+	ToOperationResponseArrayOutputWithContext(context.Context) OperationResponseArrayOutput
+}
+
+type OperationResponseArray []OperationResponseInput
+
+func (OperationResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OperationResponse)(nil)).Elem()
+}
+
+func (i OperationResponseArray) ToOperationResponseArrayOutput() OperationResponseArrayOutput {
+	return i.ToOperationResponseArrayOutputWithContext(context.Background())
+}
+
+func (i OperationResponseArray) ToOperationResponseArrayOutputWithContext(ctx context.Context) OperationResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationResponseArrayOutput)
+}
+
+// This resource represents a long-running operation that is the result of a network API call.
+type OperationResponseOutput struct{ *pulumi.OutputState }
+
+func (OperationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationResponse)(nil)).Elem()
+}
+
+func (o OperationResponseOutput) ToOperationResponseOutput() OperationResponseOutput {
+	return o
+}
+
+func (o OperationResponseOutput) ToOperationResponseOutputWithContext(ctx context.Context) OperationResponseOutput {
+	return o
+}
+
+// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
+func (o OperationResponseOutput) Done() pulumi.BoolOutput {
+	return o.ApplyT(func(v OperationResponse) bool { return v.Done }).(pulumi.BoolOutput)
+}
+
+// The error result of the operation in case of failure or cancellation.
+func (o OperationResponseOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v OperationResponse) StatusResponse { return v.Error }).(StatusResponseOutput)
+}
+
+// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+func (o OperationResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OperationResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+func (o OperationResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+func (o OperationResponseOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OperationResponse) map[string]string { return v.Response }).(pulumi.StringMapOutput)
+}
+
+type OperationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OperationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OperationResponse)(nil)).Elem()
+}
+
+func (o OperationResponseArrayOutput) ToOperationResponseArrayOutput() OperationResponseArrayOutput {
+	return o
+}
+
+func (o OperationResponseArrayOutput) ToOperationResponseArrayOutputWithContext(ctx context.Context) OperationResponseArrayOutput {
+	return o
+}
+
+func (o OperationResponseArrayOutput) Index(i pulumi.IntInput) OperationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OperationResponse {
+		return vs[0].([]OperationResponse)[vs[1].(int)]
+	}).(OperationResponseOutput)
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponse struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code int `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message string `pulumi:"message"`
+}
+
+// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
+// You can construct a concrete instance of `StatusResponseInput` via:
+//
+//          StatusResponseArgs{...}
+type StatusResponseInput interface {
+	pulumi.Input
+
+	ToStatusResponseOutput() StatusResponseOutput
+	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponseArgs struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntInput `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (StatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
+	return i.ToStatusResponseOutputWithContext(context.Background())
+}
+
+func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
+}
+
+func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
+}
+
+// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
+// You can construct a concrete instance of `StatusResponsePtrInput` via:
+//
+//          StatusResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type StatusResponsePtrInput interface {
+	pulumi.Input
+
+	ToStatusResponsePtrOutput() StatusResponsePtrOutput
+	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
+}
+
+type statusResponsePtrType StatusResponseArgs
+
+func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
+	return (*statusResponsePtrType)(v)
+}
+
+func (*statusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
+}
+
+func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+		return &v
+	}).(StatusResponsePtrOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type StatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o
+}
+
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o
+}
+
+func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
+	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
 	}).(pulumi.IntPtrOutput)
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusPtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *Status) []map[string]string {
+func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *StatusResponse) []map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -462,12 +596,12 @@ func (o StatusPtrOutput) Details() pulumi.StringMapArrayOutput {
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusPtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Status) *string {
+func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Message
+		return &v.Message
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -477,8 +611,6 @@ type TfLiteModel struct {
 	AutomlModel *string `pulumi:"automlModel"`
 	// The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is necessary to call UpdateModel for ML to pick up and validate the updated file.
 	GcsTfliteUri *string `pulumi:"gcsTfliteUri"`
-	// Output only. The size of the TFLite model
-	SizeBytes *string `pulumi:"sizeBytes"`
 }
 
 // TfLiteModelInput is an input type that accepts TfLiteModelArgs and TfLiteModelOutput values.
@@ -498,8 +630,6 @@ type TfLiteModelArgs struct {
 	AutomlModel pulumi.StringPtrInput `pulumi:"automlModel"`
 	// The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is necessary to call UpdateModel for ML to pick up and validate the updated file.
 	GcsTfliteUri pulumi.StringPtrInput `pulumi:"gcsTfliteUri"`
-	// Output only. The size of the TFLite model
-	SizeBytes pulumi.StringPtrInput `pulumi:"sizeBytes"`
 }
 
 func (TfLiteModelArgs) ElementType() reflect.Type {
@@ -590,11 +720,6 @@ func (o TfLiteModelOutput) GcsTfliteUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TfLiteModel) *string { return v.GcsTfliteUri }).(pulumi.StringPtrOutput)
 }
 
-// Output only. The size of the TFLite model
-func (o TfLiteModelOutput) SizeBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TfLiteModel) *string { return v.SizeBytes }).(pulumi.StringPtrOutput)
-}
-
 type TfLiteModelPtrOutput struct{ *pulumi.OutputState }
 
 func (TfLiteModelPtrOutput) ElementType() reflect.Type {
@@ -633,23 +758,189 @@ func (o TfLiteModelPtrOutput) GcsTfliteUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The size of the TFLite model
-func (o TfLiteModelPtrOutput) SizeBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TfLiteModel) *string {
+// Information that is specific to TfLite models.
+type TfLiteModelResponse struct {
+	// The AutoML model id referencing a model you created with the AutoML API. The name should have format 'projects//locations//models/' (This is the model resource name returned from the AutoML API)
+	AutomlModel string `pulumi:"automlModel"`
+	// The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is necessary to call UpdateModel for ML to pick up and validate the updated file.
+	GcsTfliteUri string `pulumi:"gcsTfliteUri"`
+	// The size of the TFLite model
+	SizeBytes string `pulumi:"sizeBytes"`
+}
+
+// TfLiteModelResponseInput is an input type that accepts TfLiteModelResponseArgs and TfLiteModelResponseOutput values.
+// You can construct a concrete instance of `TfLiteModelResponseInput` via:
+//
+//          TfLiteModelResponseArgs{...}
+type TfLiteModelResponseInput interface {
+	pulumi.Input
+
+	ToTfLiteModelResponseOutput() TfLiteModelResponseOutput
+	ToTfLiteModelResponseOutputWithContext(context.Context) TfLiteModelResponseOutput
+}
+
+// Information that is specific to TfLite models.
+type TfLiteModelResponseArgs struct {
+	// The AutoML model id referencing a model you created with the AutoML API. The name should have format 'projects//locations//models/' (This is the model resource name returned from the AutoML API)
+	AutomlModel pulumi.StringInput `pulumi:"automlModel"`
+	// The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is necessary to call UpdateModel for ML to pick up and validate the updated file.
+	GcsTfliteUri pulumi.StringInput `pulumi:"gcsTfliteUri"`
+	// The size of the TFLite model
+	SizeBytes pulumi.StringInput `pulumi:"sizeBytes"`
+}
+
+func (TfLiteModelResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TfLiteModelResponse)(nil)).Elem()
+}
+
+func (i TfLiteModelResponseArgs) ToTfLiteModelResponseOutput() TfLiteModelResponseOutput {
+	return i.ToTfLiteModelResponseOutputWithContext(context.Background())
+}
+
+func (i TfLiteModelResponseArgs) ToTfLiteModelResponseOutputWithContext(ctx context.Context) TfLiteModelResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TfLiteModelResponseOutput)
+}
+
+func (i TfLiteModelResponseArgs) ToTfLiteModelResponsePtrOutput() TfLiteModelResponsePtrOutput {
+	return i.ToTfLiteModelResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TfLiteModelResponseArgs) ToTfLiteModelResponsePtrOutputWithContext(ctx context.Context) TfLiteModelResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TfLiteModelResponseOutput).ToTfLiteModelResponsePtrOutputWithContext(ctx)
+}
+
+// TfLiteModelResponsePtrInput is an input type that accepts TfLiteModelResponseArgs, TfLiteModelResponsePtr and TfLiteModelResponsePtrOutput values.
+// You can construct a concrete instance of `TfLiteModelResponsePtrInput` via:
+//
+//          TfLiteModelResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TfLiteModelResponsePtrInput interface {
+	pulumi.Input
+
+	ToTfLiteModelResponsePtrOutput() TfLiteModelResponsePtrOutput
+	ToTfLiteModelResponsePtrOutputWithContext(context.Context) TfLiteModelResponsePtrOutput
+}
+
+type tfLiteModelResponsePtrType TfLiteModelResponseArgs
+
+func TfLiteModelResponsePtr(v *TfLiteModelResponseArgs) TfLiteModelResponsePtrInput {
+	return (*tfLiteModelResponsePtrType)(v)
+}
+
+func (*tfLiteModelResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TfLiteModelResponse)(nil)).Elem()
+}
+
+func (i *tfLiteModelResponsePtrType) ToTfLiteModelResponsePtrOutput() TfLiteModelResponsePtrOutput {
+	return i.ToTfLiteModelResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *tfLiteModelResponsePtrType) ToTfLiteModelResponsePtrOutputWithContext(ctx context.Context) TfLiteModelResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TfLiteModelResponsePtrOutput)
+}
+
+// Information that is specific to TfLite models.
+type TfLiteModelResponseOutput struct{ *pulumi.OutputState }
+
+func (TfLiteModelResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TfLiteModelResponse)(nil)).Elem()
+}
+
+func (o TfLiteModelResponseOutput) ToTfLiteModelResponseOutput() TfLiteModelResponseOutput {
+	return o
+}
+
+func (o TfLiteModelResponseOutput) ToTfLiteModelResponseOutputWithContext(ctx context.Context) TfLiteModelResponseOutput {
+	return o
+}
+
+func (o TfLiteModelResponseOutput) ToTfLiteModelResponsePtrOutput() TfLiteModelResponsePtrOutput {
+	return o.ToTfLiteModelResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TfLiteModelResponseOutput) ToTfLiteModelResponsePtrOutputWithContext(ctx context.Context) TfLiteModelResponsePtrOutput {
+	return o.ApplyT(func(v TfLiteModelResponse) *TfLiteModelResponse {
+		return &v
+	}).(TfLiteModelResponsePtrOutput)
+}
+
+// The AutoML model id referencing a model you created with the AutoML API. The name should have format 'projects//locations//models/' (This is the model resource name returned from the AutoML API)
+func (o TfLiteModelResponseOutput) AutomlModel() pulumi.StringOutput {
+	return o.ApplyT(func(v TfLiteModelResponse) string { return v.AutomlModel }).(pulumi.StringOutput)
+}
+
+// The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is necessary to call UpdateModel for ML to pick up and validate the updated file.
+func (o TfLiteModelResponseOutput) GcsTfliteUri() pulumi.StringOutput {
+	return o.ApplyT(func(v TfLiteModelResponse) string { return v.GcsTfliteUri }).(pulumi.StringOutput)
+}
+
+// The size of the TFLite model
+func (o TfLiteModelResponseOutput) SizeBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v TfLiteModelResponse) string { return v.SizeBytes }).(pulumi.StringOutput)
+}
+
+type TfLiteModelResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TfLiteModelResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TfLiteModelResponse)(nil)).Elem()
+}
+
+func (o TfLiteModelResponsePtrOutput) ToTfLiteModelResponsePtrOutput() TfLiteModelResponsePtrOutput {
+	return o
+}
+
+func (o TfLiteModelResponsePtrOutput) ToTfLiteModelResponsePtrOutputWithContext(ctx context.Context) TfLiteModelResponsePtrOutput {
+	return o
+}
+
+func (o TfLiteModelResponsePtrOutput) Elem() TfLiteModelResponseOutput {
+	return o.ApplyT(func(v *TfLiteModelResponse) TfLiteModelResponse { return *v }).(TfLiteModelResponseOutput)
+}
+
+// The AutoML model id referencing a model you created with the AutoML API. The name should have format 'projects//locations//models/' (This is the model resource name returned from the AutoML API)
+func (o TfLiteModelResponsePtrOutput) AutomlModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TfLiteModelResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.SizeBytes
+		return &v.AutomlModel
+	}).(pulumi.StringPtrOutput)
+}
+
+// The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is necessary to call UpdateModel for ML to pick up and validate the updated file.
+func (o TfLiteModelResponsePtrOutput) GcsTfliteUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TfLiteModelResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GcsTfliteUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The size of the TFLite model
+func (o TfLiteModelResponsePtrOutput) SizeBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TfLiteModelResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SizeBytes
 	}).(pulumi.StringPtrOutput)
 }
 
 func init() {
 	pulumi.RegisterOutputType(ModelStateTypeOutput{})
 	pulumi.RegisterOutputType(ModelStateTypePtrOutput{})
-	pulumi.RegisterOutputType(OperationOutput{})
-	pulumi.RegisterOutputType(OperationArrayOutput{})
-	pulumi.RegisterOutputType(StatusOutput{})
-	pulumi.RegisterOutputType(StatusPtrOutput{})
+	pulumi.RegisterOutputType(ModelStateResponseOutput{})
+	pulumi.RegisterOutputType(ModelStateResponsePtrOutput{})
+	pulumi.RegisterOutputType(OperationResponseOutput{})
+	pulumi.RegisterOutputType(OperationResponseArrayOutput{})
+	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(TfLiteModelOutput{})
 	pulumi.RegisterOutputType(TfLiteModelPtrOutput{})
+	pulumi.RegisterOutputType(TfLiteModelResponseOutput{})
+	pulumi.RegisterOutputType(TfLiteModelResponsePtrOutput{})
 }

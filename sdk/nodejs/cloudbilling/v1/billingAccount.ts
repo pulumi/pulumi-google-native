@@ -34,6 +34,22 @@ export class BillingAccount extends pulumi.CustomResource {
         return obj['__pulumiType'] === BillingAccount.__pulumiType;
     }
 
+    /**
+     * The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
+     */
+    public readonly masterBillingAccount!: pulumi.Output<string>;
+    /**
+     * The resource name of the billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` would be the resource name for billing account `012345-567890-ABCDEF`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
+     */
+    public /*out*/ readonly open!: pulumi.Output<boolean>;
 
     /**
      * Create a BillingAccount resource with the given unique name, arguments, and options.
@@ -52,9 +68,13 @@ export class BillingAccount extends pulumi.CustomResource {
             inputs["billingAccountsId"] = args ? args.billingAccountsId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["masterBillingAccount"] = args ? args.masterBillingAccount : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["open"] = args ? args.open : undefined;
+            inputs["name"] = undefined /*out*/;
+            inputs["open"] = undefined /*out*/;
         } else {
+            inputs["displayName"] = undefined /*out*/;
+            inputs["masterBillingAccount"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["open"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -76,12 +96,4 @@ export interface BillingAccountArgs {
      * If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
      */
     readonly masterBillingAccount?: pulumi.Input<string>;
-    /**
-     * Output only. The resource name of the billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` would be the resource name for billing account `012345-567890-ABCDEF`.
-     */
-    readonly name?: pulumi.Input<string>;
-    /**
-     * Output only. True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
-     */
-    readonly open?: pulumi.Input<boolean>;
 }

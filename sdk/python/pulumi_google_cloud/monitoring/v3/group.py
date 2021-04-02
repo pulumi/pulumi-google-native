@@ -33,7 +33,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A user-assigned name for this group, used only for display purposes.
         :param pulumi.Input[str] filter: The filter used to determine which monitored resources belong to this group.
         :param pulumi.Input[bool] is_cluster: If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
-        :param pulumi.Input[str] name: Output only. The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
+        :param pulumi.Input[str] name: The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
         :param pulumi.Input[str] parent_name: The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
         """
         if __name__ is not None:
@@ -86,7 +86,52 @@ class Group(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["display_name"] = None
+        __props__["filter"] = None
+        __props__["is_cluster"] = None
+        __props__["name"] = None
+        __props__["parent_name"] = None
         return Group(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        A user-assigned name for this group, used only for display purposes.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Output[str]:
+        """
+        The filter used to determine which monitored resources belong to this group.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter(name="isCluster")
+    def is_cluster(self) -> pulumi.Output[bool]:
+        """
+        If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
+        """
+        return pulumi.get(self, "is_cluster")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="parentName")
+    def parent_name(self) -> pulumi.Output[str]:
+        """
+        The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
+        """
+        return pulumi.get(self, "parent_name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['AgentEnvironmentSessionEntityType']
@@ -97,7 +98,34 @@ class AgentEnvironmentSessionEntityType(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["entities"] = None
+        __props__["entity_override_mode"] = None
+        __props__["name"] = None
         return AgentEnvironmentSessionEntityType(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def entities(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDialogflowCxV3EntityTypeEntityResponse']]:
+        """
+        Required. The collection of entities to override or supplement the custom entity type.
+        """
+        return pulumi.get(self, "entities")
+
+    @property
+    @pulumi.getter(name="entityOverrideMode")
+    def entity_override_mode(self) -> pulumi.Output[str]:
+        """
+        Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+        """
+        return pulumi.get(self, "entity_override_mode")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required. The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
+        """
+        return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

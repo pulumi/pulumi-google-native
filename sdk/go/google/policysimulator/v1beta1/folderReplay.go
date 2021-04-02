@@ -14,6 +14,15 @@ import (
 // Creates and starts a Replay using the given ReplayConfig.
 type FolderReplay struct {
 	pulumi.CustomResourceState
+
+	// Required. The configuration used for the `Replay`.
+	Config GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput `pulumi:"config"`
+	// The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Summary statistics about the replayed log entries.
+	ResultsSummary GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput `pulumi:"resultsSummary"`
+	// The current state of the `Replay`.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewFolderReplay registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +63,25 @@ func GetFolderReplay(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FolderReplay resources.
 type folderReplayState struct {
+	// Required. The configuration used for the `Replay`.
+	Config *GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse `pulumi:"config"`
+	// The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+	Name *string `pulumi:"name"`
+	// Summary statistics about the replayed log entries.
+	ResultsSummary *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse `pulumi:"resultsSummary"`
+	// The current state of the `Replay`.
+	State *string `pulumi:"state"`
 }
 
 type FolderReplayState struct {
+	// Required. The configuration used for the `Replay`.
+	Config GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrInput
+	// The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+	Name pulumi.StringPtrInput
+	// Summary statistics about the replayed log entries.
+	ResultsSummary GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrInput
+	// The current state of the `Replay`.
+	State pulumi.StringPtrInput
 }
 
 func (FolderReplayState) ElementType() reflect.Type {
@@ -68,13 +93,7 @@ type folderReplayArgs struct {
 	Config      *GoogleCloudPolicysimulatorV1beta1ReplayConfig `pulumi:"config"`
 	FoldersId   string                                         `pulumi:"foldersId"`
 	LocationsId string                                         `pulumi:"locationsId"`
-	// Output only. The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-	Name      *string `pulumi:"name"`
-	ReplaysId string  `pulumi:"replaysId"`
-	// Output only. Summary statistics about the replayed log entries.
-	ResultsSummary *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary `pulumi:"resultsSummary"`
-	// Output only. The current state of the `Replay`.
-	State *string `pulumi:"state"`
+	ReplaysId   string                                         `pulumi:"replaysId"`
 }
 
 // The set of arguments for constructing a FolderReplay resource.
@@ -83,13 +102,7 @@ type FolderReplayArgs struct {
 	Config      GoogleCloudPolicysimulatorV1beta1ReplayConfigPtrInput
 	FoldersId   pulumi.StringInput
 	LocationsId pulumi.StringInput
-	// Output only. The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-	Name      pulumi.StringPtrInput
-	ReplaysId pulumi.StringInput
-	// Output only. Summary statistics about the replayed log entries.
-	ResultsSummary GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrInput
-	// Output only. The current state of the `Replay`.
-	State pulumi.StringPtrInput
+	ReplaysId   pulumi.StringInput
 }
 
 func (FolderReplayArgs) ElementType() reflect.Type {

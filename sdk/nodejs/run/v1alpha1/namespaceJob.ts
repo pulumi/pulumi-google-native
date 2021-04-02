@@ -35,6 +35,26 @@ export class NamespaceJob extends pulumi.CustomResource {
         return obj['__pulumiType'] === NamespaceJob.__pulumiType;
     }
 
+    /**
+     * Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources +optional
+     */
+    public readonly apiVersion!: pulumi.Output<string>;
+    /**
+     * Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +optional
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+     */
+    public readonly metadata!: pulumi.Output<outputs.run.v1alpha1.ObjectMetaResponse>;
+    /**
+     * Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
+     */
+    public readonly spec!: pulumi.Output<outputs.run.v1alpha1.JobSpecResponse>;
+    /**
+     * Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
+     */
+    public readonly status!: pulumi.Output<outputs.run.v1alpha1.JobStatusResponse>;
 
     /**
      * Create a NamespaceJob resource with the given unique name, arguments, and options.
@@ -61,6 +81,11 @@ export class NamespaceJob extends pulumi.CustomResource {
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
+            inputs["apiVersion"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["metadata"] = undefined /*out*/;
+            inputs["spec"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Speech.V1p1beta1
     public partial class CustomClass : Pulumi.CustomResource
     {
         /// <summary>
+        /// If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
+        /// </summary>
+        [Output("customClassId")]
+        public Output<string> CustomClassId { get; private set; } = null!;
+
+        /// <summary>
+        /// A collection of class items.
+        /// </summary>
+        [Output("items")]
+        public Output<ImmutableArray<Outputs.ClassItemResponse>> Items { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the custom class.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a CustomClass resource with the given unique name, arguments, and options.
         /// </summary>
         ///

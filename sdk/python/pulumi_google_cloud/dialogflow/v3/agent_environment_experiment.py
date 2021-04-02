@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['AgentEnvironmentExperiment']
@@ -120,7 +121,115 @@ class AgentEnvironmentExperiment(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["definition"] = None
+        __props__["description"] = None
+        __props__["display_name"] = None
+        __props__["end_time"] = None
+        __props__["experiment_length"] = None
+        __props__["last_update_time"] = None
+        __props__["name"] = None
+        __props__["result"] = None
+        __props__["start_time"] = None
+        __props__["state"] = None
+        __props__["variants_history"] = None
         return AgentEnvironmentExperiment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Creation time of this experiment.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def definition(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3ExperimentDefinitionResponse']:
+        """
+        The definition of the experiment.
+        """
+        return pulumi.get(self, "definition")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        The human-readable description of the experiment.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Output[str]:
+        """
+        End time of this experiment.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="experimentLength")
+    def experiment_length(self) -> pulumi.Output[str]:
+        """
+        Maximum number of days to run the experiment/rollout. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+        """
+        return pulumi.get(self, "experiment_length")
+
+    @property
+    @pulumi.getter(name="lastUpdateTime")
+    def last_update_time(self) -> pulumi.Output[str]:
+        """
+        Last update time of this experiment.
+        """
+        return pulumi.get(self, "last_update_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the experiment. Format: projects//locations//agents//environments//experiments/..
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def result(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3ExperimentResultResponse']:
+        """
+        Inference result of the experiment.
+        """
+        return pulumi.get(self, "result")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Output[str]:
+        """
+        Start time of this experiment.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="variantsHistory")
+    def variants_history(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDialogflowCxV3VariantsHistoryResponse']]:
+        """
+        The history of updates to the experiment variants.
+        """
+        return pulumi.get(self, "variants_history")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

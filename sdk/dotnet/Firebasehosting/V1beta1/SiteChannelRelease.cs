@@ -69,19 +69,19 @@ namespace Pulumi.GoogleCloud.Firebasehosting.V1beta1
         public Input<string>? Message { get; set; }
 
         /// <summary>
-        /// Output only. The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create).
+        /// The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Output only. The time at which the version is set to be public.
+        /// The time at which the version is set to be public.
         /// </summary>
         [Input("releaseTime")]
         public Input<string>? ReleaseTime { get; set; }
 
         /// <summary>
-        /// Output only. Identifies the user who created the release.
+        /// Identifies the user who created the release.
         /// </summary>
         [Input("releaseUser")]
         public Input<Inputs.ActingUserArgs>? ReleaseUser { get; set; }
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleCloud.Firebasehosting.V1beta1
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Output only. The configuration and content that was released.
+        /// The configuration and content that was released.
         /// </summary>
         [Input("version")]
         public Input<Inputs.VersionArgs>? Version { get; set; }

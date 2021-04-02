@@ -40,12 +40,6 @@ namespace Pulumi.GoogleCloud.Bigtableadmin.V2.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Output only. The current state of the instance.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
         /// Required. The type of the instance. Defaults to `PRODUCTION`.
         /// </summary>
         [Input("type")]

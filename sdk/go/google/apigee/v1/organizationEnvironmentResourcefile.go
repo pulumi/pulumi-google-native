@@ -14,6 +14,13 @@ import (
 // Creates a resource file. Specify the `Content-Type` as `application/octet-stream` or `multipart/form-data`. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
 type OrganizationEnvironmentResourcefile struct {
 	pulumi.CustomResourceState
+
+	// The HTTP Content-Type header value specifying the content type of the body.
+	ContentType pulumi.StringOutput `pulumi:"contentType"`
+	// The HTTP request/response body as raw binary.
+	Data pulumi.StringOutput `pulumi:"data"`
+	// Application specific response metadata. Must be set in the first response for streaming APIs.
+	Extensions pulumi.StringMapArrayOutput `pulumi:"extensions"`
 }
 
 // NewOrganizationEnvironmentResourcefile registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +64,21 @@ func GetOrganizationEnvironmentResourcefile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationEnvironmentResourcefile resources.
 type organizationEnvironmentResourcefileState struct {
+	// The HTTP Content-Type header value specifying the content type of the body.
+	ContentType *string `pulumi:"contentType"`
+	// The HTTP request/response body as raw binary.
+	Data *string `pulumi:"data"`
+	// Application specific response metadata. Must be set in the first response for streaming APIs.
+	Extensions []map[string]string `pulumi:"extensions"`
 }
 
 type OrganizationEnvironmentResourcefileState struct {
+	// The HTTP Content-Type header value specifying the content type of the body.
+	ContentType pulumi.StringPtrInput
+	// The HTTP request/response body as raw binary.
+	Data pulumi.StringPtrInput
+	// Application specific response metadata. Must be set in the first response for streaming APIs.
+	Extensions pulumi.StringMapArrayInput
 }
 
 func (OrganizationEnvironmentResourcefileState) ElementType() reflect.Type {

@@ -35,6 +35,54 @@ export class Job extends pulumi.CustomResource {
         return obj['__pulumiType'] === Job.__pulumiType;
     }
 
+    /**
+     * When the job was created.
+     */
+    public readonly createTime!: pulumi.Output<string>;
+    /**
+     * When the job processing was completed.
+     */
+    public readonly endTime!: pulumi.Output<string>;
+    /**
+     * The details of a failure or a cancellation.
+     */
+    public readonly errorMessage!: pulumi.Output<string>;
+    /**
+     * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * Required. The user-specified id of the job.
+     */
+    public readonly jobId!: pulumi.Output<string>;
+    /**
+     * Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Input parameters to create a prediction job.
+     */
+    public readonly predictionInput!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1__PredictionInputResponse>;
+    /**
+     * The current prediction job result.
+     */
+    public readonly predictionOutput!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1__PredictionOutputResponse>;
+    /**
+     * When the job processing was started.
+     */
+    public readonly startTime!: pulumi.Output<string>;
+    /**
+     * The detailed state of a job.
+     */
+    public readonly state!: pulumi.Output<string>;
+    /**
+     * Input parameters to create a training job.
+     */
+    public readonly trainingInput!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1__TrainingInputResponse>;
+    /**
+     * The current training job result.
+     */
+    public readonly trainingOutput!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1__TrainingOutputResponse>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -68,6 +116,18 @@ export class Job extends pulumi.CustomResource {
             inputs["trainingInput"] = args ? args.trainingInput : undefined;
             inputs["trainingOutput"] = args ? args.trainingOutput : undefined;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["errorMessage"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["jobId"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["predictionInput"] = undefined /*out*/;
+            inputs["predictionOutput"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["trainingInput"] = undefined /*out*/;
+            inputs["trainingOutput"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -81,15 +141,15 @@ export class Job extends pulumi.CustomResource {
  */
 export interface JobArgs {
     /**
-     * Output only. When the job was created.
+     * When the job was created.
      */
     readonly createTime?: pulumi.Input<string>;
     /**
-     * Output only. When the job processing was completed.
+     * When the job processing was completed.
      */
     readonly endTime?: pulumi.Input<string>;
     /**
-     * Output only. The details of a failure or a cancellation.
+     * The details of a failure or a cancellation.
      */
     readonly errorMessage?: pulumi.Input<string>;
     /**
@@ -115,11 +175,11 @@ export interface JobArgs {
     readonly predictionOutput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__PredictionOutput>;
     readonly projectsId: pulumi.Input<string>;
     /**
-     * Output only. When the job processing was started.
+     * When the job processing was started.
      */
     readonly startTime?: pulumi.Input<string>;
     /**
-     * Output only. The detailed state of a job.
+     * The detailed state of a job.
      */
     readonly state?: pulumi.Input<string>;
     /**

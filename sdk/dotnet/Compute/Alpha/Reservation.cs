@@ -16,6 +16,85 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
     public partial class Reservation : Pulumi.CustomResource
     {
         /// <summary>
+        /// [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+        /// </summary>
+        [Output("commitment")]
+        public Output<string> Commitment { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Type of the resource. Always compute#reservations for reservations.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Server-defined fully-qualified URL for this resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// </summary>
+        [Output("selfLinkWithId")]
+        public Output<string> SelfLinkWithId { get; private set; } = null!;
+
+        /// <summary>
+        /// Share-settings for shared-reservation
+        /// </summary>
+        [Output("shareSettings")]
+        public Output<Outputs.AllocationShareSettingsResponse> ShareSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// Reservation for instances with specific machine shapes.
+        /// </summary>
+        [Output("specificReservation")]
+        public Output<Outputs.AllocationSpecificSKUReservationResponse> SpecificReservation { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
+        /// </summary>
+        [Output("specificReservationRequired")]
+        public Output<bool> SpecificReservationRequired { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The status of the reservation.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
+        /// </summary>
+        [Output("zone")]
+        public Output<string> Zone { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Reservation resource with the given unique name, arguments, and options.
         /// </summary>
         ///

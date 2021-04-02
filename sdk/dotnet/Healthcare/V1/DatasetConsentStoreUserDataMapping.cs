@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Healthcare.V1
     public partial class DatasetConsentStoreUserDataMapping : Pulumi.CustomResource
     {
         /// <summary>
+        /// Indicates the time when this mapping was archived.
+        /// </summary>
+        [Output("archiveTime")]
+        public Output<string> ArchiveTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether this mapping is archived.
+        /// </summary>
+        [Output("archived")]
+        public Output<bool> Archived { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. A unique identifier for the mapped resource.
+        /// </summary>
+        [Output("dataId")]
+        public Output<string> DataId { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
+        /// </summary>
+        [Output("resourceAttributes")]
+        public Output<ImmutableArray<Outputs.AttributeResponse>> ResourceAttributes { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. User's UUID provided by the client.
+        /// </summary>
+        [Output("userId")]
+        public Output<string> UserId { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a DatasetConsentStoreUserDataMapping resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,18 +96,6 @@ namespace Pulumi.GoogleCloud.Healthcare.V1
 
     public sealed class DatasetConsentStoreUserDataMappingArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. Indicates the time when this mapping was archived.
-        /// </summary>
-        [Input("archiveTime")]
-        public Input<string>? ArchiveTime { get; set; }
-
-        /// <summary>
-        /// Output only. Indicates whether this mapping is archived.
-        /// </summary>
-        [Input("archived")]
-        public Input<bool>? Archived { get; set; }
-
         [Input("consentStoresId", required: true)]
         public Input<string> ConsentStoresId { get; set; } = null!;
 

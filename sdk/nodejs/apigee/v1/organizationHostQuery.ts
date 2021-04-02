@@ -35,6 +35,58 @@ export class OrganizationHostQuery extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationHostQuery.__pulumiType;
     }
 
+    /**
+     * Creation time of the query.
+     */
+    public /*out*/ readonly created!: pulumi.Output<string>;
+    /**
+     * Hostname is available only when query is executed at host level.
+     */
+    public readonly envgroupHostname!: pulumi.Output<string>;
+    /**
+     * Error is set when query fails.
+     */
+    public /*out*/ readonly error!: pulumi.Output<string>;
+    /**
+     * ExecutionTime is available only after the query is completed.
+     */
+    public /*out*/ readonly executionTime!: pulumi.Output<string>;
+    /**
+     * Asynchronous Query Name.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Contains information like metrics, dimenstions etc of the AsyncQuery.
+     */
+    public /*out*/ readonly queryParams!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1QueryMetadataResponse>;
+    /**
+     * Asynchronous Report ID.
+     */
+    public readonly reportDefinitionId!: pulumi.Output<string>;
+    /**
+     * Result is available only after the query is completed.
+     */
+    public /*out*/ readonly result!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1AsyncQueryResultResponse>;
+    /**
+     * ResultFileSize is available only after the query is completed.
+     */
+    public /*out*/ readonly resultFileSize!: pulumi.Output<string>;
+    /**
+     * ResultRows is available only after the query is completed.
+     */
+    public /*out*/ readonly resultRows!: pulumi.Output<string>;
+    /**
+     * Self link of the query. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+     */
+    public /*out*/ readonly self!: pulumi.Output<string>;
+    /**
+     * Query state could be "enqueued", "running", "completed", "failed".
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Last updated timestamp for the query.
+     */
+    public /*out*/ readonly updated!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationHostQuery resource with the given unique name, arguments, and options.
@@ -66,7 +118,30 @@ export class OrganizationHostQuery extends pulumi.CustomResource {
             inputs["outputFormat"] = args ? args.outputFormat : undefined;
             inputs["reportDefinitionId"] = args ? args.reportDefinitionId : undefined;
             inputs["timeRange"] = args ? args.timeRange : undefined;
+            inputs["created"] = undefined /*out*/;
+            inputs["error"] = undefined /*out*/;
+            inputs["executionTime"] = undefined /*out*/;
+            inputs["queryParams"] = undefined /*out*/;
+            inputs["result"] = undefined /*out*/;
+            inputs["resultFileSize"] = undefined /*out*/;
+            inputs["resultRows"] = undefined /*out*/;
+            inputs["self"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updated"] = undefined /*out*/;
         } else {
+            inputs["created"] = undefined /*out*/;
+            inputs["envgroupHostname"] = undefined /*out*/;
+            inputs["error"] = undefined /*out*/;
+            inputs["executionTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["queryParams"] = undefined /*out*/;
+            inputs["reportDefinitionId"] = undefined /*out*/;
+            inputs["result"] = undefined /*out*/;
+            inputs["resultFileSize"] = undefined /*out*/;
+            inputs["resultRows"] = undefined /*out*/;
+            inputs["self"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updated"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

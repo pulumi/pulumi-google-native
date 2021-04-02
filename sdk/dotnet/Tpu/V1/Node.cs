@@ -16,6 +16,115 @@ namespace Pulumi.GoogleCloud.Tpu.V1
     public partial class Node : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The type of hardware accelerators associated with this node.
+        /// </summary>
+        [Output("acceleratorType")]
+        public Output<string> AcceleratorType { get; private set; } = null!;
+
+        /// <summary>
+        /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
+        /// </summary>
+        [Output("cidrBlock")]
+        public Output<string> CidrBlock { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the node was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The user-supplied description of the TPU. Maximum of 512 characters.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The health status of the TPU node.
+        /// </summary>
+        [Output("health")]
+        public Output<string> Health { get; private set; } = null!;
+
+        /// <summary>
+        /// If this field is populated, it contains a description of why the TPU Node is unhealthy.
+        /// </summary>
+        [Output("healthDescription")]
+        public Output<string> HealthDescription { get; private set; } = null!;
+
+        /// <summary>
+        /// DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+        /// </summary>
+        [Output("ipAddress")]
+        public Output<string> IpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource labels to represent user-provided metadata.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The name of the TPU
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
+        /// </summary>
+        [Output("network")]
+        public Output<string> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
+        /// </summary>
+        [Output("networkEndpoints")]
+        public Output<ImmutableArray<Outputs.NetworkEndpointResponse>> NetworkEndpoints { get; private set; } = null!;
+
+        /// <summary>
+        /// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+        /// </summary>
+        [Output("port")]
+        public Output<string> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// The scheduling options for this node.
+        /// </summary>
+        [Output("schedulingConfig")]
+        public Output<Outputs.SchedulingConfigResponse> SchedulingConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state for the TPU Node.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The Symptoms that have occurred to the TPU Node.
+        /// </summary>
+        [Output("symptoms")]
+        public Output<ImmutableArray<Outputs.SymptomResponse>> Symptoms { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The version of Tensorflow running in the Node.
+        /// </summary>
+        [Output("tensorflowVersion")]
+        public Output<string> TensorflowVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled.
+        /// </summary>
+        [Output("useServiceNetworking")]
+        public Output<bool> UseServiceNetworking { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Node resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -72,12 +181,6 @@ namespace Pulumi.GoogleCloud.Tpu.V1
         public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
-        /// Output only. The time when the node was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// The user-supplied description of the TPU. Maximum of 512 characters.
         /// </summary>
         [Input("description")]
@@ -90,13 +193,7 @@ namespace Pulumi.GoogleCloud.Tpu.V1
         public Input<string>? Health { get; set; }
 
         /// <summary>
-        /// Output only. If this field is populated, it contains a description of why the TPU Node is unhealthy.
-        /// </summary>
-        [Input("healthDescription")]
-        public Input<string>? HealthDescription { get; set; }
-
-        /// <summary>
-        /// Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+        /// DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -117,34 +214,16 @@ namespace Pulumi.GoogleCloud.Tpu.V1
         public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. Immutable. The name of the TPU
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
-        [Input("networkEndpoints")]
-        private InputList<Inputs.NetworkEndpointArgs>? _networkEndpoints;
-
-        /// <summary>
-        /// Output only. The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
-        /// </summary>
-        public InputList<Inputs.NetworkEndpointArgs> NetworkEndpoints
-        {
-            get => _networkEndpoints ?? (_networkEndpoints = new InputList<Inputs.NetworkEndpointArgs>());
-            set => _networkEndpoints = value;
-        }
-
         [Input("nodesId", required: true)]
         public Input<string> NodesId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+        /// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
@@ -157,30 +236,6 @@ namespace Pulumi.GoogleCloud.Tpu.V1
         /// </summary>
         [Input("schedulingConfig")]
         public Input<Inputs.SchedulingConfigArgs>? SchedulingConfig { get; set; }
-
-        /// <summary>
-        /// Output only. The service account used to run the tensor flow services within the node. To share resources, including Google Cloud Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
-        /// </summary>
-        [Input("serviceAccount")]
-        public Input<string>? ServiceAccount { get; set; }
-
-        /// <summary>
-        /// Output only. The current state for the TPU Node.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        [Input("symptoms")]
-        private InputList<Inputs.SymptomArgs>? _symptoms;
-
-        /// <summary>
-        /// Output only. The Symptoms that have occurred to the TPU Node.
-        /// </summary>
-        public InputList<Inputs.SymptomArgs> Symptoms
-        {
-            get => _symptoms ?? (_symptoms = new InputList<Inputs.SymptomArgs>());
-            set => _symptoms = value;
-        }
 
         /// <summary>
         /// Required. The version of Tensorflow running in the Node.

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['OrganizationDeveloperAppKey']
@@ -107,7 +108,88 @@ class OrganizationDeveloperAppKey(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["api_products"] = None
+        __props__["attributes"] = None
+        __props__["consumer_key"] = None
+        __props__["consumer_secret"] = None
+        __props__["expires_at"] = None
+        __props__["expires_in_seconds"] = None
+        __props__["issued_at"] = None
+        __props__["scopes"] = None
+        __props__["status"] = None
         return OrganizationDeveloperAppKey(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiProducts")
+    def api_products(self) -> pulumi.Output[Sequence[Any]]:
+        """
+        List of API products for which the credential can be used. **Note**: Do not specify the list of API products when creating a consumer key and secret for a developer app. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created.
+        """
+        return pulumi.get(self, "api_products")
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> pulumi.Output[Sequence['outputs.GoogleCloudApigeeV1AttributeResponse']]:
+        """
+        List of attributes associated with the credential.
+        """
+        return pulumi.get(self, "attributes")
+
+    @property
+    @pulumi.getter(name="consumerKey")
+    def consumer_key(self) -> pulumi.Output[str]:
+        """
+        Consumer key.
+        """
+        return pulumi.get(self, "consumer_key")
+
+    @property
+    @pulumi.getter(name="consumerSecret")
+    def consumer_secret(self) -> pulumi.Output[str]:
+        """
+        Secret key.
+        """
+        return pulumi.get(self, "consumer_secret")
+
+    @property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> pulumi.Output[str]:
+        """
+        Time the developer app expires in milliseconds since epoch.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @property
+    @pulumi.getter(name="expiresInSeconds")
+    def expires_in_seconds(self) -> pulumi.Output[str]:
+        """
+        Input only. Expiration time, in seconds, for the consumer key. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+        """
+        return pulumi.get(self, "expires_in_seconds")
+
+    @property
+    @pulumi.getter(name="issuedAt")
+    def issued_at(self) -> pulumi.Output[str]:
+        """
+        Time the developer app was created in milliseconds since epoch.
+        """
+        return pulumi.get(self, "issued_at")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Scopes to apply to the app. The specified scope names must already be defined for the API product that you associate with the app.
+        """
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        Status of the credential. Valid values include `approved` or `revoked`.
+        """
+        return pulumi.get(self, "status")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

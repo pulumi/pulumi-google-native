@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Sourcerepo.V1
     public partial class Repo : Pulumi.CustomResource
     {
         /// <summary>
+        /// How this repository mirrors a repository managed by another service. Read-only field.
+        /// </summary>
+        [Output("mirrorConfig")]
+        public Output<Outputs.MirrorConfigResponse> MirrorConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+        /// </summary>
+        [Output("pubsubConfigs")]
+        public Output<ImmutableDictionary<string, string>> PubsubConfigs { get; private set; } = null!;
+
+        /// <summary>
+        /// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
+        /// </summary>
+        [Output("size")]
+        public Output<string> Size { get; private set; } = null!;
+
+        /// <summary>
+        /// URL to clone the repository from Google Cloud Source Repositories. Read-only field.
+        /// </summary>
+        [Output("url")]
+        public Output<string> Url { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Repo resource with the given unique name, arguments, and options.
         /// </summary>
         ///

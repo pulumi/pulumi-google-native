@@ -35,6 +35,242 @@ export class Cluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === Cluster.__pulumiType;
     }
 
+    /**
+     * Configurations for the various addons available to run in the cluster.
+     */
+    public /*out*/ readonly addonsConfig!: pulumi.Output<outputs.container.v1beta1.AddonsConfigResponse>;
+    /**
+     * Configuration controlling RBAC group membership information.
+     */
+    public /*out*/ readonly authenticatorGroupsConfig!: pulumi.Output<outputs.container.v1beta1.AuthenticatorGroupsConfigResponse>;
+    /**
+     * Autopilot configuration for the cluster.
+     */
+    public /*out*/ readonly autopilot!: pulumi.Output<outputs.container.v1beta1.AutopilotResponse>;
+    /**
+     * Cluster-level autoscaling configuration.
+     */
+    public /*out*/ readonly autoscaling!: pulumi.Output<outputs.container.v1beta1.ClusterAutoscalingResponse>;
+    /**
+     * Configuration for Binary Authorization.
+     */
+    public /*out*/ readonly binaryAuthorization!: pulumi.Output<outputs.container.v1beta1.BinaryAuthorizationResponse>;
+    /**
+     * The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
+     */
+    public /*out*/ readonly clusterIpv4Cidr!: pulumi.Output<string>;
+    /**
+     * Telemetry integration for the cluster.
+     */
+    public /*out*/ readonly clusterTelemetry!: pulumi.Output<outputs.container.v1beta1.ClusterTelemetryResponse>;
+    /**
+     * Which conditions caused the current cluster state.
+     */
+    public /*out*/ readonly conditions!: pulumi.Output<outputs.container.v1beta1.StatusConditionResponse[]>;
+    /**
+     * Configuration of Confidential Nodes
+     */
+    public /*out*/ readonly confidentialNodes!: pulumi.Output<outputs.container.v1beta1.ConfidentialNodesResponse>;
+    /**
+     * [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * [Output only] The current software version of the master endpoint.
+     */
+    public /*out*/ readonly currentMasterVersion!: pulumi.Output<string>;
+    /**
+     * [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
+     */
+    public /*out*/ readonly currentNodeCount!: pulumi.Output<number>;
+    /**
+     * [Output only] Deprecated, use [NodePool.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
+     */
+    public /*out*/ readonly currentNodeVersion!: pulumi.Output<string>;
+    /**
+     * Configuration of etcd encryption.
+     */
+    public /*out*/ readonly databaseEncryption!: pulumi.Output<outputs.container.v1beta1.DatabaseEncryptionResponse>;
+    /**
+     * The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
+     */
+    public /*out*/ readonly defaultMaxPodsConstraint!: pulumi.Output<outputs.container.v1beta1.MaxPodsConstraintResponse>;
+    /**
+     * An optional description of this cluster.
+     */
+    public /*out*/ readonly description!: pulumi.Output<string>;
+    /**
+     * Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
+     */
+    public /*out*/ readonly enableKubernetesAlpha!: pulumi.Output<boolean>;
+    /**
+     * Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
+     */
+    public /*out*/ readonly enableTpu!: pulumi.Output<boolean>;
+    /**
+     * [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
+     */
+    public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    /**
+     * [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+     */
+    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    /**
+     * The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
+     */
+    public /*out*/ readonly initialClusterVersion!: pulumi.Output<string>;
+    /**
+     * The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+     */
+    public /*out*/ readonly initialNodeCount!: pulumi.Output<number>;
+    /**
+     * Configuration for cluster IP allocation.
+     */
+    public /*out*/ readonly ipAllocationPolicy!: pulumi.Output<outputs.container.v1beta1.IPAllocationPolicyResponse>;
+    /**
+     * The fingerprint of the set of labels for this cluster.
+     */
+    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    /**
+     * Configuration for the legacy ABAC authorization mode.
+     */
+    public /*out*/ readonly legacyAbac!: pulumi.Output<outputs.container.v1beta1.LegacyAbacResponse>;
+    /**
+     * [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
+     */
+    public /*out*/ readonly location!: pulumi.Output<string>;
+    /**
+     * The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
+     */
+    public /*out*/ readonly locations!: pulumi.Output<string[]>;
+    /**
+     * The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
+     */
+    public /*out*/ readonly loggingService!: pulumi.Output<string>;
+    /**
+     * Configure the maintenance policy for this cluster.
+     */
+    public /*out*/ readonly maintenancePolicy!: pulumi.Output<outputs.container.v1beta1.MaintenancePolicyResponse>;
+    /**
+     * Configuration for master components.
+     */
+    public /*out*/ readonly master!: pulumi.Output<outputs.container.v1beta1.MasterResponse>;
+    /**
+     * The authentication information for accessing the master endpoint. If unspecified, the defaults are used: For clusters before v1.12, if master_auth is unspecified, `username` will be set to "admin", a random password will be generated, and a client certificate will be issued.
+     */
+    public /*out*/ readonly masterAuth!: pulumi.Output<outputs.container.v1beta1.MasterAuthResponse>;
+    /**
+     * The configuration options for master authorized networks feature.
+     */
+    public /*out*/ readonly masterAuthorizedNetworksConfig!: pulumi.Output<outputs.container.v1beta1.MasterAuthorizedNetworksConfigResponse>;
+    /**
+     * The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.
+     */
+    public /*out*/ readonly masterIpv4CidrBlock!: pulumi.Output<string>;
+    /**
+     * The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
+     */
+    public /*out*/ readonly monitoringService!: pulumi.Output<string>;
+    /**
+     * The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. If left unspecified, the `default` network will be used. On output this shows the network ID instead of the name.
+     */
+    public /*out*/ readonly network!: pulumi.Output<string>;
+    /**
+     * Configuration for cluster networking.
+     */
+    public /*out*/ readonly networkConfig!: pulumi.Output<outputs.container.v1beta1.NetworkConfigResponse>;
+    /**
+     * Configuration options for the NetworkPolicy feature.
+     */
+    public /*out*/ readonly networkPolicy!: pulumi.Output<outputs.container.v1beta1.NetworkPolicyResponse>;
+    /**
+     * Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+     */
+    public /*out*/ readonly nodeConfig!: pulumi.Output<outputs.container.v1beta1.NodeConfigResponse>;
+    /**
+     * [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
+     */
+    public /*out*/ readonly nodeIpv4CidrSize!: pulumi.Output<number>;
+    /**
+     * The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
+     */
+    public /*out*/ readonly nodePools!: pulumi.Output<outputs.container.v1beta1.NodePoolResponse[]>;
+    /**
+     * Notification configuration of the cluster.
+     */
+    public /*out*/ readonly notificationConfig!: pulumi.Output<outputs.container.v1beta1.NotificationConfigResponse>;
+    /**
+     * Configuration for the PodSecurityPolicy feature.
+     */
+    public /*out*/ readonly podSecurityPolicyConfig!: pulumi.Output<outputs.container.v1beta1.PodSecurityPolicyConfigResponse>;
+    /**
+     * If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
+     */
+    public /*out*/ readonly privateCluster!: pulumi.Output<boolean>;
+    /**
+     * Configuration for private cluster.
+     */
+    public /*out*/ readonly privateClusterConfig!: pulumi.Output<outputs.container.v1beta1.PrivateClusterConfigResponse>;
+    /**
+     * Release channel configuration.
+     */
+    public /*out*/ readonly releaseChannel!: pulumi.Output<outputs.container.v1beta1.ReleaseChannelResponse>;
+    /**
+     * The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
+     */
+    public /*out*/ readonly resourceLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
+     */
+    public /*out*/ readonly resourceUsageExportConfig!: pulumi.Output<outputs.container.v1beta1.ResourceUsageExportConfigResponse>;
+    /**
+     * [Output only] Server-defined URL for the resource.
+     */
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * [Output only] The IP address range of the Kubernetes services in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last `/16` from the container CIDR.
+     */
+    public /*out*/ readonly servicesIpv4Cidr!: pulumi.Output<string>;
+    /**
+     * Shielded Nodes configuration.
+     */
+    public /*out*/ readonly shieldedNodes!: pulumi.Output<outputs.container.v1beta1.ShieldedNodesResponse>;
+    /**
+     * [Output only] The current status of this cluster.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
+     */
+    public /*out*/ readonly statusMessage!: pulumi.Output<string>;
+    /**
+     * The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
+     */
+    public /*out*/ readonly subnetwork!: pulumi.Output<string>;
+    /**
+     * Configuration for Cloud TPU support;
+     */
+    public /*out*/ readonly tpuConfig!: pulumi.Output<outputs.container.v1beta1.TpuConfigResponse>;
+    /**
+     * [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
+     */
+    public /*out*/ readonly tpuIpv4CidrBlock!: pulumi.Output<string>;
+    /**
+     * Cluster-level Vertical Pod Autoscaling configuration.
+     */
+    public /*out*/ readonly verticalPodAutoscaling!: pulumi.Output<outputs.container.v1beta1.VerticalPodAutoscalingResponse>;
+    /**
+     * Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
+     */
+    public /*out*/ readonly workloadIdentityConfig!: pulumi.Output<outputs.container.v1beta1.WorkloadIdentityConfigResponse>;
+    /**
+     * [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
+     */
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -61,7 +297,124 @@ export class Cluster extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["addonsConfig"] = undefined /*out*/;
+            inputs["authenticatorGroupsConfig"] = undefined /*out*/;
+            inputs["autopilot"] = undefined /*out*/;
+            inputs["autoscaling"] = undefined /*out*/;
+            inputs["binaryAuthorization"] = undefined /*out*/;
+            inputs["clusterIpv4Cidr"] = undefined /*out*/;
+            inputs["clusterTelemetry"] = undefined /*out*/;
+            inputs["conditions"] = undefined /*out*/;
+            inputs["confidentialNodes"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["currentMasterVersion"] = undefined /*out*/;
+            inputs["currentNodeCount"] = undefined /*out*/;
+            inputs["currentNodeVersion"] = undefined /*out*/;
+            inputs["databaseEncryption"] = undefined /*out*/;
+            inputs["defaultMaxPodsConstraint"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["enableKubernetesAlpha"] = undefined /*out*/;
+            inputs["enableTpu"] = undefined /*out*/;
+            inputs["endpoint"] = undefined /*out*/;
+            inputs["expireTime"] = undefined /*out*/;
+            inputs["initialClusterVersion"] = undefined /*out*/;
+            inputs["initialNodeCount"] = undefined /*out*/;
+            inputs["ipAllocationPolicy"] = undefined /*out*/;
+            inputs["labelFingerprint"] = undefined /*out*/;
+            inputs["legacyAbac"] = undefined /*out*/;
+            inputs["location"] = undefined /*out*/;
+            inputs["locations"] = undefined /*out*/;
+            inputs["loggingService"] = undefined /*out*/;
+            inputs["maintenancePolicy"] = undefined /*out*/;
+            inputs["master"] = undefined /*out*/;
+            inputs["masterAuth"] = undefined /*out*/;
+            inputs["masterAuthorizedNetworksConfig"] = undefined /*out*/;
+            inputs["masterIpv4CidrBlock"] = undefined /*out*/;
+            inputs["monitoringService"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["network"] = undefined /*out*/;
+            inputs["networkConfig"] = undefined /*out*/;
+            inputs["networkPolicy"] = undefined /*out*/;
+            inputs["nodeConfig"] = undefined /*out*/;
+            inputs["nodeIpv4CidrSize"] = undefined /*out*/;
+            inputs["nodePools"] = undefined /*out*/;
+            inputs["notificationConfig"] = undefined /*out*/;
+            inputs["podSecurityPolicyConfig"] = undefined /*out*/;
+            inputs["privateCluster"] = undefined /*out*/;
+            inputs["privateClusterConfig"] = undefined /*out*/;
+            inputs["releaseChannel"] = undefined /*out*/;
+            inputs["resourceLabels"] = undefined /*out*/;
+            inputs["resourceUsageExportConfig"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["servicesIpv4Cidr"] = undefined /*out*/;
+            inputs["shieldedNodes"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
+            inputs["subnetwork"] = undefined /*out*/;
+            inputs["tpuConfig"] = undefined /*out*/;
+            inputs["tpuIpv4CidrBlock"] = undefined /*out*/;
+            inputs["verticalPodAutoscaling"] = undefined /*out*/;
+            inputs["workloadIdentityConfig"] = undefined /*out*/;
         } else {
+            inputs["addonsConfig"] = undefined /*out*/;
+            inputs["authenticatorGroupsConfig"] = undefined /*out*/;
+            inputs["autopilot"] = undefined /*out*/;
+            inputs["autoscaling"] = undefined /*out*/;
+            inputs["binaryAuthorization"] = undefined /*out*/;
+            inputs["clusterIpv4Cidr"] = undefined /*out*/;
+            inputs["clusterTelemetry"] = undefined /*out*/;
+            inputs["conditions"] = undefined /*out*/;
+            inputs["confidentialNodes"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["currentMasterVersion"] = undefined /*out*/;
+            inputs["currentNodeCount"] = undefined /*out*/;
+            inputs["currentNodeVersion"] = undefined /*out*/;
+            inputs["databaseEncryption"] = undefined /*out*/;
+            inputs["defaultMaxPodsConstraint"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["enableKubernetesAlpha"] = undefined /*out*/;
+            inputs["enableTpu"] = undefined /*out*/;
+            inputs["endpoint"] = undefined /*out*/;
+            inputs["expireTime"] = undefined /*out*/;
+            inputs["initialClusterVersion"] = undefined /*out*/;
+            inputs["initialNodeCount"] = undefined /*out*/;
+            inputs["ipAllocationPolicy"] = undefined /*out*/;
+            inputs["labelFingerprint"] = undefined /*out*/;
+            inputs["legacyAbac"] = undefined /*out*/;
+            inputs["location"] = undefined /*out*/;
+            inputs["locations"] = undefined /*out*/;
+            inputs["loggingService"] = undefined /*out*/;
+            inputs["maintenancePolicy"] = undefined /*out*/;
+            inputs["master"] = undefined /*out*/;
+            inputs["masterAuth"] = undefined /*out*/;
+            inputs["masterAuthorizedNetworksConfig"] = undefined /*out*/;
+            inputs["masterIpv4CidrBlock"] = undefined /*out*/;
+            inputs["monitoringService"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["network"] = undefined /*out*/;
+            inputs["networkConfig"] = undefined /*out*/;
+            inputs["networkPolicy"] = undefined /*out*/;
+            inputs["nodeConfig"] = undefined /*out*/;
+            inputs["nodeIpv4CidrSize"] = undefined /*out*/;
+            inputs["nodePools"] = undefined /*out*/;
+            inputs["notificationConfig"] = undefined /*out*/;
+            inputs["podSecurityPolicyConfig"] = undefined /*out*/;
+            inputs["privateCluster"] = undefined /*out*/;
+            inputs["privateClusterConfig"] = undefined /*out*/;
+            inputs["releaseChannel"] = undefined /*out*/;
+            inputs["resourceLabels"] = undefined /*out*/;
+            inputs["resourceUsageExportConfig"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["servicesIpv4Cidr"] = undefined /*out*/;
+            inputs["shieldedNodes"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
+            inputs["subnetwork"] = undefined /*out*/;
+            inputs["tpuConfig"] = undefined /*out*/;
+            inputs["tpuIpv4CidrBlock"] = undefined /*out*/;
+            inputs["verticalPodAutoscaling"] = undefined /*out*/;
+            inputs["workloadIdentityConfig"] = undefined /*out*/;
+            inputs["zone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

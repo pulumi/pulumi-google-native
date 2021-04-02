@@ -35,6 +35,70 @@ export class ClusterNodePool extends pulumi.CustomResource {
         return obj['__pulumiType'] === ClusterNodePool.__pulumiType;
     }
 
+    /**
+     * Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
+     */
+    public /*out*/ readonly autoscaling!: pulumi.Output<outputs.container.v1beta1.NodePoolAutoscalingResponse>;
+    /**
+     * Which conditions caused the current node pool state.
+     */
+    public /*out*/ readonly conditions!: pulumi.Output<outputs.container.v1beta1.StatusConditionResponse[]>;
+    /**
+     * The node configuration of the pool.
+     */
+    public /*out*/ readonly config!: pulumi.Output<outputs.container.v1beta1.NodeConfigResponse>;
+    /**
+     * The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
+     */
+    public /*out*/ readonly initialNodeCount!: pulumi.Output<number>;
+    /**
+     * [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+     */
+    public /*out*/ readonly instanceGroupUrls!: pulumi.Output<string[]>;
+    /**
+     * The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
+     */
+    public /*out*/ readonly locations!: pulumi.Output<string[]>;
+    /**
+     * NodeManagement configuration for this NodePool.
+     */
+    public /*out*/ readonly management!: pulumi.Output<outputs.container.v1beta1.NodeManagementResponse>;
+    /**
+     * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+     */
+    public /*out*/ readonly maxPodsConstraint!: pulumi.Output<outputs.container.v1beta1.MaxPodsConstraintResponse>;
+    /**
+     * The name of the node pool.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+     */
+    public /*out*/ readonly networkConfig!: pulumi.Output<outputs.container.v1beta1.NodeNetworkConfigResponse>;
+    /**
+     * [Output only] The pod CIDR block size per node in this node pool.
+     */
+    public /*out*/ readonly podIpv4CidrSize!: pulumi.Output<number>;
+    /**
+     * [Output only] Server-defined URL for the resource.
+     */
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * [Output only] The status of the nodes in this pool instance.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+     */
+    public /*out*/ readonly statusMessage!: pulumi.Output<string>;
+    /**
+     * Upgrade settings control disruption and speed of the upgrade.
+     */
+    public /*out*/ readonly upgradeSettings!: pulumi.Output<outputs.container.v1beta1.UpgradeSettingsResponse>;
+    /**
+     * The version of the Kubernetes of this node.
+     */
+    public /*out*/ readonly version!: pulumi.Output<string>;
 
     /**
      * Create a ClusterNodePool resource with the given unique name, arguments, and options.
@@ -65,7 +129,39 @@ export class ClusterNodePool extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["autoscaling"] = undefined /*out*/;
+            inputs["conditions"] = undefined /*out*/;
+            inputs["config"] = undefined /*out*/;
+            inputs["initialNodeCount"] = undefined /*out*/;
+            inputs["instanceGroupUrls"] = undefined /*out*/;
+            inputs["locations"] = undefined /*out*/;
+            inputs["management"] = undefined /*out*/;
+            inputs["maxPodsConstraint"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["networkConfig"] = undefined /*out*/;
+            inputs["podIpv4CidrSize"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
+            inputs["upgradeSettings"] = undefined /*out*/;
+            inputs["version"] = undefined /*out*/;
         } else {
+            inputs["autoscaling"] = undefined /*out*/;
+            inputs["conditions"] = undefined /*out*/;
+            inputs["config"] = undefined /*out*/;
+            inputs["initialNodeCount"] = undefined /*out*/;
+            inputs["instanceGroupUrls"] = undefined /*out*/;
+            inputs["locations"] = undefined /*out*/;
+            inputs["management"] = undefined /*out*/;
+            inputs["maxPodsConstraint"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["networkConfig"] = undefined /*out*/;
+            inputs["podIpv4CidrSize"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
+            inputs["upgradeSettings"] = undefined /*out*/;
+            inputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

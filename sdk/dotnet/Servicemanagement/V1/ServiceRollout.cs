@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Servicemanagement.V1
     public partial class ServiceRollout : Pulumi.CustomResource
     {
         /// <summary>
+        /// Creation time of the rollout. Readonly.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// This field is deprecated and will be deleted. Please remove usage of this field.
+        /// </summary>
+        [Output("createdBy")]
+        public Output<string> CreatedBy { get; private set; } = null!;
+
+        /// <summary>
+        /// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
+        /// </summary>
+        [Output("deleteServiceStrategy")]
+        public Output<Outputs.DeleteServiceStrategyResponse> DeleteServiceStrategy { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
+        /// </summary>
+        [Output("rolloutId")]
+        public Output<string> RolloutId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the service associated with this Rollout.
+        /// </summary>
+        [Output("serviceName")]
+        public Output<string> ServiceName { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Google Service Control selects service configurations based on traffic percentage.
+        /// </summary>
+        [Output("trafficPercentStrategy")]
+        public Output<Outputs.TrafficPercentStrategyResponse> TrafficPercentStrategy { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ServiceRollout resource with the given unique name, arguments, and options.
         /// </summary>
         ///

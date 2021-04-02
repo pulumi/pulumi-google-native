@@ -35,6 +35,26 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
+    /**
+     * Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
+     */
+    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    /**
+     * Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
+     */
+    public /*out*/ readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The current state of the instance.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Required. The type of the instance. Defaults to `PRODUCTION`.
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -59,7 +79,17 @@ export class Instance extends pulumi.CustomResource {
             inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         } else {
+            inputs["displayName"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

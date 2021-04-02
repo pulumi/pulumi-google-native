@@ -14,6 +14,23 @@ import (
 // Starts a new asynchronous job. Requires the Can View project role.
 type Job struct {
 	pulumi.CustomResourceState
+
+	// [Required] Describes the job configuration.
+	Configuration JobConfigurationResponseOutput `pulumi:"configuration"`
+	// [Output-only] A hash of this resource.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// [Optional] Reference describing the unique-per-user name of the job.
+	JobReference JobReferenceResponseOutput `pulumi:"jobReference"`
+	// [Output-only] The type of the resource.
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// [Output-only] A URL that can be used to access this resource again.
+	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// [Output-only] Information about the job, including starting time and ending time of the job.
+	Statistics JobStatisticsResponseOutput `pulumi:"statistics"`
+	// [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+	Status JobStatusResponseOutput `pulumi:"status"`
+	// [Output-only] Email address of the user who ran the job.
+	User_email pulumi.StringOutput `pulumi:"user_email"`
 }
 
 // NewJob registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +68,41 @@ func GetJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Job resources.
 type jobState struct {
+	// [Required] Describes the job configuration.
+	Configuration *JobConfigurationResponse `pulumi:"configuration"`
+	// [Output-only] A hash of this resource.
+	Etag *string `pulumi:"etag"`
+	// [Optional] Reference describing the unique-per-user name of the job.
+	JobReference *JobReferenceResponse `pulumi:"jobReference"`
+	// [Output-only] The type of the resource.
+	Kind *string `pulumi:"kind"`
+	// [Output-only] A URL that can be used to access this resource again.
+	SelfLink *string `pulumi:"selfLink"`
+	// [Output-only] Information about the job, including starting time and ending time of the job.
+	Statistics *JobStatisticsResponse `pulumi:"statistics"`
+	// [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+	Status *JobStatusResponse `pulumi:"status"`
+	// [Output-only] Email address of the user who ran the job.
+	User_email *string `pulumi:"user_email"`
 }
 
 type JobState struct {
+	// [Required] Describes the job configuration.
+	Configuration JobConfigurationResponsePtrInput
+	// [Output-only] A hash of this resource.
+	Etag pulumi.StringPtrInput
+	// [Optional] Reference describing the unique-per-user name of the job.
+	JobReference JobReferenceResponsePtrInput
+	// [Output-only] The type of the resource.
+	Kind pulumi.StringPtrInput
+	// [Output-only] A URL that can be used to access this resource again.
+	SelfLink pulumi.StringPtrInput
+	// [Output-only] Information about the job, including starting time and ending time of the job.
+	Statistics JobStatisticsResponsePtrInput
+	// [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+	Status JobStatusResponsePtrInput
+	// [Output-only] Email address of the user who ran the job.
+	User_email pulumi.StringPtrInput
 }
 
 func (JobState) ElementType() reflect.Type {

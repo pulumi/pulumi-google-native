@@ -14,6 +14,13 @@ import (
 // Creates a new attachment of an environment to an environment group.
 type OrganizationEnvgroupAttachment struct {
 	pulumi.CustomResourceState
+
+	// The time at which the environment group attachment was created as milliseconds since epoch.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Required. ID of the attached environment.
+	Environment pulumi.StringOutput `pulumi:"environment"`
+	// ID of the environment group attachment.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewOrganizationEnvgroupAttachment registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +61,21 @@ func GetOrganizationEnvgroupAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationEnvgroupAttachment resources.
 type organizationEnvgroupAttachmentState struct {
+	// The time at which the environment group attachment was created as milliseconds since epoch.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Required. ID of the attached environment.
+	Environment *string `pulumi:"environment"`
+	// ID of the environment group attachment.
+	Name *string `pulumi:"name"`
 }
 
 type OrganizationEnvgroupAttachmentState struct {
+	// The time at which the environment group attachment was created as milliseconds since epoch.
+	CreatedAt pulumi.StringPtrInput
+	// Required. ID of the attached environment.
+	Environment pulumi.StringPtrInput
+	// ID of the environment group attachment.
+	Name pulumi.StringPtrInput
 }
 
 func (OrganizationEnvgroupAttachmentState) ElementType() reflect.Type {
@@ -65,9 +84,7 @@ func (OrganizationEnvgroupAttachmentState) ElementType() reflect.Type {
 
 type organizationEnvgroupAttachmentArgs struct {
 	AttachmentsId string `pulumi:"attachmentsId"`
-	// Output only. The time at which the environment group attachment was created as milliseconds since epoch.
-	CreatedAt   *string `pulumi:"createdAt"`
-	EnvgroupsId string  `pulumi:"envgroupsId"`
+	EnvgroupsId   string `pulumi:"envgroupsId"`
 	// Required. ID of the attached environment.
 	Environment *string `pulumi:"environment"`
 	// ID of the environment group attachment.
@@ -78,9 +95,7 @@ type organizationEnvgroupAttachmentArgs struct {
 // The set of arguments for constructing a OrganizationEnvgroupAttachment resource.
 type OrganizationEnvgroupAttachmentArgs struct {
 	AttachmentsId pulumi.StringInput
-	// Output only. The time at which the environment group attachment was created as milliseconds since epoch.
-	CreatedAt   pulumi.StringPtrInput
-	EnvgroupsId pulumi.StringInput
+	EnvgroupsId   pulumi.StringInput
 	// Required. ID of the attached environment.
 	Environment pulumi.StringPtrInput
 	// ID of the environment group attachment.

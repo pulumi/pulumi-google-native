@@ -234,6 +234,220 @@ func (o BucketAccessControlTypeArrayOutput) Index(i pulumi.IntInput) BucketAcces
 }
 
 // An access-control entry.
+type BucketAccessControlResponse struct {
+	// The name of the bucket.
+	Bucket string `pulumi:"bucket"`
+	// The domain associated with the entity, if any.
+	Domain string `pulumi:"domain"`
+	// The email address associated with the entity, if any.
+	Email string `pulumi:"email"`
+	// The entity holding the permission, in one of the following forms:
+	// - user-userId
+	// - user-email
+	// - group-groupId
+	// - group-email
+	// - domain-domain
+	// - project-team-projectId
+	// - allUsers
+	// - allAuthenticatedUsers Examples:
+	// - The user liz@example.com would be user-liz@example.com.
+	// - The group example@googlegroups.com would be group-example@googlegroups.com.
+	// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+	Entity string `pulumi:"entity"`
+	// The ID for the entity, if any.
+	EntityId string `pulumi:"entityId"`
+	// HTTP 1.1 Entity tag for the access-control entry.
+	Etag string `pulumi:"etag"`
+	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
+	Kind string `pulumi:"kind"`
+	// The project team associated with the entity, if any.
+	ProjectTeam map[string]string `pulumi:"projectTeam"`
+	// The access permission for the entity.
+	Role string `pulumi:"role"`
+	// The link to this access-control entry.
+	SelfLink string `pulumi:"selfLink"`
+}
+
+// BucketAccessControlResponseInput is an input type that accepts BucketAccessControlResponseArgs and BucketAccessControlResponseOutput values.
+// You can construct a concrete instance of `BucketAccessControlResponseInput` via:
+//
+//          BucketAccessControlResponseArgs{...}
+type BucketAccessControlResponseInput interface {
+	pulumi.Input
+
+	ToBucketAccessControlResponseOutput() BucketAccessControlResponseOutput
+	ToBucketAccessControlResponseOutputWithContext(context.Context) BucketAccessControlResponseOutput
+}
+
+// An access-control entry.
+type BucketAccessControlResponseArgs struct {
+	// The name of the bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The domain associated with the entity, if any.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The email address associated with the entity, if any.
+	Email pulumi.StringInput `pulumi:"email"`
+	// The entity holding the permission, in one of the following forms:
+	// - user-userId
+	// - user-email
+	// - group-groupId
+	// - group-email
+	// - domain-domain
+	// - project-team-projectId
+	// - allUsers
+	// - allAuthenticatedUsers Examples:
+	// - The user liz@example.com would be user-liz@example.com.
+	// - The group example@googlegroups.com would be group-example@googlegroups.com.
+	// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+	Entity pulumi.StringInput `pulumi:"entity"`
+	// The ID for the entity, if any.
+	EntityId pulumi.StringInput `pulumi:"entityId"`
+	// HTTP 1.1 Entity tag for the access-control entry.
+	Etag pulumi.StringInput `pulumi:"etag"`
+	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The project team associated with the entity, if any.
+	ProjectTeam pulumi.StringMapInput `pulumi:"projectTeam"`
+	// The access permission for the entity.
+	Role pulumi.StringInput `pulumi:"role"`
+	// The link to this access-control entry.
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+}
+
+func (BucketAccessControlResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketAccessControlResponse)(nil)).Elem()
+}
+
+func (i BucketAccessControlResponseArgs) ToBucketAccessControlResponseOutput() BucketAccessControlResponseOutput {
+	return i.ToBucketAccessControlResponseOutputWithContext(context.Background())
+}
+
+func (i BucketAccessControlResponseArgs) ToBucketAccessControlResponseOutputWithContext(ctx context.Context) BucketAccessControlResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlResponseOutput)
+}
+
+// BucketAccessControlResponseArrayInput is an input type that accepts BucketAccessControlResponseArray and BucketAccessControlResponseArrayOutput values.
+// You can construct a concrete instance of `BucketAccessControlResponseArrayInput` via:
+//
+//          BucketAccessControlResponseArray{ BucketAccessControlResponseArgs{...} }
+type BucketAccessControlResponseArrayInput interface {
+	pulumi.Input
+
+	ToBucketAccessControlResponseArrayOutput() BucketAccessControlResponseArrayOutput
+	ToBucketAccessControlResponseArrayOutputWithContext(context.Context) BucketAccessControlResponseArrayOutput
+}
+
+type BucketAccessControlResponseArray []BucketAccessControlResponseInput
+
+func (BucketAccessControlResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketAccessControlResponse)(nil)).Elem()
+}
+
+func (i BucketAccessControlResponseArray) ToBucketAccessControlResponseArrayOutput() BucketAccessControlResponseArrayOutput {
+	return i.ToBucketAccessControlResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BucketAccessControlResponseArray) ToBucketAccessControlResponseArrayOutputWithContext(ctx context.Context) BucketAccessControlResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlResponseArrayOutput)
+}
+
+// An access-control entry.
+type BucketAccessControlResponseOutput struct{ *pulumi.OutputState }
+
+func (BucketAccessControlResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketAccessControlResponse)(nil)).Elem()
+}
+
+func (o BucketAccessControlResponseOutput) ToBucketAccessControlResponseOutput() BucketAccessControlResponseOutput {
+	return o
+}
+
+func (o BucketAccessControlResponseOutput) ToBucketAccessControlResponseOutputWithContext(ctx context.Context) BucketAccessControlResponseOutput {
+	return o
+}
+
+// The name of the bucket.
+func (o BucketAccessControlResponseOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketAccessControlResponse) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The domain associated with the entity, if any.
+func (o BucketAccessControlResponseOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketAccessControlResponse) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The email address associated with the entity, if any.
+func (o BucketAccessControlResponseOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketAccessControlResponse) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The entity holding the permission, in one of the following forms:
+// - user-userId
+// - user-email
+// - group-groupId
+// - group-email
+// - domain-domain
+// - project-team-projectId
+// - allUsers
+// - allAuthenticatedUsers Examples:
+// - The user liz@example.com would be user-liz@example.com.
+// - The group example@googlegroups.com would be group-example@googlegroups.com.
+// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+func (o BucketAccessControlResponseOutput) Entity() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketAccessControlResponse) string { return v.Entity }).(pulumi.StringOutput)
+}
+
+// The ID for the entity, if any.
+func (o BucketAccessControlResponseOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketAccessControlResponse) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// HTTP 1.1 Entity tag for the access-control entry.
+func (o BucketAccessControlResponseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketAccessControlResponse) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
+func (o BucketAccessControlResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketAccessControlResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The project team associated with the entity, if any.
+func (o BucketAccessControlResponseOutput) ProjectTeam() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BucketAccessControlResponse) map[string]string { return v.ProjectTeam }).(pulumi.StringMapOutput)
+}
+
+// The access permission for the entity.
+func (o BucketAccessControlResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketAccessControlResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// The link to this access-control entry.
+func (o BucketAccessControlResponseOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketAccessControlResponse) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+type BucketAccessControlResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketAccessControlResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketAccessControlResponse)(nil)).Elem()
+}
+
+func (o BucketAccessControlResponseArrayOutput) ToBucketAccessControlResponseArrayOutput() BucketAccessControlResponseArrayOutput {
+	return o
+}
+
+func (o BucketAccessControlResponseArrayOutput) ToBucketAccessControlResponseArrayOutputWithContext(ctx context.Context) BucketAccessControlResponseArrayOutput {
+	return o
+}
+
+func (o BucketAccessControlResponseArrayOutput) Index(i pulumi.IntInput) BucketAccessControlResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketAccessControlResponse {
+		return vs[0].([]BucketAccessControlResponse)[vs[1].(int)]
+	}).(BucketAccessControlResponseOutput)
+}
+
+// An access-control entry.
 type ObjectAccessControlType struct {
 	// The name of the bucket.
 	Bucket *string `pulumi:"bucket"`
@@ -474,9 +688,245 @@ func (o ObjectAccessControlTypeArrayOutput) Index(i pulumi.IntInput) ObjectAcces
 	}).(ObjectAccessControlTypeOutput)
 }
 
+// An access-control entry.
+type ObjectAccessControlResponse struct {
+	// The name of the bucket.
+	Bucket string `pulumi:"bucket"`
+	// The domain associated with the entity, if any.
+	Domain string `pulumi:"domain"`
+	// The email address associated with the entity, if any.
+	Email string `pulumi:"email"`
+	// The entity holding the permission, in one of the following forms:
+	// - user-userId
+	// - user-email
+	// - group-groupId
+	// - group-email
+	// - domain-domain
+	// - project-team-projectId
+	// - allUsers
+	// - allAuthenticatedUsers Examples:
+	// - The user liz@example.com would be user-liz@example.com.
+	// - The group example@googlegroups.com would be group-example@googlegroups.com.
+	// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+	Entity string `pulumi:"entity"`
+	// The ID for the entity, if any.
+	EntityId string `pulumi:"entityId"`
+	// HTTP 1.1 Entity tag for the access-control entry.
+	Etag string `pulumi:"etag"`
+	// The content generation of the object, if applied to an object.
+	Generation string `pulumi:"generation"`
+	// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
+	Kind string `pulumi:"kind"`
+	// The name of the object, if applied to an object.
+	Object string `pulumi:"object"`
+	// The project team associated with the entity, if any.
+	ProjectTeam map[string]string `pulumi:"projectTeam"`
+	// The access permission for the entity.
+	Role string `pulumi:"role"`
+	// The link to this access-control entry.
+	SelfLink string `pulumi:"selfLink"`
+}
+
+// ObjectAccessControlResponseInput is an input type that accepts ObjectAccessControlResponseArgs and ObjectAccessControlResponseOutput values.
+// You can construct a concrete instance of `ObjectAccessControlResponseInput` via:
+//
+//          ObjectAccessControlResponseArgs{...}
+type ObjectAccessControlResponseInput interface {
+	pulumi.Input
+
+	ToObjectAccessControlResponseOutput() ObjectAccessControlResponseOutput
+	ToObjectAccessControlResponseOutputWithContext(context.Context) ObjectAccessControlResponseOutput
+}
+
+// An access-control entry.
+type ObjectAccessControlResponseArgs struct {
+	// The name of the bucket.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The domain associated with the entity, if any.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The email address associated with the entity, if any.
+	Email pulumi.StringInput `pulumi:"email"`
+	// The entity holding the permission, in one of the following forms:
+	// - user-userId
+	// - user-email
+	// - group-groupId
+	// - group-email
+	// - domain-domain
+	// - project-team-projectId
+	// - allUsers
+	// - allAuthenticatedUsers Examples:
+	// - The user liz@example.com would be user-liz@example.com.
+	// - The group example@googlegroups.com would be group-example@googlegroups.com.
+	// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+	Entity pulumi.StringInput `pulumi:"entity"`
+	// The ID for the entity, if any.
+	EntityId pulumi.StringInput `pulumi:"entityId"`
+	// HTTP 1.1 Entity tag for the access-control entry.
+	Etag pulumi.StringInput `pulumi:"etag"`
+	// The content generation of the object, if applied to an object.
+	Generation pulumi.StringInput `pulumi:"generation"`
+	// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The name of the object, if applied to an object.
+	Object pulumi.StringInput `pulumi:"object"`
+	// The project team associated with the entity, if any.
+	ProjectTeam pulumi.StringMapInput `pulumi:"projectTeam"`
+	// The access permission for the entity.
+	Role pulumi.StringInput `pulumi:"role"`
+	// The link to this access-control entry.
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+}
+
+func (ObjectAccessControlResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectAccessControlResponse)(nil)).Elem()
+}
+
+func (i ObjectAccessControlResponseArgs) ToObjectAccessControlResponseOutput() ObjectAccessControlResponseOutput {
+	return i.ToObjectAccessControlResponseOutputWithContext(context.Background())
+}
+
+func (i ObjectAccessControlResponseArgs) ToObjectAccessControlResponseOutputWithContext(ctx context.Context) ObjectAccessControlResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlResponseOutput)
+}
+
+// ObjectAccessControlResponseArrayInput is an input type that accepts ObjectAccessControlResponseArray and ObjectAccessControlResponseArrayOutput values.
+// You can construct a concrete instance of `ObjectAccessControlResponseArrayInput` via:
+//
+//          ObjectAccessControlResponseArray{ ObjectAccessControlResponseArgs{...} }
+type ObjectAccessControlResponseArrayInput interface {
+	pulumi.Input
+
+	ToObjectAccessControlResponseArrayOutput() ObjectAccessControlResponseArrayOutput
+	ToObjectAccessControlResponseArrayOutputWithContext(context.Context) ObjectAccessControlResponseArrayOutput
+}
+
+type ObjectAccessControlResponseArray []ObjectAccessControlResponseInput
+
+func (ObjectAccessControlResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ObjectAccessControlResponse)(nil)).Elem()
+}
+
+func (i ObjectAccessControlResponseArray) ToObjectAccessControlResponseArrayOutput() ObjectAccessControlResponseArrayOutput {
+	return i.ToObjectAccessControlResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ObjectAccessControlResponseArray) ToObjectAccessControlResponseArrayOutputWithContext(ctx context.Context) ObjectAccessControlResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlResponseArrayOutput)
+}
+
+// An access-control entry.
+type ObjectAccessControlResponseOutput struct{ *pulumi.OutputState }
+
+func (ObjectAccessControlResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectAccessControlResponse)(nil)).Elem()
+}
+
+func (o ObjectAccessControlResponseOutput) ToObjectAccessControlResponseOutput() ObjectAccessControlResponseOutput {
+	return o
+}
+
+func (o ObjectAccessControlResponseOutput) ToObjectAccessControlResponseOutputWithContext(ctx context.Context) ObjectAccessControlResponseOutput {
+	return o
+}
+
+// The name of the bucket.
+func (o ObjectAccessControlResponseOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The domain associated with the entity, if any.
+func (o ObjectAccessControlResponseOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The email address associated with the entity, if any.
+func (o ObjectAccessControlResponseOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The entity holding the permission, in one of the following forms:
+// - user-userId
+// - user-email
+// - group-groupId
+// - group-email
+// - domain-domain
+// - project-team-projectId
+// - allUsers
+// - allAuthenticatedUsers Examples:
+// - The user liz@example.com would be user-liz@example.com.
+// - The group example@googlegroups.com would be group-example@googlegroups.com.
+// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+func (o ObjectAccessControlResponseOutput) Entity() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.Entity }).(pulumi.StringOutput)
+}
+
+// The ID for the entity, if any.
+func (o ObjectAccessControlResponseOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// HTTP 1.1 Entity tag for the access-control entry.
+func (o ObjectAccessControlResponseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The content generation of the object, if applied to an object.
+func (o ObjectAccessControlResponseOutput) Generation() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.Generation }).(pulumi.StringOutput)
+}
+
+// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
+func (o ObjectAccessControlResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The name of the object, if applied to an object.
+func (o ObjectAccessControlResponseOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.Object }).(pulumi.StringOutput)
+}
+
+// The project team associated with the entity, if any.
+func (o ObjectAccessControlResponseOutput) ProjectTeam() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ObjectAccessControlResponse) map[string]string { return v.ProjectTeam }).(pulumi.StringMapOutput)
+}
+
+// The access permission for the entity.
+func (o ObjectAccessControlResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// The link to this access-control entry.
+func (o ObjectAccessControlResponseOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectAccessControlResponse) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+type ObjectAccessControlResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ObjectAccessControlResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ObjectAccessControlResponse)(nil)).Elem()
+}
+
+func (o ObjectAccessControlResponseArrayOutput) ToObjectAccessControlResponseArrayOutput() ObjectAccessControlResponseArrayOutput {
+	return o
+}
+
+func (o ObjectAccessControlResponseArrayOutput) ToObjectAccessControlResponseArrayOutputWithContext(ctx context.Context) ObjectAccessControlResponseArrayOutput {
+	return o
+}
+
+func (o ObjectAccessControlResponseArrayOutput) Index(i pulumi.IntInput) ObjectAccessControlResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectAccessControlResponse {
+		return vs[0].([]ObjectAccessControlResponse)[vs[1].(int)]
+	}).(ObjectAccessControlResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BucketAccessControlTypeOutput{})
 	pulumi.RegisterOutputType(BucketAccessControlTypeArrayOutput{})
+	pulumi.RegisterOutputType(BucketAccessControlResponseOutput{})
+	pulumi.RegisterOutputType(BucketAccessControlResponseArrayOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlTypeOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlTypeArrayOutput{})
+	pulumi.RegisterOutputType(ObjectAccessControlResponseOutput{})
+	pulumi.RegisterOutputType(ObjectAccessControlResponseArrayOutput{})
 }

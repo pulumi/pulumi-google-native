@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['CompositeType']
@@ -36,11 +37,11 @@ class CompositeType(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the client when the resource is created.
-        :param pulumi.Input[str] insert_time: Output only. Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] insert_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompositeTypeLabelEntryArgs']]]] labels: Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
         :param pulumi.Input[str] name: Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
-        :param pulumi.Input[pulumi.InputType['OperationArgs']] operation: Output only. The Operation that most recently ran, or is currently running, on this composite type.
-        :param pulumi.Input[str] self_link: Output only. Server defined URL for the resource.
+        :param pulumi.Input[pulumi.InputType['OperationArgs']] operation: The Operation that most recently ran, or is currently running, on this composite type.
+        :param pulumi.Input[str] self_link: Server defined URL for the resource.
         :param pulumi.Input[pulumi.InputType['TemplateContentsArgs']] template_contents: Files for the template type.
         """
         if __name__ is not None:
@@ -97,7 +98,76 @@ class CompositeType(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["description"] = None
+        __props__["insert_time"] = None
+        __props__["labels"] = None
+        __props__["name"] = None
+        __props__["operation"] = None
+        __props__["self_link"] = None
+        __props__["status"] = None
+        __props__["template_contents"] = None
         return CompositeType(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional textual description of the resource; provided by the client when the resource is created.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="insertTime")
+    def insert_time(self) -> pulumi.Output[str]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "insert_time")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Sequence['outputs.CompositeTypeLabelEntryResponse']]:
+        """
+        Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def operation(self) -> pulumi.Output['outputs.OperationResponse']:
+        """
+        The Operation that most recently ran, or is currently running, on this composite type.
+        """
+        return pulumi.get(self, "operation")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        Server defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="templateContents")
+    def template_contents(self) -> pulumi.Output['outputs.TemplateContentsResponse']:
+        """
+        Files for the template type.
+        """
+        return pulumi.get(self, "template_contents")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

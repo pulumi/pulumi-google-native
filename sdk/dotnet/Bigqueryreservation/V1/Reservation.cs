@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Bigqueryreservation.V1
     public partial class Reservation : Pulumi.CustomResource
     {
         /// <summary>
+        /// Creation time of the reservation.
+        /// </summary>
+        [Output("creationTime")]
+        public Output<string> CreationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+        /// </summary>
+        [Output("ignoreIdleSlots")]
+        public Output<bool> IgnoreIdleSlots { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
+        /// </summary>
+        [Output("slotCapacity")]
+        public Output<string> SlotCapacity { get; private set; } = null!;
+
+        /// <summary>
+        /// Last update time of the reservation.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Reservation resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +91,6 @@ namespace Pulumi.GoogleCloud.Bigqueryreservation.V1
     public sealed class ReservationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Creation time of the reservation.
-        /// </summary>
-        [Input("creationTime")]
-        public Input<string>? CreationTime { get; set; }
-
-        /// <summary>
         /// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
         /// </summary>
         [Input("ignoreIdleSlots")]
@@ -91,12 +116,6 @@ namespace Pulumi.GoogleCloud.Bigqueryreservation.V1
         /// </summary>
         [Input("slotCapacity")]
         public Input<string>? SlotCapacity { get; set; }
-
-        /// <summary>
-        /// Output only. Last update time of the reservation.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public ReservationArgs()
         {

@@ -35,6 +35,70 @@ export class RegionCommitment extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegionCommitment.__pulumiType;
     }
 
+    /**
+     * The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
+     */
+    public readonly category!: pulumi.Output<string>;
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * [Output Only] Commitment end time in RFC3339 text format.
+     */
+    public readonly endTimestamp!: pulumi.Output<string>;
+    /**
+     * [Output Only] Type of the resource. Always compute#commitment for commitments.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * The license specification required as part of a license commitment.
+     */
+    public readonly licenseResource!: pulumi.Output<outputs.compute.beta.LicenseResourceCommitmentResponse>;
+    /**
+     * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
+     */
+    public readonly plan!: pulumi.Output<string>;
+    /**
+     * [Output Only] URL of the region where this commitment may be used.
+     */
+    public readonly region!: pulumi.Output<string>;
+    /**
+     * List of reservations in this commitment.
+     */
+    public readonly reservations!: pulumi.Output<outputs.compute.beta.ReservationResponse[]>;
+    /**
+     * A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
+     */
+    public readonly resources!: pulumi.Output<outputs.compute.beta.ResourceCommitmentResponse[]>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * [Output Only] Commitment start time in RFC3339 text format.
+     */
+    public readonly startTimestamp!: pulumi.Output<string>;
+    /**
+     * [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
+     */
+    public readonly status!: pulumi.Output<string>;
+    /**
+     * [Output Only] An optional, human-readable explanation of the status.
+     */
+    public readonly statusMessage!: pulumi.Output<string>;
+    /**
+     * The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+     */
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a RegionCommitment resource with the given unique name, arguments, and options.
@@ -76,6 +140,22 @@ export class RegionCommitment extends pulumi.CustomResource {
             inputs["statusMessage"] = args ? args.statusMessage : undefined;
             inputs["type"] = args ? args.type : undefined;
         } else {
+            inputs["category"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["endTimestamp"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["licenseResource"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["plan"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["reservations"] = undefined /*out*/;
+            inputs["resources"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["startTimestamp"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

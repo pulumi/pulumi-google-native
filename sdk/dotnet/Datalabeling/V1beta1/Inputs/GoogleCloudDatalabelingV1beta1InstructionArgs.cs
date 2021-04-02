@@ -19,7 +19,7 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1.Inputs
         private InputList<string>? _blockingResources;
 
         /// <summary>
-        /// Output only. The names of any related resources that are blocking changes to the instruction.
+        /// The names of any related resources that are blocking changes to the instruction.
         /// </summary>
         public InputList<string> BlockingResources
         {
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1.Inputs
         }
 
         /// <summary>
-        /// Output only. Creation time of instruction.
+        /// Creation time of instruction.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1.Inputs
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+        /// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1.Inputs
         public Input<Inputs.GoogleCloudDatalabelingV1beta1PdfInstructionArgs>? PdfInstruction { get; set; }
 
         /// <summary>
-        /// Output only. Last update time of instruction.
+        /// Last update time of instruction.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

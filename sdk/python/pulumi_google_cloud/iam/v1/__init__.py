@@ -11,6 +11,7 @@ from .service_account_key import *
 from .workload_identity_pool import *
 from .workload_identity_pool_provider import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

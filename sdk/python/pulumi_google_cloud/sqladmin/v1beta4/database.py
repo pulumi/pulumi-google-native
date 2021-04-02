@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Database']
@@ -98,7 +99,85 @@ class Database(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["charset"] = None
+        __props__["collation"] = None
+        __props__["etag"] = None
+        __props__["instance"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["project"] = None
+        __props__["self_link"] = None
+        __props__["sqlserver_database_details"] = None
         return Database(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def charset(self) -> pulumi.Output[str]:
+        """
+        The Cloud SQL charset value.
+        """
+        return pulumi.get(self, "charset")
+
+    @property
+    @pulumi.getter
+    def collation(self) -> pulumi.Output[str]:
+        """
+        The Cloud SQL collation value.
+        """
+        return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        This field is deprecated and will be removed from a future version of the API.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def instance(self) -> pulumi.Output[str]:
+        """
+        The name of the Cloud SQL instance. This does not include the project ID.
+        """
+        return pulumi.get(self, "instance")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        This is always *sql#database*.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        """
+        The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        The URI of this resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="sqlserverDatabaseDetails")
+    def sqlserver_database_details(self) -> pulumi.Output['outputs.SqlServerDatabaseDetailsResponse']:
+        return pulumi.get(self, "sqlserver_database_details")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

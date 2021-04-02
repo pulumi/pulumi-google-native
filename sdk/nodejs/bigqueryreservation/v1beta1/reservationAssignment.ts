@@ -62,10 +62,8 @@ export class ReservationAssignment extends pulumi.CustomResource {
             inputs["assignmentsId"] = args ? args.assignmentsId : undefined;
             inputs["jobType"] = args ? args.jobType : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["reservationsId"] = args ? args.reservationsId : undefined;
-            inputs["state"] = args ? args.state : undefined;
         } else {
         }
         if (!opts.version) {
@@ -89,14 +87,6 @@ export interface ReservationAssignmentArgs {
      */
     readonly jobType?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. Name of the resource. E.g.: `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     readonly reservationsId: pulumi.Input<string>;
-    /**
-     * Output only. State of the assignment.
-     */
-    readonly state?: pulumi.Input<string>;
 }

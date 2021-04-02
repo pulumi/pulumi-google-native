@@ -164,6 +164,160 @@ func (o ApiArrayOutput) Index(i pulumi.IntInput) ApiOutput {
 	}).(ApiOutput)
 }
 
+// Api is a light-weight descriptor for an API Interface. Interfaces are also described as "protocol buffer services" in some contexts, such as by the "service" keyword in a .proto file, but they are different from API Services, which represent a concrete implementation of an interface as opposed to simply a description of methods and bindings. They are also sometimes simply referred to as "APIs" in other contexts, such as the name of this message itself. See https://cloud.google.com/apis/design/glossary for detailed terminology.
+type ApiResponse struct {
+	// The methods of this interface, in unspecified order.
+	Methods []MethodResponse `pulumi:"methods"`
+	// Included interfaces. See Mixin.
+	Mixins []MixinResponse `pulumi:"mixins"`
+	// The fully qualified name of this interface, including package name followed by the interface's simple name.
+	Name string `pulumi:"name"`
+	// Any metadata attached to the interface.
+	Options []OptionResponse `pulumi:"options"`
+	// Source context for the protocol buffer service represented by this message.
+	SourceContext SourceContextResponse `pulumi:"sourceContext"`
+	// The source syntax of the service.
+	Syntax string `pulumi:"syntax"`
+	// A version string for this interface. If specified, must have the form `major-version.minor-version`, as in `1.10`. If the minor version is omitted, it defaults to zero. If the entire version field is empty, the major version is derived from the package name, as outlined below. If the field is not empty, the version in the package name will be verified to be consistent with what is provided here. The versioning schema uses [semantic versioning](http://semver.org) where the major version number indicates a breaking change and the minor version an additive, non-breaking change. Both version numbers are signals to users what to expect from different versions, and should be carefully chosen based on the product plan. The major version is also reflected in the package name of the interface, which must end in `v`, as in `google.feature.v1`. For major versions 0 and 1, the suffix can be omitted. Zero major versions must only be used for experimental, non-GA interfaces.
+	Version string `pulumi:"version"`
+}
+
+// ApiResponseInput is an input type that accepts ApiResponseArgs and ApiResponseOutput values.
+// You can construct a concrete instance of `ApiResponseInput` via:
+//
+//          ApiResponseArgs{...}
+type ApiResponseInput interface {
+	pulumi.Input
+
+	ToApiResponseOutput() ApiResponseOutput
+	ToApiResponseOutputWithContext(context.Context) ApiResponseOutput
+}
+
+// Api is a light-weight descriptor for an API Interface. Interfaces are also described as "protocol buffer services" in some contexts, such as by the "service" keyword in a .proto file, but they are different from API Services, which represent a concrete implementation of an interface as opposed to simply a description of methods and bindings. They are also sometimes simply referred to as "APIs" in other contexts, such as the name of this message itself. See https://cloud.google.com/apis/design/glossary for detailed terminology.
+type ApiResponseArgs struct {
+	// The methods of this interface, in unspecified order.
+	Methods MethodResponseArrayInput `pulumi:"methods"`
+	// Included interfaces. See Mixin.
+	Mixins MixinResponseArrayInput `pulumi:"mixins"`
+	// The fully qualified name of this interface, including package name followed by the interface's simple name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Any metadata attached to the interface.
+	Options OptionResponseArrayInput `pulumi:"options"`
+	// Source context for the protocol buffer service represented by this message.
+	SourceContext SourceContextResponseInput `pulumi:"sourceContext"`
+	// The source syntax of the service.
+	Syntax pulumi.StringInput `pulumi:"syntax"`
+	// A version string for this interface. If specified, must have the form `major-version.minor-version`, as in `1.10`. If the minor version is omitted, it defaults to zero. If the entire version field is empty, the major version is derived from the package name, as outlined below. If the field is not empty, the version in the package name will be verified to be consistent with what is provided here. The versioning schema uses [semantic versioning](http://semver.org) where the major version number indicates a breaking change and the minor version an additive, non-breaking change. Both version numbers are signals to users what to expect from different versions, and should be carefully chosen based on the product plan. The major version is also reflected in the package name of the interface, which must end in `v`, as in `google.feature.v1`. For major versions 0 and 1, the suffix can be omitted. Zero major versions must only be used for experimental, non-GA interfaces.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (ApiResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiResponse)(nil)).Elem()
+}
+
+func (i ApiResponseArgs) ToApiResponseOutput() ApiResponseOutput {
+	return i.ToApiResponseOutputWithContext(context.Background())
+}
+
+func (i ApiResponseArgs) ToApiResponseOutputWithContext(ctx context.Context) ApiResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiResponseOutput)
+}
+
+// ApiResponseArrayInput is an input type that accepts ApiResponseArray and ApiResponseArrayOutput values.
+// You can construct a concrete instance of `ApiResponseArrayInput` via:
+//
+//          ApiResponseArray{ ApiResponseArgs{...} }
+type ApiResponseArrayInput interface {
+	pulumi.Input
+
+	ToApiResponseArrayOutput() ApiResponseArrayOutput
+	ToApiResponseArrayOutputWithContext(context.Context) ApiResponseArrayOutput
+}
+
+type ApiResponseArray []ApiResponseInput
+
+func (ApiResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiResponse)(nil)).Elem()
+}
+
+func (i ApiResponseArray) ToApiResponseArrayOutput() ApiResponseArrayOutput {
+	return i.ToApiResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ApiResponseArray) ToApiResponseArrayOutputWithContext(ctx context.Context) ApiResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiResponseArrayOutput)
+}
+
+// Api is a light-weight descriptor for an API Interface. Interfaces are also described as "protocol buffer services" in some contexts, such as by the "service" keyword in a .proto file, but they are different from API Services, which represent a concrete implementation of an interface as opposed to simply a description of methods and bindings. They are also sometimes simply referred to as "APIs" in other contexts, such as the name of this message itself. See https://cloud.google.com/apis/design/glossary for detailed terminology.
+type ApiResponseOutput struct{ *pulumi.OutputState }
+
+func (ApiResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiResponse)(nil)).Elem()
+}
+
+func (o ApiResponseOutput) ToApiResponseOutput() ApiResponseOutput {
+	return o
+}
+
+func (o ApiResponseOutput) ToApiResponseOutputWithContext(ctx context.Context) ApiResponseOutput {
+	return o
+}
+
+// The methods of this interface, in unspecified order.
+func (o ApiResponseOutput) Methods() MethodResponseArrayOutput {
+	return o.ApplyT(func(v ApiResponse) []MethodResponse { return v.Methods }).(MethodResponseArrayOutput)
+}
+
+// Included interfaces. See Mixin.
+func (o ApiResponseOutput) Mixins() MixinResponseArrayOutput {
+	return o.ApplyT(func(v ApiResponse) []MixinResponse { return v.Mixins }).(MixinResponseArrayOutput)
+}
+
+// The fully qualified name of this interface, including package name followed by the interface's simple name.
+func (o ApiResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Any metadata attached to the interface.
+func (o ApiResponseOutput) Options() OptionResponseArrayOutput {
+	return o.ApplyT(func(v ApiResponse) []OptionResponse { return v.Options }).(OptionResponseArrayOutput)
+}
+
+// Source context for the protocol buffer service represented by this message.
+func (o ApiResponseOutput) SourceContext() SourceContextResponseOutput {
+	return o.ApplyT(func(v ApiResponse) SourceContextResponse { return v.SourceContext }).(SourceContextResponseOutput)
+}
+
+// The source syntax of the service.
+func (o ApiResponseOutput) Syntax() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiResponse) string { return v.Syntax }).(pulumi.StringOutput)
+}
+
+// A version string for this interface. If specified, must have the form `major-version.minor-version`, as in `1.10`. If the minor version is omitted, it defaults to zero. If the entire version field is empty, the major version is derived from the package name, as outlined below. If the field is not empty, the version in the package name will be verified to be consistent with what is provided here. The versioning schema uses [semantic versioning](http://semver.org) where the major version number indicates a breaking change and the minor version an additive, non-breaking change. Both version numbers are signals to users what to expect from different versions, and should be carefully chosen based on the product plan. The major version is also reflected in the package name of the interface, which must end in `v`, as in `google.feature.v1`. For major versions 0 and 1, the suffix can be omitted. Zero major versions must only be used for experimental, non-GA interfaces.
+func (o ApiResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type ApiResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiResponse)(nil)).Elem()
+}
+
+func (o ApiResponseArrayOutput) ToApiResponseArrayOutput() ApiResponseArrayOutput {
+	return o
+}
+
+func (o ApiResponseArrayOutput) ToApiResponseArrayOutputWithContext(ctx context.Context) ApiResponseArrayOutput {
+	return o
+}
+
+func (o ApiResponseArrayOutput) Index(i pulumi.IntInput) ApiResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiResponse {
+		return vs[0].([]ApiResponse)[vs[1].(int)]
+	}).(ApiResponseOutput)
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
@@ -273,6 +427,115 @@ func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
 	}).(AuditConfigOutput)
 }
 
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponse struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs []AuditLogConfigResponse `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service string `pulumi:"service"`
+}
+
+// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
+// You can construct a concrete instance of `AuditConfigResponseInput` via:
+//
+//          AuditConfigResponseArgs{...}
+type AuditConfigResponseInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseOutput() AuditConfigResponseOutput
+	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseArgs struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (AuditConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return i.ToAuditConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
+}
+
+// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
+//
+//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
+type AuditConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
+	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
+}
+
+type AuditConfigResponseArray []AuditConfigResponseInput
+
+func (AuditConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return o
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return o
+}
+
+// The configuration for logging of each type of permission.
+func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
+	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
+}
+
+// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+func (o AuditConfigResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditConfigResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type AuditConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditConfigResponse {
+		return vs[0].([]AuditConfigResponse)[vs[1].(int)]
+	}).(AuditConfigResponseOutput)
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -380,6 +643,115 @@ func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfig {
 		return vs[0].([]AuditLogConfig)[vs[1].(int)]
 	}).(AuditLogConfigOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponse struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers []string `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType string `pulumi:"logType"`
+}
+
+// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
+//
+//          AuditLogConfigResponseArgs{...}
+type AuditLogConfigResponseInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
+	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseArgs struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType pulumi.StringInput `pulumi:"logType"`
+}
+
+func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
+}
+
+// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
+//
+//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
+type AuditLogConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
+	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
+}
+
+type AuditLogConfigResponseArray []AuditLogConfigResponseInput
+
+func (AuditLogConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return o
+}
+
+// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
+// The log type that this config enables.
+func (o AuditLogConfigResponseOutput) LogType() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) string { return v.LogType }).(pulumi.StringOutput)
+}
+
+type AuditLogConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfigResponse {
+		return vs[0].([]AuditLogConfigResponse)[vs[1].(int)]
+	}).(AuditLogConfigResponseOutput)
 }
 
 // Configuration for an authentication provider, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
@@ -527,6 +899,142 @@ func (o AuthProviderArrayOutput) Index(i pulumi.IntInput) AuthProviderOutput {
 	}).(AuthProviderOutput)
 }
 
+// Configuration for an authentication provider, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+type AuthProviderResponse struct {
+	// The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is absent, JWTs with audiences: - "https://[service.name]/[google.protobuf.Api.name]" - "https://[service.name]/" will be accepted. For example, if no audiences are in the setting, LibraryService API will accept JWTs with the following audiences: - https://library-example.googleapis.com/google.example.library.v1.LibraryService - https://library-example.googleapis.com/ Example: audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
+	Audiences string `pulumi:"audiences"`
+	// Redirect URL if JWT token is required but not present or is expired. Implement authorizationUrl of securityDefinitions in OpenAPI spec.
+	AuthorizationUrl string `pulumi:"authorizationUrl"`
+	// Identifies the principal that issued the JWT. See https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1 Usually a URL or an email address. Example: https://securetoken.google.com Example: 1234567-compute@developer.gserviceaccount.com
+	Issuer string `pulumi:"issuer"`
+	// URL of the provider's public key set to validate signature of the JWT. See [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). Optional if the key set document: - can be retrieved from [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html) of the issuer. - can be inferred from the email domain of the issuer (e.g. a Google service account). Example: https://www.googleapis.com/oauth2/v1/certs
+	JwksUri string `pulumi:"jwksUri"`
+	// Defines the locations to extract the JWT. JWT locations can be either from HTTP headers or URL query parameters. The rule is that the first match wins. The checking order is: checking all headers first, then URL query parameters. If not specified, default to use following 3 locations: 1) Authorization: Bearer 2) x-goog-iap-jwt-assertion 3) access_token query parameter Default locations can be specified as followings: jwt_locations: - header: Authorization value_prefix: "Bearer " - header: x-goog-iap-jwt-assertion - query: access_token
+	JwtLocations []JwtLocationResponse `pulumi:"jwtLocations"`
+}
+
+// AuthProviderResponseInput is an input type that accepts AuthProviderResponseArgs and AuthProviderResponseOutput values.
+// You can construct a concrete instance of `AuthProviderResponseInput` via:
+//
+//          AuthProviderResponseArgs{...}
+type AuthProviderResponseInput interface {
+	pulumi.Input
+
+	ToAuthProviderResponseOutput() AuthProviderResponseOutput
+	ToAuthProviderResponseOutputWithContext(context.Context) AuthProviderResponseOutput
+}
+
+// Configuration for an authentication provider, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+type AuthProviderResponseArgs struct {
+	// The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is absent, JWTs with audiences: - "https://[service.name]/[google.protobuf.Api.name]" - "https://[service.name]/" will be accepted. For example, if no audiences are in the setting, LibraryService API will accept JWTs with the following audiences: - https://library-example.googleapis.com/google.example.library.v1.LibraryService - https://library-example.googleapis.com/ Example: audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
+	Audiences pulumi.StringInput `pulumi:"audiences"`
+	// Redirect URL if JWT token is required but not present or is expired. Implement authorizationUrl of securityDefinitions in OpenAPI spec.
+	AuthorizationUrl pulumi.StringInput `pulumi:"authorizationUrl"`
+	// Identifies the principal that issued the JWT. See https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1 Usually a URL or an email address. Example: https://securetoken.google.com Example: 1234567-compute@developer.gserviceaccount.com
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+	// URL of the provider's public key set to validate signature of the JWT. See [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). Optional if the key set document: - can be retrieved from [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html) of the issuer. - can be inferred from the email domain of the issuer (e.g. a Google service account). Example: https://www.googleapis.com/oauth2/v1/certs
+	JwksUri pulumi.StringInput `pulumi:"jwksUri"`
+	// Defines the locations to extract the JWT. JWT locations can be either from HTTP headers or URL query parameters. The rule is that the first match wins. The checking order is: checking all headers first, then URL query parameters. If not specified, default to use following 3 locations: 1) Authorization: Bearer 2) x-goog-iap-jwt-assertion 3) access_token query parameter Default locations can be specified as followings: jwt_locations: - header: Authorization value_prefix: "Bearer " - header: x-goog-iap-jwt-assertion - query: access_token
+	JwtLocations JwtLocationResponseArrayInput `pulumi:"jwtLocations"`
+}
+
+func (AuthProviderResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderResponse)(nil)).Elem()
+}
+
+func (i AuthProviderResponseArgs) ToAuthProviderResponseOutput() AuthProviderResponseOutput {
+	return i.ToAuthProviderResponseOutputWithContext(context.Background())
+}
+
+func (i AuthProviderResponseArgs) ToAuthProviderResponseOutputWithContext(ctx context.Context) AuthProviderResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderResponseOutput)
+}
+
+// AuthProviderResponseArrayInput is an input type that accepts AuthProviderResponseArray and AuthProviderResponseArrayOutput values.
+// You can construct a concrete instance of `AuthProviderResponseArrayInput` via:
+//
+//          AuthProviderResponseArray{ AuthProviderResponseArgs{...} }
+type AuthProviderResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuthProviderResponseArrayOutput() AuthProviderResponseArrayOutput
+	ToAuthProviderResponseArrayOutputWithContext(context.Context) AuthProviderResponseArrayOutput
+}
+
+type AuthProviderResponseArray []AuthProviderResponseInput
+
+func (AuthProviderResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthProviderResponse)(nil)).Elem()
+}
+
+func (i AuthProviderResponseArray) ToAuthProviderResponseArrayOutput() AuthProviderResponseArrayOutput {
+	return i.ToAuthProviderResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuthProviderResponseArray) ToAuthProviderResponseArrayOutputWithContext(ctx context.Context) AuthProviderResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthProviderResponseArrayOutput)
+}
+
+// Configuration for an authentication provider, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+type AuthProviderResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthProviderResponse)(nil)).Elem()
+}
+
+func (o AuthProviderResponseOutput) ToAuthProviderResponseOutput() AuthProviderResponseOutput {
+	return o
+}
+
+func (o AuthProviderResponseOutput) ToAuthProviderResponseOutputWithContext(ctx context.Context) AuthProviderResponseOutput {
+	return o
+}
+
+// The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is absent, JWTs with audiences: - "https://[service.name]/[google.protobuf.Api.name]" - "https://[service.name]/" will be accepted. For example, if no audiences are in the setting, LibraryService API will accept JWTs with the following audiences: - https://library-example.googleapis.com/google.example.library.v1.LibraryService - https://library-example.googleapis.com/ Example: audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
+func (o AuthProviderResponseOutput) Audiences() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthProviderResponse) string { return v.Audiences }).(pulumi.StringOutput)
+}
+
+// Redirect URL if JWT token is required but not present or is expired. Implement authorizationUrl of securityDefinitions in OpenAPI spec.
+func (o AuthProviderResponseOutput) AuthorizationUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthProviderResponse) string { return v.AuthorizationUrl }).(pulumi.StringOutput)
+}
+
+// Identifies the principal that issued the JWT. See https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.1 Usually a URL or an email address. Example: https://securetoken.google.com Example: 1234567-compute@developer.gserviceaccount.com
+func (o AuthProviderResponseOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthProviderResponse) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// URL of the provider's public key set to validate signature of the JWT. See [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata). Optional if the key set document: - can be retrieved from [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html) of the issuer. - can be inferred from the email domain of the issuer (e.g. a Google service account). Example: https://www.googleapis.com/oauth2/v1/certs
+func (o AuthProviderResponseOutput) JwksUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthProviderResponse) string { return v.JwksUri }).(pulumi.StringOutput)
+}
+
+// Defines the locations to extract the JWT. JWT locations can be either from HTTP headers or URL query parameters. The rule is that the first match wins. The checking order is: checking all headers first, then URL query parameters. If not specified, default to use following 3 locations: 1) Authorization: Bearer 2) x-goog-iap-jwt-assertion 3) access_token query parameter Default locations can be specified as followings: jwt_locations: - header: Authorization value_prefix: "Bearer " - header: x-goog-iap-jwt-assertion - query: access_token
+func (o AuthProviderResponseOutput) JwtLocations() JwtLocationResponseArrayOutput {
+	return o.ApplyT(func(v AuthProviderResponse) []JwtLocationResponse { return v.JwtLocations }).(JwtLocationResponseArrayOutput)
+}
+
+type AuthProviderResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthProviderResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthProviderResponse)(nil)).Elem()
+}
+
+func (o AuthProviderResponseArrayOutput) ToAuthProviderResponseArrayOutput() AuthProviderResponseArrayOutput {
+	return o
+}
+
+func (o AuthProviderResponseArrayOutput) ToAuthProviderResponseArrayOutputWithContext(ctx context.Context) AuthProviderResponseArrayOutput {
+	return o
+}
+
+func (o AuthProviderResponseArrayOutput) Index(i pulumi.IntInput) AuthProviderResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthProviderResponse {
+		return vs[0].([]AuthProviderResponse)[vs[1].(int)]
+	}).(AuthProviderResponseOutput)
+}
+
 // User-defined authentication requirements, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
 type AuthRequirement struct {
 	// NOTE: This will be deprecated soon, once AuthProvider.audiences is implemented and accepted in all the runtime components. The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is absent, only JWTs with audience "https://Service_name/API_name" will be accepted. For example, if no audiences are in the setting, LibraryService API will only accept JWTs with the following audience "https://library-example.googleapis.com/google.example.library.v1.LibraryService". Example: audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
@@ -634,6 +1142,115 @@ func (o AuthRequirementArrayOutput) Index(i pulumi.IntInput) AuthRequirementOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthRequirement {
 		return vs[0].([]AuthRequirement)[vs[1].(int)]
 	}).(AuthRequirementOutput)
+}
+
+// User-defined authentication requirements, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+type AuthRequirementResponse struct {
+	// NOTE: This will be deprecated soon, once AuthProvider.audiences is implemented and accepted in all the runtime components. The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is absent, only JWTs with audience "https://Service_name/API_name" will be accepted. For example, if no audiences are in the setting, LibraryService API will only accept JWTs with the following audience "https://library-example.googleapis.com/google.example.library.v1.LibraryService". Example: audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
+	Audiences string `pulumi:"audiences"`
+	// id from authentication provider. Example: provider_id: bookstore_auth
+	ProviderId string `pulumi:"providerId"`
+}
+
+// AuthRequirementResponseInput is an input type that accepts AuthRequirementResponseArgs and AuthRequirementResponseOutput values.
+// You can construct a concrete instance of `AuthRequirementResponseInput` via:
+//
+//          AuthRequirementResponseArgs{...}
+type AuthRequirementResponseInput interface {
+	pulumi.Input
+
+	ToAuthRequirementResponseOutput() AuthRequirementResponseOutput
+	ToAuthRequirementResponseOutputWithContext(context.Context) AuthRequirementResponseOutput
+}
+
+// User-defined authentication requirements, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+type AuthRequirementResponseArgs struct {
+	// NOTE: This will be deprecated soon, once AuthProvider.audiences is implemented and accepted in all the runtime components. The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is absent, only JWTs with audience "https://Service_name/API_name" will be accepted. For example, if no audiences are in the setting, LibraryService API will only accept JWTs with the following audience "https://library-example.googleapis.com/google.example.library.v1.LibraryService". Example: audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
+	Audiences pulumi.StringInput `pulumi:"audiences"`
+	// id from authentication provider. Example: provider_id: bookstore_auth
+	ProviderId pulumi.StringInput `pulumi:"providerId"`
+}
+
+func (AuthRequirementResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthRequirementResponse)(nil)).Elem()
+}
+
+func (i AuthRequirementResponseArgs) ToAuthRequirementResponseOutput() AuthRequirementResponseOutput {
+	return i.ToAuthRequirementResponseOutputWithContext(context.Background())
+}
+
+func (i AuthRequirementResponseArgs) ToAuthRequirementResponseOutputWithContext(ctx context.Context) AuthRequirementResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthRequirementResponseOutput)
+}
+
+// AuthRequirementResponseArrayInput is an input type that accepts AuthRequirementResponseArray and AuthRequirementResponseArrayOutput values.
+// You can construct a concrete instance of `AuthRequirementResponseArrayInput` via:
+//
+//          AuthRequirementResponseArray{ AuthRequirementResponseArgs{...} }
+type AuthRequirementResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuthRequirementResponseArrayOutput() AuthRequirementResponseArrayOutput
+	ToAuthRequirementResponseArrayOutputWithContext(context.Context) AuthRequirementResponseArrayOutput
+}
+
+type AuthRequirementResponseArray []AuthRequirementResponseInput
+
+func (AuthRequirementResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthRequirementResponse)(nil)).Elem()
+}
+
+func (i AuthRequirementResponseArray) ToAuthRequirementResponseArrayOutput() AuthRequirementResponseArrayOutput {
+	return i.ToAuthRequirementResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuthRequirementResponseArray) ToAuthRequirementResponseArrayOutputWithContext(ctx context.Context) AuthRequirementResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthRequirementResponseArrayOutput)
+}
+
+// User-defined authentication requirements, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+type AuthRequirementResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthRequirementResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthRequirementResponse)(nil)).Elem()
+}
+
+func (o AuthRequirementResponseOutput) ToAuthRequirementResponseOutput() AuthRequirementResponseOutput {
+	return o
+}
+
+func (o AuthRequirementResponseOutput) ToAuthRequirementResponseOutputWithContext(ctx context.Context) AuthRequirementResponseOutput {
+	return o
+}
+
+// NOTE: This will be deprecated soon, once AuthProvider.audiences is implemented and accepted in all the runtime components. The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is absent, only JWTs with audience "https://Service_name/API_name" will be accepted. For example, if no audiences are in the setting, LibraryService API will only accept JWTs with the following audience "https://library-example.googleapis.com/google.example.library.v1.LibraryService". Example: audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
+func (o AuthRequirementResponseOutput) Audiences() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthRequirementResponse) string { return v.Audiences }).(pulumi.StringOutput)
+}
+
+// id from authentication provider. Example: provider_id: bookstore_auth
+func (o AuthRequirementResponseOutput) ProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthRequirementResponse) string { return v.ProviderId }).(pulumi.StringOutput)
+}
+
+type AuthRequirementResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthRequirementResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthRequirementResponse)(nil)).Elem()
+}
+
+func (o AuthRequirementResponseArrayOutput) ToAuthRequirementResponseArrayOutput() AuthRequirementResponseArrayOutput {
+	return o
+}
+
+func (o AuthRequirementResponseArrayOutput) ToAuthRequirementResponseArrayOutputWithContext(ctx context.Context) AuthRequirementResponseArrayOutput {
+	return o
+}
+
+func (o AuthRequirementResponseArrayOutput) Index(i pulumi.IntInput) AuthRequirementResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthRequirementResponse {
+		return vs[0].([]AuthRequirementResponse)[vs[1].(int)]
+	}).(AuthRequirementResponseOutput)
 }
 
 // `Authentication` defines the authentication configuration for an API. Example for an API targeted for external use: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*" requirements: provider_id: google_calendar_auth
@@ -789,6 +1406,159 @@ func (o AuthenticationPtrOutput) Rules() AuthenticationRuleArrayOutput {
 	}).(AuthenticationRuleArrayOutput)
 }
 
+// `Authentication` defines the authentication configuration for an API. Example for an API targeted for external use: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*" requirements: provider_id: google_calendar_auth
+type AuthenticationResponse struct {
+	// Defines a set of authentication providers that a service supports.
+	Providers []AuthProviderResponse `pulumi:"providers"`
+	// A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules []AuthenticationRuleResponse `pulumi:"rules"`
+}
+
+// AuthenticationResponseInput is an input type that accepts AuthenticationResponseArgs and AuthenticationResponseOutput values.
+// You can construct a concrete instance of `AuthenticationResponseInput` via:
+//
+//          AuthenticationResponseArgs{...}
+type AuthenticationResponseInput interface {
+	pulumi.Input
+
+	ToAuthenticationResponseOutput() AuthenticationResponseOutput
+	ToAuthenticationResponseOutputWithContext(context.Context) AuthenticationResponseOutput
+}
+
+// `Authentication` defines the authentication configuration for an API. Example for an API targeted for external use: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*" requirements: provider_id: google_calendar_auth
+type AuthenticationResponseArgs struct {
+	// Defines a set of authentication providers that a service supports.
+	Providers AuthProviderResponseArrayInput `pulumi:"providers"`
+	// A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules AuthenticationRuleResponseArrayInput `pulumi:"rules"`
+}
+
+func (AuthenticationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticationResponse)(nil)).Elem()
+}
+
+func (i AuthenticationResponseArgs) ToAuthenticationResponseOutput() AuthenticationResponseOutput {
+	return i.ToAuthenticationResponseOutputWithContext(context.Background())
+}
+
+func (i AuthenticationResponseArgs) ToAuthenticationResponseOutputWithContext(ctx context.Context) AuthenticationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationResponseOutput)
+}
+
+func (i AuthenticationResponseArgs) ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput {
+	return i.ToAuthenticationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AuthenticationResponseArgs) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationResponseOutput).ToAuthenticationResponsePtrOutputWithContext(ctx)
+}
+
+// AuthenticationResponsePtrInput is an input type that accepts AuthenticationResponseArgs, AuthenticationResponsePtr and AuthenticationResponsePtrOutput values.
+// You can construct a concrete instance of `AuthenticationResponsePtrInput` via:
+//
+//          AuthenticationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AuthenticationResponsePtrInput interface {
+	pulumi.Input
+
+	ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput
+	ToAuthenticationResponsePtrOutputWithContext(context.Context) AuthenticationResponsePtrOutput
+}
+
+type authenticationResponsePtrType AuthenticationResponseArgs
+
+func AuthenticationResponsePtr(v *AuthenticationResponseArgs) AuthenticationResponsePtrInput {
+	return (*authenticationResponsePtrType)(v)
+}
+
+func (*authenticationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthenticationResponse)(nil)).Elem()
+}
+
+func (i *authenticationResponsePtrType) ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput {
+	return i.ToAuthenticationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *authenticationResponsePtrType) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationResponsePtrOutput)
+}
+
+// `Authentication` defines the authentication configuration for an API. Example for an API targeted for external use: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*" requirements: provider_id: google_calendar_auth
+type AuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticationResponse)(nil)).Elem()
+}
+
+func (o AuthenticationResponseOutput) ToAuthenticationResponseOutput() AuthenticationResponseOutput {
+	return o
+}
+
+func (o AuthenticationResponseOutput) ToAuthenticationResponseOutputWithContext(ctx context.Context) AuthenticationResponseOutput {
+	return o
+}
+
+func (o AuthenticationResponseOutput) ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput {
+	return o.ToAuthenticationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AuthenticationResponseOutput) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v AuthenticationResponse) *AuthenticationResponse {
+		return &v
+	}).(AuthenticationResponsePtrOutput)
+}
+
+// Defines a set of authentication providers that a service supports.
+func (o AuthenticationResponseOutput) Providers() AuthProviderResponseArrayOutput {
+	return o.ApplyT(func(v AuthenticationResponse) []AuthProviderResponse { return v.Providers }).(AuthProviderResponseArrayOutput)
+}
+
+// A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+func (o AuthenticationResponseOutput) Rules() AuthenticationRuleResponseArrayOutput {
+	return o.ApplyT(func(v AuthenticationResponse) []AuthenticationRuleResponse { return v.Rules }).(AuthenticationRuleResponseArrayOutput)
+}
+
+type AuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthenticationResponse)(nil)).Elem()
+}
+
+func (o AuthenticationResponsePtrOutput) ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o AuthenticationResponsePtrOutput) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o AuthenticationResponsePtrOutput) Elem() AuthenticationResponseOutput {
+	return o.ApplyT(func(v *AuthenticationResponse) AuthenticationResponse { return *v }).(AuthenticationResponseOutput)
+}
+
+// Defines a set of authentication providers that a service supports.
+func (o AuthenticationResponsePtrOutput) Providers() AuthProviderResponseArrayOutput {
+	return o.ApplyT(func(v *AuthenticationResponse) []AuthProviderResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Providers
+	}).(AuthProviderResponseArrayOutput)
+}
+
+// A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+func (o AuthenticationResponsePtrOutput) Rules() AuthenticationRuleResponseArrayOutput {
+	return o.ApplyT(func(v *AuthenticationResponse) []AuthenticationRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(AuthenticationRuleResponseArrayOutput)
+}
+
 // Authentication rules for the service. By default, if a method has any authentication requirements, every request must include a valid credential matching one of the requirements. It's an error to include more than one kind of credential in a single request. If a method doesn't have any auth requirements, request credentials will be ignored.
 type AuthenticationRule struct {
 	// If true, the service accepts API keys without any other credential. This flag only applies to HTTP and gRPC requests.
@@ -914,6 +1684,133 @@ func (o AuthenticationRuleArrayOutput) Index(i pulumi.IntInput) AuthenticationRu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthenticationRule {
 		return vs[0].([]AuthenticationRule)[vs[1].(int)]
 	}).(AuthenticationRuleOutput)
+}
+
+// Authentication rules for the service. By default, if a method has any authentication requirements, every request must include a valid credential matching one of the requirements. It's an error to include more than one kind of credential in a single request. If a method doesn't have any auth requirements, request credentials will be ignored.
+type AuthenticationRuleResponse struct {
+	// If true, the service accepts API keys without any other credential. This flag only applies to HTTP and gRPC requests.
+	AllowWithoutCredential bool `pulumi:"allowWithoutCredential"`
+	// The requirements for OAuth credentials.
+	Oauth OAuthRequirementsResponse `pulumi:"oauth"`
+	// Requirements for additional authentication providers.
+	Requirements []AuthRequirementResponse `pulumi:"requirements"`
+	// Selects the methods to which this rule applies. Refer to selector for syntax details.
+	Selector string `pulumi:"selector"`
+}
+
+// AuthenticationRuleResponseInput is an input type that accepts AuthenticationRuleResponseArgs and AuthenticationRuleResponseOutput values.
+// You can construct a concrete instance of `AuthenticationRuleResponseInput` via:
+//
+//          AuthenticationRuleResponseArgs{...}
+type AuthenticationRuleResponseInput interface {
+	pulumi.Input
+
+	ToAuthenticationRuleResponseOutput() AuthenticationRuleResponseOutput
+	ToAuthenticationRuleResponseOutputWithContext(context.Context) AuthenticationRuleResponseOutput
+}
+
+// Authentication rules for the service. By default, if a method has any authentication requirements, every request must include a valid credential matching one of the requirements. It's an error to include more than one kind of credential in a single request. If a method doesn't have any auth requirements, request credentials will be ignored.
+type AuthenticationRuleResponseArgs struct {
+	// If true, the service accepts API keys without any other credential. This flag only applies to HTTP and gRPC requests.
+	AllowWithoutCredential pulumi.BoolInput `pulumi:"allowWithoutCredential"`
+	// The requirements for OAuth credentials.
+	Oauth OAuthRequirementsResponseInput `pulumi:"oauth"`
+	// Requirements for additional authentication providers.
+	Requirements AuthRequirementResponseArrayInput `pulumi:"requirements"`
+	// Selects the methods to which this rule applies. Refer to selector for syntax details.
+	Selector pulumi.StringInput `pulumi:"selector"`
+}
+
+func (AuthenticationRuleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticationRuleResponse)(nil)).Elem()
+}
+
+func (i AuthenticationRuleResponseArgs) ToAuthenticationRuleResponseOutput() AuthenticationRuleResponseOutput {
+	return i.ToAuthenticationRuleResponseOutputWithContext(context.Background())
+}
+
+func (i AuthenticationRuleResponseArgs) ToAuthenticationRuleResponseOutputWithContext(ctx context.Context) AuthenticationRuleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationRuleResponseOutput)
+}
+
+// AuthenticationRuleResponseArrayInput is an input type that accepts AuthenticationRuleResponseArray and AuthenticationRuleResponseArrayOutput values.
+// You can construct a concrete instance of `AuthenticationRuleResponseArrayInput` via:
+//
+//          AuthenticationRuleResponseArray{ AuthenticationRuleResponseArgs{...} }
+type AuthenticationRuleResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuthenticationRuleResponseArrayOutput() AuthenticationRuleResponseArrayOutput
+	ToAuthenticationRuleResponseArrayOutputWithContext(context.Context) AuthenticationRuleResponseArrayOutput
+}
+
+type AuthenticationRuleResponseArray []AuthenticationRuleResponseInput
+
+func (AuthenticationRuleResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthenticationRuleResponse)(nil)).Elem()
+}
+
+func (i AuthenticationRuleResponseArray) ToAuthenticationRuleResponseArrayOutput() AuthenticationRuleResponseArrayOutput {
+	return i.ToAuthenticationRuleResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuthenticationRuleResponseArray) ToAuthenticationRuleResponseArrayOutputWithContext(ctx context.Context) AuthenticationRuleResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationRuleResponseArrayOutput)
+}
+
+// Authentication rules for the service. By default, if a method has any authentication requirements, every request must include a valid credential matching one of the requirements. It's an error to include more than one kind of credential in a single request. If a method doesn't have any auth requirements, request credentials will be ignored.
+type AuthenticationRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticationRuleResponse)(nil)).Elem()
+}
+
+func (o AuthenticationRuleResponseOutput) ToAuthenticationRuleResponseOutput() AuthenticationRuleResponseOutput {
+	return o
+}
+
+func (o AuthenticationRuleResponseOutput) ToAuthenticationRuleResponseOutputWithContext(ctx context.Context) AuthenticationRuleResponseOutput {
+	return o
+}
+
+// If true, the service accepts API keys without any other credential. This flag only applies to HTTP and gRPC requests.
+func (o AuthenticationRuleResponseOutput) AllowWithoutCredential() pulumi.BoolOutput {
+	return o.ApplyT(func(v AuthenticationRuleResponse) bool { return v.AllowWithoutCredential }).(pulumi.BoolOutput)
+}
+
+// The requirements for OAuth credentials.
+func (o AuthenticationRuleResponseOutput) Oauth() OAuthRequirementsResponseOutput {
+	return o.ApplyT(func(v AuthenticationRuleResponse) OAuthRequirementsResponse { return v.Oauth }).(OAuthRequirementsResponseOutput)
+}
+
+// Requirements for additional authentication providers.
+func (o AuthenticationRuleResponseOutput) Requirements() AuthRequirementResponseArrayOutput {
+	return o.ApplyT(func(v AuthenticationRuleResponse) []AuthRequirementResponse { return v.Requirements }).(AuthRequirementResponseArrayOutput)
+}
+
+// Selects the methods to which this rule applies. Refer to selector for syntax details.
+func (o AuthenticationRuleResponseOutput) Selector() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthenticationRuleResponse) string { return v.Selector }).(pulumi.StringOutput)
+}
+
+type AuthenticationRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthenticationRuleResponse)(nil)).Elem()
+}
+
+func (o AuthenticationRuleResponseArrayOutput) ToAuthenticationRuleResponseArrayOutput() AuthenticationRuleResponseArrayOutput {
+	return o
+}
+
+func (o AuthenticationRuleResponseArrayOutput) ToAuthenticationRuleResponseArrayOutputWithContext(ctx context.Context) AuthenticationRuleResponseArrayOutput {
+	return o
+}
+
+func (o AuthenticationRuleResponseArrayOutput) Index(i pulumi.IntInput) AuthenticationRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthenticationRuleResponse {
+		return vs[0].([]AuthenticationRuleResponse)[vs[1].(int)]
+	}).(AuthenticationRuleResponseOutput)
 }
 
 // `Backend` defines the backend configuration for a service.
@@ -1048,6 +1945,140 @@ func (o BackendPtrOutput) Rules() BackendRuleArrayOutput {
 		}
 		return v.Rules
 	}).(BackendRuleArrayOutput)
+}
+
+// `Backend` defines the backend configuration for a service.
+type BackendResponse struct {
+	// A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules []BackendRuleResponse `pulumi:"rules"`
+}
+
+// BackendResponseInput is an input type that accepts BackendResponseArgs and BackendResponseOutput values.
+// You can construct a concrete instance of `BackendResponseInput` via:
+//
+//          BackendResponseArgs{...}
+type BackendResponseInput interface {
+	pulumi.Input
+
+	ToBackendResponseOutput() BackendResponseOutput
+	ToBackendResponseOutputWithContext(context.Context) BackendResponseOutput
+}
+
+// `Backend` defines the backend configuration for a service.
+type BackendResponseArgs struct {
+	// A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules BackendRuleResponseArrayInput `pulumi:"rules"`
+}
+
+func (BackendResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendResponse)(nil)).Elem()
+}
+
+func (i BackendResponseArgs) ToBackendResponseOutput() BackendResponseOutput {
+	return i.ToBackendResponseOutputWithContext(context.Background())
+}
+
+func (i BackendResponseArgs) ToBackendResponseOutputWithContext(ctx context.Context) BackendResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendResponseOutput)
+}
+
+func (i BackendResponseArgs) ToBackendResponsePtrOutput() BackendResponsePtrOutput {
+	return i.ToBackendResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BackendResponseArgs) ToBackendResponsePtrOutputWithContext(ctx context.Context) BackendResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendResponseOutput).ToBackendResponsePtrOutputWithContext(ctx)
+}
+
+// BackendResponsePtrInput is an input type that accepts BackendResponseArgs, BackendResponsePtr and BackendResponsePtrOutput values.
+// You can construct a concrete instance of `BackendResponsePtrInput` via:
+//
+//          BackendResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BackendResponsePtrInput interface {
+	pulumi.Input
+
+	ToBackendResponsePtrOutput() BackendResponsePtrOutput
+	ToBackendResponsePtrOutputWithContext(context.Context) BackendResponsePtrOutput
+}
+
+type backendResponsePtrType BackendResponseArgs
+
+func BackendResponsePtr(v *BackendResponseArgs) BackendResponsePtrInput {
+	return (*backendResponsePtrType)(v)
+}
+
+func (*backendResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendResponse)(nil)).Elem()
+}
+
+func (i *backendResponsePtrType) ToBackendResponsePtrOutput() BackendResponsePtrOutput {
+	return i.ToBackendResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *backendResponsePtrType) ToBackendResponsePtrOutputWithContext(ctx context.Context) BackendResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendResponsePtrOutput)
+}
+
+// `Backend` defines the backend configuration for a service.
+type BackendResponseOutput struct{ *pulumi.OutputState }
+
+func (BackendResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendResponse)(nil)).Elem()
+}
+
+func (o BackendResponseOutput) ToBackendResponseOutput() BackendResponseOutput {
+	return o
+}
+
+func (o BackendResponseOutput) ToBackendResponseOutputWithContext(ctx context.Context) BackendResponseOutput {
+	return o
+}
+
+func (o BackendResponseOutput) ToBackendResponsePtrOutput() BackendResponsePtrOutput {
+	return o.ToBackendResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BackendResponseOutput) ToBackendResponsePtrOutputWithContext(ctx context.Context) BackendResponsePtrOutput {
+	return o.ApplyT(func(v BackendResponse) *BackendResponse {
+		return &v
+	}).(BackendResponsePtrOutput)
+}
+
+// A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+func (o BackendResponseOutput) Rules() BackendRuleResponseArrayOutput {
+	return o.ApplyT(func(v BackendResponse) []BackendRuleResponse { return v.Rules }).(BackendRuleResponseArrayOutput)
+}
+
+type BackendResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BackendResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendResponse)(nil)).Elem()
+}
+
+func (o BackendResponsePtrOutput) ToBackendResponsePtrOutput() BackendResponsePtrOutput {
+	return o
+}
+
+func (o BackendResponsePtrOutput) ToBackendResponsePtrOutputWithContext(ctx context.Context) BackendResponsePtrOutput {
+	return o
+}
+
+func (o BackendResponsePtrOutput) Elem() BackendResponseOutput {
+	return o.ApplyT(func(v *BackendResponse) BackendResponse { return *v }).(BackendResponseOutput)
+}
+
+// A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+func (o BackendResponsePtrOutput) Rules() BackendRuleResponseArrayOutput {
+	return o.ApplyT(func(v *BackendResponse) []BackendRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(BackendRuleResponseArrayOutput)
 }
 
 // A backend rule provides configuration for an individual API element.
@@ -1217,6 +2248,175 @@ func (o BackendRuleArrayOutput) Index(i pulumi.IntInput) BackendRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendRule {
 		return vs[0].([]BackendRule)[vs[1].(int)]
 	}).(BackendRuleOutput)
+}
+
+// A backend rule provides configuration for an individual API element.
+type BackendRuleResponse struct {
+	// The address of the API backend. The scheme is used to determine the backend protocol and security. The following schemes are accepted: SCHEME PROTOCOL SECURITY http:// HTTP None https:// HTTP TLS grpc:// gRPC None grpcs:// gRPC TLS It is recommended to explicitly include a scheme. Leaving out the scheme may cause constrasting behaviors across platforms. If the port is unspecified, the default is: - 80 for schemes without TLS - 443 for schemes with TLS For HTTP backends, use protocol to specify the protocol version.
+	Address string `pulumi:"address"`
+	// The number of seconds to wait for a response from a request. The default varies based on the request protocol and deployment environment.
+	Deadline float64 `pulumi:"deadline"`
+	// When disable_auth is true, a JWT ID token won't be generated and the original "Authorization" HTTP header will be preserved. If the header is used to carry the original token and is expected by the backend, this field must be set to true to preserve the header.
+	DisableAuth bool `pulumi:"disableAuth"`
+	// The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
+	JwtAudience string `pulumi:"jwtAudience"`
+	// Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.
+	MinDeadline float64 `pulumi:"minDeadline"`
+	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
+	OperationDeadline float64 `pulumi:"operationDeadline"`
+	PathTranslation   string  `pulumi:"pathTranslation"`
+	// The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
+	Protocol string `pulumi:"protocol"`
+	// Selects the methods to which this rule applies. Refer to selector for syntax details.
+	Selector string `pulumi:"selector"`
+}
+
+// BackendRuleResponseInput is an input type that accepts BackendRuleResponseArgs and BackendRuleResponseOutput values.
+// You can construct a concrete instance of `BackendRuleResponseInput` via:
+//
+//          BackendRuleResponseArgs{...}
+type BackendRuleResponseInput interface {
+	pulumi.Input
+
+	ToBackendRuleResponseOutput() BackendRuleResponseOutput
+	ToBackendRuleResponseOutputWithContext(context.Context) BackendRuleResponseOutput
+}
+
+// A backend rule provides configuration for an individual API element.
+type BackendRuleResponseArgs struct {
+	// The address of the API backend. The scheme is used to determine the backend protocol and security. The following schemes are accepted: SCHEME PROTOCOL SECURITY http:// HTTP None https:// HTTP TLS grpc:// gRPC None grpcs:// gRPC TLS It is recommended to explicitly include a scheme. Leaving out the scheme may cause constrasting behaviors across platforms. If the port is unspecified, the default is: - 80 for schemes without TLS - 443 for schemes with TLS For HTTP backends, use protocol to specify the protocol version.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The number of seconds to wait for a response from a request. The default varies based on the request protocol and deployment environment.
+	Deadline pulumi.Float64Input `pulumi:"deadline"`
+	// When disable_auth is true, a JWT ID token won't be generated and the original "Authorization" HTTP header will be preserved. If the header is used to carry the original token and is expected by the backend, this field must be set to true to preserve the header.
+	DisableAuth pulumi.BoolInput `pulumi:"disableAuth"`
+	// The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
+	JwtAudience pulumi.StringInput `pulumi:"jwtAudience"`
+	// Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.
+	MinDeadline pulumi.Float64Input `pulumi:"minDeadline"`
+	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
+	OperationDeadline pulumi.Float64Input `pulumi:"operationDeadline"`
+	PathTranslation   pulumi.StringInput  `pulumi:"pathTranslation"`
+	// The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Selects the methods to which this rule applies. Refer to selector for syntax details.
+	Selector pulumi.StringInput `pulumi:"selector"`
+}
+
+func (BackendRuleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendRuleResponse)(nil)).Elem()
+}
+
+func (i BackendRuleResponseArgs) ToBackendRuleResponseOutput() BackendRuleResponseOutput {
+	return i.ToBackendRuleResponseOutputWithContext(context.Background())
+}
+
+func (i BackendRuleResponseArgs) ToBackendRuleResponseOutputWithContext(ctx context.Context) BackendRuleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendRuleResponseOutput)
+}
+
+// BackendRuleResponseArrayInput is an input type that accepts BackendRuleResponseArray and BackendRuleResponseArrayOutput values.
+// You can construct a concrete instance of `BackendRuleResponseArrayInput` via:
+//
+//          BackendRuleResponseArray{ BackendRuleResponseArgs{...} }
+type BackendRuleResponseArrayInput interface {
+	pulumi.Input
+
+	ToBackendRuleResponseArrayOutput() BackendRuleResponseArrayOutput
+	ToBackendRuleResponseArrayOutputWithContext(context.Context) BackendRuleResponseArrayOutput
+}
+
+type BackendRuleResponseArray []BackendRuleResponseInput
+
+func (BackendRuleResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendRuleResponse)(nil)).Elem()
+}
+
+func (i BackendRuleResponseArray) ToBackendRuleResponseArrayOutput() BackendRuleResponseArrayOutput {
+	return i.ToBackendRuleResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BackendRuleResponseArray) ToBackendRuleResponseArrayOutputWithContext(ctx context.Context) BackendRuleResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendRuleResponseArrayOutput)
+}
+
+// A backend rule provides configuration for an individual API element.
+type BackendRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (BackendRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendRuleResponse)(nil)).Elem()
+}
+
+func (o BackendRuleResponseOutput) ToBackendRuleResponseOutput() BackendRuleResponseOutput {
+	return o
+}
+
+func (o BackendRuleResponseOutput) ToBackendRuleResponseOutputWithContext(ctx context.Context) BackendRuleResponseOutput {
+	return o
+}
+
+// The address of the API backend. The scheme is used to determine the backend protocol and security. The following schemes are accepted: SCHEME PROTOCOL SECURITY http:// HTTP None https:// HTTP TLS grpc:// gRPC None grpcs:// gRPC TLS It is recommended to explicitly include a scheme. Leaving out the scheme may cause constrasting behaviors across platforms. If the port is unspecified, the default is: - 80 for schemes without TLS - 443 for schemes with TLS For HTTP backends, use protocol to specify the protocol version.
+func (o BackendRuleResponseOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendRuleResponse) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The number of seconds to wait for a response from a request. The default varies based on the request protocol and deployment environment.
+func (o BackendRuleResponseOutput) Deadline() pulumi.Float64Output {
+	return o.ApplyT(func(v BackendRuleResponse) float64 { return v.Deadline }).(pulumi.Float64Output)
+}
+
+// When disable_auth is true, a JWT ID token won't be generated and the original "Authorization" HTTP header will be preserved. If the header is used to carry the original token and is expected by the backend, this field must be set to true to preserve the header.
+func (o BackendRuleResponseOutput) DisableAuth() pulumi.BoolOutput {
+	return o.ApplyT(func(v BackendRuleResponse) bool { return v.DisableAuth }).(pulumi.BoolOutput)
+}
+
+// The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
+func (o BackendRuleResponseOutput) JwtAudience() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendRuleResponse) string { return v.JwtAudience }).(pulumi.StringOutput)
+}
+
+// Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.
+func (o BackendRuleResponseOutput) MinDeadline() pulumi.Float64Output {
+	return o.ApplyT(func(v BackendRuleResponse) float64 { return v.MinDeadline }).(pulumi.Float64Output)
+}
+
+// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
+func (o BackendRuleResponseOutput) OperationDeadline() pulumi.Float64Output {
+	return o.ApplyT(func(v BackendRuleResponse) float64 { return v.OperationDeadline }).(pulumi.Float64Output)
+}
+
+func (o BackendRuleResponseOutput) PathTranslation() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendRuleResponse) string { return v.PathTranslation }).(pulumi.StringOutput)
+}
+
+// The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
+func (o BackendRuleResponseOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendRuleResponse) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Selects the methods to which this rule applies. Refer to selector for syntax details.
+func (o BackendRuleResponseOutput) Selector() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendRuleResponse) string { return v.Selector }).(pulumi.StringOutput)
+}
+
+type BackendRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendRuleResponse)(nil)).Elem()
+}
+
+func (o BackendRuleResponseArrayOutput) ToBackendRuleResponseArrayOutput() BackendRuleResponseArrayOutput {
+	return o
+}
+
+func (o BackendRuleResponseArrayOutput) ToBackendRuleResponseArrayOutputWithContext(ctx context.Context) BackendRuleResponseArrayOutput {
+	return o
+}
+
+func (o BackendRuleResponseArrayOutput) Index(i pulumi.IntInput) BackendRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendRuleResponse {
+		return vs[0].([]BackendRuleResponse)[vs[1].(int)]
+	}).(BackendRuleResponseOutput)
 }
 
 // Billing related configuration of the service. The following example shows how to configure monitored resources and metrics for billing, `consumer_destinations` is the only supported destination and the monitored resources need at least one label key `cloud.googleapis.com/location` to indicate the location of the billing usage, using different monitored resources between monitoring and billing is recommended so they can be evolved independently: monitored_resources: - type: library.googleapis.com/billing_branch labels: - key: cloud.googleapis.com/location description: | Predefined label to support billing location restriction. - key: city description: | Custom label to define the city where the library branch is located in. - key: name description: Custom label to define the name of the library branch. metrics: - name: library.googleapis.com/book/borrowed_count metric_kind: DELTA value_type: INT64 unit: "1" billing: consumer_destinations: - monitored_resource: library.googleapis.com/billing_branch metrics: - library.googleapis.com/book/borrowed_count
@@ -1462,6 +2662,249 @@ func (o BillingDestinationArrayOutput) Index(i pulumi.IntInput) BillingDestinati
 	}).(BillingDestinationOutput)
 }
 
+// Configuration of a specific billing destination (Currently only support bill against consumer project).
+type BillingDestinationResponse struct {
+	// Names of the metrics to report to this billing destination. Each name must be defined in Service.metrics section.
+	Metrics []string `pulumi:"metrics"`
+	// The monitored resource type. The type must be defined in Service.monitored_resources section.
+	MonitoredResource string `pulumi:"monitoredResource"`
+}
+
+// BillingDestinationResponseInput is an input type that accepts BillingDestinationResponseArgs and BillingDestinationResponseOutput values.
+// You can construct a concrete instance of `BillingDestinationResponseInput` via:
+//
+//          BillingDestinationResponseArgs{...}
+type BillingDestinationResponseInput interface {
+	pulumi.Input
+
+	ToBillingDestinationResponseOutput() BillingDestinationResponseOutput
+	ToBillingDestinationResponseOutputWithContext(context.Context) BillingDestinationResponseOutput
+}
+
+// Configuration of a specific billing destination (Currently only support bill against consumer project).
+type BillingDestinationResponseArgs struct {
+	// Names of the metrics to report to this billing destination. Each name must be defined in Service.metrics section.
+	Metrics pulumi.StringArrayInput `pulumi:"metrics"`
+	// The monitored resource type. The type must be defined in Service.monitored_resources section.
+	MonitoredResource pulumi.StringInput `pulumi:"monitoredResource"`
+}
+
+func (BillingDestinationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingDestinationResponse)(nil)).Elem()
+}
+
+func (i BillingDestinationResponseArgs) ToBillingDestinationResponseOutput() BillingDestinationResponseOutput {
+	return i.ToBillingDestinationResponseOutputWithContext(context.Background())
+}
+
+func (i BillingDestinationResponseArgs) ToBillingDestinationResponseOutputWithContext(ctx context.Context) BillingDestinationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingDestinationResponseOutput)
+}
+
+// BillingDestinationResponseArrayInput is an input type that accepts BillingDestinationResponseArray and BillingDestinationResponseArrayOutput values.
+// You can construct a concrete instance of `BillingDestinationResponseArrayInput` via:
+//
+//          BillingDestinationResponseArray{ BillingDestinationResponseArgs{...} }
+type BillingDestinationResponseArrayInput interface {
+	pulumi.Input
+
+	ToBillingDestinationResponseArrayOutput() BillingDestinationResponseArrayOutput
+	ToBillingDestinationResponseArrayOutputWithContext(context.Context) BillingDestinationResponseArrayOutput
+}
+
+type BillingDestinationResponseArray []BillingDestinationResponseInput
+
+func (BillingDestinationResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BillingDestinationResponse)(nil)).Elem()
+}
+
+func (i BillingDestinationResponseArray) ToBillingDestinationResponseArrayOutput() BillingDestinationResponseArrayOutput {
+	return i.ToBillingDestinationResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BillingDestinationResponseArray) ToBillingDestinationResponseArrayOutputWithContext(ctx context.Context) BillingDestinationResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingDestinationResponseArrayOutput)
+}
+
+// Configuration of a specific billing destination (Currently only support bill against consumer project).
+type BillingDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (BillingDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingDestinationResponse)(nil)).Elem()
+}
+
+func (o BillingDestinationResponseOutput) ToBillingDestinationResponseOutput() BillingDestinationResponseOutput {
+	return o
+}
+
+func (o BillingDestinationResponseOutput) ToBillingDestinationResponseOutputWithContext(ctx context.Context) BillingDestinationResponseOutput {
+	return o
+}
+
+// Names of the metrics to report to this billing destination. Each name must be defined in Service.metrics section.
+func (o BillingDestinationResponseOutput) Metrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BillingDestinationResponse) []string { return v.Metrics }).(pulumi.StringArrayOutput)
+}
+
+// The monitored resource type. The type must be defined in Service.monitored_resources section.
+func (o BillingDestinationResponseOutput) MonitoredResource() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingDestinationResponse) string { return v.MonitoredResource }).(pulumi.StringOutput)
+}
+
+type BillingDestinationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BillingDestinationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BillingDestinationResponse)(nil)).Elem()
+}
+
+func (o BillingDestinationResponseArrayOutput) ToBillingDestinationResponseArrayOutput() BillingDestinationResponseArrayOutput {
+	return o
+}
+
+func (o BillingDestinationResponseArrayOutput) ToBillingDestinationResponseArrayOutputWithContext(ctx context.Context) BillingDestinationResponseArrayOutput {
+	return o
+}
+
+func (o BillingDestinationResponseArrayOutput) Index(i pulumi.IntInput) BillingDestinationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BillingDestinationResponse {
+		return vs[0].([]BillingDestinationResponse)[vs[1].(int)]
+	}).(BillingDestinationResponseOutput)
+}
+
+// Billing related configuration of the service. The following example shows how to configure monitored resources and metrics for billing, `consumer_destinations` is the only supported destination and the monitored resources need at least one label key `cloud.googleapis.com/location` to indicate the location of the billing usage, using different monitored resources between monitoring and billing is recommended so they can be evolved independently: monitored_resources: - type: library.googleapis.com/billing_branch labels: - key: cloud.googleapis.com/location description: | Predefined label to support billing location restriction. - key: city description: | Custom label to define the city where the library branch is located in. - key: name description: Custom label to define the name of the library branch. metrics: - name: library.googleapis.com/book/borrowed_count metric_kind: DELTA value_type: INT64 unit: "1" billing: consumer_destinations: - monitored_resource: library.googleapis.com/billing_branch metrics: - library.googleapis.com/book/borrowed_count
+type BillingResponse struct {
+	// Billing configurations for sending metrics to the consumer project. There can be multiple consumer destinations per service, each one must have a different monitored resource type. A metric can be used in at most one consumer destination.
+	ConsumerDestinations []BillingDestinationResponse `pulumi:"consumerDestinations"`
+}
+
+// BillingResponseInput is an input type that accepts BillingResponseArgs and BillingResponseOutput values.
+// You can construct a concrete instance of `BillingResponseInput` via:
+//
+//          BillingResponseArgs{...}
+type BillingResponseInput interface {
+	pulumi.Input
+
+	ToBillingResponseOutput() BillingResponseOutput
+	ToBillingResponseOutputWithContext(context.Context) BillingResponseOutput
+}
+
+// Billing related configuration of the service. The following example shows how to configure monitored resources and metrics for billing, `consumer_destinations` is the only supported destination and the monitored resources need at least one label key `cloud.googleapis.com/location` to indicate the location of the billing usage, using different monitored resources between monitoring and billing is recommended so they can be evolved independently: monitored_resources: - type: library.googleapis.com/billing_branch labels: - key: cloud.googleapis.com/location description: | Predefined label to support billing location restriction. - key: city description: | Custom label to define the city where the library branch is located in. - key: name description: Custom label to define the name of the library branch. metrics: - name: library.googleapis.com/book/borrowed_count metric_kind: DELTA value_type: INT64 unit: "1" billing: consumer_destinations: - monitored_resource: library.googleapis.com/billing_branch metrics: - library.googleapis.com/book/borrowed_count
+type BillingResponseArgs struct {
+	// Billing configurations for sending metrics to the consumer project. There can be multiple consumer destinations per service, each one must have a different monitored resource type. A metric can be used in at most one consumer destination.
+	ConsumerDestinations BillingDestinationResponseArrayInput `pulumi:"consumerDestinations"`
+}
+
+func (BillingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingResponse)(nil)).Elem()
+}
+
+func (i BillingResponseArgs) ToBillingResponseOutput() BillingResponseOutput {
+	return i.ToBillingResponseOutputWithContext(context.Background())
+}
+
+func (i BillingResponseArgs) ToBillingResponseOutputWithContext(ctx context.Context) BillingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingResponseOutput)
+}
+
+func (i BillingResponseArgs) ToBillingResponsePtrOutput() BillingResponsePtrOutput {
+	return i.ToBillingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BillingResponseArgs) ToBillingResponsePtrOutputWithContext(ctx context.Context) BillingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingResponseOutput).ToBillingResponsePtrOutputWithContext(ctx)
+}
+
+// BillingResponsePtrInput is an input type that accepts BillingResponseArgs, BillingResponsePtr and BillingResponsePtrOutput values.
+// You can construct a concrete instance of `BillingResponsePtrInput` via:
+//
+//          BillingResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BillingResponsePtrInput interface {
+	pulumi.Input
+
+	ToBillingResponsePtrOutput() BillingResponsePtrOutput
+	ToBillingResponsePtrOutputWithContext(context.Context) BillingResponsePtrOutput
+}
+
+type billingResponsePtrType BillingResponseArgs
+
+func BillingResponsePtr(v *BillingResponseArgs) BillingResponsePtrInput {
+	return (*billingResponsePtrType)(v)
+}
+
+func (*billingResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingResponse)(nil)).Elem()
+}
+
+func (i *billingResponsePtrType) ToBillingResponsePtrOutput() BillingResponsePtrOutput {
+	return i.ToBillingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *billingResponsePtrType) ToBillingResponsePtrOutputWithContext(ctx context.Context) BillingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingResponsePtrOutput)
+}
+
+// Billing related configuration of the service. The following example shows how to configure monitored resources and metrics for billing, `consumer_destinations` is the only supported destination and the monitored resources need at least one label key `cloud.googleapis.com/location` to indicate the location of the billing usage, using different monitored resources between monitoring and billing is recommended so they can be evolved independently: monitored_resources: - type: library.googleapis.com/billing_branch labels: - key: cloud.googleapis.com/location description: | Predefined label to support billing location restriction. - key: city description: | Custom label to define the city where the library branch is located in. - key: name description: Custom label to define the name of the library branch. metrics: - name: library.googleapis.com/book/borrowed_count metric_kind: DELTA value_type: INT64 unit: "1" billing: consumer_destinations: - monitored_resource: library.googleapis.com/billing_branch metrics: - library.googleapis.com/book/borrowed_count
+type BillingResponseOutput struct{ *pulumi.OutputState }
+
+func (BillingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingResponse)(nil)).Elem()
+}
+
+func (o BillingResponseOutput) ToBillingResponseOutput() BillingResponseOutput {
+	return o
+}
+
+func (o BillingResponseOutput) ToBillingResponseOutputWithContext(ctx context.Context) BillingResponseOutput {
+	return o
+}
+
+func (o BillingResponseOutput) ToBillingResponsePtrOutput() BillingResponsePtrOutput {
+	return o.ToBillingResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BillingResponseOutput) ToBillingResponsePtrOutputWithContext(ctx context.Context) BillingResponsePtrOutput {
+	return o.ApplyT(func(v BillingResponse) *BillingResponse {
+		return &v
+	}).(BillingResponsePtrOutput)
+}
+
+// Billing configurations for sending metrics to the consumer project. There can be multiple consumer destinations per service, each one must have a different monitored resource type. A metric can be used in at most one consumer destination.
+func (o BillingResponseOutput) ConsumerDestinations() BillingDestinationResponseArrayOutput {
+	return o.ApplyT(func(v BillingResponse) []BillingDestinationResponse { return v.ConsumerDestinations }).(BillingDestinationResponseArrayOutput)
+}
+
+type BillingResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BillingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingResponse)(nil)).Elem()
+}
+
+func (o BillingResponsePtrOutput) ToBillingResponsePtrOutput() BillingResponsePtrOutput {
+	return o
+}
+
+func (o BillingResponsePtrOutput) ToBillingResponsePtrOutputWithContext(ctx context.Context) BillingResponsePtrOutput {
+	return o
+}
+
+func (o BillingResponsePtrOutput) Elem() BillingResponseOutput {
+	return o.ApplyT(func(v *BillingResponse) BillingResponse { return *v }).(BillingResponseOutput)
+}
+
+// Billing configurations for sending metrics to the consumer project. There can be multiple consumer destinations per service, each one must have a different monitored resource type. A metric can be used in at most one consumer destination.
+func (o BillingResponsePtrOutput) ConsumerDestinations() BillingDestinationResponseArrayOutput {
+	return o.ApplyT(func(v *BillingResponse) []BillingDestinationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerDestinations
+	}).(BillingDestinationResponseArrayOutput)
+}
+
 // Associates `members` with a `role`.
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -1578,6 +3021,124 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Binding {
 		return vs[0].([]Binding)[vs[1].(int)]
 	}).(BindingOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
+// You can construct a concrete instance of `BindingResponseInput` via:
+//
+//          BindingResponseArgs{...}
+type BindingResponseInput interface {
+	pulumi.Input
+
+	ToBindingResponseOutput() BindingResponseOutput
+	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
+}
+
+// Associates `members` with a `role`.
+type BindingResponseArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
+	return i.ToBindingResponseOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
+}
+
+// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
+// You can construct a concrete instance of `BindingResponseArrayInput` via:
+//
+//          BindingResponseArray{ BindingResponseArgs{...} }
+type BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToBindingResponseArrayOutput() BindingResponseArrayOutput
+	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
+}
+
+type BindingResponseArray []BindingResponseInput
+
+func (BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return i.ToBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
+		return vs[0].([]BindingResponse)[vs[1].(int)]
+	}).(BindingResponseOutput)
 }
 
 // `Context` defines which contexts an API requests. Example: context: rules: - selector: "*" requested: - google.rpc.context.ProjectContext - google.rpc.context.OriginContext The above specifies that all methods in the API request `google.rpc.context.ProjectContext` and `google.rpc.context.OriginContext`. Available context types are defined in package `google.rpc.context`. This also provides mechanism to allowlist any protobuf message extension that can be sent in grpc metadata using “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example, list any service specific protobuf types that can appear in grpc metadata as follows in your yaml file: Example: context: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allowed_request_extensions: - google.foo.v1.NewExtension allowed_response_extensions: - google.foo.v1.NewExtension You can also specify extension ID instead of fully qualified extension name here.
@@ -1712,6 +3273,140 @@ func (o ContextPtrOutput) Rules() ContextRuleArrayOutput {
 		}
 		return v.Rules
 	}).(ContextRuleArrayOutput)
+}
+
+// `Context` defines which contexts an API requests. Example: context: rules: - selector: "*" requested: - google.rpc.context.ProjectContext - google.rpc.context.OriginContext The above specifies that all methods in the API request `google.rpc.context.ProjectContext` and `google.rpc.context.OriginContext`. Available context types are defined in package `google.rpc.context`. This also provides mechanism to allowlist any protobuf message extension that can be sent in grpc metadata using “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example, list any service specific protobuf types that can appear in grpc metadata as follows in your yaml file: Example: context: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allowed_request_extensions: - google.foo.v1.NewExtension allowed_response_extensions: - google.foo.v1.NewExtension You can also specify extension ID instead of fully qualified extension name here.
+type ContextResponse struct {
+	// A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules []ContextRuleResponse `pulumi:"rules"`
+}
+
+// ContextResponseInput is an input type that accepts ContextResponseArgs and ContextResponseOutput values.
+// You can construct a concrete instance of `ContextResponseInput` via:
+//
+//          ContextResponseArgs{...}
+type ContextResponseInput interface {
+	pulumi.Input
+
+	ToContextResponseOutput() ContextResponseOutput
+	ToContextResponseOutputWithContext(context.Context) ContextResponseOutput
+}
+
+// `Context` defines which contexts an API requests. Example: context: rules: - selector: "*" requested: - google.rpc.context.ProjectContext - google.rpc.context.OriginContext The above specifies that all methods in the API request `google.rpc.context.ProjectContext` and `google.rpc.context.OriginContext`. Available context types are defined in package `google.rpc.context`. This also provides mechanism to allowlist any protobuf message extension that can be sent in grpc metadata using “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example, list any service specific protobuf types that can appear in grpc metadata as follows in your yaml file: Example: context: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allowed_request_extensions: - google.foo.v1.NewExtension allowed_response_extensions: - google.foo.v1.NewExtension You can also specify extension ID instead of fully qualified extension name here.
+type ContextResponseArgs struct {
+	// A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules ContextRuleResponseArrayInput `pulumi:"rules"`
+}
+
+func (ContextResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContextResponse)(nil)).Elem()
+}
+
+func (i ContextResponseArgs) ToContextResponseOutput() ContextResponseOutput {
+	return i.ToContextResponseOutputWithContext(context.Background())
+}
+
+func (i ContextResponseArgs) ToContextResponseOutputWithContext(ctx context.Context) ContextResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContextResponseOutput)
+}
+
+func (i ContextResponseArgs) ToContextResponsePtrOutput() ContextResponsePtrOutput {
+	return i.ToContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ContextResponseArgs) ToContextResponsePtrOutputWithContext(ctx context.Context) ContextResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContextResponseOutput).ToContextResponsePtrOutputWithContext(ctx)
+}
+
+// ContextResponsePtrInput is an input type that accepts ContextResponseArgs, ContextResponsePtr and ContextResponsePtrOutput values.
+// You can construct a concrete instance of `ContextResponsePtrInput` via:
+//
+//          ContextResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ContextResponsePtrInput interface {
+	pulumi.Input
+
+	ToContextResponsePtrOutput() ContextResponsePtrOutput
+	ToContextResponsePtrOutputWithContext(context.Context) ContextResponsePtrOutput
+}
+
+type contextResponsePtrType ContextResponseArgs
+
+func ContextResponsePtr(v *ContextResponseArgs) ContextResponsePtrInput {
+	return (*contextResponsePtrType)(v)
+}
+
+func (*contextResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContextResponse)(nil)).Elem()
+}
+
+func (i *contextResponsePtrType) ToContextResponsePtrOutput() ContextResponsePtrOutput {
+	return i.ToContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *contextResponsePtrType) ToContextResponsePtrOutputWithContext(ctx context.Context) ContextResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContextResponsePtrOutput)
+}
+
+// `Context` defines which contexts an API requests. Example: context: rules: - selector: "*" requested: - google.rpc.context.ProjectContext - google.rpc.context.OriginContext The above specifies that all methods in the API request `google.rpc.context.ProjectContext` and `google.rpc.context.OriginContext`. Available context types are defined in package `google.rpc.context`. This also provides mechanism to allowlist any protobuf message extension that can be sent in grpc metadata using “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example, list any service specific protobuf types that can appear in grpc metadata as follows in your yaml file: Example: context: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allowed_request_extensions: - google.foo.v1.NewExtension allowed_response_extensions: - google.foo.v1.NewExtension You can also specify extension ID instead of fully qualified extension name here.
+type ContextResponseOutput struct{ *pulumi.OutputState }
+
+func (ContextResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContextResponse)(nil)).Elem()
+}
+
+func (o ContextResponseOutput) ToContextResponseOutput() ContextResponseOutput {
+	return o
+}
+
+func (o ContextResponseOutput) ToContextResponseOutputWithContext(ctx context.Context) ContextResponseOutput {
+	return o
+}
+
+func (o ContextResponseOutput) ToContextResponsePtrOutput() ContextResponsePtrOutput {
+	return o.ToContextResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ContextResponseOutput) ToContextResponsePtrOutputWithContext(ctx context.Context) ContextResponsePtrOutput {
+	return o.ApplyT(func(v ContextResponse) *ContextResponse {
+		return &v
+	}).(ContextResponsePtrOutput)
+}
+
+// A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+func (o ContextResponseOutput) Rules() ContextRuleResponseArrayOutput {
+	return o.ApplyT(func(v ContextResponse) []ContextRuleResponse { return v.Rules }).(ContextRuleResponseArrayOutput)
+}
+
+type ContextResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ContextResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContextResponse)(nil)).Elem()
+}
+
+func (o ContextResponsePtrOutput) ToContextResponsePtrOutput() ContextResponsePtrOutput {
+	return o
+}
+
+func (o ContextResponsePtrOutput) ToContextResponsePtrOutputWithContext(ctx context.Context) ContextResponsePtrOutput {
+	return o
+}
+
+func (o ContextResponsePtrOutput) Elem() ContextResponseOutput {
+	return o.ApplyT(func(v *ContextResponse) ContextResponse { return *v }).(ContextResponseOutput)
+}
+
+// A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+func (o ContextResponsePtrOutput) Rules() ContextRuleResponseArrayOutput {
+	return o.ApplyT(func(v *ContextResponse) []ContextRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(ContextRuleResponseArrayOutput)
 }
 
 // A context rule provides information about the context for an individual API element.
@@ -1850,6 +3545,142 @@ func (o ContextRuleArrayOutput) Index(i pulumi.IntInput) ContextRuleOutput {
 	}).(ContextRuleOutput)
 }
 
+// A context rule provides information about the context for an individual API element.
+type ContextRuleResponse struct {
+	// A list of full type names or extension IDs of extensions allowed in grpc side channel from client to backend.
+	AllowedRequestExtensions []string `pulumi:"allowedRequestExtensions"`
+	// A list of full type names or extension IDs of extensions allowed in grpc side channel from backend to client.
+	AllowedResponseExtensions []string `pulumi:"allowedResponseExtensions"`
+	// A list of full type names of provided contexts.
+	Provided []string `pulumi:"provided"`
+	// A list of full type names of requested contexts.
+	Requested []string `pulumi:"requested"`
+	// Selects the methods to which this rule applies. Refer to selector for syntax details.
+	Selector string `pulumi:"selector"`
+}
+
+// ContextRuleResponseInput is an input type that accepts ContextRuleResponseArgs and ContextRuleResponseOutput values.
+// You can construct a concrete instance of `ContextRuleResponseInput` via:
+//
+//          ContextRuleResponseArgs{...}
+type ContextRuleResponseInput interface {
+	pulumi.Input
+
+	ToContextRuleResponseOutput() ContextRuleResponseOutput
+	ToContextRuleResponseOutputWithContext(context.Context) ContextRuleResponseOutput
+}
+
+// A context rule provides information about the context for an individual API element.
+type ContextRuleResponseArgs struct {
+	// A list of full type names or extension IDs of extensions allowed in grpc side channel from client to backend.
+	AllowedRequestExtensions pulumi.StringArrayInput `pulumi:"allowedRequestExtensions"`
+	// A list of full type names or extension IDs of extensions allowed in grpc side channel from backend to client.
+	AllowedResponseExtensions pulumi.StringArrayInput `pulumi:"allowedResponseExtensions"`
+	// A list of full type names of provided contexts.
+	Provided pulumi.StringArrayInput `pulumi:"provided"`
+	// A list of full type names of requested contexts.
+	Requested pulumi.StringArrayInput `pulumi:"requested"`
+	// Selects the methods to which this rule applies. Refer to selector for syntax details.
+	Selector pulumi.StringInput `pulumi:"selector"`
+}
+
+func (ContextRuleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContextRuleResponse)(nil)).Elem()
+}
+
+func (i ContextRuleResponseArgs) ToContextRuleResponseOutput() ContextRuleResponseOutput {
+	return i.ToContextRuleResponseOutputWithContext(context.Background())
+}
+
+func (i ContextRuleResponseArgs) ToContextRuleResponseOutputWithContext(ctx context.Context) ContextRuleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContextRuleResponseOutput)
+}
+
+// ContextRuleResponseArrayInput is an input type that accepts ContextRuleResponseArray and ContextRuleResponseArrayOutput values.
+// You can construct a concrete instance of `ContextRuleResponseArrayInput` via:
+//
+//          ContextRuleResponseArray{ ContextRuleResponseArgs{...} }
+type ContextRuleResponseArrayInput interface {
+	pulumi.Input
+
+	ToContextRuleResponseArrayOutput() ContextRuleResponseArrayOutput
+	ToContextRuleResponseArrayOutputWithContext(context.Context) ContextRuleResponseArrayOutput
+}
+
+type ContextRuleResponseArray []ContextRuleResponseInput
+
+func (ContextRuleResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContextRuleResponse)(nil)).Elem()
+}
+
+func (i ContextRuleResponseArray) ToContextRuleResponseArrayOutput() ContextRuleResponseArrayOutput {
+	return i.ToContextRuleResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ContextRuleResponseArray) ToContextRuleResponseArrayOutputWithContext(ctx context.Context) ContextRuleResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContextRuleResponseArrayOutput)
+}
+
+// A context rule provides information about the context for an individual API element.
+type ContextRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (ContextRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContextRuleResponse)(nil)).Elem()
+}
+
+func (o ContextRuleResponseOutput) ToContextRuleResponseOutput() ContextRuleResponseOutput {
+	return o
+}
+
+func (o ContextRuleResponseOutput) ToContextRuleResponseOutputWithContext(ctx context.Context) ContextRuleResponseOutput {
+	return o
+}
+
+// A list of full type names or extension IDs of extensions allowed in grpc side channel from client to backend.
+func (o ContextRuleResponseOutput) AllowedRequestExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContextRuleResponse) []string { return v.AllowedRequestExtensions }).(pulumi.StringArrayOutput)
+}
+
+// A list of full type names or extension IDs of extensions allowed in grpc side channel from backend to client.
+func (o ContextRuleResponseOutput) AllowedResponseExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContextRuleResponse) []string { return v.AllowedResponseExtensions }).(pulumi.StringArrayOutput)
+}
+
+// A list of full type names of provided contexts.
+func (o ContextRuleResponseOutput) Provided() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContextRuleResponse) []string { return v.Provided }).(pulumi.StringArrayOutput)
+}
+
+// A list of full type names of requested contexts.
+func (o ContextRuleResponseOutput) Requested() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContextRuleResponse) []string { return v.Requested }).(pulumi.StringArrayOutput)
+}
+
+// Selects the methods to which this rule applies. Refer to selector for syntax details.
+func (o ContextRuleResponseOutput) Selector() pulumi.StringOutput {
+	return o.ApplyT(func(v ContextRuleResponse) string { return v.Selector }).(pulumi.StringOutput)
+}
+
+type ContextRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ContextRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContextRuleResponse)(nil)).Elem()
+}
+
+func (o ContextRuleResponseArrayOutput) ToContextRuleResponseArrayOutput() ContextRuleResponseArrayOutput {
+	return o
+}
+
+func (o ContextRuleResponseArrayOutput) ToContextRuleResponseArrayOutputWithContext(ctx context.Context) ContextRuleResponseArrayOutput {
+	return o
+}
+
+func (o ContextRuleResponseArrayOutput) Index(i pulumi.IntInput) ContextRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContextRuleResponse {
+		return vs[0].([]ContextRuleResponse)[vs[1].(int)]
+	}).(ContextRuleResponseOutput)
+}
+
 // Selects and configures the service controller used by the service. The service controller handles features like abuse, quota, billing, logging, monitoring, etc.
 type Control struct {
 	// The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
@@ -1981,6 +3812,140 @@ func (o ControlPtrOutput) Environment() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Environment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Selects and configures the service controller used by the service. The service controller handles features like abuse, quota, billing, logging, monitoring, etc.
+type ControlResponse struct {
+	// The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
+	Environment string `pulumi:"environment"`
+}
+
+// ControlResponseInput is an input type that accepts ControlResponseArgs and ControlResponseOutput values.
+// You can construct a concrete instance of `ControlResponseInput` via:
+//
+//          ControlResponseArgs{...}
+type ControlResponseInput interface {
+	pulumi.Input
+
+	ToControlResponseOutput() ControlResponseOutput
+	ToControlResponseOutputWithContext(context.Context) ControlResponseOutput
+}
+
+// Selects and configures the service controller used by the service. The service controller handles features like abuse, quota, billing, logging, monitoring, etc.
+type ControlResponseArgs struct {
+	// The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
+	Environment pulumi.StringInput `pulumi:"environment"`
+}
+
+func (ControlResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlResponse)(nil)).Elem()
+}
+
+func (i ControlResponseArgs) ToControlResponseOutput() ControlResponseOutput {
+	return i.ToControlResponseOutputWithContext(context.Background())
+}
+
+func (i ControlResponseArgs) ToControlResponseOutputWithContext(ctx context.Context) ControlResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlResponseOutput)
+}
+
+func (i ControlResponseArgs) ToControlResponsePtrOutput() ControlResponsePtrOutput {
+	return i.ToControlResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ControlResponseArgs) ToControlResponsePtrOutputWithContext(ctx context.Context) ControlResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlResponseOutput).ToControlResponsePtrOutputWithContext(ctx)
+}
+
+// ControlResponsePtrInput is an input type that accepts ControlResponseArgs, ControlResponsePtr and ControlResponsePtrOutput values.
+// You can construct a concrete instance of `ControlResponsePtrInput` via:
+//
+//          ControlResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ControlResponsePtrInput interface {
+	pulumi.Input
+
+	ToControlResponsePtrOutput() ControlResponsePtrOutput
+	ToControlResponsePtrOutputWithContext(context.Context) ControlResponsePtrOutput
+}
+
+type controlResponsePtrType ControlResponseArgs
+
+func ControlResponsePtr(v *ControlResponseArgs) ControlResponsePtrInput {
+	return (*controlResponsePtrType)(v)
+}
+
+func (*controlResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlResponse)(nil)).Elem()
+}
+
+func (i *controlResponsePtrType) ToControlResponsePtrOutput() ControlResponsePtrOutput {
+	return i.ToControlResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *controlResponsePtrType) ToControlResponsePtrOutputWithContext(ctx context.Context) ControlResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlResponsePtrOutput)
+}
+
+// Selects and configures the service controller used by the service. The service controller handles features like abuse, quota, billing, logging, monitoring, etc.
+type ControlResponseOutput struct{ *pulumi.OutputState }
+
+func (ControlResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlResponse)(nil)).Elem()
+}
+
+func (o ControlResponseOutput) ToControlResponseOutput() ControlResponseOutput {
+	return o
+}
+
+func (o ControlResponseOutput) ToControlResponseOutputWithContext(ctx context.Context) ControlResponseOutput {
+	return o
+}
+
+func (o ControlResponseOutput) ToControlResponsePtrOutput() ControlResponsePtrOutput {
+	return o.ToControlResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ControlResponseOutput) ToControlResponsePtrOutputWithContext(ctx context.Context) ControlResponsePtrOutput {
+	return o.ApplyT(func(v ControlResponse) *ControlResponse {
+		return &v
+	}).(ControlResponsePtrOutput)
+}
+
+// The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
+func (o ControlResponseOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v ControlResponse) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+type ControlResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ControlResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlResponse)(nil)).Elem()
+}
+
+func (o ControlResponsePtrOutput) ToControlResponsePtrOutput() ControlResponsePtrOutput {
+	return o
+}
+
+func (o ControlResponsePtrOutput) ToControlResponsePtrOutputWithContext(ctx context.Context) ControlResponsePtrOutput {
+	return o
+}
+
+func (o ControlResponsePtrOutput) Elem() ControlResponseOutput {
+	return o.ApplyT(func(v *ControlResponse) ControlResponse { return *v }).(ControlResponseOutput)
+}
+
+// The service control environment to use. If empty, no control plane feature (like quota and billing) will be enabled.
+func (o ControlResponsePtrOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ControlResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Environment
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2137,6 +4102,159 @@ func (o CustomErrorPtrOutput) Types() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Customize service error responses. For example, list any service specific protobuf types that can appear in error detail lists of error responses. Example: custom_error: types: - google.foo.v1.CustomError - google.foo.v1.AnotherError
+type CustomErrorResponse struct {
+	// The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules []CustomErrorRuleResponse `pulumi:"rules"`
+	// The list of custom error detail types, e.g. 'google.foo.v1.CustomError'.
+	Types []string `pulumi:"types"`
+}
+
+// CustomErrorResponseInput is an input type that accepts CustomErrorResponseArgs and CustomErrorResponseOutput values.
+// You can construct a concrete instance of `CustomErrorResponseInput` via:
+//
+//          CustomErrorResponseArgs{...}
+type CustomErrorResponseInput interface {
+	pulumi.Input
+
+	ToCustomErrorResponseOutput() CustomErrorResponseOutput
+	ToCustomErrorResponseOutputWithContext(context.Context) CustomErrorResponseOutput
+}
+
+// Customize service error responses. For example, list any service specific protobuf types that can appear in error detail lists of error responses. Example: custom_error: types: - google.foo.v1.CustomError - google.foo.v1.AnotherError
+type CustomErrorResponseArgs struct {
+	// The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules CustomErrorRuleResponseArrayInput `pulumi:"rules"`
+	// The list of custom error detail types, e.g. 'google.foo.v1.CustomError'.
+	Types pulumi.StringArrayInput `pulumi:"types"`
+}
+
+func (CustomErrorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponse)(nil)).Elem()
+}
+
+func (i CustomErrorResponseArgs) ToCustomErrorResponseOutput() CustomErrorResponseOutput {
+	return i.ToCustomErrorResponseOutputWithContext(context.Background())
+}
+
+func (i CustomErrorResponseArgs) ToCustomErrorResponseOutputWithContext(ctx context.Context) CustomErrorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponseOutput)
+}
+
+func (i CustomErrorResponseArgs) ToCustomErrorResponsePtrOutput() CustomErrorResponsePtrOutput {
+	return i.ToCustomErrorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CustomErrorResponseArgs) ToCustomErrorResponsePtrOutputWithContext(ctx context.Context) CustomErrorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponseOutput).ToCustomErrorResponsePtrOutputWithContext(ctx)
+}
+
+// CustomErrorResponsePtrInput is an input type that accepts CustomErrorResponseArgs, CustomErrorResponsePtr and CustomErrorResponsePtrOutput values.
+// You can construct a concrete instance of `CustomErrorResponsePtrInput` via:
+//
+//          CustomErrorResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomErrorResponsePtrInput interface {
+	pulumi.Input
+
+	ToCustomErrorResponsePtrOutput() CustomErrorResponsePtrOutput
+	ToCustomErrorResponsePtrOutputWithContext(context.Context) CustomErrorResponsePtrOutput
+}
+
+type customErrorResponsePtrType CustomErrorResponseArgs
+
+func CustomErrorResponsePtr(v *CustomErrorResponseArgs) CustomErrorResponsePtrInput {
+	return (*customErrorResponsePtrType)(v)
+}
+
+func (*customErrorResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomErrorResponse)(nil)).Elem()
+}
+
+func (i *customErrorResponsePtrType) ToCustomErrorResponsePtrOutput() CustomErrorResponsePtrOutput {
+	return i.ToCustomErrorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *customErrorResponsePtrType) ToCustomErrorResponsePtrOutputWithContext(ctx context.Context) CustomErrorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponsePtrOutput)
+}
+
+// Customize service error responses. For example, list any service specific protobuf types that can appear in error detail lists of error responses. Example: custom_error: types: - google.foo.v1.CustomError - google.foo.v1.AnotherError
+type CustomErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponse)(nil)).Elem()
+}
+
+func (o CustomErrorResponseOutput) ToCustomErrorResponseOutput() CustomErrorResponseOutput {
+	return o
+}
+
+func (o CustomErrorResponseOutput) ToCustomErrorResponseOutputWithContext(ctx context.Context) CustomErrorResponseOutput {
+	return o
+}
+
+func (o CustomErrorResponseOutput) ToCustomErrorResponsePtrOutput() CustomErrorResponsePtrOutput {
+	return o.ToCustomErrorResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CustomErrorResponseOutput) ToCustomErrorResponsePtrOutputWithContext(ctx context.Context) CustomErrorResponsePtrOutput {
+	return o.ApplyT(func(v CustomErrorResponse) *CustomErrorResponse {
+		return &v
+	}).(CustomErrorResponsePtrOutput)
+}
+
+// The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order.
+func (o CustomErrorResponseOutput) Rules() CustomErrorRuleResponseArrayOutput {
+	return o.ApplyT(func(v CustomErrorResponse) []CustomErrorRuleResponse { return v.Rules }).(CustomErrorRuleResponseArrayOutput)
+}
+
+// The list of custom error detail types, e.g. 'google.foo.v1.CustomError'.
+func (o CustomErrorResponseOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomErrorResponse) []string { return v.Types }).(pulumi.StringArrayOutput)
+}
+
+type CustomErrorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomErrorResponse)(nil)).Elem()
+}
+
+func (o CustomErrorResponsePtrOutput) ToCustomErrorResponsePtrOutput() CustomErrorResponsePtrOutput {
+	return o
+}
+
+func (o CustomErrorResponsePtrOutput) ToCustomErrorResponsePtrOutputWithContext(ctx context.Context) CustomErrorResponsePtrOutput {
+	return o
+}
+
+func (o CustomErrorResponsePtrOutput) Elem() CustomErrorResponseOutput {
+	return o.ApplyT(func(v *CustomErrorResponse) CustomErrorResponse { return *v }).(CustomErrorResponseOutput)
+}
+
+// The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order.
+func (o CustomErrorResponsePtrOutput) Rules() CustomErrorRuleResponseArrayOutput {
+	return o.ApplyT(func(v *CustomErrorResponse) []CustomErrorRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(CustomErrorRuleResponseArrayOutput)
+}
+
+// The list of custom error detail types, e.g. 'google.foo.v1.CustomError'.
+func (o CustomErrorResponsePtrOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomErrorResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Types
+	}).(pulumi.StringArrayOutput)
+}
+
 // A custom error rule.
 type CustomErrorRule struct {
 	// Mark this message as possible payload in error response. Otherwise, objects of this type will be filtered when they appear in error payload.
@@ -2244,6 +4362,115 @@ func (o CustomErrorRuleArrayOutput) Index(i pulumi.IntInput) CustomErrorRuleOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomErrorRule {
 		return vs[0].([]CustomErrorRule)[vs[1].(int)]
 	}).(CustomErrorRuleOutput)
+}
+
+// A custom error rule.
+type CustomErrorRuleResponse struct {
+	// Mark this message as possible payload in error response. Otherwise, objects of this type will be filtered when they appear in error payload.
+	IsErrorType bool `pulumi:"isErrorType"`
+	// Selects messages to which this rule applies. Refer to selector for syntax details.
+	Selector string `pulumi:"selector"`
+}
+
+// CustomErrorRuleResponseInput is an input type that accepts CustomErrorRuleResponseArgs and CustomErrorRuleResponseOutput values.
+// You can construct a concrete instance of `CustomErrorRuleResponseInput` via:
+//
+//          CustomErrorRuleResponseArgs{...}
+type CustomErrorRuleResponseInput interface {
+	pulumi.Input
+
+	ToCustomErrorRuleResponseOutput() CustomErrorRuleResponseOutput
+	ToCustomErrorRuleResponseOutputWithContext(context.Context) CustomErrorRuleResponseOutput
+}
+
+// A custom error rule.
+type CustomErrorRuleResponseArgs struct {
+	// Mark this message as possible payload in error response. Otherwise, objects of this type will be filtered when they appear in error payload.
+	IsErrorType pulumi.BoolInput `pulumi:"isErrorType"`
+	// Selects messages to which this rule applies. Refer to selector for syntax details.
+	Selector pulumi.StringInput `pulumi:"selector"`
+}
+
+func (CustomErrorRuleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorRuleResponse)(nil)).Elem()
+}
+
+func (i CustomErrorRuleResponseArgs) ToCustomErrorRuleResponseOutput() CustomErrorRuleResponseOutput {
+	return i.ToCustomErrorRuleResponseOutputWithContext(context.Background())
+}
+
+func (i CustomErrorRuleResponseArgs) ToCustomErrorRuleResponseOutputWithContext(ctx context.Context) CustomErrorRuleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorRuleResponseOutput)
+}
+
+// CustomErrorRuleResponseArrayInput is an input type that accepts CustomErrorRuleResponseArray and CustomErrorRuleResponseArrayOutput values.
+// You can construct a concrete instance of `CustomErrorRuleResponseArrayInput` via:
+//
+//          CustomErrorRuleResponseArray{ CustomErrorRuleResponseArgs{...} }
+type CustomErrorRuleResponseArrayInput interface {
+	pulumi.Input
+
+	ToCustomErrorRuleResponseArrayOutput() CustomErrorRuleResponseArrayOutput
+	ToCustomErrorRuleResponseArrayOutputWithContext(context.Context) CustomErrorRuleResponseArrayOutput
+}
+
+type CustomErrorRuleResponseArray []CustomErrorRuleResponseInput
+
+func (CustomErrorRuleResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomErrorRuleResponse)(nil)).Elem()
+}
+
+func (i CustomErrorRuleResponseArray) ToCustomErrorRuleResponseArrayOutput() CustomErrorRuleResponseArrayOutput {
+	return i.ToCustomErrorRuleResponseArrayOutputWithContext(context.Background())
+}
+
+func (i CustomErrorRuleResponseArray) ToCustomErrorRuleResponseArrayOutputWithContext(ctx context.Context) CustomErrorRuleResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorRuleResponseArrayOutput)
+}
+
+// A custom error rule.
+type CustomErrorRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorRuleResponse)(nil)).Elem()
+}
+
+func (o CustomErrorRuleResponseOutput) ToCustomErrorRuleResponseOutput() CustomErrorRuleResponseOutput {
+	return o
+}
+
+func (o CustomErrorRuleResponseOutput) ToCustomErrorRuleResponseOutputWithContext(ctx context.Context) CustomErrorRuleResponseOutput {
+	return o
+}
+
+// Mark this message as possible payload in error response. Otherwise, objects of this type will be filtered when they appear in error payload.
+func (o CustomErrorRuleResponseOutput) IsErrorType() pulumi.BoolOutput {
+	return o.ApplyT(func(v CustomErrorRuleResponse) bool { return v.IsErrorType }).(pulumi.BoolOutput)
+}
+
+// Selects messages to which this rule applies. Refer to selector for syntax details.
+func (o CustomErrorRuleResponseOutput) Selector() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomErrorRuleResponse) string { return v.Selector }).(pulumi.StringOutput)
+}
+
+type CustomErrorRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomErrorRuleResponse)(nil)).Elem()
+}
+
+func (o CustomErrorRuleResponseArrayOutput) ToCustomErrorRuleResponseArrayOutput() CustomErrorRuleResponseArrayOutput {
+	return o
+}
+
+func (o CustomErrorRuleResponseArrayOutput) ToCustomErrorRuleResponseArrayOutputWithContext(ctx context.Context) CustomErrorRuleResponseArrayOutput {
+	return o
+}
+
+func (o CustomErrorRuleResponseArrayOutput) Index(i pulumi.IntInput) CustomErrorRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomErrorRuleResponse {
+		return vs[0].([]CustomErrorRuleResponse)[vs[1].(int)]
+	}).(CustomErrorRuleResponseOutput)
 }
 
 // A custom pattern is used for defining custom HTTP verb.
@@ -2399,6 +4626,70 @@ func (o CustomHttpPatternPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A custom pattern is used for defining custom HTTP verb.
+type CustomHttpPatternResponse struct {
+	// The name of this custom HTTP verb.
+	Kind string `pulumi:"kind"`
+	// The path matched by this custom verb.
+	Path string `pulumi:"path"`
+}
+
+// CustomHttpPatternResponseInput is an input type that accepts CustomHttpPatternResponseArgs and CustomHttpPatternResponseOutput values.
+// You can construct a concrete instance of `CustomHttpPatternResponseInput` via:
+//
+//          CustomHttpPatternResponseArgs{...}
+type CustomHttpPatternResponseInput interface {
+	pulumi.Input
+
+	ToCustomHttpPatternResponseOutput() CustomHttpPatternResponseOutput
+	ToCustomHttpPatternResponseOutputWithContext(context.Context) CustomHttpPatternResponseOutput
+}
+
+// A custom pattern is used for defining custom HTTP verb.
+type CustomHttpPatternResponseArgs struct {
+	// The name of this custom HTTP verb.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The path matched by this custom verb.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (CustomHttpPatternResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHttpPatternResponse)(nil)).Elem()
+}
+
+func (i CustomHttpPatternResponseArgs) ToCustomHttpPatternResponseOutput() CustomHttpPatternResponseOutput {
+	return i.ToCustomHttpPatternResponseOutputWithContext(context.Background())
+}
+
+func (i CustomHttpPatternResponseArgs) ToCustomHttpPatternResponseOutputWithContext(ctx context.Context) CustomHttpPatternResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHttpPatternResponseOutput)
+}
+
+// A custom pattern is used for defining custom HTTP verb.
+type CustomHttpPatternResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomHttpPatternResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHttpPatternResponse)(nil)).Elem()
+}
+
+func (o CustomHttpPatternResponseOutput) ToCustomHttpPatternResponseOutput() CustomHttpPatternResponseOutput {
+	return o
+}
+
+func (o CustomHttpPatternResponseOutput) ToCustomHttpPatternResponseOutputWithContext(ctx context.Context) CustomHttpPatternResponseOutput {
+	return o
+}
+
+// The name of this custom HTTP verb.
+func (o CustomHttpPatternResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomHttpPatternResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The path matched by this custom verb.
+func (o CustomHttpPatternResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomHttpPatternResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
 // Strategy used to delete a service. This strategy is a placeholder only used by the system generated rollout to delete a service.
 type DeleteServiceStrategy struct {
 }
@@ -2512,6 +4803,121 @@ func (o DeleteServiceStrategyPtrOutput) ToDeleteServiceStrategyPtrOutputWithCont
 
 func (o DeleteServiceStrategyPtrOutput) Elem() DeleteServiceStrategyOutput {
 	return o.ApplyT(func(v *DeleteServiceStrategy) DeleteServiceStrategy { return *v }).(DeleteServiceStrategyOutput)
+}
+
+// Strategy used to delete a service. This strategy is a placeholder only used by the system generated rollout to delete a service.
+type DeleteServiceStrategyResponse struct {
+}
+
+// DeleteServiceStrategyResponseInput is an input type that accepts DeleteServiceStrategyResponseArgs and DeleteServiceStrategyResponseOutput values.
+// You can construct a concrete instance of `DeleteServiceStrategyResponseInput` via:
+//
+//          DeleteServiceStrategyResponseArgs{...}
+type DeleteServiceStrategyResponseInput interface {
+	pulumi.Input
+
+	ToDeleteServiceStrategyResponseOutput() DeleteServiceStrategyResponseOutput
+	ToDeleteServiceStrategyResponseOutputWithContext(context.Context) DeleteServiceStrategyResponseOutput
+}
+
+// Strategy used to delete a service. This strategy is a placeholder only used by the system generated rollout to delete a service.
+type DeleteServiceStrategyResponseArgs struct {
+}
+
+func (DeleteServiceStrategyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeleteServiceStrategyResponse)(nil)).Elem()
+}
+
+func (i DeleteServiceStrategyResponseArgs) ToDeleteServiceStrategyResponseOutput() DeleteServiceStrategyResponseOutput {
+	return i.ToDeleteServiceStrategyResponseOutputWithContext(context.Background())
+}
+
+func (i DeleteServiceStrategyResponseArgs) ToDeleteServiceStrategyResponseOutputWithContext(ctx context.Context) DeleteServiceStrategyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeleteServiceStrategyResponseOutput)
+}
+
+func (i DeleteServiceStrategyResponseArgs) ToDeleteServiceStrategyResponsePtrOutput() DeleteServiceStrategyResponsePtrOutput {
+	return i.ToDeleteServiceStrategyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DeleteServiceStrategyResponseArgs) ToDeleteServiceStrategyResponsePtrOutputWithContext(ctx context.Context) DeleteServiceStrategyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeleteServiceStrategyResponseOutput).ToDeleteServiceStrategyResponsePtrOutputWithContext(ctx)
+}
+
+// DeleteServiceStrategyResponsePtrInput is an input type that accepts DeleteServiceStrategyResponseArgs, DeleteServiceStrategyResponsePtr and DeleteServiceStrategyResponsePtrOutput values.
+// You can construct a concrete instance of `DeleteServiceStrategyResponsePtrInput` via:
+//
+//          DeleteServiceStrategyResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DeleteServiceStrategyResponsePtrInput interface {
+	pulumi.Input
+
+	ToDeleteServiceStrategyResponsePtrOutput() DeleteServiceStrategyResponsePtrOutput
+	ToDeleteServiceStrategyResponsePtrOutputWithContext(context.Context) DeleteServiceStrategyResponsePtrOutput
+}
+
+type deleteServiceStrategyResponsePtrType DeleteServiceStrategyResponseArgs
+
+func DeleteServiceStrategyResponsePtr(v *DeleteServiceStrategyResponseArgs) DeleteServiceStrategyResponsePtrInput {
+	return (*deleteServiceStrategyResponsePtrType)(v)
+}
+
+func (*deleteServiceStrategyResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeleteServiceStrategyResponse)(nil)).Elem()
+}
+
+func (i *deleteServiceStrategyResponsePtrType) ToDeleteServiceStrategyResponsePtrOutput() DeleteServiceStrategyResponsePtrOutput {
+	return i.ToDeleteServiceStrategyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *deleteServiceStrategyResponsePtrType) ToDeleteServiceStrategyResponsePtrOutputWithContext(ctx context.Context) DeleteServiceStrategyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeleteServiceStrategyResponsePtrOutput)
+}
+
+// Strategy used to delete a service. This strategy is a placeholder only used by the system generated rollout to delete a service.
+type DeleteServiceStrategyResponseOutput struct{ *pulumi.OutputState }
+
+func (DeleteServiceStrategyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeleteServiceStrategyResponse)(nil)).Elem()
+}
+
+func (o DeleteServiceStrategyResponseOutput) ToDeleteServiceStrategyResponseOutput() DeleteServiceStrategyResponseOutput {
+	return o
+}
+
+func (o DeleteServiceStrategyResponseOutput) ToDeleteServiceStrategyResponseOutputWithContext(ctx context.Context) DeleteServiceStrategyResponseOutput {
+	return o
+}
+
+func (o DeleteServiceStrategyResponseOutput) ToDeleteServiceStrategyResponsePtrOutput() DeleteServiceStrategyResponsePtrOutput {
+	return o.ToDeleteServiceStrategyResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DeleteServiceStrategyResponseOutput) ToDeleteServiceStrategyResponsePtrOutputWithContext(ctx context.Context) DeleteServiceStrategyResponsePtrOutput {
+	return o.ApplyT(func(v DeleteServiceStrategyResponse) *DeleteServiceStrategyResponse {
+		return &v
+	}).(DeleteServiceStrategyResponsePtrOutput)
+}
+
+type DeleteServiceStrategyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeleteServiceStrategyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeleteServiceStrategyResponse)(nil)).Elem()
+}
+
+func (o DeleteServiceStrategyResponsePtrOutput) ToDeleteServiceStrategyResponsePtrOutput() DeleteServiceStrategyResponsePtrOutput {
+	return o
+}
+
+func (o DeleteServiceStrategyResponsePtrOutput) ToDeleteServiceStrategyResponsePtrOutputWithContext(ctx context.Context) DeleteServiceStrategyResponsePtrOutput {
+	return o
+}
+
+func (o DeleteServiceStrategyResponsePtrOutput) Elem() DeleteServiceStrategyResponseOutput {
+	return o.ApplyT(func(v *DeleteServiceStrategyResponse) DeleteServiceStrategyResponse { return *v }).(DeleteServiceStrategyResponseOutput)
 }
 
 // `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
@@ -2743,6 +5149,235 @@ func (o DocumentationPtrOutput) Summary() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
+type DocumentationResponse struct {
+	// The URL to the root of documentation.
+	DocumentationRootUrl string `pulumi:"documentationRootUrl"`
+	// Declares a single overview page. For example: documentation: summary: ... overview: (== include overview.md ==) This is a shortcut for the following declaration (using pages style): documentation: summary: ... pages: - name: Overview content: (== include overview.md ==) Note: you cannot specify both `overview` field and `pages` field.
+	Overview string `pulumi:"overview"`
+	// The top level pages for the documentation set.
+	Pages []PageResponse `pulumi:"pages"`
+	// A list of documentation rules that apply to individual API elements. **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules []DocumentationRuleResponse `pulumi:"rules"`
+	// Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
+	ServiceRootUrl string `pulumi:"serviceRootUrl"`
+	// A short summary of what the service does. Can only be provided by plain text.
+	Summary string `pulumi:"summary"`
+}
+
+// DocumentationResponseInput is an input type that accepts DocumentationResponseArgs and DocumentationResponseOutput values.
+// You can construct a concrete instance of `DocumentationResponseInput` via:
+//
+//          DocumentationResponseArgs{...}
+type DocumentationResponseInput interface {
+	pulumi.Input
+
+	ToDocumentationResponseOutput() DocumentationResponseOutput
+	ToDocumentationResponseOutputWithContext(context.Context) DocumentationResponseOutput
+}
+
+// `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
+type DocumentationResponseArgs struct {
+	// The URL to the root of documentation.
+	DocumentationRootUrl pulumi.StringInput `pulumi:"documentationRootUrl"`
+	// Declares a single overview page. For example: documentation: summary: ... overview: (== include overview.md ==) This is a shortcut for the following declaration (using pages style): documentation: summary: ... pages: - name: Overview content: (== include overview.md ==) Note: you cannot specify both `overview` field and `pages` field.
+	Overview pulumi.StringInput `pulumi:"overview"`
+	// The top level pages for the documentation set.
+	Pages PageResponseArrayInput `pulumi:"pages"`
+	// A list of documentation rules that apply to individual API elements. **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules DocumentationRuleResponseArrayInput `pulumi:"rules"`
+	// Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
+	ServiceRootUrl pulumi.StringInput `pulumi:"serviceRootUrl"`
+	// A short summary of what the service does. Can only be provided by plain text.
+	Summary pulumi.StringInput `pulumi:"summary"`
+}
+
+func (DocumentationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentationResponse)(nil)).Elem()
+}
+
+func (i DocumentationResponseArgs) ToDocumentationResponseOutput() DocumentationResponseOutput {
+	return i.ToDocumentationResponseOutputWithContext(context.Background())
+}
+
+func (i DocumentationResponseArgs) ToDocumentationResponseOutputWithContext(ctx context.Context) DocumentationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationResponseOutput)
+}
+
+func (i DocumentationResponseArgs) ToDocumentationResponsePtrOutput() DocumentationResponsePtrOutput {
+	return i.ToDocumentationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DocumentationResponseArgs) ToDocumentationResponsePtrOutputWithContext(ctx context.Context) DocumentationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationResponseOutput).ToDocumentationResponsePtrOutputWithContext(ctx)
+}
+
+// DocumentationResponsePtrInput is an input type that accepts DocumentationResponseArgs, DocumentationResponsePtr and DocumentationResponsePtrOutput values.
+// You can construct a concrete instance of `DocumentationResponsePtrInput` via:
+//
+//          DocumentationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DocumentationResponsePtrInput interface {
+	pulumi.Input
+
+	ToDocumentationResponsePtrOutput() DocumentationResponsePtrOutput
+	ToDocumentationResponsePtrOutputWithContext(context.Context) DocumentationResponsePtrOutput
+}
+
+type documentationResponsePtrType DocumentationResponseArgs
+
+func DocumentationResponsePtr(v *DocumentationResponseArgs) DocumentationResponsePtrInput {
+	return (*documentationResponsePtrType)(v)
+}
+
+func (*documentationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DocumentationResponse)(nil)).Elem()
+}
+
+func (i *documentationResponsePtrType) ToDocumentationResponsePtrOutput() DocumentationResponsePtrOutput {
+	return i.ToDocumentationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *documentationResponsePtrType) ToDocumentationResponsePtrOutputWithContext(ctx context.Context) DocumentationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationResponsePtrOutput)
+}
+
+// `Documentation` provides the information for describing a service. Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages; - name: Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get description: > ... - selector: google.calendar.Calendar.Put description: > ... Documentation is provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation defined via the config at normalization time, where documentation provided by config rules overrides IDL provided. A number of constructs specific to the API platform are supported in documentation text. In order to reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (-- internal comment --) A few directives are available in documentation. Note that directives must appear on a single line to be properly identified. The `include` directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is documented together with service config validation.
+type DocumentationResponseOutput struct{ *pulumi.OutputState }
+
+func (DocumentationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentationResponse)(nil)).Elem()
+}
+
+func (o DocumentationResponseOutput) ToDocumentationResponseOutput() DocumentationResponseOutput {
+	return o
+}
+
+func (o DocumentationResponseOutput) ToDocumentationResponseOutputWithContext(ctx context.Context) DocumentationResponseOutput {
+	return o
+}
+
+func (o DocumentationResponseOutput) ToDocumentationResponsePtrOutput() DocumentationResponsePtrOutput {
+	return o.ToDocumentationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DocumentationResponseOutput) ToDocumentationResponsePtrOutputWithContext(ctx context.Context) DocumentationResponsePtrOutput {
+	return o.ApplyT(func(v DocumentationResponse) *DocumentationResponse {
+		return &v
+	}).(DocumentationResponsePtrOutput)
+}
+
+// The URL to the root of documentation.
+func (o DocumentationResponseOutput) DocumentationRootUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentationResponse) string { return v.DocumentationRootUrl }).(pulumi.StringOutput)
+}
+
+// Declares a single overview page. For example: documentation: summary: ... overview: (== include overview.md ==) This is a shortcut for the following declaration (using pages style): documentation: summary: ... pages: - name: Overview content: (== include overview.md ==) Note: you cannot specify both `overview` field and `pages` field.
+func (o DocumentationResponseOutput) Overview() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentationResponse) string { return v.Overview }).(pulumi.StringOutput)
+}
+
+// The top level pages for the documentation set.
+func (o DocumentationResponseOutput) Pages() PageResponseArrayOutput {
+	return o.ApplyT(func(v DocumentationResponse) []PageResponse { return v.Pages }).(PageResponseArrayOutput)
+}
+
+// A list of documentation rules that apply to individual API elements. **NOTE:** All service configuration rules follow "last one wins" order.
+func (o DocumentationResponseOutput) Rules() DocumentationRuleResponseArrayOutput {
+	return o.ApplyT(func(v DocumentationResponse) []DocumentationRuleResponse { return v.Rules }).(DocumentationRuleResponseArrayOutput)
+}
+
+// Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
+func (o DocumentationResponseOutput) ServiceRootUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentationResponse) string { return v.ServiceRootUrl }).(pulumi.StringOutput)
+}
+
+// A short summary of what the service does. Can only be provided by plain text.
+func (o DocumentationResponseOutput) Summary() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentationResponse) string { return v.Summary }).(pulumi.StringOutput)
+}
+
+type DocumentationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DocumentationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DocumentationResponse)(nil)).Elem()
+}
+
+func (o DocumentationResponsePtrOutput) ToDocumentationResponsePtrOutput() DocumentationResponsePtrOutput {
+	return o
+}
+
+func (o DocumentationResponsePtrOutput) ToDocumentationResponsePtrOutputWithContext(ctx context.Context) DocumentationResponsePtrOutput {
+	return o
+}
+
+func (o DocumentationResponsePtrOutput) Elem() DocumentationResponseOutput {
+	return o.ApplyT(func(v *DocumentationResponse) DocumentationResponse { return *v }).(DocumentationResponseOutput)
+}
+
+// The URL to the root of documentation.
+func (o DocumentationResponsePtrOutput) DocumentationRootUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DocumentationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DocumentationRootUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Declares a single overview page. For example: documentation: summary: ... overview: (== include overview.md ==) This is a shortcut for the following declaration (using pages style): documentation: summary: ... pages: - name: Overview content: (== include overview.md ==) Note: you cannot specify both `overview` field and `pages` field.
+func (o DocumentationResponsePtrOutput) Overview() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DocumentationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Overview
+	}).(pulumi.StringPtrOutput)
+}
+
+// The top level pages for the documentation set.
+func (o DocumentationResponsePtrOutput) Pages() PageResponseArrayOutput {
+	return o.ApplyT(func(v *DocumentationResponse) []PageResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Pages
+	}).(PageResponseArrayOutput)
+}
+
+// A list of documentation rules that apply to individual API elements. **NOTE:** All service configuration rules follow "last one wins" order.
+func (o DocumentationResponsePtrOutput) Rules() DocumentationRuleResponseArrayOutput {
+	return o.ApplyT(func(v *DocumentationResponse) []DocumentationRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(DocumentationRuleResponseArrayOutput)
+}
+
+// Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
+func (o DocumentationResponsePtrOutput) ServiceRootUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DocumentationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceRootUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// A short summary of what the service does. Can only be provided by plain text.
+func (o DocumentationResponsePtrOutput) Summary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DocumentationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Summary
+	}).(pulumi.StringPtrOutput)
+}
+
 // A documentation rule provides information about individual API elements.
 type DocumentationRule struct {
 	// Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
@@ -2859,6 +5494,124 @@ func (o DocumentationRuleArrayOutput) Index(i pulumi.IntInput) DocumentationRule
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DocumentationRule {
 		return vs[0].([]DocumentationRule)[vs[1].(int)]
 	}).(DocumentationRuleOutput)
+}
+
+// A documentation rule provides information about individual API elements.
+type DocumentationRuleResponse struct {
+	// Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
+	DeprecationDescription string `pulumi:"deprecationDescription"`
+	// Description of the selected API(s).
+	Description string `pulumi:"description"`
+	// The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
+	Selector string `pulumi:"selector"`
+}
+
+// DocumentationRuleResponseInput is an input type that accepts DocumentationRuleResponseArgs and DocumentationRuleResponseOutput values.
+// You can construct a concrete instance of `DocumentationRuleResponseInput` via:
+//
+//          DocumentationRuleResponseArgs{...}
+type DocumentationRuleResponseInput interface {
+	pulumi.Input
+
+	ToDocumentationRuleResponseOutput() DocumentationRuleResponseOutput
+	ToDocumentationRuleResponseOutputWithContext(context.Context) DocumentationRuleResponseOutput
+}
+
+// A documentation rule provides information about individual API elements.
+type DocumentationRuleResponseArgs struct {
+	// Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
+	DeprecationDescription pulumi.StringInput `pulumi:"deprecationDescription"`
+	// Description of the selected API(s).
+	Description pulumi.StringInput `pulumi:"description"`
+	// The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
+	Selector pulumi.StringInput `pulumi:"selector"`
+}
+
+func (DocumentationRuleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentationRuleResponse)(nil)).Elem()
+}
+
+func (i DocumentationRuleResponseArgs) ToDocumentationRuleResponseOutput() DocumentationRuleResponseOutput {
+	return i.ToDocumentationRuleResponseOutputWithContext(context.Background())
+}
+
+func (i DocumentationRuleResponseArgs) ToDocumentationRuleResponseOutputWithContext(ctx context.Context) DocumentationRuleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationRuleResponseOutput)
+}
+
+// DocumentationRuleResponseArrayInput is an input type that accepts DocumentationRuleResponseArray and DocumentationRuleResponseArrayOutput values.
+// You can construct a concrete instance of `DocumentationRuleResponseArrayInput` via:
+//
+//          DocumentationRuleResponseArray{ DocumentationRuleResponseArgs{...} }
+type DocumentationRuleResponseArrayInput interface {
+	pulumi.Input
+
+	ToDocumentationRuleResponseArrayOutput() DocumentationRuleResponseArrayOutput
+	ToDocumentationRuleResponseArrayOutputWithContext(context.Context) DocumentationRuleResponseArrayOutput
+}
+
+type DocumentationRuleResponseArray []DocumentationRuleResponseInput
+
+func (DocumentationRuleResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DocumentationRuleResponse)(nil)).Elem()
+}
+
+func (i DocumentationRuleResponseArray) ToDocumentationRuleResponseArrayOutput() DocumentationRuleResponseArrayOutput {
+	return i.ToDocumentationRuleResponseArrayOutputWithContext(context.Background())
+}
+
+func (i DocumentationRuleResponseArray) ToDocumentationRuleResponseArrayOutputWithContext(ctx context.Context) DocumentationRuleResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationRuleResponseArrayOutput)
+}
+
+// A documentation rule provides information about individual API elements.
+type DocumentationRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (DocumentationRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentationRuleResponse)(nil)).Elem()
+}
+
+func (o DocumentationRuleResponseOutput) ToDocumentationRuleResponseOutput() DocumentationRuleResponseOutput {
+	return o
+}
+
+func (o DocumentationRuleResponseOutput) ToDocumentationRuleResponseOutputWithContext(ctx context.Context) DocumentationRuleResponseOutput {
+	return o
+}
+
+// Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
+func (o DocumentationRuleResponseOutput) DeprecationDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentationRuleResponse) string { return v.DeprecationDescription }).(pulumi.StringOutput)
+}
+
+// Description of the selected API(s).
+func (o DocumentationRuleResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentationRuleResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The selector is a comma-separated list of patterns. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used.
+func (o DocumentationRuleResponseOutput) Selector() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentationRuleResponse) string { return v.Selector }).(pulumi.StringOutput)
+}
+
+type DocumentationRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DocumentationRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DocumentationRuleResponse)(nil)).Elem()
+}
+
+func (o DocumentationRuleResponseArrayOutput) ToDocumentationRuleResponseArrayOutput() DocumentationRuleResponseArrayOutput {
+	return o
+}
+
+func (o DocumentationRuleResponseArrayOutput) ToDocumentationRuleResponseArrayOutputWithContext(ctx context.Context) DocumentationRuleResponseArrayOutput {
+	return o
+}
+
+func (o DocumentationRuleResponseArrayOutput) Index(i pulumi.IntInput) DocumentationRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DocumentationRuleResponse {
+		return vs[0].([]DocumentationRuleResponse)[vs[1].(int)]
+	}).(DocumentationRuleResponseOutput)
 }
 
 // `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
@@ -2986,6 +5739,133 @@ func (o EndpointArrayOutput) Index(i pulumi.IntInput) EndpointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Endpoint {
 		return vs[0].([]Endpoint)[vs[1].(int)]
 	}).(EndpointOutput)
+}
+
+// `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
+type EndpointResponse struct {
+	// DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+	Aliases []string `pulumi:"aliases"`
+	// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
+	AllowCors bool `pulumi:"allowCors"`
+	// The canonical name of this endpoint.
+	Name string `pulumi:"name"`
+	// The specification of an Internet routable address of API frontend that will handle requests to this [API Endpoint](https://cloud.google.com/apis/design/glossary). It should be either a valid IPv4 address or a fully-qualified domain name. For example, "8.8.8.8" or "myservice.appspot.com".
+	Target string `pulumi:"target"`
+}
+
+// EndpointResponseInput is an input type that accepts EndpointResponseArgs and EndpointResponseOutput values.
+// You can construct a concrete instance of `EndpointResponseInput` via:
+//
+//          EndpointResponseArgs{...}
+type EndpointResponseInput interface {
+	pulumi.Input
+
+	ToEndpointResponseOutput() EndpointResponseOutput
+	ToEndpointResponseOutputWithContext(context.Context) EndpointResponseOutput
+}
+
+// `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
+type EndpointResponseArgs struct {
+	// DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+	Aliases pulumi.StringArrayInput `pulumi:"aliases"`
+	// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
+	AllowCors pulumi.BoolInput `pulumi:"allowCors"`
+	// The canonical name of this endpoint.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The specification of an Internet routable address of API frontend that will handle requests to this [API Endpoint](https://cloud.google.com/apis/design/glossary). It should be either a valid IPv4 address or a fully-qualified domain name. For example, "8.8.8.8" or "myservice.appspot.com".
+	Target pulumi.StringInput `pulumi:"target"`
+}
+
+func (EndpointResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointResponse)(nil)).Elem()
+}
+
+func (i EndpointResponseArgs) ToEndpointResponseOutput() EndpointResponseOutput {
+	return i.ToEndpointResponseOutputWithContext(context.Background())
+}
+
+func (i EndpointResponseArgs) ToEndpointResponseOutputWithContext(ctx context.Context) EndpointResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointResponseOutput)
+}
+
+// EndpointResponseArrayInput is an input type that accepts EndpointResponseArray and EndpointResponseArrayOutput values.
+// You can construct a concrete instance of `EndpointResponseArrayInput` via:
+//
+//          EndpointResponseArray{ EndpointResponseArgs{...} }
+type EndpointResponseArrayInput interface {
+	pulumi.Input
+
+	ToEndpointResponseArrayOutput() EndpointResponseArrayOutput
+	ToEndpointResponseArrayOutputWithContext(context.Context) EndpointResponseArrayOutput
+}
+
+type EndpointResponseArray []EndpointResponseInput
+
+func (EndpointResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointResponse)(nil)).Elem()
+}
+
+func (i EndpointResponseArray) ToEndpointResponseArrayOutput() EndpointResponseArrayOutput {
+	return i.ToEndpointResponseArrayOutputWithContext(context.Background())
+}
+
+func (i EndpointResponseArray) ToEndpointResponseArrayOutputWithContext(ctx context.Context) EndpointResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointResponseArrayOutput)
+}
+
+// `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
+type EndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointResponse)(nil)).Elem()
+}
+
+func (o EndpointResponseOutput) ToEndpointResponseOutput() EndpointResponseOutput {
+	return o
+}
+
+func (o EndpointResponseOutput) ToEndpointResponseOutputWithContext(ctx context.Context) EndpointResponseOutput {
+	return o
+}
+
+// DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+func (o EndpointResponseOutput) Aliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EndpointResponse) []string { return v.Aliases }).(pulumi.StringArrayOutput)
+}
+
+// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
+func (o EndpointResponseOutput) AllowCors() pulumi.BoolOutput {
+	return o.ApplyT(func(v EndpointResponse) bool { return v.AllowCors }).(pulumi.BoolOutput)
+}
+
+// The canonical name of this endpoint.
+func (o EndpointResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The specification of an Internet routable address of API frontend that will handle requests to this [API Endpoint](https://cloud.google.com/apis/design/glossary). It should be either a valid IPv4 address or a fully-qualified domain name. For example, "8.8.8.8" or "myservice.appspot.com".
+func (o EndpointResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+type EndpointResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointResponse)(nil)).Elem()
+}
+
+func (o EndpointResponseArrayOutput) ToEndpointResponseArrayOutput() EndpointResponseArrayOutput {
+	return o
+}
+
+func (o EndpointResponseArrayOutput) ToEndpointResponseArrayOutputWithContext(ctx context.Context) EndpointResponseArrayOutput {
+	return o
+}
+
+func (o EndpointResponseArrayOutput) Index(i pulumi.IntInput) EndpointResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointResponse {
+		return vs[0].([]EndpointResponse)[vs[1].(int)]
+	}).(EndpointResponseOutput)
 }
 
 // Enum type definition.
@@ -3124,6 +6004,142 @@ func (o EnumArrayOutput) Index(i pulumi.IntInput) EnumOutput {
 	}).(EnumOutput)
 }
 
+// Enum type definition.
+type EnumResponse struct {
+	// Enum value definitions.
+	Enumvalue []EnumValueResponse `pulumi:"enumvalue"`
+	// Enum type name.
+	Name string `pulumi:"name"`
+	// Protocol buffer options.
+	Options []OptionResponse `pulumi:"options"`
+	// The source context.
+	SourceContext SourceContextResponse `pulumi:"sourceContext"`
+	// The source syntax.
+	Syntax string `pulumi:"syntax"`
+}
+
+// EnumResponseInput is an input type that accepts EnumResponseArgs and EnumResponseOutput values.
+// You can construct a concrete instance of `EnumResponseInput` via:
+//
+//          EnumResponseArgs{...}
+type EnumResponseInput interface {
+	pulumi.Input
+
+	ToEnumResponseOutput() EnumResponseOutput
+	ToEnumResponseOutputWithContext(context.Context) EnumResponseOutput
+}
+
+// Enum type definition.
+type EnumResponseArgs struct {
+	// Enum value definitions.
+	Enumvalue EnumValueResponseArrayInput `pulumi:"enumvalue"`
+	// Enum type name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Protocol buffer options.
+	Options OptionResponseArrayInput `pulumi:"options"`
+	// The source context.
+	SourceContext SourceContextResponseInput `pulumi:"sourceContext"`
+	// The source syntax.
+	Syntax pulumi.StringInput `pulumi:"syntax"`
+}
+
+func (EnumResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnumResponse)(nil)).Elem()
+}
+
+func (i EnumResponseArgs) ToEnumResponseOutput() EnumResponseOutput {
+	return i.ToEnumResponseOutputWithContext(context.Background())
+}
+
+func (i EnumResponseArgs) ToEnumResponseOutputWithContext(ctx context.Context) EnumResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnumResponseOutput)
+}
+
+// EnumResponseArrayInput is an input type that accepts EnumResponseArray and EnumResponseArrayOutput values.
+// You can construct a concrete instance of `EnumResponseArrayInput` via:
+//
+//          EnumResponseArray{ EnumResponseArgs{...} }
+type EnumResponseArrayInput interface {
+	pulumi.Input
+
+	ToEnumResponseArrayOutput() EnumResponseArrayOutput
+	ToEnumResponseArrayOutputWithContext(context.Context) EnumResponseArrayOutput
+}
+
+type EnumResponseArray []EnumResponseInput
+
+func (EnumResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnumResponse)(nil)).Elem()
+}
+
+func (i EnumResponseArray) ToEnumResponseArrayOutput() EnumResponseArrayOutput {
+	return i.ToEnumResponseArrayOutputWithContext(context.Background())
+}
+
+func (i EnumResponseArray) ToEnumResponseArrayOutputWithContext(ctx context.Context) EnumResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnumResponseArrayOutput)
+}
+
+// Enum type definition.
+type EnumResponseOutput struct{ *pulumi.OutputState }
+
+func (EnumResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnumResponse)(nil)).Elem()
+}
+
+func (o EnumResponseOutput) ToEnumResponseOutput() EnumResponseOutput {
+	return o
+}
+
+func (o EnumResponseOutput) ToEnumResponseOutputWithContext(ctx context.Context) EnumResponseOutput {
+	return o
+}
+
+// Enum value definitions.
+func (o EnumResponseOutput) Enumvalue() EnumValueResponseArrayOutput {
+	return o.ApplyT(func(v EnumResponse) []EnumValueResponse { return v.Enumvalue }).(EnumValueResponseArrayOutput)
+}
+
+// Enum type name.
+func (o EnumResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EnumResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Protocol buffer options.
+func (o EnumResponseOutput) Options() OptionResponseArrayOutput {
+	return o.ApplyT(func(v EnumResponse) []OptionResponse { return v.Options }).(OptionResponseArrayOutput)
+}
+
+// The source context.
+func (o EnumResponseOutput) SourceContext() SourceContextResponseOutput {
+	return o.ApplyT(func(v EnumResponse) SourceContextResponse { return v.SourceContext }).(SourceContextResponseOutput)
+}
+
+// The source syntax.
+func (o EnumResponseOutput) Syntax() pulumi.StringOutput {
+	return o.ApplyT(func(v EnumResponse) string { return v.Syntax }).(pulumi.StringOutput)
+}
+
+type EnumResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EnumResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnumResponse)(nil)).Elem()
+}
+
+func (o EnumResponseArrayOutput) ToEnumResponseArrayOutput() EnumResponseArrayOutput {
+	return o
+}
+
+func (o EnumResponseArrayOutput) ToEnumResponseArrayOutputWithContext(ctx context.Context) EnumResponseArrayOutput {
+	return o
+}
+
+func (o EnumResponseArrayOutput) Index(i pulumi.IntInput) EnumResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnumResponse {
+		return vs[0].([]EnumResponse)[vs[1].(int)]
+	}).(EnumResponseOutput)
+}
+
 // Enum value definition.
 type EnumValue struct {
 	// Enum value name.
@@ -3240,6 +6256,124 @@ func (o EnumValueArrayOutput) Index(i pulumi.IntInput) EnumValueOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnumValue {
 		return vs[0].([]EnumValue)[vs[1].(int)]
 	}).(EnumValueOutput)
+}
+
+// Enum value definition.
+type EnumValueResponse struct {
+	// Enum value name.
+	Name string `pulumi:"name"`
+	// Enum value number.
+	Number int `pulumi:"number"`
+	// Protocol buffer options.
+	Options []OptionResponse `pulumi:"options"`
+}
+
+// EnumValueResponseInput is an input type that accepts EnumValueResponseArgs and EnumValueResponseOutput values.
+// You can construct a concrete instance of `EnumValueResponseInput` via:
+//
+//          EnumValueResponseArgs{...}
+type EnumValueResponseInput interface {
+	pulumi.Input
+
+	ToEnumValueResponseOutput() EnumValueResponseOutput
+	ToEnumValueResponseOutputWithContext(context.Context) EnumValueResponseOutput
+}
+
+// Enum value definition.
+type EnumValueResponseArgs struct {
+	// Enum value name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Enum value number.
+	Number pulumi.IntInput `pulumi:"number"`
+	// Protocol buffer options.
+	Options OptionResponseArrayInput `pulumi:"options"`
+}
+
+func (EnumValueResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnumValueResponse)(nil)).Elem()
+}
+
+func (i EnumValueResponseArgs) ToEnumValueResponseOutput() EnumValueResponseOutput {
+	return i.ToEnumValueResponseOutputWithContext(context.Background())
+}
+
+func (i EnumValueResponseArgs) ToEnumValueResponseOutputWithContext(ctx context.Context) EnumValueResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnumValueResponseOutput)
+}
+
+// EnumValueResponseArrayInput is an input type that accepts EnumValueResponseArray and EnumValueResponseArrayOutput values.
+// You can construct a concrete instance of `EnumValueResponseArrayInput` via:
+//
+//          EnumValueResponseArray{ EnumValueResponseArgs{...} }
+type EnumValueResponseArrayInput interface {
+	pulumi.Input
+
+	ToEnumValueResponseArrayOutput() EnumValueResponseArrayOutput
+	ToEnumValueResponseArrayOutputWithContext(context.Context) EnumValueResponseArrayOutput
+}
+
+type EnumValueResponseArray []EnumValueResponseInput
+
+func (EnumValueResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnumValueResponse)(nil)).Elem()
+}
+
+func (i EnumValueResponseArray) ToEnumValueResponseArrayOutput() EnumValueResponseArrayOutput {
+	return i.ToEnumValueResponseArrayOutputWithContext(context.Background())
+}
+
+func (i EnumValueResponseArray) ToEnumValueResponseArrayOutputWithContext(ctx context.Context) EnumValueResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnumValueResponseArrayOutput)
+}
+
+// Enum value definition.
+type EnumValueResponseOutput struct{ *pulumi.OutputState }
+
+func (EnumValueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnumValueResponse)(nil)).Elem()
+}
+
+func (o EnumValueResponseOutput) ToEnumValueResponseOutput() EnumValueResponseOutput {
+	return o
+}
+
+func (o EnumValueResponseOutput) ToEnumValueResponseOutputWithContext(ctx context.Context) EnumValueResponseOutput {
+	return o
+}
+
+// Enum value name.
+func (o EnumValueResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EnumValueResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Enum value number.
+func (o EnumValueResponseOutput) Number() pulumi.IntOutput {
+	return o.ApplyT(func(v EnumValueResponse) int { return v.Number }).(pulumi.IntOutput)
+}
+
+// Protocol buffer options.
+func (o EnumValueResponseOutput) Options() OptionResponseArrayOutput {
+	return o.ApplyT(func(v EnumValueResponse) []OptionResponse { return v.Options }).(OptionResponseArrayOutput)
+}
+
+type EnumValueResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EnumValueResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnumValueResponse)(nil)).Elem()
+}
+
+func (o EnumValueResponseArrayOutput) ToEnumValueResponseArrayOutput() EnumValueResponseArrayOutput {
+	return o
+}
+
+func (o EnumValueResponseArrayOutput) ToEnumValueResponseArrayOutputWithContext(ctx context.Context) EnumValueResponseArrayOutput {
+	return o
+}
+
+func (o EnumValueResponseArrayOutput) Index(i pulumi.IntInput) EnumValueResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnumValueResponse {
+		return vs[0].([]EnumValueResponse)[vs[1].(int)]
+	}).(EnumValueResponseOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -3433,6 +6567,88 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
+// You can construct a concrete instance of `ExprResponseInput` via:
+//
+//          ExprResponseArgs{...}
+type ExprResponseInput interface {
+	pulumi.Input
+
+	ToExprResponseOutput() ExprResponseOutput
+	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
+	return i.ToExprResponseOutputWithContext(context.Background())
+}
+
+func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseOutput struct{ *pulumi.OutputState }
+
+func (ExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
+	return o
+}
+
+func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
 // A single field of a message type.
 type Field struct {
 	// The field cardinality.
@@ -3614,6 +6830,187 @@ func (o FieldArrayOutput) Index(i pulumi.IntInput) FieldOutput {
 	}).(FieldOutput)
 }
 
+// A single field of a message type.
+type FieldResponse struct {
+	// The field cardinality.
+	Cardinality string `pulumi:"cardinality"`
+	// The string value of the default value of this field. Proto2 syntax only.
+	DefaultValue string `pulumi:"defaultValue"`
+	// The field JSON name.
+	JsonName string `pulumi:"jsonName"`
+	// The field type.
+	Kind string `pulumi:"kind"`
+	// The field name.
+	Name string `pulumi:"name"`
+	// The field number.
+	Number int `pulumi:"number"`
+	// The index of the field type in `Type.oneofs`, for message or enumeration types. The first type has index 1; zero means the type is not in the list.
+	OneofIndex int `pulumi:"oneofIndex"`
+	// The protocol buffer options.
+	Options []OptionResponse `pulumi:"options"`
+	// Whether to use alternative packed wire representation.
+	Packed bool `pulumi:"packed"`
+	// The field type URL, without the scheme, for message or enumeration types. Example: `"type.googleapis.com/google.protobuf.Timestamp"`.
+	TypeUrl string `pulumi:"typeUrl"`
+}
+
+// FieldResponseInput is an input type that accepts FieldResponseArgs and FieldResponseOutput values.
+// You can construct a concrete instance of `FieldResponseInput` via:
+//
+//          FieldResponseArgs{...}
+type FieldResponseInput interface {
+	pulumi.Input
+
+	ToFieldResponseOutput() FieldResponseOutput
+	ToFieldResponseOutputWithContext(context.Context) FieldResponseOutput
+}
+
+// A single field of a message type.
+type FieldResponseArgs struct {
+	// The field cardinality.
+	Cardinality pulumi.StringInput `pulumi:"cardinality"`
+	// The string value of the default value of this field. Proto2 syntax only.
+	DefaultValue pulumi.StringInput `pulumi:"defaultValue"`
+	// The field JSON name.
+	JsonName pulumi.StringInput `pulumi:"jsonName"`
+	// The field type.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The field name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The field number.
+	Number pulumi.IntInput `pulumi:"number"`
+	// The index of the field type in `Type.oneofs`, for message or enumeration types. The first type has index 1; zero means the type is not in the list.
+	OneofIndex pulumi.IntInput `pulumi:"oneofIndex"`
+	// The protocol buffer options.
+	Options OptionResponseArrayInput `pulumi:"options"`
+	// Whether to use alternative packed wire representation.
+	Packed pulumi.BoolInput `pulumi:"packed"`
+	// The field type URL, without the scheme, for message or enumeration types. Example: `"type.googleapis.com/google.protobuf.Timestamp"`.
+	TypeUrl pulumi.StringInput `pulumi:"typeUrl"`
+}
+
+func (FieldResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldResponse)(nil)).Elem()
+}
+
+func (i FieldResponseArgs) ToFieldResponseOutput() FieldResponseOutput {
+	return i.ToFieldResponseOutputWithContext(context.Background())
+}
+
+func (i FieldResponseArgs) ToFieldResponseOutputWithContext(ctx context.Context) FieldResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldResponseOutput)
+}
+
+// FieldResponseArrayInput is an input type that accepts FieldResponseArray and FieldResponseArrayOutput values.
+// You can construct a concrete instance of `FieldResponseArrayInput` via:
+//
+//          FieldResponseArray{ FieldResponseArgs{...} }
+type FieldResponseArrayInput interface {
+	pulumi.Input
+
+	ToFieldResponseArrayOutput() FieldResponseArrayOutput
+	ToFieldResponseArrayOutputWithContext(context.Context) FieldResponseArrayOutput
+}
+
+type FieldResponseArray []FieldResponseInput
+
+func (FieldResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldResponse)(nil)).Elem()
+}
+
+func (i FieldResponseArray) ToFieldResponseArrayOutput() FieldResponseArrayOutput {
+	return i.ToFieldResponseArrayOutputWithContext(context.Background())
+}
+
+func (i FieldResponseArray) ToFieldResponseArrayOutputWithContext(ctx context.Context) FieldResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldResponseArrayOutput)
+}
+
+// A single field of a message type.
+type FieldResponseOutput struct{ *pulumi.OutputState }
+
+func (FieldResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldResponse)(nil)).Elem()
+}
+
+func (o FieldResponseOutput) ToFieldResponseOutput() FieldResponseOutput {
+	return o
+}
+
+func (o FieldResponseOutput) ToFieldResponseOutputWithContext(ctx context.Context) FieldResponseOutput {
+	return o
+}
+
+// The field cardinality.
+func (o FieldResponseOutput) Cardinality() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldResponse) string { return v.Cardinality }).(pulumi.StringOutput)
+}
+
+// The string value of the default value of this field. Proto2 syntax only.
+func (o FieldResponseOutput) DefaultValue() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldResponse) string { return v.DefaultValue }).(pulumi.StringOutput)
+}
+
+// The field JSON name.
+func (o FieldResponseOutput) JsonName() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldResponse) string { return v.JsonName }).(pulumi.StringOutput)
+}
+
+// The field type.
+func (o FieldResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The field name.
+func (o FieldResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The field number.
+func (o FieldResponseOutput) Number() pulumi.IntOutput {
+	return o.ApplyT(func(v FieldResponse) int { return v.Number }).(pulumi.IntOutput)
+}
+
+// The index of the field type in `Type.oneofs`, for message or enumeration types. The first type has index 1; zero means the type is not in the list.
+func (o FieldResponseOutput) OneofIndex() pulumi.IntOutput {
+	return o.ApplyT(func(v FieldResponse) int { return v.OneofIndex }).(pulumi.IntOutput)
+}
+
+// The protocol buffer options.
+func (o FieldResponseOutput) Options() OptionResponseArrayOutput {
+	return o.ApplyT(func(v FieldResponse) []OptionResponse { return v.Options }).(OptionResponseArrayOutput)
+}
+
+// Whether to use alternative packed wire representation.
+func (o FieldResponseOutput) Packed() pulumi.BoolOutput {
+	return o.ApplyT(func(v FieldResponse) bool { return v.Packed }).(pulumi.BoolOutput)
+}
+
+// The field type URL, without the scheme, for message or enumeration types. Example: `"type.googleapis.com/google.protobuf.Timestamp"`.
+func (o FieldResponseOutput) TypeUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v FieldResponse) string { return v.TypeUrl }).(pulumi.StringOutput)
+}
+
+type FieldResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FieldResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldResponse)(nil)).Elem()
+}
+
+func (o FieldResponseArrayOutput) ToFieldResponseArrayOutput() FieldResponseArrayOutput {
+	return o
+}
+
+func (o FieldResponseArrayOutput) ToFieldResponseArrayOutputWithContext(ctx context.Context) FieldResponseArrayOutput {
+	return o
+}
+
+func (o FieldResponseArrayOutput) Index(i pulumi.IntInput) FieldResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FieldResponse {
+		return vs[0].([]FieldResponse)[vs[1].(int)]
+	}).(FieldResponseOutput)
+}
+
 // Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the mapping of an RPC method to one or more HTTP REST API methods.
 type Http struct {
 	// When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
@@ -3765,6 +7162,159 @@ func (o HttpPtrOutput) Rules() HttpRuleArrayOutput {
 		}
 		return v.Rules
 	}).(HttpRuleArrayOutput)
+}
+
+// Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the mapping of an RPC method to one or more HTTP REST API methods.
+type HttpResponse struct {
+	// When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
+	FullyDecodeReservedExpansion bool `pulumi:"fullyDecodeReservedExpansion"`
+	// A list of HTTP configuration rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules []HttpRuleResponse `pulumi:"rules"`
+}
+
+// HttpResponseInput is an input type that accepts HttpResponseArgs and HttpResponseOutput values.
+// You can construct a concrete instance of `HttpResponseInput` via:
+//
+//          HttpResponseArgs{...}
+type HttpResponseInput interface {
+	pulumi.Input
+
+	ToHttpResponseOutput() HttpResponseOutput
+	ToHttpResponseOutputWithContext(context.Context) HttpResponseOutput
+}
+
+// Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the mapping of an RPC method to one or more HTTP REST API methods.
+type HttpResponseArgs struct {
+	// When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
+	FullyDecodeReservedExpansion pulumi.BoolInput `pulumi:"fullyDecodeReservedExpansion"`
+	// A list of HTTP configuration rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules HttpRuleResponseArrayInput `pulumi:"rules"`
+}
+
+func (HttpResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpResponse)(nil)).Elem()
+}
+
+func (i HttpResponseArgs) ToHttpResponseOutput() HttpResponseOutput {
+	return i.ToHttpResponseOutputWithContext(context.Background())
+}
+
+func (i HttpResponseArgs) ToHttpResponseOutputWithContext(ctx context.Context) HttpResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpResponseOutput)
+}
+
+func (i HttpResponseArgs) ToHttpResponsePtrOutput() HttpResponsePtrOutput {
+	return i.ToHttpResponsePtrOutputWithContext(context.Background())
+}
+
+func (i HttpResponseArgs) ToHttpResponsePtrOutputWithContext(ctx context.Context) HttpResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpResponseOutput).ToHttpResponsePtrOutputWithContext(ctx)
+}
+
+// HttpResponsePtrInput is an input type that accepts HttpResponseArgs, HttpResponsePtr and HttpResponsePtrOutput values.
+// You can construct a concrete instance of `HttpResponsePtrInput` via:
+//
+//          HttpResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type HttpResponsePtrInput interface {
+	pulumi.Input
+
+	ToHttpResponsePtrOutput() HttpResponsePtrOutput
+	ToHttpResponsePtrOutputWithContext(context.Context) HttpResponsePtrOutput
+}
+
+type httpResponsePtrType HttpResponseArgs
+
+func HttpResponsePtr(v *HttpResponseArgs) HttpResponsePtrInput {
+	return (*httpResponsePtrType)(v)
+}
+
+func (*httpResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpResponse)(nil)).Elem()
+}
+
+func (i *httpResponsePtrType) ToHttpResponsePtrOutput() HttpResponsePtrOutput {
+	return i.ToHttpResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *httpResponsePtrType) ToHttpResponsePtrOutputWithContext(ctx context.Context) HttpResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpResponsePtrOutput)
+}
+
+// Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the mapping of an RPC method to one or more HTTP REST API methods.
+type HttpResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpResponse)(nil)).Elem()
+}
+
+func (o HttpResponseOutput) ToHttpResponseOutput() HttpResponseOutput {
+	return o
+}
+
+func (o HttpResponseOutput) ToHttpResponseOutputWithContext(ctx context.Context) HttpResponseOutput {
+	return o
+}
+
+func (o HttpResponseOutput) ToHttpResponsePtrOutput() HttpResponsePtrOutput {
+	return o.ToHttpResponsePtrOutputWithContext(context.Background())
+}
+
+func (o HttpResponseOutput) ToHttpResponsePtrOutputWithContext(ctx context.Context) HttpResponsePtrOutput {
+	return o.ApplyT(func(v HttpResponse) *HttpResponse {
+		return &v
+	}).(HttpResponsePtrOutput)
+}
+
+// When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
+func (o HttpResponseOutput) FullyDecodeReservedExpansion() pulumi.BoolOutput {
+	return o.ApplyT(func(v HttpResponse) bool { return v.FullyDecodeReservedExpansion }).(pulumi.BoolOutput)
+}
+
+// A list of HTTP configuration rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+func (o HttpResponseOutput) Rules() HttpRuleResponseArrayOutput {
+	return o.ApplyT(func(v HttpResponse) []HttpRuleResponse { return v.Rules }).(HttpRuleResponseArrayOutput)
+}
+
+type HttpResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpResponse)(nil)).Elem()
+}
+
+func (o HttpResponsePtrOutput) ToHttpResponsePtrOutput() HttpResponsePtrOutput {
+	return o
+}
+
+func (o HttpResponsePtrOutput) ToHttpResponsePtrOutputWithContext(ctx context.Context) HttpResponsePtrOutput {
+	return o
+}
+
+func (o HttpResponsePtrOutput) Elem() HttpResponseOutput {
+	return o.ApplyT(func(v *HttpResponse) HttpResponse { return *v }).(HttpResponseOutput)
+}
+
+// When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
+func (o HttpResponsePtrOutput) FullyDecodeReservedExpansion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.FullyDecodeReservedExpansion
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of HTTP configuration rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+func (o HttpResponsePtrOutput) Rules() HttpRuleResponseArrayOutput {
+	return o.ApplyT(func(v *HttpResponse) []HttpRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(HttpRuleResponseArrayOutput)
 }
 
 // # gRPC Transcoding gRPC Transcoding is a feature for mapping between a gRPC method and one or more HTTP REST endpoints. It allows developers to build a single API service that supports both gRPC APIs and REST APIs. Many systems, including [Google APIs](https://github.com/googleapis/googleapis), [Cloud Endpoints](https://cloud.google.com/endpoints), [gRPC Gateway](https://github.com/grpc-ecosystem/grpc-gateway), and [Envoy](https://github.com/envoyproxy/envoy) proxy support this feature and use it for large scale production services. `HttpRule` defines the schema of the gRPC/REST mapping. The mapping specifies how different portions of the gRPC request message are mapped to the URL path, URL query parameters, and HTTP request body. It also controls how the gRPC response message is mapped to the HTTP response body. `HttpRule` is typically specified as an `google.api.http` annotation on the gRPC method. Each mapping specifies a URL path template and an HTTP method. The path template may refer to one or more fields in the gRPC request message, as long as each field is a non-repeated field with a primitive (non-message) type. The path template controls how fields of the request message are mapped to the URL path. Example: service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get: "/v1/{name=messages/*}" }; } } message GetMessageRequest { string name = 1; // Mapped to URL path. } message Message { string text = 1; // The resource content. } This enables an HTTP REST to gRPC mapping as below: HTTP | gRPC -----|----- `GET /v1/messages/123456` | `GetMessage(name: "messages/123456")` Any fields in the request message which are not bound by the path template automatically become HTTP query parameters if there is no HTTP request body. For example: service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get:"/v1/messages/{message_id}" }; } } message GetMessageRequest { message SubMessage { string subfield = 1; } string message_id = 1; // Mapped to URL path. int64 revision = 2; // Mapped to URL query parameter `revision`. SubMessage sub = 3; // Mapped to URL query parameter `sub.subfield`. } This enables a HTTP JSON to RPC mapping as below: HTTP | gRPC -----|----- `GET /v1/messages/123456?revision=2&sub.subfield=foo` | `GetMessage(message_id: "123456" revision: 2 sub: SubMessage(subfield: "foo"))` Note that fields which are mapped to URL query parameters must have a primitive type or a repeated primitive type or a non-repeated message type. In the case of a repeated type, the parameter can be repeated in the URL as `...?param=A&param=B`. In the case of a message type, each field of the message is mapped to a separate parameter, such as `...?foo.a=A&foo.b=B&foo.c=C`. For HTTP methods that allow a request body, the `body` field specifies the mapping. Consider a REST update method on the message resource collection: service Messaging { rpc UpdateMessage(UpdateMessageRequest) returns (Message) { option (google.api.http) = { patch: "/v1/messages/{message_id}" body: "message" }; } } message UpdateMessageRequest { string message_id = 1; // mapped to the URL Message message = 2; // mapped to the body } The following HTTP JSON to RPC mapping is enabled, where the representation of the JSON in the request body is determined by protos JSON encoding: HTTP | gRPC -----|----- `PATCH /v1/messages/123456 { "text": "Hi!" }` | `UpdateMessage(message_id: "123456" message { text: "Hi!" })` The special name `*` can be used in the body mapping to define that every field not bound by the path template should be mapped to the request body. This enables the following alternative definition of the update method: service Messaging { rpc UpdateMessage(Message) returns (Message) { option (google.api.http) = { patch: "/v1/messages/{message_id}" body: "*" }; } } message Message { string message_id = 1; string text = 2; } The following HTTP JSON to RPC mapping is enabled: HTTP | gRPC -----|----- `PATCH /v1/messages/123456 { "text": "Hi!" }` | `UpdateMessage(message_id: "123456" text: "Hi!")` Note that when using `*` in the body mapping, it is not possible to have HTTP parameters, as all fields not bound by the path end in the body. This makes this option more rarely used in practice when defining REST APIs. The common usage of `*` is in custom methods which don't use the URL at all for transferring data. It is possible to define multiple HTTP methods for one RPC by using the `additional_bindings` option. Example: service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get: "/v1/messages/{message_id}" additional_bindings { get: "/v1/users/{user_id}/messages/{message_id}" } }; } } message GetMessageRequest { string message_id = 1; string user_id = 2; } This enables the following two alternative HTTP JSON to RPC mappings: HTTP | gRPC -----|----- `GET /v1/messages/123456` | `GetMessage(message_id: "123456")` `GET /v1/users/me/messages/123456` | `GetMessage(user_id: "me" message_id: "123456")` ## Rules for HTTP mapping 1. Leaf request fields (recursive expansion nested messages in the request message) are classified into three categories: - Fields referred by the path template. They are passed via the URL path. - Fields referred by the HttpRule.body. They are passed via the HTTP request body. - All other fields are passed via the URL query parameters, and the parameter name is the field path in the request message. A repeated field can be represented as multiple query parameters under the same name. 2. If HttpRule.body is "*", there is no URL query parameter, all fields are passed via URL path and HTTP request body. 3. If HttpRule.body is omitted, there is no HTTP request body, all fields are passed via URL path and URL query parameters. ### Path template syntax Template = "/" Segments [ Verb ] ; Segments = Segment { "/" Segment } ; Segment = "*" | "**" | LITERAL | Variable ; Variable = "{" FieldPath [ "=" Segments ] "}" ; FieldPath = IDENT { "." IDENT } ; Verb = ":" LITERAL ; The syntax `*` matches a single URL path segment. The syntax `**` matches zero or more URL path segments, which must be the last part of the URL path except the `Verb`. The syntax `Variable` matches part of the URL path as specified by its template. A variable template must not contain other variables. If a variable matches a single path segment, its template may be omitted, e.g. `{var}` is equivalent to `{var=*}`. The syntax `LITERAL` matches literal text in the URL path. If the `LITERAL` contains any reserved character, such characters should be percent-encoded before the matching. If a variable contains exactly one path segment, such as `"{var}"` or `"{var=*}"`, when such a variable is expanded into a URL path on the client side, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The server side does the reverse decoding. Such variables show up in the [Discovery Document](https://developers.google.com/discovery/v1/reference/apis) as `{var}`. If a variable contains multiple path segments, such as `"{var=foo/*}"` or `"{var=**}"`, when such a variable is expanded into a URL path on the client side, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded. The server side does the reverse decoding, except "%2F" and "%2f" are left unchanged. Such variables show up in the [Discovery Document](https://developers.google.com/discovery/v1/reference/apis) as `{+var}`. ## Using gRPC API Service Configuration gRPC API Service Configuration (service config) is a configuration language for configuring a gRPC service to become a user-facing product. The service config is simply the YAML representation of the `google.api.Service` proto message. As an alternative to annotating your proto file, you can configure gRPC transcoding in your service config YAML files. You do this by specifying a `HttpRule` that maps the gRPC method to a REST endpoint, achieving the same effect as the proto annotation. This can be particularly useful if you have a proto that is reused in multiple services. Note that any transcoding specified in the service config will override any matching transcoding configuration in the proto. Example: http: rules: # Selects a gRPC method and applies HttpRule to it. - selector: example.v1.Messaging.GetMessage get: /v1/messages/{message_id}/{sub.subfield} ## Special notes When gRPC Transcoding is used to map a gRPC to JSON REST endpoints, the proto to JSON conversion must follow the [proto3 specification](https://developers.google.com/protocol-buffers/docs/proto3#json). While the single segment variable follows the semantics of [RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String Expansion, the multi segment variable **does not** follow RFC 6570 Section 3.2.3 Reserved Expansion. The reason is that the Reserved Expansion does not expand special characters like `?` and `#`, which would lead to invalid URLs. As the result, gRPC Transcoding uses a custom encoding for multi segment variables. The path variables **must not** refer to any repeated or mapped field, because client libraries are not capable of handling such variable expansion. The path variables **must not** capture the leading "/" character. The reason is that the most common use case "{var}" does not capture the leading "/" character. For consistency, all path variables must share the same behavior. Repeated message fields must not be mapped to URL query parameters, because no client library can support such complicated mapping. If an API needs to use a JSON array for request or response body, it can map the request or response body to a repeated field. However, some gRPC Transcoding implementations may not support this feature.
@@ -3948,6 +7498,187 @@ func (o HttpRuleArrayOutput) Index(i pulumi.IntInput) HttpRuleOutput {
 	}).(HttpRuleOutput)
 }
 
+// # gRPC Transcoding gRPC Transcoding is a feature for mapping between a gRPC method and one or more HTTP REST endpoints. It allows developers to build a single API service that supports both gRPC APIs and REST APIs. Many systems, including [Google APIs](https://github.com/googleapis/googleapis), [Cloud Endpoints](https://cloud.google.com/endpoints), [gRPC Gateway](https://github.com/grpc-ecosystem/grpc-gateway), and [Envoy](https://github.com/envoyproxy/envoy) proxy support this feature and use it for large scale production services. `HttpRule` defines the schema of the gRPC/REST mapping. The mapping specifies how different portions of the gRPC request message are mapped to the URL path, URL query parameters, and HTTP request body. It also controls how the gRPC response message is mapped to the HTTP response body. `HttpRule` is typically specified as an `google.api.http` annotation on the gRPC method. Each mapping specifies a URL path template and an HTTP method. The path template may refer to one or more fields in the gRPC request message, as long as each field is a non-repeated field with a primitive (non-message) type. The path template controls how fields of the request message are mapped to the URL path. Example: service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get: "/v1/{name=messages/*}" }; } } message GetMessageRequest { string name = 1; // Mapped to URL path. } message Message { string text = 1; // The resource content. } This enables an HTTP REST to gRPC mapping as below: HTTP | gRPC -----|----- `GET /v1/messages/123456` | `GetMessage(name: "messages/123456")` Any fields in the request message which are not bound by the path template automatically become HTTP query parameters if there is no HTTP request body. For example: service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get:"/v1/messages/{message_id}" }; } } message GetMessageRequest { message SubMessage { string subfield = 1; } string message_id = 1; // Mapped to URL path. int64 revision = 2; // Mapped to URL query parameter `revision`. SubMessage sub = 3; // Mapped to URL query parameter `sub.subfield`. } This enables a HTTP JSON to RPC mapping as below: HTTP | gRPC -----|----- `GET /v1/messages/123456?revision=2&sub.subfield=foo` | `GetMessage(message_id: "123456" revision: 2 sub: SubMessage(subfield: "foo"))` Note that fields which are mapped to URL query parameters must have a primitive type or a repeated primitive type or a non-repeated message type. In the case of a repeated type, the parameter can be repeated in the URL as `...?param=A&param=B`. In the case of a message type, each field of the message is mapped to a separate parameter, such as `...?foo.a=A&foo.b=B&foo.c=C`. For HTTP methods that allow a request body, the `body` field specifies the mapping. Consider a REST update method on the message resource collection: service Messaging { rpc UpdateMessage(UpdateMessageRequest) returns (Message) { option (google.api.http) = { patch: "/v1/messages/{message_id}" body: "message" }; } } message UpdateMessageRequest { string message_id = 1; // mapped to the URL Message message = 2; // mapped to the body } The following HTTP JSON to RPC mapping is enabled, where the representation of the JSON in the request body is determined by protos JSON encoding: HTTP | gRPC -----|----- `PATCH /v1/messages/123456 { "text": "Hi!" }` | `UpdateMessage(message_id: "123456" message { text: "Hi!" })` The special name `*` can be used in the body mapping to define that every field not bound by the path template should be mapped to the request body. This enables the following alternative definition of the update method: service Messaging { rpc UpdateMessage(Message) returns (Message) { option (google.api.http) = { patch: "/v1/messages/{message_id}" body: "*" }; } } message Message { string message_id = 1; string text = 2; } The following HTTP JSON to RPC mapping is enabled: HTTP | gRPC -----|----- `PATCH /v1/messages/123456 { "text": "Hi!" }` | `UpdateMessage(message_id: "123456" text: "Hi!")` Note that when using `*` in the body mapping, it is not possible to have HTTP parameters, as all fields not bound by the path end in the body. This makes this option more rarely used in practice when defining REST APIs. The common usage of `*` is in custom methods which don't use the URL at all for transferring data. It is possible to define multiple HTTP methods for one RPC by using the `additional_bindings` option. Example: service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get: "/v1/messages/{message_id}" additional_bindings { get: "/v1/users/{user_id}/messages/{message_id}" } }; } } message GetMessageRequest { string message_id = 1; string user_id = 2; } This enables the following two alternative HTTP JSON to RPC mappings: HTTP | gRPC -----|----- `GET /v1/messages/123456` | `GetMessage(message_id: "123456")` `GET /v1/users/me/messages/123456` | `GetMessage(user_id: "me" message_id: "123456")` ## Rules for HTTP mapping 1. Leaf request fields (recursive expansion nested messages in the request message) are classified into three categories: - Fields referred by the path template. They are passed via the URL path. - Fields referred by the HttpRule.body. They are passed via the HTTP request body. - All other fields are passed via the URL query parameters, and the parameter name is the field path in the request message. A repeated field can be represented as multiple query parameters under the same name. 2. If HttpRule.body is "*", there is no URL query parameter, all fields are passed via URL path and HTTP request body. 3. If HttpRule.body is omitted, there is no HTTP request body, all fields are passed via URL path and URL query parameters. ### Path template syntax Template = "/" Segments [ Verb ] ; Segments = Segment { "/" Segment } ; Segment = "*" | "**" | LITERAL | Variable ; Variable = "{" FieldPath [ "=" Segments ] "}" ; FieldPath = IDENT { "." IDENT } ; Verb = ":" LITERAL ; The syntax `*` matches a single URL path segment. The syntax `**` matches zero or more URL path segments, which must be the last part of the URL path except the `Verb`. The syntax `Variable` matches part of the URL path as specified by its template. A variable template must not contain other variables. If a variable matches a single path segment, its template may be omitted, e.g. `{var}` is equivalent to `{var=*}`. The syntax `LITERAL` matches literal text in the URL path. If the `LITERAL` contains any reserved character, such characters should be percent-encoded before the matching. If a variable contains exactly one path segment, such as `"{var}"` or `"{var=*}"`, when such a variable is expanded into a URL path on the client side, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The server side does the reverse decoding. Such variables show up in the [Discovery Document](https://developers.google.com/discovery/v1/reference/apis) as `{var}`. If a variable contains multiple path segments, such as `"{var=foo/*}"` or `"{var=**}"`, when such a variable is expanded into a URL path on the client side, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded. The server side does the reverse decoding, except "%2F" and "%2f" are left unchanged. Such variables show up in the [Discovery Document](https://developers.google.com/discovery/v1/reference/apis) as `{+var}`. ## Using gRPC API Service Configuration gRPC API Service Configuration (service config) is a configuration language for configuring a gRPC service to become a user-facing product. The service config is simply the YAML representation of the `google.api.Service` proto message. As an alternative to annotating your proto file, you can configure gRPC transcoding in your service config YAML files. You do this by specifying a `HttpRule` that maps the gRPC method to a REST endpoint, achieving the same effect as the proto annotation. This can be particularly useful if you have a proto that is reused in multiple services. Note that any transcoding specified in the service config will override any matching transcoding configuration in the proto. Example: http: rules: # Selects a gRPC method and applies HttpRule to it. - selector: example.v1.Messaging.GetMessage get: /v1/messages/{message_id}/{sub.subfield} ## Special notes When gRPC Transcoding is used to map a gRPC to JSON REST endpoints, the proto to JSON conversion must follow the [proto3 specification](https://developers.google.com/protocol-buffers/docs/proto3#json). While the single segment variable follows the semantics of [RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String Expansion, the multi segment variable **does not** follow RFC 6570 Section 3.2.3 Reserved Expansion. The reason is that the Reserved Expansion does not expand special characters like `?` and `#`, which would lead to invalid URLs. As the result, gRPC Transcoding uses a custom encoding for multi segment variables. The path variables **must not** refer to any repeated or mapped field, because client libraries are not capable of handling such variable expansion. The path variables **must not** capture the leading "/" character. The reason is that the most common use case "{var}" does not capture the leading "/" character. For consistency, all path variables must share the same behavior. Repeated message fields must not be mapped to URL query parameters, because no client library can support such complicated mapping. If an API needs to use a JSON array for request or response body, it can map the request or response body to a repeated field. However, some gRPC Transcoding implementations may not support this feature.
+type HttpRuleResponse struct {
+	// Additional HTTP bindings for the selector. Nested bindings must not contain an `additional_bindings` field themselves (that is, the nesting may only be one level deep).
+	AdditionalBindings []HttpRuleResponse `pulumi:"additionalBindings"`
+	// The name of the request field whose value is mapped to the HTTP request body, or `*` for mapping all request fields not captured by the path pattern to the HTTP body, or omitted for not having any HTTP request body. NOTE: the referred field must be present at the top-level of the request message type.
+	Body string `pulumi:"body"`
+	// The custom pattern is used for specifying an HTTP method that is not included in the `pattern` field, such as HEAD, or "*" to leave the HTTP method unspecified for this rule. The wild-card rule is useful for services that provide content to Web (HTML) clients.
+	Custom CustomHttpPatternResponse `pulumi:"custom"`
+	// Maps to HTTP DELETE. Used for deleting a resource.
+	Delete string `pulumi:"delete"`
+	// Maps to HTTP GET. Used for listing and getting information about resources.
+	Get string `pulumi:"get"`
+	// Maps to HTTP PATCH. Used for updating a resource.
+	Patch string `pulumi:"patch"`
+	// Maps to HTTP POST. Used for creating a resource or performing an action.
+	Post string `pulumi:"post"`
+	// Maps to HTTP PUT. Used for replacing a resource.
+	Put string `pulumi:"put"`
+	// Optional. The name of the response field whose value is mapped to the HTTP response body. When omitted, the entire response message will be used as the HTTP response body. NOTE: The referred field must be present at the top-level of the response message type.
+	ResponseBody string `pulumi:"responseBody"`
+	// Selects a method to which this rule applies. Refer to selector for syntax details.
+	Selector string `pulumi:"selector"`
+}
+
+// HttpRuleResponseInput is an input type that accepts HttpRuleResponseArgs and HttpRuleResponseOutput values.
+// You can construct a concrete instance of `HttpRuleResponseInput` via:
+//
+//          HttpRuleResponseArgs{...}
+type HttpRuleResponseInput interface {
+	pulumi.Input
+
+	ToHttpRuleResponseOutput() HttpRuleResponseOutput
+	ToHttpRuleResponseOutputWithContext(context.Context) HttpRuleResponseOutput
+}
+
+// # gRPC Transcoding gRPC Transcoding is a feature for mapping between a gRPC method and one or more HTTP REST endpoints. It allows developers to build a single API service that supports both gRPC APIs and REST APIs. Many systems, including [Google APIs](https://github.com/googleapis/googleapis), [Cloud Endpoints](https://cloud.google.com/endpoints), [gRPC Gateway](https://github.com/grpc-ecosystem/grpc-gateway), and [Envoy](https://github.com/envoyproxy/envoy) proxy support this feature and use it for large scale production services. `HttpRule` defines the schema of the gRPC/REST mapping. The mapping specifies how different portions of the gRPC request message are mapped to the URL path, URL query parameters, and HTTP request body. It also controls how the gRPC response message is mapped to the HTTP response body. `HttpRule` is typically specified as an `google.api.http` annotation on the gRPC method. Each mapping specifies a URL path template and an HTTP method. The path template may refer to one or more fields in the gRPC request message, as long as each field is a non-repeated field with a primitive (non-message) type. The path template controls how fields of the request message are mapped to the URL path. Example: service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get: "/v1/{name=messages/*}" }; } } message GetMessageRequest { string name = 1; // Mapped to URL path. } message Message { string text = 1; // The resource content. } This enables an HTTP REST to gRPC mapping as below: HTTP | gRPC -----|----- `GET /v1/messages/123456` | `GetMessage(name: "messages/123456")` Any fields in the request message which are not bound by the path template automatically become HTTP query parameters if there is no HTTP request body. For example: service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get:"/v1/messages/{message_id}" }; } } message GetMessageRequest { message SubMessage { string subfield = 1; } string message_id = 1; // Mapped to URL path. int64 revision = 2; // Mapped to URL query parameter `revision`. SubMessage sub = 3; // Mapped to URL query parameter `sub.subfield`. } This enables a HTTP JSON to RPC mapping as below: HTTP | gRPC -----|----- `GET /v1/messages/123456?revision=2&sub.subfield=foo` | `GetMessage(message_id: "123456" revision: 2 sub: SubMessage(subfield: "foo"))` Note that fields which are mapped to URL query parameters must have a primitive type or a repeated primitive type or a non-repeated message type. In the case of a repeated type, the parameter can be repeated in the URL as `...?param=A&param=B`. In the case of a message type, each field of the message is mapped to a separate parameter, such as `...?foo.a=A&foo.b=B&foo.c=C`. For HTTP methods that allow a request body, the `body` field specifies the mapping. Consider a REST update method on the message resource collection: service Messaging { rpc UpdateMessage(UpdateMessageRequest) returns (Message) { option (google.api.http) = { patch: "/v1/messages/{message_id}" body: "message" }; } } message UpdateMessageRequest { string message_id = 1; // mapped to the URL Message message = 2; // mapped to the body } The following HTTP JSON to RPC mapping is enabled, where the representation of the JSON in the request body is determined by protos JSON encoding: HTTP | gRPC -----|----- `PATCH /v1/messages/123456 { "text": "Hi!" }` | `UpdateMessage(message_id: "123456" message { text: "Hi!" })` The special name `*` can be used in the body mapping to define that every field not bound by the path template should be mapped to the request body. This enables the following alternative definition of the update method: service Messaging { rpc UpdateMessage(Message) returns (Message) { option (google.api.http) = { patch: "/v1/messages/{message_id}" body: "*" }; } } message Message { string message_id = 1; string text = 2; } The following HTTP JSON to RPC mapping is enabled: HTTP | gRPC -----|----- `PATCH /v1/messages/123456 { "text": "Hi!" }` | `UpdateMessage(message_id: "123456" text: "Hi!")` Note that when using `*` in the body mapping, it is not possible to have HTTP parameters, as all fields not bound by the path end in the body. This makes this option more rarely used in practice when defining REST APIs. The common usage of `*` is in custom methods which don't use the URL at all for transferring data. It is possible to define multiple HTTP methods for one RPC by using the `additional_bindings` option. Example: service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get: "/v1/messages/{message_id}" additional_bindings { get: "/v1/users/{user_id}/messages/{message_id}" } }; } } message GetMessageRequest { string message_id = 1; string user_id = 2; } This enables the following two alternative HTTP JSON to RPC mappings: HTTP | gRPC -----|----- `GET /v1/messages/123456` | `GetMessage(message_id: "123456")` `GET /v1/users/me/messages/123456` | `GetMessage(user_id: "me" message_id: "123456")` ## Rules for HTTP mapping 1. Leaf request fields (recursive expansion nested messages in the request message) are classified into three categories: - Fields referred by the path template. They are passed via the URL path. - Fields referred by the HttpRule.body. They are passed via the HTTP request body. - All other fields are passed via the URL query parameters, and the parameter name is the field path in the request message. A repeated field can be represented as multiple query parameters under the same name. 2. If HttpRule.body is "*", there is no URL query parameter, all fields are passed via URL path and HTTP request body. 3. If HttpRule.body is omitted, there is no HTTP request body, all fields are passed via URL path and URL query parameters. ### Path template syntax Template = "/" Segments [ Verb ] ; Segments = Segment { "/" Segment } ; Segment = "*" | "**" | LITERAL | Variable ; Variable = "{" FieldPath [ "=" Segments ] "}" ; FieldPath = IDENT { "." IDENT } ; Verb = ":" LITERAL ; The syntax `*` matches a single URL path segment. The syntax `**` matches zero or more URL path segments, which must be the last part of the URL path except the `Verb`. The syntax `Variable` matches part of the URL path as specified by its template. A variable template must not contain other variables. If a variable matches a single path segment, its template may be omitted, e.g. `{var}` is equivalent to `{var=*}`. The syntax `LITERAL` matches literal text in the URL path. If the `LITERAL` contains any reserved character, such characters should be percent-encoded before the matching. If a variable contains exactly one path segment, such as `"{var}"` or `"{var=*}"`, when such a variable is expanded into a URL path on the client side, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The server side does the reverse decoding. Such variables show up in the [Discovery Document](https://developers.google.com/discovery/v1/reference/apis) as `{var}`. If a variable contains multiple path segments, such as `"{var=foo/*}"` or `"{var=**}"`, when such a variable is expanded into a URL path on the client side, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded. The server side does the reverse decoding, except "%2F" and "%2f" are left unchanged. Such variables show up in the [Discovery Document](https://developers.google.com/discovery/v1/reference/apis) as `{+var}`. ## Using gRPC API Service Configuration gRPC API Service Configuration (service config) is a configuration language for configuring a gRPC service to become a user-facing product. The service config is simply the YAML representation of the `google.api.Service` proto message. As an alternative to annotating your proto file, you can configure gRPC transcoding in your service config YAML files. You do this by specifying a `HttpRule` that maps the gRPC method to a REST endpoint, achieving the same effect as the proto annotation. This can be particularly useful if you have a proto that is reused in multiple services. Note that any transcoding specified in the service config will override any matching transcoding configuration in the proto. Example: http: rules: # Selects a gRPC method and applies HttpRule to it. - selector: example.v1.Messaging.GetMessage get: /v1/messages/{message_id}/{sub.subfield} ## Special notes When gRPC Transcoding is used to map a gRPC to JSON REST endpoints, the proto to JSON conversion must follow the [proto3 specification](https://developers.google.com/protocol-buffers/docs/proto3#json). While the single segment variable follows the semantics of [RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String Expansion, the multi segment variable **does not** follow RFC 6570 Section 3.2.3 Reserved Expansion. The reason is that the Reserved Expansion does not expand special characters like `?` and `#`, which would lead to invalid URLs. As the result, gRPC Transcoding uses a custom encoding for multi segment variables. The path variables **must not** refer to any repeated or mapped field, because client libraries are not capable of handling such variable expansion. The path variables **must not** capture the leading "/" character. The reason is that the most common use case "{var}" does not capture the leading "/" character. For consistency, all path variables must share the same behavior. Repeated message fields must not be mapped to URL query parameters, because no client library can support such complicated mapping. If an API needs to use a JSON array for request or response body, it can map the request or response body to a repeated field. However, some gRPC Transcoding implementations may not support this feature.
+type HttpRuleResponseArgs struct {
+	// Additional HTTP bindings for the selector. Nested bindings must not contain an `additional_bindings` field themselves (that is, the nesting may only be one level deep).
+	AdditionalBindings HttpRuleResponseArrayInput `pulumi:"additionalBindings"`
+	// The name of the request field whose value is mapped to the HTTP request body, or `*` for mapping all request fields not captured by the path pattern to the HTTP body, or omitted for not having any HTTP request body. NOTE: the referred field must be present at the top-level of the request message type.
+	Body pulumi.StringInput `pulumi:"body"`
+	// The custom pattern is used for specifying an HTTP method that is not included in the `pattern` field, such as HEAD, or "*" to leave the HTTP method unspecified for this rule. The wild-card rule is useful for services that provide content to Web (HTML) clients.
+	Custom CustomHttpPatternResponseInput `pulumi:"custom"`
+	// Maps to HTTP DELETE. Used for deleting a resource.
+	Delete pulumi.StringInput `pulumi:"delete"`
+	// Maps to HTTP GET. Used for listing and getting information about resources.
+	Get pulumi.StringInput `pulumi:"get"`
+	// Maps to HTTP PATCH. Used for updating a resource.
+	Patch pulumi.StringInput `pulumi:"patch"`
+	// Maps to HTTP POST. Used for creating a resource or performing an action.
+	Post pulumi.StringInput `pulumi:"post"`
+	// Maps to HTTP PUT. Used for replacing a resource.
+	Put pulumi.StringInput `pulumi:"put"`
+	// Optional. The name of the response field whose value is mapped to the HTTP response body. When omitted, the entire response message will be used as the HTTP response body. NOTE: The referred field must be present at the top-level of the response message type.
+	ResponseBody pulumi.StringInput `pulumi:"responseBody"`
+	// Selects a method to which this rule applies. Refer to selector for syntax details.
+	Selector pulumi.StringInput `pulumi:"selector"`
+}
+
+func (HttpRuleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRuleResponse)(nil)).Elem()
+}
+
+func (i HttpRuleResponseArgs) ToHttpRuleResponseOutput() HttpRuleResponseOutput {
+	return i.ToHttpRuleResponseOutputWithContext(context.Background())
+}
+
+func (i HttpRuleResponseArgs) ToHttpRuleResponseOutputWithContext(ctx context.Context) HttpRuleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRuleResponseOutput)
+}
+
+// HttpRuleResponseArrayInput is an input type that accepts HttpRuleResponseArray and HttpRuleResponseArrayOutput values.
+// You can construct a concrete instance of `HttpRuleResponseArrayInput` via:
+//
+//          HttpRuleResponseArray{ HttpRuleResponseArgs{...} }
+type HttpRuleResponseArrayInput interface {
+	pulumi.Input
+
+	ToHttpRuleResponseArrayOutput() HttpRuleResponseArrayOutput
+	ToHttpRuleResponseArrayOutputWithContext(context.Context) HttpRuleResponseArrayOutput
+}
+
+type HttpRuleResponseArray []HttpRuleResponseInput
+
+func (HttpRuleResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRuleResponse)(nil)).Elem()
+}
+
+func (i HttpRuleResponseArray) ToHttpRuleResponseArrayOutput() HttpRuleResponseArrayOutput {
+	return i.ToHttpRuleResponseArrayOutputWithContext(context.Background())
+}
+
+func (i HttpRuleResponseArray) ToHttpRuleResponseArrayOutputWithContext(ctx context.Context) HttpRuleResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRuleResponseArrayOutput)
+}
+
+// # gRPC Transcoding gRPC Transcoding is a feature for mapping between a gRPC method and one or more HTTP REST endpoints. It allows developers to build a single API service that supports both gRPC APIs and REST APIs. Many systems, including [Google APIs](https://github.com/googleapis/googleapis), [Cloud Endpoints](https://cloud.google.com/endpoints), [gRPC Gateway](https://github.com/grpc-ecosystem/grpc-gateway), and [Envoy](https://github.com/envoyproxy/envoy) proxy support this feature and use it for large scale production services. `HttpRule` defines the schema of the gRPC/REST mapping. The mapping specifies how different portions of the gRPC request message are mapped to the URL path, URL query parameters, and HTTP request body. It also controls how the gRPC response message is mapped to the HTTP response body. `HttpRule` is typically specified as an `google.api.http` annotation on the gRPC method. Each mapping specifies a URL path template and an HTTP method. The path template may refer to one or more fields in the gRPC request message, as long as each field is a non-repeated field with a primitive (non-message) type. The path template controls how fields of the request message are mapped to the URL path. Example: service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get: "/v1/{name=messages/*}" }; } } message GetMessageRequest { string name = 1; // Mapped to URL path. } message Message { string text = 1; // The resource content. } This enables an HTTP REST to gRPC mapping as below: HTTP | gRPC -----|----- `GET /v1/messages/123456` | `GetMessage(name: "messages/123456")` Any fields in the request message which are not bound by the path template automatically become HTTP query parameters if there is no HTTP request body. For example: service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get:"/v1/messages/{message_id}" }; } } message GetMessageRequest { message SubMessage { string subfield = 1; } string message_id = 1; // Mapped to URL path. int64 revision = 2; // Mapped to URL query parameter `revision`. SubMessage sub = 3; // Mapped to URL query parameter `sub.subfield`. } This enables a HTTP JSON to RPC mapping as below: HTTP | gRPC -----|----- `GET /v1/messages/123456?revision=2&sub.subfield=foo` | `GetMessage(message_id: "123456" revision: 2 sub: SubMessage(subfield: "foo"))` Note that fields which are mapped to URL query parameters must have a primitive type or a repeated primitive type or a non-repeated message type. In the case of a repeated type, the parameter can be repeated in the URL as `...?param=A&param=B`. In the case of a message type, each field of the message is mapped to a separate parameter, such as `...?foo.a=A&foo.b=B&foo.c=C`. For HTTP methods that allow a request body, the `body` field specifies the mapping. Consider a REST update method on the message resource collection: service Messaging { rpc UpdateMessage(UpdateMessageRequest) returns (Message) { option (google.api.http) = { patch: "/v1/messages/{message_id}" body: "message" }; } } message UpdateMessageRequest { string message_id = 1; // mapped to the URL Message message = 2; // mapped to the body } The following HTTP JSON to RPC mapping is enabled, where the representation of the JSON in the request body is determined by protos JSON encoding: HTTP | gRPC -----|----- `PATCH /v1/messages/123456 { "text": "Hi!" }` | `UpdateMessage(message_id: "123456" message { text: "Hi!" })` The special name `*` can be used in the body mapping to define that every field not bound by the path template should be mapped to the request body. This enables the following alternative definition of the update method: service Messaging { rpc UpdateMessage(Message) returns (Message) { option (google.api.http) = { patch: "/v1/messages/{message_id}" body: "*" }; } } message Message { string message_id = 1; string text = 2; } The following HTTP JSON to RPC mapping is enabled: HTTP | gRPC -----|----- `PATCH /v1/messages/123456 { "text": "Hi!" }` | `UpdateMessage(message_id: "123456" text: "Hi!")` Note that when using `*` in the body mapping, it is not possible to have HTTP parameters, as all fields not bound by the path end in the body. This makes this option more rarely used in practice when defining REST APIs. The common usage of `*` is in custom methods which don't use the URL at all for transferring data. It is possible to define multiple HTTP methods for one RPC by using the `additional_bindings` option. Example: service Messaging { rpc GetMessage(GetMessageRequest) returns (Message) { option (google.api.http) = { get: "/v1/messages/{message_id}" additional_bindings { get: "/v1/users/{user_id}/messages/{message_id}" } }; } } message GetMessageRequest { string message_id = 1; string user_id = 2; } This enables the following two alternative HTTP JSON to RPC mappings: HTTP | gRPC -----|----- `GET /v1/messages/123456` | `GetMessage(message_id: "123456")` `GET /v1/users/me/messages/123456` | `GetMessage(user_id: "me" message_id: "123456")` ## Rules for HTTP mapping 1. Leaf request fields (recursive expansion nested messages in the request message) are classified into three categories: - Fields referred by the path template. They are passed via the URL path. - Fields referred by the HttpRule.body. They are passed via the HTTP request body. - All other fields are passed via the URL query parameters, and the parameter name is the field path in the request message. A repeated field can be represented as multiple query parameters under the same name. 2. If HttpRule.body is "*", there is no URL query parameter, all fields are passed via URL path and HTTP request body. 3. If HttpRule.body is omitted, there is no HTTP request body, all fields are passed via URL path and URL query parameters. ### Path template syntax Template = "/" Segments [ Verb ] ; Segments = Segment { "/" Segment } ; Segment = "*" | "**" | LITERAL | Variable ; Variable = "{" FieldPath [ "=" Segments ] "}" ; FieldPath = IDENT { "." IDENT } ; Verb = ":" LITERAL ; The syntax `*` matches a single URL path segment. The syntax `**` matches zero or more URL path segments, which must be the last part of the URL path except the `Verb`. The syntax `Variable` matches part of the URL path as specified by its template. A variable template must not contain other variables. If a variable matches a single path segment, its template may be omitted, e.g. `{var}` is equivalent to `{var=*}`. The syntax `LITERAL` matches literal text in the URL path. If the `LITERAL` contains any reserved character, such characters should be percent-encoded before the matching. If a variable contains exactly one path segment, such as `"{var}"` or `"{var=*}"`, when such a variable is expanded into a URL path on the client side, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The server side does the reverse decoding. Such variables show up in the [Discovery Document](https://developers.google.com/discovery/v1/reference/apis) as `{var}`. If a variable contains multiple path segments, such as `"{var=foo/*}"` or `"{var=**}"`, when such a variable is expanded into a URL path on the client side, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded. The server side does the reverse decoding, except "%2F" and "%2f" are left unchanged. Such variables show up in the [Discovery Document](https://developers.google.com/discovery/v1/reference/apis) as `{+var}`. ## Using gRPC API Service Configuration gRPC API Service Configuration (service config) is a configuration language for configuring a gRPC service to become a user-facing product. The service config is simply the YAML representation of the `google.api.Service` proto message. As an alternative to annotating your proto file, you can configure gRPC transcoding in your service config YAML files. You do this by specifying a `HttpRule` that maps the gRPC method to a REST endpoint, achieving the same effect as the proto annotation. This can be particularly useful if you have a proto that is reused in multiple services. Note that any transcoding specified in the service config will override any matching transcoding configuration in the proto. Example: http: rules: # Selects a gRPC method and applies HttpRule to it. - selector: example.v1.Messaging.GetMessage get: /v1/messages/{message_id}/{sub.subfield} ## Special notes When gRPC Transcoding is used to map a gRPC to JSON REST endpoints, the proto to JSON conversion must follow the [proto3 specification](https://developers.google.com/protocol-buffers/docs/proto3#json). While the single segment variable follows the semantics of [RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String Expansion, the multi segment variable **does not** follow RFC 6570 Section 3.2.3 Reserved Expansion. The reason is that the Reserved Expansion does not expand special characters like `?` and `#`, which would lead to invalid URLs. As the result, gRPC Transcoding uses a custom encoding for multi segment variables. The path variables **must not** refer to any repeated or mapped field, because client libraries are not capable of handling such variable expansion. The path variables **must not** capture the leading "/" character. The reason is that the most common use case "{var}" does not capture the leading "/" character. For consistency, all path variables must share the same behavior. Repeated message fields must not be mapped to URL query parameters, because no client library can support such complicated mapping. If an API needs to use a JSON array for request or response body, it can map the request or response body to a repeated field. However, some gRPC Transcoding implementations may not support this feature.
+type HttpRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRuleResponse)(nil)).Elem()
+}
+
+func (o HttpRuleResponseOutput) ToHttpRuleResponseOutput() HttpRuleResponseOutput {
+	return o
+}
+
+func (o HttpRuleResponseOutput) ToHttpRuleResponseOutputWithContext(ctx context.Context) HttpRuleResponseOutput {
+	return o
+}
+
+// Additional HTTP bindings for the selector. Nested bindings must not contain an `additional_bindings` field themselves (that is, the nesting may only be one level deep).
+func (o HttpRuleResponseOutput) AdditionalBindings() HttpRuleResponseArrayOutput {
+	return o.ApplyT(func(v HttpRuleResponse) []HttpRuleResponse { return v.AdditionalBindings }).(HttpRuleResponseArrayOutput)
+}
+
+// The name of the request field whose value is mapped to the HTTP request body, or `*` for mapping all request fields not captured by the path pattern to the HTTP body, or omitted for not having any HTTP request body. NOTE: the referred field must be present at the top-level of the request message type.
+func (o HttpRuleResponseOutput) Body() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRuleResponse) string { return v.Body }).(pulumi.StringOutput)
+}
+
+// The custom pattern is used for specifying an HTTP method that is not included in the `pattern` field, such as HEAD, or "*" to leave the HTTP method unspecified for this rule. The wild-card rule is useful for services that provide content to Web (HTML) clients.
+func (o HttpRuleResponseOutput) Custom() CustomHttpPatternResponseOutput {
+	return o.ApplyT(func(v HttpRuleResponse) CustomHttpPatternResponse { return v.Custom }).(CustomHttpPatternResponseOutput)
+}
+
+// Maps to HTTP DELETE. Used for deleting a resource.
+func (o HttpRuleResponseOutput) Delete() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRuleResponse) string { return v.Delete }).(pulumi.StringOutput)
+}
+
+// Maps to HTTP GET. Used for listing and getting information about resources.
+func (o HttpRuleResponseOutput) Get() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRuleResponse) string { return v.Get }).(pulumi.StringOutput)
+}
+
+// Maps to HTTP PATCH. Used for updating a resource.
+func (o HttpRuleResponseOutput) Patch() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRuleResponse) string { return v.Patch }).(pulumi.StringOutput)
+}
+
+// Maps to HTTP POST. Used for creating a resource or performing an action.
+func (o HttpRuleResponseOutput) Post() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRuleResponse) string { return v.Post }).(pulumi.StringOutput)
+}
+
+// Maps to HTTP PUT. Used for replacing a resource.
+func (o HttpRuleResponseOutput) Put() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRuleResponse) string { return v.Put }).(pulumi.StringOutput)
+}
+
+// Optional. The name of the response field whose value is mapped to the HTTP response body. When omitted, the entire response message will be used as the HTTP response body. NOTE: The referred field must be present at the top-level of the response message type.
+func (o HttpRuleResponseOutput) ResponseBody() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRuleResponse) string { return v.ResponseBody }).(pulumi.StringOutput)
+}
+
+// Selects a method to which this rule applies. Refer to selector for syntax details.
+func (o HttpRuleResponseOutput) Selector() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRuleResponse) string { return v.Selector }).(pulumi.StringOutput)
+}
+
+type HttpRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRuleResponse)(nil)).Elem()
+}
+
+func (o HttpRuleResponseArrayOutput) ToHttpRuleResponseArrayOutput() HttpRuleResponseArrayOutput {
+	return o
+}
+
+func (o HttpRuleResponseArrayOutput) ToHttpRuleResponseArrayOutputWithContext(ctx context.Context) HttpRuleResponseArrayOutput {
+	return o
+}
+
+func (o HttpRuleResponseArrayOutput) Index(i pulumi.IntInput) HttpRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRuleResponse {
+		return vs[0].([]HttpRuleResponse)[vs[1].(int)]
+	}).(HttpRuleResponseOutput)
+}
+
 // Specifies a location to extract JWT from an API request.
 type JwtLocation struct {
 	// Specifies HTTP header name to extract JWT token.
@@ -4066,6 +7797,124 @@ func (o JwtLocationArrayOutput) Index(i pulumi.IntInput) JwtLocationOutput {
 	}).(JwtLocationOutput)
 }
 
+// Specifies a location to extract JWT from an API request.
+type JwtLocationResponse struct {
+	// Specifies HTTP header name to extract JWT token.
+	Header string `pulumi:"header"`
+	// Specifies URL query parameter name to extract JWT token.
+	Query string `pulumi:"query"`
+	// The value prefix. The value format is "value_prefix{token}" Only applies to "in" header type. Must be empty for "in" query type. If not empty, the header value has to match (case sensitive) this prefix. If not matched, JWT will not be extracted. If matched, JWT will be extracted after the prefix is removed. For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer " with a space at the end.
+	ValuePrefix string `pulumi:"valuePrefix"`
+}
+
+// JwtLocationResponseInput is an input type that accepts JwtLocationResponseArgs and JwtLocationResponseOutput values.
+// You can construct a concrete instance of `JwtLocationResponseInput` via:
+//
+//          JwtLocationResponseArgs{...}
+type JwtLocationResponseInput interface {
+	pulumi.Input
+
+	ToJwtLocationResponseOutput() JwtLocationResponseOutput
+	ToJwtLocationResponseOutputWithContext(context.Context) JwtLocationResponseOutput
+}
+
+// Specifies a location to extract JWT from an API request.
+type JwtLocationResponseArgs struct {
+	// Specifies HTTP header name to extract JWT token.
+	Header pulumi.StringInput `pulumi:"header"`
+	// Specifies URL query parameter name to extract JWT token.
+	Query pulumi.StringInput `pulumi:"query"`
+	// The value prefix. The value format is "value_prefix{token}" Only applies to "in" header type. Must be empty for "in" query type. If not empty, the header value has to match (case sensitive) this prefix. If not matched, JWT will not be extracted. If matched, JWT will be extracted after the prefix is removed. For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer " with a space at the end.
+	ValuePrefix pulumi.StringInput `pulumi:"valuePrefix"`
+}
+
+func (JwtLocationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JwtLocationResponse)(nil)).Elem()
+}
+
+func (i JwtLocationResponseArgs) ToJwtLocationResponseOutput() JwtLocationResponseOutput {
+	return i.ToJwtLocationResponseOutputWithContext(context.Background())
+}
+
+func (i JwtLocationResponseArgs) ToJwtLocationResponseOutputWithContext(ctx context.Context) JwtLocationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JwtLocationResponseOutput)
+}
+
+// JwtLocationResponseArrayInput is an input type that accepts JwtLocationResponseArray and JwtLocationResponseArrayOutput values.
+// You can construct a concrete instance of `JwtLocationResponseArrayInput` via:
+//
+//          JwtLocationResponseArray{ JwtLocationResponseArgs{...} }
+type JwtLocationResponseArrayInput interface {
+	pulumi.Input
+
+	ToJwtLocationResponseArrayOutput() JwtLocationResponseArrayOutput
+	ToJwtLocationResponseArrayOutputWithContext(context.Context) JwtLocationResponseArrayOutput
+}
+
+type JwtLocationResponseArray []JwtLocationResponseInput
+
+func (JwtLocationResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JwtLocationResponse)(nil)).Elem()
+}
+
+func (i JwtLocationResponseArray) ToJwtLocationResponseArrayOutput() JwtLocationResponseArrayOutput {
+	return i.ToJwtLocationResponseArrayOutputWithContext(context.Background())
+}
+
+func (i JwtLocationResponseArray) ToJwtLocationResponseArrayOutputWithContext(ctx context.Context) JwtLocationResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JwtLocationResponseArrayOutput)
+}
+
+// Specifies a location to extract JWT from an API request.
+type JwtLocationResponseOutput struct{ *pulumi.OutputState }
+
+func (JwtLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JwtLocationResponse)(nil)).Elem()
+}
+
+func (o JwtLocationResponseOutput) ToJwtLocationResponseOutput() JwtLocationResponseOutput {
+	return o
+}
+
+func (o JwtLocationResponseOutput) ToJwtLocationResponseOutputWithContext(ctx context.Context) JwtLocationResponseOutput {
+	return o
+}
+
+// Specifies HTTP header name to extract JWT token.
+func (o JwtLocationResponseOutput) Header() pulumi.StringOutput {
+	return o.ApplyT(func(v JwtLocationResponse) string { return v.Header }).(pulumi.StringOutput)
+}
+
+// Specifies URL query parameter name to extract JWT token.
+func (o JwtLocationResponseOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v JwtLocationResponse) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// The value prefix. The value format is "value_prefix{token}" Only applies to "in" header type. Must be empty for "in" query type. If not empty, the header value has to match (case sensitive) this prefix. If not matched, JWT will not be extracted. If matched, JWT will be extracted after the prefix is removed. For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer " with a space at the end.
+func (o JwtLocationResponseOutput) ValuePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v JwtLocationResponse) string { return v.ValuePrefix }).(pulumi.StringOutput)
+}
+
+type JwtLocationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (JwtLocationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JwtLocationResponse)(nil)).Elem()
+}
+
+func (o JwtLocationResponseArrayOutput) ToJwtLocationResponseArrayOutput() JwtLocationResponseArrayOutput {
+	return o
+}
+
+func (o JwtLocationResponseArrayOutput) ToJwtLocationResponseArrayOutputWithContext(ctx context.Context) JwtLocationResponseArrayOutput {
+	return o
+}
+
+func (o JwtLocationResponseArrayOutput) Index(i pulumi.IntInput) JwtLocationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JwtLocationResponse {
+		return vs[0].([]JwtLocationResponse)[vs[1].(int)]
+	}).(JwtLocationResponseOutput)
+}
+
 // A description of a label.
 type LabelDescriptor struct {
 	// A human-readable description for the label.
@@ -4182,6 +8031,124 @@ func (o LabelDescriptorArrayOutput) Index(i pulumi.IntInput) LabelDescriptorOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LabelDescriptor {
 		return vs[0].([]LabelDescriptor)[vs[1].(int)]
 	}).(LabelDescriptorOutput)
+}
+
+// A description of a label.
+type LabelDescriptorResponse struct {
+	// A human-readable description for the label.
+	Description string `pulumi:"description"`
+	// The label key.
+	Key string `pulumi:"key"`
+	// The type of data that can be assigned to the label.
+	ValueType string `pulumi:"valueType"`
+}
+
+// LabelDescriptorResponseInput is an input type that accepts LabelDescriptorResponseArgs and LabelDescriptorResponseOutput values.
+// You can construct a concrete instance of `LabelDescriptorResponseInput` via:
+//
+//          LabelDescriptorResponseArgs{...}
+type LabelDescriptorResponseInput interface {
+	pulumi.Input
+
+	ToLabelDescriptorResponseOutput() LabelDescriptorResponseOutput
+	ToLabelDescriptorResponseOutputWithContext(context.Context) LabelDescriptorResponseOutput
+}
+
+// A description of a label.
+type LabelDescriptorResponseArgs struct {
+	// A human-readable description for the label.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The label key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The type of data that can be assigned to the label.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (LabelDescriptorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelDescriptorResponse)(nil)).Elem()
+}
+
+func (i LabelDescriptorResponseArgs) ToLabelDescriptorResponseOutput() LabelDescriptorResponseOutput {
+	return i.ToLabelDescriptorResponseOutputWithContext(context.Background())
+}
+
+func (i LabelDescriptorResponseArgs) ToLabelDescriptorResponseOutputWithContext(ctx context.Context) LabelDescriptorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelDescriptorResponseOutput)
+}
+
+// LabelDescriptorResponseArrayInput is an input type that accepts LabelDescriptorResponseArray and LabelDescriptorResponseArrayOutput values.
+// You can construct a concrete instance of `LabelDescriptorResponseArrayInput` via:
+//
+//          LabelDescriptorResponseArray{ LabelDescriptorResponseArgs{...} }
+type LabelDescriptorResponseArrayInput interface {
+	pulumi.Input
+
+	ToLabelDescriptorResponseArrayOutput() LabelDescriptorResponseArrayOutput
+	ToLabelDescriptorResponseArrayOutputWithContext(context.Context) LabelDescriptorResponseArrayOutput
+}
+
+type LabelDescriptorResponseArray []LabelDescriptorResponseInput
+
+func (LabelDescriptorResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LabelDescriptorResponse)(nil)).Elem()
+}
+
+func (i LabelDescriptorResponseArray) ToLabelDescriptorResponseArrayOutput() LabelDescriptorResponseArrayOutput {
+	return i.ToLabelDescriptorResponseArrayOutputWithContext(context.Background())
+}
+
+func (i LabelDescriptorResponseArray) ToLabelDescriptorResponseArrayOutputWithContext(ctx context.Context) LabelDescriptorResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelDescriptorResponseArrayOutput)
+}
+
+// A description of a label.
+type LabelDescriptorResponseOutput struct{ *pulumi.OutputState }
+
+func (LabelDescriptorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelDescriptorResponse)(nil)).Elem()
+}
+
+func (o LabelDescriptorResponseOutput) ToLabelDescriptorResponseOutput() LabelDescriptorResponseOutput {
+	return o
+}
+
+func (o LabelDescriptorResponseOutput) ToLabelDescriptorResponseOutputWithContext(ctx context.Context) LabelDescriptorResponseOutput {
+	return o
+}
+
+// A human-readable description for the label.
+func (o LabelDescriptorResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LabelDescriptorResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The label key.
+func (o LabelDescriptorResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v LabelDescriptorResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The type of data that can be assigned to the label.
+func (o LabelDescriptorResponseOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v LabelDescriptorResponse) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type LabelDescriptorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LabelDescriptorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LabelDescriptorResponse)(nil)).Elem()
+}
+
+func (o LabelDescriptorResponseArrayOutput) ToLabelDescriptorResponseArrayOutput() LabelDescriptorResponseArrayOutput {
+	return o
+}
+
+func (o LabelDescriptorResponseArrayOutput) ToLabelDescriptorResponseArrayOutputWithContext(ctx context.Context) LabelDescriptorResponseArrayOutput {
+	return o
+}
+
+func (o LabelDescriptorResponseArrayOutput) Index(i pulumi.IntInput) LabelDescriptorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LabelDescriptorResponse {
+		return vs[0].([]LabelDescriptorResponse)[vs[1].(int)]
+	}).(LabelDescriptorResponseOutput)
 }
 
 // A description of a log type. Example in YAML format: - name: library.googleapis.com/activity_history description: The history of borrowing and returning library items. display_name: Activity labels: - key: /customer_id description: Identifier of a library customer
@@ -4309,6 +8276,133 @@ func (o LogDescriptorArrayOutput) Index(i pulumi.IntInput) LogDescriptorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogDescriptor {
 		return vs[0].([]LogDescriptor)[vs[1].(int)]
 	}).(LogDescriptorOutput)
+}
+
+// A description of a log type. Example in YAML format: - name: library.googleapis.com/activity_history description: The history of borrowing and returning library items. display_name: Activity labels: - key: /customer_id description: Identifier of a library customer
+type LogDescriptorResponse struct {
+	// A human-readable description of this log. This information appears in the documentation and can contain details.
+	Description string `pulumi:"description"`
+	// The human-readable name for this log. This information appears on the user interface and should be concise.
+	DisplayName string `pulumi:"displayName"`
+	// The set of labels that are available to describe a specific log entry. Runtime requests that contain labels not specified here are considered invalid.
+	Labels []LabelDescriptorResponse `pulumi:"labels"`
+	// The name of the log. It must be less than 512 characters long and can include the following characters: upper- and lower-case alphanumeric characters [A-Za-z0-9], and punctuation characters including slash, underscore, hyphen, period [/_-.].
+	Name string `pulumi:"name"`
+}
+
+// LogDescriptorResponseInput is an input type that accepts LogDescriptorResponseArgs and LogDescriptorResponseOutput values.
+// You can construct a concrete instance of `LogDescriptorResponseInput` via:
+//
+//          LogDescriptorResponseArgs{...}
+type LogDescriptorResponseInput interface {
+	pulumi.Input
+
+	ToLogDescriptorResponseOutput() LogDescriptorResponseOutput
+	ToLogDescriptorResponseOutputWithContext(context.Context) LogDescriptorResponseOutput
+}
+
+// A description of a log type. Example in YAML format: - name: library.googleapis.com/activity_history description: The history of borrowing and returning library items. display_name: Activity labels: - key: /customer_id description: Identifier of a library customer
+type LogDescriptorResponseArgs struct {
+	// A human-readable description of this log. This information appears in the documentation and can contain details.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The human-readable name for this log. This information appears on the user interface and should be concise.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The set of labels that are available to describe a specific log entry. Runtime requests that contain labels not specified here are considered invalid.
+	Labels LabelDescriptorResponseArrayInput `pulumi:"labels"`
+	// The name of the log. It must be less than 512 characters long and can include the following characters: upper- and lower-case alphanumeric characters [A-Za-z0-9], and punctuation characters including slash, underscore, hyphen, period [/_-.].
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LogDescriptorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogDescriptorResponse)(nil)).Elem()
+}
+
+func (i LogDescriptorResponseArgs) ToLogDescriptorResponseOutput() LogDescriptorResponseOutput {
+	return i.ToLogDescriptorResponseOutputWithContext(context.Background())
+}
+
+func (i LogDescriptorResponseArgs) ToLogDescriptorResponseOutputWithContext(ctx context.Context) LogDescriptorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogDescriptorResponseOutput)
+}
+
+// LogDescriptorResponseArrayInput is an input type that accepts LogDescriptorResponseArray and LogDescriptorResponseArrayOutput values.
+// You can construct a concrete instance of `LogDescriptorResponseArrayInput` via:
+//
+//          LogDescriptorResponseArray{ LogDescriptorResponseArgs{...} }
+type LogDescriptorResponseArrayInput interface {
+	pulumi.Input
+
+	ToLogDescriptorResponseArrayOutput() LogDescriptorResponseArrayOutput
+	ToLogDescriptorResponseArrayOutputWithContext(context.Context) LogDescriptorResponseArrayOutput
+}
+
+type LogDescriptorResponseArray []LogDescriptorResponseInput
+
+func (LogDescriptorResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogDescriptorResponse)(nil)).Elem()
+}
+
+func (i LogDescriptorResponseArray) ToLogDescriptorResponseArrayOutput() LogDescriptorResponseArrayOutput {
+	return i.ToLogDescriptorResponseArrayOutputWithContext(context.Background())
+}
+
+func (i LogDescriptorResponseArray) ToLogDescriptorResponseArrayOutputWithContext(ctx context.Context) LogDescriptorResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogDescriptorResponseArrayOutput)
+}
+
+// A description of a log type. Example in YAML format: - name: library.googleapis.com/activity_history description: The history of borrowing and returning library items. display_name: Activity labels: - key: /customer_id description: Identifier of a library customer
+type LogDescriptorResponseOutput struct{ *pulumi.OutputState }
+
+func (LogDescriptorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogDescriptorResponse)(nil)).Elem()
+}
+
+func (o LogDescriptorResponseOutput) ToLogDescriptorResponseOutput() LogDescriptorResponseOutput {
+	return o
+}
+
+func (o LogDescriptorResponseOutput) ToLogDescriptorResponseOutputWithContext(ctx context.Context) LogDescriptorResponseOutput {
+	return o
+}
+
+// A human-readable description of this log. This information appears in the documentation and can contain details.
+func (o LogDescriptorResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LogDescriptorResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The human-readable name for this log. This information appears on the user interface and should be concise.
+func (o LogDescriptorResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LogDescriptorResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The set of labels that are available to describe a specific log entry. Runtime requests that contain labels not specified here are considered invalid.
+func (o LogDescriptorResponseOutput) Labels() LabelDescriptorResponseArrayOutput {
+	return o.ApplyT(func(v LogDescriptorResponse) []LabelDescriptorResponse { return v.Labels }).(LabelDescriptorResponseArrayOutput)
+}
+
+// The name of the log. It must be less than 512 characters long and can include the following characters: upper- and lower-case alphanumeric characters [A-Za-z0-9], and punctuation characters including slash, underscore, hyphen, period [/_-.].
+func (o LogDescriptorResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LogDescriptorResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type LogDescriptorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LogDescriptorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogDescriptorResponse)(nil)).Elem()
+}
+
+func (o LogDescriptorResponseArrayOutput) ToLogDescriptorResponseArrayOutput() LogDescriptorResponseArrayOutput {
+	return o
+}
+
+func (o LogDescriptorResponseArrayOutput) ToLogDescriptorResponseArrayOutputWithContext(ctx context.Context) LogDescriptorResponseArrayOutput {
+	return o
+}
+
+func (o LogDescriptorResponseArrayOutput) Index(i pulumi.IntInput) LogDescriptorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogDescriptorResponse {
+		return vs[0].([]LogDescriptorResponse)[vs[1].(int)]
+	}).(LogDescriptorResponseOutput)
 }
 
 // Logging configuration of the service. The following example shows how to configure logs to be sent to the producer and consumer projects. In the example, the `activity_history` log is sent to both the producer and consumer projects, whereas the `purchase_history` log is only sent to the producer project. monitored_resources: - type: library.googleapis.com/branch labels: - key: /city description: The city where the library branch is located in. - key: /name description: The name of the branch. logs: - name: activity_history labels: - key: /customer_id - name: purchase_history logging: producer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history - purchase_history consumer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history
@@ -4573,6 +8667,268 @@ func (o LoggingDestinationArrayOutput) Index(i pulumi.IntInput) LoggingDestinati
 	}).(LoggingDestinationOutput)
 }
 
+// Configuration of a specific logging destination (the producer project or the consumer project).
+type LoggingDestinationResponse struct {
+	// Names of the logs to be sent to this destination. Each name must be defined in the Service.logs section. If the log name is not a domain scoped name, it will be automatically prefixed with the service name followed by "/".
+	Logs []string `pulumi:"logs"`
+	// The monitored resource type. The type must be defined in the Service.monitored_resources section.
+	MonitoredResource string `pulumi:"monitoredResource"`
+}
+
+// LoggingDestinationResponseInput is an input type that accepts LoggingDestinationResponseArgs and LoggingDestinationResponseOutput values.
+// You can construct a concrete instance of `LoggingDestinationResponseInput` via:
+//
+//          LoggingDestinationResponseArgs{...}
+type LoggingDestinationResponseInput interface {
+	pulumi.Input
+
+	ToLoggingDestinationResponseOutput() LoggingDestinationResponseOutput
+	ToLoggingDestinationResponseOutputWithContext(context.Context) LoggingDestinationResponseOutput
+}
+
+// Configuration of a specific logging destination (the producer project or the consumer project).
+type LoggingDestinationResponseArgs struct {
+	// Names of the logs to be sent to this destination. Each name must be defined in the Service.logs section. If the log name is not a domain scoped name, it will be automatically prefixed with the service name followed by "/".
+	Logs pulumi.StringArrayInput `pulumi:"logs"`
+	// The monitored resource type. The type must be defined in the Service.monitored_resources section.
+	MonitoredResource pulumi.StringInput `pulumi:"monitoredResource"`
+}
+
+func (LoggingDestinationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingDestinationResponse)(nil)).Elem()
+}
+
+func (i LoggingDestinationResponseArgs) ToLoggingDestinationResponseOutput() LoggingDestinationResponseOutput {
+	return i.ToLoggingDestinationResponseOutputWithContext(context.Background())
+}
+
+func (i LoggingDestinationResponseArgs) ToLoggingDestinationResponseOutputWithContext(ctx context.Context) LoggingDestinationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingDestinationResponseOutput)
+}
+
+// LoggingDestinationResponseArrayInput is an input type that accepts LoggingDestinationResponseArray and LoggingDestinationResponseArrayOutput values.
+// You can construct a concrete instance of `LoggingDestinationResponseArrayInput` via:
+//
+//          LoggingDestinationResponseArray{ LoggingDestinationResponseArgs{...} }
+type LoggingDestinationResponseArrayInput interface {
+	pulumi.Input
+
+	ToLoggingDestinationResponseArrayOutput() LoggingDestinationResponseArrayOutput
+	ToLoggingDestinationResponseArrayOutputWithContext(context.Context) LoggingDestinationResponseArrayOutput
+}
+
+type LoggingDestinationResponseArray []LoggingDestinationResponseInput
+
+func (LoggingDestinationResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingDestinationResponse)(nil)).Elem()
+}
+
+func (i LoggingDestinationResponseArray) ToLoggingDestinationResponseArrayOutput() LoggingDestinationResponseArrayOutput {
+	return i.ToLoggingDestinationResponseArrayOutputWithContext(context.Background())
+}
+
+func (i LoggingDestinationResponseArray) ToLoggingDestinationResponseArrayOutputWithContext(ctx context.Context) LoggingDestinationResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingDestinationResponseArrayOutput)
+}
+
+// Configuration of a specific logging destination (the producer project or the consumer project).
+type LoggingDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (LoggingDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingDestinationResponse)(nil)).Elem()
+}
+
+func (o LoggingDestinationResponseOutput) ToLoggingDestinationResponseOutput() LoggingDestinationResponseOutput {
+	return o
+}
+
+func (o LoggingDestinationResponseOutput) ToLoggingDestinationResponseOutputWithContext(ctx context.Context) LoggingDestinationResponseOutput {
+	return o
+}
+
+// Names of the logs to be sent to this destination. Each name must be defined in the Service.logs section. If the log name is not a domain scoped name, it will be automatically prefixed with the service name followed by "/".
+func (o LoggingDestinationResponseOutput) Logs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoggingDestinationResponse) []string { return v.Logs }).(pulumi.StringArrayOutput)
+}
+
+// The monitored resource type. The type must be defined in the Service.monitored_resources section.
+func (o LoggingDestinationResponseOutput) MonitoredResource() pulumi.StringOutput {
+	return o.ApplyT(func(v LoggingDestinationResponse) string { return v.MonitoredResource }).(pulumi.StringOutput)
+}
+
+type LoggingDestinationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LoggingDestinationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingDestinationResponse)(nil)).Elem()
+}
+
+func (o LoggingDestinationResponseArrayOutput) ToLoggingDestinationResponseArrayOutput() LoggingDestinationResponseArrayOutput {
+	return o
+}
+
+func (o LoggingDestinationResponseArrayOutput) ToLoggingDestinationResponseArrayOutputWithContext(ctx context.Context) LoggingDestinationResponseArrayOutput {
+	return o
+}
+
+func (o LoggingDestinationResponseArrayOutput) Index(i pulumi.IntInput) LoggingDestinationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingDestinationResponse {
+		return vs[0].([]LoggingDestinationResponse)[vs[1].(int)]
+	}).(LoggingDestinationResponseOutput)
+}
+
+// Logging configuration of the service. The following example shows how to configure logs to be sent to the producer and consumer projects. In the example, the `activity_history` log is sent to both the producer and consumer projects, whereas the `purchase_history` log is only sent to the producer project. monitored_resources: - type: library.googleapis.com/branch labels: - key: /city description: The city where the library branch is located in. - key: /name description: The name of the branch. logs: - name: activity_history labels: - key: /customer_id - name: purchase_history logging: producer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history - purchase_history consumer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history
+type LoggingResponse struct {
+	// Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination.
+	ConsumerDestinations []LoggingDestinationResponse `pulumi:"consumerDestinations"`
+	// Logging configurations for sending logs to the producer project. There can be multiple producer destinations, each one must have a different monitored resource type. A log can be used in at most one producer destination.
+	ProducerDestinations []LoggingDestinationResponse `pulumi:"producerDestinations"`
+}
+
+// LoggingResponseInput is an input type that accepts LoggingResponseArgs and LoggingResponseOutput values.
+// You can construct a concrete instance of `LoggingResponseInput` via:
+//
+//          LoggingResponseArgs{...}
+type LoggingResponseInput interface {
+	pulumi.Input
+
+	ToLoggingResponseOutput() LoggingResponseOutput
+	ToLoggingResponseOutputWithContext(context.Context) LoggingResponseOutput
+}
+
+// Logging configuration of the service. The following example shows how to configure logs to be sent to the producer and consumer projects. In the example, the `activity_history` log is sent to both the producer and consumer projects, whereas the `purchase_history` log is only sent to the producer project. monitored_resources: - type: library.googleapis.com/branch labels: - key: /city description: The city where the library branch is located in. - key: /name description: The name of the branch. logs: - name: activity_history labels: - key: /customer_id - name: purchase_history logging: producer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history - purchase_history consumer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history
+type LoggingResponseArgs struct {
+	// Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination.
+	ConsumerDestinations LoggingDestinationResponseArrayInput `pulumi:"consumerDestinations"`
+	// Logging configurations for sending logs to the producer project. There can be multiple producer destinations, each one must have a different monitored resource type. A log can be used in at most one producer destination.
+	ProducerDestinations LoggingDestinationResponseArrayInput `pulumi:"producerDestinations"`
+}
+
+func (LoggingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingResponse)(nil)).Elem()
+}
+
+func (i LoggingResponseArgs) ToLoggingResponseOutput() LoggingResponseOutput {
+	return i.ToLoggingResponseOutputWithContext(context.Background())
+}
+
+func (i LoggingResponseArgs) ToLoggingResponseOutputWithContext(ctx context.Context) LoggingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingResponseOutput)
+}
+
+func (i LoggingResponseArgs) ToLoggingResponsePtrOutput() LoggingResponsePtrOutput {
+	return i.ToLoggingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LoggingResponseArgs) ToLoggingResponsePtrOutputWithContext(ctx context.Context) LoggingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingResponseOutput).ToLoggingResponsePtrOutputWithContext(ctx)
+}
+
+// LoggingResponsePtrInput is an input type that accepts LoggingResponseArgs, LoggingResponsePtr and LoggingResponsePtrOutput values.
+// You can construct a concrete instance of `LoggingResponsePtrInput` via:
+//
+//          LoggingResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type LoggingResponsePtrInput interface {
+	pulumi.Input
+
+	ToLoggingResponsePtrOutput() LoggingResponsePtrOutput
+	ToLoggingResponsePtrOutputWithContext(context.Context) LoggingResponsePtrOutput
+}
+
+type loggingResponsePtrType LoggingResponseArgs
+
+func LoggingResponsePtr(v *LoggingResponseArgs) LoggingResponsePtrInput {
+	return (*loggingResponsePtrType)(v)
+}
+
+func (*loggingResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingResponse)(nil)).Elem()
+}
+
+func (i *loggingResponsePtrType) ToLoggingResponsePtrOutput() LoggingResponsePtrOutput {
+	return i.ToLoggingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *loggingResponsePtrType) ToLoggingResponsePtrOutputWithContext(ctx context.Context) LoggingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingResponsePtrOutput)
+}
+
+// Logging configuration of the service. The following example shows how to configure logs to be sent to the producer and consumer projects. In the example, the `activity_history` log is sent to both the producer and consumer projects, whereas the `purchase_history` log is only sent to the producer project. monitored_resources: - type: library.googleapis.com/branch labels: - key: /city description: The city where the library branch is located in. - key: /name description: The name of the branch. logs: - name: activity_history labels: - key: /customer_id - name: purchase_history logging: producer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history - purchase_history consumer_destinations: - monitored_resource: library.googleapis.com/branch logs: - activity_history
+type LoggingResponseOutput struct{ *pulumi.OutputState }
+
+func (LoggingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingResponse)(nil)).Elem()
+}
+
+func (o LoggingResponseOutput) ToLoggingResponseOutput() LoggingResponseOutput {
+	return o
+}
+
+func (o LoggingResponseOutput) ToLoggingResponseOutputWithContext(ctx context.Context) LoggingResponseOutput {
+	return o
+}
+
+func (o LoggingResponseOutput) ToLoggingResponsePtrOutput() LoggingResponsePtrOutput {
+	return o.ToLoggingResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LoggingResponseOutput) ToLoggingResponsePtrOutputWithContext(ctx context.Context) LoggingResponsePtrOutput {
+	return o.ApplyT(func(v LoggingResponse) *LoggingResponse {
+		return &v
+	}).(LoggingResponsePtrOutput)
+}
+
+// Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination.
+func (o LoggingResponseOutput) ConsumerDestinations() LoggingDestinationResponseArrayOutput {
+	return o.ApplyT(func(v LoggingResponse) []LoggingDestinationResponse { return v.ConsumerDestinations }).(LoggingDestinationResponseArrayOutput)
+}
+
+// Logging configurations for sending logs to the producer project. There can be multiple producer destinations, each one must have a different monitored resource type. A log can be used in at most one producer destination.
+func (o LoggingResponseOutput) ProducerDestinations() LoggingDestinationResponseArrayOutput {
+	return o.ApplyT(func(v LoggingResponse) []LoggingDestinationResponse { return v.ProducerDestinations }).(LoggingDestinationResponseArrayOutput)
+}
+
+type LoggingResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingResponse)(nil)).Elem()
+}
+
+func (o LoggingResponsePtrOutput) ToLoggingResponsePtrOutput() LoggingResponsePtrOutput {
+	return o
+}
+
+func (o LoggingResponsePtrOutput) ToLoggingResponsePtrOutputWithContext(ctx context.Context) LoggingResponsePtrOutput {
+	return o
+}
+
+func (o LoggingResponsePtrOutput) Elem() LoggingResponseOutput {
+	return o.ApplyT(func(v *LoggingResponse) LoggingResponse { return *v }).(LoggingResponseOutput)
+}
+
+// Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination.
+func (o LoggingResponsePtrOutput) ConsumerDestinations() LoggingDestinationResponseArrayOutput {
+	return o.ApplyT(func(v *LoggingResponse) []LoggingDestinationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerDestinations
+	}).(LoggingDestinationResponseArrayOutput)
+}
+
+// Logging configurations for sending logs to the producer project. There can be multiple producer destinations, each one must have a different monitored resource type. A log can be used in at most one producer destination.
+func (o LoggingResponsePtrOutput) ProducerDestinations() LoggingDestinationResponseArrayOutput {
+	return o.ApplyT(func(v *LoggingResponse) []LoggingDestinationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerDestinations
+	}).(LoggingDestinationResponseArrayOutput)
+}
+
 // Method represents a method of an API interface.
 type Method struct {
 	// The simple name of this method.
@@ -4725,6 +9081,160 @@ func (o MethodArrayOutput) Index(i pulumi.IntInput) MethodOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Method {
 		return vs[0].([]Method)[vs[1].(int)]
 	}).(MethodOutput)
+}
+
+// Method represents a method of an API interface.
+type MethodResponse struct {
+	// The simple name of this method.
+	Name string `pulumi:"name"`
+	// Any metadata attached to the method.
+	Options []OptionResponse `pulumi:"options"`
+	// If true, the request is streamed.
+	RequestStreaming bool `pulumi:"requestStreaming"`
+	// A URL of the input message type.
+	RequestTypeUrl string `pulumi:"requestTypeUrl"`
+	// If true, the response is streamed.
+	ResponseStreaming bool `pulumi:"responseStreaming"`
+	// The URL of the output message type.
+	ResponseTypeUrl string `pulumi:"responseTypeUrl"`
+	// The source syntax of this method.
+	Syntax string `pulumi:"syntax"`
+}
+
+// MethodResponseInput is an input type that accepts MethodResponseArgs and MethodResponseOutput values.
+// You can construct a concrete instance of `MethodResponseInput` via:
+//
+//          MethodResponseArgs{...}
+type MethodResponseInput interface {
+	pulumi.Input
+
+	ToMethodResponseOutput() MethodResponseOutput
+	ToMethodResponseOutputWithContext(context.Context) MethodResponseOutput
+}
+
+// Method represents a method of an API interface.
+type MethodResponseArgs struct {
+	// The simple name of this method.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Any metadata attached to the method.
+	Options OptionResponseArrayInput `pulumi:"options"`
+	// If true, the request is streamed.
+	RequestStreaming pulumi.BoolInput `pulumi:"requestStreaming"`
+	// A URL of the input message type.
+	RequestTypeUrl pulumi.StringInput `pulumi:"requestTypeUrl"`
+	// If true, the response is streamed.
+	ResponseStreaming pulumi.BoolInput `pulumi:"responseStreaming"`
+	// The URL of the output message type.
+	ResponseTypeUrl pulumi.StringInput `pulumi:"responseTypeUrl"`
+	// The source syntax of this method.
+	Syntax pulumi.StringInput `pulumi:"syntax"`
+}
+
+func (MethodResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodResponse)(nil)).Elem()
+}
+
+func (i MethodResponseArgs) ToMethodResponseOutput() MethodResponseOutput {
+	return i.ToMethodResponseOutputWithContext(context.Background())
+}
+
+func (i MethodResponseArgs) ToMethodResponseOutputWithContext(ctx context.Context) MethodResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodResponseOutput)
+}
+
+// MethodResponseArrayInput is an input type that accepts MethodResponseArray and MethodResponseArrayOutput values.
+// You can construct a concrete instance of `MethodResponseArrayInput` via:
+//
+//          MethodResponseArray{ MethodResponseArgs{...} }
+type MethodResponseArrayInput interface {
+	pulumi.Input
+
+	ToMethodResponseArrayOutput() MethodResponseArrayOutput
+	ToMethodResponseArrayOutputWithContext(context.Context) MethodResponseArrayOutput
+}
+
+type MethodResponseArray []MethodResponseInput
+
+func (MethodResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MethodResponse)(nil)).Elem()
+}
+
+func (i MethodResponseArray) ToMethodResponseArrayOutput() MethodResponseArrayOutput {
+	return i.ToMethodResponseArrayOutputWithContext(context.Background())
+}
+
+func (i MethodResponseArray) ToMethodResponseArrayOutputWithContext(ctx context.Context) MethodResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodResponseArrayOutput)
+}
+
+// Method represents a method of an API interface.
+type MethodResponseOutput struct{ *pulumi.OutputState }
+
+func (MethodResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodResponse)(nil)).Elem()
+}
+
+func (o MethodResponseOutput) ToMethodResponseOutput() MethodResponseOutput {
+	return o
+}
+
+func (o MethodResponseOutput) ToMethodResponseOutputWithContext(ctx context.Context) MethodResponseOutput {
+	return o
+}
+
+// The simple name of this method.
+func (o MethodResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MethodResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Any metadata attached to the method.
+func (o MethodResponseOutput) Options() OptionResponseArrayOutput {
+	return o.ApplyT(func(v MethodResponse) []OptionResponse { return v.Options }).(OptionResponseArrayOutput)
+}
+
+// If true, the request is streamed.
+func (o MethodResponseOutput) RequestStreaming() pulumi.BoolOutput {
+	return o.ApplyT(func(v MethodResponse) bool { return v.RequestStreaming }).(pulumi.BoolOutput)
+}
+
+// A URL of the input message type.
+func (o MethodResponseOutput) RequestTypeUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v MethodResponse) string { return v.RequestTypeUrl }).(pulumi.StringOutput)
+}
+
+// If true, the response is streamed.
+func (o MethodResponseOutput) ResponseStreaming() pulumi.BoolOutput {
+	return o.ApplyT(func(v MethodResponse) bool { return v.ResponseStreaming }).(pulumi.BoolOutput)
+}
+
+// The URL of the output message type.
+func (o MethodResponseOutput) ResponseTypeUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v MethodResponse) string { return v.ResponseTypeUrl }).(pulumi.StringOutput)
+}
+
+// The source syntax of this method.
+func (o MethodResponseOutput) Syntax() pulumi.StringOutput {
+	return o.ApplyT(func(v MethodResponse) string { return v.Syntax }).(pulumi.StringOutput)
+}
+
+type MethodResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MethodResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MethodResponse)(nil)).Elem()
+}
+
+func (o MethodResponseArrayOutput) ToMethodResponseArrayOutput() MethodResponseArrayOutput {
+	return o
+}
+
+func (o MethodResponseArrayOutput) ToMethodResponseArrayOutputWithContext(ctx context.Context) MethodResponseArrayOutput {
+	return o
+}
+
+func (o MethodResponseArrayOutput) Index(i pulumi.IntInput) MethodResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MethodResponse {
+		return vs[0].([]MethodResponse)[vs[1].(int)]
+	}).(MethodResponseOutput)
 }
 
 // Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
@@ -4921,8 +9431,6 @@ func (o MetricDescriptorArrayOutput) Index(i pulumi.IntInput) MetricDescriptorOu
 type MetricDescriptorMetadata struct {
 	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
 	IngestDelay *string `pulumi:"ingestDelay"`
-	// Deprecated. Must use the MetricDescriptor.launch_stage instead.
-	LaunchStage *string `pulumi:"launchStage"`
 	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 	SamplePeriod *string `pulumi:"samplePeriod"`
 }
@@ -4942,8 +9450,6 @@ type MetricDescriptorMetadataInput interface {
 type MetricDescriptorMetadataArgs struct {
 	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
 	IngestDelay pulumi.StringPtrInput `pulumi:"ingestDelay"`
-	// Deprecated. Must use the MetricDescriptor.launch_stage instead.
-	LaunchStage pulumi.StringPtrInput `pulumi:"launchStage"`
 	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 	SamplePeriod pulumi.StringPtrInput `pulumi:"samplePeriod"`
 }
@@ -5031,11 +9537,6 @@ func (o MetricDescriptorMetadataOutput) IngestDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricDescriptorMetadata) *string { return v.IngestDelay }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated. Must use the MetricDescriptor.launch_stage instead.
-func (o MetricDescriptorMetadataOutput) LaunchStage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MetricDescriptorMetadata) *string { return v.LaunchStage }).(pulumi.StringPtrOutput)
-}
-
 // The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 func (o MetricDescriptorMetadataOutput) SamplePeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricDescriptorMetadata) *string { return v.SamplePeriod }).(pulumi.StringPtrOutput)
@@ -5069,16 +9570,6 @@ func (o MetricDescriptorMetadataPtrOutput) IngestDelay() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated. Must use the MetricDescriptor.launch_stage instead.
-func (o MetricDescriptorMetadataPtrOutput) LaunchStage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MetricDescriptorMetadata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LaunchStage
-	}).(pulumi.StringPtrOutput)
-}
-
 // The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 func (o MetricDescriptorMetadataPtrOutput) SamplePeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricDescriptorMetadata) *string {
@@ -5087,6 +9578,260 @@ func (o MetricDescriptorMetadataPtrOutput) SamplePeriod() pulumi.StringPtrOutput
 		}
 		return v.SamplePeriod
 	}).(pulumi.StringPtrOutput)
+}
+
+// Additional annotations that can be used to guide the usage of a metric.
+type MetricDescriptorMetadataResponse struct {
+	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
+	IngestDelay string `pulumi:"ingestDelay"`
+	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
+	SamplePeriod string `pulumi:"samplePeriod"`
+}
+
+// MetricDescriptorMetadataResponseInput is an input type that accepts MetricDescriptorMetadataResponseArgs and MetricDescriptorMetadataResponseOutput values.
+// You can construct a concrete instance of `MetricDescriptorMetadataResponseInput` via:
+//
+//          MetricDescriptorMetadataResponseArgs{...}
+type MetricDescriptorMetadataResponseInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorMetadataResponseOutput() MetricDescriptorMetadataResponseOutput
+	ToMetricDescriptorMetadataResponseOutputWithContext(context.Context) MetricDescriptorMetadataResponseOutput
+}
+
+// Additional annotations that can be used to guide the usage of a metric.
+type MetricDescriptorMetadataResponseArgs struct {
+	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
+	IngestDelay pulumi.StringInput `pulumi:"ingestDelay"`
+	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
+	SamplePeriod pulumi.StringInput `pulumi:"samplePeriod"`
+}
+
+func (MetricDescriptorMetadataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorMetadataResponse)(nil)).Elem()
+}
+
+func (i MetricDescriptorMetadataResponseArgs) ToMetricDescriptorMetadataResponseOutput() MetricDescriptorMetadataResponseOutput {
+	return i.ToMetricDescriptorMetadataResponseOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptorMetadataResponseArgs) ToMetricDescriptorMetadataResponseOutputWithContext(ctx context.Context) MetricDescriptorMetadataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataResponseOutput)
+}
+
+// Additional annotations that can be used to guide the usage of a metric.
+type MetricDescriptorMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorMetadataResponse)(nil)).Elem()
+}
+
+func (o MetricDescriptorMetadataResponseOutput) ToMetricDescriptorMetadataResponseOutput() MetricDescriptorMetadataResponseOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataResponseOutput) ToMetricDescriptorMetadataResponseOutputWithContext(ctx context.Context) MetricDescriptorMetadataResponseOutput {
+	return o
+}
+
+// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
+func (o MetricDescriptorMetadataResponseOutput) IngestDelay() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorMetadataResponse) string { return v.IngestDelay }).(pulumi.StringOutput)
+}
+
+// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
+func (o MetricDescriptorMetadataResponseOutput) SamplePeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorMetadataResponse) string { return v.SamplePeriod }).(pulumi.StringOutput)
+}
+
+// Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
+type MetricDescriptorResponse struct {
+	// A detailed description of the metric, which can be used in documentation.
+	Description string `pulumi:"description"`
+	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota.
+	DisplayName string `pulumi:"displayName"`
+	// The set of labels that can be used to describe a specific instance of this metric type. For example, the `appengine.googleapis.com/http/server/response_latencies` metric type has a label for the HTTP response code, `response_code`, so you can look at latencies for successful responses or just for responses that failed.
+	Labels []LabelDescriptorResponse `pulumi:"labels"`
+	// Optional. The launch stage of the metric definition.
+	LaunchStage string `pulumi:"launchStage"`
+	// Optional. Metadata which can be used to guide usage of the metric.
+	Metadata MetricDescriptorMetadataResponse `pulumi:"metadata"`
+	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
+	MetricKind string `pulumi:"metricKind"`
+	// Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here.
+	MonitoredResourceTypes []string `pulumi:"monitoredResourceTypes"`
+	// The resource name of the metric descriptor.
+	Name string `pulumi:"name"`
+	// The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name `custom.googleapis.com` or `external.googleapis.com`. Metric types should use a natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies"
+	Type string `pulumi:"type"`
+	// The units in which the metric value is reported. It is only applicable if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit` defines the representation of the stored metric values. Different systems might scale the values to be more easily displayed (so a value of `0.02kBy` _might_ be displayed as `20By`, and a value of `3523kBy` _might_ be displayed as `3.5MBy`). However, if the `unit` is `kBy`, then the value of the metric is always in thousands of bytes, no matter how it might be displayed. If you want a custom metric to record the exact number of CPU-seconds used by a job, you can create an `INT64 CUMULATIVE` metric whose `unit` is `s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the job uses 12,005 CPU-seconds, then the value is written as `12005`. Alternatively, if you want a custom metric to record data in a more granular way, you can create a `DOUBLE CUMULATIVE` metric whose `unit` is `ks{CPU}`, and then write the value `12.005` (which is `12005/1000`), or use `Kis{CPU}` and write `11.723` (which is `12005/1024`). The supported units are a subset of [The Unified Code for Units of Measure](https://unitsofmeasure.org/ucum.html) standard: **Basic units (UNIT)** * `bit` bit * `By` byte * `s` second * `min` minute * `h` hour * `d` day * `1` dimensionless **Prefixes (PREFIX)** * `k` kilo (10^3) * `M` mega (10^6) * `G` giga (10^9) * `T` tera (10^12) * `P` peta (10^15) * `E` exa (10^18) * `Z` zetta (10^21) * `Y` yotta (10^24) * `m` milli (10^-3) * `u` micro (10^-6) * `n` nano (10^-9) * `p` pico (10^-12) * `f` femto (10^-15) * `a` atto (10^-18) * `z` zepto (10^-21) * `y` yocto (10^-24) * `Ki` kibi (2^10) * `Mi` mebi (2^20) * `Gi` gibi (2^30) * `Ti` tebi (2^40) * `Pi` pebi (2^50) **Grammar** The grammar also includes these connectors: * `/` division or ratio (as an infix operator). For examples, `kBy/{email}` or `MiBy/10ms` (although you should almost never have `/s` in a metric `unit`; rates should always be computed at query time from the underlying cumulative or delta value). * `.` multiplication or composition (as an infix operator). For examples, `GBy.d` or `k{watt}.h`. The grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: * `Annotation` is just a comment if it follows a `UNIT`. If the annotation is used alone, then the unit is equivalent to `1`. For examples, `{request}/s == 1/s`, `By{transmitted}/s == By/s`. * `NAME` is a sequence of non-blank printable ASCII characters not containing `{` or `}`. * `1` represents a unitary [dimensionless unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in `1/s`. It is typically used when none of the basic units are appropriate. For example, "new users per day" can be represented as `1/d` or `{new-users}/d` (and a metric value `5` would mean "5 new users). Alternatively, "thousands of page views per day" would be represented as `1000/d` or `k1/d` or `k{page_views}/d` (and a metric value of `5.3` would mean "5300 page views per day"). * `%` represents dimensionless value of 1/100, and annotates values giving a percentage (so the metric values are typically in the range of 0..100, and a metric value `3` means "3 percent"). * `10^2.%` indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and displayed as a percentage (so a metric value `0.03` means "3 percent").
+	Unit string `pulumi:"unit"`
+	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
+	ValueType string `pulumi:"valueType"`
+}
+
+// MetricDescriptorResponseInput is an input type that accepts MetricDescriptorResponseArgs and MetricDescriptorResponseOutput values.
+// You can construct a concrete instance of `MetricDescriptorResponseInput` via:
+//
+//          MetricDescriptorResponseArgs{...}
+type MetricDescriptorResponseInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorResponseOutput() MetricDescriptorResponseOutput
+	ToMetricDescriptorResponseOutputWithContext(context.Context) MetricDescriptorResponseOutput
+}
+
+// Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
+type MetricDescriptorResponseArgs struct {
+	// A detailed description of the metric, which can be used in documentation.
+	Description pulumi.StringInput `pulumi:"description"`
+	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The set of labels that can be used to describe a specific instance of this metric type. For example, the `appengine.googleapis.com/http/server/response_latencies` metric type has a label for the HTTP response code, `response_code`, so you can look at latencies for successful responses or just for responses that failed.
+	Labels LabelDescriptorResponseArrayInput `pulumi:"labels"`
+	// Optional. The launch stage of the metric definition.
+	LaunchStage pulumi.StringInput `pulumi:"launchStage"`
+	// Optional. Metadata which can be used to guide usage of the metric.
+	Metadata MetricDescriptorMetadataResponseInput `pulumi:"metadata"`
+	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
+	MetricKind pulumi.StringInput `pulumi:"metricKind"`
+	// Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here.
+	MonitoredResourceTypes pulumi.StringArrayInput `pulumi:"monitoredResourceTypes"`
+	// The resource name of the metric descriptor.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name `custom.googleapis.com` or `external.googleapis.com`. Metric types should use a natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies"
+	Type pulumi.StringInput `pulumi:"type"`
+	// The units in which the metric value is reported. It is only applicable if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit` defines the representation of the stored metric values. Different systems might scale the values to be more easily displayed (so a value of `0.02kBy` _might_ be displayed as `20By`, and a value of `3523kBy` _might_ be displayed as `3.5MBy`). However, if the `unit` is `kBy`, then the value of the metric is always in thousands of bytes, no matter how it might be displayed. If you want a custom metric to record the exact number of CPU-seconds used by a job, you can create an `INT64 CUMULATIVE` metric whose `unit` is `s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the job uses 12,005 CPU-seconds, then the value is written as `12005`. Alternatively, if you want a custom metric to record data in a more granular way, you can create a `DOUBLE CUMULATIVE` metric whose `unit` is `ks{CPU}`, and then write the value `12.005` (which is `12005/1000`), or use `Kis{CPU}` and write `11.723` (which is `12005/1024`). The supported units are a subset of [The Unified Code for Units of Measure](https://unitsofmeasure.org/ucum.html) standard: **Basic units (UNIT)** * `bit` bit * `By` byte * `s` second * `min` minute * `h` hour * `d` day * `1` dimensionless **Prefixes (PREFIX)** * `k` kilo (10^3) * `M` mega (10^6) * `G` giga (10^9) * `T` tera (10^12) * `P` peta (10^15) * `E` exa (10^18) * `Z` zetta (10^21) * `Y` yotta (10^24) * `m` milli (10^-3) * `u` micro (10^-6) * `n` nano (10^-9) * `p` pico (10^-12) * `f` femto (10^-15) * `a` atto (10^-18) * `z` zepto (10^-21) * `y` yocto (10^-24) * `Ki` kibi (2^10) * `Mi` mebi (2^20) * `Gi` gibi (2^30) * `Ti` tebi (2^40) * `Pi` pebi (2^50) **Grammar** The grammar also includes these connectors: * `/` division or ratio (as an infix operator). For examples, `kBy/{email}` or `MiBy/10ms` (although you should almost never have `/s` in a metric `unit`; rates should always be computed at query time from the underlying cumulative or delta value). * `.` multiplication or composition (as an infix operator). For examples, `GBy.d` or `k{watt}.h`. The grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: * `Annotation` is just a comment if it follows a `UNIT`. If the annotation is used alone, then the unit is equivalent to `1`. For examples, `{request}/s == 1/s`, `By{transmitted}/s == By/s`. * `NAME` is a sequence of non-blank printable ASCII characters not containing `{` or `}`. * `1` represents a unitary [dimensionless unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in `1/s`. It is typically used when none of the basic units are appropriate. For example, "new users per day" can be represented as `1/d` or `{new-users}/d` (and a metric value `5` would mean "5 new users). Alternatively, "thousands of page views per day" would be represented as `1000/d` or `k1/d` or `k{page_views}/d` (and a metric value of `5.3` would mean "5300 page views per day"). * `%` represents dimensionless value of 1/100, and annotates values giving a percentage (so the metric values are typically in the range of 0..100, and a metric value `3` means "3 percent"). * `10^2.%` indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and displayed as a percentage (so a metric value `0.03` means "3 percent").
+	Unit pulumi.StringInput `pulumi:"unit"`
+	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (MetricDescriptorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorResponse)(nil)).Elem()
+}
+
+func (i MetricDescriptorResponseArgs) ToMetricDescriptorResponseOutput() MetricDescriptorResponseOutput {
+	return i.ToMetricDescriptorResponseOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptorResponseArgs) ToMetricDescriptorResponseOutputWithContext(ctx context.Context) MetricDescriptorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorResponseOutput)
+}
+
+// MetricDescriptorResponseArrayInput is an input type that accepts MetricDescriptorResponseArray and MetricDescriptorResponseArrayOutput values.
+// You can construct a concrete instance of `MetricDescriptorResponseArrayInput` via:
+//
+//          MetricDescriptorResponseArray{ MetricDescriptorResponseArgs{...} }
+type MetricDescriptorResponseArrayInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorResponseArrayOutput() MetricDescriptorResponseArrayOutput
+	ToMetricDescriptorResponseArrayOutputWithContext(context.Context) MetricDescriptorResponseArrayOutput
+}
+
+type MetricDescriptorResponseArray []MetricDescriptorResponseInput
+
+func (MetricDescriptorResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricDescriptorResponse)(nil)).Elem()
+}
+
+func (i MetricDescriptorResponseArray) ToMetricDescriptorResponseArrayOutput() MetricDescriptorResponseArrayOutput {
+	return i.ToMetricDescriptorResponseArrayOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptorResponseArray) ToMetricDescriptorResponseArrayOutputWithContext(ctx context.Context) MetricDescriptorResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorResponseArrayOutput)
+}
+
+// Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
+type MetricDescriptorResponseOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorResponse)(nil)).Elem()
+}
+
+func (o MetricDescriptorResponseOutput) ToMetricDescriptorResponseOutput() MetricDescriptorResponseOutput {
+	return o
+}
+
+func (o MetricDescriptorResponseOutput) ToMetricDescriptorResponseOutputWithContext(ctx context.Context) MetricDescriptorResponseOutput {
+	return o
+}
+
+// A detailed description of the metric, which can be used in documentation.
+func (o MetricDescriptorResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota.
+func (o MetricDescriptorResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The set of labels that can be used to describe a specific instance of this metric type. For example, the `appengine.googleapis.com/http/server/response_latencies` metric type has a label for the HTTP response code, `response_code`, so you can look at latencies for successful responses or just for responses that failed.
+func (o MetricDescriptorResponseOutput) Labels() LabelDescriptorResponseArrayOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) []LabelDescriptorResponse { return v.Labels }).(LabelDescriptorResponseArrayOutput)
+}
+
+// Optional. The launch stage of the metric definition.
+func (o MetricDescriptorResponseOutput) LaunchStage() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.LaunchStage }).(pulumi.StringOutput)
+}
+
+// Optional. Metadata which can be used to guide usage of the metric.
+func (o MetricDescriptorResponseOutput) Metadata() MetricDescriptorMetadataResponseOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) MetricDescriptorMetadataResponse { return v.Metadata }).(MetricDescriptorMetadataResponseOutput)
+}
+
+// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
+func (o MetricDescriptorResponseOutput) MetricKind() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.MetricKind }).(pulumi.StringOutput)
+}
+
+// Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here.
+func (o MetricDescriptorResponseOutput) MonitoredResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) []string { return v.MonitoredResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+// The resource name of the metric descriptor.
+func (o MetricDescriptorResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name `custom.googleapis.com` or `external.googleapis.com`. Metric types should use a natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies"
+func (o MetricDescriptorResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The units in which the metric value is reported. It is only applicable if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit` defines the representation of the stored metric values. Different systems might scale the values to be more easily displayed (so a value of `0.02kBy` _might_ be displayed as `20By`, and a value of `3523kBy` _might_ be displayed as `3.5MBy`). However, if the `unit` is `kBy`, then the value of the metric is always in thousands of bytes, no matter how it might be displayed. If you want a custom metric to record the exact number of CPU-seconds used by a job, you can create an `INT64 CUMULATIVE` metric whose `unit` is `s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the job uses 12,005 CPU-seconds, then the value is written as `12005`. Alternatively, if you want a custom metric to record data in a more granular way, you can create a `DOUBLE CUMULATIVE` metric whose `unit` is `ks{CPU}`, and then write the value `12.005` (which is `12005/1000`), or use `Kis{CPU}` and write `11.723` (which is `12005/1024`). The supported units are a subset of [The Unified Code for Units of Measure](https://unitsofmeasure.org/ucum.html) standard: **Basic units (UNIT)** * `bit` bit * `By` byte * `s` second * `min` minute * `h` hour * `d` day * `1` dimensionless **Prefixes (PREFIX)** * `k` kilo (10^3) * `M` mega (10^6) * `G` giga (10^9) * `T` tera (10^12) * `P` peta (10^15) * `E` exa (10^18) * `Z` zetta (10^21) * `Y` yotta (10^24) * `m` milli (10^-3) * `u` micro (10^-6) * `n` nano (10^-9) * `p` pico (10^-12) * `f` femto (10^-15) * `a` atto (10^-18) * `z` zepto (10^-21) * `y` yocto (10^-24) * `Ki` kibi (2^10) * `Mi` mebi (2^20) * `Gi` gibi (2^30) * `Ti` tebi (2^40) * `Pi` pebi (2^50) **Grammar** The grammar also includes these connectors: * `/` division or ratio (as an infix operator). For examples, `kBy/{email}` or `MiBy/10ms` (although you should almost never have `/s` in a metric `unit`; rates should always be computed at query time from the underlying cumulative or delta value). * `.` multiplication or composition (as an infix operator). For examples, `GBy.d` or `k{watt}.h`. The grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: * `Annotation` is just a comment if it follows a `UNIT`. If the annotation is used alone, then the unit is equivalent to `1`. For examples, `{request}/s == 1/s`, `By{transmitted}/s == By/s`. * `NAME` is a sequence of non-blank printable ASCII characters not containing `{` or `}`. * `1` represents a unitary [dimensionless unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in `1/s`. It is typically used when none of the basic units are appropriate. For example, "new users per day" can be represented as `1/d` or `{new-users}/d` (and a metric value `5` would mean "5 new users). Alternatively, "thousands of page views per day" would be represented as `1000/d` or `k1/d` or `k{page_views}/d` (and a metric value of `5.3` would mean "5300 page views per day"). * `%` represents dimensionless value of 1/100, and annotates values giving a percentage (so the metric values are typically in the range of 0..100, and a metric value `3` means "3 percent"). * `10^2.%` indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and displayed as a percentage (so a metric value `0.03` means "3 percent").
+func (o MetricDescriptorResponseOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+// Whether the measurement is an integer, a floating-point number, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
+func (o MetricDescriptorResponseOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type MetricDescriptorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricDescriptorResponse)(nil)).Elem()
+}
+
+func (o MetricDescriptorResponseArrayOutput) ToMetricDescriptorResponseArrayOutput() MetricDescriptorResponseArrayOutput {
+	return o
+}
+
+func (o MetricDescriptorResponseArrayOutput) ToMetricDescriptorResponseArrayOutputWithContext(ctx context.Context) MetricDescriptorResponseArrayOutput {
+	return o
+}
+
+func (o MetricDescriptorResponseArrayOutput) Index(i pulumi.IntInput) MetricDescriptorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricDescriptorResponse {
+		return vs[0].([]MetricDescriptorResponse)[vs[1].(int)]
+	}).(MetricDescriptorResponseOutput)
 }
 
 // Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota behaviors to apply to the method call.
@@ -5198,6 +9943,115 @@ func (o MetricRuleArrayOutput) Index(i pulumi.IntInput) MetricRuleOutput {
 	}).(MetricRuleOutput)
 }
 
+// Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota behaviors to apply to the method call.
+type MetricRuleResponse struct {
+	// Metrics to update when the selected methods are called, and the associated cost applied to each metric. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative.
+	MetricCosts map[string]string `pulumi:"metricCosts"`
+	// Selects the methods to which this rule applies. Refer to selector for syntax details.
+	Selector string `pulumi:"selector"`
+}
+
+// MetricRuleResponseInput is an input type that accepts MetricRuleResponseArgs and MetricRuleResponseOutput values.
+// You can construct a concrete instance of `MetricRuleResponseInput` via:
+//
+//          MetricRuleResponseArgs{...}
+type MetricRuleResponseInput interface {
+	pulumi.Input
+
+	ToMetricRuleResponseOutput() MetricRuleResponseOutput
+	ToMetricRuleResponseOutputWithContext(context.Context) MetricRuleResponseOutput
+}
+
+// Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota behaviors to apply to the method call.
+type MetricRuleResponseArgs struct {
+	// Metrics to update when the selected methods are called, and the associated cost applied to each metric. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative.
+	MetricCosts pulumi.StringMapInput `pulumi:"metricCosts"`
+	// Selects the methods to which this rule applies. Refer to selector for syntax details.
+	Selector pulumi.StringInput `pulumi:"selector"`
+}
+
+func (MetricRuleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRuleResponse)(nil)).Elem()
+}
+
+func (i MetricRuleResponseArgs) ToMetricRuleResponseOutput() MetricRuleResponseOutput {
+	return i.ToMetricRuleResponseOutputWithContext(context.Background())
+}
+
+func (i MetricRuleResponseArgs) ToMetricRuleResponseOutputWithContext(ctx context.Context) MetricRuleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleResponseOutput)
+}
+
+// MetricRuleResponseArrayInput is an input type that accepts MetricRuleResponseArray and MetricRuleResponseArrayOutput values.
+// You can construct a concrete instance of `MetricRuleResponseArrayInput` via:
+//
+//          MetricRuleResponseArray{ MetricRuleResponseArgs{...} }
+type MetricRuleResponseArrayInput interface {
+	pulumi.Input
+
+	ToMetricRuleResponseArrayOutput() MetricRuleResponseArrayOutput
+	ToMetricRuleResponseArrayOutputWithContext(context.Context) MetricRuleResponseArrayOutput
+}
+
+type MetricRuleResponseArray []MetricRuleResponseInput
+
+func (MetricRuleResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRuleResponse)(nil)).Elem()
+}
+
+func (i MetricRuleResponseArray) ToMetricRuleResponseArrayOutput() MetricRuleResponseArrayOutput {
+	return i.ToMetricRuleResponseArrayOutputWithContext(context.Background())
+}
+
+func (i MetricRuleResponseArray) ToMetricRuleResponseArrayOutputWithContext(ctx context.Context) MetricRuleResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRuleResponseArrayOutput)
+}
+
+// Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota behaviors to apply to the method call.
+type MetricRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (MetricRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRuleResponse)(nil)).Elem()
+}
+
+func (o MetricRuleResponseOutput) ToMetricRuleResponseOutput() MetricRuleResponseOutput {
+	return o
+}
+
+func (o MetricRuleResponseOutput) ToMetricRuleResponseOutputWithContext(ctx context.Context) MetricRuleResponseOutput {
+	return o
+}
+
+// Metrics to update when the selected methods are called, and the associated cost applied to each metric. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative.
+func (o MetricRuleResponseOutput) MetricCosts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v MetricRuleResponse) map[string]string { return v.MetricCosts }).(pulumi.StringMapOutput)
+}
+
+// Selects the methods to which this rule applies. Refer to selector for syntax details.
+func (o MetricRuleResponseOutput) Selector() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricRuleResponse) string { return v.Selector }).(pulumi.StringOutput)
+}
+
+type MetricRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRuleResponse)(nil)).Elem()
+}
+
+func (o MetricRuleResponseArrayOutput) ToMetricRuleResponseArrayOutput() MetricRuleResponseArrayOutput {
+	return o
+}
+
+func (o MetricRuleResponseArrayOutput) ToMetricRuleResponseArrayOutputWithContext(ctx context.Context) MetricRuleResponseArrayOutput {
+	return o
+}
+
+func (o MetricRuleResponseArrayOutput) Index(i pulumi.IntInput) MetricRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricRuleResponse {
+		return vs[0].([]MetricRuleResponse)[vs[1].(int)]
+	}).(MetricRuleResponseOutput)
+}
+
 // Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inheriting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... }
 type Mixin struct {
 	// The fully qualified name of the interface which is included.
@@ -5305,6 +10159,115 @@ func (o MixinArrayOutput) Index(i pulumi.IntInput) MixinOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Mixin {
 		return vs[0].([]Mixin)[vs[1].(int)]
 	}).(MixinOutput)
+}
+
+// Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inheriting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... }
+type MixinResponse struct {
+	// The fully qualified name of the interface which is included.
+	Name string `pulumi:"name"`
+	// If non-empty specifies a path under which inherited HTTP paths are rooted.
+	Root string `pulumi:"root"`
+}
+
+// MixinResponseInput is an input type that accepts MixinResponseArgs and MixinResponseOutput values.
+// You can construct a concrete instance of `MixinResponseInput` via:
+//
+//          MixinResponseArgs{...}
+type MixinResponseInput interface {
+	pulumi.Input
+
+	ToMixinResponseOutput() MixinResponseOutput
+	ToMixinResponseOutputWithContext(context.Context) MixinResponseOutput
+}
+
+// Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inheriting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... }
+type MixinResponseArgs struct {
+	// The fully qualified name of the interface which is included.
+	Name pulumi.StringInput `pulumi:"name"`
+	// If non-empty specifies a path under which inherited HTTP paths are rooted.
+	Root pulumi.StringInput `pulumi:"root"`
+}
+
+func (MixinResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MixinResponse)(nil)).Elem()
+}
+
+func (i MixinResponseArgs) ToMixinResponseOutput() MixinResponseOutput {
+	return i.ToMixinResponseOutputWithContext(context.Background())
+}
+
+func (i MixinResponseArgs) ToMixinResponseOutputWithContext(ctx context.Context) MixinResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MixinResponseOutput)
+}
+
+// MixinResponseArrayInput is an input type that accepts MixinResponseArray and MixinResponseArrayOutput values.
+// You can construct a concrete instance of `MixinResponseArrayInput` via:
+//
+//          MixinResponseArray{ MixinResponseArgs{...} }
+type MixinResponseArrayInput interface {
+	pulumi.Input
+
+	ToMixinResponseArrayOutput() MixinResponseArrayOutput
+	ToMixinResponseArrayOutputWithContext(context.Context) MixinResponseArrayOutput
+}
+
+type MixinResponseArray []MixinResponseInput
+
+func (MixinResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MixinResponse)(nil)).Elem()
+}
+
+func (i MixinResponseArray) ToMixinResponseArrayOutput() MixinResponseArrayOutput {
+	return i.ToMixinResponseArrayOutputWithContext(context.Background())
+}
+
+func (i MixinResponseArray) ToMixinResponseArrayOutputWithContext(ctx context.Context) MixinResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MixinResponseArrayOutput)
+}
+
+// Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inheriting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... }
+type MixinResponseOutput struct{ *pulumi.OutputState }
+
+func (MixinResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MixinResponse)(nil)).Elem()
+}
+
+func (o MixinResponseOutput) ToMixinResponseOutput() MixinResponseOutput {
+	return o
+}
+
+func (o MixinResponseOutput) ToMixinResponseOutputWithContext(ctx context.Context) MixinResponseOutput {
+	return o
+}
+
+// The fully qualified name of the interface which is included.
+func (o MixinResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MixinResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// If non-empty specifies a path under which inherited HTTP paths are rooted.
+func (o MixinResponseOutput) Root() pulumi.StringOutput {
+	return o.ApplyT(func(v MixinResponse) string { return v.Root }).(pulumi.StringOutput)
+}
+
+type MixinResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MixinResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MixinResponse)(nil)).Elem()
+}
+
+func (o MixinResponseArrayOutput) ToMixinResponseArrayOutput() MixinResponseArrayOutput {
+	return o
+}
+
+func (o MixinResponseArrayOutput) ToMixinResponseArrayOutputWithContext(ctx context.Context) MixinResponseArrayOutput {
+	return o
+}
+
+func (o MixinResponseArrayOutput) Index(i pulumi.IntInput) MixinResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MixinResponse {
+		return vs[0].([]MixinResponse)[vs[1].(int)]
+	}).(MixinResponseOutput)
 }
 
 // An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method that returns the monitored resource descriptors used by the API.
@@ -5450,6 +10413,151 @@ func (o MonitoredResourceDescriptorArrayOutput) Index(i pulumi.IntInput) Monitor
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitoredResourceDescriptor {
 		return vs[0].([]MonitoredResourceDescriptor)[vs[1].(int)]
 	}).(MonitoredResourceDescriptorOutput)
+}
+
+// An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method that returns the monitored resource descriptors used by the API.
+type MonitoredResourceDescriptorResponse struct {
+	// Optional. A detailed description of the monitored resource type that might be used in documentation.
+	Description string `pulumi:"description"`
+	// Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, `"Google Cloud SQL Database"`.
+	DisplayName string `pulumi:"displayName"`
+	// Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+	Labels []LabelDescriptorResponse `pulumi:"labels"`
+	// Optional. The launch stage of the monitored resource definition.
+	LaunchStage string `pulumi:"launchStage"`
+	// Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
+	Name string `pulumi:"name"`
+	// Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+	Type string `pulumi:"type"`
+}
+
+// MonitoredResourceDescriptorResponseInput is an input type that accepts MonitoredResourceDescriptorResponseArgs and MonitoredResourceDescriptorResponseOutput values.
+// You can construct a concrete instance of `MonitoredResourceDescriptorResponseInput` via:
+//
+//          MonitoredResourceDescriptorResponseArgs{...}
+type MonitoredResourceDescriptorResponseInput interface {
+	pulumi.Input
+
+	ToMonitoredResourceDescriptorResponseOutput() MonitoredResourceDescriptorResponseOutput
+	ToMonitoredResourceDescriptorResponseOutputWithContext(context.Context) MonitoredResourceDescriptorResponseOutput
+}
+
+// An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method that returns the monitored resource descriptors used by the API.
+type MonitoredResourceDescriptorResponseArgs struct {
+	// Optional. A detailed description of the monitored resource type that might be used in documentation.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, `"Google Cloud SQL Database"`.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+	Labels LabelDescriptorResponseArrayInput `pulumi:"labels"`
+	// Optional. The launch stage of the monitored resource definition.
+	LaunchStage pulumi.StringInput `pulumi:"launchStage"`
+	// Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (MonitoredResourceDescriptorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoredResourceDescriptorResponse)(nil)).Elem()
+}
+
+func (i MonitoredResourceDescriptorResponseArgs) ToMonitoredResourceDescriptorResponseOutput() MonitoredResourceDescriptorResponseOutput {
+	return i.ToMonitoredResourceDescriptorResponseOutputWithContext(context.Background())
+}
+
+func (i MonitoredResourceDescriptorResponseArgs) ToMonitoredResourceDescriptorResponseOutputWithContext(ctx context.Context) MonitoredResourceDescriptorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoredResourceDescriptorResponseOutput)
+}
+
+// MonitoredResourceDescriptorResponseArrayInput is an input type that accepts MonitoredResourceDescriptorResponseArray and MonitoredResourceDescriptorResponseArrayOutput values.
+// You can construct a concrete instance of `MonitoredResourceDescriptorResponseArrayInput` via:
+//
+//          MonitoredResourceDescriptorResponseArray{ MonitoredResourceDescriptorResponseArgs{...} }
+type MonitoredResourceDescriptorResponseArrayInput interface {
+	pulumi.Input
+
+	ToMonitoredResourceDescriptorResponseArrayOutput() MonitoredResourceDescriptorResponseArrayOutput
+	ToMonitoredResourceDescriptorResponseArrayOutputWithContext(context.Context) MonitoredResourceDescriptorResponseArrayOutput
+}
+
+type MonitoredResourceDescriptorResponseArray []MonitoredResourceDescriptorResponseInput
+
+func (MonitoredResourceDescriptorResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitoredResourceDescriptorResponse)(nil)).Elem()
+}
+
+func (i MonitoredResourceDescriptorResponseArray) ToMonitoredResourceDescriptorResponseArrayOutput() MonitoredResourceDescriptorResponseArrayOutput {
+	return i.ToMonitoredResourceDescriptorResponseArrayOutputWithContext(context.Background())
+}
+
+func (i MonitoredResourceDescriptorResponseArray) ToMonitoredResourceDescriptorResponseArrayOutputWithContext(ctx context.Context) MonitoredResourceDescriptorResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoredResourceDescriptorResponseArrayOutput)
+}
+
+// An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method that returns the monitored resource descriptors used by the API.
+type MonitoredResourceDescriptorResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitoredResourceDescriptorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoredResourceDescriptorResponse)(nil)).Elem()
+}
+
+func (o MonitoredResourceDescriptorResponseOutput) ToMonitoredResourceDescriptorResponseOutput() MonitoredResourceDescriptorResponseOutput {
+	return o
+}
+
+func (o MonitoredResourceDescriptorResponseOutput) ToMonitoredResourceDescriptorResponseOutputWithContext(ctx context.Context) MonitoredResourceDescriptorResponseOutput {
+	return o
+}
+
+// Optional. A detailed description of the monitored resource type that might be used in documentation.
+func (o MonitoredResourceDescriptorResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoredResourceDescriptorResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, `"Google Cloud SQL Database"`.
+func (o MonitoredResourceDescriptorResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoredResourceDescriptorResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+func (o MonitoredResourceDescriptorResponseOutput) Labels() LabelDescriptorResponseArrayOutput {
+	return o.ApplyT(func(v MonitoredResourceDescriptorResponse) []LabelDescriptorResponse { return v.Labels }).(LabelDescriptorResponseArrayOutput)
+}
+
+// Optional. The launch stage of the monitored resource definition.
+func (o MonitoredResourceDescriptorResponseOutput) LaunchStage() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoredResourceDescriptorResponse) string { return v.LaunchStage }).(pulumi.StringOutput)
+}
+
+// Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
+func (o MonitoredResourceDescriptorResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoredResourceDescriptorResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+func (o MonitoredResourceDescriptorResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoredResourceDescriptorResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type MonitoredResourceDescriptorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitoredResourceDescriptorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitoredResourceDescriptorResponse)(nil)).Elem()
+}
+
+func (o MonitoredResourceDescriptorResponseArrayOutput) ToMonitoredResourceDescriptorResponseArrayOutput() MonitoredResourceDescriptorResponseArrayOutput {
+	return o
+}
+
+func (o MonitoredResourceDescriptorResponseArrayOutput) ToMonitoredResourceDescriptorResponseArrayOutputWithContext(ctx context.Context) MonitoredResourceDescriptorResponseArrayOutput {
+	return o
+}
+
+func (o MonitoredResourceDescriptorResponseArrayOutput) Index(i pulumi.IntInput) MonitoredResourceDescriptorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitoredResourceDescriptorResponse {
+		return vs[0].([]MonitoredResourceDescriptorResponse)[vs[1].(int)]
+	}).(MonitoredResourceDescriptorResponseOutput)
 }
 
 // Monitoring configuration of the service. The example below shows how to configure monitored resources and metrics for monitoring. In the example, a monitored resource and two metrics are defined. The `library.googleapis.com/book/returned_count` metric is sent to both producer and consumer projects, whereas the `library.googleapis.com/book/num_overdue` metric is only sent to the consumer project. monitored_resources: - type: library.googleapis.com/Branch display_name: "Library Branch" description: "A branch of a library." launch_stage: GA labels: - key: resource_container description: "The Cloud container (ie. project id) for the Branch." - key: location description: "The location of the library branch." - key: branch_id description: "The id of the branch." metrics: - name: library.googleapis.com/book/returned_count display_name: "Books Returned" description: "The count of books that have been returned." launch_stage: GA metric_kind: DELTA value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." - name: library.googleapis.com/book/num_overdue display_name: "Books Overdue" description: "The current number of overdue books." launch_stage: GA metric_kind: GAUGE value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." monitoring: producer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count consumer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count - library.googleapis.com/book/num_overdue
@@ -5714,6 +10822,268 @@ func (o MonitoringDestinationArrayOutput) Index(i pulumi.IntInput) MonitoringDes
 	}).(MonitoringDestinationOutput)
 }
 
+// Configuration of a specific monitoring destination (the producer project or the consumer project).
+type MonitoringDestinationResponse struct {
+	// Types of the metrics to report to this monitoring destination. Each type must be defined in Service.metrics section.
+	Metrics []string `pulumi:"metrics"`
+	// The monitored resource type. The type must be defined in Service.monitored_resources section.
+	MonitoredResource string `pulumi:"monitoredResource"`
+}
+
+// MonitoringDestinationResponseInput is an input type that accepts MonitoringDestinationResponseArgs and MonitoringDestinationResponseOutput values.
+// You can construct a concrete instance of `MonitoringDestinationResponseInput` via:
+//
+//          MonitoringDestinationResponseArgs{...}
+type MonitoringDestinationResponseInput interface {
+	pulumi.Input
+
+	ToMonitoringDestinationResponseOutput() MonitoringDestinationResponseOutput
+	ToMonitoringDestinationResponseOutputWithContext(context.Context) MonitoringDestinationResponseOutput
+}
+
+// Configuration of a specific monitoring destination (the producer project or the consumer project).
+type MonitoringDestinationResponseArgs struct {
+	// Types of the metrics to report to this monitoring destination. Each type must be defined in Service.metrics section.
+	Metrics pulumi.StringArrayInput `pulumi:"metrics"`
+	// The monitored resource type. The type must be defined in Service.monitored_resources section.
+	MonitoredResource pulumi.StringInput `pulumi:"monitoredResource"`
+}
+
+func (MonitoringDestinationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringDestinationResponse)(nil)).Elem()
+}
+
+func (i MonitoringDestinationResponseArgs) ToMonitoringDestinationResponseOutput() MonitoringDestinationResponseOutput {
+	return i.ToMonitoringDestinationResponseOutputWithContext(context.Background())
+}
+
+func (i MonitoringDestinationResponseArgs) ToMonitoringDestinationResponseOutputWithContext(ctx context.Context) MonitoringDestinationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringDestinationResponseOutput)
+}
+
+// MonitoringDestinationResponseArrayInput is an input type that accepts MonitoringDestinationResponseArray and MonitoringDestinationResponseArrayOutput values.
+// You can construct a concrete instance of `MonitoringDestinationResponseArrayInput` via:
+//
+//          MonitoringDestinationResponseArray{ MonitoringDestinationResponseArgs{...} }
+type MonitoringDestinationResponseArrayInput interface {
+	pulumi.Input
+
+	ToMonitoringDestinationResponseArrayOutput() MonitoringDestinationResponseArrayOutput
+	ToMonitoringDestinationResponseArrayOutputWithContext(context.Context) MonitoringDestinationResponseArrayOutput
+}
+
+type MonitoringDestinationResponseArray []MonitoringDestinationResponseInput
+
+func (MonitoringDestinationResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitoringDestinationResponse)(nil)).Elem()
+}
+
+func (i MonitoringDestinationResponseArray) ToMonitoringDestinationResponseArrayOutput() MonitoringDestinationResponseArrayOutput {
+	return i.ToMonitoringDestinationResponseArrayOutputWithContext(context.Background())
+}
+
+func (i MonitoringDestinationResponseArray) ToMonitoringDestinationResponseArrayOutputWithContext(ctx context.Context) MonitoringDestinationResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringDestinationResponseArrayOutput)
+}
+
+// Configuration of a specific monitoring destination (the producer project or the consumer project).
+type MonitoringDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitoringDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringDestinationResponse)(nil)).Elem()
+}
+
+func (o MonitoringDestinationResponseOutput) ToMonitoringDestinationResponseOutput() MonitoringDestinationResponseOutput {
+	return o
+}
+
+func (o MonitoringDestinationResponseOutput) ToMonitoringDestinationResponseOutputWithContext(ctx context.Context) MonitoringDestinationResponseOutput {
+	return o
+}
+
+// Types of the metrics to report to this monitoring destination. Each type must be defined in Service.metrics section.
+func (o MonitoringDestinationResponseOutput) Metrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MonitoringDestinationResponse) []string { return v.Metrics }).(pulumi.StringArrayOutput)
+}
+
+// The monitored resource type. The type must be defined in Service.monitored_resources section.
+func (o MonitoringDestinationResponseOutput) MonitoredResource() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoringDestinationResponse) string { return v.MonitoredResource }).(pulumi.StringOutput)
+}
+
+type MonitoringDestinationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitoringDestinationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitoringDestinationResponse)(nil)).Elem()
+}
+
+func (o MonitoringDestinationResponseArrayOutput) ToMonitoringDestinationResponseArrayOutput() MonitoringDestinationResponseArrayOutput {
+	return o
+}
+
+func (o MonitoringDestinationResponseArrayOutput) ToMonitoringDestinationResponseArrayOutputWithContext(ctx context.Context) MonitoringDestinationResponseArrayOutput {
+	return o
+}
+
+func (o MonitoringDestinationResponseArrayOutput) Index(i pulumi.IntInput) MonitoringDestinationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitoringDestinationResponse {
+		return vs[0].([]MonitoringDestinationResponse)[vs[1].(int)]
+	}).(MonitoringDestinationResponseOutput)
+}
+
+// Monitoring configuration of the service. The example below shows how to configure monitored resources and metrics for monitoring. In the example, a monitored resource and two metrics are defined. The `library.googleapis.com/book/returned_count` metric is sent to both producer and consumer projects, whereas the `library.googleapis.com/book/num_overdue` metric is only sent to the consumer project. monitored_resources: - type: library.googleapis.com/Branch display_name: "Library Branch" description: "A branch of a library." launch_stage: GA labels: - key: resource_container description: "The Cloud container (ie. project id) for the Branch." - key: location description: "The location of the library branch." - key: branch_id description: "The id of the branch." metrics: - name: library.googleapis.com/book/returned_count display_name: "Books Returned" description: "The count of books that have been returned." launch_stage: GA metric_kind: DELTA value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." - name: library.googleapis.com/book/num_overdue display_name: "Books Overdue" description: "The current number of overdue books." launch_stage: GA metric_kind: GAUGE value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." monitoring: producer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count consumer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count - library.googleapis.com/book/num_overdue
+type MonitoringResponse struct {
+	// Monitoring configurations for sending metrics to the consumer project. There can be multiple consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
+	ConsumerDestinations []MonitoringDestinationResponse `pulumi:"consumerDestinations"`
+	// Monitoring configurations for sending metrics to the producer project. There can be multiple producer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
+	ProducerDestinations []MonitoringDestinationResponse `pulumi:"producerDestinations"`
+}
+
+// MonitoringResponseInput is an input type that accepts MonitoringResponseArgs and MonitoringResponseOutput values.
+// You can construct a concrete instance of `MonitoringResponseInput` via:
+//
+//          MonitoringResponseArgs{...}
+type MonitoringResponseInput interface {
+	pulumi.Input
+
+	ToMonitoringResponseOutput() MonitoringResponseOutput
+	ToMonitoringResponseOutputWithContext(context.Context) MonitoringResponseOutput
+}
+
+// Monitoring configuration of the service. The example below shows how to configure monitored resources and metrics for monitoring. In the example, a monitored resource and two metrics are defined. The `library.googleapis.com/book/returned_count` metric is sent to both producer and consumer projects, whereas the `library.googleapis.com/book/num_overdue` metric is only sent to the consumer project. monitored_resources: - type: library.googleapis.com/Branch display_name: "Library Branch" description: "A branch of a library." launch_stage: GA labels: - key: resource_container description: "The Cloud container (ie. project id) for the Branch." - key: location description: "The location of the library branch." - key: branch_id description: "The id of the branch." metrics: - name: library.googleapis.com/book/returned_count display_name: "Books Returned" description: "The count of books that have been returned." launch_stage: GA metric_kind: DELTA value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." - name: library.googleapis.com/book/num_overdue display_name: "Books Overdue" description: "The current number of overdue books." launch_stage: GA metric_kind: GAUGE value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." monitoring: producer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count consumer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count - library.googleapis.com/book/num_overdue
+type MonitoringResponseArgs struct {
+	// Monitoring configurations for sending metrics to the consumer project. There can be multiple consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
+	ConsumerDestinations MonitoringDestinationResponseArrayInput `pulumi:"consumerDestinations"`
+	// Monitoring configurations for sending metrics to the producer project. There can be multiple producer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
+	ProducerDestinations MonitoringDestinationResponseArrayInput `pulumi:"producerDestinations"`
+}
+
+func (MonitoringResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringResponse)(nil)).Elem()
+}
+
+func (i MonitoringResponseArgs) ToMonitoringResponseOutput() MonitoringResponseOutput {
+	return i.ToMonitoringResponseOutputWithContext(context.Background())
+}
+
+func (i MonitoringResponseArgs) ToMonitoringResponseOutputWithContext(ctx context.Context) MonitoringResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringResponseOutput)
+}
+
+func (i MonitoringResponseArgs) ToMonitoringResponsePtrOutput() MonitoringResponsePtrOutput {
+	return i.ToMonitoringResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MonitoringResponseArgs) ToMonitoringResponsePtrOutputWithContext(ctx context.Context) MonitoringResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringResponseOutput).ToMonitoringResponsePtrOutputWithContext(ctx)
+}
+
+// MonitoringResponsePtrInput is an input type that accepts MonitoringResponseArgs, MonitoringResponsePtr and MonitoringResponsePtrOutput values.
+// You can construct a concrete instance of `MonitoringResponsePtrInput` via:
+//
+//          MonitoringResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MonitoringResponsePtrInput interface {
+	pulumi.Input
+
+	ToMonitoringResponsePtrOutput() MonitoringResponsePtrOutput
+	ToMonitoringResponsePtrOutputWithContext(context.Context) MonitoringResponsePtrOutput
+}
+
+type monitoringResponsePtrType MonitoringResponseArgs
+
+func MonitoringResponsePtr(v *MonitoringResponseArgs) MonitoringResponsePtrInput {
+	return (*monitoringResponsePtrType)(v)
+}
+
+func (*monitoringResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringResponse)(nil)).Elem()
+}
+
+func (i *monitoringResponsePtrType) ToMonitoringResponsePtrOutput() MonitoringResponsePtrOutput {
+	return i.ToMonitoringResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *monitoringResponsePtrType) ToMonitoringResponsePtrOutputWithContext(ctx context.Context) MonitoringResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringResponsePtrOutput)
+}
+
+// Monitoring configuration of the service. The example below shows how to configure monitored resources and metrics for monitoring. In the example, a monitored resource and two metrics are defined. The `library.googleapis.com/book/returned_count` metric is sent to both producer and consumer projects, whereas the `library.googleapis.com/book/num_overdue` metric is only sent to the consumer project. monitored_resources: - type: library.googleapis.com/Branch display_name: "Library Branch" description: "A branch of a library." launch_stage: GA labels: - key: resource_container description: "The Cloud container (ie. project id) for the Branch." - key: location description: "The location of the library branch." - key: branch_id description: "The id of the branch." metrics: - name: library.googleapis.com/book/returned_count display_name: "Books Returned" description: "The count of books that have been returned." launch_stage: GA metric_kind: DELTA value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." - name: library.googleapis.com/book/num_overdue display_name: "Books Overdue" description: "The current number of overdue books." launch_stage: GA metric_kind: GAUGE value_type: INT64 unit: "1" labels: - key: customer_id description: "The id of the customer." monitoring: producer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count consumer_destinations: - monitored_resource: library.googleapis.com/Branch metrics: - library.googleapis.com/book/returned_count - library.googleapis.com/book/num_overdue
+type MonitoringResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitoringResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringResponse)(nil)).Elem()
+}
+
+func (o MonitoringResponseOutput) ToMonitoringResponseOutput() MonitoringResponseOutput {
+	return o
+}
+
+func (o MonitoringResponseOutput) ToMonitoringResponseOutputWithContext(ctx context.Context) MonitoringResponseOutput {
+	return o
+}
+
+func (o MonitoringResponseOutput) ToMonitoringResponsePtrOutput() MonitoringResponsePtrOutput {
+	return o.ToMonitoringResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MonitoringResponseOutput) ToMonitoringResponsePtrOutputWithContext(ctx context.Context) MonitoringResponsePtrOutput {
+	return o.ApplyT(func(v MonitoringResponse) *MonitoringResponse {
+		return &v
+	}).(MonitoringResponsePtrOutput)
+}
+
+// Monitoring configurations for sending metrics to the consumer project. There can be multiple consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
+func (o MonitoringResponseOutput) ConsumerDestinations() MonitoringDestinationResponseArrayOutput {
+	return o.ApplyT(func(v MonitoringResponse) []MonitoringDestinationResponse { return v.ConsumerDestinations }).(MonitoringDestinationResponseArrayOutput)
+}
+
+// Monitoring configurations for sending metrics to the producer project. There can be multiple producer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
+func (o MonitoringResponseOutput) ProducerDestinations() MonitoringDestinationResponseArrayOutput {
+	return o.ApplyT(func(v MonitoringResponse) []MonitoringDestinationResponse { return v.ProducerDestinations }).(MonitoringDestinationResponseArrayOutput)
+}
+
+type MonitoringResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringResponse)(nil)).Elem()
+}
+
+func (o MonitoringResponsePtrOutput) ToMonitoringResponsePtrOutput() MonitoringResponsePtrOutput {
+	return o
+}
+
+func (o MonitoringResponsePtrOutput) ToMonitoringResponsePtrOutputWithContext(ctx context.Context) MonitoringResponsePtrOutput {
+	return o
+}
+
+func (o MonitoringResponsePtrOutput) Elem() MonitoringResponseOutput {
+	return o.ApplyT(func(v *MonitoringResponse) MonitoringResponse { return *v }).(MonitoringResponseOutput)
+}
+
+// Monitoring configurations for sending metrics to the consumer project. There can be multiple consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
+func (o MonitoringResponsePtrOutput) ConsumerDestinations() MonitoringDestinationResponseArrayOutput {
+	return o.ApplyT(func(v *MonitoringResponse) []MonitoringDestinationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerDestinations
+	}).(MonitoringDestinationResponseArrayOutput)
+}
+
+// Monitoring configurations for sending metrics to the producer project. There can be multiple producer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration.
+func (o MonitoringResponsePtrOutput) ProducerDestinations() MonitoringDestinationResponseArrayOutput {
+	return o.ApplyT(func(v *MonitoringResponse) []MonitoringDestinationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerDestinations
+	}).(MonitoringDestinationResponseArrayOutput)
+}
+
 // OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an application, giving it permission to access that data on their behalf. OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text description of what your scope means. In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth consent screens: talk with your product management about how developers will use them in practice. Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend, a request can still fail due to the backend requiring additional scopes or permissions.
 type OAuthRequirements struct {
 	// The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read
@@ -5848,6 +11218,61 @@ func (o OAuthRequirementsPtrOutput) CanonicalScopes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an application, giving it permission to access that data on their behalf. OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text description of what your scope means. In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth consent screens: talk with your product management about how developers will use them in practice. Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend, a request can still fail due to the backend requiring additional scopes or permissions.
+type OAuthRequirementsResponse struct {
+	// The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read
+	CanonicalScopes string `pulumi:"canonicalScopes"`
+}
+
+// OAuthRequirementsResponseInput is an input type that accepts OAuthRequirementsResponseArgs and OAuthRequirementsResponseOutput values.
+// You can construct a concrete instance of `OAuthRequirementsResponseInput` via:
+//
+//          OAuthRequirementsResponseArgs{...}
+type OAuthRequirementsResponseInput interface {
+	pulumi.Input
+
+	ToOAuthRequirementsResponseOutput() OAuthRequirementsResponseOutput
+	ToOAuthRequirementsResponseOutputWithContext(context.Context) OAuthRequirementsResponseOutput
+}
+
+// OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an application, giving it permission to access that data on their behalf. OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text description of what your scope means. In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth consent screens: talk with your product management about how developers will use them in practice. Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend, a request can still fail due to the backend requiring additional scopes or permissions.
+type OAuthRequirementsResponseArgs struct {
+	// The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read
+	CanonicalScopes pulumi.StringInput `pulumi:"canonicalScopes"`
+}
+
+func (OAuthRequirementsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OAuthRequirementsResponse)(nil)).Elem()
+}
+
+func (i OAuthRequirementsResponseArgs) ToOAuthRequirementsResponseOutput() OAuthRequirementsResponseOutput {
+	return i.ToOAuthRequirementsResponseOutputWithContext(context.Background())
+}
+
+func (i OAuthRequirementsResponseArgs) ToOAuthRequirementsResponseOutputWithContext(ctx context.Context) OAuthRequirementsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OAuthRequirementsResponseOutput)
+}
+
+// OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an application, giving it permission to access that data on their behalf. OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text description of what your scope means. In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth consent screens: talk with your product management about how developers will use them in practice. Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend, a request can still fail due to the backend requiring additional scopes or permissions.
+type OAuthRequirementsResponseOutput struct{ *pulumi.OutputState }
+
+func (OAuthRequirementsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OAuthRequirementsResponse)(nil)).Elem()
+}
+
+func (o OAuthRequirementsResponseOutput) ToOAuthRequirementsResponseOutput() OAuthRequirementsResponseOutput {
+	return o
+}
+
+func (o OAuthRequirementsResponseOutput) ToOAuthRequirementsResponseOutputWithContext(ctx context.Context) OAuthRequirementsResponseOutput {
+	return o
+}
+
+// The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read
+func (o OAuthRequirementsResponseOutput) CanonicalScopes() pulumi.StringOutput {
+	return o.ApplyT(func(v OAuthRequirementsResponse) string { return v.CanonicalScopes }).(pulumi.StringOutput)
+}
+
 // A protocol buffer option, which can be attached to a message, field, enumeration, etc.
 type Option struct {
 	// The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For example, `"google.api.http"`.
@@ -5955,6 +11380,115 @@ func (o OptionArrayOutput) Index(i pulumi.IntInput) OptionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Option {
 		return vs[0].([]Option)[vs[1].(int)]
 	}).(OptionOutput)
+}
+
+// A protocol buffer option, which can be attached to a message, field, enumeration, etc.
+type OptionResponse struct {
+	// The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For example, `"google.api.http"`.
+	Name string `pulumi:"name"`
+	// The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
+	Value map[string]string `pulumi:"value"`
+}
+
+// OptionResponseInput is an input type that accepts OptionResponseArgs and OptionResponseOutput values.
+// You can construct a concrete instance of `OptionResponseInput` via:
+//
+//          OptionResponseArgs{...}
+type OptionResponseInput interface {
+	pulumi.Input
+
+	ToOptionResponseOutput() OptionResponseOutput
+	ToOptionResponseOutputWithContext(context.Context) OptionResponseOutput
+}
+
+// A protocol buffer option, which can be attached to a message, field, enumeration, etc.
+type OptionResponseArgs struct {
+	// The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For example, `"google.api.http"`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
+	Value pulumi.StringMapInput `pulumi:"value"`
+}
+
+func (OptionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionResponse)(nil)).Elem()
+}
+
+func (i OptionResponseArgs) ToOptionResponseOutput() OptionResponseOutput {
+	return i.ToOptionResponseOutputWithContext(context.Background())
+}
+
+func (i OptionResponseArgs) ToOptionResponseOutputWithContext(ctx context.Context) OptionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionResponseOutput)
+}
+
+// OptionResponseArrayInput is an input type that accepts OptionResponseArray and OptionResponseArrayOutput values.
+// You can construct a concrete instance of `OptionResponseArrayInput` via:
+//
+//          OptionResponseArray{ OptionResponseArgs{...} }
+type OptionResponseArrayInput interface {
+	pulumi.Input
+
+	ToOptionResponseArrayOutput() OptionResponseArrayOutput
+	ToOptionResponseArrayOutputWithContext(context.Context) OptionResponseArrayOutput
+}
+
+type OptionResponseArray []OptionResponseInput
+
+func (OptionResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OptionResponse)(nil)).Elem()
+}
+
+func (i OptionResponseArray) ToOptionResponseArrayOutput() OptionResponseArrayOutput {
+	return i.ToOptionResponseArrayOutputWithContext(context.Background())
+}
+
+func (i OptionResponseArray) ToOptionResponseArrayOutputWithContext(ctx context.Context) OptionResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionResponseArrayOutput)
+}
+
+// A protocol buffer option, which can be attached to a message, field, enumeration, etc.
+type OptionResponseOutput struct{ *pulumi.OutputState }
+
+func (OptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionResponse)(nil)).Elem()
+}
+
+func (o OptionResponseOutput) ToOptionResponseOutput() OptionResponseOutput {
+	return o
+}
+
+func (o OptionResponseOutput) ToOptionResponseOutputWithContext(ctx context.Context) OptionResponseOutput {
+	return o
+}
+
+// The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For example, `"google.api.http"`.
+func (o OptionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OptionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The option's value packed in an Any message. If the value is a primitive, the corresponding wrapper type defined in google/protobuf/wrappers.proto should be used. If the value is an enum, it should be stored as an int32 value using the google.protobuf.Int32Value type.
+func (o OptionResponseOutput) Value() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OptionResponse) map[string]string { return v.Value }).(pulumi.StringMapOutput)
+}
+
+type OptionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OptionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OptionResponse)(nil)).Elem()
+}
+
+func (o OptionResponseArrayOutput) ToOptionResponseArrayOutput() OptionResponseArrayOutput {
+	return o
+}
+
+func (o OptionResponseArrayOutput) ToOptionResponseArrayOutputWithContext(ctx context.Context) OptionResponseArrayOutput {
+	return o
+}
+
+func (o OptionResponseArrayOutput) Index(i pulumi.IntInput) OptionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OptionResponse {
+		return vs[0].([]OptionResponse)[vs[1].(int)]
+	}).(OptionResponseOutput)
 }
 
 // Represents a documentation page. A page can contain subpages to represent nested documentation set structure.
@@ -6073,6 +11607,124 @@ func (o PageArrayOutput) Index(i pulumi.IntInput) PageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Page {
 		return vs[0].([]Page)[vs[1].(int)]
 	}).(PageOutput)
+}
+
+// Represents a documentation page. A page can contain subpages to represent nested documentation set structure.
+type PageResponse struct {
+	// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file.
+	Content string `pulumi:"content"`
+	// The name of the page. It will be used as an identity of the page to generate URI of the page, text of the link to this page in navigation, etc. The full page name (start from the root page name to this page concatenated with `.`) can be used as reference to the page in your documentation. For example: pages: - name: Tutorial content: (== include tutorial.md ==) subpages: - name: Java content: (== include tutorial_java.md ==) You can reference `Java` page using Markdown reference link syntax: `Java`.
+	Name string `pulumi:"name"`
+	// Subpages of this page. The order of subpages specified here will be honored in the generated docset.
+	Subpages []PageResponse `pulumi:"subpages"`
+}
+
+// PageResponseInput is an input type that accepts PageResponseArgs and PageResponseOutput values.
+// You can construct a concrete instance of `PageResponseInput` via:
+//
+//          PageResponseArgs{...}
+type PageResponseInput interface {
+	pulumi.Input
+
+	ToPageResponseOutput() PageResponseOutput
+	ToPageResponseOutputWithContext(context.Context) PageResponseOutput
+}
+
+// Represents a documentation page. A page can contain subpages to represent nested documentation set structure.
+type PageResponseArgs struct {
+	// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The name of the page. It will be used as an identity of the page to generate URI of the page, text of the link to this page in navigation, etc. The full page name (start from the root page name to this page concatenated with `.`) can be used as reference to the page in your documentation. For example: pages: - name: Tutorial content: (== include tutorial.md ==) subpages: - name: Java content: (== include tutorial_java.md ==) You can reference `Java` page using Markdown reference link syntax: `Java`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Subpages of this page. The order of subpages specified here will be honored in the generated docset.
+	Subpages PageResponseArrayInput `pulumi:"subpages"`
+}
+
+func (PageResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageResponse)(nil)).Elem()
+}
+
+func (i PageResponseArgs) ToPageResponseOutput() PageResponseOutput {
+	return i.ToPageResponseOutputWithContext(context.Background())
+}
+
+func (i PageResponseArgs) ToPageResponseOutputWithContext(ctx context.Context) PageResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageResponseOutput)
+}
+
+// PageResponseArrayInput is an input type that accepts PageResponseArray and PageResponseArrayOutput values.
+// You can construct a concrete instance of `PageResponseArrayInput` via:
+//
+//          PageResponseArray{ PageResponseArgs{...} }
+type PageResponseArrayInput interface {
+	pulumi.Input
+
+	ToPageResponseArrayOutput() PageResponseArrayOutput
+	ToPageResponseArrayOutputWithContext(context.Context) PageResponseArrayOutput
+}
+
+type PageResponseArray []PageResponseInput
+
+func (PageResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PageResponse)(nil)).Elem()
+}
+
+func (i PageResponseArray) ToPageResponseArrayOutput() PageResponseArrayOutput {
+	return i.ToPageResponseArrayOutputWithContext(context.Background())
+}
+
+func (i PageResponseArray) ToPageResponseArrayOutputWithContext(ctx context.Context) PageResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageResponseArrayOutput)
+}
+
+// Represents a documentation page. A page can contain subpages to represent nested documentation set structure.
+type PageResponseOutput struct{ *pulumi.OutputState }
+
+func (PageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageResponse)(nil)).Elem()
+}
+
+func (o PageResponseOutput) ToPageResponseOutput() PageResponseOutput {
+	return o
+}
+
+func (o PageResponseOutput) ToPageResponseOutputWithContext(ctx context.Context) PageResponseOutput {
+	return o
+}
+
+// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file.
+func (o PageResponseOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v PageResponse) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The name of the page. It will be used as an identity of the page to generate URI of the page, text of the link to this page in navigation, etc. The full page name (start from the root page name to this page concatenated with `.`) can be used as reference to the page in your documentation. For example: pages: - name: Tutorial content: (== include tutorial.md ==) subpages: - name: Java content: (== include tutorial_java.md ==) You can reference `Java` page using Markdown reference link syntax: `Java`.
+func (o PageResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PageResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Subpages of this page. The order of subpages specified here will be honored in the generated docset.
+func (o PageResponseOutput) Subpages() PageResponseArrayOutput {
+	return o.ApplyT(func(v PageResponse) []PageResponse { return v.Subpages }).(PageResponseArrayOutput)
+}
+
+type PageResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PageResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PageResponse)(nil)).Elem()
+}
+
+func (o PageResponseArrayOutput) ToPageResponseArrayOutput() PageResponseArrayOutput {
+	return o
+}
+
+func (o PageResponseArrayOutput) ToPageResponseArrayOutputWithContext(ctx context.Context) PageResponseArrayOutput {
+	return o
+}
+
+func (o PageResponseArrayOutput) Index(i pulumi.IntInput) PageResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PageResponse {
+		return vs[0].([]PageResponse)[vs[1].(int)]
+	}).(PageResponseOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
@@ -6600,6 +12252,340 @@ func (o QuotaLimitArrayOutput) Index(i pulumi.IntInput) QuotaLimitOutput {
 	}).(QuotaLimitOutput)
 }
 
+// `QuotaLimit` defines a specific limit that applies over a specified duration for a limit type. There can be at most one limit for a duration and limit type combination defined within a `QuotaGroup`.
+type QuotaLimitResponse struct {
+	// Default number of tokens that can be consumed during the specified duration. This is the number of tokens assigned when a client application developer activates the service for his/her project. Specifying a value of 0 will block all requests. This can be used if you are provisioning quota to selected consumers and blocking others. Similarly, a value of -1 will indicate an unlimited quota. No other negative values are allowed. Used by group-based quotas only.
+	DefaultLimit string `pulumi:"defaultLimit"`
+	// Optional. User-visible, extended description for this quota limit. Should be used only when more context is needed to understand this limit than provided by the limit's display name (see: `display_name`).
+	Description string `pulumi:"description"`
+	// User-visible display name for this limit. Optional. If not set, the UI will provide a default display name based on the quota configuration. This field can be used to override the default display name generated from the configuration.
+	DisplayName string `pulumi:"displayName"`
+	// Duration of this limit in textual notation. Must be "100s" or "1d". Used by group-based quotas only.
+	Duration string `pulumi:"duration"`
+	// Free tier value displayed in the Developers Console for this limit. The free tier is the number of tokens that will be subtracted from the billed amount when billing is enabled. This field can only be set on a limit with duration "1d", in a billable group; it is invalid on any other limit. If this field is not set, it defaults to 0, indicating that there is no free tier for this service. Used by group-based quotas only.
+	FreeTier string `pulumi:"freeTier"`
+	// Maximum number of tokens that can be consumed during the specified duration. Client application developers can override the default limit up to this maximum. If specified, this value cannot be set to a value less than the default limit. If not specified, it is set to the default limit. To allow clients to apply overrides with no upper bound, set this to -1, indicating unlimited maximum quota. Used by group-based quotas only.
+	MaxLimit string `pulumi:"maxLimit"`
+	// The name of the metric this quota limit applies to. The quota limits with the same metric will be checked together during runtime. The metric must be defined within the service config.
+	Metric string `pulumi:"metric"`
+	// Name of the quota limit. The name must be provided, and it must be unique within the service. The name can only include alphanumeric characters as well as '-'. The maximum length of the limit name is 64 characters.
+	Name string `pulumi:"name"`
+	// Specify the unit of the quota limit. It uses the same syntax as Metric.unit. The supported unit kinds are determined by the quota backend system. Here are some examples: * "1/min/{project}" for quota per minute per project. Note: the order of unit components is insignificant. The "1" at the beginning is required to follow the metric unit syntax.
+	Unit string `pulumi:"unit"`
+	// Tiered limit values. You must specify this as a key:value pair, with an integer value that is the maximum number of requests allowed for the specified unit. Currently only STANDARD is supported.
+	Values map[string]string `pulumi:"values"`
+}
+
+// QuotaLimitResponseInput is an input type that accepts QuotaLimitResponseArgs and QuotaLimitResponseOutput values.
+// You can construct a concrete instance of `QuotaLimitResponseInput` via:
+//
+//          QuotaLimitResponseArgs{...}
+type QuotaLimitResponseInput interface {
+	pulumi.Input
+
+	ToQuotaLimitResponseOutput() QuotaLimitResponseOutput
+	ToQuotaLimitResponseOutputWithContext(context.Context) QuotaLimitResponseOutput
+}
+
+// `QuotaLimit` defines a specific limit that applies over a specified duration for a limit type. There can be at most one limit for a duration and limit type combination defined within a `QuotaGroup`.
+type QuotaLimitResponseArgs struct {
+	// Default number of tokens that can be consumed during the specified duration. This is the number of tokens assigned when a client application developer activates the service for his/her project. Specifying a value of 0 will block all requests. This can be used if you are provisioning quota to selected consumers and blocking others. Similarly, a value of -1 will indicate an unlimited quota. No other negative values are allowed. Used by group-based quotas only.
+	DefaultLimit pulumi.StringInput `pulumi:"defaultLimit"`
+	// Optional. User-visible, extended description for this quota limit. Should be used only when more context is needed to understand this limit than provided by the limit's display name (see: `display_name`).
+	Description pulumi.StringInput `pulumi:"description"`
+	// User-visible display name for this limit. Optional. If not set, the UI will provide a default display name based on the quota configuration. This field can be used to override the default display name generated from the configuration.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Duration of this limit in textual notation. Must be "100s" or "1d". Used by group-based quotas only.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Free tier value displayed in the Developers Console for this limit. The free tier is the number of tokens that will be subtracted from the billed amount when billing is enabled. This field can only be set on a limit with duration "1d", in a billable group; it is invalid on any other limit. If this field is not set, it defaults to 0, indicating that there is no free tier for this service. Used by group-based quotas only.
+	FreeTier pulumi.StringInput `pulumi:"freeTier"`
+	// Maximum number of tokens that can be consumed during the specified duration. Client application developers can override the default limit up to this maximum. If specified, this value cannot be set to a value less than the default limit. If not specified, it is set to the default limit. To allow clients to apply overrides with no upper bound, set this to -1, indicating unlimited maximum quota. Used by group-based quotas only.
+	MaxLimit pulumi.StringInput `pulumi:"maxLimit"`
+	// The name of the metric this quota limit applies to. The quota limits with the same metric will be checked together during runtime. The metric must be defined within the service config.
+	Metric pulumi.StringInput `pulumi:"metric"`
+	// Name of the quota limit. The name must be provided, and it must be unique within the service. The name can only include alphanumeric characters as well as '-'. The maximum length of the limit name is 64 characters.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Specify the unit of the quota limit. It uses the same syntax as Metric.unit. The supported unit kinds are determined by the quota backend system. Here are some examples: * "1/min/{project}" for quota per minute per project. Note: the order of unit components is insignificant. The "1" at the beginning is required to follow the metric unit syntax.
+	Unit pulumi.StringInput `pulumi:"unit"`
+	// Tiered limit values. You must specify this as a key:value pair, with an integer value that is the maximum number of requests allowed for the specified unit. Currently only STANDARD is supported.
+	Values pulumi.StringMapInput `pulumi:"values"`
+}
+
+func (QuotaLimitResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaLimitResponse)(nil)).Elem()
+}
+
+func (i QuotaLimitResponseArgs) ToQuotaLimitResponseOutput() QuotaLimitResponseOutput {
+	return i.ToQuotaLimitResponseOutputWithContext(context.Background())
+}
+
+func (i QuotaLimitResponseArgs) ToQuotaLimitResponseOutputWithContext(ctx context.Context) QuotaLimitResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaLimitResponseOutput)
+}
+
+// QuotaLimitResponseArrayInput is an input type that accepts QuotaLimitResponseArray and QuotaLimitResponseArrayOutput values.
+// You can construct a concrete instance of `QuotaLimitResponseArrayInput` via:
+//
+//          QuotaLimitResponseArray{ QuotaLimitResponseArgs{...} }
+type QuotaLimitResponseArrayInput interface {
+	pulumi.Input
+
+	ToQuotaLimitResponseArrayOutput() QuotaLimitResponseArrayOutput
+	ToQuotaLimitResponseArrayOutputWithContext(context.Context) QuotaLimitResponseArrayOutput
+}
+
+type QuotaLimitResponseArray []QuotaLimitResponseInput
+
+func (QuotaLimitResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QuotaLimitResponse)(nil)).Elem()
+}
+
+func (i QuotaLimitResponseArray) ToQuotaLimitResponseArrayOutput() QuotaLimitResponseArrayOutput {
+	return i.ToQuotaLimitResponseArrayOutputWithContext(context.Background())
+}
+
+func (i QuotaLimitResponseArray) ToQuotaLimitResponseArrayOutputWithContext(ctx context.Context) QuotaLimitResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaLimitResponseArrayOutput)
+}
+
+// `QuotaLimit` defines a specific limit that applies over a specified duration for a limit type. There can be at most one limit for a duration and limit type combination defined within a `QuotaGroup`.
+type QuotaLimitResponseOutput struct{ *pulumi.OutputState }
+
+func (QuotaLimitResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaLimitResponse)(nil)).Elem()
+}
+
+func (o QuotaLimitResponseOutput) ToQuotaLimitResponseOutput() QuotaLimitResponseOutput {
+	return o
+}
+
+func (o QuotaLimitResponseOutput) ToQuotaLimitResponseOutputWithContext(ctx context.Context) QuotaLimitResponseOutput {
+	return o
+}
+
+// Default number of tokens that can be consumed during the specified duration. This is the number of tokens assigned when a client application developer activates the service for his/her project. Specifying a value of 0 will block all requests. This can be used if you are provisioning quota to selected consumers and blocking others. Similarly, a value of -1 will indicate an unlimited quota. No other negative values are allowed. Used by group-based quotas only.
+func (o QuotaLimitResponseOutput) DefaultLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaLimitResponse) string { return v.DefaultLimit }).(pulumi.StringOutput)
+}
+
+// Optional. User-visible, extended description for this quota limit. Should be used only when more context is needed to understand this limit than provided by the limit's display name (see: `display_name`).
+func (o QuotaLimitResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaLimitResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// User-visible display name for this limit. Optional. If not set, the UI will provide a default display name based on the quota configuration. This field can be used to override the default display name generated from the configuration.
+func (o QuotaLimitResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaLimitResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Duration of this limit in textual notation. Must be "100s" or "1d". Used by group-based quotas only.
+func (o QuotaLimitResponseOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaLimitResponse) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Free tier value displayed in the Developers Console for this limit. The free tier is the number of tokens that will be subtracted from the billed amount when billing is enabled. This field can only be set on a limit with duration "1d", in a billable group; it is invalid on any other limit. If this field is not set, it defaults to 0, indicating that there is no free tier for this service. Used by group-based quotas only.
+func (o QuotaLimitResponseOutput) FreeTier() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaLimitResponse) string { return v.FreeTier }).(pulumi.StringOutput)
+}
+
+// Maximum number of tokens that can be consumed during the specified duration. Client application developers can override the default limit up to this maximum. If specified, this value cannot be set to a value less than the default limit. If not specified, it is set to the default limit. To allow clients to apply overrides with no upper bound, set this to -1, indicating unlimited maximum quota. Used by group-based quotas only.
+func (o QuotaLimitResponseOutput) MaxLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaLimitResponse) string { return v.MaxLimit }).(pulumi.StringOutput)
+}
+
+// The name of the metric this quota limit applies to. The quota limits with the same metric will be checked together during runtime. The metric must be defined within the service config.
+func (o QuotaLimitResponseOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaLimitResponse) string { return v.Metric }).(pulumi.StringOutput)
+}
+
+// Name of the quota limit. The name must be provided, and it must be unique within the service. The name can only include alphanumeric characters as well as '-'. The maximum length of the limit name is 64 characters.
+func (o QuotaLimitResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaLimitResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specify the unit of the quota limit. It uses the same syntax as Metric.unit. The supported unit kinds are determined by the quota backend system. Here are some examples: * "1/min/{project}" for quota per minute per project. Note: the order of unit components is insignificant. The "1" at the beginning is required to follow the metric unit syntax.
+func (o QuotaLimitResponseOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v QuotaLimitResponse) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+// Tiered limit values. You must specify this as a key:value pair, with an integer value that is the maximum number of requests allowed for the specified unit. Currently only STANDARD is supported.
+func (o QuotaLimitResponseOutput) Values() pulumi.StringMapOutput {
+	return o.ApplyT(func(v QuotaLimitResponse) map[string]string { return v.Values }).(pulumi.StringMapOutput)
+}
+
+type QuotaLimitResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (QuotaLimitResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QuotaLimitResponse)(nil)).Elem()
+}
+
+func (o QuotaLimitResponseArrayOutput) ToQuotaLimitResponseArrayOutput() QuotaLimitResponseArrayOutput {
+	return o
+}
+
+func (o QuotaLimitResponseArrayOutput) ToQuotaLimitResponseArrayOutputWithContext(ctx context.Context) QuotaLimitResponseArrayOutput {
+	return o
+}
+
+func (o QuotaLimitResponseArrayOutput) Index(i pulumi.IntInput) QuotaLimitResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QuotaLimitResponse {
+		return vs[0].([]QuotaLimitResponse)[vs[1].(int)]
+	}).(QuotaLimitResponseOutput)
+}
+
+// Quota configuration helps to achieve fairness and budgeting in service usage. The metric based quota configuration works this way: - The service configuration defines a set of metrics. - For API calls, the quota.metric_rules maps methods to metrics with corresponding costs. - The quota.limits defines limits on the metrics, which will be used for quota checks at runtime. An example quota configuration in yaml format: quota: limits: - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}" # rate limit for consumer projects values: STANDARD: 10000 # The metric rules bind all methods to the read_calls metric, # except for the UpdateBook and DeleteBook methods. These two methods # are mapped to the write_calls metric, with the UpdateBook method # consuming at twice rate as the DeleteBook method. metric_rules: - selector: "*" metric_costs: library.googleapis.com/read_calls: 1 - selector: google.example.library.v1.LibraryService.UpdateBook metric_costs: library.googleapis.com/write_calls: 2 - selector: google.example.library.v1.LibraryService.DeleteBook metric_costs: library.googleapis.com/write_calls: 1 Corresponding Metric definition: metrics: - name: library.googleapis.com/read_calls display_name: Read requests metric_kind: DELTA value_type: INT64 - name: library.googleapis.com/write_calls display_name: Write requests metric_kind: DELTA value_type: INT64
+type QuotaResponse struct {
+	// List of `QuotaLimit` definitions for the service.
+	Limits []QuotaLimitResponse `pulumi:"limits"`
+	// List of `MetricRule` definitions, each one mapping a selected method to one or more metrics.
+	MetricRules []MetricRuleResponse `pulumi:"metricRules"`
+}
+
+// QuotaResponseInput is an input type that accepts QuotaResponseArgs and QuotaResponseOutput values.
+// You can construct a concrete instance of `QuotaResponseInput` via:
+//
+//          QuotaResponseArgs{...}
+type QuotaResponseInput interface {
+	pulumi.Input
+
+	ToQuotaResponseOutput() QuotaResponseOutput
+	ToQuotaResponseOutputWithContext(context.Context) QuotaResponseOutput
+}
+
+// Quota configuration helps to achieve fairness and budgeting in service usage. The metric based quota configuration works this way: - The service configuration defines a set of metrics. - For API calls, the quota.metric_rules maps methods to metrics with corresponding costs. - The quota.limits defines limits on the metrics, which will be used for quota checks at runtime. An example quota configuration in yaml format: quota: limits: - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}" # rate limit for consumer projects values: STANDARD: 10000 # The metric rules bind all methods to the read_calls metric, # except for the UpdateBook and DeleteBook methods. These two methods # are mapped to the write_calls metric, with the UpdateBook method # consuming at twice rate as the DeleteBook method. metric_rules: - selector: "*" metric_costs: library.googleapis.com/read_calls: 1 - selector: google.example.library.v1.LibraryService.UpdateBook metric_costs: library.googleapis.com/write_calls: 2 - selector: google.example.library.v1.LibraryService.DeleteBook metric_costs: library.googleapis.com/write_calls: 1 Corresponding Metric definition: metrics: - name: library.googleapis.com/read_calls display_name: Read requests metric_kind: DELTA value_type: INT64 - name: library.googleapis.com/write_calls display_name: Write requests metric_kind: DELTA value_type: INT64
+type QuotaResponseArgs struct {
+	// List of `QuotaLimit` definitions for the service.
+	Limits QuotaLimitResponseArrayInput `pulumi:"limits"`
+	// List of `MetricRule` definitions, each one mapping a selected method to one or more metrics.
+	MetricRules MetricRuleResponseArrayInput `pulumi:"metricRules"`
+}
+
+func (QuotaResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaResponse)(nil)).Elem()
+}
+
+func (i QuotaResponseArgs) ToQuotaResponseOutput() QuotaResponseOutput {
+	return i.ToQuotaResponseOutputWithContext(context.Background())
+}
+
+func (i QuotaResponseArgs) ToQuotaResponseOutputWithContext(ctx context.Context) QuotaResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaResponseOutput)
+}
+
+func (i QuotaResponseArgs) ToQuotaResponsePtrOutput() QuotaResponsePtrOutput {
+	return i.ToQuotaResponsePtrOutputWithContext(context.Background())
+}
+
+func (i QuotaResponseArgs) ToQuotaResponsePtrOutputWithContext(ctx context.Context) QuotaResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaResponseOutput).ToQuotaResponsePtrOutputWithContext(ctx)
+}
+
+// QuotaResponsePtrInput is an input type that accepts QuotaResponseArgs, QuotaResponsePtr and QuotaResponsePtrOutput values.
+// You can construct a concrete instance of `QuotaResponsePtrInput` via:
+//
+//          QuotaResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type QuotaResponsePtrInput interface {
+	pulumi.Input
+
+	ToQuotaResponsePtrOutput() QuotaResponsePtrOutput
+	ToQuotaResponsePtrOutputWithContext(context.Context) QuotaResponsePtrOutput
+}
+
+type quotaResponsePtrType QuotaResponseArgs
+
+func QuotaResponsePtr(v *QuotaResponseArgs) QuotaResponsePtrInput {
+	return (*quotaResponsePtrType)(v)
+}
+
+func (*quotaResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QuotaResponse)(nil)).Elem()
+}
+
+func (i *quotaResponsePtrType) ToQuotaResponsePtrOutput() QuotaResponsePtrOutput {
+	return i.ToQuotaResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *quotaResponsePtrType) ToQuotaResponsePtrOutputWithContext(ctx context.Context) QuotaResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuotaResponsePtrOutput)
+}
+
+// Quota configuration helps to achieve fairness and budgeting in service usage. The metric based quota configuration works this way: - The service configuration defines a set of metrics. - For API calls, the quota.metric_rules maps methods to metrics with corresponding costs. - The quota.limits defines limits on the metrics, which will be used for quota checks at runtime. An example quota configuration in yaml format: quota: limits: - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}" # rate limit for consumer projects values: STANDARD: 10000 # The metric rules bind all methods to the read_calls metric, # except for the UpdateBook and DeleteBook methods. These two methods # are mapped to the write_calls metric, with the UpdateBook method # consuming at twice rate as the DeleteBook method. metric_rules: - selector: "*" metric_costs: library.googleapis.com/read_calls: 1 - selector: google.example.library.v1.LibraryService.UpdateBook metric_costs: library.googleapis.com/write_calls: 2 - selector: google.example.library.v1.LibraryService.DeleteBook metric_costs: library.googleapis.com/write_calls: 1 Corresponding Metric definition: metrics: - name: library.googleapis.com/read_calls display_name: Read requests metric_kind: DELTA value_type: INT64 - name: library.googleapis.com/write_calls display_name: Write requests metric_kind: DELTA value_type: INT64
+type QuotaResponseOutput struct{ *pulumi.OutputState }
+
+func (QuotaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaResponse)(nil)).Elem()
+}
+
+func (o QuotaResponseOutput) ToQuotaResponseOutput() QuotaResponseOutput {
+	return o
+}
+
+func (o QuotaResponseOutput) ToQuotaResponseOutputWithContext(ctx context.Context) QuotaResponseOutput {
+	return o
+}
+
+func (o QuotaResponseOutput) ToQuotaResponsePtrOutput() QuotaResponsePtrOutput {
+	return o.ToQuotaResponsePtrOutputWithContext(context.Background())
+}
+
+func (o QuotaResponseOutput) ToQuotaResponsePtrOutputWithContext(ctx context.Context) QuotaResponsePtrOutput {
+	return o.ApplyT(func(v QuotaResponse) *QuotaResponse {
+		return &v
+	}).(QuotaResponsePtrOutput)
+}
+
+// List of `QuotaLimit` definitions for the service.
+func (o QuotaResponseOutput) Limits() QuotaLimitResponseArrayOutput {
+	return o.ApplyT(func(v QuotaResponse) []QuotaLimitResponse { return v.Limits }).(QuotaLimitResponseArrayOutput)
+}
+
+// List of `MetricRule` definitions, each one mapping a selected method to one or more metrics.
+func (o QuotaResponseOutput) MetricRules() MetricRuleResponseArrayOutput {
+	return o.ApplyT(func(v QuotaResponse) []MetricRuleResponse { return v.MetricRules }).(MetricRuleResponseArrayOutput)
+}
+
+type QuotaResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (QuotaResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QuotaResponse)(nil)).Elem()
+}
+
+func (o QuotaResponsePtrOutput) ToQuotaResponsePtrOutput() QuotaResponsePtrOutput {
+	return o
+}
+
+func (o QuotaResponsePtrOutput) ToQuotaResponsePtrOutputWithContext(ctx context.Context) QuotaResponsePtrOutput {
+	return o
+}
+
+func (o QuotaResponsePtrOutput) Elem() QuotaResponseOutput {
+	return o.ApplyT(func(v *QuotaResponse) QuotaResponse { return *v }).(QuotaResponseOutput)
+}
+
+// List of `QuotaLimit` definitions for the service.
+func (o QuotaResponsePtrOutput) Limits() QuotaLimitResponseArrayOutput {
+	return o.ApplyT(func(v *QuotaResponse) []QuotaLimitResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Limits
+	}).(QuotaLimitResponseArrayOutput)
+}
+
+// List of `MetricRule` definitions, each one mapping a selected method to one or more metrics.
+func (o QuotaResponsePtrOutput) MetricRules() MetricRuleResponseArrayOutput {
+	return o.ApplyT(func(v *QuotaResponse) []MetricRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MetricRules
+	}).(MetricRuleResponseArrayOutput)
+}
+
 // `SourceContext` represents information about the source of a protobuf element, like the file in which it is defined.
 type SourceContext struct {
 	// The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`.
@@ -6732,6 +12718,61 @@ func (o SourceContextPtrOutput) FileName() pulumi.StringPtrOutput {
 		}
 		return v.FileName
 	}).(pulumi.StringPtrOutput)
+}
+
+// `SourceContext` represents information about the source of a protobuf element, like the file in which it is defined.
+type SourceContextResponse struct {
+	// The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`.
+	FileName string `pulumi:"fileName"`
+}
+
+// SourceContextResponseInput is an input type that accepts SourceContextResponseArgs and SourceContextResponseOutput values.
+// You can construct a concrete instance of `SourceContextResponseInput` via:
+//
+//          SourceContextResponseArgs{...}
+type SourceContextResponseInput interface {
+	pulumi.Input
+
+	ToSourceContextResponseOutput() SourceContextResponseOutput
+	ToSourceContextResponseOutputWithContext(context.Context) SourceContextResponseOutput
+}
+
+// `SourceContext` represents information about the source of a protobuf element, like the file in which it is defined.
+type SourceContextResponseArgs struct {
+	// The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`.
+	FileName pulumi.StringInput `pulumi:"fileName"`
+}
+
+func (SourceContextResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceContextResponse)(nil)).Elem()
+}
+
+func (i SourceContextResponseArgs) ToSourceContextResponseOutput() SourceContextResponseOutput {
+	return i.ToSourceContextResponseOutputWithContext(context.Background())
+}
+
+func (i SourceContextResponseArgs) ToSourceContextResponseOutputWithContext(ctx context.Context) SourceContextResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceContextResponseOutput)
+}
+
+// `SourceContext` represents information about the source of a protobuf element, like the file in which it is defined.
+type SourceContextResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceContextResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceContextResponse)(nil)).Elem()
+}
+
+func (o SourceContextResponseOutput) ToSourceContextResponseOutput() SourceContextResponseOutput {
+	return o
+}
+
+func (o SourceContextResponseOutput) ToSourceContextResponseOutputWithContext(ctx context.Context) SourceContextResponseOutput {
+	return o
+}
+
+// The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`.
+func (o SourceContextResponseOutput) FileName() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceContextResponse) string { return v.FileName }).(pulumi.StringOutput)
 }
 
 // Source information used to create a Service Config
@@ -6868,6 +12909,140 @@ func (o SourceInfoPtrOutput) SourceFiles() pulumi.StringMapArrayOutput {
 	}).(pulumi.StringMapArrayOutput)
 }
 
+// Source information used to create a Service Config
+type SourceInfoResponse struct {
+	// All files used during config generation.
+	SourceFiles []map[string]string `pulumi:"sourceFiles"`
+}
+
+// SourceInfoResponseInput is an input type that accepts SourceInfoResponseArgs and SourceInfoResponseOutput values.
+// You can construct a concrete instance of `SourceInfoResponseInput` via:
+//
+//          SourceInfoResponseArgs{...}
+type SourceInfoResponseInput interface {
+	pulumi.Input
+
+	ToSourceInfoResponseOutput() SourceInfoResponseOutput
+	ToSourceInfoResponseOutputWithContext(context.Context) SourceInfoResponseOutput
+}
+
+// Source information used to create a Service Config
+type SourceInfoResponseArgs struct {
+	// All files used during config generation.
+	SourceFiles pulumi.StringMapArrayInput `pulumi:"sourceFiles"`
+}
+
+func (SourceInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceInfoResponse)(nil)).Elem()
+}
+
+func (i SourceInfoResponseArgs) ToSourceInfoResponseOutput() SourceInfoResponseOutput {
+	return i.ToSourceInfoResponseOutputWithContext(context.Background())
+}
+
+func (i SourceInfoResponseArgs) ToSourceInfoResponseOutputWithContext(ctx context.Context) SourceInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceInfoResponseOutput)
+}
+
+func (i SourceInfoResponseArgs) ToSourceInfoResponsePtrOutput() SourceInfoResponsePtrOutput {
+	return i.ToSourceInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SourceInfoResponseArgs) ToSourceInfoResponsePtrOutputWithContext(ctx context.Context) SourceInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceInfoResponseOutput).ToSourceInfoResponsePtrOutputWithContext(ctx)
+}
+
+// SourceInfoResponsePtrInput is an input type that accepts SourceInfoResponseArgs, SourceInfoResponsePtr and SourceInfoResponsePtrOutput values.
+// You can construct a concrete instance of `SourceInfoResponsePtrInput` via:
+//
+//          SourceInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SourceInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToSourceInfoResponsePtrOutput() SourceInfoResponsePtrOutput
+	ToSourceInfoResponsePtrOutputWithContext(context.Context) SourceInfoResponsePtrOutput
+}
+
+type sourceInfoResponsePtrType SourceInfoResponseArgs
+
+func SourceInfoResponsePtr(v *SourceInfoResponseArgs) SourceInfoResponsePtrInput {
+	return (*sourceInfoResponsePtrType)(v)
+}
+
+func (*sourceInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceInfoResponse)(nil)).Elem()
+}
+
+func (i *sourceInfoResponsePtrType) ToSourceInfoResponsePtrOutput() SourceInfoResponsePtrOutput {
+	return i.ToSourceInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *sourceInfoResponsePtrType) ToSourceInfoResponsePtrOutputWithContext(ctx context.Context) SourceInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceInfoResponsePtrOutput)
+}
+
+// Source information used to create a Service Config
+type SourceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceInfoResponse)(nil)).Elem()
+}
+
+func (o SourceInfoResponseOutput) ToSourceInfoResponseOutput() SourceInfoResponseOutput {
+	return o
+}
+
+func (o SourceInfoResponseOutput) ToSourceInfoResponseOutputWithContext(ctx context.Context) SourceInfoResponseOutput {
+	return o
+}
+
+func (o SourceInfoResponseOutput) ToSourceInfoResponsePtrOutput() SourceInfoResponsePtrOutput {
+	return o.ToSourceInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SourceInfoResponseOutput) ToSourceInfoResponsePtrOutputWithContext(ctx context.Context) SourceInfoResponsePtrOutput {
+	return o.ApplyT(func(v SourceInfoResponse) *SourceInfoResponse {
+		return &v
+	}).(SourceInfoResponsePtrOutput)
+}
+
+// All files used during config generation.
+func (o SourceInfoResponseOutput) SourceFiles() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v SourceInfoResponse) []map[string]string { return v.SourceFiles }).(pulumi.StringMapArrayOutput)
+}
+
+type SourceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceInfoResponse)(nil)).Elem()
+}
+
+func (o SourceInfoResponsePtrOutput) ToSourceInfoResponsePtrOutput() SourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o SourceInfoResponsePtrOutput) ToSourceInfoResponsePtrOutputWithContext(ctx context.Context) SourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o SourceInfoResponsePtrOutput) Elem() SourceInfoResponseOutput {
+	return o.ApplyT(func(v *SourceInfoResponse) SourceInfoResponse { return *v }).(SourceInfoResponseOutput)
+}
+
+// All files used during config generation.
+func (o SourceInfoResponsePtrOutput) SourceFiles() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *SourceInfoResponse) []map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceFiles
+	}).(pulumi.StringMapArrayOutput)
+}
+
 // Define a parameter's name and location. The parameter may be passed as either an HTTP header or a URL query parameter, and if both are passed the behavior is implementation-dependent.
 type SystemParameter struct {
 	// Define the HTTP header name to use for the parameter. It is case insensitive.
@@ -6986,6 +13161,124 @@ func (o SystemParameterArrayOutput) Index(i pulumi.IntInput) SystemParameterOutp
 	}).(SystemParameterOutput)
 }
 
+// Define a parameter's name and location. The parameter may be passed as either an HTTP header or a URL query parameter, and if both are passed the behavior is implementation-dependent.
+type SystemParameterResponse struct {
+	// Define the HTTP header name to use for the parameter. It is case insensitive.
+	HttpHeader string `pulumi:"httpHeader"`
+	// Define the name of the parameter, such as "api_key" . It is case sensitive.
+	Name string `pulumi:"name"`
+	// Define the URL query parameter name to use for the parameter. It is case sensitive.
+	UrlQueryParameter string `pulumi:"urlQueryParameter"`
+}
+
+// SystemParameterResponseInput is an input type that accepts SystemParameterResponseArgs and SystemParameterResponseOutput values.
+// You can construct a concrete instance of `SystemParameterResponseInput` via:
+//
+//          SystemParameterResponseArgs{...}
+type SystemParameterResponseInput interface {
+	pulumi.Input
+
+	ToSystemParameterResponseOutput() SystemParameterResponseOutput
+	ToSystemParameterResponseOutputWithContext(context.Context) SystemParameterResponseOutput
+}
+
+// Define a parameter's name and location. The parameter may be passed as either an HTTP header or a URL query parameter, and if both are passed the behavior is implementation-dependent.
+type SystemParameterResponseArgs struct {
+	// Define the HTTP header name to use for the parameter. It is case insensitive.
+	HttpHeader pulumi.StringInput `pulumi:"httpHeader"`
+	// Define the name of the parameter, such as "api_key" . It is case sensitive.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Define the URL query parameter name to use for the parameter. It is case sensitive.
+	UrlQueryParameter pulumi.StringInput `pulumi:"urlQueryParameter"`
+}
+
+func (SystemParameterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemParameterResponse)(nil)).Elem()
+}
+
+func (i SystemParameterResponseArgs) ToSystemParameterResponseOutput() SystemParameterResponseOutput {
+	return i.ToSystemParameterResponseOutputWithContext(context.Background())
+}
+
+func (i SystemParameterResponseArgs) ToSystemParameterResponseOutputWithContext(ctx context.Context) SystemParameterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemParameterResponseOutput)
+}
+
+// SystemParameterResponseArrayInput is an input type that accepts SystemParameterResponseArray and SystemParameterResponseArrayOutput values.
+// You can construct a concrete instance of `SystemParameterResponseArrayInput` via:
+//
+//          SystemParameterResponseArray{ SystemParameterResponseArgs{...} }
+type SystemParameterResponseArrayInput interface {
+	pulumi.Input
+
+	ToSystemParameterResponseArrayOutput() SystemParameterResponseArrayOutput
+	ToSystemParameterResponseArrayOutputWithContext(context.Context) SystemParameterResponseArrayOutput
+}
+
+type SystemParameterResponseArray []SystemParameterResponseInput
+
+func (SystemParameterResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SystemParameterResponse)(nil)).Elem()
+}
+
+func (i SystemParameterResponseArray) ToSystemParameterResponseArrayOutput() SystemParameterResponseArrayOutput {
+	return i.ToSystemParameterResponseArrayOutputWithContext(context.Background())
+}
+
+func (i SystemParameterResponseArray) ToSystemParameterResponseArrayOutputWithContext(ctx context.Context) SystemParameterResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemParameterResponseArrayOutput)
+}
+
+// Define a parameter's name and location. The parameter may be passed as either an HTTP header or a URL query parameter, and if both are passed the behavior is implementation-dependent.
+type SystemParameterResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemParameterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemParameterResponse)(nil)).Elem()
+}
+
+func (o SystemParameterResponseOutput) ToSystemParameterResponseOutput() SystemParameterResponseOutput {
+	return o
+}
+
+func (o SystemParameterResponseOutput) ToSystemParameterResponseOutputWithContext(ctx context.Context) SystemParameterResponseOutput {
+	return o
+}
+
+// Define the HTTP header name to use for the parameter. It is case insensitive.
+func (o SystemParameterResponseOutput) HttpHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemParameterResponse) string { return v.HttpHeader }).(pulumi.StringOutput)
+}
+
+// Define the name of the parameter, such as "api_key" . It is case sensitive.
+func (o SystemParameterResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemParameterResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Define the URL query parameter name to use for the parameter. It is case sensitive.
+func (o SystemParameterResponseOutput) UrlQueryParameter() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemParameterResponse) string { return v.UrlQueryParameter }).(pulumi.StringOutput)
+}
+
+type SystemParameterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SystemParameterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SystemParameterResponse)(nil)).Elem()
+}
+
+func (o SystemParameterResponseArrayOutput) ToSystemParameterResponseArrayOutput() SystemParameterResponseArrayOutput {
+	return o
+}
+
+func (o SystemParameterResponseArrayOutput) ToSystemParameterResponseArrayOutputWithContext(ctx context.Context) SystemParameterResponseArrayOutput {
+	return o
+}
+
+func (o SystemParameterResponseArrayOutput) Index(i pulumi.IntInput) SystemParameterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SystemParameterResponse {
+		return vs[0].([]SystemParameterResponse)[vs[1].(int)]
+	}).(SystemParameterResponseOutput)
+}
+
 // Define a system parameter rule mapping system parameter definitions to methods.
 type SystemParameterRule struct {
 	// Define parameters. Multiple names may be defined for a parameter. For a given method call, only one of them should be used. If multiple names are used the behavior is implementation-dependent. If none of the specified names are present the behavior is parameter-dependent.
@@ -7093,6 +13386,115 @@ func (o SystemParameterRuleArrayOutput) Index(i pulumi.IntInput) SystemParameter
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SystemParameterRule {
 		return vs[0].([]SystemParameterRule)[vs[1].(int)]
 	}).(SystemParameterRuleOutput)
+}
+
+// Define a system parameter rule mapping system parameter definitions to methods.
+type SystemParameterRuleResponse struct {
+	// Define parameters. Multiple names may be defined for a parameter. For a given method call, only one of them should be used. If multiple names are used the behavior is implementation-dependent. If none of the specified names are present the behavior is parameter-dependent.
+	Parameters []SystemParameterResponse `pulumi:"parameters"`
+	// Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details.
+	Selector string `pulumi:"selector"`
+}
+
+// SystemParameterRuleResponseInput is an input type that accepts SystemParameterRuleResponseArgs and SystemParameterRuleResponseOutput values.
+// You can construct a concrete instance of `SystemParameterRuleResponseInput` via:
+//
+//          SystemParameterRuleResponseArgs{...}
+type SystemParameterRuleResponseInput interface {
+	pulumi.Input
+
+	ToSystemParameterRuleResponseOutput() SystemParameterRuleResponseOutput
+	ToSystemParameterRuleResponseOutputWithContext(context.Context) SystemParameterRuleResponseOutput
+}
+
+// Define a system parameter rule mapping system parameter definitions to methods.
+type SystemParameterRuleResponseArgs struct {
+	// Define parameters. Multiple names may be defined for a parameter. For a given method call, only one of them should be used. If multiple names are used the behavior is implementation-dependent. If none of the specified names are present the behavior is parameter-dependent.
+	Parameters SystemParameterResponseArrayInput `pulumi:"parameters"`
+	// Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details.
+	Selector pulumi.StringInput `pulumi:"selector"`
+}
+
+func (SystemParameterRuleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemParameterRuleResponse)(nil)).Elem()
+}
+
+func (i SystemParameterRuleResponseArgs) ToSystemParameterRuleResponseOutput() SystemParameterRuleResponseOutput {
+	return i.ToSystemParameterRuleResponseOutputWithContext(context.Background())
+}
+
+func (i SystemParameterRuleResponseArgs) ToSystemParameterRuleResponseOutputWithContext(ctx context.Context) SystemParameterRuleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemParameterRuleResponseOutput)
+}
+
+// SystemParameterRuleResponseArrayInput is an input type that accepts SystemParameterRuleResponseArray and SystemParameterRuleResponseArrayOutput values.
+// You can construct a concrete instance of `SystemParameterRuleResponseArrayInput` via:
+//
+//          SystemParameterRuleResponseArray{ SystemParameterRuleResponseArgs{...} }
+type SystemParameterRuleResponseArrayInput interface {
+	pulumi.Input
+
+	ToSystemParameterRuleResponseArrayOutput() SystemParameterRuleResponseArrayOutput
+	ToSystemParameterRuleResponseArrayOutputWithContext(context.Context) SystemParameterRuleResponseArrayOutput
+}
+
+type SystemParameterRuleResponseArray []SystemParameterRuleResponseInput
+
+func (SystemParameterRuleResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SystemParameterRuleResponse)(nil)).Elem()
+}
+
+func (i SystemParameterRuleResponseArray) ToSystemParameterRuleResponseArrayOutput() SystemParameterRuleResponseArrayOutput {
+	return i.ToSystemParameterRuleResponseArrayOutputWithContext(context.Background())
+}
+
+func (i SystemParameterRuleResponseArray) ToSystemParameterRuleResponseArrayOutputWithContext(ctx context.Context) SystemParameterRuleResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemParameterRuleResponseArrayOutput)
+}
+
+// Define a system parameter rule mapping system parameter definitions to methods.
+type SystemParameterRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemParameterRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemParameterRuleResponse)(nil)).Elem()
+}
+
+func (o SystemParameterRuleResponseOutput) ToSystemParameterRuleResponseOutput() SystemParameterRuleResponseOutput {
+	return o
+}
+
+func (o SystemParameterRuleResponseOutput) ToSystemParameterRuleResponseOutputWithContext(ctx context.Context) SystemParameterRuleResponseOutput {
+	return o
+}
+
+// Define parameters. Multiple names may be defined for a parameter. For a given method call, only one of them should be used. If multiple names are used the behavior is implementation-dependent. If none of the specified names are present the behavior is parameter-dependent.
+func (o SystemParameterRuleResponseOutput) Parameters() SystemParameterResponseArrayOutput {
+	return o.ApplyT(func(v SystemParameterRuleResponse) []SystemParameterResponse { return v.Parameters }).(SystemParameterResponseArrayOutput)
+}
+
+// Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details.
+func (o SystemParameterRuleResponseOutput) Selector() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemParameterRuleResponse) string { return v.Selector }).(pulumi.StringOutput)
+}
+
+type SystemParameterRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SystemParameterRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SystemParameterRuleResponse)(nil)).Elem()
+}
+
+func (o SystemParameterRuleResponseArrayOutput) ToSystemParameterRuleResponseArrayOutput() SystemParameterRuleResponseArrayOutput {
+	return o
+}
+
+func (o SystemParameterRuleResponseArrayOutput) ToSystemParameterRuleResponseArrayOutputWithContext(ctx context.Context) SystemParameterRuleResponseArrayOutput {
+	return o
+}
+
+func (o SystemParameterRuleResponseArrayOutput) Index(i pulumi.IntInput) SystemParameterRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SystemParameterRuleResponse {
+		return vs[0].([]SystemParameterRuleResponse)[vs[1].(int)]
+	}).(SystemParameterRuleResponseOutput)
 }
 
 // ### System parameter configuration A system parameter is a special kind of parameter defined by the API system, not by an individual API. It is typically mapped to an HTTP header and/or a URL query parameter. This configuration specifies which methods change the names of the system parameters.
@@ -7229,6 +13631,140 @@ func (o SystemParametersPtrOutput) Rules() SystemParameterRuleArrayOutput {
 	}).(SystemParameterRuleArrayOutput)
 }
 
+// ### System parameter configuration A system parameter is a special kind of parameter defined by the API system, not by an individual API. It is typically mapped to an HTTP header and/or a URL query parameter. This configuration specifies which methods change the names of the system parameters.
+type SystemParametersResponse struct {
+	// Define system parameters. The parameters defined here will override the default parameters implemented by the system. If this field is missing from the service config, default system parameters will be used. Default system parameters and names is implementation-dependent. Example: define api key for all methods system_parameters rules: - selector: "*" parameters: - name: api_key url_query_parameter: api_key Example: define 2 api key names for a specific method. system_parameters rules: - selector: "/ListShelves" parameters: - name: api_key http_header: Api-Key1 - name: api_key http_header: Api-Key2 **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules []SystemParameterRuleResponse `pulumi:"rules"`
+}
+
+// SystemParametersResponseInput is an input type that accepts SystemParametersResponseArgs and SystemParametersResponseOutput values.
+// You can construct a concrete instance of `SystemParametersResponseInput` via:
+//
+//          SystemParametersResponseArgs{...}
+type SystemParametersResponseInput interface {
+	pulumi.Input
+
+	ToSystemParametersResponseOutput() SystemParametersResponseOutput
+	ToSystemParametersResponseOutputWithContext(context.Context) SystemParametersResponseOutput
+}
+
+// ### System parameter configuration A system parameter is a special kind of parameter defined by the API system, not by an individual API. It is typically mapped to an HTTP header and/or a URL query parameter. This configuration specifies which methods change the names of the system parameters.
+type SystemParametersResponseArgs struct {
+	// Define system parameters. The parameters defined here will override the default parameters implemented by the system. If this field is missing from the service config, default system parameters will be used. Default system parameters and names is implementation-dependent. Example: define api key for all methods system_parameters rules: - selector: "*" parameters: - name: api_key url_query_parameter: api_key Example: define 2 api key names for a specific method. system_parameters rules: - selector: "/ListShelves" parameters: - name: api_key http_header: Api-Key1 - name: api_key http_header: Api-Key2 **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules SystemParameterRuleResponseArrayInput `pulumi:"rules"`
+}
+
+func (SystemParametersResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemParametersResponse)(nil)).Elem()
+}
+
+func (i SystemParametersResponseArgs) ToSystemParametersResponseOutput() SystemParametersResponseOutput {
+	return i.ToSystemParametersResponseOutputWithContext(context.Background())
+}
+
+func (i SystemParametersResponseArgs) ToSystemParametersResponseOutputWithContext(ctx context.Context) SystemParametersResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemParametersResponseOutput)
+}
+
+func (i SystemParametersResponseArgs) ToSystemParametersResponsePtrOutput() SystemParametersResponsePtrOutput {
+	return i.ToSystemParametersResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SystemParametersResponseArgs) ToSystemParametersResponsePtrOutputWithContext(ctx context.Context) SystemParametersResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemParametersResponseOutput).ToSystemParametersResponsePtrOutputWithContext(ctx)
+}
+
+// SystemParametersResponsePtrInput is an input type that accepts SystemParametersResponseArgs, SystemParametersResponsePtr and SystemParametersResponsePtrOutput values.
+// You can construct a concrete instance of `SystemParametersResponsePtrInput` via:
+//
+//          SystemParametersResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SystemParametersResponsePtrInput interface {
+	pulumi.Input
+
+	ToSystemParametersResponsePtrOutput() SystemParametersResponsePtrOutput
+	ToSystemParametersResponsePtrOutputWithContext(context.Context) SystemParametersResponsePtrOutput
+}
+
+type systemParametersResponsePtrType SystemParametersResponseArgs
+
+func SystemParametersResponsePtr(v *SystemParametersResponseArgs) SystemParametersResponsePtrInput {
+	return (*systemParametersResponsePtrType)(v)
+}
+
+func (*systemParametersResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemParametersResponse)(nil)).Elem()
+}
+
+func (i *systemParametersResponsePtrType) ToSystemParametersResponsePtrOutput() SystemParametersResponsePtrOutput {
+	return i.ToSystemParametersResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *systemParametersResponsePtrType) ToSystemParametersResponsePtrOutputWithContext(ctx context.Context) SystemParametersResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemParametersResponsePtrOutput)
+}
+
+// ### System parameter configuration A system parameter is a special kind of parameter defined by the API system, not by an individual API. It is typically mapped to an HTTP header and/or a URL query parameter. This configuration specifies which methods change the names of the system parameters.
+type SystemParametersResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemParametersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemParametersResponse)(nil)).Elem()
+}
+
+func (o SystemParametersResponseOutput) ToSystemParametersResponseOutput() SystemParametersResponseOutput {
+	return o
+}
+
+func (o SystemParametersResponseOutput) ToSystemParametersResponseOutputWithContext(ctx context.Context) SystemParametersResponseOutput {
+	return o
+}
+
+func (o SystemParametersResponseOutput) ToSystemParametersResponsePtrOutput() SystemParametersResponsePtrOutput {
+	return o.ToSystemParametersResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SystemParametersResponseOutput) ToSystemParametersResponsePtrOutputWithContext(ctx context.Context) SystemParametersResponsePtrOutput {
+	return o.ApplyT(func(v SystemParametersResponse) *SystemParametersResponse {
+		return &v
+	}).(SystemParametersResponsePtrOutput)
+}
+
+// Define system parameters. The parameters defined here will override the default parameters implemented by the system. If this field is missing from the service config, default system parameters will be used. Default system parameters and names is implementation-dependent. Example: define api key for all methods system_parameters rules: - selector: "*" parameters: - name: api_key url_query_parameter: api_key Example: define 2 api key names for a specific method. system_parameters rules: - selector: "/ListShelves" parameters: - name: api_key http_header: Api-Key1 - name: api_key http_header: Api-Key2 **NOTE:** All service configuration rules follow "last one wins" order.
+func (o SystemParametersResponseOutput) Rules() SystemParameterRuleResponseArrayOutput {
+	return o.ApplyT(func(v SystemParametersResponse) []SystemParameterRuleResponse { return v.Rules }).(SystemParameterRuleResponseArrayOutput)
+}
+
+type SystemParametersResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SystemParametersResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemParametersResponse)(nil)).Elem()
+}
+
+func (o SystemParametersResponsePtrOutput) ToSystemParametersResponsePtrOutput() SystemParametersResponsePtrOutput {
+	return o
+}
+
+func (o SystemParametersResponsePtrOutput) ToSystemParametersResponsePtrOutputWithContext(ctx context.Context) SystemParametersResponsePtrOutput {
+	return o
+}
+
+func (o SystemParametersResponsePtrOutput) Elem() SystemParametersResponseOutput {
+	return o.ApplyT(func(v *SystemParametersResponse) SystemParametersResponse { return *v }).(SystemParametersResponseOutput)
+}
+
+// Define system parameters. The parameters defined here will override the default parameters implemented by the system. If this field is missing from the service config, default system parameters will be used. Default system parameters and names is implementation-dependent. Example: define api key for all methods system_parameters rules: - selector: "*" parameters: - name: api_key url_query_parameter: api_key Example: define 2 api key names for a specific method. system_parameters rules: - selector: "/ListShelves" parameters: - name: api_key http_header: Api-Key1 - name: api_key http_header: Api-Key2 **NOTE:** All service configuration rules follow "last one wins" order.
+func (o SystemParametersResponsePtrOutput) Rules() SystemParameterRuleResponseArrayOutput {
+	return o.ApplyT(func(v *SystemParametersResponse) []SystemParameterRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(SystemParameterRuleResponseArrayOutput)
+}
+
 // Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } }
 type TrafficPercentStrategy struct {
 	// Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
@@ -7356,6 +13892,140 @@ func (o TrafficPercentStrategyPtrOutput) Elem() TrafficPercentStrategyOutput {
 // Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
 func (o TrafficPercentStrategyPtrOutput) Percentages() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TrafficPercentStrategy) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Percentages
+	}).(pulumi.StringMapOutput)
+}
+
+// Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } }
+type TrafficPercentStrategyResponse struct {
+	// Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
+	Percentages map[string]string `pulumi:"percentages"`
+}
+
+// TrafficPercentStrategyResponseInput is an input type that accepts TrafficPercentStrategyResponseArgs and TrafficPercentStrategyResponseOutput values.
+// You can construct a concrete instance of `TrafficPercentStrategyResponseInput` via:
+//
+//          TrafficPercentStrategyResponseArgs{...}
+type TrafficPercentStrategyResponseInput interface {
+	pulumi.Input
+
+	ToTrafficPercentStrategyResponseOutput() TrafficPercentStrategyResponseOutput
+	ToTrafficPercentStrategyResponseOutputWithContext(context.Context) TrafficPercentStrategyResponseOutput
+}
+
+// Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } }
+type TrafficPercentStrategyResponseArgs struct {
+	// Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
+	Percentages pulumi.StringMapInput `pulumi:"percentages"`
+}
+
+func (TrafficPercentStrategyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficPercentStrategyResponse)(nil)).Elem()
+}
+
+func (i TrafficPercentStrategyResponseArgs) ToTrafficPercentStrategyResponseOutput() TrafficPercentStrategyResponseOutput {
+	return i.ToTrafficPercentStrategyResponseOutputWithContext(context.Background())
+}
+
+func (i TrafficPercentStrategyResponseArgs) ToTrafficPercentStrategyResponseOutputWithContext(ctx context.Context) TrafficPercentStrategyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficPercentStrategyResponseOutput)
+}
+
+func (i TrafficPercentStrategyResponseArgs) ToTrafficPercentStrategyResponsePtrOutput() TrafficPercentStrategyResponsePtrOutput {
+	return i.ToTrafficPercentStrategyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TrafficPercentStrategyResponseArgs) ToTrafficPercentStrategyResponsePtrOutputWithContext(ctx context.Context) TrafficPercentStrategyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficPercentStrategyResponseOutput).ToTrafficPercentStrategyResponsePtrOutputWithContext(ctx)
+}
+
+// TrafficPercentStrategyResponsePtrInput is an input type that accepts TrafficPercentStrategyResponseArgs, TrafficPercentStrategyResponsePtr and TrafficPercentStrategyResponsePtrOutput values.
+// You can construct a concrete instance of `TrafficPercentStrategyResponsePtrInput` via:
+//
+//          TrafficPercentStrategyResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TrafficPercentStrategyResponsePtrInput interface {
+	pulumi.Input
+
+	ToTrafficPercentStrategyResponsePtrOutput() TrafficPercentStrategyResponsePtrOutput
+	ToTrafficPercentStrategyResponsePtrOutputWithContext(context.Context) TrafficPercentStrategyResponsePtrOutput
+}
+
+type trafficPercentStrategyResponsePtrType TrafficPercentStrategyResponseArgs
+
+func TrafficPercentStrategyResponsePtr(v *TrafficPercentStrategyResponseArgs) TrafficPercentStrategyResponsePtrInput {
+	return (*trafficPercentStrategyResponsePtrType)(v)
+}
+
+func (*trafficPercentStrategyResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrafficPercentStrategyResponse)(nil)).Elem()
+}
+
+func (i *trafficPercentStrategyResponsePtrType) ToTrafficPercentStrategyResponsePtrOutput() TrafficPercentStrategyResponsePtrOutput {
+	return i.ToTrafficPercentStrategyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *trafficPercentStrategyResponsePtrType) ToTrafficPercentStrategyResponsePtrOutputWithContext(ctx context.Context) TrafficPercentStrategyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficPercentStrategyResponsePtrOutput)
+}
+
+// Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } }
+type TrafficPercentStrategyResponseOutput struct{ *pulumi.OutputState }
+
+func (TrafficPercentStrategyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficPercentStrategyResponse)(nil)).Elem()
+}
+
+func (o TrafficPercentStrategyResponseOutput) ToTrafficPercentStrategyResponseOutput() TrafficPercentStrategyResponseOutput {
+	return o
+}
+
+func (o TrafficPercentStrategyResponseOutput) ToTrafficPercentStrategyResponseOutputWithContext(ctx context.Context) TrafficPercentStrategyResponseOutput {
+	return o
+}
+
+func (o TrafficPercentStrategyResponseOutput) ToTrafficPercentStrategyResponsePtrOutput() TrafficPercentStrategyResponsePtrOutput {
+	return o.ToTrafficPercentStrategyResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TrafficPercentStrategyResponseOutput) ToTrafficPercentStrategyResponsePtrOutputWithContext(ctx context.Context) TrafficPercentStrategyResponsePtrOutput {
+	return o.ApplyT(func(v TrafficPercentStrategyResponse) *TrafficPercentStrategyResponse {
+		return &v
+	}).(TrafficPercentStrategyResponsePtrOutput)
+}
+
+// Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
+func (o TrafficPercentStrategyResponseOutput) Percentages() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TrafficPercentStrategyResponse) map[string]string { return v.Percentages }).(pulumi.StringMapOutput)
+}
+
+type TrafficPercentStrategyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TrafficPercentStrategyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrafficPercentStrategyResponse)(nil)).Elem()
+}
+
+func (o TrafficPercentStrategyResponsePtrOutput) ToTrafficPercentStrategyResponsePtrOutput() TrafficPercentStrategyResponsePtrOutput {
+	return o
+}
+
+func (o TrafficPercentStrategyResponsePtrOutput) ToTrafficPercentStrategyResponsePtrOutputWithContext(ctx context.Context) TrafficPercentStrategyResponsePtrOutput {
+	return o
+}
+
+func (o TrafficPercentStrategyResponsePtrOutput) Elem() TrafficPercentStrategyResponseOutput {
+	return o.ApplyT(func(v *TrafficPercentStrategyResponse) TrafficPercentStrategyResponse { return *v }).(TrafficPercentStrategyResponseOutput)
+}
+
+// Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0.
+func (o TrafficPercentStrategyResponsePtrOutput) Percentages() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TrafficPercentStrategyResponse) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -7506,6 +14176,151 @@ func (o TypeArrayOutput) Index(i pulumi.IntInput) TypeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Type {
 		return vs[0].([]Type)[vs[1].(int)]
 	}).(TypeOutput)
+}
+
+// A protocol buffer message type.
+type TypeResponse struct {
+	// The list of fields.
+	Fields []FieldResponse `pulumi:"fields"`
+	// The fully qualified message name.
+	Name string `pulumi:"name"`
+	// The list of types appearing in `oneof` definitions in this type.
+	Oneofs []string `pulumi:"oneofs"`
+	// The protocol buffer options.
+	Options []OptionResponse `pulumi:"options"`
+	// The source context.
+	SourceContext SourceContextResponse `pulumi:"sourceContext"`
+	// The source syntax.
+	Syntax string `pulumi:"syntax"`
+}
+
+// TypeResponseInput is an input type that accepts TypeResponseArgs and TypeResponseOutput values.
+// You can construct a concrete instance of `TypeResponseInput` via:
+//
+//          TypeResponseArgs{...}
+type TypeResponseInput interface {
+	pulumi.Input
+
+	ToTypeResponseOutput() TypeResponseOutput
+	ToTypeResponseOutputWithContext(context.Context) TypeResponseOutput
+}
+
+// A protocol buffer message type.
+type TypeResponseArgs struct {
+	// The list of fields.
+	Fields FieldResponseArrayInput `pulumi:"fields"`
+	// The fully qualified message name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The list of types appearing in `oneof` definitions in this type.
+	Oneofs pulumi.StringArrayInput `pulumi:"oneofs"`
+	// The protocol buffer options.
+	Options OptionResponseArrayInput `pulumi:"options"`
+	// The source context.
+	SourceContext SourceContextResponseInput `pulumi:"sourceContext"`
+	// The source syntax.
+	Syntax pulumi.StringInput `pulumi:"syntax"`
+}
+
+func (TypeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TypeResponse)(nil)).Elem()
+}
+
+func (i TypeResponseArgs) ToTypeResponseOutput() TypeResponseOutput {
+	return i.ToTypeResponseOutputWithContext(context.Background())
+}
+
+func (i TypeResponseArgs) ToTypeResponseOutputWithContext(ctx context.Context) TypeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TypeResponseOutput)
+}
+
+// TypeResponseArrayInput is an input type that accepts TypeResponseArray and TypeResponseArrayOutput values.
+// You can construct a concrete instance of `TypeResponseArrayInput` via:
+//
+//          TypeResponseArray{ TypeResponseArgs{...} }
+type TypeResponseArrayInput interface {
+	pulumi.Input
+
+	ToTypeResponseArrayOutput() TypeResponseArrayOutput
+	ToTypeResponseArrayOutputWithContext(context.Context) TypeResponseArrayOutput
+}
+
+type TypeResponseArray []TypeResponseInput
+
+func (TypeResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TypeResponse)(nil)).Elem()
+}
+
+func (i TypeResponseArray) ToTypeResponseArrayOutput() TypeResponseArrayOutput {
+	return i.ToTypeResponseArrayOutputWithContext(context.Background())
+}
+
+func (i TypeResponseArray) ToTypeResponseArrayOutputWithContext(ctx context.Context) TypeResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TypeResponseArrayOutput)
+}
+
+// A protocol buffer message type.
+type TypeResponseOutput struct{ *pulumi.OutputState }
+
+func (TypeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TypeResponse)(nil)).Elem()
+}
+
+func (o TypeResponseOutput) ToTypeResponseOutput() TypeResponseOutput {
+	return o
+}
+
+func (o TypeResponseOutput) ToTypeResponseOutputWithContext(ctx context.Context) TypeResponseOutput {
+	return o
+}
+
+// The list of fields.
+func (o TypeResponseOutput) Fields() FieldResponseArrayOutput {
+	return o.ApplyT(func(v TypeResponse) []FieldResponse { return v.Fields }).(FieldResponseArrayOutput)
+}
+
+// The fully qualified message name.
+func (o TypeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TypeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The list of types appearing in `oneof` definitions in this type.
+func (o TypeResponseOutput) Oneofs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TypeResponse) []string { return v.Oneofs }).(pulumi.StringArrayOutput)
+}
+
+// The protocol buffer options.
+func (o TypeResponseOutput) Options() OptionResponseArrayOutput {
+	return o.ApplyT(func(v TypeResponse) []OptionResponse { return v.Options }).(OptionResponseArrayOutput)
+}
+
+// The source context.
+func (o TypeResponseOutput) SourceContext() SourceContextResponseOutput {
+	return o.ApplyT(func(v TypeResponse) SourceContextResponse { return v.SourceContext }).(SourceContextResponseOutput)
+}
+
+// The source syntax.
+func (o TypeResponseOutput) Syntax() pulumi.StringOutput {
+	return o.ApplyT(func(v TypeResponse) string { return v.Syntax }).(pulumi.StringOutput)
+}
+
+type TypeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TypeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TypeResponse)(nil)).Elem()
+}
+
+func (o TypeResponseArrayOutput) ToTypeResponseArrayOutput() TypeResponseArrayOutput {
+	return o
+}
+
+func (o TypeResponseArrayOutput) ToTypeResponseArrayOutputWithContext(ctx context.Context) TypeResponseArrayOutput {
+	return o
+}
+
+func (o TypeResponseArrayOutput) Index(i pulumi.IntInput) TypeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TypeResponse {
+		return vs[0].([]TypeResponse)[vs[1].(int)]
+	}).(TypeResponseOutput)
 }
 
 // Configuration controlling usage of a service.
@@ -7680,6 +14495,178 @@ func (o UsagePtrOutput) Rules() UsageRuleArrayOutput {
 	}).(UsageRuleArrayOutput)
 }
 
+// Configuration controlling usage of a service.
+type UsageResponse struct {
+	// The full resource name of a channel used for sending notifications to the service producer. Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in https://cloud.google.com/pubsub/docs/overview.
+	ProducerNotificationChannel string `pulumi:"producerNotificationChannel"`
+	// Requirements that must be satisfied before a consumer project can use the service. Each requirement is of the form /; for example 'serviceusage.googleapis.com/billing-enabled'. For Google APIs, a Terms of Service requirement must be included here. Google Cloud APIs must include "serviceusage.googleapis.com/tos/cloud". Other Google APIs should include "serviceusage.googleapis.com/tos/universal". Additional ToS can be included based on the business needs.
+	Requirements []string `pulumi:"requirements"`
+	// A list of usage rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules []UsageRuleResponse `pulumi:"rules"`
+}
+
+// UsageResponseInput is an input type that accepts UsageResponseArgs and UsageResponseOutput values.
+// You can construct a concrete instance of `UsageResponseInput` via:
+//
+//          UsageResponseArgs{...}
+type UsageResponseInput interface {
+	pulumi.Input
+
+	ToUsageResponseOutput() UsageResponseOutput
+	ToUsageResponseOutputWithContext(context.Context) UsageResponseOutput
+}
+
+// Configuration controlling usage of a service.
+type UsageResponseArgs struct {
+	// The full resource name of a channel used for sending notifications to the service producer. Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in https://cloud.google.com/pubsub/docs/overview.
+	ProducerNotificationChannel pulumi.StringInput `pulumi:"producerNotificationChannel"`
+	// Requirements that must be satisfied before a consumer project can use the service. Each requirement is of the form /; for example 'serviceusage.googleapis.com/billing-enabled'. For Google APIs, a Terms of Service requirement must be included here. Google Cloud APIs must include "serviceusage.googleapis.com/tos/cloud". Other Google APIs should include "serviceusage.googleapis.com/tos/universal". Additional ToS can be included based on the business needs.
+	Requirements pulumi.StringArrayInput `pulumi:"requirements"`
+	// A list of usage rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+	Rules UsageRuleResponseArrayInput `pulumi:"rules"`
+}
+
+func (UsageResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsageResponse)(nil)).Elem()
+}
+
+func (i UsageResponseArgs) ToUsageResponseOutput() UsageResponseOutput {
+	return i.ToUsageResponseOutputWithContext(context.Background())
+}
+
+func (i UsageResponseArgs) ToUsageResponseOutputWithContext(ctx context.Context) UsageResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsageResponseOutput)
+}
+
+func (i UsageResponseArgs) ToUsageResponsePtrOutput() UsageResponsePtrOutput {
+	return i.ToUsageResponsePtrOutputWithContext(context.Background())
+}
+
+func (i UsageResponseArgs) ToUsageResponsePtrOutputWithContext(ctx context.Context) UsageResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsageResponseOutput).ToUsageResponsePtrOutputWithContext(ctx)
+}
+
+// UsageResponsePtrInput is an input type that accepts UsageResponseArgs, UsageResponsePtr and UsageResponsePtrOutput values.
+// You can construct a concrete instance of `UsageResponsePtrInput` via:
+//
+//          UsageResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type UsageResponsePtrInput interface {
+	pulumi.Input
+
+	ToUsageResponsePtrOutput() UsageResponsePtrOutput
+	ToUsageResponsePtrOutputWithContext(context.Context) UsageResponsePtrOutput
+}
+
+type usageResponsePtrType UsageResponseArgs
+
+func UsageResponsePtr(v *UsageResponseArgs) UsageResponsePtrInput {
+	return (*usageResponsePtrType)(v)
+}
+
+func (*usageResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsageResponse)(nil)).Elem()
+}
+
+func (i *usageResponsePtrType) ToUsageResponsePtrOutput() UsageResponsePtrOutput {
+	return i.ToUsageResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *usageResponsePtrType) ToUsageResponsePtrOutputWithContext(ctx context.Context) UsageResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsageResponsePtrOutput)
+}
+
+// Configuration controlling usage of a service.
+type UsageResponseOutput struct{ *pulumi.OutputState }
+
+func (UsageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsageResponse)(nil)).Elem()
+}
+
+func (o UsageResponseOutput) ToUsageResponseOutput() UsageResponseOutput {
+	return o
+}
+
+func (o UsageResponseOutput) ToUsageResponseOutputWithContext(ctx context.Context) UsageResponseOutput {
+	return o
+}
+
+func (o UsageResponseOutput) ToUsageResponsePtrOutput() UsageResponsePtrOutput {
+	return o.ToUsageResponsePtrOutputWithContext(context.Background())
+}
+
+func (o UsageResponseOutput) ToUsageResponsePtrOutputWithContext(ctx context.Context) UsageResponsePtrOutput {
+	return o.ApplyT(func(v UsageResponse) *UsageResponse {
+		return &v
+	}).(UsageResponsePtrOutput)
+}
+
+// The full resource name of a channel used for sending notifications to the service producer. Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in https://cloud.google.com/pubsub/docs/overview.
+func (o UsageResponseOutput) ProducerNotificationChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v UsageResponse) string { return v.ProducerNotificationChannel }).(pulumi.StringOutput)
+}
+
+// Requirements that must be satisfied before a consumer project can use the service. Each requirement is of the form /; for example 'serviceusage.googleapis.com/billing-enabled'. For Google APIs, a Terms of Service requirement must be included here. Google Cloud APIs must include "serviceusage.googleapis.com/tos/cloud". Other Google APIs should include "serviceusage.googleapis.com/tos/universal". Additional ToS can be included based on the business needs.
+func (o UsageResponseOutput) Requirements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UsageResponse) []string { return v.Requirements }).(pulumi.StringArrayOutput)
+}
+
+// A list of usage rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+func (o UsageResponseOutput) Rules() UsageRuleResponseArrayOutput {
+	return o.ApplyT(func(v UsageResponse) []UsageRuleResponse { return v.Rules }).(UsageRuleResponseArrayOutput)
+}
+
+type UsageResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UsageResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsageResponse)(nil)).Elem()
+}
+
+func (o UsageResponsePtrOutput) ToUsageResponsePtrOutput() UsageResponsePtrOutput {
+	return o
+}
+
+func (o UsageResponsePtrOutput) ToUsageResponsePtrOutputWithContext(ctx context.Context) UsageResponsePtrOutput {
+	return o
+}
+
+func (o UsageResponsePtrOutput) Elem() UsageResponseOutput {
+	return o.ApplyT(func(v *UsageResponse) UsageResponse { return *v }).(UsageResponseOutput)
+}
+
+// The full resource name of a channel used for sending notifications to the service producer. Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in https://cloud.google.com/pubsub/docs/overview.
+func (o UsageResponsePtrOutput) ProducerNotificationChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UsageResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProducerNotificationChannel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Requirements that must be satisfied before a consumer project can use the service. Each requirement is of the form /; for example 'serviceusage.googleapis.com/billing-enabled'. For Google APIs, a Terms of Service requirement must be included here. Google Cloud APIs must include "serviceusage.googleapis.com/tos/cloud". Other Google APIs should include "serviceusage.googleapis.com/tos/universal". Additional ToS can be included based on the business needs.
+func (o UsageResponsePtrOutput) Requirements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *UsageResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Requirements
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of usage rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
+func (o UsageResponsePtrOutput) Rules() UsageRuleResponseArrayOutput {
+	return o.ApplyT(func(v *UsageResponse) []UsageRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(UsageRuleResponseArrayOutput)
+}
+
 // Usage configuration rules for the service. NOTE: Under development. Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not contain consumer project identity. (Example: calls that do not contain an API key). By default, API methods do not allow unregistered calls, and each method call must be identified by a consumer project identity. Use this rule to allow/disallow unregistered calls. Example of an API that wants to allow unregistered calls for entire service. usage: rules: - selector: "*" allow_unregistered_calls: true Example of a method that wants to allow unregistered calls. usage: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allow_unregistered_calls: true
 type UsageRule struct {
 	// If true, the selected method allows unregistered calls, e.g. calls that don't identify any user or application.
@@ -7798,117 +14785,340 @@ func (o UsageRuleArrayOutput) Index(i pulumi.IntInput) UsageRuleOutput {
 	}).(UsageRuleOutput)
 }
 
+// Usage configuration rules for the service. NOTE: Under development. Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not contain consumer project identity. (Example: calls that do not contain an API key). By default, API methods do not allow unregistered calls, and each method call must be identified by a consumer project identity. Use this rule to allow/disallow unregistered calls. Example of an API that wants to allow unregistered calls for entire service. usage: rules: - selector: "*" allow_unregistered_calls: true Example of a method that wants to allow unregistered calls. usage: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allow_unregistered_calls: true
+type UsageRuleResponse struct {
+	// If true, the selected method allows unregistered calls, e.g. calls that don't identify any user or application.
+	AllowUnregisteredCalls bool `pulumi:"allowUnregisteredCalls"`
+	// Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details.
+	Selector string `pulumi:"selector"`
+	// If true, the selected method should skip service control and the control plane features, such as quota and billing, will not be available. This flag is used by Google Cloud Endpoints to bypass checks for internal methods, such as service health check methods.
+	SkipServiceControl bool `pulumi:"skipServiceControl"`
+}
+
+// UsageRuleResponseInput is an input type that accepts UsageRuleResponseArgs and UsageRuleResponseOutput values.
+// You can construct a concrete instance of `UsageRuleResponseInput` via:
+//
+//          UsageRuleResponseArgs{...}
+type UsageRuleResponseInput interface {
+	pulumi.Input
+
+	ToUsageRuleResponseOutput() UsageRuleResponseOutput
+	ToUsageRuleResponseOutputWithContext(context.Context) UsageRuleResponseOutput
+}
+
+// Usage configuration rules for the service. NOTE: Under development. Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not contain consumer project identity. (Example: calls that do not contain an API key). By default, API methods do not allow unregistered calls, and each method call must be identified by a consumer project identity. Use this rule to allow/disallow unregistered calls. Example of an API that wants to allow unregistered calls for entire service. usage: rules: - selector: "*" allow_unregistered_calls: true Example of a method that wants to allow unregistered calls. usage: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allow_unregistered_calls: true
+type UsageRuleResponseArgs struct {
+	// If true, the selected method allows unregistered calls, e.g. calls that don't identify any user or application.
+	AllowUnregisteredCalls pulumi.BoolInput `pulumi:"allowUnregisteredCalls"`
+	// Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details.
+	Selector pulumi.StringInput `pulumi:"selector"`
+	// If true, the selected method should skip service control and the control plane features, such as quota and billing, will not be available. This flag is used by Google Cloud Endpoints to bypass checks for internal methods, such as service health check methods.
+	SkipServiceControl pulumi.BoolInput `pulumi:"skipServiceControl"`
+}
+
+func (UsageRuleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsageRuleResponse)(nil)).Elem()
+}
+
+func (i UsageRuleResponseArgs) ToUsageRuleResponseOutput() UsageRuleResponseOutput {
+	return i.ToUsageRuleResponseOutputWithContext(context.Background())
+}
+
+func (i UsageRuleResponseArgs) ToUsageRuleResponseOutputWithContext(ctx context.Context) UsageRuleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsageRuleResponseOutput)
+}
+
+// UsageRuleResponseArrayInput is an input type that accepts UsageRuleResponseArray and UsageRuleResponseArrayOutput values.
+// You can construct a concrete instance of `UsageRuleResponseArrayInput` via:
+//
+//          UsageRuleResponseArray{ UsageRuleResponseArgs{...} }
+type UsageRuleResponseArrayInput interface {
+	pulumi.Input
+
+	ToUsageRuleResponseArrayOutput() UsageRuleResponseArrayOutput
+	ToUsageRuleResponseArrayOutputWithContext(context.Context) UsageRuleResponseArrayOutput
+}
+
+type UsageRuleResponseArray []UsageRuleResponseInput
+
+func (UsageRuleResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UsageRuleResponse)(nil)).Elem()
+}
+
+func (i UsageRuleResponseArray) ToUsageRuleResponseArrayOutput() UsageRuleResponseArrayOutput {
+	return i.ToUsageRuleResponseArrayOutputWithContext(context.Background())
+}
+
+func (i UsageRuleResponseArray) ToUsageRuleResponseArrayOutputWithContext(ctx context.Context) UsageRuleResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsageRuleResponseArrayOutput)
+}
+
+// Usage configuration rules for the service. NOTE: Under development. Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not contain consumer project identity. (Example: calls that do not contain an API key). By default, API methods do not allow unregistered calls, and each method call must be identified by a consumer project identity. Use this rule to allow/disallow unregistered calls. Example of an API that wants to allow unregistered calls for entire service. usage: rules: - selector: "*" allow_unregistered_calls: true Example of a method that wants to allow unregistered calls. usage: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allow_unregistered_calls: true
+type UsageRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (UsageRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsageRuleResponse)(nil)).Elem()
+}
+
+func (o UsageRuleResponseOutput) ToUsageRuleResponseOutput() UsageRuleResponseOutput {
+	return o
+}
+
+func (o UsageRuleResponseOutput) ToUsageRuleResponseOutputWithContext(ctx context.Context) UsageRuleResponseOutput {
+	return o
+}
+
+// If true, the selected method allows unregistered calls, e.g. calls that don't identify any user or application.
+func (o UsageRuleResponseOutput) AllowUnregisteredCalls() pulumi.BoolOutput {
+	return o.ApplyT(func(v UsageRuleResponse) bool { return v.AllowUnregisteredCalls }).(pulumi.BoolOutput)
+}
+
+// Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details.
+func (o UsageRuleResponseOutput) Selector() pulumi.StringOutput {
+	return o.ApplyT(func(v UsageRuleResponse) string { return v.Selector }).(pulumi.StringOutput)
+}
+
+// If true, the selected method should skip service control and the control plane features, such as quota and billing, will not be available. This flag is used by Google Cloud Endpoints to bypass checks for internal methods, such as service health check methods.
+func (o UsageRuleResponseOutput) SkipServiceControl() pulumi.BoolOutput {
+	return o.ApplyT(func(v UsageRuleResponse) bool { return v.SkipServiceControl }).(pulumi.BoolOutput)
+}
+
+type UsageRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (UsageRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UsageRuleResponse)(nil)).Elem()
+}
+
+func (o UsageRuleResponseArrayOutput) ToUsageRuleResponseArrayOutput() UsageRuleResponseArrayOutput {
+	return o
+}
+
+func (o UsageRuleResponseArrayOutput) ToUsageRuleResponseArrayOutputWithContext(ctx context.Context) UsageRuleResponseArrayOutput {
+	return o
+}
+
+func (o UsageRuleResponseArrayOutput) Index(i pulumi.IntInput) UsageRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UsageRuleResponse {
+		return vs[0].([]UsageRuleResponse)[vs[1].(int)]
+	}).(UsageRuleResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiOutput{})
 	pulumi.RegisterOutputType(ApiArrayOutput{})
+	pulumi.RegisterOutputType(ApiResponseOutput{})
+	pulumi.RegisterOutputType(ApiResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuthProviderOutput{})
 	pulumi.RegisterOutputType(AuthProviderArrayOutput{})
+	pulumi.RegisterOutputType(AuthProviderResponseOutput{})
+	pulumi.RegisterOutputType(AuthProviderResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuthRequirementOutput{})
 	pulumi.RegisterOutputType(AuthRequirementArrayOutput{})
+	pulumi.RegisterOutputType(AuthRequirementResponseOutput{})
+	pulumi.RegisterOutputType(AuthRequirementResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuthenticationOutput{})
 	pulumi.RegisterOutputType(AuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(AuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(AuthenticationResponsePtrOutput{})
 	pulumi.RegisterOutputType(AuthenticationRuleOutput{})
 	pulumi.RegisterOutputType(AuthenticationRuleArrayOutput{})
+	pulumi.RegisterOutputType(AuthenticationRuleResponseOutput{})
+	pulumi.RegisterOutputType(AuthenticationRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(BackendOutput{})
 	pulumi.RegisterOutputType(BackendPtrOutput{})
+	pulumi.RegisterOutputType(BackendResponseOutput{})
+	pulumi.RegisterOutputType(BackendResponsePtrOutput{})
 	pulumi.RegisterOutputType(BackendRuleOutput{})
 	pulumi.RegisterOutputType(BackendRuleArrayOutput{})
+	pulumi.RegisterOutputType(BackendRuleResponseOutput{})
+	pulumi.RegisterOutputType(BackendRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(BillingOutput{})
 	pulumi.RegisterOutputType(BillingPtrOutput{})
 	pulumi.RegisterOutputType(BillingDestinationOutput{})
 	pulumi.RegisterOutputType(BillingDestinationArrayOutput{})
+	pulumi.RegisterOutputType(BillingDestinationResponseOutput{})
+	pulumi.RegisterOutputType(BillingDestinationResponseArrayOutput{})
+	pulumi.RegisterOutputType(BillingResponseOutput{})
+	pulumi.RegisterOutputType(BillingResponsePtrOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingResponseOutput{})
+	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(ContextOutput{})
 	pulumi.RegisterOutputType(ContextPtrOutput{})
+	pulumi.RegisterOutputType(ContextResponseOutput{})
+	pulumi.RegisterOutputType(ContextResponsePtrOutput{})
 	pulumi.RegisterOutputType(ContextRuleOutput{})
 	pulumi.RegisterOutputType(ContextRuleArrayOutput{})
+	pulumi.RegisterOutputType(ContextRuleResponseOutput{})
+	pulumi.RegisterOutputType(ContextRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(ControlOutput{})
 	pulumi.RegisterOutputType(ControlPtrOutput{})
+	pulumi.RegisterOutputType(ControlResponseOutput{})
+	pulumi.RegisterOutputType(ControlResponsePtrOutput{})
 	pulumi.RegisterOutputType(CustomErrorOutput{})
 	pulumi.RegisterOutputType(CustomErrorPtrOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponseOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponsePtrOutput{})
 	pulumi.RegisterOutputType(CustomErrorRuleOutput{})
 	pulumi.RegisterOutputType(CustomErrorRuleArrayOutput{})
+	pulumi.RegisterOutputType(CustomErrorRuleResponseOutput{})
+	pulumi.RegisterOutputType(CustomErrorRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(CustomHttpPatternOutput{})
 	pulumi.RegisterOutputType(CustomHttpPatternPtrOutput{})
+	pulumi.RegisterOutputType(CustomHttpPatternResponseOutput{})
 	pulumi.RegisterOutputType(DeleteServiceStrategyOutput{})
 	pulumi.RegisterOutputType(DeleteServiceStrategyPtrOutput{})
+	pulumi.RegisterOutputType(DeleteServiceStrategyResponseOutput{})
+	pulumi.RegisterOutputType(DeleteServiceStrategyResponsePtrOutput{})
 	pulumi.RegisterOutputType(DocumentationOutput{})
 	pulumi.RegisterOutputType(DocumentationPtrOutput{})
+	pulumi.RegisterOutputType(DocumentationResponseOutput{})
+	pulumi.RegisterOutputType(DocumentationResponsePtrOutput{})
 	pulumi.RegisterOutputType(DocumentationRuleOutput{})
 	pulumi.RegisterOutputType(DocumentationRuleArrayOutput{})
+	pulumi.RegisterOutputType(DocumentationRuleResponseOutput{})
+	pulumi.RegisterOutputType(DocumentationRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(EndpointOutput{})
 	pulumi.RegisterOutputType(EndpointArrayOutput{})
+	pulumi.RegisterOutputType(EndpointResponseOutput{})
+	pulumi.RegisterOutputType(EndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(EnumOutput{})
 	pulumi.RegisterOutputType(EnumArrayOutput{})
+	pulumi.RegisterOutputType(EnumResponseOutput{})
+	pulumi.RegisterOutputType(EnumResponseArrayOutput{})
 	pulumi.RegisterOutputType(EnumValueOutput{})
 	pulumi.RegisterOutputType(EnumValueArrayOutput{})
+	pulumi.RegisterOutputType(EnumValueResponseOutput{})
+	pulumi.RegisterOutputType(EnumValueResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(FieldOutput{})
 	pulumi.RegisterOutputType(FieldArrayOutput{})
+	pulumi.RegisterOutputType(FieldResponseOutput{})
+	pulumi.RegisterOutputType(FieldResponseArrayOutput{})
 	pulumi.RegisterOutputType(HttpOutput{})
 	pulumi.RegisterOutputType(HttpPtrOutput{})
+	pulumi.RegisterOutputType(HttpResponseOutput{})
+	pulumi.RegisterOutputType(HttpResponsePtrOutput{})
 	pulumi.RegisterOutputType(HttpRuleOutput{})
 	pulumi.RegisterOutputType(HttpRuleArrayOutput{})
+	pulumi.RegisterOutputType(HttpRuleResponseOutput{})
+	pulumi.RegisterOutputType(HttpRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(JwtLocationOutput{})
 	pulumi.RegisterOutputType(JwtLocationArrayOutput{})
+	pulumi.RegisterOutputType(JwtLocationResponseOutput{})
+	pulumi.RegisterOutputType(JwtLocationResponseArrayOutput{})
 	pulumi.RegisterOutputType(LabelDescriptorOutput{})
 	pulumi.RegisterOutputType(LabelDescriptorArrayOutput{})
+	pulumi.RegisterOutputType(LabelDescriptorResponseOutput{})
+	pulumi.RegisterOutputType(LabelDescriptorResponseArrayOutput{})
 	pulumi.RegisterOutputType(LogDescriptorOutput{})
 	pulumi.RegisterOutputType(LogDescriptorArrayOutput{})
+	pulumi.RegisterOutputType(LogDescriptorResponseOutput{})
+	pulumi.RegisterOutputType(LogDescriptorResponseArrayOutput{})
 	pulumi.RegisterOutputType(LoggingOutput{})
 	pulumi.RegisterOutputType(LoggingPtrOutput{})
 	pulumi.RegisterOutputType(LoggingDestinationOutput{})
 	pulumi.RegisterOutputType(LoggingDestinationArrayOutput{})
+	pulumi.RegisterOutputType(LoggingDestinationResponseOutput{})
+	pulumi.RegisterOutputType(LoggingDestinationResponseArrayOutput{})
+	pulumi.RegisterOutputType(LoggingResponseOutput{})
+	pulumi.RegisterOutputType(LoggingResponsePtrOutput{})
 	pulumi.RegisterOutputType(MethodOutput{})
 	pulumi.RegisterOutputType(MethodArrayOutput{})
+	pulumi.RegisterOutputType(MethodResponseOutput{})
+	pulumi.RegisterOutputType(MethodResponseArrayOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorArrayOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorMetadataOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorMetadataPtrOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorMetadataResponseOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorResponseOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorResponseArrayOutput{})
 	pulumi.RegisterOutputType(MetricRuleOutput{})
 	pulumi.RegisterOutputType(MetricRuleArrayOutput{})
+	pulumi.RegisterOutputType(MetricRuleResponseOutput{})
+	pulumi.RegisterOutputType(MetricRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(MixinOutput{})
 	pulumi.RegisterOutputType(MixinArrayOutput{})
+	pulumi.RegisterOutputType(MixinResponseOutput{})
+	pulumi.RegisterOutputType(MixinResponseArrayOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceDescriptorOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceDescriptorArrayOutput{})
+	pulumi.RegisterOutputType(MonitoredResourceDescriptorResponseOutput{})
+	pulumi.RegisterOutputType(MonitoredResourceDescriptorResponseArrayOutput{})
 	pulumi.RegisterOutputType(MonitoringOutput{})
 	pulumi.RegisterOutputType(MonitoringPtrOutput{})
 	pulumi.RegisterOutputType(MonitoringDestinationOutput{})
 	pulumi.RegisterOutputType(MonitoringDestinationArrayOutput{})
+	pulumi.RegisterOutputType(MonitoringDestinationResponseOutput{})
+	pulumi.RegisterOutputType(MonitoringDestinationResponseArrayOutput{})
+	pulumi.RegisterOutputType(MonitoringResponseOutput{})
+	pulumi.RegisterOutputType(MonitoringResponsePtrOutput{})
 	pulumi.RegisterOutputType(OAuthRequirementsOutput{})
 	pulumi.RegisterOutputType(OAuthRequirementsPtrOutput{})
+	pulumi.RegisterOutputType(OAuthRequirementsResponseOutput{})
 	pulumi.RegisterOutputType(OptionOutput{})
 	pulumi.RegisterOutputType(OptionArrayOutput{})
+	pulumi.RegisterOutputType(OptionResponseOutput{})
+	pulumi.RegisterOutputType(OptionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PageOutput{})
 	pulumi.RegisterOutputType(PageArrayOutput{})
+	pulumi.RegisterOutputType(PageResponseOutput{})
+	pulumi.RegisterOutputType(PageResponseArrayOutput{})
 	pulumi.RegisterOutputType(PolicyOutput{})
 	pulumi.RegisterOutputType(PolicyPtrOutput{})
 	pulumi.RegisterOutputType(QuotaOutput{})
 	pulumi.RegisterOutputType(QuotaPtrOutput{})
 	pulumi.RegisterOutputType(QuotaLimitOutput{})
 	pulumi.RegisterOutputType(QuotaLimitArrayOutput{})
+	pulumi.RegisterOutputType(QuotaLimitResponseOutput{})
+	pulumi.RegisterOutputType(QuotaLimitResponseArrayOutput{})
+	pulumi.RegisterOutputType(QuotaResponseOutput{})
+	pulumi.RegisterOutputType(QuotaResponsePtrOutput{})
 	pulumi.RegisterOutputType(SourceContextOutput{})
 	pulumi.RegisterOutputType(SourceContextPtrOutput{})
+	pulumi.RegisterOutputType(SourceContextResponseOutput{})
 	pulumi.RegisterOutputType(SourceInfoOutput{})
 	pulumi.RegisterOutputType(SourceInfoPtrOutput{})
+	pulumi.RegisterOutputType(SourceInfoResponseOutput{})
+	pulumi.RegisterOutputType(SourceInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemParameterOutput{})
 	pulumi.RegisterOutputType(SystemParameterArrayOutput{})
+	pulumi.RegisterOutputType(SystemParameterResponseOutput{})
+	pulumi.RegisterOutputType(SystemParameterResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemParameterRuleOutput{})
 	pulumi.RegisterOutputType(SystemParameterRuleArrayOutput{})
+	pulumi.RegisterOutputType(SystemParameterRuleResponseOutput{})
+	pulumi.RegisterOutputType(SystemParameterRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemParametersOutput{})
 	pulumi.RegisterOutputType(SystemParametersPtrOutput{})
+	pulumi.RegisterOutputType(SystemParametersResponseOutput{})
+	pulumi.RegisterOutputType(SystemParametersResponsePtrOutput{})
 	pulumi.RegisterOutputType(TrafficPercentStrategyOutput{})
 	pulumi.RegisterOutputType(TrafficPercentStrategyPtrOutput{})
+	pulumi.RegisterOutputType(TrafficPercentStrategyResponseOutput{})
+	pulumi.RegisterOutputType(TrafficPercentStrategyResponsePtrOutput{})
 	pulumi.RegisterOutputType(TypeOutput{})
 	pulumi.RegisterOutputType(TypeArrayOutput{})
+	pulumi.RegisterOutputType(TypeResponseOutput{})
+	pulumi.RegisterOutputType(TypeResponseArrayOutput{})
 	pulumi.RegisterOutputType(UsageOutput{})
 	pulumi.RegisterOutputType(UsagePtrOutput{})
+	pulumi.RegisterOutputType(UsageResponseOutput{})
+	pulumi.RegisterOutputType(UsageResponsePtrOutput{})
 	pulumi.RegisterOutputType(UsageRuleOutput{})
 	pulumi.RegisterOutputType(UsageRuleArrayOutput{})
+	pulumi.RegisterOutputType(UsageRuleResponseOutput{})
+	pulumi.RegisterOutputType(UsageRuleResponseArrayOutput{})
 }

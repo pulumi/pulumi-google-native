@@ -16,6 +16,61 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationEnvironmentAnalyticExport : Pulumi.CustomResource
     {
         /// <summary>
+        /// Time the export job was created.
+        /// </summary>
+        [Output("created")]
+        public Output<string> Created { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the datastore that is the destination of the export job [datastore]
+        /// </summary>
+        [Output("datastoreName")]
+        public Output<string> DatastoreName { get; private set; } = null!;
+
+        /// <summary>
+        /// Description of the export job.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Error is set when export fails
+        /// </summary>
+        [Output("error")]
+        public Output<string> Error { get; private set; } = null!;
+
+        /// <summary>
+        /// Execution time for this export job. If the job is still in progress, it will be set to the amount of time that has elapsed since`created`, in seconds. Else, it will set to (`updated` - `created`), in seconds.
+        /// </summary>
+        [Output("executionTime")]
+        public Output<string> ExecutionTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Display name of the export job.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Self link of the export job. A URI that can be used to retrieve the status of an export job. Example: `/organizations/myorg/environments/myenv/analytics/exports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+        /// </summary>
+        [Output("self")]
+        public Output<string> Self { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of the export job. Valid values include `enqueued`, `running`, `completed`, and `failed`.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Time the export job was last updated.
+        /// </summary>
+        [Output("updated")]
+        public Output<string> Updated { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationEnvironmentAnalyticExport resource with the given unique name, arguments, and options.
         /// </summary>
         ///

@@ -201,6 +201,197 @@ func (o AndroidAppInfoPtrOutput) VersionName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Android app information.
+type AndroidAppInfoResponse struct {
+	// The name of the app. Optional
+	Name string `pulumi:"name"`
+	// The package name of the app. Required.
+	PackageName string `pulumi:"packageName"`
+	// The internal version code of the app. Optional.
+	VersionCode string `pulumi:"versionCode"`
+	// The version name of the app. Optional.
+	VersionName string `pulumi:"versionName"`
+}
+
+// AndroidAppInfoResponseInput is an input type that accepts AndroidAppInfoResponseArgs and AndroidAppInfoResponseOutput values.
+// You can construct a concrete instance of `AndroidAppInfoResponseInput` via:
+//
+//          AndroidAppInfoResponseArgs{...}
+type AndroidAppInfoResponseInput interface {
+	pulumi.Input
+
+	ToAndroidAppInfoResponseOutput() AndroidAppInfoResponseOutput
+	ToAndroidAppInfoResponseOutputWithContext(context.Context) AndroidAppInfoResponseOutput
+}
+
+// Android app information.
+type AndroidAppInfoResponseArgs struct {
+	// The name of the app. Optional
+	Name pulumi.StringInput `pulumi:"name"`
+	// The package name of the app. Required.
+	PackageName pulumi.StringInput `pulumi:"packageName"`
+	// The internal version code of the app. Optional.
+	VersionCode pulumi.StringInput `pulumi:"versionCode"`
+	// The version name of the app. Optional.
+	VersionName pulumi.StringInput `pulumi:"versionName"`
+}
+
+func (AndroidAppInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AndroidAppInfoResponse)(nil)).Elem()
+}
+
+func (i AndroidAppInfoResponseArgs) ToAndroidAppInfoResponseOutput() AndroidAppInfoResponseOutput {
+	return i.ToAndroidAppInfoResponseOutputWithContext(context.Background())
+}
+
+func (i AndroidAppInfoResponseArgs) ToAndroidAppInfoResponseOutputWithContext(ctx context.Context) AndroidAppInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AndroidAppInfoResponseOutput)
+}
+
+func (i AndroidAppInfoResponseArgs) ToAndroidAppInfoResponsePtrOutput() AndroidAppInfoResponsePtrOutput {
+	return i.ToAndroidAppInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AndroidAppInfoResponseArgs) ToAndroidAppInfoResponsePtrOutputWithContext(ctx context.Context) AndroidAppInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AndroidAppInfoResponseOutput).ToAndroidAppInfoResponsePtrOutputWithContext(ctx)
+}
+
+// AndroidAppInfoResponsePtrInput is an input type that accepts AndroidAppInfoResponseArgs, AndroidAppInfoResponsePtr and AndroidAppInfoResponsePtrOutput values.
+// You can construct a concrete instance of `AndroidAppInfoResponsePtrInput` via:
+//
+//          AndroidAppInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AndroidAppInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToAndroidAppInfoResponsePtrOutput() AndroidAppInfoResponsePtrOutput
+	ToAndroidAppInfoResponsePtrOutputWithContext(context.Context) AndroidAppInfoResponsePtrOutput
+}
+
+type androidAppInfoResponsePtrType AndroidAppInfoResponseArgs
+
+func AndroidAppInfoResponsePtr(v *AndroidAppInfoResponseArgs) AndroidAppInfoResponsePtrInput {
+	return (*androidAppInfoResponsePtrType)(v)
+}
+
+func (*androidAppInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AndroidAppInfoResponse)(nil)).Elem()
+}
+
+func (i *androidAppInfoResponsePtrType) ToAndroidAppInfoResponsePtrOutput() AndroidAppInfoResponsePtrOutput {
+	return i.ToAndroidAppInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *androidAppInfoResponsePtrType) ToAndroidAppInfoResponsePtrOutputWithContext(ctx context.Context) AndroidAppInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AndroidAppInfoResponsePtrOutput)
+}
+
+// Android app information.
+type AndroidAppInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (AndroidAppInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AndroidAppInfoResponse)(nil)).Elem()
+}
+
+func (o AndroidAppInfoResponseOutput) ToAndroidAppInfoResponseOutput() AndroidAppInfoResponseOutput {
+	return o
+}
+
+func (o AndroidAppInfoResponseOutput) ToAndroidAppInfoResponseOutputWithContext(ctx context.Context) AndroidAppInfoResponseOutput {
+	return o
+}
+
+func (o AndroidAppInfoResponseOutput) ToAndroidAppInfoResponsePtrOutput() AndroidAppInfoResponsePtrOutput {
+	return o.ToAndroidAppInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AndroidAppInfoResponseOutput) ToAndroidAppInfoResponsePtrOutputWithContext(ctx context.Context) AndroidAppInfoResponsePtrOutput {
+	return o.ApplyT(func(v AndroidAppInfoResponse) *AndroidAppInfoResponse {
+		return &v
+	}).(AndroidAppInfoResponsePtrOutput)
+}
+
+// The name of the app. Optional
+func (o AndroidAppInfoResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AndroidAppInfoResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The package name of the app. Required.
+func (o AndroidAppInfoResponseOutput) PackageName() pulumi.StringOutput {
+	return o.ApplyT(func(v AndroidAppInfoResponse) string { return v.PackageName }).(pulumi.StringOutput)
+}
+
+// The internal version code of the app. Optional.
+func (o AndroidAppInfoResponseOutput) VersionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v AndroidAppInfoResponse) string { return v.VersionCode }).(pulumi.StringOutput)
+}
+
+// The version name of the app. Optional.
+func (o AndroidAppInfoResponseOutput) VersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v AndroidAppInfoResponse) string { return v.VersionName }).(pulumi.StringOutput)
+}
+
+type AndroidAppInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AndroidAppInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AndroidAppInfoResponse)(nil)).Elem()
+}
+
+func (o AndroidAppInfoResponsePtrOutput) ToAndroidAppInfoResponsePtrOutput() AndroidAppInfoResponsePtrOutput {
+	return o
+}
+
+func (o AndroidAppInfoResponsePtrOutput) ToAndroidAppInfoResponsePtrOutputWithContext(ctx context.Context) AndroidAppInfoResponsePtrOutput {
+	return o
+}
+
+func (o AndroidAppInfoResponsePtrOutput) Elem() AndroidAppInfoResponseOutput {
+	return o.ApplyT(func(v *AndroidAppInfoResponse) AndroidAppInfoResponse { return *v }).(AndroidAppInfoResponseOutput)
+}
+
+// The name of the app. Optional
+func (o AndroidAppInfoResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AndroidAppInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The package name of the app. Required.
+func (o AndroidAppInfoResponsePtrOutput) PackageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AndroidAppInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PackageName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The internal version code of the app. Optional.
+func (o AndroidAppInfoResponsePtrOutput) VersionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AndroidAppInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VersionCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version name of the app. Optional.
+func (o AndroidAppInfoResponsePtrOutput) VersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AndroidAppInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VersionName
+	}).(pulumi.StringPtrOutput)
+}
+
 // A test of an Android application that can control an Android component independently of its normal lifecycle. See for more information on types of Android tests.
 type AndroidInstrumentationTest struct {
 	// The java package for the test to be executed. Required
@@ -389,6 +580,197 @@ func (o AndroidInstrumentationTestPtrOutput) UseOrchestrator() pulumi.BoolPtrOut
 			return nil
 		}
 		return v.UseOrchestrator
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A test of an Android application that can control an Android component independently of its normal lifecycle. See for more information on types of Android tests.
+type AndroidInstrumentationTestResponse struct {
+	// The java package for the test to be executed. Required
+	TestPackageId string `pulumi:"testPackageId"`
+	// The InstrumentationTestRunner class. Required
+	TestRunnerClass string `pulumi:"testRunnerClass"`
+	// Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run.
+	TestTargets []string `pulumi:"testTargets"`
+	// The flag indicates whether Android Test Orchestrator will be used to run test or not.
+	UseOrchestrator bool `pulumi:"useOrchestrator"`
+}
+
+// AndroidInstrumentationTestResponseInput is an input type that accepts AndroidInstrumentationTestResponseArgs and AndroidInstrumentationTestResponseOutput values.
+// You can construct a concrete instance of `AndroidInstrumentationTestResponseInput` via:
+//
+//          AndroidInstrumentationTestResponseArgs{...}
+type AndroidInstrumentationTestResponseInput interface {
+	pulumi.Input
+
+	ToAndroidInstrumentationTestResponseOutput() AndroidInstrumentationTestResponseOutput
+	ToAndroidInstrumentationTestResponseOutputWithContext(context.Context) AndroidInstrumentationTestResponseOutput
+}
+
+// A test of an Android application that can control an Android component independently of its normal lifecycle. See for more information on types of Android tests.
+type AndroidInstrumentationTestResponseArgs struct {
+	// The java package for the test to be executed. Required
+	TestPackageId pulumi.StringInput `pulumi:"testPackageId"`
+	// The InstrumentationTestRunner class. Required
+	TestRunnerClass pulumi.StringInput `pulumi:"testRunnerClass"`
+	// Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run.
+	TestTargets pulumi.StringArrayInput `pulumi:"testTargets"`
+	// The flag indicates whether Android Test Orchestrator will be used to run test or not.
+	UseOrchestrator pulumi.BoolInput `pulumi:"useOrchestrator"`
+}
+
+func (AndroidInstrumentationTestResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AndroidInstrumentationTestResponse)(nil)).Elem()
+}
+
+func (i AndroidInstrumentationTestResponseArgs) ToAndroidInstrumentationTestResponseOutput() AndroidInstrumentationTestResponseOutput {
+	return i.ToAndroidInstrumentationTestResponseOutputWithContext(context.Background())
+}
+
+func (i AndroidInstrumentationTestResponseArgs) ToAndroidInstrumentationTestResponseOutputWithContext(ctx context.Context) AndroidInstrumentationTestResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AndroidInstrumentationTestResponseOutput)
+}
+
+func (i AndroidInstrumentationTestResponseArgs) ToAndroidInstrumentationTestResponsePtrOutput() AndroidInstrumentationTestResponsePtrOutput {
+	return i.ToAndroidInstrumentationTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AndroidInstrumentationTestResponseArgs) ToAndroidInstrumentationTestResponsePtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AndroidInstrumentationTestResponseOutput).ToAndroidInstrumentationTestResponsePtrOutputWithContext(ctx)
+}
+
+// AndroidInstrumentationTestResponsePtrInput is an input type that accepts AndroidInstrumentationTestResponseArgs, AndroidInstrumentationTestResponsePtr and AndroidInstrumentationTestResponsePtrOutput values.
+// You can construct a concrete instance of `AndroidInstrumentationTestResponsePtrInput` via:
+//
+//          AndroidInstrumentationTestResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AndroidInstrumentationTestResponsePtrInput interface {
+	pulumi.Input
+
+	ToAndroidInstrumentationTestResponsePtrOutput() AndroidInstrumentationTestResponsePtrOutput
+	ToAndroidInstrumentationTestResponsePtrOutputWithContext(context.Context) AndroidInstrumentationTestResponsePtrOutput
+}
+
+type androidInstrumentationTestResponsePtrType AndroidInstrumentationTestResponseArgs
+
+func AndroidInstrumentationTestResponsePtr(v *AndroidInstrumentationTestResponseArgs) AndroidInstrumentationTestResponsePtrInput {
+	return (*androidInstrumentationTestResponsePtrType)(v)
+}
+
+func (*androidInstrumentationTestResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AndroidInstrumentationTestResponse)(nil)).Elem()
+}
+
+func (i *androidInstrumentationTestResponsePtrType) ToAndroidInstrumentationTestResponsePtrOutput() AndroidInstrumentationTestResponsePtrOutput {
+	return i.ToAndroidInstrumentationTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *androidInstrumentationTestResponsePtrType) ToAndroidInstrumentationTestResponsePtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AndroidInstrumentationTestResponsePtrOutput)
+}
+
+// A test of an Android application that can control an Android component independently of its normal lifecycle. See for more information on types of Android tests.
+type AndroidInstrumentationTestResponseOutput struct{ *pulumi.OutputState }
+
+func (AndroidInstrumentationTestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AndroidInstrumentationTestResponse)(nil)).Elem()
+}
+
+func (o AndroidInstrumentationTestResponseOutput) ToAndroidInstrumentationTestResponseOutput() AndroidInstrumentationTestResponseOutput {
+	return o
+}
+
+func (o AndroidInstrumentationTestResponseOutput) ToAndroidInstrumentationTestResponseOutputWithContext(ctx context.Context) AndroidInstrumentationTestResponseOutput {
+	return o
+}
+
+func (o AndroidInstrumentationTestResponseOutput) ToAndroidInstrumentationTestResponsePtrOutput() AndroidInstrumentationTestResponsePtrOutput {
+	return o.ToAndroidInstrumentationTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AndroidInstrumentationTestResponseOutput) ToAndroidInstrumentationTestResponsePtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestResponsePtrOutput {
+	return o.ApplyT(func(v AndroidInstrumentationTestResponse) *AndroidInstrumentationTestResponse {
+		return &v
+	}).(AndroidInstrumentationTestResponsePtrOutput)
+}
+
+// The java package for the test to be executed. Required
+func (o AndroidInstrumentationTestResponseOutput) TestPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v AndroidInstrumentationTestResponse) string { return v.TestPackageId }).(pulumi.StringOutput)
+}
+
+// The InstrumentationTestRunner class. Required
+func (o AndroidInstrumentationTestResponseOutput) TestRunnerClass() pulumi.StringOutput {
+	return o.ApplyT(func(v AndroidInstrumentationTestResponse) string { return v.TestRunnerClass }).(pulumi.StringOutput)
+}
+
+// Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run.
+func (o AndroidInstrumentationTestResponseOutput) TestTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AndroidInstrumentationTestResponse) []string { return v.TestTargets }).(pulumi.StringArrayOutput)
+}
+
+// The flag indicates whether Android Test Orchestrator will be used to run test or not.
+func (o AndroidInstrumentationTestResponseOutput) UseOrchestrator() pulumi.BoolOutput {
+	return o.ApplyT(func(v AndroidInstrumentationTestResponse) bool { return v.UseOrchestrator }).(pulumi.BoolOutput)
+}
+
+type AndroidInstrumentationTestResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AndroidInstrumentationTestResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AndroidInstrumentationTestResponse)(nil)).Elem()
+}
+
+func (o AndroidInstrumentationTestResponsePtrOutput) ToAndroidInstrumentationTestResponsePtrOutput() AndroidInstrumentationTestResponsePtrOutput {
+	return o
+}
+
+func (o AndroidInstrumentationTestResponsePtrOutput) ToAndroidInstrumentationTestResponsePtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestResponsePtrOutput {
+	return o
+}
+
+func (o AndroidInstrumentationTestResponsePtrOutput) Elem() AndroidInstrumentationTestResponseOutput {
+	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) AndroidInstrumentationTestResponse { return *v }).(AndroidInstrumentationTestResponseOutput)
+}
+
+// The java package for the test to be executed. Required
+func (o AndroidInstrumentationTestResponsePtrOutput) TestPackageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TestPackageId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The InstrumentationTestRunner class. Required
+func (o AndroidInstrumentationTestResponsePtrOutput) TestRunnerClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TestRunnerClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run.
+func (o AndroidInstrumentationTestResponsePtrOutput) TestTargets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TestTargets
+	}).(pulumi.StringArrayOutput)
+}
+
+// The flag indicates whether Android Test Orchestrator will be used to run test or not.
+func (o AndroidInstrumentationTestResponsePtrOutput) UseOrchestrator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UseOrchestrator
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -599,6 +981,216 @@ func (o AndroidRoboTestPtrOutput) MaxSteps() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.MaxSteps
+	}).(pulumi.IntPtrOutput)
+}
+
+// A test of an android application that explores the application on a virtual or physical Android device, finding culprits and crashes as it goes.
+type AndroidRoboTestResponse struct {
+	// The initial activity that should be used to start the app. Optional
+	AppInitialActivity string `pulumi:"appInitialActivity"`
+	// The java package for the bootstrap. Optional
+	BootstrapPackageId string `pulumi:"bootstrapPackageId"`
+	// The runner class for the bootstrap. Optional
+	BootstrapRunnerClass string `pulumi:"bootstrapRunnerClass"`
+	// The max depth of the traversal stack Robo can explore. Optional
+	MaxDepth int `pulumi:"maxDepth"`
+	// The max number of steps/actions Robo can execute. Default is no limit (0). Optional
+	MaxSteps int `pulumi:"maxSteps"`
+}
+
+// AndroidRoboTestResponseInput is an input type that accepts AndroidRoboTestResponseArgs and AndroidRoboTestResponseOutput values.
+// You can construct a concrete instance of `AndroidRoboTestResponseInput` via:
+//
+//          AndroidRoboTestResponseArgs{...}
+type AndroidRoboTestResponseInput interface {
+	pulumi.Input
+
+	ToAndroidRoboTestResponseOutput() AndroidRoboTestResponseOutput
+	ToAndroidRoboTestResponseOutputWithContext(context.Context) AndroidRoboTestResponseOutput
+}
+
+// A test of an android application that explores the application on a virtual or physical Android device, finding culprits and crashes as it goes.
+type AndroidRoboTestResponseArgs struct {
+	// The initial activity that should be used to start the app. Optional
+	AppInitialActivity pulumi.StringInput `pulumi:"appInitialActivity"`
+	// The java package for the bootstrap. Optional
+	BootstrapPackageId pulumi.StringInput `pulumi:"bootstrapPackageId"`
+	// The runner class for the bootstrap. Optional
+	BootstrapRunnerClass pulumi.StringInput `pulumi:"bootstrapRunnerClass"`
+	// The max depth of the traversal stack Robo can explore. Optional
+	MaxDepth pulumi.IntInput `pulumi:"maxDepth"`
+	// The max number of steps/actions Robo can execute. Default is no limit (0). Optional
+	MaxSteps pulumi.IntInput `pulumi:"maxSteps"`
+}
+
+func (AndroidRoboTestResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AndroidRoboTestResponse)(nil)).Elem()
+}
+
+func (i AndroidRoboTestResponseArgs) ToAndroidRoboTestResponseOutput() AndroidRoboTestResponseOutput {
+	return i.ToAndroidRoboTestResponseOutputWithContext(context.Background())
+}
+
+func (i AndroidRoboTestResponseArgs) ToAndroidRoboTestResponseOutputWithContext(ctx context.Context) AndroidRoboTestResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AndroidRoboTestResponseOutput)
+}
+
+func (i AndroidRoboTestResponseArgs) ToAndroidRoboTestResponsePtrOutput() AndroidRoboTestResponsePtrOutput {
+	return i.ToAndroidRoboTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AndroidRoboTestResponseArgs) ToAndroidRoboTestResponsePtrOutputWithContext(ctx context.Context) AndroidRoboTestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AndroidRoboTestResponseOutput).ToAndroidRoboTestResponsePtrOutputWithContext(ctx)
+}
+
+// AndroidRoboTestResponsePtrInput is an input type that accepts AndroidRoboTestResponseArgs, AndroidRoboTestResponsePtr and AndroidRoboTestResponsePtrOutput values.
+// You can construct a concrete instance of `AndroidRoboTestResponsePtrInput` via:
+//
+//          AndroidRoboTestResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AndroidRoboTestResponsePtrInput interface {
+	pulumi.Input
+
+	ToAndroidRoboTestResponsePtrOutput() AndroidRoboTestResponsePtrOutput
+	ToAndroidRoboTestResponsePtrOutputWithContext(context.Context) AndroidRoboTestResponsePtrOutput
+}
+
+type androidRoboTestResponsePtrType AndroidRoboTestResponseArgs
+
+func AndroidRoboTestResponsePtr(v *AndroidRoboTestResponseArgs) AndroidRoboTestResponsePtrInput {
+	return (*androidRoboTestResponsePtrType)(v)
+}
+
+func (*androidRoboTestResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AndroidRoboTestResponse)(nil)).Elem()
+}
+
+func (i *androidRoboTestResponsePtrType) ToAndroidRoboTestResponsePtrOutput() AndroidRoboTestResponsePtrOutput {
+	return i.ToAndroidRoboTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *androidRoboTestResponsePtrType) ToAndroidRoboTestResponsePtrOutputWithContext(ctx context.Context) AndroidRoboTestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AndroidRoboTestResponsePtrOutput)
+}
+
+// A test of an android application that explores the application on a virtual or physical Android device, finding culprits and crashes as it goes.
+type AndroidRoboTestResponseOutput struct{ *pulumi.OutputState }
+
+func (AndroidRoboTestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AndroidRoboTestResponse)(nil)).Elem()
+}
+
+func (o AndroidRoboTestResponseOutput) ToAndroidRoboTestResponseOutput() AndroidRoboTestResponseOutput {
+	return o
+}
+
+func (o AndroidRoboTestResponseOutput) ToAndroidRoboTestResponseOutputWithContext(ctx context.Context) AndroidRoboTestResponseOutput {
+	return o
+}
+
+func (o AndroidRoboTestResponseOutput) ToAndroidRoboTestResponsePtrOutput() AndroidRoboTestResponsePtrOutput {
+	return o.ToAndroidRoboTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AndroidRoboTestResponseOutput) ToAndroidRoboTestResponsePtrOutputWithContext(ctx context.Context) AndroidRoboTestResponsePtrOutput {
+	return o.ApplyT(func(v AndroidRoboTestResponse) *AndroidRoboTestResponse {
+		return &v
+	}).(AndroidRoboTestResponsePtrOutput)
+}
+
+// The initial activity that should be used to start the app. Optional
+func (o AndroidRoboTestResponseOutput) AppInitialActivity() pulumi.StringOutput {
+	return o.ApplyT(func(v AndroidRoboTestResponse) string { return v.AppInitialActivity }).(pulumi.StringOutput)
+}
+
+// The java package for the bootstrap. Optional
+func (o AndroidRoboTestResponseOutput) BootstrapPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v AndroidRoboTestResponse) string { return v.BootstrapPackageId }).(pulumi.StringOutput)
+}
+
+// The runner class for the bootstrap. Optional
+func (o AndroidRoboTestResponseOutput) BootstrapRunnerClass() pulumi.StringOutput {
+	return o.ApplyT(func(v AndroidRoboTestResponse) string { return v.BootstrapRunnerClass }).(pulumi.StringOutput)
+}
+
+// The max depth of the traversal stack Robo can explore. Optional
+func (o AndroidRoboTestResponseOutput) MaxDepth() pulumi.IntOutput {
+	return o.ApplyT(func(v AndroidRoboTestResponse) int { return v.MaxDepth }).(pulumi.IntOutput)
+}
+
+// The max number of steps/actions Robo can execute. Default is no limit (0). Optional
+func (o AndroidRoboTestResponseOutput) MaxSteps() pulumi.IntOutput {
+	return o.ApplyT(func(v AndroidRoboTestResponse) int { return v.MaxSteps }).(pulumi.IntOutput)
+}
+
+type AndroidRoboTestResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AndroidRoboTestResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AndroidRoboTestResponse)(nil)).Elem()
+}
+
+func (o AndroidRoboTestResponsePtrOutput) ToAndroidRoboTestResponsePtrOutput() AndroidRoboTestResponsePtrOutput {
+	return o
+}
+
+func (o AndroidRoboTestResponsePtrOutput) ToAndroidRoboTestResponsePtrOutputWithContext(ctx context.Context) AndroidRoboTestResponsePtrOutput {
+	return o
+}
+
+func (o AndroidRoboTestResponsePtrOutput) Elem() AndroidRoboTestResponseOutput {
+	return o.ApplyT(func(v *AndroidRoboTestResponse) AndroidRoboTestResponse { return *v }).(AndroidRoboTestResponseOutput)
+}
+
+// The initial activity that should be used to start the app. Optional
+func (o AndroidRoboTestResponsePtrOutput) AppInitialActivity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AndroidRoboTestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppInitialActivity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The java package for the bootstrap. Optional
+func (o AndroidRoboTestResponsePtrOutput) BootstrapPackageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AndroidRoboTestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BootstrapPackageId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The runner class for the bootstrap. Optional
+func (o AndroidRoboTestResponsePtrOutput) BootstrapRunnerClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AndroidRoboTestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BootstrapRunnerClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// The max depth of the traversal stack Robo can explore. Optional
+func (o AndroidRoboTestResponsePtrOutput) MaxDepth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AndroidRoboTestResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxDepth
+	}).(pulumi.IntPtrOutput)
+}
+
+// The max number of steps/actions Robo can execute. Default is no limit (0). Optional
+func (o AndroidRoboTestResponsePtrOutput) MaxSteps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AndroidRoboTestResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxSteps
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -927,6 +1519,331 @@ func (o AndroidTestLoopPtrOutput) Elem() AndroidTestLoopOutput {
 	return o.ApplyT(func(v *AndroidTestLoop) AndroidTestLoop { return *v }).(AndroidTestLoopOutput)
 }
 
+// Test Loops are tests that can be launched by the app itself, determining when to run by listening for an intent.
+type AndroidTestLoopResponse struct {
+}
+
+// AndroidTestLoopResponseInput is an input type that accepts AndroidTestLoopResponseArgs and AndroidTestLoopResponseOutput values.
+// You can construct a concrete instance of `AndroidTestLoopResponseInput` via:
+//
+//          AndroidTestLoopResponseArgs{...}
+type AndroidTestLoopResponseInput interface {
+	pulumi.Input
+
+	ToAndroidTestLoopResponseOutput() AndroidTestLoopResponseOutput
+	ToAndroidTestLoopResponseOutputWithContext(context.Context) AndroidTestLoopResponseOutput
+}
+
+// Test Loops are tests that can be launched by the app itself, determining when to run by listening for an intent.
+type AndroidTestLoopResponseArgs struct {
+}
+
+func (AndroidTestLoopResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AndroidTestLoopResponse)(nil)).Elem()
+}
+
+func (i AndroidTestLoopResponseArgs) ToAndroidTestLoopResponseOutput() AndroidTestLoopResponseOutput {
+	return i.ToAndroidTestLoopResponseOutputWithContext(context.Background())
+}
+
+func (i AndroidTestLoopResponseArgs) ToAndroidTestLoopResponseOutputWithContext(ctx context.Context) AndroidTestLoopResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AndroidTestLoopResponseOutput)
+}
+
+func (i AndroidTestLoopResponseArgs) ToAndroidTestLoopResponsePtrOutput() AndroidTestLoopResponsePtrOutput {
+	return i.ToAndroidTestLoopResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AndroidTestLoopResponseArgs) ToAndroidTestLoopResponsePtrOutputWithContext(ctx context.Context) AndroidTestLoopResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AndroidTestLoopResponseOutput).ToAndroidTestLoopResponsePtrOutputWithContext(ctx)
+}
+
+// AndroidTestLoopResponsePtrInput is an input type that accepts AndroidTestLoopResponseArgs, AndroidTestLoopResponsePtr and AndroidTestLoopResponsePtrOutput values.
+// You can construct a concrete instance of `AndroidTestLoopResponsePtrInput` via:
+//
+//          AndroidTestLoopResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AndroidTestLoopResponsePtrInput interface {
+	pulumi.Input
+
+	ToAndroidTestLoopResponsePtrOutput() AndroidTestLoopResponsePtrOutput
+	ToAndroidTestLoopResponsePtrOutputWithContext(context.Context) AndroidTestLoopResponsePtrOutput
+}
+
+type androidTestLoopResponsePtrType AndroidTestLoopResponseArgs
+
+func AndroidTestLoopResponsePtr(v *AndroidTestLoopResponseArgs) AndroidTestLoopResponsePtrInput {
+	return (*androidTestLoopResponsePtrType)(v)
+}
+
+func (*androidTestLoopResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AndroidTestLoopResponse)(nil)).Elem()
+}
+
+func (i *androidTestLoopResponsePtrType) ToAndroidTestLoopResponsePtrOutput() AndroidTestLoopResponsePtrOutput {
+	return i.ToAndroidTestLoopResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *androidTestLoopResponsePtrType) ToAndroidTestLoopResponsePtrOutputWithContext(ctx context.Context) AndroidTestLoopResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AndroidTestLoopResponsePtrOutput)
+}
+
+// Test Loops are tests that can be launched by the app itself, determining when to run by listening for an intent.
+type AndroidTestLoopResponseOutput struct{ *pulumi.OutputState }
+
+func (AndroidTestLoopResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AndroidTestLoopResponse)(nil)).Elem()
+}
+
+func (o AndroidTestLoopResponseOutput) ToAndroidTestLoopResponseOutput() AndroidTestLoopResponseOutput {
+	return o
+}
+
+func (o AndroidTestLoopResponseOutput) ToAndroidTestLoopResponseOutputWithContext(ctx context.Context) AndroidTestLoopResponseOutput {
+	return o
+}
+
+func (o AndroidTestLoopResponseOutput) ToAndroidTestLoopResponsePtrOutput() AndroidTestLoopResponsePtrOutput {
+	return o.ToAndroidTestLoopResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AndroidTestLoopResponseOutput) ToAndroidTestLoopResponsePtrOutputWithContext(ctx context.Context) AndroidTestLoopResponsePtrOutput {
+	return o.ApplyT(func(v AndroidTestLoopResponse) *AndroidTestLoopResponse {
+		return &v
+	}).(AndroidTestLoopResponsePtrOutput)
+}
+
+type AndroidTestLoopResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AndroidTestLoopResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AndroidTestLoopResponse)(nil)).Elem()
+}
+
+func (o AndroidTestLoopResponsePtrOutput) ToAndroidTestLoopResponsePtrOutput() AndroidTestLoopResponsePtrOutput {
+	return o
+}
+
+func (o AndroidTestLoopResponsePtrOutput) ToAndroidTestLoopResponsePtrOutputWithContext(ctx context.Context) AndroidTestLoopResponsePtrOutput {
+	return o
+}
+
+func (o AndroidTestLoopResponsePtrOutput) Elem() AndroidTestLoopResponseOutput {
+	return o.ApplyT(func(v *AndroidTestLoopResponse) AndroidTestLoopResponse { return *v }).(AndroidTestLoopResponseOutput)
+}
+
+// An Android mobile test specification.
+type AndroidTestResponse struct {
+	// Information about the application under test.
+	AndroidAppInfo AndroidAppInfoResponse `pulumi:"androidAppInfo"`
+	// An Android instrumentation test.
+	AndroidInstrumentationTest AndroidInstrumentationTestResponse `pulumi:"androidInstrumentationTest"`
+	// An Android robo test.
+	AndroidRoboTest AndroidRoboTestResponse `pulumi:"androidRoboTest"`
+	// An Android test loop.
+	AndroidTestLoop AndroidTestLoopResponse `pulumi:"androidTestLoop"`
+	// Max time a test is allowed to run before it is automatically cancelled.
+	TestTimeout DurationResponse `pulumi:"testTimeout"`
+}
+
+// AndroidTestResponseInput is an input type that accepts AndroidTestResponseArgs and AndroidTestResponseOutput values.
+// You can construct a concrete instance of `AndroidTestResponseInput` via:
+//
+//          AndroidTestResponseArgs{...}
+type AndroidTestResponseInput interface {
+	pulumi.Input
+
+	ToAndroidTestResponseOutput() AndroidTestResponseOutput
+	ToAndroidTestResponseOutputWithContext(context.Context) AndroidTestResponseOutput
+}
+
+// An Android mobile test specification.
+type AndroidTestResponseArgs struct {
+	// Information about the application under test.
+	AndroidAppInfo AndroidAppInfoResponseInput `pulumi:"androidAppInfo"`
+	// An Android instrumentation test.
+	AndroidInstrumentationTest AndroidInstrumentationTestResponseInput `pulumi:"androidInstrumentationTest"`
+	// An Android robo test.
+	AndroidRoboTest AndroidRoboTestResponseInput `pulumi:"androidRoboTest"`
+	// An Android test loop.
+	AndroidTestLoop AndroidTestLoopResponseInput `pulumi:"androidTestLoop"`
+	// Max time a test is allowed to run before it is automatically cancelled.
+	TestTimeout DurationResponseInput `pulumi:"testTimeout"`
+}
+
+func (AndroidTestResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AndroidTestResponse)(nil)).Elem()
+}
+
+func (i AndroidTestResponseArgs) ToAndroidTestResponseOutput() AndroidTestResponseOutput {
+	return i.ToAndroidTestResponseOutputWithContext(context.Background())
+}
+
+func (i AndroidTestResponseArgs) ToAndroidTestResponseOutputWithContext(ctx context.Context) AndroidTestResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AndroidTestResponseOutput)
+}
+
+func (i AndroidTestResponseArgs) ToAndroidTestResponsePtrOutput() AndroidTestResponsePtrOutput {
+	return i.ToAndroidTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AndroidTestResponseArgs) ToAndroidTestResponsePtrOutputWithContext(ctx context.Context) AndroidTestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AndroidTestResponseOutput).ToAndroidTestResponsePtrOutputWithContext(ctx)
+}
+
+// AndroidTestResponsePtrInput is an input type that accepts AndroidTestResponseArgs, AndroidTestResponsePtr and AndroidTestResponsePtrOutput values.
+// You can construct a concrete instance of `AndroidTestResponsePtrInput` via:
+//
+//          AndroidTestResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AndroidTestResponsePtrInput interface {
+	pulumi.Input
+
+	ToAndroidTestResponsePtrOutput() AndroidTestResponsePtrOutput
+	ToAndroidTestResponsePtrOutputWithContext(context.Context) AndroidTestResponsePtrOutput
+}
+
+type androidTestResponsePtrType AndroidTestResponseArgs
+
+func AndroidTestResponsePtr(v *AndroidTestResponseArgs) AndroidTestResponsePtrInput {
+	return (*androidTestResponsePtrType)(v)
+}
+
+func (*androidTestResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AndroidTestResponse)(nil)).Elem()
+}
+
+func (i *androidTestResponsePtrType) ToAndroidTestResponsePtrOutput() AndroidTestResponsePtrOutput {
+	return i.ToAndroidTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *androidTestResponsePtrType) ToAndroidTestResponsePtrOutputWithContext(ctx context.Context) AndroidTestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AndroidTestResponsePtrOutput)
+}
+
+// An Android mobile test specification.
+type AndroidTestResponseOutput struct{ *pulumi.OutputState }
+
+func (AndroidTestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AndroidTestResponse)(nil)).Elem()
+}
+
+func (o AndroidTestResponseOutput) ToAndroidTestResponseOutput() AndroidTestResponseOutput {
+	return o
+}
+
+func (o AndroidTestResponseOutput) ToAndroidTestResponseOutputWithContext(ctx context.Context) AndroidTestResponseOutput {
+	return o
+}
+
+func (o AndroidTestResponseOutput) ToAndroidTestResponsePtrOutput() AndroidTestResponsePtrOutput {
+	return o.ToAndroidTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AndroidTestResponseOutput) ToAndroidTestResponsePtrOutputWithContext(ctx context.Context) AndroidTestResponsePtrOutput {
+	return o.ApplyT(func(v AndroidTestResponse) *AndroidTestResponse {
+		return &v
+	}).(AndroidTestResponsePtrOutput)
+}
+
+// Information about the application under test.
+func (o AndroidTestResponseOutput) AndroidAppInfo() AndroidAppInfoResponseOutput {
+	return o.ApplyT(func(v AndroidTestResponse) AndroidAppInfoResponse { return v.AndroidAppInfo }).(AndroidAppInfoResponseOutput)
+}
+
+// An Android instrumentation test.
+func (o AndroidTestResponseOutput) AndroidInstrumentationTest() AndroidInstrumentationTestResponseOutput {
+	return o.ApplyT(func(v AndroidTestResponse) AndroidInstrumentationTestResponse { return v.AndroidInstrumentationTest }).(AndroidInstrumentationTestResponseOutput)
+}
+
+// An Android robo test.
+func (o AndroidTestResponseOutput) AndroidRoboTest() AndroidRoboTestResponseOutput {
+	return o.ApplyT(func(v AndroidTestResponse) AndroidRoboTestResponse { return v.AndroidRoboTest }).(AndroidRoboTestResponseOutput)
+}
+
+// An Android test loop.
+func (o AndroidTestResponseOutput) AndroidTestLoop() AndroidTestLoopResponseOutput {
+	return o.ApplyT(func(v AndroidTestResponse) AndroidTestLoopResponse { return v.AndroidTestLoop }).(AndroidTestLoopResponseOutput)
+}
+
+// Max time a test is allowed to run before it is automatically cancelled.
+func (o AndroidTestResponseOutput) TestTimeout() DurationResponseOutput {
+	return o.ApplyT(func(v AndroidTestResponse) DurationResponse { return v.TestTimeout }).(DurationResponseOutput)
+}
+
+type AndroidTestResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AndroidTestResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AndroidTestResponse)(nil)).Elem()
+}
+
+func (o AndroidTestResponsePtrOutput) ToAndroidTestResponsePtrOutput() AndroidTestResponsePtrOutput {
+	return o
+}
+
+func (o AndroidTestResponsePtrOutput) ToAndroidTestResponsePtrOutputWithContext(ctx context.Context) AndroidTestResponsePtrOutput {
+	return o
+}
+
+func (o AndroidTestResponsePtrOutput) Elem() AndroidTestResponseOutput {
+	return o.ApplyT(func(v *AndroidTestResponse) AndroidTestResponse { return *v }).(AndroidTestResponseOutput)
+}
+
+// Information about the application under test.
+func (o AndroidTestResponsePtrOutput) AndroidAppInfo() AndroidAppInfoResponsePtrOutput {
+	return o.ApplyT(func(v *AndroidTestResponse) *AndroidAppInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AndroidAppInfo
+	}).(AndroidAppInfoResponsePtrOutput)
+}
+
+// An Android instrumentation test.
+func (o AndroidTestResponsePtrOutput) AndroidInstrumentationTest() AndroidInstrumentationTestResponsePtrOutput {
+	return o.ApplyT(func(v *AndroidTestResponse) *AndroidInstrumentationTestResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AndroidInstrumentationTest
+	}).(AndroidInstrumentationTestResponsePtrOutput)
+}
+
+// An Android robo test.
+func (o AndroidTestResponsePtrOutput) AndroidRoboTest() AndroidRoboTestResponsePtrOutput {
+	return o.ApplyT(func(v *AndroidTestResponse) *AndroidRoboTestResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AndroidRoboTest
+	}).(AndroidRoboTestResponsePtrOutput)
+}
+
+// An Android test loop.
+func (o AndroidTestResponsePtrOutput) AndroidTestLoop() AndroidTestLoopResponsePtrOutput {
+	return o.ApplyT(func(v *AndroidTestResponse) *AndroidTestLoopResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AndroidTestLoop
+	}).(AndroidTestLoopResponsePtrOutput)
+}
+
+// Max time a test is allowed to run before it is automatically cancelled.
+func (o AndroidTestResponsePtrOutput) TestTimeout() DurationResponsePtrOutput {
+	return o.ApplyT(func(v *AndroidTestResponse) *DurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.TestTimeout
+	}).(DurationResponsePtrOutput)
+}
+
 //  `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
 type Any struct {
 	// A URL/resource name that uniquely identifies the type of the serialized protocol buffer message. This string must contain at least one "/" character. The last segment of the URL's path must represent the fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading "." is not accepted). In practice, teams usually precompile into the binary all types that they expect it to use in the context of Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type server that maps type URLs to message definitions as follows: * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a google.protobuf.Type value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking changes.) Note: this functionality is not currently available in the official protobuf release, and it is not used for type URLs beginning with type.googleapis.com. Schemes other than `http`, `https` (or the empty scheme) might be used with implementation specific semantics.
@@ -1078,6 +1995,70 @@ func (o AnyPtrOutput) Value() pulumi.StringPtrOutput {
 		}
 		return v.Value
 	}).(pulumi.StringPtrOutput)
+}
+
+//  `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
+type AnyResponse struct {
+	// A URL/resource name that uniquely identifies the type of the serialized protocol buffer message. This string must contain at least one "/" character. The last segment of the URL's path must represent the fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading "." is not accepted). In practice, teams usually precompile into the binary all types that they expect it to use in the context of Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type server that maps type URLs to message definitions as follows: * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a google.protobuf.Type value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking changes.) Note: this functionality is not currently available in the official protobuf release, and it is not used for type URLs beginning with type.googleapis.com. Schemes other than `http`, `https` (or the empty scheme) might be used with implementation specific semantics.
+	TypeUrl string `pulumi:"typeUrl"`
+	// Must be a valid serialized protocol buffer of the above specified type.
+	Value string `pulumi:"value"`
+}
+
+// AnyResponseInput is an input type that accepts AnyResponseArgs and AnyResponseOutput values.
+// You can construct a concrete instance of `AnyResponseInput` via:
+//
+//          AnyResponseArgs{...}
+type AnyResponseInput interface {
+	pulumi.Input
+
+	ToAnyResponseOutput() AnyResponseOutput
+	ToAnyResponseOutputWithContext(context.Context) AnyResponseOutput
+}
+
+//  `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
+type AnyResponseArgs struct {
+	// A URL/resource name that uniquely identifies the type of the serialized protocol buffer message. This string must contain at least one "/" character. The last segment of the URL's path must represent the fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading "." is not accepted). In practice, teams usually precompile into the binary all types that they expect it to use in the context of Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type server that maps type URLs to message definitions as follows: * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a google.protobuf.Type value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking changes.) Note: this functionality is not currently available in the official protobuf release, and it is not used for type URLs beginning with type.googleapis.com. Schemes other than `http`, `https` (or the empty scheme) might be used with implementation specific semantics.
+	TypeUrl pulumi.StringInput `pulumi:"typeUrl"`
+	// Must be a valid serialized protocol buffer of the above specified type.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (AnyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnyResponse)(nil)).Elem()
+}
+
+func (i AnyResponseArgs) ToAnyResponseOutput() AnyResponseOutput {
+	return i.ToAnyResponseOutputWithContext(context.Background())
+}
+
+func (i AnyResponseArgs) ToAnyResponseOutputWithContext(ctx context.Context) AnyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnyResponseOutput)
+}
+
+//  `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
+type AnyResponseOutput struct{ *pulumi.OutputState }
+
+func (AnyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnyResponse)(nil)).Elem()
+}
+
+func (o AnyResponseOutput) ToAnyResponseOutput() AnyResponseOutput {
+	return o
+}
+
+func (o AnyResponseOutput) ToAnyResponseOutputWithContext(ctx context.Context) AnyResponseOutput {
+	return o
+}
+
+// A URL/resource name that uniquely identifies the type of the serialized protocol buffer message. This string must contain at least one "/" character. The last segment of the URL's path must represent the fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading "." is not accepted). In practice, teams usually precompile into the binary all types that they expect it to use in the context of Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type server that maps type URLs to message definitions as follows: * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a google.protobuf.Type value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking changes.) Note: this functionality is not currently available in the official protobuf release, and it is not used for type URLs beginning with type.googleapis.com. Schemes other than `http`, `https` (or the empty scheme) might be used with implementation specific semantics.
+func (o AnyResponseOutput) TypeUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v AnyResponse) string { return v.TypeUrl }).(pulumi.StringOutput)
+}
+
+// Must be a valid serialized protocol buffer of the above specified type.
+func (o AnyResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AnyResponse) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type AppStartTime struct {
@@ -1386,6 +2367,165 @@ func (o BasicPerfSampleSeriesPtrOutput) SampleSeriesLabel() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.SampleSeriesLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encapsulates the metadata for basic sample series represented by a line chart
+type BasicPerfSampleSeriesResponse struct {
+	PerfMetricType    string `pulumi:"perfMetricType"`
+	PerfUnit          string `pulumi:"perfUnit"`
+	SampleSeriesLabel string `pulumi:"sampleSeriesLabel"`
+}
+
+// BasicPerfSampleSeriesResponseInput is an input type that accepts BasicPerfSampleSeriesResponseArgs and BasicPerfSampleSeriesResponseOutput values.
+// You can construct a concrete instance of `BasicPerfSampleSeriesResponseInput` via:
+//
+//          BasicPerfSampleSeriesResponseArgs{...}
+type BasicPerfSampleSeriesResponseInput interface {
+	pulumi.Input
+
+	ToBasicPerfSampleSeriesResponseOutput() BasicPerfSampleSeriesResponseOutput
+	ToBasicPerfSampleSeriesResponseOutputWithContext(context.Context) BasicPerfSampleSeriesResponseOutput
+}
+
+// Encapsulates the metadata for basic sample series represented by a line chart
+type BasicPerfSampleSeriesResponseArgs struct {
+	PerfMetricType    pulumi.StringInput `pulumi:"perfMetricType"`
+	PerfUnit          pulumi.StringInput `pulumi:"perfUnit"`
+	SampleSeriesLabel pulumi.StringInput `pulumi:"sampleSeriesLabel"`
+}
+
+func (BasicPerfSampleSeriesResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicPerfSampleSeriesResponse)(nil)).Elem()
+}
+
+func (i BasicPerfSampleSeriesResponseArgs) ToBasicPerfSampleSeriesResponseOutput() BasicPerfSampleSeriesResponseOutput {
+	return i.ToBasicPerfSampleSeriesResponseOutputWithContext(context.Background())
+}
+
+func (i BasicPerfSampleSeriesResponseArgs) ToBasicPerfSampleSeriesResponseOutputWithContext(ctx context.Context) BasicPerfSampleSeriesResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicPerfSampleSeriesResponseOutput)
+}
+
+func (i BasicPerfSampleSeriesResponseArgs) ToBasicPerfSampleSeriesResponsePtrOutput() BasicPerfSampleSeriesResponsePtrOutput {
+	return i.ToBasicPerfSampleSeriesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BasicPerfSampleSeriesResponseArgs) ToBasicPerfSampleSeriesResponsePtrOutputWithContext(ctx context.Context) BasicPerfSampleSeriesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicPerfSampleSeriesResponseOutput).ToBasicPerfSampleSeriesResponsePtrOutputWithContext(ctx)
+}
+
+// BasicPerfSampleSeriesResponsePtrInput is an input type that accepts BasicPerfSampleSeriesResponseArgs, BasicPerfSampleSeriesResponsePtr and BasicPerfSampleSeriesResponsePtrOutput values.
+// You can construct a concrete instance of `BasicPerfSampleSeriesResponsePtrInput` via:
+//
+//          BasicPerfSampleSeriesResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BasicPerfSampleSeriesResponsePtrInput interface {
+	pulumi.Input
+
+	ToBasicPerfSampleSeriesResponsePtrOutput() BasicPerfSampleSeriesResponsePtrOutput
+	ToBasicPerfSampleSeriesResponsePtrOutputWithContext(context.Context) BasicPerfSampleSeriesResponsePtrOutput
+}
+
+type basicPerfSampleSeriesResponsePtrType BasicPerfSampleSeriesResponseArgs
+
+func BasicPerfSampleSeriesResponsePtr(v *BasicPerfSampleSeriesResponseArgs) BasicPerfSampleSeriesResponsePtrInput {
+	return (*basicPerfSampleSeriesResponsePtrType)(v)
+}
+
+func (*basicPerfSampleSeriesResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasicPerfSampleSeriesResponse)(nil)).Elem()
+}
+
+func (i *basicPerfSampleSeriesResponsePtrType) ToBasicPerfSampleSeriesResponsePtrOutput() BasicPerfSampleSeriesResponsePtrOutput {
+	return i.ToBasicPerfSampleSeriesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *basicPerfSampleSeriesResponsePtrType) ToBasicPerfSampleSeriesResponsePtrOutputWithContext(ctx context.Context) BasicPerfSampleSeriesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicPerfSampleSeriesResponsePtrOutput)
+}
+
+// Encapsulates the metadata for basic sample series represented by a line chart
+type BasicPerfSampleSeriesResponseOutput struct{ *pulumi.OutputState }
+
+func (BasicPerfSampleSeriesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicPerfSampleSeriesResponse)(nil)).Elem()
+}
+
+func (o BasicPerfSampleSeriesResponseOutput) ToBasicPerfSampleSeriesResponseOutput() BasicPerfSampleSeriesResponseOutput {
+	return o
+}
+
+func (o BasicPerfSampleSeriesResponseOutput) ToBasicPerfSampleSeriesResponseOutputWithContext(ctx context.Context) BasicPerfSampleSeriesResponseOutput {
+	return o
+}
+
+func (o BasicPerfSampleSeriesResponseOutput) ToBasicPerfSampleSeriesResponsePtrOutput() BasicPerfSampleSeriesResponsePtrOutput {
+	return o.ToBasicPerfSampleSeriesResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BasicPerfSampleSeriesResponseOutput) ToBasicPerfSampleSeriesResponsePtrOutputWithContext(ctx context.Context) BasicPerfSampleSeriesResponsePtrOutput {
+	return o.ApplyT(func(v BasicPerfSampleSeriesResponse) *BasicPerfSampleSeriesResponse {
+		return &v
+	}).(BasicPerfSampleSeriesResponsePtrOutput)
+}
+func (o BasicPerfSampleSeriesResponseOutput) PerfMetricType() pulumi.StringOutput {
+	return o.ApplyT(func(v BasicPerfSampleSeriesResponse) string { return v.PerfMetricType }).(pulumi.StringOutput)
+}
+
+func (o BasicPerfSampleSeriesResponseOutput) PerfUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v BasicPerfSampleSeriesResponse) string { return v.PerfUnit }).(pulumi.StringOutput)
+}
+
+func (o BasicPerfSampleSeriesResponseOutput) SampleSeriesLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v BasicPerfSampleSeriesResponse) string { return v.SampleSeriesLabel }).(pulumi.StringOutput)
+}
+
+type BasicPerfSampleSeriesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BasicPerfSampleSeriesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasicPerfSampleSeriesResponse)(nil)).Elem()
+}
+
+func (o BasicPerfSampleSeriesResponsePtrOutput) ToBasicPerfSampleSeriesResponsePtrOutput() BasicPerfSampleSeriesResponsePtrOutput {
+	return o
+}
+
+func (o BasicPerfSampleSeriesResponsePtrOutput) ToBasicPerfSampleSeriesResponsePtrOutputWithContext(ctx context.Context) BasicPerfSampleSeriesResponsePtrOutput {
+	return o
+}
+
+func (o BasicPerfSampleSeriesResponsePtrOutput) Elem() BasicPerfSampleSeriesResponseOutput {
+	return o.ApplyT(func(v *BasicPerfSampleSeriesResponse) BasicPerfSampleSeriesResponse { return *v }).(BasicPerfSampleSeriesResponseOutput)
+}
+
+func (o BasicPerfSampleSeriesResponsePtrOutput) PerfMetricType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BasicPerfSampleSeriesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PerfMetricType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BasicPerfSampleSeriesResponsePtrOutput) PerfUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BasicPerfSampleSeriesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PerfUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BasicPerfSampleSeriesResponsePtrOutput) SampleSeriesLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BasicPerfSampleSeriesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SampleSeriesLabel
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1711,6 +2851,159 @@ func (o DurationPtrOutput) Seconds() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+//  A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
+type DurationResponse struct {
+	// Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one second are represented with a 0 `seconds` field and a positive or negative `nanos` field. For durations of one second or more, a non-zero value for the `nanos` field must be of the same sign as the `seconds` field. Must be from -999,999,999 to +999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Signed seconds of the span of time. Must be from -315,576,000,000 to +315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds string `pulumi:"seconds"`
+}
+
+// DurationResponseInput is an input type that accepts DurationResponseArgs and DurationResponseOutput values.
+// You can construct a concrete instance of `DurationResponseInput` via:
+//
+//          DurationResponseArgs{...}
+type DurationResponseInput interface {
+	pulumi.Input
+
+	ToDurationResponseOutput() DurationResponseOutput
+	ToDurationResponseOutputWithContext(context.Context) DurationResponseOutput
+}
+
+//  A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
+type DurationResponseArgs struct {
+	// Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one second are represented with a 0 `seconds` field and a positive or negative `nanos` field. For durations of one second or more, a non-zero value for the `nanos` field must be of the same sign as the `seconds` field. Must be from -999,999,999 to +999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Signed seconds of the span of time. Must be from -315,576,000,000 to +315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds pulumi.StringInput `pulumi:"seconds"`
+}
+
+func (DurationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DurationResponse)(nil)).Elem()
+}
+
+func (i DurationResponseArgs) ToDurationResponseOutput() DurationResponseOutput {
+	return i.ToDurationResponseOutputWithContext(context.Background())
+}
+
+func (i DurationResponseArgs) ToDurationResponseOutputWithContext(ctx context.Context) DurationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DurationResponseOutput)
+}
+
+func (i DurationResponseArgs) ToDurationResponsePtrOutput() DurationResponsePtrOutput {
+	return i.ToDurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DurationResponseArgs) ToDurationResponsePtrOutputWithContext(ctx context.Context) DurationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DurationResponseOutput).ToDurationResponsePtrOutputWithContext(ctx)
+}
+
+// DurationResponsePtrInput is an input type that accepts DurationResponseArgs, DurationResponsePtr and DurationResponsePtrOutput values.
+// You can construct a concrete instance of `DurationResponsePtrInput` via:
+//
+//          DurationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DurationResponsePtrInput interface {
+	pulumi.Input
+
+	ToDurationResponsePtrOutput() DurationResponsePtrOutput
+	ToDurationResponsePtrOutputWithContext(context.Context) DurationResponsePtrOutput
+}
+
+type durationResponsePtrType DurationResponseArgs
+
+func DurationResponsePtr(v *DurationResponseArgs) DurationResponsePtrInput {
+	return (*durationResponsePtrType)(v)
+}
+
+func (*durationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DurationResponse)(nil)).Elem()
+}
+
+func (i *durationResponsePtrType) ToDurationResponsePtrOutput() DurationResponsePtrOutput {
+	return i.ToDurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *durationResponsePtrType) ToDurationResponsePtrOutputWithContext(ctx context.Context) DurationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DurationResponsePtrOutput)
+}
+
+//  A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
+type DurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DurationResponse)(nil)).Elem()
+}
+
+func (o DurationResponseOutput) ToDurationResponseOutput() DurationResponseOutput {
+	return o
+}
+
+func (o DurationResponseOutput) ToDurationResponseOutputWithContext(ctx context.Context) DurationResponseOutput {
+	return o
+}
+
+func (o DurationResponseOutput) ToDurationResponsePtrOutput() DurationResponsePtrOutput {
+	return o.ToDurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DurationResponseOutput) ToDurationResponsePtrOutputWithContext(ctx context.Context) DurationResponsePtrOutput {
+	return o.ApplyT(func(v DurationResponse) *DurationResponse {
+		return &v
+	}).(DurationResponsePtrOutput)
+}
+
+// Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one second are represented with a 0 `seconds` field and a positive or negative `nanos` field. For durations of one second or more, a non-zero value for the `nanos` field must be of the same sign as the `seconds` field. Must be from -999,999,999 to +999,999,999 inclusive.
+func (o DurationResponseOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v DurationResponse) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Signed seconds of the span of time. Must be from -315,576,000,000 to +315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o DurationResponseOutput) Seconds() pulumi.StringOutput {
+	return o.ApplyT(func(v DurationResponse) string { return v.Seconds }).(pulumi.StringOutput)
+}
+
+type DurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DurationResponse)(nil)).Elem()
+}
+
+func (o DurationResponsePtrOutput) ToDurationResponsePtrOutput() DurationResponsePtrOutput {
+	return o
+}
+
+func (o DurationResponsePtrOutput) ToDurationResponsePtrOutputWithContext(ctx context.Context) DurationResponsePtrOutput {
+	return o
+}
+
+func (o DurationResponsePtrOutput) Elem() DurationResponseOutput {
+	return o.ApplyT(func(v *DurationResponse) DurationResponse { return *v }).(DurationResponseOutput)
+}
+
+// Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one second are represented with a 0 `seconds` field and a positive or negative `nanos` field. For durations of one second or more, a non-zero value for the `nanos` field must be of the same sign as the `seconds` field. Must be from -999,999,999 to +999,999,999 inclusive.
+func (o DurationResponsePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Signed seconds of the span of time. Must be from -315,576,000,000 to +315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o DurationResponsePtrOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
 // Details for an outcome with a FAILURE outcome summary.
 type FailureDetail struct {
 	// If the failure was severe because the system (app) under test crashed.
@@ -1959,6 +3252,254 @@ func (o FailureDetailPtrOutput) UnableToCrawl() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Details for an outcome with a FAILURE outcome summary.
+type FailureDetailResponse struct {
+	// If the failure was severe because the system (app) under test crashed.
+	Crashed bool `pulumi:"crashed"`
+	// If the device ran out of memory during a test, causing the test to crash.
+	DeviceOutOfMemory bool `pulumi:"deviceOutOfMemory"`
+	// If the Roboscript failed to complete successfully, e.g., because a Roboscript action or assertion failed or a Roboscript action could not be matched during the entire crawl.
+	FailedRoboscript bool `pulumi:"failedRoboscript"`
+	// If an app is not installed and thus no test can be run with the app. This might be caused by trying to run a test on an unsupported platform.
+	NotInstalled bool `pulumi:"notInstalled"`
+	// If a native process (including any other than the app) crashed.
+	OtherNativeCrash bool `pulumi:"otherNativeCrash"`
+	// If the test overran some time limit, and that is why it failed.
+	TimedOut bool `pulumi:"timedOut"`
+	// If the robo was unable to crawl the app; perhaps because the app did not start.
+	UnableToCrawl bool `pulumi:"unableToCrawl"`
+}
+
+// FailureDetailResponseInput is an input type that accepts FailureDetailResponseArgs and FailureDetailResponseOutput values.
+// You can construct a concrete instance of `FailureDetailResponseInput` via:
+//
+//          FailureDetailResponseArgs{...}
+type FailureDetailResponseInput interface {
+	pulumi.Input
+
+	ToFailureDetailResponseOutput() FailureDetailResponseOutput
+	ToFailureDetailResponseOutputWithContext(context.Context) FailureDetailResponseOutput
+}
+
+// Details for an outcome with a FAILURE outcome summary.
+type FailureDetailResponseArgs struct {
+	// If the failure was severe because the system (app) under test crashed.
+	Crashed pulumi.BoolInput `pulumi:"crashed"`
+	// If the device ran out of memory during a test, causing the test to crash.
+	DeviceOutOfMemory pulumi.BoolInput `pulumi:"deviceOutOfMemory"`
+	// If the Roboscript failed to complete successfully, e.g., because a Roboscript action or assertion failed or a Roboscript action could not be matched during the entire crawl.
+	FailedRoboscript pulumi.BoolInput `pulumi:"failedRoboscript"`
+	// If an app is not installed and thus no test can be run with the app. This might be caused by trying to run a test on an unsupported platform.
+	NotInstalled pulumi.BoolInput `pulumi:"notInstalled"`
+	// If a native process (including any other than the app) crashed.
+	OtherNativeCrash pulumi.BoolInput `pulumi:"otherNativeCrash"`
+	// If the test overran some time limit, and that is why it failed.
+	TimedOut pulumi.BoolInput `pulumi:"timedOut"`
+	// If the robo was unable to crawl the app; perhaps because the app did not start.
+	UnableToCrawl pulumi.BoolInput `pulumi:"unableToCrawl"`
+}
+
+func (FailureDetailResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailureDetailResponse)(nil)).Elem()
+}
+
+func (i FailureDetailResponseArgs) ToFailureDetailResponseOutput() FailureDetailResponseOutput {
+	return i.ToFailureDetailResponseOutputWithContext(context.Background())
+}
+
+func (i FailureDetailResponseArgs) ToFailureDetailResponseOutputWithContext(ctx context.Context) FailureDetailResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FailureDetailResponseOutput)
+}
+
+func (i FailureDetailResponseArgs) ToFailureDetailResponsePtrOutput() FailureDetailResponsePtrOutput {
+	return i.ToFailureDetailResponsePtrOutputWithContext(context.Background())
+}
+
+func (i FailureDetailResponseArgs) ToFailureDetailResponsePtrOutputWithContext(ctx context.Context) FailureDetailResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FailureDetailResponseOutput).ToFailureDetailResponsePtrOutputWithContext(ctx)
+}
+
+// FailureDetailResponsePtrInput is an input type that accepts FailureDetailResponseArgs, FailureDetailResponsePtr and FailureDetailResponsePtrOutput values.
+// You can construct a concrete instance of `FailureDetailResponsePtrInput` via:
+//
+//          FailureDetailResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type FailureDetailResponsePtrInput interface {
+	pulumi.Input
+
+	ToFailureDetailResponsePtrOutput() FailureDetailResponsePtrOutput
+	ToFailureDetailResponsePtrOutputWithContext(context.Context) FailureDetailResponsePtrOutput
+}
+
+type failureDetailResponsePtrType FailureDetailResponseArgs
+
+func FailureDetailResponsePtr(v *FailureDetailResponseArgs) FailureDetailResponsePtrInput {
+	return (*failureDetailResponsePtrType)(v)
+}
+
+func (*failureDetailResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FailureDetailResponse)(nil)).Elem()
+}
+
+func (i *failureDetailResponsePtrType) ToFailureDetailResponsePtrOutput() FailureDetailResponsePtrOutput {
+	return i.ToFailureDetailResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *failureDetailResponsePtrType) ToFailureDetailResponsePtrOutputWithContext(ctx context.Context) FailureDetailResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FailureDetailResponsePtrOutput)
+}
+
+// Details for an outcome with a FAILURE outcome summary.
+type FailureDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (FailureDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailureDetailResponse)(nil)).Elem()
+}
+
+func (o FailureDetailResponseOutput) ToFailureDetailResponseOutput() FailureDetailResponseOutput {
+	return o
+}
+
+func (o FailureDetailResponseOutput) ToFailureDetailResponseOutputWithContext(ctx context.Context) FailureDetailResponseOutput {
+	return o
+}
+
+func (o FailureDetailResponseOutput) ToFailureDetailResponsePtrOutput() FailureDetailResponsePtrOutput {
+	return o.ToFailureDetailResponsePtrOutputWithContext(context.Background())
+}
+
+func (o FailureDetailResponseOutput) ToFailureDetailResponsePtrOutputWithContext(ctx context.Context) FailureDetailResponsePtrOutput {
+	return o.ApplyT(func(v FailureDetailResponse) *FailureDetailResponse {
+		return &v
+	}).(FailureDetailResponsePtrOutput)
+}
+
+// If the failure was severe because the system (app) under test crashed.
+func (o FailureDetailResponseOutput) Crashed() pulumi.BoolOutput {
+	return o.ApplyT(func(v FailureDetailResponse) bool { return v.Crashed }).(pulumi.BoolOutput)
+}
+
+// If the device ran out of memory during a test, causing the test to crash.
+func (o FailureDetailResponseOutput) DeviceOutOfMemory() pulumi.BoolOutput {
+	return o.ApplyT(func(v FailureDetailResponse) bool { return v.DeviceOutOfMemory }).(pulumi.BoolOutput)
+}
+
+// If the Roboscript failed to complete successfully, e.g., because a Roboscript action or assertion failed or a Roboscript action could not be matched during the entire crawl.
+func (o FailureDetailResponseOutput) FailedRoboscript() pulumi.BoolOutput {
+	return o.ApplyT(func(v FailureDetailResponse) bool { return v.FailedRoboscript }).(pulumi.BoolOutput)
+}
+
+// If an app is not installed and thus no test can be run with the app. This might be caused by trying to run a test on an unsupported platform.
+func (o FailureDetailResponseOutput) NotInstalled() pulumi.BoolOutput {
+	return o.ApplyT(func(v FailureDetailResponse) bool { return v.NotInstalled }).(pulumi.BoolOutput)
+}
+
+// If a native process (including any other than the app) crashed.
+func (o FailureDetailResponseOutput) OtherNativeCrash() pulumi.BoolOutput {
+	return o.ApplyT(func(v FailureDetailResponse) bool { return v.OtherNativeCrash }).(pulumi.BoolOutput)
+}
+
+// If the test overran some time limit, and that is why it failed.
+func (o FailureDetailResponseOutput) TimedOut() pulumi.BoolOutput {
+	return o.ApplyT(func(v FailureDetailResponse) bool { return v.TimedOut }).(pulumi.BoolOutput)
+}
+
+// If the robo was unable to crawl the app; perhaps because the app did not start.
+func (o FailureDetailResponseOutput) UnableToCrawl() pulumi.BoolOutput {
+	return o.ApplyT(func(v FailureDetailResponse) bool { return v.UnableToCrawl }).(pulumi.BoolOutput)
+}
+
+type FailureDetailResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FailureDetailResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FailureDetailResponse)(nil)).Elem()
+}
+
+func (o FailureDetailResponsePtrOutput) ToFailureDetailResponsePtrOutput() FailureDetailResponsePtrOutput {
+	return o
+}
+
+func (o FailureDetailResponsePtrOutput) ToFailureDetailResponsePtrOutputWithContext(ctx context.Context) FailureDetailResponsePtrOutput {
+	return o
+}
+
+func (o FailureDetailResponsePtrOutput) Elem() FailureDetailResponseOutput {
+	return o.ApplyT(func(v *FailureDetailResponse) FailureDetailResponse { return *v }).(FailureDetailResponseOutput)
+}
+
+// If the failure was severe because the system (app) under test crashed.
+func (o FailureDetailResponsePtrOutput) Crashed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FailureDetailResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Crashed
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the device ran out of memory during a test, causing the test to crash.
+func (o FailureDetailResponsePtrOutput) DeviceOutOfMemory() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FailureDetailResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.DeviceOutOfMemory
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the Roboscript failed to complete successfully, e.g., because a Roboscript action or assertion failed or a Roboscript action could not be matched during the entire crawl.
+func (o FailureDetailResponsePtrOutput) FailedRoboscript() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FailureDetailResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.FailedRoboscript
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If an app is not installed and thus no test can be run with the app. This might be caused by trying to run a test on an unsupported platform.
+func (o FailureDetailResponsePtrOutput) NotInstalled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FailureDetailResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.NotInstalled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If a native process (including any other than the app) crashed.
+func (o FailureDetailResponsePtrOutput) OtherNativeCrash() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FailureDetailResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.OtherNativeCrash
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the test overran some time limit, and that is why it failed.
+func (o FailureDetailResponsePtrOutput) TimedOut() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FailureDetailResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.TimedOut
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the robo was unable to crawl the app; perhaps because the app did not start.
+func (o FailureDetailResponsePtrOutput) UnableToCrawl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FailureDetailResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UnableToCrawl
+	}).(pulumi.BoolPtrOutput)
+}
+
 // A reference to a file.
 type FileReference struct {
 	// The URI of a file stored in Google Cloud Storage. For example: http://storage.googleapis.com/mybucket/path/to/test.xml or in gsutil format: gs://mybucket/path/to/test.xml with version-specific info, gs://mybucket/path/to/test.xml#1360383693690000 An INVALID_ARGUMENT error will be returned if the URI format is not supported. - In response: always set - In create/update request: always set
@@ -2136,6 +3677,106 @@ func (o FileReferenceArrayOutput) Index(i pulumi.IntInput) FileReferenceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FileReference {
 		return vs[0].([]FileReference)[vs[1].(int)]
 	}).(FileReferenceOutput)
+}
+
+// A reference to a file.
+type FileReferenceResponse struct {
+	// The URI of a file stored in Google Cloud Storage. For example: http://storage.googleapis.com/mybucket/path/to/test.xml or in gsutil format: gs://mybucket/path/to/test.xml with version-specific info, gs://mybucket/path/to/test.xml#1360383693690000 An INVALID_ARGUMENT error will be returned if the URI format is not supported. - In response: always set - In create/update request: always set
+	FileUri string `pulumi:"fileUri"`
+}
+
+// FileReferenceResponseInput is an input type that accepts FileReferenceResponseArgs and FileReferenceResponseOutput values.
+// You can construct a concrete instance of `FileReferenceResponseInput` via:
+//
+//          FileReferenceResponseArgs{...}
+type FileReferenceResponseInput interface {
+	pulumi.Input
+
+	ToFileReferenceResponseOutput() FileReferenceResponseOutput
+	ToFileReferenceResponseOutputWithContext(context.Context) FileReferenceResponseOutput
+}
+
+// A reference to a file.
+type FileReferenceResponseArgs struct {
+	// The URI of a file stored in Google Cloud Storage. For example: http://storage.googleapis.com/mybucket/path/to/test.xml or in gsutil format: gs://mybucket/path/to/test.xml with version-specific info, gs://mybucket/path/to/test.xml#1360383693690000 An INVALID_ARGUMENT error will be returned if the URI format is not supported. - In response: always set - In create/update request: always set
+	FileUri pulumi.StringInput `pulumi:"fileUri"`
+}
+
+func (FileReferenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileReferenceResponse)(nil)).Elem()
+}
+
+func (i FileReferenceResponseArgs) ToFileReferenceResponseOutput() FileReferenceResponseOutput {
+	return i.ToFileReferenceResponseOutputWithContext(context.Background())
+}
+
+func (i FileReferenceResponseArgs) ToFileReferenceResponseOutputWithContext(ctx context.Context) FileReferenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileReferenceResponseOutput)
+}
+
+// FileReferenceResponseArrayInput is an input type that accepts FileReferenceResponseArray and FileReferenceResponseArrayOutput values.
+// You can construct a concrete instance of `FileReferenceResponseArrayInput` via:
+//
+//          FileReferenceResponseArray{ FileReferenceResponseArgs{...} }
+type FileReferenceResponseArrayInput interface {
+	pulumi.Input
+
+	ToFileReferenceResponseArrayOutput() FileReferenceResponseArrayOutput
+	ToFileReferenceResponseArrayOutputWithContext(context.Context) FileReferenceResponseArrayOutput
+}
+
+type FileReferenceResponseArray []FileReferenceResponseInput
+
+func (FileReferenceResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FileReferenceResponse)(nil)).Elem()
+}
+
+func (i FileReferenceResponseArray) ToFileReferenceResponseArrayOutput() FileReferenceResponseArrayOutput {
+	return i.ToFileReferenceResponseArrayOutputWithContext(context.Background())
+}
+
+func (i FileReferenceResponseArray) ToFileReferenceResponseArrayOutputWithContext(ctx context.Context) FileReferenceResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileReferenceResponseArrayOutput)
+}
+
+// A reference to a file.
+type FileReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (FileReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileReferenceResponse)(nil)).Elem()
+}
+
+func (o FileReferenceResponseOutput) ToFileReferenceResponseOutput() FileReferenceResponseOutput {
+	return o
+}
+
+func (o FileReferenceResponseOutput) ToFileReferenceResponseOutputWithContext(ctx context.Context) FileReferenceResponseOutput {
+	return o
+}
+
+// The URI of a file stored in Google Cloud Storage. For example: http://storage.googleapis.com/mybucket/path/to/test.xml or in gsutil format: gs://mybucket/path/to/test.xml with version-specific info, gs://mybucket/path/to/test.xml#1360383693690000 An INVALID_ARGUMENT error will be returned if the URI format is not supported. - In response: always set - In create/update request: always set
+func (o FileReferenceResponseOutput) FileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v FileReferenceResponse) string { return v.FileUri }).(pulumi.StringOutput)
+}
+
+type FileReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FileReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FileReferenceResponse)(nil)).Elem()
+}
+
+func (o FileReferenceResponseArrayOutput) ToFileReferenceResponseArrayOutput() FileReferenceResponseArrayOutput {
+	return o
+}
+
+func (o FileReferenceResponseArrayOutput) ToFileReferenceResponseArrayOutputWithContext(ctx context.Context) FileReferenceResponseArrayOutput {
+	return o
+}
+
+func (o FileReferenceResponseArrayOutput) Index(i pulumi.IntInput) FileReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FileReferenceResponse {
+		return vs[0].([]FileReferenceResponse)[vs[1].(int)]
+	}).(FileReferenceResponseOutput)
 }
 
 // Graphics statistics for the App. The information is collected from 'adb shell dumpsys graphicsstats'. For more info see: https://developer.android.com/training/testing/performance.html Statistics will only be present for API 23+.
@@ -2759,6 +4400,178 @@ func (o InconclusiveDetailPtrOutput) InfrastructureFailure() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Details for an outcome with an INCONCLUSIVE outcome summary.
+type InconclusiveDetailResponse struct {
+	// If the end user aborted the test execution before a pass or fail could be determined. For example, the user pressed ctrl-c which sent a kill signal to the test runner while the test was running.
+	AbortedByUser bool `pulumi:"abortedByUser"`
+	// If results are being provided to the user in certain cases of infrastructure failures
+	HasErrorLogs bool `pulumi:"hasErrorLogs"`
+	// If the test runner could not determine success or failure because the test depends on a component other than the system under test which failed. For example, a mobile test requires provisioning a device where the test executes, and that provisioning can fail.
+	InfrastructureFailure bool `pulumi:"infrastructureFailure"`
+}
+
+// InconclusiveDetailResponseInput is an input type that accepts InconclusiveDetailResponseArgs and InconclusiveDetailResponseOutput values.
+// You can construct a concrete instance of `InconclusiveDetailResponseInput` via:
+//
+//          InconclusiveDetailResponseArgs{...}
+type InconclusiveDetailResponseInput interface {
+	pulumi.Input
+
+	ToInconclusiveDetailResponseOutput() InconclusiveDetailResponseOutput
+	ToInconclusiveDetailResponseOutputWithContext(context.Context) InconclusiveDetailResponseOutput
+}
+
+// Details for an outcome with an INCONCLUSIVE outcome summary.
+type InconclusiveDetailResponseArgs struct {
+	// If the end user aborted the test execution before a pass or fail could be determined. For example, the user pressed ctrl-c which sent a kill signal to the test runner while the test was running.
+	AbortedByUser pulumi.BoolInput `pulumi:"abortedByUser"`
+	// If results are being provided to the user in certain cases of infrastructure failures
+	HasErrorLogs pulumi.BoolInput `pulumi:"hasErrorLogs"`
+	// If the test runner could not determine success or failure because the test depends on a component other than the system under test which failed. For example, a mobile test requires provisioning a device where the test executes, and that provisioning can fail.
+	InfrastructureFailure pulumi.BoolInput `pulumi:"infrastructureFailure"`
+}
+
+func (InconclusiveDetailResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InconclusiveDetailResponse)(nil)).Elem()
+}
+
+func (i InconclusiveDetailResponseArgs) ToInconclusiveDetailResponseOutput() InconclusiveDetailResponseOutput {
+	return i.ToInconclusiveDetailResponseOutputWithContext(context.Background())
+}
+
+func (i InconclusiveDetailResponseArgs) ToInconclusiveDetailResponseOutputWithContext(ctx context.Context) InconclusiveDetailResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InconclusiveDetailResponseOutput)
+}
+
+func (i InconclusiveDetailResponseArgs) ToInconclusiveDetailResponsePtrOutput() InconclusiveDetailResponsePtrOutput {
+	return i.ToInconclusiveDetailResponsePtrOutputWithContext(context.Background())
+}
+
+func (i InconclusiveDetailResponseArgs) ToInconclusiveDetailResponsePtrOutputWithContext(ctx context.Context) InconclusiveDetailResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InconclusiveDetailResponseOutput).ToInconclusiveDetailResponsePtrOutputWithContext(ctx)
+}
+
+// InconclusiveDetailResponsePtrInput is an input type that accepts InconclusiveDetailResponseArgs, InconclusiveDetailResponsePtr and InconclusiveDetailResponsePtrOutput values.
+// You can construct a concrete instance of `InconclusiveDetailResponsePtrInput` via:
+//
+//          InconclusiveDetailResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type InconclusiveDetailResponsePtrInput interface {
+	pulumi.Input
+
+	ToInconclusiveDetailResponsePtrOutput() InconclusiveDetailResponsePtrOutput
+	ToInconclusiveDetailResponsePtrOutputWithContext(context.Context) InconclusiveDetailResponsePtrOutput
+}
+
+type inconclusiveDetailResponsePtrType InconclusiveDetailResponseArgs
+
+func InconclusiveDetailResponsePtr(v *InconclusiveDetailResponseArgs) InconclusiveDetailResponsePtrInput {
+	return (*inconclusiveDetailResponsePtrType)(v)
+}
+
+func (*inconclusiveDetailResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InconclusiveDetailResponse)(nil)).Elem()
+}
+
+func (i *inconclusiveDetailResponsePtrType) ToInconclusiveDetailResponsePtrOutput() InconclusiveDetailResponsePtrOutput {
+	return i.ToInconclusiveDetailResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *inconclusiveDetailResponsePtrType) ToInconclusiveDetailResponsePtrOutputWithContext(ctx context.Context) InconclusiveDetailResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InconclusiveDetailResponsePtrOutput)
+}
+
+// Details for an outcome with an INCONCLUSIVE outcome summary.
+type InconclusiveDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (InconclusiveDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InconclusiveDetailResponse)(nil)).Elem()
+}
+
+func (o InconclusiveDetailResponseOutput) ToInconclusiveDetailResponseOutput() InconclusiveDetailResponseOutput {
+	return o
+}
+
+func (o InconclusiveDetailResponseOutput) ToInconclusiveDetailResponseOutputWithContext(ctx context.Context) InconclusiveDetailResponseOutput {
+	return o
+}
+
+func (o InconclusiveDetailResponseOutput) ToInconclusiveDetailResponsePtrOutput() InconclusiveDetailResponsePtrOutput {
+	return o.ToInconclusiveDetailResponsePtrOutputWithContext(context.Background())
+}
+
+func (o InconclusiveDetailResponseOutput) ToInconclusiveDetailResponsePtrOutputWithContext(ctx context.Context) InconclusiveDetailResponsePtrOutput {
+	return o.ApplyT(func(v InconclusiveDetailResponse) *InconclusiveDetailResponse {
+		return &v
+	}).(InconclusiveDetailResponsePtrOutput)
+}
+
+// If the end user aborted the test execution before a pass or fail could be determined. For example, the user pressed ctrl-c which sent a kill signal to the test runner while the test was running.
+func (o InconclusiveDetailResponseOutput) AbortedByUser() pulumi.BoolOutput {
+	return o.ApplyT(func(v InconclusiveDetailResponse) bool { return v.AbortedByUser }).(pulumi.BoolOutput)
+}
+
+// If results are being provided to the user in certain cases of infrastructure failures
+func (o InconclusiveDetailResponseOutput) HasErrorLogs() pulumi.BoolOutput {
+	return o.ApplyT(func(v InconclusiveDetailResponse) bool { return v.HasErrorLogs }).(pulumi.BoolOutput)
+}
+
+// If the test runner could not determine success or failure because the test depends on a component other than the system under test which failed. For example, a mobile test requires provisioning a device where the test executes, and that provisioning can fail.
+func (o InconclusiveDetailResponseOutput) InfrastructureFailure() pulumi.BoolOutput {
+	return o.ApplyT(func(v InconclusiveDetailResponse) bool { return v.InfrastructureFailure }).(pulumi.BoolOutput)
+}
+
+type InconclusiveDetailResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InconclusiveDetailResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InconclusiveDetailResponse)(nil)).Elem()
+}
+
+func (o InconclusiveDetailResponsePtrOutput) ToInconclusiveDetailResponsePtrOutput() InconclusiveDetailResponsePtrOutput {
+	return o
+}
+
+func (o InconclusiveDetailResponsePtrOutput) ToInconclusiveDetailResponsePtrOutputWithContext(ctx context.Context) InconclusiveDetailResponsePtrOutput {
+	return o
+}
+
+func (o InconclusiveDetailResponsePtrOutput) Elem() InconclusiveDetailResponseOutput {
+	return o.ApplyT(func(v *InconclusiveDetailResponse) InconclusiveDetailResponse { return *v }).(InconclusiveDetailResponseOutput)
+}
+
+// If the end user aborted the test execution before a pass or fail could be determined. For example, the user pressed ctrl-c which sent a kill signal to the test runner while the test was running.
+func (o InconclusiveDetailResponsePtrOutput) AbortedByUser() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InconclusiveDetailResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.AbortedByUser
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If results are being provided to the user in certain cases of infrastructure failures
+func (o InconclusiveDetailResponsePtrOutput) HasErrorLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InconclusiveDetailResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.HasErrorLogs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the test runner could not determine success or failure because the test depends on a component other than the system under test which failed. For example, a mobile test requires provisioning a device where the test executes, and that provisioning can fail.
+func (o InconclusiveDetailResponsePtrOutput) InfrastructureFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InconclusiveDetailResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.InfrastructureFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Step Id and outcome of each individual step that was run as a group with other steps with the same configuration.
 type IndividualOutcome struct {
 	// Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
@@ -2878,6 +4691,127 @@ func (o IndividualOutcomeArrayOutput) Index(i pulumi.IntInput) IndividualOutcome
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IndividualOutcome {
 		return vs[0].([]IndividualOutcome)[vs[1].(int)]
 	}).(IndividualOutcomeOutput)
+}
+
+// Step Id and outcome of each individual step that was run as a group with other steps with the same configuration.
+type IndividualOutcomeResponse struct {
+	// Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
+	MultistepNumber int    `pulumi:"multistepNumber"`
+	OutcomeSummary  string `pulumi:"outcomeSummary"`
+	// How long it took for this step to run.
+	RunDuration DurationResponse `pulumi:"runDuration"`
+	StepId      string           `pulumi:"stepId"`
+}
+
+// IndividualOutcomeResponseInput is an input type that accepts IndividualOutcomeResponseArgs and IndividualOutcomeResponseOutput values.
+// You can construct a concrete instance of `IndividualOutcomeResponseInput` via:
+//
+//          IndividualOutcomeResponseArgs{...}
+type IndividualOutcomeResponseInput interface {
+	pulumi.Input
+
+	ToIndividualOutcomeResponseOutput() IndividualOutcomeResponseOutput
+	ToIndividualOutcomeResponseOutputWithContext(context.Context) IndividualOutcomeResponseOutput
+}
+
+// Step Id and outcome of each individual step that was run as a group with other steps with the same configuration.
+type IndividualOutcomeResponseArgs struct {
+	// Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
+	MultistepNumber pulumi.IntInput    `pulumi:"multistepNumber"`
+	OutcomeSummary  pulumi.StringInput `pulumi:"outcomeSummary"`
+	// How long it took for this step to run.
+	RunDuration DurationResponseInput `pulumi:"runDuration"`
+	StepId      pulumi.StringInput    `pulumi:"stepId"`
+}
+
+func (IndividualOutcomeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndividualOutcomeResponse)(nil)).Elem()
+}
+
+func (i IndividualOutcomeResponseArgs) ToIndividualOutcomeResponseOutput() IndividualOutcomeResponseOutput {
+	return i.ToIndividualOutcomeResponseOutputWithContext(context.Background())
+}
+
+func (i IndividualOutcomeResponseArgs) ToIndividualOutcomeResponseOutputWithContext(ctx context.Context) IndividualOutcomeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndividualOutcomeResponseOutput)
+}
+
+// IndividualOutcomeResponseArrayInput is an input type that accepts IndividualOutcomeResponseArray and IndividualOutcomeResponseArrayOutput values.
+// You can construct a concrete instance of `IndividualOutcomeResponseArrayInput` via:
+//
+//          IndividualOutcomeResponseArray{ IndividualOutcomeResponseArgs{...} }
+type IndividualOutcomeResponseArrayInput interface {
+	pulumi.Input
+
+	ToIndividualOutcomeResponseArrayOutput() IndividualOutcomeResponseArrayOutput
+	ToIndividualOutcomeResponseArrayOutputWithContext(context.Context) IndividualOutcomeResponseArrayOutput
+}
+
+type IndividualOutcomeResponseArray []IndividualOutcomeResponseInput
+
+func (IndividualOutcomeResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IndividualOutcomeResponse)(nil)).Elem()
+}
+
+func (i IndividualOutcomeResponseArray) ToIndividualOutcomeResponseArrayOutput() IndividualOutcomeResponseArrayOutput {
+	return i.ToIndividualOutcomeResponseArrayOutputWithContext(context.Background())
+}
+
+func (i IndividualOutcomeResponseArray) ToIndividualOutcomeResponseArrayOutputWithContext(ctx context.Context) IndividualOutcomeResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndividualOutcomeResponseArrayOutput)
+}
+
+// Step Id and outcome of each individual step that was run as a group with other steps with the same configuration.
+type IndividualOutcomeResponseOutput struct{ *pulumi.OutputState }
+
+func (IndividualOutcomeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndividualOutcomeResponse)(nil)).Elem()
+}
+
+func (o IndividualOutcomeResponseOutput) ToIndividualOutcomeResponseOutput() IndividualOutcomeResponseOutput {
+	return o
+}
+
+func (o IndividualOutcomeResponseOutput) ToIndividualOutcomeResponseOutputWithContext(ctx context.Context) IndividualOutcomeResponseOutput {
+	return o
+}
+
+// Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
+func (o IndividualOutcomeResponseOutput) MultistepNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v IndividualOutcomeResponse) int { return v.MultistepNumber }).(pulumi.IntOutput)
+}
+
+func (o IndividualOutcomeResponseOutput) OutcomeSummary() pulumi.StringOutput {
+	return o.ApplyT(func(v IndividualOutcomeResponse) string { return v.OutcomeSummary }).(pulumi.StringOutput)
+}
+
+// How long it took for this step to run.
+func (o IndividualOutcomeResponseOutput) RunDuration() DurationResponseOutput {
+	return o.ApplyT(func(v IndividualOutcomeResponse) DurationResponse { return v.RunDuration }).(DurationResponseOutput)
+}
+
+func (o IndividualOutcomeResponseOutput) StepId() pulumi.StringOutput {
+	return o.ApplyT(func(v IndividualOutcomeResponse) string { return v.StepId }).(pulumi.StringOutput)
+}
+
+type IndividualOutcomeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IndividualOutcomeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IndividualOutcomeResponse)(nil)).Elem()
+}
+
+func (o IndividualOutcomeResponseArrayOutput) ToIndividualOutcomeResponseArrayOutput() IndividualOutcomeResponseArrayOutput {
+	return o
+}
+
+func (o IndividualOutcomeResponseArrayOutput) ToIndividualOutcomeResponseArrayOutputWithContext(ctx context.Context) IndividualOutcomeResponseArrayOutput {
+	return o
+}
+
+func (o IndividualOutcomeResponseArrayOutput) Index(i pulumi.IntInput) IndividualOutcomeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IndividualOutcomeResponse {
+		return vs[0].([]IndividualOutcomeResponse)[vs[1].(int)]
+	}).(IndividualOutcomeResponseOutput)
 }
 
 // iOS app information
@@ -3014,6 +4948,140 @@ func (o IosAppInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// iOS app information
+type IosAppInfoResponse struct {
+	// The name of the app. Required
+	Name string `pulumi:"name"`
+}
+
+// IosAppInfoResponseInput is an input type that accepts IosAppInfoResponseArgs and IosAppInfoResponseOutput values.
+// You can construct a concrete instance of `IosAppInfoResponseInput` via:
+//
+//          IosAppInfoResponseArgs{...}
+type IosAppInfoResponseInput interface {
+	pulumi.Input
+
+	ToIosAppInfoResponseOutput() IosAppInfoResponseOutput
+	ToIosAppInfoResponseOutputWithContext(context.Context) IosAppInfoResponseOutput
+}
+
+// iOS app information
+type IosAppInfoResponseArgs struct {
+	// The name of the app. Required
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (IosAppInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IosAppInfoResponse)(nil)).Elem()
+}
+
+func (i IosAppInfoResponseArgs) ToIosAppInfoResponseOutput() IosAppInfoResponseOutput {
+	return i.ToIosAppInfoResponseOutputWithContext(context.Background())
+}
+
+func (i IosAppInfoResponseArgs) ToIosAppInfoResponseOutputWithContext(ctx context.Context) IosAppInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosAppInfoResponseOutput)
+}
+
+func (i IosAppInfoResponseArgs) ToIosAppInfoResponsePtrOutput() IosAppInfoResponsePtrOutput {
+	return i.ToIosAppInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i IosAppInfoResponseArgs) ToIosAppInfoResponsePtrOutputWithContext(ctx context.Context) IosAppInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosAppInfoResponseOutput).ToIosAppInfoResponsePtrOutputWithContext(ctx)
+}
+
+// IosAppInfoResponsePtrInput is an input type that accepts IosAppInfoResponseArgs, IosAppInfoResponsePtr and IosAppInfoResponsePtrOutput values.
+// You can construct a concrete instance of `IosAppInfoResponsePtrInput` via:
+//
+//          IosAppInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type IosAppInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToIosAppInfoResponsePtrOutput() IosAppInfoResponsePtrOutput
+	ToIosAppInfoResponsePtrOutputWithContext(context.Context) IosAppInfoResponsePtrOutput
+}
+
+type iosAppInfoResponsePtrType IosAppInfoResponseArgs
+
+func IosAppInfoResponsePtr(v *IosAppInfoResponseArgs) IosAppInfoResponsePtrInput {
+	return (*iosAppInfoResponsePtrType)(v)
+}
+
+func (*iosAppInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IosAppInfoResponse)(nil)).Elem()
+}
+
+func (i *iosAppInfoResponsePtrType) ToIosAppInfoResponsePtrOutput() IosAppInfoResponsePtrOutput {
+	return i.ToIosAppInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *iosAppInfoResponsePtrType) ToIosAppInfoResponsePtrOutputWithContext(ctx context.Context) IosAppInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosAppInfoResponsePtrOutput)
+}
+
+// iOS app information
+type IosAppInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (IosAppInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IosAppInfoResponse)(nil)).Elem()
+}
+
+func (o IosAppInfoResponseOutput) ToIosAppInfoResponseOutput() IosAppInfoResponseOutput {
+	return o
+}
+
+func (o IosAppInfoResponseOutput) ToIosAppInfoResponseOutputWithContext(ctx context.Context) IosAppInfoResponseOutput {
+	return o
+}
+
+func (o IosAppInfoResponseOutput) ToIosAppInfoResponsePtrOutput() IosAppInfoResponsePtrOutput {
+	return o.ToIosAppInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o IosAppInfoResponseOutput) ToIosAppInfoResponsePtrOutputWithContext(ctx context.Context) IosAppInfoResponsePtrOutput {
+	return o.ApplyT(func(v IosAppInfoResponse) *IosAppInfoResponse {
+		return &v
+	}).(IosAppInfoResponsePtrOutput)
+}
+
+// The name of the app. Required
+func (o IosAppInfoResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v IosAppInfoResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type IosAppInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IosAppInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IosAppInfoResponse)(nil)).Elem()
+}
+
+func (o IosAppInfoResponsePtrOutput) ToIosAppInfoResponsePtrOutput() IosAppInfoResponsePtrOutput {
+	return o
+}
+
+func (o IosAppInfoResponsePtrOutput) ToIosAppInfoResponsePtrOutputWithContext(ctx context.Context) IosAppInfoResponsePtrOutput {
+	return o
+}
+
+func (o IosAppInfoResponsePtrOutput) Elem() IosAppInfoResponseOutput {
+	return o.ApplyT(func(v *IosAppInfoResponse) IosAppInfoResponse { return *v }).(IosAppInfoResponseOutput)
+}
+
+// The name of the app. Required
+func (o IosAppInfoResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IosAppInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 // A Robo test for an iOS application.
 type IosRoboTest struct {
 }
@@ -3127,6 +5195,121 @@ func (o IosRoboTestPtrOutput) ToIosRoboTestPtrOutputWithContext(ctx context.Cont
 
 func (o IosRoboTestPtrOutput) Elem() IosRoboTestOutput {
 	return o.ApplyT(func(v *IosRoboTest) IosRoboTest { return *v }).(IosRoboTestOutput)
+}
+
+// A Robo test for an iOS application.
+type IosRoboTestResponse struct {
+}
+
+// IosRoboTestResponseInput is an input type that accepts IosRoboTestResponseArgs and IosRoboTestResponseOutput values.
+// You can construct a concrete instance of `IosRoboTestResponseInput` via:
+//
+//          IosRoboTestResponseArgs{...}
+type IosRoboTestResponseInput interface {
+	pulumi.Input
+
+	ToIosRoboTestResponseOutput() IosRoboTestResponseOutput
+	ToIosRoboTestResponseOutputWithContext(context.Context) IosRoboTestResponseOutput
+}
+
+// A Robo test for an iOS application.
+type IosRoboTestResponseArgs struct {
+}
+
+func (IosRoboTestResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IosRoboTestResponse)(nil)).Elem()
+}
+
+func (i IosRoboTestResponseArgs) ToIosRoboTestResponseOutput() IosRoboTestResponseOutput {
+	return i.ToIosRoboTestResponseOutputWithContext(context.Background())
+}
+
+func (i IosRoboTestResponseArgs) ToIosRoboTestResponseOutputWithContext(ctx context.Context) IosRoboTestResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosRoboTestResponseOutput)
+}
+
+func (i IosRoboTestResponseArgs) ToIosRoboTestResponsePtrOutput() IosRoboTestResponsePtrOutput {
+	return i.ToIosRoboTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (i IosRoboTestResponseArgs) ToIosRoboTestResponsePtrOutputWithContext(ctx context.Context) IosRoboTestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosRoboTestResponseOutput).ToIosRoboTestResponsePtrOutputWithContext(ctx)
+}
+
+// IosRoboTestResponsePtrInput is an input type that accepts IosRoboTestResponseArgs, IosRoboTestResponsePtr and IosRoboTestResponsePtrOutput values.
+// You can construct a concrete instance of `IosRoboTestResponsePtrInput` via:
+//
+//          IosRoboTestResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type IosRoboTestResponsePtrInput interface {
+	pulumi.Input
+
+	ToIosRoboTestResponsePtrOutput() IosRoboTestResponsePtrOutput
+	ToIosRoboTestResponsePtrOutputWithContext(context.Context) IosRoboTestResponsePtrOutput
+}
+
+type iosRoboTestResponsePtrType IosRoboTestResponseArgs
+
+func IosRoboTestResponsePtr(v *IosRoboTestResponseArgs) IosRoboTestResponsePtrInput {
+	return (*iosRoboTestResponsePtrType)(v)
+}
+
+func (*iosRoboTestResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IosRoboTestResponse)(nil)).Elem()
+}
+
+func (i *iosRoboTestResponsePtrType) ToIosRoboTestResponsePtrOutput() IosRoboTestResponsePtrOutput {
+	return i.ToIosRoboTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *iosRoboTestResponsePtrType) ToIosRoboTestResponsePtrOutputWithContext(ctx context.Context) IosRoboTestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosRoboTestResponsePtrOutput)
+}
+
+// A Robo test for an iOS application.
+type IosRoboTestResponseOutput struct{ *pulumi.OutputState }
+
+func (IosRoboTestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IosRoboTestResponse)(nil)).Elem()
+}
+
+func (o IosRoboTestResponseOutput) ToIosRoboTestResponseOutput() IosRoboTestResponseOutput {
+	return o
+}
+
+func (o IosRoboTestResponseOutput) ToIosRoboTestResponseOutputWithContext(ctx context.Context) IosRoboTestResponseOutput {
+	return o
+}
+
+func (o IosRoboTestResponseOutput) ToIosRoboTestResponsePtrOutput() IosRoboTestResponsePtrOutput {
+	return o.ToIosRoboTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (o IosRoboTestResponseOutput) ToIosRoboTestResponsePtrOutputWithContext(ctx context.Context) IosRoboTestResponsePtrOutput {
+	return o.ApplyT(func(v IosRoboTestResponse) *IosRoboTestResponse {
+		return &v
+	}).(IosRoboTestResponsePtrOutput)
+}
+
+type IosRoboTestResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IosRoboTestResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IosRoboTestResponse)(nil)).Elem()
+}
+
+func (o IosRoboTestResponsePtrOutput) ToIosRoboTestResponsePtrOutput() IosRoboTestResponsePtrOutput {
+	return o
+}
+
+func (o IosRoboTestResponsePtrOutput) ToIosRoboTestResponsePtrOutputWithContext(ctx context.Context) IosRoboTestResponsePtrOutput {
+	return o
+}
+
+func (o IosRoboTestResponsePtrOutput) Elem() IosRoboTestResponseOutput {
+	return o.ApplyT(func(v *IosRoboTestResponse) IosRoboTestResponse { return *v }).(IosRoboTestResponseOutput)
 }
 
 // A iOS mobile test specification
@@ -3473,6 +5656,350 @@ func (o IosTestLoopPtrOutput) BundleId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A game loop test of an iOS application.
+type IosTestLoopResponse struct {
+	// Bundle ID of the app.
+	BundleId string `pulumi:"bundleId"`
+}
+
+// IosTestLoopResponseInput is an input type that accepts IosTestLoopResponseArgs and IosTestLoopResponseOutput values.
+// You can construct a concrete instance of `IosTestLoopResponseInput` via:
+//
+//          IosTestLoopResponseArgs{...}
+type IosTestLoopResponseInput interface {
+	pulumi.Input
+
+	ToIosTestLoopResponseOutput() IosTestLoopResponseOutput
+	ToIosTestLoopResponseOutputWithContext(context.Context) IosTestLoopResponseOutput
+}
+
+// A game loop test of an iOS application.
+type IosTestLoopResponseArgs struct {
+	// Bundle ID of the app.
+	BundleId pulumi.StringInput `pulumi:"bundleId"`
+}
+
+func (IosTestLoopResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IosTestLoopResponse)(nil)).Elem()
+}
+
+func (i IosTestLoopResponseArgs) ToIosTestLoopResponseOutput() IosTestLoopResponseOutput {
+	return i.ToIosTestLoopResponseOutputWithContext(context.Background())
+}
+
+func (i IosTestLoopResponseArgs) ToIosTestLoopResponseOutputWithContext(ctx context.Context) IosTestLoopResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosTestLoopResponseOutput)
+}
+
+func (i IosTestLoopResponseArgs) ToIosTestLoopResponsePtrOutput() IosTestLoopResponsePtrOutput {
+	return i.ToIosTestLoopResponsePtrOutputWithContext(context.Background())
+}
+
+func (i IosTestLoopResponseArgs) ToIosTestLoopResponsePtrOutputWithContext(ctx context.Context) IosTestLoopResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosTestLoopResponseOutput).ToIosTestLoopResponsePtrOutputWithContext(ctx)
+}
+
+// IosTestLoopResponsePtrInput is an input type that accepts IosTestLoopResponseArgs, IosTestLoopResponsePtr and IosTestLoopResponsePtrOutput values.
+// You can construct a concrete instance of `IosTestLoopResponsePtrInput` via:
+//
+//          IosTestLoopResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type IosTestLoopResponsePtrInput interface {
+	pulumi.Input
+
+	ToIosTestLoopResponsePtrOutput() IosTestLoopResponsePtrOutput
+	ToIosTestLoopResponsePtrOutputWithContext(context.Context) IosTestLoopResponsePtrOutput
+}
+
+type iosTestLoopResponsePtrType IosTestLoopResponseArgs
+
+func IosTestLoopResponsePtr(v *IosTestLoopResponseArgs) IosTestLoopResponsePtrInput {
+	return (*iosTestLoopResponsePtrType)(v)
+}
+
+func (*iosTestLoopResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IosTestLoopResponse)(nil)).Elem()
+}
+
+func (i *iosTestLoopResponsePtrType) ToIosTestLoopResponsePtrOutput() IosTestLoopResponsePtrOutput {
+	return i.ToIosTestLoopResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *iosTestLoopResponsePtrType) ToIosTestLoopResponsePtrOutputWithContext(ctx context.Context) IosTestLoopResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosTestLoopResponsePtrOutput)
+}
+
+// A game loop test of an iOS application.
+type IosTestLoopResponseOutput struct{ *pulumi.OutputState }
+
+func (IosTestLoopResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IosTestLoopResponse)(nil)).Elem()
+}
+
+func (o IosTestLoopResponseOutput) ToIosTestLoopResponseOutput() IosTestLoopResponseOutput {
+	return o
+}
+
+func (o IosTestLoopResponseOutput) ToIosTestLoopResponseOutputWithContext(ctx context.Context) IosTestLoopResponseOutput {
+	return o
+}
+
+func (o IosTestLoopResponseOutput) ToIosTestLoopResponsePtrOutput() IosTestLoopResponsePtrOutput {
+	return o.ToIosTestLoopResponsePtrOutputWithContext(context.Background())
+}
+
+func (o IosTestLoopResponseOutput) ToIosTestLoopResponsePtrOutputWithContext(ctx context.Context) IosTestLoopResponsePtrOutput {
+	return o.ApplyT(func(v IosTestLoopResponse) *IosTestLoopResponse {
+		return &v
+	}).(IosTestLoopResponsePtrOutput)
+}
+
+// Bundle ID of the app.
+func (o IosTestLoopResponseOutput) BundleId() pulumi.StringOutput {
+	return o.ApplyT(func(v IosTestLoopResponse) string { return v.BundleId }).(pulumi.StringOutput)
+}
+
+type IosTestLoopResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IosTestLoopResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IosTestLoopResponse)(nil)).Elem()
+}
+
+func (o IosTestLoopResponsePtrOutput) ToIosTestLoopResponsePtrOutput() IosTestLoopResponsePtrOutput {
+	return o
+}
+
+func (o IosTestLoopResponsePtrOutput) ToIosTestLoopResponsePtrOutputWithContext(ctx context.Context) IosTestLoopResponsePtrOutput {
+	return o
+}
+
+func (o IosTestLoopResponsePtrOutput) Elem() IosTestLoopResponseOutput {
+	return o.ApplyT(func(v *IosTestLoopResponse) IosTestLoopResponse { return *v }).(IosTestLoopResponseOutput)
+}
+
+// Bundle ID of the app.
+func (o IosTestLoopResponsePtrOutput) BundleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IosTestLoopResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BundleId
+	}).(pulumi.StringPtrOutput)
+}
+
+// A iOS mobile test specification
+type IosTestResponse struct {
+	// Information about the application under test.
+	IosAppInfo IosAppInfoResponse `pulumi:"iosAppInfo"`
+	// An iOS Robo test.
+	IosRoboTest IosRoboTestResponse `pulumi:"iosRoboTest"`
+	// An iOS test loop.
+	IosTestLoop IosTestLoopResponse `pulumi:"iosTestLoop"`
+	// An iOS XCTest.
+	IosXcTest IosXcTestResponse `pulumi:"iosXcTest"`
+	// Max time a test is allowed to run before it is automatically cancelled.
+	TestTimeout DurationResponse `pulumi:"testTimeout"`
+}
+
+// IosTestResponseInput is an input type that accepts IosTestResponseArgs and IosTestResponseOutput values.
+// You can construct a concrete instance of `IosTestResponseInput` via:
+//
+//          IosTestResponseArgs{...}
+type IosTestResponseInput interface {
+	pulumi.Input
+
+	ToIosTestResponseOutput() IosTestResponseOutput
+	ToIosTestResponseOutputWithContext(context.Context) IosTestResponseOutput
+}
+
+// A iOS mobile test specification
+type IosTestResponseArgs struct {
+	// Information about the application under test.
+	IosAppInfo IosAppInfoResponseInput `pulumi:"iosAppInfo"`
+	// An iOS Robo test.
+	IosRoboTest IosRoboTestResponseInput `pulumi:"iosRoboTest"`
+	// An iOS test loop.
+	IosTestLoop IosTestLoopResponseInput `pulumi:"iosTestLoop"`
+	// An iOS XCTest.
+	IosXcTest IosXcTestResponseInput `pulumi:"iosXcTest"`
+	// Max time a test is allowed to run before it is automatically cancelled.
+	TestTimeout DurationResponseInput `pulumi:"testTimeout"`
+}
+
+func (IosTestResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IosTestResponse)(nil)).Elem()
+}
+
+func (i IosTestResponseArgs) ToIosTestResponseOutput() IosTestResponseOutput {
+	return i.ToIosTestResponseOutputWithContext(context.Background())
+}
+
+func (i IosTestResponseArgs) ToIosTestResponseOutputWithContext(ctx context.Context) IosTestResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosTestResponseOutput)
+}
+
+func (i IosTestResponseArgs) ToIosTestResponsePtrOutput() IosTestResponsePtrOutput {
+	return i.ToIosTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (i IosTestResponseArgs) ToIosTestResponsePtrOutputWithContext(ctx context.Context) IosTestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosTestResponseOutput).ToIosTestResponsePtrOutputWithContext(ctx)
+}
+
+// IosTestResponsePtrInput is an input type that accepts IosTestResponseArgs, IosTestResponsePtr and IosTestResponsePtrOutput values.
+// You can construct a concrete instance of `IosTestResponsePtrInput` via:
+//
+//          IosTestResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type IosTestResponsePtrInput interface {
+	pulumi.Input
+
+	ToIosTestResponsePtrOutput() IosTestResponsePtrOutput
+	ToIosTestResponsePtrOutputWithContext(context.Context) IosTestResponsePtrOutput
+}
+
+type iosTestResponsePtrType IosTestResponseArgs
+
+func IosTestResponsePtr(v *IosTestResponseArgs) IosTestResponsePtrInput {
+	return (*iosTestResponsePtrType)(v)
+}
+
+func (*iosTestResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IosTestResponse)(nil)).Elem()
+}
+
+func (i *iosTestResponsePtrType) ToIosTestResponsePtrOutput() IosTestResponsePtrOutput {
+	return i.ToIosTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *iosTestResponsePtrType) ToIosTestResponsePtrOutputWithContext(ctx context.Context) IosTestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosTestResponsePtrOutput)
+}
+
+// A iOS mobile test specification
+type IosTestResponseOutput struct{ *pulumi.OutputState }
+
+func (IosTestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IosTestResponse)(nil)).Elem()
+}
+
+func (o IosTestResponseOutput) ToIosTestResponseOutput() IosTestResponseOutput {
+	return o
+}
+
+func (o IosTestResponseOutput) ToIosTestResponseOutputWithContext(ctx context.Context) IosTestResponseOutput {
+	return o
+}
+
+func (o IosTestResponseOutput) ToIosTestResponsePtrOutput() IosTestResponsePtrOutput {
+	return o.ToIosTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (o IosTestResponseOutput) ToIosTestResponsePtrOutputWithContext(ctx context.Context) IosTestResponsePtrOutput {
+	return o.ApplyT(func(v IosTestResponse) *IosTestResponse {
+		return &v
+	}).(IosTestResponsePtrOutput)
+}
+
+// Information about the application under test.
+func (o IosTestResponseOutput) IosAppInfo() IosAppInfoResponseOutput {
+	return o.ApplyT(func(v IosTestResponse) IosAppInfoResponse { return v.IosAppInfo }).(IosAppInfoResponseOutput)
+}
+
+// An iOS Robo test.
+func (o IosTestResponseOutput) IosRoboTest() IosRoboTestResponseOutput {
+	return o.ApplyT(func(v IosTestResponse) IosRoboTestResponse { return v.IosRoboTest }).(IosRoboTestResponseOutput)
+}
+
+// An iOS test loop.
+func (o IosTestResponseOutput) IosTestLoop() IosTestLoopResponseOutput {
+	return o.ApplyT(func(v IosTestResponse) IosTestLoopResponse { return v.IosTestLoop }).(IosTestLoopResponseOutput)
+}
+
+// An iOS XCTest.
+func (o IosTestResponseOutput) IosXcTest() IosXcTestResponseOutput {
+	return o.ApplyT(func(v IosTestResponse) IosXcTestResponse { return v.IosXcTest }).(IosXcTestResponseOutput)
+}
+
+// Max time a test is allowed to run before it is automatically cancelled.
+func (o IosTestResponseOutput) TestTimeout() DurationResponseOutput {
+	return o.ApplyT(func(v IosTestResponse) DurationResponse { return v.TestTimeout }).(DurationResponseOutput)
+}
+
+type IosTestResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IosTestResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IosTestResponse)(nil)).Elem()
+}
+
+func (o IosTestResponsePtrOutput) ToIosTestResponsePtrOutput() IosTestResponsePtrOutput {
+	return o
+}
+
+func (o IosTestResponsePtrOutput) ToIosTestResponsePtrOutputWithContext(ctx context.Context) IosTestResponsePtrOutput {
+	return o
+}
+
+func (o IosTestResponsePtrOutput) Elem() IosTestResponseOutput {
+	return o.ApplyT(func(v *IosTestResponse) IosTestResponse { return *v }).(IosTestResponseOutput)
+}
+
+// Information about the application under test.
+func (o IosTestResponsePtrOutput) IosAppInfo() IosAppInfoResponsePtrOutput {
+	return o.ApplyT(func(v *IosTestResponse) *IosAppInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.IosAppInfo
+	}).(IosAppInfoResponsePtrOutput)
+}
+
+// An iOS Robo test.
+func (o IosTestResponsePtrOutput) IosRoboTest() IosRoboTestResponsePtrOutput {
+	return o.ApplyT(func(v *IosTestResponse) *IosRoboTestResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.IosRoboTest
+	}).(IosRoboTestResponsePtrOutput)
+}
+
+// An iOS test loop.
+func (o IosTestResponsePtrOutput) IosTestLoop() IosTestLoopResponsePtrOutput {
+	return o.ApplyT(func(v *IosTestResponse) *IosTestLoopResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.IosTestLoop
+	}).(IosTestLoopResponsePtrOutput)
+}
+
+// An iOS XCTest.
+func (o IosTestResponsePtrOutput) IosXcTest() IosXcTestResponsePtrOutput {
+	return o.ApplyT(func(v *IosTestResponse) *IosXcTestResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.IosXcTest
+	}).(IosXcTestResponsePtrOutput)
+}
+
+// Max time a test is allowed to run before it is automatically cancelled.
+func (o IosTestResponsePtrOutput) TestTimeout() DurationResponsePtrOutput {
+	return o.ApplyT(func(v *IosTestResponse) *DurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.TestTimeout
+	}).(DurationResponsePtrOutput)
+}
+
 // A test of an iOS application that uses the XCTest framework.
 type IosXcTest struct {
 	// Bundle ID of the app.
@@ -3626,6 +6153,159 @@ func (o IosXcTestPtrOutput) XcodeVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A test of an iOS application that uses the XCTest framework.
+type IosXcTestResponse struct {
+	// Bundle ID of the app.
+	BundleId string `pulumi:"bundleId"`
+	// Xcode version that the test was run with.
+	XcodeVersion string `pulumi:"xcodeVersion"`
+}
+
+// IosXcTestResponseInput is an input type that accepts IosXcTestResponseArgs and IosXcTestResponseOutput values.
+// You can construct a concrete instance of `IosXcTestResponseInput` via:
+//
+//          IosXcTestResponseArgs{...}
+type IosXcTestResponseInput interface {
+	pulumi.Input
+
+	ToIosXcTestResponseOutput() IosXcTestResponseOutput
+	ToIosXcTestResponseOutputWithContext(context.Context) IosXcTestResponseOutput
+}
+
+// A test of an iOS application that uses the XCTest framework.
+type IosXcTestResponseArgs struct {
+	// Bundle ID of the app.
+	BundleId pulumi.StringInput `pulumi:"bundleId"`
+	// Xcode version that the test was run with.
+	XcodeVersion pulumi.StringInput `pulumi:"xcodeVersion"`
+}
+
+func (IosXcTestResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IosXcTestResponse)(nil)).Elem()
+}
+
+func (i IosXcTestResponseArgs) ToIosXcTestResponseOutput() IosXcTestResponseOutput {
+	return i.ToIosXcTestResponseOutputWithContext(context.Background())
+}
+
+func (i IosXcTestResponseArgs) ToIosXcTestResponseOutputWithContext(ctx context.Context) IosXcTestResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosXcTestResponseOutput)
+}
+
+func (i IosXcTestResponseArgs) ToIosXcTestResponsePtrOutput() IosXcTestResponsePtrOutput {
+	return i.ToIosXcTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (i IosXcTestResponseArgs) ToIosXcTestResponsePtrOutputWithContext(ctx context.Context) IosXcTestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosXcTestResponseOutput).ToIosXcTestResponsePtrOutputWithContext(ctx)
+}
+
+// IosXcTestResponsePtrInput is an input type that accepts IosXcTestResponseArgs, IosXcTestResponsePtr and IosXcTestResponsePtrOutput values.
+// You can construct a concrete instance of `IosXcTestResponsePtrInput` via:
+//
+//          IosXcTestResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type IosXcTestResponsePtrInput interface {
+	pulumi.Input
+
+	ToIosXcTestResponsePtrOutput() IosXcTestResponsePtrOutput
+	ToIosXcTestResponsePtrOutputWithContext(context.Context) IosXcTestResponsePtrOutput
+}
+
+type iosXcTestResponsePtrType IosXcTestResponseArgs
+
+func IosXcTestResponsePtr(v *IosXcTestResponseArgs) IosXcTestResponsePtrInput {
+	return (*iosXcTestResponsePtrType)(v)
+}
+
+func (*iosXcTestResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IosXcTestResponse)(nil)).Elem()
+}
+
+func (i *iosXcTestResponsePtrType) ToIosXcTestResponsePtrOutput() IosXcTestResponsePtrOutput {
+	return i.ToIosXcTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *iosXcTestResponsePtrType) ToIosXcTestResponsePtrOutputWithContext(ctx context.Context) IosXcTestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IosXcTestResponsePtrOutput)
+}
+
+// A test of an iOS application that uses the XCTest framework.
+type IosXcTestResponseOutput struct{ *pulumi.OutputState }
+
+func (IosXcTestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IosXcTestResponse)(nil)).Elem()
+}
+
+func (o IosXcTestResponseOutput) ToIosXcTestResponseOutput() IosXcTestResponseOutput {
+	return o
+}
+
+func (o IosXcTestResponseOutput) ToIosXcTestResponseOutputWithContext(ctx context.Context) IosXcTestResponseOutput {
+	return o
+}
+
+func (o IosXcTestResponseOutput) ToIosXcTestResponsePtrOutput() IosXcTestResponsePtrOutput {
+	return o.ToIosXcTestResponsePtrOutputWithContext(context.Background())
+}
+
+func (o IosXcTestResponseOutput) ToIosXcTestResponsePtrOutputWithContext(ctx context.Context) IosXcTestResponsePtrOutput {
+	return o.ApplyT(func(v IosXcTestResponse) *IosXcTestResponse {
+		return &v
+	}).(IosXcTestResponsePtrOutput)
+}
+
+// Bundle ID of the app.
+func (o IosXcTestResponseOutput) BundleId() pulumi.StringOutput {
+	return o.ApplyT(func(v IosXcTestResponse) string { return v.BundleId }).(pulumi.StringOutput)
+}
+
+// Xcode version that the test was run with.
+func (o IosXcTestResponseOutput) XcodeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v IosXcTestResponse) string { return v.XcodeVersion }).(pulumi.StringOutput)
+}
+
+type IosXcTestResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IosXcTestResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IosXcTestResponse)(nil)).Elem()
+}
+
+func (o IosXcTestResponsePtrOutput) ToIosXcTestResponsePtrOutput() IosXcTestResponsePtrOutput {
+	return o
+}
+
+func (o IosXcTestResponsePtrOutput) ToIosXcTestResponsePtrOutputWithContext(ctx context.Context) IosXcTestResponsePtrOutput {
+	return o
+}
+
+func (o IosXcTestResponsePtrOutput) Elem() IosXcTestResponseOutput {
+	return o.ApplyT(func(v *IosXcTestResponse) IosXcTestResponse { return *v }).(IosXcTestResponseOutput)
+}
+
+// Bundle ID of the app.
+func (o IosXcTestResponsePtrOutput) BundleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IosXcTestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BundleId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Xcode version that the test was run with.
+func (o IosXcTestResponsePtrOutput) XcodeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IosXcTestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.XcodeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // One dimension of the matrix of different runs of a step.
 type MatrixDimensionDefinition struct {
 }
@@ -3715,6 +6395,97 @@ func (o MatrixDimensionDefinitionArrayOutput) Index(i pulumi.IntInput) MatrixDim
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MatrixDimensionDefinition {
 		return vs[0].([]MatrixDimensionDefinition)[vs[1].(int)]
 	}).(MatrixDimensionDefinitionOutput)
+}
+
+// One dimension of the matrix of different runs of a step.
+type MatrixDimensionDefinitionResponse struct {
+}
+
+// MatrixDimensionDefinitionResponseInput is an input type that accepts MatrixDimensionDefinitionResponseArgs and MatrixDimensionDefinitionResponseOutput values.
+// You can construct a concrete instance of `MatrixDimensionDefinitionResponseInput` via:
+//
+//          MatrixDimensionDefinitionResponseArgs{...}
+type MatrixDimensionDefinitionResponseInput interface {
+	pulumi.Input
+
+	ToMatrixDimensionDefinitionResponseOutput() MatrixDimensionDefinitionResponseOutput
+	ToMatrixDimensionDefinitionResponseOutputWithContext(context.Context) MatrixDimensionDefinitionResponseOutput
+}
+
+// One dimension of the matrix of different runs of a step.
+type MatrixDimensionDefinitionResponseArgs struct {
+}
+
+func (MatrixDimensionDefinitionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MatrixDimensionDefinitionResponse)(nil)).Elem()
+}
+
+func (i MatrixDimensionDefinitionResponseArgs) ToMatrixDimensionDefinitionResponseOutput() MatrixDimensionDefinitionResponseOutput {
+	return i.ToMatrixDimensionDefinitionResponseOutputWithContext(context.Background())
+}
+
+func (i MatrixDimensionDefinitionResponseArgs) ToMatrixDimensionDefinitionResponseOutputWithContext(ctx context.Context) MatrixDimensionDefinitionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MatrixDimensionDefinitionResponseOutput)
+}
+
+// MatrixDimensionDefinitionResponseArrayInput is an input type that accepts MatrixDimensionDefinitionResponseArray and MatrixDimensionDefinitionResponseArrayOutput values.
+// You can construct a concrete instance of `MatrixDimensionDefinitionResponseArrayInput` via:
+//
+//          MatrixDimensionDefinitionResponseArray{ MatrixDimensionDefinitionResponseArgs{...} }
+type MatrixDimensionDefinitionResponseArrayInput interface {
+	pulumi.Input
+
+	ToMatrixDimensionDefinitionResponseArrayOutput() MatrixDimensionDefinitionResponseArrayOutput
+	ToMatrixDimensionDefinitionResponseArrayOutputWithContext(context.Context) MatrixDimensionDefinitionResponseArrayOutput
+}
+
+type MatrixDimensionDefinitionResponseArray []MatrixDimensionDefinitionResponseInput
+
+func (MatrixDimensionDefinitionResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MatrixDimensionDefinitionResponse)(nil)).Elem()
+}
+
+func (i MatrixDimensionDefinitionResponseArray) ToMatrixDimensionDefinitionResponseArrayOutput() MatrixDimensionDefinitionResponseArrayOutput {
+	return i.ToMatrixDimensionDefinitionResponseArrayOutputWithContext(context.Background())
+}
+
+func (i MatrixDimensionDefinitionResponseArray) ToMatrixDimensionDefinitionResponseArrayOutputWithContext(ctx context.Context) MatrixDimensionDefinitionResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MatrixDimensionDefinitionResponseArrayOutput)
+}
+
+// One dimension of the matrix of different runs of a step.
+type MatrixDimensionDefinitionResponseOutput struct{ *pulumi.OutputState }
+
+func (MatrixDimensionDefinitionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MatrixDimensionDefinitionResponse)(nil)).Elem()
+}
+
+func (o MatrixDimensionDefinitionResponseOutput) ToMatrixDimensionDefinitionResponseOutput() MatrixDimensionDefinitionResponseOutput {
+	return o
+}
+
+func (o MatrixDimensionDefinitionResponseOutput) ToMatrixDimensionDefinitionResponseOutputWithContext(ctx context.Context) MatrixDimensionDefinitionResponseOutput {
+	return o
+}
+
+type MatrixDimensionDefinitionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MatrixDimensionDefinitionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MatrixDimensionDefinitionResponse)(nil)).Elem()
+}
+
+func (o MatrixDimensionDefinitionResponseArrayOutput) ToMatrixDimensionDefinitionResponseArrayOutput() MatrixDimensionDefinitionResponseArrayOutput {
+	return o
+}
+
+func (o MatrixDimensionDefinitionResponseArrayOutput) ToMatrixDimensionDefinitionResponseArrayOutputWithContext(ctx context.Context) MatrixDimensionDefinitionResponseArrayOutput {
+	return o
+}
+
+func (o MatrixDimensionDefinitionResponseArrayOutput) Index(i pulumi.IntInput) MatrixDimensionDefinitionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MatrixDimensionDefinitionResponse {
+		return vs[0].([]MatrixDimensionDefinitionResponse)[vs[1].(int)]
+	}).(MatrixDimensionDefinitionResponseOutput)
 }
 
 type MemoryInfo struct {
@@ -4039,6 +6810,178 @@ func (o MultiStepPtrOutput) PrimaryStepId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Details when multiple steps are run with the same configuration as a group.
+type MultiStepResponse struct {
+	// Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
+	MultistepNumber int `pulumi:"multistepNumber"`
+	// Present if it is a primary (original) step.
+	PrimaryStep PrimaryStepResponse `pulumi:"primaryStep"`
+	// Step Id of the primary (original) step, which might be this step.
+	PrimaryStepId string `pulumi:"primaryStepId"`
+}
+
+// MultiStepResponseInput is an input type that accepts MultiStepResponseArgs and MultiStepResponseOutput values.
+// You can construct a concrete instance of `MultiStepResponseInput` via:
+//
+//          MultiStepResponseArgs{...}
+type MultiStepResponseInput interface {
+	pulumi.Input
+
+	ToMultiStepResponseOutput() MultiStepResponseOutput
+	ToMultiStepResponseOutputWithContext(context.Context) MultiStepResponseOutput
+}
+
+// Details when multiple steps are run with the same configuration as a group.
+type MultiStepResponseArgs struct {
+	// Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
+	MultistepNumber pulumi.IntInput `pulumi:"multistepNumber"`
+	// Present if it is a primary (original) step.
+	PrimaryStep PrimaryStepResponseInput `pulumi:"primaryStep"`
+	// Step Id of the primary (original) step, which might be this step.
+	PrimaryStepId pulumi.StringInput `pulumi:"primaryStepId"`
+}
+
+func (MultiStepResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiStepResponse)(nil)).Elem()
+}
+
+func (i MultiStepResponseArgs) ToMultiStepResponseOutput() MultiStepResponseOutput {
+	return i.ToMultiStepResponseOutputWithContext(context.Background())
+}
+
+func (i MultiStepResponseArgs) ToMultiStepResponseOutputWithContext(ctx context.Context) MultiStepResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiStepResponseOutput)
+}
+
+func (i MultiStepResponseArgs) ToMultiStepResponsePtrOutput() MultiStepResponsePtrOutput {
+	return i.ToMultiStepResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MultiStepResponseArgs) ToMultiStepResponsePtrOutputWithContext(ctx context.Context) MultiStepResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiStepResponseOutput).ToMultiStepResponsePtrOutputWithContext(ctx)
+}
+
+// MultiStepResponsePtrInput is an input type that accepts MultiStepResponseArgs, MultiStepResponsePtr and MultiStepResponsePtrOutput values.
+// You can construct a concrete instance of `MultiStepResponsePtrInput` via:
+//
+//          MultiStepResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MultiStepResponsePtrInput interface {
+	pulumi.Input
+
+	ToMultiStepResponsePtrOutput() MultiStepResponsePtrOutput
+	ToMultiStepResponsePtrOutputWithContext(context.Context) MultiStepResponsePtrOutput
+}
+
+type multiStepResponsePtrType MultiStepResponseArgs
+
+func MultiStepResponsePtr(v *MultiStepResponseArgs) MultiStepResponsePtrInput {
+	return (*multiStepResponsePtrType)(v)
+}
+
+func (*multiStepResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiStepResponse)(nil)).Elem()
+}
+
+func (i *multiStepResponsePtrType) ToMultiStepResponsePtrOutput() MultiStepResponsePtrOutput {
+	return i.ToMultiStepResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *multiStepResponsePtrType) ToMultiStepResponsePtrOutputWithContext(ctx context.Context) MultiStepResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiStepResponsePtrOutput)
+}
+
+// Details when multiple steps are run with the same configuration as a group.
+type MultiStepResponseOutput struct{ *pulumi.OutputState }
+
+func (MultiStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiStepResponse)(nil)).Elem()
+}
+
+func (o MultiStepResponseOutput) ToMultiStepResponseOutput() MultiStepResponseOutput {
+	return o
+}
+
+func (o MultiStepResponseOutput) ToMultiStepResponseOutputWithContext(ctx context.Context) MultiStepResponseOutput {
+	return o
+}
+
+func (o MultiStepResponseOutput) ToMultiStepResponsePtrOutput() MultiStepResponsePtrOutput {
+	return o.ToMultiStepResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MultiStepResponseOutput) ToMultiStepResponsePtrOutputWithContext(ctx context.Context) MultiStepResponsePtrOutput {
+	return o.ApplyT(func(v MultiStepResponse) *MultiStepResponse {
+		return &v
+	}).(MultiStepResponsePtrOutput)
+}
+
+// Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
+func (o MultiStepResponseOutput) MultistepNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v MultiStepResponse) int { return v.MultistepNumber }).(pulumi.IntOutput)
+}
+
+// Present if it is a primary (original) step.
+func (o MultiStepResponseOutput) PrimaryStep() PrimaryStepResponseOutput {
+	return o.ApplyT(func(v MultiStepResponse) PrimaryStepResponse { return v.PrimaryStep }).(PrimaryStepResponseOutput)
+}
+
+// Step Id of the primary (original) step, which might be this step.
+func (o MultiStepResponseOutput) PrimaryStepId() pulumi.StringOutput {
+	return o.ApplyT(func(v MultiStepResponse) string { return v.PrimaryStepId }).(pulumi.StringOutput)
+}
+
+type MultiStepResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MultiStepResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiStepResponse)(nil)).Elem()
+}
+
+func (o MultiStepResponsePtrOutput) ToMultiStepResponsePtrOutput() MultiStepResponsePtrOutput {
+	return o
+}
+
+func (o MultiStepResponsePtrOutput) ToMultiStepResponsePtrOutputWithContext(ctx context.Context) MultiStepResponsePtrOutput {
+	return o
+}
+
+func (o MultiStepResponsePtrOutput) Elem() MultiStepResponseOutput {
+	return o.ApplyT(func(v *MultiStepResponse) MultiStepResponse { return *v }).(MultiStepResponseOutput)
+}
+
+// Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
+func (o MultiStepResponsePtrOutput) MultistepNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MultiStepResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MultistepNumber
+	}).(pulumi.IntPtrOutput)
+}
+
+// Present if it is a primary (original) step.
+func (o MultiStepResponsePtrOutput) PrimaryStep() PrimaryStepResponsePtrOutput {
+	return o.ApplyT(func(v *MultiStepResponse) *PrimaryStepResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.PrimaryStep
+	}).(PrimaryStepResponsePtrOutput)
+}
+
+// Step Id of the primary (original) step, which might be this step.
+func (o MultiStepResponsePtrOutput) PrimaryStepId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrimaryStepId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Interprets a result so that humans and machines can act on it.
 type Outcome struct {
 	// More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE. Optional
@@ -4246,6 +7189,216 @@ func (o OutcomePtrOutput) Summary() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Summary
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interprets a result so that humans and machines can act on it.
+type OutcomeResponse struct {
+	// More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE. Optional
+	FailureDetail FailureDetailResponse `pulumi:"failureDetail"`
+	// More information about an INCONCLUSIVE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE. Optional
+	InconclusiveDetail InconclusiveDetailResponse `pulumi:"inconclusiveDetail"`
+	// More information about a SKIPPED outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED. Optional
+	SkippedDetail SkippedDetailResponse `pulumi:"skippedDetail"`
+	// More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS. Optional
+	SuccessDetail SuccessDetailResponse `pulumi:"successDetail"`
+	// The simplest way to interpret a result. Required
+	Summary string `pulumi:"summary"`
+}
+
+// OutcomeResponseInput is an input type that accepts OutcomeResponseArgs and OutcomeResponseOutput values.
+// You can construct a concrete instance of `OutcomeResponseInput` via:
+//
+//          OutcomeResponseArgs{...}
+type OutcomeResponseInput interface {
+	pulumi.Input
+
+	ToOutcomeResponseOutput() OutcomeResponseOutput
+	ToOutcomeResponseOutputWithContext(context.Context) OutcomeResponseOutput
+}
+
+// Interprets a result so that humans and machines can act on it.
+type OutcomeResponseArgs struct {
+	// More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE. Optional
+	FailureDetail FailureDetailResponseInput `pulumi:"failureDetail"`
+	// More information about an INCONCLUSIVE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE. Optional
+	InconclusiveDetail InconclusiveDetailResponseInput `pulumi:"inconclusiveDetail"`
+	// More information about a SKIPPED outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED. Optional
+	SkippedDetail SkippedDetailResponseInput `pulumi:"skippedDetail"`
+	// More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS. Optional
+	SuccessDetail SuccessDetailResponseInput `pulumi:"successDetail"`
+	// The simplest way to interpret a result. Required
+	Summary pulumi.StringInput `pulumi:"summary"`
+}
+
+func (OutcomeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutcomeResponse)(nil)).Elem()
+}
+
+func (i OutcomeResponseArgs) ToOutcomeResponseOutput() OutcomeResponseOutput {
+	return i.ToOutcomeResponseOutputWithContext(context.Background())
+}
+
+func (i OutcomeResponseArgs) ToOutcomeResponseOutputWithContext(ctx context.Context) OutcomeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutcomeResponseOutput)
+}
+
+func (i OutcomeResponseArgs) ToOutcomeResponsePtrOutput() OutcomeResponsePtrOutput {
+	return i.ToOutcomeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i OutcomeResponseArgs) ToOutcomeResponsePtrOutputWithContext(ctx context.Context) OutcomeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutcomeResponseOutput).ToOutcomeResponsePtrOutputWithContext(ctx)
+}
+
+// OutcomeResponsePtrInput is an input type that accepts OutcomeResponseArgs, OutcomeResponsePtr and OutcomeResponsePtrOutput values.
+// You can construct a concrete instance of `OutcomeResponsePtrInput` via:
+//
+//          OutcomeResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type OutcomeResponsePtrInput interface {
+	pulumi.Input
+
+	ToOutcomeResponsePtrOutput() OutcomeResponsePtrOutput
+	ToOutcomeResponsePtrOutputWithContext(context.Context) OutcomeResponsePtrOutput
+}
+
+type outcomeResponsePtrType OutcomeResponseArgs
+
+func OutcomeResponsePtr(v *OutcomeResponseArgs) OutcomeResponsePtrInput {
+	return (*outcomeResponsePtrType)(v)
+}
+
+func (*outcomeResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OutcomeResponse)(nil)).Elem()
+}
+
+func (i *outcomeResponsePtrType) ToOutcomeResponsePtrOutput() OutcomeResponsePtrOutput {
+	return i.ToOutcomeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *outcomeResponsePtrType) ToOutcomeResponsePtrOutputWithContext(ctx context.Context) OutcomeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OutcomeResponsePtrOutput)
+}
+
+// Interprets a result so that humans and machines can act on it.
+type OutcomeResponseOutput struct{ *pulumi.OutputState }
+
+func (OutcomeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutcomeResponse)(nil)).Elem()
+}
+
+func (o OutcomeResponseOutput) ToOutcomeResponseOutput() OutcomeResponseOutput {
+	return o
+}
+
+func (o OutcomeResponseOutput) ToOutcomeResponseOutputWithContext(ctx context.Context) OutcomeResponseOutput {
+	return o
+}
+
+func (o OutcomeResponseOutput) ToOutcomeResponsePtrOutput() OutcomeResponsePtrOutput {
+	return o.ToOutcomeResponsePtrOutputWithContext(context.Background())
+}
+
+func (o OutcomeResponseOutput) ToOutcomeResponsePtrOutputWithContext(ctx context.Context) OutcomeResponsePtrOutput {
+	return o.ApplyT(func(v OutcomeResponse) *OutcomeResponse {
+		return &v
+	}).(OutcomeResponsePtrOutput)
+}
+
+// More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE. Optional
+func (o OutcomeResponseOutput) FailureDetail() FailureDetailResponseOutput {
+	return o.ApplyT(func(v OutcomeResponse) FailureDetailResponse { return v.FailureDetail }).(FailureDetailResponseOutput)
+}
+
+// More information about an INCONCLUSIVE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE. Optional
+func (o OutcomeResponseOutput) InconclusiveDetail() InconclusiveDetailResponseOutput {
+	return o.ApplyT(func(v OutcomeResponse) InconclusiveDetailResponse { return v.InconclusiveDetail }).(InconclusiveDetailResponseOutput)
+}
+
+// More information about a SKIPPED outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED. Optional
+func (o OutcomeResponseOutput) SkippedDetail() SkippedDetailResponseOutput {
+	return o.ApplyT(func(v OutcomeResponse) SkippedDetailResponse { return v.SkippedDetail }).(SkippedDetailResponseOutput)
+}
+
+// More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS. Optional
+func (o OutcomeResponseOutput) SuccessDetail() SuccessDetailResponseOutput {
+	return o.ApplyT(func(v OutcomeResponse) SuccessDetailResponse { return v.SuccessDetail }).(SuccessDetailResponseOutput)
+}
+
+// The simplest way to interpret a result. Required
+func (o OutcomeResponseOutput) Summary() pulumi.StringOutput {
+	return o.ApplyT(func(v OutcomeResponse) string { return v.Summary }).(pulumi.StringOutput)
+}
+
+type OutcomeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OutcomeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OutcomeResponse)(nil)).Elem()
+}
+
+func (o OutcomeResponsePtrOutput) ToOutcomeResponsePtrOutput() OutcomeResponsePtrOutput {
+	return o
+}
+
+func (o OutcomeResponsePtrOutput) ToOutcomeResponsePtrOutputWithContext(ctx context.Context) OutcomeResponsePtrOutput {
+	return o
+}
+
+func (o OutcomeResponsePtrOutput) Elem() OutcomeResponseOutput {
+	return o.ApplyT(func(v *OutcomeResponse) OutcomeResponse { return *v }).(OutcomeResponseOutput)
+}
+
+// More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE. Optional
+func (o OutcomeResponsePtrOutput) FailureDetail() FailureDetailResponsePtrOutput {
+	return o.ApplyT(func(v *OutcomeResponse) *FailureDetailResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.FailureDetail
+	}).(FailureDetailResponsePtrOutput)
+}
+
+// More information about an INCONCLUSIVE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE. Optional
+func (o OutcomeResponsePtrOutput) InconclusiveDetail() InconclusiveDetailResponsePtrOutput {
+	return o.ApplyT(func(v *OutcomeResponse) *InconclusiveDetailResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.InconclusiveDetail
+	}).(InconclusiveDetailResponsePtrOutput)
+}
+
+// More information about a SKIPPED outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED. Optional
+func (o OutcomeResponsePtrOutput) SkippedDetail() SkippedDetailResponsePtrOutput {
+	return o.ApplyT(func(v *OutcomeResponse) *SkippedDetailResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.SkippedDetail
+	}).(SkippedDetailResponsePtrOutput)
+}
+
+// More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS. Optional
+func (o OutcomeResponsePtrOutput) SuccessDetail() SuccessDetailResponsePtrOutput {
+	return o.ApplyT(func(v *OutcomeResponse) *SuccessDetailResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.SuccessDetail
+	}).(SuccessDetailResponsePtrOutput)
+}
+
+// The simplest way to interpret a result. Required
+func (o OutcomeResponsePtrOutput) Summary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OutcomeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Summary
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4555,6 +7708,159 @@ func (o PrimaryStepPtrOutput) RollUp() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Stores rollup test status of multiple steps that were run as a group and outcome of each individual step.
+type PrimaryStepResponse struct {
+	// Step Id and outcome of each individual step.
+	IndividualOutcome []IndividualOutcomeResponse `pulumi:"individualOutcome"`
+	// Rollup test status of multiple steps that were run with the same configuration as a group.
+	RollUp string `pulumi:"rollUp"`
+}
+
+// PrimaryStepResponseInput is an input type that accepts PrimaryStepResponseArgs and PrimaryStepResponseOutput values.
+// You can construct a concrete instance of `PrimaryStepResponseInput` via:
+//
+//          PrimaryStepResponseArgs{...}
+type PrimaryStepResponseInput interface {
+	pulumi.Input
+
+	ToPrimaryStepResponseOutput() PrimaryStepResponseOutput
+	ToPrimaryStepResponseOutputWithContext(context.Context) PrimaryStepResponseOutput
+}
+
+// Stores rollup test status of multiple steps that were run as a group and outcome of each individual step.
+type PrimaryStepResponseArgs struct {
+	// Step Id and outcome of each individual step.
+	IndividualOutcome IndividualOutcomeResponseArrayInput `pulumi:"individualOutcome"`
+	// Rollup test status of multiple steps that were run with the same configuration as a group.
+	RollUp pulumi.StringInput `pulumi:"rollUp"`
+}
+
+func (PrimaryStepResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrimaryStepResponse)(nil)).Elem()
+}
+
+func (i PrimaryStepResponseArgs) ToPrimaryStepResponseOutput() PrimaryStepResponseOutput {
+	return i.ToPrimaryStepResponseOutputWithContext(context.Background())
+}
+
+func (i PrimaryStepResponseArgs) ToPrimaryStepResponseOutputWithContext(ctx context.Context) PrimaryStepResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrimaryStepResponseOutput)
+}
+
+func (i PrimaryStepResponseArgs) ToPrimaryStepResponsePtrOutput() PrimaryStepResponsePtrOutput {
+	return i.ToPrimaryStepResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PrimaryStepResponseArgs) ToPrimaryStepResponsePtrOutputWithContext(ctx context.Context) PrimaryStepResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrimaryStepResponseOutput).ToPrimaryStepResponsePtrOutputWithContext(ctx)
+}
+
+// PrimaryStepResponsePtrInput is an input type that accepts PrimaryStepResponseArgs, PrimaryStepResponsePtr and PrimaryStepResponsePtrOutput values.
+// You can construct a concrete instance of `PrimaryStepResponsePtrInput` via:
+//
+//          PrimaryStepResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PrimaryStepResponsePtrInput interface {
+	pulumi.Input
+
+	ToPrimaryStepResponsePtrOutput() PrimaryStepResponsePtrOutput
+	ToPrimaryStepResponsePtrOutputWithContext(context.Context) PrimaryStepResponsePtrOutput
+}
+
+type primaryStepResponsePtrType PrimaryStepResponseArgs
+
+func PrimaryStepResponsePtr(v *PrimaryStepResponseArgs) PrimaryStepResponsePtrInput {
+	return (*primaryStepResponsePtrType)(v)
+}
+
+func (*primaryStepResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrimaryStepResponse)(nil)).Elem()
+}
+
+func (i *primaryStepResponsePtrType) ToPrimaryStepResponsePtrOutput() PrimaryStepResponsePtrOutput {
+	return i.ToPrimaryStepResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *primaryStepResponsePtrType) ToPrimaryStepResponsePtrOutputWithContext(ctx context.Context) PrimaryStepResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrimaryStepResponsePtrOutput)
+}
+
+// Stores rollup test status of multiple steps that were run as a group and outcome of each individual step.
+type PrimaryStepResponseOutput struct{ *pulumi.OutputState }
+
+func (PrimaryStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrimaryStepResponse)(nil)).Elem()
+}
+
+func (o PrimaryStepResponseOutput) ToPrimaryStepResponseOutput() PrimaryStepResponseOutput {
+	return o
+}
+
+func (o PrimaryStepResponseOutput) ToPrimaryStepResponseOutputWithContext(ctx context.Context) PrimaryStepResponseOutput {
+	return o
+}
+
+func (o PrimaryStepResponseOutput) ToPrimaryStepResponsePtrOutput() PrimaryStepResponsePtrOutput {
+	return o.ToPrimaryStepResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PrimaryStepResponseOutput) ToPrimaryStepResponsePtrOutputWithContext(ctx context.Context) PrimaryStepResponsePtrOutput {
+	return o.ApplyT(func(v PrimaryStepResponse) *PrimaryStepResponse {
+		return &v
+	}).(PrimaryStepResponsePtrOutput)
+}
+
+// Step Id and outcome of each individual step.
+func (o PrimaryStepResponseOutput) IndividualOutcome() IndividualOutcomeResponseArrayOutput {
+	return o.ApplyT(func(v PrimaryStepResponse) []IndividualOutcomeResponse { return v.IndividualOutcome }).(IndividualOutcomeResponseArrayOutput)
+}
+
+// Rollup test status of multiple steps that were run with the same configuration as a group.
+func (o PrimaryStepResponseOutput) RollUp() pulumi.StringOutput {
+	return o.ApplyT(func(v PrimaryStepResponse) string { return v.RollUp }).(pulumi.StringOutput)
+}
+
+type PrimaryStepResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrimaryStepResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrimaryStepResponse)(nil)).Elem()
+}
+
+func (o PrimaryStepResponsePtrOutput) ToPrimaryStepResponsePtrOutput() PrimaryStepResponsePtrOutput {
+	return o
+}
+
+func (o PrimaryStepResponsePtrOutput) ToPrimaryStepResponsePtrOutputWithContext(ctx context.Context) PrimaryStepResponsePtrOutput {
+	return o
+}
+
+func (o PrimaryStepResponsePtrOutput) Elem() PrimaryStepResponseOutput {
+	return o.ApplyT(func(v *PrimaryStepResponse) PrimaryStepResponse { return *v }).(PrimaryStepResponseOutput)
+}
+
+// Step Id and outcome of each individual step.
+func (o PrimaryStepResponsePtrOutput) IndividualOutcome() IndividualOutcomeResponseArrayOutput {
+	return o.ApplyT(func(v *PrimaryStepResponse) []IndividualOutcomeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IndividualOutcome
+	}).(IndividualOutcomeResponseArrayOutput)
+}
+
+// Rollup test status of multiple steps that were run with the same configuration as a group.
+func (o PrimaryStepResponsePtrOutput) RollUp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrimaryStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RollUp
+	}).(pulumi.StringPtrOutput)
+}
+
 // Details for an outcome with a SKIPPED outcome summary.
 type SkippedDetail struct {
 	// If the App doesn't support the specific API level.
@@ -4727,6 +8033,178 @@ func (o SkippedDetailPtrOutput) IncompatibleDevice() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Details for an outcome with a SKIPPED outcome summary.
+type SkippedDetailResponse struct {
+	// If the App doesn't support the specific API level.
+	IncompatibleAppVersion bool `pulumi:"incompatibleAppVersion"`
+	// If the App doesn't run on the specific architecture, for example, x86.
+	IncompatibleArchitecture bool `pulumi:"incompatibleArchitecture"`
+	// If the requested OS version doesn't run on the specific device model.
+	IncompatibleDevice bool `pulumi:"incompatibleDevice"`
+}
+
+// SkippedDetailResponseInput is an input type that accepts SkippedDetailResponseArgs and SkippedDetailResponseOutput values.
+// You can construct a concrete instance of `SkippedDetailResponseInput` via:
+//
+//          SkippedDetailResponseArgs{...}
+type SkippedDetailResponseInput interface {
+	pulumi.Input
+
+	ToSkippedDetailResponseOutput() SkippedDetailResponseOutput
+	ToSkippedDetailResponseOutputWithContext(context.Context) SkippedDetailResponseOutput
+}
+
+// Details for an outcome with a SKIPPED outcome summary.
+type SkippedDetailResponseArgs struct {
+	// If the App doesn't support the specific API level.
+	IncompatibleAppVersion pulumi.BoolInput `pulumi:"incompatibleAppVersion"`
+	// If the App doesn't run on the specific architecture, for example, x86.
+	IncompatibleArchitecture pulumi.BoolInput `pulumi:"incompatibleArchitecture"`
+	// If the requested OS version doesn't run on the specific device model.
+	IncompatibleDevice pulumi.BoolInput `pulumi:"incompatibleDevice"`
+}
+
+func (SkippedDetailResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkippedDetailResponse)(nil)).Elem()
+}
+
+func (i SkippedDetailResponseArgs) ToSkippedDetailResponseOutput() SkippedDetailResponseOutput {
+	return i.ToSkippedDetailResponseOutputWithContext(context.Background())
+}
+
+func (i SkippedDetailResponseArgs) ToSkippedDetailResponseOutputWithContext(ctx context.Context) SkippedDetailResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkippedDetailResponseOutput)
+}
+
+func (i SkippedDetailResponseArgs) ToSkippedDetailResponsePtrOutput() SkippedDetailResponsePtrOutput {
+	return i.ToSkippedDetailResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SkippedDetailResponseArgs) ToSkippedDetailResponsePtrOutputWithContext(ctx context.Context) SkippedDetailResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkippedDetailResponseOutput).ToSkippedDetailResponsePtrOutputWithContext(ctx)
+}
+
+// SkippedDetailResponsePtrInput is an input type that accepts SkippedDetailResponseArgs, SkippedDetailResponsePtr and SkippedDetailResponsePtrOutput values.
+// You can construct a concrete instance of `SkippedDetailResponsePtrInput` via:
+//
+//          SkippedDetailResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SkippedDetailResponsePtrInput interface {
+	pulumi.Input
+
+	ToSkippedDetailResponsePtrOutput() SkippedDetailResponsePtrOutput
+	ToSkippedDetailResponsePtrOutputWithContext(context.Context) SkippedDetailResponsePtrOutput
+}
+
+type skippedDetailResponsePtrType SkippedDetailResponseArgs
+
+func SkippedDetailResponsePtr(v *SkippedDetailResponseArgs) SkippedDetailResponsePtrInput {
+	return (*skippedDetailResponsePtrType)(v)
+}
+
+func (*skippedDetailResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkippedDetailResponse)(nil)).Elem()
+}
+
+func (i *skippedDetailResponsePtrType) ToSkippedDetailResponsePtrOutput() SkippedDetailResponsePtrOutput {
+	return i.ToSkippedDetailResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *skippedDetailResponsePtrType) ToSkippedDetailResponsePtrOutputWithContext(ctx context.Context) SkippedDetailResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkippedDetailResponsePtrOutput)
+}
+
+// Details for an outcome with a SKIPPED outcome summary.
+type SkippedDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (SkippedDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkippedDetailResponse)(nil)).Elem()
+}
+
+func (o SkippedDetailResponseOutput) ToSkippedDetailResponseOutput() SkippedDetailResponseOutput {
+	return o
+}
+
+func (o SkippedDetailResponseOutput) ToSkippedDetailResponseOutputWithContext(ctx context.Context) SkippedDetailResponseOutput {
+	return o
+}
+
+func (o SkippedDetailResponseOutput) ToSkippedDetailResponsePtrOutput() SkippedDetailResponsePtrOutput {
+	return o.ToSkippedDetailResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SkippedDetailResponseOutput) ToSkippedDetailResponsePtrOutputWithContext(ctx context.Context) SkippedDetailResponsePtrOutput {
+	return o.ApplyT(func(v SkippedDetailResponse) *SkippedDetailResponse {
+		return &v
+	}).(SkippedDetailResponsePtrOutput)
+}
+
+// If the App doesn't support the specific API level.
+func (o SkippedDetailResponseOutput) IncompatibleAppVersion() pulumi.BoolOutput {
+	return o.ApplyT(func(v SkippedDetailResponse) bool { return v.IncompatibleAppVersion }).(pulumi.BoolOutput)
+}
+
+// If the App doesn't run on the specific architecture, for example, x86.
+func (o SkippedDetailResponseOutput) IncompatibleArchitecture() pulumi.BoolOutput {
+	return o.ApplyT(func(v SkippedDetailResponse) bool { return v.IncompatibleArchitecture }).(pulumi.BoolOutput)
+}
+
+// If the requested OS version doesn't run on the specific device model.
+func (o SkippedDetailResponseOutput) IncompatibleDevice() pulumi.BoolOutput {
+	return o.ApplyT(func(v SkippedDetailResponse) bool { return v.IncompatibleDevice }).(pulumi.BoolOutput)
+}
+
+type SkippedDetailResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SkippedDetailResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkippedDetailResponse)(nil)).Elem()
+}
+
+func (o SkippedDetailResponsePtrOutput) ToSkippedDetailResponsePtrOutput() SkippedDetailResponsePtrOutput {
+	return o
+}
+
+func (o SkippedDetailResponsePtrOutput) ToSkippedDetailResponsePtrOutputWithContext(ctx context.Context) SkippedDetailResponsePtrOutput {
+	return o
+}
+
+func (o SkippedDetailResponsePtrOutput) Elem() SkippedDetailResponseOutput {
+	return o.ApplyT(func(v *SkippedDetailResponse) SkippedDetailResponse { return *v }).(SkippedDetailResponseOutput)
+}
+
+// If the App doesn't support the specific API level.
+func (o SkippedDetailResponsePtrOutput) IncompatibleAppVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SkippedDetailResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IncompatibleAppVersion
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the App doesn't run on the specific architecture, for example, x86.
+func (o SkippedDetailResponsePtrOutput) IncompatibleArchitecture() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SkippedDetailResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IncompatibleArchitecture
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the requested OS version doesn't run on the specific device model.
+func (o SkippedDetailResponsePtrOutput) IncompatibleDevice() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SkippedDetailResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IncompatibleDevice
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The details about how to run the execution.
 type Specification struct {
 	// An Android mobile test execution specification.
@@ -4880,6 +8358,159 @@ func (o SpecificationPtrOutput) IosTest() IosTestPtrOutput {
 	}).(IosTestPtrOutput)
 }
 
+// The details about how to run the execution.
+type SpecificationResponse struct {
+	// An Android mobile test execution specification.
+	AndroidTest AndroidTestResponse `pulumi:"androidTest"`
+	// An iOS mobile test execution specification.
+	IosTest IosTestResponse `pulumi:"iosTest"`
+}
+
+// SpecificationResponseInput is an input type that accepts SpecificationResponseArgs and SpecificationResponseOutput values.
+// You can construct a concrete instance of `SpecificationResponseInput` via:
+//
+//          SpecificationResponseArgs{...}
+type SpecificationResponseInput interface {
+	pulumi.Input
+
+	ToSpecificationResponseOutput() SpecificationResponseOutput
+	ToSpecificationResponseOutputWithContext(context.Context) SpecificationResponseOutput
+}
+
+// The details about how to run the execution.
+type SpecificationResponseArgs struct {
+	// An Android mobile test execution specification.
+	AndroidTest AndroidTestResponseInput `pulumi:"androidTest"`
+	// An iOS mobile test execution specification.
+	IosTest IosTestResponseInput `pulumi:"iosTest"`
+}
+
+func (SpecificationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpecificationResponse)(nil)).Elem()
+}
+
+func (i SpecificationResponseArgs) ToSpecificationResponseOutput() SpecificationResponseOutput {
+	return i.ToSpecificationResponseOutputWithContext(context.Background())
+}
+
+func (i SpecificationResponseArgs) ToSpecificationResponseOutputWithContext(ctx context.Context) SpecificationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpecificationResponseOutput)
+}
+
+func (i SpecificationResponseArgs) ToSpecificationResponsePtrOutput() SpecificationResponsePtrOutput {
+	return i.ToSpecificationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SpecificationResponseArgs) ToSpecificationResponsePtrOutputWithContext(ctx context.Context) SpecificationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpecificationResponseOutput).ToSpecificationResponsePtrOutputWithContext(ctx)
+}
+
+// SpecificationResponsePtrInput is an input type that accepts SpecificationResponseArgs, SpecificationResponsePtr and SpecificationResponsePtrOutput values.
+// You can construct a concrete instance of `SpecificationResponsePtrInput` via:
+//
+//          SpecificationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SpecificationResponsePtrInput interface {
+	pulumi.Input
+
+	ToSpecificationResponsePtrOutput() SpecificationResponsePtrOutput
+	ToSpecificationResponsePtrOutputWithContext(context.Context) SpecificationResponsePtrOutput
+}
+
+type specificationResponsePtrType SpecificationResponseArgs
+
+func SpecificationResponsePtr(v *SpecificationResponseArgs) SpecificationResponsePtrInput {
+	return (*specificationResponsePtrType)(v)
+}
+
+func (*specificationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpecificationResponse)(nil)).Elem()
+}
+
+func (i *specificationResponsePtrType) ToSpecificationResponsePtrOutput() SpecificationResponsePtrOutput {
+	return i.ToSpecificationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *specificationResponsePtrType) ToSpecificationResponsePtrOutputWithContext(ctx context.Context) SpecificationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpecificationResponsePtrOutput)
+}
+
+// The details about how to run the execution.
+type SpecificationResponseOutput struct{ *pulumi.OutputState }
+
+func (SpecificationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpecificationResponse)(nil)).Elem()
+}
+
+func (o SpecificationResponseOutput) ToSpecificationResponseOutput() SpecificationResponseOutput {
+	return o
+}
+
+func (o SpecificationResponseOutput) ToSpecificationResponseOutputWithContext(ctx context.Context) SpecificationResponseOutput {
+	return o
+}
+
+func (o SpecificationResponseOutput) ToSpecificationResponsePtrOutput() SpecificationResponsePtrOutput {
+	return o.ToSpecificationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SpecificationResponseOutput) ToSpecificationResponsePtrOutputWithContext(ctx context.Context) SpecificationResponsePtrOutput {
+	return o.ApplyT(func(v SpecificationResponse) *SpecificationResponse {
+		return &v
+	}).(SpecificationResponsePtrOutput)
+}
+
+// An Android mobile test execution specification.
+func (o SpecificationResponseOutput) AndroidTest() AndroidTestResponseOutput {
+	return o.ApplyT(func(v SpecificationResponse) AndroidTestResponse { return v.AndroidTest }).(AndroidTestResponseOutput)
+}
+
+// An iOS mobile test execution specification.
+func (o SpecificationResponseOutput) IosTest() IosTestResponseOutput {
+	return o.ApplyT(func(v SpecificationResponse) IosTestResponse { return v.IosTest }).(IosTestResponseOutput)
+}
+
+type SpecificationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SpecificationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpecificationResponse)(nil)).Elem()
+}
+
+func (o SpecificationResponsePtrOutput) ToSpecificationResponsePtrOutput() SpecificationResponsePtrOutput {
+	return o
+}
+
+func (o SpecificationResponsePtrOutput) ToSpecificationResponsePtrOutputWithContext(ctx context.Context) SpecificationResponsePtrOutput {
+	return o
+}
+
+func (o SpecificationResponsePtrOutput) Elem() SpecificationResponseOutput {
+	return o.ApplyT(func(v *SpecificationResponse) SpecificationResponse { return *v }).(SpecificationResponseOutput)
+}
+
+// An Android mobile test execution specification.
+func (o SpecificationResponsePtrOutput) AndroidTest() AndroidTestResponsePtrOutput {
+	return o.ApplyT(func(v *SpecificationResponse) *AndroidTestResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AndroidTest
+	}).(AndroidTestResponsePtrOutput)
+}
+
+// An iOS mobile test execution specification.
+func (o SpecificationResponsePtrOutput) IosTest() IosTestResponsePtrOutput {
+	return o.ApplyT(func(v *SpecificationResponse) *IosTestResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.IosTest
+	}).(IosTestResponsePtrOutput)
+}
+
 // A stacktrace.
 type StackTrace struct {
 	// The stack trace message. Required
@@ -5014,6 +8645,61 @@ func (o StackTracePtrOutput) Exception() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A stacktrace.
+type StackTraceResponse struct {
+	// The stack trace message. Required
+	Exception string `pulumi:"exception"`
+}
+
+// StackTraceResponseInput is an input type that accepts StackTraceResponseArgs and StackTraceResponseOutput values.
+// You can construct a concrete instance of `StackTraceResponseInput` via:
+//
+//          StackTraceResponseArgs{...}
+type StackTraceResponseInput interface {
+	pulumi.Input
+
+	ToStackTraceResponseOutput() StackTraceResponseOutput
+	ToStackTraceResponseOutputWithContext(context.Context) StackTraceResponseOutput
+}
+
+// A stacktrace.
+type StackTraceResponseArgs struct {
+	// The stack trace message. Required
+	Exception pulumi.StringInput `pulumi:"exception"`
+}
+
+func (StackTraceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackTraceResponse)(nil)).Elem()
+}
+
+func (i StackTraceResponseArgs) ToStackTraceResponseOutput() StackTraceResponseOutput {
+	return i.ToStackTraceResponseOutputWithContext(context.Background())
+}
+
+func (i StackTraceResponseArgs) ToStackTraceResponseOutputWithContext(ctx context.Context) StackTraceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackTraceResponseOutput)
+}
+
+// A stacktrace.
+type StackTraceResponseOutput struct{ *pulumi.OutputState }
+
+func (StackTraceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackTraceResponse)(nil)).Elem()
+}
+
+func (o StackTraceResponseOutput) ToStackTraceResponseOutput() StackTraceResponseOutput {
+	return o
+}
+
+func (o StackTraceResponseOutput) ToStackTraceResponseOutputWithContext(ctx context.Context) StackTraceResponseOutput {
+	return o
+}
+
+// The stack trace message. Required
+func (o StackTraceResponseOutput) Exception() pulumi.StringOutput {
+	return o.ApplyT(func(v StackTraceResponse) string { return v.Exception }).(pulumi.StringOutput)
+}
+
 type StepDimensionValueEntry struct {
 	Key   *string `pulumi:"key"`
 	Value *string `pulumi:"value"`
@@ -5114,6 +8800,106 @@ func (o StepDimensionValueEntryArrayOutput) Index(i pulumi.IntInput) StepDimensi
 	}).(StepDimensionValueEntryOutput)
 }
 
+type StepDimensionValueEntryResponse struct {
+	Key   string `pulumi:"key"`
+	Value string `pulumi:"value"`
+}
+
+// StepDimensionValueEntryResponseInput is an input type that accepts StepDimensionValueEntryResponseArgs and StepDimensionValueEntryResponseOutput values.
+// You can construct a concrete instance of `StepDimensionValueEntryResponseInput` via:
+//
+//          StepDimensionValueEntryResponseArgs{...}
+type StepDimensionValueEntryResponseInput interface {
+	pulumi.Input
+
+	ToStepDimensionValueEntryResponseOutput() StepDimensionValueEntryResponseOutput
+	ToStepDimensionValueEntryResponseOutputWithContext(context.Context) StepDimensionValueEntryResponseOutput
+}
+
+type StepDimensionValueEntryResponseArgs struct {
+	Key   pulumi.StringInput `pulumi:"key"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (StepDimensionValueEntryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StepDimensionValueEntryResponse)(nil)).Elem()
+}
+
+func (i StepDimensionValueEntryResponseArgs) ToStepDimensionValueEntryResponseOutput() StepDimensionValueEntryResponseOutput {
+	return i.ToStepDimensionValueEntryResponseOutputWithContext(context.Background())
+}
+
+func (i StepDimensionValueEntryResponseArgs) ToStepDimensionValueEntryResponseOutputWithContext(ctx context.Context) StepDimensionValueEntryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StepDimensionValueEntryResponseOutput)
+}
+
+// StepDimensionValueEntryResponseArrayInput is an input type that accepts StepDimensionValueEntryResponseArray and StepDimensionValueEntryResponseArrayOutput values.
+// You can construct a concrete instance of `StepDimensionValueEntryResponseArrayInput` via:
+//
+//          StepDimensionValueEntryResponseArray{ StepDimensionValueEntryResponseArgs{...} }
+type StepDimensionValueEntryResponseArrayInput interface {
+	pulumi.Input
+
+	ToStepDimensionValueEntryResponseArrayOutput() StepDimensionValueEntryResponseArrayOutput
+	ToStepDimensionValueEntryResponseArrayOutputWithContext(context.Context) StepDimensionValueEntryResponseArrayOutput
+}
+
+type StepDimensionValueEntryResponseArray []StepDimensionValueEntryResponseInput
+
+func (StepDimensionValueEntryResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StepDimensionValueEntryResponse)(nil)).Elem()
+}
+
+func (i StepDimensionValueEntryResponseArray) ToStepDimensionValueEntryResponseArrayOutput() StepDimensionValueEntryResponseArrayOutput {
+	return i.ToStepDimensionValueEntryResponseArrayOutputWithContext(context.Background())
+}
+
+func (i StepDimensionValueEntryResponseArray) ToStepDimensionValueEntryResponseArrayOutputWithContext(ctx context.Context) StepDimensionValueEntryResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StepDimensionValueEntryResponseArrayOutput)
+}
+
+type StepDimensionValueEntryResponseOutput struct{ *pulumi.OutputState }
+
+func (StepDimensionValueEntryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StepDimensionValueEntryResponse)(nil)).Elem()
+}
+
+func (o StepDimensionValueEntryResponseOutput) ToStepDimensionValueEntryResponseOutput() StepDimensionValueEntryResponseOutput {
+	return o
+}
+
+func (o StepDimensionValueEntryResponseOutput) ToStepDimensionValueEntryResponseOutputWithContext(ctx context.Context) StepDimensionValueEntryResponseOutput {
+	return o
+}
+
+func (o StepDimensionValueEntryResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v StepDimensionValueEntryResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o StepDimensionValueEntryResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v StepDimensionValueEntryResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type StepDimensionValueEntryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StepDimensionValueEntryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StepDimensionValueEntryResponse)(nil)).Elem()
+}
+
+func (o StepDimensionValueEntryResponseArrayOutput) ToStepDimensionValueEntryResponseArrayOutput() StepDimensionValueEntryResponseArrayOutput {
+	return o
+}
+
+func (o StepDimensionValueEntryResponseArrayOutput) ToStepDimensionValueEntryResponseArrayOutputWithContext(ctx context.Context) StepDimensionValueEntryResponseArrayOutput {
+	return o
+}
+
+func (o StepDimensionValueEntryResponseArrayOutput) Index(i pulumi.IntInput) StepDimensionValueEntryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StepDimensionValueEntryResponse {
+		return vs[0].([]StepDimensionValueEntryResponse)[vs[1].(int)]
+	}).(StepDimensionValueEntryResponseOutput)
+}
+
 type StepLabelsEntry struct {
 	Key   *string `pulumi:"key"`
 	Value *string `pulumi:"value"`
@@ -5212,6 +8998,106 @@ func (o StepLabelsEntryArrayOutput) Index(i pulumi.IntInput) StepLabelsEntryOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StepLabelsEntry {
 		return vs[0].([]StepLabelsEntry)[vs[1].(int)]
 	}).(StepLabelsEntryOutput)
+}
+
+type StepLabelsEntryResponse struct {
+	Key   string `pulumi:"key"`
+	Value string `pulumi:"value"`
+}
+
+// StepLabelsEntryResponseInput is an input type that accepts StepLabelsEntryResponseArgs and StepLabelsEntryResponseOutput values.
+// You can construct a concrete instance of `StepLabelsEntryResponseInput` via:
+//
+//          StepLabelsEntryResponseArgs{...}
+type StepLabelsEntryResponseInput interface {
+	pulumi.Input
+
+	ToStepLabelsEntryResponseOutput() StepLabelsEntryResponseOutput
+	ToStepLabelsEntryResponseOutputWithContext(context.Context) StepLabelsEntryResponseOutput
+}
+
+type StepLabelsEntryResponseArgs struct {
+	Key   pulumi.StringInput `pulumi:"key"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (StepLabelsEntryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StepLabelsEntryResponse)(nil)).Elem()
+}
+
+func (i StepLabelsEntryResponseArgs) ToStepLabelsEntryResponseOutput() StepLabelsEntryResponseOutput {
+	return i.ToStepLabelsEntryResponseOutputWithContext(context.Background())
+}
+
+func (i StepLabelsEntryResponseArgs) ToStepLabelsEntryResponseOutputWithContext(ctx context.Context) StepLabelsEntryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StepLabelsEntryResponseOutput)
+}
+
+// StepLabelsEntryResponseArrayInput is an input type that accepts StepLabelsEntryResponseArray and StepLabelsEntryResponseArrayOutput values.
+// You can construct a concrete instance of `StepLabelsEntryResponseArrayInput` via:
+//
+//          StepLabelsEntryResponseArray{ StepLabelsEntryResponseArgs{...} }
+type StepLabelsEntryResponseArrayInput interface {
+	pulumi.Input
+
+	ToStepLabelsEntryResponseArrayOutput() StepLabelsEntryResponseArrayOutput
+	ToStepLabelsEntryResponseArrayOutputWithContext(context.Context) StepLabelsEntryResponseArrayOutput
+}
+
+type StepLabelsEntryResponseArray []StepLabelsEntryResponseInput
+
+func (StepLabelsEntryResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StepLabelsEntryResponse)(nil)).Elem()
+}
+
+func (i StepLabelsEntryResponseArray) ToStepLabelsEntryResponseArrayOutput() StepLabelsEntryResponseArrayOutput {
+	return i.ToStepLabelsEntryResponseArrayOutputWithContext(context.Background())
+}
+
+func (i StepLabelsEntryResponseArray) ToStepLabelsEntryResponseArrayOutputWithContext(ctx context.Context) StepLabelsEntryResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StepLabelsEntryResponseArrayOutput)
+}
+
+type StepLabelsEntryResponseOutput struct{ *pulumi.OutputState }
+
+func (StepLabelsEntryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StepLabelsEntryResponse)(nil)).Elem()
+}
+
+func (o StepLabelsEntryResponseOutput) ToStepLabelsEntryResponseOutput() StepLabelsEntryResponseOutput {
+	return o
+}
+
+func (o StepLabelsEntryResponseOutput) ToStepLabelsEntryResponseOutputWithContext(ctx context.Context) StepLabelsEntryResponseOutput {
+	return o
+}
+
+func (o StepLabelsEntryResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v StepLabelsEntryResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o StepLabelsEntryResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v StepLabelsEntryResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type StepLabelsEntryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StepLabelsEntryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StepLabelsEntryResponse)(nil)).Elem()
+}
+
+func (o StepLabelsEntryResponseArrayOutput) ToStepLabelsEntryResponseArrayOutput() StepLabelsEntryResponseArrayOutput {
+	return o
+}
+
+func (o StepLabelsEntryResponseArrayOutput) ToStepLabelsEntryResponseArrayOutputWithContext(ctx context.Context) StepLabelsEntryResponseArrayOutput {
+	return o
+}
+
+func (o StepLabelsEntryResponseArrayOutput) Index(i pulumi.IntInput) StepLabelsEntryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StepLabelsEntryResponse {
+		return vs[0].([]StepLabelsEntryResponse)[vs[1].(int)]
+	}).(StepLabelsEntryResponseOutput)
 }
 
 // Details for an outcome with a SUCCESS outcome summary. LINT.IfChange
@@ -5345,6 +9231,140 @@ func (o SuccessDetailPtrOutput) OtherNativeCrash() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.OtherNativeCrash
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Details for an outcome with a SUCCESS outcome summary. LINT.IfChange
+type SuccessDetailResponse struct {
+	// If a native process other than the app crashed.
+	OtherNativeCrash bool `pulumi:"otherNativeCrash"`
+}
+
+// SuccessDetailResponseInput is an input type that accepts SuccessDetailResponseArgs and SuccessDetailResponseOutput values.
+// You can construct a concrete instance of `SuccessDetailResponseInput` via:
+//
+//          SuccessDetailResponseArgs{...}
+type SuccessDetailResponseInput interface {
+	pulumi.Input
+
+	ToSuccessDetailResponseOutput() SuccessDetailResponseOutput
+	ToSuccessDetailResponseOutputWithContext(context.Context) SuccessDetailResponseOutput
+}
+
+// Details for an outcome with a SUCCESS outcome summary. LINT.IfChange
+type SuccessDetailResponseArgs struct {
+	// If a native process other than the app crashed.
+	OtherNativeCrash pulumi.BoolInput `pulumi:"otherNativeCrash"`
+}
+
+func (SuccessDetailResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuccessDetailResponse)(nil)).Elem()
+}
+
+func (i SuccessDetailResponseArgs) ToSuccessDetailResponseOutput() SuccessDetailResponseOutput {
+	return i.ToSuccessDetailResponseOutputWithContext(context.Background())
+}
+
+func (i SuccessDetailResponseArgs) ToSuccessDetailResponseOutputWithContext(ctx context.Context) SuccessDetailResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuccessDetailResponseOutput)
+}
+
+func (i SuccessDetailResponseArgs) ToSuccessDetailResponsePtrOutput() SuccessDetailResponsePtrOutput {
+	return i.ToSuccessDetailResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SuccessDetailResponseArgs) ToSuccessDetailResponsePtrOutputWithContext(ctx context.Context) SuccessDetailResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuccessDetailResponseOutput).ToSuccessDetailResponsePtrOutputWithContext(ctx)
+}
+
+// SuccessDetailResponsePtrInput is an input type that accepts SuccessDetailResponseArgs, SuccessDetailResponsePtr and SuccessDetailResponsePtrOutput values.
+// You can construct a concrete instance of `SuccessDetailResponsePtrInput` via:
+//
+//          SuccessDetailResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SuccessDetailResponsePtrInput interface {
+	pulumi.Input
+
+	ToSuccessDetailResponsePtrOutput() SuccessDetailResponsePtrOutput
+	ToSuccessDetailResponsePtrOutputWithContext(context.Context) SuccessDetailResponsePtrOutput
+}
+
+type successDetailResponsePtrType SuccessDetailResponseArgs
+
+func SuccessDetailResponsePtr(v *SuccessDetailResponseArgs) SuccessDetailResponsePtrInput {
+	return (*successDetailResponsePtrType)(v)
+}
+
+func (*successDetailResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SuccessDetailResponse)(nil)).Elem()
+}
+
+func (i *successDetailResponsePtrType) ToSuccessDetailResponsePtrOutput() SuccessDetailResponsePtrOutput {
+	return i.ToSuccessDetailResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *successDetailResponsePtrType) ToSuccessDetailResponsePtrOutputWithContext(ctx context.Context) SuccessDetailResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuccessDetailResponsePtrOutput)
+}
+
+// Details for an outcome with a SUCCESS outcome summary. LINT.IfChange
+type SuccessDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (SuccessDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuccessDetailResponse)(nil)).Elem()
+}
+
+func (o SuccessDetailResponseOutput) ToSuccessDetailResponseOutput() SuccessDetailResponseOutput {
+	return o
+}
+
+func (o SuccessDetailResponseOutput) ToSuccessDetailResponseOutputWithContext(ctx context.Context) SuccessDetailResponseOutput {
+	return o
+}
+
+func (o SuccessDetailResponseOutput) ToSuccessDetailResponsePtrOutput() SuccessDetailResponsePtrOutput {
+	return o.ToSuccessDetailResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SuccessDetailResponseOutput) ToSuccessDetailResponsePtrOutputWithContext(ctx context.Context) SuccessDetailResponsePtrOutput {
+	return o.ApplyT(func(v SuccessDetailResponse) *SuccessDetailResponse {
+		return &v
+	}).(SuccessDetailResponsePtrOutput)
+}
+
+// If a native process other than the app crashed.
+func (o SuccessDetailResponseOutput) OtherNativeCrash() pulumi.BoolOutput {
+	return o.ApplyT(func(v SuccessDetailResponse) bool { return v.OtherNativeCrash }).(pulumi.BoolOutput)
+}
+
+type SuccessDetailResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SuccessDetailResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SuccessDetailResponse)(nil)).Elem()
+}
+
+func (o SuccessDetailResponsePtrOutput) ToSuccessDetailResponsePtrOutput() SuccessDetailResponsePtrOutput {
+	return o
+}
+
+func (o SuccessDetailResponsePtrOutput) ToSuccessDetailResponsePtrOutputWithContext(ctx context.Context) SuccessDetailResponsePtrOutput {
+	return o
+}
+
+func (o SuccessDetailResponsePtrOutput) Elem() SuccessDetailResponseOutput {
+	return o.ApplyT(func(v *SuccessDetailResponse) SuccessDetailResponse { return *v }).(SuccessDetailResponseOutput)
+}
+
+// If a native process other than the app crashed.
+func (o SuccessDetailResponsePtrOutput) OtherNativeCrash() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SuccessDetailResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.OtherNativeCrash
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -5518,6 +9538,79 @@ func (o TestCaseReferencePtrOutput) TestSuiteName() pulumi.StringPtrOutput {
 		}
 		return v.TestSuiteName
 	}).(pulumi.StringPtrOutput)
+}
+
+// A reference to a test case. Test case references are canonically ordered lexicographically by these three factors: * First, by test_suite_name. * Second, by class_name. * Third, by name.
+type TestCaseReferenceResponse struct {
+	// The name of the class.
+	ClassName string `pulumi:"className"`
+	// The name of the test case. Required.
+	Name string `pulumi:"name"`
+	// The name of the test suite to which this test case belongs.
+	TestSuiteName string `pulumi:"testSuiteName"`
+}
+
+// TestCaseReferenceResponseInput is an input type that accepts TestCaseReferenceResponseArgs and TestCaseReferenceResponseOutput values.
+// You can construct a concrete instance of `TestCaseReferenceResponseInput` via:
+//
+//          TestCaseReferenceResponseArgs{...}
+type TestCaseReferenceResponseInput interface {
+	pulumi.Input
+
+	ToTestCaseReferenceResponseOutput() TestCaseReferenceResponseOutput
+	ToTestCaseReferenceResponseOutputWithContext(context.Context) TestCaseReferenceResponseOutput
+}
+
+// A reference to a test case. Test case references are canonically ordered lexicographically by these three factors: * First, by test_suite_name. * Second, by class_name. * Third, by name.
+type TestCaseReferenceResponseArgs struct {
+	// The name of the class.
+	ClassName pulumi.StringInput `pulumi:"className"`
+	// The name of the test case. Required.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the test suite to which this test case belongs.
+	TestSuiteName pulumi.StringInput `pulumi:"testSuiteName"`
+}
+
+func (TestCaseReferenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TestCaseReferenceResponse)(nil)).Elem()
+}
+
+func (i TestCaseReferenceResponseArgs) ToTestCaseReferenceResponseOutput() TestCaseReferenceResponseOutput {
+	return i.ToTestCaseReferenceResponseOutputWithContext(context.Background())
+}
+
+func (i TestCaseReferenceResponseArgs) ToTestCaseReferenceResponseOutputWithContext(ctx context.Context) TestCaseReferenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TestCaseReferenceResponseOutput)
+}
+
+// A reference to a test case. Test case references are canonically ordered lexicographically by these three factors: * First, by test_suite_name. * Second, by class_name. * Third, by name.
+type TestCaseReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (TestCaseReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TestCaseReferenceResponse)(nil)).Elem()
+}
+
+func (o TestCaseReferenceResponseOutput) ToTestCaseReferenceResponseOutput() TestCaseReferenceResponseOutput {
+	return o
+}
+
+func (o TestCaseReferenceResponseOutput) ToTestCaseReferenceResponseOutputWithContext(ctx context.Context) TestCaseReferenceResponseOutput {
+	return o
+}
+
+// The name of the class.
+func (o TestCaseReferenceResponseOutput) ClassName() pulumi.StringOutput {
+	return o.ApplyT(func(v TestCaseReferenceResponse) string { return v.ClassName }).(pulumi.StringOutput)
+}
+
+// The name of the test case. Required.
+func (o TestCaseReferenceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TestCaseReferenceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the test suite to which this test case belongs.
+func (o TestCaseReferenceResponseOutput) TestSuiteName() pulumi.StringOutput {
+	return o.ApplyT(func(v TestCaseReferenceResponse) string { return v.TestSuiteName }).(pulumi.StringOutput)
 }
 
 // A step that represents running tests. It accepts ant-junit xml files which will be parsed into structured test results by the service. Xml file paths are updated in order to append more files, however they can't be deleted. Users can also add test results manually by using the test_result field.
@@ -5711,6 +9804,197 @@ func (o TestExecutionStepPtrOutput) ToolExecution() ToolExecutionPtrOutput {
 	}).(ToolExecutionPtrOutput)
 }
 
+// A step that represents running tests. It accepts ant-junit xml files which will be parsed into structured test results by the service. Xml file paths are updated in order to append more files, however they can't be deleted. Users can also add test results manually by using the test_result field.
+type TestExecutionStepResponse struct {
+	// Issues observed during the test execution. For example, if the mobile app under test crashed during the test, the error message and the stack trace content can be recorded here to assist debugging. - In response: present if set by create or update - In create/update request: optional
+	TestIssues []TestIssueResponse `pulumi:"testIssues"`
+	// List of test suite overview contents. This could be parsed from xUnit XML log by server, or uploaded directly by user. This references should only be called when test suites are fully parsed or uploaded. The maximum allowed number of test suite overviews per step is 1000. - In response: always set - In create request: optional - In update request: never (use publishXunitXmlFiles custom method instead)
+	TestSuiteOverviews []TestSuiteOverviewResponse `pulumi:"testSuiteOverviews"`
+	// The timing break down of the test execution. - In response: present if set by create or update - In create/update request: optional
+	TestTiming TestTimingResponse `pulumi:"testTiming"`
+	// Represents the execution of the test runner. The exit code of this tool will be used to determine if the test passed. - In response: always set - In create/update request: optional
+	ToolExecution ToolExecutionResponse `pulumi:"toolExecution"`
+}
+
+// TestExecutionStepResponseInput is an input type that accepts TestExecutionStepResponseArgs and TestExecutionStepResponseOutput values.
+// You can construct a concrete instance of `TestExecutionStepResponseInput` via:
+//
+//          TestExecutionStepResponseArgs{...}
+type TestExecutionStepResponseInput interface {
+	pulumi.Input
+
+	ToTestExecutionStepResponseOutput() TestExecutionStepResponseOutput
+	ToTestExecutionStepResponseOutputWithContext(context.Context) TestExecutionStepResponseOutput
+}
+
+// A step that represents running tests. It accepts ant-junit xml files which will be parsed into structured test results by the service. Xml file paths are updated in order to append more files, however they can't be deleted. Users can also add test results manually by using the test_result field.
+type TestExecutionStepResponseArgs struct {
+	// Issues observed during the test execution. For example, if the mobile app under test crashed during the test, the error message and the stack trace content can be recorded here to assist debugging. - In response: present if set by create or update - In create/update request: optional
+	TestIssues TestIssueResponseArrayInput `pulumi:"testIssues"`
+	// List of test suite overview contents. This could be parsed from xUnit XML log by server, or uploaded directly by user. This references should only be called when test suites are fully parsed or uploaded. The maximum allowed number of test suite overviews per step is 1000. - In response: always set - In create request: optional - In update request: never (use publishXunitXmlFiles custom method instead)
+	TestSuiteOverviews TestSuiteOverviewResponseArrayInput `pulumi:"testSuiteOverviews"`
+	// The timing break down of the test execution. - In response: present if set by create or update - In create/update request: optional
+	TestTiming TestTimingResponseInput `pulumi:"testTiming"`
+	// Represents the execution of the test runner. The exit code of this tool will be used to determine if the test passed. - In response: always set - In create/update request: optional
+	ToolExecution ToolExecutionResponseInput `pulumi:"toolExecution"`
+}
+
+func (TestExecutionStepResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TestExecutionStepResponse)(nil)).Elem()
+}
+
+func (i TestExecutionStepResponseArgs) ToTestExecutionStepResponseOutput() TestExecutionStepResponseOutput {
+	return i.ToTestExecutionStepResponseOutputWithContext(context.Background())
+}
+
+func (i TestExecutionStepResponseArgs) ToTestExecutionStepResponseOutputWithContext(ctx context.Context) TestExecutionStepResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TestExecutionStepResponseOutput)
+}
+
+func (i TestExecutionStepResponseArgs) ToTestExecutionStepResponsePtrOutput() TestExecutionStepResponsePtrOutput {
+	return i.ToTestExecutionStepResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TestExecutionStepResponseArgs) ToTestExecutionStepResponsePtrOutputWithContext(ctx context.Context) TestExecutionStepResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TestExecutionStepResponseOutput).ToTestExecutionStepResponsePtrOutputWithContext(ctx)
+}
+
+// TestExecutionStepResponsePtrInput is an input type that accepts TestExecutionStepResponseArgs, TestExecutionStepResponsePtr and TestExecutionStepResponsePtrOutput values.
+// You can construct a concrete instance of `TestExecutionStepResponsePtrInput` via:
+//
+//          TestExecutionStepResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TestExecutionStepResponsePtrInput interface {
+	pulumi.Input
+
+	ToTestExecutionStepResponsePtrOutput() TestExecutionStepResponsePtrOutput
+	ToTestExecutionStepResponsePtrOutputWithContext(context.Context) TestExecutionStepResponsePtrOutput
+}
+
+type testExecutionStepResponsePtrType TestExecutionStepResponseArgs
+
+func TestExecutionStepResponsePtr(v *TestExecutionStepResponseArgs) TestExecutionStepResponsePtrInput {
+	return (*testExecutionStepResponsePtrType)(v)
+}
+
+func (*testExecutionStepResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TestExecutionStepResponse)(nil)).Elem()
+}
+
+func (i *testExecutionStepResponsePtrType) ToTestExecutionStepResponsePtrOutput() TestExecutionStepResponsePtrOutput {
+	return i.ToTestExecutionStepResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *testExecutionStepResponsePtrType) ToTestExecutionStepResponsePtrOutputWithContext(ctx context.Context) TestExecutionStepResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TestExecutionStepResponsePtrOutput)
+}
+
+// A step that represents running tests. It accepts ant-junit xml files which will be parsed into structured test results by the service. Xml file paths are updated in order to append more files, however they can't be deleted. Users can also add test results manually by using the test_result field.
+type TestExecutionStepResponseOutput struct{ *pulumi.OutputState }
+
+func (TestExecutionStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TestExecutionStepResponse)(nil)).Elem()
+}
+
+func (o TestExecutionStepResponseOutput) ToTestExecutionStepResponseOutput() TestExecutionStepResponseOutput {
+	return o
+}
+
+func (o TestExecutionStepResponseOutput) ToTestExecutionStepResponseOutputWithContext(ctx context.Context) TestExecutionStepResponseOutput {
+	return o
+}
+
+func (o TestExecutionStepResponseOutput) ToTestExecutionStepResponsePtrOutput() TestExecutionStepResponsePtrOutput {
+	return o.ToTestExecutionStepResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TestExecutionStepResponseOutput) ToTestExecutionStepResponsePtrOutputWithContext(ctx context.Context) TestExecutionStepResponsePtrOutput {
+	return o.ApplyT(func(v TestExecutionStepResponse) *TestExecutionStepResponse {
+		return &v
+	}).(TestExecutionStepResponsePtrOutput)
+}
+
+// Issues observed during the test execution. For example, if the mobile app under test crashed during the test, the error message and the stack trace content can be recorded here to assist debugging. - In response: present if set by create or update - In create/update request: optional
+func (o TestExecutionStepResponseOutput) TestIssues() TestIssueResponseArrayOutput {
+	return o.ApplyT(func(v TestExecutionStepResponse) []TestIssueResponse { return v.TestIssues }).(TestIssueResponseArrayOutput)
+}
+
+// List of test suite overview contents. This could be parsed from xUnit XML log by server, or uploaded directly by user. This references should only be called when test suites are fully parsed or uploaded. The maximum allowed number of test suite overviews per step is 1000. - In response: always set - In create request: optional - In update request: never (use publishXunitXmlFiles custom method instead)
+func (o TestExecutionStepResponseOutput) TestSuiteOverviews() TestSuiteOverviewResponseArrayOutput {
+	return o.ApplyT(func(v TestExecutionStepResponse) []TestSuiteOverviewResponse { return v.TestSuiteOverviews }).(TestSuiteOverviewResponseArrayOutput)
+}
+
+// The timing break down of the test execution. - In response: present if set by create or update - In create/update request: optional
+func (o TestExecutionStepResponseOutput) TestTiming() TestTimingResponseOutput {
+	return o.ApplyT(func(v TestExecutionStepResponse) TestTimingResponse { return v.TestTiming }).(TestTimingResponseOutput)
+}
+
+// Represents the execution of the test runner. The exit code of this tool will be used to determine if the test passed. - In response: always set - In create/update request: optional
+func (o TestExecutionStepResponseOutput) ToolExecution() ToolExecutionResponseOutput {
+	return o.ApplyT(func(v TestExecutionStepResponse) ToolExecutionResponse { return v.ToolExecution }).(ToolExecutionResponseOutput)
+}
+
+type TestExecutionStepResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TestExecutionStepResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TestExecutionStepResponse)(nil)).Elem()
+}
+
+func (o TestExecutionStepResponsePtrOutput) ToTestExecutionStepResponsePtrOutput() TestExecutionStepResponsePtrOutput {
+	return o
+}
+
+func (o TestExecutionStepResponsePtrOutput) ToTestExecutionStepResponsePtrOutputWithContext(ctx context.Context) TestExecutionStepResponsePtrOutput {
+	return o
+}
+
+func (o TestExecutionStepResponsePtrOutput) Elem() TestExecutionStepResponseOutput {
+	return o.ApplyT(func(v *TestExecutionStepResponse) TestExecutionStepResponse { return *v }).(TestExecutionStepResponseOutput)
+}
+
+// Issues observed during the test execution. For example, if the mobile app under test crashed during the test, the error message and the stack trace content can be recorded here to assist debugging. - In response: present if set by create or update - In create/update request: optional
+func (o TestExecutionStepResponsePtrOutput) TestIssues() TestIssueResponseArrayOutput {
+	return o.ApplyT(func(v *TestExecutionStepResponse) []TestIssueResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TestIssues
+	}).(TestIssueResponseArrayOutput)
+}
+
+// List of test suite overview contents. This could be parsed from xUnit XML log by server, or uploaded directly by user. This references should only be called when test suites are fully parsed or uploaded. The maximum allowed number of test suite overviews per step is 1000. - In response: always set - In create request: optional - In update request: never (use publishXunitXmlFiles custom method instead)
+func (o TestExecutionStepResponsePtrOutput) TestSuiteOverviews() TestSuiteOverviewResponseArrayOutput {
+	return o.ApplyT(func(v *TestExecutionStepResponse) []TestSuiteOverviewResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TestSuiteOverviews
+	}).(TestSuiteOverviewResponseArrayOutput)
+}
+
+// The timing break down of the test execution. - In response: present if set by create or update - In create/update request: optional
+func (o TestExecutionStepResponsePtrOutput) TestTiming() TestTimingResponsePtrOutput {
+	return o.ApplyT(func(v *TestExecutionStepResponse) *TestTimingResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.TestTiming
+	}).(TestTimingResponsePtrOutput)
+}
+
+// Represents the execution of the test runner. The exit code of this tool will be used to determine if the test passed. - In response: always set - In create/update request: optional
+func (o TestExecutionStepResponsePtrOutput) ToolExecution() ToolExecutionResponsePtrOutput {
+	return o.ApplyT(func(v *TestExecutionStepResponse) *ToolExecutionResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ToolExecution
+	}).(ToolExecutionResponsePtrOutput)
+}
+
 // An issue detected occurring during a test execution.
 type TestIssue struct {
 	// Category of issue. Required.
@@ -5854,6 +10138,151 @@ func (o TestIssueArrayOutput) Index(i pulumi.IntInput) TestIssueOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TestIssue {
 		return vs[0].([]TestIssue)[vs[1].(int)]
 	}).(TestIssueOutput)
+}
+
+// An issue detected occurring during a test execution.
+type TestIssueResponse struct {
+	// Category of issue. Required.
+	Category string `pulumi:"category"`
+	// A brief human-readable message describing the issue. Required.
+	ErrorMessage string `pulumi:"errorMessage"`
+	// Severity of issue. Required.
+	Severity string `pulumi:"severity"`
+	// Deprecated in favor of stack trace fields inside specific warnings.
+	StackTrace StackTraceResponse `pulumi:"stackTrace"`
+	// Type of issue. Required.
+	Type string `pulumi:"type"`
+	// Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
+	Warning AnyResponse `pulumi:"warning"`
+}
+
+// TestIssueResponseInput is an input type that accepts TestIssueResponseArgs and TestIssueResponseOutput values.
+// You can construct a concrete instance of `TestIssueResponseInput` via:
+//
+//          TestIssueResponseArgs{...}
+type TestIssueResponseInput interface {
+	pulumi.Input
+
+	ToTestIssueResponseOutput() TestIssueResponseOutput
+	ToTestIssueResponseOutputWithContext(context.Context) TestIssueResponseOutput
+}
+
+// An issue detected occurring during a test execution.
+type TestIssueResponseArgs struct {
+	// Category of issue. Required.
+	Category pulumi.StringInput `pulumi:"category"`
+	// A brief human-readable message describing the issue. Required.
+	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
+	// Severity of issue. Required.
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// Deprecated in favor of stack trace fields inside specific warnings.
+	StackTrace StackTraceResponseInput `pulumi:"stackTrace"`
+	// Type of issue. Required.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
+	Warning AnyResponseInput `pulumi:"warning"`
+}
+
+func (TestIssueResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TestIssueResponse)(nil)).Elem()
+}
+
+func (i TestIssueResponseArgs) ToTestIssueResponseOutput() TestIssueResponseOutput {
+	return i.ToTestIssueResponseOutputWithContext(context.Background())
+}
+
+func (i TestIssueResponseArgs) ToTestIssueResponseOutputWithContext(ctx context.Context) TestIssueResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TestIssueResponseOutput)
+}
+
+// TestIssueResponseArrayInput is an input type that accepts TestIssueResponseArray and TestIssueResponseArrayOutput values.
+// You can construct a concrete instance of `TestIssueResponseArrayInput` via:
+//
+//          TestIssueResponseArray{ TestIssueResponseArgs{...} }
+type TestIssueResponseArrayInput interface {
+	pulumi.Input
+
+	ToTestIssueResponseArrayOutput() TestIssueResponseArrayOutput
+	ToTestIssueResponseArrayOutputWithContext(context.Context) TestIssueResponseArrayOutput
+}
+
+type TestIssueResponseArray []TestIssueResponseInput
+
+func (TestIssueResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TestIssueResponse)(nil)).Elem()
+}
+
+func (i TestIssueResponseArray) ToTestIssueResponseArrayOutput() TestIssueResponseArrayOutput {
+	return i.ToTestIssueResponseArrayOutputWithContext(context.Background())
+}
+
+func (i TestIssueResponseArray) ToTestIssueResponseArrayOutputWithContext(ctx context.Context) TestIssueResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TestIssueResponseArrayOutput)
+}
+
+// An issue detected occurring during a test execution.
+type TestIssueResponseOutput struct{ *pulumi.OutputState }
+
+func (TestIssueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TestIssueResponse)(nil)).Elem()
+}
+
+func (o TestIssueResponseOutput) ToTestIssueResponseOutput() TestIssueResponseOutput {
+	return o
+}
+
+func (o TestIssueResponseOutput) ToTestIssueResponseOutputWithContext(ctx context.Context) TestIssueResponseOutput {
+	return o
+}
+
+// Category of issue. Required.
+func (o TestIssueResponseOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v TestIssueResponse) string { return v.Category }).(pulumi.StringOutput)
+}
+
+// A brief human-readable message describing the issue. Required.
+func (o TestIssueResponseOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v TestIssueResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// Severity of issue. Required.
+func (o TestIssueResponseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v TestIssueResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Deprecated in favor of stack trace fields inside specific warnings.
+func (o TestIssueResponseOutput) StackTrace() StackTraceResponseOutput {
+	return o.ApplyT(func(v TestIssueResponse) StackTraceResponse { return v.StackTrace }).(StackTraceResponseOutput)
+}
+
+// Type of issue. Required.
+func (o TestIssueResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TestIssueResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
+func (o TestIssueResponseOutput) Warning() AnyResponseOutput {
+	return o.ApplyT(func(v TestIssueResponse) AnyResponse { return v.Warning }).(AnyResponseOutput)
+}
+
+type TestIssueResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TestIssueResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TestIssueResponse)(nil)).Elem()
+}
+
+func (o TestIssueResponseArrayOutput) ToTestIssueResponseArrayOutput() TestIssueResponseArrayOutput {
+	return o
+}
+
+func (o TestIssueResponseArrayOutput) ToTestIssueResponseArrayOutputWithContext(ctx context.Context) TestIssueResponseArrayOutput {
+	return o
+}
+
+func (o TestIssueResponseArrayOutput) Index(i pulumi.IntInput) TestIssueResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TestIssueResponse {
+		return vs[0].([]TestIssueResponse)[vs[1].(int)]
+	}).(TestIssueResponseOutput)
 }
 
 // A summary of a test suite result either parsed from XML or uploaded directly by a user. Note: the API related comments are for StepService only. This message is also being used in ExecutionService in a read only mode for the corresponding step.
@@ -6019,6 +10448,169 @@ func (o TestSuiteOverviewArrayOutput) Index(i pulumi.IntInput) TestSuiteOverview
 	}).(TestSuiteOverviewOutput)
 }
 
+// A summary of a test suite result either parsed from XML or uploaded directly by a user. Note: the API related comments are for StepService only. This message is also being used in ExecutionService in a read only mode for the corresponding step.
+type TestSuiteOverviewResponse struct {
+	// Elapsed time of test suite.
+	ElapsedTime DurationResponse `pulumi:"elapsedTime"`
+	// Number of test cases in error, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
+	ErrorCount int `pulumi:"errorCount"`
+	// Number of failed test cases, typically set by the service by parsing the xml_source. May also be set by the user. - In create/response: always set - In update request: never
+	FailureCount int `pulumi:"failureCount"`
+	// Number of flaky test cases, set by the service by rolling up flaky test attempts. Present only for rollup test suite overview at environment level. A step cannot have flaky test cases.
+	FlakyCount int `pulumi:"flakyCount"`
+	// The name of the test suite. - In create/response: always set - In update request: never
+	Name string `pulumi:"name"`
+	// Number of test cases not run, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
+	SkippedCount int `pulumi:"skippedCount"`
+	// Number of test cases, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
+	TotalCount int `pulumi:"totalCount"`
+	// If this test suite was parsed from XML, this is the URI where the original XML file is stored. Note: Multiple test suites can share the same xml_source Returns INVALID_ARGUMENT if the uri format is not supported. - In create/response: optional - In update request: never
+	XmlSource FileReferenceResponse `pulumi:"xmlSource"`
+}
+
+// TestSuiteOverviewResponseInput is an input type that accepts TestSuiteOverviewResponseArgs and TestSuiteOverviewResponseOutput values.
+// You can construct a concrete instance of `TestSuiteOverviewResponseInput` via:
+//
+//          TestSuiteOverviewResponseArgs{...}
+type TestSuiteOverviewResponseInput interface {
+	pulumi.Input
+
+	ToTestSuiteOverviewResponseOutput() TestSuiteOverviewResponseOutput
+	ToTestSuiteOverviewResponseOutputWithContext(context.Context) TestSuiteOverviewResponseOutput
+}
+
+// A summary of a test suite result either parsed from XML or uploaded directly by a user. Note: the API related comments are for StepService only. This message is also being used in ExecutionService in a read only mode for the corresponding step.
+type TestSuiteOverviewResponseArgs struct {
+	// Elapsed time of test suite.
+	ElapsedTime DurationResponseInput `pulumi:"elapsedTime"`
+	// Number of test cases in error, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
+	ErrorCount pulumi.IntInput `pulumi:"errorCount"`
+	// Number of failed test cases, typically set by the service by parsing the xml_source. May also be set by the user. - In create/response: always set - In update request: never
+	FailureCount pulumi.IntInput `pulumi:"failureCount"`
+	// Number of flaky test cases, set by the service by rolling up flaky test attempts. Present only for rollup test suite overview at environment level. A step cannot have flaky test cases.
+	FlakyCount pulumi.IntInput `pulumi:"flakyCount"`
+	// The name of the test suite. - In create/response: always set - In update request: never
+	Name pulumi.StringInput `pulumi:"name"`
+	// Number of test cases not run, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
+	SkippedCount pulumi.IntInput `pulumi:"skippedCount"`
+	// Number of test cases, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
+	TotalCount pulumi.IntInput `pulumi:"totalCount"`
+	// If this test suite was parsed from XML, this is the URI where the original XML file is stored. Note: Multiple test suites can share the same xml_source Returns INVALID_ARGUMENT if the uri format is not supported. - In create/response: optional - In update request: never
+	XmlSource FileReferenceResponseInput `pulumi:"xmlSource"`
+}
+
+func (TestSuiteOverviewResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TestSuiteOverviewResponse)(nil)).Elem()
+}
+
+func (i TestSuiteOverviewResponseArgs) ToTestSuiteOverviewResponseOutput() TestSuiteOverviewResponseOutput {
+	return i.ToTestSuiteOverviewResponseOutputWithContext(context.Background())
+}
+
+func (i TestSuiteOverviewResponseArgs) ToTestSuiteOverviewResponseOutputWithContext(ctx context.Context) TestSuiteOverviewResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TestSuiteOverviewResponseOutput)
+}
+
+// TestSuiteOverviewResponseArrayInput is an input type that accepts TestSuiteOverviewResponseArray and TestSuiteOverviewResponseArrayOutput values.
+// You can construct a concrete instance of `TestSuiteOverviewResponseArrayInput` via:
+//
+//          TestSuiteOverviewResponseArray{ TestSuiteOverviewResponseArgs{...} }
+type TestSuiteOverviewResponseArrayInput interface {
+	pulumi.Input
+
+	ToTestSuiteOverviewResponseArrayOutput() TestSuiteOverviewResponseArrayOutput
+	ToTestSuiteOverviewResponseArrayOutputWithContext(context.Context) TestSuiteOverviewResponseArrayOutput
+}
+
+type TestSuiteOverviewResponseArray []TestSuiteOverviewResponseInput
+
+func (TestSuiteOverviewResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TestSuiteOverviewResponse)(nil)).Elem()
+}
+
+func (i TestSuiteOverviewResponseArray) ToTestSuiteOverviewResponseArrayOutput() TestSuiteOverviewResponseArrayOutput {
+	return i.ToTestSuiteOverviewResponseArrayOutputWithContext(context.Background())
+}
+
+func (i TestSuiteOverviewResponseArray) ToTestSuiteOverviewResponseArrayOutputWithContext(ctx context.Context) TestSuiteOverviewResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TestSuiteOverviewResponseArrayOutput)
+}
+
+// A summary of a test suite result either parsed from XML or uploaded directly by a user. Note: the API related comments are for StepService only. This message is also being used in ExecutionService in a read only mode for the corresponding step.
+type TestSuiteOverviewResponseOutput struct{ *pulumi.OutputState }
+
+func (TestSuiteOverviewResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TestSuiteOverviewResponse)(nil)).Elem()
+}
+
+func (o TestSuiteOverviewResponseOutput) ToTestSuiteOverviewResponseOutput() TestSuiteOverviewResponseOutput {
+	return o
+}
+
+func (o TestSuiteOverviewResponseOutput) ToTestSuiteOverviewResponseOutputWithContext(ctx context.Context) TestSuiteOverviewResponseOutput {
+	return o
+}
+
+// Elapsed time of test suite.
+func (o TestSuiteOverviewResponseOutput) ElapsedTime() DurationResponseOutput {
+	return o.ApplyT(func(v TestSuiteOverviewResponse) DurationResponse { return v.ElapsedTime }).(DurationResponseOutput)
+}
+
+// Number of test cases in error, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
+func (o TestSuiteOverviewResponseOutput) ErrorCount() pulumi.IntOutput {
+	return o.ApplyT(func(v TestSuiteOverviewResponse) int { return v.ErrorCount }).(pulumi.IntOutput)
+}
+
+// Number of failed test cases, typically set by the service by parsing the xml_source. May also be set by the user. - In create/response: always set - In update request: never
+func (o TestSuiteOverviewResponseOutput) FailureCount() pulumi.IntOutput {
+	return o.ApplyT(func(v TestSuiteOverviewResponse) int { return v.FailureCount }).(pulumi.IntOutput)
+}
+
+// Number of flaky test cases, set by the service by rolling up flaky test attempts. Present only for rollup test suite overview at environment level. A step cannot have flaky test cases.
+func (o TestSuiteOverviewResponseOutput) FlakyCount() pulumi.IntOutput {
+	return o.ApplyT(func(v TestSuiteOverviewResponse) int { return v.FlakyCount }).(pulumi.IntOutput)
+}
+
+// The name of the test suite. - In create/response: always set - In update request: never
+func (o TestSuiteOverviewResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TestSuiteOverviewResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Number of test cases not run, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
+func (o TestSuiteOverviewResponseOutput) SkippedCount() pulumi.IntOutput {
+	return o.ApplyT(func(v TestSuiteOverviewResponse) int { return v.SkippedCount }).(pulumi.IntOutput)
+}
+
+// Number of test cases, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never
+func (o TestSuiteOverviewResponseOutput) TotalCount() pulumi.IntOutput {
+	return o.ApplyT(func(v TestSuiteOverviewResponse) int { return v.TotalCount }).(pulumi.IntOutput)
+}
+
+// If this test suite was parsed from XML, this is the URI where the original XML file is stored. Note: Multiple test suites can share the same xml_source Returns INVALID_ARGUMENT if the uri format is not supported. - In create/response: optional - In update request: never
+func (o TestSuiteOverviewResponseOutput) XmlSource() FileReferenceResponseOutput {
+	return o.ApplyT(func(v TestSuiteOverviewResponse) FileReferenceResponse { return v.XmlSource }).(FileReferenceResponseOutput)
+}
+
+type TestSuiteOverviewResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TestSuiteOverviewResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TestSuiteOverviewResponse)(nil)).Elem()
+}
+
+func (o TestSuiteOverviewResponseArrayOutput) ToTestSuiteOverviewResponseArrayOutput() TestSuiteOverviewResponseArrayOutput {
+	return o
+}
+
+func (o TestSuiteOverviewResponseArrayOutput) ToTestSuiteOverviewResponseArrayOutputWithContext(ctx context.Context) TestSuiteOverviewResponseArrayOutput {
+	return o
+}
+
+func (o TestSuiteOverviewResponseArrayOutput) Index(i pulumi.IntInput) TestSuiteOverviewResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TestSuiteOverviewResponse {
+		return vs[0].([]TestSuiteOverviewResponse)[vs[1].(int)]
+	}).(TestSuiteOverviewResponseOutput)
+}
+
 // Testing timing break down to know phases.
 type TestTiming struct {
 	// How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
@@ -6151,6 +10743,140 @@ func (o TestTimingPtrOutput) TestProcessDuration() DurationPtrOutput {
 		}
 		return v.TestProcessDuration
 	}).(DurationPtrOutput)
+}
+
+// Testing timing break down to know phases.
+type TestTimingResponse struct {
+	// How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
+	TestProcessDuration DurationResponse `pulumi:"testProcessDuration"`
+}
+
+// TestTimingResponseInput is an input type that accepts TestTimingResponseArgs and TestTimingResponseOutput values.
+// You can construct a concrete instance of `TestTimingResponseInput` via:
+//
+//          TestTimingResponseArgs{...}
+type TestTimingResponseInput interface {
+	pulumi.Input
+
+	ToTestTimingResponseOutput() TestTimingResponseOutput
+	ToTestTimingResponseOutputWithContext(context.Context) TestTimingResponseOutput
+}
+
+// Testing timing break down to know phases.
+type TestTimingResponseArgs struct {
+	// How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
+	TestProcessDuration DurationResponseInput `pulumi:"testProcessDuration"`
+}
+
+func (TestTimingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TestTimingResponse)(nil)).Elem()
+}
+
+func (i TestTimingResponseArgs) ToTestTimingResponseOutput() TestTimingResponseOutput {
+	return i.ToTestTimingResponseOutputWithContext(context.Background())
+}
+
+func (i TestTimingResponseArgs) ToTestTimingResponseOutputWithContext(ctx context.Context) TestTimingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TestTimingResponseOutput)
+}
+
+func (i TestTimingResponseArgs) ToTestTimingResponsePtrOutput() TestTimingResponsePtrOutput {
+	return i.ToTestTimingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TestTimingResponseArgs) ToTestTimingResponsePtrOutputWithContext(ctx context.Context) TestTimingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TestTimingResponseOutput).ToTestTimingResponsePtrOutputWithContext(ctx)
+}
+
+// TestTimingResponsePtrInput is an input type that accepts TestTimingResponseArgs, TestTimingResponsePtr and TestTimingResponsePtrOutput values.
+// You can construct a concrete instance of `TestTimingResponsePtrInput` via:
+//
+//          TestTimingResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TestTimingResponsePtrInput interface {
+	pulumi.Input
+
+	ToTestTimingResponsePtrOutput() TestTimingResponsePtrOutput
+	ToTestTimingResponsePtrOutputWithContext(context.Context) TestTimingResponsePtrOutput
+}
+
+type testTimingResponsePtrType TestTimingResponseArgs
+
+func TestTimingResponsePtr(v *TestTimingResponseArgs) TestTimingResponsePtrInput {
+	return (*testTimingResponsePtrType)(v)
+}
+
+func (*testTimingResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TestTimingResponse)(nil)).Elem()
+}
+
+func (i *testTimingResponsePtrType) ToTestTimingResponsePtrOutput() TestTimingResponsePtrOutput {
+	return i.ToTestTimingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *testTimingResponsePtrType) ToTestTimingResponsePtrOutputWithContext(ctx context.Context) TestTimingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TestTimingResponsePtrOutput)
+}
+
+// Testing timing break down to know phases.
+type TestTimingResponseOutput struct{ *pulumi.OutputState }
+
+func (TestTimingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TestTimingResponse)(nil)).Elem()
+}
+
+func (o TestTimingResponseOutput) ToTestTimingResponseOutput() TestTimingResponseOutput {
+	return o
+}
+
+func (o TestTimingResponseOutput) ToTestTimingResponseOutputWithContext(ctx context.Context) TestTimingResponseOutput {
+	return o
+}
+
+func (o TestTimingResponseOutput) ToTestTimingResponsePtrOutput() TestTimingResponsePtrOutput {
+	return o.ToTestTimingResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TestTimingResponseOutput) ToTestTimingResponsePtrOutputWithContext(ctx context.Context) TestTimingResponsePtrOutput {
+	return o.ApplyT(func(v TestTimingResponse) *TestTimingResponse {
+		return &v
+	}).(TestTimingResponsePtrOutput)
+}
+
+// How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
+func (o TestTimingResponseOutput) TestProcessDuration() DurationResponseOutput {
+	return o.ApplyT(func(v TestTimingResponse) DurationResponse { return v.TestProcessDuration }).(DurationResponseOutput)
+}
+
+type TestTimingResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TestTimingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TestTimingResponse)(nil)).Elem()
+}
+
+func (o TestTimingResponsePtrOutput) ToTestTimingResponsePtrOutput() TestTimingResponsePtrOutput {
+	return o
+}
+
+func (o TestTimingResponsePtrOutput) ToTestTimingResponsePtrOutputWithContext(ctx context.Context) TestTimingResponsePtrOutput {
+	return o
+}
+
+func (o TestTimingResponsePtrOutput) Elem() TestTimingResponseOutput {
+	return o.ApplyT(func(v *TestTimingResponse) TestTimingResponse { return *v }).(TestTimingResponseOutput)
+}
+
+// How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
+func (o TestTimingResponsePtrOutput) TestProcessDuration() DurationResponsePtrOutput {
+	return o.ApplyT(func(v *TestTimingResponse) *DurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.TestProcessDuration
+	}).(DurationResponsePtrOutput)
 }
 
 // A Timestamp represents a point in time independent of any time zone or local calendar, encoded as a count of seconds and fractions of seconds at nanosecond resolution. The count is relative to an epoch at UTC midnight on January 1, 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar backwards to year one. All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap second table is needed for interpretation, using a [24-hour linear smear](https://developers.google.com/time/smear). The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we ensure that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
@@ -6303,6 +11029,159 @@ func (o TimestampPtrOutput) Seconds() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
+// A Timestamp represents a point in time independent of any time zone or local calendar, encoded as a count of seconds and fractions of seconds at nanosecond resolution. The count is relative to an epoch at UTC midnight on January 1, 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar backwards to year one. All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap second table is needed for interpretation, using a [24-hour linear smear](https://developers.google.com/time/smear). The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we ensure that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
+type TimestampResponse struct {
+	// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
+	Seconds string `pulumi:"seconds"`
+}
+
+// TimestampResponseInput is an input type that accepts TimestampResponseArgs and TimestampResponseOutput values.
+// You can construct a concrete instance of `TimestampResponseInput` via:
+//
+//          TimestampResponseArgs{...}
+type TimestampResponseInput interface {
+	pulumi.Input
+
+	ToTimestampResponseOutput() TimestampResponseOutput
+	ToTimestampResponseOutputWithContext(context.Context) TimestampResponseOutput
+}
+
+// A Timestamp represents a point in time independent of any time zone or local calendar, encoded as a count of seconds and fractions of seconds at nanosecond resolution. The count is relative to an epoch at UTC midnight on January 1, 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar backwards to year one. All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap second table is needed for interpretation, using a [24-hour linear smear](https://developers.google.com/time/smear). The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we ensure that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
+type TimestampResponseArgs struct {
+	// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
+	Seconds pulumi.StringInput `pulumi:"seconds"`
+}
+
+func (TimestampResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimestampResponse)(nil)).Elem()
+}
+
+func (i TimestampResponseArgs) ToTimestampResponseOutput() TimestampResponseOutput {
+	return i.ToTimestampResponseOutputWithContext(context.Background())
+}
+
+func (i TimestampResponseArgs) ToTimestampResponseOutputWithContext(ctx context.Context) TimestampResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimestampResponseOutput)
+}
+
+func (i TimestampResponseArgs) ToTimestampResponsePtrOutput() TimestampResponsePtrOutput {
+	return i.ToTimestampResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TimestampResponseArgs) ToTimestampResponsePtrOutputWithContext(ctx context.Context) TimestampResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimestampResponseOutput).ToTimestampResponsePtrOutputWithContext(ctx)
+}
+
+// TimestampResponsePtrInput is an input type that accepts TimestampResponseArgs, TimestampResponsePtr and TimestampResponsePtrOutput values.
+// You can construct a concrete instance of `TimestampResponsePtrInput` via:
+//
+//          TimestampResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TimestampResponsePtrInput interface {
+	pulumi.Input
+
+	ToTimestampResponsePtrOutput() TimestampResponsePtrOutput
+	ToTimestampResponsePtrOutputWithContext(context.Context) TimestampResponsePtrOutput
+}
+
+type timestampResponsePtrType TimestampResponseArgs
+
+func TimestampResponsePtr(v *TimestampResponseArgs) TimestampResponsePtrInput {
+	return (*timestampResponsePtrType)(v)
+}
+
+func (*timestampResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimestampResponse)(nil)).Elem()
+}
+
+func (i *timestampResponsePtrType) ToTimestampResponsePtrOutput() TimestampResponsePtrOutput {
+	return i.ToTimestampResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *timestampResponsePtrType) ToTimestampResponsePtrOutputWithContext(ctx context.Context) TimestampResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimestampResponsePtrOutput)
+}
+
+// A Timestamp represents a point in time independent of any time zone or local calendar, encoded as a count of seconds and fractions of seconds at nanosecond resolution. The count is relative to an epoch at UTC midnight on January 1, 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar backwards to year one. All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap second table is needed for interpretation, using a [24-hour linear smear](https://developers.google.com/time/smear). The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to that range, we ensure that we can convert to and from [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
+type TimestampResponseOutput struct{ *pulumi.OutputState }
+
+func (TimestampResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimestampResponse)(nil)).Elem()
+}
+
+func (o TimestampResponseOutput) ToTimestampResponseOutput() TimestampResponseOutput {
+	return o
+}
+
+func (o TimestampResponseOutput) ToTimestampResponseOutputWithContext(ctx context.Context) TimestampResponseOutput {
+	return o
+}
+
+func (o TimestampResponseOutput) ToTimestampResponsePtrOutput() TimestampResponsePtrOutput {
+	return o.ToTimestampResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TimestampResponseOutput) ToTimestampResponsePtrOutputWithContext(ctx context.Context) TimestampResponsePtrOutput {
+	return o.ApplyT(func(v TimestampResponse) *TimestampResponse {
+		return &v
+	}).(TimestampResponsePtrOutput)
+}
+
+// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive.
+func (o TimestampResponseOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v TimestampResponse) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
+func (o TimestampResponseOutput) Seconds() pulumi.StringOutput {
+	return o.ApplyT(func(v TimestampResponse) string { return v.Seconds }).(pulumi.StringOutput)
+}
+
+type TimestampResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TimestampResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimestampResponse)(nil)).Elem()
+}
+
+func (o TimestampResponsePtrOutput) ToTimestampResponsePtrOutput() TimestampResponsePtrOutput {
+	return o
+}
+
+func (o TimestampResponsePtrOutput) ToTimestampResponsePtrOutputWithContext(ctx context.Context) TimestampResponsePtrOutput {
+	return o
+}
+
+func (o TimestampResponsePtrOutput) Elem() TimestampResponseOutput {
+	return o.ApplyT(func(v *TimestampResponse) TimestampResponse { return *v }).(TimestampResponseOutput)
+}
+
+// Non-negative fractions of a second at nanosecond resolution. Negative second values with fractions must still have non-negative nanos values that count forward in time. Must be from 0 to 999,999,999 inclusive.
+func (o TimestampResponsePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimestampResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
+func (o TimestampResponsePtrOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TimestampResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Seconds
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6497,6 +11376,197 @@ func (o ToolExecutionPtrOutput) ToolOutputs() ToolOutputReferenceArrayOutput {
 	}).(ToolOutputReferenceArrayOutput)
 }
 
+// An execution of an arbitrary tool. It could be a test runner or a tool copying artifacts or deploying code.
+type ToolExecutionResponse struct {
+	// The full tokenized command line including the program name (equivalent to argv in a C program). - In response: present if set by create request - In create request: optional - In update request: never set
+	CommandLineArguments []string `pulumi:"commandLineArguments"`
+	// Tool execution exit code. This field will be set once the tool has exited. - In response: present if set by create/update request - In create request: optional - In update request: optional, a FAILED_PRECONDITION error will be returned if an exit_code is already set.
+	ExitCode ToolExitCodeResponse `pulumi:"exitCode"`
+	// References to any plain text logs output the tool execution. This field can be set before the tool has exited in order to be able to have access to a live view of the logs while the tool is running. The maximum allowed number of tool logs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list
+	ToolLogs []FileReferenceResponse `pulumi:"toolLogs"`
+	// References to opaque files of any format output by the tool execution. The maximum allowed number of tool outputs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list
+	ToolOutputs []ToolOutputReferenceResponse `pulumi:"toolOutputs"`
+}
+
+// ToolExecutionResponseInput is an input type that accepts ToolExecutionResponseArgs and ToolExecutionResponseOutput values.
+// You can construct a concrete instance of `ToolExecutionResponseInput` via:
+//
+//          ToolExecutionResponseArgs{...}
+type ToolExecutionResponseInput interface {
+	pulumi.Input
+
+	ToToolExecutionResponseOutput() ToolExecutionResponseOutput
+	ToToolExecutionResponseOutputWithContext(context.Context) ToolExecutionResponseOutput
+}
+
+// An execution of an arbitrary tool. It could be a test runner or a tool copying artifacts or deploying code.
+type ToolExecutionResponseArgs struct {
+	// The full tokenized command line including the program name (equivalent to argv in a C program). - In response: present if set by create request - In create request: optional - In update request: never set
+	CommandLineArguments pulumi.StringArrayInput `pulumi:"commandLineArguments"`
+	// Tool execution exit code. This field will be set once the tool has exited. - In response: present if set by create/update request - In create request: optional - In update request: optional, a FAILED_PRECONDITION error will be returned if an exit_code is already set.
+	ExitCode ToolExitCodeResponseInput `pulumi:"exitCode"`
+	// References to any plain text logs output the tool execution. This field can be set before the tool has exited in order to be able to have access to a live view of the logs while the tool is running. The maximum allowed number of tool logs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list
+	ToolLogs FileReferenceResponseArrayInput `pulumi:"toolLogs"`
+	// References to opaque files of any format output by the tool execution. The maximum allowed number of tool outputs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list
+	ToolOutputs ToolOutputReferenceResponseArrayInput `pulumi:"toolOutputs"`
+}
+
+func (ToolExecutionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolExecutionResponse)(nil)).Elem()
+}
+
+func (i ToolExecutionResponseArgs) ToToolExecutionResponseOutput() ToolExecutionResponseOutput {
+	return i.ToToolExecutionResponseOutputWithContext(context.Background())
+}
+
+func (i ToolExecutionResponseArgs) ToToolExecutionResponseOutputWithContext(ctx context.Context) ToolExecutionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolExecutionResponseOutput)
+}
+
+func (i ToolExecutionResponseArgs) ToToolExecutionResponsePtrOutput() ToolExecutionResponsePtrOutput {
+	return i.ToToolExecutionResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ToolExecutionResponseArgs) ToToolExecutionResponsePtrOutputWithContext(ctx context.Context) ToolExecutionResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolExecutionResponseOutput).ToToolExecutionResponsePtrOutputWithContext(ctx)
+}
+
+// ToolExecutionResponsePtrInput is an input type that accepts ToolExecutionResponseArgs, ToolExecutionResponsePtr and ToolExecutionResponsePtrOutput values.
+// You can construct a concrete instance of `ToolExecutionResponsePtrInput` via:
+//
+//          ToolExecutionResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ToolExecutionResponsePtrInput interface {
+	pulumi.Input
+
+	ToToolExecutionResponsePtrOutput() ToolExecutionResponsePtrOutput
+	ToToolExecutionResponsePtrOutputWithContext(context.Context) ToolExecutionResponsePtrOutput
+}
+
+type toolExecutionResponsePtrType ToolExecutionResponseArgs
+
+func ToolExecutionResponsePtr(v *ToolExecutionResponseArgs) ToolExecutionResponsePtrInput {
+	return (*toolExecutionResponsePtrType)(v)
+}
+
+func (*toolExecutionResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolExecutionResponse)(nil)).Elem()
+}
+
+func (i *toolExecutionResponsePtrType) ToToolExecutionResponsePtrOutput() ToolExecutionResponsePtrOutput {
+	return i.ToToolExecutionResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *toolExecutionResponsePtrType) ToToolExecutionResponsePtrOutputWithContext(ctx context.Context) ToolExecutionResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolExecutionResponsePtrOutput)
+}
+
+// An execution of an arbitrary tool. It could be a test runner or a tool copying artifacts or deploying code.
+type ToolExecutionResponseOutput struct{ *pulumi.OutputState }
+
+func (ToolExecutionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolExecutionResponse)(nil)).Elem()
+}
+
+func (o ToolExecutionResponseOutput) ToToolExecutionResponseOutput() ToolExecutionResponseOutput {
+	return o
+}
+
+func (o ToolExecutionResponseOutput) ToToolExecutionResponseOutputWithContext(ctx context.Context) ToolExecutionResponseOutput {
+	return o
+}
+
+func (o ToolExecutionResponseOutput) ToToolExecutionResponsePtrOutput() ToolExecutionResponsePtrOutput {
+	return o.ToToolExecutionResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ToolExecutionResponseOutput) ToToolExecutionResponsePtrOutputWithContext(ctx context.Context) ToolExecutionResponsePtrOutput {
+	return o.ApplyT(func(v ToolExecutionResponse) *ToolExecutionResponse {
+		return &v
+	}).(ToolExecutionResponsePtrOutput)
+}
+
+// The full tokenized command line including the program name (equivalent to argv in a C program). - In response: present if set by create request - In create request: optional - In update request: never set
+func (o ToolExecutionResponseOutput) CommandLineArguments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ToolExecutionResponse) []string { return v.CommandLineArguments }).(pulumi.StringArrayOutput)
+}
+
+// Tool execution exit code. This field will be set once the tool has exited. - In response: present if set by create/update request - In create request: optional - In update request: optional, a FAILED_PRECONDITION error will be returned if an exit_code is already set.
+func (o ToolExecutionResponseOutput) ExitCode() ToolExitCodeResponseOutput {
+	return o.ApplyT(func(v ToolExecutionResponse) ToolExitCodeResponse { return v.ExitCode }).(ToolExitCodeResponseOutput)
+}
+
+// References to any plain text logs output the tool execution. This field can be set before the tool has exited in order to be able to have access to a live view of the logs while the tool is running. The maximum allowed number of tool logs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list
+func (o ToolExecutionResponseOutput) ToolLogs() FileReferenceResponseArrayOutput {
+	return o.ApplyT(func(v ToolExecutionResponse) []FileReferenceResponse { return v.ToolLogs }).(FileReferenceResponseArrayOutput)
+}
+
+// References to opaque files of any format output by the tool execution. The maximum allowed number of tool outputs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list
+func (o ToolExecutionResponseOutput) ToolOutputs() ToolOutputReferenceResponseArrayOutput {
+	return o.ApplyT(func(v ToolExecutionResponse) []ToolOutputReferenceResponse { return v.ToolOutputs }).(ToolOutputReferenceResponseArrayOutput)
+}
+
+type ToolExecutionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ToolExecutionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolExecutionResponse)(nil)).Elem()
+}
+
+func (o ToolExecutionResponsePtrOutput) ToToolExecutionResponsePtrOutput() ToolExecutionResponsePtrOutput {
+	return o
+}
+
+func (o ToolExecutionResponsePtrOutput) ToToolExecutionResponsePtrOutputWithContext(ctx context.Context) ToolExecutionResponsePtrOutput {
+	return o
+}
+
+func (o ToolExecutionResponsePtrOutput) Elem() ToolExecutionResponseOutput {
+	return o.ApplyT(func(v *ToolExecutionResponse) ToolExecutionResponse { return *v }).(ToolExecutionResponseOutput)
+}
+
+// The full tokenized command line including the program name (equivalent to argv in a C program). - In response: present if set by create request - In create request: optional - In update request: never set
+func (o ToolExecutionResponsePtrOutput) CommandLineArguments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ToolExecutionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CommandLineArguments
+	}).(pulumi.StringArrayOutput)
+}
+
+// Tool execution exit code. This field will be set once the tool has exited. - In response: present if set by create/update request - In create request: optional - In update request: optional, a FAILED_PRECONDITION error will be returned if an exit_code is already set.
+func (o ToolExecutionResponsePtrOutput) ExitCode() ToolExitCodeResponsePtrOutput {
+	return o.ApplyT(func(v *ToolExecutionResponse) *ToolExitCodeResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ExitCode
+	}).(ToolExitCodeResponsePtrOutput)
+}
+
+// References to any plain text logs output the tool execution. This field can be set before the tool has exited in order to be able to have access to a live view of the logs while the tool is running. The maximum allowed number of tool logs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list
+func (o ToolExecutionResponsePtrOutput) ToolLogs() FileReferenceResponseArrayOutput {
+	return o.ApplyT(func(v *ToolExecutionResponse) []FileReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ToolLogs
+	}).(FileReferenceResponseArrayOutput)
+}
+
+// References to opaque files of any format output by the tool execution. The maximum allowed number of tool outputs per step is 1000. - In response: present if set by create/update request - In create request: optional - In update request: optional, any value provided will be appended to the existing list
+func (o ToolExecutionResponsePtrOutput) ToolOutputs() ToolOutputReferenceResponseArrayOutput {
+	return o.ApplyT(func(v *ToolExecutionResponse) []ToolOutputReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ToolOutputs
+	}).(ToolOutputReferenceResponseArrayOutput)
+}
+
 // Generic tool step to be used for binaries we do not explicitly support. For example: running cp to copy artifacts from one location to another.
 type ToolExecutionStep struct {
 	// A Tool execution. - In response: present if set by create/update request - In create/update request: optional
@@ -6629,6 +11699,140 @@ func (o ToolExecutionStepPtrOutput) ToolExecution() ToolExecutionPtrOutput {
 		}
 		return v.ToolExecution
 	}).(ToolExecutionPtrOutput)
+}
+
+// Generic tool step to be used for binaries we do not explicitly support. For example: running cp to copy artifacts from one location to another.
+type ToolExecutionStepResponse struct {
+	// A Tool execution. - In response: present if set by create/update request - In create/update request: optional
+	ToolExecution ToolExecutionResponse `pulumi:"toolExecution"`
+}
+
+// ToolExecutionStepResponseInput is an input type that accepts ToolExecutionStepResponseArgs and ToolExecutionStepResponseOutput values.
+// You can construct a concrete instance of `ToolExecutionStepResponseInput` via:
+//
+//          ToolExecutionStepResponseArgs{...}
+type ToolExecutionStepResponseInput interface {
+	pulumi.Input
+
+	ToToolExecutionStepResponseOutput() ToolExecutionStepResponseOutput
+	ToToolExecutionStepResponseOutputWithContext(context.Context) ToolExecutionStepResponseOutput
+}
+
+// Generic tool step to be used for binaries we do not explicitly support. For example: running cp to copy artifacts from one location to another.
+type ToolExecutionStepResponseArgs struct {
+	// A Tool execution. - In response: present if set by create/update request - In create/update request: optional
+	ToolExecution ToolExecutionResponseInput `pulumi:"toolExecution"`
+}
+
+func (ToolExecutionStepResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolExecutionStepResponse)(nil)).Elem()
+}
+
+func (i ToolExecutionStepResponseArgs) ToToolExecutionStepResponseOutput() ToolExecutionStepResponseOutput {
+	return i.ToToolExecutionStepResponseOutputWithContext(context.Background())
+}
+
+func (i ToolExecutionStepResponseArgs) ToToolExecutionStepResponseOutputWithContext(ctx context.Context) ToolExecutionStepResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolExecutionStepResponseOutput)
+}
+
+func (i ToolExecutionStepResponseArgs) ToToolExecutionStepResponsePtrOutput() ToolExecutionStepResponsePtrOutput {
+	return i.ToToolExecutionStepResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ToolExecutionStepResponseArgs) ToToolExecutionStepResponsePtrOutputWithContext(ctx context.Context) ToolExecutionStepResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolExecutionStepResponseOutput).ToToolExecutionStepResponsePtrOutputWithContext(ctx)
+}
+
+// ToolExecutionStepResponsePtrInput is an input type that accepts ToolExecutionStepResponseArgs, ToolExecutionStepResponsePtr and ToolExecutionStepResponsePtrOutput values.
+// You can construct a concrete instance of `ToolExecutionStepResponsePtrInput` via:
+//
+//          ToolExecutionStepResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ToolExecutionStepResponsePtrInput interface {
+	pulumi.Input
+
+	ToToolExecutionStepResponsePtrOutput() ToolExecutionStepResponsePtrOutput
+	ToToolExecutionStepResponsePtrOutputWithContext(context.Context) ToolExecutionStepResponsePtrOutput
+}
+
+type toolExecutionStepResponsePtrType ToolExecutionStepResponseArgs
+
+func ToolExecutionStepResponsePtr(v *ToolExecutionStepResponseArgs) ToolExecutionStepResponsePtrInput {
+	return (*toolExecutionStepResponsePtrType)(v)
+}
+
+func (*toolExecutionStepResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolExecutionStepResponse)(nil)).Elem()
+}
+
+func (i *toolExecutionStepResponsePtrType) ToToolExecutionStepResponsePtrOutput() ToolExecutionStepResponsePtrOutput {
+	return i.ToToolExecutionStepResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *toolExecutionStepResponsePtrType) ToToolExecutionStepResponsePtrOutputWithContext(ctx context.Context) ToolExecutionStepResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolExecutionStepResponsePtrOutput)
+}
+
+// Generic tool step to be used for binaries we do not explicitly support. For example: running cp to copy artifacts from one location to another.
+type ToolExecutionStepResponseOutput struct{ *pulumi.OutputState }
+
+func (ToolExecutionStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolExecutionStepResponse)(nil)).Elem()
+}
+
+func (o ToolExecutionStepResponseOutput) ToToolExecutionStepResponseOutput() ToolExecutionStepResponseOutput {
+	return o
+}
+
+func (o ToolExecutionStepResponseOutput) ToToolExecutionStepResponseOutputWithContext(ctx context.Context) ToolExecutionStepResponseOutput {
+	return o
+}
+
+func (o ToolExecutionStepResponseOutput) ToToolExecutionStepResponsePtrOutput() ToolExecutionStepResponsePtrOutput {
+	return o.ToToolExecutionStepResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ToolExecutionStepResponseOutput) ToToolExecutionStepResponsePtrOutputWithContext(ctx context.Context) ToolExecutionStepResponsePtrOutput {
+	return o.ApplyT(func(v ToolExecutionStepResponse) *ToolExecutionStepResponse {
+		return &v
+	}).(ToolExecutionStepResponsePtrOutput)
+}
+
+// A Tool execution. - In response: present if set by create/update request - In create/update request: optional
+func (o ToolExecutionStepResponseOutput) ToolExecution() ToolExecutionResponseOutput {
+	return o.ApplyT(func(v ToolExecutionStepResponse) ToolExecutionResponse { return v.ToolExecution }).(ToolExecutionResponseOutput)
+}
+
+type ToolExecutionStepResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ToolExecutionStepResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolExecutionStepResponse)(nil)).Elem()
+}
+
+func (o ToolExecutionStepResponsePtrOutput) ToToolExecutionStepResponsePtrOutput() ToolExecutionStepResponsePtrOutput {
+	return o
+}
+
+func (o ToolExecutionStepResponsePtrOutput) ToToolExecutionStepResponsePtrOutputWithContext(ctx context.Context) ToolExecutionStepResponsePtrOutput {
+	return o
+}
+
+func (o ToolExecutionStepResponsePtrOutput) Elem() ToolExecutionStepResponseOutput {
+	return o.ApplyT(func(v *ToolExecutionStepResponse) ToolExecutionStepResponse { return *v }).(ToolExecutionStepResponseOutput)
+}
+
+// A Tool execution. - In response: present if set by create/update request - In create/update request: optional
+func (o ToolExecutionStepResponsePtrOutput) ToolExecution() ToolExecutionResponsePtrOutput {
+	return o.ApplyT(func(v *ToolExecutionStepResponse) *ToolExecutionResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ToolExecution
+	}).(ToolExecutionResponsePtrOutput)
 }
 
 // Exit code from a tool execution.
@@ -6765,6 +11969,140 @@ func (o ToolExitCodePtrOutput) Number() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Exit code from a tool execution.
+type ToolExitCodeResponse struct {
+	// Tool execution exit code. A value of 0 means that the execution was successful. - In response: always set - In create/update request: always set
+	Number int `pulumi:"number"`
+}
+
+// ToolExitCodeResponseInput is an input type that accepts ToolExitCodeResponseArgs and ToolExitCodeResponseOutput values.
+// You can construct a concrete instance of `ToolExitCodeResponseInput` via:
+//
+//          ToolExitCodeResponseArgs{...}
+type ToolExitCodeResponseInput interface {
+	pulumi.Input
+
+	ToToolExitCodeResponseOutput() ToolExitCodeResponseOutput
+	ToToolExitCodeResponseOutputWithContext(context.Context) ToolExitCodeResponseOutput
+}
+
+// Exit code from a tool execution.
+type ToolExitCodeResponseArgs struct {
+	// Tool execution exit code. A value of 0 means that the execution was successful. - In response: always set - In create/update request: always set
+	Number pulumi.IntInput `pulumi:"number"`
+}
+
+func (ToolExitCodeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolExitCodeResponse)(nil)).Elem()
+}
+
+func (i ToolExitCodeResponseArgs) ToToolExitCodeResponseOutput() ToolExitCodeResponseOutput {
+	return i.ToToolExitCodeResponseOutputWithContext(context.Background())
+}
+
+func (i ToolExitCodeResponseArgs) ToToolExitCodeResponseOutputWithContext(ctx context.Context) ToolExitCodeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolExitCodeResponseOutput)
+}
+
+func (i ToolExitCodeResponseArgs) ToToolExitCodeResponsePtrOutput() ToolExitCodeResponsePtrOutput {
+	return i.ToToolExitCodeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ToolExitCodeResponseArgs) ToToolExitCodeResponsePtrOutputWithContext(ctx context.Context) ToolExitCodeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolExitCodeResponseOutput).ToToolExitCodeResponsePtrOutputWithContext(ctx)
+}
+
+// ToolExitCodeResponsePtrInput is an input type that accepts ToolExitCodeResponseArgs, ToolExitCodeResponsePtr and ToolExitCodeResponsePtrOutput values.
+// You can construct a concrete instance of `ToolExitCodeResponsePtrInput` via:
+//
+//          ToolExitCodeResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ToolExitCodeResponsePtrInput interface {
+	pulumi.Input
+
+	ToToolExitCodeResponsePtrOutput() ToolExitCodeResponsePtrOutput
+	ToToolExitCodeResponsePtrOutputWithContext(context.Context) ToolExitCodeResponsePtrOutput
+}
+
+type toolExitCodeResponsePtrType ToolExitCodeResponseArgs
+
+func ToolExitCodeResponsePtr(v *ToolExitCodeResponseArgs) ToolExitCodeResponsePtrInput {
+	return (*toolExitCodeResponsePtrType)(v)
+}
+
+func (*toolExitCodeResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolExitCodeResponse)(nil)).Elem()
+}
+
+func (i *toolExitCodeResponsePtrType) ToToolExitCodeResponsePtrOutput() ToolExitCodeResponsePtrOutput {
+	return i.ToToolExitCodeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *toolExitCodeResponsePtrType) ToToolExitCodeResponsePtrOutputWithContext(ctx context.Context) ToolExitCodeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolExitCodeResponsePtrOutput)
+}
+
+// Exit code from a tool execution.
+type ToolExitCodeResponseOutput struct{ *pulumi.OutputState }
+
+func (ToolExitCodeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolExitCodeResponse)(nil)).Elem()
+}
+
+func (o ToolExitCodeResponseOutput) ToToolExitCodeResponseOutput() ToolExitCodeResponseOutput {
+	return o
+}
+
+func (o ToolExitCodeResponseOutput) ToToolExitCodeResponseOutputWithContext(ctx context.Context) ToolExitCodeResponseOutput {
+	return o
+}
+
+func (o ToolExitCodeResponseOutput) ToToolExitCodeResponsePtrOutput() ToolExitCodeResponsePtrOutput {
+	return o.ToToolExitCodeResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ToolExitCodeResponseOutput) ToToolExitCodeResponsePtrOutputWithContext(ctx context.Context) ToolExitCodeResponsePtrOutput {
+	return o.ApplyT(func(v ToolExitCodeResponse) *ToolExitCodeResponse {
+		return &v
+	}).(ToolExitCodeResponsePtrOutput)
+}
+
+// Tool execution exit code. A value of 0 means that the execution was successful. - In response: always set - In create/update request: always set
+func (o ToolExitCodeResponseOutput) Number() pulumi.IntOutput {
+	return o.ApplyT(func(v ToolExitCodeResponse) int { return v.Number }).(pulumi.IntOutput)
+}
+
+type ToolExitCodeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ToolExitCodeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolExitCodeResponse)(nil)).Elem()
+}
+
+func (o ToolExitCodeResponsePtrOutput) ToToolExitCodeResponsePtrOutput() ToolExitCodeResponsePtrOutput {
+	return o
+}
+
+func (o ToolExitCodeResponsePtrOutput) ToToolExitCodeResponsePtrOutputWithContext(ctx context.Context) ToolExitCodeResponsePtrOutput {
+	return o
+}
+
+func (o ToolExitCodeResponsePtrOutput) Elem() ToolExitCodeResponseOutput {
+	return o.ApplyT(func(v *ToolExitCodeResponse) ToolExitCodeResponse { return *v }).(ToolExitCodeResponseOutput)
+}
+
+// Tool execution exit code. A value of 0 means that the execution was successful. - In response: always set - In create/update request: always set
+func (o ToolExitCodeResponsePtrOutput) Number() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ToolExitCodeResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Number
+	}).(pulumi.IntPtrOutput)
+}
+
 // A reference to a ToolExecution output file.
 type ToolOutputReference struct {
 	// The creation time of the file. - In response: present if set by create/update request - In create/update request: optional
@@ -6883,92 +12221,281 @@ func (o ToolOutputReferenceArrayOutput) Index(i pulumi.IntInput) ToolOutputRefer
 	}).(ToolOutputReferenceOutput)
 }
 
+// A reference to a ToolExecution output file.
+type ToolOutputReferenceResponse struct {
+	// The creation time of the file. - In response: present if set by create/update request - In create/update request: optional
+	CreationTime TimestampResponse `pulumi:"creationTime"`
+	// A FileReference to an output file. - In response: always set - In create/update request: always set
+	Output FileReferenceResponse `pulumi:"output"`
+	// The test case to which this output file belongs. - In response: present if set by create/update request - In create/update request: optional
+	TestCase TestCaseReferenceResponse `pulumi:"testCase"`
+}
+
+// ToolOutputReferenceResponseInput is an input type that accepts ToolOutputReferenceResponseArgs and ToolOutputReferenceResponseOutput values.
+// You can construct a concrete instance of `ToolOutputReferenceResponseInput` via:
+//
+//          ToolOutputReferenceResponseArgs{...}
+type ToolOutputReferenceResponseInput interface {
+	pulumi.Input
+
+	ToToolOutputReferenceResponseOutput() ToolOutputReferenceResponseOutput
+	ToToolOutputReferenceResponseOutputWithContext(context.Context) ToolOutputReferenceResponseOutput
+}
+
+// A reference to a ToolExecution output file.
+type ToolOutputReferenceResponseArgs struct {
+	// The creation time of the file. - In response: present if set by create/update request - In create/update request: optional
+	CreationTime TimestampResponseInput `pulumi:"creationTime"`
+	// A FileReference to an output file. - In response: always set - In create/update request: always set
+	Output FileReferenceResponseInput `pulumi:"output"`
+	// The test case to which this output file belongs. - In response: present if set by create/update request - In create/update request: optional
+	TestCase TestCaseReferenceResponseInput `pulumi:"testCase"`
+}
+
+func (ToolOutputReferenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOutputReferenceResponse)(nil)).Elem()
+}
+
+func (i ToolOutputReferenceResponseArgs) ToToolOutputReferenceResponseOutput() ToolOutputReferenceResponseOutput {
+	return i.ToToolOutputReferenceResponseOutputWithContext(context.Background())
+}
+
+func (i ToolOutputReferenceResponseArgs) ToToolOutputReferenceResponseOutputWithContext(ctx context.Context) ToolOutputReferenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOutputReferenceResponseOutput)
+}
+
+// ToolOutputReferenceResponseArrayInput is an input type that accepts ToolOutputReferenceResponseArray and ToolOutputReferenceResponseArrayOutput values.
+// You can construct a concrete instance of `ToolOutputReferenceResponseArrayInput` via:
+//
+//          ToolOutputReferenceResponseArray{ ToolOutputReferenceResponseArgs{...} }
+type ToolOutputReferenceResponseArrayInput interface {
+	pulumi.Input
+
+	ToToolOutputReferenceResponseArrayOutput() ToolOutputReferenceResponseArrayOutput
+	ToToolOutputReferenceResponseArrayOutputWithContext(context.Context) ToolOutputReferenceResponseArrayOutput
+}
+
+type ToolOutputReferenceResponseArray []ToolOutputReferenceResponseInput
+
+func (ToolOutputReferenceResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOutputReferenceResponse)(nil)).Elem()
+}
+
+func (i ToolOutputReferenceResponseArray) ToToolOutputReferenceResponseArrayOutput() ToolOutputReferenceResponseArrayOutput {
+	return i.ToToolOutputReferenceResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ToolOutputReferenceResponseArray) ToToolOutputReferenceResponseArrayOutputWithContext(ctx context.Context) ToolOutputReferenceResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolOutputReferenceResponseArrayOutput)
+}
+
+// A reference to a ToolExecution output file.
+type ToolOutputReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (ToolOutputReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolOutputReferenceResponse)(nil)).Elem()
+}
+
+func (o ToolOutputReferenceResponseOutput) ToToolOutputReferenceResponseOutput() ToolOutputReferenceResponseOutput {
+	return o
+}
+
+func (o ToolOutputReferenceResponseOutput) ToToolOutputReferenceResponseOutputWithContext(ctx context.Context) ToolOutputReferenceResponseOutput {
+	return o
+}
+
+// The creation time of the file. - In response: present if set by create/update request - In create/update request: optional
+func (o ToolOutputReferenceResponseOutput) CreationTime() TimestampResponseOutput {
+	return o.ApplyT(func(v ToolOutputReferenceResponse) TimestampResponse { return v.CreationTime }).(TimestampResponseOutput)
+}
+
+// A FileReference to an output file. - In response: always set - In create/update request: always set
+func (o ToolOutputReferenceResponseOutput) Output() FileReferenceResponseOutput {
+	return o.ApplyT(func(v ToolOutputReferenceResponse) FileReferenceResponse { return v.Output }).(FileReferenceResponseOutput)
+}
+
+// The test case to which this output file belongs. - In response: present if set by create/update request - In create/update request: optional
+func (o ToolOutputReferenceResponseOutput) TestCase() TestCaseReferenceResponseOutput {
+	return o.ApplyT(func(v ToolOutputReferenceResponse) TestCaseReferenceResponse { return v.TestCase }).(TestCaseReferenceResponseOutput)
+}
+
+type ToolOutputReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ToolOutputReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ToolOutputReferenceResponse)(nil)).Elem()
+}
+
+func (o ToolOutputReferenceResponseArrayOutput) ToToolOutputReferenceResponseArrayOutput() ToolOutputReferenceResponseArrayOutput {
+	return o
+}
+
+func (o ToolOutputReferenceResponseArrayOutput) ToToolOutputReferenceResponseArrayOutputWithContext(ctx context.Context) ToolOutputReferenceResponseArrayOutput {
+	return o
+}
+
+func (o ToolOutputReferenceResponseArrayOutput) Index(i pulumi.IntInput) ToolOutputReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ToolOutputReferenceResponse {
+		return vs[0].([]ToolOutputReferenceResponse)[vs[1].(int)]
+	}).(ToolOutputReferenceResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AndroidAppInfoOutput{})
 	pulumi.RegisterOutputType(AndroidAppInfoPtrOutput{})
+	pulumi.RegisterOutputType(AndroidAppInfoResponseOutput{})
+	pulumi.RegisterOutputType(AndroidAppInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(AndroidInstrumentationTestOutput{})
 	pulumi.RegisterOutputType(AndroidInstrumentationTestPtrOutput{})
+	pulumi.RegisterOutputType(AndroidInstrumentationTestResponseOutput{})
+	pulumi.RegisterOutputType(AndroidInstrumentationTestResponsePtrOutput{})
 	pulumi.RegisterOutputType(AndroidRoboTestOutput{})
 	pulumi.RegisterOutputType(AndroidRoboTestPtrOutput{})
+	pulumi.RegisterOutputType(AndroidRoboTestResponseOutput{})
+	pulumi.RegisterOutputType(AndroidRoboTestResponsePtrOutput{})
 	pulumi.RegisterOutputType(AndroidTestOutput{})
 	pulumi.RegisterOutputType(AndroidTestPtrOutput{})
 	pulumi.RegisterOutputType(AndroidTestLoopOutput{})
 	pulumi.RegisterOutputType(AndroidTestLoopPtrOutput{})
+	pulumi.RegisterOutputType(AndroidTestLoopResponseOutput{})
+	pulumi.RegisterOutputType(AndroidTestLoopResponsePtrOutput{})
+	pulumi.RegisterOutputType(AndroidTestResponseOutput{})
+	pulumi.RegisterOutputType(AndroidTestResponsePtrOutput{})
 	pulumi.RegisterOutputType(AnyOutput{})
 	pulumi.RegisterOutputType(AnyPtrOutput{})
+	pulumi.RegisterOutputType(AnyResponseOutput{})
 	pulumi.RegisterOutputType(AppStartTimeOutput{})
 	pulumi.RegisterOutputType(AppStartTimePtrOutput{})
 	pulumi.RegisterOutputType(BasicPerfSampleSeriesOutput{})
 	pulumi.RegisterOutputType(BasicPerfSampleSeriesPtrOutput{})
+	pulumi.RegisterOutputType(BasicPerfSampleSeriesResponseOutput{})
+	pulumi.RegisterOutputType(BasicPerfSampleSeriesResponsePtrOutput{})
 	pulumi.RegisterOutputType(CPUInfoOutput{})
 	pulumi.RegisterOutputType(CPUInfoPtrOutput{})
 	pulumi.RegisterOutputType(DurationOutput{})
 	pulumi.RegisterOutputType(DurationPtrOutput{})
+	pulumi.RegisterOutputType(DurationResponseOutput{})
+	pulumi.RegisterOutputType(DurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(FailureDetailOutput{})
 	pulumi.RegisterOutputType(FailureDetailPtrOutput{})
+	pulumi.RegisterOutputType(FailureDetailResponseOutput{})
+	pulumi.RegisterOutputType(FailureDetailResponsePtrOutput{})
 	pulumi.RegisterOutputType(FileReferenceOutput{})
 	pulumi.RegisterOutputType(FileReferencePtrOutput{})
 	pulumi.RegisterOutputType(FileReferenceArrayOutput{})
+	pulumi.RegisterOutputType(FileReferenceResponseOutput{})
+	pulumi.RegisterOutputType(FileReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(GraphicsStatsOutput{})
 	pulumi.RegisterOutputType(GraphicsStatsPtrOutput{})
 	pulumi.RegisterOutputType(GraphicsStatsBucketOutput{})
 	pulumi.RegisterOutputType(GraphicsStatsBucketArrayOutput{})
 	pulumi.RegisterOutputType(InconclusiveDetailOutput{})
 	pulumi.RegisterOutputType(InconclusiveDetailPtrOutput{})
+	pulumi.RegisterOutputType(InconclusiveDetailResponseOutput{})
+	pulumi.RegisterOutputType(InconclusiveDetailResponsePtrOutput{})
 	pulumi.RegisterOutputType(IndividualOutcomeOutput{})
 	pulumi.RegisterOutputType(IndividualOutcomeArrayOutput{})
+	pulumi.RegisterOutputType(IndividualOutcomeResponseOutput{})
+	pulumi.RegisterOutputType(IndividualOutcomeResponseArrayOutput{})
 	pulumi.RegisterOutputType(IosAppInfoOutput{})
 	pulumi.RegisterOutputType(IosAppInfoPtrOutput{})
+	pulumi.RegisterOutputType(IosAppInfoResponseOutput{})
+	pulumi.RegisterOutputType(IosAppInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(IosRoboTestOutput{})
 	pulumi.RegisterOutputType(IosRoboTestPtrOutput{})
+	pulumi.RegisterOutputType(IosRoboTestResponseOutput{})
+	pulumi.RegisterOutputType(IosRoboTestResponsePtrOutput{})
 	pulumi.RegisterOutputType(IosTestOutput{})
 	pulumi.RegisterOutputType(IosTestPtrOutput{})
 	pulumi.RegisterOutputType(IosTestLoopOutput{})
 	pulumi.RegisterOutputType(IosTestLoopPtrOutput{})
+	pulumi.RegisterOutputType(IosTestLoopResponseOutput{})
+	pulumi.RegisterOutputType(IosTestLoopResponsePtrOutput{})
+	pulumi.RegisterOutputType(IosTestResponseOutput{})
+	pulumi.RegisterOutputType(IosTestResponsePtrOutput{})
 	pulumi.RegisterOutputType(IosXcTestOutput{})
 	pulumi.RegisterOutputType(IosXcTestPtrOutput{})
+	pulumi.RegisterOutputType(IosXcTestResponseOutput{})
+	pulumi.RegisterOutputType(IosXcTestResponsePtrOutput{})
 	pulumi.RegisterOutputType(MatrixDimensionDefinitionOutput{})
 	pulumi.RegisterOutputType(MatrixDimensionDefinitionArrayOutput{})
+	pulumi.RegisterOutputType(MatrixDimensionDefinitionResponseOutput{})
+	pulumi.RegisterOutputType(MatrixDimensionDefinitionResponseArrayOutput{})
 	pulumi.RegisterOutputType(MemoryInfoOutput{})
 	pulumi.RegisterOutputType(MemoryInfoPtrOutput{})
 	pulumi.RegisterOutputType(MultiStepOutput{})
 	pulumi.RegisterOutputType(MultiStepPtrOutput{})
+	pulumi.RegisterOutputType(MultiStepResponseOutput{})
+	pulumi.RegisterOutputType(MultiStepResponsePtrOutput{})
 	pulumi.RegisterOutputType(OutcomeOutput{})
 	pulumi.RegisterOutputType(OutcomePtrOutput{})
+	pulumi.RegisterOutputType(OutcomeResponseOutput{})
+	pulumi.RegisterOutputType(OutcomeResponsePtrOutput{})
 	pulumi.RegisterOutputType(PerfEnvironmentOutput{})
 	pulumi.RegisterOutputType(PerfEnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(PrimaryStepOutput{})
 	pulumi.RegisterOutputType(PrimaryStepPtrOutput{})
+	pulumi.RegisterOutputType(PrimaryStepResponseOutput{})
+	pulumi.RegisterOutputType(PrimaryStepResponsePtrOutput{})
 	pulumi.RegisterOutputType(SkippedDetailOutput{})
 	pulumi.RegisterOutputType(SkippedDetailPtrOutput{})
+	pulumi.RegisterOutputType(SkippedDetailResponseOutput{})
+	pulumi.RegisterOutputType(SkippedDetailResponsePtrOutput{})
 	pulumi.RegisterOutputType(SpecificationOutput{})
 	pulumi.RegisterOutputType(SpecificationPtrOutput{})
+	pulumi.RegisterOutputType(SpecificationResponseOutput{})
+	pulumi.RegisterOutputType(SpecificationResponsePtrOutput{})
 	pulumi.RegisterOutputType(StackTraceOutput{})
 	pulumi.RegisterOutputType(StackTracePtrOutput{})
+	pulumi.RegisterOutputType(StackTraceResponseOutput{})
 	pulumi.RegisterOutputType(StepDimensionValueEntryOutput{})
 	pulumi.RegisterOutputType(StepDimensionValueEntryArrayOutput{})
+	pulumi.RegisterOutputType(StepDimensionValueEntryResponseOutput{})
+	pulumi.RegisterOutputType(StepDimensionValueEntryResponseArrayOutput{})
 	pulumi.RegisterOutputType(StepLabelsEntryOutput{})
 	pulumi.RegisterOutputType(StepLabelsEntryArrayOutput{})
+	pulumi.RegisterOutputType(StepLabelsEntryResponseOutput{})
+	pulumi.RegisterOutputType(StepLabelsEntryResponseArrayOutput{})
 	pulumi.RegisterOutputType(SuccessDetailOutput{})
 	pulumi.RegisterOutputType(SuccessDetailPtrOutput{})
+	pulumi.RegisterOutputType(SuccessDetailResponseOutput{})
+	pulumi.RegisterOutputType(SuccessDetailResponsePtrOutput{})
 	pulumi.RegisterOutputType(TestCaseReferenceOutput{})
 	pulumi.RegisterOutputType(TestCaseReferencePtrOutput{})
+	pulumi.RegisterOutputType(TestCaseReferenceResponseOutput{})
 	pulumi.RegisterOutputType(TestExecutionStepOutput{})
 	pulumi.RegisterOutputType(TestExecutionStepPtrOutput{})
+	pulumi.RegisterOutputType(TestExecutionStepResponseOutput{})
+	pulumi.RegisterOutputType(TestExecutionStepResponsePtrOutput{})
 	pulumi.RegisterOutputType(TestIssueOutput{})
 	pulumi.RegisterOutputType(TestIssueArrayOutput{})
+	pulumi.RegisterOutputType(TestIssueResponseOutput{})
+	pulumi.RegisterOutputType(TestIssueResponseArrayOutput{})
 	pulumi.RegisterOutputType(TestSuiteOverviewOutput{})
 	pulumi.RegisterOutputType(TestSuiteOverviewArrayOutput{})
+	pulumi.RegisterOutputType(TestSuiteOverviewResponseOutput{})
+	pulumi.RegisterOutputType(TestSuiteOverviewResponseArrayOutput{})
 	pulumi.RegisterOutputType(TestTimingOutput{})
 	pulumi.RegisterOutputType(TestTimingPtrOutput{})
+	pulumi.RegisterOutputType(TestTimingResponseOutput{})
+	pulumi.RegisterOutputType(TestTimingResponsePtrOutput{})
 	pulumi.RegisterOutputType(TimestampOutput{})
 	pulumi.RegisterOutputType(TimestampPtrOutput{})
+	pulumi.RegisterOutputType(TimestampResponseOutput{})
+	pulumi.RegisterOutputType(TimestampResponsePtrOutput{})
 	pulumi.RegisterOutputType(ToolExecutionOutput{})
 	pulumi.RegisterOutputType(ToolExecutionPtrOutput{})
+	pulumi.RegisterOutputType(ToolExecutionResponseOutput{})
+	pulumi.RegisterOutputType(ToolExecutionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ToolExecutionStepOutput{})
 	pulumi.RegisterOutputType(ToolExecutionStepPtrOutput{})
+	pulumi.RegisterOutputType(ToolExecutionStepResponseOutput{})
+	pulumi.RegisterOutputType(ToolExecutionStepResponsePtrOutput{})
 	pulumi.RegisterOutputType(ToolExitCodeOutput{})
 	pulumi.RegisterOutputType(ToolExitCodePtrOutput{})
+	pulumi.RegisterOutputType(ToolExitCodeResponseOutput{})
+	pulumi.RegisterOutputType(ToolExitCodeResponsePtrOutput{})
 	pulumi.RegisterOutputType(ToolOutputReferenceOutput{})
 	pulumi.RegisterOutputType(ToolOutputReferenceArrayOutput{})
+	pulumi.RegisterOutputType(ToolOutputReferenceResponseOutput{})
+	pulumi.RegisterOutputType(ToolOutputReferenceResponseArrayOutput{})
 }

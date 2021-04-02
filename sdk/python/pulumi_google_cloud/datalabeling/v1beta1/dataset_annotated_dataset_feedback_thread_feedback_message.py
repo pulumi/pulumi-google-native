@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage']
@@ -100,7 +101,55 @@ class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(pulumi.CustomResource
 
         __props__ = dict()
 
+        __props__["body"] = None
+        __props__["create_time"] = None
+        __props__["image"] = None
+        __props__["name"] = None
+        __props__["operator_feedback_metadata"] = None
+        __props__["requester_feedback_metadata"] = None
         return DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def body(self) -> pulumi.Output[str]:
+        """
+        String content of the feedback. Maximum of 10000 characters.
+        """
+        return pulumi.get(self, "body")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Create time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def image(self) -> pulumi.Output[str]:
+        """
+        The image storing this feedback if the feedback is an image representing operator's comments.
+        """
+        return pulumi.get(self, "image")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="operatorFeedbackMetadata")
+    def operator_feedback_metadata(self) -> pulumi.Output['outputs.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse']:
+        return pulumi.get(self, "operator_feedback_metadata")
+
+    @property
+    @pulumi.getter(name="requesterFeedbackMetadata")
+    def requester_feedback_metadata(self) -> pulumi.Output['outputs.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse']:
+        return pulumi.get(self, "requester_feedback_metadata")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

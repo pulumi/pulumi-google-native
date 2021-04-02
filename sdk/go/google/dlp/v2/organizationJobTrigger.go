@@ -14,6 +14,27 @@ import (
 // Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
 type OrganizationJobTrigger struct {
 	pulumi.CustomResourceState
+
+	// The creation timestamp of a triggeredJob.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// User provided description (max 256 chars)
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Display name (max 100 chars)
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
+	Errors GooglePrivacyDlpV2ErrorResponseArrayOutput `pulumi:"errors"`
+	// For inspect jobs, a snapshot of the configuration.
+	InspectJob GooglePrivacyDlpV2InspectJobConfigResponseOutput `pulumi:"inspectJob"`
+	// The timestamp of the last time this trigger executed.
+	LastRunTime pulumi.StringOutput `pulumi:"lastRunTime"`
+	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. A status for this trigger.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
+	Triggers GooglePrivacyDlpV2TriggerResponseArrayOutput `pulumi:"triggers"`
+	// The last update timestamp of a triggeredJob.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewOrganizationJobTrigger registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +75,49 @@ func GetOrganizationJobTrigger(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationJobTrigger resources.
 type organizationJobTriggerState struct {
+	// The creation timestamp of a triggeredJob.
+	CreateTime *string `pulumi:"createTime"`
+	// User provided description (max 256 chars)
+	Description *string `pulumi:"description"`
+	// Display name (max 100 chars)
+	DisplayName *string `pulumi:"displayName"`
+	// A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
+	Errors []GooglePrivacyDlpV2ErrorResponse `pulumi:"errors"`
+	// For inspect jobs, a snapshot of the configuration.
+	InspectJob *GooglePrivacyDlpV2InspectJobConfigResponse `pulumi:"inspectJob"`
+	// The timestamp of the last time this trigger executed.
+	LastRunTime *string `pulumi:"lastRunTime"`
+	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
+	Name *string `pulumi:"name"`
+	// Required. A status for this trigger.
+	Status *string `pulumi:"status"`
+	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
+	Triggers []GooglePrivacyDlpV2TriggerResponse `pulumi:"triggers"`
+	// The last update timestamp of a triggeredJob.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type OrganizationJobTriggerState struct {
+	// The creation timestamp of a triggeredJob.
+	CreateTime pulumi.StringPtrInput
+	// User provided description (max 256 chars)
+	Description pulumi.StringPtrInput
+	// Display name (max 100 chars)
+	DisplayName pulumi.StringPtrInput
+	// A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
+	Errors GooglePrivacyDlpV2ErrorResponseArrayInput
+	// For inspect jobs, a snapshot of the configuration.
+	InspectJob GooglePrivacyDlpV2InspectJobConfigResponsePtrInput
+	// The timestamp of the last time this trigger executed.
+	LastRunTime pulumi.StringPtrInput
+	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
+	Name pulumi.StringPtrInput
+	// Required. A status for this trigger.
+	Status pulumi.StringPtrInput
+	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
+	Triggers GooglePrivacyDlpV2TriggerResponseArrayInput
+	// The last update timestamp of a triggeredJob.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (OrganizationJobTriggerState) ElementType() reflect.Type {
@@ -65,12 +126,10 @@ func (OrganizationJobTriggerState) ElementType() reflect.Type {
 
 type organizationJobTriggerArgs struct {
 	// Required. The JobTrigger to create.
-	JobTrigger    *GooglePrivacyDlpV2JobTrigger `pulumi:"jobTrigger"`
-	JobTriggersId string                        `pulumi:"jobTriggersId"`
-	// Deprecated. This field has no effect.
-	LocationId      *string `pulumi:"locationId"`
-	LocationsId     string  `pulumi:"locationsId"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	JobTrigger      *GooglePrivacyDlpV2JobTrigger `pulumi:"jobTrigger"`
+	JobTriggersId   string                        `pulumi:"jobTriggersId"`
+	LocationsId     string                        `pulumi:"locationsId"`
+	OrganizationsId string                        `pulumi:"organizationsId"`
 	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId *string `pulumi:"triggerId"`
 }
@@ -78,10 +137,8 @@ type organizationJobTriggerArgs struct {
 // The set of arguments for constructing a OrganizationJobTrigger resource.
 type OrganizationJobTriggerArgs struct {
 	// Required. The JobTrigger to create.
-	JobTrigger    GooglePrivacyDlpV2JobTriggerPtrInput
-	JobTriggersId pulumi.StringInput
-	// Deprecated. This field has no effect.
-	LocationId      pulumi.StringPtrInput
+	JobTrigger      GooglePrivacyDlpV2JobTriggerPtrInput
+	JobTriggersId   pulumi.StringInput
 	LocationsId     pulumi.StringInput
 	OrganizationsId pulumi.StringInput
 	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.

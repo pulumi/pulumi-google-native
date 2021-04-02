@@ -14,6 +14,23 @@ import (
 // Creates a `WorkerPool` to run the builds, and returns the new worker pool.
 type WorkerPool struct {
 	pulumi.CustomResourceState
+
+	// Time at which the request to create the `WorkerPool` was received.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Time at which the request to delete the `WorkerPool` was received.
+	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// The resource name of the `WorkerPool`. Format of the name is `projects/{project_id}/workerPools/{worker_pool_id}`, where the value of {worker_pool_id} is provided in the CreateWorkerPool request.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Network configuration for the `WorkerPool`.
+	NetworkConfig NetworkConfigResponseOutput `pulumi:"networkConfig"`
+	// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+	Region pulumi.StringOutput `pulumi:"region"`
+	// WorkerPool state.
+	State pulumi.StringOutput `pulumi:"state"`
+	// Time at which the request to update the `WorkerPool` was received.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Worker configuration for the `WorkerPool`.
+	WorkerConfig WorkerConfigResponseOutput `pulumi:"workerConfig"`
 }
 
 // NewWorkerPool registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +68,41 @@ func GetWorkerPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerPool resources.
 type workerPoolState struct {
+	// Time at which the request to create the `WorkerPool` was received.
+	CreateTime *string `pulumi:"createTime"`
+	// Time at which the request to delete the `WorkerPool` was received.
+	DeleteTime *string `pulumi:"deleteTime"`
+	// The resource name of the `WorkerPool`. Format of the name is `projects/{project_id}/workerPools/{worker_pool_id}`, where the value of {worker_pool_id} is provided in the CreateWorkerPool request.
+	Name *string `pulumi:"name"`
+	// Network configuration for the `WorkerPool`.
+	NetworkConfig *NetworkConfigResponse `pulumi:"networkConfig"`
+	// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+	Region *string `pulumi:"region"`
+	// WorkerPool state.
+	State *string `pulumi:"state"`
+	// Time at which the request to update the `WorkerPool` was received.
+	UpdateTime *string `pulumi:"updateTime"`
+	// Worker configuration for the `WorkerPool`.
+	WorkerConfig *WorkerConfigResponse `pulumi:"workerConfig"`
 }
 
 type WorkerPoolState struct {
+	// Time at which the request to create the `WorkerPool` was received.
+	CreateTime pulumi.StringPtrInput
+	// Time at which the request to delete the `WorkerPool` was received.
+	DeleteTime pulumi.StringPtrInput
+	// The resource name of the `WorkerPool`. Format of the name is `projects/{project_id}/workerPools/{worker_pool_id}`, where the value of {worker_pool_id} is provided in the CreateWorkerPool request.
+	Name pulumi.StringPtrInput
+	// Network configuration for the `WorkerPool`.
+	NetworkConfig NetworkConfigResponsePtrInput
+	// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+	Region pulumi.StringPtrInput
+	// WorkerPool state.
+	State pulumi.StringPtrInput
+	// Time at which the request to update the `WorkerPool` was received.
+	UpdateTime pulumi.StringPtrInput
+	// Worker configuration for the `WorkerPool`.
+	WorkerConfig WorkerConfigResponsePtrInput
 }
 
 func (WorkerPoolState) ElementType() reflect.Type {
@@ -61,21 +110,11 @@ func (WorkerPoolState) ElementType() reflect.Type {
 }
 
 type workerPoolArgs struct {
-	// Output only. Time at which the request to create the `WorkerPool` was received.
-	CreateTime *string `pulumi:"createTime"`
-	// Output only. Time at which the request to delete the `WorkerPool` was received.
-	DeleteTime *string `pulumi:"deleteTime"`
-	// Output only. The resource name of the `WorkerPool`. Format of the name is `projects/{project_id}/workerPools/{worker_pool_id}`, where the value of {worker_pool_id} is provided in the CreateWorkerPool request.
-	Name *string `pulumi:"name"`
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	ProjectsId    string         `pulumi:"projectsId"`
 	// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
 	Region *string `pulumi:"region"`
-	// Output only. WorkerPool state.
-	State *string `pulumi:"state"`
-	// Output only. Time at which the request to update the `WorkerPool` was received.
-	UpdateTime *string `pulumi:"updateTime"`
 	// Worker configuration for the `WorkerPool`.
 	WorkerConfig  *WorkerConfig `pulumi:"workerConfig"`
 	WorkerPoolsId string        `pulumi:"workerPoolsId"`
@@ -83,21 +122,11 @@ type workerPoolArgs struct {
 
 // The set of arguments for constructing a WorkerPool resource.
 type WorkerPoolArgs struct {
-	// Output only. Time at which the request to create the `WorkerPool` was received.
-	CreateTime pulumi.StringPtrInput
-	// Output only. Time at which the request to delete the `WorkerPool` was received.
-	DeleteTime pulumi.StringPtrInput
-	// Output only. The resource name of the `WorkerPool`. Format of the name is `projects/{project_id}/workerPools/{worker_pool_id}`, where the value of {worker_pool_id} is provided in the CreateWorkerPool request.
-	Name pulumi.StringPtrInput
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigPtrInput
 	ProjectsId    pulumi.StringInput
 	// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
 	Region pulumi.StringPtrInput
-	// Output only. WorkerPool state.
-	State pulumi.StringPtrInput
-	// Output only. Time at which the request to update the `WorkerPool` was received.
-	UpdateTime pulumi.StringPtrInput
 	// Worker configuration for the `WorkerPool`.
 	WorkerConfig  WorkerConfigPtrInput
 	WorkerPoolsId pulumi.StringInput

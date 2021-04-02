@@ -35,6 +35,18 @@ export class AdminTopic extends pulumi.CustomResource {
         return obj['__pulumiType'] === AdminTopic.__pulumiType;
     }
 
+    /**
+     * The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The settings for this topic's partitions.
+     */
+    public readonly partitionConfig!: pulumi.Output<outputs.pubsublite.v1.PartitionConfigResponse>;
+    /**
+     * The settings for this topic's message retention.
+     */
+    public readonly retentionConfig!: pulumi.Output<outputs.pubsublite.v1.RetentionConfigResponse>;
 
     /**
      * Create a AdminTopic resource with the given unique name, arguments, and options.
@@ -63,6 +75,9 @@ export class AdminTopic extends pulumi.CustomResource {
             inputs["retentionConfig"] = args ? args.retentionConfig : undefined;
             inputs["topicsId"] = args ? args.topicsId : undefined;
         } else {
+            inputs["name"] = undefined /*out*/;
+            inputs["partitionConfig"] = undefined /*out*/;
+            inputs["retentionConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

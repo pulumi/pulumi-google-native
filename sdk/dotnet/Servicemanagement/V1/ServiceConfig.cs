@@ -16,6 +16,163 @@ namespace Pulumi.GoogleCloud.Servicemanagement.V1
     public partial class ServiceConfig : Pulumi.CustomResource
     {
         /// <summary>
+        /// A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api needs to be provided by the configuration author, as the remaining fields will be derived from the IDL during the normalization process. It is an error to specify an API interface here which cannot be resolved against the associated IDL files.
+        /// </summary>
+        [Output("apis")]
+        public Output<ImmutableArray<Outputs.ApiResponse>> Apis { get; private set; } = null!;
+
+        /// <summary>
+        /// Auth configuration.
+        /// </summary>
+        [Output("authentication")]
+        public Output<Outputs.AuthenticationResponse> Authentication { get; private set; } = null!;
+
+        /// <summary>
+        /// API backend configuration.
+        /// </summary>
+        [Output("backend")]
+        public Output<Outputs.BackendResponse> Backend { get; private set; } = null!;
+
+        /// <summary>
+        /// Billing configuration.
+        /// </summary>
+        [Output("billing")]
+        public Output<Outputs.BillingResponse> Billing { get; private set; } = null!;
+
+        /// <summary>
+        /// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
+        /// </summary>
+        [Output("configVersion")]
+        public Output<int> ConfigVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Context configuration.
+        /// </summary>
+        [Output("context")]
+        public Output<Outputs.ContextResponse> Context { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for the service control plane.
+        /// </summary>
+        [Output("control")]
+        public Output<Outputs.ControlResponse> Control { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom error configuration.
+        /// </summary>
+        [Output("customError")]
+        public Output<Outputs.CustomErrorResponse> CustomError { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional API documentation.
+        /// </summary>
+        [Output("documentation")]
+        public Output<Outputs.DocumentationResponse> Documentation { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
+        /// </summary>
+        [Output("endpoints")]
+        public Output<ImmutableArray<Outputs.EndpointResponse>> Endpoints { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
+        /// </summary>
+        [Output("enums")]
+        public Output<ImmutableArray<Outputs.EnumResponse>> Enums { get; private set; } = null!;
+
+        /// <summary>
+        /// HTTP configuration.
+        /// </summary>
+        [Output("http")]
+        public Output<Outputs.HttpResponse> Http { get; private set; } = null!;
+
+        /// <summary>
+        /// Logging configuration.
+        /// </summary>
+        [Output("logging")]
+        public Output<Outputs.LoggingResponse> Logging { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines the logs used by this service.
+        /// </summary>
+        [Output("logs")]
+        public Output<ImmutableArray<Outputs.LogDescriptorResponse>> Logs { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines the metrics used by this service.
+        /// </summary>
+        [Output("metrics")]
+        public Output<ImmutableArray<Outputs.MetricDescriptorResponse>> Metrics { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines the monitored resources used by this service. This is required by the Service.monitoring and Service.logging configurations.
+        /// </summary>
+        [Output("monitoredResources")]
+        public Output<ImmutableArray<Outputs.MonitoredResourceDescriptorResponse>> MonitoredResources { get; private set; } = null!;
+
+        /// <summary>
+        /// Monitoring configuration.
+        /// </summary>
+        [Output("monitoring")]
+        public Output<Outputs.MonitoringResponse> Monitoring { get; private set; } = null!;
+
+        /// <summary>
+        /// The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The Google project that owns this service.
+        /// </summary>
+        [Output("producerProjectId")]
+        public Output<string> ProducerProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// Quota configuration.
+        /// </summary>
+        [Output("quota")]
+        public Output<Outputs.QuotaResponse> Quota { get; private set; } = null!;
+
+        /// <summary>
+        /// The source information for this configuration if available.
+        /// </summary>
+        [Output("sourceInfo")]
+        public Output<Outputs.SourceInfoResponse> SourceInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// System parameter configuration.
+        /// </summary>
+        [Output("systemParameters")]
+        public Output<Outputs.SystemParametersResponse> SystemParameters { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
+        /// </summary>
+        [Output("systemTypes")]
+        public Output<ImmutableArray<Outputs.TypeResponse>> SystemTypes { get; private set; } = null!;
+
+        /// <summary>
+        /// The product title for this service.
+        /// </summary>
+        [Output("title")]
+        public Output<string> Title { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
+        /// </summary>
+        [Output("types")]
+        public Output<ImmutableArray<Outputs.TypeResponse>> Types { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration controlling usage of this service.
+        /// </summary>
+        [Output("usage")]
+        public Output<Outputs.UsageResponse> Usage { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ServiceConfig resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -228,7 +385,7 @@ namespace Pulumi.GoogleCloud.Servicemanagement.V1
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The source information for this configuration if available.
+        /// The source information for this configuration if available.
         /// </summary>
         [Input("sourceInfo")]
         public Input<Inputs.SourceInfoArgs>? SourceInfo { get; set; }

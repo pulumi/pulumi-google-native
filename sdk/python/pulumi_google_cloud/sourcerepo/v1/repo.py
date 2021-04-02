@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Repo']
@@ -87,7 +88,52 @@ class Repo(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["mirror_config"] = None
+        __props__["name"] = None
+        __props__["pubsub_configs"] = None
+        __props__["size"] = None
+        __props__["url"] = None
         return Repo(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="mirrorConfig")
+    def mirror_config(self) -> pulumi.Output['outputs.MirrorConfigResponse']:
+        """
+        How this repository mirrors a repository managed by another service. Read-only field.
+        """
+        return pulumi.get(self, "mirror_config")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pubsubConfigs")
+    def pubsub_configs(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+        """
+        return pulumi.get(self, "pubsub_configs")
+
+    @property
+    @pulumi.getter
+    def size(self) -> pulumi.Output[str]:
+        """
+        The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Output[str]:
+        """
+        URL to clone the repository from Google Cloud Source Repositories. Read-only field.
+        """
+        return pulumi.get(self, "url")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

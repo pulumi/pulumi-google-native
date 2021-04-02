@@ -15,12 +15,9 @@ __all__ = [
     'BindingArgs',
     'ExprArgs',
     'GkeClusterArgs',
-    'KubernetesMetadataArgs',
     'KubernetesResourceArgs',
     'MembershipEndpointArgs',
-    'MembershipStateArgs',
     'PolicyArgs',
-    'ResourceManifestArgs',
     'ResourceOptionsArgs',
 ]
 
@@ -107,37 +104,17 @@ class AuditLogConfigArgs:
 @pulumi.input_type
 class AuthorityArgs:
     def __init__(__self__, *,
-                 identity_provider: Optional[pulumi.Input[str]] = None,
                  issuer: Optional[pulumi.Input[str]] = None,
-                 oidc_jwks: Optional[pulumi.Input[str]] = None,
-                 workload_identity_pool: Optional[pulumi.Input[str]] = None):
+                 oidc_jwks: Optional[pulumi.Input[str]] = None):
         """
         Authority encodes how Google will recognize identities from this Membership. See the workload identity documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
-        :param pulumi.Input[str] identity_provider: Output only. An identity provider that reflects the `issuer` in the workload identity pool.
         :param pulumi.Input[str] issuer: Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer, unless `oidc_jwks` is set. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
         :param pulumi.Input[str] oidc_jwks: Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
-        :param pulumi.Input[str] workload_identity_pool: Output only. The name of the workload identity pool in which `issuer` will be recognized. There is a single Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to change in newer versions of this API.
         """
-        if identity_provider is not None:
-            pulumi.set(__self__, "identity_provider", identity_provider)
         if issuer is not None:
             pulumi.set(__self__, "issuer", issuer)
         if oidc_jwks is not None:
             pulumi.set(__self__, "oidc_jwks", oidc_jwks)
-        if workload_identity_pool is not None:
-            pulumi.set(__self__, "workload_identity_pool", workload_identity_pool)
-
-    @property
-    @pulumi.getter(name="identityProvider")
-    def identity_provider(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. An identity provider that reflects the `issuer` in the workload identity pool.
-        """
-        return pulumi.get(self, "identity_provider")
-
-    @identity_provider.setter
-    def identity_provider(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "identity_provider", value)
 
     @property
     @pulumi.getter
@@ -162,18 +139,6 @@ class AuthorityArgs:
     @oidc_jwks.setter
     def oidc_jwks(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "oidc_jwks", value)
-
-    @property
-    @pulumi.getter(name="workloadIdentityPool")
-    def workload_identity_pool(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The name of the workload identity pool in which `issuer` will be recognized. There is a single Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to change in newer versions of this API.
-        """
-        return pulumi.get(self, "workload_identity_pool")
-
-    @workload_identity_pool.setter
-    def workload_identity_pool(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "workload_identity_pool", value)
 
 
 @pulumi.input_type
@@ -329,143 +294,19 @@ class GkeClusterArgs:
 
 
 @pulumi.input_type
-class KubernetesMetadataArgs:
-    def __init__(__self__, *,
-                 kubernetes_api_server_version: Optional[pulumi.Input[str]] = None,
-                 memory_mb: Optional[pulumi.Input[int]] = None,
-                 node_count: Optional[pulumi.Input[int]] = None,
-                 node_provider_id: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
-                 vcpu_count: Optional[pulumi.Input[int]] = None):
-        """
-        KubernetesMetadata provides informational metadata for Memberships that are created from Kubernetes Endpoints (currently, these are equivalent to Kubernetes clusters).
-        :param pulumi.Input[str] kubernetes_api_server_version: Output only. Kubernetes API server version string as reported by '/version'.
-        :param pulumi.Input[int] memory_mb: Output only. The total memory capacity as reported by the sum of all Kubernetes nodes resources, defined in MB.
-        :param pulumi.Input[int] node_count: Output only. Node count as reported by Kubernetes nodes resources.
-        :param pulumi.Input[str] node_provider_id: Output only. Node providerID as reported by the first node in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the node_count will be zero and the node_provider_id will be empty.
-        :param pulumi.Input[str] update_time: Output only. The time at which these details were last updated. This update_time is different from the Membership-level update_time since EndpointDetails are updated internally for API consumers.
-        :param pulumi.Input[int] vcpu_count: Output only. vCPU count as reported by Kubernetes nodes resources.
-        """
-        if kubernetes_api_server_version is not None:
-            pulumi.set(__self__, "kubernetes_api_server_version", kubernetes_api_server_version)
-        if memory_mb is not None:
-            pulumi.set(__self__, "memory_mb", memory_mb)
-        if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
-        if node_provider_id is not None:
-            pulumi.set(__self__, "node_provider_id", node_provider_id)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
-        if vcpu_count is not None:
-            pulumi.set(__self__, "vcpu_count", vcpu_count)
-
-    @property
-    @pulumi.getter(name="kubernetesApiServerVersion")
-    def kubernetes_api_server_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Kubernetes API server version string as reported by '/version'.
-        """
-        return pulumi.get(self, "kubernetes_api_server_version")
-
-    @kubernetes_api_server_version.setter
-    def kubernetes_api_server_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kubernetes_api_server_version", value)
-
-    @property
-    @pulumi.getter(name="memoryMb")
-    def memory_mb(self) -> Optional[pulumi.Input[int]]:
-        """
-        Output only. The total memory capacity as reported by the sum of all Kubernetes nodes resources, defined in MB.
-        """
-        return pulumi.get(self, "memory_mb")
-
-    @memory_mb.setter
-    def memory_mb(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "memory_mb", value)
-
-    @property
-    @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        Output only. Node count as reported by Kubernetes nodes resources.
-        """
-        return pulumi.get(self, "node_count")
-
-    @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "node_count", value)
-
-    @property
-    @pulumi.getter(name="nodeProviderId")
-    def node_provider_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Node providerID as reported by the first node in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the node_count will be zero and the node_provider_id will be empty.
-        """
-        return pulumi.get(self, "node_provider_id")
-
-    @node_provider_id.setter
-    def node_provider_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "node_provider_id", value)
-
-    @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The time at which these details were last updated. This update_time is different from the Membership-level update_time since EndpointDetails are updated internally for API consumers.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
-
-    @property
-    @pulumi.getter(name="vcpuCount")
-    def vcpu_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        Output only. vCPU count as reported by Kubernetes nodes resources.
-        """
-        return pulumi.get(self, "vcpu_count")
-
-    @vcpu_count.setter
-    def vcpu_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "vcpu_count", value)
-
-
-@pulumi.input_type
 class KubernetesResourceArgs:
     def __init__(__self__, *,
-                 connect_resources: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceManifestArgs']]]] = None,
                  membership_cr_manifest: Optional[pulumi.Input[str]] = None,
-                 membership_resources: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceManifestArgs']]]] = None,
                  resource_options: Optional[pulumi.Input['ResourceOptionsArgs']] = None):
         """
         KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
-        :param pulumi.Input[Sequence[pulumi.Input['ResourceManifestArgs']]] connect_resources: Output only. The Kubernetes resources for installing the GKE Connect agent. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
         :param pulumi.Input[str] membership_cr_manifest: Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during Create or Update, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
-        :param pulumi.Input[Sequence[pulumi.Input['ResourceManifestArgs']]] membership_resources: Output only. Additional Kubernetes resources that need to be applied to the cluster after Membership creation, and after every update. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
         :param pulumi.Input['ResourceOptionsArgs'] resource_options: Optional. Options for Kubernetes resource generation.
         """
-        if connect_resources is not None:
-            pulumi.set(__self__, "connect_resources", connect_resources)
         if membership_cr_manifest is not None:
             pulumi.set(__self__, "membership_cr_manifest", membership_cr_manifest)
-        if membership_resources is not None:
-            pulumi.set(__self__, "membership_resources", membership_resources)
         if resource_options is not None:
             pulumi.set(__self__, "resource_options", resource_options)
-
-    @property
-    @pulumi.getter(name="connectResources")
-    def connect_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceManifestArgs']]]]:
-        """
-        Output only. The Kubernetes resources for installing the GKE Connect agent. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
-        """
-        return pulumi.get(self, "connect_resources")
-
-    @connect_resources.setter
-    def connect_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceManifestArgs']]]]):
-        pulumi.set(self, "connect_resources", value)
 
     @property
     @pulumi.getter(name="membershipCrManifest")
@@ -478,18 +319,6 @@ class KubernetesResourceArgs:
     @membership_cr_manifest.setter
     def membership_cr_manifest(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "membership_cr_manifest", value)
-
-    @property
-    @pulumi.getter(name="membershipResources")
-    def membership_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceManifestArgs']]]]:
-        """
-        Output only. Additional Kubernetes resources that need to be applied to the cluster after Membership creation, and after every update. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
-        """
-        return pulumi.get(self, "membership_resources")
-
-    @membership_resources.setter
-    def membership_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceManifestArgs']]]]):
-        pulumi.set(self, "membership_resources", value)
 
     @property
     @pulumi.getter(name="resourceOptions")
@@ -508,18 +337,14 @@ class KubernetesResourceArgs:
 class MembershipEndpointArgs:
     def __init__(__self__, *,
                  gke_cluster: Optional[pulumi.Input['GkeClusterArgs']] = None,
-                 kubernetes_metadata: Optional[pulumi.Input['KubernetesMetadataArgs']] = None,
                  kubernetes_resource: Optional[pulumi.Input['KubernetesResourceArgs']] = None):
         """
         MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
         :param pulumi.Input['GkeClusterArgs'] gke_cluster: Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
-        :param pulumi.Input['KubernetesMetadataArgs'] kubernetes_metadata: Output only. Useful Kubernetes-specific metadata.
         :param pulumi.Input['KubernetesResourceArgs'] kubernetes_resource: Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
         """
         if gke_cluster is not None:
             pulumi.set(__self__, "gke_cluster", gke_cluster)
-        if kubernetes_metadata is not None:
-            pulumi.set(__self__, "kubernetes_metadata", kubernetes_metadata)
         if kubernetes_resource is not None:
             pulumi.set(__self__, "kubernetes_resource", kubernetes_resource)
 
@@ -536,18 +361,6 @@ class MembershipEndpointArgs:
         pulumi.set(self, "gke_cluster", value)
 
     @property
-    @pulumi.getter(name="kubernetesMetadata")
-    def kubernetes_metadata(self) -> Optional[pulumi.Input['KubernetesMetadataArgs']]:
-        """
-        Output only. Useful Kubernetes-specific metadata.
-        """
-        return pulumi.get(self, "kubernetes_metadata")
-
-    @kubernetes_metadata.setter
-    def kubernetes_metadata(self, value: Optional[pulumi.Input['KubernetesMetadataArgs']]):
-        pulumi.set(self, "kubernetes_metadata", value)
-
-    @property
     @pulumi.getter(name="kubernetesResource")
     def kubernetes_resource(self) -> Optional[pulumi.Input['KubernetesResourceArgs']]:
         """
@@ -558,30 +371,6 @@ class MembershipEndpointArgs:
     @kubernetes_resource.setter
     def kubernetes_resource(self, value: Optional[pulumi.Input['KubernetesResourceArgs']]):
         pulumi.set(self, "kubernetes_resource", value)
-
-
-@pulumi.input_type
-class MembershipStateArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input[str]] = None):
-        """
-        MembershipState describes the state of a Membership resource.
-        :param pulumi.Input[str] code: Output only. The current state of the Membership resource.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The current state of the Membership resource.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "code", value)
 
 
 @pulumi.input_type
@@ -654,46 +443,6 @@ class PolicyArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "version", value)
-
-
-@pulumi.input_type
-class ResourceManifestArgs:
-    def __init__(__self__, *,
-                 cluster_scoped: Optional[pulumi.Input[bool]] = None,
-                 manifest: Optional[pulumi.Input[str]] = None):
-        """
-        ResourceManifest represents a single Kubernetes resource to be applied to the cluster.
-        :param pulumi.Input[bool] cluster_scoped: Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is assumed to be namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
-        :param pulumi.Input[str] manifest: YAML manifest of the resource.
-        """
-        if cluster_scoped is not None:
-            pulumi.set(__self__, "cluster_scoped", cluster_scoped)
-        if manifest is not None:
-            pulumi.set(__self__, "manifest", manifest)
-
-    @property
-    @pulumi.getter(name="clusterScoped")
-    def cluster_scoped(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is assumed to be namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
-        """
-        return pulumi.get(self, "cluster_scoped")
-
-    @cluster_scoped.setter
-    def cluster_scoped(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "cluster_scoped", value)
-
-    @property
-    @pulumi.getter
-    def manifest(self) -> Optional[pulumi.Input[str]]:
-        """
-        YAML manifest of the resource.
-        """
-        return pulumi.get(self, "manifest")
-
-    @manifest.setter
-    def manifest(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "manifest", value)
 
 
 @pulumi.input_type

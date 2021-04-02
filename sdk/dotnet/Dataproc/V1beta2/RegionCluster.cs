@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Dataproc.V1beta2
     public partial class RegionCluster : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+        /// </summary>
+        [Output("clusterName")]
+        public Output<string> ClusterName { get; private set; } = null!;
+
+        /// <summary>
+        /// A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the cluster.
+        /// </summary>
+        [Output("clusterUuid")]
+        public Output<string> ClusterUuid { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+        /// </summary>
+        [Output("config")]
+        public Output<Outputs.ClusterConfigResponse> Config { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+        /// </summary>
+        [Output("metrics")]
+        public Output<Outputs.ClusterMetricsResponse> Metrics { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The Google Cloud Platform project ID that the cluster belongs to.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// Cluster status.
+        /// </summary>
+        [Output("status")]
+        public Output<Outputs.ClusterStatusResponse> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The previous cluster status.
+        /// </summary>
+        [Output("statusHistory")]
+        public Output<ImmutableArray<Outputs.ClusterStatusResponse>> StatusHistory { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a RegionCluster resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -66,12 +115,6 @@ namespace Pulumi.GoogleCloud.Dataproc.V1beta2
         public Input<string> ClusterName { get; set; } = null!;
 
         /// <summary>
-        /// Output only. A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the cluster.
-        /// </summary>
-        [Input("clusterUuid")]
-        public Input<string>? ClusterUuid { get; set; }
-
-        /// <summary>
         /// Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
         /// </summary>
         [Input("config")]
@@ -90,12 +133,6 @@ namespace Pulumi.GoogleCloud.Dataproc.V1beta2
         }
 
         /// <summary>
-        /// Output only. Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
-        /// </summary>
-        [Input("metrics")]
-        public Input<Inputs.ClusterMetricsArgs>? Metrics { get; set; }
-
-        /// <summary>
         /// Required. The Google Cloud Platform project ID that the cluster belongs to.
         /// </summary>
         [Input("projectId", required: true)]
@@ -103,24 +140,6 @@ namespace Pulumi.GoogleCloud.Dataproc.V1beta2
 
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Cluster status.
-        /// </summary>
-        [Input("status")]
-        public Input<Inputs.ClusterStatusArgs>? Status { get; set; }
-
-        [Input("statusHistory")]
-        private InputList<Inputs.ClusterStatusArgs>? _statusHistory;
-
-        /// <summary>
-        /// Output only. The previous cluster status.
-        /// </summary>
-        public InputList<Inputs.ClusterStatusArgs> StatusHistory
-        {
-            get => _statusHistory ?? (_statusHistory = new InputList<Inputs.ClusterStatusArgs>());
-            set => _statusHistory = value;
-        }
 
         public RegionClusterArgs()
         {

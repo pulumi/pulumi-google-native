@@ -35,6 +35,54 @@ export class AgentEnvironmentExperiment extends pulumi.CustomResource {
         return obj['__pulumiType'] === AgentEnvironmentExperiment.__pulumiType;
     }
 
+    /**
+     * Creation time of this experiment.
+     */
+    public readonly createTime!: pulumi.Output<string>;
+    /**
+     * The definition of the experiment.
+     */
+    public readonly definition!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3ExperimentDefinitionResponse>;
+    /**
+     * The human-readable description of the experiment.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * End time of this experiment.
+     */
+    public readonly endTime!: pulumi.Output<string>;
+    /**
+     * Maximum number of days to run the experiment/rollout. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+     */
+    public readonly experimentLength!: pulumi.Output<string>;
+    /**
+     * Last update time of this experiment.
+     */
+    public readonly lastUpdateTime!: pulumi.Output<string>;
+    /**
+     * The name of the experiment. Format: projects//locations//agents//environments//experiments/..
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Inference result of the experiment.
+     */
+    public readonly result!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3ExperimentResultResponse>;
+    /**
+     * Start time of this experiment.
+     */
+    public readonly startTime!: pulumi.Output<string>;
+    /**
+     * The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+     */
+    public readonly state!: pulumi.Output<string>;
+    /**
+     * The history of updates to the experiment variants.
+     */
+    public readonly variantsHistory!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3VariantsHistoryResponse[]>;
 
     /**
      * Create a AgentEnvironmentExperiment resource with the given unique name, arguments, and options.
@@ -80,6 +128,18 @@ export class AgentEnvironmentExperiment extends pulumi.CustomResource {
             inputs["state"] = args ? args.state : undefined;
             inputs["variantsHistory"] = args ? args.variantsHistory : undefined;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["definition"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["experimentLength"] = undefined /*out*/;
+            inputs["lastUpdateTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["result"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["variantsHistory"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

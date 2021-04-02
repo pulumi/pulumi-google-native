@@ -35,6 +35,18 @@ export class AppDomainMapping extends pulumi.CustomResource {
         return obj['__pulumiType'] === AppDomainMapping.__pulumiType;
     }
 
+    /**
+     * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+     */
+    public readonly resourceRecords!: pulumi.Output<outputs.appengine.v1.ResourceRecordResponse[]>;
+    /**
+     * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+     */
+    public readonly sslSettings!: pulumi.Output<outputs.appengine.v1.SslSettingsResponse>;
 
     /**
      * Create a AppDomainMapping resource with the given unique name, arguments, and options.
@@ -60,6 +72,9 @@ export class AppDomainMapping extends pulumi.CustomResource {
             inputs["resourceRecords"] = args ? args.resourceRecords : undefined;
             inputs["sslSettings"] = args ? args.sslSettings : undefined;
         } else {
+            inputs["name"] = undefined /*out*/;
+            inputs["resourceRecords"] = undefined /*out*/;
+            inputs["sslSettings"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

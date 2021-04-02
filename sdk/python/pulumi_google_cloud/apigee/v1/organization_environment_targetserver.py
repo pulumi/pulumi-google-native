@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['OrganizationEnvironmentTargetserver']
@@ -94,7 +95,61 @@ class OrganizationEnvironmentTargetserver(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["description"] = None
+        __props__["host"] = None
+        __props__["is_enabled"] = None
+        __props__["name"] = None
+        __props__["port"] = None
+        __props__["s_sl_info"] = None
         return OrganizationEnvironmentTargetserver(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Optional. A human-readable description of this TargetServer.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Output[str]:
+        """
+        Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> pulumi.Output[bool]:
+        """
+        Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required. The resource id of this target server. Values must match the regular expression 
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Output[int]:
+        """
+        Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="sSLInfo")
+    def s_sl_info(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1TlsInfoResponse']:
+        """
+        Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
+        """
+        return pulumi.get(self, "s_sl_info")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

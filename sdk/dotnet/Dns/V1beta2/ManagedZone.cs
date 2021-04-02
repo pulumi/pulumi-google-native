@@ -16,6 +16,94 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2
     public partial class ManagedZone : Pulumi.CustomResource
     {
         /// <summary>
+        /// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
+        /// </summary>
+        [Output("creationTime")]
+        public Output<string> CreationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The DNS name of this managed zone, for instance "example.com.".
+        /// </summary>
+        [Output("dnsName")]
+        public Output<string> DnsName { get; private set; } = null!;
+
+        /// <summary>
+        /// DNSSEC configuration.
+        /// </summary>
+        [Output("dnssecConfig")]
+        public Output<Outputs.ManagedZoneDnsSecConfigResponse> DnssecConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
+        /// </summary>
+        [Output("forwardingConfig")]
+        public Output<Outputs.ManagedZoneForwardingConfigResponse> ForwardingConfig { get; private set; } = null!;
+
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// User labels.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
+        /// </summary>
+        [Output("nameServerSet")]
+        public Output<string> NameServerSet { get; private set; } = null!;
+
+        /// <summary>
+        /// Delegate your managed_zone to these virtual name servers; defined by the server (output only)
+        /// </summary>
+        [Output("nameServers")]
+        public Output<ImmutableArray<string>> NameServers { get; private set; } = null!;
+
+        /// <summary>
+        /// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
+        /// </summary>
+        [Output("peeringConfig")]
+        public Output<Outputs.ManagedZonePeeringConfigResponse> PeeringConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+        /// </summary>
+        [Output("privateVisibilityConfig")]
+        public Output<Outputs.ManagedZonePrivateVisibilityConfigResponse> PrivateVisibilityConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
+        /// </summary>
+        [Output("reverseLookupConfig")]
+        public Output<Outputs.ManagedZoneReverseLookupConfigResponse> ReverseLookupConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
+        /// </summary>
+        [Output("serviceDirectoryConfig")]
+        public Output<Outputs.ManagedZoneServiceDirectoryConfigResponse> ServiceDirectoryConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+        /// </summary>
+        [Output("visibility")]
+        public Output<string> Visibility { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ManagedZone resource with the given unique name, arguments, and options.
         /// </summary>
         ///

@@ -14,6 +14,19 @@ import (
 // Creates a new Backup in a given project and location.
 type ServiceBackup struct {
 	pulumi.CustomResourceState
+
+	// The time when the backup was started.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The description of the backup.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// The time when the backup finished creating.
+	EndTime pulumi.StringOutput `pulumi:"endTime"`
+	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The revision of the service at the time of backup.
+	ServiceRevision ServiceResponseOutput `pulumi:"serviceRevision"`
+	// The current state of the backup.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewServiceBackup registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +70,33 @@ func GetServiceBackup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceBackup resources.
 type serviceBackupState struct {
+	// The time when the backup was started.
+	CreateTime *string `pulumi:"createTime"`
+	// The description of the backup.
+	Description *string `pulumi:"description"`
+	// The time when the backup finished creating.
+	EndTime *string `pulumi:"endTime"`
+	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+	Name *string `pulumi:"name"`
+	// The revision of the service at the time of backup.
+	ServiceRevision *ServiceResponse `pulumi:"serviceRevision"`
+	// The current state of the backup.
+	State *string `pulumi:"state"`
 }
 
 type ServiceBackupState struct {
+	// The time when the backup was started.
+	CreateTime pulumi.StringPtrInput
+	// The description of the backup.
+	Description pulumi.StringPtrInput
+	// The time when the backup finished creating.
+	EndTime pulumi.StringPtrInput
+	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+	Name pulumi.StringPtrInput
+	// The revision of the service at the time of backup.
+	ServiceRevision ServiceResponsePtrInput
+	// The current state of the backup.
+	State pulumi.StringPtrInput
 }
 
 func (ServiceBackupState) ElementType() reflect.Type {
@@ -68,41 +105,25 @@ func (ServiceBackupState) ElementType() reflect.Type {
 
 type serviceBackupArgs struct {
 	BackupsId string `pulumi:"backupsId"`
-	// Output only. The time when the backup was started.
-	CreateTime *string `pulumi:"createTime"`
 	// The description of the backup.
 	Description *string `pulumi:"description"`
-	// Output only. The time when the backup finished creating.
-	EndTime     *string `pulumi:"endTime"`
 	LocationsId string  `pulumi:"locationsId"`
 	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
-	// Output only. The revision of the service at the time of backup.
-	ServiceRevision *ServiceType `pulumi:"serviceRevision"`
-	ServicesId      string       `pulumi:"servicesId"`
-	// Output only. The current state of the backup.
-	State *string `pulumi:"state"`
+	ServicesId string  `pulumi:"servicesId"`
 }
 
 // The set of arguments for constructing a ServiceBackup resource.
 type ServiceBackupArgs struct {
 	BackupsId pulumi.StringInput
-	// Output only. The time when the backup was started.
-	CreateTime pulumi.StringPtrInput
 	// The description of the backup.
 	Description pulumi.StringPtrInput
-	// Output only. The time when the backup finished creating.
-	EndTime     pulumi.StringPtrInput
 	LocationsId pulumi.StringInput
 	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
-	// Output only. The revision of the service at the time of backup.
-	ServiceRevision ServiceTypePtrInput
-	ServicesId      pulumi.StringInput
-	// Output only. The current state of the backup.
-	State pulumi.StringPtrInput
+	ServicesId pulumi.StringInput
 }
 
 func (ServiceBackupArgs) ElementType() reflect.Type {

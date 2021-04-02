@@ -16,6 +16,86 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
     public partial class Router : Pulumi.CustomResource
     {
         /// <summary>
+        /// BGP information specific to this router.
+        /// </summary>
+        [Output("bgp")]
+        public Output<Outputs.RouterBgpResponse> Bgp { get; private set; } = null!;
+
+        /// <summary>
+        /// BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
+        /// </summary>
+        [Output("bgpPeers")]
+        public Output<ImmutableArray<Outputs.RouterBgpPeerResponse>> BgpPeers { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
+        /// Not currently available in all Interconnect locations.
+        /// </summary>
+        [Output("encryptedInterconnectRouter")]
+        public Output<bool> EncryptedInterconnectRouter { get; private set; } = null!;
+
+        /// <summary>
+        /// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
+        /// </summary>
+        [Output("interfaces")]
+        public Output<ImmutableArray<Outputs.RouterInterfaceResponse>> Interfaces { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Type of resource. Always compute#router for routers.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of NAT services created in this router.
+        /// </summary>
+        [Output("nats")]
+        public Output<ImmutableArray<Outputs.RouterNatResponse>> Nats { get; private set; } = null!;
+
+        /// <summary>
+        /// URI of the network to which this router belongs.
+        /// </summary>
+        [Output("network")]
+        public Output<string> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Server-defined URL for the resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// </summary>
+        [Output("selfLinkWithId")]
+        public Output<string> SelfLinkWithId { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Router resource with the given unique name, arguments, and options.
         /// </summary>
         ///

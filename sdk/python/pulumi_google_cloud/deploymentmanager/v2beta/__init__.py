@@ -8,6 +8,7 @@ from .deployment import *
 from .deployment_iam_policy import *
 from .type_provider import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

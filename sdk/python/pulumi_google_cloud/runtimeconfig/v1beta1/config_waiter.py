@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['ConfigWaiter']
@@ -34,9 +35,9 @@ class ConfigWaiter(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
-        :param pulumi.Input[bool] done: Output only. If the value is `false`, it means the waiter is still waiting for one of its conditions to be met. If true, the waiter has finished. If the waiter finished due to a timeout or failure, `error` will be set.
-        :param pulumi.Input[pulumi.InputType['StatusArgs']] error: Output only. If the waiter ended due to a failure or timeout, this value will be set.
+        :param pulumi.Input[str] create_time: The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
+        :param pulumi.Input[bool] done: If the value is `false`, it means the waiter is still waiting for one of its conditions to be met. If true, the waiter has finished. If the waiter finished due to a timeout or failure, `error` will be set.
+        :param pulumi.Input[pulumi.InputType['StatusArgs']] error: If the waiter ended due to a failure or timeout, this value will be set.
         :param pulumi.Input[pulumi.InputType['EndConditionArgs']] failure: [Optional] The failure condition of this waiter. If this condition is met, `done` will be set to `true` and the `error` code will be set to `ABORTED`. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated. This value is optional; if no failure condition is set, the only failure scenario will be a timeout.
         :param pulumi.Input[str] name: The name of the Waiter resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google Cloud project ID, the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the `[WAITER_NAME]` must match RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you create a Waiter resource, you cannot change the resource name.
         :param pulumi.Input[pulumi.InputType['EndConditionArgs']] success: [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
@@ -97,7 +98,70 @@ class ConfigWaiter(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["done"] = None
+        __props__["error"] = None
+        __props__["failure"] = None
+        __props__["name"] = None
+        __props__["success"] = None
+        __props__["timeout"] = None
         return ConfigWaiter(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def done(self) -> pulumi.Output[bool]:
+        """
+        If the value is `false`, it means the waiter is still waiting for one of its conditions to be met. If true, the waiter has finished. If the waiter finished due to a timeout or failure, `error` will be set.
+        """
+        return pulumi.get(self, "done")
+
+    @property
+    @pulumi.getter
+    def error(self) -> pulumi.Output['outputs.StatusResponse']:
+        """
+        If the waiter ended due to a failure or timeout, this value will be set.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def failure(self) -> pulumi.Output['outputs.EndConditionResponse']:
+        """
+        [Optional] The failure condition of this waiter. If this condition is met, `done` will be set to `true` and the `error` code will be set to `ABORTED`. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated. This value is optional; if no failure condition is set, the only failure scenario will be a timeout.
+        """
+        return pulumi.get(self, "failure")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the Waiter resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google Cloud project ID, the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the `[WAITER_NAME]` must match RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you create a Waiter resource, you cannot change the resource name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def success(self) -> pulumi.Output['outputs.EndConditionResponse']:
+        """
+        [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
+        """
+        return pulumi.get(self, "success")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Output[str]:
+        """
+        [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`.
+        """
+        return pulumi.get(self, "timeout")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

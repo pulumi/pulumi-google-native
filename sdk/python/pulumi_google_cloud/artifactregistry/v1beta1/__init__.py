@@ -7,6 +7,7 @@ from .repository import *
 from .repository_iam_policy import *
 from .repository_package_tag import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

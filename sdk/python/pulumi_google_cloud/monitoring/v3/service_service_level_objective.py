@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['ServiceServiceLevelObjective']
@@ -98,7 +99,61 @@ class ServiceServiceLevelObjective(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["calendar_period"] = None
+        __props__["display_name"] = None
+        __props__["goal"] = None
+        __props__["name"] = None
+        __props__["rolling_period"] = None
+        __props__["service_level_indicator"] = None
         return ServiceServiceLevelObjective(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="calendarPeriod")
+    def calendar_period(self) -> pulumi.Output[str]:
+        """
+        A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
+        """
+        return pulumi.get(self, "calendar_period")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Name used for UI elements listing this SLO.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def goal(self) -> pulumi.Output[float]:
+        """
+        The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999.
+        """
+        return pulumi.get(self, "goal")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="rollingPeriod")
+    def rolling_period(self) -> pulumi.Output[str]:
+        """
+        A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
+        """
+        return pulumi.get(self, "rolling_period")
+
+    @property
+    @pulumi.getter(name="serviceLevelIndicator")
+    def service_level_indicator(self) -> pulumi.Output['outputs.ServiceLevelIndicatorResponse']:
+        """
+        The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
+        """
+        return pulumi.get(self, "service_level_indicator")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

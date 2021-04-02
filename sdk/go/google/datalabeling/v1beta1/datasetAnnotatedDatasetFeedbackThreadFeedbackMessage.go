@@ -14,6 +14,17 @@ import (
 // Create a FeedbackMessage object.
 type DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage struct {
 	pulumi.CustomResourceState
+
+	// String content of the feedback. Maximum of 10000 characters.
+	Body pulumi.StringOutput `pulumi:"body"`
+	// Create time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The image storing this feedback if the feedback is an image representing operator's comments.
+	Image pulumi.StringOutput `pulumi:"image"`
+	// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
+	Name                      pulumi.StringOutput                                                   `pulumi:"name"`
+	OperatorFeedbackMetadata  GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput  `pulumi:"operatorFeedbackMetadata"`
+	RequesterFeedbackMetadata GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput `pulumi:"requesterFeedbackMetadata"`
 }
 
 // NewDatasetAnnotatedDatasetFeedbackThreadFeedbackMessage registers a new resource with the given unique name, arguments, and options.
@@ -60,9 +71,29 @@ func GetDatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(ctx *pulumi.Context
 
 // Input properties used for looking up and filtering DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage resources.
 type datasetAnnotatedDatasetFeedbackThreadFeedbackMessageState struct {
+	// String content of the feedback. Maximum of 10000 characters.
+	Body *string `pulumi:"body"`
+	// Create time.
+	CreateTime *string `pulumi:"createTime"`
+	// The image storing this feedback if the feedback is an image representing operator's comments.
+	Image *string `pulumi:"image"`
+	// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
+	Name                      *string                                                          `pulumi:"name"`
+	OperatorFeedbackMetadata  *GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse  `pulumi:"operatorFeedbackMetadata"`
+	RequesterFeedbackMetadata *GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse `pulumi:"requesterFeedbackMetadata"`
 }
 
 type DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageState struct {
+	// String content of the feedback. Maximum of 10000 characters.
+	Body pulumi.StringPtrInput
+	// Create time.
+	CreateTime pulumi.StringPtrInput
+	// The image storing this feedback if the feedback is an image representing operator's comments.
+	Image pulumi.StringPtrInput
+	// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
+	Name                      pulumi.StringPtrInput
+	OperatorFeedbackMetadata  GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrInput
+	RequesterFeedbackMetadata GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrInput
 }
 
 func (DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageState) ElementType() reflect.Type {

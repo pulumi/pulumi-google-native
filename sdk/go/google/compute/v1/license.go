@@ -14,6 +14,24 @@ import (
 // Create a License resource in the specified project.  Caution This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
 type License struct {
 	pulumi.CustomResourceState
+
+	// [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
+	ChargesUseFee pulumi.BoolOutput `pulumi:"chargesUseFee"`
+	// [Output Only] Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// An optional textual description of the resource; provided by the client when the resource is created.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// [Output Only] Type of resource. Always compute#license for licenses.
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// [Output Only] The unique code used to attach this license to images, snapshots, and disks.
+	LicenseCode pulumi.StringOutput `pulumi:"licenseCode"`
+	// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
+	Name                 pulumi.StringOutput                       `pulumi:"name"`
+	ResourceRequirements LicenseResourceRequirementsResponseOutput `pulumi:"resourceRequirements"`
+	// [Output Only] Server-defined URL for the resource.
+	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
+	Transferable pulumi.BoolOutput `pulumi:"transferable"`
 }
 
 // NewLicense registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +69,43 @@ func GetLicense(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering License resources.
 type licenseState struct {
+	// [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
+	ChargesUseFee *bool `pulumi:"chargesUseFee"`
+	// [Output Only] Creation timestamp in RFC3339 text format.
+	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// An optional textual description of the resource; provided by the client when the resource is created.
+	Description *string `pulumi:"description"`
+	// [Output Only] Type of resource. Always compute#license for licenses.
+	Kind *string `pulumi:"kind"`
+	// [Output Only] The unique code used to attach this license to images, snapshots, and disks.
+	LicenseCode *string `pulumi:"licenseCode"`
+	// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
+	Name                 *string                              `pulumi:"name"`
+	ResourceRequirements *LicenseResourceRequirementsResponse `pulumi:"resourceRequirements"`
+	// [Output Only] Server-defined URL for the resource.
+	SelfLink *string `pulumi:"selfLink"`
+	// If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
+	Transferable *bool `pulumi:"transferable"`
 }
 
 type LicenseState struct {
+	// [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
+	ChargesUseFee pulumi.BoolPtrInput
+	// [Output Only] Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringPtrInput
+	// An optional textual description of the resource; provided by the client when the resource is created.
+	Description pulumi.StringPtrInput
+	// [Output Only] Type of resource. Always compute#license for licenses.
+	Kind pulumi.StringPtrInput
+	// [Output Only] The unique code used to attach this license to images, snapshots, and disks.
+	LicenseCode pulumi.StringPtrInput
+	// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
+	Name                 pulumi.StringPtrInput
+	ResourceRequirements LicenseResourceRequirementsResponsePtrInput
+	// [Output Only] Server-defined URL for the resource.
+	SelfLink pulumi.StringPtrInput
+	// If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
+	Transferable pulumi.BoolPtrInput
 }
 
 func (LicenseState) ElementType() reflect.Type {

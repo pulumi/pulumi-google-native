@@ -76,8 +76,6 @@ type organizationSourceFindingArgs struct {
 	Parent *string `pulumi:"parent"`
 	// For findings on Google Cloud resources, the full resource name of the Google Cloud resource this finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding is for a non-Google Cloud resource, the resourceName can be a customer or partner defined string. This field is immutable after creation time.
 	ResourceName *string `pulumi:"resourceName"`
-	// Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.
-	SecurityMarks *GoogleCloudSecuritycenterV1beta1SecurityMarks `pulumi:"securityMarks"`
 	// Source specific properties. These properties are managed by the source that writes the finding. The key names in the source_properties map must be between 1 and 255 characters, and must start with a letter and contain alphanumeric characters or underscores only.
 	SourceProperties map[string]string `pulumi:"sourceProperties"`
 	SourcesId        string            `pulumi:"sourcesId"`
@@ -102,8 +100,6 @@ type OrganizationSourceFindingArgs struct {
 	Parent pulumi.StringPtrInput
 	// For findings on Google Cloud resources, the full resource name of the Google Cloud resource this finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding is for a non-Google Cloud resource, the resourceName can be a customer or partner defined string. This field is immutable after creation time.
 	ResourceName pulumi.StringPtrInput
-	// Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.
-	SecurityMarks GoogleCloudSecuritycenterV1beta1SecurityMarksPtrInput
 	// Source specific properties. These properties are managed by the source that writes the finding. The key names in the source_properties map must be between 1 and 255 characters, and must start with a letter and contain alphanumeric characters or underscores only.
 	SourceProperties pulumi.StringMapInput
 	SourcesId        pulumi.StringInput

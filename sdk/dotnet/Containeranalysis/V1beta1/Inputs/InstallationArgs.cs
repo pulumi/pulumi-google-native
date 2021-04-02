@@ -28,7 +28,7 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1beta1.Inputs
         }
 
         /// <summary>
-        /// Output only. The name of the installed package.
+        /// The name of the installed package.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

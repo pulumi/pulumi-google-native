@@ -208,6 +208,115 @@ func (o ApigatewayApiConfigFileArrayOutput) Index(i pulumi.IntInput) ApigatewayA
 	}).(ApigatewayApiConfigFileOutput)
 }
 
+// A lightweight description of a file.
+type ApigatewayApiConfigFileResponse struct {
+	// The bytes that constitute the file.
+	Contents string `pulumi:"contents"`
+	// The file path (full or relative path). This is typically the path of the file when it is uploaded.
+	Path string `pulumi:"path"`
+}
+
+// ApigatewayApiConfigFileResponseInput is an input type that accepts ApigatewayApiConfigFileResponseArgs and ApigatewayApiConfigFileResponseOutput values.
+// You can construct a concrete instance of `ApigatewayApiConfigFileResponseInput` via:
+//
+//          ApigatewayApiConfigFileResponseArgs{...}
+type ApigatewayApiConfigFileResponseInput interface {
+	pulumi.Input
+
+	ToApigatewayApiConfigFileResponseOutput() ApigatewayApiConfigFileResponseOutput
+	ToApigatewayApiConfigFileResponseOutputWithContext(context.Context) ApigatewayApiConfigFileResponseOutput
+}
+
+// A lightweight description of a file.
+type ApigatewayApiConfigFileResponseArgs struct {
+	// The bytes that constitute the file.
+	Contents pulumi.StringInput `pulumi:"contents"`
+	// The file path (full or relative path). This is typically the path of the file when it is uploaded.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (ApigatewayApiConfigFileResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayApiConfigFileResponse)(nil)).Elem()
+}
+
+func (i ApigatewayApiConfigFileResponseArgs) ToApigatewayApiConfigFileResponseOutput() ApigatewayApiConfigFileResponseOutput {
+	return i.ToApigatewayApiConfigFileResponseOutputWithContext(context.Background())
+}
+
+func (i ApigatewayApiConfigFileResponseArgs) ToApigatewayApiConfigFileResponseOutputWithContext(ctx context.Context) ApigatewayApiConfigFileResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigFileResponseOutput)
+}
+
+// ApigatewayApiConfigFileResponseArrayInput is an input type that accepts ApigatewayApiConfigFileResponseArray and ApigatewayApiConfigFileResponseArrayOutput values.
+// You can construct a concrete instance of `ApigatewayApiConfigFileResponseArrayInput` via:
+//
+//          ApigatewayApiConfigFileResponseArray{ ApigatewayApiConfigFileResponseArgs{...} }
+type ApigatewayApiConfigFileResponseArrayInput interface {
+	pulumi.Input
+
+	ToApigatewayApiConfigFileResponseArrayOutput() ApigatewayApiConfigFileResponseArrayOutput
+	ToApigatewayApiConfigFileResponseArrayOutputWithContext(context.Context) ApigatewayApiConfigFileResponseArrayOutput
+}
+
+type ApigatewayApiConfigFileResponseArray []ApigatewayApiConfigFileResponseInput
+
+func (ApigatewayApiConfigFileResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayApiConfigFileResponse)(nil)).Elem()
+}
+
+func (i ApigatewayApiConfigFileResponseArray) ToApigatewayApiConfigFileResponseArrayOutput() ApigatewayApiConfigFileResponseArrayOutput {
+	return i.ToApigatewayApiConfigFileResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ApigatewayApiConfigFileResponseArray) ToApigatewayApiConfigFileResponseArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigFileResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigFileResponseArrayOutput)
+}
+
+// A lightweight description of a file.
+type ApigatewayApiConfigFileResponseOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayApiConfigFileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayApiConfigFileResponse)(nil)).Elem()
+}
+
+func (o ApigatewayApiConfigFileResponseOutput) ToApigatewayApiConfigFileResponseOutput() ApigatewayApiConfigFileResponseOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigFileResponseOutput) ToApigatewayApiConfigFileResponseOutputWithContext(ctx context.Context) ApigatewayApiConfigFileResponseOutput {
+	return o
+}
+
+// The bytes that constitute the file.
+func (o ApigatewayApiConfigFileResponseOutput) Contents() pulumi.StringOutput {
+	return o.ApplyT(func(v ApigatewayApiConfigFileResponse) string { return v.Contents }).(pulumi.StringOutput)
+}
+
+// The file path (full or relative path). This is typically the path of the file when it is uploaded.
+func (o ApigatewayApiConfigFileResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v ApigatewayApiConfigFileResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type ApigatewayApiConfigFileResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayApiConfigFileResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayApiConfigFileResponse)(nil)).Elem()
+}
+
+func (o ApigatewayApiConfigFileResponseArrayOutput) ToApigatewayApiConfigFileResponseArrayOutput() ApigatewayApiConfigFileResponseArrayOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigFileResponseArrayOutput) ToApigatewayApiConfigFileResponseArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigFileResponseArrayOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigFileResponseArrayOutput) Index(i pulumi.IntInput) ApigatewayApiConfigFileResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApigatewayApiConfigFileResponse {
+		return vs[0].([]ApigatewayApiConfigFileResponse)[vs[1].(int)]
+	}).(ApigatewayApiConfigFileResponseOutput)
+}
+
 // A gRPC service definition.
 type ApigatewayApiConfigGrpcServiceDefinition struct {
 	// Input only. File descriptor set, generated by protoc. To generate, use protoc with imports and source info included. For an example test.proto file, the following command would put the value in a new file named out.pb. $ protoc --include_imports --include_source_info test.proto -o out.pb
@@ -317,6 +426,119 @@ func (o ApigatewayApiConfigGrpcServiceDefinitionArrayOutput) Index(i pulumi.IntI
 	}).(ApigatewayApiConfigGrpcServiceDefinitionOutput)
 }
 
+// A gRPC service definition.
+type ApigatewayApiConfigGrpcServiceDefinitionResponse struct {
+	// Input only. File descriptor set, generated by protoc. To generate, use protoc with imports and source info included. For an example test.proto file, the following command would put the value in a new file named out.pb. $ protoc --include_imports --include_source_info test.proto -o out.pb
+	FileDescriptorSet ApigatewayApiConfigFileResponse `pulumi:"fileDescriptorSet"`
+	// Optional. Uncompiled proto files associated with the descriptor set, used for display purposes (server-side compilation is not supported). These should match the inputs to 'protoc' command used to generate file_descriptor_set.
+	Source []ApigatewayApiConfigFileResponse `pulumi:"source"`
+}
+
+// ApigatewayApiConfigGrpcServiceDefinitionResponseInput is an input type that accepts ApigatewayApiConfigGrpcServiceDefinitionResponseArgs and ApigatewayApiConfigGrpcServiceDefinitionResponseOutput values.
+// You can construct a concrete instance of `ApigatewayApiConfigGrpcServiceDefinitionResponseInput` via:
+//
+//          ApigatewayApiConfigGrpcServiceDefinitionResponseArgs{...}
+type ApigatewayApiConfigGrpcServiceDefinitionResponseInput interface {
+	pulumi.Input
+
+	ToApigatewayApiConfigGrpcServiceDefinitionResponseOutput() ApigatewayApiConfigGrpcServiceDefinitionResponseOutput
+	ToApigatewayApiConfigGrpcServiceDefinitionResponseOutputWithContext(context.Context) ApigatewayApiConfigGrpcServiceDefinitionResponseOutput
+}
+
+// A gRPC service definition.
+type ApigatewayApiConfigGrpcServiceDefinitionResponseArgs struct {
+	// Input only. File descriptor set, generated by protoc. To generate, use protoc with imports and source info included. For an example test.proto file, the following command would put the value in a new file named out.pb. $ protoc --include_imports --include_source_info test.proto -o out.pb
+	FileDescriptorSet ApigatewayApiConfigFileResponseInput `pulumi:"fileDescriptorSet"`
+	// Optional. Uncompiled proto files associated with the descriptor set, used for display purposes (server-side compilation is not supported). These should match the inputs to 'protoc' command used to generate file_descriptor_set.
+	Source ApigatewayApiConfigFileResponseArrayInput `pulumi:"source"`
+}
+
+func (ApigatewayApiConfigGrpcServiceDefinitionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayApiConfigGrpcServiceDefinitionResponse)(nil)).Elem()
+}
+
+func (i ApigatewayApiConfigGrpcServiceDefinitionResponseArgs) ToApigatewayApiConfigGrpcServiceDefinitionResponseOutput() ApigatewayApiConfigGrpcServiceDefinitionResponseOutput {
+	return i.ToApigatewayApiConfigGrpcServiceDefinitionResponseOutputWithContext(context.Background())
+}
+
+func (i ApigatewayApiConfigGrpcServiceDefinitionResponseArgs) ToApigatewayApiConfigGrpcServiceDefinitionResponseOutputWithContext(ctx context.Context) ApigatewayApiConfigGrpcServiceDefinitionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigGrpcServiceDefinitionResponseOutput)
+}
+
+// ApigatewayApiConfigGrpcServiceDefinitionResponseArrayInput is an input type that accepts ApigatewayApiConfigGrpcServiceDefinitionResponseArray and ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput values.
+// You can construct a concrete instance of `ApigatewayApiConfigGrpcServiceDefinitionResponseArrayInput` via:
+//
+//          ApigatewayApiConfigGrpcServiceDefinitionResponseArray{ ApigatewayApiConfigGrpcServiceDefinitionResponseArgs{...} }
+type ApigatewayApiConfigGrpcServiceDefinitionResponseArrayInput interface {
+	pulumi.Input
+
+	ToApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput() ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput
+	ToApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutputWithContext(context.Context) ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput
+}
+
+type ApigatewayApiConfigGrpcServiceDefinitionResponseArray []ApigatewayApiConfigGrpcServiceDefinitionResponseInput
+
+func (ApigatewayApiConfigGrpcServiceDefinitionResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayApiConfigGrpcServiceDefinitionResponse)(nil)).Elem()
+}
+
+func (i ApigatewayApiConfigGrpcServiceDefinitionResponseArray) ToApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput() ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput {
+	return i.ToApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ApigatewayApiConfigGrpcServiceDefinitionResponseArray) ToApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput)
+}
+
+// A gRPC service definition.
+type ApigatewayApiConfigGrpcServiceDefinitionResponseOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayApiConfigGrpcServiceDefinitionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayApiConfigGrpcServiceDefinitionResponse)(nil)).Elem()
+}
+
+func (o ApigatewayApiConfigGrpcServiceDefinitionResponseOutput) ToApigatewayApiConfigGrpcServiceDefinitionResponseOutput() ApigatewayApiConfigGrpcServiceDefinitionResponseOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigGrpcServiceDefinitionResponseOutput) ToApigatewayApiConfigGrpcServiceDefinitionResponseOutputWithContext(ctx context.Context) ApigatewayApiConfigGrpcServiceDefinitionResponseOutput {
+	return o
+}
+
+// Input only. File descriptor set, generated by protoc. To generate, use protoc with imports and source info included. For an example test.proto file, the following command would put the value in a new file named out.pb. $ protoc --include_imports --include_source_info test.proto -o out.pb
+func (o ApigatewayApiConfigGrpcServiceDefinitionResponseOutput) FileDescriptorSet() ApigatewayApiConfigFileResponseOutput {
+	return o.ApplyT(func(v ApigatewayApiConfigGrpcServiceDefinitionResponse) ApigatewayApiConfigFileResponse {
+		return v.FileDescriptorSet
+	}).(ApigatewayApiConfigFileResponseOutput)
+}
+
+// Optional. Uncompiled proto files associated with the descriptor set, used for display purposes (server-side compilation is not supported). These should match the inputs to 'protoc' command used to generate file_descriptor_set.
+func (o ApigatewayApiConfigGrpcServiceDefinitionResponseOutput) Source() ApigatewayApiConfigFileResponseArrayOutput {
+	return o.ApplyT(func(v ApigatewayApiConfigGrpcServiceDefinitionResponse) []ApigatewayApiConfigFileResponse {
+		return v.Source
+	}).(ApigatewayApiConfigFileResponseArrayOutput)
+}
+
+type ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayApiConfigGrpcServiceDefinitionResponse)(nil)).Elem()
+}
+
+func (o ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput) ToApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput() ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput) ToApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput) Index(i pulumi.IntInput) ApigatewayApiConfigGrpcServiceDefinitionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApigatewayApiConfigGrpcServiceDefinitionResponse {
+		return vs[0].([]ApigatewayApiConfigGrpcServiceDefinitionResponse)[vs[1].(int)]
+	}).(ApigatewayApiConfigGrpcServiceDefinitionResponseOutput)
+}
+
 // An OpenAPI Specification Document describing an API.
 type ApigatewayApiConfigOpenApiDocument struct {
 	// The OpenAPI Specification document file.
@@ -415,6 +637,106 @@ func (o ApigatewayApiConfigOpenApiDocumentArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApigatewayApiConfigOpenApiDocument {
 		return vs[0].([]ApigatewayApiConfigOpenApiDocument)[vs[1].(int)]
 	}).(ApigatewayApiConfigOpenApiDocumentOutput)
+}
+
+// An OpenAPI Specification Document describing an API.
+type ApigatewayApiConfigOpenApiDocumentResponse struct {
+	// The OpenAPI Specification document file.
+	Document ApigatewayApiConfigFileResponse `pulumi:"document"`
+}
+
+// ApigatewayApiConfigOpenApiDocumentResponseInput is an input type that accepts ApigatewayApiConfigOpenApiDocumentResponseArgs and ApigatewayApiConfigOpenApiDocumentResponseOutput values.
+// You can construct a concrete instance of `ApigatewayApiConfigOpenApiDocumentResponseInput` via:
+//
+//          ApigatewayApiConfigOpenApiDocumentResponseArgs{...}
+type ApigatewayApiConfigOpenApiDocumentResponseInput interface {
+	pulumi.Input
+
+	ToApigatewayApiConfigOpenApiDocumentResponseOutput() ApigatewayApiConfigOpenApiDocumentResponseOutput
+	ToApigatewayApiConfigOpenApiDocumentResponseOutputWithContext(context.Context) ApigatewayApiConfigOpenApiDocumentResponseOutput
+}
+
+// An OpenAPI Specification Document describing an API.
+type ApigatewayApiConfigOpenApiDocumentResponseArgs struct {
+	// The OpenAPI Specification document file.
+	Document ApigatewayApiConfigFileResponseInput `pulumi:"document"`
+}
+
+func (ApigatewayApiConfigOpenApiDocumentResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayApiConfigOpenApiDocumentResponse)(nil)).Elem()
+}
+
+func (i ApigatewayApiConfigOpenApiDocumentResponseArgs) ToApigatewayApiConfigOpenApiDocumentResponseOutput() ApigatewayApiConfigOpenApiDocumentResponseOutput {
+	return i.ToApigatewayApiConfigOpenApiDocumentResponseOutputWithContext(context.Background())
+}
+
+func (i ApigatewayApiConfigOpenApiDocumentResponseArgs) ToApigatewayApiConfigOpenApiDocumentResponseOutputWithContext(ctx context.Context) ApigatewayApiConfigOpenApiDocumentResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigOpenApiDocumentResponseOutput)
+}
+
+// ApigatewayApiConfigOpenApiDocumentResponseArrayInput is an input type that accepts ApigatewayApiConfigOpenApiDocumentResponseArray and ApigatewayApiConfigOpenApiDocumentResponseArrayOutput values.
+// You can construct a concrete instance of `ApigatewayApiConfigOpenApiDocumentResponseArrayInput` via:
+//
+//          ApigatewayApiConfigOpenApiDocumentResponseArray{ ApigatewayApiConfigOpenApiDocumentResponseArgs{...} }
+type ApigatewayApiConfigOpenApiDocumentResponseArrayInput interface {
+	pulumi.Input
+
+	ToApigatewayApiConfigOpenApiDocumentResponseArrayOutput() ApigatewayApiConfigOpenApiDocumentResponseArrayOutput
+	ToApigatewayApiConfigOpenApiDocumentResponseArrayOutputWithContext(context.Context) ApigatewayApiConfigOpenApiDocumentResponseArrayOutput
+}
+
+type ApigatewayApiConfigOpenApiDocumentResponseArray []ApigatewayApiConfigOpenApiDocumentResponseInput
+
+func (ApigatewayApiConfigOpenApiDocumentResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayApiConfigOpenApiDocumentResponse)(nil)).Elem()
+}
+
+func (i ApigatewayApiConfigOpenApiDocumentResponseArray) ToApigatewayApiConfigOpenApiDocumentResponseArrayOutput() ApigatewayApiConfigOpenApiDocumentResponseArrayOutput {
+	return i.ToApigatewayApiConfigOpenApiDocumentResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ApigatewayApiConfigOpenApiDocumentResponseArray) ToApigatewayApiConfigOpenApiDocumentResponseArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigOpenApiDocumentResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayApiConfigOpenApiDocumentResponseArrayOutput)
+}
+
+// An OpenAPI Specification Document describing an API.
+type ApigatewayApiConfigOpenApiDocumentResponseOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayApiConfigOpenApiDocumentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayApiConfigOpenApiDocumentResponse)(nil)).Elem()
+}
+
+func (o ApigatewayApiConfigOpenApiDocumentResponseOutput) ToApigatewayApiConfigOpenApiDocumentResponseOutput() ApigatewayApiConfigOpenApiDocumentResponseOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigOpenApiDocumentResponseOutput) ToApigatewayApiConfigOpenApiDocumentResponseOutputWithContext(ctx context.Context) ApigatewayApiConfigOpenApiDocumentResponseOutput {
+	return o
+}
+
+// The OpenAPI Specification document file.
+func (o ApigatewayApiConfigOpenApiDocumentResponseOutput) Document() ApigatewayApiConfigFileResponseOutput {
+	return o.ApplyT(func(v ApigatewayApiConfigOpenApiDocumentResponse) ApigatewayApiConfigFileResponse { return v.Document }).(ApigatewayApiConfigFileResponseOutput)
+}
+
+type ApigatewayApiConfigOpenApiDocumentResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayApiConfigOpenApiDocumentResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayApiConfigOpenApiDocumentResponse)(nil)).Elem()
+}
+
+func (o ApigatewayApiConfigOpenApiDocumentResponseArrayOutput) ToApigatewayApiConfigOpenApiDocumentResponseArrayOutput() ApigatewayApiConfigOpenApiDocumentResponseArrayOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigOpenApiDocumentResponseArrayOutput) ToApigatewayApiConfigOpenApiDocumentResponseArrayOutputWithContext(ctx context.Context) ApigatewayApiConfigOpenApiDocumentResponseArrayOutput {
+	return o
+}
+
+func (o ApigatewayApiConfigOpenApiDocumentResponseArrayOutput) Index(i pulumi.IntInput) ApigatewayApiConfigOpenApiDocumentResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApigatewayApiConfigOpenApiDocumentResponse {
+		return vs[0].([]ApigatewayApiConfigOpenApiDocumentResponse)[vs[1].(int)]
+	}).(ApigatewayApiConfigOpenApiDocumentResponseOutput)
 }
 
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
@@ -526,6 +848,115 @@ func (o ApigatewayAuditConfigArrayOutput) Index(i pulumi.IntInput) ApigatewayAud
 	}).(ApigatewayAuditConfigOutput)
 }
 
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type ApigatewayAuditConfigResponse struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs []ApigatewayAuditLogConfigResponse `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service string `pulumi:"service"`
+}
+
+// ApigatewayAuditConfigResponseInput is an input type that accepts ApigatewayAuditConfigResponseArgs and ApigatewayAuditConfigResponseOutput values.
+// You can construct a concrete instance of `ApigatewayAuditConfigResponseInput` via:
+//
+//          ApigatewayAuditConfigResponseArgs{...}
+type ApigatewayAuditConfigResponseInput interface {
+	pulumi.Input
+
+	ToApigatewayAuditConfigResponseOutput() ApigatewayAuditConfigResponseOutput
+	ToApigatewayAuditConfigResponseOutputWithContext(context.Context) ApigatewayAuditConfigResponseOutput
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type ApigatewayAuditConfigResponseArgs struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs ApigatewayAuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (ApigatewayAuditConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayAuditConfigResponse)(nil)).Elem()
+}
+
+func (i ApigatewayAuditConfigResponseArgs) ToApigatewayAuditConfigResponseOutput() ApigatewayAuditConfigResponseOutput {
+	return i.ToApigatewayAuditConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ApigatewayAuditConfigResponseArgs) ToApigatewayAuditConfigResponseOutputWithContext(ctx context.Context) ApigatewayAuditConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayAuditConfigResponseOutput)
+}
+
+// ApigatewayAuditConfigResponseArrayInput is an input type that accepts ApigatewayAuditConfigResponseArray and ApigatewayAuditConfigResponseArrayOutput values.
+// You can construct a concrete instance of `ApigatewayAuditConfigResponseArrayInput` via:
+//
+//          ApigatewayAuditConfigResponseArray{ ApigatewayAuditConfigResponseArgs{...} }
+type ApigatewayAuditConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToApigatewayAuditConfigResponseArrayOutput() ApigatewayAuditConfigResponseArrayOutput
+	ToApigatewayAuditConfigResponseArrayOutputWithContext(context.Context) ApigatewayAuditConfigResponseArrayOutput
+}
+
+type ApigatewayAuditConfigResponseArray []ApigatewayAuditConfigResponseInput
+
+func (ApigatewayAuditConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayAuditConfigResponse)(nil)).Elem()
+}
+
+func (i ApigatewayAuditConfigResponseArray) ToApigatewayAuditConfigResponseArrayOutput() ApigatewayAuditConfigResponseArrayOutput {
+	return i.ToApigatewayAuditConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ApigatewayAuditConfigResponseArray) ToApigatewayAuditConfigResponseArrayOutputWithContext(ctx context.Context) ApigatewayAuditConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayAuditConfigResponseArrayOutput)
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type ApigatewayAuditConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayAuditConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayAuditConfigResponse)(nil)).Elem()
+}
+
+func (o ApigatewayAuditConfigResponseOutput) ToApigatewayAuditConfigResponseOutput() ApigatewayAuditConfigResponseOutput {
+	return o
+}
+
+func (o ApigatewayAuditConfigResponseOutput) ToApigatewayAuditConfigResponseOutputWithContext(ctx context.Context) ApigatewayAuditConfigResponseOutput {
+	return o
+}
+
+// The configuration for logging of each type of permission.
+func (o ApigatewayAuditConfigResponseOutput) AuditLogConfigs() ApigatewayAuditLogConfigResponseArrayOutput {
+	return o.ApplyT(func(v ApigatewayAuditConfigResponse) []ApigatewayAuditLogConfigResponse { return v.AuditLogConfigs }).(ApigatewayAuditLogConfigResponseArrayOutput)
+}
+
+// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+func (o ApigatewayAuditConfigResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v ApigatewayAuditConfigResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type ApigatewayAuditConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayAuditConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayAuditConfigResponse)(nil)).Elem()
+}
+
+func (o ApigatewayAuditConfigResponseArrayOutput) ToApigatewayAuditConfigResponseArrayOutput() ApigatewayAuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o ApigatewayAuditConfigResponseArrayOutput) ToApigatewayAuditConfigResponseArrayOutputWithContext(ctx context.Context) ApigatewayAuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o ApigatewayAuditConfigResponseArrayOutput) Index(i pulumi.IntInput) ApigatewayAuditConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApigatewayAuditConfigResponse {
+		return vs[0].([]ApigatewayAuditConfigResponse)[vs[1].(int)]
+	}).(ApigatewayAuditConfigResponseOutput)
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type ApigatewayAuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -633,6 +1064,115 @@ func (o ApigatewayAuditLogConfigArrayOutput) Index(i pulumi.IntInput) Apigateway
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApigatewayAuditLogConfig {
 		return vs[0].([]ApigatewayAuditLogConfig)[vs[1].(int)]
 	}).(ApigatewayAuditLogConfigOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type ApigatewayAuditLogConfigResponse struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers []string `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType string `pulumi:"logType"`
+}
+
+// ApigatewayAuditLogConfigResponseInput is an input type that accepts ApigatewayAuditLogConfigResponseArgs and ApigatewayAuditLogConfigResponseOutput values.
+// You can construct a concrete instance of `ApigatewayAuditLogConfigResponseInput` via:
+//
+//          ApigatewayAuditLogConfigResponseArgs{...}
+type ApigatewayAuditLogConfigResponseInput interface {
+	pulumi.Input
+
+	ToApigatewayAuditLogConfigResponseOutput() ApigatewayAuditLogConfigResponseOutput
+	ToApigatewayAuditLogConfigResponseOutputWithContext(context.Context) ApigatewayAuditLogConfigResponseOutput
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type ApigatewayAuditLogConfigResponseArgs struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType pulumi.StringInput `pulumi:"logType"`
+}
+
+func (ApigatewayAuditLogConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayAuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i ApigatewayAuditLogConfigResponseArgs) ToApigatewayAuditLogConfigResponseOutput() ApigatewayAuditLogConfigResponseOutput {
+	return i.ToApigatewayAuditLogConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ApigatewayAuditLogConfigResponseArgs) ToApigatewayAuditLogConfigResponseOutputWithContext(ctx context.Context) ApigatewayAuditLogConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayAuditLogConfigResponseOutput)
+}
+
+// ApigatewayAuditLogConfigResponseArrayInput is an input type that accepts ApigatewayAuditLogConfigResponseArray and ApigatewayAuditLogConfigResponseArrayOutput values.
+// You can construct a concrete instance of `ApigatewayAuditLogConfigResponseArrayInput` via:
+//
+//          ApigatewayAuditLogConfigResponseArray{ ApigatewayAuditLogConfigResponseArgs{...} }
+type ApigatewayAuditLogConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToApigatewayAuditLogConfigResponseArrayOutput() ApigatewayAuditLogConfigResponseArrayOutput
+	ToApigatewayAuditLogConfigResponseArrayOutputWithContext(context.Context) ApigatewayAuditLogConfigResponseArrayOutput
+}
+
+type ApigatewayAuditLogConfigResponseArray []ApigatewayAuditLogConfigResponseInput
+
+func (ApigatewayAuditLogConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayAuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i ApigatewayAuditLogConfigResponseArray) ToApigatewayAuditLogConfigResponseArrayOutput() ApigatewayAuditLogConfigResponseArrayOutput {
+	return i.ToApigatewayAuditLogConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ApigatewayAuditLogConfigResponseArray) ToApigatewayAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) ApigatewayAuditLogConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayAuditLogConfigResponseArrayOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type ApigatewayAuditLogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayAuditLogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayAuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o ApigatewayAuditLogConfigResponseOutput) ToApigatewayAuditLogConfigResponseOutput() ApigatewayAuditLogConfigResponseOutput {
+	return o
+}
+
+func (o ApigatewayAuditLogConfigResponseOutput) ToApigatewayAuditLogConfigResponseOutputWithContext(ctx context.Context) ApigatewayAuditLogConfigResponseOutput {
+	return o
+}
+
+// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+func (o ApigatewayAuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApigatewayAuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
+// The log type that this config enables.
+func (o ApigatewayAuditLogConfigResponseOutput) LogType() pulumi.StringOutput {
+	return o.ApplyT(func(v ApigatewayAuditLogConfigResponse) string { return v.LogType }).(pulumi.StringOutput)
+}
+
+type ApigatewayAuditLogConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayAuditLogConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayAuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o ApigatewayAuditLogConfigResponseArrayOutput) ToApigatewayAuditLogConfigResponseArrayOutput() ApigatewayAuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o ApigatewayAuditLogConfigResponseArrayOutput) ToApigatewayAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) ApigatewayAuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o ApigatewayAuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) ApigatewayAuditLogConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApigatewayAuditLogConfigResponse {
+		return vs[0].([]ApigatewayAuditLogConfigResponse)[vs[1].(int)]
+	}).(ApigatewayAuditLogConfigResponseOutput)
 }
 
 // Associates `members` with a `role`.
@@ -751,6 +1291,124 @@ func (o ApigatewayBindingArrayOutput) Index(i pulumi.IntInput) ApigatewayBinding
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApigatewayBinding {
 		return vs[0].([]ApigatewayBinding)[vs[1].(int)]
 	}).(ApigatewayBindingOutput)
+}
+
+// Associates `members` with a `role`.
+type ApigatewayBindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ApigatewayExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// ApigatewayBindingResponseInput is an input type that accepts ApigatewayBindingResponseArgs and ApigatewayBindingResponseOutput values.
+// You can construct a concrete instance of `ApigatewayBindingResponseInput` via:
+//
+//          ApigatewayBindingResponseArgs{...}
+type ApigatewayBindingResponseInput interface {
+	pulumi.Input
+
+	ToApigatewayBindingResponseOutput() ApigatewayBindingResponseOutput
+	ToApigatewayBindingResponseOutputWithContext(context.Context) ApigatewayBindingResponseOutput
+}
+
+// Associates `members` with a `role`.
+type ApigatewayBindingResponseArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ApigatewayExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (ApigatewayBindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayBindingResponse)(nil)).Elem()
+}
+
+func (i ApigatewayBindingResponseArgs) ToApigatewayBindingResponseOutput() ApigatewayBindingResponseOutput {
+	return i.ToApigatewayBindingResponseOutputWithContext(context.Background())
+}
+
+func (i ApigatewayBindingResponseArgs) ToApigatewayBindingResponseOutputWithContext(ctx context.Context) ApigatewayBindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayBindingResponseOutput)
+}
+
+// ApigatewayBindingResponseArrayInput is an input type that accepts ApigatewayBindingResponseArray and ApigatewayBindingResponseArrayOutput values.
+// You can construct a concrete instance of `ApigatewayBindingResponseArrayInput` via:
+//
+//          ApigatewayBindingResponseArray{ ApigatewayBindingResponseArgs{...} }
+type ApigatewayBindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToApigatewayBindingResponseArrayOutput() ApigatewayBindingResponseArrayOutput
+	ToApigatewayBindingResponseArrayOutputWithContext(context.Context) ApigatewayBindingResponseArrayOutput
+}
+
+type ApigatewayBindingResponseArray []ApigatewayBindingResponseInput
+
+func (ApigatewayBindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayBindingResponse)(nil)).Elem()
+}
+
+func (i ApigatewayBindingResponseArray) ToApigatewayBindingResponseArrayOutput() ApigatewayBindingResponseArrayOutput {
+	return i.ToApigatewayBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ApigatewayBindingResponseArray) ToApigatewayBindingResponseArrayOutputWithContext(ctx context.Context) ApigatewayBindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayBindingResponseArrayOutput)
+}
+
+// Associates `members` with a `role`.
+type ApigatewayBindingResponseOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayBindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayBindingResponse)(nil)).Elem()
+}
+
+func (o ApigatewayBindingResponseOutput) ToApigatewayBindingResponseOutput() ApigatewayBindingResponseOutput {
+	return o
+}
+
+func (o ApigatewayBindingResponseOutput) ToApigatewayBindingResponseOutputWithContext(ctx context.Context) ApigatewayBindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o ApigatewayBindingResponseOutput) Condition() ApigatewayExprResponseOutput {
+	return o.ApplyT(func(v ApigatewayBindingResponse) ApigatewayExprResponse { return v.Condition }).(ApigatewayExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o ApigatewayBindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApigatewayBindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o ApigatewayBindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v ApigatewayBindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type ApigatewayBindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayBindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApigatewayBindingResponse)(nil)).Elem()
+}
+
+func (o ApigatewayBindingResponseArrayOutput) ToApigatewayBindingResponseArrayOutput() ApigatewayBindingResponseArrayOutput {
+	return o
+}
+
+func (o ApigatewayBindingResponseArrayOutput) ToApigatewayBindingResponseArrayOutputWithContext(ctx context.Context) ApigatewayBindingResponseArrayOutput {
+	return o
+}
+
+func (o ApigatewayBindingResponseArrayOutput) Index(i pulumi.IntInput) ApigatewayBindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApigatewayBindingResponse {
+		return vs[0].([]ApigatewayBindingResponse)[vs[1].(int)]
+	}).(ApigatewayBindingResponseOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -942,6 +1600,88 @@ func (o ApigatewayExprPtrOutput) Title() pulumi.StringPtrOutput {
 		}
 		return v.Title
 	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ApigatewayExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// ApigatewayExprResponseInput is an input type that accepts ApigatewayExprResponseArgs and ApigatewayExprResponseOutput values.
+// You can construct a concrete instance of `ApigatewayExprResponseInput` via:
+//
+//          ApigatewayExprResponseArgs{...}
+type ApigatewayExprResponseInput interface {
+	pulumi.Input
+
+	ToApigatewayExprResponseOutput() ApigatewayExprResponseOutput
+	ToApigatewayExprResponseOutputWithContext(context.Context) ApigatewayExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ApigatewayExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ApigatewayExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayExprResponse)(nil)).Elem()
+}
+
+func (i ApigatewayExprResponseArgs) ToApigatewayExprResponseOutput() ApigatewayExprResponseOutput {
+	return i.ToApigatewayExprResponseOutputWithContext(context.Background())
+}
+
+func (i ApigatewayExprResponseArgs) ToApigatewayExprResponseOutputWithContext(ctx context.Context) ApigatewayExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApigatewayExprResponseOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ApigatewayExprResponseOutput struct{ *pulumi.OutputState }
+
+func (ApigatewayExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApigatewayExprResponse)(nil)).Elem()
+}
+
+func (o ApigatewayExprResponseOutput) ToApigatewayExprResponseOutput() ApigatewayExprResponseOutput {
+	return o
+}
+
+func (o ApigatewayExprResponseOutput) ToApigatewayExprResponseOutputWithContext(ctx context.Context) ApigatewayExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ApigatewayExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ApigatewayExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ApigatewayExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ApigatewayExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ApigatewayExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ApigatewayExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ApigatewayExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ApigatewayExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
@@ -1139,18 +1879,31 @@ func init() {
 	pulumi.RegisterOutputType(ApigatewayApiConfigFileOutput{})
 	pulumi.RegisterOutputType(ApigatewayApiConfigFilePtrOutput{})
 	pulumi.RegisterOutputType(ApigatewayApiConfigFileArrayOutput{})
+	pulumi.RegisterOutputType(ApigatewayApiConfigFileResponseOutput{})
+	pulumi.RegisterOutputType(ApigatewayApiConfigFileResponseArrayOutput{})
 	pulumi.RegisterOutputType(ApigatewayApiConfigGrpcServiceDefinitionOutput{})
 	pulumi.RegisterOutputType(ApigatewayApiConfigGrpcServiceDefinitionArrayOutput{})
+	pulumi.RegisterOutputType(ApigatewayApiConfigGrpcServiceDefinitionResponseOutput{})
+	pulumi.RegisterOutputType(ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ApigatewayApiConfigOpenApiDocumentOutput{})
 	pulumi.RegisterOutputType(ApigatewayApiConfigOpenApiDocumentArrayOutput{})
+	pulumi.RegisterOutputType(ApigatewayApiConfigOpenApiDocumentResponseOutput{})
+	pulumi.RegisterOutputType(ApigatewayApiConfigOpenApiDocumentResponseArrayOutput{})
 	pulumi.RegisterOutputType(ApigatewayAuditConfigOutput{})
 	pulumi.RegisterOutputType(ApigatewayAuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(ApigatewayAuditConfigResponseOutput{})
+	pulumi.RegisterOutputType(ApigatewayAuditConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(ApigatewayAuditLogConfigOutput{})
 	pulumi.RegisterOutputType(ApigatewayAuditLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(ApigatewayAuditLogConfigResponseOutput{})
+	pulumi.RegisterOutputType(ApigatewayAuditLogConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(ApigatewayBindingOutput{})
 	pulumi.RegisterOutputType(ApigatewayBindingArrayOutput{})
+	pulumi.RegisterOutputType(ApigatewayBindingResponseOutput{})
+	pulumi.RegisterOutputType(ApigatewayBindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(ApigatewayExprOutput{})
 	pulumi.RegisterOutputType(ApigatewayExprPtrOutput{})
+	pulumi.RegisterOutputType(ApigatewayExprResponseOutput{})
 	pulumi.RegisterOutputType(ApigatewayPolicyOutput{})
 	pulumi.RegisterOutputType(ApigatewayPolicyPtrOutput{})
 }

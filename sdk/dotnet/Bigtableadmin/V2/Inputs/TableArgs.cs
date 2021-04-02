@@ -15,18 +15,6 @@ namespace Pulumi.GoogleCloud.Bigtableadmin.V2.Inputs
     /// </summary>
     public sealed class TableArgs : Pulumi.ResourceArgs
     {
-        [Input("clusterStates")]
-        private InputMap<string>? _clusterStates;
-
-        /// <summary>
-        /// Output only. Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
-        /// </summary>
-        public InputMap<string> ClusterStates
-        {
-            get => _clusterStates ?? (_clusterStates = new InputMap<string>());
-            set => _clusterStates = value;
-        }
-
         [Input("columnFamilies")]
         private InputMap<string>? _columnFamilies;
 
@@ -50,12 +38,6 @@ namespace Pulumi.GoogleCloud.Bigtableadmin.V2.Inputs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Output only. If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
-        /// </summary>
-        [Input("restoreInfo")]
-        public Input<Inputs.RestoreInfoArgs>? RestoreInfo { get; set; }
 
         public TableArgs()
         {

@@ -16,6 +16,193 @@ namespace Pulumi.GoogleCloud.Storage.V1
     public partial class BucketObject : Pulumi.CustomResource
     {
         /// <summary>
+        /// Access controls on the object.
+        /// </summary>
+        [Output("acl")]
+        public Output<ImmutableArray<Outputs.ObjectAccessControlResponse>> Acl { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the bucket containing this object.
+        /// </summary>
+        [Output("bucket")]
+        public Output<string> Bucket { get; private set; } = null!;
+
+        /// <summary>
+        /// Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
+        /// </summary>
+        [Output("cacheControl")]
+        public Output<string> CacheControl { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of underlying components that make up this object. Components are accumulated by compose operations.
+        /// </summary>
+        [Output("componentCount")]
+        public Output<int> ComponentCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Content-Disposition of the object data.
+        /// </summary>
+        [Output("contentDisposition")]
+        public Output<string> ContentDisposition { get; private set; } = null!;
+
+        /// <summary>
+        /// Content-Encoding of the object data.
+        /// </summary>
+        [Output("contentEncoding")]
+        public Output<string> ContentEncoding { get; private set; } = null!;
+
+        /// <summary>
+        /// Content-Language of the object data.
+        /// </summary>
+        [Output("contentLanguage")]
+        public Output<string> ContentLanguage { get; private set; } = null!;
+
+        /// <summary>
+        /// Content-Type of the object data. If an object is stored without a Content-Type, it is served as application/octet-stream.
+        /// </summary>
+        [Output("contentType")]
+        public Output<string> ContentType { get; private set; } = null!;
+
+        /// <summary>
+        /// CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte order. For more information about using the CRC32c checksum, see Hashes and ETags: Best Practices.
+        /// </summary>
+        [Output("crc32c")]
+        public Output<string> Crc32c { get; private set; } = null!;
+
+        /// <summary>
+        /// A timestamp in RFC 3339 format specified by the user for an object.
+        /// </summary>
+        [Output("customTime")]
+        public Output<string> CustomTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+        /// </summary>
+        [Output("customerEncryption")]
+        public Output<ImmutableDictionary<string, string>> CustomerEncryption { get; private set; } = null!;
+
+        /// <summary>
+        /// HTTP 1.1 Entity tag for the object.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is the loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false.
+        /// </summary>
+        [Output("eventBasedHold")]
+        public Output<bool> EventBasedHold { get; private set; } = null!;
+
+        /// <summary>
+        /// The content generation of this object. Used for object versioning.
+        /// </summary>
+        [Output("generation")]
+        public Output<string> Generation { get; private set; } = null!;
+
+        /// <summary>
+        /// The kind of item this is. For objects, this is always storage#object.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string> KmsKeyName { get; private set; } = null!;
+
+        /// <summary>
+        /// MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see Hashes and ETags: Best Practices.
+        /// </summary>
+        [Output("md5Hash")]
+        public Output<string> Md5Hash { get; private set; } = null!;
+
+        /// <summary>
+        /// Media download link.
+        /// </summary>
+        [Output("mediaLink")]
+        public Output<string> MediaLink { get; private set; } = null!;
+
+        /// <summary>
+        /// User-provided metadata, in key/value pairs.
+        /// </summary>
+        [Output("metadata")]
+        public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.
+        /// </summary>
+        [Output("metageneration")]
+        public Output<string> Metageneration { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the object. Required if not specified by URL parameter.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The owner of the object. This will always be the uploader of the object.
+        /// </summary>
+        [Output("owner")]
+        public Output<ImmutableDictionary<string, string>> Owner { get; private set; } = null!;
+
+        /// <summary>
+        /// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
+        /// </summary>
+        [Output("retentionExpirationTime")]
+        public Output<string> RetentionExpirationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The link to this object.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// Content-Length of the data in bytes.
+        /// </summary>
+        [Output("size")]
+        public Output<string> Size { get; private set; } = null!;
+
+        /// <summary>
+        /// Storage class of the object.
+        /// </summary>
+        [Output("storageClass")]
+        public Output<string> StorageClass { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and overwrites. A common use case of this flag is regulatory investigations where objects need to be retained while the investigation is ongoing. Note that unlike event-based hold, temporary hold does not impact retention expiration time of an object.
+        /// </summary>
+        [Output("temporaryHold")]
+        public Output<bool> TemporaryHold { get; private set; } = null!;
+
+        /// <summary>
+        /// The creation time of the object in RFC 3339 format.
+        /// </summary>
+        [Output("timeCreated")]
+        public Output<string> TimeCreated { get; private set; } = null!;
+
+        /// <summary>
+        /// The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+        /// </summary>
+        [Output("timeDeleted")]
+        public Output<string> TimeDeleted { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
+        /// </summary>
+        [Output("timeStorageClassUpdated")]
+        public Output<string> TimeStorageClassUpdated { get; private set; } = null!;
+
+        /// <summary>
+        /// The modification time of the object metadata in RFC 3339 format.
+        /// </summary>
+        [Output("updated")]
+        public Output<string> Updated { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a BucketObject resource with the given unique name, arguments, and options.
         /// </summary>
         ///

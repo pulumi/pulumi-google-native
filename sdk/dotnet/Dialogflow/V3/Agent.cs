@@ -16,6 +16,73 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3
     public partial class Agent : Pulumi.CustomResource
     {
         /// <summary>
+        /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
+        /// </summary>
+        [Output("avatarUri")]
+        public Output<string> AvatarUri { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+        /// </summary>
+        [Output("defaultLanguageCode")]
+        public Output<string> DefaultLanguageCode { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The human-readable name of the agent, unique within the location.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates if automatic spell correction is enabled in detect intent requests.
+        /// </summary>
+        [Output("enableSpellCorrection")]
+        public Output<bool> EnableSpellCorrection { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates if stackdriver logging is enabled for the agent.
+        /// </summary>
+        [Output("enableStackdriverLogging")]
+        public Output<bool> EnableStackdriverLogging { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+        /// </summary>
+        [Output("securitySettings")]
+        public Output<string> SecuritySettings { get; private set; } = null!;
+
+        /// <summary>
+        /// Speech recognition related settings.
+        /// </summary>
+        [Output("speechToTextSettings")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3SpeechToTextSettingsResponse> SpeechToTextSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
+        /// </summary>
+        [Output("startFlow")]
+        public Output<string> StartFlow { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+        /// </summary>
+        [Output("timeZone")]
+        public Output<string> TimeZone { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Agent resource with the given unique name, arguments, and options.
         /// </summary>
         ///

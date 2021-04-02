@@ -35,6 +35,38 @@ export class AppAuthorizedCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === AppAuthorizedCertificate.__pulumiType;
     }
 
+    /**
+     * The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
+     */
+    public readonly certificateRawData!: pulumi.Output<outputs.appengine.v1alpha.CertificateRawDataResponse>;
+    /**
+     * The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Aggregate count of the domain mappings with this certificate mapped. This count includes domain mappings on applications for which the user does not have VIEWER permissions.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly
+     */
+    public readonly domainMappingsCount!: pulumi.Output<number>;
+    /**
+     * Topmost applicable domains of this certificate. This certificate applies to these domains and their subdomains. Example: example.com.@OutputOnly
+     */
+    public readonly domainNames!: pulumi.Output<string[]>;
+    /**
+     * The time when this certificate expires. To update the renewal time on this certificate, upload an SSL certificate with a different expiration time using AuthorizedCertificates.UpdateAuthorizedCertificate.@OutputOnly
+     */
+    public readonly expireTime!: pulumi.Output<string>;
+    /**
+     * Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this certificate is manually administered by the user, this field will be empty.@OutputOnly
+     */
+    public readonly managedCertificate!: pulumi.Output<outputs.appengine.v1alpha.ManagedCertificateResponse>;
+    /**
+     * Full path to the AuthorizedCertificate resource in the API. Example: apps/myapp/authorizedCertificates/12345.@OutputOnly
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The full paths to user visible Domain Mapping resources that have this certificate mapped. Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the user does not have VIEWER permissions on all of the applications that have this certificate mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly
+     */
+    public readonly visibleDomainMappings!: pulumi.Output<string[]>;
 
     /**
      * Create a AppAuthorizedCertificate resource with the given unique name, arguments, and options.
@@ -65,6 +97,14 @@ export class AppAuthorizedCertificate extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["visibleDomainMappings"] = args ? args.visibleDomainMappings : undefined;
         } else {
+            inputs["certificateRawData"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["domainMappingsCount"] = undefined /*out*/;
+            inputs["domainNames"] = undefined /*out*/;
+            inputs["expireTime"] = undefined /*out*/;
+            inputs["managedCertificate"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["visibleDomainMappings"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

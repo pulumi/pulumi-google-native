@@ -14,6 +14,24 @@ import (
 // Inserts a resource containing information about a database inside a Cloud SQL instance.
 type Database struct {
 	pulumi.CustomResourceState
+
+	// The Cloud SQL charset value.
+	Charset pulumi.StringOutput `pulumi:"charset"`
+	// The Cloud SQL collation value.
+	Collation pulumi.StringOutput `pulumi:"collation"`
+	// This field is deprecated and will be removed from a future version of the API.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The name of the Cloud SQL instance. This does not include the project ID.
+	Instance pulumi.StringOutput `pulumi:"instance"`
+	// This is always *sql#database*.
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
+	Project pulumi.StringOutput `pulumi:"project"`
+	// The URI of this resource.
+	SelfLink                 pulumi.StringOutput                    `pulumi:"selfLink"`
+	SqlserverDatabaseDetails SqlServerDatabaseDetailsResponseOutput `pulumi:"sqlserverDatabaseDetails"`
 }
 
 // NewDatabase registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +72,43 @@ func GetDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Database resources.
 type databaseState struct {
+	// The Cloud SQL charset value.
+	Charset *string `pulumi:"charset"`
+	// The Cloud SQL collation value.
+	Collation *string `pulumi:"collation"`
+	// This field is deprecated and will be removed from a future version of the API.
+	Etag *string `pulumi:"etag"`
+	// The name of the Cloud SQL instance. This does not include the project ID.
+	Instance *string `pulumi:"instance"`
+	// This is always *sql#database*.
+	Kind *string `pulumi:"kind"`
+	// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+	Name *string `pulumi:"name"`
+	// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
+	Project *string `pulumi:"project"`
+	// The URI of this resource.
+	SelfLink                 *string                           `pulumi:"selfLink"`
+	SqlserverDatabaseDetails *SqlServerDatabaseDetailsResponse `pulumi:"sqlserverDatabaseDetails"`
 }
 
 type DatabaseState struct {
+	// The Cloud SQL charset value.
+	Charset pulumi.StringPtrInput
+	// The Cloud SQL collation value.
+	Collation pulumi.StringPtrInput
+	// This field is deprecated and will be removed from a future version of the API.
+	Etag pulumi.StringPtrInput
+	// The name of the Cloud SQL instance. This does not include the project ID.
+	Instance pulumi.StringPtrInput
+	// This is always *sql#database*.
+	Kind pulumi.StringPtrInput
+	// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+	Name pulumi.StringPtrInput
+	// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
+	Project pulumi.StringPtrInput
+	// The URI of this resource.
+	SelfLink                 pulumi.StringPtrInput
+	SqlserverDatabaseDetails SqlServerDatabaseDetailsResponsePtrInput
 }
 
 func (DatabaseState) ElementType() reflect.Type {

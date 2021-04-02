@@ -35,6 +35,42 @@ export class Service extends pulumi.CustomResource {
         return obj['__pulumiType'] === Service.__pulumiType;
     }
 
+    /**
+     * Type used for App Engine services.
+     */
+    public readonly appEngine!: pulumi.Output<outputs.monitoring.v3.AppEngineResponse>;
+    /**
+     * Type used for Cloud Endpoints services.
+     */
+    public readonly cloudEndpoints!: pulumi.Output<outputs.monitoring.v3.CloudEndpointsResponse>;
+    /**
+     * Type used for Istio services that live in a Kubernetes cluster.
+     */
+    public readonly clusterIstio!: pulumi.Output<outputs.monitoring.v3.ClusterIstioResponse>;
+    /**
+     * Custom service type.
+     */
+    public readonly custom!: pulumi.Output<outputs.monitoring.v3.CustomResponse>;
+    /**
+     * Name used for UI elements listing this Service.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
+     */
+    public readonly istioCanonicalService!: pulumi.Output<outputs.monitoring.v3.IstioCanonicalServiceResponse>;
+    /**
+     * Type used for Istio services scoped to an Istio mesh.
+     */
+    public readonly meshIstio!: pulumi.Output<outputs.monitoring.v3.MeshIstioResponse>;
+    /**
+     * Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Configuration for how to query telemetry on a Service.
+     */
+    public readonly telemetry!: pulumi.Output<outputs.monitoring.v3.TelemetryResponse>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -69,6 +105,15 @@ export class Service extends pulumi.CustomResource {
             inputs["v3Id"] = args ? args.v3Id : undefined;
             inputs["v3Id1"] = args ? args.v3Id1 : undefined;
         } else {
+            inputs["appEngine"] = undefined /*out*/;
+            inputs["cloudEndpoints"] = undefined /*out*/;
+            inputs["clusterIstio"] = undefined /*out*/;
+            inputs["custom"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["istioCanonicalService"] = undefined /*out*/;
+            inputs["meshIstio"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["telemetry"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

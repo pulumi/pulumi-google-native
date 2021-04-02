@@ -14,8 +14,6 @@ import (
 type BigQueryOptions struct {
 	// Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
 	UsePartitionedTables *bool `pulumi:"usePartitionedTables"`
-	// Output only. True if new timestamp column based partitioning is in use, false if legacy ingestion-time partitioning is in use. All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false.
-	UsesTimestampColumnPartitioning *bool `pulumi:"usesTimestampColumnPartitioning"`
 }
 
 // BigQueryOptionsInput is an input type that accepts BigQueryOptionsArgs and BigQueryOptionsOutput values.
@@ -33,8 +31,6 @@ type BigQueryOptionsInput interface {
 type BigQueryOptionsArgs struct {
 	// Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
 	UsePartitionedTables pulumi.BoolPtrInput `pulumi:"usePartitionedTables"`
-	// Output only. True if new timestamp column based partitioning is in use, false if legacy ingestion-time partitioning is in use. All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false.
-	UsesTimestampColumnPartitioning pulumi.BoolPtrInput `pulumi:"usesTimestampColumnPartitioning"`
 }
 
 func (BigQueryOptionsArgs) ElementType() reflect.Type {
@@ -120,11 +116,6 @@ func (o BigQueryOptionsOutput) UsePartitionedTables() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BigQueryOptions) *bool { return v.UsePartitionedTables }).(pulumi.BoolPtrOutput)
 }
 
-// Output only. True if new timestamp column based partitioning is in use, false if legacy ingestion-time partitioning is in use. All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false.
-func (o BigQueryOptionsOutput) UsesTimestampColumnPartitioning() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v BigQueryOptions) *bool { return v.UsesTimestampColumnPartitioning }).(pulumi.BoolPtrOutput)
-}
-
 type BigQueryOptionsPtrOutput struct{ *pulumi.OutputState }
 
 func (BigQueryOptionsPtrOutput) ElementType() reflect.Type {
@@ -153,13 +144,156 @@ func (o BigQueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Output only. True if new timestamp column based partitioning is in use, false if legacy ingestion-time partitioning is in use. All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false.
-func (o BigQueryOptionsPtrOutput) UsesTimestampColumnPartitioning() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *BigQueryOptions) *bool {
+// Options that change functionality of a sink exporting data to BigQuery.
+type BigQueryOptionsResponse struct {
+	// Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
+	UsePartitionedTables bool `pulumi:"usePartitionedTables"`
+	// True if new timestamp column based partitioning is in use, false if legacy ingestion-time partitioning is in use. All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false.
+	UsesTimestampColumnPartitioning bool `pulumi:"usesTimestampColumnPartitioning"`
+}
+
+// BigQueryOptionsResponseInput is an input type that accepts BigQueryOptionsResponseArgs and BigQueryOptionsResponseOutput values.
+// You can construct a concrete instance of `BigQueryOptionsResponseInput` via:
+//
+//          BigQueryOptionsResponseArgs{...}
+type BigQueryOptionsResponseInput interface {
+	pulumi.Input
+
+	ToBigQueryOptionsResponseOutput() BigQueryOptionsResponseOutput
+	ToBigQueryOptionsResponseOutputWithContext(context.Context) BigQueryOptionsResponseOutput
+}
+
+// Options that change functionality of a sink exporting data to BigQuery.
+type BigQueryOptionsResponseArgs struct {
+	// Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
+	UsePartitionedTables pulumi.BoolInput `pulumi:"usePartitionedTables"`
+	// True if new timestamp column based partitioning is in use, false if legacy ingestion-time partitioning is in use. All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false.
+	UsesTimestampColumnPartitioning pulumi.BoolInput `pulumi:"usesTimestampColumnPartitioning"`
+}
+
+func (BigQueryOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryOptionsResponse)(nil)).Elem()
+}
+
+func (i BigQueryOptionsResponseArgs) ToBigQueryOptionsResponseOutput() BigQueryOptionsResponseOutput {
+	return i.ToBigQueryOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i BigQueryOptionsResponseArgs) ToBigQueryOptionsResponseOutputWithContext(ctx context.Context) BigQueryOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryOptionsResponseOutput)
+}
+
+func (i BigQueryOptionsResponseArgs) ToBigQueryOptionsResponsePtrOutput() BigQueryOptionsResponsePtrOutput {
+	return i.ToBigQueryOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BigQueryOptionsResponseArgs) ToBigQueryOptionsResponsePtrOutputWithContext(ctx context.Context) BigQueryOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryOptionsResponseOutput).ToBigQueryOptionsResponsePtrOutputWithContext(ctx)
+}
+
+// BigQueryOptionsResponsePtrInput is an input type that accepts BigQueryOptionsResponseArgs, BigQueryOptionsResponsePtr and BigQueryOptionsResponsePtrOutput values.
+// You can construct a concrete instance of `BigQueryOptionsResponsePtrInput` via:
+//
+//          BigQueryOptionsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BigQueryOptionsResponsePtrInput interface {
+	pulumi.Input
+
+	ToBigQueryOptionsResponsePtrOutput() BigQueryOptionsResponsePtrOutput
+	ToBigQueryOptionsResponsePtrOutputWithContext(context.Context) BigQueryOptionsResponsePtrOutput
+}
+
+type bigQueryOptionsResponsePtrType BigQueryOptionsResponseArgs
+
+func BigQueryOptionsResponsePtr(v *BigQueryOptionsResponseArgs) BigQueryOptionsResponsePtrInput {
+	return (*bigQueryOptionsResponsePtrType)(v)
+}
+
+func (*bigQueryOptionsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryOptionsResponse)(nil)).Elem()
+}
+
+func (i *bigQueryOptionsResponsePtrType) ToBigQueryOptionsResponsePtrOutput() BigQueryOptionsResponsePtrOutput {
+	return i.ToBigQueryOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *bigQueryOptionsResponsePtrType) ToBigQueryOptionsResponsePtrOutputWithContext(ctx context.Context) BigQueryOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryOptionsResponsePtrOutput)
+}
+
+// Options that change functionality of a sink exporting data to BigQuery.
+type BigQueryOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (BigQueryOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryOptionsResponse)(nil)).Elem()
+}
+
+func (o BigQueryOptionsResponseOutput) ToBigQueryOptionsResponseOutput() BigQueryOptionsResponseOutput {
+	return o
+}
+
+func (o BigQueryOptionsResponseOutput) ToBigQueryOptionsResponseOutputWithContext(ctx context.Context) BigQueryOptionsResponseOutput {
+	return o
+}
+
+func (o BigQueryOptionsResponseOutput) ToBigQueryOptionsResponsePtrOutput() BigQueryOptionsResponsePtrOutput {
+	return o.ToBigQueryOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BigQueryOptionsResponseOutput) ToBigQueryOptionsResponsePtrOutputWithContext(ctx context.Context) BigQueryOptionsResponsePtrOutput {
+	return o.ApplyT(func(v BigQueryOptionsResponse) *BigQueryOptionsResponse {
+		return &v
+	}).(BigQueryOptionsResponsePtrOutput)
+}
+
+// Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
+func (o BigQueryOptionsResponseOutput) UsePartitionedTables() pulumi.BoolOutput {
+	return o.ApplyT(func(v BigQueryOptionsResponse) bool { return v.UsePartitionedTables }).(pulumi.BoolOutput)
+}
+
+// True if new timestamp column based partitioning is in use, false if legacy ingestion-time partitioning is in use. All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false.
+func (o BigQueryOptionsResponseOutput) UsesTimestampColumnPartitioning() pulumi.BoolOutput {
+	return o.ApplyT(func(v BigQueryOptionsResponse) bool { return v.UsesTimestampColumnPartitioning }).(pulumi.BoolOutput)
+}
+
+type BigQueryOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BigQueryOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryOptionsResponse)(nil)).Elem()
+}
+
+func (o BigQueryOptionsResponsePtrOutput) ToBigQueryOptionsResponsePtrOutput() BigQueryOptionsResponsePtrOutput {
+	return o
+}
+
+func (o BigQueryOptionsResponsePtrOutput) ToBigQueryOptionsResponsePtrOutputWithContext(ctx context.Context) BigQueryOptionsResponsePtrOutput {
+	return o
+}
+
+func (o BigQueryOptionsResponsePtrOutput) Elem() BigQueryOptionsResponseOutput {
+	return o.ApplyT(func(v *BigQueryOptionsResponse) BigQueryOptionsResponse { return *v }).(BigQueryOptionsResponseOutput)
+}
+
+// Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
+func (o BigQueryOptionsResponsePtrOutput) UsePartitionedTables() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BigQueryOptionsResponse) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.UsesTimestampColumnPartitioning
+		return &v.UsePartitionedTables
+	}).(pulumi.BoolPtrOutput)
+}
+
+// True if new timestamp column based partitioning is in use, false if legacy ingestion-time partitioning is in use. All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false.
+func (o BigQueryOptionsResponsePtrOutput) UsesTimestampColumnPartitioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BigQueryOptionsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UsesTimestampColumnPartitioning
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -335,6 +469,178 @@ func (o BucketOptionsPtrOutput) LinearBuckets() LinearPtrOutput {
 	}).(LinearPtrOutput)
 }
 
+// BucketOptions describes the bucket boundaries used to create a histogram for the distribution. The buckets can be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly. BucketOptions does not include the number of values in each bucket.A bucket has an inclusive lower bound and exclusive upper bound for the values that are counted for that bucket. The upper bound of a bucket must be strictly greater than the lower bound. The sequence of N buckets for a distribution consists of an underflow bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an overflow bucket (number N - 1). The buckets are contiguous: the lower bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets span the whole range of finite values: lower bound of the underflow bucket is -infinity and the upper bound of the overflow bucket is +infinity. The finite buckets are so-called because both bounds are finite.
+type BucketOptionsResponse struct {
+	// The explicit buckets.
+	ExplicitBuckets ExplicitResponse `pulumi:"explicitBuckets"`
+	// The exponential buckets.
+	ExponentialBuckets ExponentialResponse `pulumi:"exponentialBuckets"`
+	// The linear bucket.
+	LinearBuckets LinearResponse `pulumi:"linearBuckets"`
+}
+
+// BucketOptionsResponseInput is an input type that accepts BucketOptionsResponseArgs and BucketOptionsResponseOutput values.
+// You can construct a concrete instance of `BucketOptionsResponseInput` via:
+//
+//          BucketOptionsResponseArgs{...}
+type BucketOptionsResponseInput interface {
+	pulumi.Input
+
+	ToBucketOptionsResponseOutput() BucketOptionsResponseOutput
+	ToBucketOptionsResponseOutputWithContext(context.Context) BucketOptionsResponseOutput
+}
+
+// BucketOptions describes the bucket boundaries used to create a histogram for the distribution. The buckets can be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly. BucketOptions does not include the number of values in each bucket.A bucket has an inclusive lower bound and exclusive upper bound for the values that are counted for that bucket. The upper bound of a bucket must be strictly greater than the lower bound. The sequence of N buckets for a distribution consists of an underflow bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an overflow bucket (number N - 1). The buckets are contiguous: the lower bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets span the whole range of finite values: lower bound of the underflow bucket is -infinity and the upper bound of the overflow bucket is +infinity. The finite buckets are so-called because both bounds are finite.
+type BucketOptionsResponseArgs struct {
+	// The explicit buckets.
+	ExplicitBuckets ExplicitResponseInput `pulumi:"explicitBuckets"`
+	// The exponential buckets.
+	ExponentialBuckets ExponentialResponseInput `pulumi:"exponentialBuckets"`
+	// The linear bucket.
+	LinearBuckets LinearResponseInput `pulumi:"linearBuckets"`
+}
+
+func (BucketOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketOptionsResponse)(nil)).Elem()
+}
+
+func (i BucketOptionsResponseArgs) ToBucketOptionsResponseOutput() BucketOptionsResponseOutput {
+	return i.ToBucketOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i BucketOptionsResponseArgs) ToBucketOptionsResponseOutputWithContext(ctx context.Context) BucketOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketOptionsResponseOutput)
+}
+
+func (i BucketOptionsResponseArgs) ToBucketOptionsResponsePtrOutput() BucketOptionsResponsePtrOutput {
+	return i.ToBucketOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BucketOptionsResponseArgs) ToBucketOptionsResponsePtrOutputWithContext(ctx context.Context) BucketOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketOptionsResponseOutput).ToBucketOptionsResponsePtrOutputWithContext(ctx)
+}
+
+// BucketOptionsResponsePtrInput is an input type that accepts BucketOptionsResponseArgs, BucketOptionsResponsePtr and BucketOptionsResponsePtrOutput values.
+// You can construct a concrete instance of `BucketOptionsResponsePtrInput` via:
+//
+//          BucketOptionsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BucketOptionsResponsePtrInput interface {
+	pulumi.Input
+
+	ToBucketOptionsResponsePtrOutput() BucketOptionsResponsePtrOutput
+	ToBucketOptionsResponsePtrOutputWithContext(context.Context) BucketOptionsResponsePtrOutput
+}
+
+type bucketOptionsResponsePtrType BucketOptionsResponseArgs
+
+func BucketOptionsResponsePtr(v *BucketOptionsResponseArgs) BucketOptionsResponsePtrInput {
+	return (*bucketOptionsResponsePtrType)(v)
+}
+
+func (*bucketOptionsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketOptionsResponse)(nil)).Elem()
+}
+
+func (i *bucketOptionsResponsePtrType) ToBucketOptionsResponsePtrOutput() BucketOptionsResponsePtrOutput {
+	return i.ToBucketOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *bucketOptionsResponsePtrType) ToBucketOptionsResponsePtrOutputWithContext(ctx context.Context) BucketOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketOptionsResponsePtrOutput)
+}
+
+// BucketOptions describes the bucket boundaries used to create a histogram for the distribution. The buckets can be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly. BucketOptions does not include the number of values in each bucket.A bucket has an inclusive lower bound and exclusive upper bound for the values that are counted for that bucket. The upper bound of a bucket must be strictly greater than the lower bound. The sequence of N buckets for a distribution consists of an underflow bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an overflow bucket (number N - 1). The buckets are contiguous: the lower bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets span the whole range of finite values: lower bound of the underflow bucket is -infinity and the upper bound of the overflow bucket is +infinity. The finite buckets are so-called because both bounds are finite.
+type BucketOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (BucketOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketOptionsResponse)(nil)).Elem()
+}
+
+func (o BucketOptionsResponseOutput) ToBucketOptionsResponseOutput() BucketOptionsResponseOutput {
+	return o
+}
+
+func (o BucketOptionsResponseOutput) ToBucketOptionsResponseOutputWithContext(ctx context.Context) BucketOptionsResponseOutput {
+	return o
+}
+
+func (o BucketOptionsResponseOutput) ToBucketOptionsResponsePtrOutput() BucketOptionsResponsePtrOutput {
+	return o.ToBucketOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BucketOptionsResponseOutput) ToBucketOptionsResponsePtrOutputWithContext(ctx context.Context) BucketOptionsResponsePtrOutput {
+	return o.ApplyT(func(v BucketOptionsResponse) *BucketOptionsResponse {
+		return &v
+	}).(BucketOptionsResponsePtrOutput)
+}
+
+// The explicit buckets.
+func (o BucketOptionsResponseOutput) ExplicitBuckets() ExplicitResponseOutput {
+	return o.ApplyT(func(v BucketOptionsResponse) ExplicitResponse { return v.ExplicitBuckets }).(ExplicitResponseOutput)
+}
+
+// The exponential buckets.
+func (o BucketOptionsResponseOutput) ExponentialBuckets() ExponentialResponseOutput {
+	return o.ApplyT(func(v BucketOptionsResponse) ExponentialResponse { return v.ExponentialBuckets }).(ExponentialResponseOutput)
+}
+
+// The linear bucket.
+func (o BucketOptionsResponseOutput) LinearBuckets() LinearResponseOutput {
+	return o.ApplyT(func(v BucketOptionsResponse) LinearResponse { return v.LinearBuckets }).(LinearResponseOutput)
+}
+
+type BucketOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BucketOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketOptionsResponse)(nil)).Elem()
+}
+
+func (o BucketOptionsResponsePtrOutput) ToBucketOptionsResponsePtrOutput() BucketOptionsResponsePtrOutput {
+	return o
+}
+
+func (o BucketOptionsResponsePtrOutput) ToBucketOptionsResponsePtrOutputWithContext(ctx context.Context) BucketOptionsResponsePtrOutput {
+	return o
+}
+
+func (o BucketOptionsResponsePtrOutput) Elem() BucketOptionsResponseOutput {
+	return o.ApplyT(func(v *BucketOptionsResponse) BucketOptionsResponse { return *v }).(BucketOptionsResponseOutput)
+}
+
+// The explicit buckets.
+func (o BucketOptionsResponsePtrOutput) ExplicitBuckets() ExplicitResponsePtrOutput {
+	return o.ApplyT(func(v *BucketOptionsResponse) *ExplicitResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ExplicitBuckets
+	}).(ExplicitResponsePtrOutput)
+}
+
+// The exponential buckets.
+func (o BucketOptionsResponsePtrOutput) ExponentialBuckets() ExponentialResponsePtrOutput {
+	return o.ApplyT(func(v *BucketOptionsResponse) *ExponentialResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ExponentialBuckets
+	}).(ExponentialResponsePtrOutput)
+}
+
+// The linear bucket.
+func (o BucketOptionsResponsePtrOutput) LinearBuckets() LinearResponsePtrOutput {
+	return o.ApplyT(func(v *BucketOptionsResponse) *LinearResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LinearBuckets
+	}).(LinearResponsePtrOutput)
+}
+
 // Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): boundsi Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at least one element. If bounds has only one element, then there are no finite buckets, and that single element is the common boundary of the overflow and underflow buckets.
 type Explicit struct {
 	// The values must be monotonically increasing.
@@ -462,6 +768,140 @@ func (o ExplicitPtrOutput) Elem() ExplicitOutput {
 // The values must be monotonically increasing.
 func (o ExplicitPtrOutput) Bounds() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v *Explicit) []float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Bounds
+	}).(pulumi.Float64ArrayOutput)
+}
+
+// Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): boundsi Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at least one element. If bounds has only one element, then there are no finite buckets, and that single element is the common boundary of the overflow and underflow buckets.
+type ExplicitResponse struct {
+	// The values must be monotonically increasing.
+	Bounds []float64 `pulumi:"bounds"`
+}
+
+// ExplicitResponseInput is an input type that accepts ExplicitResponseArgs and ExplicitResponseOutput values.
+// You can construct a concrete instance of `ExplicitResponseInput` via:
+//
+//          ExplicitResponseArgs{...}
+type ExplicitResponseInput interface {
+	pulumi.Input
+
+	ToExplicitResponseOutput() ExplicitResponseOutput
+	ToExplicitResponseOutputWithContext(context.Context) ExplicitResponseOutput
+}
+
+// Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): boundsi Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at least one element. If bounds has only one element, then there are no finite buckets, and that single element is the common boundary of the overflow and underflow buckets.
+type ExplicitResponseArgs struct {
+	// The values must be monotonically increasing.
+	Bounds pulumi.Float64ArrayInput `pulumi:"bounds"`
+}
+
+func (ExplicitResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExplicitResponse)(nil)).Elem()
+}
+
+func (i ExplicitResponseArgs) ToExplicitResponseOutput() ExplicitResponseOutput {
+	return i.ToExplicitResponseOutputWithContext(context.Background())
+}
+
+func (i ExplicitResponseArgs) ToExplicitResponseOutputWithContext(ctx context.Context) ExplicitResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExplicitResponseOutput)
+}
+
+func (i ExplicitResponseArgs) ToExplicitResponsePtrOutput() ExplicitResponsePtrOutput {
+	return i.ToExplicitResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ExplicitResponseArgs) ToExplicitResponsePtrOutputWithContext(ctx context.Context) ExplicitResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExplicitResponseOutput).ToExplicitResponsePtrOutputWithContext(ctx)
+}
+
+// ExplicitResponsePtrInput is an input type that accepts ExplicitResponseArgs, ExplicitResponsePtr and ExplicitResponsePtrOutput values.
+// You can construct a concrete instance of `ExplicitResponsePtrInput` via:
+//
+//          ExplicitResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ExplicitResponsePtrInput interface {
+	pulumi.Input
+
+	ToExplicitResponsePtrOutput() ExplicitResponsePtrOutput
+	ToExplicitResponsePtrOutputWithContext(context.Context) ExplicitResponsePtrOutput
+}
+
+type explicitResponsePtrType ExplicitResponseArgs
+
+func ExplicitResponsePtr(v *ExplicitResponseArgs) ExplicitResponsePtrInput {
+	return (*explicitResponsePtrType)(v)
+}
+
+func (*explicitResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExplicitResponse)(nil)).Elem()
+}
+
+func (i *explicitResponsePtrType) ToExplicitResponsePtrOutput() ExplicitResponsePtrOutput {
+	return i.ToExplicitResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *explicitResponsePtrType) ToExplicitResponsePtrOutputWithContext(ctx context.Context) ExplicitResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExplicitResponsePtrOutput)
+}
+
+// Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): boundsi Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at least one element. If bounds has only one element, then there are no finite buckets, and that single element is the common boundary of the overflow and underflow buckets.
+type ExplicitResponseOutput struct{ *pulumi.OutputState }
+
+func (ExplicitResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExplicitResponse)(nil)).Elem()
+}
+
+func (o ExplicitResponseOutput) ToExplicitResponseOutput() ExplicitResponseOutput {
+	return o
+}
+
+func (o ExplicitResponseOutput) ToExplicitResponseOutputWithContext(ctx context.Context) ExplicitResponseOutput {
+	return o
+}
+
+func (o ExplicitResponseOutput) ToExplicitResponsePtrOutput() ExplicitResponsePtrOutput {
+	return o.ToExplicitResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ExplicitResponseOutput) ToExplicitResponsePtrOutputWithContext(ctx context.Context) ExplicitResponsePtrOutput {
+	return o.ApplyT(func(v ExplicitResponse) *ExplicitResponse {
+		return &v
+	}).(ExplicitResponsePtrOutput)
+}
+
+// The values must be monotonically increasing.
+func (o ExplicitResponseOutput) Bounds() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v ExplicitResponse) []float64 { return v.Bounds }).(pulumi.Float64ArrayOutput)
+}
+
+type ExplicitResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExplicitResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExplicitResponse)(nil)).Elem()
+}
+
+func (o ExplicitResponsePtrOutput) ToExplicitResponsePtrOutput() ExplicitResponsePtrOutput {
+	return o
+}
+
+func (o ExplicitResponsePtrOutput) ToExplicitResponsePtrOutputWithContext(ctx context.Context) ExplicitResponsePtrOutput {
+	return o
+}
+
+func (o ExplicitResponsePtrOutput) Elem() ExplicitResponseOutput {
+	return o.ApplyT(func(v *ExplicitResponse) ExplicitResponse { return *v }).(ExplicitResponseOutput)
+}
+
+// The values must be monotonically increasing.
+func (o ExplicitResponsePtrOutput) Bounds() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v *ExplicitResponse) []float64 {
 		if v == nil {
 			return nil
 		}
@@ -641,6 +1081,178 @@ func (o ExponentialPtrOutput) Scale() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
+type ExponentialResponse struct {
+	// Must be greater than 1.
+	GrowthFactor float64 `pulumi:"growthFactor"`
+	// Must be greater than 0.
+	NumFiniteBuckets int `pulumi:"numFiniteBuckets"`
+	// Must be greater than 0.
+	Scale float64 `pulumi:"scale"`
+}
+
+// ExponentialResponseInput is an input type that accepts ExponentialResponseArgs and ExponentialResponseOutput values.
+// You can construct a concrete instance of `ExponentialResponseInput` via:
+//
+//          ExponentialResponseArgs{...}
+type ExponentialResponseInput interface {
+	pulumi.Input
+
+	ToExponentialResponseOutput() ExponentialResponseOutput
+	ToExponentialResponseOutputWithContext(context.Context) ExponentialResponseOutput
+}
+
+// Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
+type ExponentialResponseArgs struct {
+	// Must be greater than 1.
+	GrowthFactor pulumi.Float64Input `pulumi:"growthFactor"`
+	// Must be greater than 0.
+	NumFiniteBuckets pulumi.IntInput `pulumi:"numFiniteBuckets"`
+	// Must be greater than 0.
+	Scale pulumi.Float64Input `pulumi:"scale"`
+}
+
+func (ExponentialResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExponentialResponse)(nil)).Elem()
+}
+
+func (i ExponentialResponseArgs) ToExponentialResponseOutput() ExponentialResponseOutput {
+	return i.ToExponentialResponseOutputWithContext(context.Background())
+}
+
+func (i ExponentialResponseArgs) ToExponentialResponseOutputWithContext(ctx context.Context) ExponentialResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExponentialResponseOutput)
+}
+
+func (i ExponentialResponseArgs) ToExponentialResponsePtrOutput() ExponentialResponsePtrOutput {
+	return i.ToExponentialResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ExponentialResponseArgs) ToExponentialResponsePtrOutputWithContext(ctx context.Context) ExponentialResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExponentialResponseOutput).ToExponentialResponsePtrOutputWithContext(ctx)
+}
+
+// ExponentialResponsePtrInput is an input type that accepts ExponentialResponseArgs, ExponentialResponsePtr and ExponentialResponsePtrOutput values.
+// You can construct a concrete instance of `ExponentialResponsePtrInput` via:
+//
+//          ExponentialResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ExponentialResponsePtrInput interface {
+	pulumi.Input
+
+	ToExponentialResponsePtrOutput() ExponentialResponsePtrOutput
+	ToExponentialResponsePtrOutputWithContext(context.Context) ExponentialResponsePtrOutput
+}
+
+type exponentialResponsePtrType ExponentialResponseArgs
+
+func ExponentialResponsePtr(v *ExponentialResponseArgs) ExponentialResponsePtrInput {
+	return (*exponentialResponsePtrType)(v)
+}
+
+func (*exponentialResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExponentialResponse)(nil)).Elem()
+}
+
+func (i *exponentialResponsePtrType) ToExponentialResponsePtrOutput() ExponentialResponsePtrOutput {
+	return i.ToExponentialResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *exponentialResponsePtrType) ToExponentialResponsePtrOutputWithContext(ctx context.Context) ExponentialResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExponentialResponsePtrOutput)
+}
+
+// Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
+type ExponentialResponseOutput struct{ *pulumi.OutputState }
+
+func (ExponentialResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExponentialResponse)(nil)).Elem()
+}
+
+func (o ExponentialResponseOutput) ToExponentialResponseOutput() ExponentialResponseOutput {
+	return o
+}
+
+func (o ExponentialResponseOutput) ToExponentialResponseOutputWithContext(ctx context.Context) ExponentialResponseOutput {
+	return o
+}
+
+func (o ExponentialResponseOutput) ToExponentialResponsePtrOutput() ExponentialResponsePtrOutput {
+	return o.ToExponentialResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ExponentialResponseOutput) ToExponentialResponsePtrOutputWithContext(ctx context.Context) ExponentialResponsePtrOutput {
+	return o.ApplyT(func(v ExponentialResponse) *ExponentialResponse {
+		return &v
+	}).(ExponentialResponsePtrOutput)
+}
+
+// Must be greater than 1.
+func (o ExponentialResponseOutput) GrowthFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v ExponentialResponse) float64 { return v.GrowthFactor }).(pulumi.Float64Output)
+}
+
+// Must be greater than 0.
+func (o ExponentialResponseOutput) NumFiniteBuckets() pulumi.IntOutput {
+	return o.ApplyT(func(v ExponentialResponse) int { return v.NumFiniteBuckets }).(pulumi.IntOutput)
+}
+
+// Must be greater than 0.
+func (o ExponentialResponseOutput) Scale() pulumi.Float64Output {
+	return o.ApplyT(func(v ExponentialResponse) float64 { return v.Scale }).(pulumi.Float64Output)
+}
+
+type ExponentialResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExponentialResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExponentialResponse)(nil)).Elem()
+}
+
+func (o ExponentialResponsePtrOutput) ToExponentialResponsePtrOutput() ExponentialResponsePtrOutput {
+	return o
+}
+
+func (o ExponentialResponsePtrOutput) ToExponentialResponsePtrOutputWithContext(ctx context.Context) ExponentialResponsePtrOutput {
+	return o
+}
+
+func (o ExponentialResponsePtrOutput) Elem() ExponentialResponseOutput {
+	return o.ApplyT(func(v *ExponentialResponse) ExponentialResponse { return *v }).(ExponentialResponseOutput)
+}
+
+// Must be greater than 1.
+func (o ExponentialResponsePtrOutput) GrowthFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ExponentialResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.GrowthFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Must be greater than 0.
+func (o ExponentialResponsePtrOutput) NumFiniteBuckets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ExponentialResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.NumFiniteBuckets
+	}).(pulumi.IntPtrOutput)
+}
+
+// Must be greater than 0.
+func (o ExponentialResponsePtrOutput) Scale() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ExponentialResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Scale
+	}).(pulumi.Float64PtrOutput)
+}
+
 // A description of a label.
 type LabelDescriptor struct {
 	// A human-readable description for the label.
@@ -757,6 +1369,124 @@ func (o LabelDescriptorArrayOutput) Index(i pulumi.IntInput) LabelDescriptorOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LabelDescriptor {
 		return vs[0].([]LabelDescriptor)[vs[1].(int)]
 	}).(LabelDescriptorOutput)
+}
+
+// A description of a label.
+type LabelDescriptorResponse struct {
+	// A human-readable description for the label.
+	Description string `pulumi:"description"`
+	// The label key.
+	Key string `pulumi:"key"`
+	// The type of data that can be assigned to the label.
+	ValueType string `pulumi:"valueType"`
+}
+
+// LabelDescriptorResponseInput is an input type that accepts LabelDescriptorResponseArgs and LabelDescriptorResponseOutput values.
+// You can construct a concrete instance of `LabelDescriptorResponseInput` via:
+//
+//          LabelDescriptorResponseArgs{...}
+type LabelDescriptorResponseInput interface {
+	pulumi.Input
+
+	ToLabelDescriptorResponseOutput() LabelDescriptorResponseOutput
+	ToLabelDescriptorResponseOutputWithContext(context.Context) LabelDescriptorResponseOutput
+}
+
+// A description of a label.
+type LabelDescriptorResponseArgs struct {
+	// A human-readable description for the label.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The label key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The type of data that can be assigned to the label.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (LabelDescriptorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelDescriptorResponse)(nil)).Elem()
+}
+
+func (i LabelDescriptorResponseArgs) ToLabelDescriptorResponseOutput() LabelDescriptorResponseOutput {
+	return i.ToLabelDescriptorResponseOutputWithContext(context.Background())
+}
+
+func (i LabelDescriptorResponseArgs) ToLabelDescriptorResponseOutputWithContext(ctx context.Context) LabelDescriptorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelDescriptorResponseOutput)
+}
+
+// LabelDescriptorResponseArrayInput is an input type that accepts LabelDescriptorResponseArray and LabelDescriptorResponseArrayOutput values.
+// You can construct a concrete instance of `LabelDescriptorResponseArrayInput` via:
+//
+//          LabelDescriptorResponseArray{ LabelDescriptorResponseArgs{...} }
+type LabelDescriptorResponseArrayInput interface {
+	pulumi.Input
+
+	ToLabelDescriptorResponseArrayOutput() LabelDescriptorResponseArrayOutput
+	ToLabelDescriptorResponseArrayOutputWithContext(context.Context) LabelDescriptorResponseArrayOutput
+}
+
+type LabelDescriptorResponseArray []LabelDescriptorResponseInput
+
+func (LabelDescriptorResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LabelDescriptorResponse)(nil)).Elem()
+}
+
+func (i LabelDescriptorResponseArray) ToLabelDescriptorResponseArrayOutput() LabelDescriptorResponseArrayOutput {
+	return i.ToLabelDescriptorResponseArrayOutputWithContext(context.Background())
+}
+
+func (i LabelDescriptorResponseArray) ToLabelDescriptorResponseArrayOutputWithContext(ctx context.Context) LabelDescriptorResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelDescriptorResponseArrayOutput)
+}
+
+// A description of a label.
+type LabelDescriptorResponseOutput struct{ *pulumi.OutputState }
+
+func (LabelDescriptorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelDescriptorResponse)(nil)).Elem()
+}
+
+func (o LabelDescriptorResponseOutput) ToLabelDescriptorResponseOutput() LabelDescriptorResponseOutput {
+	return o
+}
+
+func (o LabelDescriptorResponseOutput) ToLabelDescriptorResponseOutputWithContext(ctx context.Context) LabelDescriptorResponseOutput {
+	return o
+}
+
+// A human-readable description for the label.
+func (o LabelDescriptorResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LabelDescriptorResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The label key.
+func (o LabelDescriptorResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v LabelDescriptorResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The type of data that can be assigned to the label.
+func (o LabelDescriptorResponseOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v LabelDescriptorResponse) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type LabelDescriptorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LabelDescriptorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LabelDescriptorResponse)(nil)).Elem()
+}
+
+func (o LabelDescriptorResponseArrayOutput) ToLabelDescriptorResponseArrayOutput() LabelDescriptorResponseArrayOutput {
+	return o
+}
+
+func (o LabelDescriptorResponseArrayOutput) ToLabelDescriptorResponseArrayOutputWithContext(ctx context.Context) LabelDescriptorResponseArrayOutput {
+	return o
+}
+
+func (o LabelDescriptorResponseArrayOutput) Index(i pulumi.IntInput) LabelDescriptorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LabelDescriptorResponse {
+		return vs[0].([]LabelDescriptorResponse)[vs[1].(int)]
+	}).(LabelDescriptorResponseOutput)
 }
 
 // Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).
@@ -931,10 +1661,180 @@ func (o LinearPtrOutput) Width() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).
+type LinearResponse struct {
+	// Must be greater than 0.
+	NumFiniteBuckets int `pulumi:"numFiniteBuckets"`
+	// Lower bound of the first bucket.
+	Offset float64 `pulumi:"offset"`
+	// Must be greater than 0.
+	Width float64 `pulumi:"width"`
+}
+
+// LinearResponseInput is an input type that accepts LinearResponseArgs and LinearResponseOutput values.
+// You can construct a concrete instance of `LinearResponseInput` via:
+//
+//          LinearResponseArgs{...}
+type LinearResponseInput interface {
+	pulumi.Input
+
+	ToLinearResponseOutput() LinearResponseOutput
+	ToLinearResponseOutputWithContext(context.Context) LinearResponseOutput
+}
+
+// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).
+type LinearResponseArgs struct {
+	// Must be greater than 0.
+	NumFiniteBuckets pulumi.IntInput `pulumi:"numFiniteBuckets"`
+	// Lower bound of the first bucket.
+	Offset pulumi.Float64Input `pulumi:"offset"`
+	// Must be greater than 0.
+	Width pulumi.Float64Input `pulumi:"width"`
+}
+
+func (LinearResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinearResponse)(nil)).Elem()
+}
+
+func (i LinearResponseArgs) ToLinearResponseOutput() LinearResponseOutput {
+	return i.ToLinearResponseOutputWithContext(context.Background())
+}
+
+func (i LinearResponseArgs) ToLinearResponseOutputWithContext(ctx context.Context) LinearResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinearResponseOutput)
+}
+
+func (i LinearResponseArgs) ToLinearResponsePtrOutput() LinearResponsePtrOutput {
+	return i.ToLinearResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LinearResponseArgs) ToLinearResponsePtrOutputWithContext(ctx context.Context) LinearResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinearResponseOutput).ToLinearResponsePtrOutputWithContext(ctx)
+}
+
+// LinearResponsePtrInput is an input type that accepts LinearResponseArgs, LinearResponsePtr and LinearResponsePtrOutput values.
+// You can construct a concrete instance of `LinearResponsePtrInput` via:
+//
+//          LinearResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type LinearResponsePtrInput interface {
+	pulumi.Input
+
+	ToLinearResponsePtrOutput() LinearResponsePtrOutput
+	ToLinearResponsePtrOutputWithContext(context.Context) LinearResponsePtrOutput
+}
+
+type linearResponsePtrType LinearResponseArgs
+
+func LinearResponsePtr(v *LinearResponseArgs) LinearResponsePtrInput {
+	return (*linearResponsePtrType)(v)
+}
+
+func (*linearResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinearResponse)(nil)).Elem()
+}
+
+func (i *linearResponsePtrType) ToLinearResponsePtrOutput() LinearResponsePtrOutput {
+	return i.ToLinearResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *linearResponsePtrType) ToLinearResponsePtrOutputWithContext(ctx context.Context) LinearResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinearResponsePtrOutput)
+}
+
+// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).
+type LinearResponseOutput struct{ *pulumi.OutputState }
+
+func (LinearResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinearResponse)(nil)).Elem()
+}
+
+func (o LinearResponseOutput) ToLinearResponseOutput() LinearResponseOutput {
+	return o
+}
+
+func (o LinearResponseOutput) ToLinearResponseOutputWithContext(ctx context.Context) LinearResponseOutput {
+	return o
+}
+
+func (o LinearResponseOutput) ToLinearResponsePtrOutput() LinearResponsePtrOutput {
+	return o.ToLinearResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LinearResponseOutput) ToLinearResponsePtrOutputWithContext(ctx context.Context) LinearResponsePtrOutput {
+	return o.ApplyT(func(v LinearResponse) *LinearResponse {
+		return &v
+	}).(LinearResponsePtrOutput)
+}
+
+// Must be greater than 0.
+func (o LinearResponseOutput) NumFiniteBuckets() pulumi.IntOutput {
+	return o.ApplyT(func(v LinearResponse) int { return v.NumFiniteBuckets }).(pulumi.IntOutput)
+}
+
+// Lower bound of the first bucket.
+func (o LinearResponseOutput) Offset() pulumi.Float64Output {
+	return o.ApplyT(func(v LinearResponse) float64 { return v.Offset }).(pulumi.Float64Output)
+}
+
+// Must be greater than 0.
+func (o LinearResponseOutput) Width() pulumi.Float64Output {
+	return o.ApplyT(func(v LinearResponse) float64 { return v.Width }).(pulumi.Float64Output)
+}
+
+type LinearResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LinearResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinearResponse)(nil)).Elem()
+}
+
+func (o LinearResponsePtrOutput) ToLinearResponsePtrOutput() LinearResponsePtrOutput {
+	return o
+}
+
+func (o LinearResponsePtrOutput) ToLinearResponsePtrOutputWithContext(ctx context.Context) LinearResponsePtrOutput {
+	return o
+}
+
+func (o LinearResponsePtrOutput) Elem() LinearResponseOutput {
+	return o.ApplyT(func(v *LinearResponse) LinearResponse { return *v }).(LinearResponseOutput)
+}
+
+// Must be greater than 0.
+func (o LinearResponsePtrOutput) NumFiniteBuckets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LinearResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.NumFiniteBuckets
+	}).(pulumi.IntPtrOutput)
+}
+
+// Lower bound of the first bucket.
+func (o LinearResponsePtrOutput) Offset() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LinearResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Offset
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Must be greater than 0.
+func (o LinearResponsePtrOutput) Width() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LinearResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Width
+	}).(pulumi.Float64PtrOutput)
+}
+
 // Specifies a set of log entries that are not to be stored in Logging. If your GCP resource receives a large volume of logs, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
 type LogExclusion struct {
-	// Output only. The creation timestamp of the exclusion.This field may not be present for older exclusions.
-	CreateTime *string `pulumi:"createTime"`
 	// Optional. A description of this exclusion.
 	Description *string `pulumi:"description"`
 	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
@@ -943,8 +1843,6 @@ type LogExclusion struct {
 	Filter *string `pulumi:"filter"`
 	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name *string `pulumi:"name"`
-	// Output only. The last update timestamp of the exclusion.This field may not be present for older exclusions.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // LogExclusionInput is an input type that accepts LogExclusionArgs and LogExclusionOutput values.
@@ -960,8 +1858,6 @@ type LogExclusionInput interface {
 
 // Specifies a set of log entries that are not to be stored in Logging. If your GCP resource receives a large volume of logs, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
 type LogExclusionArgs struct {
-	// Output only. The creation timestamp of the exclusion.This field may not be present for older exclusions.
-	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
 	// Optional. A description of this exclusion.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
@@ -970,8 +1866,6 @@ type LogExclusionArgs struct {
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Output only. The last update timestamp of the exclusion.This field may not be present for older exclusions.
-	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
 func (LogExclusionArgs) ElementType() reflect.Type {
@@ -1026,11 +1920,6 @@ func (o LogExclusionOutput) ToLogExclusionOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Output only. The creation timestamp of the exclusion.This field may not be present for older exclusions.
-func (o LogExclusionOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogExclusion) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
-}
-
 // Optional. A description of this exclusion.
 func (o LogExclusionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogExclusion) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -1051,11 +1940,6 @@ func (o LogExclusionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogExclusion) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Output only. The last update timestamp of the exclusion.This field may not be present for older exclusions.
-func (o LogExclusionOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogExclusion) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
-}
-
 type LogExclusionArrayOutput struct{ *pulumi.OutputState }
 
 func (LogExclusionArrayOutput) ElementType() reflect.Type {
@@ -1074,6 +1958,151 @@ func (o LogExclusionArrayOutput) Index(i pulumi.IntInput) LogExclusionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogExclusion {
 		return vs[0].([]LogExclusion)[vs[1].(int)]
 	}).(LogExclusionOutput)
+}
+
+// Specifies a set of log entries that are not to be stored in Logging. If your GCP resource receives a large volume of logs, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
+type LogExclusionResponse struct {
+	// The creation timestamp of the exclusion.This field may not be present for older exclusions.
+	CreateTime string `pulumi:"createTime"`
+	// Optional. A description of this exclusion.
+	Description string `pulumi:"description"`
+	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
+	Disabled bool `pulumi:"disabled"`
+	// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+	Filter string `pulumi:"filter"`
+	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	Name string `pulumi:"name"`
+	// The last update timestamp of the exclusion.This field may not be present for older exclusions.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// LogExclusionResponseInput is an input type that accepts LogExclusionResponseArgs and LogExclusionResponseOutput values.
+// You can construct a concrete instance of `LogExclusionResponseInput` via:
+//
+//          LogExclusionResponseArgs{...}
+type LogExclusionResponseInput interface {
+	pulumi.Input
+
+	ToLogExclusionResponseOutput() LogExclusionResponseOutput
+	ToLogExclusionResponseOutputWithContext(context.Context) LogExclusionResponseOutput
+}
+
+// Specifies a set of log entries that are not to be stored in Logging. If your GCP resource receives a large volume of logs, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
+type LogExclusionResponseArgs struct {
+	// The creation timestamp of the exclusion.This field may not be present for older exclusions.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Optional. A description of this exclusion.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The last update timestamp of the exclusion.This field may not be present for older exclusions.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (LogExclusionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogExclusionResponse)(nil)).Elem()
+}
+
+func (i LogExclusionResponseArgs) ToLogExclusionResponseOutput() LogExclusionResponseOutput {
+	return i.ToLogExclusionResponseOutputWithContext(context.Background())
+}
+
+func (i LogExclusionResponseArgs) ToLogExclusionResponseOutputWithContext(ctx context.Context) LogExclusionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogExclusionResponseOutput)
+}
+
+// LogExclusionResponseArrayInput is an input type that accepts LogExclusionResponseArray and LogExclusionResponseArrayOutput values.
+// You can construct a concrete instance of `LogExclusionResponseArrayInput` via:
+//
+//          LogExclusionResponseArray{ LogExclusionResponseArgs{...} }
+type LogExclusionResponseArrayInput interface {
+	pulumi.Input
+
+	ToLogExclusionResponseArrayOutput() LogExclusionResponseArrayOutput
+	ToLogExclusionResponseArrayOutputWithContext(context.Context) LogExclusionResponseArrayOutput
+}
+
+type LogExclusionResponseArray []LogExclusionResponseInput
+
+func (LogExclusionResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogExclusionResponse)(nil)).Elem()
+}
+
+func (i LogExclusionResponseArray) ToLogExclusionResponseArrayOutput() LogExclusionResponseArrayOutput {
+	return i.ToLogExclusionResponseArrayOutputWithContext(context.Background())
+}
+
+func (i LogExclusionResponseArray) ToLogExclusionResponseArrayOutputWithContext(ctx context.Context) LogExclusionResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogExclusionResponseArrayOutput)
+}
+
+// Specifies a set of log entries that are not to be stored in Logging. If your GCP resource receives a large volume of logs, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
+type LogExclusionResponseOutput struct{ *pulumi.OutputState }
+
+func (LogExclusionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogExclusionResponse)(nil)).Elem()
+}
+
+func (o LogExclusionResponseOutput) ToLogExclusionResponseOutput() LogExclusionResponseOutput {
+	return o
+}
+
+func (o LogExclusionResponseOutput) ToLogExclusionResponseOutputWithContext(ctx context.Context) LogExclusionResponseOutput {
+	return o
+}
+
+// The creation timestamp of the exclusion.This field may not be present for older exclusions.
+func (o LogExclusionResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LogExclusionResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. A description of this exclusion.
+func (o LogExclusionResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LogExclusionResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
+func (o LogExclusionResponseOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LogExclusionResponse) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+func (o LogExclusionResponseOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v LogExclusionResponse) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+func (o LogExclusionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LogExclusionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The last update timestamp of the exclusion.This field may not be present for older exclusions.
+func (o LogExclusionResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LogExclusionResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type LogExclusionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LogExclusionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogExclusionResponse)(nil)).Elem()
+}
+
+func (o LogExclusionResponseArrayOutput) ToLogExclusionResponseArrayOutput() LogExclusionResponseArrayOutput {
+	return o
+}
+
+func (o LogExclusionResponseArrayOutput) ToLogExclusionResponseArrayOutputWithContext(ctx context.Context) LogExclusionResponseArrayOutput {
+	return o
+}
+
+func (o LogExclusionResponseArrayOutput) Index(i pulumi.IntInput) LogExclusionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogExclusionResponse {
+		return vs[0].([]LogExclusionResponse)[vs[1].(int)]
+	}).(LogExclusionResponseOutput)
 }
 
 // Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
@@ -1404,8 +2433,6 @@ func (o MetricDescriptorPtrOutput) ValueType() pulumi.StringPtrOutput {
 type MetricDescriptorMetadata struct {
 	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
 	IngestDelay *string `pulumi:"ingestDelay"`
-	// Deprecated. Must use the MetricDescriptor.launch_stage instead.
-	LaunchStage *string `pulumi:"launchStage"`
 	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 	SamplePeriod *string `pulumi:"samplePeriod"`
 }
@@ -1425,8 +2452,6 @@ type MetricDescriptorMetadataInput interface {
 type MetricDescriptorMetadataArgs struct {
 	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
 	IngestDelay pulumi.StringPtrInput `pulumi:"ingestDelay"`
-	// Deprecated. Must use the MetricDescriptor.launch_stage instead.
-	LaunchStage pulumi.StringPtrInput `pulumi:"launchStage"`
 	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 	SamplePeriod pulumi.StringPtrInput `pulumi:"samplePeriod"`
 }
@@ -1514,11 +2539,6 @@ func (o MetricDescriptorMetadataOutput) IngestDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricDescriptorMetadata) *string { return v.IngestDelay }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated. Must use the MetricDescriptor.launch_stage instead.
-func (o MetricDescriptorMetadataOutput) LaunchStage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MetricDescriptorMetadata) *string { return v.LaunchStage }).(pulumi.StringPtrOutput)
-}
-
 // The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 func (o MetricDescriptorMetadataOutput) SamplePeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricDescriptorMetadata) *string { return v.SamplePeriod }).(pulumi.StringPtrOutput)
@@ -1552,16 +2572,6 @@ func (o MetricDescriptorMetadataPtrOutput) IngestDelay() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated. Must use the MetricDescriptor.launch_stage instead.
-func (o MetricDescriptorMetadataPtrOutput) LaunchStage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MetricDescriptorMetadata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LaunchStage
-	}).(pulumi.StringPtrOutput)
-}
-
 // The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 func (o MetricDescriptorMetadataPtrOutput) SamplePeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricDescriptorMetadata) *string {
@@ -1572,23 +2582,518 @@ func (o MetricDescriptorMetadataPtrOutput) SamplePeriod() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Additional annotations that can be used to guide the usage of a metric.
+type MetricDescriptorMetadataResponse struct {
+	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
+	IngestDelay string `pulumi:"ingestDelay"`
+	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
+	SamplePeriod string `pulumi:"samplePeriod"`
+}
+
+// MetricDescriptorMetadataResponseInput is an input type that accepts MetricDescriptorMetadataResponseArgs and MetricDescriptorMetadataResponseOutput values.
+// You can construct a concrete instance of `MetricDescriptorMetadataResponseInput` via:
+//
+//          MetricDescriptorMetadataResponseArgs{...}
+type MetricDescriptorMetadataResponseInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorMetadataResponseOutput() MetricDescriptorMetadataResponseOutput
+	ToMetricDescriptorMetadataResponseOutputWithContext(context.Context) MetricDescriptorMetadataResponseOutput
+}
+
+// Additional annotations that can be used to guide the usage of a metric.
+type MetricDescriptorMetadataResponseArgs struct {
+	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
+	IngestDelay pulumi.StringInput `pulumi:"ingestDelay"`
+	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
+	SamplePeriod pulumi.StringInput `pulumi:"samplePeriod"`
+}
+
+func (MetricDescriptorMetadataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorMetadataResponse)(nil)).Elem()
+}
+
+func (i MetricDescriptorMetadataResponseArgs) ToMetricDescriptorMetadataResponseOutput() MetricDescriptorMetadataResponseOutput {
+	return i.ToMetricDescriptorMetadataResponseOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptorMetadataResponseArgs) ToMetricDescriptorMetadataResponseOutputWithContext(ctx context.Context) MetricDescriptorMetadataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataResponseOutput)
+}
+
+func (i MetricDescriptorMetadataResponseArgs) ToMetricDescriptorMetadataResponsePtrOutput() MetricDescriptorMetadataResponsePtrOutput {
+	return i.ToMetricDescriptorMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptorMetadataResponseArgs) ToMetricDescriptorMetadataResponsePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataResponseOutput).ToMetricDescriptorMetadataResponsePtrOutputWithContext(ctx)
+}
+
+// MetricDescriptorMetadataResponsePtrInput is an input type that accepts MetricDescriptorMetadataResponseArgs, MetricDescriptorMetadataResponsePtr and MetricDescriptorMetadataResponsePtrOutput values.
+// You can construct a concrete instance of `MetricDescriptorMetadataResponsePtrInput` via:
+//
+//          MetricDescriptorMetadataResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MetricDescriptorMetadataResponsePtrInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorMetadataResponsePtrOutput() MetricDescriptorMetadataResponsePtrOutput
+	ToMetricDescriptorMetadataResponsePtrOutputWithContext(context.Context) MetricDescriptorMetadataResponsePtrOutput
+}
+
+type metricDescriptorMetadataResponsePtrType MetricDescriptorMetadataResponseArgs
+
+func MetricDescriptorMetadataResponsePtr(v *MetricDescriptorMetadataResponseArgs) MetricDescriptorMetadataResponsePtrInput {
+	return (*metricDescriptorMetadataResponsePtrType)(v)
+}
+
+func (*metricDescriptorMetadataResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricDescriptorMetadataResponse)(nil)).Elem()
+}
+
+func (i *metricDescriptorMetadataResponsePtrType) ToMetricDescriptorMetadataResponsePtrOutput() MetricDescriptorMetadataResponsePtrOutput {
+	return i.ToMetricDescriptorMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *metricDescriptorMetadataResponsePtrType) ToMetricDescriptorMetadataResponsePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataResponsePtrOutput)
+}
+
+// Additional annotations that can be used to guide the usage of a metric.
+type MetricDescriptorMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorMetadataResponse)(nil)).Elem()
+}
+
+func (o MetricDescriptorMetadataResponseOutput) ToMetricDescriptorMetadataResponseOutput() MetricDescriptorMetadataResponseOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataResponseOutput) ToMetricDescriptorMetadataResponseOutputWithContext(ctx context.Context) MetricDescriptorMetadataResponseOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataResponseOutput) ToMetricDescriptorMetadataResponsePtrOutput() MetricDescriptorMetadataResponsePtrOutput {
+	return o.ToMetricDescriptorMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorMetadataResponseOutput) ToMetricDescriptorMetadataResponsePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataResponsePtrOutput {
+	return o.ApplyT(func(v MetricDescriptorMetadataResponse) *MetricDescriptorMetadataResponse {
+		return &v
+	}).(MetricDescriptorMetadataResponsePtrOutput)
+}
+
+// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
+func (o MetricDescriptorMetadataResponseOutput) IngestDelay() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorMetadataResponse) string { return v.IngestDelay }).(pulumi.StringOutput)
+}
+
+// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
+func (o MetricDescriptorMetadataResponseOutput) SamplePeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorMetadataResponse) string { return v.SamplePeriod }).(pulumi.StringOutput)
+}
+
+type MetricDescriptorMetadataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorMetadataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricDescriptorMetadataResponse)(nil)).Elem()
+}
+
+func (o MetricDescriptorMetadataResponsePtrOutput) ToMetricDescriptorMetadataResponsePtrOutput() MetricDescriptorMetadataResponsePtrOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataResponsePtrOutput) ToMetricDescriptorMetadataResponsePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataResponsePtrOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataResponsePtrOutput) Elem() MetricDescriptorMetadataResponseOutput {
+	return o.ApplyT(func(v *MetricDescriptorMetadataResponse) MetricDescriptorMetadataResponse { return *v }).(MetricDescriptorMetadataResponseOutput)
+}
+
+// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
+func (o MetricDescriptorMetadataResponsePtrOutput) IngestDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IngestDelay
+	}).(pulumi.StringPtrOutput)
+}
+
+// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
+func (o MetricDescriptorMetadataResponsePtrOutput) SamplePeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SamplePeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
+type MetricDescriptorResponse struct {
+	// A detailed description of the metric, which can be used in documentation.
+	Description string `pulumi:"description"`
+	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota.
+	DisplayName string `pulumi:"displayName"`
+	// The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed.
+	Labels []LabelDescriptorResponse `pulumi:"labels"`
+	// Optional. The launch stage of the metric definition.
+	LaunchStage string `pulumi:"launchStage"`
+	// Optional. Metadata which can be used to guide usage of the metric.
+	Metadata MetricDescriptorMetadataResponse `pulumi:"metadata"`
+	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
+	MetricKind string `pulumi:"metricKind"`
+	// Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here.
+	MonitoredResourceTypes []string `pulumi:"monitoredResourceTypes"`
+	// The resource name of the metric descriptor.
+	Name string `pulumi:"name"`
+	// The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies"
+	Type string `pulumi:"type"`
+	// The units in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of the stored metric values.Different systems might scale the values to be more easily displayed (so a value of 0.02kBy might be displayed as 20By, and a value of 3523kBy might be displayed as 3.5MBy). However, if the unit is kBy, then the value of the metric is always in thousands of bytes, no matter how it might be displayed.If you want a custom metric to record the exact number of CPU-seconds used by a job, you can create an INT64 CUMULATIVE metric whose unit is s{CPU} (or equivalently 1s{CPU} or just s). If the job uses 12,005 CPU-seconds, then the value is written as 12005.Alternatively, if you want a custom metric to record data in a more granular way, you can create a DOUBLE CUMULATIVE metric whose unit is ks{CPU}, and then write the value 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).The supported units are a subset of The Unified Code for Units of Measure (https://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT) bit bit By byte s second min minute h hour d day 1 dimensionlessPrefixes (PREFIX) k kilo (10^3) M mega (10^6) G giga (10^9) T tera (10^12) P peta (10^15) E exa (10^18) Z zetta (10^21) Y yotta (10^24) m milli (10^-3) u micro (10^-6) n nano (10^-9) p pico (10^-12) f femto (10^-15) a atto (10^-18) z zepto (10^-21) y yocto (10^-24) Ki kibi (2^10) Mi mebi (2^20) Gi gibi (2^30) Ti tebi (2^40) Pi pebi (2^50)GrammarThe grammar also includes these connectors: / division or ratio (as an infix operator). For examples, kBy/{email} or MiBy/10ms (although you should almost never have /s in a metric unit; rates should always be computed at query time from the underlying cumulative or delta value). . multiplication or composition (as an infix operator). For examples, GBy.d or k{watt}.h.The grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: Annotation is just a comment if it follows a UNIT. If the annotation is used alone, then the unit is equivalent to 1. For examples, {request}/s == 1/s, By{transmitted}/s == By/s. NAME is a sequence of non-blank printable ASCII characters not containing { or }. 1 represents a unitary dimensionless unit (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in 1/s. It is typically used when none of the basic units are appropriate. For example, "new users per day" can be represented as 1/d or {new-users}/d (and a metric value 5 would mean "5 new users). Alternatively, "thousands of page views per day" would be represented as 1000/d or k1/d or k{page_views}/d (and a metric value of 5.3 would mean "5300 page views per day"). % represents dimensionless value of 1/100, and annotates values giving a percentage (so the metric values are typically in the range of 0..100, and a metric value 3 means "3 percent"). 10^2.% indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and displayed as a percentage (so a metric value 0.03 means "3 percent").
+	Unit string `pulumi:"unit"`
+	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported.
+	ValueType string `pulumi:"valueType"`
+}
+
+// MetricDescriptorResponseInput is an input type that accepts MetricDescriptorResponseArgs and MetricDescriptorResponseOutput values.
+// You can construct a concrete instance of `MetricDescriptorResponseInput` via:
+//
+//          MetricDescriptorResponseArgs{...}
+type MetricDescriptorResponseInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorResponseOutput() MetricDescriptorResponseOutput
+	ToMetricDescriptorResponseOutputWithContext(context.Context) MetricDescriptorResponseOutput
+}
+
+// Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
+type MetricDescriptorResponseArgs struct {
+	// A detailed description of the metric, which can be used in documentation.
+	Description pulumi.StringInput `pulumi:"description"`
+	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed.
+	Labels LabelDescriptorResponseArrayInput `pulumi:"labels"`
+	// Optional. The launch stage of the metric definition.
+	LaunchStage pulumi.StringInput `pulumi:"launchStage"`
+	// Optional. Metadata which can be used to guide usage of the metric.
+	Metadata MetricDescriptorMetadataResponseInput `pulumi:"metadata"`
+	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
+	MetricKind pulumi.StringInput `pulumi:"metricKind"`
+	// Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here.
+	MonitoredResourceTypes pulumi.StringArrayInput `pulumi:"monitoredResourceTypes"`
+	// The resource name of the metric descriptor.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies"
+	Type pulumi.StringInput `pulumi:"type"`
+	// The units in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of the stored metric values.Different systems might scale the values to be more easily displayed (so a value of 0.02kBy might be displayed as 20By, and a value of 3523kBy might be displayed as 3.5MBy). However, if the unit is kBy, then the value of the metric is always in thousands of bytes, no matter how it might be displayed.If you want a custom metric to record the exact number of CPU-seconds used by a job, you can create an INT64 CUMULATIVE metric whose unit is s{CPU} (or equivalently 1s{CPU} or just s). If the job uses 12,005 CPU-seconds, then the value is written as 12005.Alternatively, if you want a custom metric to record data in a more granular way, you can create a DOUBLE CUMULATIVE metric whose unit is ks{CPU}, and then write the value 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).The supported units are a subset of The Unified Code for Units of Measure (https://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT) bit bit By byte s second min minute h hour d day 1 dimensionlessPrefixes (PREFIX) k kilo (10^3) M mega (10^6) G giga (10^9) T tera (10^12) P peta (10^15) E exa (10^18) Z zetta (10^21) Y yotta (10^24) m milli (10^-3) u micro (10^-6) n nano (10^-9) p pico (10^-12) f femto (10^-15) a atto (10^-18) z zepto (10^-21) y yocto (10^-24) Ki kibi (2^10) Mi mebi (2^20) Gi gibi (2^30) Ti tebi (2^40) Pi pebi (2^50)GrammarThe grammar also includes these connectors: / division or ratio (as an infix operator). For examples, kBy/{email} or MiBy/10ms (although you should almost never have /s in a metric unit; rates should always be computed at query time from the underlying cumulative or delta value). . multiplication or composition (as an infix operator). For examples, GBy.d or k{watt}.h.The grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: Annotation is just a comment if it follows a UNIT. If the annotation is used alone, then the unit is equivalent to 1. For examples, {request}/s == 1/s, By{transmitted}/s == By/s. NAME is a sequence of non-blank printable ASCII characters not containing { or }. 1 represents a unitary dimensionless unit (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in 1/s. It is typically used when none of the basic units are appropriate. For example, "new users per day" can be represented as 1/d or {new-users}/d (and a metric value 5 would mean "5 new users). Alternatively, "thousands of page views per day" would be represented as 1000/d or k1/d or k{page_views}/d (and a metric value of 5.3 would mean "5300 page views per day"). % represents dimensionless value of 1/100, and annotates values giving a percentage (so the metric values are typically in the range of 0..100, and a metric value 3 means "3 percent"). 10^2.% indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and displayed as a percentage (so a metric value 0.03 means "3 percent").
+	Unit pulumi.StringInput `pulumi:"unit"`
+	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (MetricDescriptorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorResponse)(nil)).Elem()
+}
+
+func (i MetricDescriptorResponseArgs) ToMetricDescriptorResponseOutput() MetricDescriptorResponseOutput {
+	return i.ToMetricDescriptorResponseOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptorResponseArgs) ToMetricDescriptorResponseOutputWithContext(ctx context.Context) MetricDescriptorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorResponseOutput)
+}
+
+func (i MetricDescriptorResponseArgs) ToMetricDescriptorResponsePtrOutput() MetricDescriptorResponsePtrOutput {
+	return i.ToMetricDescriptorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptorResponseArgs) ToMetricDescriptorResponsePtrOutputWithContext(ctx context.Context) MetricDescriptorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorResponseOutput).ToMetricDescriptorResponsePtrOutputWithContext(ctx)
+}
+
+// MetricDescriptorResponsePtrInput is an input type that accepts MetricDescriptorResponseArgs, MetricDescriptorResponsePtr and MetricDescriptorResponsePtrOutput values.
+// You can construct a concrete instance of `MetricDescriptorResponsePtrInput` via:
+//
+//          MetricDescriptorResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MetricDescriptorResponsePtrInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorResponsePtrOutput() MetricDescriptorResponsePtrOutput
+	ToMetricDescriptorResponsePtrOutputWithContext(context.Context) MetricDescriptorResponsePtrOutput
+}
+
+type metricDescriptorResponsePtrType MetricDescriptorResponseArgs
+
+func MetricDescriptorResponsePtr(v *MetricDescriptorResponseArgs) MetricDescriptorResponsePtrInput {
+	return (*metricDescriptorResponsePtrType)(v)
+}
+
+func (*metricDescriptorResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricDescriptorResponse)(nil)).Elem()
+}
+
+func (i *metricDescriptorResponsePtrType) ToMetricDescriptorResponsePtrOutput() MetricDescriptorResponsePtrOutput {
+	return i.ToMetricDescriptorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *metricDescriptorResponsePtrType) ToMetricDescriptorResponsePtrOutputWithContext(ctx context.Context) MetricDescriptorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorResponsePtrOutput)
+}
+
+// Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
+type MetricDescriptorResponseOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorResponse)(nil)).Elem()
+}
+
+func (o MetricDescriptorResponseOutput) ToMetricDescriptorResponseOutput() MetricDescriptorResponseOutput {
+	return o
+}
+
+func (o MetricDescriptorResponseOutput) ToMetricDescriptorResponseOutputWithContext(ctx context.Context) MetricDescriptorResponseOutput {
+	return o
+}
+
+func (o MetricDescriptorResponseOutput) ToMetricDescriptorResponsePtrOutput() MetricDescriptorResponsePtrOutput {
+	return o.ToMetricDescriptorResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorResponseOutput) ToMetricDescriptorResponsePtrOutputWithContext(ctx context.Context) MetricDescriptorResponsePtrOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) *MetricDescriptorResponse {
+		return &v
+	}).(MetricDescriptorResponsePtrOutput)
+}
+
+// A detailed description of the metric, which can be used in documentation.
+func (o MetricDescriptorResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota.
+func (o MetricDescriptorResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed.
+func (o MetricDescriptorResponseOutput) Labels() LabelDescriptorResponseArrayOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) []LabelDescriptorResponse { return v.Labels }).(LabelDescriptorResponseArrayOutput)
+}
+
+// Optional. The launch stage of the metric definition.
+func (o MetricDescriptorResponseOutput) LaunchStage() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.LaunchStage }).(pulumi.StringOutput)
+}
+
+// Optional. Metadata which can be used to guide usage of the metric.
+func (o MetricDescriptorResponseOutput) Metadata() MetricDescriptorMetadataResponseOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) MetricDescriptorMetadataResponse { return v.Metadata }).(MetricDescriptorMetadataResponseOutput)
+}
+
+// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
+func (o MetricDescriptorResponseOutput) MetricKind() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.MetricKind }).(pulumi.StringOutput)
+}
+
+// Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here.
+func (o MetricDescriptorResponseOutput) MonitoredResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) []string { return v.MonitoredResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+// The resource name of the metric descriptor.
+func (o MetricDescriptorResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies"
+func (o MetricDescriptorResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The units in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of the stored metric values.Different systems might scale the values to be more easily displayed (so a value of 0.02kBy might be displayed as 20By, and a value of 3523kBy might be displayed as 3.5MBy). However, if the unit is kBy, then the value of the metric is always in thousands of bytes, no matter how it might be displayed.If you want a custom metric to record the exact number of CPU-seconds used by a job, you can create an INT64 CUMULATIVE metric whose unit is s{CPU} (or equivalently 1s{CPU} or just s). If the job uses 12,005 CPU-seconds, then the value is written as 12005.Alternatively, if you want a custom metric to record data in a more granular way, you can create a DOUBLE CUMULATIVE metric whose unit is ks{CPU}, and then write the value 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).The supported units are a subset of The Unified Code for Units of Measure (https://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT) bit bit By byte s second min minute h hour d day 1 dimensionlessPrefixes (PREFIX) k kilo (10^3) M mega (10^6) G giga (10^9) T tera (10^12) P peta (10^15) E exa (10^18) Z zetta (10^21) Y yotta (10^24) m milli (10^-3) u micro (10^-6) n nano (10^-9) p pico (10^-12) f femto (10^-15) a atto (10^-18) z zepto (10^-21) y yocto (10^-24) Ki kibi (2^10) Mi mebi (2^20) Gi gibi (2^30) Ti tebi (2^40) Pi pebi (2^50)GrammarThe grammar also includes these connectors: / division or ratio (as an infix operator). For examples, kBy/{email} or MiBy/10ms (although you should almost never have /s in a metric unit; rates should always be computed at query time from the underlying cumulative or delta value). . multiplication or composition (as an infix operator). For examples, GBy.d or k{watt}.h.The grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: Annotation is just a comment if it follows a UNIT. If the annotation is used alone, then the unit is equivalent to 1. For examples, {request}/s == 1/s, By{transmitted}/s == By/s. NAME is a sequence of non-blank printable ASCII characters not containing { or }. 1 represents a unitary dimensionless unit (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in 1/s. It is typically used when none of the basic units are appropriate. For example, "new users per day" can be represented as 1/d or {new-users}/d (and a metric value 5 would mean "5 new users). Alternatively, "thousands of page views per day" would be represented as 1000/d or k1/d or k{page_views}/d (and a metric value of 5.3 would mean "5300 page views per day"). % represents dimensionless value of 1/100, and annotates values giving a percentage (so the metric values are typically in the range of 0..100, and a metric value 3 means "3 percent"). 10^2.% indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and displayed as a percentage (so a metric value 0.03 means "3 percent").
+func (o MetricDescriptorResponseOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported.
+func (o MetricDescriptorResponseOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorResponse) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type MetricDescriptorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricDescriptorResponse)(nil)).Elem()
+}
+
+func (o MetricDescriptorResponsePtrOutput) ToMetricDescriptorResponsePtrOutput() MetricDescriptorResponsePtrOutput {
+	return o
+}
+
+func (o MetricDescriptorResponsePtrOutput) ToMetricDescriptorResponsePtrOutputWithContext(ctx context.Context) MetricDescriptorResponsePtrOutput {
+	return o
+}
+
+func (o MetricDescriptorResponsePtrOutput) Elem() MetricDescriptorResponseOutput {
+	return o.ApplyT(func(v *MetricDescriptorResponse) MetricDescriptorResponse { return *v }).(MetricDescriptorResponseOutput)
+}
+
+// A detailed description of the metric, which can be used in documentation.
+func (o MetricDescriptorResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota.
+func (o MetricDescriptorResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed.
+func (o MetricDescriptorResponsePtrOutput) Labels() LabelDescriptorResponseArrayOutput {
+	return o.ApplyT(func(v *MetricDescriptorResponse) []LabelDescriptorResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(LabelDescriptorResponseArrayOutput)
+}
+
+// Optional. The launch stage of the metric definition.
+func (o MetricDescriptorResponsePtrOutput) LaunchStage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LaunchStage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Metadata which can be used to guide usage of the metric.
+func (o MetricDescriptorResponsePtrOutput) Metadata() MetricDescriptorMetadataResponsePtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorResponse) *MetricDescriptorMetadataResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Metadata
+	}).(MetricDescriptorMetadataResponsePtrOutput)
+}
+
+// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
+func (o MetricDescriptorResponsePtrOutput) MetricKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MetricKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here.
+func (o MetricDescriptorResponsePtrOutput) MonitoredResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MetricDescriptorResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoredResourceTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The resource name of the metric descriptor.
+func (o MetricDescriptorResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined metric types have the DNS name custom.googleapis.com or external.googleapis.com. Metric types should use a natural hierarchical grouping. For example: "custom.googleapis.com/invoice/paid/amount" "external.googleapis.com/prometheus/up" "appengine.googleapis.com/http/server/response_latencies"
+func (o MetricDescriptorResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The units in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of the stored metric values.Different systems might scale the values to be more easily displayed (so a value of 0.02kBy might be displayed as 20By, and a value of 3523kBy might be displayed as 3.5MBy). However, if the unit is kBy, then the value of the metric is always in thousands of bytes, no matter how it might be displayed.If you want a custom metric to record the exact number of CPU-seconds used by a job, you can create an INT64 CUMULATIVE metric whose unit is s{CPU} (or equivalently 1s{CPU} or just s). If the job uses 12,005 CPU-seconds, then the value is written as 12005.Alternatively, if you want a custom metric to record data in a more granular way, you can create a DOUBLE CUMULATIVE metric whose unit is ks{CPU}, and then write the value 12.005 (which is 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).The supported units are a subset of The Unified Code for Units of Measure (https://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT) bit bit By byte s second min minute h hour d day 1 dimensionlessPrefixes (PREFIX) k kilo (10^3) M mega (10^6) G giga (10^9) T tera (10^12) P peta (10^15) E exa (10^18) Z zetta (10^21) Y yotta (10^24) m milli (10^-3) u micro (10^-6) n nano (10^-9) p pico (10^-12) f femto (10^-15) a atto (10^-18) z zepto (10^-21) y yocto (10^-24) Ki kibi (2^10) Mi mebi (2^20) Gi gibi (2^30) Ti tebi (2^40) Pi pebi (2^50)GrammarThe grammar also includes these connectors: / division or ratio (as an infix operator). For examples, kBy/{email} or MiBy/10ms (although you should almost never have /s in a metric unit; rates should always be computed at query time from the underlying cumulative or delta value). . multiplication or composition (as an infix operator). For examples, GBy.d or k{watt}.h.The grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: Annotation is just a comment if it follows a UNIT. If the annotation is used alone, then the unit is equivalent to 1. For examples, {request}/s == 1/s, By{transmitted}/s == By/s. NAME is a sequence of non-blank printable ASCII characters not containing { or }. 1 represents a unitary dimensionless unit (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in 1/s. It is typically used when none of the basic units are appropriate. For example, "new users per day" can be represented as 1/d or {new-users}/d (and a metric value 5 would mean "5 new users). Alternatively, "thousands of page views per day" would be represented as 1000/d or k1/d or k{page_views}/d (and a metric value of 5.3 would mean "5300 page views per day"). % represents dimensionless value of 1/100, and annotates values giving a percentage (so the metric values are typically in the range of 0..100, and a metric value 3 means "3 percent"). 10^2.% indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and displayed as a percentage (so a metric value 0.03 means "3 percent").
+func (o MetricDescriptorResponsePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported.
+func (o MetricDescriptorResponsePtrOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ValueType
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BigQueryOptionsOutput{})
 	pulumi.RegisterOutputType(BigQueryOptionsPtrOutput{})
+	pulumi.RegisterOutputType(BigQueryOptionsResponseOutput{})
+	pulumi.RegisterOutputType(BigQueryOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketOptionsOutput{})
 	pulumi.RegisterOutputType(BucketOptionsPtrOutput{})
+	pulumi.RegisterOutputType(BucketOptionsResponseOutput{})
+	pulumi.RegisterOutputType(BucketOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExplicitOutput{})
 	pulumi.RegisterOutputType(ExplicitPtrOutput{})
+	pulumi.RegisterOutputType(ExplicitResponseOutput{})
+	pulumi.RegisterOutputType(ExplicitResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExponentialOutput{})
 	pulumi.RegisterOutputType(ExponentialPtrOutput{})
+	pulumi.RegisterOutputType(ExponentialResponseOutput{})
+	pulumi.RegisterOutputType(ExponentialResponsePtrOutput{})
 	pulumi.RegisterOutputType(LabelDescriptorOutput{})
 	pulumi.RegisterOutputType(LabelDescriptorArrayOutput{})
+	pulumi.RegisterOutputType(LabelDescriptorResponseOutput{})
+	pulumi.RegisterOutputType(LabelDescriptorResponseArrayOutput{})
 	pulumi.RegisterOutputType(LinearOutput{})
 	pulumi.RegisterOutputType(LinearPtrOutput{})
+	pulumi.RegisterOutputType(LinearResponseOutput{})
+	pulumi.RegisterOutputType(LinearResponsePtrOutput{})
 	pulumi.RegisterOutputType(LogExclusionOutput{})
 	pulumi.RegisterOutputType(LogExclusionArrayOutput{})
+	pulumi.RegisterOutputType(LogExclusionResponseOutput{})
+	pulumi.RegisterOutputType(LogExclusionResponseArrayOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorPtrOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorMetadataOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorMetadataPtrOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorMetadataResponseOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorMetadataResponsePtrOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorResponseOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorResponsePtrOutput{})
 }

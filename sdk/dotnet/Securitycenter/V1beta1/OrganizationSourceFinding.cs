@@ -104,12 +104,6 @@ namespace Pulumi.GoogleCloud.Securitycenter.V1beta1
         [Input("resourceName")]
         public Input<string>? ResourceName { get; set; }
 
-        /// <summary>
-        /// Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.
-        /// </summary>
-        [Input("securityMarks")]
-        public Input<Inputs.GoogleCloudSecuritycenterV1beta1SecurityMarksArgs>? SecurityMarks { get; set; }
-
         [Input("sourceProperties")]
         private InputMap<string>? _sourceProperties;
 

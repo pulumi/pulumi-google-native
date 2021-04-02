@@ -35,6 +35,46 @@ export class JobTrigger extends pulumi.CustomResource {
         return obj['__pulumiType'] === JobTrigger.__pulumiType;
     }
 
+    /**
+     * The creation timestamp of a triggeredJob.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * User provided description (max 256 chars)
+     */
+    public /*out*/ readonly description!: pulumi.Output<string>;
+    /**
+     * Display name (max 100 chars)
+     */
+    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    /**
+     * A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
+     */
+    public /*out*/ readonly errors!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2ErrorResponse[]>;
+    /**
+     * For inspect jobs, a snapshot of the configuration.
+     */
+    public /*out*/ readonly inspectJob!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2InspectJobConfigResponse>;
+    /**
+     * The timestamp of the last time this trigger executed.
+     */
+    public /*out*/ readonly lastRunTime!: pulumi.Output<string>;
+    /**
+     * Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Required. A status for this trigger.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
+     */
+    public /*out*/ readonly triggers!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2TriggerResponse[]>;
+    /**
+     * The last update timestamp of a triggeredJob.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a JobTrigger resource with the given unique name, arguments, and options.
@@ -58,11 +98,30 @@ export class JobTrigger extends pulumi.CustomResource {
             }
             inputs["jobTrigger"] = args ? args.jobTrigger : undefined;
             inputs["jobTriggersId"] = args ? args.jobTriggersId : undefined;
-            inputs["locationId"] = args ? args.locationId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["triggerId"] = args ? args.triggerId : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["errors"] = undefined /*out*/;
+            inputs["inspectJob"] = undefined /*out*/;
+            inputs["lastRunTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["triggers"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["errors"] = undefined /*out*/;
+            inputs["inspectJob"] = undefined /*out*/;
+            inputs["lastRunTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["triggers"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -80,10 +139,6 @@ export interface JobTriggerArgs {
      */
     readonly jobTrigger?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2JobTrigger>;
     readonly jobTriggersId: pulumi.Input<string>;
-    /**
-     * Deprecated. This field has no effect.
-     */
-    readonly locationId?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**

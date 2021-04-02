@@ -16,6 +16,103 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1
     public partial class Occurrence : Pulumi.CustomResource
     {
         /// <summary>
+        /// Describes an attestation of an artifact.
+        /// </summary>
+        [Output("attestation")]
+        public Output<Outputs.AttestationResponse> Attestation { get; private set; } = null!;
+
+        /// <summary>
+        /// Build details for a verifiable build.
+        /// </summary>
+        [Output("buildDetails")]
+        public Output<Outputs.BuildDetailsResponse> BuildDetails { get; private set; } = null!;
+
+        /// <summary>
+        /// The time this `Occurrence` was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes the deployment of an artifact on a runtime.
+        /// </summary>
+        [Output("deployment")]
+        public Output<Outputs.DeploymentResponse> Deployment { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes how this resource derives from the basis in the associated note.
+        /// </summary>
+        [Output("derivedImage")]
+        public Output<Outputs.DerivedResponse> DerivedImage { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes the initial scan status for this resource.
+        /// </summary>
+        [Output("discovered")]
+        public Output<Outputs.DiscoveredResponse> Discovered { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes the installation of a package on the linked resource.
+        /// </summary>
+        [Output("installation")]
+        public Output<Outputs.InstallationResponse> Installation { get; private set; } = null!;
+
+        /// <summary>
+        /// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
+        /// </summary>
+        [Output("noteName")]
+        public Output<string> NoteName { get; private set; } = null!;
+
+        /// <summary>
+        /// A description of actions that can be taken to remedy the `Note`
+        /// </summary>
+        [Output("remediation")]
+        public Output<string> Remediation { get; private set; } = null!;
+
+        /// <summary>
+        ///  The resource for which the `Occurrence` applies.
+        /// </summary>
+        [Output("resource")]
+        public Output<Outputs.ResourceResponse> Resource { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
+        /// </summary>
+        [Output("resourceUrl")]
+        public Output<string> ResourceUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// The time this `Occurrence` was last updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes an upgrade.
+        /// </summary>
+        [Output("upgrade")]
+        public Output<Outputs.UpgradeOccurrenceResponse> Upgrade { get; private set; } = null!;
+
+        /// <summary>
+        /// Details of a security vulnerability note.
+        /// </summary>
+        [Output("vulnerabilityDetails")]
+        public Output<Outputs.VulnerabilityDetailsResponse> VulnerabilityDetails { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Occurrence resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -72,7 +169,7 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1
         public Input<Inputs.BuildDetailsArgs>? BuildDetails { get; set; }
 
         /// <summary>
-        /// Output only. The time this `Occurrence` was created.
+        /// The time this `Occurrence` was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -102,13 +199,13 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1
         public Input<Inputs.InstallationArgs>? Installation { get; set; }
 
         /// <summary>
-        /// Output only. This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
+        /// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// Output only. The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
+        /// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -144,7 +241,7 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1alpha1
         public Input<string>? ResourceUrl { get; set; }
 
         /// <summary>
-        /// Output only. The time this `Occurrence` was last updated.
+        /// The time this `Occurrence` was last updated.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

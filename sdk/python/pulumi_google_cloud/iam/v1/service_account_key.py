@@ -59,6 +59,13 @@ class ServiceAccountKey(pulumi.CustomResource):
             if service_accounts_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_accounts_id'")
             __props__['service_accounts_id'] = service_accounts_id
+            __props__['key_origin'] = None
+            __props__['key_type'] = None
+            __props__['name'] = None
+            __props__['private_key_data'] = None
+            __props__['public_key_data'] = None
+            __props__['valid_after_time'] = None
+            __props__['valid_before_time'] = None
         super(ServiceAccountKey, __self__).__init__(
             'google-cloud:iam/v1:ServiceAccountKey',
             resource_name,
@@ -81,7 +88,88 @@ class ServiceAccountKey(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["key_algorithm"] = None
+        __props__["key_origin"] = None
+        __props__["key_type"] = None
+        __props__["name"] = None
+        __props__["private_key_data"] = None
+        __props__["private_key_type"] = None
+        __props__["public_key_data"] = None
+        __props__["valid_after_time"] = None
+        __props__["valid_before_time"] = None
         return ServiceAccountKey(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="keyAlgorithm")
+    def key_algorithm(self) -> pulumi.Output[str]:
+        """
+        Specifies the algorithm (and possibly key size) for the key.
+        """
+        return pulumi.get(self, "key_algorithm")
+
+    @property
+    @pulumi.getter(name="keyOrigin")
+    def key_origin(self) -> pulumi.Output[str]:
+        """
+        The key origin.
+        """
+        return pulumi.get(self, "key_origin")
+
+    @property
+    @pulumi.getter(name="keyType")
+    def key_type(self) -> pulumi.Output[str]:
+        """
+        The key type.
+        """
+        return pulumi.get(self, "key_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the service account key in the following format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="privateKeyData")
+    def private_key_data(self) -> pulumi.Output[str]:
+        """
+        The private key data. Only provided in `CreateServiceAccountKey` responses. Make sure to keep the private key data secure because it allows for the assertion of the service account identity. When base64 decoded, the private key data can be used to authenticate with Google API client libraries and with gcloud auth activate-service-account.
+        """
+        return pulumi.get(self, "private_key_data")
+
+    @property
+    @pulumi.getter(name="privateKeyType")
+    def private_key_type(self) -> pulumi.Output[str]:
+        """
+        The output format for the private key. Only provided in `CreateServiceAccountKey` responses, not in `GetServiceAccountKey` or `ListServiceAccountKey` responses. Google never exposes system-managed private keys, and never retains user-managed private keys.
+        """
+        return pulumi.get(self, "private_key_type")
+
+    @property
+    @pulumi.getter(name="publicKeyData")
+    def public_key_data(self) -> pulumi.Output[str]:
+        """
+        The public key data. Only provided in `GetServiceAccountKey` responses.
+        """
+        return pulumi.get(self, "public_key_data")
+
+    @property
+    @pulumi.getter(name="validAfterTime")
+    def valid_after_time(self) -> pulumi.Output[str]:
+        """
+        The key can be used after this timestamp.
+        """
+        return pulumi.get(self, "valid_after_time")
+
+    @property
+    @pulumi.getter(name="validBeforeTime")
+    def valid_before_time(self) -> pulumi.Output[str]:
+        """
+        The key can be used before this timestamp. For system-managed key pairs, this timestamp is the end time for the private key signing operation. The public key could still be used for verification for a few hours after this time.
+        """
+        return pulumi.get(self, "valid_before_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

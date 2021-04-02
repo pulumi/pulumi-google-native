@@ -14,6 +14,13 @@ import (
 // Creates a source.
 type OrganizationSource struct {
 	pulumi.CustomResourceState
+
+	// The description of the source (max of 1024 characters). Example: "Web Security Scanner is a web security scanner for common vulnerabilities in App Engine applications. It can automatically scan and detect four common vulnerabilities, including cross-site-scripting (XSS), Flash injection, mixed content (HTTP in HTTPS), and outdated/insecure libraries."
+	Description pulumi.StringOutput `pulumi:"description"`
+	// The source's display name. A source's display name must be unique amongst its siblings, for example, two sources with the same parent can't share the same display name. The display name must have a length between 1 and 64 characters (inclusive).
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}"
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewOrganizationSource registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +58,21 @@ func GetOrganizationSource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationSource resources.
 type organizationSourceState struct {
+	// The description of the source (max of 1024 characters). Example: "Web Security Scanner is a web security scanner for common vulnerabilities in App Engine applications. It can automatically scan and detect four common vulnerabilities, including cross-site-scripting (XSS), Flash injection, mixed content (HTTP in HTTPS), and outdated/insecure libraries."
+	Description *string `pulumi:"description"`
+	// The source's display name. A source's display name must be unique amongst its siblings, for example, two sources with the same parent can't share the same display name. The display name must have a length between 1 and 64 characters (inclusive).
+	DisplayName *string `pulumi:"displayName"`
+	// The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}"
+	Name *string `pulumi:"name"`
 }
 
 type OrganizationSourceState struct {
+	// The description of the source (max of 1024 characters). Example: "Web Security Scanner is a web security scanner for common vulnerabilities in App Engine applications. It can automatically scan and detect four common vulnerabilities, including cross-site-scripting (XSS), Flash injection, mixed content (HTTP in HTTPS), and outdated/insecure libraries."
+	Description pulumi.StringPtrInput
+	// The source's display name. A source's display name must be unique amongst its siblings, for example, two sources with the same parent can't share the same display name. The display name must have a length between 1 and 64 characters (inclusive).
+	DisplayName pulumi.StringPtrInput
+	// The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}"
+	Name pulumi.StringPtrInput
 }
 
 func (OrganizationSourceState) ElementType() reflect.Type {

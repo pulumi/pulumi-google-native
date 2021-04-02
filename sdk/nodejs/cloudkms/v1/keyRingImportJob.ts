@@ -35,6 +35,46 @@ export class KeyRingImportJob extends pulumi.CustomResource {
         return obj['__pulumiType'] === KeyRingImportJob.__pulumiType;
     }
 
+    /**
+     * Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen ImportMethod is one with a protection level of HSM.
+     */
+    public /*out*/ readonly attestation!: pulumi.Output<outputs.cloudkms.v1.KeyOperationAttestationResponse>;
+    /**
+     * The time at which this ImportJob was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The time this ImportJob expired. Only present if state is EXPIRED.
+     */
+    public /*out*/ readonly expireEventTime!: pulumi.Output<string>;
+    /**
+     * The time at which this ImportJob is scheduled for expiration and can no longer be used to import key material.
+     */
+    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    /**
+     * The time this ImportJob's key material was generated.
+     */
+    public /*out*/ readonly generateTime!: pulumi.Output<string>;
+    /**
+     * Required. Immutable. The wrapping method to be used for incoming key material.
+     */
+    public readonly importMethod!: pulumi.Output<string>;
+    /**
+     * The resource name for this ImportJob in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;importJobs/*`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+     */
+    public readonly protectionLevel!: pulumi.Output<string>;
+    /**
+     * The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
+     */
+    public /*out*/ readonly publicKey!: pulumi.Output<outputs.cloudkms.v1.WrappingPublicKeyResponse>;
+    /**
+     * The current state of the ImportJob, indicating if it can be used.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a KeyRingImportJob resource with the given unique name, arguments, and options.
@@ -59,21 +99,31 @@ export class KeyRingImportJob extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["attestation"] = args ? args.attestation : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["expireEventTime"] = args ? args.expireEventTime : undefined;
-            inputs["expireTime"] = args ? args.expireTime : undefined;
-            inputs["generateTime"] = args ? args.generateTime : undefined;
             inputs["importJobsId"] = args ? args.importJobsId : undefined;
             inputs["importMethod"] = args ? args.importMethod : undefined;
             inputs["keyRingsId"] = args ? args.keyRingsId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["protectionLevel"] = args ? args.protectionLevel : undefined;
-            inputs["publicKey"] = args ? args.publicKey : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["attestation"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["expireEventTime"] = undefined /*out*/;
+            inputs["expireTime"] = undefined /*out*/;
+            inputs["generateTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["publicKey"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["attestation"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["expireEventTime"] = undefined /*out*/;
+            inputs["expireTime"] = undefined /*out*/;
+            inputs["generateTime"] = undefined /*out*/;
+            inputs["importMethod"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["protectionLevel"] = undefined /*out*/;
+            inputs["publicKey"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -86,26 +136,6 @@ export class KeyRingImportJob extends pulumi.CustomResource {
  * The set of arguments for constructing a KeyRingImportJob resource.
  */
 export interface KeyRingImportJobArgs {
-    /**
-     * Output only. Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen ImportMethod is one with a protection level of HSM.
-     */
-    readonly attestation?: pulumi.Input<inputs.cloudkms.v1.KeyOperationAttestation>;
-    /**
-     * Output only. The time at which this ImportJob was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
-     * Output only. The time this ImportJob expired. Only present if state is EXPIRED.
-     */
-    readonly expireEventTime?: pulumi.Input<string>;
-    /**
-     * Output only. The time at which this ImportJob is scheduled for expiration and can no longer be used to import key material.
-     */
-    readonly expireTime?: pulumi.Input<string>;
-    /**
-     * Output only. The time this ImportJob's key material was generated.
-     */
-    readonly generateTime?: pulumi.Input<string>;
     readonly importJobsId: pulumi.Input<string>;
     /**
      * Required. Immutable. The wrapping method to be used for incoming key material.
@@ -113,21 +143,9 @@ export interface KeyRingImportJobArgs {
     readonly importMethod?: pulumi.Input<string>;
     readonly keyRingsId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. The resource name for this ImportJob in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;importJobs/*`.
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
      */
     readonly protectionLevel?: pulumi.Input<string>;
-    /**
-     * Output only. The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
-     */
-    readonly publicKey?: pulumi.Input<inputs.cloudkms.v1.WrappingPublicKey>;
-    /**
-     * Output only. The current state of the ImportJob, indicating if it can be used.
-     */
-    readonly state?: pulumi.Input<string>;
 }

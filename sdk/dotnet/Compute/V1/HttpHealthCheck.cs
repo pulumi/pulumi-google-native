@@ -16,6 +16,79 @@ namespace Pulumi.GoogleCloud.Compute.V1
     public partial class HttpHealthCheck : Pulumi.CustomResource
     {
         /// <summary>
+        /// How often (in seconds) to send a health check. The default value is 5 seconds.
+        /// </summary>
+        [Output("checkIntervalSec")]
+        public Output<int> CheckIntervalSec { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
+        /// </summary>
+        [Output("healthyThreshold")]
+        public Output<int> HealthyThreshold { get; private set; } = null!;
+
+        /// <summary>
+        /// The value of the host header in the HTTP health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
+        /// </summary>
+        [Output("host")]
+        public Output<string> Host { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Type of the resource. Always compute#httpHealthCheck for HTTP health checks.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The TCP port number for the HTTP health check request. The default value is 80.
+        /// </summary>
+        [Output("port")]
+        public Output<int> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
+        /// </summary>
+        [Output("requestPath")]
+        public Output<string> RequestPath { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Server-defined URL for the resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
+        /// </summary>
+        [Output("timeoutSec")]
+        public Output<int> TimeoutSec { get; private set; } = null!;
+
+        /// <summary>
+        /// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
+        /// </summary>
+        [Output("unhealthyThreshold")]
+        public Output<int> UnhealthyThreshold { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a HttpHealthCheck resource with the given unique name, arguments, and options.
         /// </summary>
         ///

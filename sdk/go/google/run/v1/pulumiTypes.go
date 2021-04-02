@@ -139,6 +139,135 @@ func (o AddressablePtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Information for connecting over HTTP(s).
+type AddressableResponse struct {
+	Url string `pulumi:"url"`
+}
+
+// AddressableResponseInput is an input type that accepts AddressableResponseArgs and AddressableResponseOutput values.
+// You can construct a concrete instance of `AddressableResponseInput` via:
+//
+//          AddressableResponseArgs{...}
+type AddressableResponseInput interface {
+	pulumi.Input
+
+	ToAddressableResponseOutput() AddressableResponseOutput
+	ToAddressableResponseOutputWithContext(context.Context) AddressableResponseOutput
+}
+
+// Information for connecting over HTTP(s).
+type AddressableResponseArgs struct {
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (AddressableResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressableResponse)(nil)).Elem()
+}
+
+func (i AddressableResponseArgs) ToAddressableResponseOutput() AddressableResponseOutput {
+	return i.ToAddressableResponseOutputWithContext(context.Background())
+}
+
+func (i AddressableResponseArgs) ToAddressableResponseOutputWithContext(ctx context.Context) AddressableResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressableResponseOutput)
+}
+
+func (i AddressableResponseArgs) ToAddressableResponsePtrOutput() AddressableResponsePtrOutput {
+	return i.ToAddressableResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AddressableResponseArgs) ToAddressableResponsePtrOutputWithContext(ctx context.Context) AddressableResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressableResponseOutput).ToAddressableResponsePtrOutputWithContext(ctx)
+}
+
+// AddressableResponsePtrInput is an input type that accepts AddressableResponseArgs, AddressableResponsePtr and AddressableResponsePtrOutput values.
+// You can construct a concrete instance of `AddressableResponsePtrInput` via:
+//
+//          AddressableResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AddressableResponsePtrInput interface {
+	pulumi.Input
+
+	ToAddressableResponsePtrOutput() AddressableResponsePtrOutput
+	ToAddressableResponsePtrOutputWithContext(context.Context) AddressableResponsePtrOutput
+}
+
+type addressableResponsePtrType AddressableResponseArgs
+
+func AddressableResponsePtr(v *AddressableResponseArgs) AddressableResponsePtrInput {
+	return (*addressableResponsePtrType)(v)
+}
+
+func (*addressableResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressableResponse)(nil)).Elem()
+}
+
+func (i *addressableResponsePtrType) ToAddressableResponsePtrOutput() AddressableResponsePtrOutput {
+	return i.ToAddressableResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *addressableResponsePtrType) ToAddressableResponsePtrOutputWithContext(ctx context.Context) AddressableResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressableResponsePtrOutput)
+}
+
+// Information for connecting over HTTP(s).
+type AddressableResponseOutput struct{ *pulumi.OutputState }
+
+func (AddressableResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressableResponse)(nil)).Elem()
+}
+
+func (o AddressableResponseOutput) ToAddressableResponseOutput() AddressableResponseOutput {
+	return o
+}
+
+func (o AddressableResponseOutput) ToAddressableResponseOutputWithContext(ctx context.Context) AddressableResponseOutput {
+	return o
+}
+
+func (o AddressableResponseOutput) ToAddressableResponsePtrOutput() AddressableResponsePtrOutput {
+	return o.ToAddressableResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AddressableResponseOutput) ToAddressableResponsePtrOutputWithContext(ctx context.Context) AddressableResponsePtrOutput {
+	return o.ApplyT(func(v AddressableResponse) *AddressableResponse {
+		return &v
+	}).(AddressableResponsePtrOutput)
+}
+func (o AddressableResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v AddressableResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type AddressableResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AddressableResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressableResponse)(nil)).Elem()
+}
+
+func (o AddressableResponsePtrOutput) ToAddressableResponsePtrOutput() AddressableResponsePtrOutput {
+	return o
+}
+
+func (o AddressableResponsePtrOutput) ToAddressableResponsePtrOutputWithContext(ctx context.Context) AddressableResponsePtrOutput {
+	return o
+}
+
+func (o AddressableResponsePtrOutput) Elem() AddressableResponseOutput {
+	return o.ApplyT(func(v *AddressableResponse) AddressableResponse { return *v }).(AddressableResponseOutput)
+}
+
+func (o AddressableResponsePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AddressableResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
@@ -248,6 +377,115 @@ func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
 	}).(AuditConfigOutput)
 }
 
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponse struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs []AuditLogConfigResponse `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service string `pulumi:"service"`
+}
+
+// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
+// You can construct a concrete instance of `AuditConfigResponseInput` via:
+//
+//          AuditConfigResponseArgs{...}
+type AuditConfigResponseInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseOutput() AuditConfigResponseOutput
+	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseArgs struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (AuditConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return i.ToAuditConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
+}
+
+// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
+//
+//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
+type AuditConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
+	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
+}
+
+type AuditConfigResponseArray []AuditConfigResponseInput
+
+func (AuditConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return o
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return o
+}
+
+// The configuration for logging of each type of permission.
+func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
+	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
+}
+
+// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+func (o AuditConfigResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditConfigResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type AuditConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditConfigResponse {
+		return vs[0].([]AuditConfigResponse)[vs[1].(int)]
+	}).(AuditConfigResponseOutput)
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -355,6 +593,115 @@ func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfig {
 		return vs[0].([]AuditLogConfig)[vs[1].(int)]
 	}).(AuditLogConfigOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponse struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers []string `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType string `pulumi:"logType"`
+}
+
+// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
+//
+//          AuditLogConfigResponseArgs{...}
+type AuditLogConfigResponseInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
+	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseArgs struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType pulumi.StringInput `pulumi:"logType"`
+}
+
+func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
+}
+
+// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
+//
+//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
+type AuditLogConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
+	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
+}
+
+type AuditLogConfigResponseArray []AuditLogConfigResponseInput
+
+func (AuditLogConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return o
+}
+
+// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
+// The log type that this config enables.
+func (o AuditLogConfigResponseOutput) LogType() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) string { return v.LogType }).(pulumi.StringOutput)
+}
+
+type AuditLogConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfigResponse {
+		return vs[0].([]AuditLogConfigResponse)[vs[1].(int)]
+	}).(AuditLogConfigResponseOutput)
 }
 
 // Associates `members` with a `role`.
@@ -473,6 +820,124 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Binding {
 		return vs[0].([]Binding)[vs[1].(int)]
 	}).(BindingOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
+// You can construct a concrete instance of `BindingResponseInput` via:
+//
+//          BindingResponseArgs{...}
+type BindingResponseInput interface {
+	pulumi.Input
+
+	ToBindingResponseOutput() BindingResponseOutput
+	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
+}
+
+// Associates `members` with a `role`.
+type BindingResponseArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
+	return i.ToBindingResponseOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
+}
+
+// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
+// You can construct a concrete instance of `BindingResponseArrayInput` via:
+//
+//          BindingResponseArray{ BindingResponseArgs{...} }
+type BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToBindingResponseArrayOutput() BindingResponseArrayOutput
+	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
+}
+
+type BindingResponseArray []BindingResponseInput
+
+func (BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return i.ToBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
+		return vs[0].([]BindingResponse)[vs[1].(int)]
+	}).(BindingResponseOutput)
 }
 
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
@@ -645,6 +1110,79 @@ func (o ConfigMapEnvSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 		}
 		return v.Optional
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+type ConfigMapEnvSourceResponse struct {
+	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+	LocalObjectReference LocalObjectReferenceResponse `pulumi:"localObjectReference"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	Name string `pulumi:"name"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined
+	Optional bool `pulumi:"optional"`
+}
+
+// ConfigMapEnvSourceResponseInput is an input type that accepts ConfigMapEnvSourceResponseArgs and ConfigMapEnvSourceResponseOutput values.
+// You can construct a concrete instance of `ConfigMapEnvSourceResponseInput` via:
+//
+//          ConfigMapEnvSourceResponseArgs{...}
+type ConfigMapEnvSourceResponseInput interface {
+	pulumi.Input
+
+	ToConfigMapEnvSourceResponseOutput() ConfigMapEnvSourceResponseOutput
+	ToConfigMapEnvSourceResponseOutputWithContext(context.Context) ConfigMapEnvSourceResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+type ConfigMapEnvSourceResponseArgs struct {
+	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined
+	Optional pulumi.BoolInput `pulumi:"optional"`
+}
+
+func (ConfigMapEnvSourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMapEnvSourceResponse)(nil)).Elem()
+}
+
+func (i ConfigMapEnvSourceResponseArgs) ToConfigMapEnvSourceResponseOutput() ConfigMapEnvSourceResponseOutput {
+	return i.ToConfigMapEnvSourceResponseOutputWithContext(context.Background())
+}
+
+func (i ConfigMapEnvSourceResponseArgs) ToConfigMapEnvSourceResponseOutputWithContext(ctx context.Context) ConfigMapEnvSourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapEnvSourceResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+type ConfigMapEnvSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigMapEnvSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMapEnvSourceResponse)(nil)).Elem()
+}
+
+func (o ConfigMapEnvSourceResponseOutput) ToConfigMapEnvSourceResponseOutput() ConfigMapEnvSourceResponseOutput {
+	return o
+}
+
+func (o ConfigMapEnvSourceResponseOutput) ToConfigMapEnvSourceResponseOutputWithContext(ctx context.Context) ConfigMapEnvSourceResponseOutput {
+	return o
+}
+
+// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+func (o ConfigMapEnvSourceResponseOutput) LocalObjectReference() LocalObjectReferenceResponseOutput {
+	return o.ApplyT(func(v ConfigMapEnvSourceResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+func (o ConfigMapEnvSourceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigMapEnvSourceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap must be defined
+func (o ConfigMapEnvSourceResponseOutput) Optional() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConfigMapEnvSourceResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key from a ConfigMap.
@@ -838,6 +1376,88 @@ func (o ConfigMapKeySelectorPtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key from a ConfigMap.
+type ConfigMapKeySelectorResponse struct {
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to select.
+	Key string `pulumi:"key"`
+	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+	LocalObjectReference LocalObjectReferenceResponse `pulumi:"localObjectReference"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	Name string `pulumi:"name"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap or its key must be defined
+	Optional bool `pulumi:"optional"`
+}
+
+// ConfigMapKeySelectorResponseInput is an input type that accepts ConfigMapKeySelectorResponseArgs and ConfigMapKeySelectorResponseOutput values.
+// You can construct a concrete instance of `ConfigMapKeySelectorResponseInput` via:
+//
+//          ConfigMapKeySelectorResponseArgs{...}
+type ConfigMapKeySelectorResponseInput interface {
+	pulumi.Input
+
+	ToConfigMapKeySelectorResponseOutput() ConfigMapKeySelectorResponseOutput
+	ToConfigMapKeySelectorResponseOutputWithContext(context.Context) ConfigMapKeySelectorResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key from a ConfigMap.
+type ConfigMapKeySelectorResponseArgs struct {
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to select.
+	Key pulumi.StringInput `pulumi:"key"`
+	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap or its key must be defined
+	Optional pulumi.BoolInput `pulumi:"optional"`
+}
+
+func (ConfigMapKeySelectorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMapKeySelectorResponse)(nil)).Elem()
+}
+
+func (i ConfigMapKeySelectorResponseArgs) ToConfigMapKeySelectorResponseOutput() ConfigMapKeySelectorResponseOutput {
+	return i.ToConfigMapKeySelectorResponseOutputWithContext(context.Background())
+}
+
+func (i ConfigMapKeySelectorResponseArgs) ToConfigMapKeySelectorResponseOutputWithContext(ctx context.Context) ConfigMapKeySelectorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapKeySelectorResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key from a ConfigMap.
+type ConfigMapKeySelectorResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigMapKeySelectorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMapKeySelectorResponse)(nil)).Elem()
+}
+
+func (o ConfigMapKeySelectorResponseOutput) ToConfigMapKeySelectorResponseOutput() ConfigMapKeySelectorResponseOutput {
+	return o
+}
+
+func (o ConfigMapKeySelectorResponseOutput) ToConfigMapKeySelectorResponseOutputWithContext(ctx context.Context) ConfigMapKeySelectorResponseOutput {
+	return o
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to select.
+func (o ConfigMapKeySelectorResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigMapKeySelectorResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+func (o ConfigMapKeySelectorResponseOutput) LocalObjectReference() LocalObjectReferenceResponseOutput {
+	return o.ApplyT(func(v ConfigMapKeySelectorResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+func (o ConfigMapKeySelectorResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigMapKeySelectorResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap or its key must be defined
+func (o ConfigMapKeySelectorResponseOutput) Optional() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConfigMapKeySelectorResponse) bool { return v.Optional }).(pulumi.BoolOutput)
+}
+
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
 type ConfigMapVolumeSource struct {
 	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
@@ -1027,6 +1647,88 @@ func (o ConfigMapVolumeSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 		}
 		return v.Optional
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+type ConfigMapVolumeSourceResponse struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	DefaultMode int `pulumi:"defaultMode"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	Items []KeyToPathResponse `pulumi:"items"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the config.
+	Name string `pulumi:"name"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+	Optional bool `pulumi:"optional"`
+}
+
+// ConfigMapVolumeSourceResponseInput is an input type that accepts ConfigMapVolumeSourceResponseArgs and ConfigMapVolumeSourceResponseOutput values.
+// You can construct a concrete instance of `ConfigMapVolumeSourceResponseInput` via:
+//
+//          ConfigMapVolumeSourceResponseArgs{...}
+type ConfigMapVolumeSourceResponseInput interface {
+	pulumi.Input
+
+	ToConfigMapVolumeSourceResponseOutput() ConfigMapVolumeSourceResponseOutput
+	ToConfigMapVolumeSourceResponseOutputWithContext(context.Context) ConfigMapVolumeSourceResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+type ConfigMapVolumeSourceResponseArgs struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	DefaultMode pulumi.IntInput `pulumi:"defaultMode"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	Items KeyToPathResponseArrayInput `pulumi:"items"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the config.
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+	Optional pulumi.BoolInput `pulumi:"optional"`
+}
+
+func (ConfigMapVolumeSourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMapVolumeSourceResponse)(nil)).Elem()
+}
+
+func (i ConfigMapVolumeSourceResponseArgs) ToConfigMapVolumeSourceResponseOutput() ConfigMapVolumeSourceResponseOutput {
+	return i.ToConfigMapVolumeSourceResponseOutputWithContext(context.Background())
+}
+
+func (i ConfigMapVolumeSourceResponseArgs) ToConfigMapVolumeSourceResponseOutputWithContext(ctx context.Context) ConfigMapVolumeSourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapVolumeSourceResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+type ConfigMapVolumeSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigMapVolumeSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMapVolumeSourceResponse)(nil)).Elem()
+}
+
+func (o ConfigMapVolumeSourceResponseOutput) ToConfigMapVolumeSourceResponseOutput() ConfigMapVolumeSourceResponseOutput {
+	return o
+}
+
+func (o ConfigMapVolumeSourceResponseOutput) ToConfigMapVolumeSourceResponseOutputWithContext(ctx context.Context) ConfigMapVolumeSourceResponseOutput {
+	return o
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+func (o ConfigMapVolumeSourceResponseOutput) DefaultMode() pulumi.IntOutput {
+	return o.ApplyT(func(v ConfigMapVolumeSourceResponse) int { return v.DefaultMode }).(pulumi.IntOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+func (o ConfigMapVolumeSourceResponseOutput) Items() KeyToPathResponseArrayOutput {
+	return o.ApplyT(func(v ConfigMapVolumeSourceResponse) []KeyToPathResponse { return v.Items }).(KeyToPathResponseArrayOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the config.
+func (o ConfigMapVolumeSourceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigMapVolumeSourceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+func (o ConfigMapVolumeSourceResponseOutput) Optional() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConfigMapVolumeSourceResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
@@ -1379,6 +2081,356 @@ func (o ContainerPortArrayOutput) Index(i pulumi.IntInput) ContainerPortOutput {
 	}).(ContainerPortOutput)
 }
 
+// ContainerPort represents a network port in a single container.
+type ContainerPortResponse struct {
+	// (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+	ContainerPort int `pulumi:"containerPort"`
+	// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+	Name string `pulumi:"name"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for port. Must be "TCP". Defaults to "TCP".
+	Protocol string `pulumi:"protocol"`
+}
+
+// ContainerPortResponseInput is an input type that accepts ContainerPortResponseArgs and ContainerPortResponseOutput values.
+// You can construct a concrete instance of `ContainerPortResponseInput` via:
+//
+//          ContainerPortResponseArgs{...}
+type ContainerPortResponseInput interface {
+	pulumi.Input
+
+	ToContainerPortResponseOutput() ContainerPortResponseOutput
+	ToContainerPortResponseOutputWithContext(context.Context) ContainerPortResponseOutput
+}
+
+// ContainerPort represents a network port in a single container.
+type ContainerPortResponseArgs struct {
+	// (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
+	// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for port. Must be "TCP". Defaults to "TCP".
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (ContainerPortResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerPortResponse)(nil)).Elem()
+}
+
+func (i ContainerPortResponseArgs) ToContainerPortResponseOutput() ContainerPortResponseOutput {
+	return i.ToContainerPortResponseOutputWithContext(context.Background())
+}
+
+func (i ContainerPortResponseArgs) ToContainerPortResponseOutputWithContext(ctx context.Context) ContainerPortResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerPortResponseOutput)
+}
+
+// ContainerPortResponseArrayInput is an input type that accepts ContainerPortResponseArray and ContainerPortResponseArrayOutput values.
+// You can construct a concrete instance of `ContainerPortResponseArrayInput` via:
+//
+//          ContainerPortResponseArray{ ContainerPortResponseArgs{...} }
+type ContainerPortResponseArrayInput interface {
+	pulumi.Input
+
+	ToContainerPortResponseArrayOutput() ContainerPortResponseArrayOutput
+	ToContainerPortResponseArrayOutputWithContext(context.Context) ContainerPortResponseArrayOutput
+}
+
+type ContainerPortResponseArray []ContainerPortResponseInput
+
+func (ContainerPortResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerPortResponse)(nil)).Elem()
+}
+
+func (i ContainerPortResponseArray) ToContainerPortResponseArrayOutput() ContainerPortResponseArrayOutput {
+	return i.ToContainerPortResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerPortResponseArray) ToContainerPortResponseArrayOutputWithContext(ctx context.Context) ContainerPortResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerPortResponseArrayOutput)
+}
+
+// ContainerPort represents a network port in a single container.
+type ContainerPortResponseOutput struct{ *pulumi.OutputState }
+
+func (ContainerPortResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerPortResponse)(nil)).Elem()
+}
+
+func (o ContainerPortResponseOutput) ToContainerPortResponseOutput() ContainerPortResponseOutput {
+	return o
+}
+
+func (o ContainerPortResponseOutput) ToContainerPortResponseOutputWithContext(ctx context.Context) ContainerPortResponseOutput {
+	return o
+}
+
+// (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+func (o ContainerPortResponseOutput) ContainerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v ContainerPortResponse) int { return v.ContainerPort }).(pulumi.IntOutput)
+}
+
+// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+func (o ContainerPortResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerPortResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for port. Must be "TCP". Defaults to "TCP".
+func (o ContainerPortResponseOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerPortResponse) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type ContainerPortResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerPortResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerPortResponse)(nil)).Elem()
+}
+
+func (o ContainerPortResponseArrayOutput) ToContainerPortResponseArrayOutput() ContainerPortResponseArrayOutput {
+	return o
+}
+
+func (o ContainerPortResponseArrayOutput) ToContainerPortResponseArrayOutputWithContext(ctx context.Context) ContainerPortResponseArrayOutput {
+	return o
+}
+
+func (o ContainerPortResponseArrayOutput) Index(i pulumi.IntInput) ContainerPortResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerPortResponse {
+		return vs[0].([]ContainerPortResponse)[vs[1].(int)]
+	}).(ContainerPortResponseOutput)
+}
+
+// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
+type ContainerResponse struct {
+	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Args    []string `pulumi:"args"`
+	Command []string `pulumi:"command"`
+	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported List of environment variables to set in the container.
+	Env []EnvVarResponse `pulumi:"env"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+	EnvFrom []EnvFromSourceResponse `pulumi:"envFrom"`
+	// Cloud Run fully managed: only supports containers from Google Container Registry Cloud Run for Anthos: supported URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
+	Image string `pulumi:"image"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+	ImagePullPolicy string `pulumi:"imagePullPolicy"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	LivenessProbe ProbeResponse `pulumi:"livenessProbe"`
+	// (Optional) Name of the container specified as a DNS_LABEL.
+	Name string `pulumi:"name"`
+	// (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
+	Ports []ContainerPortResponse `pulumi:"ports"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	ReadinessProbe ProbeResponse `pulumi:"readinessProbe"`
+	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	Resources ResourceRequirementsResponse `pulumi:"resources"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+	SecurityContext SecurityContextResponse `pulumi:"securityContext"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
+	TerminationMessagePath string `pulumi:"terminationMessagePath"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+	TerminationMessagePolicy string `pulumi:"terminationMessagePolicy"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
+	VolumeMounts []VolumeMountResponse `pulumi:"volumeMounts"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir string `pulumi:"workingDir"`
+}
+
+// ContainerResponseInput is an input type that accepts ContainerResponseArgs and ContainerResponseOutput values.
+// You can construct a concrete instance of `ContainerResponseInput` via:
+//
+//          ContainerResponseArgs{...}
+type ContainerResponseInput interface {
+	pulumi.Input
+
+	ToContainerResponseOutput() ContainerResponseOutput
+	ToContainerResponseOutputWithContext(context.Context) ContainerResponseOutput
+}
+
+// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
+type ContainerResponseArgs struct {
+	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Args    pulumi.StringArrayInput `pulumi:"args"`
+	Command pulumi.StringArrayInput `pulumi:"command"`
+	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported List of environment variables to set in the container.
+	Env EnvVarResponseArrayInput `pulumi:"env"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+	EnvFrom EnvFromSourceResponseArrayInput `pulumi:"envFrom"`
+	// Cloud Run fully managed: only supports containers from Google Container Registry Cloud Run for Anthos: supported URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
+	Image pulumi.StringInput `pulumi:"image"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+	ImagePullPolicy pulumi.StringInput `pulumi:"imagePullPolicy"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	LivenessProbe ProbeResponseInput `pulumi:"livenessProbe"`
+	// (Optional) Name of the container specified as a DNS_LABEL.
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
+	Ports ContainerPortResponseArrayInput `pulumi:"ports"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	ReadinessProbe ProbeResponseInput `pulumi:"readinessProbe"`
+	// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	Resources ResourceRequirementsResponseInput `pulumi:"resources"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+	SecurityContext SecurityContextResponseInput `pulumi:"securityContext"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
+	TerminationMessagePath pulumi.StringInput `pulumi:"terminationMessagePath"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+	TerminationMessagePolicy pulumi.StringInput `pulumi:"terminationMessagePolicy"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
+	VolumeMounts VolumeMountResponseArrayInput `pulumi:"volumeMounts"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir pulumi.StringInput `pulumi:"workingDir"`
+}
+
+func (ContainerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerResponse)(nil)).Elem()
+}
+
+func (i ContainerResponseArgs) ToContainerResponseOutput() ContainerResponseOutput {
+	return i.ToContainerResponseOutputWithContext(context.Background())
+}
+
+func (i ContainerResponseArgs) ToContainerResponseOutputWithContext(ctx context.Context) ContainerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerResponseOutput)
+}
+
+// ContainerResponseArrayInput is an input type that accepts ContainerResponseArray and ContainerResponseArrayOutput values.
+// You can construct a concrete instance of `ContainerResponseArrayInput` via:
+//
+//          ContainerResponseArray{ ContainerResponseArgs{...} }
+type ContainerResponseArrayInput interface {
+	pulumi.Input
+
+	ToContainerResponseArrayOutput() ContainerResponseArrayOutput
+	ToContainerResponseArrayOutputWithContext(context.Context) ContainerResponseArrayOutput
+}
+
+type ContainerResponseArray []ContainerResponseInput
+
+func (ContainerResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerResponse)(nil)).Elem()
+}
+
+func (i ContainerResponseArray) ToContainerResponseArrayOutput() ContainerResponseArrayOutput {
+	return i.ToContainerResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerResponseArray) ToContainerResponseArrayOutputWithContext(ctx context.Context) ContainerResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerResponseArrayOutput)
+}
+
+// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
+type ContainerResponseOutput struct{ *pulumi.OutputState }
+
+func (ContainerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerResponse)(nil)).Elem()
+}
+
+func (o ContainerResponseOutput) ToContainerResponseOutput() ContainerResponseOutput {
+	return o
+}
+
+func (o ContainerResponseOutput) ToContainerResponseOutputWithContext(ctx context.Context) ContainerResponseOutput {
+	return o
+}
+
+// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+func (o ContainerResponseOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+func (o ContainerResponseOutput) Command() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
+}
+
+// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported List of environment variables to set in the container.
+func (o ContainerResponseOutput) Env() EnvVarResponseArrayOutput {
+	return o.ApplyT(func(v ContainerResponse) []EnvVarResponse { return v.Env }).(EnvVarResponseArrayOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+func (o ContainerResponseOutput) EnvFrom() EnvFromSourceResponseArrayOutput {
+	return o.ApplyT(func(v ContainerResponse) []EnvFromSourceResponse { return v.EnvFrom }).(EnvFromSourceResponseArrayOutput)
+}
+
+// Cloud Run fully managed: only supports containers from Google Container Registry Cloud Run for Anthos: supported URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
+func (o ContainerResponseOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerResponse) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+func (o ContainerResponseOutput) ImagePullPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerResponse) string { return v.ImagePullPolicy }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+func (o ContainerResponseOutput) LivenessProbe() ProbeResponseOutput {
+	return o.ApplyT(func(v ContainerResponse) ProbeResponse { return v.LivenessProbe }).(ProbeResponseOutput)
+}
+
+// (Optional) Name of the container specified as a DNS_LABEL.
+func (o ContainerResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
+func (o ContainerResponseOutput) Ports() ContainerPortResponseArrayOutput {
+	return o.ApplyT(func(v ContainerResponse) []ContainerPortResponse { return v.Ports }).(ContainerPortResponseArrayOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+func (o ContainerResponseOutput) ReadinessProbe() ProbeResponseOutput {
+	return o.ApplyT(func(v ContainerResponse) ProbeResponse { return v.ReadinessProbe }).(ProbeResponseOutput)
+}
+
+// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+func (o ContainerResponseOutput) Resources() ResourceRequirementsResponseOutput {
+	return o.ApplyT(func(v ContainerResponse) ResourceRequirementsResponse { return v.Resources }).(ResourceRequirementsResponseOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+func (o ContainerResponseOutput) SecurityContext() SecurityContextResponseOutput {
+	return o.ApplyT(func(v ContainerResponse) SecurityContextResponse { return v.SecurityContext }).(SecurityContextResponseOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
+func (o ContainerResponseOutput) TerminationMessagePath() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerResponse) string { return v.TerminationMessagePath }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+func (o ContainerResponseOutput) TerminationMessagePolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerResponse) string { return v.TerminationMessagePolicy }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
+func (o ContainerResponseOutput) VolumeMounts() VolumeMountResponseArrayOutput {
+	return o.ApplyT(func(v ContainerResponse) []VolumeMountResponse { return v.VolumeMounts }).(VolumeMountResponseArrayOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+func (o ContainerResponseOutput) WorkingDir() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerResponse) string { return v.WorkingDir }).(pulumi.StringOutput)
+}
+
+type ContainerResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerResponse)(nil)).Elem()
+}
+
+func (o ContainerResponseArrayOutput) ToContainerResponseArrayOutput() ContainerResponseArrayOutput {
+	return o
+}
+
+func (o ContainerResponseArrayOutput) ToContainerResponseArrayOutputWithContext(ctx context.Context) ContainerResponseArrayOutput {
+	return o
+}
+
+func (o ContainerResponseArrayOutput) Index(i pulumi.IntInput) ContainerResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerResponse {
+		return vs[0].([]ContainerResponse)[vs[1].(int)]
+	}).(ContainerResponseOutput)
+}
+
 // The desired state of the Domain Mapping.
 type DomainMappingSpec struct {
 	// The mode of the certificate.
@@ -1548,6 +2600,178 @@ func (o DomainMappingSpecPtrOutput) RouteName() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.RouteName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The desired state of the Domain Mapping.
+type DomainMappingSpecResponse struct {
+	// The mode of the certificate.
+	CertificateMode string `pulumi:"certificateMode"`
+	// If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning.
+	ForceOverride bool `pulumi:"forceOverride"`
+	// The name of the Knative Route that this DomainMapping applies to. The route must exist.
+	RouteName string `pulumi:"routeName"`
+}
+
+// DomainMappingSpecResponseInput is an input type that accepts DomainMappingSpecResponseArgs and DomainMappingSpecResponseOutput values.
+// You can construct a concrete instance of `DomainMappingSpecResponseInput` via:
+//
+//          DomainMappingSpecResponseArgs{...}
+type DomainMappingSpecResponseInput interface {
+	pulumi.Input
+
+	ToDomainMappingSpecResponseOutput() DomainMappingSpecResponseOutput
+	ToDomainMappingSpecResponseOutputWithContext(context.Context) DomainMappingSpecResponseOutput
+}
+
+// The desired state of the Domain Mapping.
+type DomainMappingSpecResponseArgs struct {
+	// The mode of the certificate.
+	CertificateMode pulumi.StringInput `pulumi:"certificateMode"`
+	// If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning.
+	ForceOverride pulumi.BoolInput `pulumi:"forceOverride"`
+	// The name of the Knative Route that this DomainMapping applies to. The route must exist.
+	RouteName pulumi.StringInput `pulumi:"routeName"`
+}
+
+func (DomainMappingSpecResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainMappingSpecResponse)(nil)).Elem()
+}
+
+func (i DomainMappingSpecResponseArgs) ToDomainMappingSpecResponseOutput() DomainMappingSpecResponseOutput {
+	return i.ToDomainMappingSpecResponseOutputWithContext(context.Background())
+}
+
+func (i DomainMappingSpecResponseArgs) ToDomainMappingSpecResponseOutputWithContext(ctx context.Context) DomainMappingSpecResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingSpecResponseOutput)
+}
+
+func (i DomainMappingSpecResponseArgs) ToDomainMappingSpecResponsePtrOutput() DomainMappingSpecResponsePtrOutput {
+	return i.ToDomainMappingSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DomainMappingSpecResponseArgs) ToDomainMappingSpecResponsePtrOutputWithContext(ctx context.Context) DomainMappingSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingSpecResponseOutput).ToDomainMappingSpecResponsePtrOutputWithContext(ctx)
+}
+
+// DomainMappingSpecResponsePtrInput is an input type that accepts DomainMappingSpecResponseArgs, DomainMappingSpecResponsePtr and DomainMappingSpecResponsePtrOutput values.
+// You can construct a concrete instance of `DomainMappingSpecResponsePtrInput` via:
+//
+//          DomainMappingSpecResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DomainMappingSpecResponsePtrInput interface {
+	pulumi.Input
+
+	ToDomainMappingSpecResponsePtrOutput() DomainMappingSpecResponsePtrOutput
+	ToDomainMappingSpecResponsePtrOutputWithContext(context.Context) DomainMappingSpecResponsePtrOutput
+}
+
+type domainMappingSpecResponsePtrType DomainMappingSpecResponseArgs
+
+func DomainMappingSpecResponsePtr(v *DomainMappingSpecResponseArgs) DomainMappingSpecResponsePtrInput {
+	return (*domainMappingSpecResponsePtrType)(v)
+}
+
+func (*domainMappingSpecResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainMappingSpecResponse)(nil)).Elem()
+}
+
+func (i *domainMappingSpecResponsePtrType) ToDomainMappingSpecResponsePtrOutput() DomainMappingSpecResponsePtrOutput {
+	return i.ToDomainMappingSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *domainMappingSpecResponsePtrType) ToDomainMappingSpecResponsePtrOutputWithContext(ctx context.Context) DomainMappingSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingSpecResponsePtrOutput)
+}
+
+// The desired state of the Domain Mapping.
+type DomainMappingSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (DomainMappingSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainMappingSpecResponse)(nil)).Elem()
+}
+
+func (o DomainMappingSpecResponseOutput) ToDomainMappingSpecResponseOutput() DomainMappingSpecResponseOutput {
+	return o
+}
+
+func (o DomainMappingSpecResponseOutput) ToDomainMappingSpecResponseOutputWithContext(ctx context.Context) DomainMappingSpecResponseOutput {
+	return o
+}
+
+func (o DomainMappingSpecResponseOutput) ToDomainMappingSpecResponsePtrOutput() DomainMappingSpecResponsePtrOutput {
+	return o.ToDomainMappingSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DomainMappingSpecResponseOutput) ToDomainMappingSpecResponsePtrOutputWithContext(ctx context.Context) DomainMappingSpecResponsePtrOutput {
+	return o.ApplyT(func(v DomainMappingSpecResponse) *DomainMappingSpecResponse {
+		return &v
+	}).(DomainMappingSpecResponsePtrOutput)
+}
+
+// The mode of the certificate.
+func (o DomainMappingSpecResponseOutput) CertificateMode() pulumi.StringOutput {
+	return o.ApplyT(func(v DomainMappingSpecResponse) string { return v.CertificateMode }).(pulumi.StringOutput)
+}
+
+// If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning.
+func (o DomainMappingSpecResponseOutput) ForceOverride() pulumi.BoolOutput {
+	return o.ApplyT(func(v DomainMappingSpecResponse) bool { return v.ForceOverride }).(pulumi.BoolOutput)
+}
+
+// The name of the Knative Route that this DomainMapping applies to. The route must exist.
+func (o DomainMappingSpecResponseOutput) RouteName() pulumi.StringOutput {
+	return o.ApplyT(func(v DomainMappingSpecResponse) string { return v.RouteName }).(pulumi.StringOutput)
+}
+
+type DomainMappingSpecResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DomainMappingSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainMappingSpecResponse)(nil)).Elem()
+}
+
+func (o DomainMappingSpecResponsePtrOutput) ToDomainMappingSpecResponsePtrOutput() DomainMappingSpecResponsePtrOutput {
+	return o
+}
+
+func (o DomainMappingSpecResponsePtrOutput) ToDomainMappingSpecResponsePtrOutputWithContext(ctx context.Context) DomainMappingSpecResponsePtrOutput {
+	return o
+}
+
+func (o DomainMappingSpecResponsePtrOutput) Elem() DomainMappingSpecResponseOutput {
+	return o.ApplyT(func(v *DomainMappingSpecResponse) DomainMappingSpecResponse { return *v }).(DomainMappingSpecResponseOutput)
+}
+
+// The mode of the certificate.
+func (o DomainMappingSpecResponsePtrOutput) CertificateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainMappingSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning.
+func (o DomainMappingSpecResponsePtrOutput) ForceOverride() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DomainMappingSpecResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ForceOverride
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the Knative Route that this DomainMapping applies to. The route must exist.
+func (o DomainMappingSpecResponsePtrOutput) RouteName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainMappingSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RouteName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1761,6 +2985,216 @@ func (o DomainMappingStatusPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The current state of the Domain Mapping.
+type DomainMappingStatusResponse struct {
+	// Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
+	Conditions []GoogleCloudRunV1ConditionResponse `pulumi:"conditions"`
+	// The name of the route that the mapping currently points to.
+	MappedRouteName string `pulumi:"mappedRouteName"`
+	// ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
+	ObservedGeneration int `pulumi:"observedGeneration"`
+	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
+	ResourceRecords []ResourceRecordResponse `pulumi:"resourceRecords"`
+	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+	Url string `pulumi:"url"`
+}
+
+// DomainMappingStatusResponseInput is an input type that accepts DomainMappingStatusResponseArgs and DomainMappingStatusResponseOutput values.
+// You can construct a concrete instance of `DomainMappingStatusResponseInput` via:
+//
+//          DomainMappingStatusResponseArgs{...}
+type DomainMappingStatusResponseInput interface {
+	pulumi.Input
+
+	ToDomainMappingStatusResponseOutput() DomainMappingStatusResponseOutput
+	ToDomainMappingStatusResponseOutputWithContext(context.Context) DomainMappingStatusResponseOutput
+}
+
+// The current state of the Domain Mapping.
+type DomainMappingStatusResponseArgs struct {
+	// Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
+	Conditions GoogleCloudRunV1ConditionResponseArrayInput `pulumi:"conditions"`
+	// The name of the route that the mapping currently points to.
+	MappedRouteName pulumi.StringInput `pulumi:"mappedRouteName"`
+	// ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
+	ObservedGeneration pulumi.IntInput `pulumi:"observedGeneration"`
+	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
+	ResourceRecords ResourceRecordResponseArrayInput `pulumi:"resourceRecords"`
+	// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (DomainMappingStatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainMappingStatusResponse)(nil)).Elem()
+}
+
+func (i DomainMappingStatusResponseArgs) ToDomainMappingStatusResponseOutput() DomainMappingStatusResponseOutput {
+	return i.ToDomainMappingStatusResponseOutputWithContext(context.Background())
+}
+
+func (i DomainMappingStatusResponseArgs) ToDomainMappingStatusResponseOutputWithContext(ctx context.Context) DomainMappingStatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingStatusResponseOutput)
+}
+
+func (i DomainMappingStatusResponseArgs) ToDomainMappingStatusResponsePtrOutput() DomainMappingStatusResponsePtrOutput {
+	return i.ToDomainMappingStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DomainMappingStatusResponseArgs) ToDomainMappingStatusResponsePtrOutputWithContext(ctx context.Context) DomainMappingStatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingStatusResponseOutput).ToDomainMappingStatusResponsePtrOutputWithContext(ctx)
+}
+
+// DomainMappingStatusResponsePtrInput is an input type that accepts DomainMappingStatusResponseArgs, DomainMappingStatusResponsePtr and DomainMappingStatusResponsePtrOutput values.
+// You can construct a concrete instance of `DomainMappingStatusResponsePtrInput` via:
+//
+//          DomainMappingStatusResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DomainMappingStatusResponsePtrInput interface {
+	pulumi.Input
+
+	ToDomainMappingStatusResponsePtrOutput() DomainMappingStatusResponsePtrOutput
+	ToDomainMappingStatusResponsePtrOutputWithContext(context.Context) DomainMappingStatusResponsePtrOutput
+}
+
+type domainMappingStatusResponsePtrType DomainMappingStatusResponseArgs
+
+func DomainMappingStatusResponsePtr(v *DomainMappingStatusResponseArgs) DomainMappingStatusResponsePtrInput {
+	return (*domainMappingStatusResponsePtrType)(v)
+}
+
+func (*domainMappingStatusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainMappingStatusResponse)(nil)).Elem()
+}
+
+func (i *domainMappingStatusResponsePtrType) ToDomainMappingStatusResponsePtrOutput() DomainMappingStatusResponsePtrOutput {
+	return i.ToDomainMappingStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *domainMappingStatusResponsePtrType) ToDomainMappingStatusResponsePtrOutputWithContext(ctx context.Context) DomainMappingStatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingStatusResponsePtrOutput)
+}
+
+// The current state of the Domain Mapping.
+type DomainMappingStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (DomainMappingStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainMappingStatusResponse)(nil)).Elem()
+}
+
+func (o DomainMappingStatusResponseOutput) ToDomainMappingStatusResponseOutput() DomainMappingStatusResponseOutput {
+	return o
+}
+
+func (o DomainMappingStatusResponseOutput) ToDomainMappingStatusResponseOutputWithContext(ctx context.Context) DomainMappingStatusResponseOutput {
+	return o
+}
+
+func (o DomainMappingStatusResponseOutput) ToDomainMappingStatusResponsePtrOutput() DomainMappingStatusResponsePtrOutput {
+	return o.ToDomainMappingStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DomainMappingStatusResponseOutput) ToDomainMappingStatusResponsePtrOutputWithContext(ctx context.Context) DomainMappingStatusResponsePtrOutput {
+	return o.ApplyT(func(v DomainMappingStatusResponse) *DomainMappingStatusResponse {
+		return &v
+	}).(DomainMappingStatusResponsePtrOutput)
+}
+
+// Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
+func (o DomainMappingStatusResponseOutput) Conditions() GoogleCloudRunV1ConditionResponseArrayOutput {
+	return o.ApplyT(func(v DomainMappingStatusResponse) []GoogleCloudRunV1ConditionResponse { return v.Conditions }).(GoogleCloudRunV1ConditionResponseArrayOutput)
+}
+
+// The name of the route that the mapping currently points to.
+func (o DomainMappingStatusResponseOutput) MappedRouteName() pulumi.StringOutput {
+	return o.ApplyT(func(v DomainMappingStatusResponse) string { return v.MappedRouteName }).(pulumi.StringOutput)
+}
+
+// ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
+func (o DomainMappingStatusResponseOutput) ObservedGeneration() pulumi.IntOutput {
+	return o.ApplyT(func(v DomainMappingStatusResponse) int { return v.ObservedGeneration }).(pulumi.IntOutput)
+}
+
+// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
+func (o DomainMappingStatusResponseOutput) ResourceRecords() ResourceRecordResponseArrayOutput {
+	return o.ApplyT(func(v DomainMappingStatusResponse) []ResourceRecordResponse { return v.ResourceRecords }).(ResourceRecordResponseArrayOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+func (o DomainMappingStatusResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v DomainMappingStatusResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type DomainMappingStatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DomainMappingStatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainMappingStatusResponse)(nil)).Elem()
+}
+
+func (o DomainMappingStatusResponsePtrOutput) ToDomainMappingStatusResponsePtrOutput() DomainMappingStatusResponsePtrOutput {
+	return o
+}
+
+func (o DomainMappingStatusResponsePtrOutput) ToDomainMappingStatusResponsePtrOutputWithContext(ctx context.Context) DomainMappingStatusResponsePtrOutput {
+	return o
+}
+
+func (o DomainMappingStatusResponsePtrOutput) Elem() DomainMappingStatusResponseOutput {
+	return o.ApplyT(func(v *DomainMappingStatusResponse) DomainMappingStatusResponse { return *v }).(DomainMappingStatusResponseOutput)
+}
+
+// Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
+func (o DomainMappingStatusResponsePtrOutput) Conditions() GoogleCloudRunV1ConditionResponseArrayOutput {
+	return o.ApplyT(func(v *DomainMappingStatusResponse) []GoogleCloudRunV1ConditionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(GoogleCloudRunV1ConditionResponseArrayOutput)
+}
+
+// The name of the route that the mapping currently points to.
+func (o DomainMappingStatusResponsePtrOutput) MappedRouteName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainMappingStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MappedRouteName
+	}).(pulumi.StringPtrOutput)
+}
+
+// ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
+func (o DomainMappingStatusResponsePtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DomainMappingStatusResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ObservedGeneration
+	}).(pulumi.IntPtrOutput)
+}
+
+// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
+func (o DomainMappingStatusResponsePtrOutput) ResourceRecords() ResourceRecordResponseArrayOutput {
+	return o.ApplyT(func(v *DomainMappingStatusResponse) []ResourceRecordResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceRecords
+	}).(ResourceRecordResponseArrayOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
+func (o DomainMappingStatusResponsePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainMappingStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvFromSource represents the source of a set of ConfigMaps
 type EnvFromSource struct {
 	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from
@@ -1879,6 +3313,124 @@ func (o EnvFromSourceArrayOutput) Index(i pulumi.IntInput) EnvFromSourceOutput {
 	}).(EnvFromSourceOutput)
 }
 
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvFromSource represents the source of a set of ConfigMaps
+type EnvFromSourceResponse struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from
+	ConfigMapRef ConfigMapEnvSourceResponse `pulumi:"configMapRef"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+	Prefix string `pulumi:"prefix"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from
+	SecretRef SecretEnvSourceResponse `pulumi:"secretRef"`
+}
+
+// EnvFromSourceResponseInput is an input type that accepts EnvFromSourceResponseArgs and EnvFromSourceResponseOutput values.
+// You can construct a concrete instance of `EnvFromSourceResponseInput` via:
+//
+//          EnvFromSourceResponseArgs{...}
+type EnvFromSourceResponseInput interface {
+	pulumi.Input
+
+	ToEnvFromSourceResponseOutput() EnvFromSourceResponseOutput
+	ToEnvFromSourceResponseOutputWithContext(context.Context) EnvFromSourceResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvFromSource represents the source of a set of ConfigMaps
+type EnvFromSourceResponseArgs struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from
+	ConfigMapRef ConfigMapEnvSourceResponseInput `pulumi:"configMapRef"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from
+	SecretRef SecretEnvSourceResponseInput `pulumi:"secretRef"`
+}
+
+func (EnvFromSourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvFromSourceResponse)(nil)).Elem()
+}
+
+func (i EnvFromSourceResponseArgs) ToEnvFromSourceResponseOutput() EnvFromSourceResponseOutput {
+	return i.ToEnvFromSourceResponseOutputWithContext(context.Background())
+}
+
+func (i EnvFromSourceResponseArgs) ToEnvFromSourceResponseOutputWithContext(ctx context.Context) EnvFromSourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvFromSourceResponseOutput)
+}
+
+// EnvFromSourceResponseArrayInput is an input type that accepts EnvFromSourceResponseArray and EnvFromSourceResponseArrayOutput values.
+// You can construct a concrete instance of `EnvFromSourceResponseArrayInput` via:
+//
+//          EnvFromSourceResponseArray{ EnvFromSourceResponseArgs{...} }
+type EnvFromSourceResponseArrayInput interface {
+	pulumi.Input
+
+	ToEnvFromSourceResponseArrayOutput() EnvFromSourceResponseArrayOutput
+	ToEnvFromSourceResponseArrayOutputWithContext(context.Context) EnvFromSourceResponseArrayOutput
+}
+
+type EnvFromSourceResponseArray []EnvFromSourceResponseInput
+
+func (EnvFromSourceResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvFromSourceResponse)(nil)).Elem()
+}
+
+func (i EnvFromSourceResponseArray) ToEnvFromSourceResponseArrayOutput() EnvFromSourceResponseArrayOutput {
+	return i.ToEnvFromSourceResponseArrayOutputWithContext(context.Background())
+}
+
+func (i EnvFromSourceResponseArray) ToEnvFromSourceResponseArrayOutputWithContext(ctx context.Context) EnvFromSourceResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvFromSourceResponseArrayOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvFromSource represents the source of a set of ConfigMaps
+type EnvFromSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (EnvFromSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvFromSourceResponse)(nil)).Elem()
+}
+
+func (o EnvFromSourceResponseOutput) ToEnvFromSourceResponseOutput() EnvFromSourceResponseOutput {
+	return o
+}
+
+func (o EnvFromSourceResponseOutput) ToEnvFromSourceResponseOutputWithContext(ctx context.Context) EnvFromSourceResponseOutput {
+	return o
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from
+func (o EnvFromSourceResponseOutput) ConfigMapRef() ConfigMapEnvSourceResponseOutput {
+	return o.ApplyT(func(v EnvFromSourceResponse) ConfigMapEnvSourceResponse { return v.ConfigMapRef }).(ConfigMapEnvSourceResponseOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+func (o EnvFromSourceResponseOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvFromSourceResponse) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from
+func (o EnvFromSourceResponseOutput) SecretRef() SecretEnvSourceResponseOutput {
+	return o.ApplyT(func(v EnvFromSourceResponse) SecretEnvSourceResponse { return v.SecretRef }).(SecretEnvSourceResponseOutput)
+}
+
+type EnvFromSourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvFromSourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvFromSourceResponse)(nil)).Elem()
+}
+
+func (o EnvFromSourceResponseArrayOutput) ToEnvFromSourceResponseArrayOutput() EnvFromSourceResponseArrayOutput {
+	return o
+}
+
+func (o EnvFromSourceResponseArrayOutput) ToEnvFromSourceResponseArrayOutputWithContext(ctx context.Context) EnvFromSourceResponseArrayOutput {
+	return o
+}
+
+func (o EnvFromSourceResponseArrayOutput) Index(i pulumi.IntInput) EnvFromSourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvFromSourceResponse {
+		return vs[0].([]EnvFromSourceResponse)[vs[1].(int)]
+	}).(EnvFromSourceResponseOutput)
+}
+
 // EnvVar represents an environment variable present in a Container.
 type EnvVar struct {
 	// Name of the environment variable. Must be a C_IDENTIFIER.
@@ -1995,6 +3547,124 @@ func (o EnvVarArrayOutput) Index(i pulumi.IntInput) EnvVarOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvVar {
 		return vs[0].([]EnvVar)[vs[1].(int)]
 	}).(EnvVarOutput)
+}
+
+// EnvVar represents an environment variable present in a Container.
+type EnvVarResponse struct {
+	// Name of the environment variable. Must be a C_IDENTIFIER.
+	Name string `pulumi:"name"`
+	// (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+	Value string `pulumi:"value"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
+	ValueFrom EnvVarSourceResponse `pulumi:"valueFrom"`
+}
+
+// EnvVarResponseInput is an input type that accepts EnvVarResponseArgs and EnvVarResponseOutput values.
+// You can construct a concrete instance of `EnvVarResponseInput` via:
+//
+//          EnvVarResponseArgs{...}
+type EnvVarResponseInput interface {
+	pulumi.Input
+
+	ToEnvVarResponseOutput() EnvVarResponseOutput
+	ToEnvVarResponseOutputWithContext(context.Context) EnvVarResponseOutput
+}
+
+// EnvVar represents an environment variable present in a Container.
+type EnvVarResponseArgs struct {
+	// Name of the environment variable. Must be a C_IDENTIFIER.
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+	Value pulumi.StringInput `pulumi:"value"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
+	ValueFrom EnvVarSourceResponseInput `pulumi:"valueFrom"`
+}
+
+func (EnvVarResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvVarResponse)(nil)).Elem()
+}
+
+func (i EnvVarResponseArgs) ToEnvVarResponseOutput() EnvVarResponseOutput {
+	return i.ToEnvVarResponseOutputWithContext(context.Background())
+}
+
+func (i EnvVarResponseArgs) ToEnvVarResponseOutputWithContext(ctx context.Context) EnvVarResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvVarResponseOutput)
+}
+
+// EnvVarResponseArrayInput is an input type that accepts EnvVarResponseArray and EnvVarResponseArrayOutput values.
+// You can construct a concrete instance of `EnvVarResponseArrayInput` via:
+//
+//          EnvVarResponseArray{ EnvVarResponseArgs{...} }
+type EnvVarResponseArrayInput interface {
+	pulumi.Input
+
+	ToEnvVarResponseArrayOutput() EnvVarResponseArrayOutput
+	ToEnvVarResponseArrayOutputWithContext(context.Context) EnvVarResponseArrayOutput
+}
+
+type EnvVarResponseArray []EnvVarResponseInput
+
+func (EnvVarResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvVarResponse)(nil)).Elem()
+}
+
+func (i EnvVarResponseArray) ToEnvVarResponseArrayOutput() EnvVarResponseArrayOutput {
+	return i.ToEnvVarResponseArrayOutputWithContext(context.Background())
+}
+
+func (i EnvVarResponseArray) ToEnvVarResponseArrayOutputWithContext(ctx context.Context) EnvVarResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvVarResponseArrayOutput)
+}
+
+// EnvVar represents an environment variable present in a Container.
+type EnvVarResponseOutput struct{ *pulumi.OutputState }
+
+func (EnvVarResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvVarResponse)(nil)).Elem()
+}
+
+func (o EnvVarResponseOutput) ToEnvVarResponseOutput() EnvVarResponseOutput {
+	return o
+}
+
+func (o EnvVarResponseOutput) ToEnvVarResponseOutputWithContext(ctx context.Context) EnvVarResponseOutput {
+	return o
+}
+
+// Name of the environment variable. Must be a C_IDENTIFIER.
+func (o EnvVarResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvVarResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+func (o EnvVarResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvVarResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
+func (o EnvVarResponseOutput) ValueFrom() EnvVarSourceResponseOutput {
+	return o.ApplyT(func(v EnvVarResponse) EnvVarSourceResponse { return v.ValueFrom }).(EnvVarSourceResponseOutput)
+}
+
+type EnvVarResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvVarResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvVarResponse)(nil)).Elem()
+}
+
+func (o EnvVarResponseArrayOutput) ToEnvVarResponseArrayOutput() EnvVarResponseArrayOutput {
+	return o
+}
+
+func (o EnvVarResponseArrayOutput) ToEnvVarResponseArrayOutputWithContext(ctx context.Context) EnvVarResponseArrayOutput {
+	return o
+}
+
+func (o EnvVarResponseArrayOutput) Index(i pulumi.IntInput) EnvVarResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvVarResponse {
+		return vs[0].([]EnvVarResponse)[vs[1].(int)]
+	}).(EnvVarResponseOutput)
 }
 
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source for the value of an EnvVar.
@@ -2150,6 +3820,70 @@ func (o EnvVarSourcePtrOutput) SecretKeyRef() SecretKeySelectorPtrOutput {
 	}).(SecretKeySelectorPtrOutput)
 }
 
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source for the value of an EnvVar.
+type EnvVarSourceResponse struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
+	ConfigMapKeyRef ConfigMapKeySelectorResponse `pulumi:"configMapKeyRef"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a secret in the pod's namespace
+	SecretKeyRef SecretKeySelectorResponse `pulumi:"secretKeyRef"`
+}
+
+// EnvVarSourceResponseInput is an input type that accepts EnvVarSourceResponseArgs and EnvVarSourceResponseOutput values.
+// You can construct a concrete instance of `EnvVarSourceResponseInput` via:
+//
+//          EnvVarSourceResponseArgs{...}
+type EnvVarSourceResponseInput interface {
+	pulumi.Input
+
+	ToEnvVarSourceResponseOutput() EnvVarSourceResponseOutput
+	ToEnvVarSourceResponseOutputWithContext(context.Context) EnvVarSourceResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source for the value of an EnvVar.
+type EnvVarSourceResponseArgs struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
+	ConfigMapKeyRef ConfigMapKeySelectorResponseInput `pulumi:"configMapKeyRef"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a secret in the pod's namespace
+	SecretKeyRef SecretKeySelectorResponseInput `pulumi:"secretKeyRef"`
+}
+
+func (EnvVarSourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvVarSourceResponse)(nil)).Elem()
+}
+
+func (i EnvVarSourceResponseArgs) ToEnvVarSourceResponseOutput() EnvVarSourceResponseOutput {
+	return i.ToEnvVarSourceResponseOutputWithContext(context.Background())
+}
+
+func (i EnvVarSourceResponseArgs) ToEnvVarSourceResponseOutputWithContext(ctx context.Context) EnvVarSourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvVarSourceResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source for the value of an EnvVar.
+type EnvVarSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (EnvVarSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvVarSourceResponse)(nil)).Elem()
+}
+
+func (o EnvVarSourceResponseOutput) ToEnvVarSourceResponseOutput() EnvVarSourceResponseOutput {
+	return o
+}
+
+func (o EnvVarSourceResponseOutput) ToEnvVarSourceResponseOutputWithContext(ctx context.Context) EnvVarSourceResponseOutput {
+	return o
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
+func (o EnvVarSourceResponseOutput) ConfigMapKeyRef() ConfigMapKeySelectorResponseOutput {
+	return o.ApplyT(func(v EnvVarSourceResponse) ConfigMapKeySelectorResponse { return v.ConfigMapKeyRef }).(ConfigMapKeySelectorResponseOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a secret in the pod's namespace
+func (o EnvVarSourceResponseOutput) SecretKeyRef() SecretKeySelectorResponseOutput {
+	return o.ApplyT(func(v EnvVarSourceResponse) SecretKeySelectorResponse { return v.SecretKeyRef }).(SecretKeySelectorResponseOutput)
+}
+
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported ExecAction describes a "run in container" action.
 type ExecAction struct {
 	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
@@ -2282,6 +4016,61 @@ func (o ExecActionPtrOutput) Command() pulumi.StringArrayOutput {
 		}
 		return v.Command
 	}).(pulumi.StringArrayOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ExecAction describes a "run in container" action.
+type ExecActionResponse struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	Command []string `pulumi:"command"`
+}
+
+// ExecActionResponseInput is an input type that accepts ExecActionResponseArgs and ExecActionResponseOutput values.
+// You can construct a concrete instance of `ExecActionResponseInput` via:
+//
+//          ExecActionResponseArgs{...}
+type ExecActionResponseInput interface {
+	pulumi.Input
+
+	ToExecActionResponseOutput() ExecActionResponseOutput
+	ToExecActionResponseOutputWithContext(context.Context) ExecActionResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ExecAction describes a "run in container" action.
+type ExecActionResponseArgs struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	Command pulumi.StringArrayInput `pulumi:"command"`
+}
+
+func (ExecActionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecActionResponse)(nil)).Elem()
+}
+
+func (i ExecActionResponseArgs) ToExecActionResponseOutput() ExecActionResponseOutput {
+	return i.ToExecActionResponseOutputWithContext(context.Background())
+}
+
+func (i ExecActionResponseArgs) ToExecActionResponseOutputWithContext(ctx context.Context) ExecActionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecActionResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported ExecAction describes a "run in container" action.
+type ExecActionResponseOutput struct{ *pulumi.OutputState }
+
+func (ExecActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecActionResponse)(nil)).Elem()
+}
+
+func (o ExecActionResponseOutput) ToExecActionResponseOutput() ExecActionResponseOutput {
+	return o
+}
+
+func (o ExecActionResponseOutput) ToExecActionResponseOutputWithContext(ctx context.Context) ExecActionResponseOutput {
+	return o
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+func (o ExecActionResponseOutput) Command() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExecActionResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -2475,6 +4264,88 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
+// You can construct a concrete instance of `ExprResponseInput` via:
+//
+//          ExprResponseArgs{...}
+type ExprResponseInput interface {
+	pulumi.Input
+
+	ToExprResponseOutput() ExprResponseOutput
+	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
+	return i.ToExprResponseOutputWithContext(context.Background())
+}
+
+func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseOutput struct{ *pulumi.OutputState }
+
+func (ExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
+	return o
+}
+
+func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
 // Condition defines a generic condition for a Resource
 type GoogleCloudRunV1Condition struct {
 	// Optional. Last time the condition transitioned from one status to another.
@@ -2618,6 +4489,151 @@ func (o GoogleCloudRunV1ConditionArrayOutput) Index(i pulumi.IntInput) GoogleClo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRunV1Condition {
 		return vs[0].([]GoogleCloudRunV1Condition)[vs[1].(int)]
 	}).(GoogleCloudRunV1ConditionOutput)
+}
+
+// Condition defines a generic condition for a Resource
+type GoogleCloudRunV1ConditionResponse struct {
+	// Optional. Last time the condition transitioned from one status to another.
+	LastTransitionTime string `pulumi:"lastTransitionTime"`
+	// Optional. Human readable message indicating details about the current status.
+	Message string `pulumi:"message"`
+	// Optional. One-word CamelCase reason for the condition's last transition.
+	Reason string `pulumi:"reason"`
+	// Optional. How to interpret failures of this condition, one of Error, Warning, Info
+	Severity string `pulumi:"severity"`
+	// Status of the condition, one of True, False, Unknown.
+	Status string `pulumi:"status"`
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type string `pulumi:"type"`
+}
+
+// GoogleCloudRunV1ConditionResponseInput is an input type that accepts GoogleCloudRunV1ConditionResponseArgs and GoogleCloudRunV1ConditionResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV1ConditionResponseInput` via:
+//
+//          GoogleCloudRunV1ConditionResponseArgs{...}
+type GoogleCloudRunV1ConditionResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV1ConditionResponseOutput() GoogleCloudRunV1ConditionResponseOutput
+	ToGoogleCloudRunV1ConditionResponseOutputWithContext(context.Context) GoogleCloudRunV1ConditionResponseOutput
+}
+
+// Condition defines a generic condition for a Resource
+type GoogleCloudRunV1ConditionResponseArgs struct {
+	// Optional. Last time the condition transitioned from one status to another.
+	LastTransitionTime pulumi.StringInput `pulumi:"lastTransitionTime"`
+	// Optional. Human readable message indicating details about the current status.
+	Message pulumi.StringInput `pulumi:"message"`
+	// Optional. One-word CamelCase reason for the condition's last transition.
+	Reason pulumi.StringInput `pulumi:"reason"`
+	// Optional. How to interpret failures of this condition, one of Error, Warning, Info
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// Status of the condition, one of True, False, Unknown.
+	Status pulumi.StringInput `pulumi:"status"`
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GoogleCloudRunV1ConditionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV1ConditionResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudRunV1ConditionResponseArgs) ToGoogleCloudRunV1ConditionResponseOutput() GoogleCloudRunV1ConditionResponseOutput {
+	return i.ToGoogleCloudRunV1ConditionResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV1ConditionResponseArgs) ToGoogleCloudRunV1ConditionResponseOutputWithContext(ctx context.Context) GoogleCloudRunV1ConditionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV1ConditionResponseOutput)
+}
+
+// GoogleCloudRunV1ConditionResponseArrayInput is an input type that accepts GoogleCloudRunV1ConditionResponseArray and GoogleCloudRunV1ConditionResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV1ConditionResponseArrayInput` via:
+//
+//          GoogleCloudRunV1ConditionResponseArray{ GoogleCloudRunV1ConditionResponseArgs{...} }
+type GoogleCloudRunV1ConditionResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV1ConditionResponseArrayOutput() GoogleCloudRunV1ConditionResponseArrayOutput
+	ToGoogleCloudRunV1ConditionResponseArrayOutputWithContext(context.Context) GoogleCloudRunV1ConditionResponseArrayOutput
+}
+
+type GoogleCloudRunV1ConditionResponseArray []GoogleCloudRunV1ConditionResponseInput
+
+func (GoogleCloudRunV1ConditionResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRunV1ConditionResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudRunV1ConditionResponseArray) ToGoogleCloudRunV1ConditionResponseArrayOutput() GoogleCloudRunV1ConditionResponseArrayOutput {
+	return i.ToGoogleCloudRunV1ConditionResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV1ConditionResponseArray) ToGoogleCloudRunV1ConditionResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunV1ConditionResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV1ConditionResponseArrayOutput)
+}
+
+// Condition defines a generic condition for a Resource
+type GoogleCloudRunV1ConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV1ConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV1ConditionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV1ConditionResponseOutput) ToGoogleCloudRunV1ConditionResponseOutput() GoogleCloudRunV1ConditionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRunV1ConditionResponseOutput) ToGoogleCloudRunV1ConditionResponseOutputWithContext(ctx context.Context) GoogleCloudRunV1ConditionResponseOutput {
+	return o
+}
+
+// Optional. Last time the condition transitioned from one status to another.
+func (o GoogleCloudRunV1ConditionResponseOutput) LastTransitionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV1ConditionResponse) string { return v.LastTransitionTime }).(pulumi.StringOutput)
+}
+
+// Optional. Human readable message indicating details about the current status.
+func (o GoogleCloudRunV1ConditionResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV1ConditionResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Optional. One-word CamelCase reason for the condition's last transition.
+func (o GoogleCloudRunV1ConditionResponseOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV1ConditionResponse) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+// Optional. How to interpret failures of this condition, one of Error, Warning, Info
+func (o GoogleCloudRunV1ConditionResponseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV1ConditionResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Status of the condition, one of True, False, Unknown.
+func (o GoogleCloudRunV1ConditionResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV1ConditionResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+func (o GoogleCloudRunV1ConditionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV1ConditionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GoogleCloudRunV1ConditionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV1ConditionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRunV1ConditionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV1ConditionResponseArrayOutput) ToGoogleCloudRunV1ConditionResponseArrayOutput() GoogleCloudRunV1ConditionResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRunV1ConditionResponseArrayOutput) ToGoogleCloudRunV1ConditionResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRunV1ConditionResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRunV1ConditionResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV1ConditionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRunV1ConditionResponse {
+		return vs[0].([]GoogleCloudRunV1ConditionResponse)[vs[1].(int)]
+	}).(GoogleCloudRunV1ConditionResponseOutput)
 }
 
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGetAction describes an action based on HTTP Get requests.
@@ -2811,6 +4827,88 @@ func (o HTTPGetActionPtrOutput) Scheme() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGetAction describes an action based on HTTP Get requests.
+type HTTPGetActionResponse struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	Host string `pulumi:"host"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Custom headers to set in the request. HTTP allows repeated headers.
+	HttpHeaders []HTTPHeaderResponse `pulumi:"httpHeaders"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path to access on the HTTP server.
+	Path string `pulumi:"path"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Scheme to use for connecting to the host. Defaults to HTTP.
+	Scheme string `pulumi:"scheme"`
+}
+
+// HTTPGetActionResponseInput is an input type that accepts HTTPGetActionResponseArgs and HTTPGetActionResponseOutput values.
+// You can construct a concrete instance of `HTTPGetActionResponseInput` via:
+//
+//          HTTPGetActionResponseArgs{...}
+type HTTPGetActionResponseInput interface {
+	pulumi.Input
+
+	ToHTTPGetActionResponseOutput() HTTPGetActionResponseOutput
+	ToHTTPGetActionResponseOutputWithContext(context.Context) HTTPGetActionResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGetAction describes an action based on HTTP Get requests.
+type HTTPGetActionResponseArgs struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+	Host pulumi.StringInput `pulumi:"host"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Custom headers to set in the request. HTTP allows repeated headers.
+	HttpHeaders HTTPHeaderResponseArrayInput `pulumi:"httpHeaders"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path to access on the HTTP server.
+	Path pulumi.StringInput `pulumi:"path"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Scheme to use for connecting to the host. Defaults to HTTP.
+	Scheme pulumi.StringInput `pulumi:"scheme"`
+}
+
+func (HTTPGetActionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HTTPGetActionResponse)(nil)).Elem()
+}
+
+func (i HTTPGetActionResponseArgs) ToHTTPGetActionResponseOutput() HTTPGetActionResponseOutput {
+	return i.ToHTTPGetActionResponseOutputWithContext(context.Background())
+}
+
+func (i HTTPGetActionResponseArgs) ToHTTPGetActionResponseOutputWithContext(ctx context.Context) HTTPGetActionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HTTPGetActionResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGetAction describes an action based on HTTP Get requests.
+type HTTPGetActionResponseOutput struct{ *pulumi.OutputState }
+
+func (HTTPGetActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HTTPGetActionResponse)(nil)).Elem()
+}
+
+func (o HTTPGetActionResponseOutput) ToHTTPGetActionResponseOutput() HTTPGetActionResponseOutput {
+	return o
+}
+
+func (o HTTPGetActionResponseOutput) ToHTTPGetActionResponseOutputWithContext(ctx context.Context) HTTPGetActionResponseOutput {
+	return o
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+func (o HTTPGetActionResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v HTTPGetActionResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Custom headers to set in the request. HTTP allows repeated headers.
+func (o HTTPGetActionResponseOutput) HttpHeaders() HTTPHeaderResponseArrayOutput {
+	return o.ApplyT(func(v HTTPGetActionResponse) []HTTPHeaderResponse { return v.HttpHeaders }).(HTTPHeaderResponseArrayOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path to access on the HTTP server.
+func (o HTTPGetActionResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v HTTPGetActionResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Scheme to use for connecting to the host. Defaults to HTTP.
+func (o HTTPGetActionResponseOutput) Scheme() pulumi.StringOutput {
+	return o.ApplyT(func(v HTTPGetActionResponse) string { return v.Scheme }).(pulumi.StringOutput)
+}
+
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPHeader describes a custom header to be used in HTTP probes
 type HTTPHeader struct {
 	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field name
@@ -2918,6 +5016,115 @@ func (o HTTPHeaderArrayOutput) Index(i pulumi.IntInput) HTTPHeaderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HTTPHeader {
 		return vs[0].([]HTTPHeader)[vs[1].(int)]
 	}).(HTTPHeaderOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPHeader describes a custom header to be used in HTTP probes
+type HTTPHeaderResponse struct {
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field name
+	Name string `pulumi:"name"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field value
+	Value string `pulumi:"value"`
+}
+
+// HTTPHeaderResponseInput is an input type that accepts HTTPHeaderResponseArgs and HTTPHeaderResponseOutput values.
+// You can construct a concrete instance of `HTTPHeaderResponseInput` via:
+//
+//          HTTPHeaderResponseArgs{...}
+type HTTPHeaderResponseInput interface {
+	pulumi.Input
+
+	ToHTTPHeaderResponseOutput() HTTPHeaderResponseOutput
+	ToHTTPHeaderResponseOutputWithContext(context.Context) HTTPHeaderResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPHeader describes a custom header to be used in HTTP probes
+type HTTPHeaderResponseArgs struct {
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (HTTPHeaderResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HTTPHeaderResponse)(nil)).Elem()
+}
+
+func (i HTTPHeaderResponseArgs) ToHTTPHeaderResponseOutput() HTTPHeaderResponseOutput {
+	return i.ToHTTPHeaderResponseOutputWithContext(context.Background())
+}
+
+func (i HTTPHeaderResponseArgs) ToHTTPHeaderResponseOutputWithContext(ctx context.Context) HTTPHeaderResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HTTPHeaderResponseOutput)
+}
+
+// HTTPHeaderResponseArrayInput is an input type that accepts HTTPHeaderResponseArray and HTTPHeaderResponseArrayOutput values.
+// You can construct a concrete instance of `HTTPHeaderResponseArrayInput` via:
+//
+//          HTTPHeaderResponseArray{ HTTPHeaderResponseArgs{...} }
+type HTTPHeaderResponseArrayInput interface {
+	pulumi.Input
+
+	ToHTTPHeaderResponseArrayOutput() HTTPHeaderResponseArrayOutput
+	ToHTTPHeaderResponseArrayOutputWithContext(context.Context) HTTPHeaderResponseArrayOutput
+}
+
+type HTTPHeaderResponseArray []HTTPHeaderResponseInput
+
+func (HTTPHeaderResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HTTPHeaderResponse)(nil)).Elem()
+}
+
+func (i HTTPHeaderResponseArray) ToHTTPHeaderResponseArrayOutput() HTTPHeaderResponseArrayOutput {
+	return i.ToHTTPHeaderResponseArrayOutputWithContext(context.Background())
+}
+
+func (i HTTPHeaderResponseArray) ToHTTPHeaderResponseArrayOutputWithContext(ctx context.Context) HTTPHeaderResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HTTPHeaderResponseArrayOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPHeader describes a custom header to be used in HTTP probes
+type HTTPHeaderResponseOutput struct{ *pulumi.OutputState }
+
+func (HTTPHeaderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HTTPHeaderResponse)(nil)).Elem()
+}
+
+func (o HTTPHeaderResponseOutput) ToHTTPHeaderResponseOutput() HTTPHeaderResponseOutput {
+	return o
+}
+
+func (o HTTPHeaderResponseOutput) ToHTTPHeaderResponseOutputWithContext(ctx context.Context) HTTPHeaderResponseOutput {
+	return o
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field name
+func (o HTTPHeaderResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v HTTPHeaderResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field value
+func (o HTTPHeaderResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v HTTPHeaderResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type HTTPHeaderResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HTTPHeaderResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HTTPHeaderResponse)(nil)).Elem()
+}
+
+func (o HTTPHeaderResponseArrayOutput) ToHTTPHeaderResponseArrayOutput() HTTPHeaderResponseArrayOutput {
+	return o
+}
+
+func (o HTTPHeaderResponseArrayOutput) ToHTTPHeaderResponseArrayOutputWithContext(ctx context.Context) HTTPHeaderResponseArrayOutput {
+	return o
+}
+
+func (o HTTPHeaderResponseArrayOutput) Index(i pulumi.IntInput) HTTPHeaderResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HTTPHeaderResponse {
+		return vs[0].([]HTTPHeaderResponse)[vs[1].(int)]
+	}).(HTTPHeaderResponseOutput)
 }
 
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
@@ -3036,6 +5243,124 @@ func (o KeyToPathArrayOutput) Index(i pulumi.IntInput) KeyToPathOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyToPath {
 		return vs[0].([]KeyToPath)[vs[1].(int)]
 	}).(KeyToPathOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
+type KeyToPathResponse struct {
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to project.
+	Key string `pulumi:"key"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	Mode int `pulumi:"mode"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+	Path string `pulumi:"path"`
+}
+
+// KeyToPathResponseInput is an input type that accepts KeyToPathResponseArgs and KeyToPathResponseOutput values.
+// You can construct a concrete instance of `KeyToPathResponseInput` via:
+//
+//          KeyToPathResponseArgs{...}
+type KeyToPathResponseInput interface {
+	pulumi.Input
+
+	ToKeyToPathResponseOutput() KeyToPathResponseOutput
+	ToKeyToPathResponseOutputWithContext(context.Context) KeyToPathResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
+type KeyToPathResponseArgs struct {
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to project.
+	Key pulumi.StringInput `pulumi:"key"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+	Mode pulumi.IntInput `pulumi:"mode"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (KeyToPathResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyToPathResponse)(nil)).Elem()
+}
+
+func (i KeyToPathResponseArgs) ToKeyToPathResponseOutput() KeyToPathResponseOutput {
+	return i.ToKeyToPathResponseOutputWithContext(context.Background())
+}
+
+func (i KeyToPathResponseArgs) ToKeyToPathResponseOutputWithContext(ctx context.Context) KeyToPathResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyToPathResponseOutput)
+}
+
+// KeyToPathResponseArrayInput is an input type that accepts KeyToPathResponseArray and KeyToPathResponseArrayOutput values.
+// You can construct a concrete instance of `KeyToPathResponseArrayInput` via:
+//
+//          KeyToPathResponseArray{ KeyToPathResponseArgs{...} }
+type KeyToPathResponseArrayInput interface {
+	pulumi.Input
+
+	ToKeyToPathResponseArrayOutput() KeyToPathResponseArrayOutput
+	ToKeyToPathResponseArrayOutputWithContext(context.Context) KeyToPathResponseArrayOutput
+}
+
+type KeyToPathResponseArray []KeyToPathResponseInput
+
+func (KeyToPathResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeyToPathResponse)(nil)).Elem()
+}
+
+func (i KeyToPathResponseArray) ToKeyToPathResponseArrayOutput() KeyToPathResponseArrayOutput {
+	return i.ToKeyToPathResponseArrayOutputWithContext(context.Background())
+}
+
+func (i KeyToPathResponseArray) ToKeyToPathResponseArrayOutputWithContext(ctx context.Context) KeyToPathResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyToPathResponseArrayOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
+type KeyToPathResponseOutput struct{ *pulumi.OutputState }
+
+func (KeyToPathResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyToPathResponse)(nil)).Elem()
+}
+
+func (o KeyToPathResponseOutput) ToKeyToPathResponseOutput() KeyToPathResponseOutput {
+	return o
+}
+
+func (o KeyToPathResponseOutput) ToKeyToPathResponseOutputWithContext(ctx context.Context) KeyToPathResponseOutput {
+	return o
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to project.
+func (o KeyToPathResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyToPathResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+func (o KeyToPathResponseOutput) Mode() pulumi.IntOutput {
+	return o.ApplyT(func(v KeyToPathResponse) int { return v.Mode }).(pulumi.IntOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+func (o KeyToPathResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyToPathResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type KeyToPathResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (KeyToPathResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeyToPathResponse)(nil)).Elem()
+}
+
+func (o KeyToPathResponseArrayOutput) ToKeyToPathResponseArrayOutput() KeyToPathResponseArrayOutput {
+	return o
+}
+
+func (o KeyToPathResponseArrayOutput) ToKeyToPathResponseArrayOutputWithContext(ctx context.Context) KeyToPathResponseArrayOutput {
+	return o
+}
+
+func (o KeyToPathResponseArrayOutput) Index(i pulumi.IntInput) KeyToPathResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyToPathResponse {
+		return vs[0].([]KeyToPathResponse)[vs[1].(int)]
+	}).(KeyToPathResponseOutput)
 }
 
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
@@ -3170,6 +5495,61 @@ func (o LocalObjectReferencePtrOutput) Name() pulumi.StringPtrOutput {
 		}
 		return v.Name
 	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+type LocalObjectReferenceResponse struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	Name string `pulumi:"name"`
+}
+
+// LocalObjectReferenceResponseInput is an input type that accepts LocalObjectReferenceResponseArgs and LocalObjectReferenceResponseOutput values.
+// You can construct a concrete instance of `LocalObjectReferenceResponseInput` via:
+//
+//          LocalObjectReferenceResponseArgs{...}
+type LocalObjectReferenceResponseInput interface {
+	pulumi.Input
+
+	ToLocalObjectReferenceResponseOutput() LocalObjectReferenceResponseOutput
+	ToLocalObjectReferenceResponseOutputWithContext(context.Context) LocalObjectReferenceResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+type LocalObjectReferenceResponseArgs struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LocalObjectReferenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalObjectReferenceResponse)(nil)).Elem()
+}
+
+func (i LocalObjectReferenceResponseArgs) ToLocalObjectReferenceResponseOutput() LocalObjectReferenceResponseOutput {
+	return i.ToLocalObjectReferenceResponseOutputWithContext(context.Background())
+}
+
+func (i LocalObjectReferenceResponseArgs) ToLocalObjectReferenceResponseOutputWithContext(ctx context.Context) LocalObjectReferenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalObjectReferenceResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+type LocalObjectReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (LocalObjectReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalObjectReferenceResponse)(nil)).Elem()
+}
+
+func (o LocalObjectReferenceResponseOutput) ToLocalObjectReferenceResponseOutput() LocalObjectReferenceResponseOutput {
+	return o
+}
+
+func (o LocalObjectReferenceResponseOutput) ToLocalObjectReferenceResponseOutputWithContext(ctx context.Context) LocalObjectReferenceResponseOutput {
+	return o
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+func (o LocalObjectReferenceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LocalObjectReferenceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
@@ -3572,6 +5952,406 @@ func (o ObjectMetaPtrOutput) Uid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
+type ObjectMetaResponse struct {
+	// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+	Annotations map[string]string `pulumi:"annotations"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
+	ClusterName string `pulumi:"clusterName"`
+	// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	CreationTimestamp string `pulumi:"creationTimestamp"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+	DeletionGracePeriodSeconds int `pulumi:"deletionGracePeriodSeconds"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	DeletionTimestamp string `pulumi:"deletionTimestamp"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
+	Finalizers []string `pulumi:"finalizers"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
+	GenerateName string `pulumi:"generateName"`
+	// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
+	Generation int `pulumi:"generation"`
+	// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
+	Labels map[string]string `pulumi:"labels"`
+	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
+	Name string `pulumi:"name"`
+	// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
+	Namespace string `pulumi:"namespace"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
+	OwnerReferences []OwnerReferenceResponse `pulumi:"ownerReferences"`
+	// (Optional) An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+	ResourceVersion string `pulumi:"resourceVersion"`
+	// (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
+	SelfLink string `pulumi:"selfLink"`
+	// (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+	Uid string `pulumi:"uid"`
+}
+
+// ObjectMetaResponseInput is an input type that accepts ObjectMetaResponseArgs and ObjectMetaResponseOutput values.
+// You can construct a concrete instance of `ObjectMetaResponseInput` via:
+//
+//          ObjectMetaResponseArgs{...}
+type ObjectMetaResponseInput interface {
+	pulumi.Input
+
+	ToObjectMetaResponseOutput() ObjectMetaResponseOutput
+	ToObjectMetaResponseOutputWithContext(context.Context) ObjectMetaResponseOutput
+}
+
+// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
+type ObjectMetaResponseArgs struct {
+	// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+	DeletionGracePeriodSeconds pulumi.IntInput `pulumi:"deletionGracePeriodSeconds"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+	DeletionTimestamp pulumi.StringInput `pulumi:"deletionTimestamp"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
+	Finalizers pulumi.StringArrayInput `pulumi:"finalizers"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
+	GenerateName pulumi.StringInput `pulumi:"generateName"`
+	// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
+	Generation pulumi.IntInput `pulumi:"generation"`
+	// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
+	Name pulumi.StringInput `pulumi:"name"`
+	// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
+	OwnerReferences OwnerReferenceResponseArrayInput `pulumi:"ownerReferences"`
+	// (Optional) An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+	ResourceVersion pulumi.StringInput `pulumi:"resourceVersion"`
+	// (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+	Uid pulumi.StringInput `pulumi:"uid"`
+}
+
+func (ObjectMetaResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectMetaResponse)(nil)).Elem()
+}
+
+func (i ObjectMetaResponseArgs) ToObjectMetaResponseOutput() ObjectMetaResponseOutput {
+	return i.ToObjectMetaResponseOutputWithContext(context.Background())
+}
+
+func (i ObjectMetaResponseArgs) ToObjectMetaResponseOutputWithContext(ctx context.Context) ObjectMetaResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaResponseOutput)
+}
+
+func (i ObjectMetaResponseArgs) ToObjectMetaResponsePtrOutput() ObjectMetaResponsePtrOutput {
+	return i.ToObjectMetaResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ObjectMetaResponseArgs) ToObjectMetaResponsePtrOutputWithContext(ctx context.Context) ObjectMetaResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaResponseOutput).ToObjectMetaResponsePtrOutputWithContext(ctx)
+}
+
+// ObjectMetaResponsePtrInput is an input type that accepts ObjectMetaResponseArgs, ObjectMetaResponsePtr and ObjectMetaResponsePtrOutput values.
+// You can construct a concrete instance of `ObjectMetaResponsePtrInput` via:
+//
+//          ObjectMetaResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ObjectMetaResponsePtrInput interface {
+	pulumi.Input
+
+	ToObjectMetaResponsePtrOutput() ObjectMetaResponsePtrOutput
+	ToObjectMetaResponsePtrOutputWithContext(context.Context) ObjectMetaResponsePtrOutput
+}
+
+type objectMetaResponsePtrType ObjectMetaResponseArgs
+
+func ObjectMetaResponsePtr(v *ObjectMetaResponseArgs) ObjectMetaResponsePtrInput {
+	return (*objectMetaResponsePtrType)(v)
+}
+
+func (*objectMetaResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectMetaResponse)(nil)).Elem()
+}
+
+func (i *objectMetaResponsePtrType) ToObjectMetaResponsePtrOutput() ObjectMetaResponsePtrOutput {
+	return i.ToObjectMetaResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *objectMetaResponsePtrType) ToObjectMetaResponsePtrOutputWithContext(ctx context.Context) ObjectMetaResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectMetaResponsePtrOutput)
+}
+
+// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
+type ObjectMetaResponseOutput struct{ *pulumi.OutputState }
+
+func (ObjectMetaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectMetaResponse)(nil)).Elem()
+}
+
+func (o ObjectMetaResponseOutput) ToObjectMetaResponseOutput() ObjectMetaResponseOutput {
+	return o
+}
+
+func (o ObjectMetaResponseOutput) ToObjectMetaResponseOutputWithContext(ctx context.Context) ObjectMetaResponseOutput {
+	return o
+}
+
+func (o ObjectMetaResponseOutput) ToObjectMetaResponsePtrOutput() ObjectMetaResponsePtrOutput {
+	return o.ToObjectMetaResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ObjectMetaResponseOutput) ToObjectMetaResponsePtrOutputWithContext(ctx context.Context) ObjectMetaResponsePtrOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) *ObjectMetaResponse {
+		return &v
+	}).(ObjectMetaResponsePtrOutput)
+}
+
+// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+func (o ObjectMetaResponseOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
+func (o ObjectMetaResponseOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+func (o ObjectMetaResponseOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+func (o ObjectMetaResponseOutput) DeletionGracePeriodSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) int { return v.DeletionGracePeriodSeconds }).(pulumi.IntOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+func (o ObjectMetaResponseOutput) DeletionTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) string { return v.DeletionTimestamp }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
+func (o ObjectMetaResponseOutput) Finalizers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) []string { return v.Finalizers }).(pulumi.StringArrayOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
+func (o ObjectMetaResponseOutput) GenerateName() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) string { return v.GenerateName }).(pulumi.StringOutput)
+}
+
+// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
+func (o ObjectMetaResponseOutput) Generation() pulumi.IntOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) int { return v.Generation }).(pulumi.IntOutput)
+}
+
+// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
+func (o ObjectMetaResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
+func (o ObjectMetaResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
+func (o ObjectMetaResponseOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
+func (o ObjectMetaResponseOutput) OwnerReferences() OwnerReferenceResponseArrayOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) []OwnerReferenceResponse { return v.OwnerReferences }).(OwnerReferenceResponseArrayOutput)
+}
+
+// (Optional) An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+func (o ObjectMetaResponseOutput) ResourceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) string { return v.ResourceVersion }).(pulumi.StringOutput)
+}
+
+// (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
+func (o ObjectMetaResponseOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+func (o ObjectMetaResponseOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v ObjectMetaResponse) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+type ObjectMetaResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ObjectMetaResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectMetaResponse)(nil)).Elem()
+}
+
+func (o ObjectMetaResponsePtrOutput) ToObjectMetaResponsePtrOutput() ObjectMetaResponsePtrOutput {
+	return o
+}
+
+func (o ObjectMetaResponsePtrOutput) ToObjectMetaResponsePtrOutputWithContext(ctx context.Context) ObjectMetaResponsePtrOutput {
+	return o
+}
+
+func (o ObjectMetaResponsePtrOutput) Elem() ObjectMetaResponseOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) ObjectMetaResponse { return *v }).(ObjectMetaResponseOutput)
+}
+
+// (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations
+func (o ObjectMetaResponsePtrOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Annotations
+	}).(pulumi.StringMapOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
+func (o ObjectMetaResponsePtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+func (o ObjectMetaResponsePtrOutput) CreationTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreationTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+func (o ObjectMetaResponsePtrOutput) DeletionGracePeriodSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DeletionGracePeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+func (o ObjectMetaResponsePtrOutput) DeletionTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeletionTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
+func (o ObjectMetaResponsePtrOutput) Finalizers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Finalizers
+	}).(pulumi.StringArrayOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
+func (o ObjectMetaResponsePtrOutput) GenerateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GenerateName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
+func (o ObjectMetaResponsePtrOutput) Generation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Generation
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: http://kubernetes.io/docs/user-guide/labels
+func (o ObjectMetaResponsePtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
+func (o ObjectMetaResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
+func (o ObjectMetaResponsePtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
+func (o ObjectMetaResponsePtrOutput) OwnerReferences() OwnerReferenceResponseArrayOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) []OwnerReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.OwnerReferences
+	}).(OwnerReferenceResponseArrayOutput)
+}
+
+// (Optional) An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+func (o ObjectMetaResponsePtrOutput) ResourceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
+func (o ObjectMetaResponsePtrOutput) SelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SelfLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+func (o ObjectMetaResponsePtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObjectMetaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uid
+	}).(pulumi.StringPtrOutput)
+}
+
 // OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.
 type OwnerReference struct {
 	// API version of the referent.
@@ -3715,6 +6495,151 @@ func (o OwnerReferenceArrayOutput) Index(i pulumi.IntInput) OwnerReferenceOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OwnerReference {
 		return vs[0].([]OwnerReference)[vs[1].(int)]
 	}).(OwnerReferenceOutput)
+}
+
+// OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.
+type OwnerReferenceResponse struct {
+	// API version of the referent.
+	ApiVersion string `pulumi:"apiVersion"`
+	// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned. +optional
+	BlockOwnerDeletion bool `pulumi:"blockOwnerDeletion"`
+	// If true, this reference points to the managing controller. +optional
+	Controller bool `pulumi:"controller"`
+	// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind string `pulumi:"kind"`
+	// Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names
+	Name string `pulumi:"name"`
+	// UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+	Uid string `pulumi:"uid"`
+}
+
+// OwnerReferenceResponseInput is an input type that accepts OwnerReferenceResponseArgs and OwnerReferenceResponseOutput values.
+// You can construct a concrete instance of `OwnerReferenceResponseInput` via:
+//
+//          OwnerReferenceResponseArgs{...}
+type OwnerReferenceResponseInput interface {
+	pulumi.Input
+
+	ToOwnerReferenceResponseOutput() OwnerReferenceResponseOutput
+	ToOwnerReferenceResponseOutputWithContext(context.Context) OwnerReferenceResponseOutput
+}
+
+// OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.
+type OwnerReferenceResponseArgs struct {
+	// API version of the referent.
+	ApiVersion pulumi.StringInput `pulumi:"apiVersion"`
+	// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned. +optional
+	BlockOwnerDeletion pulumi.BoolInput `pulumi:"blockOwnerDeletion"`
+	// If true, this reference points to the managing controller. +optional
+	Controller pulumi.BoolInput `pulumi:"controller"`
+	// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names
+	Name pulumi.StringInput `pulumi:"name"`
+	// UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+	Uid pulumi.StringInput `pulumi:"uid"`
+}
+
+func (OwnerReferenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OwnerReferenceResponse)(nil)).Elem()
+}
+
+func (i OwnerReferenceResponseArgs) ToOwnerReferenceResponseOutput() OwnerReferenceResponseOutput {
+	return i.ToOwnerReferenceResponseOutputWithContext(context.Background())
+}
+
+func (i OwnerReferenceResponseArgs) ToOwnerReferenceResponseOutputWithContext(ctx context.Context) OwnerReferenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OwnerReferenceResponseOutput)
+}
+
+// OwnerReferenceResponseArrayInput is an input type that accepts OwnerReferenceResponseArray and OwnerReferenceResponseArrayOutput values.
+// You can construct a concrete instance of `OwnerReferenceResponseArrayInput` via:
+//
+//          OwnerReferenceResponseArray{ OwnerReferenceResponseArgs{...} }
+type OwnerReferenceResponseArrayInput interface {
+	pulumi.Input
+
+	ToOwnerReferenceResponseArrayOutput() OwnerReferenceResponseArrayOutput
+	ToOwnerReferenceResponseArrayOutputWithContext(context.Context) OwnerReferenceResponseArrayOutput
+}
+
+type OwnerReferenceResponseArray []OwnerReferenceResponseInput
+
+func (OwnerReferenceResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OwnerReferenceResponse)(nil)).Elem()
+}
+
+func (i OwnerReferenceResponseArray) ToOwnerReferenceResponseArrayOutput() OwnerReferenceResponseArrayOutput {
+	return i.ToOwnerReferenceResponseArrayOutputWithContext(context.Background())
+}
+
+func (i OwnerReferenceResponseArray) ToOwnerReferenceResponseArrayOutputWithContext(ctx context.Context) OwnerReferenceResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OwnerReferenceResponseArrayOutput)
+}
+
+// OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.
+type OwnerReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (OwnerReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OwnerReferenceResponse)(nil)).Elem()
+}
+
+func (o OwnerReferenceResponseOutput) ToOwnerReferenceResponseOutput() OwnerReferenceResponseOutput {
+	return o
+}
+
+func (o OwnerReferenceResponseOutput) ToOwnerReferenceResponseOutputWithContext(ctx context.Context) OwnerReferenceResponseOutput {
+	return o
+}
+
+// API version of the referent.
+func (o OwnerReferenceResponseOutput) ApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v OwnerReferenceResponse) string { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned. +optional
+func (o OwnerReferenceResponseOutput) BlockOwnerDeletion() pulumi.BoolOutput {
+	return o.ApplyT(func(v OwnerReferenceResponse) bool { return v.BlockOwnerDeletion }).(pulumi.BoolOutput)
+}
+
+// If true, this reference points to the managing controller. +optional
+func (o OwnerReferenceResponseOutput) Controller() pulumi.BoolOutput {
+	return o.ApplyT(func(v OwnerReferenceResponse) bool { return v.Controller }).(pulumi.BoolOutput)
+}
+
+// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+func (o OwnerReferenceResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v OwnerReferenceResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names
+func (o OwnerReferenceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OwnerReferenceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+func (o OwnerReferenceResponseOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v OwnerReferenceResponse) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+type OwnerReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OwnerReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OwnerReferenceResponse)(nil)).Elem()
+}
+
+func (o OwnerReferenceResponseArrayOutput) ToOwnerReferenceResponseArrayOutput() OwnerReferenceResponseArrayOutput {
+	return o
+}
+
+func (o OwnerReferenceResponseArrayOutput) ToOwnerReferenceResponseArrayOutputWithContext(ctx context.Context) OwnerReferenceResponseArrayOutput {
+	return o
+}
+
+func (o OwnerReferenceResponseArrayOutput) Index(i pulumi.IntInput) OwnerReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OwnerReferenceResponse {
+		return vs[0].([]OwnerReferenceResponse)[vs[1].(int)]
+	}).(OwnerReferenceResponseOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
@@ -4175,6 +7100,124 @@ func (o ProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+type ProbeResponse struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+	Exec ExecActionResponse `pulumi:"exec"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold int `pulumi:"failureThreshold"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+	HttpGet HTTPGetActionResponse `pulumi:"httpGet"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	InitialDelaySeconds int `pulumi:"initialDelaySeconds"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+	PeriodSeconds int `pulumi:"periodSeconds"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+	SuccessThreshold int `pulumi:"successThreshold"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+	TcpSocket TCPSocketActionResponse `pulumi:"tcpSocket"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	TimeoutSeconds int `pulumi:"timeoutSeconds"`
+}
+
+// ProbeResponseInput is an input type that accepts ProbeResponseArgs and ProbeResponseOutput values.
+// You can construct a concrete instance of `ProbeResponseInput` via:
+//
+//          ProbeResponseArgs{...}
+type ProbeResponseInput interface {
+	pulumi.Input
+
+	ToProbeResponseOutput() ProbeResponseOutput
+	ToProbeResponseOutputWithContext(context.Context) ProbeResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+type ProbeResponseArgs struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+	Exec ExecActionResponseInput `pulumi:"exec"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold pulumi.IntInput `pulumi:"failureThreshold"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+	HttpGet HTTPGetActionResponseInput `pulumi:"httpGet"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	InitialDelaySeconds pulumi.IntInput `pulumi:"initialDelaySeconds"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+	PeriodSeconds pulumi.IntInput `pulumi:"periodSeconds"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+	SuccessThreshold pulumi.IntInput `pulumi:"successThreshold"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+	TcpSocket TCPSocketActionResponseInput `pulumi:"tcpSocket"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	TimeoutSeconds pulumi.IntInput `pulumi:"timeoutSeconds"`
+}
+
+func (ProbeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProbeResponse)(nil)).Elem()
+}
+
+func (i ProbeResponseArgs) ToProbeResponseOutput() ProbeResponseOutput {
+	return i.ToProbeResponseOutputWithContext(context.Background())
+}
+
+func (i ProbeResponseArgs) ToProbeResponseOutputWithContext(ctx context.Context) ProbeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProbeResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+type ProbeResponseOutput struct{ *pulumi.OutputState }
+
+func (ProbeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProbeResponse)(nil)).Elem()
+}
+
+func (o ProbeResponseOutput) ToProbeResponseOutput() ProbeResponseOutput {
+	return o
+}
+
+func (o ProbeResponseOutput) ToProbeResponseOutputWithContext(ctx context.Context) ProbeResponseOutput {
+	return o
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+func (o ProbeResponseOutput) Exec() ExecActionResponseOutput {
+	return o.ApplyT(func(v ProbeResponse) ExecActionResponse { return v.Exec }).(ExecActionResponseOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+func (o ProbeResponseOutput) FailureThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v ProbeResponse) int { return v.FailureThreshold }).(pulumi.IntOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+func (o ProbeResponseOutput) HttpGet() HTTPGetActionResponseOutput {
+	return o.ApplyT(func(v ProbeResponse) HTTPGetActionResponse { return v.HttpGet }).(HTTPGetActionResponseOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+func (o ProbeResponseOutput) InitialDelaySeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v ProbeResponse) int { return v.InitialDelaySeconds }).(pulumi.IntOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+func (o ProbeResponseOutput) PeriodSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v ProbeResponse) int { return v.PeriodSeconds }).(pulumi.IntOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+func (o ProbeResponseOutput) SuccessThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v ProbeResponse) int { return v.SuccessThreshold }).(pulumi.IntOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+func (o ProbeResponseOutput) TcpSocket() TCPSocketActionResponseOutput {
+	return o.ApplyT(func(v ProbeResponse) TCPSocketActionResponse { return v.TcpSocket }).(TCPSocketActionResponseOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+func (o ProbeResponseOutput) TimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v ProbeResponse) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
+}
+
 // A DNS resource record.
 type ResourceRecord struct {
 	// Relative name of the object affected by this record. Only applicable for `CNAME` records. Example: 'www'.
@@ -4291,6 +7334,124 @@ func (o ResourceRecordArrayOutput) Index(i pulumi.IntInput) ResourceRecordOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceRecord {
 		return vs[0].([]ResourceRecord)[vs[1].(int)]
 	}).(ResourceRecordOutput)
+}
+
+// A DNS resource record.
+type ResourceRecordResponse struct {
+	// Relative name of the object affected by this record. Only applicable for `CNAME` records. Example: 'www'.
+	Name string `pulumi:"name"`
+	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+	Rrdata string `pulumi:"rrdata"`
+	// Resource record type. Example: `AAAA`.
+	Type string `pulumi:"type"`
+}
+
+// ResourceRecordResponseInput is an input type that accepts ResourceRecordResponseArgs and ResourceRecordResponseOutput values.
+// You can construct a concrete instance of `ResourceRecordResponseInput` via:
+//
+//          ResourceRecordResponseArgs{...}
+type ResourceRecordResponseInput interface {
+	pulumi.Input
+
+	ToResourceRecordResponseOutput() ResourceRecordResponseOutput
+	ToResourceRecordResponseOutputWithContext(context.Context) ResourceRecordResponseOutput
+}
+
+// A DNS resource record.
+type ResourceRecordResponseArgs struct {
+	// Relative name of the object affected by this record. Only applicable for `CNAME` records. Example: 'www'.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+	Rrdata pulumi.StringInput `pulumi:"rrdata"`
+	// Resource record type. Example: `AAAA`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ResourceRecordResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRecordResponse)(nil)).Elem()
+}
+
+func (i ResourceRecordResponseArgs) ToResourceRecordResponseOutput() ResourceRecordResponseOutput {
+	return i.ToResourceRecordResponseOutputWithContext(context.Background())
+}
+
+func (i ResourceRecordResponseArgs) ToResourceRecordResponseOutputWithContext(ctx context.Context) ResourceRecordResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordResponseOutput)
+}
+
+// ResourceRecordResponseArrayInput is an input type that accepts ResourceRecordResponseArray and ResourceRecordResponseArrayOutput values.
+// You can construct a concrete instance of `ResourceRecordResponseArrayInput` via:
+//
+//          ResourceRecordResponseArray{ ResourceRecordResponseArgs{...} }
+type ResourceRecordResponseArrayInput interface {
+	pulumi.Input
+
+	ToResourceRecordResponseArrayOutput() ResourceRecordResponseArrayOutput
+	ToResourceRecordResponseArrayOutputWithContext(context.Context) ResourceRecordResponseArrayOutput
+}
+
+type ResourceRecordResponseArray []ResourceRecordResponseInput
+
+func (ResourceRecordResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceRecordResponse)(nil)).Elem()
+}
+
+func (i ResourceRecordResponseArray) ToResourceRecordResponseArrayOutput() ResourceRecordResponseArrayOutput {
+	return i.ToResourceRecordResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ResourceRecordResponseArray) ToResourceRecordResponseArrayOutputWithContext(ctx context.Context) ResourceRecordResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordResponseArrayOutput)
+}
+
+// A DNS resource record.
+type ResourceRecordResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceRecordResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRecordResponse)(nil)).Elem()
+}
+
+func (o ResourceRecordResponseOutput) ToResourceRecordResponseOutput() ResourceRecordResponseOutput {
+	return o
+}
+
+func (o ResourceRecordResponseOutput) ToResourceRecordResponseOutputWithContext(ctx context.Context) ResourceRecordResponseOutput {
+	return o
+}
+
+// Relative name of the object affected by this record. Only applicable for `CNAME` records. Example: 'www'.
+func (o ResourceRecordResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRecordResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+func (o ResourceRecordResponseOutput) Rrdata() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRecordResponse) string { return v.Rrdata }).(pulumi.StringOutput)
+}
+
+// Resource record type. Example: `AAAA`.
+func (o ResourceRecordResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRecordResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ResourceRecordResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceRecordResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceRecordResponse)(nil)).Elem()
+}
+
+func (o ResourceRecordResponseArrayOutput) ToResourceRecordResponseArrayOutput() ResourceRecordResponseArrayOutput {
+	return o
+}
+
+func (o ResourceRecordResponseArrayOutput) ToResourceRecordResponseArrayOutputWithContext(ctx context.Context) ResourceRecordResponseArrayOutput {
+	return o
+}
+
+func (o ResourceRecordResponseArrayOutput) Index(i pulumi.IntInput) ResourceRecordResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceRecordResponse {
+		return vs[0].([]ResourceRecordResponse)[vs[1].(int)]
+	}).(ResourceRecordResponseOutput)
 }
 
 // ResourceRequirements describes the compute resource requirements.
@@ -4444,6 +7605,70 @@ func (o ResourceRequirementsPtrOutput) Requests() pulumi.StringMapOutput {
 		}
 		return v.Requests
 	}).(pulumi.StringMapOutput)
+}
+
+// ResourceRequirements describes the compute resource requirements.
+type ResourceRequirementsResponse struct {
+	// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Cloud Run for Anthos: supported Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	Limits map[string]string `pulumi:"limits"`
+	// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Cloud Run for Anthos: supported Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	Requests map[string]string `pulumi:"requests"`
+}
+
+// ResourceRequirementsResponseInput is an input type that accepts ResourceRequirementsResponseArgs and ResourceRequirementsResponseOutput values.
+// You can construct a concrete instance of `ResourceRequirementsResponseInput` via:
+//
+//          ResourceRequirementsResponseArgs{...}
+type ResourceRequirementsResponseInput interface {
+	pulumi.Input
+
+	ToResourceRequirementsResponseOutput() ResourceRequirementsResponseOutput
+	ToResourceRequirementsResponseOutputWithContext(context.Context) ResourceRequirementsResponseOutput
+}
+
+// ResourceRequirements describes the compute resource requirements.
+type ResourceRequirementsResponseArgs struct {
+	// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Cloud Run for Anthos: supported Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	Limits pulumi.StringMapInput `pulumi:"limits"`
+	// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Cloud Run for Anthos: supported Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	Requests pulumi.StringMapInput `pulumi:"requests"`
+}
+
+func (ResourceRequirementsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRequirementsResponse)(nil)).Elem()
+}
+
+func (i ResourceRequirementsResponseArgs) ToResourceRequirementsResponseOutput() ResourceRequirementsResponseOutput {
+	return i.ToResourceRequirementsResponseOutputWithContext(context.Background())
+}
+
+func (i ResourceRequirementsResponseArgs) ToResourceRequirementsResponseOutputWithContext(ctx context.Context) ResourceRequirementsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRequirementsResponseOutput)
+}
+
+// ResourceRequirements describes the compute resource requirements.
+type ResourceRequirementsResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceRequirementsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRequirementsResponse)(nil)).Elem()
+}
+
+func (o ResourceRequirementsResponseOutput) ToResourceRequirementsResponseOutput() ResourceRequirementsResponseOutput {
+	return o
+}
+
+func (o ResourceRequirementsResponseOutput) ToResourceRequirementsResponseOutputWithContext(ctx context.Context) ResourceRequirementsResponseOutput {
+	return o
+}
+
+// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. Cloud Run for Anthos: supported Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+func (o ResourceRequirementsResponseOutput) Limits() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceRequirementsResponse) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
+}
+
+// (Optional) Cloud Run fully managed: Only memory and CPU are supported. Note: The only supported values for CPU are '1' and '2'. Cloud Run for Anthos: supported Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+func (o ResourceRequirementsResponseOutput) Requests() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceRequirementsResponse) map[string]string { return v.Requests }).(pulumi.StringMapOutput)
 }
 
 // RevisionSpec holds the desired state of the Revision (from the client).
@@ -4652,6 +7877,212 @@ func (o RevisionSpecPtrOutput) Volumes() VolumeArrayOutput {
 	}).(VolumeArrayOutput)
 }
 
+// RevisionSpec holds the desired state of the Revision (from the client).
+type RevisionSpecResponse struct {
+	// (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+	ContainerConcurrency int `pulumi:"containerConcurrency"`
+	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+	Containers []ContainerResponse `pulumi:"containers"`
+	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+	ServiceAccountName string `pulumi:"serviceAccountName"`
+	// TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 900 seconds (15 minutes). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
+	TimeoutSeconds int              `pulumi:"timeoutSeconds"`
+	Volumes        []VolumeResponse `pulumi:"volumes"`
+}
+
+// RevisionSpecResponseInput is an input type that accepts RevisionSpecResponseArgs and RevisionSpecResponseOutput values.
+// You can construct a concrete instance of `RevisionSpecResponseInput` via:
+//
+//          RevisionSpecResponseArgs{...}
+type RevisionSpecResponseInput interface {
+	pulumi.Input
+
+	ToRevisionSpecResponseOutput() RevisionSpecResponseOutput
+	ToRevisionSpecResponseOutputWithContext(context.Context) RevisionSpecResponseOutput
+}
+
+// RevisionSpec holds the desired state of the Revision (from the client).
+type RevisionSpecResponseArgs struct {
+	// (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+	ContainerConcurrency pulumi.IntInput `pulumi:"containerConcurrency"`
+	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+	Containers ContainerResponseArrayInput `pulumi:"containers"`
+	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+	ServiceAccountName pulumi.StringInput `pulumi:"serviceAccountName"`
+	// TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 900 seconds (15 minutes). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
+	TimeoutSeconds pulumi.IntInput          `pulumi:"timeoutSeconds"`
+	Volumes        VolumeResponseArrayInput `pulumi:"volumes"`
+}
+
+func (RevisionSpecResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RevisionSpecResponse)(nil)).Elem()
+}
+
+func (i RevisionSpecResponseArgs) ToRevisionSpecResponseOutput() RevisionSpecResponseOutput {
+	return i.ToRevisionSpecResponseOutputWithContext(context.Background())
+}
+
+func (i RevisionSpecResponseArgs) ToRevisionSpecResponseOutputWithContext(ctx context.Context) RevisionSpecResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RevisionSpecResponseOutput)
+}
+
+func (i RevisionSpecResponseArgs) ToRevisionSpecResponsePtrOutput() RevisionSpecResponsePtrOutput {
+	return i.ToRevisionSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i RevisionSpecResponseArgs) ToRevisionSpecResponsePtrOutputWithContext(ctx context.Context) RevisionSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RevisionSpecResponseOutput).ToRevisionSpecResponsePtrOutputWithContext(ctx)
+}
+
+// RevisionSpecResponsePtrInput is an input type that accepts RevisionSpecResponseArgs, RevisionSpecResponsePtr and RevisionSpecResponsePtrOutput values.
+// You can construct a concrete instance of `RevisionSpecResponsePtrInput` via:
+//
+//          RevisionSpecResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type RevisionSpecResponsePtrInput interface {
+	pulumi.Input
+
+	ToRevisionSpecResponsePtrOutput() RevisionSpecResponsePtrOutput
+	ToRevisionSpecResponsePtrOutputWithContext(context.Context) RevisionSpecResponsePtrOutput
+}
+
+type revisionSpecResponsePtrType RevisionSpecResponseArgs
+
+func RevisionSpecResponsePtr(v *RevisionSpecResponseArgs) RevisionSpecResponsePtrInput {
+	return (*revisionSpecResponsePtrType)(v)
+}
+
+func (*revisionSpecResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RevisionSpecResponse)(nil)).Elem()
+}
+
+func (i *revisionSpecResponsePtrType) ToRevisionSpecResponsePtrOutput() RevisionSpecResponsePtrOutput {
+	return i.ToRevisionSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *revisionSpecResponsePtrType) ToRevisionSpecResponsePtrOutputWithContext(ctx context.Context) RevisionSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RevisionSpecResponsePtrOutput)
+}
+
+// RevisionSpec holds the desired state of the Revision (from the client).
+type RevisionSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (RevisionSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RevisionSpecResponse)(nil)).Elem()
+}
+
+func (o RevisionSpecResponseOutput) ToRevisionSpecResponseOutput() RevisionSpecResponseOutput {
+	return o
+}
+
+func (o RevisionSpecResponseOutput) ToRevisionSpecResponseOutputWithContext(ctx context.Context) RevisionSpecResponseOutput {
+	return o
+}
+
+func (o RevisionSpecResponseOutput) ToRevisionSpecResponsePtrOutput() RevisionSpecResponsePtrOutput {
+	return o.ToRevisionSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (o RevisionSpecResponseOutput) ToRevisionSpecResponsePtrOutputWithContext(ctx context.Context) RevisionSpecResponsePtrOutput {
+	return o.ApplyT(func(v RevisionSpecResponse) *RevisionSpecResponse {
+		return &v
+	}).(RevisionSpecResponsePtrOutput)
+}
+
+// (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+func (o RevisionSpecResponseOutput) ContainerConcurrency() pulumi.IntOutput {
+	return o.ApplyT(func(v RevisionSpecResponse) int { return v.ContainerConcurrency }).(pulumi.IntOutput)
+}
+
+// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+func (o RevisionSpecResponseOutput) Containers() ContainerResponseArrayOutput {
+	return o.ApplyT(func(v RevisionSpecResponse) []ContainerResponse { return v.Containers }).(ContainerResponseArrayOutput)
+}
+
+// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+func (o RevisionSpecResponseOutput) ServiceAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v RevisionSpecResponse) string { return v.ServiceAccountName }).(pulumi.StringOutput)
+}
+
+// TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 900 seconds (15 minutes). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
+func (o RevisionSpecResponseOutput) TimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v RevisionSpecResponse) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
+}
+
+func (o RevisionSpecResponseOutput) Volumes() VolumeResponseArrayOutput {
+	return o.ApplyT(func(v RevisionSpecResponse) []VolumeResponse { return v.Volumes }).(VolumeResponseArrayOutput)
+}
+
+type RevisionSpecResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RevisionSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RevisionSpecResponse)(nil)).Elem()
+}
+
+func (o RevisionSpecResponsePtrOutput) ToRevisionSpecResponsePtrOutput() RevisionSpecResponsePtrOutput {
+	return o
+}
+
+func (o RevisionSpecResponsePtrOutput) ToRevisionSpecResponsePtrOutputWithContext(ctx context.Context) RevisionSpecResponsePtrOutput {
+	return o
+}
+
+func (o RevisionSpecResponsePtrOutput) Elem() RevisionSpecResponseOutput {
+	return o.ApplyT(func(v *RevisionSpecResponse) RevisionSpecResponse { return *v }).(RevisionSpecResponseOutput)
+}
+
+// (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+func (o RevisionSpecResponsePtrOutput) ContainerConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RevisionSpecResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ContainerConcurrency
+	}).(pulumi.IntPtrOutput)
+}
+
+// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/master/docs/runtime-contract.md
+func (o RevisionSpecResponsePtrOutput) Containers() ContainerResponseArrayOutput {
+	return o.ApplyT(func(v *RevisionSpecResponse) []ContainerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Containers
+	}).(ContainerResponseArrayOutput)
+}
+
+// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+func (o RevisionSpecResponsePtrOutput) ServiceAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RevisionSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 900 seconds (15 minutes). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
+func (o RevisionSpecResponsePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RevisionSpecResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeoutSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o RevisionSpecResponsePtrOutput) Volumes() VolumeResponseArrayOutput {
+	return o.ApplyT(func(v *RevisionSpecResponse) []VolumeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(VolumeResponseArrayOutput)
+}
+
 // RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
 type RevisionTemplate struct {
 	// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all` and `private-ranges-only`.
@@ -4803,6 +8234,159 @@ func (o RevisionTemplatePtrOutput) Spec() RevisionSpecPtrOutput {
 		}
 		return v.Spec
 	}).(RevisionSpecPtrOutput)
+}
+
+// RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+type RevisionTemplateResponse struct {
+	// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all` and `private-ranges-only`.
+	Metadata ObjectMetaResponse `pulumi:"metadata"`
+	// RevisionSpec holds the desired state of the Revision (from the client).
+	Spec RevisionSpecResponse `pulumi:"spec"`
+}
+
+// RevisionTemplateResponseInput is an input type that accepts RevisionTemplateResponseArgs and RevisionTemplateResponseOutput values.
+// You can construct a concrete instance of `RevisionTemplateResponseInput` via:
+//
+//          RevisionTemplateResponseArgs{...}
+type RevisionTemplateResponseInput interface {
+	pulumi.Input
+
+	ToRevisionTemplateResponseOutput() RevisionTemplateResponseOutput
+	ToRevisionTemplateResponseOutputWithContext(context.Context) RevisionTemplateResponseOutput
+}
+
+// RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+type RevisionTemplateResponseArgs struct {
+	// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all` and `private-ranges-only`.
+	Metadata ObjectMetaResponseInput `pulumi:"metadata"`
+	// RevisionSpec holds the desired state of the Revision (from the client).
+	Spec RevisionSpecResponseInput `pulumi:"spec"`
+}
+
+func (RevisionTemplateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RevisionTemplateResponse)(nil)).Elem()
+}
+
+func (i RevisionTemplateResponseArgs) ToRevisionTemplateResponseOutput() RevisionTemplateResponseOutput {
+	return i.ToRevisionTemplateResponseOutputWithContext(context.Background())
+}
+
+func (i RevisionTemplateResponseArgs) ToRevisionTemplateResponseOutputWithContext(ctx context.Context) RevisionTemplateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RevisionTemplateResponseOutput)
+}
+
+func (i RevisionTemplateResponseArgs) ToRevisionTemplateResponsePtrOutput() RevisionTemplateResponsePtrOutput {
+	return i.ToRevisionTemplateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i RevisionTemplateResponseArgs) ToRevisionTemplateResponsePtrOutputWithContext(ctx context.Context) RevisionTemplateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RevisionTemplateResponseOutput).ToRevisionTemplateResponsePtrOutputWithContext(ctx)
+}
+
+// RevisionTemplateResponsePtrInput is an input type that accepts RevisionTemplateResponseArgs, RevisionTemplateResponsePtr and RevisionTemplateResponsePtrOutput values.
+// You can construct a concrete instance of `RevisionTemplateResponsePtrInput` via:
+//
+//          RevisionTemplateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type RevisionTemplateResponsePtrInput interface {
+	pulumi.Input
+
+	ToRevisionTemplateResponsePtrOutput() RevisionTemplateResponsePtrOutput
+	ToRevisionTemplateResponsePtrOutputWithContext(context.Context) RevisionTemplateResponsePtrOutput
+}
+
+type revisionTemplateResponsePtrType RevisionTemplateResponseArgs
+
+func RevisionTemplateResponsePtr(v *RevisionTemplateResponseArgs) RevisionTemplateResponsePtrInput {
+	return (*revisionTemplateResponsePtrType)(v)
+}
+
+func (*revisionTemplateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RevisionTemplateResponse)(nil)).Elem()
+}
+
+func (i *revisionTemplateResponsePtrType) ToRevisionTemplateResponsePtrOutput() RevisionTemplateResponsePtrOutput {
+	return i.ToRevisionTemplateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *revisionTemplateResponsePtrType) ToRevisionTemplateResponsePtrOutputWithContext(ctx context.Context) RevisionTemplateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RevisionTemplateResponsePtrOutput)
+}
+
+// RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
+type RevisionTemplateResponseOutput struct{ *pulumi.OutputState }
+
+func (RevisionTemplateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RevisionTemplateResponse)(nil)).Elem()
+}
+
+func (o RevisionTemplateResponseOutput) ToRevisionTemplateResponseOutput() RevisionTemplateResponseOutput {
+	return o
+}
+
+func (o RevisionTemplateResponseOutput) ToRevisionTemplateResponseOutputWithContext(ctx context.Context) RevisionTemplateResponseOutput {
+	return o
+}
+
+func (o RevisionTemplateResponseOutput) ToRevisionTemplateResponsePtrOutput() RevisionTemplateResponsePtrOutput {
+	return o.ToRevisionTemplateResponsePtrOutputWithContext(context.Background())
+}
+
+func (o RevisionTemplateResponseOutput) ToRevisionTemplateResponsePtrOutputWithContext(ctx context.Context) RevisionTemplateResponsePtrOutput {
+	return o.ApplyT(func(v RevisionTemplateResponse) *RevisionTemplateResponse {
+		return &v
+	}).(RevisionTemplateResponsePtrOutput)
+}
+
+// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all` and `private-ranges-only`.
+func (o RevisionTemplateResponseOutput) Metadata() ObjectMetaResponseOutput {
+	return o.ApplyT(func(v RevisionTemplateResponse) ObjectMetaResponse { return v.Metadata }).(ObjectMetaResponseOutput)
+}
+
+// RevisionSpec holds the desired state of the Revision (from the client).
+func (o RevisionTemplateResponseOutput) Spec() RevisionSpecResponseOutput {
+	return o.ApplyT(func(v RevisionTemplateResponse) RevisionSpecResponse { return v.Spec }).(RevisionSpecResponseOutput)
+}
+
+type RevisionTemplateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RevisionTemplateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RevisionTemplateResponse)(nil)).Elem()
+}
+
+func (o RevisionTemplateResponsePtrOutput) ToRevisionTemplateResponsePtrOutput() RevisionTemplateResponsePtrOutput {
+	return o
+}
+
+func (o RevisionTemplateResponsePtrOutput) ToRevisionTemplateResponsePtrOutputWithContext(ctx context.Context) RevisionTemplateResponsePtrOutput {
+	return o
+}
+
+func (o RevisionTemplateResponsePtrOutput) Elem() RevisionTemplateResponseOutput {
+	return o.ApplyT(func(v *RevisionTemplateResponse) RevisionTemplateResponse { return *v }).(RevisionTemplateResponseOutput)
+}
+
+// Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. The following annotation keys set properties of the created revision: * `autoscaling.knative.dev/minScale` sets the minimum number of instances. * `autoscaling.knative.dev/maxScale` sets the maximum number of instances. * `run.googleapis.com/cloudsql-instances` sets Cloud SQL connections. Multiple values should be comma separated. * `run.googleapis.com/vpc-access-connector` sets a Serverless VPC Access connector. * `run.googleapis.com/vpc-access-egress` sets VPC egress. Supported values are `all` and `private-ranges-only`.
+func (o RevisionTemplateResponsePtrOutput) Metadata() ObjectMetaResponsePtrOutput {
+	return o.ApplyT(func(v *RevisionTemplateResponse) *ObjectMetaResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Metadata
+	}).(ObjectMetaResponsePtrOutput)
+}
+
+// RevisionSpec holds the desired state of the Revision (from the client).
+func (o RevisionTemplateResponsePtrOutput) Spec() RevisionSpecResponsePtrOutput {
+	return o.ApplyT(func(v *RevisionTemplateResponse) *RevisionSpecResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Spec
+	}).(RevisionSpecResponsePtrOutput)
 }
 
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
@@ -4975,6 +8559,79 @@ func (o SecretEnvSourcePtrOutput) Optional() pulumi.BoolPtrOutput {
 		}
 		return v.Optional
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+type SecretEnvSourceResponse struct {
+	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+	LocalObjectReference LocalObjectReferenceResponse `pulumi:"localObjectReference"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+	Name string `pulumi:"name"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined
+	Optional bool `pulumi:"optional"`
+}
+
+// SecretEnvSourceResponseInput is an input type that accepts SecretEnvSourceResponseArgs and SecretEnvSourceResponseOutput values.
+// You can construct a concrete instance of `SecretEnvSourceResponseInput` via:
+//
+//          SecretEnvSourceResponseArgs{...}
+type SecretEnvSourceResponseInput interface {
+	pulumi.Input
+
+	ToSecretEnvSourceResponseOutput() SecretEnvSourceResponseOutput
+	ToSecretEnvSourceResponseOutputWithContext(context.Context) SecretEnvSourceResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+type SecretEnvSourceResponseArgs struct {
+	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined
+	Optional pulumi.BoolInput `pulumi:"optional"`
+}
+
+func (SecretEnvSourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretEnvSourceResponse)(nil)).Elem()
+}
+
+func (i SecretEnvSourceResponseArgs) ToSecretEnvSourceResponseOutput() SecretEnvSourceResponseOutput {
+	return i.ToSecretEnvSourceResponseOutputWithContext(context.Background())
+}
+
+func (i SecretEnvSourceResponseArgs) ToSecretEnvSourceResponseOutputWithContext(ctx context.Context) SecretEnvSourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvSourceResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+type SecretEnvSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretEnvSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretEnvSourceResponse)(nil)).Elem()
+}
+
+func (o SecretEnvSourceResponseOutput) ToSecretEnvSourceResponseOutput() SecretEnvSourceResponseOutput {
+	return o
+}
+
+func (o SecretEnvSourceResponseOutput) ToSecretEnvSourceResponseOutputWithContext(ctx context.Context) SecretEnvSourceResponseOutput {
+	return o
+}
+
+// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+func (o SecretEnvSourceResponseOutput) LocalObjectReference() LocalObjectReferenceResponseOutput {
+	return o.ApplyT(func(v SecretEnvSourceResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+func (o SecretEnvSourceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEnvSourceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined
+func (o SecretEnvSourceResponseOutput) Optional() pulumi.BoolOutput {
+	return o.ApplyT(func(v SecretEnvSourceResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretKeySelector selects a key of a Secret.
@@ -5168,6 +8825,88 @@ func (o SecretKeySelectorPtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretKeySelector selects a key of a Secret.
+type SecretKeySelectorResponse struct {
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+	Key string `pulumi:"key"`
+	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+	LocalObjectReference LocalObjectReferenceResponse `pulumi:"localObjectReference"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+	Name string `pulumi:"name"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its key must be defined
+	Optional bool `pulumi:"optional"`
+}
+
+// SecretKeySelectorResponseInput is an input type that accepts SecretKeySelectorResponseArgs and SecretKeySelectorResponseOutput values.
+// You can construct a concrete instance of `SecretKeySelectorResponseInput` via:
+//
+//          SecretKeySelectorResponseArgs{...}
+type SecretKeySelectorResponseInput interface {
+	pulumi.Input
+
+	ToSecretKeySelectorResponseOutput() SecretKeySelectorResponseOutput
+	ToSecretKeySelectorResponseOutputWithContext(context.Context) SecretKeySelectorResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretKeySelector selects a key of a Secret.
+type SecretKeySelectorResponseArgs struct {
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+	LocalObjectReference LocalObjectReferenceResponseInput `pulumi:"localObjectReference"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its key must be defined
+	Optional pulumi.BoolInput `pulumi:"optional"`
+}
+
+func (SecretKeySelectorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretKeySelectorResponse)(nil)).Elem()
+}
+
+func (i SecretKeySelectorResponseArgs) ToSecretKeySelectorResponseOutput() SecretKeySelectorResponseOutput {
+	return i.ToSecretKeySelectorResponseOutputWithContext(context.Background())
+}
+
+func (i SecretKeySelectorResponseArgs) ToSecretKeySelectorResponseOutputWithContext(ctx context.Context) SecretKeySelectorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretKeySelectorResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretKeySelector selects a key of a Secret.
+type SecretKeySelectorResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretKeySelectorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretKeySelectorResponse)(nil)).Elem()
+}
+
+func (o SecretKeySelectorResponseOutput) ToSecretKeySelectorResponseOutput() SecretKeySelectorResponseOutput {
+	return o
+}
+
+func (o SecretKeySelectorResponseOutput) ToSecretKeySelectorResponseOutputWithContext(ctx context.Context) SecretKeySelectorResponseOutput {
+	return o
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+func (o SecretKeySelectorResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretKeySelectorResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+func (o SecretKeySelectorResponseOutput) LocalObjectReference() LocalObjectReferenceResponseOutput {
+	return o.ApplyT(func(v SecretKeySelectorResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+func (o SecretKeySelectorResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretKeySelectorResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its key must be defined
+func (o SecretKeySelectorResponseOutput) Optional() pulumi.BoolOutput {
+	return o.ApplyT(func(v SecretKeySelectorResponse) bool { return v.Optional }).(pulumi.BoolOutput)
+}
+
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
 type SecretVolumeSource struct {
 	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
@@ -5359,6 +9098,88 @@ func (o SecretVolumeSourcePtrOutput) SecretName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+type SecretVolumeSourceResponse struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+	DefaultMode int `pulumi:"defaultMode"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	Items []KeyToPathResponse `pulumi:"items"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+	Optional bool `pulumi:"optional"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+	SecretName string `pulumi:"secretName"`
+}
+
+// SecretVolumeSourceResponseInput is an input type that accepts SecretVolumeSourceResponseArgs and SecretVolumeSourceResponseOutput values.
+// You can construct a concrete instance of `SecretVolumeSourceResponseInput` via:
+//
+//          SecretVolumeSourceResponseArgs{...}
+type SecretVolumeSourceResponseInput interface {
+	pulumi.Input
+
+	ToSecretVolumeSourceResponseOutput() SecretVolumeSourceResponseOutput
+	ToSecretVolumeSourceResponseOutputWithContext(context.Context) SecretVolumeSourceResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+type SecretVolumeSourceResponseArgs struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+	DefaultMode pulumi.IntInput `pulumi:"defaultMode"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+	Items KeyToPathResponseArrayInput `pulumi:"items"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+	Optional pulumi.BoolInput `pulumi:"optional"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+	SecretName pulumi.StringInput `pulumi:"secretName"`
+}
+
+func (SecretVolumeSourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVolumeSourceResponse)(nil)).Elem()
+}
+
+func (i SecretVolumeSourceResponseArgs) ToSecretVolumeSourceResponseOutput() SecretVolumeSourceResponseOutput {
+	return i.ToSecretVolumeSourceResponseOutputWithContext(context.Background())
+}
+
+func (i SecretVolumeSourceResponseArgs) ToSecretVolumeSourceResponseOutputWithContext(ctx context.Context) SecretVolumeSourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVolumeSourceResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+type SecretVolumeSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretVolumeSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVolumeSourceResponse)(nil)).Elem()
+}
+
+func (o SecretVolumeSourceResponseOutput) ToSecretVolumeSourceResponseOutput() SecretVolumeSourceResponseOutput {
+	return o
+}
+
+func (o SecretVolumeSourceResponseOutput) ToSecretVolumeSourceResponseOutputWithContext(ctx context.Context) SecretVolumeSourceResponseOutput {
+	return o
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
+func (o SecretVolumeSourceResponseOutput) DefaultMode() pulumi.IntOutput {
+	return o.ApplyT(func(v SecretVolumeSourceResponse) int { return v.DefaultMode }).(pulumi.IntOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+func (o SecretVolumeSourceResponseOutput) Items() KeyToPathResponseArrayOutput {
+	return o.ApplyT(func(v SecretVolumeSourceResponse) []KeyToPathResponse { return v.Items }).(KeyToPathResponseArrayOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
+func (o SecretVolumeSourceResponseOutput) Optional() pulumi.BoolOutput {
+	return o.ApplyT(func(v SecretVolumeSourceResponse) bool { return v.Optional }).(pulumi.BoolOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+func (o SecretVolumeSourceResponseOutput) SecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretVolumeSourceResponse) string { return v.SecretName }).(pulumi.StringOutput)
+}
+
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
 type SecurityContext struct {
 	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
@@ -5491,6 +9312,61 @@ func (o SecurityContextPtrOutput) RunAsUser() pulumi.IntPtrOutput {
 		}
 		return v.RunAsUser
 	}).(pulumi.IntPtrOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+type SecurityContextResponse struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+	RunAsUser int `pulumi:"runAsUser"`
+}
+
+// SecurityContextResponseInput is an input type that accepts SecurityContextResponseArgs and SecurityContextResponseOutput values.
+// You can construct a concrete instance of `SecurityContextResponseInput` via:
+//
+//          SecurityContextResponseArgs{...}
+type SecurityContextResponseInput interface {
+	pulumi.Input
+
+	ToSecurityContextResponseOutput() SecurityContextResponseOutput
+	ToSecurityContextResponseOutputWithContext(context.Context) SecurityContextResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+type SecurityContextResponseArgs struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+	RunAsUser pulumi.IntInput `pulumi:"runAsUser"`
+}
+
+func (SecurityContextResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityContextResponse)(nil)).Elem()
+}
+
+func (i SecurityContextResponseArgs) ToSecurityContextResponseOutput() SecurityContextResponseOutput {
+	return i.ToSecurityContextResponseOutputWithContext(context.Background())
+}
+
+func (i SecurityContextResponseArgs) ToSecurityContextResponseOutputWithContext(ctx context.Context) SecurityContextResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityContextResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+type SecurityContextResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityContextResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityContextResponse)(nil)).Elem()
+}
+
+func (o SecurityContextResponseOutput) ToSecurityContextResponseOutput() SecurityContextResponseOutput {
+	return o
+}
+
+func (o SecurityContextResponseOutput) ToSecurityContextResponseOutputWithContext(ctx context.Context) SecurityContextResponseOutput {
+	return o
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+func (o SecurityContextResponseOutput) RunAsUser() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityContextResponse) int { return v.RunAsUser }).(pulumi.IntOutput)
 }
 
 // ServiceSpec holds the desired state of the Route (from the client), which is used to manipulate the underlying Route and Configuration(s).
@@ -5644,6 +9520,159 @@ func (o ServiceSpecPtrOutput) Traffic() TrafficTargetArrayOutput {
 		}
 		return v.Traffic
 	}).(TrafficTargetArrayOutput)
+}
+
+// ServiceSpec holds the desired state of the Route (from the client), which is used to manipulate the underlying Route and Configuration(s).
+type ServiceSpecResponse struct {
+	// Template holds the latest specification for the Revision to be stamped out.
+	Template RevisionTemplateResponse `pulumi:"template"`
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations.
+	Traffic []TrafficTargetResponse `pulumi:"traffic"`
+}
+
+// ServiceSpecResponseInput is an input type that accepts ServiceSpecResponseArgs and ServiceSpecResponseOutput values.
+// You can construct a concrete instance of `ServiceSpecResponseInput` via:
+//
+//          ServiceSpecResponseArgs{...}
+type ServiceSpecResponseInput interface {
+	pulumi.Input
+
+	ToServiceSpecResponseOutput() ServiceSpecResponseOutput
+	ToServiceSpecResponseOutputWithContext(context.Context) ServiceSpecResponseOutput
+}
+
+// ServiceSpec holds the desired state of the Route (from the client), which is used to manipulate the underlying Route and Configuration(s).
+type ServiceSpecResponseArgs struct {
+	// Template holds the latest specification for the Revision to be stamped out.
+	Template RevisionTemplateResponseInput `pulumi:"template"`
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations.
+	Traffic TrafficTargetResponseArrayInput `pulumi:"traffic"`
+}
+
+func (ServiceSpecResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceSpecResponse)(nil)).Elem()
+}
+
+func (i ServiceSpecResponseArgs) ToServiceSpecResponseOutput() ServiceSpecResponseOutput {
+	return i.ToServiceSpecResponseOutputWithContext(context.Background())
+}
+
+func (i ServiceSpecResponseArgs) ToServiceSpecResponseOutputWithContext(ctx context.Context) ServiceSpecResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSpecResponseOutput)
+}
+
+func (i ServiceSpecResponseArgs) ToServiceSpecResponsePtrOutput() ServiceSpecResponsePtrOutput {
+	return i.ToServiceSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceSpecResponseArgs) ToServiceSpecResponsePtrOutputWithContext(ctx context.Context) ServiceSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSpecResponseOutput).ToServiceSpecResponsePtrOutputWithContext(ctx)
+}
+
+// ServiceSpecResponsePtrInput is an input type that accepts ServiceSpecResponseArgs, ServiceSpecResponsePtr and ServiceSpecResponsePtrOutput values.
+// You can construct a concrete instance of `ServiceSpecResponsePtrInput` via:
+//
+//          ServiceSpecResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceSpecResponsePtrInput interface {
+	pulumi.Input
+
+	ToServiceSpecResponsePtrOutput() ServiceSpecResponsePtrOutput
+	ToServiceSpecResponsePtrOutputWithContext(context.Context) ServiceSpecResponsePtrOutput
+}
+
+type serviceSpecResponsePtrType ServiceSpecResponseArgs
+
+func ServiceSpecResponsePtr(v *ServiceSpecResponseArgs) ServiceSpecResponsePtrInput {
+	return (*serviceSpecResponsePtrType)(v)
+}
+
+func (*serviceSpecResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceSpecResponse)(nil)).Elem()
+}
+
+func (i *serviceSpecResponsePtrType) ToServiceSpecResponsePtrOutput() ServiceSpecResponsePtrOutput {
+	return i.ToServiceSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceSpecResponsePtrType) ToServiceSpecResponsePtrOutputWithContext(ctx context.Context) ServiceSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceSpecResponsePtrOutput)
+}
+
+// ServiceSpec holds the desired state of the Route (from the client), which is used to manipulate the underlying Route and Configuration(s).
+type ServiceSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceSpecResponse)(nil)).Elem()
+}
+
+func (o ServiceSpecResponseOutput) ToServiceSpecResponseOutput() ServiceSpecResponseOutput {
+	return o
+}
+
+func (o ServiceSpecResponseOutput) ToServiceSpecResponseOutputWithContext(ctx context.Context) ServiceSpecResponseOutput {
+	return o
+}
+
+func (o ServiceSpecResponseOutput) ToServiceSpecResponsePtrOutput() ServiceSpecResponsePtrOutput {
+	return o.ToServiceSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceSpecResponseOutput) ToServiceSpecResponsePtrOutputWithContext(ctx context.Context) ServiceSpecResponsePtrOutput {
+	return o.ApplyT(func(v ServiceSpecResponse) *ServiceSpecResponse {
+		return &v
+	}).(ServiceSpecResponsePtrOutput)
+}
+
+// Template holds the latest specification for the Revision to be stamped out.
+func (o ServiceSpecResponseOutput) Template() RevisionTemplateResponseOutput {
+	return o.ApplyT(func(v ServiceSpecResponse) RevisionTemplateResponse { return v.Template }).(RevisionTemplateResponseOutput)
+}
+
+// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations.
+func (o ServiceSpecResponseOutput) Traffic() TrafficTargetResponseArrayOutput {
+	return o.ApplyT(func(v ServiceSpecResponse) []TrafficTargetResponse { return v.Traffic }).(TrafficTargetResponseArrayOutput)
+}
+
+type ServiceSpecResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceSpecResponse)(nil)).Elem()
+}
+
+func (o ServiceSpecResponsePtrOutput) ToServiceSpecResponsePtrOutput() ServiceSpecResponsePtrOutput {
+	return o
+}
+
+func (o ServiceSpecResponsePtrOutput) ToServiceSpecResponsePtrOutputWithContext(ctx context.Context) ServiceSpecResponsePtrOutput {
+	return o
+}
+
+func (o ServiceSpecResponsePtrOutput) Elem() ServiceSpecResponseOutput {
+	return o.ApplyT(func(v *ServiceSpecResponse) ServiceSpecResponse { return *v }).(ServiceSpecResponseOutput)
+}
+
+// Template holds the latest specification for the Revision to be stamped out.
+func (o ServiceSpecResponsePtrOutput) Template() RevisionTemplateResponsePtrOutput {
+	return o.ApplyT(func(v *ServiceSpecResponse) *RevisionTemplateResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Template
+	}).(RevisionTemplateResponsePtrOutput)
+}
+
+// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations.
+func (o ServiceSpecResponsePtrOutput) Traffic() TrafficTargetResponseArrayOutput {
+	return o.ApplyT(func(v *ServiceSpecResponse) []TrafficTargetResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Traffic
+	}).(TrafficTargetResponseArrayOutput)
 }
 
 // The current state of the Service. Output only.
@@ -5894,6 +9923,254 @@ func (o ServiceStatusPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The current state of the Service. Output only.
+type ServiceStatusResponse struct {
+	// From RouteStatus. Similar to url, information on where the service is available on HTTP.
+	Address AddressableResponse `pulumi:"address"`
+	// Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Service-specific conditions include: * "ConfigurationsReady": true when the underlying Configuration is ready. * "RoutesReady": true when the underlying Route is ready. * "Ready": true when both the underlying Route and Configuration are ready.
+	Conditions []GoogleCloudRunV1ConditionResponse `pulumi:"conditions"`
+	// From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
+	LatestCreatedRevisionName string `pulumi:"latestCreatedRevisionName"`
+	// From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision stamped out from this Service's Configuration that has had its "Ready" condition become "True".
+	LatestReadyRevisionName string `pulumi:"latestReadyRevisionName"`
+	// ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
+	ObservedGeneration int `pulumi:"observedGeneration"`
+	// From RouteStatus. Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
+	Traffic []TrafficTargetResponse `pulumi:"traffic"`
+	// From RouteStatus. URL holds the url that will distribute traffic over the provided traffic targets. It generally has the form https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
+	Url string `pulumi:"url"`
+}
+
+// ServiceStatusResponseInput is an input type that accepts ServiceStatusResponseArgs and ServiceStatusResponseOutput values.
+// You can construct a concrete instance of `ServiceStatusResponseInput` via:
+//
+//          ServiceStatusResponseArgs{...}
+type ServiceStatusResponseInput interface {
+	pulumi.Input
+
+	ToServiceStatusResponseOutput() ServiceStatusResponseOutput
+	ToServiceStatusResponseOutputWithContext(context.Context) ServiceStatusResponseOutput
+}
+
+// The current state of the Service. Output only.
+type ServiceStatusResponseArgs struct {
+	// From RouteStatus. Similar to url, information on where the service is available on HTTP.
+	Address AddressableResponseInput `pulumi:"address"`
+	// Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Service-specific conditions include: * "ConfigurationsReady": true when the underlying Configuration is ready. * "RoutesReady": true when the underlying Route is ready. * "Ready": true when both the underlying Route and Configuration are ready.
+	Conditions GoogleCloudRunV1ConditionResponseArrayInput `pulumi:"conditions"`
+	// From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
+	LatestCreatedRevisionName pulumi.StringInput `pulumi:"latestCreatedRevisionName"`
+	// From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision stamped out from this Service's Configuration that has had its "Ready" condition become "True".
+	LatestReadyRevisionName pulumi.StringInput `pulumi:"latestReadyRevisionName"`
+	// ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
+	ObservedGeneration pulumi.IntInput `pulumi:"observedGeneration"`
+	// From RouteStatus. Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
+	Traffic TrafficTargetResponseArrayInput `pulumi:"traffic"`
+	// From RouteStatus. URL holds the url that will distribute traffic over the provided traffic targets. It generally has the form https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (ServiceStatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceStatusResponse)(nil)).Elem()
+}
+
+func (i ServiceStatusResponseArgs) ToServiceStatusResponseOutput() ServiceStatusResponseOutput {
+	return i.ToServiceStatusResponseOutputWithContext(context.Background())
+}
+
+func (i ServiceStatusResponseArgs) ToServiceStatusResponseOutputWithContext(ctx context.Context) ServiceStatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusResponseOutput)
+}
+
+func (i ServiceStatusResponseArgs) ToServiceStatusResponsePtrOutput() ServiceStatusResponsePtrOutput {
+	return i.ToServiceStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceStatusResponseArgs) ToServiceStatusResponsePtrOutputWithContext(ctx context.Context) ServiceStatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusResponseOutput).ToServiceStatusResponsePtrOutputWithContext(ctx)
+}
+
+// ServiceStatusResponsePtrInput is an input type that accepts ServiceStatusResponseArgs, ServiceStatusResponsePtr and ServiceStatusResponsePtrOutput values.
+// You can construct a concrete instance of `ServiceStatusResponsePtrInput` via:
+//
+//          ServiceStatusResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceStatusResponsePtrInput interface {
+	pulumi.Input
+
+	ToServiceStatusResponsePtrOutput() ServiceStatusResponsePtrOutput
+	ToServiceStatusResponsePtrOutputWithContext(context.Context) ServiceStatusResponsePtrOutput
+}
+
+type serviceStatusResponsePtrType ServiceStatusResponseArgs
+
+func ServiceStatusResponsePtr(v *ServiceStatusResponseArgs) ServiceStatusResponsePtrInput {
+	return (*serviceStatusResponsePtrType)(v)
+}
+
+func (*serviceStatusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceStatusResponse)(nil)).Elem()
+}
+
+func (i *serviceStatusResponsePtrType) ToServiceStatusResponsePtrOutput() ServiceStatusResponsePtrOutput {
+	return i.ToServiceStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceStatusResponsePtrType) ToServiceStatusResponsePtrOutputWithContext(ctx context.Context) ServiceStatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusResponsePtrOutput)
+}
+
+// The current state of the Service. Output only.
+type ServiceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceStatusResponse)(nil)).Elem()
+}
+
+func (o ServiceStatusResponseOutput) ToServiceStatusResponseOutput() ServiceStatusResponseOutput {
+	return o
+}
+
+func (o ServiceStatusResponseOutput) ToServiceStatusResponseOutputWithContext(ctx context.Context) ServiceStatusResponseOutput {
+	return o
+}
+
+func (o ServiceStatusResponseOutput) ToServiceStatusResponsePtrOutput() ServiceStatusResponsePtrOutput {
+	return o.ToServiceStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceStatusResponseOutput) ToServiceStatusResponsePtrOutputWithContext(ctx context.Context) ServiceStatusResponsePtrOutput {
+	return o.ApplyT(func(v ServiceStatusResponse) *ServiceStatusResponse {
+		return &v
+	}).(ServiceStatusResponsePtrOutput)
+}
+
+// From RouteStatus. Similar to url, information on where the service is available on HTTP.
+func (o ServiceStatusResponseOutput) Address() AddressableResponseOutput {
+	return o.ApplyT(func(v ServiceStatusResponse) AddressableResponse { return v.Address }).(AddressableResponseOutput)
+}
+
+// Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Service-specific conditions include: * "ConfigurationsReady": true when the underlying Configuration is ready. * "RoutesReady": true when the underlying Route is ready. * "Ready": true when both the underlying Route and Configuration are ready.
+func (o ServiceStatusResponseOutput) Conditions() GoogleCloudRunV1ConditionResponseArrayOutput {
+	return o.ApplyT(func(v ServiceStatusResponse) []GoogleCloudRunV1ConditionResponse { return v.Conditions }).(GoogleCloudRunV1ConditionResponseArrayOutput)
+}
+
+// From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
+func (o ServiceStatusResponseOutput) LatestCreatedRevisionName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceStatusResponse) string { return v.LatestCreatedRevisionName }).(pulumi.StringOutput)
+}
+
+// From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision stamped out from this Service's Configuration that has had its "Ready" condition become "True".
+func (o ServiceStatusResponseOutput) LatestReadyRevisionName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceStatusResponse) string { return v.LatestReadyRevisionName }).(pulumi.StringOutput)
+}
+
+// ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
+func (o ServiceStatusResponseOutput) ObservedGeneration() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceStatusResponse) int { return v.ObservedGeneration }).(pulumi.IntOutput)
+}
+
+// From RouteStatus. Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
+func (o ServiceStatusResponseOutput) Traffic() TrafficTargetResponseArrayOutput {
+	return o.ApplyT(func(v ServiceStatusResponse) []TrafficTargetResponse { return v.Traffic }).(TrafficTargetResponseArrayOutput)
+}
+
+// From RouteStatus. URL holds the url that will distribute traffic over the provided traffic targets. It generally has the form https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
+func (o ServiceStatusResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceStatusResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type ServiceStatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceStatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceStatusResponse)(nil)).Elem()
+}
+
+func (o ServiceStatusResponsePtrOutput) ToServiceStatusResponsePtrOutput() ServiceStatusResponsePtrOutput {
+	return o
+}
+
+func (o ServiceStatusResponsePtrOutput) ToServiceStatusResponsePtrOutputWithContext(ctx context.Context) ServiceStatusResponsePtrOutput {
+	return o
+}
+
+func (o ServiceStatusResponsePtrOutput) Elem() ServiceStatusResponseOutput {
+	return o.ApplyT(func(v *ServiceStatusResponse) ServiceStatusResponse { return *v }).(ServiceStatusResponseOutput)
+}
+
+// From RouteStatus. Similar to url, information on where the service is available on HTTP.
+func (o ServiceStatusResponsePtrOutput) Address() AddressableResponsePtrOutput {
+	return o.ApplyT(func(v *ServiceStatusResponse) *AddressableResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Address
+	}).(AddressableResponsePtrOutput)
+}
+
+// Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Service-specific conditions include: * "ConfigurationsReady": true when the underlying Configuration is ready. * "RoutesReady": true when the underlying Route is ready. * "Ready": true when both the underlying Route and Configuration are ready.
+func (o ServiceStatusResponsePtrOutput) Conditions() GoogleCloudRunV1ConditionResponseArrayOutput {
+	return o.ApplyT(func(v *ServiceStatusResponse) []GoogleCloudRunV1ConditionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(GoogleCloudRunV1ConditionResponseArrayOutput)
+}
+
+// From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
+func (o ServiceStatusResponsePtrOutput) LatestCreatedRevisionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LatestCreatedRevisionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision stamped out from this Service's Configuration that has had its "Ready" condition become "True".
+func (o ServiceStatusResponsePtrOutput) LatestReadyRevisionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LatestReadyRevisionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
+func (o ServiceStatusResponsePtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceStatusResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ObservedGeneration
+	}).(pulumi.IntPtrOutput)
+}
+
+// From RouteStatus. Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
+func (o ServiceStatusResponsePtrOutput) Traffic() TrafficTargetResponseArrayOutput {
+	return o.ApplyT(func(v *ServiceStatusResponse) []TrafficTargetResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Traffic
+	}).(TrafficTargetResponseArrayOutput)
+}
+
+// From RouteStatus. URL holds the url that will distribute traffic over the provided traffic targets. It generally has the form https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
+func (o ServiceStatusResponsePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocketAction describes an action based on opening a socket
 type TCPSocketAction struct {
 	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Optional: Host name to connect to, defaults to the pod IP.
@@ -6047,6 +10324,70 @@ func (o TCPSocketActionPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocketAction describes an action based on opening a socket
+type TCPSocketActionResponse struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Optional: Host name to connect to, defaults to the pod IP.
+	Host string `pulumi:"host"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+	Port int `pulumi:"port"`
+}
+
+// TCPSocketActionResponseInput is an input type that accepts TCPSocketActionResponseArgs and TCPSocketActionResponseOutput values.
+// You can construct a concrete instance of `TCPSocketActionResponseInput` via:
+//
+//          TCPSocketActionResponseArgs{...}
+type TCPSocketActionResponseInput interface {
+	pulumi.Input
+
+	ToTCPSocketActionResponseOutput() TCPSocketActionResponseOutput
+	ToTCPSocketActionResponseOutputWithContext(context.Context) TCPSocketActionResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocketAction describes an action based on opening a socket
+type TCPSocketActionResponseArgs struct {
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Optional: Host name to connect to, defaults to the pod IP.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (TCPSocketActionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TCPSocketActionResponse)(nil)).Elem()
+}
+
+func (i TCPSocketActionResponseArgs) ToTCPSocketActionResponseOutput() TCPSocketActionResponseOutput {
+	return i.ToTCPSocketActionResponseOutputWithContext(context.Background())
+}
+
+func (i TCPSocketActionResponseArgs) ToTCPSocketActionResponseOutputWithContext(ctx context.Context) TCPSocketActionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TCPSocketActionResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported TCPSocketAction describes an action based on opening a socket
+type TCPSocketActionResponseOutput struct{ *pulumi.OutputState }
+
+func (TCPSocketActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TCPSocketActionResponse)(nil)).Elem()
+}
+
+func (o TCPSocketActionResponseOutput) ToTCPSocketActionResponseOutput() TCPSocketActionResponseOutput {
+	return o
+}
+
+func (o TCPSocketActionResponseOutput) ToTCPSocketActionResponseOutputWithContext(ctx context.Context) TCPSocketActionResponseOutput {
+	return o
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Optional: Host name to connect to, defaults to the pod IP.
+func (o TCPSocketActionResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v TCPSocketActionResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+func (o TCPSocketActionResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v TCPSocketActionResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
 // TrafficTarget holds a single entry of the routing table for a Route.
 type TrafficTarget struct {
 	// ConfigurationName of a configuration to whose latest revision we will send this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
@@ -6059,7 +10400,7 @@ type TrafficTarget struct {
 	RevisionName *string `pulumi:"revisionName"`
 	// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
 	Tag *string `pulumi:"tag"`
-	// Output only. URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
+	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
 	Url *string `pulumi:"url"`
 }
 
@@ -6086,7 +10427,7 @@ type TrafficTargetArgs struct {
 	RevisionName pulumi.StringPtrInput `pulumi:"revisionName"`
 	// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
-	// Output only. URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
+	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
@@ -6167,7 +10508,7 @@ func (o TrafficTargetOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
 
-// Output only. URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
+// URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
 func (o TrafficTargetOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -6190,6 +10531,151 @@ func (o TrafficTargetArrayOutput) Index(i pulumi.IntInput) TrafficTargetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrafficTarget {
 		return vs[0].([]TrafficTarget)[vs[1].(int)]
 	}).(TrafficTargetOutput)
+}
+
+// TrafficTarget holds a single entry of the routing table for a Route.
+type TrafficTargetResponse struct {
+	// ConfigurationName of a configuration to whose latest revision we will send this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
+	ConfigurationName string `pulumi:"configurationName"`
+	// LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty. +optional
+	LatestRevision bool `pulumi:"latestRevision"`
+	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
+	Percent int `pulumi:"percent"`
+	// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
+	RevisionName string `pulumi:"revisionName"`
+	// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
+	Tag string `pulumi:"tag"`
+	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
+	Url string `pulumi:"url"`
+}
+
+// TrafficTargetResponseInput is an input type that accepts TrafficTargetResponseArgs and TrafficTargetResponseOutput values.
+// You can construct a concrete instance of `TrafficTargetResponseInput` via:
+//
+//          TrafficTargetResponseArgs{...}
+type TrafficTargetResponseInput interface {
+	pulumi.Input
+
+	ToTrafficTargetResponseOutput() TrafficTargetResponseOutput
+	ToTrafficTargetResponseOutputWithContext(context.Context) TrafficTargetResponseOutput
+}
+
+// TrafficTarget holds a single entry of the routing table for a Route.
+type TrafficTargetResponseArgs struct {
+	// ConfigurationName of a configuration to whose latest revision we will send this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
+	ConfigurationName pulumi.StringInput `pulumi:"configurationName"`
+	// LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty. +optional
+	LatestRevision pulumi.BoolInput `pulumi:"latestRevision"`
+	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
+	Percent pulumi.IntInput `pulumi:"percent"`
+	// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
+	RevisionName pulumi.StringInput `pulumi:"revisionName"`
+	// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
+	Tag pulumi.StringInput `pulumi:"tag"`
+	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (TrafficTargetResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficTargetResponse)(nil)).Elem()
+}
+
+func (i TrafficTargetResponseArgs) ToTrafficTargetResponseOutput() TrafficTargetResponseOutput {
+	return i.ToTrafficTargetResponseOutputWithContext(context.Background())
+}
+
+func (i TrafficTargetResponseArgs) ToTrafficTargetResponseOutputWithContext(ctx context.Context) TrafficTargetResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficTargetResponseOutput)
+}
+
+// TrafficTargetResponseArrayInput is an input type that accepts TrafficTargetResponseArray and TrafficTargetResponseArrayOutput values.
+// You can construct a concrete instance of `TrafficTargetResponseArrayInput` via:
+//
+//          TrafficTargetResponseArray{ TrafficTargetResponseArgs{...} }
+type TrafficTargetResponseArrayInput interface {
+	pulumi.Input
+
+	ToTrafficTargetResponseArrayOutput() TrafficTargetResponseArrayOutput
+	ToTrafficTargetResponseArrayOutputWithContext(context.Context) TrafficTargetResponseArrayOutput
+}
+
+type TrafficTargetResponseArray []TrafficTargetResponseInput
+
+func (TrafficTargetResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrafficTargetResponse)(nil)).Elem()
+}
+
+func (i TrafficTargetResponseArray) ToTrafficTargetResponseArrayOutput() TrafficTargetResponseArrayOutput {
+	return i.ToTrafficTargetResponseArrayOutputWithContext(context.Background())
+}
+
+func (i TrafficTargetResponseArray) ToTrafficTargetResponseArrayOutputWithContext(ctx context.Context) TrafficTargetResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficTargetResponseArrayOutput)
+}
+
+// TrafficTarget holds a single entry of the routing table for a Route.
+type TrafficTargetResponseOutput struct{ *pulumi.OutputState }
+
+func (TrafficTargetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficTargetResponse)(nil)).Elem()
+}
+
+func (o TrafficTargetResponseOutput) ToTrafficTargetResponseOutput() TrafficTargetResponseOutput {
+	return o
+}
+
+func (o TrafficTargetResponseOutput) ToTrafficTargetResponseOutputWithContext(ctx context.Context) TrafficTargetResponseOutput {
+	return o
+}
+
+// ConfigurationName of a configuration to whose latest revision we will send this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
+func (o TrafficTargetResponseOutput) ConfigurationName() pulumi.StringOutput {
+	return o.ApplyT(func(v TrafficTargetResponse) string { return v.ConfigurationName }).(pulumi.StringOutput)
+}
+
+// LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty. +optional
+func (o TrafficTargetResponseOutput) LatestRevision() pulumi.BoolOutput {
+	return o.ApplyT(func(v TrafficTargetResponse) bool { return v.LatestRevision }).(pulumi.BoolOutput)
+}
+
+// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
+func (o TrafficTargetResponseOutput) Percent() pulumi.IntOutput {
+	return o.ApplyT(func(v TrafficTargetResponse) int { return v.Percent }).(pulumi.IntOutput)
+}
+
+// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
+func (o TrafficTargetResponseOutput) RevisionName() pulumi.StringOutput {
+	return o.ApplyT(func(v TrafficTargetResponse) string { return v.RevisionName }).(pulumi.StringOutput)
+}
+
+// Tag is optionally used to expose a dedicated url for referencing this target exclusively. +optional
+func (o TrafficTargetResponseOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v TrafficTargetResponse) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+// URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
+func (o TrafficTargetResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v TrafficTargetResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type TrafficTargetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TrafficTargetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrafficTargetResponse)(nil)).Elem()
+}
+
+func (o TrafficTargetResponseArrayOutput) ToTrafficTargetResponseArrayOutput() TrafficTargetResponseArrayOutput {
+	return o
+}
+
+func (o TrafficTargetResponseArrayOutput) ToTrafficTargetResponseArrayOutputWithContext(ctx context.Context) TrafficTargetResponseArrayOutput {
+	return o
+}
+
+func (o TrafficTargetResponseArrayOutput) Index(i pulumi.IntInput) TrafficTargetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrafficTargetResponse {
+		return vs[0].([]TrafficTargetResponse)[vs[1].(int)]
+	}).(TrafficTargetResponseOutput)
 }
 
 // Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume in a container.
@@ -6437,83 +10923,389 @@ func (o VolumeMountArrayOutput) Index(i pulumi.IntInput) VolumeMountOutput {
 	}).(VolumeMountOutput)
 }
 
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported VolumeMount describes a mounting of a Volume within a container.
+type VolumeMountResponse struct {
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
+	MountPath string `pulumi:"mountPath"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+	Name string `pulumi:"name"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
+	ReadOnly bool `pulumi:"readOnly"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+	SubPath string `pulumi:"subPath"`
+}
+
+// VolumeMountResponseInput is an input type that accepts VolumeMountResponseArgs and VolumeMountResponseOutput values.
+// You can construct a concrete instance of `VolumeMountResponseInput` via:
+//
+//          VolumeMountResponseArgs{...}
+type VolumeMountResponseInput interface {
+	pulumi.Input
+
+	ToVolumeMountResponseOutput() VolumeMountResponseOutput
+	ToVolumeMountResponseOutputWithContext(context.Context) VolumeMountResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported VolumeMount describes a mounting of a Volume within a container.
+type VolumeMountResponseArgs struct {
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
+	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
+	// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+	SubPath pulumi.StringInput `pulumi:"subPath"`
+}
+
+func (VolumeMountResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeMountResponse)(nil)).Elem()
+}
+
+func (i VolumeMountResponseArgs) ToVolumeMountResponseOutput() VolumeMountResponseOutput {
+	return i.ToVolumeMountResponseOutputWithContext(context.Background())
+}
+
+func (i VolumeMountResponseArgs) ToVolumeMountResponseOutputWithContext(ctx context.Context) VolumeMountResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeMountResponseOutput)
+}
+
+// VolumeMountResponseArrayInput is an input type that accepts VolumeMountResponseArray and VolumeMountResponseArrayOutput values.
+// You can construct a concrete instance of `VolumeMountResponseArrayInput` via:
+//
+//          VolumeMountResponseArray{ VolumeMountResponseArgs{...} }
+type VolumeMountResponseArrayInput interface {
+	pulumi.Input
+
+	ToVolumeMountResponseArrayOutput() VolumeMountResponseArrayOutput
+	ToVolumeMountResponseArrayOutputWithContext(context.Context) VolumeMountResponseArrayOutput
+}
+
+type VolumeMountResponseArray []VolumeMountResponseInput
+
+func (VolumeMountResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeMountResponse)(nil)).Elem()
+}
+
+func (i VolumeMountResponseArray) ToVolumeMountResponseArrayOutput() VolumeMountResponseArrayOutput {
+	return i.ToVolumeMountResponseArrayOutputWithContext(context.Background())
+}
+
+func (i VolumeMountResponseArray) ToVolumeMountResponseArrayOutputWithContext(ctx context.Context) VolumeMountResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeMountResponseArrayOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported VolumeMount describes a mounting of a Volume within a container.
+type VolumeMountResponseOutput struct{ *pulumi.OutputState }
+
+func (VolumeMountResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeMountResponse)(nil)).Elem()
+}
+
+func (o VolumeMountResponseOutput) ToVolumeMountResponseOutput() VolumeMountResponseOutput {
+	return o
+}
+
+func (o VolumeMountResponseOutput) ToVolumeMountResponseOutputWithContext(ctx context.Context) VolumeMountResponseOutput {
+	return o
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
+func (o VolumeMountResponseOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeMountResponse) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+func (o VolumeMountResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeMountResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
+func (o VolumeMountResponseOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v VolumeMountResponse) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+func (o VolumeMountResponseOutput) SubPath() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeMountResponse) string { return v.SubPath }).(pulumi.StringOutput)
+}
+
+type VolumeMountResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeMountResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeMountResponse)(nil)).Elem()
+}
+
+func (o VolumeMountResponseArrayOutput) ToVolumeMountResponseArrayOutput() VolumeMountResponseArrayOutput {
+	return o
+}
+
+func (o VolumeMountResponseArrayOutput) ToVolumeMountResponseArrayOutputWithContext(ctx context.Context) VolumeMountResponseArrayOutput {
+	return o
+}
+
+func (o VolumeMountResponseArrayOutput) Index(i pulumi.IntInput) VolumeMountResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeMountResponse {
+		return vs[0].([]VolumeMountResponse)[vs[1].(int)]
+	}).(VolumeMountResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume in a container.
+type VolumeResponse struct {
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
+	ConfigMap ConfigMapVolumeSourceResponse `pulumi:"configMap"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume's name.
+	Name string `pulumi:"name"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
+	Secret SecretVolumeSourceResponse `pulumi:"secret"`
+}
+
+// VolumeResponseInput is an input type that accepts VolumeResponseArgs and VolumeResponseOutput values.
+// You can construct a concrete instance of `VolumeResponseInput` via:
+//
+//          VolumeResponseArgs{...}
+type VolumeResponseInput interface {
+	pulumi.Input
+
+	ToVolumeResponseOutput() VolumeResponseOutput
+	ToVolumeResponseOutputWithContext(context.Context) VolumeResponseOutput
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume in a container.
+type VolumeResponseArgs struct {
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
+	ConfigMap ConfigMapVolumeSourceResponseInput `pulumi:"configMap"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume's name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
+	Secret SecretVolumeSourceResponseInput `pulumi:"secret"`
+}
+
+func (VolumeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeResponse)(nil)).Elem()
+}
+
+func (i VolumeResponseArgs) ToVolumeResponseOutput() VolumeResponseOutput {
+	return i.ToVolumeResponseOutputWithContext(context.Background())
+}
+
+func (i VolumeResponseArgs) ToVolumeResponseOutputWithContext(ctx context.Context) VolumeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeResponseOutput)
+}
+
+// VolumeResponseArrayInput is an input type that accepts VolumeResponseArray and VolumeResponseArrayOutput values.
+// You can construct a concrete instance of `VolumeResponseArrayInput` via:
+//
+//          VolumeResponseArray{ VolumeResponseArgs{...} }
+type VolumeResponseArrayInput interface {
+	pulumi.Input
+
+	ToVolumeResponseArrayOutput() VolumeResponseArrayOutput
+	ToVolumeResponseArrayOutputWithContext(context.Context) VolumeResponseArrayOutput
+}
+
+type VolumeResponseArray []VolumeResponseInput
+
+func (VolumeResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeResponse)(nil)).Elem()
+}
+
+func (i VolumeResponseArray) ToVolumeResponseArrayOutput() VolumeResponseArrayOutput {
+	return i.ToVolumeResponseArrayOutputWithContext(context.Background())
+}
+
+func (i VolumeResponseArray) ToVolumeResponseArrayOutputWithContext(ctx context.Context) VolumeResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeResponseArrayOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume in a container.
+type VolumeResponseOutput struct{ *pulumi.OutputState }
+
+func (VolumeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeResponse)(nil)).Elem()
+}
+
+func (o VolumeResponseOutput) ToVolumeResponseOutput() VolumeResponseOutput {
+	return o
+}
+
+func (o VolumeResponseOutput) ToVolumeResponseOutputWithContext(ctx context.Context) VolumeResponseOutput {
+	return o
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
+func (o VolumeResponseOutput) ConfigMap() ConfigMapVolumeSourceResponseOutput {
+	return o.ApplyT(func(v VolumeResponse) ConfigMapVolumeSourceResponse { return v.ConfigMap }).(ConfigMapVolumeSourceResponseOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume's name.
+func (o VolumeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
+func (o VolumeResponseOutput) Secret() SecretVolumeSourceResponseOutput {
+	return o.ApplyT(func(v VolumeResponse) SecretVolumeSourceResponse { return v.Secret }).(SecretVolumeSourceResponseOutput)
+}
+
+type VolumeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeResponse)(nil)).Elem()
+}
+
+func (o VolumeResponseArrayOutput) ToVolumeResponseArrayOutput() VolumeResponseArrayOutput {
+	return o
+}
+
+func (o VolumeResponseArrayOutput) ToVolumeResponseArrayOutputWithContext(ctx context.Context) VolumeResponseArrayOutput {
+	return o
+}
+
+func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeResponse {
+		return vs[0].([]VolumeResponse)[vs[1].(int)]
+	}).(VolumeResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AddressableOutput{})
 	pulumi.RegisterOutputType(AddressablePtrOutput{})
+	pulumi.RegisterOutputType(AddressableResponseOutput{})
+	pulumi.RegisterOutputType(AddressableResponsePtrOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingResponseOutput{})
+	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourceOutput{})
 	pulumi.RegisterOutputType(ConfigMapEnvSourcePtrOutput{})
+	pulumi.RegisterOutputType(ConfigMapEnvSourceResponseOutput{})
 	pulumi.RegisterOutputType(ConfigMapKeySelectorOutput{})
 	pulumi.RegisterOutputType(ConfigMapKeySelectorPtrOutput{})
+	pulumi.RegisterOutputType(ConfigMapKeySelectorResponseOutput{})
 	pulumi.RegisterOutputType(ConfigMapVolumeSourceOutput{})
 	pulumi.RegisterOutputType(ConfigMapVolumeSourcePtrOutput{})
+	pulumi.RegisterOutputType(ConfigMapVolumeSourceResponseOutput{})
 	pulumi.RegisterOutputType(ContainerOutput{})
 	pulumi.RegisterOutputType(ContainerArrayOutput{})
 	pulumi.RegisterOutputType(ContainerPortOutput{})
 	pulumi.RegisterOutputType(ContainerPortArrayOutput{})
+	pulumi.RegisterOutputType(ContainerPortResponseOutput{})
+	pulumi.RegisterOutputType(ContainerPortResponseArrayOutput{})
+	pulumi.RegisterOutputType(ContainerResponseOutput{})
+	pulumi.RegisterOutputType(ContainerResponseArrayOutput{})
 	pulumi.RegisterOutputType(DomainMappingSpecOutput{})
 	pulumi.RegisterOutputType(DomainMappingSpecPtrOutput{})
+	pulumi.RegisterOutputType(DomainMappingSpecResponseOutput{})
+	pulumi.RegisterOutputType(DomainMappingSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(DomainMappingStatusOutput{})
 	pulumi.RegisterOutputType(DomainMappingStatusPtrOutput{})
+	pulumi.RegisterOutputType(DomainMappingStatusResponseOutput{})
+	pulumi.RegisterOutputType(DomainMappingStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(EnvFromSourceOutput{})
 	pulumi.RegisterOutputType(EnvFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(EnvFromSourceResponseOutput{})
+	pulumi.RegisterOutputType(EnvFromSourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(EnvVarOutput{})
 	pulumi.RegisterOutputType(EnvVarArrayOutput{})
+	pulumi.RegisterOutputType(EnvVarResponseOutput{})
+	pulumi.RegisterOutputType(EnvVarResponseArrayOutput{})
 	pulumi.RegisterOutputType(EnvVarSourceOutput{})
 	pulumi.RegisterOutputType(EnvVarSourcePtrOutput{})
+	pulumi.RegisterOutputType(EnvVarSourceResponseOutput{})
 	pulumi.RegisterOutputType(ExecActionOutput{})
 	pulumi.RegisterOutputType(ExecActionPtrOutput{})
+	pulumi.RegisterOutputType(ExecActionResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV1ConditionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV1ConditionArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV1ConditionResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV1ConditionResponseArrayOutput{})
 	pulumi.RegisterOutputType(HTTPGetActionOutput{})
 	pulumi.RegisterOutputType(HTTPGetActionPtrOutput{})
+	pulumi.RegisterOutputType(HTTPGetActionResponseOutput{})
 	pulumi.RegisterOutputType(HTTPHeaderOutput{})
 	pulumi.RegisterOutputType(HTTPHeaderArrayOutput{})
+	pulumi.RegisterOutputType(HTTPHeaderResponseOutput{})
+	pulumi.RegisterOutputType(HTTPHeaderResponseArrayOutput{})
 	pulumi.RegisterOutputType(KeyToPathOutput{})
 	pulumi.RegisterOutputType(KeyToPathArrayOutput{})
+	pulumi.RegisterOutputType(KeyToPathResponseOutput{})
+	pulumi.RegisterOutputType(KeyToPathResponseArrayOutput{})
 	pulumi.RegisterOutputType(LocalObjectReferenceOutput{})
 	pulumi.RegisterOutputType(LocalObjectReferencePtrOutput{})
+	pulumi.RegisterOutputType(LocalObjectReferenceResponseOutput{})
 	pulumi.RegisterOutputType(ObjectMetaOutput{})
 	pulumi.RegisterOutputType(ObjectMetaPtrOutput{})
+	pulumi.RegisterOutputType(ObjectMetaResponseOutput{})
+	pulumi.RegisterOutputType(ObjectMetaResponsePtrOutput{})
 	pulumi.RegisterOutputType(OwnerReferenceOutput{})
 	pulumi.RegisterOutputType(OwnerReferenceArrayOutput{})
+	pulumi.RegisterOutputType(OwnerReferenceResponseOutput{})
+	pulumi.RegisterOutputType(OwnerReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(PolicyOutput{})
 	pulumi.RegisterOutputType(PolicyPtrOutput{})
 	pulumi.RegisterOutputType(ProbeOutput{})
 	pulumi.RegisterOutputType(ProbePtrOutput{})
+	pulumi.RegisterOutputType(ProbeResponseOutput{})
 	pulumi.RegisterOutputType(ResourceRecordOutput{})
 	pulumi.RegisterOutputType(ResourceRecordArrayOutput{})
+	pulumi.RegisterOutputType(ResourceRecordResponseOutput{})
+	pulumi.RegisterOutputType(ResourceRecordResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourceRequirementsOutput{})
 	pulumi.RegisterOutputType(ResourceRequirementsPtrOutput{})
+	pulumi.RegisterOutputType(ResourceRequirementsResponseOutput{})
 	pulumi.RegisterOutputType(RevisionSpecOutput{})
 	pulumi.RegisterOutputType(RevisionSpecPtrOutput{})
+	pulumi.RegisterOutputType(RevisionSpecResponseOutput{})
+	pulumi.RegisterOutputType(RevisionSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(RevisionTemplateOutput{})
 	pulumi.RegisterOutputType(RevisionTemplatePtrOutput{})
+	pulumi.RegisterOutputType(RevisionTemplateResponseOutput{})
+	pulumi.RegisterOutputType(RevisionTemplateResponsePtrOutput{})
 	pulumi.RegisterOutputType(SecretEnvSourceOutput{})
 	pulumi.RegisterOutputType(SecretEnvSourcePtrOutput{})
+	pulumi.RegisterOutputType(SecretEnvSourceResponseOutput{})
 	pulumi.RegisterOutputType(SecretKeySelectorOutput{})
 	pulumi.RegisterOutputType(SecretKeySelectorPtrOutput{})
+	pulumi.RegisterOutputType(SecretKeySelectorResponseOutput{})
 	pulumi.RegisterOutputType(SecretVolumeSourceOutput{})
 	pulumi.RegisterOutputType(SecretVolumeSourcePtrOutput{})
+	pulumi.RegisterOutputType(SecretVolumeSourceResponseOutput{})
 	pulumi.RegisterOutputType(SecurityContextOutput{})
 	pulumi.RegisterOutputType(SecurityContextPtrOutput{})
+	pulumi.RegisterOutputType(SecurityContextResponseOutput{})
 	pulumi.RegisterOutputType(ServiceSpecOutput{})
 	pulumi.RegisterOutputType(ServiceSpecPtrOutput{})
+	pulumi.RegisterOutputType(ServiceSpecResponseOutput{})
+	pulumi.RegisterOutputType(ServiceSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(ServiceStatusOutput{})
 	pulumi.RegisterOutputType(ServiceStatusPtrOutput{})
+	pulumi.RegisterOutputType(ServiceStatusResponseOutput{})
+	pulumi.RegisterOutputType(ServiceStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(TCPSocketActionOutput{})
 	pulumi.RegisterOutputType(TCPSocketActionPtrOutput{})
+	pulumi.RegisterOutputType(TCPSocketActionResponseOutput{})
 	pulumi.RegisterOutputType(TrafficTargetOutput{})
 	pulumi.RegisterOutputType(TrafficTargetArrayOutput{})
+	pulumi.RegisterOutputType(TrafficTargetResponseOutput{})
+	pulumi.RegisterOutputType(TrafficTargetResponseArrayOutput{})
 	pulumi.RegisterOutputType(VolumeOutput{})
 	pulumi.RegisterOutputType(VolumeArrayOutput{})
 	pulumi.RegisterOutputType(VolumeMountOutput{})
 	pulumi.RegisterOutputType(VolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(VolumeMountResponseOutput{})
+	pulumi.RegisterOutputType(VolumeMountResponseArrayOutput{})
+	pulumi.RegisterOutputType(VolumeResponseOutput{})
+	pulumi.RegisterOutputType(VolumeResponseArrayOutput{})
 }

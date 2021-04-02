@@ -35,6 +35,39 @@ export class License extends pulumi.CustomResource {
         return obj['__pulumiType'] === License.__pulumiType;
     }
 
+    /**
+     * [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
+     */
+    public readonly chargesUseFee!: pulumi.Output<boolean>;
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional textual description of the resource; provided by the client when the resource is created.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * [Output Only] Type of resource. Always compute#license for licenses.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * [Output Only] The unique code used to attach this license to images, snapshots, and disks.
+     */
+    public readonly licenseCode!: pulumi.Output<string>;
+    /**
+     * Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
+     */
+    public readonly name!: pulumi.Output<string>;
+    public readonly resourceRequirements!: pulumi.Output<outputs.compute.beta.LicenseResourceRequirementsResponse>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
+     */
+    public readonly transferable!: pulumi.Output<boolean>;
 
     /**
      * Create a License resource with the given unique name, arguments, and options.
@@ -66,6 +99,15 @@ export class License extends pulumi.CustomResource {
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["transferable"] = args ? args.transferable : undefined;
         } else {
+            inputs["chargesUseFee"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["licenseCode"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["resourceRequirements"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["transferable"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

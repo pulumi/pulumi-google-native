@@ -14,6 +14,11 @@ import (
 // Creates a new RuntimeConfig resource. The configuration name must be unique within project.
 type Config struct {
 	pulumi.CustomResourceState
+
+	// An optional description of the RuntimeConfig object.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// The resource name of a runtime config. The name must have the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME] The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches the `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression. The length of `[CONFIG_NAME]` must be less than 64 characters. You pick the RuntimeConfig resource name, but the server will validate that the name adheres to this format. After you create the resource, you cannot change the resource's name.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewConfig registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +56,17 @@ func GetConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Config resources.
 type configState struct {
+	// An optional description of the RuntimeConfig object.
+	Description *string `pulumi:"description"`
+	// The resource name of a runtime config. The name must have the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME] The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches the `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression. The length of `[CONFIG_NAME]` must be less than 64 characters. You pick the RuntimeConfig resource name, but the server will validate that the name adheres to this format. After you create the resource, you cannot change the resource's name.
+	Name *string `pulumi:"name"`
 }
 
 type ConfigState struct {
+	// An optional description of the RuntimeConfig object.
+	Description pulumi.StringPtrInput
+	// The resource name of a runtime config. The name must have the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME] The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches the `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression. The length of `[CONFIG_NAME]` must be less than 64 characters. You pick the RuntimeConfig resource name, but the server will validate that the name adheres to this format. After you create the resource, you cannot change the resource's name.
+	Name pulumi.StringPtrInput
 }
 
 func (ConfigState) ElementType() reflect.Type {

@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
     public partial class DatasetHl7V2StoreMessage : Pulumi.CustomResource
     {
         /// <summary>
+        /// The datetime when the message was created. Set by the server.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Raw message bytes.
+        /// </summary>
+        [Output("data")]
+        public Output<string> Data { get; private set; } = null!;
+
+        /// <summary>
+        /// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The message type for this message. MSH-9.1.
+        /// </summary>
+        [Output("messageType")]
+        public Output<string> MessageType { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The parsed version of the raw message data.
+        /// </summary>
+        [Output("parsedData")]
+        public Output<Outputs.ParsedDataResponse> ParsedData { get; private set; } = null!;
+
+        /// <summary>
+        /// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
+        /// </summary>
+        [Output("patientIds")]
+        public Output<ImmutableArray<Outputs.PatientIdResponse>> PatientIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
+        /// </summary>
+        [Output("schematizedData")]
+        public Output<Outputs.SchematizedDataResponse> SchematizedData { get; private set; } = null!;
+
+        /// <summary>
+        /// The hospital that this message came from. MSH-4.
+        /// </summary>
+        [Output("sendFacility")]
+        public Output<string> SendFacility { get; private set; } = null!;
+
+        /// <summary>
+        /// The datetime the sending application sent this message. MSH-7.
+        /// </summary>
+        [Output("sendTime")]
+        public Output<string> SendTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a DatasetHl7V2StoreMessage resource with the given unique name, arguments, and options.
         /// </summary>
         ///

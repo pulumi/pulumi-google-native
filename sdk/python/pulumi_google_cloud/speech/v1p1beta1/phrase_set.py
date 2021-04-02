@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['PhraseSet']
@@ -60,6 +61,9 @@ class PhraseSet(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['boost'] = None
+            __props__['name'] = None
+            __props__['phrases'] = None
         super(PhraseSet, __self__).__init__(
             'google-cloud:speech/v1p1beta1:PhraseSet',
             resource_name,
@@ -82,7 +86,34 @@ class PhraseSet(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["boost"] = None
+        __props__["name"] = None
+        __props__["phrases"] = None
         return PhraseSet(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def boost(self) -> pulumi.Output[float]:
+        """
+        Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
+        """
+        return pulumi.get(self, "boost")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the phrase set.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def phrases(self) -> pulumi.Output[Sequence['outputs.PhraseResponse']]:
+        """
+        A list of word and phrases.
+        """
+        return pulumi.get(self, "phrases")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -35,6 +35,38 @@ export class InstanceClusterBackup extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceClusterBackup.__pulumiType;
     }
 
+    /**
+     * The encryption information for the backup.
+     */
+    public /*out*/ readonly encryptionInfo!: pulumi.Output<outputs.bigtableadmin.v2.EncryptionInfoResponse>;
+    /**
+     * `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp.
+     */
+    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    /**
+     * Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
+     */
+    public readonly expireTime!: pulumi.Output<string>;
+    /**
+     * A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Size of the backup in bytes.
+     */
+    public /*out*/ readonly sizeBytes!: pulumi.Output<string>;
+    /**
+     * Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
+     */
+    public readonly sourceTable!: pulumi.Output<string>;
+    /**
+     * `start_time` is the time that the backup was started (i.e. approximately the time the CreateBackup request is received). The row data in this backup will be no older than this timestamp.
+     */
+    public /*out*/ readonly startTime!: pulumi.Output<string>;
+    /**
+     * The current state of the backup.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a InstanceClusterBackup resource with the given unique name, arguments, and options.
@@ -61,17 +93,25 @@ export class InstanceClusterBackup extends pulumi.CustomResource {
             }
             inputs["backupsId"] = args ? args.backupsId : undefined;
             inputs["clustersId"] = args ? args.clustersId : undefined;
-            inputs["encryptionInfo"] = args ? args.encryptionInfo : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
             inputs["expireTime"] = args ? args.expireTime : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["sizeBytes"] = args ? args.sizeBytes : undefined;
             inputs["sourceTable"] = args ? args.sourceTable : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["encryptionInfo"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["sizeBytes"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["encryptionInfo"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["expireTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["sizeBytes"] = undefined /*out*/;
+            inputs["sourceTable"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -87,14 +127,6 @@ export interface InstanceClusterBackupArgs {
     readonly backupsId: pulumi.Input<string>;
     readonly clustersId: pulumi.Input<string>;
     /**
-     * Output only. The encryption information for the backup.
-     */
-    readonly encryptionInfo?: pulumi.Input<inputs.bigtableadmin.v2.EncryptionInfo>;
-    /**
-     * Output only. `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp.
-     */
-    readonly endTime?: pulumi.Input<string>;
-    /**
      * Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
      */
     readonly expireTime?: pulumi.Input<string>;
@@ -105,19 +137,7 @@ export interface InstanceClusterBackupArgs {
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**
-     * Output only. Size of the backup in bytes.
-     */
-    readonly sizeBytes?: pulumi.Input<string>;
-    /**
      * Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
      */
     readonly sourceTable?: pulumi.Input<string>;
-    /**
-     * Output only. `start_time` is the time that the backup was started (i.e. approximately the time the CreateBackup request is received). The row data in this backup will be no older than this timestamp.
-     */
-    readonly startTime?: pulumi.Input<string>;
-    /**
-     * Output only. The current state of the backup.
-     */
-    readonly state?: pulumi.Input<string>;
 }

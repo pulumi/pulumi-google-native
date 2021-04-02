@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['InstanceGroup']
@@ -117,7 +118,119 @@ class InstanceGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["creation_timestamp"] = None
+        __props__["description"] = None
+        __props__["fingerprint"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["named_ports"] = None
+        __props__["network"] = None
+        __props__["region"] = None
+        __props__["self_link"] = None
+        __props__["size"] = None
+        __props__["subnetwork"] = None
+        __props__["zone"] = None
         return InstanceGroup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The creation timestamp for this instance group in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The fingerprint of the named ports. The system uses this fingerprint to detect conflicts when multiple users change the named ports concurrently.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The resource type, which is always compute#instanceGroup for instance groups.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the instance group. The name must be 1-63 characters long, and comply with RFC1035.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namedPorts")
+    def named_ports(self) -> pulumi.Output[Sequence['outputs.NamedPortResponse']]:
+        """
+        Assigns a name to a port number. For example: {name: "http", port: 80}
+
+        This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] 
+
+        Named ports apply to all instances in this instance group.
+        """
+        return pulumi.get(self, "named_ports")
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The URL of the region where the instance group is located (for regional resources).
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The URL for this instance group. The server generates this URL.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def size(self) -> pulumi.Output[int]:
+        """
+        [Output Only] The total number of instances in the instance group.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The URL of the zone where the instance group is located (for zonal resources).
+        """
+        return pulumi.get(self, "zone")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

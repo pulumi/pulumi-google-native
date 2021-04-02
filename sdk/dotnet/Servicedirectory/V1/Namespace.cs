@@ -16,6 +16,19 @@ namespace Pulumi.GoogleCloud.Servicedirectory.V1
     public partial class Namespace : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Namespace resource with the given unique name, arguments, and options.
         /// </summary>
         ///

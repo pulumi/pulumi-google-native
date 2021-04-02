@@ -35,6 +35,46 @@ export class DlpJob extends pulumi.CustomResource {
         return obj['__pulumiType'] === DlpJob.__pulumiType;
     }
 
+    /**
+     * Time when the job was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Time when the job finished.
+     */
+    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    /**
+     * A stream of errors encountered running the job.
+     */
+    public /*out*/ readonly errors!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2ErrorResponse[]>;
+    /**
+     * Results from inspecting a data source.
+     */
+    public /*out*/ readonly inspectDetails!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2InspectDataSourceDetailsResponse>;
+    /**
+     * If created by a job trigger, the resource name of the trigger that instantiated the job.
+     */
+    public /*out*/ readonly jobTriggerName!: pulumi.Output<string>;
+    /**
+     * The server-assigned name.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Results from analyzing risk of a data source.
+     */
+    public /*out*/ readonly riskDetails!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse>;
+    /**
+     * Time when the job started.
+     */
+    public /*out*/ readonly startTime!: pulumi.Output<string>;
+    /**
+     * State of a job.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The type of job.
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
      * Create a DlpJob resource with the given unique name, arguments, and options.
@@ -59,11 +99,30 @@ export class DlpJob extends pulumi.CustomResource {
             inputs["dlpJobsId"] = args ? args.dlpJobsId : undefined;
             inputs["inspectJob"] = args ? args.inspectJob : undefined;
             inputs["jobId"] = args ? args.jobId : undefined;
-            inputs["locationId"] = args ? args.locationId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["riskJob"] = args ? args.riskJob : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["errors"] = undefined /*out*/;
+            inputs["inspectDetails"] = undefined /*out*/;
+            inputs["jobTriggerName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["riskDetails"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["errors"] = undefined /*out*/;
+            inputs["inspectDetails"] = undefined /*out*/;
+            inputs["jobTriggerName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["riskDetails"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -85,10 +144,6 @@ export interface DlpJobArgs {
      * The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
     readonly jobId?: pulumi.Input<string>;
-    /**
-     * Deprecated. This field has no effect.
-     */
-    readonly locationId?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**

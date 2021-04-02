@@ -14,6 +14,21 @@ import (
 // Creates a new conversation. Conversations are auto-completed after 24 hours. Conversation Lifecycle: There are two stages during a conversation: Automated Agent Stage and Assist Stage. For Automated Agent Stage, there will be a dialogflow agent responding to user queries. For Assist Stage, there's no dialogflow agent responding to user queries. But we will provide suggestions which are generated from conversation. If Conversation.conversation_profile is configured for a dialogflow agent, conversation will start from `Automated Agent Stage`, otherwise, it will start from `Assist Stage`. And during `Automated Agent Stage`, once an Intent with Intent.live_agent_handoff is triggered, conversation will transfer to Assist Stage.
 type Conversation struct {
 	pulumi.CustomResourceState
+
+	// Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
+	ConversationProfile pulumi.StringOutput `pulumi:"conversationProfile"`
+	// The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
+	ConversationStage pulumi.StringOutput `pulumi:"conversationStage"`
+	// The time the conversation was finished.
+	EndTime pulumi.StringOutput `pulumi:"endTime"`
+	// The current state of the Conversation.
+	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
+	// The unique identifier of this conversation. Format: `projects//locations//conversations/`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// It will not be empty if the conversation is to be connected over telephony.
+	PhoneNumber GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput `pulumi:"phoneNumber"`
+	// The time the conversation was started.
+	StartTime pulumi.StringOutput `pulumi:"startTime"`
 }
 
 // NewConversation registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +69,37 @@ func GetConversation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Conversation resources.
 type conversationState struct {
+	// Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
+	ConversationProfile *string `pulumi:"conversationProfile"`
+	// The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
+	ConversationStage *string `pulumi:"conversationStage"`
+	// The time the conversation was finished.
+	EndTime *string `pulumi:"endTime"`
+	// The current state of the Conversation.
+	LifecycleState *string `pulumi:"lifecycleState"`
+	// The unique identifier of this conversation. Format: `projects//locations//conversations/`.
+	Name *string `pulumi:"name"`
+	// It will not be empty if the conversation is to be connected over telephony.
+	PhoneNumber *GoogleCloudDialogflowV2ConversationPhoneNumberResponse `pulumi:"phoneNumber"`
+	// The time the conversation was started.
+	StartTime *string `pulumi:"startTime"`
 }
 
 type ConversationState struct {
+	// Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
+	ConversationProfile pulumi.StringPtrInput
+	// The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
+	ConversationStage pulumi.StringPtrInput
+	// The time the conversation was finished.
+	EndTime pulumi.StringPtrInput
+	// The current state of the Conversation.
+	LifecycleState pulumi.StringPtrInput
+	// The unique identifier of this conversation. Format: `projects//locations//conversations/`.
+	Name pulumi.StringPtrInput
+	// It will not be empty if the conversation is to be connected over telephony.
+	PhoneNumber GoogleCloudDialogflowV2ConversationPhoneNumberResponsePtrInput
+	// The time the conversation was started.
+	StartTime pulumi.StringPtrInput
 }
 
 func (ConversationState) ElementType() reflect.Type {
@@ -69,18 +112,8 @@ type conversationArgs struct {
 	// The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
 	ConversationStage *string `pulumi:"conversationStage"`
 	ConversationsId   string  `pulumi:"conversationsId"`
-	// Output only. The time the conversation was finished.
-	EndTime *string `pulumi:"endTime"`
-	// Output only. The current state of the Conversation.
-	LifecycleState *string `pulumi:"lifecycleState"`
-	LocationsId    string  `pulumi:"locationsId"`
-	// Output only. The unique identifier of this conversation. Format: `projects//locations//conversations/`.
-	Name *string `pulumi:"name"`
-	// Output only. It will not be empty if the conversation is to be connected over telephony.
-	PhoneNumber *GoogleCloudDialogflowV2ConversationPhoneNumber `pulumi:"phoneNumber"`
-	ProjectsId  string                                          `pulumi:"projectsId"`
-	// Output only. The time the conversation was started.
-	StartTime *string `pulumi:"startTime"`
+	LocationsId       string  `pulumi:"locationsId"`
+	ProjectsId        string  `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a Conversation resource.
@@ -90,18 +123,8 @@ type ConversationArgs struct {
 	// The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
 	ConversationStage pulumi.StringPtrInput
 	ConversationsId   pulumi.StringInput
-	// Output only. The time the conversation was finished.
-	EndTime pulumi.StringPtrInput
-	// Output only. The current state of the Conversation.
-	LifecycleState pulumi.StringPtrInput
-	LocationsId    pulumi.StringInput
-	// Output only. The unique identifier of this conversation. Format: `projects//locations//conversations/`.
-	Name pulumi.StringPtrInput
-	// Output only. It will not be empty if the conversation is to be connected over telephony.
-	PhoneNumber GoogleCloudDialogflowV2ConversationPhoneNumberPtrInput
-	ProjectsId  pulumi.StringInput
-	// Output only. The time the conversation was started.
-	StartTime pulumi.StringPtrInput
+	LocationsId       pulumi.StringInput
+	ProjectsId        pulumi.StringInput
 }
 
 func (ConversationArgs) ElementType() reflect.Type {

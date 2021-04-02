@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3
     public partial class SecuritySetting : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The human-readable name of the security settings, unique within the location.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+        /// </summary>
+        [Output("inspectTemplate")]
+        public Output<string> InspectTemplate { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// List of types of data to remove when retention settings triggers purge.
+        /// </summary>
+        [Output("purgeDataTypes")]
+        public Output<ImmutableArray<string>> PurgeDataTypes { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+        /// </summary>
+        [Output("redactionScope")]
+        public Output<string> RedactionScope { get; private set; } = null!;
+
+        /// <summary>
+        /// Strategy that defines how we do redaction.
+        /// </summary>
+        [Output("redactionStrategy")]
+        public Output<string> RedactionStrategy { get; private set; } = null!;
+
+        /// <summary>
+        /// Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
+        /// </summary>
+        [Output("retentionWindowDays")]
+        public Output<int> RetentionWindowDays { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a SecuritySetting resource with the given unique name, arguments, and options.
         /// </summary>
         ///

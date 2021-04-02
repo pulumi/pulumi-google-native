@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationEnvgroup : Pulumi.CustomResource
     {
         /// <summary>
+        /// The time at which the environment group was created as milliseconds since epoch.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Host names for this environment group.
+        /// </summary>
+        [Output("hostnames")]
+        public Output<ImmutableArray<string>> Hostnames { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which the environment group was last updated as milliseconds since epoch.
+        /// </summary>
+        [Output("lastModifiedAt")]
+        public Output<string> LastModifiedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the environment group.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the environment group. Values other than ACTIVE means the resource is not ready to use.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationEnvgroup resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,12 +90,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
 
     public sealed class OrganizationEnvgroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. The time at which the environment group was created as milliseconds since epoch.
-        /// </summary>
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
         [Input("envgroupsId", required: true)]
         public Input<string> EnvgroupsId { get; set; } = null!;
 
@@ -81,12 +106,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         }
 
         /// <summary>
-        /// Output only. The time at which the environment group was last updated as milliseconds since epoch.
-        /// </summary>
-        [Input("lastModifiedAt")]
-        public Input<string>? LastModifiedAt { get; set; }
-
-        /// <summary>
         /// ID of the environment group.
         /// </summary>
         [Input("name")]
@@ -94,12 +113,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
 
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. State of the environment group. Values other than ACTIVE means the resource is not ready to use.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         public OrganizationEnvgroupArgs()
         {

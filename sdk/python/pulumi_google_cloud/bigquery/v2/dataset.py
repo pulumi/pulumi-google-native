@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Dataset']
@@ -119,7 +120,139 @@ class Dataset(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["access"] = None
+        __props__["creation_time"] = None
+        __props__["dataset_reference"] = None
+        __props__["default_encryption_configuration"] = None
+        __props__["default_partition_expiration_ms"] = None
+        __props__["default_table_expiration_ms"] = None
+        __props__["description"] = None
+        __props__["etag"] = None
+        __props__["friendly_name"] = None
+        __props__["kind"] = None
+        __props__["labels"] = None
+        __props__["last_modified_time"] = None
+        __props__["location"] = None
+        __props__["satisfies_pzs"] = None
+        __props__["self_link"] = None
         return Dataset(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def access(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+        """
+        [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+        """
+        return pulumi.get(self, "access")
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> pulumi.Output[str]:
+        """
+        [Output-only] The time when this dataset was created, in milliseconds since the epoch.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="datasetReference")
+    def dataset_reference(self) -> pulumi.Output['outputs.DatasetReferenceResponse']:
+        """
+        [Required] A reference that identifies the dataset.
+        """
+        return pulumi.get(self, "dataset_reference")
+
+    @property
+    @pulumi.getter(name="defaultEncryptionConfiguration")
+    def default_encryption_configuration(self) -> pulumi.Output['outputs.EncryptionConfigurationResponse']:
+        return pulumi.get(self, "default_encryption_configuration")
+
+    @property
+    @pulumi.getter(name="defaultPartitionExpirationMs")
+    def default_partition_expiration_ms(self) -> pulumi.Output[str]:
+        """
+        [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
+        """
+        return pulumi.get(self, "default_partition_expiration_ms")
+
+    @property
+    @pulumi.getter(name="defaultTableExpirationMs")
+    def default_table_expiration_ms(self) -> pulumi.Output[str]:
+        """
+        [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
+        """
+        return pulumi.get(self, "default_table_expiration_ms")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        [Optional] A user-friendly description of the dataset.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        [Output-only] A hash of the resource.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="friendlyName")
+    def friendly_name(self) -> pulumi.Output[str]:
+        """
+        [Optional] A descriptive name for the dataset.
+        """
+        return pulumi.get(self, "friendly_name")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output-only] The resource type.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> pulumi.Output[str]:
+        """
+        [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        """
+        The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="satisfiesPZS")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        [Output-only] Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
+        """
+        return pulumi.get(self, "self_link")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

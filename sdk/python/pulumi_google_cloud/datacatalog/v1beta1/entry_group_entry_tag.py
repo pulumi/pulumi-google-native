@@ -24,7 +24,6 @@ class EntryGroupEntryTag(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  tags_id: Optional[pulumi.Input[str]] = None,
                  template: Optional[pulumi.Input[str]] = None,
-                 template_display_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -37,7 +36,6 @@ class EntryGroupEntryTag(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Required. This maps the ID of a tag field to the value of and additional information about that field. Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
         :param pulumi.Input[str] name: The resource name of the tag in URL format. Example: * projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id} where `tag_id` is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
         :param pulumi.Input[str] template: Required. The resource name of the tag template that this tag uses. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} This field cannot be modified after creation.
-        :param pulumi.Input[str] template_display_name: Output only. The display name of the tag template.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -75,7 +73,6 @@ class EntryGroupEntryTag(pulumi.CustomResource):
                 raise TypeError("Missing required property 'tags_id'")
             __props__['tags_id'] = tags_id
             __props__['template'] = template
-            __props__['template_display_name'] = template_display_name
         super(EntryGroupEntryTag, __self__).__init__(
             'google-cloud:datacatalog/v1beta1:EntryGroupEntryTag',
             resource_name,

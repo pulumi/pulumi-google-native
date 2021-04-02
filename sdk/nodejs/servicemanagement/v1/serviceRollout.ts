@@ -35,6 +35,34 @@ export class ServiceRollout extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServiceRollout.__pulumiType;
     }
 
+    /**
+     * Creation time of the rollout. Readonly.
+     */
+    public readonly createTime!: pulumi.Output<string>;
+    /**
+     * This field is deprecated and will be deleted. Please remove usage of this field.
+     */
+    public readonly createdBy!: pulumi.Output<string>;
+    /**
+     * The strategy associated with a rollout to delete a `ManagedService`. Readonly.
+     */
+    public readonly deleteServiceStrategy!: pulumi.Output<outputs.servicemanagement.v1.DeleteServiceStrategyResponse>;
+    /**
+     * Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
+     */
+    public readonly rolloutId!: pulumi.Output<string>;
+    /**
+     * The name of the service associated with this Rollout.
+     */
+    public readonly serviceName!: pulumi.Output<string>;
+    /**
+     * The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
+     */
+    public readonly status!: pulumi.Output<string>;
+    /**
+     * Google Service Control selects service configurations based on traffic percentage.
+     */
+    public readonly trafficPercentStrategy!: pulumi.Output<outputs.servicemanagement.v1.TrafficPercentStrategyResponse>;
 
     /**
      * Create a ServiceRollout resource with the given unique name, arguments, and options.
@@ -61,6 +89,13 @@ export class ServiceRollout extends pulumi.CustomResource {
             inputs["status"] = args ? args.status : undefined;
             inputs["trafficPercentStrategy"] = args ? args.trafficPercentStrategy : undefined;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["createdBy"] = undefined /*out*/;
+            inputs["deleteServiceStrategy"] = undefined /*out*/;
+            inputs["rolloutId"] = undefined /*out*/;
+            inputs["serviceName"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["trafficPercentStrategy"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -35,6 +35,44 @@ export class InstanceTemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceTemplate.__pulumiType;
     }
 
+    /**
+     * [Output Only] The creation timestamp for this instance template in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The instance properties for this instance template.
+     */
+    public readonly properties!: pulumi.Output<outputs.compute.alpha.InstancePropertiesResponse>;
+    /**
+     * [Output Only] The URL for this instance template. The server defines this URL.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for this resource with the resource id.
+     */
+    public readonly selfLinkWithId!: pulumi.Output<string>;
+    /**
+     * The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
+     * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
+     * - projects/project/zones/zone/instances/instance
+     */
+    public readonly sourceInstance!: pulumi.Output<string>;
+    /**
+     * The source instance params to use to create this instance template.
+     */
+    public readonly sourceInstanceParams!: pulumi.Output<outputs.compute.alpha.SourceInstanceParamsResponse>;
 
     /**
      * Create a InstanceTemplate resource with the given unique name, arguments, and options.
@@ -66,6 +104,15 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["sourceInstance"] = args ? args.sourceInstance : undefined;
             inputs["sourceInstanceParams"] = args ? args.sourceInstanceParams : undefined;
         } else {
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["properties"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
+            inputs["sourceInstance"] = undefined /*out*/;
+            inputs["sourceInstanceParams"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

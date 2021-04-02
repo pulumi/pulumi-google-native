@@ -14,6 +14,21 @@ import (
 // Create a Datastore for an org
 type OrganizationAnalyticDatastore struct {
 	pulumi.CustomResourceState
+
+	// Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Datastore Configurations.
+	DatastoreConfig GoogleCloudApigeeV1DatastoreConfigResponseOutput `pulumi:"datastoreConfig"`
+	// Required. Display name in UI
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+	LastUpdateTime pulumi.StringOutput `pulumi:"lastUpdateTime"`
+	// Organization that the datastore belongs to
+	Org pulumi.StringOutput `pulumi:"org"`
+	// Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
+	Self pulumi.StringOutput `pulumi:"self"`
+	// Destination storage type. Supported types `gcs` or `bigquery`.
+	TargetType pulumi.StringOutput `pulumi:"targetType"`
 }
 
 // NewOrganizationAnalyticDatastore registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +66,37 @@ func GetOrganizationAnalyticDatastore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationAnalyticDatastore resources.
 type organizationAnalyticDatastoreState struct {
+	// Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+	CreateTime *string `pulumi:"createTime"`
+	// Datastore Configurations.
+	DatastoreConfig *GoogleCloudApigeeV1DatastoreConfigResponse `pulumi:"datastoreConfig"`
+	// Required. Display name in UI
+	DisplayName *string `pulumi:"displayName"`
+	// Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+	LastUpdateTime *string `pulumi:"lastUpdateTime"`
+	// Organization that the datastore belongs to
+	Org *string `pulumi:"org"`
+	// Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
+	Self *string `pulumi:"self"`
+	// Destination storage type. Supported types `gcs` or `bigquery`.
+	TargetType *string `pulumi:"targetType"`
 }
 
 type OrganizationAnalyticDatastoreState struct {
+	// Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+	CreateTime pulumi.StringPtrInput
+	// Datastore Configurations.
+	DatastoreConfig GoogleCloudApigeeV1DatastoreConfigResponsePtrInput
+	// Required. Display name in UI
+	DisplayName pulumi.StringPtrInput
+	// Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+	LastUpdateTime pulumi.StringPtrInput
+	// Organization that the datastore belongs to
+	Org pulumi.StringPtrInput
+	// Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
+	Self pulumi.StringPtrInput
+	// Destination storage type. Supported types `gcs` or `bigquery`.
+	TargetType pulumi.StringPtrInput
 }
 
 func (OrganizationAnalyticDatastoreState) ElementType() reflect.Type {
@@ -61,40 +104,24 @@ func (OrganizationAnalyticDatastoreState) ElementType() reflect.Type {
 }
 
 type organizationAnalyticDatastoreArgs struct {
-	// Output only. Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
-	CreateTime *string `pulumi:"createTime"`
 	// Datastore Configurations.
 	DatastoreConfig *GoogleCloudApigeeV1DatastoreConfig `pulumi:"datastoreConfig"`
 	DatastoresId    string                              `pulumi:"datastoresId"`
 	// Required. Display name in UI
-	DisplayName *string `pulumi:"displayName"`
-	// Output only. Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
-	LastUpdateTime *string `pulumi:"lastUpdateTime"`
-	// Output only. Organization that the datastore belongs to
-	Org             *string `pulumi:"org"`
+	DisplayName     *string `pulumi:"displayName"`
 	OrganizationsId string  `pulumi:"organizationsId"`
-	// Output only. Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
-	Self *string `pulumi:"self"`
 	// Destination storage type. Supported types `gcs` or `bigquery`.
 	TargetType *string `pulumi:"targetType"`
 }
 
 // The set of arguments for constructing a OrganizationAnalyticDatastore resource.
 type OrganizationAnalyticDatastoreArgs struct {
-	// Output only. Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
-	CreateTime pulumi.StringPtrInput
 	// Datastore Configurations.
 	DatastoreConfig GoogleCloudApigeeV1DatastoreConfigPtrInput
 	DatastoresId    pulumi.StringInput
 	// Required. Display name in UI
-	DisplayName pulumi.StringPtrInput
-	// Output only. Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
-	LastUpdateTime pulumi.StringPtrInput
-	// Output only. Organization that the datastore belongs to
-	Org             pulumi.StringPtrInput
+	DisplayName     pulumi.StringPtrInput
 	OrganizationsId pulumi.StringInput
-	// Output only. Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
-	Self pulumi.StringPtrInput
 	// Destination storage type. Supported types `gcs` or `bigquery`.
 	TargetType pulumi.StringPtrInput
 }

@@ -16,6 +16,19 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
     public partial class Dataset : Pulumi.CustomResource
     {
         /// <summary>
+        /// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
+        /// </summary>
+        [Output("timeZone")]
+        public Output<string> TimeZone { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Dataset resource with the given unique name, arguments, and options.
         /// </summary>
         ///

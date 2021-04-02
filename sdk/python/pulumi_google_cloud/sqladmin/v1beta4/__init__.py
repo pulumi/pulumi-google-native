@@ -9,6 +9,7 @@ from .instance import *
 from .ssl_cert import *
 from .user import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

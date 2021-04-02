@@ -63,19 +63,19 @@ func (SiteVersionState) ElementType() reflect.Type {
 type siteVersionArgs struct {
 	// The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.
 	Config *ServingConfig `pulumi:"config"`
-	// Output only. The time at which the version was created.
+	// The time at which the version was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Output only. Identifies the user who created the version.
+	// Identifies the user who created the version.
 	CreateUser *ActingUser `pulumi:"createUser"`
-	// Output only. The time at which the version was `DELETED`.
+	// The time at which the version was `DELETED`.
 	DeleteTime *string `pulumi:"deleteTime"`
-	// Output only. Identifies the user who `DELETED` the version.
+	// Identifies the user who `DELETED` the version.
 	DeleteUser *ActingUser `pulumi:"deleteUser"`
-	// Output only. The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
+	// The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
 	FileCount *string `pulumi:"fileCount"`
-	// Output only. The time at which the version was `FINALIZED`.
+	// The time at which the version was `FINALIZED`.
 	FinalizeTime *string `pulumi:"finalizeTime"`
-	// Output only. Identifies the user who `FINALIZED` the version.
+	// Identifies the user who `FINALIZED` the version.
 	FinalizeUser *ActingUser `pulumi:"finalizeUser"`
 	// The labels used for extra metadata and/or filtering.
 	Labels map[string]string `pulumi:"labels"`
@@ -86,7 +86,7 @@ type siteVersionArgs struct {
 	SitesId string         `pulumi:"sitesId"`
 	// The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
 	Status *string `pulumi:"status"`
-	// Output only. The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
+	// The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
 	VersionBytes *string `pulumi:"versionBytes"`
 	VersionsId   string  `pulumi:"versionsId"`
 }
@@ -95,19 +95,19 @@ type siteVersionArgs struct {
 type SiteVersionArgs struct {
 	// The configuration for the behavior of the site. This configuration exists in the [`firebase.json`](https://firebase.google.com/docs/cli/#the_firebasejson_file) file.
 	Config ServingConfigPtrInput
-	// Output only. The time at which the version was created.
+	// The time at which the version was created.
 	CreateTime pulumi.StringPtrInput
-	// Output only. Identifies the user who created the version.
+	// Identifies the user who created the version.
 	CreateUser ActingUserPtrInput
-	// Output only. The time at which the version was `DELETED`.
+	// The time at which the version was `DELETED`.
 	DeleteTime pulumi.StringPtrInput
-	// Output only. Identifies the user who `DELETED` the version.
+	// Identifies the user who `DELETED` the version.
 	DeleteUser ActingUserPtrInput
-	// Output only. The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
+	// The total number of files associated with the version. This value is calculated after a version is `FINALIZED`.
 	FileCount pulumi.StringPtrInput
-	// Output only. The time at which the version was `FINALIZED`.
+	// The time at which the version was `FINALIZED`.
 	FinalizeTime pulumi.StringPtrInput
-	// Output only. Identifies the user who `FINALIZED` the version.
+	// Identifies the user who `FINALIZED` the version.
 	FinalizeUser ActingUserPtrInput
 	// The labels used for extra metadata and/or filtering.
 	Labels pulumi.StringMapInput
@@ -118,7 +118,7 @@ type SiteVersionArgs struct {
 	SitesId pulumi.StringInput
 	// The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
 	Status pulumi.StringPtrInput
-	// Output only. The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
+	// The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
 	VersionBytes pulumi.StringPtrInput
 	VersionsId   pulumi.StringInput
 }

@@ -14,6 +14,29 @@ import (
 // Creates a new connection profile in a given project and location.
 type ConnectionProfile struct {
 	pulumi.CustomResourceState
+
+	// A CloudSQL database connection profile.
+	Cloudsql CloudSqlConnectionProfileResponseOutput `pulumi:"cloudsql"`
+	// The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The connection profile display name.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// The error details in case of state FAILED.
+	Error StatusResponseOutput `pulumi:"error"`
+	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// A MySQL database connection profile.
+	Mysql MySqlConnectionProfileResponseOutput `pulumi:"mysql"`
+	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// A PostgreSQL database connection profile.
+	Postgresql PostgreSqlConnectionProfileResponseOutput `pulumi:"postgresql"`
+	// The database provider.
+	Provider pulumi.StringOutput `pulumi:"provider"`
+	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
+	State pulumi.StringOutput `pulumi:"state"`
+	// The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewConnectionProfile registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +77,53 @@ func GetConnectionProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConnectionProfile resources.
 type connectionProfileState struct {
+	// A CloudSQL database connection profile.
+	Cloudsql *CloudSqlConnectionProfileResponse `pulumi:"cloudsql"`
+	// The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	CreateTime *string `pulumi:"createTime"`
+	// The connection profile display name.
+	DisplayName *string `pulumi:"displayName"`
+	// The error details in case of state FAILED.
+	Error *StatusResponse `pulumi:"error"`
+	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+	Labels map[string]string `pulumi:"labels"`
+	// A MySQL database connection profile.
+	Mysql *MySqlConnectionProfileResponse `pulumi:"mysql"`
+	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+	Name *string `pulumi:"name"`
+	// A PostgreSQL database connection profile.
+	Postgresql *PostgreSqlConnectionProfileResponse `pulumi:"postgresql"`
+	// The database provider.
+	Provider *string `pulumi:"provider"`
+	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
+	State *string `pulumi:"state"`
+	// The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ConnectionProfileState struct {
+	// A CloudSQL database connection profile.
+	Cloudsql CloudSqlConnectionProfileResponsePtrInput
+	// The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringPtrInput
+	// The connection profile display name.
+	DisplayName pulumi.StringPtrInput
+	// The error details in case of state FAILED.
+	Error StatusResponsePtrInput
+	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+	Labels pulumi.StringMapInput
+	// A MySQL database connection profile.
+	Mysql MySqlConnectionProfileResponsePtrInput
+	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+	Name pulumi.StringPtrInput
+	// A PostgreSQL database connection profile.
+	Postgresql PostgreSqlConnectionProfileResponsePtrInput
+	// The database provider.
+	Provider pulumi.StringPtrInput
+	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
+	State pulumi.StringPtrInput
+	// The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (ConnectionProfileState) ElementType() reflect.Type {
@@ -67,12 +134,8 @@ type connectionProfileArgs struct {
 	// A CloudSQL database connection profile.
 	Cloudsql             *CloudSqlConnectionProfile `pulumi:"cloudsql"`
 	ConnectionProfilesId string                     `pulumi:"connectionProfilesId"`
-	// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	CreateTime *string `pulumi:"createTime"`
 	// The connection profile display name.
 	DisplayName *string `pulumi:"displayName"`
-	// Output only. The error details in case of state FAILED.
-	Error *Status `pulumi:"error"`
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels      map[string]string `pulumi:"labels"`
 	LocationsId string            `pulumi:"locationsId"`
@@ -87,8 +150,6 @@ type connectionProfileArgs struct {
 	Provider *string `pulumi:"provider"`
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State *string `pulumi:"state"`
-	// Output only. The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a ConnectionProfile resource.
@@ -96,12 +157,8 @@ type ConnectionProfileArgs struct {
 	// A CloudSQL database connection profile.
 	Cloudsql             CloudSqlConnectionProfilePtrInput
 	ConnectionProfilesId pulumi.StringInput
-	// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	CreateTime pulumi.StringPtrInput
 	// The connection profile display name.
 	DisplayName pulumi.StringPtrInput
-	// Output only. The error details in case of state FAILED.
-	Error StatusPtrInput
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels      pulumi.StringMapInput
 	LocationsId pulumi.StringInput
@@ -116,8 +173,6 @@ type ConnectionProfileArgs struct {
 	Provider pulumi.StringPtrInput
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State pulumi.StringPtrInput
-	// Output only. The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (ConnectionProfileArgs) ElementType() reflect.Type {

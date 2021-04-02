@@ -84,12 +84,6 @@ namespace Pulumi.GoogleCloud.Datacatalog.V1beta1
         public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The resource name of the tag template field in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template}/fields/{field} Note that this TagTemplateField may not actually be stored in the location in this name.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// The order of this field with respect to other fields in this tag template. A higher value indicates a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
         /// </summary>
         [Input("order")]

@@ -11,6 +11,7 @@ from .key_ring_iam_policy import *
 from .key_ring_import_job import *
 from .key_ring_import_job_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

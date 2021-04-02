@@ -35,6 +35,50 @@ export class Spoke extends pulumi.CustomResource {
         return obj['__pulumiType'] === Spoke.__pulumiType;
     }
 
+    /**
+     * The time when the Spoke was created.
+     */
+    public readonly createTime!: pulumi.Output<string>;
+    /**
+     * Short description of the spoke resource
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * The resource URL of the hub resource that the spoke is attached to
+     */
+    public readonly hub!: pulumi.Output<string>;
+    /**
+     * User-defined labels.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The URIs of linked interconnect attachment resources
+     */
+    public readonly linkedInterconnectAttachments!: pulumi.Output<string[]>;
+    /**
+     * The URIs of linked Router appliance resources
+     */
+    public readonly linkedRouterApplianceInstances!: pulumi.Output<outputs.networkconnectivity.v1alpha1.RouterApplianceInstanceResponse[]>;
+    /**
+     * The URIs of linked VPN tunnel resources
+     */
+    public readonly linkedVpnTunnels!: pulumi.Output<string[]>;
+    /**
+     * Immutable. The name of a Spoke resource.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The current lifecycle state of this Hub.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Google-generated UUID for this resource. This is unique across all Spoke resources. If a Spoke resource is deleted and another with the same name is created, it gets a different unique_id.
+     */
+    public /*out*/ readonly uniqueId!: pulumi.Output<string>;
+    /**
+     * The time when the Spoke was updated.
+     */
+    public readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Spoke resource with the given unique name, arguments, and options.
@@ -67,10 +111,21 @@ export class Spoke extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["spokesId"] = args ? args.spokesId : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["uniqueId"] = args ? args.uniqueId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["state"] = undefined /*out*/;
+            inputs["uniqueId"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["hub"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["linkedInterconnectAttachments"] = undefined /*out*/;
+            inputs["linkedRouterApplianceInstances"] = undefined /*out*/;
+            inputs["linkedVpnTunnels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["uniqueId"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -118,14 +173,6 @@ export interface SpokeArgs {
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     readonly spokesId: pulumi.Input<string>;
-    /**
-     * Output only. The current lifecycle state of this Hub.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. Google-generated UUID for this resource. This is unique across all Spoke resources. If a Spoke resource is deleted and another with the same name is created, it gets a different unique_id.
-     */
-    readonly uniqueId?: pulumi.Input<string>;
     /**
      * The time when the Spoke was updated.
      */

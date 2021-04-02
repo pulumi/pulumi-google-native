@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2
     public partial class ConversationParticipant : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
+        /// </summary>
+        [Output("role")]
+        public Output<string> Role { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
+        /// </summary>
+        [Output("sipRecordingMediaLabel")]
+        public Output<string> SipRecordingMediaLabel { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ConversationParticipant resource with the given unique name, arguments, and options.
         /// </summary>
         ///

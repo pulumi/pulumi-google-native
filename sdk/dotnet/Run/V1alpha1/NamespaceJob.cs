@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Run.V1alpha1
     public partial class NamespaceJob : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources +optional
+        /// </summary>
+        [Output("apiVersion")]
+        public Output<string> ApiVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +optional
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+        /// </summary>
+        [Output("metadata")]
+        public Output<Outputs.ObjectMetaResponse> Metadata { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
+        /// </summary>
+        [Output("spec")]
+        public Output<Outputs.JobSpecResponse> Spec { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
+        /// </summary>
+        [Output("status")]
+        public Output<Outputs.JobStatusResponse> Status { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a NamespaceJob resource with the given unique name, arguments, and options.
         /// </summary>
         ///

@@ -35,6 +35,38 @@ export class Connector extends pulumi.CustomResource {
         return obj['__pulumiType'] === Connector.__pulumiType;
     }
 
+    /**
+     * List of projects using the connector.
+     */
+    public /*out*/ readonly connectedProjects!: pulumi.Output<string[]>;
+    /**
+     * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
+     */
+    public readonly ipCidrRange!: pulumi.Output<string>;
+    /**
+     * Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+     */
+    public readonly maxThroughput!: pulumi.Output<number>;
+    /**
+     * Minimum throughput of the connector in Mbps. Default and min is 200.
+     */
+    public readonly minThroughput!: pulumi.Output<number>;
+    /**
+     * The resource name in the format `projects/*&#47;locations/*&#47;connectors/*`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Name of a VPC network.
+     */
+    public readonly network!: pulumi.Output<string>;
+    /**
+     * State of the VPC access connector.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The subnet in which to house the VPC Access Connector.
+     */
+    public readonly subnet!: pulumi.Output<outputs.vpcaccess.v1.SubnetResponse>;
 
     /**
      * Create a Connector resource with the given unique name, arguments, and options.
@@ -56,7 +88,6 @@ export class Connector extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["connectedProjects"] = args ? args.connectedProjects : undefined;
             inputs["connectorsId"] = args ? args.connectorsId : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -65,9 +96,18 @@ export class Connector extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["state"] = args ? args.state : undefined;
             inputs["subnet"] = args ? args.subnet : undefined;
+            inputs["connectedProjects"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["connectedProjects"] = undefined /*out*/;
+            inputs["ipCidrRange"] = undefined /*out*/;
+            inputs["maxThroughput"] = undefined /*out*/;
+            inputs["minThroughput"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["network"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["subnet"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -80,10 +120,6 @@ export class Connector extends pulumi.CustomResource {
  * The set of arguments for constructing a Connector resource.
  */
 export interface ConnectorArgs {
-    /**
-     * Output only. List of projects using the connector.
-     */
-    readonly connectedProjects?: pulumi.Input<pulumi.Input<string>[]>;
     readonly connectorsId: pulumi.Input<string>;
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
@@ -107,10 +143,6 @@ export interface ConnectorArgs {
      */
     readonly network?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. State of the VPC access connector.
-     */
-    readonly state?: pulumi.Input<string>;
     /**
      * The subnet in which to house the VPC Access Connector.
      */

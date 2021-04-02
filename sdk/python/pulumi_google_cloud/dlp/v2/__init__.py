@@ -13,6 +13,7 @@ from .organization_job_trigger import *
 from .organization_stored_info_type import *
 from .stored_info_type import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

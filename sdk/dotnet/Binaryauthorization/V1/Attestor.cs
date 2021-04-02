@@ -16,6 +16,31 @@ namespace Pulumi.GoogleCloud.Binaryauthorization.V1
     public partial class Attestor : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Time when the attestor was last updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// This specifies how an attestation will be read, and how it will be used during policy enforcement.
+        /// </summary>
+        [Output("userOwnedGrafeasNote")]
+        public Output<Outputs.UserOwnedGrafeasNoteResponse> UserOwnedGrafeasNote { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Attestor resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -76,12 +101,6 @@ namespace Pulumi.GoogleCloud.Binaryauthorization.V1
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Time when the attestor was last updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
         /// This specifies how an attestation will be read, and how it will be used during policy enforcement.

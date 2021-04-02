@@ -661,9 +661,7 @@ class RecurringScheduleArgs:
     def __init__(__self__, *,
                  end_time: Optional[pulumi.Input[str]] = None,
                  frequency: Optional[pulumi.Input[str]] = None,
-                 last_execute_time: Optional[pulumi.Input[str]] = None,
                  monthly: Optional[pulumi.Input['MonthlyScheduleArgs']] = None,
-                 next_execute_time: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  time_of_day: Optional[pulumi.Input['TimeOfDayArgs']] = None,
                  time_zone: Optional[pulumi.Input['TimeZoneArgs']] = None,
@@ -672,9 +670,7 @@ class RecurringScheduleArgs:
         Sets the time for recurring patch deployments.
         :param pulumi.Input[str] end_time: Optional. The end time at which a recurring patch deployment schedule is no longer active.
         :param pulumi.Input[str] frequency: Required. The frequency unit of this recurring schedule.
-        :param pulumi.Input[str] last_execute_time: Output only. The time the last patch job ran successfully.
         :param pulumi.Input['MonthlyScheduleArgs'] monthly: Required. Schedule with monthly executions.
-        :param pulumi.Input[str] next_execute_time: Output only. The time the next patch job is scheduled to run.
         :param pulumi.Input[str] start_time: Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
         :param pulumi.Input['TimeOfDayArgs'] time_of_day: Required. Time of the day to run a recurring deployment.
         :param pulumi.Input['TimeZoneArgs'] time_zone: Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
@@ -684,12 +680,8 @@ class RecurringScheduleArgs:
             pulumi.set(__self__, "end_time", end_time)
         if frequency is not None:
             pulumi.set(__self__, "frequency", frequency)
-        if last_execute_time is not None:
-            pulumi.set(__self__, "last_execute_time", last_execute_time)
         if monthly is not None:
             pulumi.set(__self__, "monthly", monthly)
-        if next_execute_time is not None:
-            pulumi.set(__self__, "next_execute_time", next_execute_time)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
         if time_of_day is not None:
@@ -724,18 +716,6 @@ class RecurringScheduleArgs:
         pulumi.set(self, "frequency", value)
 
     @property
-    @pulumi.getter(name="lastExecuteTime")
-    def last_execute_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The time the last patch job ran successfully.
-        """
-        return pulumi.get(self, "last_execute_time")
-
-    @last_execute_time.setter
-    def last_execute_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_execute_time", value)
-
-    @property
     @pulumi.getter
     def monthly(self) -> Optional[pulumi.Input['MonthlyScheduleArgs']]:
         """
@@ -746,18 +726,6 @@ class RecurringScheduleArgs:
     @monthly.setter
     def monthly(self, value: Optional[pulumi.Input['MonthlyScheduleArgs']]):
         pulumi.set(self, "monthly", value)
-
-    @property
-    @pulumi.getter(name="nextExecuteTime")
-    def next_execute_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The time the next patch job is scheduled to run.
-        """
-        return pulumi.get(self, "next_execute_time")
-
-    @next_execute_time.setter
-    def next_execute_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "next_execute_time", value)
 
     @property
     @pulumi.getter(name="startTime")

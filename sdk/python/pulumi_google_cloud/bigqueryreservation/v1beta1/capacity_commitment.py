@@ -7,7 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
-from ._inputs import *
+from . import outputs
 
 __all__ = ['CapacityCommitment']
 
@@ -17,16 +17,11 @@ class CapacityCommitment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_commitments_id: Optional[pulumi.Input[str]] = None,
-                 commitment_end_time: Optional[pulumi.Input[str]] = None,
-                 commitment_start_time: Optional[pulumi.Input[str]] = None,
-                 failure_status: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  renewal_plan: Optional[pulumi.Input[str]] = None,
                  slot_count: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -35,14 +30,9 @@ class CapacityCommitment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] commitment_end_time: Output only. The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
-        :param pulumi.Input[str] commitment_start_time: Output only. The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
-        :param pulumi.Input[pulumi.InputType['StatusArgs']] failure_status: Output only. For FAILED commitment plan, provides the reason of failure.
-        :param pulumi.Input[str] name: Output only. The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
         :param pulumi.Input[str] plan: Capacity commitment commitment plan.
         :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
         :param pulumi.Input[str] slot_count: Number of slots in this commitment.
-        :param pulumi.Input[str] state: Output only. State of the commitment.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -64,20 +54,20 @@ class CapacityCommitment(pulumi.CustomResource):
             if capacity_commitments_id is None and not opts.urn:
                 raise TypeError("Missing required property 'capacity_commitments_id'")
             __props__['capacity_commitments_id'] = capacity_commitments_id
-            __props__['commitment_end_time'] = commitment_end_time
-            __props__['commitment_start_time'] = commitment_start_time
-            __props__['failure_status'] = failure_status
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
             __props__['plan'] = plan
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
             __props__['renewal_plan'] = renewal_plan
             __props__['slot_count'] = slot_count
-            __props__['state'] = state
+            __props__['commitment_end_time'] = None
+            __props__['commitment_start_time'] = None
+            __props__['failure_status'] = None
+            __props__['name'] = None
+            __props__['state'] = None
         super(CapacityCommitment, __self__).__init__(
             'google-cloud:bigqueryreservation/v1beta1:CapacityCommitment',
             resource_name,
@@ -100,7 +90,79 @@ class CapacityCommitment(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["commitment_end_time"] = None
+        __props__["commitment_start_time"] = None
+        __props__["failure_status"] = None
+        __props__["name"] = None
+        __props__["plan"] = None
+        __props__["renewal_plan"] = None
+        __props__["slot_count"] = None
+        __props__["state"] = None
         return CapacityCommitment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="commitmentEndTime")
+    def commitment_end_time(self) -> pulumi.Output[str]:
+        """
+        The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+        """
+        return pulumi.get(self, "commitment_end_time")
+
+    @property
+    @pulumi.getter(name="commitmentStartTime")
+    def commitment_start_time(self) -> pulumi.Output[str]:
+        """
+        The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+        """
+        return pulumi.get(self, "commitment_start_time")
+
+    @property
+    @pulumi.getter(name="failureStatus")
+    def failure_status(self) -> pulumi.Output['outputs.StatusResponse']:
+        """
+        For FAILED commitment plan, provides the reason of failure.
+        """
+        return pulumi.get(self, "failure_status")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def plan(self) -> pulumi.Output[str]:
+        """
+        Capacity commitment commitment plan.
+        """
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter(name="renewalPlan")
+    def renewal_plan(self) -> pulumi.Output[str]:
+        """
+        The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
+        """
+        return pulumi.get(self, "renewal_plan")
+
+    @property
+    @pulumi.getter(name="slotCount")
+    def slot_count(self) -> pulumi.Output[str]:
+        """
+        Number of slots in this commitment.
+        """
+        return pulumi.get(self, "slot_count")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        State of the commitment.
+        """
+        return pulumi.get(self, "state")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

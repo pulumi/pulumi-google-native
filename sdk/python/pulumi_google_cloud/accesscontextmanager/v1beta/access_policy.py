@@ -27,7 +27,7 @@ class AccessPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+        :param pulumi.Input[str] name: Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
         :param pulumi.Input[str] parent: Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
         :param pulumi.Input[str] title: Required. Human readable title. Does not affect behavior.
         """
@@ -76,7 +76,34 @@ class AccessPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["name"] = None
+        __props__["parent"] = None
+        __props__["title"] = None
         return AccessPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Output[str]:
+        """
+        Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+        """
+        return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Output[str]:
+        """
+        Required. Human readable title. Does not affect behavior.
+        """
+        return pulumi.get(self, "title")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

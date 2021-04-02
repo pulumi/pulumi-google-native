@@ -14,6 +14,25 @@ import (
 // Creates a custom consumer key and secret for a developer app. This is particularly useful if you want to migrate existing consumer keys and secrets to Apigee hybrid from another system. Consumer keys and secrets can contain letters, numbers, underscores, and hyphens. No other special characters are allowed. To avoid service disruptions, a consumer key and secret should not exceed 2 KBs each. **Note**: When creating the consumer key and secret, an association to API products will not be made. Therefore, you should not specify the associated API products in your request. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created. If a consumer key and secret already exist, you can keep them or delete them using the DeleteDeveloperAppKey API.
 type OrganizationDeveloperAppKey struct {
 	pulumi.CustomResourceState
+
+	// List of API products for which the credential can be used. **Note**: Do not specify the list of API products when creating a consumer key and secret for a developer app. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created.
+	ApiProducts pulumi.ArrayOutput `pulumi:"apiProducts"`
+	// List of attributes associated with the credential.
+	Attributes GoogleCloudApigeeV1AttributeResponseArrayOutput `pulumi:"attributes"`
+	// Consumer key.
+	ConsumerKey pulumi.StringOutput `pulumi:"consumerKey"`
+	// Secret key.
+	ConsumerSecret pulumi.StringOutput `pulumi:"consumerSecret"`
+	// Time the developer app expires in milliseconds since epoch.
+	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
+	// Input only. Expiration time, in seconds, for the consumer key. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+	ExpiresInSeconds pulumi.StringOutput `pulumi:"expiresInSeconds"`
+	// Time the developer app was created in milliseconds since epoch.
+	IssuedAt pulumi.StringOutput `pulumi:"issuedAt"`
+	// Scopes to apply to the app. The specified scope names must already be defined for the API product that you associate with the app.
+	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
+	// Status of the credential. Valid values include `approved` or `revoked`.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewOrganizationDeveloperAppKey registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +76,45 @@ func GetOrganizationDeveloperAppKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationDeveloperAppKey resources.
 type organizationDeveloperAppKeyState struct {
+	// List of API products for which the credential can be used. **Note**: Do not specify the list of API products when creating a consumer key and secret for a developer app. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created.
+	ApiProducts []interface{} `pulumi:"apiProducts"`
+	// List of attributes associated with the credential.
+	Attributes []GoogleCloudApigeeV1AttributeResponse `pulumi:"attributes"`
+	// Consumer key.
+	ConsumerKey *string `pulumi:"consumerKey"`
+	// Secret key.
+	ConsumerSecret *string `pulumi:"consumerSecret"`
+	// Time the developer app expires in milliseconds since epoch.
+	ExpiresAt *string `pulumi:"expiresAt"`
+	// Input only. Expiration time, in seconds, for the consumer key. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+	ExpiresInSeconds *string `pulumi:"expiresInSeconds"`
+	// Time the developer app was created in milliseconds since epoch.
+	IssuedAt *string `pulumi:"issuedAt"`
+	// Scopes to apply to the app. The specified scope names must already be defined for the API product that you associate with the app.
+	Scopes []string `pulumi:"scopes"`
+	// Status of the credential. Valid values include `approved` or `revoked`.
+	Status *string `pulumi:"status"`
 }
 
 type OrganizationDeveloperAppKeyState struct {
+	// List of API products for which the credential can be used. **Note**: Do not specify the list of API products when creating a consumer key and secret for a developer app. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created.
+	ApiProducts pulumi.ArrayInput
+	// List of attributes associated with the credential.
+	Attributes GoogleCloudApigeeV1AttributeResponseArrayInput
+	// Consumer key.
+	ConsumerKey pulumi.StringPtrInput
+	// Secret key.
+	ConsumerSecret pulumi.StringPtrInput
+	// Time the developer app expires in milliseconds since epoch.
+	ExpiresAt pulumi.StringPtrInput
+	// Input only. Expiration time, in seconds, for the consumer key. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+	ExpiresInSeconds pulumi.StringPtrInput
+	// Time the developer app was created in milliseconds since epoch.
+	IssuedAt pulumi.StringPtrInput
+	// Scopes to apply to the app. The specified scope names must already be defined for the API product that you associate with the app.
+	Scopes pulumi.StringArrayInput
+	// Status of the credential. Valid values include `approved` or `revoked`.
+	Status pulumi.StringPtrInput
 }
 
 func (OrganizationDeveloperAppKeyState) ElementType() reflect.Type {

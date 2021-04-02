@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Job']
@@ -99,7 +100,79 @@ class Job(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["configuration"] = None
+        __props__["etag"] = None
+        __props__["job_reference"] = None
+        __props__["kind"] = None
+        __props__["self_link"] = None
+        __props__["statistics"] = None
+        __props__["status"] = None
+        __props__["user_email"] = None
         return Job(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def configuration(self) -> pulumi.Output['outputs.JobConfigurationResponse']:
+        """
+        [Required] Describes the job configuration.
+        """
+        return pulumi.get(self, "configuration")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        [Output-only] A hash of this resource.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="jobReference")
+    def job_reference(self) -> pulumi.Output['outputs.JobReferenceResponse']:
+        """
+        [Optional] Reference describing the unique-per-user name of the job.
+        """
+        return pulumi.get(self, "job_reference")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output-only] The type of the resource.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output-only] A URL that can be used to access this resource again.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def statistics(self) -> pulumi.Output['outputs.JobStatisticsResponse']:
+        """
+        [Output-only] Information about the job, including starting time and ending time of the job.
+        """
+        return pulumi.get(self, "statistics")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output['outputs.JobStatusResponse']:
+        """
+        [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def user_email(self) -> pulumi.Output[str]:
+        """
+        [Output-only] Email address of the user who ran the job.
+        """
+        return pulumi.get(self, "user_email")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1
     public partial class AgentEnvironment : Pulumi.CustomResource
     {
         /// <summary>
+        /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the environment. Format: `projects//locations//agents//environments/`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Update time of this environment.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        /// </summary>
+        [Output("versionConfigs")]
+        public Output<ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse>> VersionConfigs { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AgentEnvironment resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -88,12 +119,6 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3beta1
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Update time of this environment.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         [Input("versionConfigs")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs>? _versionConfigs;

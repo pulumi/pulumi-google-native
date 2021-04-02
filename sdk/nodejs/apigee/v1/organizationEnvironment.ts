@@ -35,6 +35,34 @@ export class OrganizationEnvironment extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationEnvironment.__pulumiType;
     }
 
+    /**
+     * Creation time of this environment as milliseconds since epoch.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Optional. Description of the environment.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Optional. Display name for this environment.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Last modification time of this environment as milliseconds since epoch.
+     */
+    public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
+    /**
+     * Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. Key-value pairs that may be used for customizing the environment.
+     */
+    public readonly properties!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1PropertiesResponse>;
+    /**
+     * State of the environment. Values other than ACTIVE means the resource is not ready to use.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationEnvironment resource with the given unique name, arguments, and options.
@@ -53,16 +81,23 @@ export class OrganizationEnvironment extends pulumi.CustomResource {
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
-            inputs["createdAt"] = args ? args.createdAt : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["environmentsId"] = args ? args.environmentsId : undefined;
-            inputs["lastModifiedAt"] = args ? args.lastModifiedAt : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["properties"] = args ? args.properties : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["lastModifiedAt"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["lastModifiedAt"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["properties"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -76,10 +111,6 @@ export class OrganizationEnvironment extends pulumi.CustomResource {
  */
 export interface OrganizationEnvironmentArgs {
     /**
-     * Output only. Creation time of this environment as milliseconds since epoch.
-     */
-    readonly createdAt?: pulumi.Input<string>;
-    /**
      * Optional. Description of the environment.
      */
     readonly description?: pulumi.Input<string>;
@@ -89,10 +120,6 @@ export interface OrganizationEnvironmentArgs {
     readonly displayName?: pulumi.Input<string>;
     readonly environmentsId: pulumi.Input<string>;
     /**
-     * Output only. Last modification time of this environment as milliseconds since epoch.
-     */
-    readonly lastModifiedAt?: pulumi.Input<string>;
-    /**
      * Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
      */
     readonly name?: pulumi.Input<string>;
@@ -101,8 +128,4 @@ export interface OrganizationEnvironmentArgs {
      * Optional. Key-value pairs that may be used for customizing the environment.
      */
     readonly properties?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1Properties>;
-    /**
-     * Output only. State of the environment. Values other than ACTIVE means the resource is not ready to use.
-     */
-    readonly state?: pulumi.Input<string>;
 }

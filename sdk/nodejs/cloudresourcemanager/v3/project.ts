@@ -34,6 +34,46 @@ export class Project extends pulumi.CustomResource {
         return obj['__pulumiType'] === Project.__pulumiType;
     }
 
+    /**
+     * Creation time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The time at which this resource was requested for deletion.
+     */
+    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    /**
+     * Optional. A user-assigned display name of the project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project`
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * A checksum computed by the server based on the current value of the Project resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * Optional. The labels associated with this project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63 characters long and must conform to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"myBusinessDimension" : "businessValue"`
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The unique resource name of the project. It is an int64 generated number prefixed by "projects/". Example: `projects/415104041262`
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
+     */
+    public readonly parent!: pulumi.Output<string>;
+    /**
+     * Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
+     * The project lifecycle state.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The most recent time this resource was modified.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -49,18 +89,28 @@ export class Project extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["deleteTime"] = args ? args.deleteTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deleteTime"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deleteTime"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["parent"] = undefined /*out*/;
+            inputs["projectId"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -74,29 +124,13 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectArgs {
     /**
-     * Output only. Creation time.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
-     * Output only. The time at which this resource was requested for deletion.
-     */
-    readonly deleteTime?: pulumi.Input<string>;
-    /**
      * Optional. A user-assigned display name of the project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project`
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * Output only. A checksum computed by the server based on the current value of the Project resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-     */
-    readonly etag?: pulumi.Input<string>;
-    /**
      * Optional. The labels associated with this project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63 characters long and must conform to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"myBusinessDimension" : "businessValue"`
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Output only. The unique resource name of the project. It is an int64 generated number prefixed by "projects/". Example: `projects/415104041262`
-     */
-    readonly name?: pulumi.Input<string>;
     /**
      * Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
      */
@@ -106,12 +140,4 @@ export interface ProjectArgs {
      */
     readonly projectId?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. The project lifecycle state.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. The most recent time this resource was modified.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

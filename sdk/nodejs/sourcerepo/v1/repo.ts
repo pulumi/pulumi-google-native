@@ -35,6 +35,26 @@ export class Repo extends pulumi.CustomResource {
         return obj['__pulumiType'] === Repo.__pulumiType;
     }
 
+    /**
+     * How this repository mirrors a repository managed by another service. Read-only field.
+     */
+    public readonly mirrorConfig!: pulumi.Output<outputs.sourcerepo.v1.MirrorConfigResponse>;
+    /**
+     * Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+     */
+    public readonly pubsubConfigs!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
+     */
+    public readonly size!: pulumi.Output<string>;
+    /**
+     * URL to clone the repository from Google Cloud Source Repositories. Read-only field.
+     */
+    public readonly url!: pulumi.Output<string>;
 
     /**
      * Create a Repo resource with the given unique name, arguments, and options.
@@ -61,6 +81,11 @@ export class Repo extends pulumi.CustomResource {
             inputs["size"] = args ? args.size : undefined;
             inputs["url"] = args ? args.url : undefined;
         } else {
+            inputs["mirrorConfig"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["pubsubConfigs"] = undefined /*out*/;
+            inputs["size"] = undefined /*out*/;
+            inputs["url"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

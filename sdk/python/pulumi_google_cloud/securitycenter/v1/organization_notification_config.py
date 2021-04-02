@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['OrganizationNotificationConfig']
@@ -21,7 +22,6 @@ class OrganizationNotificationConfig(pulumi.CustomResource):
                  notification_configs_id: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
                  pubsub_topic: Optional[pulumi.Input[str]] = None,
-                 service_account: Optional[pulumi.Input[str]] = None,
                  streaming_config: Optional[pulumi.Input[pulumi.InputType['StreamingConfigArgs']]] = None,
                  __props__=None,
                  __name__=None,
@@ -34,7 +34,6 @@ class OrganizationNotificationConfig(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the notification config (max of 1024 characters).
         :param pulumi.Input[str] name: The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
         :param pulumi.Input[str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
-        :param pulumi.Input[str] service_account: Output only. The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
         :param pulumi.Input[pulumi.InputType['StreamingConfigArgs']] streaming_config: The config for triggering streaming-based notifications.
         """
         if __name__ is not None:
@@ -63,8 +62,8 @@ class OrganizationNotificationConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
             __props__['pubsub_topic'] = pubsub_topic
-            __props__['service_account'] = service_account
             __props__['streaming_config'] = streaming_config
+            __props__['service_account'] = None
         super(OrganizationNotificationConfig, __self__).__init__(
             'google-cloud:securitycenter/v1:OrganizationNotificationConfig',
             resource_name,
@@ -87,7 +86,52 @@ class OrganizationNotificationConfig(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["description"] = None
+        __props__["name"] = None
+        __props__["pubsub_topic"] = None
+        __props__["service_account"] = None
+        __props__["streaming_config"] = None
         return OrganizationNotificationConfig(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        The description of the notification config (max of 1024 characters).
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pubsubTopic")
+    def pubsub_topic(self) -> pulumi.Output[str]:
+        """
+        The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+        """
+        return pulumi.get(self, "pubsub_topic")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[str]:
+        """
+        The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="streamingConfig")
+    def streaming_config(self) -> pulumi.Output['outputs.StreamingConfigResponse']:
+        """
+        The config for triggering streaming-based notifications.
+        """
+        return pulumi.get(self, "streaming_config")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

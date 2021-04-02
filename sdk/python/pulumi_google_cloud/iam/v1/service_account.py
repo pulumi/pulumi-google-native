@@ -56,6 +56,14 @@ class ServiceAccount(pulumi.CustomResource):
             if service_accounts_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_accounts_id'")
             __props__['service_accounts_id'] = service_accounts_id
+            __props__['description'] = None
+            __props__['disabled'] = None
+            __props__['display_name'] = None
+            __props__['email'] = None
+            __props__['name'] = None
+            __props__['oauth2_client_id'] = None
+            __props__['project_id'] = None
+            __props__['unique_id'] = None
         super(ServiceAccount, __self__).__init__(
             'google-cloud:iam/v1:ServiceAccount',
             resource_name,
@@ -78,7 +86,79 @@ class ServiceAccount(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["description"] = None
+        __props__["disabled"] = None
+        __props__["display_name"] = None
+        __props__["email"] = None
+        __props__["name"] = None
+        __props__["oauth2_client_id"] = None
+        __props__["project_id"] = None
+        __props__["unique_id"] = None
         return ServiceAccount(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Output[bool]:
+        """
+        Whether the service account is disabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Output[str]:
+        """
+        The email address of the service account.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="oauth2ClientId")
+    def oauth2_client_id(self) -> pulumi.Output[str]:
+        """
+        The OAuth 2.0 client ID for the service account.
+        """
+        return pulumi.get(self, "oauth2_client_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the project that owns the service account.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="uniqueId")
+    def unique_id(self) -> pulumi.Output[str]:
+        """
+        The unique, stable numeric ID for the service account. Each service account retains its unique ID even if you delete the service account. For example, if you delete a service account, then create a new service account with the same name, the new service account has a different unique ID than the deleted service account.
+        """
+        return pulumi.get(self, "unique_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -27,12 +27,6 @@ namespace Pulumi.GoogleCloud.Composer.V1.Inputs
         [Input("masterIpv4CidrBlock")]
         public Input<string>? MasterIpv4CidrBlock { get; set; }
 
-        /// <summary>
-        /// Output only. The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the GKE cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network.
-        /// </summary>
-        [Input("masterIpv4ReservedRange")]
-        public Input<string>? MasterIpv4ReservedRange { get; set; }
-
         public PrivateClusterConfigArgs()
         {
         }

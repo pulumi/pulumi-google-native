@@ -16,6 +16,19 @@ namespace Pulumi.GoogleCloud.Servicemanagement.V1
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>
+        /// ID of the project that produces and owns this service.
+        /// </summary>
+        [Output("producerProjectId")]
+        public Output<string> ProducerProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the service. See the [overview](/service-management/overview) for naming requirements.
+        /// </summary>
+        [Output("serviceName")]
+        public Output<string> ServiceName { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Service resource with the given unique name, arguments, and options.
         /// </summary>
         ///

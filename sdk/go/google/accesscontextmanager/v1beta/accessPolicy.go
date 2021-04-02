@@ -14,6 +14,13 @@ import (
 // Create an `AccessPolicy`. Fails if this organization already has a `AccessPolicy`. The longrunning Operation will have a successful status once the `AccessPolicy` has propagated to long-lasting storage. Syntactic and basic semantic errors will be returned in `metadata` as a BadRequest proto.
 type AccessPolicy struct {
 	pulumi.CustomResourceState
+
+	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+	Parent pulumi.StringOutput `pulumi:"parent"`
+	// Required. Human readable title. Does not affect behavior.
+	Title pulumi.StringOutput `pulumi:"title"`
 }
 
 // NewAccessPolicy registers a new resource with the given unique name, arguments, and options.
@@ -48,9 +55,21 @@ func GetAccessPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPolicy resources.
 type accessPolicyState struct {
+	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+	Name *string `pulumi:"name"`
+	// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+	Parent *string `pulumi:"parent"`
+	// Required. Human readable title. Does not affect behavior.
+	Title *string `pulumi:"title"`
 }
 
 type AccessPolicyState struct {
+	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+	Name pulumi.StringPtrInput
+	// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+	Parent pulumi.StringPtrInput
+	// Required. Human readable title. Does not affect behavior.
+	Title pulumi.StringPtrInput
 }
 
 func (AccessPolicyState) ElementType() reflect.Type {
@@ -59,7 +78,7 @@ func (AccessPolicyState) ElementType() reflect.Type {
 
 type accessPolicyArgs struct {
 	AccessPoliciesId string `pulumi:"accessPoliciesId"`
-	// Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
 	Name *string `pulumi:"name"`
 	// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
 	Parent *string `pulumi:"parent"`
@@ -70,7 +89,7 @@ type accessPolicyArgs struct {
 // The set of arguments for constructing a AccessPolicy resource.
 type AccessPolicyArgs struct {
 	AccessPoliciesId pulumi.StringInput
-	// Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
 	Name pulumi.StringPtrInput
 	// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
 	Parent pulumi.StringPtrInput

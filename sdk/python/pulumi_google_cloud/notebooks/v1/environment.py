@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Environment']
@@ -17,12 +18,10 @@ class Environment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_image: Optional[pulumi.Input[pulumi.InputType['ContainerImageArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  environments_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  vm_image: Optional[pulumi.Input[pulumi.InputType['VmImageArgs']]] = None,
@@ -35,10 +34,8 @@ class Environment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ContainerImageArgs']] container_image: Use a container image to start the notebook instance.
-        :param pulumi.Input[str] create_time: Output only. The time at which this environment was created.
         :param pulumi.Input[str] description: A brief description of this environment.
         :param pulumi.Input[str] display_name: Display name of this environment for the UI.
-        :param pulumi.Input[str] name: Output only. Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
         :param pulumi.Input[pulumi.InputType['VmImageArgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
         """
@@ -60,7 +57,6 @@ class Environment(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['container_image'] = container_image
-            __props__['create_time'] = create_time
             __props__['description'] = description
             __props__['display_name'] = display_name
             if environments_id is None and not opts.urn:
@@ -69,12 +65,13 @@ class Environment(pulumi.CustomResource):
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
             __props__['post_startup_script'] = post_startup_script
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
             __props__['vm_image'] = vm_image
+            __props__['create_time'] = None
+            __props__['name'] = None
         super(Environment, __self__).__init__(
             'google-cloud:notebooks/v1:Environment',
             resource_name,
@@ -97,7 +94,70 @@ class Environment(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["container_image"] = None
+        __props__["create_time"] = None
+        __props__["description"] = None
+        __props__["display_name"] = None
+        __props__["name"] = None
+        __props__["post_startup_script"] = None
+        __props__["vm_image"] = None
         return Environment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="containerImage")
+    def container_image(self) -> pulumi.Output['outputs.ContainerImageResponse']:
+        """
+        Use a container image to start the notebook instance.
+        """
+        return pulumi.get(self, "container_image")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time at which this environment was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        A brief description of this environment.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Display name of this environment for the UI.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="postStartupScript")
+    def post_startup_script(self) -> pulumi.Output[str]:
+        """
+        Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
+        """
+        return pulumi.get(self, "post_startup_script")
+
+    @property
+    @pulumi.getter(name="vmImage")
+    def vm_image(self) -> pulumi.Output['outputs.VmImageResponse']:
+        """
+        Use a Compute Engine VM image to start the notebook instance.
+        """
+        return pulumi.get(self, "vm_image")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

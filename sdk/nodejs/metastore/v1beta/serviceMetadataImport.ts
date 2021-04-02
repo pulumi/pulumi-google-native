@@ -35,6 +35,30 @@ export class ServiceMetadataImport extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServiceMetadataImport.__pulumiType;
     }
 
+    /**
+     * The time when the metadata import was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Immutable. A database dump from a pre-existing metastore's database.
+     */
+    public readonly databaseDump!: pulumi.Output<outputs.metastore.v1beta.DatabaseDumpResponse>;
+    /**
+     * The description of the metadata import.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The current state of the metadata import.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The time when the metadata import was last updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a ServiceMetadataImport resource with the given unique name, arguments, and options.
@@ -59,7 +83,6 @@ export class ServiceMetadataImport extends pulumi.CustomResource {
             if ((!args || args.servicesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'servicesId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["databaseDump"] = args ? args.databaseDump : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -67,9 +90,16 @@ export class ServiceMetadataImport extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["servicesId"] = args ? args.servicesId : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["databaseDump"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -82,10 +112,6 @@ export class ServiceMetadataImport extends pulumi.CustomResource {
  * The set of arguments for constructing a ServiceMetadataImport resource.
  */
 export interface ServiceMetadataImportArgs {
-    /**
-     * Output only. The time when the metadata import was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
     /**
      * Immutable. A database dump from a pre-existing metastore's database.
      */
@@ -102,12 +128,4 @@ export interface ServiceMetadataImportArgs {
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     readonly servicesId: pulumi.Input<string>;
-    /**
-     * Output only. The current state of the metadata import.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. The time when the metadata import was last updated.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

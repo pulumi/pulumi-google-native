@@ -119,6 +119,115 @@ func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
 	}).(AuditConfigOutput)
 }
 
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponse struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs []AuditLogConfigResponse `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service string `pulumi:"service"`
+}
+
+// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
+// You can construct a concrete instance of `AuditConfigResponseInput` via:
+//
+//          AuditConfigResponseArgs{...}
+type AuditConfigResponseInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseOutput() AuditConfigResponseOutput
+	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseArgs struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (AuditConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return i.ToAuditConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
+}
+
+// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
+//
+//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
+type AuditConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
+	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
+}
+
+type AuditConfigResponseArray []AuditConfigResponseInput
+
+func (AuditConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return o
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return o
+}
+
+// The configuration for logging of each type of permission.
+func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
+	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
+}
+
+// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+func (o AuditConfigResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditConfigResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type AuditConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditConfigResponse {
+		return vs[0].([]AuditConfigResponse)[vs[1].(int)]
+	}).(AuditConfigResponseOutput)
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -226,6 +335,115 @@ func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfig {
 		return vs[0].([]AuditLogConfig)[vs[1].(int)]
 	}).(AuditLogConfigOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponse struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers []string `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType string `pulumi:"logType"`
+}
+
+// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
+//
+//          AuditLogConfigResponseArgs{...}
+type AuditLogConfigResponseInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
+	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseArgs struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType pulumi.StringInput `pulumi:"logType"`
+}
+
+func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
+}
+
+// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
+//
+//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
+type AuditLogConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
+	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
+}
+
+type AuditLogConfigResponseArray []AuditLogConfigResponseInput
+
+func (AuditLogConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return o
+}
+
+// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
+// The log type that this config enables.
+func (o AuditLogConfigResponseOutput) LogType() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) string { return v.LogType }).(pulumi.StringOutput)
+}
+
+type AuditLogConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfigResponse {
+		return vs[0].([]AuditLogConfigResponse)[vs[1].(int)]
+	}).(AuditLogConfigResponseOutput)
 }
 
 // Represents an Amazon Web Services identity provider.
@@ -362,6 +580,140 @@ func (o AwsPtrOutput) AccountId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents an Amazon Web Services identity provider.
+type AwsResponse struct {
+	// Required. The AWS account ID.
+	AccountId string `pulumi:"accountId"`
+}
+
+// AwsResponseInput is an input type that accepts AwsResponseArgs and AwsResponseOutput values.
+// You can construct a concrete instance of `AwsResponseInput` via:
+//
+//          AwsResponseArgs{...}
+type AwsResponseInput interface {
+	pulumi.Input
+
+	ToAwsResponseOutput() AwsResponseOutput
+	ToAwsResponseOutputWithContext(context.Context) AwsResponseOutput
+}
+
+// Represents an Amazon Web Services identity provider.
+type AwsResponseArgs struct {
+	// Required. The AWS account ID.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+}
+
+func (AwsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsResponse)(nil)).Elem()
+}
+
+func (i AwsResponseArgs) ToAwsResponseOutput() AwsResponseOutput {
+	return i.ToAwsResponseOutputWithContext(context.Background())
+}
+
+func (i AwsResponseArgs) ToAwsResponseOutputWithContext(ctx context.Context) AwsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsResponseOutput)
+}
+
+func (i AwsResponseArgs) ToAwsResponsePtrOutput() AwsResponsePtrOutput {
+	return i.ToAwsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AwsResponseArgs) ToAwsResponsePtrOutputWithContext(ctx context.Context) AwsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsResponseOutput).ToAwsResponsePtrOutputWithContext(ctx)
+}
+
+// AwsResponsePtrInput is an input type that accepts AwsResponseArgs, AwsResponsePtr and AwsResponsePtrOutput values.
+// You can construct a concrete instance of `AwsResponsePtrInput` via:
+//
+//          AwsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AwsResponsePtrInput interface {
+	pulumi.Input
+
+	ToAwsResponsePtrOutput() AwsResponsePtrOutput
+	ToAwsResponsePtrOutputWithContext(context.Context) AwsResponsePtrOutput
+}
+
+type awsResponsePtrType AwsResponseArgs
+
+func AwsResponsePtr(v *AwsResponseArgs) AwsResponsePtrInput {
+	return (*awsResponsePtrType)(v)
+}
+
+func (*awsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsResponse)(nil)).Elem()
+}
+
+func (i *awsResponsePtrType) ToAwsResponsePtrOutput() AwsResponsePtrOutput {
+	return i.ToAwsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *awsResponsePtrType) ToAwsResponsePtrOutputWithContext(ctx context.Context) AwsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsResponsePtrOutput)
+}
+
+// Represents an Amazon Web Services identity provider.
+type AwsResponseOutput struct{ *pulumi.OutputState }
+
+func (AwsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsResponse)(nil)).Elem()
+}
+
+func (o AwsResponseOutput) ToAwsResponseOutput() AwsResponseOutput {
+	return o
+}
+
+func (o AwsResponseOutput) ToAwsResponseOutputWithContext(ctx context.Context) AwsResponseOutput {
+	return o
+}
+
+func (o AwsResponseOutput) ToAwsResponsePtrOutput() AwsResponsePtrOutput {
+	return o.ToAwsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AwsResponseOutput) ToAwsResponsePtrOutputWithContext(ctx context.Context) AwsResponsePtrOutput {
+	return o.ApplyT(func(v AwsResponse) *AwsResponse {
+		return &v
+	}).(AwsResponsePtrOutput)
+}
+
+// Required. The AWS account ID.
+func (o AwsResponseOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsResponse) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+type AwsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AwsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsResponse)(nil)).Elem()
+}
+
+func (o AwsResponsePtrOutput) ToAwsResponsePtrOutput() AwsResponsePtrOutput {
+	return o
+}
+
+func (o AwsResponsePtrOutput) ToAwsResponsePtrOutputWithContext(ctx context.Context) AwsResponsePtrOutput {
+	return o
+}
+
+func (o AwsResponsePtrOutput) Elem() AwsResponseOutput {
+	return o.ApplyT(func(v *AwsResponse) AwsResponse { return *v }).(AwsResponseOutput)
+}
+
+// Required. The AWS account ID.
+func (o AwsResponsePtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccountId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Associates `members` with a `role`.
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -478,6 +830,124 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Binding {
 		return vs[0].([]Binding)[vs[1].(int)]
 	}).(BindingOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
+// You can construct a concrete instance of `BindingResponseInput` via:
+//
+//          BindingResponseArgs{...}
+type BindingResponseInput interface {
+	pulumi.Input
+
+	ToBindingResponseOutput() BindingResponseOutput
+	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
+}
+
+// Associates `members` with a `role`.
+type BindingResponseArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
+	return i.ToBindingResponseOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
+}
+
+// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
+// You can construct a concrete instance of `BindingResponseArrayInput` via:
+//
+//          BindingResponseArray{ BindingResponseArgs{...} }
+type BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToBindingResponseArrayOutput() BindingResponseArrayOutput
+	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
+}
+
+type BindingResponseArray []BindingResponseInput
+
+func (BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return i.ToBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
+		return vs[0].([]BindingResponse)[vs[1].(int)]
+	}).(BindingResponseOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -671,6 +1141,88 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
+// You can construct a concrete instance of `ExprResponseInput` via:
+//
+//          ExprResponseArgs{...}
+type ExprResponseInput interface {
+	pulumi.Input
+
+	ToExprResponseOutput() ExprResponseOutput
+	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
+	return i.ToExprResponseOutputWithContext(context.Background())
+}
+
+func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseOutput struct{ *pulumi.OutputState }
+
+func (ExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
+	return o
+}
+
+func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
 // Represents an OpenId Connect 1.0 identity provider.
 type Oidc struct {
 	// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
@@ -821,6 +1373,159 @@ func (o OidcPtrOutput) IssuerUri() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.IssuerUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents an OpenId Connect 1.0 identity provider.
+type OidcResponse struct {
+	// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
+	AllowedAudiences []string `pulumi:"allowedAudiences"`
+	// Required. The OIDC issuer URL.
+	IssuerUri string `pulumi:"issuerUri"`
+}
+
+// OidcResponseInput is an input type that accepts OidcResponseArgs and OidcResponseOutput values.
+// You can construct a concrete instance of `OidcResponseInput` via:
+//
+//          OidcResponseArgs{...}
+type OidcResponseInput interface {
+	pulumi.Input
+
+	ToOidcResponseOutput() OidcResponseOutput
+	ToOidcResponseOutputWithContext(context.Context) OidcResponseOutput
+}
+
+// Represents an OpenId Connect 1.0 identity provider.
+type OidcResponseArgs struct {
+	// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
+	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
+	// Required. The OIDC issuer URL.
+	IssuerUri pulumi.StringInput `pulumi:"issuerUri"`
+}
+
+func (OidcResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OidcResponse)(nil)).Elem()
+}
+
+func (i OidcResponseArgs) ToOidcResponseOutput() OidcResponseOutput {
+	return i.ToOidcResponseOutputWithContext(context.Background())
+}
+
+func (i OidcResponseArgs) ToOidcResponseOutputWithContext(ctx context.Context) OidcResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OidcResponseOutput)
+}
+
+func (i OidcResponseArgs) ToOidcResponsePtrOutput() OidcResponsePtrOutput {
+	return i.ToOidcResponsePtrOutputWithContext(context.Background())
+}
+
+func (i OidcResponseArgs) ToOidcResponsePtrOutputWithContext(ctx context.Context) OidcResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OidcResponseOutput).ToOidcResponsePtrOutputWithContext(ctx)
+}
+
+// OidcResponsePtrInput is an input type that accepts OidcResponseArgs, OidcResponsePtr and OidcResponsePtrOutput values.
+// You can construct a concrete instance of `OidcResponsePtrInput` via:
+//
+//          OidcResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type OidcResponsePtrInput interface {
+	pulumi.Input
+
+	ToOidcResponsePtrOutput() OidcResponsePtrOutput
+	ToOidcResponsePtrOutputWithContext(context.Context) OidcResponsePtrOutput
+}
+
+type oidcResponsePtrType OidcResponseArgs
+
+func OidcResponsePtr(v *OidcResponseArgs) OidcResponsePtrInput {
+	return (*oidcResponsePtrType)(v)
+}
+
+func (*oidcResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OidcResponse)(nil)).Elem()
+}
+
+func (i *oidcResponsePtrType) ToOidcResponsePtrOutput() OidcResponsePtrOutput {
+	return i.ToOidcResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *oidcResponsePtrType) ToOidcResponsePtrOutputWithContext(ctx context.Context) OidcResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OidcResponsePtrOutput)
+}
+
+// Represents an OpenId Connect 1.0 identity provider.
+type OidcResponseOutput struct{ *pulumi.OutputState }
+
+func (OidcResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OidcResponse)(nil)).Elem()
+}
+
+func (o OidcResponseOutput) ToOidcResponseOutput() OidcResponseOutput {
+	return o
+}
+
+func (o OidcResponseOutput) ToOidcResponseOutputWithContext(ctx context.Context) OidcResponseOutput {
+	return o
+}
+
+func (o OidcResponseOutput) ToOidcResponsePtrOutput() OidcResponsePtrOutput {
+	return o.ToOidcResponsePtrOutputWithContext(context.Background())
+}
+
+func (o OidcResponseOutput) ToOidcResponsePtrOutputWithContext(ctx context.Context) OidcResponsePtrOutput {
+	return o.ApplyT(func(v OidcResponse) *OidcResponse {
+		return &v
+	}).(OidcResponsePtrOutput)
+}
+
+// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
+func (o OidcResponseOutput) AllowedAudiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OidcResponse) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
+}
+
+// Required. The OIDC issuer URL.
+func (o OidcResponseOutput) IssuerUri() pulumi.StringOutput {
+	return o.ApplyT(func(v OidcResponse) string { return v.IssuerUri }).(pulumi.StringOutput)
+}
+
+type OidcResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OidcResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OidcResponse)(nil)).Elem()
+}
+
+func (o OidcResponsePtrOutput) ToOidcResponsePtrOutput() OidcResponsePtrOutput {
+	return o
+}
+
+func (o OidcResponsePtrOutput) ToOidcResponsePtrOutputWithContext(ctx context.Context) OidcResponsePtrOutput {
+	return o
+}
+
+func (o OidcResponsePtrOutput) Elem() OidcResponseOutput {
+	return o.ApplyT(func(v *OidcResponse) OidcResponse { return *v }).(OidcResponseOutput)
+}
+
+// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
+func (o OidcResponsePtrOutput) AllowedAudiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OidcResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedAudiences
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. The OIDC issuer URL.
+func (o OidcResponsePtrOutput) IssuerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OidcResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuerUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1267,22 +1972,10 @@ func (o RoleTypePtrOutput) Title() pulumi.StringPtrOutput {
 type ServiceAccountType struct {
 	// Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
 	Description *string `pulumi:"description"`
-	// Output only. Whether the service account is disabled.
-	Disabled *bool `pulumi:"disabled"`
 	// Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
 	DisplayName *string `pulumi:"displayName"`
-	// Output only. The email address of the service account.
-	Email *string `pulumi:"email"`
-	// Deprecated. Do not use.
-	Etag *string `pulumi:"etag"`
 	// The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
 	Name *string `pulumi:"name"`
-	// Output only. The OAuth 2.0 client ID for the service account.
-	Oauth2ClientId *string `pulumi:"oauth2ClientId"`
-	// Output only. The ID of the project that owns the service account.
-	ProjectId *string `pulumi:"projectId"`
-	// Output only. The unique, stable numeric ID for the service account. Each service account retains its unique ID even if you delete the service account. For example, if you delete a service account, then create a new service account with the same name, the new service account has a different unique ID than the deleted service account.
-	UniqueId *string `pulumi:"uniqueId"`
 }
 
 // ServiceAccountTypeInput is an input type that accepts ServiceAccountTypeArgs and ServiceAccountTypeOutput values.
@@ -1300,22 +1993,10 @@ type ServiceAccountTypeInput interface {
 type ServiceAccountTypeArgs struct {
 	// Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Output only. Whether the service account is disabled.
-	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Output only. The email address of the service account.
-	Email pulumi.StringPtrInput `pulumi:"email"`
-	// Deprecated. Do not use.
-	Etag pulumi.StringPtrInput `pulumi:"etag"`
 	// The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Output only. The OAuth 2.0 client ID for the service account.
-	Oauth2ClientId pulumi.StringPtrInput `pulumi:"oauth2ClientId"`
-	// Output only. The ID of the project that owns the service account.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// Output only. The unique, stable numeric ID for the service account. Each service account retains its unique ID even if you delete the service account. For example, if you delete a service account, then create a new service account with the same name, the new service account has a different unique ID than the deleted service account.
-	UniqueId pulumi.StringPtrInput `pulumi:"uniqueId"`
 }
 
 func (ServiceAccountTypeArgs) ElementType() reflect.Type {
@@ -1401,44 +2082,14 @@ func (o ServiceAccountTypeOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceAccountType) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Output only. Whether the service account is disabled.
-func (o ServiceAccountTypeOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServiceAccountType) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
-}
-
 // Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
 func (o ServiceAccountTypeOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceAccountType) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Output only. The email address of the service account.
-func (o ServiceAccountTypeOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceAccountType) *string { return v.Email }).(pulumi.StringPtrOutput)
-}
-
-// Deprecated. Do not use.
-func (o ServiceAccountTypeOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceAccountType) *string { return v.Etag }).(pulumi.StringPtrOutput)
-}
-
 // The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
 func (o ServiceAccountTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceAccountType) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Output only. The OAuth 2.0 client ID for the service account.
-func (o ServiceAccountTypeOutput) Oauth2ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceAccountType) *string { return v.Oauth2ClientId }).(pulumi.StringPtrOutput)
-}
-
-// Output only. The ID of the project that owns the service account.
-func (o ServiceAccountTypeOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceAccountType) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
-}
-
-// Output only. The unique, stable numeric ID for the service account. Each service account retains its unique ID even if you delete the service account. For example, if you delete a service account, then create a new service account with the same name, the new service account has a different unique ID than the deleted service account.
-func (o ServiceAccountTypeOutput) UniqueId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceAccountType) *string { return v.UniqueId }).(pulumi.StringPtrOutput)
 }
 
 type ServiceAccountTypePtrOutput struct{ *pulumi.OutputState }
@@ -1469,16 +2120,6 @@ func (o ServiceAccountTypePtrOutput) Description() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. Whether the service account is disabled.
-func (o ServiceAccountTypePtrOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServiceAccountType) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Disabled
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
 func (o ServiceAccountTypePtrOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceAccountType) *string {
@@ -1486,26 +2127,6 @@ func (o ServiceAccountTypePtrOutput) DisplayName() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Output only. The email address of the service account.
-func (o ServiceAccountTypePtrOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceAccountType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Email
-	}).(pulumi.StringPtrOutput)
-}
-
-// Deprecated. Do not use.
-func (o ServiceAccountTypePtrOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceAccountType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Etag
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1519,49 +2140,30 @@ func (o ServiceAccountTypePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The OAuth 2.0 client ID for the service account.
-func (o ServiceAccountTypePtrOutput) Oauth2ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceAccountType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Oauth2ClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Output only. The ID of the project that owns the service account.
-func (o ServiceAccountTypePtrOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceAccountType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProjectId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Output only. The unique, stable numeric ID for the service account. Each service account retains its unique ID even if you delete the service account. For example, if you delete a service account, then create a new service account with the same name, the new service account has a different unique ID than the deleted service account.
-func (o ServiceAccountTypePtrOutput) UniqueId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceAccountType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UniqueId
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(AwsOutput{})
 	pulumi.RegisterOutputType(AwsPtrOutput{})
+	pulumi.RegisterOutputType(AwsResponseOutput{})
+	pulumi.RegisterOutputType(AwsResponsePtrOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingResponseOutput{})
+	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(OidcOutput{})
 	pulumi.RegisterOutputType(OidcPtrOutput{})
+	pulumi.RegisterOutputType(OidcResponseOutput{})
+	pulumi.RegisterOutputType(OidcResponsePtrOutput{})
 	pulumi.RegisterOutputType(PolicyOutput{})
 	pulumi.RegisterOutputType(PolicyPtrOutput{})
 	pulumi.RegisterOutputType(RoleTypeOutput{})

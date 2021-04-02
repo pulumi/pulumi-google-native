@@ -16,22 +16,10 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1.Inputs
     public sealed class GoogleCloudChannelV1CommitmentSettingsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Commitment end timestamp.
-        /// </summary>
-        [Input("endTime")]
-        public Input<string>? EndTime { get; set; }
-
-        /// <summary>
         /// Optional. Renewal settings applicable for a commitment-based Offer.
         /// </summary>
         [Input("renewalSettings")]
         public Input<Inputs.GoogleCloudChannelV1RenewalSettingsArgs>? RenewalSettings { get; set; }
-
-        /// <summary>
-        /// Output only. Commitment start timestamp.
-        /// </summary>
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
 
         public GoogleCloudChannelV1CommitmentSettingsArgs()
         {

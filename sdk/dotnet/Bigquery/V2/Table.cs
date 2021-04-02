@@ -16,6 +16,175 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
     public partial class Table : Pulumi.CustomResource
     {
         /// <summary>
+        /// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
+        /// </summary>
+        [Output("clustering")]
+        public Output<Outputs.ClusteringResponse> Clustering { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] The time when this table was created, in milliseconds since the epoch.
+        /// </summary>
+        [Output("creationTime")]
+        public Output<string> CreationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// [Optional] A user-friendly description of this table.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom encryption configuration (e.g., Cloud KMS keys).
+        /// </summary>
+        [Output("encryptionConfiguration")]
+        public Output<Outputs.EncryptionConfigurationResponse> EncryptionConfiguration { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
+        /// </summary>
+        [Output("expirationTime")]
+        public Output<string> ExpirationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
+        /// </summary>
+        [Output("externalDataConfiguration")]
+        public Output<Outputs.ExternalDataConfigurationResponse> ExternalDataConfiguration { get; private set; } = null!;
+
+        /// <summary>
+        /// [Optional] A descriptive name for this table.
+        /// </summary>
+        [Output("friendlyName")]
+        public Output<string> FriendlyName { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] The type of the resource.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] The time when this table was last modified, in milliseconds since the epoch.
+        /// </summary>
+        [Output("lastModifiedTime")]
+        public Output<string> LastModifiedTime { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] The geographic location where the table resides. This value is inherited from the dataset.
+        /// </summary>
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// [Optional] Materialized view definition.
+        /// </summary>
+        [Output("materializedView")]
+        public Output<Outputs.MaterializedViewDefinitionResponse> MaterializedView { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
+        /// </summary>
+        [Output("model")]
+        public Output<Outputs.ModelDefinitionResponse> Model { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] The size of this table in bytes, excluding any data in the streaming buffer.
+        /// </summary>
+        [Output("numBytes")]
+        public Output<string> NumBytes { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] The number of bytes in the table that are considered "long-term storage".
+        /// </summary>
+        [Output("numLongTermBytes")]
+        public Output<string> NumLongTermBytes { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
+        /// </summary>
+        [Output("numPhysicalBytes")]
+        public Output<string> NumPhysicalBytes { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
+        /// </summary>
+        [Output("numRows")]
+        public Output<string> NumRows { get; private set; } = null!;
+
+        /// <summary>
+        /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        /// </summary>
+        [Output("rangePartitioning")]
+        public Output<Outputs.RangePartitioningResponse> RangePartitioning { get; private set; } = null!;
+
+        /// <summary>
+        /// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+        /// </summary>
+        [Output("requirePartitionFilter")]
+        public Output<bool> RequirePartitionFilter { get; private set; } = null!;
+
+        /// <summary>
+        /// [Optional] Describes the schema of this table.
+        /// </summary>
+        [Output("schema")]
+        public Output<Outputs.TableSchemaResponse> Schema { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] A URL that can be used to access this resource again.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] Snapshot definition.
+        /// </summary>
+        [Output("snapshotDefinition")]
+        public Output<Outputs.SnapshotDefinitionResponse> SnapshotDefinition { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
+        /// </summary>
+        [Output("streamingBuffer")]
+        public Output<Outputs.StreamingbufferResponse> StreamingBuffer { get; private set; } = null!;
+
+        /// <summary>
+        /// [Required] Reference describing the ID of this table.
+        /// </summary>
+        [Output("tableReference")]
+        public Output<Outputs.TableReferenceResponse> TableReference { get; private set; } = null!;
+
+        /// <summary>
+        /// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        /// </summary>
+        [Output("timePartitioning")]
+        public Output<Outputs.TimePartitioningResponse> TimePartitioning { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// [Optional] The view definition.
+        /// </summary>
+        [Output("view")]
+        public Output<Outputs.ViewDefinitionResponse> View { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Table resource with the given unique name, arguments, and options.
         /// </summary>
         ///

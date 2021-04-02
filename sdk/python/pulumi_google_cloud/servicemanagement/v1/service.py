@@ -71,7 +71,25 @@ class Service(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["producer_project_id"] = None
+        __props__["service_name"] = None
         return Service(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="producerProjectId")
+    def producer_project_id(self) -> pulumi.Output[str]:
+        """
+        ID of the project that produces and owns this service.
+        """
+        return pulumi.get(self, "producer_project_id")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Output[str]:
+        """
+        The name of the service. See the [overview](/service-management/overview) for naming requirements.
+        """
+        return pulumi.get(self, "service_name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

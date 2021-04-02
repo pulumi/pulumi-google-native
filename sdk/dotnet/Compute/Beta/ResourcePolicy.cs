@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Compute.Beta
     public partial class ResourcePolicy : Pulumi.CustomResource
     {
         /// <summary>
+        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource policy for instances for placement configuration.
+        /// </summary>
+        [Output("groupPlacementPolicy")]
+        public Output<Outputs.ResourcePolicyGroupPlacementPolicyResponse> GroupPlacementPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource policy for scheduling instance operations.
+        /// </summary>
+        [Output("instanceSchedulePolicy")]
+        public Output<Outputs.ResourcePolicyInstanceSchedulePolicyResponse> InstanceSchedulePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The system status of the resource policy.
+        /// </summary>
+        [Output("resourceStatus")]
+        public Output<Outputs.ResourcePolicyResourceStatusResponse> ResourceStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Server-defined fully-qualified URL for this resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource policy for persistent disks for creating snapshots.
+        /// </summary>
+        [Output("snapshotSchedulePolicy")]
+        public Output<Outputs.ResourcePolicySnapshotSchedulePolicyResponse> SnapshotSchedulePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The status of resource policy creation.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ResourcePolicy resource with the given unique name, arguments, and options.
         /// </summary>
         ///

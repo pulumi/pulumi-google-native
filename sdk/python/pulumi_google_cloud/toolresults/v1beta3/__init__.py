@@ -9,6 +9,7 @@ from .history_execution_step import *
 from .history_execution_step_perf_metrics_summary import *
 from .history_execution_step_perf_sample_series import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

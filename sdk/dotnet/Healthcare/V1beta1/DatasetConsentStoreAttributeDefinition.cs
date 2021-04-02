@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Healthcare.V1beta1
     public partial class DatasetConsentStoreAttributeDefinition : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+        /// </summary>
+        [Output("allowedValues")]
+        public Output<ImmutableArray<string>> AllowedValues { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The category of the attribute. The value of this field cannot be changed after creation.
+        /// </summary>
+        [Output("category")]
+        public Output<string> Category { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
+        /// </summary>
+        [Output("consentDefaultValues")]
+        public Output<ImmutableArray<string>> ConsentDefaultValues { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
+        /// </summary>
+        [Output("dataMappingDefaultValue")]
+        public Output<string> DataMappingDefaultValue { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. A description of the attribute.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a DatasetConsentStoreAttributeDefinition resource with the given unique name, arguments, and options.
         /// </summary>
         ///

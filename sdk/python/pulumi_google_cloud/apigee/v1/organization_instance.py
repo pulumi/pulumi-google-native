@@ -15,19 +15,14 @@ class OrganizationInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 created_at: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 host: Optional[pulumi.Input[str]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
-                 last_modified_at: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
                  peering_cidr_range: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -36,17 +31,12 @@ class OrganizationInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] created_at: Output only. Time the instance was created in milliseconds since epoch.
         :param pulumi.Input[str] description: Optional. Description of the instance.
         :param pulumi.Input[str] disk_encryption_key_name: Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
         :param pulumi.Input[str] display_name: Optional. Display name for the instance.
-        :param pulumi.Input[str] host: Output only. Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
-        :param pulumi.Input[str] last_modified_at: Output only. Time the instance was last modified in milliseconds since epoch.
         :param pulumi.Input[str] location: Required. Compute Engine location where the instance resides.
         :param pulumi.Input[str] name: Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
         :param pulumi.Input[str] peering_cidr_range: Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
-        :param pulumi.Input[str] port: Output only. Port number of the exposed Apigee endpoint.
-        :param pulumi.Input[str] state: Output only. State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -65,23 +55,23 @@ class OrganizationInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['created_at'] = created_at
             __props__['description'] = description
             __props__['disk_encryption_key_name'] = disk_encryption_key_name
             __props__['display_name'] = display_name
-            __props__['host'] = host
             if instances_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instances_id'")
             __props__['instances_id'] = instances_id
-            __props__['last_modified_at'] = last_modified_at
             __props__['location'] = location
             __props__['name'] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
             __props__['peering_cidr_range'] = peering_cidr_range
-            __props__['port'] = port
-            __props__['state'] = state
+            __props__['created_at'] = None
+            __props__['host'] = None
+            __props__['last_modified_at'] = None
+            __props__['port'] = None
+            __props__['state'] = None
         super(OrganizationInstance, __self__).__init__(
             'google-cloud:apigee/v1:OrganizationInstance',
             resource_name,
@@ -104,7 +94,106 @@ class OrganizationInstance(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["created_at"] = None
+        __props__["description"] = None
+        __props__["disk_encryption_key_name"] = None
+        __props__["display_name"] = None
+        __props__["host"] = None
+        __props__["last_modified_at"] = None
+        __props__["location"] = None
+        __props__["name"] = None
+        __props__["peering_cidr_range"] = None
+        __props__["port"] = None
+        __props__["state"] = None
         return OrganizationInstance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        """
+        Time the instance was created in milliseconds since epoch.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Optional. Description of the instance.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKeyName")
+    def disk_encryption_key_name(self) -> pulumi.Output[str]:
+        """
+        Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+        """
+        return pulumi.get(self, "disk_encryption_key_name")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Optional. Display name for the instance.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Output[str]:
+        """
+        Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="lastModifiedAt")
+    def last_modified_at(self) -> pulumi.Output[str]:
+        """
+        Time the instance was last modified in milliseconds since epoch.
+        """
+        return pulumi.get(self, "last_modified_at")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        """
+        Required. Compute Engine location where the instance resides.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="peeringCidrRange")
+    def peering_cidr_range(self) -> pulumi.Output[str]:
+        """
+        Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
+        """
+        return pulumi.get(self, "peering_cidr_range")
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Output[str]:
+        """
+        Port number of the exposed Apigee endpoint.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
+        """
+        return pulumi.get(self, "state")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

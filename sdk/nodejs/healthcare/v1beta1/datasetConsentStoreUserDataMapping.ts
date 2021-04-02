@@ -35,6 +35,30 @@ export class DatasetConsentStoreUserDataMapping extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatasetConsentStoreUserDataMapping.__pulumiType;
     }
 
+    /**
+     * Indicates the time when this mapping was archived.
+     */
+    public /*out*/ readonly archiveTime!: pulumi.Output<string>;
+    /**
+     * Indicates whether this mapping is archived.
+     */
+    public /*out*/ readonly archived!: pulumi.Output<boolean>;
+    /**
+     * Required. A unique identifier for the mapped resource.
+     */
+    public readonly dataId!: pulumi.Output<string>;
+    /**
+     * Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
+     */
+    public readonly resourceAttributes!: pulumi.Output<outputs.healthcare.v1beta1.AttributeResponse[]>;
+    /**
+     * Required. User's UUID provided by the client.
+     */
+    public readonly userId!: pulumi.Output<string>;
 
     /**
      * Create a DatasetConsentStoreUserDataMapping resource with the given unique name, arguments, and options.
@@ -62,8 +86,6 @@ export class DatasetConsentStoreUserDataMapping extends pulumi.CustomResource {
             if ((!args || args.userDataMappingsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userDataMappingsId'");
             }
-            inputs["archiveTime"] = args ? args.archiveTime : undefined;
-            inputs["archived"] = args ? args.archived : undefined;
             inputs["consentStoresId"] = args ? args.consentStoresId : undefined;
             inputs["dataId"] = args ? args.dataId : undefined;
             inputs["datasetsId"] = args ? args.datasetsId : undefined;
@@ -73,7 +95,15 @@ export class DatasetConsentStoreUserDataMapping extends pulumi.CustomResource {
             inputs["resourceAttributes"] = args ? args.resourceAttributes : undefined;
             inputs["userDataMappingsId"] = args ? args.userDataMappingsId : undefined;
             inputs["userId"] = args ? args.userId : undefined;
+            inputs["archiveTime"] = undefined /*out*/;
+            inputs["archived"] = undefined /*out*/;
         } else {
+            inputs["archiveTime"] = undefined /*out*/;
+            inputs["archived"] = undefined /*out*/;
+            inputs["dataId"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["resourceAttributes"] = undefined /*out*/;
+            inputs["userId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -86,14 +116,6 @@ export class DatasetConsentStoreUserDataMapping extends pulumi.CustomResource {
  * The set of arguments for constructing a DatasetConsentStoreUserDataMapping resource.
  */
 export interface DatasetConsentStoreUserDataMappingArgs {
-    /**
-     * Output only. Indicates the time when this mapping was archived.
-     */
-    readonly archiveTime?: pulumi.Input<string>;
-    /**
-     * Output only. Indicates whether this mapping is archived.
-     */
-    readonly archived?: pulumi.Input<boolean>;
     readonly consentStoresId: pulumi.Input<string>;
     /**
      * Required. A unique identifier for the mapped resource.

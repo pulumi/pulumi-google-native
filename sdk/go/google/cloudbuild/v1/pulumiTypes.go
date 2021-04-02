@@ -16,8 +16,6 @@ type ArtifactObjects struct {
 	Location *string `pulumi:"location"`
 	// Path globs used to match files in the build's workspace.
 	Paths []string `pulumi:"paths"`
-	// Output only. Stores timing information for pushing all artifact objects.
-	Timing *TimeSpan `pulumi:"timing"`
 }
 
 // ArtifactObjectsInput is an input type that accepts ArtifactObjectsArgs and ArtifactObjectsOutput values.
@@ -37,8 +35,6 @@ type ArtifactObjectsArgs struct {
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Path globs used to match files in the build's workspace.
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
-	// Output only. Stores timing information for pushing all artifact objects.
-	Timing TimeSpanPtrInput `pulumi:"timing"`
 }
 
 func (ArtifactObjectsArgs) ElementType() reflect.Type {
@@ -129,11 +125,6 @@ func (o ArtifactObjectsOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ArtifactObjects) []string { return v.Paths }).(pulumi.StringArrayOutput)
 }
 
-// Output only. Stores timing information for pushing all artifact objects.
-func (o ArtifactObjectsOutput) Timing() TimeSpanPtrOutput {
-	return o.ApplyT(func(v ArtifactObjects) *TimeSpan { return v.Timing }).(TimeSpanPtrOutput)
-}
-
 type ArtifactObjectsPtrOutput struct{ *pulumi.OutputState }
 
 func (ArtifactObjectsPtrOutput) ElementType() reflect.Type {
@@ -172,14 +163,176 @@ func (o ArtifactObjectsPtrOutput) Paths() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Output only. Stores timing information for pushing all artifact objects.
-func (o ArtifactObjectsPtrOutput) Timing() TimeSpanPtrOutput {
-	return o.ApplyT(func(v *ArtifactObjects) *TimeSpan {
+// Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
+type ArtifactObjectsResponse struct {
+	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
+	Location string `pulumi:"location"`
+	// Path globs used to match files in the build's workspace.
+	Paths []string `pulumi:"paths"`
+	// Stores timing information for pushing all artifact objects.
+	Timing TimeSpanResponse `pulumi:"timing"`
+}
+
+// ArtifactObjectsResponseInput is an input type that accepts ArtifactObjectsResponseArgs and ArtifactObjectsResponseOutput values.
+// You can construct a concrete instance of `ArtifactObjectsResponseInput` via:
+//
+//          ArtifactObjectsResponseArgs{...}
+type ArtifactObjectsResponseInput interface {
+	pulumi.Input
+
+	ToArtifactObjectsResponseOutput() ArtifactObjectsResponseOutput
+	ToArtifactObjectsResponseOutputWithContext(context.Context) ArtifactObjectsResponseOutput
+}
+
+// Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
+type ArtifactObjectsResponseArgs struct {
+	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Path globs used to match files in the build's workspace.
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+	// Stores timing information for pushing all artifact objects.
+	Timing TimeSpanResponseInput `pulumi:"timing"`
+}
+
+func (ArtifactObjectsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArtifactObjectsResponse)(nil)).Elem()
+}
+
+func (i ArtifactObjectsResponseArgs) ToArtifactObjectsResponseOutput() ArtifactObjectsResponseOutput {
+	return i.ToArtifactObjectsResponseOutputWithContext(context.Background())
+}
+
+func (i ArtifactObjectsResponseArgs) ToArtifactObjectsResponseOutputWithContext(ctx context.Context) ArtifactObjectsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArtifactObjectsResponseOutput)
+}
+
+func (i ArtifactObjectsResponseArgs) ToArtifactObjectsResponsePtrOutput() ArtifactObjectsResponsePtrOutput {
+	return i.ToArtifactObjectsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ArtifactObjectsResponseArgs) ToArtifactObjectsResponsePtrOutputWithContext(ctx context.Context) ArtifactObjectsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArtifactObjectsResponseOutput).ToArtifactObjectsResponsePtrOutputWithContext(ctx)
+}
+
+// ArtifactObjectsResponsePtrInput is an input type that accepts ArtifactObjectsResponseArgs, ArtifactObjectsResponsePtr and ArtifactObjectsResponsePtrOutput values.
+// You can construct a concrete instance of `ArtifactObjectsResponsePtrInput` via:
+//
+//          ArtifactObjectsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ArtifactObjectsResponsePtrInput interface {
+	pulumi.Input
+
+	ToArtifactObjectsResponsePtrOutput() ArtifactObjectsResponsePtrOutput
+	ToArtifactObjectsResponsePtrOutputWithContext(context.Context) ArtifactObjectsResponsePtrOutput
+}
+
+type artifactObjectsResponsePtrType ArtifactObjectsResponseArgs
+
+func ArtifactObjectsResponsePtr(v *ArtifactObjectsResponseArgs) ArtifactObjectsResponsePtrInput {
+	return (*artifactObjectsResponsePtrType)(v)
+}
+
+func (*artifactObjectsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArtifactObjectsResponse)(nil)).Elem()
+}
+
+func (i *artifactObjectsResponsePtrType) ToArtifactObjectsResponsePtrOutput() ArtifactObjectsResponsePtrOutput {
+	return i.ToArtifactObjectsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *artifactObjectsResponsePtrType) ToArtifactObjectsResponsePtrOutputWithContext(ctx context.Context) ArtifactObjectsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArtifactObjectsResponsePtrOutput)
+}
+
+// Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
+type ArtifactObjectsResponseOutput struct{ *pulumi.OutputState }
+
+func (ArtifactObjectsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArtifactObjectsResponse)(nil)).Elem()
+}
+
+func (o ArtifactObjectsResponseOutput) ToArtifactObjectsResponseOutput() ArtifactObjectsResponseOutput {
+	return o
+}
+
+func (o ArtifactObjectsResponseOutput) ToArtifactObjectsResponseOutputWithContext(ctx context.Context) ArtifactObjectsResponseOutput {
+	return o
+}
+
+func (o ArtifactObjectsResponseOutput) ToArtifactObjectsResponsePtrOutput() ArtifactObjectsResponsePtrOutput {
+	return o.ToArtifactObjectsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ArtifactObjectsResponseOutput) ToArtifactObjectsResponsePtrOutputWithContext(ctx context.Context) ArtifactObjectsResponsePtrOutput {
+	return o.ApplyT(func(v ArtifactObjectsResponse) *ArtifactObjectsResponse {
+		return &v
+	}).(ArtifactObjectsResponsePtrOutput)
+}
+
+// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
+func (o ArtifactObjectsResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ArtifactObjectsResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Path globs used to match files in the build's workspace.
+func (o ArtifactObjectsResponseOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ArtifactObjectsResponse) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// Stores timing information for pushing all artifact objects.
+func (o ArtifactObjectsResponseOutput) Timing() TimeSpanResponseOutput {
+	return o.ApplyT(func(v ArtifactObjectsResponse) TimeSpanResponse { return v.Timing }).(TimeSpanResponseOutput)
+}
+
+type ArtifactObjectsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ArtifactObjectsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArtifactObjectsResponse)(nil)).Elem()
+}
+
+func (o ArtifactObjectsResponsePtrOutput) ToArtifactObjectsResponsePtrOutput() ArtifactObjectsResponsePtrOutput {
+	return o
+}
+
+func (o ArtifactObjectsResponsePtrOutput) ToArtifactObjectsResponsePtrOutputWithContext(ctx context.Context) ArtifactObjectsResponsePtrOutput {
+	return o
+}
+
+func (o ArtifactObjectsResponsePtrOutput) Elem() ArtifactObjectsResponseOutput {
+	return o.ApplyT(func(v *ArtifactObjectsResponse) ArtifactObjectsResponse { return *v }).(ArtifactObjectsResponseOutput)
+}
+
+// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
+func (o ArtifactObjectsResponsePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ArtifactObjectsResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Timing
-	}).(TimeSpanPtrOutput)
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path globs used to match files in the build's workspace.
+func (o ArtifactObjectsResponsePtrOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ArtifactObjectsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Paths
+	}).(pulumi.StringArrayOutput)
+}
+
+// Stores timing information for pushing all artifact objects.
+func (o ArtifactObjectsResponsePtrOutput) Timing() TimeSpanResponsePtrOutput {
+	return o.ApplyT(func(v *ArtifactObjectsResponse) *TimeSpanResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Timing
+	}).(TimeSpanResponsePtrOutput)
 }
 
 // Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
@@ -335,50 +488,179 @@ func (o ArtifactsPtrOutput) Objects() ArtifactObjectsPtrOutput {
 	}).(ArtifactObjectsPtrOutput)
 }
 
+// Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
+type ArtifactsResponse struct {
+	// A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
+	Images []string `pulumi:"images"`
+	// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
+	Objects ArtifactObjectsResponse `pulumi:"objects"`
+}
+
+// ArtifactsResponseInput is an input type that accepts ArtifactsResponseArgs and ArtifactsResponseOutput values.
+// You can construct a concrete instance of `ArtifactsResponseInput` via:
+//
+//          ArtifactsResponseArgs{...}
+type ArtifactsResponseInput interface {
+	pulumi.Input
+
+	ToArtifactsResponseOutput() ArtifactsResponseOutput
+	ToArtifactsResponseOutputWithContext(context.Context) ArtifactsResponseOutput
+}
+
+// Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
+type ArtifactsResponseArgs struct {
+	// A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
+	Images pulumi.StringArrayInput `pulumi:"images"`
+	// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
+	Objects ArtifactObjectsResponseInput `pulumi:"objects"`
+}
+
+func (ArtifactsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArtifactsResponse)(nil)).Elem()
+}
+
+func (i ArtifactsResponseArgs) ToArtifactsResponseOutput() ArtifactsResponseOutput {
+	return i.ToArtifactsResponseOutputWithContext(context.Background())
+}
+
+func (i ArtifactsResponseArgs) ToArtifactsResponseOutputWithContext(ctx context.Context) ArtifactsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArtifactsResponseOutput)
+}
+
+func (i ArtifactsResponseArgs) ToArtifactsResponsePtrOutput() ArtifactsResponsePtrOutput {
+	return i.ToArtifactsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ArtifactsResponseArgs) ToArtifactsResponsePtrOutputWithContext(ctx context.Context) ArtifactsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArtifactsResponseOutput).ToArtifactsResponsePtrOutputWithContext(ctx)
+}
+
+// ArtifactsResponsePtrInput is an input type that accepts ArtifactsResponseArgs, ArtifactsResponsePtr and ArtifactsResponsePtrOutput values.
+// You can construct a concrete instance of `ArtifactsResponsePtrInput` via:
+//
+//          ArtifactsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ArtifactsResponsePtrInput interface {
+	pulumi.Input
+
+	ToArtifactsResponsePtrOutput() ArtifactsResponsePtrOutput
+	ToArtifactsResponsePtrOutputWithContext(context.Context) ArtifactsResponsePtrOutput
+}
+
+type artifactsResponsePtrType ArtifactsResponseArgs
+
+func ArtifactsResponsePtr(v *ArtifactsResponseArgs) ArtifactsResponsePtrInput {
+	return (*artifactsResponsePtrType)(v)
+}
+
+func (*artifactsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArtifactsResponse)(nil)).Elem()
+}
+
+func (i *artifactsResponsePtrType) ToArtifactsResponsePtrOutput() ArtifactsResponsePtrOutput {
+	return i.ToArtifactsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *artifactsResponsePtrType) ToArtifactsResponsePtrOutputWithContext(ctx context.Context) ArtifactsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArtifactsResponsePtrOutput)
+}
+
+// Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
+type ArtifactsResponseOutput struct{ *pulumi.OutputState }
+
+func (ArtifactsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArtifactsResponse)(nil)).Elem()
+}
+
+func (o ArtifactsResponseOutput) ToArtifactsResponseOutput() ArtifactsResponseOutput {
+	return o
+}
+
+func (o ArtifactsResponseOutput) ToArtifactsResponseOutputWithContext(ctx context.Context) ArtifactsResponseOutput {
+	return o
+}
+
+func (o ArtifactsResponseOutput) ToArtifactsResponsePtrOutput() ArtifactsResponsePtrOutput {
+	return o.ToArtifactsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ArtifactsResponseOutput) ToArtifactsResponsePtrOutputWithContext(ctx context.Context) ArtifactsResponsePtrOutput {
+	return o.ApplyT(func(v ArtifactsResponse) *ArtifactsResponse {
+		return &v
+	}).(ArtifactsResponsePtrOutput)
+}
+
+// A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
+func (o ArtifactsResponseOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ArtifactsResponse) []string { return v.Images }).(pulumi.StringArrayOutput)
+}
+
+// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
+func (o ArtifactsResponseOutput) Objects() ArtifactObjectsResponseOutput {
+	return o.ApplyT(func(v ArtifactsResponse) ArtifactObjectsResponse { return v.Objects }).(ArtifactObjectsResponseOutput)
+}
+
+type ArtifactsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ArtifactsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArtifactsResponse)(nil)).Elem()
+}
+
+func (o ArtifactsResponsePtrOutput) ToArtifactsResponsePtrOutput() ArtifactsResponsePtrOutput {
+	return o
+}
+
+func (o ArtifactsResponsePtrOutput) ToArtifactsResponsePtrOutputWithContext(ctx context.Context) ArtifactsResponsePtrOutput {
+	return o
+}
+
+func (o ArtifactsResponsePtrOutput) Elem() ArtifactsResponseOutput {
+	return o.ApplyT(func(v *ArtifactsResponse) ArtifactsResponse { return *v }).(ArtifactsResponseOutput)
+}
+
+// A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
+func (o ArtifactsResponsePtrOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ArtifactsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Images
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
+func (o ArtifactsResponsePtrOutput) Objects() ArtifactObjectsResponsePtrOutput {
+	return o.ApplyT(func(v *ArtifactsResponse) *ArtifactObjectsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Objects
+	}).(ArtifactObjectsResponsePtrOutput)
+}
+
 // A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
 type BuildType struct {
 	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
 	Artifacts *Artifacts `pulumi:"artifacts"`
 	// Secrets and secret environment variables.
 	AvailableSecrets *Secrets `pulumi:"availableSecrets"`
-	// Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
-	BuildTriggerId *string `pulumi:"buildTriggerId"`
-	// Output only. Time at which the request to create the build was received.
-	CreateTime *string `pulumi:"createTime"`
-	// Output only. Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
-	FinishTime *string `pulumi:"finishTime"`
-	// Output only. Unique identifier of the build.
-	Id *string `pulumi:"id"`
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
 	Images []string `pulumi:"images"`
-	// Output only. URL to logs for this build in Google Cloud Console.
-	LogUrl *string `pulumi:"logUrl"`
 	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
 	LogsBucket *string `pulumi:"logsBucket"`
-	// Output only. The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.
-	Name *string `pulumi:"name"`
 	// Special options for this build.
 	Options *BuildOptions `pulumi:"options"`
-	// Output only. ID of the project.
-	ProjectId *string `pulumi:"projectId"`
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl *string `pulumi:"queueTtl"`
-	// Output only. Results of the build.
-	Results *Results `pulumi:"results"`
 	// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
 	Secrets []Secret `pulumi:"secrets"`
 	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The location of the source files to build.
 	Source *Source `pulumi:"source"`
-	// Output only. A permanent fixed identifier for source.
-	SourceProvenance *SourceProvenance `pulumi:"sourceProvenance"`
-	// Output only. Time at which execution of the build was started.
-	StartTime *string `pulumi:"startTime"`
-	// Output only. Status of the build.
-	Status *string `pulumi:"status"`
-	// Output only. Customer-readable message about the current status.
-	StatusDetail *string `pulumi:"statusDetail"`
 	// Required. The operations to be performed on the workspace.
 	Steps []BuildStep `pulumi:"steps"`
 	// Substitutions data for `Build` resource.
@@ -387,8 +669,6 @@ type BuildType struct {
 	Tags []string `pulumi:"tags"`
 	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
 	Timeout *string `pulumi:"timeout"`
-	// Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
-	Timing map[string]string `pulumi:"timing"`
 }
 
 // BuildTypeInput is an input type that accepts BuildTypeArgs and BuildTypeOutput values.
@@ -408,44 +688,20 @@ type BuildTypeArgs struct {
 	Artifacts ArtifactsPtrInput `pulumi:"artifacts"`
 	// Secrets and secret environment variables.
 	AvailableSecrets SecretsPtrInput `pulumi:"availableSecrets"`
-	// Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
-	BuildTriggerId pulumi.StringPtrInput `pulumi:"buildTriggerId"`
-	// Output only. Time at which the request to create the build was received.
-	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// Output only. Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
-	FinishTime pulumi.StringPtrInput `pulumi:"finishTime"`
-	// Output only. Unique identifier of the build.
-	Id pulumi.StringPtrInput `pulumi:"id"`
 	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
 	Images pulumi.StringArrayInput `pulumi:"images"`
-	// Output only. URL to logs for this build in Google Cloud Console.
-	LogUrl pulumi.StringPtrInput `pulumi:"logUrl"`
 	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
 	LogsBucket pulumi.StringPtrInput `pulumi:"logsBucket"`
-	// Output only. The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.
-	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Special options for this build.
 	Options BuildOptionsPtrInput `pulumi:"options"`
-	// Output only. ID of the project.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl pulumi.StringPtrInput `pulumi:"queueTtl"`
-	// Output only. Results of the build.
-	Results ResultsPtrInput `pulumi:"results"`
 	// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
 	Secrets SecretArrayInput `pulumi:"secrets"`
 	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// The location of the source files to build.
 	Source SourcePtrInput `pulumi:"source"`
-	// Output only. A permanent fixed identifier for source.
-	SourceProvenance SourceProvenancePtrInput `pulumi:"sourceProvenance"`
-	// Output only. Time at which execution of the build was started.
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// Output only. Status of the build.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Output only. Customer-readable message about the current status.
-	StatusDetail pulumi.StringPtrInput `pulumi:"statusDetail"`
 	// Required. The operations to be performed on the workspace.
 	Steps BuildStepArrayInput `pulumi:"steps"`
 	// Substitutions data for `Build` resource.
@@ -454,8 +710,6 @@ type BuildTypeArgs struct {
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
-	// Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
-	Timing pulumi.StringMapInput `pulumi:"timing"`
 }
 
 func (BuildTypeArgs) ElementType() reflect.Type {
@@ -546,34 +800,9 @@ func (o BuildTypeOutput) AvailableSecrets() SecretsPtrOutput {
 	return o.ApplyT(func(v BuildType) *Secrets { return v.AvailableSecrets }).(SecretsPtrOutput)
 }
 
-// Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
-func (o BuildTypeOutput) BuildTriggerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildType) *string { return v.BuildTriggerId }).(pulumi.StringPtrOutput)
-}
-
-// Output only. Time at which the request to create the build was received.
-func (o BuildTypeOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildType) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
-}
-
-// Output only. Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
-func (o BuildTypeOutput) FinishTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildType) *string { return v.FinishTime }).(pulumi.StringPtrOutput)
-}
-
-// Output only. Unique identifier of the build.
-func (o BuildTypeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildType) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
 // A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
 func (o BuildTypeOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildType) []string { return v.Images }).(pulumi.StringArrayOutput)
-}
-
-// Output only. URL to logs for this build in Google Cloud Console.
-func (o BuildTypeOutput) LogUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildType) *string { return v.LogUrl }).(pulumi.StringPtrOutput)
 }
 
 // Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
@@ -581,29 +810,14 @@ func (o BuildTypeOutput) LogsBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildType) *string { return v.LogsBucket }).(pulumi.StringPtrOutput)
 }
 
-// Output only. The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.
-func (o BuildTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildType) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
 // Special options for this build.
 func (o BuildTypeOutput) Options() BuildOptionsPtrOutput {
 	return o.ApplyT(func(v BuildType) *BuildOptions { return v.Options }).(BuildOptionsPtrOutput)
 }
 
-// Output only. ID of the project.
-func (o BuildTypeOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildType) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
-}
-
 // TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 func (o BuildTypeOutput) QueueTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildType) *string { return v.QueueTtl }).(pulumi.StringPtrOutput)
-}
-
-// Output only. Results of the build.
-func (o BuildTypeOutput) Results() ResultsPtrOutput {
-	return o.ApplyT(func(v BuildType) *Results { return v.Results }).(ResultsPtrOutput)
 }
 
 // Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
@@ -619,26 +833,6 @@ func (o BuildTypeOutput) ServiceAccount() pulumi.StringPtrOutput {
 // The location of the source files to build.
 func (o BuildTypeOutput) Source() SourcePtrOutput {
 	return o.ApplyT(func(v BuildType) *Source { return v.Source }).(SourcePtrOutput)
-}
-
-// Output only. A permanent fixed identifier for source.
-func (o BuildTypeOutput) SourceProvenance() SourceProvenancePtrOutput {
-	return o.ApplyT(func(v BuildType) *SourceProvenance { return v.SourceProvenance }).(SourceProvenancePtrOutput)
-}
-
-// Output only. Time at which execution of the build was started.
-func (o BuildTypeOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildType) *string { return v.StartTime }).(pulumi.StringPtrOutput)
-}
-
-// Output only. Status of the build.
-func (o BuildTypeOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildType) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// Output only. Customer-readable message about the current status.
-func (o BuildTypeOutput) StatusDetail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildType) *string { return v.StatusDetail }).(pulumi.StringPtrOutput)
 }
 
 // Required. The operations to be performed on the workspace.
@@ -659,11 +853,6 @@ func (o BuildTypeOutput) Tags() pulumi.StringArrayOutput {
 // Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
 func (o BuildTypeOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildType) *string { return v.Timeout }).(pulumi.StringPtrOutput)
-}
-
-// Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
-func (o BuildTypeOutput) Timing() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BuildType) map[string]string { return v.Timing }).(pulumi.StringMapOutput)
 }
 
 type BuildTypePtrOutput struct{ *pulumi.OutputState }
@@ -704,46 +893,6 @@ func (o BuildTypePtrOutput) AvailableSecrets() SecretsPtrOutput {
 	}).(SecretsPtrOutput)
 }
 
-// Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
-func (o BuildTypePtrOutput) BuildTriggerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BuildTriggerId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Output only. Time at which the request to create the build was received.
-func (o BuildTypePtrOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreateTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Output only. Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
-func (o BuildTypePtrOutput) FinishTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FinishTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Output only. Unique identifier of the build.
-func (o BuildTypePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
 // A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
 func (o BuildTypePtrOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BuildType) []string {
@@ -754,16 +903,6 @@ func (o BuildTypePtrOutput) Images() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Output only. URL to logs for this build in Google Cloud Console.
-func (o BuildTypePtrOutput) LogUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LogUrl
-	}).(pulumi.StringPtrOutput)
-}
-
 // Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
 func (o BuildTypePtrOutput) LogsBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildType) *string {
@@ -771,16 +910,6 @@ func (o BuildTypePtrOutput) LogsBucket() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.LogsBucket
-	}).(pulumi.StringPtrOutput)
-}
-
-// Output only. The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.
-func (o BuildTypePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -794,16 +923,6 @@ func (o BuildTypePtrOutput) Options() BuildOptionsPtrOutput {
 	}).(BuildOptionsPtrOutput)
 }
 
-// Output only. ID of the project.
-func (o BuildTypePtrOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProjectId
-	}).(pulumi.StringPtrOutput)
-}
-
 // TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 func (o BuildTypePtrOutput) QueueTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildType) *string {
@@ -812,16 +931,6 @@ func (o BuildTypePtrOutput) QueueTtl() pulumi.StringPtrOutput {
 		}
 		return v.QueueTtl
 	}).(pulumi.StringPtrOutput)
-}
-
-// Output only. Results of the build.
-func (o BuildTypePtrOutput) Results() ResultsPtrOutput {
-	return o.ApplyT(func(v *BuildType) *Results {
-		if v == nil {
-			return nil
-		}
-		return v.Results
-	}).(ResultsPtrOutput)
 }
 
 // Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
@@ -852,46 +961,6 @@ func (o BuildTypePtrOutput) Source() SourcePtrOutput {
 		}
 		return v.Source
 	}).(SourcePtrOutput)
-}
-
-// Output only. A permanent fixed identifier for source.
-func (o BuildTypePtrOutput) SourceProvenance() SourceProvenancePtrOutput {
-	return o.ApplyT(func(v *BuildType) *SourceProvenance {
-		if v == nil {
-			return nil
-		}
-		return v.SourceProvenance
-	}).(SourceProvenancePtrOutput)
-}
-
-// Output only. Time at which execution of the build was started.
-func (o BuildTypePtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Output only. Status of the build.
-func (o BuildTypePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// Output only. Customer-readable message about the current status.
-func (o BuildTypePtrOutput) StatusDetail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StatusDetail
-	}).(pulumi.StringPtrOutput)
 }
 
 // Required. The operations to be performed on the workspace.
@@ -932,16 +1001,6 @@ func (o BuildTypePtrOutput) Timeout() pulumi.StringPtrOutput {
 		}
 		return v.Timeout
 	}).(pulumi.StringPtrOutput)
-}
-
-// Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
-func (o BuildTypePtrOutput) Timing() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *BuildType) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Timing
-	}).(pulumi.StringMapOutput)
 }
 
 // Optional arguments to enable specific features of builds.
@@ -1287,6 +1346,939 @@ func (o BuildOptionsPtrOutput) WorkerPool() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional arguments to enable specific features of builds.
+type BuildOptionsResponse struct {
+	// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
+	DiskSizeGb string `pulumi:"diskSizeGb"`
+	// Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+	DynamicSubstitutions bool `pulumi:"dynamicSubstitutions"`
+	// A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+	Env []string `pulumi:"env"`
+	// Option to define build log streaming behavior to Google Cloud Storage.
+	LogStreamingOption string `pulumi:"logStreamingOption"`
+	// Option to specify the logging mode, which determines if and where build logs are stored.
+	Logging string `pulumi:"logging"`
+	// Compute Engine machine type on which to run the build.
+	MachineType string `pulumi:"machineType"`
+	// Requested verifiability options.
+	RequestedVerifyOption string `pulumi:"requestedVerifyOption"`
+	// A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build.
+	SecretEnv []string `pulumi:"secretEnv"`
+	// Requested hash for SourceProvenance.
+	SourceProvenanceHash []string `pulumi:"sourceProvenanceHash"`
+	// Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
+	SubstitutionOption string `pulumi:"substitutionOption"`
+	// Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
+	Volumes []VolumeResponse `pulumi:"volumes"`
+	// Option to specify a `WorkerPool` for the build. Format: projects/{project}/locations/{location}/workerPools/{workerPool} This field is in beta and is available only to restricted users.
+	WorkerPool string `pulumi:"workerPool"`
+}
+
+// BuildOptionsResponseInput is an input type that accepts BuildOptionsResponseArgs and BuildOptionsResponseOutput values.
+// You can construct a concrete instance of `BuildOptionsResponseInput` via:
+//
+//          BuildOptionsResponseArgs{...}
+type BuildOptionsResponseInput interface {
+	pulumi.Input
+
+	ToBuildOptionsResponseOutput() BuildOptionsResponseOutput
+	ToBuildOptionsResponseOutputWithContext(context.Context) BuildOptionsResponseOutput
+}
+
+// Optional arguments to enable specific features of builds.
+type BuildOptionsResponseArgs struct {
+	// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
+	DiskSizeGb pulumi.StringInput `pulumi:"diskSizeGb"`
+	// Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+	DynamicSubstitutions pulumi.BoolInput `pulumi:"dynamicSubstitutions"`
+	// A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+	Env pulumi.StringArrayInput `pulumi:"env"`
+	// Option to define build log streaming behavior to Google Cloud Storage.
+	LogStreamingOption pulumi.StringInput `pulumi:"logStreamingOption"`
+	// Option to specify the logging mode, which determines if and where build logs are stored.
+	Logging pulumi.StringInput `pulumi:"logging"`
+	// Compute Engine machine type on which to run the build.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// Requested verifiability options.
+	RequestedVerifyOption pulumi.StringInput `pulumi:"requestedVerifyOption"`
+	// A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build.
+	SecretEnv pulumi.StringArrayInput `pulumi:"secretEnv"`
+	// Requested hash for SourceProvenance.
+	SourceProvenanceHash pulumi.StringArrayInput `pulumi:"sourceProvenanceHash"`
+	// Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
+	SubstitutionOption pulumi.StringInput `pulumi:"substitutionOption"`
+	// Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
+	Volumes VolumeResponseArrayInput `pulumi:"volumes"`
+	// Option to specify a `WorkerPool` for the build. Format: projects/{project}/locations/{location}/workerPools/{workerPool} This field is in beta and is available only to restricted users.
+	WorkerPool pulumi.StringInput `pulumi:"workerPool"`
+}
+
+func (BuildOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildOptionsResponse)(nil)).Elem()
+}
+
+func (i BuildOptionsResponseArgs) ToBuildOptionsResponseOutput() BuildOptionsResponseOutput {
+	return i.ToBuildOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i BuildOptionsResponseArgs) ToBuildOptionsResponseOutputWithContext(ctx context.Context) BuildOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildOptionsResponseOutput)
+}
+
+func (i BuildOptionsResponseArgs) ToBuildOptionsResponsePtrOutput() BuildOptionsResponsePtrOutput {
+	return i.ToBuildOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BuildOptionsResponseArgs) ToBuildOptionsResponsePtrOutputWithContext(ctx context.Context) BuildOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildOptionsResponseOutput).ToBuildOptionsResponsePtrOutputWithContext(ctx)
+}
+
+// BuildOptionsResponsePtrInput is an input type that accepts BuildOptionsResponseArgs, BuildOptionsResponsePtr and BuildOptionsResponsePtrOutput values.
+// You can construct a concrete instance of `BuildOptionsResponsePtrInput` via:
+//
+//          BuildOptionsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BuildOptionsResponsePtrInput interface {
+	pulumi.Input
+
+	ToBuildOptionsResponsePtrOutput() BuildOptionsResponsePtrOutput
+	ToBuildOptionsResponsePtrOutputWithContext(context.Context) BuildOptionsResponsePtrOutput
+}
+
+type buildOptionsResponsePtrType BuildOptionsResponseArgs
+
+func BuildOptionsResponsePtr(v *BuildOptionsResponseArgs) BuildOptionsResponsePtrInput {
+	return (*buildOptionsResponsePtrType)(v)
+}
+
+func (*buildOptionsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildOptionsResponse)(nil)).Elem()
+}
+
+func (i *buildOptionsResponsePtrType) ToBuildOptionsResponsePtrOutput() BuildOptionsResponsePtrOutput {
+	return i.ToBuildOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *buildOptionsResponsePtrType) ToBuildOptionsResponsePtrOutputWithContext(ctx context.Context) BuildOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildOptionsResponsePtrOutput)
+}
+
+// Optional arguments to enable specific features of builds.
+type BuildOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildOptionsResponse)(nil)).Elem()
+}
+
+func (o BuildOptionsResponseOutput) ToBuildOptionsResponseOutput() BuildOptionsResponseOutput {
+	return o
+}
+
+func (o BuildOptionsResponseOutput) ToBuildOptionsResponseOutputWithContext(ctx context.Context) BuildOptionsResponseOutput {
+	return o
+}
+
+func (o BuildOptionsResponseOutput) ToBuildOptionsResponsePtrOutput() BuildOptionsResponsePtrOutput {
+	return o.ToBuildOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsResponseOutput) ToBuildOptionsResponsePtrOutputWithContext(ctx context.Context) BuildOptionsResponsePtrOutput {
+	return o.ApplyT(func(v BuildOptionsResponse) *BuildOptionsResponse {
+		return &v
+	}).(BuildOptionsResponsePtrOutput)
+}
+
+// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
+func (o BuildOptionsResponseOutput) DiskSizeGb() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildOptionsResponse) string { return v.DiskSizeGb }).(pulumi.StringOutput)
+}
+
+// Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+func (o BuildOptionsResponseOutput) DynamicSubstitutions() pulumi.BoolOutput {
+	return o.ApplyT(func(v BuildOptionsResponse) bool { return v.DynamicSubstitutions }).(pulumi.BoolOutput)
+}
+
+// A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+func (o BuildOptionsResponseOutput) Env() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BuildOptionsResponse) []string { return v.Env }).(pulumi.StringArrayOutput)
+}
+
+// Option to define build log streaming behavior to Google Cloud Storage.
+func (o BuildOptionsResponseOutput) LogStreamingOption() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildOptionsResponse) string { return v.LogStreamingOption }).(pulumi.StringOutput)
+}
+
+// Option to specify the logging mode, which determines if and where build logs are stored.
+func (o BuildOptionsResponseOutput) Logging() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildOptionsResponse) string { return v.Logging }).(pulumi.StringOutput)
+}
+
+// Compute Engine machine type on which to run the build.
+func (o BuildOptionsResponseOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildOptionsResponse) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// Requested verifiability options.
+func (o BuildOptionsResponseOutput) RequestedVerifyOption() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildOptionsResponse) string { return v.RequestedVerifyOption }).(pulumi.StringOutput)
+}
+
+// A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build.
+func (o BuildOptionsResponseOutput) SecretEnv() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BuildOptionsResponse) []string { return v.SecretEnv }).(pulumi.StringArrayOutput)
+}
+
+// Requested hash for SourceProvenance.
+func (o BuildOptionsResponseOutput) SourceProvenanceHash() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BuildOptionsResponse) []string { return v.SourceProvenanceHash }).(pulumi.StringArrayOutput)
+}
+
+// Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
+func (o BuildOptionsResponseOutput) SubstitutionOption() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildOptionsResponse) string { return v.SubstitutionOption }).(pulumi.StringOutput)
+}
+
+// Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
+func (o BuildOptionsResponseOutput) Volumes() VolumeResponseArrayOutput {
+	return o.ApplyT(func(v BuildOptionsResponse) []VolumeResponse { return v.Volumes }).(VolumeResponseArrayOutput)
+}
+
+// Option to specify a `WorkerPool` for the build. Format: projects/{project}/locations/{location}/workerPools/{workerPool} This field is in beta and is available only to restricted users.
+func (o BuildOptionsResponseOutput) WorkerPool() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildOptionsResponse) string { return v.WorkerPool }).(pulumi.StringOutput)
+}
+
+type BuildOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildOptionsResponse)(nil)).Elem()
+}
+
+func (o BuildOptionsResponsePtrOutput) ToBuildOptionsResponsePtrOutput() BuildOptionsResponsePtrOutput {
+	return o
+}
+
+func (o BuildOptionsResponsePtrOutput) ToBuildOptionsResponsePtrOutputWithContext(ctx context.Context) BuildOptionsResponsePtrOutput {
+	return o
+}
+
+func (o BuildOptionsResponsePtrOutput) Elem() BuildOptionsResponseOutput {
+	return o.ApplyT(func(v *BuildOptionsResponse) BuildOptionsResponse { return *v }).(BuildOptionsResponseOutput)
+}
+
+// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
+func (o BuildOptionsResponsePtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskSizeGb
+	}).(pulumi.StringPtrOutput)
+}
+
+// Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+func (o BuildOptionsResponsePtrOutput) DynamicSubstitutions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BuildOptionsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.DynamicSubstitutions
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+func (o BuildOptionsResponsePtrOutput) Env() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BuildOptionsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Env
+	}).(pulumi.StringArrayOutput)
+}
+
+// Option to define build log streaming behavior to Google Cloud Storage.
+func (o BuildOptionsResponsePtrOutput) LogStreamingOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LogStreamingOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// Option to specify the logging mode, which determines if and where build logs are stored.
+func (o BuildOptionsResponsePtrOutput) Logging() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Logging
+	}).(pulumi.StringPtrOutput)
+}
+
+// Compute Engine machine type on which to run the build.
+func (o BuildOptionsResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Requested verifiability options.
+func (o BuildOptionsResponsePtrOutput) RequestedVerifyOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RequestedVerifyOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build.
+func (o BuildOptionsResponsePtrOutput) SecretEnv() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BuildOptionsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretEnv
+	}).(pulumi.StringArrayOutput)
+}
+
+// Requested hash for SourceProvenance.
+func (o BuildOptionsResponsePtrOutput) SourceProvenanceHash() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BuildOptionsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceProvenanceHash
+	}).(pulumi.StringArrayOutput)
+}
+
+// Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
+func (o BuildOptionsResponsePtrOutput) SubstitutionOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubstitutionOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
+func (o BuildOptionsResponsePtrOutput) Volumes() VolumeResponseArrayOutput {
+	return o.ApplyT(func(v *BuildOptionsResponse) []VolumeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(VolumeResponseArrayOutput)
+}
+
+// Option to specify a `WorkerPool` for the build. Format: projects/{project}/locations/{location}/workerPools/{workerPool} This field is in beta and is available only to restricted users.
+func (o BuildOptionsResponsePtrOutput) WorkerPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkerPool
+	}).(pulumi.StringPtrOutput)
+}
+
+// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+type BuildResponse struct {
+	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+	Artifacts ArtifactsResponse `pulumi:"artifacts"`
+	// Secrets and secret environment variables.
+	AvailableSecrets SecretsResponse `pulumi:"availableSecrets"`
+	// The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
+	BuildTriggerId string `pulumi:"buildTriggerId"`
+	// Time at which the request to create the build was received.
+	CreateTime string `pulumi:"createTime"`
+	// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
+	FinishTime string `pulumi:"finishTime"`
+	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
+	Images []string `pulumi:"images"`
+	// URL to logs for this build in Google Cloud Console.
+	LogUrl string `pulumi:"logUrl"`
+	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+	LogsBucket string `pulumi:"logsBucket"`
+	// The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.
+	Name string `pulumi:"name"`
+	// Special options for this build.
+	Options BuildOptionsResponse `pulumi:"options"`
+	// ID of the project.
+	ProjectId string `pulumi:"projectId"`
+	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
+	QueueTtl string `pulumi:"queueTtl"`
+	// Results of the build.
+	Results ResultsResponse `pulumi:"results"`
+	// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
+	Secrets []SecretResponse `pulumi:"secrets"`
+	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+	ServiceAccount string `pulumi:"serviceAccount"`
+	// The location of the source files to build.
+	Source SourceResponse `pulumi:"source"`
+	// A permanent fixed identifier for source.
+	SourceProvenance SourceProvenanceResponse `pulumi:"sourceProvenance"`
+	// Time at which execution of the build was started.
+	StartTime string `pulumi:"startTime"`
+	// Status of the build.
+	Status string `pulumi:"status"`
+	// Customer-readable message about the current status.
+	StatusDetail string `pulumi:"statusDetail"`
+	// Required. The operations to be performed on the workspace.
+	Steps []BuildStepResponse `pulumi:"steps"`
+	// Substitutions data for `Build` resource.
+	Substitutions map[string]string `pulumi:"substitutions"`
+	// Tags for annotation of a `Build`. These are not docker tags.
+	Tags []string `pulumi:"tags"`
+	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+	Timeout string `pulumi:"timeout"`
+	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+	Timing map[string]string `pulumi:"timing"`
+}
+
+// BuildResponseInput is an input type that accepts BuildResponseArgs and BuildResponseOutput values.
+// You can construct a concrete instance of `BuildResponseInput` via:
+//
+//          BuildResponseArgs{...}
+type BuildResponseInput interface {
+	pulumi.Input
+
+	ToBuildResponseOutput() BuildResponseOutput
+	ToBuildResponseOutputWithContext(context.Context) BuildResponseOutput
+}
+
+// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+type BuildResponseArgs struct {
+	// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+	Artifacts ArtifactsResponseInput `pulumi:"artifacts"`
+	// Secrets and secret environment variables.
+	AvailableSecrets SecretsResponseInput `pulumi:"availableSecrets"`
+	// The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
+	BuildTriggerId pulumi.StringInput `pulumi:"buildTriggerId"`
+	// Time at which the request to create the build was received.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
+	FinishTime pulumi.StringInput `pulumi:"finishTime"`
+	// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
+	Images pulumi.StringArrayInput `pulumi:"images"`
+	// URL to logs for this build in Google Cloud Console.
+	LogUrl pulumi.StringInput `pulumi:"logUrl"`
+	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+	LogsBucket pulumi.StringInput `pulumi:"logsBucket"`
+	// The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Special options for this build.
+	Options BuildOptionsResponseInput `pulumi:"options"`
+	// ID of the project.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
+	QueueTtl pulumi.StringInput `pulumi:"queueTtl"`
+	// Results of the build.
+	Results ResultsResponseInput `pulumi:"results"`
+	// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
+	Secrets SecretResponseArrayInput `pulumi:"secrets"`
+	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+	// The location of the source files to build.
+	Source SourceResponseInput `pulumi:"source"`
+	// A permanent fixed identifier for source.
+	SourceProvenance SourceProvenanceResponseInput `pulumi:"sourceProvenance"`
+	// Time at which execution of the build was started.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// Status of the build.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Customer-readable message about the current status.
+	StatusDetail pulumi.StringInput `pulumi:"statusDetail"`
+	// Required. The operations to be performed on the workspace.
+	Steps BuildStepResponseArrayInput `pulumi:"steps"`
+	// Substitutions data for `Build` resource.
+	Substitutions pulumi.StringMapInput `pulumi:"substitutions"`
+	// Tags for annotation of a `Build`. These are not docker tags.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+	Timing pulumi.StringMapInput `pulumi:"timing"`
+}
+
+func (BuildResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildResponse)(nil)).Elem()
+}
+
+func (i BuildResponseArgs) ToBuildResponseOutput() BuildResponseOutput {
+	return i.ToBuildResponseOutputWithContext(context.Background())
+}
+
+func (i BuildResponseArgs) ToBuildResponseOutputWithContext(ctx context.Context) BuildResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildResponseOutput)
+}
+
+func (i BuildResponseArgs) ToBuildResponsePtrOutput() BuildResponsePtrOutput {
+	return i.ToBuildResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BuildResponseArgs) ToBuildResponsePtrOutputWithContext(ctx context.Context) BuildResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildResponseOutput).ToBuildResponsePtrOutputWithContext(ctx)
+}
+
+// BuildResponsePtrInput is an input type that accepts BuildResponseArgs, BuildResponsePtr and BuildResponsePtrOutput values.
+// You can construct a concrete instance of `BuildResponsePtrInput` via:
+//
+//          BuildResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BuildResponsePtrInput interface {
+	pulumi.Input
+
+	ToBuildResponsePtrOutput() BuildResponsePtrOutput
+	ToBuildResponsePtrOutputWithContext(context.Context) BuildResponsePtrOutput
+}
+
+type buildResponsePtrType BuildResponseArgs
+
+func BuildResponsePtr(v *BuildResponseArgs) BuildResponsePtrInput {
+	return (*buildResponsePtrType)(v)
+}
+
+func (*buildResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildResponse)(nil)).Elem()
+}
+
+func (i *buildResponsePtrType) ToBuildResponsePtrOutput() BuildResponsePtrOutput {
+	return i.ToBuildResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *buildResponsePtrType) ToBuildResponsePtrOutputWithContext(ctx context.Context) BuildResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildResponsePtrOutput)
+}
+
+// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+type BuildResponseOutput struct{ *pulumi.OutputState }
+
+func (BuildResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildResponse)(nil)).Elem()
+}
+
+func (o BuildResponseOutput) ToBuildResponseOutput() BuildResponseOutput {
+	return o
+}
+
+func (o BuildResponseOutput) ToBuildResponseOutputWithContext(ctx context.Context) BuildResponseOutput {
+	return o
+}
+
+func (o BuildResponseOutput) ToBuildResponsePtrOutput() BuildResponsePtrOutput {
+	return o.ToBuildResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BuildResponseOutput) ToBuildResponsePtrOutputWithContext(ctx context.Context) BuildResponsePtrOutput {
+	return o.ApplyT(func(v BuildResponse) *BuildResponse {
+		return &v
+	}).(BuildResponsePtrOutput)
+}
+
+// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+func (o BuildResponseOutput) Artifacts() ArtifactsResponseOutput {
+	return o.ApplyT(func(v BuildResponse) ArtifactsResponse { return v.Artifacts }).(ArtifactsResponseOutput)
+}
+
+// Secrets and secret environment variables.
+func (o BuildResponseOutput) AvailableSecrets() SecretsResponseOutput {
+	return o.ApplyT(func(v BuildResponse) SecretsResponse { return v.AvailableSecrets }).(SecretsResponseOutput)
+}
+
+// The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
+func (o BuildResponseOutput) BuildTriggerId() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.BuildTriggerId }).(pulumi.StringOutput)
+}
+
+// Time at which the request to create the build was received.
+func (o BuildResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
+func (o BuildResponseOutput) FinishTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.FinishTime }).(pulumi.StringOutput)
+}
+
+// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
+func (o BuildResponseOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BuildResponse) []string { return v.Images }).(pulumi.StringArrayOutput)
+}
+
+// URL to logs for this build in Google Cloud Console.
+func (o BuildResponseOutput) LogUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.LogUrl }).(pulumi.StringOutput)
+}
+
+// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+func (o BuildResponseOutput) LogsBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.LogsBucket }).(pulumi.StringOutput)
+}
+
+// The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.
+func (o BuildResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Special options for this build.
+func (o BuildResponseOutput) Options() BuildOptionsResponseOutput {
+	return o.ApplyT(func(v BuildResponse) BuildOptionsResponse { return v.Options }).(BuildOptionsResponseOutput)
+}
+
+// ID of the project.
+func (o BuildResponseOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
+func (o BuildResponseOutput) QueueTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.QueueTtl }).(pulumi.StringOutput)
+}
+
+// Results of the build.
+func (o BuildResponseOutput) Results() ResultsResponseOutput {
+	return o.ApplyT(func(v BuildResponse) ResultsResponse { return v.Results }).(ResultsResponseOutput)
+}
+
+// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
+func (o BuildResponseOutput) Secrets() SecretResponseArrayOutput {
+	return o.ApplyT(func(v BuildResponse) []SecretResponse { return v.Secrets }).(SecretResponseArrayOutput)
+}
+
+// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+func (o BuildResponseOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// The location of the source files to build.
+func (o BuildResponseOutput) Source() SourceResponseOutput {
+	return o.ApplyT(func(v BuildResponse) SourceResponse { return v.Source }).(SourceResponseOutput)
+}
+
+// A permanent fixed identifier for source.
+func (o BuildResponseOutput) SourceProvenance() SourceProvenanceResponseOutput {
+	return o.ApplyT(func(v BuildResponse) SourceProvenanceResponse { return v.SourceProvenance }).(SourceProvenanceResponseOutput)
+}
+
+// Time at which execution of the build was started.
+func (o BuildResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Status of the build.
+func (o BuildResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Customer-readable message about the current status.
+func (o BuildResponseOutput) StatusDetail() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.StatusDetail }).(pulumi.StringOutput)
+}
+
+// Required. The operations to be performed on the workspace.
+func (o BuildResponseOutput) Steps() BuildStepResponseArrayOutput {
+	return o.ApplyT(func(v BuildResponse) []BuildStepResponse { return v.Steps }).(BuildStepResponseArrayOutput)
+}
+
+// Substitutions data for `Build` resource.
+func (o BuildResponseOutput) Substitutions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BuildResponse) map[string]string { return v.Substitutions }).(pulumi.StringMapOutput)
+}
+
+// Tags for annotation of a `Build`. These are not docker tags.
+func (o BuildResponseOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BuildResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+func (o BuildResponseOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResponse) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+func (o BuildResponseOutput) Timing() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BuildResponse) map[string]string { return v.Timing }).(pulumi.StringMapOutput)
+}
+
+type BuildResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BuildResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildResponse)(nil)).Elem()
+}
+
+func (o BuildResponsePtrOutput) ToBuildResponsePtrOutput() BuildResponsePtrOutput {
+	return o
+}
+
+func (o BuildResponsePtrOutput) ToBuildResponsePtrOutputWithContext(ctx context.Context) BuildResponsePtrOutput {
+	return o
+}
+
+func (o BuildResponsePtrOutput) Elem() BuildResponseOutput {
+	return o.ApplyT(func(v *BuildResponse) BuildResponse { return *v }).(BuildResponseOutput)
+}
+
+// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+func (o BuildResponsePtrOutput) Artifacts() ArtifactsResponsePtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *ArtifactsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Artifacts
+	}).(ArtifactsResponsePtrOutput)
+}
+
+// Secrets and secret environment variables.
+func (o BuildResponsePtrOutput) AvailableSecrets() SecretsResponsePtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *SecretsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AvailableSecrets
+	}).(SecretsResponsePtrOutput)
+}
+
+// The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
+func (o BuildResponsePtrOutput) BuildTriggerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BuildTriggerId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time at which the request to create the build was received.
+func (o BuildResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution.
+func (o BuildResponsePtrOutput) FinishTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FinishTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
+func (o BuildResponsePtrOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BuildResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Images
+	}).(pulumi.StringArrayOutput)
+}
+
+// URL to logs for this build in Google Cloud Console.
+func (o BuildResponsePtrOutput) LogUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LogUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+func (o BuildResponsePtrOutput) LogsBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LogsBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service.
+func (o BuildResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Special options for this build.
+func (o BuildResponsePtrOutput) Options() BuildOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *BuildOptionsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Options
+	}).(BuildOptionsResponsePtrOutput)
+}
+
+// ID of the project.
+func (o BuildResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
+func (o BuildResponsePtrOutput) QueueTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.QueueTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Results of the build.
+func (o BuildResponsePtrOutput) Results() ResultsResponsePtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *ResultsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Results
+	}).(ResultsResponsePtrOutput)
+}
+
+// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
+func (o BuildResponsePtrOutput) Secrets() SecretResponseArrayOutput {
+	return o.ApplyT(func(v *BuildResponse) []SecretResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Secrets
+	}).(SecretResponseArrayOutput)
+}
+
+// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+func (o BuildResponsePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// The location of the source files to build.
+func (o BuildResponsePtrOutput) Source() SourceResponsePtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *SourceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Source
+	}).(SourceResponsePtrOutput)
+}
+
+// A permanent fixed identifier for source.
+func (o BuildResponsePtrOutput) SourceProvenance() SourceProvenanceResponsePtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *SourceProvenanceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceProvenance
+	}).(SourceProvenanceResponsePtrOutput)
+}
+
+// Time at which execution of the build was started.
+func (o BuildResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Status of the build.
+func (o BuildResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customer-readable message about the current status.
+func (o BuildResponsePtrOutput) StatusDetail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StatusDetail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The operations to be performed on the workspace.
+func (o BuildResponsePtrOutput) Steps() BuildStepResponseArrayOutput {
+	return o.ApplyT(func(v *BuildResponse) []BuildStepResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Steps
+	}).(BuildStepResponseArrayOutput)
+}
+
+// Substitutions data for `Build` resource.
+func (o BuildResponsePtrOutput) Substitutions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BuildResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Substitutions
+	}).(pulumi.StringMapOutput)
+}
+
+// Tags for annotation of a `Build`. These are not docker tags.
+func (o BuildResponsePtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BuildResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+func (o BuildResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
+func (o BuildResponsePtrOutput) Timing() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BuildResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Timing
+	}).(pulumi.StringMapOutput)
+}
+
 // A step in the build pipeline.
 type BuildStep struct {
 	// A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
@@ -1301,16 +2293,10 @@ type BuildStep struct {
 	Id *string `pulumi:"id"`
 	// Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
 	Name *string `pulumi:"name"`
-	// Output only. Stores timing information for pulling this build step's builder image only.
-	PullTiming *TimeSpan `pulumi:"pullTiming"`
 	// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
 	SecretEnv []string `pulumi:"secretEnv"`
-	// Output only. Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses.
-	Status *string `pulumi:"status"`
 	// Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
 	Timeout *string `pulumi:"timeout"`
-	// Output only. Stores timing information for executing this build step.
-	Timing *TimeSpan `pulumi:"timing"`
 	// List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration.
 	Volumes []Volume `pulumi:"volumes"`
 	// The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully.
@@ -1342,16 +2328,10 @@ type BuildStepArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Output only. Stores timing information for pulling this build step's builder image only.
-	PullTiming TimeSpanPtrInput `pulumi:"pullTiming"`
 	// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
 	SecretEnv pulumi.StringArrayInput `pulumi:"secretEnv"`
-	// Output only. Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses.
-	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
-	// Output only. Stores timing information for executing this build step.
-	Timing TimeSpanPtrInput `pulumi:"timing"`
 	// List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration.
 	Volumes VolumeArrayInput `pulumi:"volumes"`
 	// The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully.
@@ -1440,29 +2420,14 @@ func (o BuildStepOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildStep) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Output only. Stores timing information for pulling this build step's builder image only.
-func (o BuildStepOutput) PullTiming() TimeSpanPtrOutput {
-	return o.ApplyT(func(v BuildStep) *TimeSpan { return v.PullTiming }).(TimeSpanPtrOutput)
-}
-
 // A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
 func (o BuildStepOutput) SecretEnv() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildStep) []string { return v.SecretEnv }).(pulumi.StringArrayOutput)
 }
 
-// Output only. Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses.
-func (o BuildStepOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildStep) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
 // Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
 func (o BuildStepOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildStep) *string { return v.Timeout }).(pulumi.StringPtrOutput)
-}
-
-// Output only. Stores timing information for executing this build step.
-func (o BuildStepOutput) Timing() TimeSpanPtrOutput {
-	return o.ApplyT(func(v BuildStep) *TimeSpan { return v.Timing }).(TimeSpanPtrOutput)
 }
 
 // List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration.
@@ -1495,122 +2460,321 @@ func (o BuildStepArrayOutput) Index(i pulumi.IntInput) BuildStepOutput {
 	}).(BuildStepOutput)
 }
 
-// An image built by the pipeline.
-type BuiltImage struct {
-	// Docker Registry 2.0 digest.
-	Digest *string `pulumi:"digest"`
-	// Name used to push the container image to Google Container Registry, as presented to `docker push`.
-	Name *string `pulumi:"name"`
-	// Output only. Stores timing information for pushing the specified image.
-	PushTiming *TimeSpan `pulumi:"pushTiming"`
+// A step in the build pipeline.
+type BuildStepResponse struct {
+	// A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
+	Args []string `pulumi:"args"`
+	// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
+	Dir string `pulumi:"dir"`
+	// Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
+	Entrypoint string `pulumi:"entrypoint"`
+	// A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+	Env []string `pulumi:"env"`
+	// Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
+	Name string `pulumi:"name"`
+	// Stores timing information for pulling this build step's builder image only.
+	PullTiming TimeSpanResponse `pulumi:"pullTiming"`
+	// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
+	SecretEnv []string `pulumi:"secretEnv"`
+	// Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses.
+	Status string `pulumi:"status"`
+	// Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
+	Timeout string `pulumi:"timeout"`
+	// Stores timing information for executing this build step.
+	Timing TimeSpanResponse `pulumi:"timing"`
+	// List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration.
+	Volumes []VolumeResponse `pulumi:"volumes"`
+	// The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully.
+	WaitFor []string `pulumi:"waitFor"`
 }
 
-// BuiltImageInput is an input type that accepts BuiltImageArgs and BuiltImageOutput values.
-// You can construct a concrete instance of `BuiltImageInput` via:
+// BuildStepResponseInput is an input type that accepts BuildStepResponseArgs and BuildStepResponseOutput values.
+// You can construct a concrete instance of `BuildStepResponseInput` via:
 //
-//          BuiltImageArgs{...}
-type BuiltImageInput interface {
+//          BuildStepResponseArgs{...}
+type BuildStepResponseInput interface {
 	pulumi.Input
 
-	ToBuiltImageOutput() BuiltImageOutput
-	ToBuiltImageOutputWithContext(context.Context) BuiltImageOutput
+	ToBuildStepResponseOutput() BuildStepResponseOutput
+	ToBuildStepResponseOutputWithContext(context.Context) BuildStepResponseOutput
 }
 
-// An image built by the pipeline.
-type BuiltImageArgs struct {
-	// Docker Registry 2.0 digest.
-	Digest pulumi.StringPtrInput `pulumi:"digest"`
-	// Name used to push the container image to Google Container Registry, as presented to `docker push`.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Output only. Stores timing information for pushing the specified image.
-	PushTiming TimeSpanPtrInput `pulumi:"pushTiming"`
+// A step in the build pipeline.
+type BuildStepResponseArgs struct {
+	// A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
+	Dir pulumi.StringInput `pulumi:"dir"`
+	// Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
+	Entrypoint pulumi.StringInput `pulumi:"entrypoint"`
+	// A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+	Env pulumi.StringArrayInput `pulumi:"env"`
+	// Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Stores timing information for pulling this build step's builder image only.
+	PullTiming TimeSpanResponseInput `pulumi:"pullTiming"`
+	// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
+	SecretEnv pulumi.StringArrayInput `pulumi:"secretEnv"`
+	// Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+	// Stores timing information for executing this build step.
+	Timing TimeSpanResponseInput `pulumi:"timing"`
+	// List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration.
+	Volumes VolumeResponseArrayInput `pulumi:"volumes"`
+	// The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully.
+	WaitFor pulumi.StringArrayInput `pulumi:"waitFor"`
 }
 
-func (BuiltImageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BuiltImage)(nil)).Elem()
+func (BuildStepResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildStepResponse)(nil)).Elem()
 }
 
-func (i BuiltImageArgs) ToBuiltImageOutput() BuiltImageOutput {
-	return i.ToBuiltImageOutputWithContext(context.Background())
+func (i BuildStepResponseArgs) ToBuildStepResponseOutput() BuildStepResponseOutput {
+	return i.ToBuildStepResponseOutputWithContext(context.Background())
 }
 
-func (i BuiltImageArgs) ToBuiltImageOutputWithContext(ctx context.Context) BuiltImageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuiltImageOutput)
+func (i BuildStepResponseArgs) ToBuildStepResponseOutputWithContext(ctx context.Context) BuildStepResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildStepResponseOutput)
 }
 
-// BuiltImageArrayInput is an input type that accepts BuiltImageArray and BuiltImageArrayOutput values.
-// You can construct a concrete instance of `BuiltImageArrayInput` via:
+// BuildStepResponseArrayInput is an input type that accepts BuildStepResponseArray and BuildStepResponseArrayOutput values.
+// You can construct a concrete instance of `BuildStepResponseArrayInput` via:
 //
-//          BuiltImageArray{ BuiltImageArgs{...} }
-type BuiltImageArrayInput interface {
+//          BuildStepResponseArray{ BuildStepResponseArgs{...} }
+type BuildStepResponseArrayInput interface {
 	pulumi.Input
 
-	ToBuiltImageArrayOutput() BuiltImageArrayOutput
-	ToBuiltImageArrayOutputWithContext(context.Context) BuiltImageArrayOutput
+	ToBuildStepResponseArrayOutput() BuildStepResponseArrayOutput
+	ToBuildStepResponseArrayOutputWithContext(context.Context) BuildStepResponseArrayOutput
 }
 
-type BuiltImageArray []BuiltImageInput
+type BuildStepResponseArray []BuildStepResponseInput
 
-func (BuiltImageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BuiltImage)(nil)).Elem()
+func (BuildStepResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BuildStepResponse)(nil)).Elem()
 }
 
-func (i BuiltImageArray) ToBuiltImageArrayOutput() BuiltImageArrayOutput {
-	return i.ToBuiltImageArrayOutputWithContext(context.Background())
+func (i BuildStepResponseArray) ToBuildStepResponseArrayOutput() BuildStepResponseArrayOutput {
+	return i.ToBuildStepResponseArrayOutputWithContext(context.Background())
 }
 
-func (i BuiltImageArray) ToBuiltImageArrayOutputWithContext(ctx context.Context) BuiltImageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BuiltImageArrayOutput)
+func (i BuildStepResponseArray) ToBuildStepResponseArrayOutputWithContext(ctx context.Context) BuildStepResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildStepResponseArrayOutput)
 }
 
-// An image built by the pipeline.
-type BuiltImageOutput struct{ *pulumi.OutputState }
+// A step in the build pipeline.
+type BuildStepResponseOutput struct{ *pulumi.OutputState }
 
-func (BuiltImageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BuiltImage)(nil)).Elem()
+func (BuildStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildStepResponse)(nil)).Elem()
 }
 
-func (o BuiltImageOutput) ToBuiltImageOutput() BuiltImageOutput {
+func (o BuildStepResponseOutput) ToBuildStepResponseOutput() BuildStepResponseOutput {
 	return o
 }
 
-func (o BuiltImageOutput) ToBuiltImageOutputWithContext(ctx context.Context) BuiltImageOutput {
+func (o BuildStepResponseOutput) ToBuildStepResponseOutputWithContext(ctx context.Context) BuildStepResponseOutput {
+	return o
+}
+
+// A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
+func (o BuildStepResponseOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BuildStepResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
+func (o BuildStepResponseOutput) Dir() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStepResponse) string { return v.Dir }).(pulumi.StringOutput)
+}
+
+// Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
+func (o BuildStepResponseOutput) Entrypoint() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStepResponse) string { return v.Entrypoint }).(pulumi.StringOutput)
+}
+
+// A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+func (o BuildStepResponseOutput) Env() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BuildStepResponse) []string { return v.Env }).(pulumi.StringArrayOutput)
+}
+
+// Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
+func (o BuildStepResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStepResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Stores timing information for pulling this build step's builder image only.
+func (o BuildStepResponseOutput) PullTiming() TimeSpanResponseOutput {
+	return o.ApplyT(func(v BuildStepResponse) TimeSpanResponse { return v.PullTiming }).(TimeSpanResponseOutput)
+}
+
+// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
+func (o BuildStepResponseOutput) SecretEnv() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BuildStepResponse) []string { return v.SecretEnv }).(pulumi.StringArrayOutput)
+}
+
+// Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses.
+func (o BuildStepResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStepResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
+func (o BuildStepResponseOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStepResponse) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+// Stores timing information for executing this build step.
+func (o BuildStepResponseOutput) Timing() TimeSpanResponseOutput {
+	return o.ApplyT(func(v BuildStepResponse) TimeSpanResponse { return v.Timing }).(TimeSpanResponseOutput)
+}
+
+// List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration.
+func (o BuildStepResponseOutput) Volumes() VolumeResponseArrayOutput {
+	return o.ApplyT(func(v BuildStepResponse) []VolumeResponse { return v.Volumes }).(VolumeResponseArrayOutput)
+}
+
+// The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully.
+func (o BuildStepResponseOutput) WaitFor() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BuildStepResponse) []string { return v.WaitFor }).(pulumi.StringArrayOutput)
+}
+
+type BuildStepResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BuildStepResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BuildStepResponse)(nil)).Elem()
+}
+
+func (o BuildStepResponseArrayOutput) ToBuildStepResponseArrayOutput() BuildStepResponseArrayOutput {
+	return o
+}
+
+func (o BuildStepResponseArrayOutput) ToBuildStepResponseArrayOutputWithContext(ctx context.Context) BuildStepResponseArrayOutput {
+	return o
+}
+
+func (o BuildStepResponseArrayOutput) Index(i pulumi.IntInput) BuildStepResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BuildStepResponse {
+		return vs[0].([]BuildStepResponse)[vs[1].(int)]
+	}).(BuildStepResponseOutput)
+}
+
+// An image built by the pipeline.
+type BuiltImageResponse struct {
+	// Docker Registry 2.0 digest.
+	Digest string `pulumi:"digest"`
+	// Name used to push the container image to Google Container Registry, as presented to `docker push`.
+	Name string `pulumi:"name"`
+	// Stores timing information for pushing the specified image.
+	PushTiming TimeSpanResponse `pulumi:"pushTiming"`
+}
+
+// BuiltImageResponseInput is an input type that accepts BuiltImageResponseArgs and BuiltImageResponseOutput values.
+// You can construct a concrete instance of `BuiltImageResponseInput` via:
+//
+//          BuiltImageResponseArgs{...}
+type BuiltImageResponseInput interface {
+	pulumi.Input
+
+	ToBuiltImageResponseOutput() BuiltImageResponseOutput
+	ToBuiltImageResponseOutputWithContext(context.Context) BuiltImageResponseOutput
+}
+
+// An image built by the pipeline.
+type BuiltImageResponseArgs struct {
+	// Docker Registry 2.0 digest.
+	Digest pulumi.StringInput `pulumi:"digest"`
+	// Name used to push the container image to Google Container Registry, as presented to `docker push`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Stores timing information for pushing the specified image.
+	PushTiming TimeSpanResponseInput `pulumi:"pushTiming"`
+}
+
+func (BuiltImageResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuiltImageResponse)(nil)).Elem()
+}
+
+func (i BuiltImageResponseArgs) ToBuiltImageResponseOutput() BuiltImageResponseOutput {
+	return i.ToBuiltImageResponseOutputWithContext(context.Background())
+}
+
+func (i BuiltImageResponseArgs) ToBuiltImageResponseOutputWithContext(ctx context.Context) BuiltImageResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuiltImageResponseOutput)
+}
+
+// BuiltImageResponseArrayInput is an input type that accepts BuiltImageResponseArray and BuiltImageResponseArrayOutput values.
+// You can construct a concrete instance of `BuiltImageResponseArrayInput` via:
+//
+//          BuiltImageResponseArray{ BuiltImageResponseArgs{...} }
+type BuiltImageResponseArrayInput interface {
+	pulumi.Input
+
+	ToBuiltImageResponseArrayOutput() BuiltImageResponseArrayOutput
+	ToBuiltImageResponseArrayOutputWithContext(context.Context) BuiltImageResponseArrayOutput
+}
+
+type BuiltImageResponseArray []BuiltImageResponseInput
+
+func (BuiltImageResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BuiltImageResponse)(nil)).Elem()
+}
+
+func (i BuiltImageResponseArray) ToBuiltImageResponseArrayOutput() BuiltImageResponseArrayOutput {
+	return i.ToBuiltImageResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BuiltImageResponseArray) ToBuiltImageResponseArrayOutputWithContext(ctx context.Context) BuiltImageResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuiltImageResponseArrayOutput)
+}
+
+// An image built by the pipeline.
+type BuiltImageResponseOutput struct{ *pulumi.OutputState }
+
+func (BuiltImageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuiltImageResponse)(nil)).Elem()
+}
+
+func (o BuiltImageResponseOutput) ToBuiltImageResponseOutput() BuiltImageResponseOutput {
+	return o
+}
+
+func (o BuiltImageResponseOutput) ToBuiltImageResponseOutputWithContext(ctx context.Context) BuiltImageResponseOutput {
 	return o
 }
 
 // Docker Registry 2.0 digest.
-func (o BuiltImageOutput) Digest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuiltImage) *string { return v.Digest }).(pulumi.StringPtrOutput)
+func (o BuiltImageResponseOutput) Digest() pulumi.StringOutput {
+	return o.ApplyT(func(v BuiltImageResponse) string { return v.Digest }).(pulumi.StringOutput)
 }
 
 // Name used to push the container image to Google Container Registry, as presented to `docker push`.
-func (o BuiltImageOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuiltImage) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o BuiltImageResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v BuiltImageResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Output only. Stores timing information for pushing the specified image.
-func (o BuiltImageOutput) PushTiming() TimeSpanPtrOutput {
-	return o.ApplyT(func(v BuiltImage) *TimeSpan { return v.PushTiming }).(TimeSpanPtrOutput)
+// Stores timing information for pushing the specified image.
+func (o BuiltImageResponseOutput) PushTiming() TimeSpanResponseOutput {
+	return o.ApplyT(func(v BuiltImageResponse) TimeSpanResponse { return v.PushTiming }).(TimeSpanResponseOutput)
 }
 
-type BuiltImageArrayOutput struct{ *pulumi.OutputState }
+type BuiltImageResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (BuiltImageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BuiltImage)(nil)).Elem()
+func (BuiltImageResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BuiltImageResponse)(nil)).Elem()
 }
 
-func (o BuiltImageArrayOutput) ToBuiltImageArrayOutput() BuiltImageArrayOutput {
+func (o BuiltImageResponseArrayOutput) ToBuiltImageResponseArrayOutput() BuiltImageResponseArrayOutput {
 	return o
 }
 
-func (o BuiltImageArrayOutput) ToBuiltImageArrayOutputWithContext(ctx context.Context) BuiltImageArrayOutput {
+func (o BuiltImageResponseArrayOutput) ToBuiltImageResponseArrayOutputWithContext(ctx context.Context) BuiltImageResponseArrayOutput {
 	return o
 }
 
-func (o BuiltImageArrayOutput) Index(i pulumi.IntInput) BuiltImageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BuiltImage {
-		return vs[0].([]BuiltImage)[vs[1].(int)]
-	}).(BuiltImageOutput)
+func (o BuiltImageResponseArrayOutput) Index(i pulumi.IntInput) BuiltImageResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BuiltImageResponse {
+		return vs[0].([]BuiltImageResponse)[vs[1].(int)]
+	}).(BuiltImageResponseOutput)
 }
 
 // GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
@@ -1823,6 +2987,216 @@ func (o GitHubEventsConfigPtrOutput) Push() PushFilterPtrOutput {
 	}).(PushFilterPtrOutput)
 }
 
+// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
+type GitHubEventsConfigResponse struct {
+	// The installationID that emits the GitHub event.
+	InstallationId string `pulumi:"installationId"`
+	// Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
+	Name string `pulumi:"name"`
+	// Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
+	Owner string `pulumi:"owner"`
+	// filter to match changes in pull requests.
+	PullRequest PullRequestFilterResponse `pulumi:"pullRequest"`
+	// filter to match changes in refs like branches, tags.
+	Push PushFilterResponse `pulumi:"push"`
+}
+
+// GitHubEventsConfigResponseInput is an input type that accepts GitHubEventsConfigResponseArgs and GitHubEventsConfigResponseOutput values.
+// You can construct a concrete instance of `GitHubEventsConfigResponseInput` via:
+//
+//          GitHubEventsConfigResponseArgs{...}
+type GitHubEventsConfigResponseInput interface {
+	pulumi.Input
+
+	ToGitHubEventsConfigResponseOutput() GitHubEventsConfigResponseOutput
+	ToGitHubEventsConfigResponseOutputWithContext(context.Context) GitHubEventsConfigResponseOutput
+}
+
+// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
+type GitHubEventsConfigResponseArgs struct {
+	// The installationID that emits the GitHub event.
+	InstallationId pulumi.StringInput `pulumi:"installationId"`
+	// Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
+	Name pulumi.StringInput `pulumi:"name"`
+	// Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
+	Owner pulumi.StringInput `pulumi:"owner"`
+	// filter to match changes in pull requests.
+	PullRequest PullRequestFilterResponseInput `pulumi:"pullRequest"`
+	// filter to match changes in refs like branches, tags.
+	Push PushFilterResponseInput `pulumi:"push"`
+}
+
+func (GitHubEventsConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubEventsConfigResponse)(nil)).Elem()
+}
+
+func (i GitHubEventsConfigResponseArgs) ToGitHubEventsConfigResponseOutput() GitHubEventsConfigResponseOutput {
+	return i.ToGitHubEventsConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GitHubEventsConfigResponseArgs) ToGitHubEventsConfigResponseOutputWithContext(ctx context.Context) GitHubEventsConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubEventsConfigResponseOutput)
+}
+
+func (i GitHubEventsConfigResponseArgs) ToGitHubEventsConfigResponsePtrOutput() GitHubEventsConfigResponsePtrOutput {
+	return i.ToGitHubEventsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GitHubEventsConfigResponseArgs) ToGitHubEventsConfigResponsePtrOutputWithContext(ctx context.Context) GitHubEventsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubEventsConfigResponseOutput).ToGitHubEventsConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GitHubEventsConfigResponsePtrInput is an input type that accepts GitHubEventsConfigResponseArgs, GitHubEventsConfigResponsePtr and GitHubEventsConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GitHubEventsConfigResponsePtrInput` via:
+//
+//          GitHubEventsConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GitHubEventsConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGitHubEventsConfigResponsePtrOutput() GitHubEventsConfigResponsePtrOutput
+	ToGitHubEventsConfigResponsePtrOutputWithContext(context.Context) GitHubEventsConfigResponsePtrOutput
+}
+
+type gitHubEventsConfigResponsePtrType GitHubEventsConfigResponseArgs
+
+func GitHubEventsConfigResponsePtr(v *GitHubEventsConfigResponseArgs) GitHubEventsConfigResponsePtrInput {
+	return (*gitHubEventsConfigResponsePtrType)(v)
+}
+
+func (*gitHubEventsConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitHubEventsConfigResponse)(nil)).Elem()
+}
+
+func (i *gitHubEventsConfigResponsePtrType) ToGitHubEventsConfigResponsePtrOutput() GitHubEventsConfigResponsePtrOutput {
+	return i.ToGitHubEventsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gitHubEventsConfigResponsePtrType) ToGitHubEventsConfigResponsePtrOutputWithContext(ctx context.Context) GitHubEventsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubEventsConfigResponsePtrOutput)
+}
+
+// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. This message is experimental.
+type GitHubEventsConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GitHubEventsConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubEventsConfigResponse)(nil)).Elem()
+}
+
+func (o GitHubEventsConfigResponseOutput) ToGitHubEventsConfigResponseOutput() GitHubEventsConfigResponseOutput {
+	return o
+}
+
+func (o GitHubEventsConfigResponseOutput) ToGitHubEventsConfigResponseOutputWithContext(ctx context.Context) GitHubEventsConfigResponseOutput {
+	return o
+}
+
+func (o GitHubEventsConfigResponseOutput) ToGitHubEventsConfigResponsePtrOutput() GitHubEventsConfigResponsePtrOutput {
+	return o.ToGitHubEventsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GitHubEventsConfigResponseOutput) ToGitHubEventsConfigResponsePtrOutputWithContext(ctx context.Context) GitHubEventsConfigResponsePtrOutput {
+	return o.ApplyT(func(v GitHubEventsConfigResponse) *GitHubEventsConfigResponse {
+		return &v
+	}).(GitHubEventsConfigResponsePtrOutput)
+}
+
+// The installationID that emits the GitHub event.
+func (o GitHubEventsConfigResponseOutput) InstallationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubEventsConfigResponse) string { return v.InstallationId }).(pulumi.StringOutput)
+}
+
+// Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
+func (o GitHubEventsConfigResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubEventsConfigResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
+func (o GitHubEventsConfigResponseOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubEventsConfigResponse) string { return v.Owner }).(pulumi.StringOutput)
+}
+
+// filter to match changes in pull requests.
+func (o GitHubEventsConfigResponseOutput) PullRequest() PullRequestFilterResponseOutput {
+	return o.ApplyT(func(v GitHubEventsConfigResponse) PullRequestFilterResponse { return v.PullRequest }).(PullRequestFilterResponseOutput)
+}
+
+// filter to match changes in refs like branches, tags.
+func (o GitHubEventsConfigResponseOutput) Push() PushFilterResponseOutput {
+	return o.ApplyT(func(v GitHubEventsConfigResponse) PushFilterResponse { return v.Push }).(PushFilterResponseOutput)
+}
+
+type GitHubEventsConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GitHubEventsConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitHubEventsConfigResponse)(nil)).Elem()
+}
+
+func (o GitHubEventsConfigResponsePtrOutput) ToGitHubEventsConfigResponsePtrOutput() GitHubEventsConfigResponsePtrOutput {
+	return o
+}
+
+func (o GitHubEventsConfigResponsePtrOutput) ToGitHubEventsConfigResponsePtrOutputWithContext(ctx context.Context) GitHubEventsConfigResponsePtrOutput {
+	return o
+}
+
+func (o GitHubEventsConfigResponsePtrOutput) Elem() GitHubEventsConfigResponseOutput {
+	return o.ApplyT(func(v *GitHubEventsConfigResponse) GitHubEventsConfigResponse { return *v }).(GitHubEventsConfigResponseOutput)
+}
+
+// The installationID that emits the GitHub event.
+func (o GitHubEventsConfigResponsePtrOutput) InstallationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEventsConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstallationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
+func (o GitHubEventsConfigResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEventsConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
+func (o GitHubEventsConfigResponsePtrOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitHubEventsConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Owner
+	}).(pulumi.StringPtrOutput)
+}
+
+// filter to match changes in pull requests.
+func (o GitHubEventsConfigResponsePtrOutput) PullRequest() PullRequestFilterResponsePtrOutput {
+	return o.ApplyT(func(v *GitHubEventsConfigResponse) *PullRequestFilterResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.PullRequest
+	}).(PullRequestFilterResponsePtrOutput)
+}
+
+// filter to match changes in refs like branches, tags.
+func (o GitHubEventsConfigResponsePtrOutput) Push() PushFilterResponsePtrOutput {
+	return o.ApplyT(func(v *GitHubEventsConfigResponse) *PushFilterResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Push
+	}).(PushFilterResponsePtrOutput)
+}
+
 // Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
 type InlineSecret struct {
 	// Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
@@ -1930,6 +3304,115 @@ func (o InlineSecretArrayOutput) Index(i pulumi.IntInput) InlineSecretOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InlineSecret {
 		return vs[0].([]InlineSecret)[vs[1].(int)]
 	}).(InlineSecretOutput)
+}
+
+// Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
+type InlineSecretResponse struct {
+	// Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
+	EnvMap map[string]string `pulumi:"envMap"`
+	// Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// InlineSecretResponseInput is an input type that accepts InlineSecretResponseArgs and InlineSecretResponseOutput values.
+// You can construct a concrete instance of `InlineSecretResponseInput` via:
+//
+//          InlineSecretResponseArgs{...}
+type InlineSecretResponseInput interface {
+	pulumi.Input
+
+	ToInlineSecretResponseOutput() InlineSecretResponseOutput
+	ToInlineSecretResponseOutputWithContext(context.Context) InlineSecretResponseOutput
+}
+
+// Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
+type InlineSecretResponseArgs struct {
+	// Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
+	EnvMap pulumi.StringMapInput `pulumi:"envMap"`
+	// Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (InlineSecretResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InlineSecretResponse)(nil)).Elem()
+}
+
+func (i InlineSecretResponseArgs) ToInlineSecretResponseOutput() InlineSecretResponseOutput {
+	return i.ToInlineSecretResponseOutputWithContext(context.Background())
+}
+
+func (i InlineSecretResponseArgs) ToInlineSecretResponseOutputWithContext(ctx context.Context) InlineSecretResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InlineSecretResponseOutput)
+}
+
+// InlineSecretResponseArrayInput is an input type that accepts InlineSecretResponseArray and InlineSecretResponseArrayOutput values.
+// You can construct a concrete instance of `InlineSecretResponseArrayInput` via:
+//
+//          InlineSecretResponseArray{ InlineSecretResponseArgs{...} }
+type InlineSecretResponseArrayInput interface {
+	pulumi.Input
+
+	ToInlineSecretResponseArrayOutput() InlineSecretResponseArrayOutput
+	ToInlineSecretResponseArrayOutputWithContext(context.Context) InlineSecretResponseArrayOutput
+}
+
+type InlineSecretResponseArray []InlineSecretResponseInput
+
+func (InlineSecretResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InlineSecretResponse)(nil)).Elem()
+}
+
+func (i InlineSecretResponseArray) ToInlineSecretResponseArrayOutput() InlineSecretResponseArrayOutput {
+	return i.ToInlineSecretResponseArrayOutputWithContext(context.Background())
+}
+
+func (i InlineSecretResponseArray) ToInlineSecretResponseArrayOutputWithContext(ctx context.Context) InlineSecretResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InlineSecretResponseArrayOutput)
+}
+
+// Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt the value.
+type InlineSecretResponseOutput struct{ *pulumi.OutputState }
+
+func (InlineSecretResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InlineSecretResponse)(nil)).Elem()
+}
+
+func (o InlineSecretResponseOutput) ToInlineSecretResponseOutput() InlineSecretResponseOutput {
+	return o
+}
+
+func (o InlineSecretResponseOutput) ToInlineSecretResponseOutputWithContext(ctx context.Context) InlineSecretResponseOutput {
+	return o
+}
+
+// Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
+func (o InlineSecretResponseOutput) EnvMap() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InlineSecretResponse) map[string]string { return v.EnvMap }).(pulumi.StringMapOutput)
+}
+
+// Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+func (o InlineSecretResponseOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v InlineSecretResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type InlineSecretResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InlineSecretResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InlineSecretResponse)(nil)).Elem()
+}
+
+func (o InlineSecretResponseArrayOutput) ToInlineSecretResponseArrayOutput() InlineSecretResponseArrayOutput {
+	return o
+}
+
+func (o InlineSecretResponseArrayOutput) ToInlineSecretResponseArrayOutputWithContext(ctx context.Context) InlineSecretResponseArrayOutput {
+	return o
+}
+
+func (o InlineSecretResponseArrayOutput) Index(i pulumi.IntInput) InlineSecretResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InlineSecretResponse {
+		return vs[0].([]InlineSecretResponse)[vs[1].(int)]
+	}).(InlineSecretResponseOutput)
 }
 
 // PullRequestFilter contains filter properties for matching GitHub Pull Requests.
@@ -2104,6 +3587,178 @@ func (o PullRequestFilterPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// PullRequestFilter contains filter properties for matching GitHub Pull Requests.
+type PullRequestFilterResponse struct {
+	// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+	Branch string `pulumi:"branch"`
+	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+	CommentControl string `pulumi:"commentControl"`
+	// If true, branches that do NOT match the git_ref will trigger a build.
+	InvertRegex bool `pulumi:"invertRegex"`
+}
+
+// PullRequestFilterResponseInput is an input type that accepts PullRequestFilterResponseArgs and PullRequestFilterResponseOutput values.
+// You can construct a concrete instance of `PullRequestFilterResponseInput` via:
+//
+//          PullRequestFilterResponseArgs{...}
+type PullRequestFilterResponseInput interface {
+	pulumi.Input
+
+	ToPullRequestFilterResponseOutput() PullRequestFilterResponseOutput
+	ToPullRequestFilterResponseOutputWithContext(context.Context) PullRequestFilterResponseOutput
+}
+
+// PullRequestFilter contains filter properties for matching GitHub Pull Requests.
+type PullRequestFilterResponseArgs struct {
+	// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+	Branch pulumi.StringInput `pulumi:"branch"`
+	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+	CommentControl pulumi.StringInput `pulumi:"commentControl"`
+	// If true, branches that do NOT match the git_ref will trigger a build.
+	InvertRegex pulumi.BoolInput `pulumi:"invertRegex"`
+}
+
+func (PullRequestFilterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PullRequestFilterResponse)(nil)).Elem()
+}
+
+func (i PullRequestFilterResponseArgs) ToPullRequestFilterResponseOutput() PullRequestFilterResponseOutput {
+	return i.ToPullRequestFilterResponseOutputWithContext(context.Background())
+}
+
+func (i PullRequestFilterResponseArgs) ToPullRequestFilterResponseOutputWithContext(ctx context.Context) PullRequestFilterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PullRequestFilterResponseOutput)
+}
+
+func (i PullRequestFilterResponseArgs) ToPullRequestFilterResponsePtrOutput() PullRequestFilterResponsePtrOutput {
+	return i.ToPullRequestFilterResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PullRequestFilterResponseArgs) ToPullRequestFilterResponsePtrOutputWithContext(ctx context.Context) PullRequestFilterResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PullRequestFilterResponseOutput).ToPullRequestFilterResponsePtrOutputWithContext(ctx)
+}
+
+// PullRequestFilterResponsePtrInput is an input type that accepts PullRequestFilterResponseArgs, PullRequestFilterResponsePtr and PullRequestFilterResponsePtrOutput values.
+// You can construct a concrete instance of `PullRequestFilterResponsePtrInput` via:
+//
+//          PullRequestFilterResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PullRequestFilterResponsePtrInput interface {
+	pulumi.Input
+
+	ToPullRequestFilterResponsePtrOutput() PullRequestFilterResponsePtrOutput
+	ToPullRequestFilterResponsePtrOutputWithContext(context.Context) PullRequestFilterResponsePtrOutput
+}
+
+type pullRequestFilterResponsePtrType PullRequestFilterResponseArgs
+
+func PullRequestFilterResponsePtr(v *PullRequestFilterResponseArgs) PullRequestFilterResponsePtrInput {
+	return (*pullRequestFilterResponsePtrType)(v)
+}
+
+func (*pullRequestFilterResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PullRequestFilterResponse)(nil)).Elem()
+}
+
+func (i *pullRequestFilterResponsePtrType) ToPullRequestFilterResponsePtrOutput() PullRequestFilterResponsePtrOutput {
+	return i.ToPullRequestFilterResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *pullRequestFilterResponsePtrType) ToPullRequestFilterResponsePtrOutputWithContext(ctx context.Context) PullRequestFilterResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PullRequestFilterResponsePtrOutput)
+}
+
+// PullRequestFilter contains filter properties for matching GitHub Pull Requests.
+type PullRequestFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (PullRequestFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PullRequestFilterResponse)(nil)).Elem()
+}
+
+func (o PullRequestFilterResponseOutput) ToPullRequestFilterResponseOutput() PullRequestFilterResponseOutput {
+	return o
+}
+
+func (o PullRequestFilterResponseOutput) ToPullRequestFilterResponseOutputWithContext(ctx context.Context) PullRequestFilterResponseOutput {
+	return o
+}
+
+func (o PullRequestFilterResponseOutput) ToPullRequestFilterResponsePtrOutput() PullRequestFilterResponsePtrOutput {
+	return o.ToPullRequestFilterResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PullRequestFilterResponseOutput) ToPullRequestFilterResponsePtrOutputWithContext(ctx context.Context) PullRequestFilterResponsePtrOutput {
+	return o.ApplyT(func(v PullRequestFilterResponse) *PullRequestFilterResponse {
+		return &v
+	}).(PullRequestFilterResponsePtrOutput)
+}
+
+// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+func (o PullRequestFilterResponseOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v PullRequestFilterResponse) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+func (o PullRequestFilterResponseOutput) CommentControl() pulumi.StringOutput {
+	return o.ApplyT(func(v PullRequestFilterResponse) string { return v.CommentControl }).(pulumi.StringOutput)
+}
+
+// If true, branches that do NOT match the git_ref will trigger a build.
+func (o PullRequestFilterResponseOutput) InvertRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v PullRequestFilterResponse) bool { return v.InvertRegex }).(pulumi.BoolOutput)
+}
+
+type PullRequestFilterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PullRequestFilterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PullRequestFilterResponse)(nil)).Elem()
+}
+
+func (o PullRequestFilterResponsePtrOutput) ToPullRequestFilterResponsePtrOutput() PullRequestFilterResponsePtrOutput {
+	return o
+}
+
+func (o PullRequestFilterResponsePtrOutput) ToPullRequestFilterResponsePtrOutputWithContext(ctx context.Context) PullRequestFilterResponsePtrOutput {
+	return o
+}
+
+func (o PullRequestFilterResponsePtrOutput) Elem() PullRequestFilterResponseOutput {
+	return o.ApplyT(func(v *PullRequestFilterResponse) PullRequestFilterResponse { return *v }).(PullRequestFilterResponseOutput)
+}
+
+// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+func (o PullRequestFilterResponsePtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PullRequestFilterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
+func (o PullRequestFilterResponsePtrOutput) CommentControl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PullRequestFilterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CommentControl
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, branches that do NOT match the git_ref will trigger a build.
+func (o PullRequestFilterResponsePtrOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PullRequestFilterResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.InvertRegex
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Push contains filter properties for matching GitHub git pushes.
 type PushFilter struct {
 	// Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -2273,6 +3928,178 @@ func (o PushFilterPtrOutput) Tag() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+// Push contains filter properties for matching GitHub git pushes.
+type PushFilterResponse struct {
+	// Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+	Branch string `pulumi:"branch"`
+	// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+	InvertRegex bool `pulumi:"invertRegex"`
+	// Regexes matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+	Tag string `pulumi:"tag"`
+}
+
+// PushFilterResponseInput is an input type that accepts PushFilterResponseArgs and PushFilterResponseOutput values.
+// You can construct a concrete instance of `PushFilterResponseInput` via:
+//
+//          PushFilterResponseArgs{...}
+type PushFilterResponseInput interface {
+	pulumi.Input
+
+	ToPushFilterResponseOutput() PushFilterResponseOutput
+	ToPushFilterResponseOutputWithContext(context.Context) PushFilterResponseOutput
+}
+
+// Push contains filter properties for matching GitHub git pushes.
+type PushFilterResponseArgs struct {
+	// Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+	Branch pulumi.StringInput `pulumi:"branch"`
+	// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+	InvertRegex pulumi.BoolInput `pulumi:"invertRegex"`
+	// Regexes matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+	Tag pulumi.StringInput `pulumi:"tag"`
+}
+
+func (PushFilterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PushFilterResponse)(nil)).Elem()
+}
+
+func (i PushFilterResponseArgs) ToPushFilterResponseOutput() PushFilterResponseOutput {
+	return i.ToPushFilterResponseOutputWithContext(context.Background())
+}
+
+func (i PushFilterResponseArgs) ToPushFilterResponseOutputWithContext(ctx context.Context) PushFilterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PushFilterResponseOutput)
+}
+
+func (i PushFilterResponseArgs) ToPushFilterResponsePtrOutput() PushFilterResponsePtrOutput {
+	return i.ToPushFilterResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PushFilterResponseArgs) ToPushFilterResponsePtrOutputWithContext(ctx context.Context) PushFilterResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PushFilterResponseOutput).ToPushFilterResponsePtrOutputWithContext(ctx)
+}
+
+// PushFilterResponsePtrInput is an input type that accepts PushFilterResponseArgs, PushFilterResponsePtr and PushFilterResponsePtrOutput values.
+// You can construct a concrete instance of `PushFilterResponsePtrInput` via:
+//
+//          PushFilterResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PushFilterResponsePtrInput interface {
+	pulumi.Input
+
+	ToPushFilterResponsePtrOutput() PushFilterResponsePtrOutput
+	ToPushFilterResponsePtrOutputWithContext(context.Context) PushFilterResponsePtrOutput
+}
+
+type pushFilterResponsePtrType PushFilterResponseArgs
+
+func PushFilterResponsePtr(v *PushFilterResponseArgs) PushFilterResponsePtrInput {
+	return (*pushFilterResponsePtrType)(v)
+}
+
+func (*pushFilterResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PushFilterResponse)(nil)).Elem()
+}
+
+func (i *pushFilterResponsePtrType) ToPushFilterResponsePtrOutput() PushFilterResponsePtrOutput {
+	return i.ToPushFilterResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *pushFilterResponsePtrType) ToPushFilterResponsePtrOutputWithContext(ctx context.Context) PushFilterResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PushFilterResponsePtrOutput)
+}
+
+// Push contains filter properties for matching GitHub git pushes.
+type PushFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (PushFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PushFilterResponse)(nil)).Elem()
+}
+
+func (o PushFilterResponseOutput) ToPushFilterResponseOutput() PushFilterResponseOutput {
+	return o
+}
+
+func (o PushFilterResponseOutput) ToPushFilterResponseOutputWithContext(ctx context.Context) PushFilterResponseOutput {
+	return o
+}
+
+func (o PushFilterResponseOutput) ToPushFilterResponsePtrOutput() PushFilterResponsePtrOutput {
+	return o.ToPushFilterResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PushFilterResponseOutput) ToPushFilterResponsePtrOutputWithContext(ctx context.Context) PushFilterResponsePtrOutput {
+	return o.ApplyT(func(v PushFilterResponse) *PushFilterResponse {
+		return &v
+	}).(PushFilterResponsePtrOutput)
+}
+
+// Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+func (o PushFilterResponseOutput) Branch() pulumi.StringOutput {
+	return o.ApplyT(func(v PushFilterResponse) string { return v.Branch }).(pulumi.StringOutput)
+}
+
+// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+func (o PushFilterResponseOutput) InvertRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v PushFilterResponse) bool { return v.InvertRegex }).(pulumi.BoolOutput)
+}
+
+// Regexes matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+func (o PushFilterResponseOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v PushFilterResponse) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+type PushFilterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PushFilterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PushFilterResponse)(nil)).Elem()
+}
+
+func (o PushFilterResponsePtrOutput) ToPushFilterResponsePtrOutput() PushFilterResponsePtrOutput {
+	return o
+}
+
+func (o PushFilterResponsePtrOutput) ToPushFilterResponsePtrOutputWithContext(ctx context.Context) PushFilterResponsePtrOutput {
+	return o
+}
+
+func (o PushFilterResponsePtrOutput) Elem() PushFilterResponseOutput {
+	return o.ApplyT(func(v *PushFilterResponse) PushFilterResponse { return *v }).(PushFilterResponseOutput)
+}
+
+// Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+func (o PushFilterResponsePtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PushFilterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// When true, only trigger a build if the revision regex does NOT match the git_ref regex.
+func (o PushFilterResponsePtrOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PushFilterResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.InvertRegex
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Regexes matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+func (o PushFilterResponsePtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PushFilterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Tag
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2543,198 +4370,465 @@ func (o RepoSourcePtrOutput) TagName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Location of the source in a Google Cloud Source Repository.
+type RepoSourceResponse struct {
+	// Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+	BranchName string `pulumi:"branchName"`
+	// Explicit commit SHA to build.
+	CommitSha string `pulumi:"commitSha"`
+	// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+	Dir string `pulumi:"dir"`
+	// Only trigger a build if the revision regex does NOT match the revision regex.
+	InvertRegex bool `pulumi:"invertRegex"`
+	// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
+	ProjectId string `pulumi:"projectId"`
+	// Name of the Cloud Source Repository.
+	RepoName string `pulumi:"repoName"`
+	// Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
+	Substitutions map[string]string `pulumi:"substitutions"`
+	// Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+	TagName string `pulumi:"tagName"`
+}
+
+// RepoSourceResponseInput is an input type that accepts RepoSourceResponseArgs and RepoSourceResponseOutput values.
+// You can construct a concrete instance of `RepoSourceResponseInput` via:
+//
+//          RepoSourceResponseArgs{...}
+type RepoSourceResponseInput interface {
+	pulumi.Input
+
+	ToRepoSourceResponseOutput() RepoSourceResponseOutput
+	ToRepoSourceResponseOutputWithContext(context.Context) RepoSourceResponseOutput
+}
+
+// Location of the source in a Google Cloud Source Repository.
+type RepoSourceResponseArgs struct {
+	// Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+	BranchName pulumi.StringInput `pulumi:"branchName"`
+	// Explicit commit SHA to build.
+	CommitSha pulumi.StringInput `pulumi:"commitSha"`
+	// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+	Dir pulumi.StringInput `pulumi:"dir"`
+	// Only trigger a build if the revision regex does NOT match the revision regex.
+	InvertRegex pulumi.BoolInput `pulumi:"invertRegex"`
+	// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Name of the Cloud Source Repository.
+	RepoName pulumi.StringInput `pulumi:"repoName"`
+	// Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
+	Substitutions pulumi.StringMapInput `pulumi:"substitutions"`
+	// Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+	TagName pulumi.StringInput `pulumi:"tagName"`
+}
+
+func (RepoSourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepoSourceResponse)(nil)).Elem()
+}
+
+func (i RepoSourceResponseArgs) ToRepoSourceResponseOutput() RepoSourceResponseOutput {
+	return i.ToRepoSourceResponseOutputWithContext(context.Background())
+}
+
+func (i RepoSourceResponseArgs) ToRepoSourceResponseOutputWithContext(ctx context.Context) RepoSourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepoSourceResponseOutput)
+}
+
+func (i RepoSourceResponseArgs) ToRepoSourceResponsePtrOutput() RepoSourceResponsePtrOutput {
+	return i.ToRepoSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i RepoSourceResponseArgs) ToRepoSourceResponsePtrOutputWithContext(ctx context.Context) RepoSourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepoSourceResponseOutput).ToRepoSourceResponsePtrOutputWithContext(ctx)
+}
+
+// RepoSourceResponsePtrInput is an input type that accepts RepoSourceResponseArgs, RepoSourceResponsePtr and RepoSourceResponsePtrOutput values.
+// You can construct a concrete instance of `RepoSourceResponsePtrInput` via:
+//
+//          RepoSourceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type RepoSourceResponsePtrInput interface {
+	pulumi.Input
+
+	ToRepoSourceResponsePtrOutput() RepoSourceResponsePtrOutput
+	ToRepoSourceResponsePtrOutputWithContext(context.Context) RepoSourceResponsePtrOutput
+}
+
+type repoSourceResponsePtrType RepoSourceResponseArgs
+
+func RepoSourceResponsePtr(v *RepoSourceResponseArgs) RepoSourceResponsePtrInput {
+	return (*repoSourceResponsePtrType)(v)
+}
+
+func (*repoSourceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepoSourceResponse)(nil)).Elem()
+}
+
+func (i *repoSourceResponsePtrType) ToRepoSourceResponsePtrOutput() RepoSourceResponsePtrOutput {
+	return i.ToRepoSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *repoSourceResponsePtrType) ToRepoSourceResponsePtrOutputWithContext(ctx context.Context) RepoSourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepoSourceResponsePtrOutput)
+}
+
+// Location of the source in a Google Cloud Source Repository.
+type RepoSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (RepoSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepoSourceResponse)(nil)).Elem()
+}
+
+func (o RepoSourceResponseOutput) ToRepoSourceResponseOutput() RepoSourceResponseOutput {
+	return o
+}
+
+func (o RepoSourceResponseOutput) ToRepoSourceResponseOutputWithContext(ctx context.Context) RepoSourceResponseOutput {
+	return o
+}
+
+func (o RepoSourceResponseOutput) ToRepoSourceResponsePtrOutput() RepoSourceResponsePtrOutput {
+	return o.ToRepoSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o RepoSourceResponseOutput) ToRepoSourceResponsePtrOutputWithContext(ctx context.Context) RepoSourceResponsePtrOutput {
+	return o.ApplyT(func(v RepoSourceResponse) *RepoSourceResponse {
+		return &v
+	}).(RepoSourceResponsePtrOutput)
+}
+
+// Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+func (o RepoSourceResponseOutput) BranchName() pulumi.StringOutput {
+	return o.ApplyT(func(v RepoSourceResponse) string { return v.BranchName }).(pulumi.StringOutput)
+}
+
+// Explicit commit SHA to build.
+func (o RepoSourceResponseOutput) CommitSha() pulumi.StringOutput {
+	return o.ApplyT(func(v RepoSourceResponse) string { return v.CommitSha }).(pulumi.StringOutput)
+}
+
+// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+func (o RepoSourceResponseOutput) Dir() pulumi.StringOutput {
+	return o.ApplyT(func(v RepoSourceResponse) string { return v.Dir }).(pulumi.StringOutput)
+}
+
+// Only trigger a build if the revision regex does NOT match the revision regex.
+func (o RepoSourceResponseOutput) InvertRegex() pulumi.BoolOutput {
+	return o.ApplyT(func(v RepoSourceResponse) bool { return v.InvertRegex }).(pulumi.BoolOutput)
+}
+
+// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
+func (o RepoSourceResponseOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v RepoSourceResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Name of the Cloud Source Repository.
+func (o RepoSourceResponseOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v RepoSourceResponse) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+// Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
+func (o RepoSourceResponseOutput) Substitutions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RepoSourceResponse) map[string]string { return v.Substitutions }).(pulumi.StringMapOutput)
+}
+
+// Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+func (o RepoSourceResponseOutput) TagName() pulumi.StringOutput {
+	return o.ApplyT(func(v RepoSourceResponse) string { return v.TagName }).(pulumi.StringOutput)
+}
+
+type RepoSourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RepoSourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepoSourceResponse)(nil)).Elem()
+}
+
+func (o RepoSourceResponsePtrOutput) ToRepoSourceResponsePtrOutput() RepoSourceResponsePtrOutput {
+	return o
+}
+
+func (o RepoSourceResponsePtrOutput) ToRepoSourceResponsePtrOutputWithContext(ctx context.Context) RepoSourceResponsePtrOutput {
+	return o
+}
+
+func (o RepoSourceResponsePtrOutput) Elem() RepoSourceResponseOutput {
+	return o.ApplyT(func(v *RepoSourceResponse) RepoSourceResponse { return *v }).(RepoSourceResponseOutput)
+}
+
+// Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+func (o RepoSourceResponsePtrOutput) BranchName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepoSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BranchName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Explicit commit SHA to build.
+func (o RepoSourceResponsePtrOutput) CommitSha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepoSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CommitSha
+	}).(pulumi.StringPtrOutput)
+}
+
+// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+func (o RepoSourceResponsePtrOutput) Dir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepoSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Dir
+	}).(pulumi.StringPtrOutput)
+}
+
+// Only trigger a build if the revision regex does NOT match the revision regex.
+func (o RepoSourceResponsePtrOutput) InvertRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RepoSourceResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.InvertRegex
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
+func (o RepoSourceResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepoSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Source Repository.
+func (o RepoSourceResponsePtrOutput) RepoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepoSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RepoName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
+func (o RepoSourceResponsePtrOutput) Substitutions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RepoSourceResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Substitutions
+	}).(pulumi.StringMapOutput)
+}
+
+// Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+func (o RepoSourceResponsePtrOutput) TagName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepoSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TagName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Artifacts created by the build pipeline.
-type Results struct {
+type ResultsResponse struct {
 	// Path to the artifact manifest. Only populated when artifacts are uploaded.
-	ArtifactManifest *string `pulumi:"artifactManifest"`
+	ArtifactManifest string `pulumi:"artifactManifest"`
 	// Time to push all non-container artifacts.
-	ArtifactTiming *TimeSpan `pulumi:"artifactTiming"`
+	ArtifactTiming TimeSpanResponse `pulumi:"artifactTiming"`
 	// List of build step digests, in the order corresponding to build step indices.
 	BuildStepImages []string `pulumi:"buildStepImages"`
 	// List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
 	BuildStepOutputs []string `pulumi:"buildStepOutputs"`
 	// Container images that were built as a part of the build.
-	Images []BuiltImage `pulumi:"images"`
+	Images []BuiltImageResponse `pulumi:"images"`
 	// Number of artifacts uploaded. Only populated when artifacts are uploaded.
-	NumArtifacts *string `pulumi:"numArtifacts"`
+	NumArtifacts string `pulumi:"numArtifacts"`
 }
 
-// ResultsInput is an input type that accepts ResultsArgs and ResultsOutput values.
-// You can construct a concrete instance of `ResultsInput` via:
+// ResultsResponseInput is an input type that accepts ResultsResponseArgs and ResultsResponseOutput values.
+// You can construct a concrete instance of `ResultsResponseInput` via:
 //
-//          ResultsArgs{...}
-type ResultsInput interface {
+//          ResultsResponseArgs{...}
+type ResultsResponseInput interface {
 	pulumi.Input
 
-	ToResultsOutput() ResultsOutput
-	ToResultsOutputWithContext(context.Context) ResultsOutput
+	ToResultsResponseOutput() ResultsResponseOutput
+	ToResultsResponseOutputWithContext(context.Context) ResultsResponseOutput
 }
 
 // Artifacts created by the build pipeline.
-type ResultsArgs struct {
+type ResultsResponseArgs struct {
 	// Path to the artifact manifest. Only populated when artifacts are uploaded.
-	ArtifactManifest pulumi.StringPtrInput `pulumi:"artifactManifest"`
+	ArtifactManifest pulumi.StringInput `pulumi:"artifactManifest"`
 	// Time to push all non-container artifacts.
-	ArtifactTiming TimeSpanPtrInput `pulumi:"artifactTiming"`
+	ArtifactTiming TimeSpanResponseInput `pulumi:"artifactTiming"`
 	// List of build step digests, in the order corresponding to build step indices.
 	BuildStepImages pulumi.StringArrayInput `pulumi:"buildStepImages"`
 	// List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
 	BuildStepOutputs pulumi.StringArrayInput `pulumi:"buildStepOutputs"`
 	// Container images that were built as a part of the build.
-	Images BuiltImageArrayInput `pulumi:"images"`
+	Images BuiltImageResponseArrayInput `pulumi:"images"`
 	// Number of artifacts uploaded. Only populated when artifacts are uploaded.
-	NumArtifacts pulumi.StringPtrInput `pulumi:"numArtifacts"`
+	NumArtifacts pulumi.StringInput `pulumi:"numArtifacts"`
 }
 
-func (ResultsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Results)(nil)).Elem()
+func (ResultsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResultsResponse)(nil)).Elem()
 }
 
-func (i ResultsArgs) ToResultsOutput() ResultsOutput {
-	return i.ToResultsOutputWithContext(context.Background())
+func (i ResultsResponseArgs) ToResultsResponseOutput() ResultsResponseOutput {
+	return i.ToResultsResponseOutputWithContext(context.Background())
 }
 
-func (i ResultsArgs) ToResultsOutputWithContext(ctx context.Context) ResultsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResultsOutput)
+func (i ResultsResponseArgs) ToResultsResponseOutputWithContext(ctx context.Context) ResultsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResultsResponseOutput)
 }
 
-func (i ResultsArgs) ToResultsPtrOutput() ResultsPtrOutput {
-	return i.ToResultsPtrOutputWithContext(context.Background())
+func (i ResultsResponseArgs) ToResultsResponsePtrOutput() ResultsResponsePtrOutput {
+	return i.ToResultsResponsePtrOutputWithContext(context.Background())
 }
 
-func (i ResultsArgs) ToResultsPtrOutputWithContext(ctx context.Context) ResultsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResultsOutput).ToResultsPtrOutputWithContext(ctx)
+func (i ResultsResponseArgs) ToResultsResponsePtrOutputWithContext(ctx context.Context) ResultsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResultsResponseOutput).ToResultsResponsePtrOutputWithContext(ctx)
 }
 
-// ResultsPtrInput is an input type that accepts ResultsArgs, ResultsPtr and ResultsPtrOutput values.
-// You can construct a concrete instance of `ResultsPtrInput` via:
+// ResultsResponsePtrInput is an input type that accepts ResultsResponseArgs, ResultsResponsePtr and ResultsResponsePtrOutput values.
+// You can construct a concrete instance of `ResultsResponsePtrInput` via:
 //
-//          ResultsArgs{...}
+//          ResultsResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type ResultsPtrInput interface {
+type ResultsResponsePtrInput interface {
 	pulumi.Input
 
-	ToResultsPtrOutput() ResultsPtrOutput
-	ToResultsPtrOutputWithContext(context.Context) ResultsPtrOutput
+	ToResultsResponsePtrOutput() ResultsResponsePtrOutput
+	ToResultsResponsePtrOutputWithContext(context.Context) ResultsResponsePtrOutput
 }
 
-type resultsPtrType ResultsArgs
+type resultsResponsePtrType ResultsResponseArgs
 
-func ResultsPtr(v *ResultsArgs) ResultsPtrInput {
-	return (*resultsPtrType)(v)
+func ResultsResponsePtr(v *ResultsResponseArgs) ResultsResponsePtrInput {
+	return (*resultsResponsePtrType)(v)
 }
 
-func (*resultsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Results)(nil)).Elem()
+func (*resultsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResultsResponse)(nil)).Elem()
 }
 
-func (i *resultsPtrType) ToResultsPtrOutput() ResultsPtrOutput {
-	return i.ToResultsPtrOutputWithContext(context.Background())
+func (i *resultsResponsePtrType) ToResultsResponsePtrOutput() ResultsResponsePtrOutput {
+	return i.ToResultsResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *resultsPtrType) ToResultsPtrOutputWithContext(ctx context.Context) ResultsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResultsPtrOutput)
+func (i *resultsResponsePtrType) ToResultsResponsePtrOutputWithContext(ctx context.Context) ResultsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResultsResponsePtrOutput)
 }
 
 // Artifacts created by the build pipeline.
-type ResultsOutput struct{ *pulumi.OutputState }
+type ResultsResponseOutput struct{ *pulumi.OutputState }
 
-func (ResultsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Results)(nil)).Elem()
+func (ResultsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResultsResponse)(nil)).Elem()
 }
 
-func (o ResultsOutput) ToResultsOutput() ResultsOutput {
+func (o ResultsResponseOutput) ToResultsResponseOutput() ResultsResponseOutput {
 	return o
 }
 
-func (o ResultsOutput) ToResultsOutputWithContext(ctx context.Context) ResultsOutput {
+func (o ResultsResponseOutput) ToResultsResponseOutputWithContext(ctx context.Context) ResultsResponseOutput {
 	return o
 }
 
-func (o ResultsOutput) ToResultsPtrOutput() ResultsPtrOutput {
-	return o.ToResultsPtrOutputWithContext(context.Background())
+func (o ResultsResponseOutput) ToResultsResponsePtrOutput() ResultsResponsePtrOutput {
+	return o.ToResultsResponsePtrOutputWithContext(context.Background())
 }
 
-func (o ResultsOutput) ToResultsPtrOutputWithContext(ctx context.Context) ResultsPtrOutput {
-	return o.ApplyT(func(v Results) *Results {
+func (o ResultsResponseOutput) ToResultsResponsePtrOutputWithContext(ctx context.Context) ResultsResponsePtrOutput {
+	return o.ApplyT(func(v ResultsResponse) *ResultsResponse {
 		return &v
-	}).(ResultsPtrOutput)
+	}).(ResultsResponsePtrOutput)
 }
 
 // Path to the artifact manifest. Only populated when artifacts are uploaded.
-func (o ResultsOutput) ArtifactManifest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Results) *string { return v.ArtifactManifest }).(pulumi.StringPtrOutput)
+func (o ResultsResponseOutput) ArtifactManifest() pulumi.StringOutput {
+	return o.ApplyT(func(v ResultsResponse) string { return v.ArtifactManifest }).(pulumi.StringOutput)
 }
 
 // Time to push all non-container artifacts.
-func (o ResultsOutput) ArtifactTiming() TimeSpanPtrOutput {
-	return o.ApplyT(func(v Results) *TimeSpan { return v.ArtifactTiming }).(TimeSpanPtrOutput)
+func (o ResultsResponseOutput) ArtifactTiming() TimeSpanResponseOutput {
+	return o.ApplyT(func(v ResultsResponse) TimeSpanResponse { return v.ArtifactTiming }).(TimeSpanResponseOutput)
 }
 
 // List of build step digests, in the order corresponding to build step indices.
-func (o ResultsOutput) BuildStepImages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v Results) []string { return v.BuildStepImages }).(pulumi.StringArrayOutput)
+func (o ResultsResponseOutput) BuildStepImages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResultsResponse) []string { return v.BuildStepImages }).(pulumi.StringArrayOutput)
 }
 
 // List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
-func (o ResultsOutput) BuildStepOutputs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v Results) []string { return v.BuildStepOutputs }).(pulumi.StringArrayOutput)
+func (o ResultsResponseOutput) BuildStepOutputs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResultsResponse) []string { return v.BuildStepOutputs }).(pulumi.StringArrayOutput)
 }
 
 // Container images that were built as a part of the build.
-func (o ResultsOutput) Images() BuiltImageArrayOutput {
-	return o.ApplyT(func(v Results) []BuiltImage { return v.Images }).(BuiltImageArrayOutput)
+func (o ResultsResponseOutput) Images() BuiltImageResponseArrayOutput {
+	return o.ApplyT(func(v ResultsResponse) []BuiltImageResponse { return v.Images }).(BuiltImageResponseArrayOutput)
 }
 
 // Number of artifacts uploaded. Only populated when artifacts are uploaded.
-func (o ResultsOutput) NumArtifacts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Results) *string { return v.NumArtifacts }).(pulumi.StringPtrOutput)
+func (o ResultsResponseOutput) NumArtifacts() pulumi.StringOutput {
+	return o.ApplyT(func(v ResultsResponse) string { return v.NumArtifacts }).(pulumi.StringOutput)
 }
 
-type ResultsPtrOutput struct{ *pulumi.OutputState }
+type ResultsResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (ResultsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Results)(nil)).Elem()
+func (ResultsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResultsResponse)(nil)).Elem()
 }
 
-func (o ResultsPtrOutput) ToResultsPtrOutput() ResultsPtrOutput {
+func (o ResultsResponsePtrOutput) ToResultsResponsePtrOutput() ResultsResponsePtrOutput {
 	return o
 }
 
-func (o ResultsPtrOutput) ToResultsPtrOutputWithContext(ctx context.Context) ResultsPtrOutput {
+func (o ResultsResponsePtrOutput) ToResultsResponsePtrOutputWithContext(ctx context.Context) ResultsResponsePtrOutput {
 	return o
 }
 
-func (o ResultsPtrOutput) Elem() ResultsOutput {
-	return o.ApplyT(func(v *Results) Results { return *v }).(ResultsOutput)
+func (o ResultsResponsePtrOutput) Elem() ResultsResponseOutput {
+	return o.ApplyT(func(v *ResultsResponse) ResultsResponse { return *v }).(ResultsResponseOutput)
 }
 
 // Path to the artifact manifest. Only populated when artifacts are uploaded.
-func (o ResultsPtrOutput) ArtifactManifest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Results) *string {
+func (o ResultsResponsePtrOutput) ArtifactManifest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResultsResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ArtifactManifest
+		return &v.ArtifactManifest
 	}).(pulumi.StringPtrOutput)
 }
 
 // Time to push all non-container artifacts.
-func (o ResultsPtrOutput) ArtifactTiming() TimeSpanPtrOutput {
-	return o.ApplyT(func(v *Results) *TimeSpan {
+func (o ResultsResponsePtrOutput) ArtifactTiming() TimeSpanResponsePtrOutput {
+	return o.ApplyT(func(v *ResultsResponse) *TimeSpanResponse {
 		if v == nil {
 			return nil
 		}
-		return v.ArtifactTiming
-	}).(TimeSpanPtrOutput)
+		return &v.ArtifactTiming
+	}).(TimeSpanResponsePtrOutput)
 }
 
 // List of build step digests, in the order corresponding to build step indices.
-func (o ResultsPtrOutput) BuildStepImages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Results) []string {
+func (o ResultsResponsePtrOutput) BuildStepImages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResultsResponse) []string {
 		if v == nil {
 			return nil
 		}
@@ -2743,8 +4837,8 @@ func (o ResultsPtrOutput) BuildStepImages() pulumi.StringArrayOutput {
 }
 
 // List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
-func (o ResultsPtrOutput) BuildStepOutputs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Results) []string {
+func (o ResultsResponsePtrOutput) BuildStepOutputs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResultsResponse) []string {
 		if v == nil {
 			return nil
 		}
@@ -2753,22 +4847,22 @@ func (o ResultsPtrOutput) BuildStepOutputs() pulumi.StringArrayOutput {
 }
 
 // Container images that were built as a part of the build.
-func (o ResultsPtrOutput) Images() BuiltImageArrayOutput {
-	return o.ApplyT(func(v *Results) []BuiltImage {
+func (o ResultsResponsePtrOutput) Images() BuiltImageResponseArrayOutput {
+	return o.ApplyT(func(v *ResultsResponse) []BuiltImageResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Images
-	}).(BuiltImageArrayOutput)
+	}).(BuiltImageResponseArrayOutput)
 }
 
 // Number of artifacts uploaded. Only populated when artifacts are uploaded.
-func (o ResultsPtrOutput) NumArtifacts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Results) *string {
+func (o ResultsResponsePtrOutput) NumArtifacts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResultsResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.NumArtifacts
+		return &v.NumArtifacts
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2990,6 +5084,224 @@ func (o SecretManagerSecretArrayOutput) Index(i pulumi.IntInput) SecretManagerSe
 	}).(SecretManagerSecretOutput)
 }
 
+// Pairs a secret environment variable with a SecretVersion in Secret Manager.
+type SecretManagerSecretResponse struct {
+	// Environment variable name to associate with the secret. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step.
+	Env string `pulumi:"env"`
+	// Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
+	VersionName string `pulumi:"versionName"`
+}
+
+// SecretManagerSecretResponseInput is an input type that accepts SecretManagerSecretResponseArgs and SecretManagerSecretResponseOutput values.
+// You can construct a concrete instance of `SecretManagerSecretResponseInput` via:
+//
+//          SecretManagerSecretResponseArgs{...}
+type SecretManagerSecretResponseInput interface {
+	pulumi.Input
+
+	ToSecretManagerSecretResponseOutput() SecretManagerSecretResponseOutput
+	ToSecretManagerSecretResponseOutputWithContext(context.Context) SecretManagerSecretResponseOutput
+}
+
+// Pairs a secret environment variable with a SecretVersion in Secret Manager.
+type SecretManagerSecretResponseArgs struct {
+	// Environment variable name to associate with the secret. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step.
+	Env pulumi.StringInput `pulumi:"env"`
+	// Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
+	VersionName pulumi.StringInput `pulumi:"versionName"`
+}
+
+func (SecretManagerSecretResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretManagerSecretResponse)(nil)).Elem()
+}
+
+func (i SecretManagerSecretResponseArgs) ToSecretManagerSecretResponseOutput() SecretManagerSecretResponseOutput {
+	return i.ToSecretManagerSecretResponseOutputWithContext(context.Background())
+}
+
+func (i SecretManagerSecretResponseArgs) ToSecretManagerSecretResponseOutputWithContext(ctx context.Context) SecretManagerSecretResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretManagerSecretResponseOutput)
+}
+
+// SecretManagerSecretResponseArrayInput is an input type that accepts SecretManagerSecretResponseArray and SecretManagerSecretResponseArrayOutput values.
+// You can construct a concrete instance of `SecretManagerSecretResponseArrayInput` via:
+//
+//          SecretManagerSecretResponseArray{ SecretManagerSecretResponseArgs{...} }
+type SecretManagerSecretResponseArrayInput interface {
+	pulumi.Input
+
+	ToSecretManagerSecretResponseArrayOutput() SecretManagerSecretResponseArrayOutput
+	ToSecretManagerSecretResponseArrayOutputWithContext(context.Context) SecretManagerSecretResponseArrayOutput
+}
+
+type SecretManagerSecretResponseArray []SecretManagerSecretResponseInput
+
+func (SecretManagerSecretResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretManagerSecretResponse)(nil)).Elem()
+}
+
+func (i SecretManagerSecretResponseArray) ToSecretManagerSecretResponseArrayOutput() SecretManagerSecretResponseArrayOutput {
+	return i.ToSecretManagerSecretResponseArrayOutputWithContext(context.Background())
+}
+
+func (i SecretManagerSecretResponseArray) ToSecretManagerSecretResponseArrayOutputWithContext(ctx context.Context) SecretManagerSecretResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretManagerSecretResponseArrayOutput)
+}
+
+// Pairs a secret environment variable with a SecretVersion in Secret Manager.
+type SecretManagerSecretResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretManagerSecretResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretManagerSecretResponse)(nil)).Elem()
+}
+
+func (o SecretManagerSecretResponseOutput) ToSecretManagerSecretResponseOutput() SecretManagerSecretResponseOutput {
+	return o
+}
+
+func (o SecretManagerSecretResponseOutput) ToSecretManagerSecretResponseOutputWithContext(ctx context.Context) SecretManagerSecretResponseOutput {
+	return o
+}
+
+// Environment variable name to associate with the secret. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step.
+func (o SecretManagerSecretResponseOutput) Env() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretManagerSecretResponse) string { return v.Env }).(pulumi.StringOutput)
+}
+
+// Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
+func (o SecretManagerSecretResponseOutput) VersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretManagerSecretResponse) string { return v.VersionName }).(pulumi.StringOutput)
+}
+
+type SecretManagerSecretResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretManagerSecretResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretManagerSecretResponse)(nil)).Elem()
+}
+
+func (o SecretManagerSecretResponseArrayOutput) ToSecretManagerSecretResponseArrayOutput() SecretManagerSecretResponseArrayOutput {
+	return o
+}
+
+func (o SecretManagerSecretResponseArrayOutput) ToSecretManagerSecretResponseArrayOutputWithContext(ctx context.Context) SecretManagerSecretResponseArrayOutput {
+	return o
+}
+
+func (o SecretManagerSecretResponseArrayOutput) Index(i pulumi.IntInput) SecretManagerSecretResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretManagerSecretResponse {
+		return vs[0].([]SecretManagerSecretResponse)[vs[1].(int)]
+	}).(SecretManagerSecretResponseOutput)
+}
+
+// Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials.
+type SecretResponse struct {
+	// Cloud KMS key name to use to decrypt these envs.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	// Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
+	SecretEnv map[string]string `pulumi:"secretEnv"`
+}
+
+// SecretResponseInput is an input type that accepts SecretResponseArgs and SecretResponseOutput values.
+// You can construct a concrete instance of `SecretResponseInput` via:
+//
+//          SecretResponseArgs{...}
+type SecretResponseInput interface {
+	pulumi.Input
+
+	ToSecretResponseOutput() SecretResponseOutput
+	ToSecretResponseOutputWithContext(context.Context) SecretResponseOutput
+}
+
+// Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials.
+type SecretResponseArgs struct {
+	// Cloud KMS key name to use to decrypt these envs.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
+	SecretEnv pulumi.StringMapInput `pulumi:"secretEnv"`
+}
+
+func (SecretResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretResponse)(nil)).Elem()
+}
+
+func (i SecretResponseArgs) ToSecretResponseOutput() SecretResponseOutput {
+	return i.ToSecretResponseOutputWithContext(context.Background())
+}
+
+func (i SecretResponseArgs) ToSecretResponseOutputWithContext(ctx context.Context) SecretResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretResponseOutput)
+}
+
+// SecretResponseArrayInput is an input type that accepts SecretResponseArray and SecretResponseArrayOutput values.
+// You can construct a concrete instance of `SecretResponseArrayInput` via:
+//
+//          SecretResponseArray{ SecretResponseArgs{...} }
+type SecretResponseArrayInput interface {
+	pulumi.Input
+
+	ToSecretResponseArrayOutput() SecretResponseArrayOutput
+	ToSecretResponseArrayOutputWithContext(context.Context) SecretResponseArrayOutput
+}
+
+type SecretResponseArray []SecretResponseInput
+
+func (SecretResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretResponse)(nil)).Elem()
+}
+
+func (i SecretResponseArray) ToSecretResponseArrayOutput() SecretResponseArrayOutput {
+	return i.ToSecretResponseArrayOutputWithContext(context.Background())
+}
+
+func (i SecretResponseArray) ToSecretResponseArrayOutputWithContext(ctx context.Context) SecretResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretResponseArrayOutput)
+}
+
+// Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials.
+type SecretResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretResponse)(nil)).Elem()
+}
+
+func (o SecretResponseOutput) ToSecretResponseOutput() SecretResponseOutput {
+	return o
+}
+
+func (o SecretResponseOutput) ToSecretResponseOutputWithContext(ctx context.Context) SecretResponseOutput {
+	return o
+}
+
+// Cloud KMS key name to use to decrypt these envs.
+func (o SecretResponseOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
+func (o SecretResponseOutput) SecretEnv() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretResponse) map[string]string { return v.SecretEnv }).(pulumi.StringMapOutput)
+}
+
+type SecretResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretResponse)(nil)).Elem()
+}
+
+func (o SecretResponseArrayOutput) ToSecretResponseArrayOutput() SecretResponseArrayOutput {
+	return o
+}
+
+func (o SecretResponseArrayOutput) ToSecretResponseArrayOutputWithContext(ctx context.Context) SecretResponseArrayOutput {
+	return o
+}
+
+func (o SecretResponseArrayOutput) Index(i pulumi.IntInput) SecretResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretResponse {
+		return vs[0].([]SecretResponse)[vs[1].(int)]
+	}).(SecretResponseOutput)
+}
+
 // Secrets and secret environment variables.
 type Secrets struct {
 	// Secrets encrypted with KMS key and the associated secret environment variable.
@@ -3141,6 +5453,159 @@ func (o SecretsPtrOutput) SecretManager() SecretManagerSecretArrayOutput {
 		}
 		return v.SecretManager
 	}).(SecretManagerSecretArrayOutput)
+}
+
+// Secrets and secret environment variables.
+type SecretsResponse struct {
+	// Secrets encrypted with KMS key and the associated secret environment variable.
+	Inline []InlineSecretResponse `pulumi:"inline"`
+	// Secrets in Secret Manager and associated secret environment variable.
+	SecretManager []SecretManagerSecretResponse `pulumi:"secretManager"`
+}
+
+// SecretsResponseInput is an input type that accepts SecretsResponseArgs and SecretsResponseOutput values.
+// You can construct a concrete instance of `SecretsResponseInput` via:
+//
+//          SecretsResponseArgs{...}
+type SecretsResponseInput interface {
+	pulumi.Input
+
+	ToSecretsResponseOutput() SecretsResponseOutput
+	ToSecretsResponseOutputWithContext(context.Context) SecretsResponseOutput
+}
+
+// Secrets and secret environment variables.
+type SecretsResponseArgs struct {
+	// Secrets encrypted with KMS key and the associated secret environment variable.
+	Inline InlineSecretResponseArrayInput `pulumi:"inline"`
+	// Secrets in Secret Manager and associated secret environment variable.
+	SecretManager SecretManagerSecretResponseArrayInput `pulumi:"secretManager"`
+}
+
+func (SecretsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretsResponse)(nil)).Elem()
+}
+
+func (i SecretsResponseArgs) ToSecretsResponseOutput() SecretsResponseOutput {
+	return i.ToSecretsResponseOutputWithContext(context.Background())
+}
+
+func (i SecretsResponseArgs) ToSecretsResponseOutputWithContext(ctx context.Context) SecretsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretsResponseOutput)
+}
+
+func (i SecretsResponseArgs) ToSecretsResponsePtrOutput() SecretsResponsePtrOutput {
+	return i.ToSecretsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SecretsResponseArgs) ToSecretsResponsePtrOutputWithContext(ctx context.Context) SecretsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretsResponseOutput).ToSecretsResponsePtrOutputWithContext(ctx)
+}
+
+// SecretsResponsePtrInput is an input type that accepts SecretsResponseArgs, SecretsResponsePtr and SecretsResponsePtrOutput values.
+// You can construct a concrete instance of `SecretsResponsePtrInput` via:
+//
+//          SecretsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SecretsResponsePtrInput interface {
+	pulumi.Input
+
+	ToSecretsResponsePtrOutput() SecretsResponsePtrOutput
+	ToSecretsResponsePtrOutputWithContext(context.Context) SecretsResponsePtrOutput
+}
+
+type secretsResponsePtrType SecretsResponseArgs
+
+func SecretsResponsePtr(v *SecretsResponseArgs) SecretsResponsePtrInput {
+	return (*secretsResponsePtrType)(v)
+}
+
+func (*secretsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretsResponse)(nil)).Elem()
+}
+
+func (i *secretsResponsePtrType) ToSecretsResponsePtrOutput() SecretsResponsePtrOutput {
+	return i.ToSecretsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *secretsResponsePtrType) ToSecretsResponsePtrOutputWithContext(ctx context.Context) SecretsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretsResponsePtrOutput)
+}
+
+// Secrets and secret environment variables.
+type SecretsResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretsResponse)(nil)).Elem()
+}
+
+func (o SecretsResponseOutput) ToSecretsResponseOutput() SecretsResponseOutput {
+	return o
+}
+
+func (o SecretsResponseOutput) ToSecretsResponseOutputWithContext(ctx context.Context) SecretsResponseOutput {
+	return o
+}
+
+func (o SecretsResponseOutput) ToSecretsResponsePtrOutput() SecretsResponsePtrOutput {
+	return o.ToSecretsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SecretsResponseOutput) ToSecretsResponsePtrOutputWithContext(ctx context.Context) SecretsResponsePtrOutput {
+	return o.ApplyT(func(v SecretsResponse) *SecretsResponse {
+		return &v
+	}).(SecretsResponsePtrOutput)
+}
+
+// Secrets encrypted with KMS key and the associated secret environment variable.
+func (o SecretsResponseOutput) Inline() InlineSecretResponseArrayOutput {
+	return o.ApplyT(func(v SecretsResponse) []InlineSecretResponse { return v.Inline }).(InlineSecretResponseArrayOutput)
+}
+
+// Secrets in Secret Manager and associated secret environment variable.
+func (o SecretsResponseOutput) SecretManager() SecretManagerSecretResponseArrayOutput {
+	return o.ApplyT(func(v SecretsResponse) []SecretManagerSecretResponse { return v.SecretManager }).(SecretManagerSecretResponseArrayOutput)
+}
+
+type SecretsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecretsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretsResponse)(nil)).Elem()
+}
+
+func (o SecretsResponsePtrOutput) ToSecretsResponsePtrOutput() SecretsResponsePtrOutput {
+	return o
+}
+
+func (o SecretsResponsePtrOutput) ToSecretsResponsePtrOutputWithContext(ctx context.Context) SecretsResponsePtrOutput {
+	return o
+}
+
+func (o SecretsResponsePtrOutput) Elem() SecretsResponseOutput {
+	return o.ApplyT(func(v *SecretsResponse) SecretsResponse { return *v }).(SecretsResponseOutput)
+}
+
+// Secrets encrypted with KMS key and the associated secret environment variable.
+func (o SecretsResponsePtrOutput) Inline() InlineSecretResponseArrayOutput {
+	return o.ApplyT(func(v *SecretsResponse) []InlineSecretResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Inline
+	}).(InlineSecretResponseArrayOutput)
+}
+
+// Secrets in Secret Manager and associated secret environment variable.
+func (o SecretsResponsePtrOutput) SecretManager() SecretManagerSecretResponseArrayOutput {
+	return o.ApplyT(func(v *SecretsResponse) []SecretManagerSecretResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SecretManager
+	}).(SecretManagerSecretResponseArrayOutput)
 }
 
 // Location of the source in a supported storage service.
@@ -3316,159 +5781,159 @@ func (o SourcePtrOutput) StorageSourceManifest() StorageSourceManifestPtrOutput 
 }
 
 // Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
-type SourceProvenance struct {
-	// Output only. Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
+type SourceProvenanceResponse struct {
+	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
 	FileHashes map[string]string `pulumi:"fileHashes"`
 	// A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
-	ResolvedRepoSource *RepoSource `pulumi:"resolvedRepoSource"`
+	ResolvedRepoSource RepoSourceResponse `pulumi:"resolvedRepoSource"`
 	// A copy of the build's `source.storage_source`, if exists, with any generations resolved.
-	ResolvedStorageSource *StorageSource `pulumi:"resolvedStorageSource"`
+	ResolvedStorageSource StorageSourceResponse `pulumi:"resolvedStorageSource"`
 	// A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
-	ResolvedStorageSourceManifest *StorageSourceManifest `pulumi:"resolvedStorageSourceManifest"`
+	ResolvedStorageSourceManifest StorageSourceManifestResponse `pulumi:"resolvedStorageSourceManifest"`
 }
 
-// SourceProvenanceInput is an input type that accepts SourceProvenanceArgs and SourceProvenanceOutput values.
-// You can construct a concrete instance of `SourceProvenanceInput` via:
+// SourceProvenanceResponseInput is an input type that accepts SourceProvenanceResponseArgs and SourceProvenanceResponseOutput values.
+// You can construct a concrete instance of `SourceProvenanceResponseInput` via:
 //
-//          SourceProvenanceArgs{...}
-type SourceProvenanceInput interface {
+//          SourceProvenanceResponseArgs{...}
+type SourceProvenanceResponseInput interface {
 	pulumi.Input
 
-	ToSourceProvenanceOutput() SourceProvenanceOutput
-	ToSourceProvenanceOutputWithContext(context.Context) SourceProvenanceOutput
+	ToSourceProvenanceResponseOutput() SourceProvenanceResponseOutput
+	ToSourceProvenanceResponseOutputWithContext(context.Context) SourceProvenanceResponseOutput
 }
 
 // Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
-type SourceProvenanceArgs struct {
-	// Output only. Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
+type SourceProvenanceResponseArgs struct {
+	// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
 	FileHashes pulumi.StringMapInput `pulumi:"fileHashes"`
 	// A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
-	ResolvedRepoSource RepoSourcePtrInput `pulumi:"resolvedRepoSource"`
+	ResolvedRepoSource RepoSourceResponseInput `pulumi:"resolvedRepoSource"`
 	// A copy of the build's `source.storage_source`, if exists, with any generations resolved.
-	ResolvedStorageSource StorageSourcePtrInput `pulumi:"resolvedStorageSource"`
+	ResolvedStorageSource StorageSourceResponseInput `pulumi:"resolvedStorageSource"`
 	// A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
-	ResolvedStorageSourceManifest StorageSourceManifestPtrInput `pulumi:"resolvedStorageSourceManifest"`
+	ResolvedStorageSourceManifest StorageSourceManifestResponseInput `pulumi:"resolvedStorageSourceManifest"`
 }
 
-func (SourceProvenanceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceProvenance)(nil)).Elem()
+func (SourceProvenanceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceProvenanceResponse)(nil)).Elem()
 }
 
-func (i SourceProvenanceArgs) ToSourceProvenanceOutput() SourceProvenanceOutput {
-	return i.ToSourceProvenanceOutputWithContext(context.Background())
+func (i SourceProvenanceResponseArgs) ToSourceProvenanceResponseOutput() SourceProvenanceResponseOutput {
+	return i.ToSourceProvenanceResponseOutputWithContext(context.Background())
 }
 
-func (i SourceProvenanceArgs) ToSourceProvenanceOutputWithContext(ctx context.Context) SourceProvenanceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceProvenanceOutput)
+func (i SourceProvenanceResponseArgs) ToSourceProvenanceResponseOutputWithContext(ctx context.Context) SourceProvenanceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceProvenanceResponseOutput)
 }
 
-func (i SourceProvenanceArgs) ToSourceProvenancePtrOutput() SourceProvenancePtrOutput {
-	return i.ToSourceProvenancePtrOutputWithContext(context.Background())
+func (i SourceProvenanceResponseArgs) ToSourceProvenanceResponsePtrOutput() SourceProvenanceResponsePtrOutput {
+	return i.ToSourceProvenanceResponsePtrOutputWithContext(context.Background())
 }
 
-func (i SourceProvenanceArgs) ToSourceProvenancePtrOutputWithContext(ctx context.Context) SourceProvenancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceProvenanceOutput).ToSourceProvenancePtrOutputWithContext(ctx)
+func (i SourceProvenanceResponseArgs) ToSourceProvenanceResponsePtrOutputWithContext(ctx context.Context) SourceProvenanceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceProvenanceResponseOutput).ToSourceProvenanceResponsePtrOutputWithContext(ctx)
 }
 
-// SourceProvenancePtrInput is an input type that accepts SourceProvenanceArgs, SourceProvenancePtr and SourceProvenancePtrOutput values.
-// You can construct a concrete instance of `SourceProvenancePtrInput` via:
+// SourceProvenanceResponsePtrInput is an input type that accepts SourceProvenanceResponseArgs, SourceProvenanceResponsePtr and SourceProvenanceResponsePtrOutput values.
+// You can construct a concrete instance of `SourceProvenanceResponsePtrInput` via:
 //
-//          SourceProvenanceArgs{...}
+//          SourceProvenanceResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type SourceProvenancePtrInput interface {
+type SourceProvenanceResponsePtrInput interface {
 	pulumi.Input
 
-	ToSourceProvenancePtrOutput() SourceProvenancePtrOutput
-	ToSourceProvenancePtrOutputWithContext(context.Context) SourceProvenancePtrOutput
+	ToSourceProvenanceResponsePtrOutput() SourceProvenanceResponsePtrOutput
+	ToSourceProvenanceResponsePtrOutputWithContext(context.Context) SourceProvenanceResponsePtrOutput
 }
 
-type sourceProvenancePtrType SourceProvenanceArgs
+type sourceProvenanceResponsePtrType SourceProvenanceResponseArgs
 
-func SourceProvenancePtr(v *SourceProvenanceArgs) SourceProvenancePtrInput {
-	return (*sourceProvenancePtrType)(v)
+func SourceProvenanceResponsePtr(v *SourceProvenanceResponseArgs) SourceProvenanceResponsePtrInput {
+	return (*sourceProvenanceResponsePtrType)(v)
 }
 
-func (*sourceProvenancePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceProvenance)(nil)).Elem()
+func (*sourceProvenanceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceProvenanceResponse)(nil)).Elem()
 }
 
-func (i *sourceProvenancePtrType) ToSourceProvenancePtrOutput() SourceProvenancePtrOutput {
-	return i.ToSourceProvenancePtrOutputWithContext(context.Background())
+func (i *sourceProvenanceResponsePtrType) ToSourceProvenanceResponsePtrOutput() SourceProvenanceResponsePtrOutput {
+	return i.ToSourceProvenanceResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *sourceProvenancePtrType) ToSourceProvenancePtrOutputWithContext(ctx context.Context) SourceProvenancePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceProvenancePtrOutput)
+func (i *sourceProvenanceResponsePtrType) ToSourceProvenanceResponsePtrOutputWithContext(ctx context.Context) SourceProvenanceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceProvenanceResponsePtrOutput)
 }
 
 // Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
-type SourceProvenanceOutput struct{ *pulumi.OutputState }
+type SourceProvenanceResponseOutput struct{ *pulumi.OutputState }
 
-func (SourceProvenanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceProvenance)(nil)).Elem()
+func (SourceProvenanceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceProvenanceResponse)(nil)).Elem()
 }
 
-func (o SourceProvenanceOutput) ToSourceProvenanceOutput() SourceProvenanceOutput {
+func (o SourceProvenanceResponseOutput) ToSourceProvenanceResponseOutput() SourceProvenanceResponseOutput {
 	return o
 }
 
-func (o SourceProvenanceOutput) ToSourceProvenanceOutputWithContext(ctx context.Context) SourceProvenanceOutput {
+func (o SourceProvenanceResponseOutput) ToSourceProvenanceResponseOutputWithContext(ctx context.Context) SourceProvenanceResponseOutput {
 	return o
 }
 
-func (o SourceProvenanceOutput) ToSourceProvenancePtrOutput() SourceProvenancePtrOutput {
-	return o.ToSourceProvenancePtrOutputWithContext(context.Background())
+func (o SourceProvenanceResponseOutput) ToSourceProvenanceResponsePtrOutput() SourceProvenanceResponsePtrOutput {
+	return o.ToSourceProvenanceResponsePtrOutputWithContext(context.Background())
 }
 
-func (o SourceProvenanceOutput) ToSourceProvenancePtrOutputWithContext(ctx context.Context) SourceProvenancePtrOutput {
-	return o.ApplyT(func(v SourceProvenance) *SourceProvenance {
+func (o SourceProvenanceResponseOutput) ToSourceProvenanceResponsePtrOutputWithContext(ctx context.Context) SourceProvenanceResponsePtrOutput {
+	return o.ApplyT(func(v SourceProvenanceResponse) *SourceProvenanceResponse {
 		return &v
-	}).(SourceProvenancePtrOutput)
+	}).(SourceProvenanceResponsePtrOutput)
 }
 
-// Output only. Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
-func (o SourceProvenanceOutput) FileHashes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SourceProvenance) map[string]string { return v.FileHashes }).(pulumi.StringMapOutput)
+// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
+func (o SourceProvenanceResponseOutput) FileHashes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SourceProvenanceResponse) map[string]string { return v.FileHashes }).(pulumi.StringMapOutput)
 }
 
 // A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
-func (o SourceProvenanceOutput) ResolvedRepoSource() RepoSourcePtrOutput {
-	return o.ApplyT(func(v SourceProvenance) *RepoSource { return v.ResolvedRepoSource }).(RepoSourcePtrOutput)
+func (o SourceProvenanceResponseOutput) ResolvedRepoSource() RepoSourceResponseOutput {
+	return o.ApplyT(func(v SourceProvenanceResponse) RepoSourceResponse { return v.ResolvedRepoSource }).(RepoSourceResponseOutput)
 }
 
 // A copy of the build's `source.storage_source`, if exists, with any generations resolved.
-func (o SourceProvenanceOutput) ResolvedStorageSource() StorageSourcePtrOutput {
-	return o.ApplyT(func(v SourceProvenance) *StorageSource { return v.ResolvedStorageSource }).(StorageSourcePtrOutput)
+func (o SourceProvenanceResponseOutput) ResolvedStorageSource() StorageSourceResponseOutput {
+	return o.ApplyT(func(v SourceProvenanceResponse) StorageSourceResponse { return v.ResolvedStorageSource }).(StorageSourceResponseOutput)
 }
 
 // A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
-func (o SourceProvenanceOutput) ResolvedStorageSourceManifest() StorageSourceManifestPtrOutput {
-	return o.ApplyT(func(v SourceProvenance) *StorageSourceManifest { return v.ResolvedStorageSourceManifest }).(StorageSourceManifestPtrOutput)
+func (o SourceProvenanceResponseOutput) ResolvedStorageSourceManifest() StorageSourceManifestResponseOutput {
+	return o.ApplyT(func(v SourceProvenanceResponse) StorageSourceManifestResponse { return v.ResolvedStorageSourceManifest }).(StorageSourceManifestResponseOutput)
 }
 
-type SourceProvenancePtrOutput struct{ *pulumi.OutputState }
+type SourceProvenanceResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (SourceProvenancePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceProvenance)(nil)).Elem()
+func (SourceProvenanceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceProvenanceResponse)(nil)).Elem()
 }
 
-func (o SourceProvenancePtrOutput) ToSourceProvenancePtrOutput() SourceProvenancePtrOutput {
+func (o SourceProvenanceResponsePtrOutput) ToSourceProvenanceResponsePtrOutput() SourceProvenanceResponsePtrOutput {
 	return o
 }
 
-func (o SourceProvenancePtrOutput) ToSourceProvenancePtrOutputWithContext(ctx context.Context) SourceProvenancePtrOutput {
+func (o SourceProvenanceResponsePtrOutput) ToSourceProvenanceResponsePtrOutputWithContext(ctx context.Context) SourceProvenanceResponsePtrOutput {
 	return o
 }
 
-func (o SourceProvenancePtrOutput) Elem() SourceProvenanceOutput {
-	return o.ApplyT(func(v *SourceProvenance) SourceProvenance { return *v }).(SourceProvenanceOutput)
+func (o SourceProvenanceResponsePtrOutput) Elem() SourceProvenanceResponseOutput {
+	return o.ApplyT(func(v *SourceProvenanceResponse) SourceProvenanceResponse { return *v }).(SourceProvenanceResponseOutput)
 }
 
-// Output only. Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
-func (o SourceProvenancePtrOutput) FileHashes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *SourceProvenance) map[string]string {
+// Hash(es) of the build source, which can be used to verify that the original source integrity was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the hash values for those files. If the build source came in a single package such as a gzipped tarfile (`.tar.gz`), the `FileHash` will be for the single path to that file.
+func (o SourceProvenanceResponsePtrOutput) FileHashes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SourceProvenanceResponse) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -3477,33 +5942,205 @@ func (o SourceProvenancePtrOutput) FileHashes() pulumi.StringMapOutput {
 }
 
 // A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
-func (o SourceProvenancePtrOutput) ResolvedRepoSource() RepoSourcePtrOutput {
-	return o.ApplyT(func(v *SourceProvenance) *RepoSource {
+func (o SourceProvenanceResponsePtrOutput) ResolvedRepoSource() RepoSourceResponsePtrOutput {
+	return o.ApplyT(func(v *SourceProvenanceResponse) *RepoSourceResponse {
 		if v == nil {
 			return nil
 		}
-		return v.ResolvedRepoSource
-	}).(RepoSourcePtrOutput)
+		return &v.ResolvedRepoSource
+	}).(RepoSourceResponsePtrOutput)
 }
 
 // A copy of the build's `source.storage_source`, if exists, with any generations resolved.
-func (o SourceProvenancePtrOutput) ResolvedStorageSource() StorageSourcePtrOutput {
-	return o.ApplyT(func(v *SourceProvenance) *StorageSource {
+func (o SourceProvenanceResponsePtrOutput) ResolvedStorageSource() StorageSourceResponsePtrOutput {
+	return o.ApplyT(func(v *SourceProvenanceResponse) *StorageSourceResponse {
 		if v == nil {
 			return nil
 		}
-		return v.ResolvedStorageSource
-	}).(StorageSourcePtrOutput)
+		return &v.ResolvedStorageSource
+	}).(StorageSourceResponsePtrOutput)
 }
 
 // A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature is in Preview.
-func (o SourceProvenancePtrOutput) ResolvedStorageSourceManifest() StorageSourceManifestPtrOutput {
-	return o.ApplyT(func(v *SourceProvenance) *StorageSourceManifest {
+func (o SourceProvenanceResponsePtrOutput) ResolvedStorageSourceManifest() StorageSourceManifestResponsePtrOutput {
+	return o.ApplyT(func(v *SourceProvenanceResponse) *StorageSourceManifestResponse {
 		if v == nil {
 			return nil
 		}
-		return v.ResolvedStorageSourceManifest
-	}).(StorageSourceManifestPtrOutput)
+		return &v.ResolvedStorageSourceManifest
+	}).(StorageSourceManifestResponsePtrOutput)
+}
+
+// Location of the source in a supported storage service.
+type SourceResponse struct {
+	// If provided, get the source from this location in a Cloud Source Repository.
+	RepoSource RepoSourceResponse `pulumi:"repoSource"`
+	// If provided, get the source from this location in Google Cloud Storage.
+	StorageSource StorageSourceResponse `pulumi:"storageSource"`
+	// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+	StorageSourceManifest StorageSourceManifestResponse `pulumi:"storageSourceManifest"`
+}
+
+// SourceResponseInput is an input type that accepts SourceResponseArgs and SourceResponseOutput values.
+// You can construct a concrete instance of `SourceResponseInput` via:
+//
+//          SourceResponseArgs{...}
+type SourceResponseInput interface {
+	pulumi.Input
+
+	ToSourceResponseOutput() SourceResponseOutput
+	ToSourceResponseOutputWithContext(context.Context) SourceResponseOutput
+}
+
+// Location of the source in a supported storage service.
+type SourceResponseArgs struct {
+	// If provided, get the source from this location in a Cloud Source Repository.
+	RepoSource RepoSourceResponseInput `pulumi:"repoSource"`
+	// If provided, get the source from this location in Google Cloud Storage.
+	StorageSource StorageSourceResponseInput `pulumi:"storageSource"`
+	// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+	StorageSourceManifest StorageSourceManifestResponseInput `pulumi:"storageSourceManifest"`
+}
+
+func (SourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceResponse)(nil)).Elem()
+}
+
+func (i SourceResponseArgs) ToSourceResponseOutput() SourceResponseOutput {
+	return i.ToSourceResponseOutputWithContext(context.Background())
+}
+
+func (i SourceResponseArgs) ToSourceResponseOutputWithContext(ctx context.Context) SourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceResponseOutput)
+}
+
+func (i SourceResponseArgs) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
+	return i.ToSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SourceResponseArgs) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceResponseOutput).ToSourceResponsePtrOutputWithContext(ctx)
+}
+
+// SourceResponsePtrInput is an input type that accepts SourceResponseArgs, SourceResponsePtr and SourceResponsePtrOutput values.
+// You can construct a concrete instance of `SourceResponsePtrInput` via:
+//
+//          SourceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SourceResponsePtrInput interface {
+	pulumi.Input
+
+	ToSourceResponsePtrOutput() SourceResponsePtrOutput
+	ToSourceResponsePtrOutputWithContext(context.Context) SourceResponsePtrOutput
+}
+
+type sourceResponsePtrType SourceResponseArgs
+
+func SourceResponsePtr(v *SourceResponseArgs) SourceResponsePtrInput {
+	return (*sourceResponsePtrType)(v)
+}
+
+func (*sourceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceResponse)(nil)).Elem()
+}
+
+func (i *sourceResponsePtrType) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
+	return i.ToSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *sourceResponsePtrType) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceResponsePtrOutput)
+}
+
+// Location of the source in a supported storage service.
+type SourceResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceResponse)(nil)).Elem()
+}
+
+func (o SourceResponseOutput) ToSourceResponseOutput() SourceResponseOutput {
+	return o
+}
+
+func (o SourceResponseOutput) ToSourceResponseOutputWithContext(ctx context.Context) SourceResponseOutput {
+	return o
+}
+
+func (o SourceResponseOutput) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
+	return o.ToSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SourceResponseOutput) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
+	return o.ApplyT(func(v SourceResponse) *SourceResponse {
+		return &v
+	}).(SourceResponsePtrOutput)
+}
+
+// If provided, get the source from this location in a Cloud Source Repository.
+func (o SourceResponseOutput) RepoSource() RepoSourceResponseOutput {
+	return o.ApplyT(func(v SourceResponse) RepoSourceResponse { return v.RepoSource }).(RepoSourceResponseOutput)
+}
+
+// If provided, get the source from this location in Google Cloud Storage.
+func (o SourceResponseOutput) StorageSource() StorageSourceResponseOutput {
+	return o.ApplyT(func(v SourceResponse) StorageSourceResponse { return v.StorageSource }).(StorageSourceResponseOutput)
+}
+
+// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+func (o SourceResponseOutput) StorageSourceManifest() StorageSourceManifestResponseOutput {
+	return o.ApplyT(func(v SourceResponse) StorageSourceManifestResponse { return v.StorageSourceManifest }).(StorageSourceManifestResponseOutput)
+}
+
+type SourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceResponse)(nil)).Elem()
+}
+
+func (o SourceResponsePtrOutput) ToSourceResponsePtrOutput() SourceResponsePtrOutput {
+	return o
+}
+
+func (o SourceResponsePtrOutput) ToSourceResponsePtrOutputWithContext(ctx context.Context) SourceResponsePtrOutput {
+	return o
+}
+
+func (o SourceResponsePtrOutput) Elem() SourceResponseOutput {
+	return o.ApplyT(func(v *SourceResponse) SourceResponse { return *v }).(SourceResponseOutput)
+}
+
+// If provided, get the source from this location in a Cloud Source Repository.
+func (o SourceResponsePtrOutput) RepoSource() RepoSourceResponsePtrOutput {
+	return o.ApplyT(func(v *SourceResponse) *RepoSourceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.RepoSource
+	}).(RepoSourceResponsePtrOutput)
+}
+
+// If provided, get the source from this location in Google Cloud Storage.
+func (o SourceResponsePtrOutput) StorageSource() StorageSourceResponsePtrOutput {
+	return o.ApplyT(func(v *SourceResponse) *StorageSourceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageSource
+	}).(StorageSourceResponsePtrOutput)
+}
+
+// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+func (o SourceResponsePtrOutput) StorageSourceManifest() StorageSourceManifestResponsePtrOutput {
+	return o.ApplyT(func(v *SourceResponse) *StorageSourceManifestResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageSourceManifest
+	}).(StorageSourceManifestResponsePtrOutput)
 }
 
 // Location of the source in an archive file in Google Cloud Storage.
@@ -3850,156 +6487,500 @@ func (o StorageSourceManifestPtrOutput) Object() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Start and end times for a build execution phase.
-type TimeSpan struct {
-	// End of time span.
-	EndTime *string `pulumi:"endTime"`
-	// Start of time span.
-	StartTime *string `pulumi:"startTime"`
+// Location of the source manifest in Google Cloud Storage. This feature is in Preview.
+type StorageSourceManifestResponse struct {
+	// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+	Bucket string `pulumi:"bucket"`
+	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+	Generation string `pulumi:"generation"`
+	// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+	Object string `pulumi:"object"`
 }
 
-// TimeSpanInput is an input type that accepts TimeSpanArgs and TimeSpanOutput values.
-// You can construct a concrete instance of `TimeSpanInput` via:
+// StorageSourceManifestResponseInput is an input type that accepts StorageSourceManifestResponseArgs and StorageSourceManifestResponseOutput values.
+// You can construct a concrete instance of `StorageSourceManifestResponseInput` via:
 //
-//          TimeSpanArgs{...}
-type TimeSpanInput interface {
+//          StorageSourceManifestResponseArgs{...}
+type StorageSourceManifestResponseInput interface {
 	pulumi.Input
 
-	ToTimeSpanOutput() TimeSpanOutput
-	ToTimeSpanOutputWithContext(context.Context) TimeSpanOutput
+	ToStorageSourceManifestResponseOutput() StorageSourceManifestResponseOutput
+	ToStorageSourceManifestResponseOutputWithContext(context.Context) StorageSourceManifestResponseOutput
 }
 
-// Start and end times for a build execution phase.
-type TimeSpanArgs struct {
-	// End of time span.
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Start of time span.
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+// Location of the source manifest in Google Cloud Storage. This feature is in Preview.
+type StorageSourceManifestResponseArgs struct {
+	// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+	Generation pulumi.StringInput `pulumi:"generation"`
+	// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+	Object pulumi.StringInput `pulumi:"object"`
 }
 
-func (TimeSpanArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TimeSpan)(nil)).Elem()
+func (StorageSourceManifestResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageSourceManifestResponse)(nil)).Elem()
 }
 
-func (i TimeSpanArgs) ToTimeSpanOutput() TimeSpanOutput {
-	return i.ToTimeSpanOutputWithContext(context.Background())
+func (i StorageSourceManifestResponseArgs) ToStorageSourceManifestResponseOutput() StorageSourceManifestResponseOutput {
+	return i.ToStorageSourceManifestResponseOutputWithContext(context.Background())
 }
 
-func (i TimeSpanArgs) ToTimeSpanOutputWithContext(ctx context.Context) TimeSpanOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeSpanOutput)
+func (i StorageSourceManifestResponseArgs) ToStorageSourceManifestResponseOutputWithContext(ctx context.Context) StorageSourceManifestResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceManifestResponseOutput)
 }
 
-func (i TimeSpanArgs) ToTimeSpanPtrOutput() TimeSpanPtrOutput {
-	return i.ToTimeSpanPtrOutputWithContext(context.Background())
+func (i StorageSourceManifestResponseArgs) ToStorageSourceManifestResponsePtrOutput() StorageSourceManifestResponsePtrOutput {
+	return i.ToStorageSourceManifestResponsePtrOutputWithContext(context.Background())
 }
 
-func (i TimeSpanArgs) ToTimeSpanPtrOutputWithContext(ctx context.Context) TimeSpanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeSpanOutput).ToTimeSpanPtrOutputWithContext(ctx)
+func (i StorageSourceManifestResponseArgs) ToStorageSourceManifestResponsePtrOutputWithContext(ctx context.Context) StorageSourceManifestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceManifestResponseOutput).ToStorageSourceManifestResponsePtrOutputWithContext(ctx)
 }
 
-// TimeSpanPtrInput is an input type that accepts TimeSpanArgs, TimeSpanPtr and TimeSpanPtrOutput values.
-// You can construct a concrete instance of `TimeSpanPtrInput` via:
+// StorageSourceManifestResponsePtrInput is an input type that accepts StorageSourceManifestResponseArgs, StorageSourceManifestResponsePtr and StorageSourceManifestResponsePtrOutput values.
+// You can construct a concrete instance of `StorageSourceManifestResponsePtrInput` via:
 //
-//          TimeSpanArgs{...}
+//          StorageSourceManifestResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type TimeSpanPtrInput interface {
+type StorageSourceManifestResponsePtrInput interface {
 	pulumi.Input
 
-	ToTimeSpanPtrOutput() TimeSpanPtrOutput
-	ToTimeSpanPtrOutputWithContext(context.Context) TimeSpanPtrOutput
+	ToStorageSourceManifestResponsePtrOutput() StorageSourceManifestResponsePtrOutput
+	ToStorageSourceManifestResponsePtrOutputWithContext(context.Context) StorageSourceManifestResponsePtrOutput
 }
 
-type timeSpanPtrType TimeSpanArgs
+type storageSourceManifestResponsePtrType StorageSourceManifestResponseArgs
 
-func TimeSpanPtr(v *TimeSpanArgs) TimeSpanPtrInput {
-	return (*timeSpanPtrType)(v)
+func StorageSourceManifestResponsePtr(v *StorageSourceManifestResponseArgs) StorageSourceManifestResponsePtrInput {
+	return (*storageSourceManifestResponsePtrType)(v)
 }
 
-func (*timeSpanPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TimeSpan)(nil)).Elem()
+func (*storageSourceManifestResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageSourceManifestResponse)(nil)).Elem()
 }
 
-func (i *timeSpanPtrType) ToTimeSpanPtrOutput() TimeSpanPtrOutput {
-	return i.ToTimeSpanPtrOutputWithContext(context.Background())
+func (i *storageSourceManifestResponsePtrType) ToStorageSourceManifestResponsePtrOutput() StorageSourceManifestResponsePtrOutput {
+	return i.ToStorageSourceManifestResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *timeSpanPtrType) ToTimeSpanPtrOutputWithContext(ctx context.Context) TimeSpanPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TimeSpanPtrOutput)
+func (i *storageSourceManifestResponsePtrType) ToStorageSourceManifestResponsePtrOutputWithContext(ctx context.Context) StorageSourceManifestResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceManifestResponsePtrOutput)
 }
 
-// Start and end times for a build execution phase.
-type TimeSpanOutput struct{ *pulumi.OutputState }
+// Location of the source manifest in Google Cloud Storage. This feature is in Preview.
+type StorageSourceManifestResponseOutput struct{ *pulumi.OutputState }
 
-func (TimeSpanOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TimeSpan)(nil)).Elem()
+func (StorageSourceManifestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageSourceManifestResponse)(nil)).Elem()
 }
 
-func (o TimeSpanOutput) ToTimeSpanOutput() TimeSpanOutput {
+func (o StorageSourceManifestResponseOutput) ToStorageSourceManifestResponseOutput() StorageSourceManifestResponseOutput {
 	return o
 }
 
-func (o TimeSpanOutput) ToTimeSpanOutputWithContext(ctx context.Context) TimeSpanOutput {
+func (o StorageSourceManifestResponseOutput) ToStorageSourceManifestResponseOutputWithContext(ctx context.Context) StorageSourceManifestResponseOutput {
 	return o
 }
 
-func (o TimeSpanOutput) ToTimeSpanPtrOutput() TimeSpanPtrOutput {
-	return o.ToTimeSpanPtrOutputWithContext(context.Background())
+func (o StorageSourceManifestResponseOutput) ToStorageSourceManifestResponsePtrOutput() StorageSourceManifestResponsePtrOutput {
+	return o.ToStorageSourceManifestResponsePtrOutputWithContext(context.Background())
 }
 
-func (o TimeSpanOutput) ToTimeSpanPtrOutputWithContext(ctx context.Context) TimeSpanPtrOutput {
-	return o.ApplyT(func(v TimeSpan) *TimeSpan {
+func (o StorageSourceManifestResponseOutput) ToStorageSourceManifestResponsePtrOutputWithContext(ctx context.Context) StorageSourceManifestResponsePtrOutput {
+	return o.ApplyT(func(v StorageSourceManifestResponse) *StorageSourceManifestResponse {
 		return &v
-	}).(TimeSpanPtrOutput)
+	}).(StorageSourceManifestResponsePtrOutput)
 }
 
-// End of time span.
-func (o TimeSpanOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TimeSpan) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+func (o StorageSourceManifestResponseOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageSourceManifestResponse) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
-// Start of time span.
-func (o TimeSpanOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TimeSpan) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+func (o StorageSourceManifestResponseOutput) Generation() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageSourceManifestResponse) string { return v.Generation }).(pulumi.StringOutput)
 }
 
-type TimeSpanPtrOutput struct{ *pulumi.OutputState }
-
-func (TimeSpanPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TimeSpan)(nil)).Elem()
+// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+func (o StorageSourceManifestResponseOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageSourceManifestResponse) string { return v.Object }).(pulumi.StringOutput)
 }
 
-func (o TimeSpanPtrOutput) ToTimeSpanPtrOutput() TimeSpanPtrOutput {
+type StorageSourceManifestResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageSourceManifestResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageSourceManifestResponse)(nil)).Elem()
+}
+
+func (o StorageSourceManifestResponsePtrOutput) ToStorageSourceManifestResponsePtrOutput() StorageSourceManifestResponsePtrOutput {
 	return o
 }
 
-func (o TimeSpanPtrOutput) ToTimeSpanPtrOutputWithContext(ctx context.Context) TimeSpanPtrOutput {
+func (o StorageSourceManifestResponsePtrOutput) ToStorageSourceManifestResponsePtrOutputWithContext(ctx context.Context) StorageSourceManifestResponsePtrOutput {
 	return o
 }
 
-func (o TimeSpanPtrOutput) Elem() TimeSpanOutput {
-	return o.ApplyT(func(v *TimeSpan) TimeSpan { return *v }).(TimeSpanOutput)
+func (o StorageSourceManifestResponsePtrOutput) Elem() StorageSourceManifestResponseOutput {
+	return o.ApplyT(func(v *StorageSourceManifestResponse) StorageSourceManifestResponse { return *v }).(StorageSourceManifestResponseOutput)
 }
 
-// End of time span.
-func (o TimeSpanPtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TimeSpan) *string {
+// Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+func (o StorageSourceManifestResponsePtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageSourceManifestResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.EndTime
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+func (o StorageSourceManifestResponsePtrOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageSourceManifestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
+func (o StorageSourceManifestResponsePtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageSourceManifestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location of the source in an archive file in Google Cloud Storage.
+type StorageSourceResponse struct {
+	// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+	Bucket string `pulumi:"bucket"`
+	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+	Generation string `pulumi:"generation"`
+	// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+	Object string `pulumi:"object"`
+}
+
+// StorageSourceResponseInput is an input type that accepts StorageSourceResponseArgs and StorageSourceResponseOutput values.
+// You can construct a concrete instance of `StorageSourceResponseInput` via:
+//
+//          StorageSourceResponseArgs{...}
+type StorageSourceResponseInput interface {
+	pulumi.Input
+
+	ToStorageSourceResponseOutput() StorageSourceResponseOutput
+	ToStorageSourceResponseOutputWithContext(context.Context) StorageSourceResponseOutput
+}
+
+// Location of the source in an archive file in Google Cloud Storage.
+type StorageSourceResponseArgs struct {
+	// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+	Generation pulumi.StringInput `pulumi:"generation"`
+	// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (StorageSourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageSourceResponse)(nil)).Elem()
+}
+
+func (i StorageSourceResponseArgs) ToStorageSourceResponseOutput() StorageSourceResponseOutput {
+	return i.ToStorageSourceResponseOutputWithContext(context.Background())
+}
+
+func (i StorageSourceResponseArgs) ToStorageSourceResponseOutputWithContext(ctx context.Context) StorageSourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceResponseOutput)
+}
+
+func (i StorageSourceResponseArgs) ToStorageSourceResponsePtrOutput() StorageSourceResponsePtrOutput {
+	return i.ToStorageSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i StorageSourceResponseArgs) ToStorageSourceResponsePtrOutputWithContext(ctx context.Context) StorageSourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceResponseOutput).ToStorageSourceResponsePtrOutputWithContext(ctx)
+}
+
+// StorageSourceResponsePtrInput is an input type that accepts StorageSourceResponseArgs, StorageSourceResponsePtr and StorageSourceResponsePtrOutput values.
+// You can construct a concrete instance of `StorageSourceResponsePtrInput` via:
+//
+//          StorageSourceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type StorageSourceResponsePtrInput interface {
+	pulumi.Input
+
+	ToStorageSourceResponsePtrOutput() StorageSourceResponsePtrOutput
+	ToStorageSourceResponsePtrOutputWithContext(context.Context) StorageSourceResponsePtrOutput
+}
+
+type storageSourceResponsePtrType StorageSourceResponseArgs
+
+func StorageSourceResponsePtr(v *StorageSourceResponseArgs) StorageSourceResponsePtrInput {
+	return (*storageSourceResponsePtrType)(v)
+}
+
+func (*storageSourceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageSourceResponse)(nil)).Elem()
+}
+
+func (i *storageSourceResponsePtrType) ToStorageSourceResponsePtrOutput() StorageSourceResponsePtrOutput {
+	return i.ToStorageSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *storageSourceResponsePtrType) ToStorageSourceResponsePtrOutputWithContext(ctx context.Context) StorageSourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageSourceResponsePtrOutput)
+}
+
+// Location of the source in an archive file in Google Cloud Storage.
+type StorageSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageSourceResponse)(nil)).Elem()
+}
+
+func (o StorageSourceResponseOutput) ToStorageSourceResponseOutput() StorageSourceResponseOutput {
+	return o
+}
+
+func (o StorageSourceResponseOutput) ToStorageSourceResponseOutputWithContext(ctx context.Context) StorageSourceResponseOutput {
+	return o
+}
+
+func (o StorageSourceResponseOutput) ToStorageSourceResponsePtrOutput() StorageSourceResponsePtrOutput {
+	return o.ToStorageSourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o StorageSourceResponseOutput) ToStorageSourceResponsePtrOutputWithContext(ctx context.Context) StorageSourceResponsePtrOutput {
+	return o.ApplyT(func(v StorageSourceResponse) *StorageSourceResponse {
+		return &v
+	}).(StorageSourceResponsePtrOutput)
+}
+
+// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+func (o StorageSourceResponseOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageSourceResponse) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+func (o StorageSourceResponseOutput) Generation() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageSourceResponse) string { return v.Generation }).(pulumi.StringOutput)
+}
+
+// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+func (o StorageSourceResponseOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageSourceResponse) string { return v.Object }).(pulumi.StringOutput)
+}
+
+type StorageSourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageSourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageSourceResponse)(nil)).Elem()
+}
+
+func (o StorageSourceResponsePtrOutput) ToStorageSourceResponsePtrOutput() StorageSourceResponsePtrOutput {
+	return o
+}
+
+func (o StorageSourceResponsePtrOutput) ToStorageSourceResponsePtrOutputWithContext(ctx context.Context) StorageSourceResponsePtrOutput {
+	return o
+}
+
+func (o StorageSourceResponsePtrOutput) Elem() StorageSourceResponseOutput {
+	return o.ApplyT(func(v *StorageSourceResponse) StorageSourceResponse { return *v }).(StorageSourceResponseOutput)
+}
+
+// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+func (o StorageSourceResponsePtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+func (o StorageSourceResponsePtrOutput) Generation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Generation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
+func (o StorageSourceResponsePtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start and end times for a build execution phase.
+type TimeSpanResponse struct {
+	// End of time span.
+	EndTime string `pulumi:"endTime"`
+	// Start of time span.
+	StartTime string `pulumi:"startTime"`
+}
+
+// TimeSpanResponseInput is an input type that accepts TimeSpanResponseArgs and TimeSpanResponseOutput values.
+// You can construct a concrete instance of `TimeSpanResponseInput` via:
+//
+//          TimeSpanResponseArgs{...}
+type TimeSpanResponseInput interface {
+	pulumi.Input
+
+	ToTimeSpanResponseOutput() TimeSpanResponseOutput
+	ToTimeSpanResponseOutputWithContext(context.Context) TimeSpanResponseOutput
+}
+
+// Start and end times for a build execution phase.
+type TimeSpanResponseArgs struct {
+	// End of time span.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Start of time span.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (TimeSpanResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSpanResponse)(nil)).Elem()
+}
+
+func (i TimeSpanResponseArgs) ToTimeSpanResponseOutput() TimeSpanResponseOutput {
+	return i.ToTimeSpanResponseOutputWithContext(context.Background())
+}
+
+func (i TimeSpanResponseArgs) ToTimeSpanResponseOutputWithContext(ctx context.Context) TimeSpanResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSpanResponseOutput)
+}
+
+func (i TimeSpanResponseArgs) ToTimeSpanResponsePtrOutput() TimeSpanResponsePtrOutput {
+	return i.ToTimeSpanResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TimeSpanResponseArgs) ToTimeSpanResponsePtrOutputWithContext(ctx context.Context) TimeSpanResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSpanResponseOutput).ToTimeSpanResponsePtrOutputWithContext(ctx)
+}
+
+// TimeSpanResponsePtrInput is an input type that accepts TimeSpanResponseArgs, TimeSpanResponsePtr and TimeSpanResponsePtrOutput values.
+// You can construct a concrete instance of `TimeSpanResponsePtrInput` via:
+//
+//          TimeSpanResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TimeSpanResponsePtrInput interface {
+	pulumi.Input
+
+	ToTimeSpanResponsePtrOutput() TimeSpanResponsePtrOutput
+	ToTimeSpanResponsePtrOutputWithContext(context.Context) TimeSpanResponsePtrOutput
+}
+
+type timeSpanResponsePtrType TimeSpanResponseArgs
+
+func TimeSpanResponsePtr(v *TimeSpanResponseArgs) TimeSpanResponsePtrInput {
+	return (*timeSpanResponsePtrType)(v)
+}
+
+func (*timeSpanResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeSpanResponse)(nil)).Elem()
+}
+
+func (i *timeSpanResponsePtrType) ToTimeSpanResponsePtrOutput() TimeSpanResponsePtrOutput {
+	return i.ToTimeSpanResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *timeSpanResponsePtrType) ToTimeSpanResponsePtrOutputWithContext(ctx context.Context) TimeSpanResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSpanResponsePtrOutput)
+}
+
+// Start and end times for a build execution phase.
+type TimeSpanResponseOutput struct{ *pulumi.OutputState }
+
+func (TimeSpanResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSpanResponse)(nil)).Elem()
+}
+
+func (o TimeSpanResponseOutput) ToTimeSpanResponseOutput() TimeSpanResponseOutput {
+	return o
+}
+
+func (o TimeSpanResponseOutput) ToTimeSpanResponseOutputWithContext(ctx context.Context) TimeSpanResponseOutput {
+	return o
+}
+
+func (o TimeSpanResponseOutput) ToTimeSpanResponsePtrOutput() TimeSpanResponsePtrOutput {
+	return o.ToTimeSpanResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TimeSpanResponseOutput) ToTimeSpanResponsePtrOutputWithContext(ctx context.Context) TimeSpanResponsePtrOutput {
+	return o.ApplyT(func(v TimeSpanResponse) *TimeSpanResponse {
+		return &v
+	}).(TimeSpanResponsePtrOutput)
+}
+
+// End of time span.
+func (o TimeSpanResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeSpanResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Start of time span.
+func (o TimeSpanResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeSpanResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type TimeSpanResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TimeSpanResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeSpanResponse)(nil)).Elem()
+}
+
+func (o TimeSpanResponsePtrOutput) ToTimeSpanResponsePtrOutput() TimeSpanResponsePtrOutput {
+	return o
+}
+
+func (o TimeSpanResponsePtrOutput) ToTimeSpanResponsePtrOutputWithContext(ctx context.Context) TimeSpanResponsePtrOutput {
+	return o
+}
+
+func (o TimeSpanResponsePtrOutput) Elem() TimeSpanResponseOutput {
+	return o.ApplyT(func(v *TimeSpanResponse) TimeSpanResponse { return *v }).(TimeSpanResponseOutput)
+}
+
+// End of time span.
+func (o TimeSpanResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TimeSpanResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndTime
 	}).(pulumi.StringPtrOutput)
 }
 
 // Start of time span.
-func (o TimeSpanPtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TimeSpan) *string {
+func (o TimeSpanResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TimeSpanResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.StartTime
+		return &v.StartTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4112,47 +7093,190 @@ func (o VolumeArrayOutput) Index(i pulumi.IntInput) VolumeOutput {
 	}).(VolumeOutput)
 }
 
+// Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution.
+type VolumeResponse struct {
+	// Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps.
+	Name string `pulumi:"name"`
+	// Path at which to mount the volume. Paths must be absolute and cannot conflict with other volume paths on the same build step or with certain reserved volume paths.
+	Path string `pulumi:"path"`
+}
+
+// VolumeResponseInput is an input type that accepts VolumeResponseArgs and VolumeResponseOutput values.
+// You can construct a concrete instance of `VolumeResponseInput` via:
+//
+//          VolumeResponseArgs{...}
+type VolumeResponseInput interface {
+	pulumi.Input
+
+	ToVolumeResponseOutput() VolumeResponseOutput
+	ToVolumeResponseOutputWithContext(context.Context) VolumeResponseOutput
+}
+
+// Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution.
+type VolumeResponseArgs struct {
+	// Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path at which to mount the volume. Paths must be absolute and cannot conflict with other volume paths on the same build step or with certain reserved volume paths.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (VolumeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeResponse)(nil)).Elem()
+}
+
+func (i VolumeResponseArgs) ToVolumeResponseOutput() VolumeResponseOutput {
+	return i.ToVolumeResponseOutputWithContext(context.Background())
+}
+
+func (i VolumeResponseArgs) ToVolumeResponseOutputWithContext(ctx context.Context) VolumeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeResponseOutput)
+}
+
+// VolumeResponseArrayInput is an input type that accepts VolumeResponseArray and VolumeResponseArrayOutput values.
+// You can construct a concrete instance of `VolumeResponseArrayInput` via:
+//
+//          VolumeResponseArray{ VolumeResponseArgs{...} }
+type VolumeResponseArrayInput interface {
+	pulumi.Input
+
+	ToVolumeResponseArrayOutput() VolumeResponseArrayOutput
+	ToVolumeResponseArrayOutputWithContext(context.Context) VolumeResponseArrayOutput
+}
+
+type VolumeResponseArray []VolumeResponseInput
+
+func (VolumeResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeResponse)(nil)).Elem()
+}
+
+func (i VolumeResponseArray) ToVolumeResponseArrayOutput() VolumeResponseArrayOutput {
+	return i.ToVolumeResponseArrayOutputWithContext(context.Background())
+}
+
+func (i VolumeResponseArray) ToVolumeResponseArrayOutputWithContext(ctx context.Context) VolumeResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeResponseArrayOutput)
+}
+
+// Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution.
+type VolumeResponseOutput struct{ *pulumi.OutputState }
+
+func (VolumeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeResponse)(nil)).Elem()
+}
+
+func (o VolumeResponseOutput) ToVolumeResponseOutput() VolumeResponseOutput {
+	return o
+}
+
+func (o VolumeResponseOutput) ToVolumeResponseOutputWithContext(ctx context.Context) VolumeResponseOutput {
+	return o
+}
+
+// Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps.
+func (o VolumeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path at which to mount the volume. Paths must be absolute and cannot conflict with other volume paths on the same build step or with certain reserved volume paths.
+func (o VolumeResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type VolumeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeResponse)(nil)).Elem()
+}
+
+func (o VolumeResponseArrayOutput) ToVolumeResponseArrayOutput() VolumeResponseArrayOutput {
+	return o
+}
+
+func (o VolumeResponseArrayOutput) ToVolumeResponseArrayOutputWithContext(ctx context.Context) VolumeResponseArrayOutput {
+	return o
+}
+
+func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeResponse {
+		return vs[0].([]VolumeResponse)[vs[1].(int)]
+	}).(VolumeResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ArtifactObjectsOutput{})
 	pulumi.RegisterOutputType(ArtifactObjectsPtrOutput{})
+	pulumi.RegisterOutputType(ArtifactObjectsResponseOutput{})
+	pulumi.RegisterOutputType(ArtifactObjectsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ArtifactsOutput{})
 	pulumi.RegisterOutputType(ArtifactsPtrOutput{})
+	pulumi.RegisterOutputType(ArtifactsResponseOutput{})
+	pulumi.RegisterOutputType(ArtifactsResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildTypeOutput{})
 	pulumi.RegisterOutputType(BuildTypePtrOutput{})
 	pulumi.RegisterOutputType(BuildOptionsOutput{})
 	pulumi.RegisterOutputType(BuildOptionsPtrOutput{})
+	pulumi.RegisterOutputType(BuildOptionsResponseOutput{})
+	pulumi.RegisterOutputType(BuildOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(BuildResponseOutput{})
+	pulumi.RegisterOutputType(BuildResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildStepOutput{})
 	pulumi.RegisterOutputType(BuildStepArrayOutput{})
-	pulumi.RegisterOutputType(BuiltImageOutput{})
-	pulumi.RegisterOutputType(BuiltImageArrayOutput{})
+	pulumi.RegisterOutputType(BuildStepResponseOutput{})
+	pulumi.RegisterOutputType(BuildStepResponseArrayOutput{})
+	pulumi.RegisterOutputType(BuiltImageResponseOutput{})
+	pulumi.RegisterOutputType(BuiltImageResponseArrayOutput{})
 	pulumi.RegisterOutputType(GitHubEventsConfigOutput{})
 	pulumi.RegisterOutputType(GitHubEventsConfigPtrOutput{})
+	pulumi.RegisterOutputType(GitHubEventsConfigResponseOutput{})
+	pulumi.RegisterOutputType(GitHubEventsConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(InlineSecretOutput{})
 	pulumi.RegisterOutputType(InlineSecretArrayOutput{})
+	pulumi.RegisterOutputType(InlineSecretResponseOutput{})
+	pulumi.RegisterOutputType(InlineSecretResponseArrayOutput{})
 	pulumi.RegisterOutputType(PullRequestFilterOutput{})
 	pulumi.RegisterOutputType(PullRequestFilterPtrOutput{})
+	pulumi.RegisterOutputType(PullRequestFilterResponseOutput{})
+	pulumi.RegisterOutputType(PullRequestFilterResponsePtrOutput{})
 	pulumi.RegisterOutputType(PushFilterOutput{})
 	pulumi.RegisterOutputType(PushFilterPtrOutput{})
+	pulumi.RegisterOutputType(PushFilterResponseOutput{})
+	pulumi.RegisterOutputType(PushFilterResponsePtrOutput{})
 	pulumi.RegisterOutputType(RepoSourceOutput{})
 	pulumi.RegisterOutputType(RepoSourcePtrOutput{})
-	pulumi.RegisterOutputType(ResultsOutput{})
-	pulumi.RegisterOutputType(ResultsPtrOutput{})
+	pulumi.RegisterOutputType(RepoSourceResponseOutput{})
+	pulumi.RegisterOutputType(RepoSourceResponsePtrOutput{})
+	pulumi.RegisterOutputType(ResultsResponseOutput{})
+	pulumi.RegisterOutputType(ResultsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SecretOutput{})
 	pulumi.RegisterOutputType(SecretArrayOutput{})
 	pulumi.RegisterOutputType(SecretManagerSecretOutput{})
 	pulumi.RegisterOutputType(SecretManagerSecretArrayOutput{})
+	pulumi.RegisterOutputType(SecretManagerSecretResponseOutput{})
+	pulumi.RegisterOutputType(SecretManagerSecretResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecretResponseOutput{})
+	pulumi.RegisterOutputType(SecretResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecretsOutput{})
 	pulumi.RegisterOutputType(SecretsPtrOutput{})
+	pulumi.RegisterOutputType(SecretsResponseOutput{})
+	pulumi.RegisterOutputType(SecretsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SourceOutput{})
 	pulumi.RegisterOutputType(SourcePtrOutput{})
-	pulumi.RegisterOutputType(SourceProvenanceOutput{})
-	pulumi.RegisterOutputType(SourceProvenancePtrOutput{})
+	pulumi.RegisterOutputType(SourceProvenanceResponseOutput{})
+	pulumi.RegisterOutputType(SourceProvenanceResponsePtrOutput{})
+	pulumi.RegisterOutputType(SourceResponseOutput{})
+	pulumi.RegisterOutputType(SourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(StorageSourceOutput{})
 	pulumi.RegisterOutputType(StorageSourcePtrOutput{})
 	pulumi.RegisterOutputType(StorageSourceManifestOutput{})
 	pulumi.RegisterOutputType(StorageSourceManifestPtrOutput{})
-	pulumi.RegisterOutputType(TimeSpanOutput{})
-	pulumi.RegisterOutputType(TimeSpanPtrOutput{})
+	pulumi.RegisterOutputType(StorageSourceManifestResponseOutput{})
+	pulumi.RegisterOutputType(StorageSourceManifestResponsePtrOutput{})
+	pulumi.RegisterOutputType(StorageSourceResponseOutput{})
+	pulumi.RegisterOutputType(StorageSourceResponsePtrOutput{})
+	pulumi.RegisterOutputType(TimeSpanResponseOutput{})
+	pulumi.RegisterOutputType(TimeSpanResponsePtrOutput{})
 	pulumi.RegisterOutputType(VolumeOutput{})
 	pulumi.RegisterOutputType(VolumeArrayOutput{})
+	pulumi.RegisterOutputType(VolumeResponseOutput{})
+	pulumi.RegisterOutputType(VolumeResponseArrayOutput{})
 }

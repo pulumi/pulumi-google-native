@@ -11,6 +11,7 @@ from .instance_database_iam_policy import *
 from .instance_database_session import *
 from .instance_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

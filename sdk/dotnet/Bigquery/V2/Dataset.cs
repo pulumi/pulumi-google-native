@@ -16,6 +16,94 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
     public partial class Dataset : Pulumi.CustomResource
     {
         /// <summary>
+        /// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+        /// </summary>
+        [Output("access")]
+        public Output<ImmutableArray<ImmutableDictionary<string, string>>> Access { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
+        /// </summary>
+        [Output("creationTime")]
+        public Output<string> CreationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// [Required] A reference that identifies the dataset.
+        /// </summary>
+        [Output("datasetReference")]
+        public Output<Outputs.DatasetReferenceResponse> DatasetReference { get; private set; } = null!;
+
+        [Output("defaultEncryptionConfiguration")]
+        public Output<Outputs.EncryptionConfigurationResponse> DefaultEncryptionConfiguration { get; private set; } = null!;
+
+        /// <summary>
+        /// [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
+        /// </summary>
+        [Output("defaultPartitionExpirationMs")]
+        public Output<string> DefaultPartitionExpirationMs { get; private set; } = null!;
+
+        /// <summary>
+        /// [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
+        /// </summary>
+        [Output("defaultTableExpirationMs")]
+        public Output<string> DefaultTableExpirationMs { get; private set; } = null!;
+
+        /// <summary>
+        /// [Optional] A user-friendly description of the dataset.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] A hash of the resource.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// [Optional] A descriptive name for the dataset.
+        /// </summary>
+        [Output("friendlyName")]
+        public Output<string> FriendlyName { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] The resource type.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        /// </summary>
+        [Output("lastModifiedTime")]
+        public Output<string> LastModifiedTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+        /// </summary>
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPZS")]
+        public Output<bool> SatisfiesPZS { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Dataset resource with the given unique name, arguments, and options.
         /// </summary>
         ///

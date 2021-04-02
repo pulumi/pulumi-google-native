@@ -24,7 +24,6 @@ __all__ = [
     'SqlIpConfigArgs',
     'SslConfigArgs',
     'StaticIpConnectivityArgs',
-    'StatusArgs',
     'VpcPeeringConnectivityArgs',
 ]
 
@@ -167,61 +166,13 @@ class BindingArgs:
 @pulumi.input_type
 class CloudSqlConnectionProfileArgs:
     def __init__(__self__, *,
-                 cloud_sql_id: Optional[pulumi.Input[str]] = None,
-                 private_ip: Optional[pulumi.Input[str]] = None,
-                 public_ip: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input['CloudSqlSettingsArgs']] = None):
         """
         Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
-        :param pulumi.Input[str] cloud_sql_id: Output only. The Cloud SQL instance ID that this connection profile is associated with.
-        :param pulumi.Input[str] private_ip: Output only. The Cloud SQL database instance's private IP.
-        :param pulumi.Input[str] public_ip: Output only. The Cloud SQL database instance's public IP.
         :param pulumi.Input['CloudSqlSettingsArgs'] settings: Immutable. Metadata used to create the destination Cloud SQL database.
         """
-        if cloud_sql_id is not None:
-            pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
-        if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
-        if public_ip is not None:
-            pulumi.set(__self__, "public_ip", public_ip)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
-
-    @property
-    @pulumi.getter(name="cloudSqlId")
-    def cloud_sql_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The Cloud SQL instance ID that this connection profile is associated with.
-        """
-        return pulumi.get(self, "cloud_sql_id")
-
-    @cloud_sql_id.setter
-    def cloud_sql_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "cloud_sql_id", value)
-
-    @property
-    @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The Cloud SQL database instance's private IP.
-        """
-        return pulumi.get(self, "private_ip")
-
-    @private_ip.setter
-    def private_ip(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "private_ip", value)
-
-    @property
-    @pulumi.getter(name="publicIp")
-    def public_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The Cloud SQL database instance's public IP.
-        """
-        return pulumi.get(self, "public_ip")
-
-    @public_ip.setter
-    def public_ip(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "public_ip", value)
 
     @property
     @pulumi.getter
@@ -248,7 +199,6 @@ class CloudSqlSettingsArgs:
                  database_version: Optional[pulumi.Input[str]] = None,
                  ip_config: Optional[pulumi.Input['SqlIpConfigArgs']] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
-                 root_password_set: Optional[pulumi.Input[bool]] = None,
                  source_id: Optional[pulumi.Input[str]] = None,
                  storage_auto_resize_limit: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
@@ -265,7 +215,6 @@ class CloudSqlSettingsArgs:
         :param pulumi.Input[str] database_version: The database engine type and version.
         :param pulumi.Input['SqlIpConfigArgs'] ip_config: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
         :param pulumi.Input[str] root_password: Input only. Initial root password.
-        :param pulumi.Input[bool] root_password_set: Output only. Indicates If this connection profile root password is stored.
         :param pulumi.Input[str] source_id: The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
         :param pulumi.Input[str] storage_auto_resize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param pulumi.Input[str] tier: The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances) or `db-custom-1-3840` (PostgreSQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
@@ -290,8 +239,6 @@ class CloudSqlSettingsArgs:
             pulumi.set(__self__, "ip_config", ip_config)
         if root_password is not None:
             pulumi.set(__self__, "root_password", root_password)
-        if root_password_set is not None:
-            pulumi.set(__self__, "root_password_set", root_password_set)
         if source_id is not None:
             pulumi.set(__self__, "source_id", source_id)
         if storage_auto_resize_limit is not None:
@@ -410,18 +357,6 @@ class CloudSqlSettingsArgs:
     @root_password.setter
     def root_password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "root_password", value)
-
-    @property
-    @pulumi.getter(name="rootPasswordSet")
-    def root_password_set(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Output only. Indicates If this connection profile root password is stored.
-        """
-        return pulumi.get(self, "root_password_set")
-
-    @root_password_set.setter
-    def root_password_set(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "root_password_set", value)
 
     @property
     @pulumi.getter(name="sourceId")
@@ -602,7 +537,6 @@ class MySqlConnectionProfileArgs:
                  cloud_sql_id: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 password_set: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  ssl: Optional[pulumi.Input['SslConfigArgs']] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -611,7 +545,6 @@ class MySqlConnectionProfileArgs:
         :param pulumi.Input[str] cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         :param pulumi.Input[str] host: Required. The IP or hostname of the source MySQL database.
         :param pulumi.Input[str] password: Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-        :param pulumi.Input[bool] password_set: Output only. Indicates If this connection profile password is stored.
         :param pulumi.Input[int] port: Required. The network port of the source MySQL database.
         :param pulumi.Input['SslConfigArgs'] ssl: SSL configuration for the destination to connect to the source database.
         :param pulumi.Input[str] username: Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
@@ -622,8 +555,6 @@ class MySqlConnectionProfileArgs:
             pulumi.set(__self__, "host", host)
         if password is not None:
             pulumi.set(__self__, "password", password)
-        if password_set is not None:
-            pulumi.set(__self__, "password_set", password_set)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if ssl is not None:
@@ -666,18 +597,6 @@ class MySqlConnectionProfileArgs:
     @password.setter
     def password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter(name="passwordSet")
-    def password_set(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Output only. Indicates If this connection profile password is stored.
-        """
-        return pulumi.get(self, "password_set")
-
-    @password_set.setter
-    def password_set(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "password_set", value)
 
     @property
     @pulumi.getter
@@ -794,7 +713,6 @@ class PostgreSqlConnectionProfileArgs:
                  cloud_sql_id: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 password_set: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  ssl: Optional[pulumi.Input['SslConfigArgs']] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -803,7 +721,6 @@ class PostgreSqlConnectionProfileArgs:
         :param pulumi.Input[str] cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         :param pulumi.Input[str] host: Required. The IP or hostname of the source PostgreSQL database.
         :param pulumi.Input[str] password: Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-        :param pulumi.Input[bool] password_set: Output only. Indicates If this connection profile password is stored.
         :param pulumi.Input[int] port: Required. The network port of the source PostgreSQL database.
         :param pulumi.Input['SslConfigArgs'] ssl: SSL configuration for the destination to connect to the source database.
         :param pulumi.Input[str] username: Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
@@ -814,8 +731,6 @@ class PostgreSqlConnectionProfileArgs:
             pulumi.set(__self__, "host", host)
         if password is not None:
             pulumi.set(__self__, "password", password)
-        if password_set is not None:
-            pulumi.set(__self__, "password_set", password_set)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if ssl is not None:
@@ -858,18 +773,6 @@ class PostgreSqlConnectionProfileArgs:
     @password.setter
     def password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter(name="passwordSet")
-    def password_set(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Output only. Indicates If this connection profile password is stored.
-        """
-        return pulumi.get(self, "password_set")
-
-    @password_set.setter
-    def password_set(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "password_set", value)
 
     @property
     @pulumi.getter
@@ -1129,14 +1032,12 @@ class SslConfigArgs:
     def __init__(__self__, *,
                  ca_certificate: Optional[pulumi.Input[str]] = None,
                  client_certificate: Optional[pulumi.Input[str]] = None,
-                 client_key: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 client_key: Optional[pulumi.Input[str]] = None):
         """
         SSL configuration information.
         :param pulumi.Input[str] ca_certificate: Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
         :param pulumi.Input[str] client_certificate: Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory.
         :param pulumi.Input[str] client_key: Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' field is mandatory.
-        :param pulumi.Input[str] type: Output only. The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'.
         """
         if ca_certificate is not None:
             pulumi.set(__self__, "ca_certificate", ca_certificate)
@@ -1144,8 +1045,6 @@ class SslConfigArgs:
             pulumi.set(__self__, "client_certificate", client_certificate)
         if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="caCertificate")
@@ -1183,18 +1082,6 @@ class SslConfigArgs:
     def client_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_key", value)
 
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
 
 @pulumi.input_type
 class StaticIpConnectivityArgs:
@@ -1203,62 +1090,6 @@ class StaticIpConnectivityArgs:
         The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
         """
         pass
-
-
-@pulumi.input_type
-class StatusArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
-                 message: Optional[pulumi.Input[str]] = None):
-        """
-        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-        :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if details is not None:
-            pulumi.set(__self__, "details", details)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[int]]:
-        """
-        The status code, which should be an enum value of google.rpc.Code.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
-        """
-        A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        """
-        return pulumi.get(self, "details")
-
-    @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
-        pulumi.set(self, "details", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
 
 
 @pulumi.input_type

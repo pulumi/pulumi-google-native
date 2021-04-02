@@ -7,7 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
-from ._inputs import *
+from . import outputs
 
 __all__ = ['Device']
 
@@ -16,33 +16,9 @@ class Device(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 android_specific_attributes: Optional[pulumi.Input[pulumi.InputType['GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs']]] = None,
                  asset_tag: Optional[pulumi.Input[str]] = None,
-                 baseband_version: Optional[pulumi.Input[str]] = None,
-                 bootloader_version: Optional[pulumi.Input[str]] = None,
-                 brand: Optional[pulumi.Input[str]] = None,
-                 build_number: Optional[pulumi.Input[str]] = None,
-                 compromised_state: Optional[pulumi.Input[str]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 device_type: Optional[pulumi.Input[str]] = None,
                  devices_id: Optional[pulumi.Input[str]] = None,
-                 enabled_developer_options: Optional[pulumi.Input[bool]] = None,
-                 enabled_usb_debugging: Optional[pulumi.Input[bool]] = None,
-                 encryption_state: Optional[pulumi.Input[str]] = None,
-                 imei: Optional[pulumi.Input[str]] = None,
-                 kernel_version: Optional[pulumi.Input[str]] = None,
                  last_sync_time: Optional[pulumi.Input[str]] = None,
-                 management_state: Optional[pulumi.Input[str]] = None,
-                 manufacturer: Optional[pulumi.Input[str]] = None,
-                 meid: Optional[pulumi.Input[str]] = None,
-                 model: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 network_operator: Optional[pulumi.Input[str]] = None,
-                 os_version: Optional[pulumi.Input[str]] = None,
-                 other_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 owner_type: Optional[pulumi.Input[str]] = None,
-                 release_version: Optional[pulumi.Input[str]] = None,
-                 security_patch_time: Optional[pulumi.Input[str]] = None,
                  serial_number: Optional[pulumi.Input[str]] = None,
                  wifi_mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
@@ -53,32 +29,8 @@ class Device(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs']] android_specific_attributes: Output only. Attributes specific to Android devices.
         :param pulumi.Input[str] asset_tag: Asset tag of the device.
-        :param pulumi.Input[str] baseband_version: Output only. Baseband version of the device.
-        :param pulumi.Input[str] bootloader_version: Output only. Device bootloader version. Example: 0.6.7.
-        :param pulumi.Input[str] brand: Output only. Device brand. Example: Samsung.
-        :param pulumi.Input[str] build_number: Output only. Build number of the device.
-        :param pulumi.Input[str] compromised_state: Output only. Represents whether the Device is compromised.
-        :param pulumi.Input[str] create_time: Output only. When the Company-Owned device was imported. This field is empty for BYOD devices.
-        :param pulumi.Input[str] device_type: Output only. Type of device.
-        :param pulumi.Input[bool] enabled_developer_options: Output only. Whether developer options is enabled on device.
-        :param pulumi.Input[bool] enabled_usb_debugging: Output only. Whether USB debugging is enabled on device.
-        :param pulumi.Input[str] encryption_state: Output only. Device encryption state.
-        :param pulumi.Input[str] imei: Output only. IMEI number of device if GSM device; empty otherwise.
-        :param pulumi.Input[str] kernel_version: Output only. Kernel version of the device.
         :param pulumi.Input[str] last_sync_time: Most recent time when device synced with this service.
-        :param pulumi.Input[str] management_state: Output only. Management state of the device
-        :param pulumi.Input[str] manufacturer: Output only. Device manufacturer. Example: Motorola.
-        :param pulumi.Input[str] meid: Output only. MEID number of device if CDMA device; empty otherwise.
-        :param pulumi.Input[str] model: Output only. Model name of device. Example: Pixel 3.
-        :param pulumi.Input[str] name: Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.
-        :param pulumi.Input[str] network_operator: Output only. Mobile or network operator of device, if available.
-        :param pulumi.Input[str] os_version: Output only. OS version of the device. Example: Android 8.1.0.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] other_accounts: Output only. Domain name for Google accounts on device. Type for other accounts on device. On Android, will only be populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed in to the device policy app if that account's domain has only one account. Examples: "com.example", "xyz.com".
-        :param pulumi.Input[str] owner_type: Output only. Whether the device is owned by the company or an individual
-        :param pulumi.Input[str] release_version: Output only. OS release version. Example: 6.0.
-        :param pulumi.Input[str] security_patch_time: Output only. OS security patch update time on device.
         :param pulumi.Input[str] serial_number: Serial Number of device. Example: HT82V1A01076.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] wifi_mac_addresses: WiFi MAC addresses of device.
         """
@@ -99,37 +51,37 @@ class Device(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['android_specific_attributes'] = android_specific_attributes
             __props__['asset_tag'] = asset_tag
-            __props__['baseband_version'] = baseband_version
-            __props__['bootloader_version'] = bootloader_version
-            __props__['brand'] = brand
-            __props__['build_number'] = build_number
-            __props__['compromised_state'] = compromised_state
-            __props__['create_time'] = create_time
-            __props__['device_type'] = device_type
             if devices_id is None and not opts.urn:
                 raise TypeError("Missing required property 'devices_id'")
             __props__['devices_id'] = devices_id
-            __props__['enabled_developer_options'] = enabled_developer_options
-            __props__['enabled_usb_debugging'] = enabled_usb_debugging
-            __props__['encryption_state'] = encryption_state
-            __props__['imei'] = imei
-            __props__['kernel_version'] = kernel_version
             __props__['last_sync_time'] = last_sync_time
-            __props__['management_state'] = management_state
-            __props__['manufacturer'] = manufacturer
-            __props__['meid'] = meid
-            __props__['model'] = model
-            __props__['name'] = name
-            __props__['network_operator'] = network_operator
-            __props__['os_version'] = os_version
-            __props__['other_accounts'] = other_accounts
-            __props__['owner_type'] = owner_type
-            __props__['release_version'] = release_version
-            __props__['security_patch_time'] = security_patch_time
             __props__['serial_number'] = serial_number
             __props__['wifi_mac_addresses'] = wifi_mac_addresses
+            __props__['android_specific_attributes'] = None
+            __props__['baseband_version'] = None
+            __props__['bootloader_version'] = None
+            __props__['brand'] = None
+            __props__['build_number'] = None
+            __props__['compromised_state'] = None
+            __props__['create_time'] = None
+            __props__['device_type'] = None
+            __props__['enabled_developer_options'] = None
+            __props__['enabled_usb_debugging'] = None
+            __props__['encryption_state'] = None
+            __props__['imei'] = None
+            __props__['kernel_version'] = None
+            __props__['management_state'] = None
+            __props__['manufacturer'] = None
+            __props__['meid'] = None
+            __props__['model'] = None
+            __props__['name'] = None
+            __props__['network_operator'] = None
+            __props__['os_version'] = None
+            __props__['other_accounts'] = None
+            __props__['owner_type'] = None
+            __props__['release_version'] = None
+            __props__['security_patch_time'] = None
         super(Device, __self__).__init__(
             'google-cloud:cloudidentity/v1:Device',
             resource_name,
@@ -152,7 +104,259 @@ class Device(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["android_specific_attributes"] = None
+        __props__["asset_tag"] = None
+        __props__["baseband_version"] = None
+        __props__["bootloader_version"] = None
+        __props__["brand"] = None
+        __props__["build_number"] = None
+        __props__["compromised_state"] = None
+        __props__["create_time"] = None
+        __props__["device_type"] = None
+        __props__["enabled_developer_options"] = None
+        __props__["enabled_usb_debugging"] = None
+        __props__["encryption_state"] = None
+        __props__["imei"] = None
+        __props__["kernel_version"] = None
+        __props__["last_sync_time"] = None
+        __props__["management_state"] = None
+        __props__["manufacturer"] = None
+        __props__["meid"] = None
+        __props__["model"] = None
+        __props__["name"] = None
+        __props__["network_operator"] = None
+        __props__["os_version"] = None
+        __props__["other_accounts"] = None
+        __props__["owner_type"] = None
+        __props__["release_version"] = None
+        __props__["security_patch_time"] = None
+        __props__["serial_number"] = None
+        __props__["wifi_mac_addresses"] = None
         return Device(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="androidSpecificAttributes")
+    def android_specific_attributes(self) -> pulumi.Output['outputs.GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse']:
+        """
+        Attributes specific to Android devices.
+        """
+        return pulumi.get(self, "android_specific_attributes")
+
+    @property
+    @pulumi.getter(name="assetTag")
+    def asset_tag(self) -> pulumi.Output[str]:
+        """
+        Asset tag of the device.
+        """
+        return pulumi.get(self, "asset_tag")
+
+    @property
+    @pulumi.getter(name="basebandVersion")
+    def baseband_version(self) -> pulumi.Output[str]:
+        """
+        Baseband version of the device.
+        """
+        return pulumi.get(self, "baseband_version")
+
+    @property
+    @pulumi.getter(name="bootloaderVersion")
+    def bootloader_version(self) -> pulumi.Output[str]:
+        """
+        Device bootloader version. Example: 0.6.7.
+        """
+        return pulumi.get(self, "bootloader_version")
+
+    @property
+    @pulumi.getter
+    def brand(self) -> pulumi.Output[str]:
+        """
+        Device brand. Example: Samsung.
+        """
+        return pulumi.get(self, "brand")
+
+    @property
+    @pulumi.getter(name="buildNumber")
+    def build_number(self) -> pulumi.Output[str]:
+        """
+        Build number of the device.
+        """
+        return pulumi.get(self, "build_number")
+
+    @property
+    @pulumi.getter(name="compromisedState")
+    def compromised_state(self) -> pulumi.Output[str]:
+        """
+        Represents whether the Device is compromised.
+        """
+        return pulumi.get(self, "compromised_state")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        When the Company-Owned device was imported. This field is empty for BYOD devices.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deviceType")
+    def device_type(self) -> pulumi.Output[str]:
+        """
+        Type of device.
+        """
+        return pulumi.get(self, "device_type")
+
+    @property
+    @pulumi.getter(name="enabledDeveloperOptions")
+    def enabled_developer_options(self) -> pulumi.Output[bool]:
+        """
+        Whether developer options is enabled on device.
+        """
+        return pulumi.get(self, "enabled_developer_options")
+
+    @property
+    @pulumi.getter(name="enabledUsbDebugging")
+    def enabled_usb_debugging(self) -> pulumi.Output[bool]:
+        """
+        Whether USB debugging is enabled on device.
+        """
+        return pulumi.get(self, "enabled_usb_debugging")
+
+    @property
+    @pulumi.getter(name="encryptionState")
+    def encryption_state(self) -> pulumi.Output[str]:
+        """
+        Device encryption state.
+        """
+        return pulumi.get(self, "encryption_state")
+
+    @property
+    @pulumi.getter
+    def imei(self) -> pulumi.Output[str]:
+        """
+        IMEI number of device if GSM device; empty otherwise.
+        """
+        return pulumi.get(self, "imei")
+
+    @property
+    @pulumi.getter(name="kernelVersion")
+    def kernel_version(self) -> pulumi.Output[str]:
+        """
+        Kernel version of the device.
+        """
+        return pulumi.get(self, "kernel_version")
+
+    @property
+    @pulumi.getter(name="lastSyncTime")
+    def last_sync_time(self) -> pulumi.Output[str]:
+        """
+        Most recent time when device synced with this service.
+        """
+        return pulumi.get(self, "last_sync_time")
+
+    @property
+    @pulumi.getter(name="managementState")
+    def management_state(self) -> pulumi.Output[str]:
+        """
+        Management state of the device
+        """
+        return pulumi.get(self, "management_state")
+
+    @property
+    @pulumi.getter
+    def manufacturer(self) -> pulumi.Output[str]:
+        """
+        Device manufacturer. Example: Motorola.
+        """
+        return pulumi.get(self, "manufacturer")
+
+    @property
+    @pulumi.getter
+    def meid(self) -> pulumi.Output[str]:
+        """
+        MEID number of device if CDMA device; empty otherwise.
+        """
+        return pulumi.get(self, "meid")
+
+    @property
+    @pulumi.getter
+    def model(self) -> pulumi.Output[str]:
+        """
+        Model name of device. Example: Pixel 3.
+        """
+        return pulumi.get(self, "model")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkOperator")
+    def network_operator(self) -> pulumi.Output[str]:
+        """
+        Mobile or network operator of device, if available.
+        """
+        return pulumi.get(self, "network_operator")
+
+    @property
+    @pulumi.getter(name="osVersion")
+    def os_version(self) -> pulumi.Output[str]:
+        """
+        OS version of the device. Example: Android 8.1.0.
+        """
+        return pulumi.get(self, "os_version")
+
+    @property
+    @pulumi.getter(name="otherAccounts")
+    def other_accounts(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Domain name for Google accounts on device. Type for other accounts on device. On Android, will only be populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed in to the device policy app if that account's domain has only one account. Examples: "com.example", "xyz.com".
+        """
+        return pulumi.get(self, "other_accounts")
+
+    @property
+    @pulumi.getter(name="ownerType")
+    def owner_type(self) -> pulumi.Output[str]:
+        """
+        Whether the device is owned by the company or an individual
+        """
+        return pulumi.get(self, "owner_type")
+
+    @property
+    @pulumi.getter(name="releaseVersion")
+    def release_version(self) -> pulumi.Output[str]:
+        """
+        OS release version. Example: 6.0.
+        """
+        return pulumi.get(self, "release_version")
+
+    @property
+    @pulumi.getter(name="securityPatchTime")
+    def security_patch_time(self) -> pulumi.Output[str]:
+        """
+        OS security patch update time on device.
+        """
+        return pulumi.get(self, "security_patch_time")
+
+    @property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> pulumi.Output[str]:
+        """
+        Serial Number of device. Example: HT82V1A01076.
+        """
+        return pulumi.get(self, "serial_number")
+
+    @property
+    @pulumi.getter(name="wifiMacAddresses")
+    def wifi_mac_addresses(self) -> pulumi.Output[Sequence[str]]:
+        """
+        WiFi MAC addresses of device.
+        """
+        return pulumi.get(self, "wifi_mac_addresses")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

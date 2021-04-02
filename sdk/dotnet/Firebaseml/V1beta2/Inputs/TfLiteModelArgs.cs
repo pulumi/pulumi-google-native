@@ -27,12 +27,6 @@ namespace Pulumi.GoogleCloud.Firebaseml.V1beta2.Inputs
         [Input("gcsTfliteUri")]
         public Input<string>? GcsTfliteUri { get; set; }
 
-        /// <summary>
-        /// Output only. The size of the TFLite model
-        /// </summary>
-        [Input("sizeBytes")]
-        public Input<string>? SizeBytes { get; set; }
-
         public TfLiteModelArgs()
         {
         }

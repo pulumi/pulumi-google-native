@@ -35,6 +35,62 @@ export class OrganizationDeveloper extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationDeveloper.__pulumiType;
     }
 
+    /**
+     * Access type.
+     */
+    public readonly accessType!: pulumi.Output<string>;
+    /**
+     * Developer app family.
+     */
+    public readonly appFamily!: pulumi.Output<string>;
+    /**
+     * List of apps associated with the developer.
+     */
+    public readonly apps!: pulumi.Output<string[]>;
+    /**
+     * Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
+     */
+    public readonly attributes!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1AttributeResponse[]>;
+    /**
+     * List of companies associated with the developer.
+     */
+    public readonly companies!: pulumi.Output<string[]>;
+    /**
+     * Time at which the developer was created in milliseconds since epoch.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
+     */
+    public readonly developerId!: pulumi.Output<string>;
+    /**
+     * Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
+     */
+    public readonly email!: pulumi.Output<string>;
+    /**
+     * Required. First name of the developer.
+     */
+    public readonly firstName!: pulumi.Output<string>;
+    /**
+     * Time at which the developer was last modified in milliseconds since epoch.
+     */
+    public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
+    /**
+     * Required. Last name of the developer.
+     */
+    public readonly lastName!: pulumi.Output<string>;
+    /**
+     * Name of the Apigee organization in which the developer resides.
+     */
+    public /*out*/ readonly organizationName!: pulumi.Output<string>;
+    /**
+     * Status of the developer. Valid values are `active` and `inactive`.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * Required. User name of the developer. Not used by Apigee hybrid.
+     */
+    public readonly userName!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationDeveloper resource with the given unique name, arguments, and options.
@@ -58,18 +114,32 @@ export class OrganizationDeveloper extends pulumi.CustomResource {
             inputs["apps"] = args ? args.apps : undefined;
             inputs["attributes"] = args ? args.attributes : undefined;
             inputs["companies"] = args ? args.companies : undefined;
-            inputs["createdAt"] = args ? args.createdAt : undefined;
             inputs["developerId"] = args ? args.developerId : undefined;
             inputs["developersId"] = args ? args.developersId : undefined;
             inputs["email"] = args ? args.email : undefined;
             inputs["firstName"] = args ? args.firstName : undefined;
-            inputs["lastModifiedAt"] = args ? args.lastModifiedAt : undefined;
             inputs["lastName"] = args ? args.lastName : undefined;
-            inputs["organizationName"] = args ? args.organizationName : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
-            inputs["status"] = args ? args.status : undefined;
             inputs["userName"] = args ? args.userName : undefined;
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["lastModifiedAt"] = undefined /*out*/;
+            inputs["organizationName"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         } else {
+            inputs["accessType"] = undefined /*out*/;
+            inputs["appFamily"] = undefined /*out*/;
+            inputs["apps"] = undefined /*out*/;
+            inputs["attributes"] = undefined /*out*/;
+            inputs["companies"] = undefined /*out*/;
+            inputs["createdAt"] = undefined /*out*/;
+            inputs["developerId"] = undefined /*out*/;
+            inputs["email"] = undefined /*out*/;
+            inputs["firstName"] = undefined /*out*/;
+            inputs["lastModifiedAt"] = undefined /*out*/;
+            inputs["lastName"] = undefined /*out*/;
+            inputs["organizationName"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["userName"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -103,10 +173,6 @@ export interface OrganizationDeveloperArgs {
      */
     readonly companies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Output only. Time at which the developer was created in milliseconds since epoch.
-     */
-    readonly createdAt?: pulumi.Input<string>;
-    /**
      * ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
      */
     readonly developerId?: pulumi.Input<string>;
@@ -120,22 +186,10 @@ export interface OrganizationDeveloperArgs {
      */
     readonly firstName?: pulumi.Input<string>;
     /**
-     * Output only. Time at which the developer was last modified in milliseconds since epoch.
-     */
-    readonly lastModifiedAt?: pulumi.Input<string>;
-    /**
      * Required. Last name of the developer.
      */
     readonly lastName?: pulumi.Input<string>;
-    /**
-     * Output only. Name of the Apigee organization in which the developer resides.
-     */
-    readonly organizationName?: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
-    /**
-     * Output only. Status of the developer. Valid values are `active` and `inactive`.
-     */
-    readonly status?: pulumi.Input<string>;
     /**
      * Required. User name of the developer. Not used by Apigee hybrid.
      */

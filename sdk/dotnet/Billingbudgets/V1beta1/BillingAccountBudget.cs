@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Billingbudgets.V1beta1
     public partial class BillingAccountBudget : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
+        /// </summary>
+        [Output("allUpdatesRule")]
+        public Output<Outputs.GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse> AllUpdatesRule { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Budgeted amount.
+        /// </summary>
+        [Output("amount")]
+        public Output<Outputs.GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse> Amount { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Filters that define which resources are used to compute the actual spend against the budget.
+        /// </summary>
+        [Output("budgetFilter")]
+        public Output<Outputs.GoogleCloudBillingBudgetsV1beta1FilterResponse> BudgetFilter { get; private set; } = null!;
+
+        /// <summary>
+        /// User data for display name in UI. Validation: &lt;= 60 chars.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+        /// </summary>
+        [Output("thresholdRules")]
+        public Output<ImmutableArray<Outputs.GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse>> ThresholdRules { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a BillingAccountBudget resource with the given unique name, arguments, and options.
         /// </summary>
         ///

@@ -16,6 +16,7 @@ from .taxonomy_iam_policy import *
 from .taxonomy_policy_tag import *
 from .taxonomy_policy_tag_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

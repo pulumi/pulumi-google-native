@@ -35,6 +35,19 @@ export class ResponsePolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === ResponsePolicy.__pulumiType;
     }
 
+    /**
+     * User-provided description for this Response Policy.
+     */
+    public readonly description!: pulumi.Output<string>;
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * List of network names specifying networks to which this policy is applied.
+     */
+    public readonly networks!: pulumi.Output<outputs.dns.v1beta2.ResponsePolicyNetworkResponse[]>;
+    /**
+     * User assigned name for this Response Policy.
+     */
+    public readonly responsePolicyName!: pulumi.Output<string>;
 
     /**
      * Create a ResponsePolicy resource with the given unique name, arguments, and options.
@@ -61,6 +74,10 @@ export class ResponsePolicy extends pulumi.CustomResource {
             inputs["responsePolicy"] = args ? args.responsePolicy : undefined;
             inputs["responsePolicyName"] = args ? args.responsePolicyName : undefined;
         } else {
+            inputs["description"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["networks"] = undefined /*out*/;
+            inputs["responsePolicyName"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

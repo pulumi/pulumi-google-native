@@ -8,6 +8,7 @@ from .config_iam_policy import *
 from .config_variable import *
 from .config_waiter import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['InstanceTemplate']
@@ -104,7 +105,90 @@ class InstanceTemplate(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["creation_timestamp"] = None
+        __props__["description"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["properties"] = None
+        __props__["self_link"] = None
+        __props__["self_link_with_id"] = None
+        __props__["source_instance"] = None
+        __props__["source_instance_params"] = None
         return InstanceTemplate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The creation timestamp for this instance template in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> pulumi.Output['outputs.InstancePropertiesResponse']:
+        """
+        The instance properties for this instance template.
+        """
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The URL for this instance template. The server defines this URL.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for this resource with the resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="sourceInstance")
+    def source_instance(self) -> pulumi.Output[str]:
+        """
+        The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
+        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
+        - projects/project/zones/zone/instances/instance
+        """
+        return pulumi.get(self, "source_instance")
+
+    @property
+    @pulumi.getter(name="sourceInstanceParams")
+    def source_instance_params(self) -> pulumi.Output['outputs.SourceInstanceParamsResponse']:
+        """
+        The source instance params to use to create this instance template.
+        """
+        return pulumi.get(self, "source_instance_params")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -16,12 +16,6 @@ namespace Pulumi.GoogleCloud.Healthcare.V1.Inputs
     public sealed class MessageArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The datetime when the message was created. Set by the server.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Raw message bytes.
         /// </summary>
         [Input("data")]
@@ -50,12 +44,6 @@ namespace Pulumi.GoogleCloud.Healthcare.V1.Inputs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Output only. The parsed version of the raw message data.
-        /// </summary>
-        [Input("parsedData")]
-        public Input<Inputs.ParsedDataArgs>? ParsedData { get; set; }
 
         [Input("patientIds")]
         private InputList<Inputs.PatientIdArgs>? _patientIds;

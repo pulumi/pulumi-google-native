@@ -14,6 +14,17 @@ import (
 // Create a Service Perimeter. The longrunning operation from this RPC will have a successful status once the Service Perimeter has propagated to long-lasting storage. Service Perimeters containing errors will result in an error response for the first error encountered.
 type AccessPolicyServicePerimeter struct {
 	pulumi.CustomResourceState
+
+	// Description of the `ServicePerimeter` and its use. Does not affect behavior.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
+	PerimeterType pulumi.StringOutput `pulumi:"perimeterType"`
+	// Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
+	Status ServicePerimeterConfigResponseOutput `pulumi:"status"`
+	// Human readable title. Must be unique within the Policy.
+	Title pulumi.StringOutput `pulumi:"title"`
 }
 
 // NewAccessPolicyServicePerimeter registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +62,29 @@ func GetAccessPolicyServicePerimeter(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPolicyServicePerimeter resources.
 type accessPolicyServicePerimeterState struct {
+	// Description of the `ServicePerimeter` and its use. Does not affect behavior.
+	Description *string `pulumi:"description"`
+	// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+	Name *string `pulumi:"name"`
+	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
+	PerimeterType *string `pulumi:"perimeterType"`
+	// Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
+	Status *ServicePerimeterConfigResponse `pulumi:"status"`
+	// Human readable title. Must be unique within the Policy.
+	Title *string `pulumi:"title"`
 }
 
 type AccessPolicyServicePerimeterState struct {
+	// Description of the `ServicePerimeter` and its use. Does not affect behavior.
+	Description pulumi.StringPtrInput
+	// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+	Name pulumi.StringPtrInput
+	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
+	PerimeterType pulumi.StringPtrInput
+	// Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
+	Status ServicePerimeterConfigResponsePtrInput
+	// Human readable title. Must be unique within the Policy.
+	Title pulumi.StringPtrInput
 }
 
 func (AccessPolicyServicePerimeterState) ElementType() reflect.Type {

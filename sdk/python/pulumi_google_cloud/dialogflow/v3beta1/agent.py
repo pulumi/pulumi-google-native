@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Agent']
@@ -109,7 +110,106 @@ class Agent(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["avatar_uri"] = None
+        __props__["default_language_code"] = None
+        __props__["description"] = None
+        __props__["display_name"] = None
+        __props__["enable_spell_correction"] = None
+        __props__["enable_stackdriver_logging"] = None
+        __props__["name"] = None
+        __props__["security_settings"] = None
+        __props__["speech_to_text_settings"] = None
+        __props__["start_flow"] = None
+        __props__["time_zone"] = None
         return Agent(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="avatarUri")
+    def avatar_uri(self) -> pulumi.Output[str]:
+        """
+        The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
+        """
+        return pulumi.get(self, "avatar_uri")
+
+    @property
+    @pulumi.getter(name="defaultLanguageCode")
+    def default_language_code(self) -> pulumi.Output[str]:
+        """
+        Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+        """
+        return pulumi.get(self, "default_language_code")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. The human-readable name of the agent, unique within the location.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="enableSpellCorrection")
+    def enable_spell_correction(self) -> pulumi.Output[bool]:
+        """
+        Indicates if automatic spell correction is enabled in detect intent requests.
+        """
+        return pulumi.get(self, "enable_spell_correction")
+
+    @property
+    @pulumi.getter(name="enableStackdriverLogging")
+    def enable_stackdriver_logging(self) -> pulumi.Output[bool]:
+        """
+        Indicates if stackdriver logging is enabled for the agent.
+        """
+        return pulumi.get(self, "enable_stackdriver_logging")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="securitySettings")
+    def security_settings(self) -> pulumi.Output[str]:
+        """
+        Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+        """
+        return pulumi.get(self, "security_settings")
+
+    @property
+    @pulumi.getter(name="speechToTextSettings")
+    def speech_to_text_settings(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse']:
+        """
+        Speech recognition related settings.
+        """
+        return pulumi.get(self, "speech_to_text_settings")
+
+    @property
+    @pulumi.getter(name="startFlow")
+    def start_flow(self) -> pulumi.Output[str]:
+        """
+        Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
+        """
+        return pulumi.get(self, "start_flow")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Output[str]:
+        """
+        Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+        """
+        return pulumi.get(self, "time_zone")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

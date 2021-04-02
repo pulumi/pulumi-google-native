@@ -35,6 +35,30 @@ export class HistoryExecutionStepPerfSampleSeries extends pulumi.CustomResource 
         return obj['__pulumiType'] === HistoryExecutionStepPerfSampleSeries.__pulumiType;
     }
 
+    /**
+     * Basic series represented by a line chart
+     */
+    public readonly basicPerfSampleSeries!: pulumi.Output<outputs.toolresults.v1beta3.BasicPerfSampleSeriesResponse>;
+    /**
+     * A tool results execution ID. @OutputOnly
+     */
+    public readonly executionId!: pulumi.Output<string>;
+    /**
+     * A tool results history ID. @OutputOnly
+     */
+    public readonly historyId!: pulumi.Output<string>;
+    /**
+     * The cloud project @OutputOnly
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
+     * A sample series id @OutputOnly
+     */
+    public readonly sampleSeriesId!: pulumi.Output<string>;
+    /**
+     * A tool results step ID. @OutputOnly
+     */
+    public readonly stepId!: pulumi.Output<string>;
 
     /**
      * Create a HistoryExecutionStepPerfSampleSeries resource with the given unique name, arguments, and options.
@@ -69,6 +93,12 @@ export class HistoryExecutionStepPerfSampleSeries extends pulumi.CustomResource 
             inputs["sampleSeriesId"] = args ? args.sampleSeriesId : undefined;
             inputs["stepId"] = args ? args.stepId : undefined;
         } else {
+            inputs["basicPerfSampleSeries"] = undefined /*out*/;
+            inputs["executionId"] = undefined /*out*/;
+            inputs["historyId"] = undefined /*out*/;
+            inputs["projectId"] = undefined /*out*/;
+            inputs["sampleSeriesId"] = undefined /*out*/;
+            inputs["stepId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

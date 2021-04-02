@@ -16,6 +16,58 @@ namespace Pulumi.GoogleCloud.Compute.Beta
     public partial class License : Pulumi.CustomResource
     {
         /// <summary>
+        /// [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
+        /// </summary>
+        [Output("chargesUseFee")]
+        public Output<bool> ChargesUseFee { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional textual description of the resource; provided by the client when the resource is created.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Type of resource. Always compute#license for licenses.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The unique code used to attach this license to images, snapshots, and disks.
+        /// </summary>
+        [Output("licenseCode")]
+        public Output<string> LicenseCode { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        [Output("resourceRequirements")]
+        public Output<Outputs.LicenseResourceRequirementsResponse> ResourceRequirements { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Server-defined URL for the resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
+        /// </summary>
+        [Output("transferable")]
+        public Output<bool> Transferable { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a License resource with the given unique name, arguments, and options.
         /// </summary>
         ///

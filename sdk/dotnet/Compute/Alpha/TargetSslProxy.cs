@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
     public partial class TargetSslProxy : Pulumi.CustomResource
     {
         /// <summary>
+        /// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+        /// </summary>
+        [Output("certificateMap")]
+        public Output<string> CertificateMap { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Type of the resource. Always compute#targetSslProxy for target SSL proxies.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+        /// </summary>
+        [Output("proxyHeader")]
+        public Output<string> ProxyHeader { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Server-defined URL for the resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// URL to the BackendService resource.
+        /// </summary>
+        [Output("service")]
+        public Output<string> Service { get; private set; } = null!;
+
+        /// <summary>
+        /// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+        /// </summary>
+        [Output("sslCertificates")]
+        public Output<ImmutableArray<string>> SslCertificates { get; private set; } = null!;
+
+        /// <summary>
+        /// URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
+        /// </summary>
+        [Output("sslPolicy")]
+        public Output<string> SslPolicy { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a TargetSslProxy resource with the given unique name, arguments, and options.
         /// </summary>
         ///

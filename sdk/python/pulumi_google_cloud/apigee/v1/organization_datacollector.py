@@ -15,10 +15,8 @@ class OrganizationDatacollector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 created_at: Optional[pulumi.Input[str]] = None,
                  datacollectors_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 last_modified_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -30,9 +28,7 @@ class OrganizationDatacollector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] created_at: Output only. The time at which the data collector was created in milliseconds since the epoch.
         :param pulumi.Input[str] description: A description of the data collector.
-        :param pulumi.Input[str] last_modified_at: Output only. The time at which the Data Collector was last updated in milliseconds since the epoch.
         :param pulumi.Input[str] name: ID of the data collector. Must begin with `dc_`.
         :param pulumi.Input[str] type: Immutable. The type of data this data collector will collect.
         """
@@ -53,17 +49,17 @@ class OrganizationDatacollector(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['created_at'] = created_at
             if datacollectors_id is None and not opts.urn:
                 raise TypeError("Missing required property 'datacollectors_id'")
             __props__['datacollectors_id'] = datacollectors_id
             __props__['description'] = description
-            __props__['last_modified_at'] = last_modified_at
             __props__['name'] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
             __props__['type'] = type
+            __props__['created_at'] = None
+            __props__['last_modified_at'] = None
         super(OrganizationDatacollector, __self__).__init__(
             'google-cloud:apigee/v1:OrganizationDatacollector',
             resource_name,
@@ -86,7 +82,52 @@ class OrganizationDatacollector(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["created_at"] = None
+        __props__["description"] = None
+        __props__["last_modified_at"] = None
+        __props__["name"] = None
+        __props__["type"] = None
         return OrganizationDatacollector(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        """
+        The time at which the data collector was created in milliseconds since the epoch.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        A description of the data collector.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="lastModifiedAt")
+    def last_modified_at(self) -> pulumi.Output[str]:
+        """
+        The time at which the Data Collector was last updated in milliseconds since the epoch.
+        """
+        return pulumi.get(self, "last_modified_at")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        ID of the data collector. Must begin with `dc_`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        Immutable. The type of data this data collector will collect.
+        """
+        return pulumi.get(self, "type")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

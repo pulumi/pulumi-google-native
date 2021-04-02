@@ -35,6 +35,35 @@ export class CompositeType extends pulumi.CustomResource {
         return obj['__pulumiType'] === CompositeType.__pulumiType;
     }
 
+    /**
+     * An optional textual description of the resource; provided by the client when the resource is created.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    public readonly insertTime!: pulumi.Output<string>;
+    /**
+     * Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+     */
+    public readonly labels!: pulumi.Output<outputs.deploymentmanager.v2beta.CompositeTypeLabelEntryResponse[]>;
+    /**
+     * Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The Operation that most recently ran, or is currently running, on this composite type.
+     */
+    public readonly operation!: pulumi.Output<outputs.deploymentmanager.v2beta.OperationResponse>;
+    /**
+     * Server defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string>;
+    /**
+     * Files for the template type.
+     */
+    public readonly templateContents!: pulumi.Output<outputs.deploymentmanager.v2beta.TemplateContentsResponse>;
 
     /**
      * Create a CompositeType resource with the given unique name, arguments, and options.
@@ -65,6 +94,14 @@ export class CompositeType extends pulumi.CustomResource {
             inputs["status"] = args ? args.status : undefined;
             inputs["templateContents"] = args ? args.templateContents : undefined;
         } else {
+            inputs["description"] = undefined /*out*/;
+            inputs["insertTime"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["operation"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["templateContents"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -84,7 +121,7 @@ export interface CompositeTypeArgs {
     readonly description?: pulumi.Input<string>;
     readonly id?: pulumi.Input<string>;
     /**
-     * Output only. Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly insertTime?: pulumi.Input<string>;
     /**
@@ -96,12 +133,12 @@ export interface CompositeTypeArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Output only. The Operation that most recently ran, or is currently running, on this composite type.
+     * The Operation that most recently ran, or is currently running, on this composite type.
      */
     readonly operation?: pulumi.Input<inputs.deploymentmanager.v2beta.Operation>;
     readonly project: pulumi.Input<string>;
     /**
-     * Output only. Server defined URL for the resource.
+     * Server defined URL for the resource.
      */
     readonly selfLink?: pulumi.Input<string>;
     readonly status?: pulumi.Input<string>;

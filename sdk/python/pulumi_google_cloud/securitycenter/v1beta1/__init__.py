@@ -7,6 +7,7 @@ from .organization_source import *
 from .organization_source_finding import *
 from .organization_source_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

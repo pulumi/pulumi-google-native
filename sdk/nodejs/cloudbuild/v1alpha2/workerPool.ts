@@ -35,6 +35,38 @@ export class WorkerPool extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkerPool.__pulumiType;
     }
 
+    /**
+     * Time at which the request to create the `WorkerPool` was received.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Time at which the request to delete the `WorkerPool` was received.
+     */
+    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    /**
+     * The resource name of the `WorkerPool`. Format of the name is `projects/{project_id}/workerPools/{worker_pool_id}`, where the value of {worker_pool_id} is provided in the CreateWorkerPool request.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Network configuration for the `WorkerPool`.
+     */
+    public readonly networkConfig!: pulumi.Output<outputs.cloudbuild.v1alpha2.NetworkConfigResponse>;
+    /**
+     * Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+     */
+    public readonly region!: pulumi.Output<string>;
+    /**
+     * WorkerPool state.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Time at which the request to update the `WorkerPool` was received.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Worker configuration for the `WorkerPool`.
+     */
+    public readonly workerConfig!: pulumi.Output<outputs.cloudbuild.v1alpha2.WorkerConfigResponse>;
 
     /**
      * Create a WorkerPool resource with the given unique name, arguments, and options.
@@ -53,17 +85,25 @@ export class WorkerPool extends pulumi.CustomResource {
             if ((!args || args.workerPoolsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerPoolsId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["deleteTime"] = args ? args.deleteTime : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["networkConfig"] = args ? args.networkConfig : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["region"] = args ? args.region : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["workerConfig"] = args ? args.workerConfig : undefined;
             inputs["workerPoolsId"] = args ? args.workerPoolsId : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deleteTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deleteTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["networkConfig"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
+            inputs["workerConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -77,18 +117,6 @@ export class WorkerPool extends pulumi.CustomResource {
  */
 export interface WorkerPoolArgs {
     /**
-     * Output only. Time at which the request to create the `WorkerPool` was received.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
-     * Output only. Time at which the request to delete the `WorkerPool` was received.
-     */
-    readonly deleteTime?: pulumi.Input<string>;
-    /**
-     * Output only. The resource name of the `WorkerPool`. Format of the name is `projects/{project_id}/workerPools/{worker_pool_id}`, where the value of {worker_pool_id} is provided in the CreateWorkerPool request.
-     */
-    readonly name?: pulumi.Input<string>;
-    /**
      * Network configuration for the `WorkerPool`.
      */
     readonly networkConfig?: pulumi.Input<inputs.cloudbuild.v1alpha2.NetworkConfig>;
@@ -97,14 +125,6 @@ export interface WorkerPoolArgs {
      * Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
      */
     readonly region?: pulumi.Input<string>;
-    /**
-     * Output only. WorkerPool state.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. Time at which the request to update the `WorkerPool` was received.
-     */
-    readonly updateTime?: pulumi.Input<string>;
     /**
      * Worker configuration for the `WorkerPool`.
      */

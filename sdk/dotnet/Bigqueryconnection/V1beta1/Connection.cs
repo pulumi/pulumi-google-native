@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Bigqueryconnection.V1beta1
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>
+        /// Cloud SQL properties.
+        /// </summary>
+        [Output("cloudSql")]
+        public Output<Outputs.CloudSqlPropertiesResponse> CloudSql { get; private set; } = null!;
+
+        /// <summary>
+        /// The creation timestamp of the connection.
+        /// </summary>
+        [Output("creationTime")]
+        public Output<string> CreationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// User provided description.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// User provided display name for the connection.
+        /// </summary>
+        [Output("friendlyName")]
+        public Output<string> FriendlyName { get; private set; } = null!;
+
+        /// <summary>
+        /// True, if credential is configured for this connection.
+        /// </summary>
+        [Output("hasCredential")]
+        public Output<bool> HasCredential { get; private set; } = null!;
+
+        /// <summary>
+        /// The last update timestamp of the connection.
+        /// </summary>
+        [Output("lastModifiedTime")]
+        public Output<string> LastModifiedTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Connection resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -69,12 +112,6 @@ namespace Pulumi.GoogleCloud.Bigqueryconnection.V1beta1
         public Input<string> ConnectionsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The creation timestamp of the connection.
-        /// </summary>
-        [Input("creationTime")]
-        public Input<string>? CreationTime { get; set; }
-
-        /// <summary>
         /// User provided description.
         /// </summary>
         [Input("description")]
@@ -85,18 +122,6 @@ namespace Pulumi.GoogleCloud.Bigqueryconnection.V1beta1
         /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
-
-        /// <summary>
-        /// Output only. True, if credential is configured for this connection.
-        /// </summary>
-        [Input("hasCredential")]
-        public Input<bool>? HasCredential { get; set; }
-
-        /// <summary>
-        /// Output only. The last update timestamp of the connection.
-        /// </summary>
-        [Input("lastModifiedTime")]
-        public Input<string>? LastModifiedTime { get; set; }
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;

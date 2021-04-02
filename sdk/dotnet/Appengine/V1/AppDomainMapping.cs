@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Appengine.V1
     public partial class AppDomainMapping : Pulumi.CustomResource
     {
         /// <summary>
+        /// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+        /// </summary>
+        [Output("resourceRecords")]
+        public Output<ImmutableArray<Outputs.ResourceRecordResponse>> ResourceRecords { get; private set; } = null!;
+
+        /// <summary>
+        /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+        /// </summary>
+        [Output("sslSettings")]
+        public Output<Outputs.SslSettingsResponse> SslSettings { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AppDomainMapping resource with the given unique name, arguments, and options.
         /// </summary>
         ///

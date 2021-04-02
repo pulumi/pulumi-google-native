@@ -16,6 +16,61 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>
+        /// The time when the `Group` was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The display name of the `Group`.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Dynamic group metadata like queries and status.
+        /// </summary>
+        [Output("dynamicGroupMetadata")]
+        public Output<Outputs.DynamicGroupMetadataResponse> DynamicGroupMetadata { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. The `EntityKey` of the `Group`.
+        /// </summary>
+        [Output("groupKey")]
+        public Output<Outputs.EntityKeyResponse> GroupKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
+        /// </summary>
+        [Output("parent")]
+        public Output<string> Parent { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the `Group` was last updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Group resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +115,6 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1
     public sealed class GroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The time when the `Group` was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
         /// </summary>
         [Input("description")]
@@ -105,22 +154,10 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1
         }
 
         /// <summary>
-        /// Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
-
-        /// <summary>
-        /// Output only. The time when the `Group` was last updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public GroupArgs()
         {

@@ -137,6 +137,133 @@ func (o AclEntryArrayOutput) Index(i pulumi.IntInput) AclEntryOutput {
 	}).(AclEntryOutput)
 }
 
+// An entry for an Access Control list.
+type AclEntryResponse struct {
+	// The time when this access control entry expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	ExpirationTime string `pulumi:"expirationTime"`
+	// This is always *sql#aclEntry*.
+	Kind string `pulumi:"kind"`
+	// Optional. A label to identify this entry.
+	Name string `pulumi:"name"`
+	// The allowlisted value for the access control list.
+	Value string `pulumi:"value"`
+}
+
+// AclEntryResponseInput is an input type that accepts AclEntryResponseArgs and AclEntryResponseOutput values.
+// You can construct a concrete instance of `AclEntryResponseInput` via:
+//
+//          AclEntryResponseArgs{...}
+type AclEntryResponseInput interface {
+	pulumi.Input
+
+	ToAclEntryResponseOutput() AclEntryResponseOutput
+	ToAclEntryResponseOutputWithContext(context.Context) AclEntryResponseOutput
+}
+
+// An entry for an Access Control list.
+type AclEntryResponseArgs struct {
+	// The time when this access control entry expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
+	// This is always *sql#aclEntry*.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Optional. A label to identify this entry.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The allowlisted value for the access control list.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (AclEntryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclEntryResponse)(nil)).Elem()
+}
+
+func (i AclEntryResponseArgs) ToAclEntryResponseOutput() AclEntryResponseOutput {
+	return i.ToAclEntryResponseOutputWithContext(context.Background())
+}
+
+func (i AclEntryResponseArgs) ToAclEntryResponseOutputWithContext(ctx context.Context) AclEntryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclEntryResponseOutput)
+}
+
+// AclEntryResponseArrayInput is an input type that accepts AclEntryResponseArray and AclEntryResponseArrayOutput values.
+// You can construct a concrete instance of `AclEntryResponseArrayInput` via:
+//
+//          AclEntryResponseArray{ AclEntryResponseArgs{...} }
+type AclEntryResponseArrayInput interface {
+	pulumi.Input
+
+	ToAclEntryResponseArrayOutput() AclEntryResponseArrayOutput
+	ToAclEntryResponseArrayOutputWithContext(context.Context) AclEntryResponseArrayOutput
+}
+
+type AclEntryResponseArray []AclEntryResponseInput
+
+func (AclEntryResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclEntryResponse)(nil)).Elem()
+}
+
+func (i AclEntryResponseArray) ToAclEntryResponseArrayOutput() AclEntryResponseArrayOutput {
+	return i.ToAclEntryResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AclEntryResponseArray) ToAclEntryResponseArrayOutputWithContext(ctx context.Context) AclEntryResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclEntryResponseArrayOutput)
+}
+
+// An entry for an Access Control list.
+type AclEntryResponseOutput struct{ *pulumi.OutputState }
+
+func (AclEntryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclEntryResponse)(nil)).Elem()
+}
+
+func (o AclEntryResponseOutput) ToAclEntryResponseOutput() AclEntryResponseOutput {
+	return o
+}
+
+func (o AclEntryResponseOutput) ToAclEntryResponseOutputWithContext(ctx context.Context) AclEntryResponseOutput {
+	return o
+}
+
+// The time when this access control entry expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+func (o AclEntryResponseOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v AclEntryResponse) string { return v.ExpirationTime }).(pulumi.StringOutput)
+}
+
+// This is always *sql#aclEntry*.
+func (o AclEntryResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v AclEntryResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Optional. A label to identify this entry.
+func (o AclEntryResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AclEntryResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The allowlisted value for the access control list.
+func (o AclEntryResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v AclEntryResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type AclEntryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AclEntryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AclEntryResponse)(nil)).Elem()
+}
+
+func (o AclEntryResponseArrayOutput) ToAclEntryResponseArrayOutput() AclEntryResponseArrayOutput {
+	return o
+}
+
+func (o AclEntryResponseArrayOutput) ToAclEntryResponseArrayOutputWithContext(ctx context.Context) AclEntryResponseArrayOutput {
+	return o
+}
+
+func (o AclEntryResponseArrayOutput) Index(i pulumi.IntInput) AclEntryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AclEntryResponse {
+		return vs[0].([]AclEntryResponse)[vs[1].(int)]
+	}).(AclEntryResponseOutput)
+}
+
 // Database instance backup configuration.
 type BackupConfiguration struct {
 	// Backup retention settings.
@@ -423,6 +550,292 @@ func (o BackupConfigurationPtrOutput) TransactionLogRetentionDays() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+// Database instance backup configuration.
+type BackupConfigurationResponse struct {
+	// Backup retention settings.
+	BackupRetentionSettings BackupRetentionSettingsResponse `pulumi:"backupRetentionSettings"`
+	// (MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be disabled as well.
+	BinaryLogEnabled bool `pulumi:"binaryLogEnabled"`
+	// Whether this configuration is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// This is always *sql#backupConfiguration*.
+	Kind string `pulumi:"kind"`
+	// Location of the backup
+	Location string `pulumi:"location"`
+	// Reserved for future use.
+	PointInTimeRecoveryEnabled bool `pulumi:"pointInTimeRecoveryEnabled"`
+	// Reserved for future use.
+	ReplicationLogArchivingEnabled bool `pulumi:"replicationLogArchivingEnabled"`
+	// Start time for the daily backup configuration in UTC timezone in the 24 hour format - *HH:MM*.
+	StartTime string `pulumi:"startTime"`
+	// The number of days of transaction logs we retain for point in time restore, from 1-7.
+	TransactionLogRetentionDays int `pulumi:"transactionLogRetentionDays"`
+}
+
+// BackupConfigurationResponseInput is an input type that accepts BackupConfigurationResponseArgs and BackupConfigurationResponseOutput values.
+// You can construct a concrete instance of `BackupConfigurationResponseInput` via:
+//
+//          BackupConfigurationResponseArgs{...}
+type BackupConfigurationResponseInput interface {
+	pulumi.Input
+
+	ToBackupConfigurationResponseOutput() BackupConfigurationResponseOutput
+	ToBackupConfigurationResponseOutputWithContext(context.Context) BackupConfigurationResponseOutput
+}
+
+// Database instance backup configuration.
+type BackupConfigurationResponseArgs struct {
+	// Backup retention settings.
+	BackupRetentionSettings BackupRetentionSettingsResponseInput `pulumi:"backupRetentionSettings"`
+	// (MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be disabled as well.
+	BinaryLogEnabled pulumi.BoolInput `pulumi:"binaryLogEnabled"`
+	// Whether this configuration is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// This is always *sql#backupConfiguration*.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Location of the backup
+	Location pulumi.StringInput `pulumi:"location"`
+	// Reserved for future use.
+	PointInTimeRecoveryEnabled pulumi.BoolInput `pulumi:"pointInTimeRecoveryEnabled"`
+	// Reserved for future use.
+	ReplicationLogArchivingEnabled pulumi.BoolInput `pulumi:"replicationLogArchivingEnabled"`
+	// Start time for the daily backup configuration in UTC timezone in the 24 hour format - *HH:MM*.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// The number of days of transaction logs we retain for point in time restore, from 1-7.
+	TransactionLogRetentionDays pulumi.IntInput `pulumi:"transactionLogRetentionDays"`
+}
+
+func (BackupConfigurationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupConfigurationResponse)(nil)).Elem()
+}
+
+func (i BackupConfigurationResponseArgs) ToBackupConfigurationResponseOutput() BackupConfigurationResponseOutput {
+	return i.ToBackupConfigurationResponseOutputWithContext(context.Background())
+}
+
+func (i BackupConfigurationResponseArgs) ToBackupConfigurationResponseOutputWithContext(ctx context.Context) BackupConfigurationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupConfigurationResponseOutput)
+}
+
+func (i BackupConfigurationResponseArgs) ToBackupConfigurationResponsePtrOutput() BackupConfigurationResponsePtrOutput {
+	return i.ToBackupConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BackupConfigurationResponseArgs) ToBackupConfigurationResponsePtrOutputWithContext(ctx context.Context) BackupConfigurationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupConfigurationResponseOutput).ToBackupConfigurationResponsePtrOutputWithContext(ctx)
+}
+
+// BackupConfigurationResponsePtrInput is an input type that accepts BackupConfigurationResponseArgs, BackupConfigurationResponsePtr and BackupConfigurationResponsePtrOutput values.
+// You can construct a concrete instance of `BackupConfigurationResponsePtrInput` via:
+//
+//          BackupConfigurationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BackupConfigurationResponsePtrInput interface {
+	pulumi.Input
+
+	ToBackupConfigurationResponsePtrOutput() BackupConfigurationResponsePtrOutput
+	ToBackupConfigurationResponsePtrOutputWithContext(context.Context) BackupConfigurationResponsePtrOutput
+}
+
+type backupConfigurationResponsePtrType BackupConfigurationResponseArgs
+
+func BackupConfigurationResponsePtr(v *BackupConfigurationResponseArgs) BackupConfigurationResponsePtrInput {
+	return (*backupConfigurationResponsePtrType)(v)
+}
+
+func (*backupConfigurationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupConfigurationResponse)(nil)).Elem()
+}
+
+func (i *backupConfigurationResponsePtrType) ToBackupConfigurationResponsePtrOutput() BackupConfigurationResponsePtrOutput {
+	return i.ToBackupConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *backupConfigurationResponsePtrType) ToBackupConfigurationResponsePtrOutputWithContext(ctx context.Context) BackupConfigurationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupConfigurationResponsePtrOutput)
+}
+
+// Database instance backup configuration.
+type BackupConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (BackupConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupConfigurationResponse)(nil)).Elem()
+}
+
+func (o BackupConfigurationResponseOutput) ToBackupConfigurationResponseOutput() BackupConfigurationResponseOutput {
+	return o
+}
+
+func (o BackupConfigurationResponseOutput) ToBackupConfigurationResponseOutputWithContext(ctx context.Context) BackupConfigurationResponseOutput {
+	return o
+}
+
+func (o BackupConfigurationResponseOutput) ToBackupConfigurationResponsePtrOutput() BackupConfigurationResponsePtrOutput {
+	return o.ToBackupConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BackupConfigurationResponseOutput) ToBackupConfigurationResponsePtrOutputWithContext(ctx context.Context) BackupConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v BackupConfigurationResponse) *BackupConfigurationResponse {
+		return &v
+	}).(BackupConfigurationResponsePtrOutput)
+}
+
+// Backup retention settings.
+func (o BackupConfigurationResponseOutput) BackupRetentionSettings() BackupRetentionSettingsResponseOutput {
+	return o.ApplyT(func(v BackupConfigurationResponse) BackupRetentionSettingsResponse { return v.BackupRetentionSettings }).(BackupRetentionSettingsResponseOutput)
+}
+
+// (MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be disabled as well.
+func (o BackupConfigurationResponseOutput) BinaryLogEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BackupConfigurationResponse) bool { return v.BinaryLogEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether this configuration is enabled.
+func (o BackupConfigurationResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BackupConfigurationResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// This is always *sql#backupConfiguration*.
+func (o BackupConfigurationResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupConfigurationResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Location of the backup
+func (o BackupConfigurationResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupConfigurationResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o BackupConfigurationResponseOutput) PointInTimeRecoveryEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BackupConfigurationResponse) bool { return v.PointInTimeRecoveryEnabled }).(pulumi.BoolOutput)
+}
+
+// Reserved for future use.
+func (o BackupConfigurationResponseOutput) ReplicationLogArchivingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BackupConfigurationResponse) bool { return v.ReplicationLogArchivingEnabled }).(pulumi.BoolOutput)
+}
+
+// Start time for the daily backup configuration in UTC timezone in the 24 hour format - *HH:MM*.
+func (o BackupConfigurationResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupConfigurationResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The number of days of transaction logs we retain for point in time restore, from 1-7.
+func (o BackupConfigurationResponseOutput) TransactionLogRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v BackupConfigurationResponse) int { return v.TransactionLogRetentionDays }).(pulumi.IntOutput)
+}
+
+type BackupConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BackupConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupConfigurationResponse)(nil)).Elem()
+}
+
+func (o BackupConfigurationResponsePtrOutput) ToBackupConfigurationResponsePtrOutput() BackupConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o BackupConfigurationResponsePtrOutput) ToBackupConfigurationResponsePtrOutputWithContext(ctx context.Context) BackupConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o BackupConfigurationResponsePtrOutput) Elem() BackupConfigurationResponseOutput {
+	return o.ApplyT(func(v *BackupConfigurationResponse) BackupConfigurationResponse { return *v }).(BackupConfigurationResponseOutput)
+}
+
+// Backup retention settings.
+func (o BackupConfigurationResponsePtrOutput) BackupRetentionSettings() BackupRetentionSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *BackupConfigurationResponse) *BackupRetentionSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.BackupRetentionSettings
+	}).(BackupRetentionSettingsResponsePtrOutput)
+}
+
+// (MySQL only) Whether binary log is enabled. If backup configuration is disabled, binarylog must be disabled as well.
+func (o BackupConfigurationResponsePtrOutput) BinaryLogEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackupConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.BinaryLogEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether this configuration is enabled.
+func (o BackupConfigurationResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackupConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// This is always *sql#backupConfiguration*.
+func (o BackupConfigurationResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location of the backup
+func (o BackupConfigurationResponsePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reserved for future use.
+func (o BackupConfigurationResponsePtrOutput) PointInTimeRecoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackupConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.PointInTimeRecoveryEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Reserved for future use.
+func (o BackupConfigurationResponsePtrOutput) ReplicationLogArchivingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackupConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ReplicationLogArchivingEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Start time for the daily backup configuration in UTC timezone in the 24 hour format - *HH:MM*.
+func (o BackupConfigurationResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of days of transaction logs we retain for point in time restore, from 1-7.
+func (o BackupConfigurationResponsePtrOutput) TransactionLogRetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TransactionLogRetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
 // We currently only support backup retention by specifying the number of backups we will retain.
 type BackupRetentionSettings struct {
 	// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
@@ -576,6 +989,159 @@ func (o BackupRetentionSettingsPtrOutput) RetentionUnit() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// We currently only support backup retention by specifying the number of backups we will retain.
+type BackupRetentionSettingsResponse struct {
+	// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
+	RetainedBackups int `pulumi:"retainedBackups"`
+	// The unit that 'retained_backups' represents.
+	RetentionUnit string `pulumi:"retentionUnit"`
+}
+
+// BackupRetentionSettingsResponseInput is an input type that accepts BackupRetentionSettingsResponseArgs and BackupRetentionSettingsResponseOutput values.
+// You can construct a concrete instance of `BackupRetentionSettingsResponseInput` via:
+//
+//          BackupRetentionSettingsResponseArgs{...}
+type BackupRetentionSettingsResponseInput interface {
+	pulumi.Input
+
+	ToBackupRetentionSettingsResponseOutput() BackupRetentionSettingsResponseOutput
+	ToBackupRetentionSettingsResponseOutputWithContext(context.Context) BackupRetentionSettingsResponseOutput
+}
+
+// We currently only support backup retention by specifying the number of backups we will retain.
+type BackupRetentionSettingsResponseArgs struct {
+	// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
+	RetainedBackups pulumi.IntInput `pulumi:"retainedBackups"`
+	// The unit that 'retained_backups' represents.
+	RetentionUnit pulumi.StringInput `pulumi:"retentionUnit"`
+}
+
+func (BackupRetentionSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupRetentionSettingsResponse)(nil)).Elem()
+}
+
+func (i BackupRetentionSettingsResponseArgs) ToBackupRetentionSettingsResponseOutput() BackupRetentionSettingsResponseOutput {
+	return i.ToBackupRetentionSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i BackupRetentionSettingsResponseArgs) ToBackupRetentionSettingsResponseOutputWithContext(ctx context.Context) BackupRetentionSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupRetentionSettingsResponseOutput)
+}
+
+func (i BackupRetentionSettingsResponseArgs) ToBackupRetentionSettingsResponsePtrOutput() BackupRetentionSettingsResponsePtrOutput {
+	return i.ToBackupRetentionSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BackupRetentionSettingsResponseArgs) ToBackupRetentionSettingsResponsePtrOutputWithContext(ctx context.Context) BackupRetentionSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupRetentionSettingsResponseOutput).ToBackupRetentionSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// BackupRetentionSettingsResponsePtrInput is an input type that accepts BackupRetentionSettingsResponseArgs, BackupRetentionSettingsResponsePtr and BackupRetentionSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `BackupRetentionSettingsResponsePtrInput` via:
+//
+//          BackupRetentionSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BackupRetentionSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToBackupRetentionSettingsResponsePtrOutput() BackupRetentionSettingsResponsePtrOutput
+	ToBackupRetentionSettingsResponsePtrOutputWithContext(context.Context) BackupRetentionSettingsResponsePtrOutput
+}
+
+type backupRetentionSettingsResponsePtrType BackupRetentionSettingsResponseArgs
+
+func BackupRetentionSettingsResponsePtr(v *BackupRetentionSettingsResponseArgs) BackupRetentionSettingsResponsePtrInput {
+	return (*backupRetentionSettingsResponsePtrType)(v)
+}
+
+func (*backupRetentionSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupRetentionSettingsResponse)(nil)).Elem()
+}
+
+func (i *backupRetentionSettingsResponsePtrType) ToBackupRetentionSettingsResponsePtrOutput() BackupRetentionSettingsResponsePtrOutput {
+	return i.ToBackupRetentionSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *backupRetentionSettingsResponsePtrType) ToBackupRetentionSettingsResponsePtrOutputWithContext(ctx context.Context) BackupRetentionSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupRetentionSettingsResponsePtrOutput)
+}
+
+// We currently only support backup retention by specifying the number of backups we will retain.
+type BackupRetentionSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (BackupRetentionSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupRetentionSettingsResponse)(nil)).Elem()
+}
+
+func (o BackupRetentionSettingsResponseOutput) ToBackupRetentionSettingsResponseOutput() BackupRetentionSettingsResponseOutput {
+	return o
+}
+
+func (o BackupRetentionSettingsResponseOutput) ToBackupRetentionSettingsResponseOutputWithContext(ctx context.Context) BackupRetentionSettingsResponseOutput {
+	return o
+}
+
+func (o BackupRetentionSettingsResponseOutput) ToBackupRetentionSettingsResponsePtrOutput() BackupRetentionSettingsResponsePtrOutput {
+	return o.ToBackupRetentionSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BackupRetentionSettingsResponseOutput) ToBackupRetentionSettingsResponsePtrOutputWithContext(ctx context.Context) BackupRetentionSettingsResponsePtrOutput {
+	return o.ApplyT(func(v BackupRetentionSettingsResponse) *BackupRetentionSettingsResponse {
+		return &v
+	}).(BackupRetentionSettingsResponsePtrOutput)
+}
+
+// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
+func (o BackupRetentionSettingsResponseOutput) RetainedBackups() pulumi.IntOutput {
+	return o.ApplyT(func(v BackupRetentionSettingsResponse) int { return v.RetainedBackups }).(pulumi.IntOutput)
+}
+
+// The unit that 'retained_backups' represents.
+func (o BackupRetentionSettingsResponseOutput) RetentionUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupRetentionSettingsResponse) string { return v.RetentionUnit }).(pulumi.StringOutput)
+}
+
+type BackupRetentionSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BackupRetentionSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupRetentionSettingsResponse)(nil)).Elem()
+}
+
+func (o BackupRetentionSettingsResponsePtrOutput) ToBackupRetentionSettingsResponsePtrOutput() BackupRetentionSettingsResponsePtrOutput {
+	return o
+}
+
+func (o BackupRetentionSettingsResponsePtrOutput) ToBackupRetentionSettingsResponsePtrOutputWithContext(ctx context.Context) BackupRetentionSettingsResponsePtrOutput {
+	return o
+}
+
+func (o BackupRetentionSettingsResponsePtrOutput) Elem() BackupRetentionSettingsResponseOutput {
+	return o.ApplyT(func(v *BackupRetentionSettingsResponse) BackupRetentionSettingsResponse { return *v }).(BackupRetentionSettingsResponseOutput)
+}
+
+// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
+func (o BackupRetentionSettingsResponsePtrOutput) RetainedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupRetentionSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RetainedBackups
+	}).(pulumi.IntPtrOutput)
+}
+
+// The unit that 'retained_backups' represents.
+func (o BackupRetentionSettingsResponsePtrOutput) RetentionUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupRetentionSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RetentionUnit
+	}).(pulumi.StringPtrOutput)
+}
+
 // Database flags for Cloud SQL instances.
 type DatabaseFlags struct {
 	// The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
@@ -683,6 +1249,115 @@ func (o DatabaseFlagsArrayOutput) Index(i pulumi.IntInput) DatabaseFlagsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseFlags {
 		return vs[0].([]DatabaseFlags)[vs[1].(int)]
 	}).(DatabaseFlagsOutput)
+}
+
+// Database flags for Cloud SQL instances.
+type DatabaseFlagsResponse struct {
+	// The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
+	Name string `pulumi:"name"`
+	// The value of the flag. Booleans are set to *on* for true and *off* for false. This field must be omitted if the flag doesn't take a value.
+	Value string `pulumi:"value"`
+}
+
+// DatabaseFlagsResponseInput is an input type that accepts DatabaseFlagsResponseArgs and DatabaseFlagsResponseOutput values.
+// You can construct a concrete instance of `DatabaseFlagsResponseInput` via:
+//
+//          DatabaseFlagsResponseArgs{...}
+type DatabaseFlagsResponseInput interface {
+	pulumi.Input
+
+	ToDatabaseFlagsResponseOutput() DatabaseFlagsResponseOutput
+	ToDatabaseFlagsResponseOutputWithContext(context.Context) DatabaseFlagsResponseOutput
+}
+
+// Database flags for Cloud SQL instances.
+type DatabaseFlagsResponseArgs struct {
+	// The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the flag. Booleans are set to *on* for true and *off* for false. This field must be omitted if the flag doesn't take a value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (DatabaseFlagsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseFlagsResponse)(nil)).Elem()
+}
+
+func (i DatabaseFlagsResponseArgs) ToDatabaseFlagsResponseOutput() DatabaseFlagsResponseOutput {
+	return i.ToDatabaseFlagsResponseOutputWithContext(context.Background())
+}
+
+func (i DatabaseFlagsResponseArgs) ToDatabaseFlagsResponseOutputWithContext(ctx context.Context) DatabaseFlagsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFlagsResponseOutput)
+}
+
+// DatabaseFlagsResponseArrayInput is an input type that accepts DatabaseFlagsResponseArray and DatabaseFlagsResponseArrayOutput values.
+// You can construct a concrete instance of `DatabaseFlagsResponseArrayInput` via:
+//
+//          DatabaseFlagsResponseArray{ DatabaseFlagsResponseArgs{...} }
+type DatabaseFlagsResponseArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseFlagsResponseArrayOutput() DatabaseFlagsResponseArrayOutput
+	ToDatabaseFlagsResponseArrayOutputWithContext(context.Context) DatabaseFlagsResponseArrayOutput
+}
+
+type DatabaseFlagsResponseArray []DatabaseFlagsResponseInput
+
+func (DatabaseFlagsResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseFlagsResponse)(nil)).Elem()
+}
+
+func (i DatabaseFlagsResponseArray) ToDatabaseFlagsResponseArrayOutput() DatabaseFlagsResponseArrayOutput {
+	return i.ToDatabaseFlagsResponseArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseFlagsResponseArray) ToDatabaseFlagsResponseArrayOutputWithContext(ctx context.Context) DatabaseFlagsResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseFlagsResponseArrayOutput)
+}
+
+// Database flags for Cloud SQL instances.
+type DatabaseFlagsResponseOutput struct{ *pulumi.OutputState }
+
+func (DatabaseFlagsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseFlagsResponse)(nil)).Elem()
+}
+
+func (o DatabaseFlagsResponseOutput) ToDatabaseFlagsResponseOutput() DatabaseFlagsResponseOutput {
+	return o
+}
+
+func (o DatabaseFlagsResponseOutput) ToDatabaseFlagsResponseOutputWithContext(ctx context.Context) DatabaseFlagsResponseOutput {
+	return o
+}
+
+// The name of the flag. These flags are passed at instance startup, so include both server options and system variables for MySQL. Flags are specified with underscores, not hyphens. For more information, see Configuring Database Flags in the Cloud SQL documentation.
+func (o DatabaseFlagsResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseFlagsResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the flag. Booleans are set to *on* for true and *off* for false. This field must be omitted if the flag doesn't take a value.
+func (o DatabaseFlagsResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseFlagsResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type DatabaseFlagsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseFlagsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseFlagsResponse)(nil)).Elem()
+}
+
+func (o DatabaseFlagsResponseArrayOutput) ToDatabaseFlagsResponseArrayOutput() DatabaseFlagsResponseArrayOutput {
+	return o
+}
+
+func (o DatabaseFlagsResponseArrayOutput) ToDatabaseFlagsResponseArrayOutputWithContext(ctx context.Context) DatabaseFlagsResponseArrayOutput {
+	return o
+}
+
+func (o DatabaseFlagsResponseArrayOutput) Index(i pulumi.IntInput) DatabaseFlagsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseFlagsResponse {
+		return vs[0].([]DatabaseFlagsResponse)[vs[1].(int)]
+	}).(DatabaseFlagsResponseOutput)
 }
 
 // Deny Maintenance Periods. This specifies a date range during when all CSA rollout will be denied.
@@ -801,6 +1476,124 @@ func (o DenyMaintenancePeriodArrayOutput) Index(i pulumi.IntInput) DenyMaintenan
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DenyMaintenancePeriod {
 		return vs[0].([]DenyMaintenancePeriod)[vs[1].(int)]
 	}).(DenyMaintenancePeriodOutput)
+}
+
+// Deny Maintenance Periods. This specifies a date range during when all CSA rollout will be denied.
+type DenyMaintenancePeriodResponse struct {
+	// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	EndDate string `pulumi:"endDate"`
+	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	StartDate string `pulumi:"startDate"`
+	// Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+	Time string `pulumi:"time"`
+}
+
+// DenyMaintenancePeriodResponseInput is an input type that accepts DenyMaintenancePeriodResponseArgs and DenyMaintenancePeriodResponseOutput values.
+// You can construct a concrete instance of `DenyMaintenancePeriodResponseInput` via:
+//
+//          DenyMaintenancePeriodResponseArgs{...}
+type DenyMaintenancePeriodResponseInput interface {
+	pulumi.Input
+
+	ToDenyMaintenancePeriodResponseOutput() DenyMaintenancePeriodResponseOutput
+	ToDenyMaintenancePeriodResponseOutputWithContext(context.Context) DenyMaintenancePeriodResponseOutput
+}
+
+// Deny Maintenance Periods. This specifies a date range during when all CSA rollout will be denied.
+type DenyMaintenancePeriodResponseArgs struct {
+	// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	EndDate pulumi.StringInput `pulumi:"endDate"`
+	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	StartDate pulumi.StringInput `pulumi:"startDate"`
+	// Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+	Time pulumi.StringInput `pulumi:"time"`
+}
+
+func (DenyMaintenancePeriodResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DenyMaintenancePeriodResponse)(nil)).Elem()
+}
+
+func (i DenyMaintenancePeriodResponseArgs) ToDenyMaintenancePeriodResponseOutput() DenyMaintenancePeriodResponseOutput {
+	return i.ToDenyMaintenancePeriodResponseOutputWithContext(context.Background())
+}
+
+func (i DenyMaintenancePeriodResponseArgs) ToDenyMaintenancePeriodResponseOutputWithContext(ctx context.Context) DenyMaintenancePeriodResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DenyMaintenancePeriodResponseOutput)
+}
+
+// DenyMaintenancePeriodResponseArrayInput is an input type that accepts DenyMaintenancePeriodResponseArray and DenyMaintenancePeriodResponseArrayOutput values.
+// You can construct a concrete instance of `DenyMaintenancePeriodResponseArrayInput` via:
+//
+//          DenyMaintenancePeriodResponseArray{ DenyMaintenancePeriodResponseArgs{...} }
+type DenyMaintenancePeriodResponseArrayInput interface {
+	pulumi.Input
+
+	ToDenyMaintenancePeriodResponseArrayOutput() DenyMaintenancePeriodResponseArrayOutput
+	ToDenyMaintenancePeriodResponseArrayOutputWithContext(context.Context) DenyMaintenancePeriodResponseArrayOutput
+}
+
+type DenyMaintenancePeriodResponseArray []DenyMaintenancePeriodResponseInput
+
+func (DenyMaintenancePeriodResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DenyMaintenancePeriodResponse)(nil)).Elem()
+}
+
+func (i DenyMaintenancePeriodResponseArray) ToDenyMaintenancePeriodResponseArrayOutput() DenyMaintenancePeriodResponseArrayOutput {
+	return i.ToDenyMaintenancePeriodResponseArrayOutputWithContext(context.Background())
+}
+
+func (i DenyMaintenancePeriodResponseArray) ToDenyMaintenancePeriodResponseArrayOutputWithContext(ctx context.Context) DenyMaintenancePeriodResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DenyMaintenancePeriodResponseArrayOutput)
+}
+
+// Deny Maintenance Periods. This specifies a date range during when all CSA rollout will be denied.
+type DenyMaintenancePeriodResponseOutput struct{ *pulumi.OutputState }
+
+func (DenyMaintenancePeriodResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DenyMaintenancePeriodResponse)(nil)).Elem()
+}
+
+func (o DenyMaintenancePeriodResponseOutput) ToDenyMaintenancePeriodResponseOutput() DenyMaintenancePeriodResponseOutput {
+	return o
+}
+
+func (o DenyMaintenancePeriodResponseOutput) ToDenyMaintenancePeriodResponseOutputWithContext(ctx context.Context) DenyMaintenancePeriodResponseOutput {
+	return o
+}
+
+// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+func (o DenyMaintenancePeriodResponseOutput) EndDate() pulumi.StringOutput {
+	return o.ApplyT(func(v DenyMaintenancePeriodResponse) string { return v.EndDate }).(pulumi.StringOutput)
+}
+
+// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+func (o DenyMaintenancePeriodResponseOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v DenyMaintenancePeriodResponse) string { return v.StartDate }).(pulumi.StringOutput)
+}
+
+// Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+func (o DenyMaintenancePeriodResponseOutput) Time() pulumi.StringOutput {
+	return o.ApplyT(func(v DenyMaintenancePeriodResponse) string { return v.Time }).(pulumi.StringOutput)
+}
+
+type DenyMaintenancePeriodResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DenyMaintenancePeriodResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DenyMaintenancePeriodResponse)(nil)).Elem()
+}
+
+func (o DenyMaintenancePeriodResponseArrayOutput) ToDenyMaintenancePeriodResponseArrayOutput() DenyMaintenancePeriodResponseArrayOutput {
+	return o
+}
+
+func (o DenyMaintenancePeriodResponseArrayOutput) ToDenyMaintenancePeriodResponseArrayOutputWithContext(ctx context.Context) DenyMaintenancePeriodResponseArrayOutput {
+	return o
+}
+
+func (o DenyMaintenancePeriodResponseArrayOutput) Index(i pulumi.IntInput) DenyMaintenancePeriodResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DenyMaintenancePeriodResponse {
+		return vs[0].([]DenyMaintenancePeriodResponse)[vs[1].(int)]
+	}).(DenyMaintenancePeriodResponseOutput)
 }
 
 // Disk encryption configuration for an instance.
@@ -956,6 +1749,159 @@ func (o DiskEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Disk encryption configuration for an instance.
+type DiskEncryptionConfigurationResponse struct {
+	// This is always *sql#diskEncryptionConfiguration*.
+	Kind string `pulumi:"kind"`
+	// Resource name of KMS key for disk encryption
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// DiskEncryptionConfigurationResponseInput is an input type that accepts DiskEncryptionConfigurationResponseArgs and DiskEncryptionConfigurationResponseOutput values.
+// You can construct a concrete instance of `DiskEncryptionConfigurationResponseInput` via:
+//
+//          DiskEncryptionConfigurationResponseArgs{...}
+type DiskEncryptionConfigurationResponseInput interface {
+	pulumi.Input
+
+	ToDiskEncryptionConfigurationResponseOutput() DiskEncryptionConfigurationResponseOutput
+	ToDiskEncryptionConfigurationResponseOutputWithContext(context.Context) DiskEncryptionConfigurationResponseOutput
+}
+
+// Disk encryption configuration for an instance.
+type DiskEncryptionConfigurationResponseArgs struct {
+	// This is always *sql#diskEncryptionConfiguration*.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Resource name of KMS key for disk encryption
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (DiskEncryptionConfigurationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskEncryptionConfigurationResponse)(nil)).Elem()
+}
+
+func (i DiskEncryptionConfigurationResponseArgs) ToDiskEncryptionConfigurationResponseOutput() DiskEncryptionConfigurationResponseOutput {
+	return i.ToDiskEncryptionConfigurationResponseOutputWithContext(context.Background())
+}
+
+func (i DiskEncryptionConfigurationResponseArgs) ToDiskEncryptionConfigurationResponseOutputWithContext(ctx context.Context) DiskEncryptionConfigurationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionConfigurationResponseOutput)
+}
+
+func (i DiskEncryptionConfigurationResponseArgs) ToDiskEncryptionConfigurationResponsePtrOutput() DiskEncryptionConfigurationResponsePtrOutput {
+	return i.ToDiskEncryptionConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DiskEncryptionConfigurationResponseArgs) ToDiskEncryptionConfigurationResponsePtrOutputWithContext(ctx context.Context) DiskEncryptionConfigurationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionConfigurationResponseOutput).ToDiskEncryptionConfigurationResponsePtrOutputWithContext(ctx)
+}
+
+// DiskEncryptionConfigurationResponsePtrInput is an input type that accepts DiskEncryptionConfigurationResponseArgs, DiskEncryptionConfigurationResponsePtr and DiskEncryptionConfigurationResponsePtrOutput values.
+// You can construct a concrete instance of `DiskEncryptionConfigurationResponsePtrInput` via:
+//
+//          DiskEncryptionConfigurationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DiskEncryptionConfigurationResponsePtrInput interface {
+	pulumi.Input
+
+	ToDiskEncryptionConfigurationResponsePtrOutput() DiskEncryptionConfigurationResponsePtrOutput
+	ToDiskEncryptionConfigurationResponsePtrOutputWithContext(context.Context) DiskEncryptionConfigurationResponsePtrOutput
+}
+
+type diskEncryptionConfigurationResponsePtrType DiskEncryptionConfigurationResponseArgs
+
+func DiskEncryptionConfigurationResponsePtr(v *DiskEncryptionConfigurationResponseArgs) DiskEncryptionConfigurationResponsePtrInput {
+	return (*diskEncryptionConfigurationResponsePtrType)(v)
+}
+
+func (*diskEncryptionConfigurationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskEncryptionConfigurationResponse)(nil)).Elem()
+}
+
+func (i *diskEncryptionConfigurationResponsePtrType) ToDiskEncryptionConfigurationResponsePtrOutput() DiskEncryptionConfigurationResponsePtrOutput {
+	return i.ToDiskEncryptionConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *diskEncryptionConfigurationResponsePtrType) ToDiskEncryptionConfigurationResponsePtrOutputWithContext(ctx context.Context) DiskEncryptionConfigurationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionConfigurationResponsePtrOutput)
+}
+
+// Disk encryption configuration for an instance.
+type DiskEncryptionConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskEncryptionConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskEncryptionConfigurationResponse)(nil)).Elem()
+}
+
+func (o DiskEncryptionConfigurationResponseOutput) ToDiskEncryptionConfigurationResponseOutput() DiskEncryptionConfigurationResponseOutput {
+	return o
+}
+
+func (o DiskEncryptionConfigurationResponseOutput) ToDiskEncryptionConfigurationResponseOutputWithContext(ctx context.Context) DiskEncryptionConfigurationResponseOutput {
+	return o
+}
+
+func (o DiskEncryptionConfigurationResponseOutput) ToDiskEncryptionConfigurationResponsePtrOutput() DiskEncryptionConfigurationResponsePtrOutput {
+	return o.ToDiskEncryptionConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DiskEncryptionConfigurationResponseOutput) ToDiskEncryptionConfigurationResponsePtrOutputWithContext(ctx context.Context) DiskEncryptionConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v DiskEncryptionConfigurationResponse) *DiskEncryptionConfigurationResponse {
+		return &v
+	}).(DiskEncryptionConfigurationResponsePtrOutput)
+}
+
+// This is always *sql#diskEncryptionConfiguration*.
+func (o DiskEncryptionConfigurationResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskEncryptionConfigurationResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Resource name of KMS key for disk encryption
+func (o DiskEncryptionConfigurationResponseOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskEncryptionConfigurationResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type DiskEncryptionConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiskEncryptionConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskEncryptionConfigurationResponse)(nil)).Elem()
+}
+
+func (o DiskEncryptionConfigurationResponsePtrOutput) ToDiskEncryptionConfigurationResponsePtrOutput() DiskEncryptionConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DiskEncryptionConfigurationResponsePtrOutput) ToDiskEncryptionConfigurationResponsePtrOutputWithContext(ctx context.Context) DiskEncryptionConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DiskEncryptionConfigurationResponsePtrOutput) Elem() DiskEncryptionConfigurationResponseOutput {
+	return o.ApplyT(func(v *DiskEncryptionConfigurationResponse) DiskEncryptionConfigurationResponse { return *v }).(DiskEncryptionConfigurationResponseOutput)
+}
+
+// This is always *sql#diskEncryptionConfiguration*.
+func (o DiskEncryptionConfigurationResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskEncryptionConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource name of KMS key for disk encryption
+func (o DiskEncryptionConfigurationResponsePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskEncryptionConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Disk encryption status for an instance.
 type DiskEncryptionStatus struct {
 	// This is always *sql#diskEncryptionStatus*.
@@ -1106,6 +2052,159 @@ func (o DiskEncryptionStatusPtrOutput) KmsKeyVersionName() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.KmsKeyVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Disk encryption status for an instance.
+type DiskEncryptionStatusResponse struct {
+	// This is always *sql#diskEncryptionStatus*.
+	Kind string `pulumi:"kind"`
+	// KMS key version used to encrypt the Cloud SQL instance resource
+	KmsKeyVersionName string `pulumi:"kmsKeyVersionName"`
+}
+
+// DiskEncryptionStatusResponseInput is an input type that accepts DiskEncryptionStatusResponseArgs and DiskEncryptionStatusResponseOutput values.
+// You can construct a concrete instance of `DiskEncryptionStatusResponseInput` via:
+//
+//          DiskEncryptionStatusResponseArgs{...}
+type DiskEncryptionStatusResponseInput interface {
+	pulumi.Input
+
+	ToDiskEncryptionStatusResponseOutput() DiskEncryptionStatusResponseOutput
+	ToDiskEncryptionStatusResponseOutputWithContext(context.Context) DiskEncryptionStatusResponseOutput
+}
+
+// Disk encryption status for an instance.
+type DiskEncryptionStatusResponseArgs struct {
+	// This is always *sql#diskEncryptionStatus*.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// KMS key version used to encrypt the Cloud SQL instance resource
+	KmsKeyVersionName pulumi.StringInput `pulumi:"kmsKeyVersionName"`
+}
+
+func (DiskEncryptionStatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskEncryptionStatusResponse)(nil)).Elem()
+}
+
+func (i DiskEncryptionStatusResponseArgs) ToDiskEncryptionStatusResponseOutput() DiskEncryptionStatusResponseOutput {
+	return i.ToDiskEncryptionStatusResponseOutputWithContext(context.Background())
+}
+
+func (i DiskEncryptionStatusResponseArgs) ToDiskEncryptionStatusResponseOutputWithContext(ctx context.Context) DiskEncryptionStatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionStatusResponseOutput)
+}
+
+func (i DiskEncryptionStatusResponseArgs) ToDiskEncryptionStatusResponsePtrOutput() DiskEncryptionStatusResponsePtrOutput {
+	return i.ToDiskEncryptionStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DiskEncryptionStatusResponseArgs) ToDiskEncryptionStatusResponsePtrOutputWithContext(ctx context.Context) DiskEncryptionStatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionStatusResponseOutput).ToDiskEncryptionStatusResponsePtrOutputWithContext(ctx)
+}
+
+// DiskEncryptionStatusResponsePtrInput is an input type that accepts DiskEncryptionStatusResponseArgs, DiskEncryptionStatusResponsePtr and DiskEncryptionStatusResponsePtrOutput values.
+// You can construct a concrete instance of `DiskEncryptionStatusResponsePtrInput` via:
+//
+//          DiskEncryptionStatusResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DiskEncryptionStatusResponsePtrInput interface {
+	pulumi.Input
+
+	ToDiskEncryptionStatusResponsePtrOutput() DiskEncryptionStatusResponsePtrOutput
+	ToDiskEncryptionStatusResponsePtrOutputWithContext(context.Context) DiskEncryptionStatusResponsePtrOutput
+}
+
+type diskEncryptionStatusResponsePtrType DiskEncryptionStatusResponseArgs
+
+func DiskEncryptionStatusResponsePtr(v *DiskEncryptionStatusResponseArgs) DiskEncryptionStatusResponsePtrInput {
+	return (*diskEncryptionStatusResponsePtrType)(v)
+}
+
+func (*diskEncryptionStatusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskEncryptionStatusResponse)(nil)).Elem()
+}
+
+func (i *diskEncryptionStatusResponsePtrType) ToDiskEncryptionStatusResponsePtrOutput() DiskEncryptionStatusResponsePtrOutput {
+	return i.ToDiskEncryptionStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *diskEncryptionStatusResponsePtrType) ToDiskEncryptionStatusResponsePtrOutputWithContext(ctx context.Context) DiskEncryptionStatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionStatusResponsePtrOutput)
+}
+
+// Disk encryption status for an instance.
+type DiskEncryptionStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskEncryptionStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskEncryptionStatusResponse)(nil)).Elem()
+}
+
+func (o DiskEncryptionStatusResponseOutput) ToDiskEncryptionStatusResponseOutput() DiskEncryptionStatusResponseOutput {
+	return o
+}
+
+func (o DiskEncryptionStatusResponseOutput) ToDiskEncryptionStatusResponseOutputWithContext(ctx context.Context) DiskEncryptionStatusResponseOutput {
+	return o
+}
+
+func (o DiskEncryptionStatusResponseOutput) ToDiskEncryptionStatusResponsePtrOutput() DiskEncryptionStatusResponsePtrOutput {
+	return o.ToDiskEncryptionStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DiskEncryptionStatusResponseOutput) ToDiskEncryptionStatusResponsePtrOutputWithContext(ctx context.Context) DiskEncryptionStatusResponsePtrOutput {
+	return o.ApplyT(func(v DiskEncryptionStatusResponse) *DiskEncryptionStatusResponse {
+		return &v
+	}).(DiskEncryptionStatusResponsePtrOutput)
+}
+
+// This is always *sql#diskEncryptionStatus*.
+func (o DiskEncryptionStatusResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskEncryptionStatusResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// KMS key version used to encrypt the Cloud SQL instance resource
+func (o DiskEncryptionStatusResponseOutput) KmsKeyVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskEncryptionStatusResponse) string { return v.KmsKeyVersionName }).(pulumi.StringOutput)
+}
+
+type DiskEncryptionStatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiskEncryptionStatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskEncryptionStatusResponse)(nil)).Elem()
+}
+
+func (o DiskEncryptionStatusResponsePtrOutput) ToDiskEncryptionStatusResponsePtrOutput() DiskEncryptionStatusResponsePtrOutput {
+	return o
+}
+
+func (o DiskEncryptionStatusResponsePtrOutput) ToDiskEncryptionStatusResponsePtrOutputWithContext(ctx context.Context) DiskEncryptionStatusResponsePtrOutput {
+	return o
+}
+
+func (o DiskEncryptionStatusResponsePtrOutput) Elem() DiskEncryptionStatusResponseOutput {
+	return o.ApplyT(func(v *DiskEncryptionStatusResponse) DiskEncryptionStatusResponse { return *v }).(DiskEncryptionStatusResponseOutput)
+}
+
+// This is always *sql#diskEncryptionStatus*.
+func (o DiskEncryptionStatusResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskEncryptionStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// KMS key version used to encrypt the Cloud SQL instance resource
+func (o DiskEncryptionStatusResponsePtrOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskEncryptionStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyVersionName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1300,6 +2399,197 @@ func (o InsightsConfigPtrOutput) RecordClientAddress() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Insights configuration. This specifies when Cloud SQL Insights feature is enabled and optional configuration.
+type InsightsConfigResponse struct {
+	// Whether Query Insights feature is enabled.
+	QueryInsightsEnabled bool `pulumi:"queryInsightsEnabled"`
+	// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
+	QueryStringLength int `pulumi:"queryStringLength"`
+	// Whether Query Insights will record application tags from query when enabled.
+	RecordApplicationTags bool `pulumi:"recordApplicationTags"`
+	// Whether Query Insights will record client address when enabled.
+	RecordClientAddress bool `pulumi:"recordClientAddress"`
+}
+
+// InsightsConfigResponseInput is an input type that accepts InsightsConfigResponseArgs and InsightsConfigResponseOutput values.
+// You can construct a concrete instance of `InsightsConfigResponseInput` via:
+//
+//          InsightsConfigResponseArgs{...}
+type InsightsConfigResponseInput interface {
+	pulumi.Input
+
+	ToInsightsConfigResponseOutput() InsightsConfigResponseOutput
+	ToInsightsConfigResponseOutputWithContext(context.Context) InsightsConfigResponseOutput
+}
+
+// Insights configuration. This specifies when Cloud SQL Insights feature is enabled and optional configuration.
+type InsightsConfigResponseArgs struct {
+	// Whether Query Insights feature is enabled.
+	QueryInsightsEnabled pulumi.BoolInput `pulumi:"queryInsightsEnabled"`
+	// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
+	QueryStringLength pulumi.IntInput `pulumi:"queryStringLength"`
+	// Whether Query Insights will record application tags from query when enabled.
+	RecordApplicationTags pulumi.BoolInput `pulumi:"recordApplicationTags"`
+	// Whether Query Insights will record client address when enabled.
+	RecordClientAddress pulumi.BoolInput `pulumi:"recordClientAddress"`
+}
+
+func (InsightsConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigResponse)(nil)).Elem()
+}
+
+func (i InsightsConfigResponseArgs) ToInsightsConfigResponseOutput() InsightsConfigResponseOutput {
+	return i.ToInsightsConfigResponseOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigResponseArgs) ToInsightsConfigResponseOutputWithContext(ctx context.Context) InsightsConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigResponseOutput)
+}
+
+func (i InsightsConfigResponseArgs) ToInsightsConfigResponsePtrOutput() InsightsConfigResponsePtrOutput {
+	return i.ToInsightsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i InsightsConfigResponseArgs) ToInsightsConfigResponsePtrOutputWithContext(ctx context.Context) InsightsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigResponseOutput).ToInsightsConfigResponsePtrOutputWithContext(ctx)
+}
+
+// InsightsConfigResponsePtrInput is an input type that accepts InsightsConfigResponseArgs, InsightsConfigResponsePtr and InsightsConfigResponsePtrOutput values.
+// You can construct a concrete instance of `InsightsConfigResponsePtrInput` via:
+//
+//          InsightsConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type InsightsConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToInsightsConfigResponsePtrOutput() InsightsConfigResponsePtrOutput
+	ToInsightsConfigResponsePtrOutputWithContext(context.Context) InsightsConfigResponsePtrOutput
+}
+
+type insightsConfigResponsePtrType InsightsConfigResponseArgs
+
+func InsightsConfigResponsePtr(v *InsightsConfigResponseArgs) InsightsConfigResponsePtrInput {
+	return (*insightsConfigResponsePtrType)(v)
+}
+
+func (*insightsConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsConfigResponse)(nil)).Elem()
+}
+
+func (i *insightsConfigResponsePtrType) ToInsightsConfigResponsePtrOutput() InsightsConfigResponsePtrOutput {
+	return i.ToInsightsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *insightsConfigResponsePtrType) ToInsightsConfigResponsePtrOutputWithContext(ctx context.Context) InsightsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsConfigResponsePtrOutput)
+}
+
+// Insights configuration. This specifies when Cloud SQL Insights feature is enabled and optional configuration.
+type InsightsConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsConfigResponse)(nil)).Elem()
+}
+
+func (o InsightsConfigResponseOutput) ToInsightsConfigResponseOutput() InsightsConfigResponseOutput {
+	return o
+}
+
+func (o InsightsConfigResponseOutput) ToInsightsConfigResponseOutputWithContext(ctx context.Context) InsightsConfigResponseOutput {
+	return o
+}
+
+func (o InsightsConfigResponseOutput) ToInsightsConfigResponsePtrOutput() InsightsConfigResponsePtrOutput {
+	return o.ToInsightsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o InsightsConfigResponseOutput) ToInsightsConfigResponsePtrOutputWithContext(ctx context.Context) InsightsConfigResponsePtrOutput {
+	return o.ApplyT(func(v InsightsConfigResponse) *InsightsConfigResponse {
+		return &v
+	}).(InsightsConfigResponsePtrOutput)
+}
+
+// Whether Query Insights feature is enabled.
+func (o InsightsConfigResponseOutput) QueryInsightsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v InsightsConfigResponse) bool { return v.QueryInsightsEnabled }).(pulumi.BoolOutput)
+}
+
+// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
+func (o InsightsConfigResponseOutput) QueryStringLength() pulumi.IntOutput {
+	return o.ApplyT(func(v InsightsConfigResponse) int { return v.QueryStringLength }).(pulumi.IntOutput)
+}
+
+// Whether Query Insights will record application tags from query when enabled.
+func (o InsightsConfigResponseOutput) RecordApplicationTags() pulumi.BoolOutput {
+	return o.ApplyT(func(v InsightsConfigResponse) bool { return v.RecordApplicationTags }).(pulumi.BoolOutput)
+}
+
+// Whether Query Insights will record client address when enabled.
+func (o InsightsConfigResponseOutput) RecordClientAddress() pulumi.BoolOutput {
+	return o.ApplyT(func(v InsightsConfigResponse) bool { return v.RecordClientAddress }).(pulumi.BoolOutput)
+}
+
+type InsightsConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsConfigResponse)(nil)).Elem()
+}
+
+func (o InsightsConfigResponsePtrOutput) ToInsightsConfigResponsePtrOutput() InsightsConfigResponsePtrOutput {
+	return o
+}
+
+func (o InsightsConfigResponsePtrOutput) ToInsightsConfigResponsePtrOutputWithContext(ctx context.Context) InsightsConfigResponsePtrOutput {
+	return o
+}
+
+func (o InsightsConfigResponsePtrOutput) Elem() InsightsConfigResponseOutput {
+	return o.ApplyT(func(v *InsightsConfigResponse) InsightsConfigResponse { return *v }).(InsightsConfigResponseOutput)
+}
+
+// Whether Query Insights feature is enabled.
+func (o InsightsConfigResponsePtrOutput) QueryInsightsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InsightsConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryInsightsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
+func (o InsightsConfigResponsePtrOutput) QueryStringLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InsightsConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryStringLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether Query Insights will record application tags from query when enabled.
+func (o InsightsConfigResponsePtrOutput) RecordApplicationTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InsightsConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.RecordApplicationTags
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether Query Insights will record client address when enabled.
+func (o InsightsConfigResponsePtrOutput) RecordClientAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InsightsConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.RecordClientAddress
+	}).(pulumi.BoolPtrOutput)
+}
+
 // IP Management configuration.
 type IpConfiguration struct {
 	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
@@ -1491,6 +2781,197 @@ func (o IpConfigurationPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// IP Management configuration.
+type IpConfigurationResponse struct {
+	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
+	AuthorizedNetworks []AclEntryResponse `pulumi:"authorizedNetworks"`
+	// Whether the instance is assigned a public IP address or not.
+	Ipv4Enabled bool `pulumi:"ipv4Enabled"`
+	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, */projects/myProject/global/networks/default*. This setting can be updated, but it cannot be removed after it is set.
+	PrivateNetwork string `pulumi:"privateNetwork"`
+	// Whether SSL connections over IP are enforced or not.
+	RequireSsl bool `pulumi:"requireSsl"`
+}
+
+// IpConfigurationResponseInput is an input type that accepts IpConfigurationResponseArgs and IpConfigurationResponseOutput values.
+// You can construct a concrete instance of `IpConfigurationResponseInput` via:
+//
+//          IpConfigurationResponseArgs{...}
+type IpConfigurationResponseInput interface {
+	pulumi.Input
+
+	ToIpConfigurationResponseOutput() IpConfigurationResponseOutput
+	ToIpConfigurationResponseOutputWithContext(context.Context) IpConfigurationResponseOutput
+}
+
+// IP Management configuration.
+type IpConfigurationResponseArgs struct {
+	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
+	AuthorizedNetworks AclEntryResponseArrayInput `pulumi:"authorizedNetworks"`
+	// Whether the instance is assigned a public IP address or not.
+	Ipv4Enabled pulumi.BoolInput `pulumi:"ipv4Enabled"`
+	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, */projects/myProject/global/networks/default*. This setting can be updated, but it cannot be removed after it is set.
+	PrivateNetwork pulumi.StringInput `pulumi:"privateNetwork"`
+	// Whether SSL connections over IP are enforced or not.
+	RequireSsl pulumi.BoolInput `pulumi:"requireSsl"`
+}
+
+func (IpConfigurationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpConfigurationResponse)(nil)).Elem()
+}
+
+func (i IpConfigurationResponseArgs) ToIpConfigurationResponseOutput() IpConfigurationResponseOutput {
+	return i.ToIpConfigurationResponseOutputWithContext(context.Background())
+}
+
+func (i IpConfigurationResponseArgs) ToIpConfigurationResponseOutputWithContext(ctx context.Context) IpConfigurationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpConfigurationResponseOutput)
+}
+
+func (i IpConfigurationResponseArgs) ToIpConfigurationResponsePtrOutput() IpConfigurationResponsePtrOutput {
+	return i.ToIpConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i IpConfigurationResponseArgs) ToIpConfigurationResponsePtrOutputWithContext(ctx context.Context) IpConfigurationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpConfigurationResponseOutput).ToIpConfigurationResponsePtrOutputWithContext(ctx)
+}
+
+// IpConfigurationResponsePtrInput is an input type that accepts IpConfigurationResponseArgs, IpConfigurationResponsePtr and IpConfigurationResponsePtrOutput values.
+// You can construct a concrete instance of `IpConfigurationResponsePtrInput` via:
+//
+//          IpConfigurationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type IpConfigurationResponsePtrInput interface {
+	pulumi.Input
+
+	ToIpConfigurationResponsePtrOutput() IpConfigurationResponsePtrOutput
+	ToIpConfigurationResponsePtrOutputWithContext(context.Context) IpConfigurationResponsePtrOutput
+}
+
+type ipConfigurationResponsePtrType IpConfigurationResponseArgs
+
+func IpConfigurationResponsePtr(v *IpConfigurationResponseArgs) IpConfigurationResponsePtrInput {
+	return (*ipConfigurationResponsePtrType)(v)
+}
+
+func (*ipConfigurationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpConfigurationResponse)(nil)).Elem()
+}
+
+func (i *ipConfigurationResponsePtrType) ToIpConfigurationResponsePtrOutput() IpConfigurationResponsePtrOutput {
+	return i.ToIpConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *ipConfigurationResponsePtrType) ToIpConfigurationResponsePtrOutputWithContext(ctx context.Context) IpConfigurationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpConfigurationResponsePtrOutput)
+}
+
+// IP Management configuration.
+type IpConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (IpConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpConfigurationResponse)(nil)).Elem()
+}
+
+func (o IpConfigurationResponseOutput) ToIpConfigurationResponseOutput() IpConfigurationResponseOutput {
+	return o
+}
+
+func (o IpConfigurationResponseOutput) ToIpConfigurationResponseOutputWithContext(ctx context.Context) IpConfigurationResponseOutput {
+	return o
+}
+
+func (o IpConfigurationResponseOutput) ToIpConfigurationResponsePtrOutput() IpConfigurationResponsePtrOutput {
+	return o.ToIpConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o IpConfigurationResponseOutput) ToIpConfigurationResponsePtrOutputWithContext(ctx context.Context) IpConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v IpConfigurationResponse) *IpConfigurationResponse {
+		return &v
+	}).(IpConfigurationResponsePtrOutput)
+}
+
+// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
+func (o IpConfigurationResponseOutput) AuthorizedNetworks() AclEntryResponseArrayOutput {
+	return o.ApplyT(func(v IpConfigurationResponse) []AclEntryResponse { return v.AuthorizedNetworks }).(AclEntryResponseArrayOutput)
+}
+
+// Whether the instance is assigned a public IP address or not.
+func (o IpConfigurationResponseOutput) Ipv4Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v IpConfigurationResponse) bool { return v.Ipv4Enabled }).(pulumi.BoolOutput)
+}
+
+// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, */projects/myProject/global/networks/default*. This setting can be updated, but it cannot be removed after it is set.
+func (o IpConfigurationResponseOutput) PrivateNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v IpConfigurationResponse) string { return v.PrivateNetwork }).(pulumi.StringOutput)
+}
+
+// Whether SSL connections over IP are enforced or not.
+func (o IpConfigurationResponseOutput) RequireSsl() pulumi.BoolOutput {
+	return o.ApplyT(func(v IpConfigurationResponse) bool { return v.RequireSsl }).(pulumi.BoolOutput)
+}
+
+type IpConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IpConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpConfigurationResponse)(nil)).Elem()
+}
+
+func (o IpConfigurationResponsePtrOutput) ToIpConfigurationResponsePtrOutput() IpConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o IpConfigurationResponsePtrOutput) ToIpConfigurationResponsePtrOutputWithContext(ctx context.Context) IpConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o IpConfigurationResponsePtrOutput) Elem() IpConfigurationResponseOutput {
+	return o.ApplyT(func(v *IpConfigurationResponse) IpConfigurationResponse { return *v }).(IpConfigurationResponseOutput)
+}
+
+// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
+func (o IpConfigurationResponsePtrOutput) AuthorizedNetworks() AclEntryResponseArrayOutput {
+	return o.ApplyT(func(v *IpConfigurationResponse) []AclEntryResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizedNetworks
+	}).(AclEntryResponseArrayOutput)
+}
+
+// Whether the instance is assigned a public IP address or not.
+func (o IpConfigurationResponsePtrOutput) Ipv4Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IpConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Ipv4Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, */projects/myProject/global/networks/default*. This setting can be updated, but it cannot be removed after it is set.
+func (o IpConfigurationResponsePtrOutput) PrivateNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether SSL connections over IP are enforced or not.
+func (o IpConfigurationResponsePtrOutput) RequireSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IpConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.RequireSsl
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Database instance IP Mapping.
 type IpMapping struct {
 	// The IP address assigned.
@@ -1607,6 +3088,124 @@ func (o IpMappingArrayOutput) Index(i pulumi.IntInput) IpMappingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpMapping {
 		return vs[0].([]IpMapping)[vs[1].(int)]
 	}).(IpMappingOutput)
+}
+
+// Database instance IP Mapping.
+type IpMappingResponse struct {
+	// The IP address assigned.
+	IpAddress string `pulumi:"ipAddress"`
+	// The due time for this IP to be retired in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*. This field is only available when the IP is scheduled to be retired.
+	TimeToRetire string `pulumi:"timeToRetire"`
+	// The type of this IP address. A *PRIMARY* address is a public address that can accept incoming connections. A *PRIVATE* address is a private address that can accept incoming connections. An *OUTGOING* address is the source address of connections originating from the instance, if supported.
+	Type string `pulumi:"type"`
+}
+
+// IpMappingResponseInput is an input type that accepts IpMappingResponseArgs and IpMappingResponseOutput values.
+// You can construct a concrete instance of `IpMappingResponseInput` via:
+//
+//          IpMappingResponseArgs{...}
+type IpMappingResponseInput interface {
+	pulumi.Input
+
+	ToIpMappingResponseOutput() IpMappingResponseOutput
+	ToIpMappingResponseOutputWithContext(context.Context) IpMappingResponseOutput
+}
+
+// Database instance IP Mapping.
+type IpMappingResponseArgs struct {
+	// The IP address assigned.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The due time for this IP to be retired in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*. This field is only available when the IP is scheduled to be retired.
+	TimeToRetire pulumi.StringInput `pulumi:"timeToRetire"`
+	// The type of this IP address. A *PRIMARY* address is a public address that can accept incoming connections. A *PRIVATE* address is a private address that can accept incoming connections. An *OUTGOING* address is the source address of connections originating from the instance, if supported.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (IpMappingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpMappingResponse)(nil)).Elem()
+}
+
+func (i IpMappingResponseArgs) ToIpMappingResponseOutput() IpMappingResponseOutput {
+	return i.ToIpMappingResponseOutputWithContext(context.Background())
+}
+
+func (i IpMappingResponseArgs) ToIpMappingResponseOutputWithContext(ctx context.Context) IpMappingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpMappingResponseOutput)
+}
+
+// IpMappingResponseArrayInput is an input type that accepts IpMappingResponseArray and IpMappingResponseArrayOutput values.
+// You can construct a concrete instance of `IpMappingResponseArrayInput` via:
+//
+//          IpMappingResponseArray{ IpMappingResponseArgs{...} }
+type IpMappingResponseArrayInput interface {
+	pulumi.Input
+
+	ToIpMappingResponseArrayOutput() IpMappingResponseArrayOutput
+	ToIpMappingResponseArrayOutputWithContext(context.Context) IpMappingResponseArrayOutput
+}
+
+type IpMappingResponseArray []IpMappingResponseInput
+
+func (IpMappingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpMappingResponse)(nil)).Elem()
+}
+
+func (i IpMappingResponseArray) ToIpMappingResponseArrayOutput() IpMappingResponseArrayOutput {
+	return i.ToIpMappingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i IpMappingResponseArray) ToIpMappingResponseArrayOutputWithContext(ctx context.Context) IpMappingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpMappingResponseArrayOutput)
+}
+
+// Database instance IP Mapping.
+type IpMappingResponseOutput struct{ *pulumi.OutputState }
+
+func (IpMappingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpMappingResponse)(nil)).Elem()
+}
+
+func (o IpMappingResponseOutput) ToIpMappingResponseOutput() IpMappingResponseOutput {
+	return o
+}
+
+func (o IpMappingResponseOutput) ToIpMappingResponseOutputWithContext(ctx context.Context) IpMappingResponseOutput {
+	return o
+}
+
+// The IP address assigned.
+func (o IpMappingResponseOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v IpMappingResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The due time for this IP to be retired in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*. This field is only available when the IP is scheduled to be retired.
+func (o IpMappingResponseOutput) TimeToRetire() pulumi.StringOutput {
+	return o.ApplyT(func(v IpMappingResponse) string { return v.TimeToRetire }).(pulumi.StringOutput)
+}
+
+// The type of this IP address. A *PRIMARY* address is a public address that can accept incoming connections. A *PRIVATE* address is a private address that can accept incoming connections. An *OUTGOING* address is the source address of connections originating from the instance, if supported.
+func (o IpMappingResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v IpMappingResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type IpMappingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IpMappingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpMappingResponse)(nil)).Elem()
+}
+
+func (o IpMappingResponseArrayOutput) ToIpMappingResponseArrayOutput() IpMappingResponseArrayOutput {
+	return o
+}
+
+func (o IpMappingResponseArrayOutput) ToIpMappingResponseArrayOutputWithContext(ctx context.Context) IpMappingResponseArrayOutput {
+	return o
+}
+
+func (o IpMappingResponseArrayOutput) Index(i pulumi.IntInput) IpMappingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpMappingResponse {
+		return vs[0].([]IpMappingResponse)[vs[1].(int)]
+	}).(IpMappingResponseOutput)
 }
 
 // Preferred location. This specifies where a Cloud SQL instance is located, either in a specific Compute Engine zone, or co-located with an App Engine application. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
@@ -1800,6 +3399,197 @@ func (o LocationPreferencePtrOutput) Zone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Preferred location. This specifies where a Cloud SQL instance is located, either in a specific Compute Engine zone, or co-located with an App Engine application. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
+type LocationPreferenceResponse struct {
+	// The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+	FollowGaeApplication string `pulumi:"followGaeApplication"`
+	// This is always *sql#locationPreference*.
+	Kind string `pulumi:"kind"`
+	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
+	SecondaryZone string `pulumi:"secondaryZone"`
+	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+	Zone string `pulumi:"zone"`
+}
+
+// LocationPreferenceResponseInput is an input type that accepts LocationPreferenceResponseArgs and LocationPreferenceResponseOutput values.
+// You can construct a concrete instance of `LocationPreferenceResponseInput` via:
+//
+//          LocationPreferenceResponseArgs{...}
+type LocationPreferenceResponseInput interface {
+	pulumi.Input
+
+	ToLocationPreferenceResponseOutput() LocationPreferenceResponseOutput
+	ToLocationPreferenceResponseOutputWithContext(context.Context) LocationPreferenceResponseOutput
+}
+
+// Preferred location. This specifies where a Cloud SQL instance is located, either in a specific Compute Engine zone, or co-located with an App Engine application. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
+type LocationPreferenceResponseArgs struct {
+	// The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+	FollowGaeApplication pulumi.StringInput `pulumi:"followGaeApplication"`
+	// This is always *sql#locationPreference*.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
+	SecondaryZone pulumi.StringInput `pulumi:"secondaryZone"`
+	// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+	Zone pulumi.StringInput `pulumi:"zone"`
+}
+
+func (LocationPreferenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationPreferenceResponse)(nil)).Elem()
+}
+
+func (i LocationPreferenceResponseArgs) ToLocationPreferenceResponseOutput() LocationPreferenceResponseOutput {
+	return i.ToLocationPreferenceResponseOutputWithContext(context.Background())
+}
+
+func (i LocationPreferenceResponseArgs) ToLocationPreferenceResponseOutputWithContext(ctx context.Context) LocationPreferenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationPreferenceResponseOutput)
+}
+
+func (i LocationPreferenceResponseArgs) ToLocationPreferenceResponsePtrOutput() LocationPreferenceResponsePtrOutput {
+	return i.ToLocationPreferenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LocationPreferenceResponseArgs) ToLocationPreferenceResponsePtrOutputWithContext(ctx context.Context) LocationPreferenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationPreferenceResponseOutput).ToLocationPreferenceResponsePtrOutputWithContext(ctx)
+}
+
+// LocationPreferenceResponsePtrInput is an input type that accepts LocationPreferenceResponseArgs, LocationPreferenceResponsePtr and LocationPreferenceResponsePtrOutput values.
+// You can construct a concrete instance of `LocationPreferenceResponsePtrInput` via:
+//
+//          LocationPreferenceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type LocationPreferenceResponsePtrInput interface {
+	pulumi.Input
+
+	ToLocationPreferenceResponsePtrOutput() LocationPreferenceResponsePtrOutput
+	ToLocationPreferenceResponsePtrOutputWithContext(context.Context) LocationPreferenceResponsePtrOutput
+}
+
+type locationPreferenceResponsePtrType LocationPreferenceResponseArgs
+
+func LocationPreferenceResponsePtr(v *LocationPreferenceResponseArgs) LocationPreferenceResponsePtrInput {
+	return (*locationPreferenceResponsePtrType)(v)
+}
+
+func (*locationPreferenceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationPreferenceResponse)(nil)).Elem()
+}
+
+func (i *locationPreferenceResponsePtrType) ToLocationPreferenceResponsePtrOutput() LocationPreferenceResponsePtrOutput {
+	return i.ToLocationPreferenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *locationPreferenceResponsePtrType) ToLocationPreferenceResponsePtrOutputWithContext(ctx context.Context) LocationPreferenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationPreferenceResponsePtrOutput)
+}
+
+// Preferred location. This specifies where a Cloud SQL instance is located, either in a specific Compute Engine zone, or co-located with an App Engine application. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
+type LocationPreferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (LocationPreferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationPreferenceResponse)(nil)).Elem()
+}
+
+func (o LocationPreferenceResponseOutput) ToLocationPreferenceResponseOutput() LocationPreferenceResponseOutput {
+	return o
+}
+
+func (o LocationPreferenceResponseOutput) ToLocationPreferenceResponseOutputWithContext(ctx context.Context) LocationPreferenceResponseOutput {
+	return o
+}
+
+func (o LocationPreferenceResponseOutput) ToLocationPreferenceResponsePtrOutput() LocationPreferenceResponsePtrOutput {
+	return o.ToLocationPreferenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LocationPreferenceResponseOutput) ToLocationPreferenceResponsePtrOutputWithContext(ctx context.Context) LocationPreferenceResponsePtrOutput {
+	return o.ApplyT(func(v LocationPreferenceResponse) *LocationPreferenceResponse {
+		return &v
+	}).(LocationPreferenceResponsePtrOutput)
+}
+
+// The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+func (o LocationPreferenceResponseOutput) FollowGaeApplication() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationPreferenceResponse) string { return v.FollowGaeApplication }).(pulumi.StringOutput)
+}
+
+// This is always *sql#locationPreference*.
+func (o LocationPreferenceResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationPreferenceResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
+func (o LocationPreferenceResponseOutput) SecondaryZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationPreferenceResponse) string { return v.SecondaryZone }).(pulumi.StringOutput)
+}
+
+// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+func (o LocationPreferenceResponseOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationPreferenceResponse) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type LocationPreferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LocationPreferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationPreferenceResponse)(nil)).Elem()
+}
+
+func (o LocationPreferenceResponsePtrOutput) ToLocationPreferenceResponsePtrOutput() LocationPreferenceResponsePtrOutput {
+	return o
+}
+
+func (o LocationPreferenceResponsePtrOutput) ToLocationPreferenceResponsePtrOutputWithContext(ctx context.Context) LocationPreferenceResponsePtrOutput {
+	return o
+}
+
+func (o LocationPreferenceResponsePtrOutput) Elem() LocationPreferenceResponseOutput {
+	return o.ApplyT(func(v *LocationPreferenceResponse) LocationPreferenceResponse { return *v }).(LocationPreferenceResponseOutput)
+}
+
+// The App Engine application to follow, it must be in the same region as the Cloud SQL instance.
+func (o LocationPreferenceResponsePtrOutput) FollowGaeApplication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationPreferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FollowGaeApplication
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is always *sql#locationPreference*.
+func (o LocationPreferenceResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationPreferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.
+func (o LocationPreferenceResponsePtrOutput) SecondaryZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationPreferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecondaryZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).
+func (o LocationPreferenceResponsePtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationPreferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Zone
+	}).(pulumi.StringPtrOutput)
+}
+
 // Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance purposes.
 type MaintenanceWindow struct {
 	// day of week (1-7), starting on Monday.
@@ -1988,6 +3778,197 @@ func (o MaintenanceWindowPtrOutput) UpdateTrack() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.UpdateTrack
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance purposes.
+type MaintenanceWindowResponse struct {
+	// day of week (1-7), starting on Monday.
+	Day int `pulumi:"day"`
+	// hour of day - 0 to 23.
+	Hour int `pulumi:"hour"`
+	// This is always *sql#maintenanceWindow*.
+	Kind string `pulumi:"kind"`
+	// Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
+	UpdateTrack string `pulumi:"updateTrack"`
+}
+
+// MaintenanceWindowResponseInput is an input type that accepts MaintenanceWindowResponseArgs and MaintenanceWindowResponseOutput values.
+// You can construct a concrete instance of `MaintenanceWindowResponseInput` via:
+//
+//          MaintenanceWindowResponseArgs{...}
+type MaintenanceWindowResponseInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowResponseOutput() MaintenanceWindowResponseOutput
+	ToMaintenanceWindowResponseOutputWithContext(context.Context) MaintenanceWindowResponseOutput
+}
+
+// Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance purposes.
+type MaintenanceWindowResponseArgs struct {
+	// day of week (1-7), starting on Monday.
+	Day pulumi.IntInput `pulumi:"day"`
+	// hour of day - 0 to 23.
+	Hour pulumi.IntInput `pulumi:"hour"`
+	// This is always *sql#maintenanceWindow*.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
+	UpdateTrack pulumi.StringInput `pulumi:"updateTrack"`
+}
+
+func (MaintenanceWindowResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponseOutput() MaintenanceWindowResponseOutput {
+	return i.ToMaintenanceWindowResponseOutputWithContext(context.Background())
+}
+
+func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponseOutputWithContext(ctx context.Context) MaintenanceWindowResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowResponseOutput)
+}
+
+func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
+	return i.ToMaintenanceWindowResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MaintenanceWindowResponseArgs) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowResponseOutput).ToMaintenanceWindowResponsePtrOutputWithContext(ctx)
+}
+
+// MaintenanceWindowResponsePtrInput is an input type that accepts MaintenanceWindowResponseArgs, MaintenanceWindowResponsePtr and MaintenanceWindowResponsePtrOutput values.
+// You can construct a concrete instance of `MaintenanceWindowResponsePtrInput` via:
+//
+//          MaintenanceWindowResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MaintenanceWindowResponsePtrInput interface {
+	pulumi.Input
+
+	ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput
+	ToMaintenanceWindowResponsePtrOutputWithContext(context.Context) MaintenanceWindowResponsePtrOutput
+}
+
+type maintenanceWindowResponsePtrType MaintenanceWindowResponseArgs
+
+func MaintenanceWindowResponsePtr(v *MaintenanceWindowResponseArgs) MaintenanceWindowResponsePtrInput {
+	return (*maintenanceWindowResponsePtrType)(v)
+}
+
+func (*maintenanceWindowResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (i *maintenanceWindowResponsePtrType) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
+	return i.ToMaintenanceWindowResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *maintenanceWindowResponsePtrType) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowResponsePtrOutput)
+}
+
+// Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance purposes.
+type MaintenanceWindowResponseOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutput() MaintenanceWindowResponseOutput {
+	return o
+}
+
+func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutputWithContext(ctx context.Context) MaintenanceWindowResponseOutput {
+	return o
+}
+
+func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
+	return o.ToMaintenanceWindowResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
+	return o.ApplyT(func(v MaintenanceWindowResponse) *MaintenanceWindowResponse {
+		return &v
+	}).(MaintenanceWindowResponsePtrOutput)
+}
+
+// day of week (1-7), starting on Monday.
+func (o MaintenanceWindowResponseOutput) Day() pulumi.IntOutput {
+	return o.ApplyT(func(v MaintenanceWindowResponse) int { return v.Day }).(pulumi.IntOutput)
+}
+
+// hour of day - 0 to 23.
+func (o MaintenanceWindowResponseOutput) Hour() pulumi.IntOutput {
+	return o.ApplyT(func(v MaintenanceWindowResponse) int { return v.Hour }).(pulumi.IntOutput)
+}
+
+// This is always *sql#maintenanceWindow*.
+func (o MaintenanceWindowResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
+func (o MaintenanceWindowResponseOutput) UpdateTrack() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.UpdateTrack }).(pulumi.StringOutput)
+}
+
+type MaintenanceWindowResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceWindowResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutput() MaintenanceWindowResponsePtrOutput {
+	return o
+}
+
+func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
+	return o
+}
+
+func (o MaintenanceWindowResponsePtrOutput) Elem() MaintenanceWindowResponseOutput {
+	return o.ApplyT(func(v *MaintenanceWindowResponse) MaintenanceWindowResponse { return *v }).(MaintenanceWindowResponseOutput)
+}
+
+// day of week (1-7), starting on Monday.
+func (o MaintenanceWindowResponsePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MaintenanceWindowResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// hour of day - 0 to 23.
+func (o MaintenanceWindowResponsePtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MaintenanceWindowResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+// This is always *sql#maintenanceWindow*.
+func (o MaintenanceWindowResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
+func (o MaintenanceWindowResponsePtrOutput) UpdateTrack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UpdateTrack
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2315,6 +4296,330 @@ func (o MySqlReplicaConfigurationPtrOutput) VerifyServerCertificate() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Read-replica configuration specific to MySQL databases.
+type MySqlReplicaConfigurationResponse struct {
+	// PEM representation of the trusted CA's x509 certificate.
+	CaCertificate string `pulumi:"caCertificate"`
+	// PEM representation of the replica's x509 certificate.
+	ClientCertificate string `pulumi:"clientCertificate"`
+	// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
+	ClientKey string `pulumi:"clientKey"`
+	// Seconds to wait between connect retries. MySQL's default is 60 seconds.
+	ConnectRetryInterval int `pulumi:"connectRetryInterval"`
+	// Path to a SQL dump file in Google Cloud Storage from which the replica instance is to be created. The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps have the binlog co-ordinates from which replication begins. This can be accomplished by setting --master-data to 1 when using mysqldump.
+	DumpFilePath string `pulumi:"dumpFilePath"`
+	// This is always *sql#mysqlReplicaConfiguration*.
+	Kind string `pulumi:"kind"`
+	// Interval in milliseconds between replication heartbeats.
+	MasterHeartbeatPeriod string `pulumi:"masterHeartbeatPeriod"`
+	// The password for the replication connection.
+	Password string `pulumi:"password"`
+	// A list of permissible ciphers to use for SSL encryption.
+	SslCipher string `pulumi:"sslCipher"`
+	// The username for the replication connection.
+	Username string `pulumi:"username"`
+	// Whether or not to check the primary instance's Common Name value in the certificate that it sends during the SSL handshake.
+	VerifyServerCertificate bool `pulumi:"verifyServerCertificate"`
+}
+
+// MySqlReplicaConfigurationResponseInput is an input type that accepts MySqlReplicaConfigurationResponseArgs and MySqlReplicaConfigurationResponseOutput values.
+// You can construct a concrete instance of `MySqlReplicaConfigurationResponseInput` via:
+//
+//          MySqlReplicaConfigurationResponseArgs{...}
+type MySqlReplicaConfigurationResponseInput interface {
+	pulumi.Input
+
+	ToMySqlReplicaConfigurationResponseOutput() MySqlReplicaConfigurationResponseOutput
+	ToMySqlReplicaConfigurationResponseOutputWithContext(context.Context) MySqlReplicaConfigurationResponseOutput
+}
+
+// Read-replica configuration specific to MySQL databases.
+type MySqlReplicaConfigurationResponseArgs struct {
+	// PEM representation of the trusted CA's x509 certificate.
+	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
+	// PEM representation of the replica's x509 certificate.
+	ClientCertificate pulumi.StringInput `pulumi:"clientCertificate"`
+	// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
+	ClientKey pulumi.StringInput `pulumi:"clientKey"`
+	// Seconds to wait between connect retries. MySQL's default is 60 seconds.
+	ConnectRetryInterval pulumi.IntInput `pulumi:"connectRetryInterval"`
+	// Path to a SQL dump file in Google Cloud Storage from which the replica instance is to be created. The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps have the binlog co-ordinates from which replication begins. This can be accomplished by setting --master-data to 1 when using mysqldump.
+	DumpFilePath pulumi.StringInput `pulumi:"dumpFilePath"`
+	// This is always *sql#mysqlReplicaConfiguration*.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Interval in milliseconds between replication heartbeats.
+	MasterHeartbeatPeriod pulumi.StringInput `pulumi:"masterHeartbeatPeriod"`
+	// The password for the replication connection.
+	Password pulumi.StringInput `pulumi:"password"`
+	// A list of permissible ciphers to use for SSL encryption.
+	SslCipher pulumi.StringInput `pulumi:"sslCipher"`
+	// The username for the replication connection.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Whether or not to check the primary instance's Common Name value in the certificate that it sends during the SSL handshake.
+	VerifyServerCertificate pulumi.BoolInput `pulumi:"verifyServerCertificate"`
+}
+
+func (MySqlReplicaConfigurationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MySqlReplicaConfigurationResponse)(nil)).Elem()
+}
+
+func (i MySqlReplicaConfigurationResponseArgs) ToMySqlReplicaConfigurationResponseOutput() MySqlReplicaConfigurationResponseOutput {
+	return i.ToMySqlReplicaConfigurationResponseOutputWithContext(context.Background())
+}
+
+func (i MySqlReplicaConfigurationResponseArgs) ToMySqlReplicaConfigurationResponseOutputWithContext(ctx context.Context) MySqlReplicaConfigurationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MySqlReplicaConfigurationResponseOutput)
+}
+
+func (i MySqlReplicaConfigurationResponseArgs) ToMySqlReplicaConfigurationResponsePtrOutput() MySqlReplicaConfigurationResponsePtrOutput {
+	return i.ToMySqlReplicaConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MySqlReplicaConfigurationResponseArgs) ToMySqlReplicaConfigurationResponsePtrOutputWithContext(ctx context.Context) MySqlReplicaConfigurationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MySqlReplicaConfigurationResponseOutput).ToMySqlReplicaConfigurationResponsePtrOutputWithContext(ctx)
+}
+
+// MySqlReplicaConfigurationResponsePtrInput is an input type that accepts MySqlReplicaConfigurationResponseArgs, MySqlReplicaConfigurationResponsePtr and MySqlReplicaConfigurationResponsePtrOutput values.
+// You can construct a concrete instance of `MySqlReplicaConfigurationResponsePtrInput` via:
+//
+//          MySqlReplicaConfigurationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MySqlReplicaConfigurationResponsePtrInput interface {
+	pulumi.Input
+
+	ToMySqlReplicaConfigurationResponsePtrOutput() MySqlReplicaConfigurationResponsePtrOutput
+	ToMySqlReplicaConfigurationResponsePtrOutputWithContext(context.Context) MySqlReplicaConfigurationResponsePtrOutput
+}
+
+type mySqlReplicaConfigurationResponsePtrType MySqlReplicaConfigurationResponseArgs
+
+func MySqlReplicaConfigurationResponsePtr(v *MySqlReplicaConfigurationResponseArgs) MySqlReplicaConfigurationResponsePtrInput {
+	return (*mySqlReplicaConfigurationResponsePtrType)(v)
+}
+
+func (*mySqlReplicaConfigurationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MySqlReplicaConfigurationResponse)(nil)).Elem()
+}
+
+func (i *mySqlReplicaConfigurationResponsePtrType) ToMySqlReplicaConfigurationResponsePtrOutput() MySqlReplicaConfigurationResponsePtrOutput {
+	return i.ToMySqlReplicaConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *mySqlReplicaConfigurationResponsePtrType) ToMySqlReplicaConfigurationResponsePtrOutputWithContext(ctx context.Context) MySqlReplicaConfigurationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MySqlReplicaConfigurationResponsePtrOutput)
+}
+
+// Read-replica configuration specific to MySQL databases.
+type MySqlReplicaConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (MySqlReplicaConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MySqlReplicaConfigurationResponse)(nil)).Elem()
+}
+
+func (o MySqlReplicaConfigurationResponseOutput) ToMySqlReplicaConfigurationResponseOutput() MySqlReplicaConfigurationResponseOutput {
+	return o
+}
+
+func (o MySqlReplicaConfigurationResponseOutput) ToMySqlReplicaConfigurationResponseOutputWithContext(ctx context.Context) MySqlReplicaConfigurationResponseOutput {
+	return o
+}
+
+func (o MySqlReplicaConfigurationResponseOutput) ToMySqlReplicaConfigurationResponsePtrOutput() MySqlReplicaConfigurationResponsePtrOutput {
+	return o.ToMySqlReplicaConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MySqlReplicaConfigurationResponseOutput) ToMySqlReplicaConfigurationResponsePtrOutputWithContext(ctx context.Context) MySqlReplicaConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v MySqlReplicaConfigurationResponse) *MySqlReplicaConfigurationResponse {
+		return &v
+	}).(MySqlReplicaConfigurationResponsePtrOutput)
+}
+
+// PEM representation of the trusted CA's x509 certificate.
+func (o MySqlReplicaConfigurationResponseOutput) CaCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v MySqlReplicaConfigurationResponse) string { return v.CaCertificate }).(pulumi.StringOutput)
+}
+
+// PEM representation of the replica's x509 certificate.
+func (o MySqlReplicaConfigurationResponseOutput) ClientCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v MySqlReplicaConfigurationResponse) string { return v.ClientCertificate }).(pulumi.StringOutput)
+}
+
+// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
+func (o MySqlReplicaConfigurationResponseOutput) ClientKey() pulumi.StringOutput {
+	return o.ApplyT(func(v MySqlReplicaConfigurationResponse) string { return v.ClientKey }).(pulumi.StringOutput)
+}
+
+// Seconds to wait between connect retries. MySQL's default is 60 seconds.
+func (o MySqlReplicaConfigurationResponseOutput) ConnectRetryInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v MySqlReplicaConfigurationResponse) int { return v.ConnectRetryInterval }).(pulumi.IntOutput)
+}
+
+// Path to a SQL dump file in Google Cloud Storage from which the replica instance is to be created. The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps have the binlog co-ordinates from which replication begins. This can be accomplished by setting --master-data to 1 when using mysqldump.
+func (o MySqlReplicaConfigurationResponseOutput) DumpFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v MySqlReplicaConfigurationResponse) string { return v.DumpFilePath }).(pulumi.StringOutput)
+}
+
+// This is always *sql#mysqlReplicaConfiguration*.
+func (o MySqlReplicaConfigurationResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v MySqlReplicaConfigurationResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Interval in milliseconds between replication heartbeats.
+func (o MySqlReplicaConfigurationResponseOutput) MasterHeartbeatPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v MySqlReplicaConfigurationResponse) string { return v.MasterHeartbeatPeriod }).(pulumi.StringOutput)
+}
+
+// The password for the replication connection.
+func (o MySqlReplicaConfigurationResponseOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v MySqlReplicaConfigurationResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// A list of permissible ciphers to use for SSL encryption.
+func (o MySqlReplicaConfigurationResponseOutput) SslCipher() pulumi.StringOutput {
+	return o.ApplyT(func(v MySqlReplicaConfigurationResponse) string { return v.SslCipher }).(pulumi.StringOutput)
+}
+
+// The username for the replication connection.
+func (o MySqlReplicaConfigurationResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v MySqlReplicaConfigurationResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// Whether or not to check the primary instance's Common Name value in the certificate that it sends during the SSL handshake.
+func (o MySqlReplicaConfigurationResponseOutput) VerifyServerCertificate() pulumi.BoolOutput {
+	return o.ApplyT(func(v MySqlReplicaConfigurationResponse) bool { return v.VerifyServerCertificate }).(pulumi.BoolOutput)
+}
+
+type MySqlReplicaConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MySqlReplicaConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MySqlReplicaConfigurationResponse)(nil)).Elem()
+}
+
+func (o MySqlReplicaConfigurationResponsePtrOutput) ToMySqlReplicaConfigurationResponsePtrOutput() MySqlReplicaConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o MySqlReplicaConfigurationResponsePtrOutput) ToMySqlReplicaConfigurationResponsePtrOutputWithContext(ctx context.Context) MySqlReplicaConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o MySqlReplicaConfigurationResponsePtrOutput) Elem() MySqlReplicaConfigurationResponseOutput {
+	return o.ApplyT(func(v *MySqlReplicaConfigurationResponse) MySqlReplicaConfigurationResponse { return *v }).(MySqlReplicaConfigurationResponseOutput)
+}
+
+// PEM representation of the trusted CA's x509 certificate.
+func (o MySqlReplicaConfigurationResponsePtrOutput) CaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlReplicaConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CaCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// PEM representation of the replica's x509 certificate.
+func (o MySqlReplicaConfigurationResponsePtrOutput) ClientCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlReplicaConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
+func (o MySqlReplicaConfigurationResponsePtrOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlReplicaConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Seconds to wait between connect retries. MySQL's default is 60 seconds.
+func (o MySqlReplicaConfigurationResponsePtrOutput) ConnectRetryInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MySqlReplicaConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectRetryInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Path to a SQL dump file in Google Cloud Storage from which the replica instance is to be created. The URI is in the form gs://bucketName/fileName. Compressed gzip files (.gz) are also supported. Dumps have the binlog co-ordinates from which replication begins. This can be accomplished by setting --master-data to 1 when using mysqldump.
+func (o MySqlReplicaConfigurationResponsePtrOutput) DumpFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlReplicaConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DumpFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is always *sql#mysqlReplicaConfiguration*.
+func (o MySqlReplicaConfigurationResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlReplicaConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interval in milliseconds between replication heartbeats.
+func (o MySqlReplicaConfigurationResponsePtrOutput) MasterHeartbeatPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlReplicaConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterHeartbeatPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password for the replication connection.
+func (o MySqlReplicaConfigurationResponsePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlReplicaConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of permissible ciphers to use for SSL encryption.
+func (o MySqlReplicaConfigurationResponsePtrOutput) SslCipher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlReplicaConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SslCipher
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username for the replication connection.
+func (o MySqlReplicaConfigurationResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MySqlReplicaConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether or not to check the primary instance's Common Name value in the certificate that it sends during the SSL handshake.
+func (o MySqlReplicaConfigurationResponsePtrOutput) VerifyServerCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MySqlReplicaConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.VerifyServerCertificate
+	}).(pulumi.BoolPtrOutput)
+}
+
 // On-premises instance configuration.
 type OnPremisesConfiguration struct {
 	// PEM representation of the trusted CA's x509 certificate.
@@ -2582,6 +4887,273 @@ func (o OnPremisesConfigurationPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// On-premises instance configuration.
+type OnPremisesConfigurationResponse struct {
+	// PEM representation of the trusted CA's x509 certificate.
+	CaCertificate string `pulumi:"caCertificate"`
+	// PEM representation of the replica's x509 certificate.
+	ClientCertificate string `pulumi:"clientCertificate"`
+	// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
+	ClientKey string `pulumi:"clientKey"`
+	// The dump file to create the Cloud SQL replica.
+	DumpFilePath string `pulumi:"dumpFilePath"`
+	// The host and port of the on-premises instance in host:port format
+	HostPort string `pulumi:"hostPort"`
+	// This is always *sql#onPremisesConfiguration*.
+	Kind string `pulumi:"kind"`
+	// The password for connecting to on-premises instance.
+	Password string `pulumi:"password"`
+	// The username for connecting to on-premises instance.
+	Username string `pulumi:"username"`
+}
+
+// OnPremisesConfigurationResponseInput is an input type that accepts OnPremisesConfigurationResponseArgs and OnPremisesConfigurationResponseOutput values.
+// You can construct a concrete instance of `OnPremisesConfigurationResponseInput` via:
+//
+//          OnPremisesConfigurationResponseArgs{...}
+type OnPremisesConfigurationResponseInput interface {
+	pulumi.Input
+
+	ToOnPremisesConfigurationResponseOutput() OnPremisesConfigurationResponseOutput
+	ToOnPremisesConfigurationResponseOutputWithContext(context.Context) OnPremisesConfigurationResponseOutput
+}
+
+// On-premises instance configuration.
+type OnPremisesConfigurationResponseArgs struct {
+	// PEM representation of the trusted CA's x509 certificate.
+	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
+	// PEM representation of the replica's x509 certificate.
+	ClientCertificate pulumi.StringInput `pulumi:"clientCertificate"`
+	// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
+	ClientKey pulumi.StringInput `pulumi:"clientKey"`
+	// The dump file to create the Cloud SQL replica.
+	DumpFilePath pulumi.StringInput `pulumi:"dumpFilePath"`
+	// The host and port of the on-premises instance in host:port format
+	HostPort pulumi.StringInput `pulumi:"hostPort"`
+	// This is always *sql#onPremisesConfiguration*.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The password for connecting to on-premises instance.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The username for connecting to on-premises instance.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (OnPremisesConfigurationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnPremisesConfigurationResponse)(nil)).Elem()
+}
+
+func (i OnPremisesConfigurationResponseArgs) ToOnPremisesConfigurationResponseOutput() OnPremisesConfigurationResponseOutput {
+	return i.ToOnPremisesConfigurationResponseOutputWithContext(context.Background())
+}
+
+func (i OnPremisesConfigurationResponseArgs) ToOnPremisesConfigurationResponseOutputWithContext(ctx context.Context) OnPremisesConfigurationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnPremisesConfigurationResponseOutput)
+}
+
+func (i OnPremisesConfigurationResponseArgs) ToOnPremisesConfigurationResponsePtrOutput() OnPremisesConfigurationResponsePtrOutput {
+	return i.ToOnPremisesConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i OnPremisesConfigurationResponseArgs) ToOnPremisesConfigurationResponsePtrOutputWithContext(ctx context.Context) OnPremisesConfigurationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnPremisesConfigurationResponseOutput).ToOnPremisesConfigurationResponsePtrOutputWithContext(ctx)
+}
+
+// OnPremisesConfigurationResponsePtrInput is an input type that accepts OnPremisesConfigurationResponseArgs, OnPremisesConfigurationResponsePtr and OnPremisesConfigurationResponsePtrOutput values.
+// You can construct a concrete instance of `OnPremisesConfigurationResponsePtrInput` via:
+//
+//          OnPremisesConfigurationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type OnPremisesConfigurationResponsePtrInput interface {
+	pulumi.Input
+
+	ToOnPremisesConfigurationResponsePtrOutput() OnPremisesConfigurationResponsePtrOutput
+	ToOnPremisesConfigurationResponsePtrOutputWithContext(context.Context) OnPremisesConfigurationResponsePtrOutput
+}
+
+type onPremisesConfigurationResponsePtrType OnPremisesConfigurationResponseArgs
+
+func OnPremisesConfigurationResponsePtr(v *OnPremisesConfigurationResponseArgs) OnPremisesConfigurationResponsePtrInput {
+	return (*onPremisesConfigurationResponsePtrType)(v)
+}
+
+func (*onPremisesConfigurationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnPremisesConfigurationResponse)(nil)).Elem()
+}
+
+func (i *onPremisesConfigurationResponsePtrType) ToOnPremisesConfigurationResponsePtrOutput() OnPremisesConfigurationResponsePtrOutput {
+	return i.ToOnPremisesConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *onPremisesConfigurationResponsePtrType) ToOnPremisesConfigurationResponsePtrOutputWithContext(ctx context.Context) OnPremisesConfigurationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnPremisesConfigurationResponsePtrOutput)
+}
+
+// On-premises instance configuration.
+type OnPremisesConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (OnPremisesConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnPremisesConfigurationResponse)(nil)).Elem()
+}
+
+func (o OnPremisesConfigurationResponseOutput) ToOnPremisesConfigurationResponseOutput() OnPremisesConfigurationResponseOutput {
+	return o
+}
+
+func (o OnPremisesConfigurationResponseOutput) ToOnPremisesConfigurationResponseOutputWithContext(ctx context.Context) OnPremisesConfigurationResponseOutput {
+	return o
+}
+
+func (o OnPremisesConfigurationResponseOutput) ToOnPremisesConfigurationResponsePtrOutput() OnPremisesConfigurationResponsePtrOutput {
+	return o.ToOnPremisesConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o OnPremisesConfigurationResponseOutput) ToOnPremisesConfigurationResponsePtrOutputWithContext(ctx context.Context) OnPremisesConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v OnPremisesConfigurationResponse) *OnPremisesConfigurationResponse {
+		return &v
+	}).(OnPremisesConfigurationResponsePtrOutput)
+}
+
+// PEM representation of the trusted CA's x509 certificate.
+func (o OnPremisesConfigurationResponseOutput) CaCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v OnPremisesConfigurationResponse) string { return v.CaCertificate }).(pulumi.StringOutput)
+}
+
+// PEM representation of the replica's x509 certificate.
+func (o OnPremisesConfigurationResponseOutput) ClientCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v OnPremisesConfigurationResponse) string { return v.ClientCertificate }).(pulumi.StringOutput)
+}
+
+// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
+func (o OnPremisesConfigurationResponseOutput) ClientKey() pulumi.StringOutput {
+	return o.ApplyT(func(v OnPremisesConfigurationResponse) string { return v.ClientKey }).(pulumi.StringOutput)
+}
+
+// The dump file to create the Cloud SQL replica.
+func (o OnPremisesConfigurationResponseOutput) DumpFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v OnPremisesConfigurationResponse) string { return v.DumpFilePath }).(pulumi.StringOutput)
+}
+
+// The host and port of the on-premises instance in host:port format
+func (o OnPremisesConfigurationResponseOutput) HostPort() pulumi.StringOutput {
+	return o.ApplyT(func(v OnPremisesConfigurationResponse) string { return v.HostPort }).(pulumi.StringOutput)
+}
+
+// This is always *sql#onPremisesConfiguration*.
+func (o OnPremisesConfigurationResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v OnPremisesConfigurationResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The password for connecting to on-premises instance.
+func (o OnPremisesConfigurationResponseOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v OnPremisesConfigurationResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The username for connecting to on-premises instance.
+func (o OnPremisesConfigurationResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v OnPremisesConfigurationResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type OnPremisesConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OnPremisesConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnPremisesConfigurationResponse)(nil)).Elem()
+}
+
+func (o OnPremisesConfigurationResponsePtrOutput) ToOnPremisesConfigurationResponsePtrOutput() OnPremisesConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o OnPremisesConfigurationResponsePtrOutput) ToOnPremisesConfigurationResponsePtrOutputWithContext(ctx context.Context) OnPremisesConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o OnPremisesConfigurationResponsePtrOutput) Elem() OnPremisesConfigurationResponseOutput {
+	return o.ApplyT(func(v *OnPremisesConfigurationResponse) OnPremisesConfigurationResponse { return *v }).(OnPremisesConfigurationResponseOutput)
+}
+
+// PEM representation of the trusted CA's x509 certificate.
+func (o OnPremisesConfigurationResponsePtrOutput) CaCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnPremisesConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CaCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// PEM representation of the replica's x509 certificate.
+func (o OnPremisesConfigurationResponsePtrOutput) ClientCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnPremisesConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
+func (o OnPremisesConfigurationResponsePtrOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnPremisesConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The dump file to create the Cloud SQL replica.
+func (o OnPremisesConfigurationResponsePtrOutput) DumpFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnPremisesConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DumpFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host and port of the on-premises instance in host:port format
+func (o OnPremisesConfigurationResponsePtrOutput) HostPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnPremisesConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HostPort
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is always *sql#onPremisesConfiguration*.
+func (o OnPremisesConfigurationResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnPremisesConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password for connecting to on-premises instance.
+func (o OnPremisesConfigurationResponsePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnPremisesConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username for connecting to on-premises instance.
+func (o OnPremisesConfigurationResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnPremisesConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 // Database instance operation error.
 type OperationError struct {
 	// Identifies the specific error that occurred.
@@ -2751,6 +5323,178 @@ func (o OperationErrorPtrOutput) Message() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Database instance operation error.
+type OperationErrorResponse struct {
+	// Identifies the specific error that occurred.
+	Code string `pulumi:"code"`
+	// This is always *sql#operationError*.
+	Kind string `pulumi:"kind"`
+	// Additional information about the error encountered.
+	Message string `pulumi:"message"`
+}
+
+// OperationErrorResponseInput is an input type that accepts OperationErrorResponseArgs and OperationErrorResponseOutput values.
+// You can construct a concrete instance of `OperationErrorResponseInput` via:
+//
+//          OperationErrorResponseArgs{...}
+type OperationErrorResponseInput interface {
+	pulumi.Input
+
+	ToOperationErrorResponseOutput() OperationErrorResponseOutput
+	ToOperationErrorResponseOutputWithContext(context.Context) OperationErrorResponseOutput
+}
+
+// Database instance operation error.
+type OperationErrorResponseArgs struct {
+	// Identifies the specific error that occurred.
+	Code pulumi.StringInput `pulumi:"code"`
+	// This is always *sql#operationError*.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Additional information about the error encountered.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (OperationErrorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationErrorResponse)(nil)).Elem()
+}
+
+func (i OperationErrorResponseArgs) ToOperationErrorResponseOutput() OperationErrorResponseOutput {
+	return i.ToOperationErrorResponseOutputWithContext(context.Background())
+}
+
+func (i OperationErrorResponseArgs) ToOperationErrorResponseOutputWithContext(ctx context.Context) OperationErrorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorResponseOutput)
+}
+
+func (i OperationErrorResponseArgs) ToOperationErrorResponsePtrOutput() OperationErrorResponsePtrOutput {
+	return i.ToOperationErrorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i OperationErrorResponseArgs) ToOperationErrorResponsePtrOutputWithContext(ctx context.Context) OperationErrorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorResponseOutput).ToOperationErrorResponsePtrOutputWithContext(ctx)
+}
+
+// OperationErrorResponsePtrInput is an input type that accepts OperationErrorResponseArgs, OperationErrorResponsePtr and OperationErrorResponsePtrOutput values.
+// You can construct a concrete instance of `OperationErrorResponsePtrInput` via:
+//
+//          OperationErrorResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type OperationErrorResponsePtrInput interface {
+	pulumi.Input
+
+	ToOperationErrorResponsePtrOutput() OperationErrorResponsePtrOutput
+	ToOperationErrorResponsePtrOutputWithContext(context.Context) OperationErrorResponsePtrOutput
+}
+
+type operationErrorResponsePtrType OperationErrorResponseArgs
+
+func OperationErrorResponsePtr(v *OperationErrorResponseArgs) OperationErrorResponsePtrInput {
+	return (*operationErrorResponsePtrType)(v)
+}
+
+func (*operationErrorResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OperationErrorResponse)(nil)).Elem()
+}
+
+func (i *operationErrorResponsePtrType) ToOperationErrorResponsePtrOutput() OperationErrorResponsePtrOutput {
+	return i.ToOperationErrorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *operationErrorResponsePtrType) ToOperationErrorResponsePtrOutputWithContext(ctx context.Context) OperationErrorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationErrorResponsePtrOutput)
+}
+
+// Database instance operation error.
+type OperationErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (OperationErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationErrorResponse)(nil)).Elem()
+}
+
+func (o OperationErrorResponseOutput) ToOperationErrorResponseOutput() OperationErrorResponseOutput {
+	return o
+}
+
+func (o OperationErrorResponseOutput) ToOperationErrorResponseOutputWithContext(ctx context.Context) OperationErrorResponseOutput {
+	return o
+}
+
+func (o OperationErrorResponseOutput) ToOperationErrorResponsePtrOutput() OperationErrorResponsePtrOutput {
+	return o.ToOperationErrorResponsePtrOutputWithContext(context.Background())
+}
+
+func (o OperationErrorResponseOutput) ToOperationErrorResponsePtrOutputWithContext(ctx context.Context) OperationErrorResponsePtrOutput {
+	return o.ApplyT(func(v OperationErrorResponse) *OperationErrorResponse {
+		return &v
+	}).(OperationErrorResponsePtrOutput)
+}
+
+// Identifies the specific error that occurred.
+func (o OperationErrorResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationErrorResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// This is always *sql#operationError*.
+func (o OperationErrorResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationErrorResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Additional information about the error encountered.
+func (o OperationErrorResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationErrorResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type OperationErrorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OperationErrorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OperationErrorResponse)(nil)).Elem()
+}
+
+func (o OperationErrorResponsePtrOutput) ToOperationErrorResponsePtrOutput() OperationErrorResponsePtrOutput {
+	return o
+}
+
+func (o OperationErrorResponsePtrOutput) ToOperationErrorResponsePtrOutputWithContext(ctx context.Context) OperationErrorResponsePtrOutput {
+	return o
+}
+
+func (o OperationErrorResponsePtrOutput) Elem() OperationErrorResponseOutput {
+	return o.ApplyT(func(v *OperationErrorResponse) OperationErrorResponse { return *v }).(OperationErrorResponseOutput)
+}
+
+// Identifies the specific error that occurred.
+func (o OperationErrorResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OperationErrorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is always *sql#operationError*.
+func (o OperationErrorResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OperationErrorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional information about the error encountered.
+func (o OperationErrorResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OperationErrorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Message
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2924,6 +5668,180 @@ func (o ReplicaConfigurationPtrOutput) MysqlReplicaConfiguration() MySqlReplicaC
 		}
 		return v.MysqlReplicaConfiguration
 	}).(MySqlReplicaConfigurationPtrOutput)
+}
+
+// Read-replica configuration for connecting to the primary instance.
+type ReplicaConfigurationResponse struct {
+	// Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+	FailoverTarget bool `pulumi:"failoverTarget"`
+	// This is always *sql#replicaConfiguration*.
+	Kind string `pulumi:"kind"`
+	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+	MysqlReplicaConfiguration MySqlReplicaConfigurationResponse `pulumi:"mysqlReplicaConfiguration"`
+}
+
+// ReplicaConfigurationResponseInput is an input type that accepts ReplicaConfigurationResponseArgs and ReplicaConfigurationResponseOutput values.
+// You can construct a concrete instance of `ReplicaConfigurationResponseInput` via:
+//
+//          ReplicaConfigurationResponseArgs{...}
+type ReplicaConfigurationResponseInput interface {
+	pulumi.Input
+
+	ToReplicaConfigurationResponseOutput() ReplicaConfigurationResponseOutput
+	ToReplicaConfigurationResponseOutputWithContext(context.Context) ReplicaConfigurationResponseOutput
+}
+
+// Read-replica configuration for connecting to the primary instance.
+type ReplicaConfigurationResponseArgs struct {
+	// Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+	FailoverTarget pulumi.BoolInput `pulumi:"failoverTarget"`
+	// This is always *sql#replicaConfiguration*.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+	MysqlReplicaConfiguration MySqlReplicaConfigurationResponseInput `pulumi:"mysqlReplicaConfiguration"`
+}
+
+func (ReplicaConfigurationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicaConfigurationResponse)(nil)).Elem()
+}
+
+func (i ReplicaConfigurationResponseArgs) ToReplicaConfigurationResponseOutput() ReplicaConfigurationResponseOutput {
+	return i.ToReplicaConfigurationResponseOutputWithContext(context.Background())
+}
+
+func (i ReplicaConfigurationResponseArgs) ToReplicaConfigurationResponseOutputWithContext(ctx context.Context) ReplicaConfigurationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicaConfigurationResponseOutput)
+}
+
+func (i ReplicaConfigurationResponseArgs) ToReplicaConfigurationResponsePtrOutput() ReplicaConfigurationResponsePtrOutput {
+	return i.ToReplicaConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ReplicaConfigurationResponseArgs) ToReplicaConfigurationResponsePtrOutputWithContext(ctx context.Context) ReplicaConfigurationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicaConfigurationResponseOutput).ToReplicaConfigurationResponsePtrOutputWithContext(ctx)
+}
+
+// ReplicaConfigurationResponsePtrInput is an input type that accepts ReplicaConfigurationResponseArgs, ReplicaConfigurationResponsePtr and ReplicaConfigurationResponsePtrOutput values.
+// You can construct a concrete instance of `ReplicaConfigurationResponsePtrInput` via:
+//
+//          ReplicaConfigurationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ReplicaConfigurationResponsePtrInput interface {
+	pulumi.Input
+
+	ToReplicaConfigurationResponsePtrOutput() ReplicaConfigurationResponsePtrOutput
+	ToReplicaConfigurationResponsePtrOutputWithContext(context.Context) ReplicaConfigurationResponsePtrOutput
+}
+
+type replicaConfigurationResponsePtrType ReplicaConfigurationResponseArgs
+
+func ReplicaConfigurationResponsePtr(v *ReplicaConfigurationResponseArgs) ReplicaConfigurationResponsePtrInput {
+	return (*replicaConfigurationResponsePtrType)(v)
+}
+
+func (*replicaConfigurationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicaConfigurationResponse)(nil)).Elem()
+}
+
+func (i *replicaConfigurationResponsePtrType) ToReplicaConfigurationResponsePtrOutput() ReplicaConfigurationResponsePtrOutput {
+	return i.ToReplicaConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *replicaConfigurationResponsePtrType) ToReplicaConfigurationResponsePtrOutputWithContext(ctx context.Context) ReplicaConfigurationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicaConfigurationResponsePtrOutput)
+}
+
+// Read-replica configuration for connecting to the primary instance.
+type ReplicaConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (ReplicaConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicaConfigurationResponse)(nil)).Elem()
+}
+
+func (o ReplicaConfigurationResponseOutput) ToReplicaConfigurationResponseOutput() ReplicaConfigurationResponseOutput {
+	return o
+}
+
+func (o ReplicaConfigurationResponseOutput) ToReplicaConfigurationResponseOutputWithContext(ctx context.Context) ReplicaConfigurationResponseOutput {
+	return o
+}
+
+func (o ReplicaConfigurationResponseOutput) ToReplicaConfigurationResponsePtrOutput() ReplicaConfigurationResponsePtrOutput {
+	return o.ToReplicaConfigurationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ReplicaConfigurationResponseOutput) ToReplicaConfigurationResponsePtrOutputWithContext(ctx context.Context) ReplicaConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v ReplicaConfigurationResponse) *ReplicaConfigurationResponse {
+		return &v
+	}).(ReplicaConfigurationResponsePtrOutput)
+}
+
+// Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+func (o ReplicaConfigurationResponseOutput) FailoverTarget() pulumi.BoolOutput {
+	return o.ApplyT(func(v ReplicaConfigurationResponse) bool { return v.FailoverTarget }).(pulumi.BoolOutput)
+}
+
+// This is always *sql#replicaConfiguration*.
+func (o ReplicaConfigurationResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicaConfigurationResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+func (o ReplicaConfigurationResponseOutput) MysqlReplicaConfiguration() MySqlReplicaConfigurationResponseOutput {
+	return o.ApplyT(func(v ReplicaConfigurationResponse) MySqlReplicaConfigurationResponse {
+		return v.MysqlReplicaConfiguration
+	}).(MySqlReplicaConfigurationResponseOutput)
+}
+
+type ReplicaConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ReplicaConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicaConfigurationResponse)(nil)).Elem()
+}
+
+func (o ReplicaConfigurationResponsePtrOutput) ToReplicaConfigurationResponsePtrOutput() ReplicaConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ReplicaConfigurationResponsePtrOutput) ToReplicaConfigurationResponsePtrOutputWithContext(ctx context.Context) ReplicaConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ReplicaConfigurationResponsePtrOutput) Elem() ReplicaConfigurationResponseOutput {
+	return o.ApplyT(func(v *ReplicaConfigurationResponse) ReplicaConfigurationResponse { return *v }).(ReplicaConfigurationResponseOutput)
+}
+
+// Specifies if the replica is the failover target. If the field is set to *true* the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
+func (o ReplicaConfigurationResponsePtrOutput) FailoverTarget() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReplicaConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.FailoverTarget
+	}).(pulumi.BoolPtrOutput)
+}
+
+// This is always *sql#replicaConfiguration*.
+func (o ReplicaConfigurationResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicaConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// MySQL specific configuration when replicating from a MySQL on-premises primary instance. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named *master.info* in the data directory.
+func (o ReplicaConfigurationResponsePtrOutput) MysqlReplicaConfiguration() MySqlReplicaConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ReplicaConfigurationResponse) *MySqlReplicaConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MysqlReplicaConfiguration
+	}).(MySqlReplicaConfigurationResponsePtrOutput)
 }
 
 // Database instance settings.
@@ -3497,6 +6415,577 @@ func (o SettingsPtrOutput) UserLabels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// Database instance settings.
+type SettingsResponse struct {
+	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
+	ActivationPolicy string `pulumi:"activationPolicy"`
+	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
+	ActiveDirectoryConfig SqlActiveDirectoryConfigResponse `pulumi:"activeDirectoryConfig"`
+	// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+	AuthorizedGaeApplications []string `pulumi:"authorizedGaeApplications"`
+	// Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
+	AvailabilityType string `pulumi:"availabilityType"`
+	// The daily backup configuration for the instance.
+	BackupConfiguration BackupConfigurationResponse `pulumi:"backupConfiguration"`
+	// The name of server Instance collation.
+	Collation string `pulumi:"collation"`
+	// Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
+	CrashSafeReplicationEnabled bool `pulumi:"crashSafeReplicationEnabled"`
+	// The size of data disk, in GB. The data disk size minimum is 10GB.
+	DataDiskSizeGb string `pulumi:"dataDiskSizeGb"`
+	// The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
+	DataDiskType string `pulumi:"dataDiskType"`
+	// The database flags passed to the instance at startup.
+	DatabaseFlags []DatabaseFlagsResponse `pulumi:"databaseFlags"`
+	// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+	DatabaseReplicationEnabled bool `pulumi:"databaseReplicationEnabled"`
+	// Deny maintenance periods
+	DenyMaintenancePeriods []DenyMaintenancePeriodResponse `pulumi:"denyMaintenancePeriods"`
+	// Insights configuration, for now relevant only for Postgres.
+	InsightsConfig InsightsConfigResponse `pulumi:"insightsConfig"`
+	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+	IpConfiguration IpConfigurationResponse `pulumi:"ipConfiguration"`
+	// This is always *sql#settings*.
+	Kind string `pulumi:"kind"`
+	// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
+	LocationPreference LocationPreferenceResponse `pulumi:"locationPreference"`
+	// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
+	MaintenanceWindow MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
+	// The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
+	PricingPlan string `pulumi:"pricingPlan"`
+	// The type of replication this instance uses. This can be either *ASYNCHRONOUS* or *SYNCHRONOUS*. (Deprecated_ This property was only applicable to First Generation instances.
+	ReplicationType string `pulumi:"replicationType"`
+	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
+	SettingsVersion string `pulumi:"settingsVersion"`
+	// Configuration to increase storage size automatically. The default value is true.
+	StorageAutoResize bool `pulumi:"storageAutoResize"`
+	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+	StorageAutoResizeLimit string `pulumi:"storageAutoResizeLimit"`
+	// The tier (or machine type) for this instance, for example *db-custom-1-3840* .
+	Tier string `pulumi:"tier"`
+	// User-provided labels, represented as a dictionary where each label is a single key value pair.
+	UserLabels map[string]string `pulumi:"userLabels"`
+}
+
+// SettingsResponseInput is an input type that accepts SettingsResponseArgs and SettingsResponseOutput values.
+// You can construct a concrete instance of `SettingsResponseInput` via:
+//
+//          SettingsResponseArgs{...}
+type SettingsResponseInput interface {
+	pulumi.Input
+
+	ToSettingsResponseOutput() SettingsResponseOutput
+	ToSettingsResponseOutputWithContext(context.Context) SettingsResponseOutput
+}
+
+// Database instance settings.
+type SettingsResponseArgs struct {
+	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
+	ActivationPolicy pulumi.StringInput `pulumi:"activationPolicy"`
+	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
+	ActiveDirectoryConfig SqlActiveDirectoryConfigResponseInput `pulumi:"activeDirectoryConfig"`
+	// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+	AuthorizedGaeApplications pulumi.StringArrayInput `pulumi:"authorizedGaeApplications"`
+	// Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
+	AvailabilityType pulumi.StringInput `pulumi:"availabilityType"`
+	// The daily backup configuration for the instance.
+	BackupConfiguration BackupConfigurationResponseInput `pulumi:"backupConfiguration"`
+	// The name of server Instance collation.
+	Collation pulumi.StringInput `pulumi:"collation"`
+	// Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
+	CrashSafeReplicationEnabled pulumi.BoolInput `pulumi:"crashSafeReplicationEnabled"`
+	// The size of data disk, in GB. The data disk size minimum is 10GB.
+	DataDiskSizeGb pulumi.StringInput `pulumi:"dataDiskSizeGb"`
+	// The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
+	DataDiskType pulumi.StringInput `pulumi:"dataDiskType"`
+	// The database flags passed to the instance at startup.
+	DatabaseFlags DatabaseFlagsResponseArrayInput `pulumi:"databaseFlags"`
+	// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+	DatabaseReplicationEnabled pulumi.BoolInput `pulumi:"databaseReplicationEnabled"`
+	// Deny maintenance periods
+	DenyMaintenancePeriods DenyMaintenancePeriodResponseArrayInput `pulumi:"denyMaintenancePeriods"`
+	// Insights configuration, for now relevant only for Postgres.
+	InsightsConfig InsightsConfigResponseInput `pulumi:"insightsConfig"`
+	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+	IpConfiguration IpConfigurationResponseInput `pulumi:"ipConfiguration"`
+	// This is always *sql#settings*.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
+	LocationPreference LocationPreferenceResponseInput `pulumi:"locationPreference"`
+	// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
+	MaintenanceWindow MaintenanceWindowResponseInput `pulumi:"maintenanceWindow"`
+	// The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
+	PricingPlan pulumi.StringInput `pulumi:"pricingPlan"`
+	// The type of replication this instance uses. This can be either *ASYNCHRONOUS* or *SYNCHRONOUS*. (Deprecated_ This property was only applicable to First Generation instances.
+	ReplicationType pulumi.StringInput `pulumi:"replicationType"`
+	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
+	SettingsVersion pulumi.StringInput `pulumi:"settingsVersion"`
+	// Configuration to increase storage size automatically. The default value is true.
+	StorageAutoResize pulumi.BoolInput `pulumi:"storageAutoResize"`
+	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+	StorageAutoResizeLimit pulumi.StringInput `pulumi:"storageAutoResizeLimit"`
+	// The tier (or machine type) for this instance, for example *db-custom-1-3840* .
+	Tier pulumi.StringInput `pulumi:"tier"`
+	// User-provided labels, represented as a dictionary where each label is a single key value pair.
+	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
+}
+
+func (SettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsResponse)(nil)).Elem()
+}
+
+func (i SettingsResponseArgs) ToSettingsResponseOutput() SettingsResponseOutput {
+	return i.ToSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i SettingsResponseArgs) ToSettingsResponseOutputWithContext(ctx context.Context) SettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsResponseOutput)
+}
+
+func (i SettingsResponseArgs) ToSettingsResponsePtrOutput() SettingsResponsePtrOutput {
+	return i.ToSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SettingsResponseArgs) ToSettingsResponsePtrOutputWithContext(ctx context.Context) SettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsResponseOutput).ToSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// SettingsResponsePtrInput is an input type that accepts SettingsResponseArgs, SettingsResponsePtr and SettingsResponsePtrOutput values.
+// You can construct a concrete instance of `SettingsResponsePtrInput` via:
+//
+//          SettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToSettingsResponsePtrOutput() SettingsResponsePtrOutput
+	ToSettingsResponsePtrOutputWithContext(context.Context) SettingsResponsePtrOutput
+}
+
+type settingsResponsePtrType SettingsResponseArgs
+
+func SettingsResponsePtr(v *SettingsResponseArgs) SettingsResponsePtrInput {
+	return (*settingsResponsePtrType)(v)
+}
+
+func (*settingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsResponse)(nil)).Elem()
+}
+
+func (i *settingsResponsePtrType) ToSettingsResponsePtrOutput() SettingsResponsePtrOutput {
+	return i.ToSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *settingsResponsePtrType) ToSettingsResponsePtrOutputWithContext(ctx context.Context) SettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsResponsePtrOutput)
+}
+
+// Database instance settings.
+type SettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (SettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsResponse)(nil)).Elem()
+}
+
+func (o SettingsResponseOutput) ToSettingsResponseOutput() SettingsResponseOutput {
+	return o
+}
+
+func (o SettingsResponseOutput) ToSettingsResponseOutputWithContext(ctx context.Context) SettingsResponseOutput {
+	return o
+}
+
+func (o SettingsResponseOutput) ToSettingsResponsePtrOutput() SettingsResponsePtrOutput {
+	return o.ToSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SettingsResponseOutput) ToSettingsResponsePtrOutputWithContext(ctx context.Context) SettingsResponsePtrOutput {
+	return o.ApplyT(func(v SettingsResponse) *SettingsResponse {
+		return &v
+	}).(SettingsResponsePtrOutput)
+}
+
+// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
+func (o SettingsResponseOutput) ActivationPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsResponse) string { return v.ActivationPolicy }).(pulumi.StringOutput)
+}
+
+// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
+func (o SettingsResponseOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfigResponseOutput {
+	return o.ApplyT(func(v SettingsResponse) SqlActiveDirectoryConfigResponse { return v.ActiveDirectoryConfig }).(SqlActiveDirectoryConfigResponseOutput)
+}
+
+// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+func (o SettingsResponseOutput) AuthorizedGaeApplications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingsResponse) []string { return v.AuthorizedGaeApplications }).(pulumi.StringArrayOutput)
+}
+
+// Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
+func (o SettingsResponseOutput) AvailabilityType() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsResponse) string { return v.AvailabilityType }).(pulumi.StringOutput)
+}
+
+// The daily backup configuration for the instance.
+func (o SettingsResponseOutput) BackupConfiguration() BackupConfigurationResponseOutput {
+	return o.ApplyT(func(v SettingsResponse) BackupConfigurationResponse { return v.BackupConfiguration }).(BackupConfigurationResponseOutput)
+}
+
+// The name of server Instance collation.
+func (o SettingsResponseOutput) Collation() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsResponse) string { return v.Collation }).(pulumi.StringOutput)
+}
+
+// Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
+func (o SettingsResponseOutput) CrashSafeReplicationEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v SettingsResponse) bool { return v.CrashSafeReplicationEnabled }).(pulumi.BoolOutput)
+}
+
+// The size of data disk, in GB. The data disk size minimum is 10GB.
+func (o SettingsResponseOutput) DataDiskSizeGb() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsResponse) string { return v.DataDiskSizeGb }).(pulumi.StringOutput)
+}
+
+// The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
+func (o SettingsResponseOutput) DataDiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsResponse) string { return v.DataDiskType }).(pulumi.StringOutput)
+}
+
+// The database flags passed to the instance at startup.
+func (o SettingsResponseOutput) DatabaseFlags() DatabaseFlagsResponseArrayOutput {
+	return o.ApplyT(func(v SettingsResponse) []DatabaseFlagsResponse { return v.DatabaseFlags }).(DatabaseFlagsResponseArrayOutput)
+}
+
+// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+func (o SettingsResponseOutput) DatabaseReplicationEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v SettingsResponse) bool { return v.DatabaseReplicationEnabled }).(pulumi.BoolOutput)
+}
+
+// Deny maintenance periods
+func (o SettingsResponseOutput) DenyMaintenancePeriods() DenyMaintenancePeriodResponseArrayOutput {
+	return o.ApplyT(func(v SettingsResponse) []DenyMaintenancePeriodResponse { return v.DenyMaintenancePeriods }).(DenyMaintenancePeriodResponseArrayOutput)
+}
+
+// Insights configuration, for now relevant only for Postgres.
+func (o SettingsResponseOutput) InsightsConfig() InsightsConfigResponseOutput {
+	return o.ApplyT(func(v SettingsResponse) InsightsConfigResponse { return v.InsightsConfig }).(InsightsConfigResponseOutput)
+}
+
+// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+func (o SettingsResponseOutput) IpConfiguration() IpConfigurationResponseOutput {
+	return o.ApplyT(func(v SettingsResponse) IpConfigurationResponse { return v.IpConfiguration }).(IpConfigurationResponseOutput)
+}
+
+// This is always *sql#settings*.
+func (o SettingsResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
+func (o SettingsResponseOutput) LocationPreference() LocationPreferenceResponseOutput {
+	return o.ApplyT(func(v SettingsResponse) LocationPreferenceResponse { return v.LocationPreference }).(LocationPreferenceResponseOutput)
+}
+
+// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
+func (o SettingsResponseOutput) MaintenanceWindow() MaintenanceWindowResponseOutput {
+	return o.ApplyT(func(v SettingsResponse) MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponseOutput)
+}
+
+// The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
+func (o SettingsResponseOutput) PricingPlan() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsResponse) string { return v.PricingPlan }).(pulumi.StringOutput)
+}
+
+// The type of replication this instance uses. This can be either *ASYNCHRONOUS* or *SYNCHRONOUS*. (Deprecated_ This property was only applicable to First Generation instances.
+func (o SettingsResponseOutput) ReplicationType() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsResponse) string { return v.ReplicationType }).(pulumi.StringOutput)
+}
+
+// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
+func (o SettingsResponseOutput) SettingsVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsResponse) string { return v.SettingsVersion }).(pulumi.StringOutput)
+}
+
+// Configuration to increase storage size automatically. The default value is true.
+func (o SettingsResponseOutput) StorageAutoResize() pulumi.BoolOutput {
+	return o.ApplyT(func(v SettingsResponse) bool { return v.StorageAutoResize }).(pulumi.BoolOutput)
+}
+
+// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+func (o SettingsResponseOutput) StorageAutoResizeLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsResponse) string { return v.StorageAutoResizeLimit }).(pulumi.StringOutput)
+}
+
+// The tier (or machine type) for this instance, for example *db-custom-1-3840* .
+func (o SettingsResponseOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsResponse) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+// User-provided labels, represented as a dictionary where each label is a single key value pair.
+func (o SettingsResponseOutput) UserLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SettingsResponse) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
+}
+
+type SettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsResponse)(nil)).Elem()
+}
+
+func (o SettingsResponsePtrOutput) ToSettingsResponsePtrOutput() SettingsResponsePtrOutput {
+	return o
+}
+
+func (o SettingsResponsePtrOutput) ToSettingsResponsePtrOutputWithContext(ctx context.Context) SettingsResponsePtrOutput {
+	return o
+}
+
+func (o SettingsResponsePtrOutput) Elem() SettingsResponseOutput {
+	return o.ApplyT(func(v *SettingsResponse) SettingsResponse { return *v }).(SettingsResponseOutput)
+}
+
+// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
+func (o SettingsResponsePtrOutput) ActivationPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ActivationPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
+func (o SettingsResponsePtrOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfigResponsePtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *SqlActiveDirectoryConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ActiveDirectoryConfig
+	}).(SqlActiveDirectoryConfigResponsePtrOutput)
+}
+
+// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+func (o SettingsResponsePtrOutput) AuthorizedGaeApplications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizedGaeApplications
+	}).(pulumi.StringArrayOutput)
+}
+
+// Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
+func (o SettingsResponsePtrOutput) AvailabilityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AvailabilityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The daily backup configuration for the instance.
+func (o SettingsResponsePtrOutput) BackupConfiguration() BackupConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *BackupConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.BackupConfiguration
+	}).(BackupConfigurationResponsePtrOutput)
+}
+
+// The name of server Instance collation.
+func (o SettingsResponsePtrOutput) Collation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Collation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
+func (o SettingsResponsePtrOutput) CrashSafeReplicationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.CrashSafeReplicationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The size of data disk, in GB. The data disk size minimum is 10GB.
+func (o SettingsResponsePtrOutput) DataDiskSizeGb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DataDiskSizeGb
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
+func (o SettingsResponsePtrOutput) DataDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DataDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The database flags passed to the instance at startup.
+func (o SettingsResponsePtrOutput) DatabaseFlags() DatabaseFlagsResponseArrayOutput {
+	return o.ApplyT(func(v *SettingsResponse) []DatabaseFlagsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseFlags
+	}).(DatabaseFlagsResponseArrayOutput)
+}
+
+// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
+func (o SettingsResponsePtrOutput) DatabaseReplicationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.DatabaseReplicationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Deny maintenance periods
+func (o SettingsResponsePtrOutput) DenyMaintenancePeriods() DenyMaintenancePeriodResponseArrayOutput {
+	return o.ApplyT(func(v *SettingsResponse) []DenyMaintenancePeriodResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DenyMaintenancePeriods
+	}).(DenyMaintenancePeriodResponseArrayOutput)
+}
+
+// Insights configuration, for now relevant only for Postgres.
+func (o SettingsResponsePtrOutput) InsightsConfig() InsightsConfigResponsePtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *InsightsConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.InsightsConfig
+	}).(InsightsConfigResponsePtrOutput)
+}
+
+// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
+func (o SettingsResponsePtrOutput) IpConfiguration() IpConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *IpConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.IpConfiguration
+	}).(IpConfigurationResponsePtrOutput)
+}
+
+// This is always *sql#settings*.
+func (o SettingsResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances.
+func (o SettingsResponsePtrOutput) LocationPreference() LocationPreferenceResponsePtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *LocationPreferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LocationPreference
+	}).(LocationPreferenceResponsePtrOutput)
+}
+
+// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
+func (o SettingsResponsePtrOutput) MaintenanceWindow() MaintenanceWindowResponsePtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *MaintenanceWindowResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MaintenanceWindow
+	}).(MaintenanceWindowResponsePtrOutput)
+}
+
+// The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
+func (o SettingsResponsePtrOutput) PricingPlan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PricingPlan
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of replication this instance uses. This can be either *ASYNCHRONOUS* or *SYNCHRONOUS*. (Deprecated_ This property was only applicable to First Generation instances.
+func (o SettingsResponsePtrOutput) ReplicationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReplicationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
+func (o SettingsResponsePtrOutput) SettingsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SettingsVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration to increase storage size automatically. The default value is true.
+func (o SettingsResponsePtrOutput) StorageAutoResize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageAutoResize
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+func (o SettingsResponsePtrOutput) StorageAutoResizeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageAutoResizeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tier (or machine type) for this instance, for example *db-custom-1-3840* .
+func (o SettingsResponsePtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Tier
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided labels, represented as a dictionary where each label is a single key value pair.
+func (o SettingsResponsePtrOutput) UserLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SettingsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.UserLabels
+	}).(pulumi.StringMapOutput)
+}
+
 // Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 type SqlActiveDirectoryConfig struct {
 	// The name of the domain (e.g., mydomain.com).
@@ -3647,6 +7136,159 @@ func (o SqlActiveDirectoryConfigPtrOutput) Kind() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
+type SqlActiveDirectoryConfigResponse struct {
+	// The name of the domain (e.g., mydomain.com).
+	Domain string `pulumi:"domain"`
+	// This is always sql#activeDirectoryConfig.
+	Kind string `pulumi:"kind"`
+}
+
+// SqlActiveDirectoryConfigResponseInput is an input type that accepts SqlActiveDirectoryConfigResponseArgs and SqlActiveDirectoryConfigResponseOutput values.
+// You can construct a concrete instance of `SqlActiveDirectoryConfigResponseInput` via:
+//
+//          SqlActiveDirectoryConfigResponseArgs{...}
+type SqlActiveDirectoryConfigResponseInput interface {
+	pulumi.Input
+
+	ToSqlActiveDirectoryConfigResponseOutput() SqlActiveDirectoryConfigResponseOutput
+	ToSqlActiveDirectoryConfigResponseOutputWithContext(context.Context) SqlActiveDirectoryConfigResponseOutput
+}
+
+// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
+type SqlActiveDirectoryConfigResponseArgs struct {
+	// The name of the domain (e.g., mydomain.com).
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// This is always sql#activeDirectoryConfig.
+	Kind pulumi.StringInput `pulumi:"kind"`
+}
+
+func (SqlActiveDirectoryConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlActiveDirectoryConfigResponse)(nil)).Elem()
+}
+
+func (i SqlActiveDirectoryConfigResponseArgs) ToSqlActiveDirectoryConfigResponseOutput() SqlActiveDirectoryConfigResponseOutput {
+	return i.ToSqlActiveDirectoryConfigResponseOutputWithContext(context.Background())
+}
+
+func (i SqlActiveDirectoryConfigResponseArgs) ToSqlActiveDirectoryConfigResponseOutputWithContext(ctx context.Context) SqlActiveDirectoryConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlActiveDirectoryConfigResponseOutput)
+}
+
+func (i SqlActiveDirectoryConfigResponseArgs) ToSqlActiveDirectoryConfigResponsePtrOutput() SqlActiveDirectoryConfigResponsePtrOutput {
+	return i.ToSqlActiveDirectoryConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SqlActiveDirectoryConfigResponseArgs) ToSqlActiveDirectoryConfigResponsePtrOutputWithContext(ctx context.Context) SqlActiveDirectoryConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlActiveDirectoryConfigResponseOutput).ToSqlActiveDirectoryConfigResponsePtrOutputWithContext(ctx)
+}
+
+// SqlActiveDirectoryConfigResponsePtrInput is an input type that accepts SqlActiveDirectoryConfigResponseArgs, SqlActiveDirectoryConfigResponsePtr and SqlActiveDirectoryConfigResponsePtrOutput values.
+// You can construct a concrete instance of `SqlActiveDirectoryConfigResponsePtrInput` via:
+//
+//          SqlActiveDirectoryConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SqlActiveDirectoryConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToSqlActiveDirectoryConfigResponsePtrOutput() SqlActiveDirectoryConfigResponsePtrOutput
+	ToSqlActiveDirectoryConfigResponsePtrOutputWithContext(context.Context) SqlActiveDirectoryConfigResponsePtrOutput
+}
+
+type sqlActiveDirectoryConfigResponsePtrType SqlActiveDirectoryConfigResponseArgs
+
+func SqlActiveDirectoryConfigResponsePtr(v *SqlActiveDirectoryConfigResponseArgs) SqlActiveDirectoryConfigResponsePtrInput {
+	return (*sqlActiveDirectoryConfigResponsePtrType)(v)
+}
+
+func (*sqlActiveDirectoryConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlActiveDirectoryConfigResponse)(nil)).Elem()
+}
+
+func (i *sqlActiveDirectoryConfigResponsePtrType) ToSqlActiveDirectoryConfigResponsePtrOutput() SqlActiveDirectoryConfigResponsePtrOutput {
+	return i.ToSqlActiveDirectoryConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *sqlActiveDirectoryConfigResponsePtrType) ToSqlActiveDirectoryConfigResponsePtrOutputWithContext(ctx context.Context) SqlActiveDirectoryConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlActiveDirectoryConfigResponsePtrOutput)
+}
+
+// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
+type SqlActiveDirectoryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlActiveDirectoryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlActiveDirectoryConfigResponse)(nil)).Elem()
+}
+
+func (o SqlActiveDirectoryConfigResponseOutput) ToSqlActiveDirectoryConfigResponseOutput() SqlActiveDirectoryConfigResponseOutput {
+	return o
+}
+
+func (o SqlActiveDirectoryConfigResponseOutput) ToSqlActiveDirectoryConfigResponseOutputWithContext(ctx context.Context) SqlActiveDirectoryConfigResponseOutput {
+	return o
+}
+
+func (o SqlActiveDirectoryConfigResponseOutput) ToSqlActiveDirectoryConfigResponsePtrOutput() SqlActiveDirectoryConfigResponsePtrOutput {
+	return o.ToSqlActiveDirectoryConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SqlActiveDirectoryConfigResponseOutput) ToSqlActiveDirectoryConfigResponsePtrOutputWithContext(ctx context.Context) SqlActiveDirectoryConfigResponsePtrOutput {
+	return o.ApplyT(func(v SqlActiveDirectoryConfigResponse) *SqlActiveDirectoryConfigResponse {
+		return &v
+	}).(SqlActiveDirectoryConfigResponsePtrOutput)
+}
+
+// The name of the domain (e.g., mydomain.com).
+func (o SqlActiveDirectoryConfigResponseOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlActiveDirectoryConfigResponse) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// This is always sql#activeDirectoryConfig.
+func (o SqlActiveDirectoryConfigResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlActiveDirectoryConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type SqlActiveDirectoryConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlActiveDirectoryConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlActiveDirectoryConfigResponse)(nil)).Elem()
+}
+
+func (o SqlActiveDirectoryConfigResponsePtrOutput) ToSqlActiveDirectoryConfigResponsePtrOutput() SqlActiveDirectoryConfigResponsePtrOutput {
+	return o
+}
+
+func (o SqlActiveDirectoryConfigResponsePtrOutput) ToSqlActiveDirectoryConfigResponsePtrOutputWithContext(ctx context.Context) SqlActiveDirectoryConfigResponsePtrOutput {
+	return o
+}
+
+func (o SqlActiveDirectoryConfigResponsePtrOutput) Elem() SqlActiveDirectoryConfigResponseOutput {
+	return o.ApplyT(func(v *SqlActiveDirectoryConfigResponse) SqlActiveDirectoryConfigResponse { return *v }).(SqlActiveDirectoryConfigResponseOutput)
+}
+
+// The name of the domain (e.g., mydomain.com).
+func (o SqlActiveDirectoryConfigResponsePtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlActiveDirectoryConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is always sql#activeDirectoryConfig.
+func (o SqlActiveDirectoryConfigResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlActiveDirectoryConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3817,6 +7459,173 @@ func (o SqlScheduledMaintenancePtrOutput) StartTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Any scheduled maintenancce for this instance.
+type SqlScheduledMaintenanceResponse struct {
+	CanDefer bool `pulumi:"canDefer"`
+	// If the scheduled maintenance can be rescheduled.
+	CanReschedule bool `pulumi:"canReschedule"`
+	// The start time of any upcoming scheduled maintenance for this instance.
+	StartTime string `pulumi:"startTime"`
+}
+
+// SqlScheduledMaintenanceResponseInput is an input type that accepts SqlScheduledMaintenanceResponseArgs and SqlScheduledMaintenanceResponseOutput values.
+// You can construct a concrete instance of `SqlScheduledMaintenanceResponseInput` via:
+//
+//          SqlScheduledMaintenanceResponseArgs{...}
+type SqlScheduledMaintenanceResponseInput interface {
+	pulumi.Input
+
+	ToSqlScheduledMaintenanceResponseOutput() SqlScheduledMaintenanceResponseOutput
+	ToSqlScheduledMaintenanceResponseOutputWithContext(context.Context) SqlScheduledMaintenanceResponseOutput
+}
+
+// Any scheduled maintenancce for this instance.
+type SqlScheduledMaintenanceResponseArgs struct {
+	CanDefer pulumi.BoolInput `pulumi:"canDefer"`
+	// If the scheduled maintenance can be rescheduled.
+	CanReschedule pulumi.BoolInput `pulumi:"canReschedule"`
+	// The start time of any upcoming scheduled maintenance for this instance.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (SqlScheduledMaintenanceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlScheduledMaintenanceResponse)(nil)).Elem()
+}
+
+func (i SqlScheduledMaintenanceResponseArgs) ToSqlScheduledMaintenanceResponseOutput() SqlScheduledMaintenanceResponseOutput {
+	return i.ToSqlScheduledMaintenanceResponseOutputWithContext(context.Background())
+}
+
+func (i SqlScheduledMaintenanceResponseArgs) ToSqlScheduledMaintenanceResponseOutputWithContext(ctx context.Context) SqlScheduledMaintenanceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlScheduledMaintenanceResponseOutput)
+}
+
+func (i SqlScheduledMaintenanceResponseArgs) ToSqlScheduledMaintenanceResponsePtrOutput() SqlScheduledMaintenanceResponsePtrOutput {
+	return i.ToSqlScheduledMaintenanceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SqlScheduledMaintenanceResponseArgs) ToSqlScheduledMaintenanceResponsePtrOutputWithContext(ctx context.Context) SqlScheduledMaintenanceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlScheduledMaintenanceResponseOutput).ToSqlScheduledMaintenanceResponsePtrOutputWithContext(ctx)
+}
+
+// SqlScheduledMaintenanceResponsePtrInput is an input type that accepts SqlScheduledMaintenanceResponseArgs, SqlScheduledMaintenanceResponsePtr and SqlScheduledMaintenanceResponsePtrOutput values.
+// You can construct a concrete instance of `SqlScheduledMaintenanceResponsePtrInput` via:
+//
+//          SqlScheduledMaintenanceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SqlScheduledMaintenanceResponsePtrInput interface {
+	pulumi.Input
+
+	ToSqlScheduledMaintenanceResponsePtrOutput() SqlScheduledMaintenanceResponsePtrOutput
+	ToSqlScheduledMaintenanceResponsePtrOutputWithContext(context.Context) SqlScheduledMaintenanceResponsePtrOutput
+}
+
+type sqlScheduledMaintenanceResponsePtrType SqlScheduledMaintenanceResponseArgs
+
+func SqlScheduledMaintenanceResponsePtr(v *SqlScheduledMaintenanceResponseArgs) SqlScheduledMaintenanceResponsePtrInput {
+	return (*sqlScheduledMaintenanceResponsePtrType)(v)
+}
+
+func (*sqlScheduledMaintenanceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlScheduledMaintenanceResponse)(nil)).Elem()
+}
+
+func (i *sqlScheduledMaintenanceResponsePtrType) ToSqlScheduledMaintenanceResponsePtrOutput() SqlScheduledMaintenanceResponsePtrOutput {
+	return i.ToSqlScheduledMaintenanceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *sqlScheduledMaintenanceResponsePtrType) ToSqlScheduledMaintenanceResponsePtrOutputWithContext(ctx context.Context) SqlScheduledMaintenanceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlScheduledMaintenanceResponsePtrOutput)
+}
+
+// Any scheduled maintenancce for this instance.
+type SqlScheduledMaintenanceResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlScheduledMaintenanceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlScheduledMaintenanceResponse)(nil)).Elem()
+}
+
+func (o SqlScheduledMaintenanceResponseOutput) ToSqlScheduledMaintenanceResponseOutput() SqlScheduledMaintenanceResponseOutput {
+	return o
+}
+
+func (o SqlScheduledMaintenanceResponseOutput) ToSqlScheduledMaintenanceResponseOutputWithContext(ctx context.Context) SqlScheduledMaintenanceResponseOutput {
+	return o
+}
+
+func (o SqlScheduledMaintenanceResponseOutput) ToSqlScheduledMaintenanceResponsePtrOutput() SqlScheduledMaintenanceResponsePtrOutput {
+	return o.ToSqlScheduledMaintenanceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SqlScheduledMaintenanceResponseOutput) ToSqlScheduledMaintenanceResponsePtrOutputWithContext(ctx context.Context) SqlScheduledMaintenanceResponsePtrOutput {
+	return o.ApplyT(func(v SqlScheduledMaintenanceResponse) *SqlScheduledMaintenanceResponse {
+		return &v
+	}).(SqlScheduledMaintenanceResponsePtrOutput)
+}
+func (o SqlScheduledMaintenanceResponseOutput) CanDefer() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlScheduledMaintenanceResponse) bool { return v.CanDefer }).(pulumi.BoolOutput)
+}
+
+// If the scheduled maintenance can be rescheduled.
+func (o SqlScheduledMaintenanceResponseOutput) CanReschedule() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlScheduledMaintenanceResponse) bool { return v.CanReschedule }).(pulumi.BoolOutput)
+}
+
+// The start time of any upcoming scheduled maintenance for this instance.
+func (o SqlScheduledMaintenanceResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlScheduledMaintenanceResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type SqlScheduledMaintenanceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlScheduledMaintenanceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlScheduledMaintenanceResponse)(nil)).Elem()
+}
+
+func (o SqlScheduledMaintenanceResponsePtrOutput) ToSqlScheduledMaintenanceResponsePtrOutput() SqlScheduledMaintenanceResponsePtrOutput {
+	return o
+}
+
+func (o SqlScheduledMaintenanceResponsePtrOutput) ToSqlScheduledMaintenanceResponsePtrOutputWithContext(ctx context.Context) SqlScheduledMaintenanceResponsePtrOutput {
+	return o
+}
+
+func (o SqlScheduledMaintenanceResponsePtrOutput) Elem() SqlScheduledMaintenanceResponseOutput {
+	return o.ApplyT(func(v *SqlScheduledMaintenanceResponse) SqlScheduledMaintenanceResponse { return *v }).(SqlScheduledMaintenanceResponseOutput)
+}
+
+func (o SqlScheduledMaintenanceResponsePtrOutput) CanDefer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlScheduledMaintenanceResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.CanDefer
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the scheduled maintenance can be rescheduled.
+func (o SqlScheduledMaintenanceResponsePtrOutput) CanReschedule() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlScheduledMaintenanceResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.CanReschedule
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The start time of any upcoming scheduled maintenance for this instance.
+func (o SqlScheduledMaintenanceResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlScheduledMaintenanceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents a Sql Server database on the Cloud SQL instance.
 type SqlServerDatabaseDetails struct {
 	// The version of SQL Server with which the database is to be made compatible
@@ -3967,6 +7776,159 @@ func (o SqlServerDatabaseDetailsPtrOutput) RecoveryModel() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.RecoveryModel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a Sql Server database on the Cloud SQL instance.
+type SqlServerDatabaseDetailsResponse struct {
+	// The version of SQL Server with which the database is to be made compatible
+	CompatibilityLevel int `pulumi:"compatibilityLevel"`
+	// The recovery model of a SQL Server database
+	RecoveryModel string `pulumi:"recoveryModel"`
+}
+
+// SqlServerDatabaseDetailsResponseInput is an input type that accepts SqlServerDatabaseDetailsResponseArgs and SqlServerDatabaseDetailsResponseOutput values.
+// You can construct a concrete instance of `SqlServerDatabaseDetailsResponseInput` via:
+//
+//          SqlServerDatabaseDetailsResponseArgs{...}
+type SqlServerDatabaseDetailsResponseInput interface {
+	pulumi.Input
+
+	ToSqlServerDatabaseDetailsResponseOutput() SqlServerDatabaseDetailsResponseOutput
+	ToSqlServerDatabaseDetailsResponseOutputWithContext(context.Context) SqlServerDatabaseDetailsResponseOutput
+}
+
+// Represents a Sql Server database on the Cloud SQL instance.
+type SqlServerDatabaseDetailsResponseArgs struct {
+	// The version of SQL Server with which the database is to be made compatible
+	CompatibilityLevel pulumi.IntInput `pulumi:"compatibilityLevel"`
+	// The recovery model of a SQL Server database
+	RecoveryModel pulumi.StringInput `pulumi:"recoveryModel"`
+}
+
+func (SqlServerDatabaseDetailsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerDatabaseDetailsResponse)(nil)).Elem()
+}
+
+func (i SqlServerDatabaseDetailsResponseArgs) ToSqlServerDatabaseDetailsResponseOutput() SqlServerDatabaseDetailsResponseOutput {
+	return i.ToSqlServerDatabaseDetailsResponseOutputWithContext(context.Background())
+}
+
+func (i SqlServerDatabaseDetailsResponseArgs) ToSqlServerDatabaseDetailsResponseOutputWithContext(ctx context.Context) SqlServerDatabaseDetailsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerDatabaseDetailsResponseOutput)
+}
+
+func (i SqlServerDatabaseDetailsResponseArgs) ToSqlServerDatabaseDetailsResponsePtrOutput() SqlServerDatabaseDetailsResponsePtrOutput {
+	return i.ToSqlServerDatabaseDetailsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerDatabaseDetailsResponseArgs) ToSqlServerDatabaseDetailsResponsePtrOutputWithContext(ctx context.Context) SqlServerDatabaseDetailsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerDatabaseDetailsResponseOutput).ToSqlServerDatabaseDetailsResponsePtrOutputWithContext(ctx)
+}
+
+// SqlServerDatabaseDetailsResponsePtrInput is an input type that accepts SqlServerDatabaseDetailsResponseArgs, SqlServerDatabaseDetailsResponsePtr and SqlServerDatabaseDetailsResponsePtrOutput values.
+// You can construct a concrete instance of `SqlServerDatabaseDetailsResponsePtrInput` via:
+//
+//          SqlServerDatabaseDetailsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SqlServerDatabaseDetailsResponsePtrInput interface {
+	pulumi.Input
+
+	ToSqlServerDatabaseDetailsResponsePtrOutput() SqlServerDatabaseDetailsResponsePtrOutput
+	ToSqlServerDatabaseDetailsResponsePtrOutputWithContext(context.Context) SqlServerDatabaseDetailsResponsePtrOutput
+}
+
+type sqlServerDatabaseDetailsResponsePtrType SqlServerDatabaseDetailsResponseArgs
+
+func SqlServerDatabaseDetailsResponsePtr(v *SqlServerDatabaseDetailsResponseArgs) SqlServerDatabaseDetailsResponsePtrInput {
+	return (*sqlServerDatabaseDetailsResponsePtrType)(v)
+}
+
+func (*sqlServerDatabaseDetailsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerDatabaseDetailsResponse)(nil)).Elem()
+}
+
+func (i *sqlServerDatabaseDetailsResponsePtrType) ToSqlServerDatabaseDetailsResponsePtrOutput() SqlServerDatabaseDetailsResponsePtrOutput {
+	return i.ToSqlServerDatabaseDetailsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerDatabaseDetailsResponsePtrType) ToSqlServerDatabaseDetailsResponsePtrOutputWithContext(ctx context.Context) SqlServerDatabaseDetailsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerDatabaseDetailsResponsePtrOutput)
+}
+
+// Represents a Sql Server database on the Cloud SQL instance.
+type SqlServerDatabaseDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerDatabaseDetailsResponse)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseDetailsResponseOutput) ToSqlServerDatabaseDetailsResponseOutput() SqlServerDatabaseDetailsResponseOutput {
+	return o
+}
+
+func (o SqlServerDatabaseDetailsResponseOutput) ToSqlServerDatabaseDetailsResponseOutputWithContext(ctx context.Context) SqlServerDatabaseDetailsResponseOutput {
+	return o
+}
+
+func (o SqlServerDatabaseDetailsResponseOutput) ToSqlServerDatabaseDetailsResponsePtrOutput() SqlServerDatabaseDetailsResponsePtrOutput {
+	return o.ToSqlServerDatabaseDetailsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerDatabaseDetailsResponseOutput) ToSqlServerDatabaseDetailsResponsePtrOutputWithContext(ctx context.Context) SqlServerDatabaseDetailsResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerDatabaseDetailsResponse) *SqlServerDatabaseDetailsResponse {
+		return &v
+	}).(SqlServerDatabaseDetailsResponsePtrOutput)
+}
+
+// The version of SQL Server with which the database is to be made compatible
+func (o SqlServerDatabaseDetailsResponseOutput) CompatibilityLevel() pulumi.IntOutput {
+	return o.ApplyT(func(v SqlServerDatabaseDetailsResponse) int { return v.CompatibilityLevel }).(pulumi.IntOutput)
+}
+
+// The recovery model of a SQL Server database
+func (o SqlServerDatabaseDetailsResponseOutput) RecoveryModel() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerDatabaseDetailsResponse) string { return v.RecoveryModel }).(pulumi.StringOutput)
+}
+
+type SqlServerDatabaseDetailsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerDatabaseDetailsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerDatabaseDetailsResponse)(nil)).Elem()
+}
+
+func (o SqlServerDatabaseDetailsResponsePtrOutput) ToSqlServerDatabaseDetailsResponsePtrOutput() SqlServerDatabaseDetailsResponsePtrOutput {
+	return o
+}
+
+func (o SqlServerDatabaseDetailsResponsePtrOutput) ToSqlServerDatabaseDetailsResponsePtrOutputWithContext(ctx context.Context) SqlServerDatabaseDetailsResponsePtrOutput {
+	return o
+}
+
+func (o SqlServerDatabaseDetailsResponsePtrOutput) Elem() SqlServerDatabaseDetailsResponseOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseDetailsResponse) SqlServerDatabaseDetailsResponse { return *v }).(SqlServerDatabaseDetailsResponseOutput)
+}
+
+// The version of SQL Server with which the database is to be made compatible
+func (o SqlServerDatabaseDetailsResponsePtrOutput) CompatibilityLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseDetailsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.CompatibilityLevel
+	}).(pulumi.IntPtrOutput)
+}
+
+// The recovery model of a SQL Server database
+func (o SqlServerDatabaseDetailsResponsePtrOutput) RecoveryModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerDatabaseDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RecoveryModel
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4409,49 +8371,377 @@ func (o SslCertTypePtrOutput) Sha1Fingerprint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// SslCerts Resource
+type SslCertResponse struct {
+	// PEM representation.
+	Cert string `pulumi:"cert"`
+	// Serial number, as extracted from the certificate.
+	CertSerialNumber string `pulumi:"certSerialNumber"`
+	// User supplied name. Constrained to [a-zA-Z.-_ ]+.
+	CommonName string `pulumi:"commonName"`
+	// The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
+	CreateTime string `pulumi:"createTime"`
+	// The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	ExpirationTime string `pulumi:"expirationTime"`
+	// Name of the database instance.
+	Instance string `pulumi:"instance"`
+	// This is always *sql#sslCert*.
+	Kind string `pulumi:"kind"`
+	// The URI of this resource.
+	SelfLink string `pulumi:"selfLink"`
+	// Sha1 Fingerprint.
+	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
+}
+
+// SslCertResponseInput is an input type that accepts SslCertResponseArgs and SslCertResponseOutput values.
+// You can construct a concrete instance of `SslCertResponseInput` via:
+//
+//          SslCertResponseArgs{...}
+type SslCertResponseInput interface {
+	pulumi.Input
+
+	ToSslCertResponseOutput() SslCertResponseOutput
+	ToSslCertResponseOutputWithContext(context.Context) SslCertResponseOutput
+}
+
+// SslCerts Resource
+type SslCertResponseArgs struct {
+	// PEM representation.
+	Cert pulumi.StringInput `pulumi:"cert"`
+	// Serial number, as extracted from the certificate.
+	CertSerialNumber pulumi.StringInput `pulumi:"certSerialNumber"`
+	// User supplied name. Constrained to [a-zA-Z.-_ ]+.
+	CommonName pulumi.StringInput `pulumi:"commonName"`
+	// The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
+	// Name of the database instance.
+	Instance pulumi.StringInput `pulumi:"instance"`
+	// This is always *sql#sslCert*.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The URI of this resource.
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// Sha1 Fingerprint.
+	Sha1Fingerprint pulumi.StringInput `pulumi:"sha1Fingerprint"`
+}
+
+func (SslCertResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslCertResponse)(nil)).Elem()
+}
+
+func (i SslCertResponseArgs) ToSslCertResponseOutput() SslCertResponseOutput {
+	return i.ToSslCertResponseOutputWithContext(context.Background())
+}
+
+func (i SslCertResponseArgs) ToSslCertResponseOutputWithContext(ctx context.Context) SslCertResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslCertResponseOutput)
+}
+
+func (i SslCertResponseArgs) ToSslCertResponsePtrOutput() SslCertResponsePtrOutput {
+	return i.ToSslCertResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SslCertResponseArgs) ToSslCertResponsePtrOutputWithContext(ctx context.Context) SslCertResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslCertResponseOutput).ToSslCertResponsePtrOutputWithContext(ctx)
+}
+
+// SslCertResponsePtrInput is an input type that accepts SslCertResponseArgs, SslCertResponsePtr and SslCertResponsePtrOutput values.
+// You can construct a concrete instance of `SslCertResponsePtrInput` via:
+//
+//          SslCertResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SslCertResponsePtrInput interface {
+	pulumi.Input
+
+	ToSslCertResponsePtrOutput() SslCertResponsePtrOutput
+	ToSslCertResponsePtrOutputWithContext(context.Context) SslCertResponsePtrOutput
+}
+
+type sslCertResponsePtrType SslCertResponseArgs
+
+func SslCertResponsePtr(v *SslCertResponseArgs) SslCertResponsePtrInput {
+	return (*sslCertResponsePtrType)(v)
+}
+
+func (*sslCertResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslCertResponse)(nil)).Elem()
+}
+
+func (i *sslCertResponsePtrType) ToSslCertResponsePtrOutput() SslCertResponsePtrOutput {
+	return i.ToSslCertResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *sslCertResponsePtrType) ToSslCertResponsePtrOutputWithContext(ctx context.Context) SslCertResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslCertResponsePtrOutput)
+}
+
+// SslCerts Resource
+type SslCertResponseOutput struct{ *pulumi.OutputState }
+
+func (SslCertResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslCertResponse)(nil)).Elem()
+}
+
+func (o SslCertResponseOutput) ToSslCertResponseOutput() SslCertResponseOutput {
+	return o
+}
+
+func (o SslCertResponseOutput) ToSslCertResponseOutputWithContext(ctx context.Context) SslCertResponseOutput {
+	return o
+}
+
+func (o SslCertResponseOutput) ToSslCertResponsePtrOutput() SslCertResponsePtrOutput {
+	return o.ToSslCertResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SslCertResponseOutput) ToSslCertResponsePtrOutputWithContext(ctx context.Context) SslCertResponsePtrOutput {
+	return o.ApplyT(func(v SslCertResponse) *SslCertResponse {
+		return &v
+	}).(SslCertResponsePtrOutput)
+}
+
+// PEM representation.
+func (o SslCertResponseOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v SslCertResponse) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+// Serial number, as extracted from the certificate.
+func (o SslCertResponseOutput) CertSerialNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v SslCertResponse) string { return v.CertSerialNumber }).(pulumi.StringOutput)
+}
+
+// User supplied name. Constrained to [a-zA-Z.-_ ]+.
+func (o SslCertResponseOutput) CommonName() pulumi.StringOutput {
+	return o.ApplyT(func(v SslCertResponse) string { return v.CommonName }).(pulumi.StringOutput)
+}
+
+// The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
+func (o SslCertResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SslCertResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+func (o SslCertResponseOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SslCertResponse) string { return v.ExpirationTime }).(pulumi.StringOutput)
+}
+
+// Name of the database instance.
+func (o SslCertResponseOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v SslCertResponse) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+// This is always *sql#sslCert*.
+func (o SslCertResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v SslCertResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The URI of this resource.
+func (o SslCertResponseOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v SslCertResponse) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Sha1 Fingerprint.
+func (o SslCertResponseOutput) Sha1Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v SslCertResponse) string { return v.Sha1Fingerprint }).(pulumi.StringOutput)
+}
+
+type SslCertResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SslCertResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslCertResponse)(nil)).Elem()
+}
+
+func (o SslCertResponsePtrOutput) ToSslCertResponsePtrOutput() SslCertResponsePtrOutput {
+	return o
+}
+
+func (o SslCertResponsePtrOutput) ToSslCertResponsePtrOutputWithContext(ctx context.Context) SslCertResponsePtrOutput {
+	return o
+}
+
+func (o SslCertResponsePtrOutput) Elem() SslCertResponseOutput {
+	return o.ApplyT(func(v *SslCertResponse) SslCertResponse { return *v }).(SslCertResponseOutput)
+}
+
+// PEM representation.
+func (o SslCertResponsePtrOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cert
+	}).(pulumi.StringPtrOutput)
+}
+
+// Serial number, as extracted from the certificate.
+func (o SslCertResponsePtrOutput) CertSerialNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertSerialNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// User supplied name. Constrained to [a-zA-Z.-_ ]+.
+func (o SslCertResponsePtrOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CommonName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
+func (o SslCertResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+func (o SslCertResponsePtrOutput) ExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExpirationTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the database instance.
+func (o SslCertResponsePtrOutput) Instance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Instance
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is always *sql#sslCert*.
+func (o SslCertResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of this resource.
+func (o SslCertResponsePtrOutput) SelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SelfLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sha1 Fingerprint.
+func (o SslCertResponsePtrOutput) Sha1Fingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslCertResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Sha1Fingerprint
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AclEntryOutput{})
 	pulumi.RegisterOutputType(AclEntryArrayOutput{})
+	pulumi.RegisterOutputType(AclEntryResponseOutput{})
+	pulumi.RegisterOutputType(AclEntryResponseArrayOutput{})
 	pulumi.RegisterOutputType(BackupConfigurationOutput{})
 	pulumi.RegisterOutputType(BackupConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(BackupConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(BackupConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(BackupRetentionSettingsOutput{})
 	pulumi.RegisterOutputType(BackupRetentionSettingsPtrOutput{})
+	pulumi.RegisterOutputType(BackupRetentionSettingsResponseOutput{})
+	pulumi.RegisterOutputType(BackupRetentionSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseFlagsOutput{})
 	pulumi.RegisterOutputType(DatabaseFlagsArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseFlagsResponseOutput{})
+	pulumi.RegisterOutputType(DatabaseFlagsResponseArrayOutput{})
 	pulumi.RegisterOutputType(DenyMaintenancePeriodOutput{})
 	pulumi.RegisterOutputType(DenyMaintenancePeriodArrayOutput{})
+	pulumi.RegisterOutputType(DenyMaintenancePeriodResponseOutput{})
+	pulumi.RegisterOutputType(DenyMaintenancePeriodResponseArrayOutput{})
 	pulumi.RegisterOutputType(DiskEncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(DiskEncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DiskEncryptionConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DiskEncryptionConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(DiskEncryptionStatusOutput{})
 	pulumi.RegisterOutputType(DiskEncryptionStatusPtrOutput{})
+	pulumi.RegisterOutputType(DiskEncryptionStatusResponseOutput{})
+	pulumi.RegisterOutputType(DiskEncryptionStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(InsightsConfigOutput{})
 	pulumi.RegisterOutputType(InsightsConfigPtrOutput{})
+	pulumi.RegisterOutputType(InsightsConfigResponseOutput{})
+	pulumi.RegisterOutputType(InsightsConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(IpConfigurationOutput{})
 	pulumi.RegisterOutputType(IpConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(IpConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(IpConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(IpMappingOutput{})
 	pulumi.RegisterOutputType(IpMappingArrayOutput{})
+	pulumi.RegisterOutputType(IpMappingResponseOutput{})
+	pulumi.RegisterOutputType(IpMappingResponseArrayOutput{})
 	pulumi.RegisterOutputType(LocationPreferenceOutput{})
 	pulumi.RegisterOutputType(LocationPreferencePtrOutput{})
+	pulumi.RegisterOutputType(LocationPreferenceResponseOutput{})
+	pulumi.RegisterOutputType(LocationPreferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowResponseOutput{})
+	pulumi.RegisterOutputType(MaintenanceWindowResponsePtrOutput{})
 	pulumi.RegisterOutputType(MySqlReplicaConfigurationOutput{})
 	pulumi.RegisterOutputType(MySqlReplicaConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(MySqlReplicaConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(MySqlReplicaConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(OnPremisesConfigurationOutput{})
 	pulumi.RegisterOutputType(OnPremisesConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(OnPremisesConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(OnPremisesConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(OperationErrorOutput{})
 	pulumi.RegisterOutputType(OperationErrorPtrOutput{})
+	pulumi.RegisterOutputType(OperationErrorResponseOutput{})
+	pulumi.RegisterOutputType(OperationErrorResponsePtrOutput{})
 	pulumi.RegisterOutputType(ReplicaConfigurationOutput{})
 	pulumi.RegisterOutputType(ReplicaConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ReplicaConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ReplicaConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SettingsOutput{})
 	pulumi.RegisterOutputType(SettingsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsResponseOutput{})
+	pulumi.RegisterOutputType(SettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SqlActiveDirectoryConfigOutput{})
 	pulumi.RegisterOutputType(SqlActiveDirectoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(SqlActiveDirectoryConfigResponseOutput{})
+	pulumi.RegisterOutputType(SqlActiveDirectoryConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(SqlScheduledMaintenanceOutput{})
 	pulumi.RegisterOutputType(SqlScheduledMaintenancePtrOutput{})
+	pulumi.RegisterOutputType(SqlScheduledMaintenanceResponseOutput{})
+	pulumi.RegisterOutputType(SqlScheduledMaintenanceResponsePtrOutput{})
 	pulumi.RegisterOutputType(SqlServerDatabaseDetailsOutput{})
 	pulumi.RegisterOutputType(SqlServerDatabaseDetailsPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseDetailsResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerDatabaseDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SqlServerUserDetailsOutput{})
 	pulumi.RegisterOutputType(SqlServerUserDetailsPtrOutput{})
 	pulumi.RegisterOutputType(SslCertTypeOutput{})
 	pulumi.RegisterOutputType(SslCertTypePtrOutput{})
+	pulumi.RegisterOutputType(SslCertResponseOutput{})
+	pulumi.RegisterOutputType(SslCertResponsePtrOutput{})
 }

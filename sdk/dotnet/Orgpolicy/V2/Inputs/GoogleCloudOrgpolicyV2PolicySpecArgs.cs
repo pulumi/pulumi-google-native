@@ -45,12 +45,6 @@ namespace Pulumi.GoogleCloud.Orgpolicy.V2.Inputs
             set => _rules = value;
         }
 
-        /// <summary>
-        /// Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
-
         public GoogleCloudOrgpolicyV2PolicySpecArgs()
         {
         }

@@ -22,13 +22,13 @@ namespace Pulumi.GoogleCloud.Cloudtasks.V2beta3.Inputs
         public Input<Inputs.AppEngineHttpRequestArgs>? AppEngineHttpRequest { get; set; }
 
         /// <summary>
-        /// Output only. The time that the task was created. `create_time` will be truncated to the nearest second.
+        /// The time that the task was created. `create_time` will be truncated to the nearest second.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Output only. The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
+        /// The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
         /// </summary>
         [Input("dispatchCount")]
         public Input<int>? DispatchCount { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleCloud.Cloudtasks.V2beta3.Inputs
         public Input<string>? DispatchDeadline { get; set; }
 
         /// <summary>
-        /// Output only. The status of the task's first attempt. Only dispatch_time will be set. The other Attempt information is not retained by Cloud Tasks.
+        /// The status of the task's first attempt. Only dispatch_time will be set. The other Attempt information is not retained by Cloud Tasks.
         /// </summary>
         [Input("firstAttempt")]
         public Input<Inputs.AttemptArgs>? FirstAttempt { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleCloud.Cloudtasks.V2beta3.Inputs
         public Input<Inputs.HttpRequestArgs>? HttpRequest { get; set; }
 
         /// <summary>
-        /// Output only. The status of the task's last attempt.
+        /// The status of the task's last attempt.
         /// </summary>
         [Input("lastAttempt")]
         public Input<Inputs.AttemptArgs>? LastAttempt { get; set; }
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleCloud.Cloudtasks.V2beta3.Inputs
         public Input<Inputs.PullMessageArgs>? PullMessage { get; set; }
 
         /// <summary>
-        /// Output only. The number of attempts which have received a response.
+        /// The number of attempts which have received a response.
         /// </summary>
         [Input("responseCount")]
         public Input<int>? ResponseCount { get; set; }
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleCloud.Cloudtasks.V2beta3.Inputs
         public Input<string>? ScheduleTime { get; set; }
 
         /// <summary>
-        /// Output only. The view specifies which subset of the Task has been returned.
+        /// The view specifies which subset of the Task has been returned.
         /// </summary>
         [Input("view")]
         public Input<string>? View { get; set; }

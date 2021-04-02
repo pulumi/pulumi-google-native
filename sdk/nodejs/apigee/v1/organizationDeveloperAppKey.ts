@@ -35,6 +35,42 @@ export class OrganizationDeveloperAppKey extends pulumi.CustomResource {
         return obj['__pulumiType'] === OrganizationDeveloperAppKey.__pulumiType;
     }
 
+    /**
+     * List of API products for which the credential can be used. **Note**: Do not specify the list of API products when creating a consumer key and secret for a developer app. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created.
+     */
+    public readonly apiProducts!: pulumi.Output<any[]>;
+    /**
+     * List of attributes associated with the credential.
+     */
+    public readonly attributes!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1AttributeResponse[]>;
+    /**
+     * Consumer key.
+     */
+    public readonly consumerKey!: pulumi.Output<string>;
+    /**
+     * Secret key.
+     */
+    public readonly consumerSecret!: pulumi.Output<string>;
+    /**
+     * Time the developer app expires in milliseconds since epoch.
+     */
+    public readonly expiresAt!: pulumi.Output<string>;
+    /**
+     * Input only. Expiration time, in seconds, for the consumer key. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+     */
+    public readonly expiresInSeconds!: pulumi.Output<string>;
+    /**
+     * Time the developer app was created in milliseconds since epoch.
+     */
+    public readonly issuedAt!: pulumi.Output<string>;
+    /**
+     * Scopes to apply to the app. The specified scope names must already be defined for the API product that you associate with the app.
+     */
+    public readonly scopes!: pulumi.Output<string[]>;
+    /**
+     * Status of the credential. Valid values include `approved` or `revoked`.
+     */
+    public readonly status!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationDeveloperAppKey resource with the given unique name, arguments, and options.
@@ -73,6 +109,15 @@ export class OrganizationDeveloperAppKey extends pulumi.CustomResource {
             inputs["scopes"] = args ? args.scopes : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
+            inputs["apiProducts"] = undefined /*out*/;
+            inputs["attributes"] = undefined /*out*/;
+            inputs["consumerKey"] = undefined /*out*/;
+            inputs["consumerSecret"] = undefined /*out*/;
+            inputs["expiresAt"] = undefined /*out*/;
+            inputs["expiresInSeconds"] = undefined /*out*/;
+            inputs["issuedAt"] = undefined /*out*/;
+            inputs["scopes"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

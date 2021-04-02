@@ -153,18 +153,6 @@ namespace Pulumi.GoogleCloud.Container.V1beta1.Inputs
         [Input("initialNodeCount")]
         public Input<int>? InitialNodeCount { get; set; }
 
-        [Input("instanceGroupUrls")]
-        private InputList<string>? _instanceGroupUrls;
-
-        /// <summary>
-        /// Deprecated. Use node_pools.instance_group_urls.
-        /// </summary>
-        public InputList<string> InstanceGroupUrls
-        {
-            get => _instanceGroupUrls ?? (_instanceGroupUrls = new InputList<string>());
-            set => _instanceGroupUrls = value;
-        }
-
         /// <summary>
         /// Configuration for cluster IP allocation.
         /// </summary>

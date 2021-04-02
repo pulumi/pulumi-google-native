@@ -14,6 +14,33 @@ import (
 // Creates an entry. Only entries of 'FILESET' type or user-specified type can be created. Users should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information). A maximum of 100,000 entries may be created per entry group.
 type EntryGroupEntry struct {
 	pulumi.CustomResourceState
+
+	// Specification for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+	BigqueryDateShardedSpec GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponseOutput `pulumi:"bigqueryDateShardedSpec"`
+	// Specification that applies to a BigQuery table. This is only valid on entries of type `TABLE`.
+	BigqueryTableSpec GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponseOutput `pulumi:"bigqueryTableSpec"`
+	// Entry description, which can consist of several sentences or paragraphs that describe entry contents. Default value is an empty string.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Display information such as title and description. A short name to identify the entry, for example, "Analytics Data - Jan 2011". Default value is an empty string.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+	GcsFilesetSpec GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponseOutput `pulumi:"gcsFilesetSpec"`
+	// This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
+	IntegratedSystem pulumi.StringOutput `pulumi:"integratedSystem"`
+	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
+	LinkedResource pulumi.StringOutput `pulumi:"linkedResource"`
+	// The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Schema of the entry. An entry might not have any schema attached to it.
+	Schema GoogleCloudDatacatalogV1beta1SchemaResponseOutput `pulumi:"schema"`
+	// Timestamps about the underlying resource, not about this Data Catalog entry. Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty timestamp.
+	SourceSystemTimestamps GoogleCloudDatacatalogV1beta1SystemTimestampsResponseOutput `pulumi:"sourceSystemTimestamps"`
+	// The type of the entry. Only used for Entries with types in the EntryType enum.
+	Type pulumi.StringOutput `pulumi:"type"`
+	// This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
+	UserSpecifiedSystem pulumi.StringOutput `pulumi:"userSpecifiedSystem"`
+	// Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.
+	UserSpecifiedType pulumi.StringOutput `pulumi:"userSpecifiedType"`
 }
 
 // NewEntryGroupEntry registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +84,61 @@ func GetEntryGroupEntry(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EntryGroupEntry resources.
 type entryGroupEntryState struct {
+	// Specification for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+	BigqueryDateShardedSpec *GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse `pulumi:"bigqueryDateShardedSpec"`
+	// Specification that applies to a BigQuery table. This is only valid on entries of type `TABLE`.
+	BigqueryTableSpec *GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse `pulumi:"bigqueryTableSpec"`
+	// Entry description, which can consist of several sentences or paragraphs that describe entry contents. Default value is an empty string.
+	Description *string `pulumi:"description"`
+	// Display information such as title and description. A short name to identify the entry, for example, "Analytics Data - Jan 2011". Default value is an empty string.
+	DisplayName *string `pulumi:"displayName"`
+	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+	GcsFilesetSpec *GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse `pulumi:"gcsFilesetSpec"`
+	// This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
+	IntegratedSystem *string `pulumi:"integratedSystem"`
+	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
+	LinkedResource *string `pulumi:"linkedResource"`
+	// The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
+	Name *string `pulumi:"name"`
+	// Schema of the entry. An entry might not have any schema attached to it.
+	Schema *GoogleCloudDatacatalogV1beta1SchemaResponse `pulumi:"schema"`
+	// Timestamps about the underlying resource, not about this Data Catalog entry. Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty timestamp.
+	SourceSystemTimestamps *GoogleCloudDatacatalogV1beta1SystemTimestampsResponse `pulumi:"sourceSystemTimestamps"`
+	// The type of the entry. Only used for Entries with types in the EntryType enum.
+	Type *string `pulumi:"type"`
+	// This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
+	UserSpecifiedSystem *string `pulumi:"userSpecifiedSystem"`
+	// Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.
+	UserSpecifiedType *string `pulumi:"userSpecifiedType"`
 }
 
 type EntryGroupEntryState struct {
+	// Specification for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+	BigqueryDateShardedSpec GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponsePtrInput
+	// Specification that applies to a BigQuery table. This is only valid on entries of type `TABLE`.
+	BigqueryTableSpec GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponsePtrInput
+	// Entry description, which can consist of several sentences or paragraphs that describe entry contents. Default value is an empty string.
+	Description pulumi.StringPtrInput
+	// Display information such as title and description. A short name to identify the entry, for example, "Analytics Data - Jan 2011". Default value is an empty string.
+	DisplayName pulumi.StringPtrInput
+	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+	GcsFilesetSpec GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponsePtrInput
+	// This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
+	IntegratedSystem pulumi.StringPtrInput
+	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
+	LinkedResource pulumi.StringPtrInput
+	// The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
+	Name pulumi.StringPtrInput
+	// Schema of the entry. An entry might not have any schema attached to it.
+	Schema GoogleCloudDatacatalogV1beta1SchemaResponsePtrInput
+	// Timestamps about the underlying resource, not about this Data Catalog entry. Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty timestamp.
+	SourceSystemTimestamps GoogleCloudDatacatalogV1beta1SystemTimestampsResponsePtrInput
+	// The type of the entry. Only used for Entries with types in the EntryType enum.
+	Type pulumi.StringPtrInput
+	// This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
+	UserSpecifiedSystem pulumi.StringPtrInput
+	// Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.
+	UserSpecifiedType pulumi.StringPtrInput
 }
 
 func (EntryGroupEntryState) ElementType() reflect.Type {
@@ -79,18 +158,12 @@ type entryGroupEntryArgs struct {
 	EntryGroupsId string  `pulumi:"entryGroupsId"`
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	GcsFilesetSpec *GoogleCloudDatacatalogV1beta1GcsFilesetSpec `pulumi:"gcsFilesetSpec"`
-	// Output only. This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
-	IntegratedSystem *string `pulumi:"integratedSystem"`
 	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
 	LinkedResource *string `pulumi:"linkedResource"`
 	LocationsId    string  `pulumi:"locationsId"`
-	// Output only. The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	ProjectsId     string  `pulumi:"projectsId"`
 	// Schema of the entry. An entry might not have any schema attached to it.
 	Schema *GoogleCloudDatacatalogV1beta1Schema `pulumi:"schema"`
-	// Output only. Timestamps about the underlying resource, not about this Data Catalog entry. Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty timestamp.
-	SourceSystemTimestamps *GoogleCloudDatacatalogV1beta1SystemTimestamps `pulumi:"sourceSystemTimestamps"`
 	// The type of the entry. Only used for Entries with types in the EntryType enum.
 	Type *string `pulumi:"type"`
 	// This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
@@ -113,18 +186,12 @@ type EntryGroupEntryArgs struct {
 	EntryGroupsId pulumi.StringInput
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	GcsFilesetSpec GoogleCloudDatacatalogV1beta1GcsFilesetSpecPtrInput
-	// Output only. This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
-	IntegratedSystem pulumi.StringPtrInput
 	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
 	LinkedResource pulumi.StringPtrInput
 	LocationsId    pulumi.StringInput
-	// Output only. The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	ProjectsId     pulumi.StringInput
 	// Schema of the entry. An entry might not have any schema attached to it.
 	Schema GoogleCloudDatacatalogV1beta1SchemaPtrInput
-	// Output only. Timestamps about the underlying resource, not about this Data Catalog entry. Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty timestamp.
-	SourceSystemTimestamps GoogleCloudDatacatalogV1beta1SystemTimestampsPtrInput
 	// The type of the entry. Only used for Entries with types in the EntryType enum.
 	Type pulumi.StringPtrInput
 	// This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.

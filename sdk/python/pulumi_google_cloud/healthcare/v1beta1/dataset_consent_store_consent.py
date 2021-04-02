@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['DatasetConsentStoreConsent']
@@ -26,8 +27,6 @@ class DatasetConsentStoreConsent(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1beta1ConsentPolicyArgs']]]]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 revision_create_time: Optional[pulumi.Input[str]] = None,
-                 revision_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
@@ -44,8 +43,6 @@ class DatasetConsentStoreConsent(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
         :param pulumi.Input[str] name: Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudHealthcareV1beta1ConsentPolicyArgs']]]] policies: Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
-        :param pulumi.Input[str] revision_create_time: Output only. The timestamp that the revision was created.
-        :param pulumi.Input[str] revision_id: Output only. The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
         :param pulumi.Input[str] state: Required. Indicates the current state of this Consent.
         :param pulumi.Input[str] ttl: Input only. The time to live for this Consent from when it is created.
         :param pulumi.Input[str] user_id: Required. User's UUID provided by the client.
@@ -87,11 +84,11 @@ class DatasetConsentStoreConsent(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['revision_create_time'] = revision_create_time
-            __props__['revision_id'] = revision_id
             __props__['state'] = state
             __props__['ttl'] = ttl
             __props__['user_id'] = user_id
+            __props__['revision_create_time'] = None
+            __props__['revision_id'] = None
         super(DatasetConsentStoreConsent, __self__).__init__(
             'google-cloud:healthcare/v1beta1:DatasetConsentStoreConsent',
             resource_name,
@@ -114,7 +111,97 @@ class DatasetConsentStoreConsent(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["consent_artifact"] = None
+        __props__["expire_time"] = None
+        __props__["metadata"] = None
+        __props__["name"] = None
+        __props__["policies"] = None
+        __props__["revision_create_time"] = None
+        __props__["revision_id"] = None
+        __props__["state"] = None
+        __props__["ttl"] = None
+        __props__["user_id"] = None
         return DatasetConsentStoreConsent(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="consentArtifact")
+    def consent_artifact(self) -> pulumi.Output[str]:
+        """
+        Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        """
+        return pulumi.get(self, "consent_artifact")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        Timestamp in UTC of when this Consent is considered expired.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def policies(self) -> pulumi.Output[Sequence['outputs.GoogleCloudHealthcareV1beta1ConsentPolicyResponse']]:
+        """
+        Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
+        """
+        return pulumi.get(self, "policies")
+
+    @property
+    @pulumi.getter(name="revisionCreateTime")
+    def revision_create_time(self) -> pulumi.Output[str]:
+        """
+        The timestamp that the revision was created.
+        """
+        return pulumi.get(self, "revision_create_time")
+
+    @property
+    @pulumi.getter(name="revisionId")
+    def revision_id(self) -> pulumi.Output[str]:
+        """
+        The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
+        """
+        return pulumi.get(self, "revision_id")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        Required. Indicates the current state of this Consent.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> pulumi.Output[str]:
+        """
+        Input only. The time to live for this Consent from when it is created.
+        """
+        return pulumi.get(self, "ttl")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Output[str]:
+        """
+        Required. User's UUID provided by the client.
+        """
+        return pulumi.get(self, "user_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

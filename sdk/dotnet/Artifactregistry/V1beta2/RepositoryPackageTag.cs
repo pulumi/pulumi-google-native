@@ -16,6 +16,19 @@ namespace Pulumi.GoogleCloud.Artifactregistry.V1beta2
     public partial class RepositoryPackageTag : Pulumi.CustomResource
     {
         /// <summary>
+        /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+        /// </summary>
+        [Output("version")]
+        public Output<string> Version { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a RepositoryPackageTag resource with the given unique name, arguments, and options.
         /// </summary>
         ///

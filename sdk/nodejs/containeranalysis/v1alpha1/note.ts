@@ -35,6 +35,70 @@ export class Note extends pulumi.CustomResource {
         return obj['__pulumiType'] === Note.__pulumiType;
     }
 
+    /**
+     * A note describing an attestation role.
+     */
+    public readonly attestationAuthority!: pulumi.Output<outputs.containeranalysis.v1alpha1.AttestationAuthorityResponse>;
+    /**
+     * A note describing a base image.
+     */
+    public readonly baseImage!: pulumi.Output<outputs.containeranalysis.v1alpha1.BasisResponse>;
+    /**
+     * Build provenance type for a verifiable build.
+     */
+    public readonly buildType!: pulumi.Output<outputs.containeranalysis.v1alpha1.BuildTypeResponse>;
+    /**
+     * The time this note was created. This field can be used as a filter in list requests.
+     */
+    public readonly createTime!: pulumi.Output<string>;
+    /**
+     * A note describing something that can be deployed.
+     */
+    public readonly deployable!: pulumi.Output<outputs.containeranalysis.v1alpha1.DeployableResponse>;
+    /**
+     * A note describing a provider/analysis type.
+     */
+    public readonly discovery!: pulumi.Output<outputs.containeranalysis.v1alpha1.DiscoveryResponse>;
+    /**
+     * Time of expiration for this note, null if note does not expire.
+     */
+    public readonly expirationTime!: pulumi.Output<string>;
+    /**
+     * This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * A detailed description of this `Note`.
+     */
+    public readonly longDescription!: pulumi.Output<string>;
+    /**
+     * The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * A note describing a package hosted by various package managers.
+     */
+    public readonly package!: pulumi.Output<outputs.containeranalysis.v1alpha1.PackageResponse>;
+    /**
+     * URLs associated with this note
+     */
+    public readonly relatedUrl!: pulumi.Output<outputs.containeranalysis.v1alpha1.RelatedUrlResponse[]>;
+    /**
+     * A one sentence description of this `Note`.
+     */
+    public readonly shortDescription!: pulumi.Output<string>;
+    /**
+     * The time this note was last updated. This field can be used as a filter in list requests.
+     */
+    public readonly updateTime!: pulumi.Output<string>;
+    /**
+     * A note describing an upgrade.
+     */
+    public readonly upgrade!: pulumi.Output<outputs.containeranalysis.v1alpha1.UpgradeNoteResponse>;
+    /**
+     * A package vulnerability type of note.
+     */
+    public readonly vulnerabilityType!: pulumi.Output<outputs.containeranalysis.v1alpha1.VulnerabilityTypeResponse>;
 
     /**
      * Create a Note resource with the given unique name, arguments, and options.
@@ -72,6 +136,22 @@ export class Note extends pulumi.CustomResource {
             inputs["upgrade"] = args ? args.upgrade : undefined;
             inputs["vulnerabilityType"] = args ? args.vulnerabilityType : undefined;
         } else {
+            inputs["attestationAuthority"] = undefined /*out*/;
+            inputs["baseImage"] = undefined /*out*/;
+            inputs["buildType"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deployable"] = undefined /*out*/;
+            inputs["discovery"] = undefined /*out*/;
+            inputs["expirationTime"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["longDescription"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["package"] = undefined /*out*/;
+            inputs["relatedUrl"] = undefined /*out*/;
+            inputs["shortDescription"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
+            inputs["upgrade"] = undefined /*out*/;
+            inputs["vulnerabilityType"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -97,7 +177,7 @@ export interface NoteArgs {
      */
     readonly buildType?: pulumi.Input<inputs.containeranalysis.v1alpha1.BuildType>;
     /**
-     * Output only. The time this note was created. This field can be used as a filter in list requests.
+     * The time this note was created. This field can be used as a filter in list requests.
      */
     readonly createTime?: pulumi.Input<string>;
     /**
@@ -113,7 +193,7 @@ export interface NoteArgs {
      */
     readonly expirationTime?: pulumi.Input<string>;
     /**
-     * Output only. This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
+     * This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
      */
     readonly kind?: pulumi.Input<string>;
     /**
@@ -139,7 +219,7 @@ export interface NoteArgs {
      */
     readonly shortDescription?: pulumi.Input<string>;
     /**
-     * Output only. The time this note was last updated. This field can be used as a filter in list requests.
+     * The time this note was last updated. This field can be used as a filter in list requests.
      */
     readonly updateTime?: pulumi.Input<string>;
     /**

@@ -40,19 +40,19 @@ namespace Pulumi.GoogleCloud.Container.V1.Inputs
         public Input<string>? MasterIpv4CidrBlock { get; set; }
 
         /// <summary>
-        /// Output only. The peering name in the customer VPC used by this cluster.
+        /// The peering name in the customer VPC used by this cluster.
         /// </summary>
         [Input("peeringName")]
         public Input<string>? PeeringName { get; set; }
 
         /// <summary>
-        /// Output only. The internal IP address of this cluster's master endpoint.
+        /// The internal IP address of this cluster's master endpoint.
         /// </summary>
         [Input("privateEndpoint")]
         public Input<string>? PrivateEndpoint { get; set; }
 
         /// <summary>
-        /// Output only. The external IP address of this cluster's master endpoint.
+        /// The external IP address of this cluster's master endpoint.
         /// </summary>
         [Input("publicEndpoint")]
         public Input<string>? PublicEndpoint { get; set; }

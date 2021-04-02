@@ -7,7 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
-from ._inputs import *
+from . import outputs
 
 __all__ = ['EntryGroup']
 
@@ -16,7 +16,6 @@ class EntryGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_catalog_timestamps: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1SystemTimestampsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_groups_id: Optional[pulumi.Input[str]] = None,
@@ -31,7 +30,6 @@ class EntryGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1SystemTimestampsArgs']] data_catalog_timestamps: Output only. Timestamps about this EntryGroup. Default value is empty timestamps.
         :param pulumi.Input[str] description: Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.
         :param pulumi.Input[str] display_name: A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
         :param pulumi.Input[str] name: The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
@@ -53,7 +51,6 @@ class EntryGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['data_catalog_timestamps'] = data_catalog_timestamps
             __props__['description'] = description
             __props__['display_name'] = display_name
             if entry_groups_id is None and not opts.urn:
@@ -66,6 +63,7 @@ class EntryGroup(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['data_catalog_timestamps'] = None
         super(EntryGroup, __self__).__init__(
             'google-cloud:datacatalog/v1beta1:EntryGroup',
             resource_name,
@@ -88,7 +86,43 @@ class EntryGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["data_catalog_timestamps"] = None
+        __props__["description"] = None
+        __props__["display_name"] = None
+        __props__["name"] = None
         return EntryGroup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="dataCatalogTimestamps")
+    def data_catalog_timestamps(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1beta1SystemTimestampsResponse']:
+        """
+        Timestamps about this EntryGroup. Default value is empty timestamps.
+        """
+        return pulumi.get(self, "data_catalog_timestamps")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
+        """
+        return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

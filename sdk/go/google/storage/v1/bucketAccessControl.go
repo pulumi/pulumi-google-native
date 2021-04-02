@@ -14,6 +14,38 @@ import (
 // Creates a new ACL entry on the specified bucket.
 type BucketAccessControl struct {
 	pulumi.CustomResourceState
+
+	// The name of the bucket.
+	Bucket pulumi.StringOutput `pulumi:"bucket"`
+	// The domain associated with the entity, if any.
+	Domain pulumi.StringOutput `pulumi:"domain"`
+	// The email address associated with the entity, if any.
+	Email pulumi.StringOutput `pulumi:"email"`
+	// The entity holding the permission, in one of the following forms:
+	// - user-userId
+	// - user-email
+	// - group-groupId
+	// - group-email
+	// - domain-domain
+	// - project-team-projectId
+	// - allUsers
+	// - allAuthenticatedUsers Examples:
+	// - The user liz@example.com would be user-liz@example.com.
+	// - The group example@googlegroups.com would be group-example@googlegroups.com.
+	// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+	Entity pulumi.StringOutput `pulumi:"entity"`
+	// The ID for the entity, if any.
+	EntityId pulumi.StringOutput `pulumi:"entityId"`
+	// HTTP 1.1 Entity tag for the access-control entry.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// The project team associated with the entity, if any.
+	ProjectTeam pulumi.StringMapOutput `pulumi:"projectTeam"`
+	// The access permission for the entity.
+	Role pulumi.StringOutput `pulumi:"role"`
+	// The link to this access-control entry.
+	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
 
 // NewBucketAccessControl registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +83,71 @@ func GetBucketAccessControl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BucketAccessControl resources.
 type bucketAccessControlState struct {
+	// The name of the bucket.
+	Bucket *string `pulumi:"bucket"`
+	// The domain associated with the entity, if any.
+	Domain *string `pulumi:"domain"`
+	// The email address associated with the entity, if any.
+	Email *string `pulumi:"email"`
+	// The entity holding the permission, in one of the following forms:
+	// - user-userId
+	// - user-email
+	// - group-groupId
+	// - group-email
+	// - domain-domain
+	// - project-team-projectId
+	// - allUsers
+	// - allAuthenticatedUsers Examples:
+	// - The user liz@example.com would be user-liz@example.com.
+	// - The group example@googlegroups.com would be group-example@googlegroups.com.
+	// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+	Entity *string `pulumi:"entity"`
+	// The ID for the entity, if any.
+	EntityId *string `pulumi:"entityId"`
+	// HTTP 1.1 Entity tag for the access-control entry.
+	Etag *string `pulumi:"etag"`
+	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
+	Kind *string `pulumi:"kind"`
+	// The project team associated with the entity, if any.
+	ProjectTeam map[string]string `pulumi:"projectTeam"`
+	// The access permission for the entity.
+	Role *string `pulumi:"role"`
+	// The link to this access-control entry.
+	SelfLink *string `pulumi:"selfLink"`
 }
 
 type BucketAccessControlState struct {
+	// The name of the bucket.
+	Bucket pulumi.StringPtrInput
+	// The domain associated with the entity, if any.
+	Domain pulumi.StringPtrInput
+	// The email address associated with the entity, if any.
+	Email pulumi.StringPtrInput
+	// The entity holding the permission, in one of the following forms:
+	// - user-userId
+	// - user-email
+	// - group-groupId
+	// - group-email
+	// - domain-domain
+	// - project-team-projectId
+	// - allUsers
+	// - allAuthenticatedUsers Examples:
+	// - The user liz@example.com would be user-liz@example.com.
+	// - The group example@googlegroups.com would be group-example@googlegroups.com.
+	// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+	Entity pulumi.StringPtrInput
+	// The ID for the entity, if any.
+	EntityId pulumi.StringPtrInput
+	// HTTP 1.1 Entity tag for the access-control entry.
+	Etag pulumi.StringPtrInput
+	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
+	Kind pulumi.StringPtrInput
+	// The project team associated with the entity, if any.
+	ProjectTeam pulumi.StringMapInput
+	// The access permission for the entity.
+	Role pulumi.StringPtrInput
+	// The link to this access-control entry.
+	SelfLink pulumi.StringPtrInput
 }
 
 func (BucketAccessControlState) ElementType() reflect.Type {

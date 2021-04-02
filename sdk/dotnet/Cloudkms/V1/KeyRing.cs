@@ -16,6 +16,19 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
     public partial class KeyRing : Pulumi.CustomResource
     {
         /// <summary>
+        /// The time at which this KeyRing was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a KeyRing resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,23 +72,11 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
 
     public sealed class KeyRingArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. The time at which this KeyRing was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
         [Input("keyRingsId", required: true)]
         public Input<string> KeyRingsId { get; set; } = null!;
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;

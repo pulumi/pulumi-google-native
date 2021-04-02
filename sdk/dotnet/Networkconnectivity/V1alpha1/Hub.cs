@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Networkconnectivity.V1alpha1
     public partial class Hub : Pulumi.CustomResource
     {
         /// <summary>
+        /// Time when the Hub was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Short description of the hub resource.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// User-defined labels.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The name of a Hub resource.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of the URIs of all attached spokes
+        /// </summary>
+        [Output("spokes")]
+        public Output<ImmutableArray<string>> Spokes { get; private set; } = null!;
+
+        /// <summary>
+        /// The current lifecycle state of this Hub.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.
+        /// </summary>
+        [Output("uniqueId")]
+        public Output<string> UniqueId { get; private set; } = null!;
+
+        /// <summary>
+        /// Time when the Hub was updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Hub resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -94,30 +143,6 @@ namespace Pulumi.GoogleCloud.Networkconnectivity.V1alpha1
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        [Input("spokes")]
-        private InputList<string>? _spokes;
-
-        /// <summary>
-        /// Output only. A list of the URIs of all attached spokes
-        /// </summary>
-        public InputList<string> Spokes
-        {
-            get => _spokes ?? (_spokes = new InputList<string>());
-            set => _spokes = value;
-        }
-
-        /// <summary>
-        /// Output only. The current lifecycle state of this Hub.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.
-        /// </summary>
-        [Input("uniqueId")]
-        public Input<string>? UniqueId { get; set; }
 
         /// <summary>
         /// Time when the Hub was updated.

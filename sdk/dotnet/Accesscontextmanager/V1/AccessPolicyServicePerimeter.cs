@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Accesscontextmanager.V1
     public partial class AccessPolicyServicePerimeter : Pulumi.CustomResource
     {
         /// <summary>
+        /// Description of the `ServicePerimeter` and its use. Does not affect behavior.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
+        /// </summary>
+        [Output("perimeterType")]
+        public Output<string> PerimeterType { get; private set; } = null!;
+
+        /// <summary>
+        /// Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the "use_explicit_dry_run_spec" flag is set.
+        /// </summary>
+        [Output("spec")]
+        public Output<Outputs.ServicePerimeterConfigResponse> Spec { get; private set; } = null!;
+
+        /// <summary>
+        /// Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries.
+        /// </summary>
+        [Output("status")]
+        public Output<Outputs.ServicePerimeterConfigResponse> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Human readable title. Must be unique within the Policy.
+        /// </summary>
+        [Output("title")]
+        public Output<string> Title { get; private set; } = null!;
+
+        /// <summary>
+        /// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that spec is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of the implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run version of the Service Perimeter. This allows the user to test changes to the enforced config ("status") without actually enforcing them. This testing is done through analyzing the differences between currently enforced and suggested restrictions. use_explicit_dry_run_spec must bet set to True if any of the fields in the spec are set to non-default values.
+        /// </summary>
+        [Output("useExplicitDryRunSpec")]
+        public Output<bool> UseExplicitDryRunSpec { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AccessPolicyServicePerimeter resource with the given unique name, arguments, and options.
         /// </summary>
         ///

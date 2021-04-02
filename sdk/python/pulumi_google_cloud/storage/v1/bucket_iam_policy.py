@@ -82,7 +82,52 @@ class BucketIamPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["bindings"] = None
+        __props__["etag"] = None
+        __props__["kind"] = None
+        __props__["resource_id"] = None
+        __props__["version"] = None
         return BucketIamPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def bindings(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+        """
+        An association between a role, which comes with a set of permissions, and members who may assume that role.
+        """
+        return pulumi.get(self, "bindings")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        HTTP 1.1  Entity tag for the policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Output[int]:
+        """
+        The IAM policy format version.
+        """
+        return pulumi.get(self, "version")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

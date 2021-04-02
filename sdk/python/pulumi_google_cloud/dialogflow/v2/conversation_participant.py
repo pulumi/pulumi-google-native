@@ -88,7 +88,34 @@ class ConversationParticipant(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["name"] = None
+        __props__["role"] = None
+        __props__["sip_recording_media_label"] = None
         return ConversationParticipant(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Output[str]:
+        """
+        Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter(name="sipRecordingMediaLabel")
+    def sip_recording_media_label(self) -> pulumi.Output[str]:
+        """
+        Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
+        """
+        return pulumi.get(self, "sip_recording_media_label")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -14,6 +14,18 @@ import (
 // Atomically updates the ResourceRecordSet collection.
 type Change struct {
 	pulumi.CustomResourceState
+
+	// Which ResourceRecordSets to add?
+	Additions ResourceRecordSetResponseArrayOutput `pulumi:"additions"`
+	// Which ResourceRecordSets to remove? Must match existing data exactly.
+	Deletions ResourceRecordSetResponseArrayOutput `pulumi:"deletions"`
+	// If the DNS queries for the zone will be served.
+	IsServing pulumi.BoolOutput   `pulumi:"isServing"`
+	Kind      pulumi.StringOutput `pulumi:"kind"`
+	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
+	StartTime pulumi.StringOutput `pulumi:"startTime"`
+	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewChange registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +66,31 @@ func GetChange(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Change resources.
 type changeState struct {
+	// Which ResourceRecordSets to add?
+	Additions []ResourceRecordSetResponse `pulumi:"additions"`
+	// Which ResourceRecordSets to remove? Must match existing data exactly.
+	Deletions []ResourceRecordSetResponse `pulumi:"deletions"`
+	// If the DNS queries for the zone will be served.
+	IsServing *bool   `pulumi:"isServing"`
+	Kind      *string `pulumi:"kind"`
+	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
+	StartTime *string `pulumi:"startTime"`
+	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
+	Status *string `pulumi:"status"`
 }
 
 type ChangeState struct {
+	// Which ResourceRecordSets to add?
+	Additions ResourceRecordSetResponseArrayInput
+	// Which ResourceRecordSets to remove? Must match existing data exactly.
+	Deletions ResourceRecordSetResponseArrayInput
+	// If the DNS queries for the zone will be served.
+	IsServing pulumi.BoolPtrInput
+	Kind      pulumi.StringPtrInput
+	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
+	StartTime pulumi.StringPtrInput
+	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
+	Status pulumi.StringPtrInput
 }
 
 func (ChangeState) ElementType() reflect.Type {

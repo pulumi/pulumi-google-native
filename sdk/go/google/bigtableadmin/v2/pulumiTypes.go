@@ -119,6 +119,115 @@ func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
 	}).(AuditConfigOutput)
 }
 
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponse struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs []AuditLogConfigResponse `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service string `pulumi:"service"`
+}
+
+// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
+// You can construct a concrete instance of `AuditConfigResponseInput` via:
+//
+//          AuditConfigResponseArgs{...}
+type AuditConfigResponseInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseOutput() AuditConfigResponseOutput
+	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseArgs struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (AuditConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return i.ToAuditConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
+}
+
+// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
+//
+//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
+type AuditConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
+	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
+}
+
+type AuditConfigResponseArray []AuditConfigResponseInput
+
+func (AuditConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return o
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return o
+}
+
+// The configuration for logging of each type of permission.
+func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
+	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
+}
+
+// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+func (o AuditConfigResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditConfigResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type AuditConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditConfigResponse {
+		return vs[0].([]AuditConfigResponse)[vs[1].(int)]
+	}).(AuditConfigResponseOutput)
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -228,194 +337,303 @@ func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput
 	}).(AuditLogConfigOutput)
 }
 
-// Information about a backup.
-type BackupInfo struct {
-	// Output only. Name of the backup.
-	Backup *string `pulumi:"backup"`
-	// Output only. This time that the backup was finished. Row data in the backup will be no newer than this timestamp.
-	EndTime *string `pulumi:"endTime"`
-	// Output only. Name of the table the backup was created from.
-	SourceTable *string `pulumi:"sourceTable"`
-	// Output only. The time that the backup was started. Row data in the backup will be no older than this timestamp.
-	StartTime *string `pulumi:"startTime"`
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponse struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers []string `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType string `pulumi:"logType"`
 }
 
-// BackupInfoInput is an input type that accepts BackupInfoArgs and BackupInfoOutput values.
-// You can construct a concrete instance of `BackupInfoInput` via:
+// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
 //
-//          BackupInfoArgs{...}
-type BackupInfoInput interface {
+//          AuditLogConfigResponseArgs{...}
+type AuditLogConfigResponseInput interface {
 	pulumi.Input
 
-	ToBackupInfoOutput() BackupInfoOutput
-	ToBackupInfoOutputWithContext(context.Context) BackupInfoOutput
+	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
+	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseArgs struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType pulumi.StringInput `pulumi:"logType"`
+}
+
+func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
+}
+
+// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
+//
+//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
+type AuditLogConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
+	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
+}
+
+type AuditLogConfigResponseArray []AuditLogConfigResponseInput
+
+func (AuditLogConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return o
+}
+
+// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
+// The log type that this config enables.
+func (o AuditLogConfigResponseOutput) LogType() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) string { return v.LogType }).(pulumi.StringOutput)
+}
+
+type AuditLogConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfigResponse {
+		return vs[0].([]AuditLogConfigResponse)[vs[1].(int)]
+	}).(AuditLogConfigResponseOutput)
 }
 
 // Information about a backup.
-type BackupInfoArgs struct {
-	// Output only. Name of the backup.
-	Backup pulumi.StringPtrInput `pulumi:"backup"`
-	// Output only. This time that the backup was finished. Row data in the backup will be no newer than this timestamp.
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Output only. Name of the table the backup was created from.
-	SourceTable pulumi.StringPtrInput `pulumi:"sourceTable"`
-	// Output only. The time that the backup was started. Row data in the backup will be no older than this timestamp.
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+type BackupInfoResponse struct {
+	// Name of the backup.
+	Backup string `pulumi:"backup"`
+	// This time that the backup was finished. Row data in the backup will be no newer than this timestamp.
+	EndTime string `pulumi:"endTime"`
+	// Name of the table the backup was created from.
+	SourceTable string `pulumi:"sourceTable"`
+	// The time that the backup was started. Row data in the backup will be no older than this timestamp.
+	StartTime string `pulumi:"startTime"`
 }
 
-func (BackupInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupInfo)(nil)).Elem()
-}
-
-func (i BackupInfoArgs) ToBackupInfoOutput() BackupInfoOutput {
-	return i.ToBackupInfoOutputWithContext(context.Background())
-}
-
-func (i BackupInfoArgs) ToBackupInfoOutputWithContext(ctx context.Context) BackupInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackupInfoOutput)
-}
-
-func (i BackupInfoArgs) ToBackupInfoPtrOutput() BackupInfoPtrOutput {
-	return i.ToBackupInfoPtrOutputWithContext(context.Background())
-}
-
-func (i BackupInfoArgs) ToBackupInfoPtrOutputWithContext(ctx context.Context) BackupInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackupInfoOutput).ToBackupInfoPtrOutputWithContext(ctx)
-}
-
-// BackupInfoPtrInput is an input type that accepts BackupInfoArgs, BackupInfoPtr and BackupInfoPtrOutput values.
-// You can construct a concrete instance of `BackupInfoPtrInput` via:
+// BackupInfoResponseInput is an input type that accepts BackupInfoResponseArgs and BackupInfoResponseOutput values.
+// You can construct a concrete instance of `BackupInfoResponseInput` via:
 //
-//          BackupInfoArgs{...}
+//          BackupInfoResponseArgs{...}
+type BackupInfoResponseInput interface {
+	pulumi.Input
+
+	ToBackupInfoResponseOutput() BackupInfoResponseOutput
+	ToBackupInfoResponseOutputWithContext(context.Context) BackupInfoResponseOutput
+}
+
+// Information about a backup.
+type BackupInfoResponseArgs struct {
+	// Name of the backup.
+	Backup pulumi.StringInput `pulumi:"backup"`
+	// This time that the backup was finished. Row data in the backup will be no newer than this timestamp.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Name of the table the backup was created from.
+	SourceTable pulumi.StringInput `pulumi:"sourceTable"`
+	// The time that the backup was started. Row data in the backup will be no older than this timestamp.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (BackupInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupInfoResponse)(nil)).Elem()
+}
+
+func (i BackupInfoResponseArgs) ToBackupInfoResponseOutput() BackupInfoResponseOutput {
+	return i.ToBackupInfoResponseOutputWithContext(context.Background())
+}
+
+func (i BackupInfoResponseArgs) ToBackupInfoResponseOutputWithContext(ctx context.Context) BackupInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupInfoResponseOutput)
+}
+
+func (i BackupInfoResponseArgs) ToBackupInfoResponsePtrOutput() BackupInfoResponsePtrOutput {
+	return i.ToBackupInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BackupInfoResponseArgs) ToBackupInfoResponsePtrOutputWithContext(ctx context.Context) BackupInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupInfoResponseOutput).ToBackupInfoResponsePtrOutputWithContext(ctx)
+}
+
+// BackupInfoResponsePtrInput is an input type that accepts BackupInfoResponseArgs, BackupInfoResponsePtr and BackupInfoResponsePtrOutput values.
+// You can construct a concrete instance of `BackupInfoResponsePtrInput` via:
+//
+//          BackupInfoResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type BackupInfoPtrInput interface {
+type BackupInfoResponsePtrInput interface {
 	pulumi.Input
 
-	ToBackupInfoPtrOutput() BackupInfoPtrOutput
-	ToBackupInfoPtrOutputWithContext(context.Context) BackupInfoPtrOutput
+	ToBackupInfoResponsePtrOutput() BackupInfoResponsePtrOutput
+	ToBackupInfoResponsePtrOutputWithContext(context.Context) BackupInfoResponsePtrOutput
 }
 
-type backupInfoPtrType BackupInfoArgs
+type backupInfoResponsePtrType BackupInfoResponseArgs
 
-func BackupInfoPtr(v *BackupInfoArgs) BackupInfoPtrInput {
-	return (*backupInfoPtrType)(v)
+func BackupInfoResponsePtr(v *BackupInfoResponseArgs) BackupInfoResponsePtrInput {
+	return (*backupInfoResponsePtrType)(v)
 }
 
-func (*backupInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackupInfo)(nil)).Elem()
+func (*backupInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupInfoResponse)(nil)).Elem()
 }
 
-func (i *backupInfoPtrType) ToBackupInfoPtrOutput() BackupInfoPtrOutput {
-	return i.ToBackupInfoPtrOutputWithContext(context.Background())
+func (i *backupInfoResponsePtrType) ToBackupInfoResponsePtrOutput() BackupInfoResponsePtrOutput {
+	return i.ToBackupInfoResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *backupInfoPtrType) ToBackupInfoPtrOutputWithContext(ctx context.Context) BackupInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackupInfoPtrOutput)
+func (i *backupInfoResponsePtrType) ToBackupInfoResponsePtrOutputWithContext(ctx context.Context) BackupInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupInfoResponsePtrOutput)
 }
 
 // Information about a backup.
-type BackupInfoOutput struct{ *pulumi.OutputState }
+type BackupInfoResponseOutput struct{ *pulumi.OutputState }
 
-func (BackupInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupInfo)(nil)).Elem()
+func (BackupInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupInfoResponse)(nil)).Elem()
 }
 
-func (o BackupInfoOutput) ToBackupInfoOutput() BackupInfoOutput {
+func (o BackupInfoResponseOutput) ToBackupInfoResponseOutput() BackupInfoResponseOutput {
 	return o
 }
 
-func (o BackupInfoOutput) ToBackupInfoOutputWithContext(ctx context.Context) BackupInfoOutput {
+func (o BackupInfoResponseOutput) ToBackupInfoResponseOutputWithContext(ctx context.Context) BackupInfoResponseOutput {
 	return o
 }
 
-func (o BackupInfoOutput) ToBackupInfoPtrOutput() BackupInfoPtrOutput {
-	return o.ToBackupInfoPtrOutputWithContext(context.Background())
+func (o BackupInfoResponseOutput) ToBackupInfoResponsePtrOutput() BackupInfoResponsePtrOutput {
+	return o.ToBackupInfoResponsePtrOutputWithContext(context.Background())
 }
 
-func (o BackupInfoOutput) ToBackupInfoPtrOutputWithContext(ctx context.Context) BackupInfoPtrOutput {
-	return o.ApplyT(func(v BackupInfo) *BackupInfo {
+func (o BackupInfoResponseOutput) ToBackupInfoResponsePtrOutputWithContext(ctx context.Context) BackupInfoResponsePtrOutput {
+	return o.ApplyT(func(v BackupInfoResponse) *BackupInfoResponse {
 		return &v
-	}).(BackupInfoPtrOutput)
+	}).(BackupInfoResponsePtrOutput)
 }
 
-// Output only. Name of the backup.
-func (o BackupInfoOutput) Backup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BackupInfo) *string { return v.Backup }).(pulumi.StringPtrOutput)
+// Name of the backup.
+func (o BackupInfoResponseOutput) Backup() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupInfoResponse) string { return v.Backup }).(pulumi.StringOutput)
 }
 
-// Output only. This time that the backup was finished. Row data in the backup will be no newer than this timestamp.
-func (o BackupInfoOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BackupInfo) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+// This time that the backup was finished. Row data in the backup will be no newer than this timestamp.
+func (o BackupInfoResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupInfoResponse) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// Output only. Name of the table the backup was created from.
-func (o BackupInfoOutput) SourceTable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BackupInfo) *string { return v.SourceTable }).(pulumi.StringPtrOutput)
+// Name of the table the backup was created from.
+func (o BackupInfoResponseOutput) SourceTable() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupInfoResponse) string { return v.SourceTable }).(pulumi.StringOutput)
 }
 
-// Output only. The time that the backup was started. Row data in the backup will be no older than this timestamp.
-func (o BackupInfoOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BackupInfo) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+// The time that the backup was started. Row data in the backup will be no older than this timestamp.
+func (o BackupInfoResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupInfoResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-type BackupInfoPtrOutput struct{ *pulumi.OutputState }
+type BackupInfoResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (BackupInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackupInfo)(nil)).Elem()
+func (BackupInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupInfoResponse)(nil)).Elem()
 }
 
-func (o BackupInfoPtrOutput) ToBackupInfoPtrOutput() BackupInfoPtrOutput {
+func (o BackupInfoResponsePtrOutput) ToBackupInfoResponsePtrOutput() BackupInfoResponsePtrOutput {
 	return o
 }
 
-func (o BackupInfoPtrOutput) ToBackupInfoPtrOutputWithContext(ctx context.Context) BackupInfoPtrOutput {
+func (o BackupInfoResponsePtrOutput) ToBackupInfoResponsePtrOutputWithContext(ctx context.Context) BackupInfoResponsePtrOutput {
 	return o
 }
 
-func (o BackupInfoPtrOutput) Elem() BackupInfoOutput {
-	return o.ApplyT(func(v *BackupInfo) BackupInfo { return *v }).(BackupInfoOutput)
+func (o BackupInfoResponsePtrOutput) Elem() BackupInfoResponseOutput {
+	return o.ApplyT(func(v *BackupInfoResponse) BackupInfoResponse { return *v }).(BackupInfoResponseOutput)
 }
 
-// Output only. Name of the backup.
-func (o BackupInfoPtrOutput) Backup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BackupInfo) *string {
+// Name of the backup.
+func (o BackupInfoResponsePtrOutput) Backup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupInfoResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Backup
+		return &v.Backup
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. This time that the backup was finished. Row data in the backup will be no newer than this timestamp.
-func (o BackupInfoPtrOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BackupInfo) *string {
+// This time that the backup was finished. Row data in the backup will be no newer than this timestamp.
+func (o BackupInfoResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupInfoResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.EndTime
+		return &v.EndTime
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. Name of the table the backup was created from.
-func (o BackupInfoPtrOutput) SourceTable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BackupInfo) *string {
+// Name of the table the backup was created from.
+func (o BackupInfoResponsePtrOutput) SourceTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupInfoResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.SourceTable
+		return &v.SourceTable
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The time that the backup was started. Row data in the backup will be no older than this timestamp.
-func (o BackupInfoPtrOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BackupInfo) *string {
+// The time that the backup was started. Row data in the backup will be no older than this timestamp.
+func (o BackupInfoResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupInfoResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.StartTime
+		return &v.StartTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -535,6 +753,124 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Binding {
 		return vs[0].([]Binding)[vs[1].(int)]
 	}).(BindingOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
+// You can construct a concrete instance of `BindingResponseInput` via:
+//
+//          BindingResponseArgs{...}
+type BindingResponseInput interface {
+	pulumi.Input
+
+	ToBindingResponseOutput() BindingResponseOutput
+	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
+}
+
+// Associates `members` with a `role`.
+type BindingResponseArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
+	return i.ToBindingResponseOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
+}
+
+// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
+// You can construct a concrete instance of `BindingResponseArrayInput` via:
+//
+//          BindingResponseArray{ BindingResponseArgs{...} }
+type BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToBindingResponseArrayOutput() BindingResponseArrayOutput
+	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
+}
+
+type BindingResponseArray []BindingResponseInput
+
+func (BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return i.ToBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
+		return vs[0].([]BindingResponse)[vs[1].(int)]
+	}).(BindingResponseOutput)
 }
 
 // Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster.
@@ -671,175 +1007,309 @@ func (o EncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Encryption information for a given resource. If this resource is protected with customer managed encryption, the in-use Cloud Key Management Service (Cloud KMS) key version is specified along with its status.
-type EncryptionInfo struct {
-	// Output only. The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status, the existing data is always encrypted at rest.
-	EncryptionStatus *Status `pulumi:"encryptionStatus"`
-	// Output only. The type of encryption used to protect this resource.
-	EncryptionType *string `pulumi:"encryptionType"`
-	// Output only. The version of the Cloud KMS key specified in the parent cluster that is in use for the data underlying this table.
-	KmsKeyVersion *string `pulumi:"kmsKeyVersion"`
+// Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster.
+type EncryptionConfigResponse struct {
+	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+	KmsKeyName string `pulumi:"kmsKeyName"`
 }
 
-// EncryptionInfoInput is an input type that accepts EncryptionInfoArgs and EncryptionInfoOutput values.
-// You can construct a concrete instance of `EncryptionInfoInput` via:
+// EncryptionConfigResponseInput is an input type that accepts EncryptionConfigResponseArgs and EncryptionConfigResponseOutput values.
+// You can construct a concrete instance of `EncryptionConfigResponseInput` via:
 //
-//          EncryptionInfoArgs{...}
-type EncryptionInfoInput interface {
+//          EncryptionConfigResponseArgs{...}
+type EncryptionConfigResponseInput interface {
 	pulumi.Input
 
-	ToEncryptionInfoOutput() EncryptionInfoOutput
-	ToEncryptionInfoOutputWithContext(context.Context) EncryptionInfoOutput
+	ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput
+	ToEncryptionConfigResponseOutputWithContext(context.Context) EncryptionConfigResponseOutput
 }
 
-// Encryption information for a given resource. If this resource is protected with customer managed encryption, the in-use Cloud Key Management Service (Cloud KMS) key version is specified along with its status.
-type EncryptionInfoArgs struct {
-	// Output only. The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status, the existing data is always encrypted at rest.
-	EncryptionStatus StatusPtrInput `pulumi:"encryptionStatus"`
-	// Output only. The type of encryption used to protect this resource.
-	EncryptionType pulumi.StringPtrInput `pulumi:"encryptionType"`
-	// Output only. The version of the Cloud KMS key specified in the parent cluster that is in use for the data underlying this table.
-	KmsKeyVersion pulumi.StringPtrInput `pulumi:"kmsKeyVersion"`
+// Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster.
+type EncryptionConfigResponseArgs struct {
+	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
 }
 
-func (EncryptionInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionInfo)(nil)).Elem()
+func (EncryptionConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfigResponse)(nil)).Elem()
 }
 
-func (i EncryptionInfoArgs) ToEncryptionInfoOutput() EncryptionInfoOutput {
-	return i.ToEncryptionInfoOutputWithContext(context.Background())
+func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput {
+	return i.ToEncryptionConfigResponseOutputWithContext(context.Background())
 }
 
-func (i EncryptionInfoArgs) ToEncryptionInfoOutputWithContext(ctx context.Context) EncryptionInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionInfoOutput)
+func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponseOutputWithContext(ctx context.Context) EncryptionConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponseOutput)
 }
 
-func (i EncryptionInfoArgs) ToEncryptionInfoPtrOutput() EncryptionInfoPtrOutput {
-	return i.ToEncryptionInfoPtrOutputWithContext(context.Background())
+func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
+	return i.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
 }
 
-func (i EncryptionInfoArgs) ToEncryptionInfoPtrOutputWithContext(ctx context.Context) EncryptionInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionInfoOutput).ToEncryptionInfoPtrOutputWithContext(ctx)
+func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponseOutput).ToEncryptionConfigResponsePtrOutputWithContext(ctx)
 }
 
-// EncryptionInfoPtrInput is an input type that accepts EncryptionInfoArgs, EncryptionInfoPtr and EncryptionInfoPtrOutput values.
-// You can construct a concrete instance of `EncryptionInfoPtrInput` via:
+// EncryptionConfigResponsePtrInput is an input type that accepts EncryptionConfigResponseArgs, EncryptionConfigResponsePtr and EncryptionConfigResponsePtrOutput values.
+// You can construct a concrete instance of `EncryptionConfigResponsePtrInput` via:
 //
-//          EncryptionInfoArgs{...}
+//          EncryptionConfigResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type EncryptionInfoPtrInput interface {
+type EncryptionConfigResponsePtrInput interface {
 	pulumi.Input
 
-	ToEncryptionInfoPtrOutput() EncryptionInfoPtrOutput
-	ToEncryptionInfoPtrOutputWithContext(context.Context) EncryptionInfoPtrOutput
+	ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput
+	ToEncryptionConfigResponsePtrOutputWithContext(context.Context) EncryptionConfigResponsePtrOutput
 }
 
-type encryptionInfoPtrType EncryptionInfoArgs
+type encryptionConfigResponsePtrType EncryptionConfigResponseArgs
 
-func EncryptionInfoPtr(v *EncryptionInfoArgs) EncryptionInfoPtrInput {
-	return (*encryptionInfoPtrType)(v)
+func EncryptionConfigResponsePtr(v *EncryptionConfigResponseArgs) EncryptionConfigResponsePtrInput {
+	return (*encryptionConfigResponsePtrType)(v)
 }
 
-func (*encryptionInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionInfo)(nil)).Elem()
+func (*encryptionConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfigResponse)(nil)).Elem()
 }
 
-func (i *encryptionInfoPtrType) ToEncryptionInfoPtrOutput() EncryptionInfoPtrOutput {
-	return i.ToEncryptionInfoPtrOutputWithContext(context.Background())
+func (i *encryptionConfigResponsePtrType) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
+	return i.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *encryptionInfoPtrType) ToEncryptionInfoPtrOutputWithContext(ctx context.Context) EncryptionInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionInfoPtrOutput)
+func (i *encryptionConfigResponsePtrType) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponsePtrOutput)
 }
 
-// Encryption information for a given resource. If this resource is protected with customer managed encryption, the in-use Cloud Key Management Service (Cloud KMS) key version is specified along with its status.
-type EncryptionInfoOutput struct{ *pulumi.OutputState }
+// Cloud Key Management Service (Cloud KMS) settings for a CMEK-protected cluster.
+type EncryptionConfigResponseOutput struct{ *pulumi.OutputState }
 
-func (EncryptionInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionInfo)(nil)).Elem()
+func (EncryptionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfigResponse)(nil)).Elem()
 }
 
-func (o EncryptionInfoOutput) ToEncryptionInfoOutput() EncryptionInfoOutput {
+func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput {
 	return o
 }
 
-func (o EncryptionInfoOutput) ToEncryptionInfoOutputWithContext(ctx context.Context) EncryptionInfoOutput {
+func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutputWithContext(ctx context.Context) EncryptionConfigResponseOutput {
 	return o
 }
 
-func (o EncryptionInfoOutput) ToEncryptionInfoPtrOutput() EncryptionInfoPtrOutput {
-	return o.ToEncryptionInfoPtrOutputWithContext(context.Background())
+func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
+	return o.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
 }
 
-func (o EncryptionInfoOutput) ToEncryptionInfoPtrOutputWithContext(ctx context.Context) EncryptionInfoPtrOutput {
-	return o.ApplyT(func(v EncryptionInfo) *EncryptionInfo {
+func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
+	return o.ApplyT(func(v EncryptionConfigResponse) *EncryptionConfigResponse {
 		return &v
-	}).(EncryptionInfoPtrOutput)
+	}).(EncryptionConfigResponsePtrOutput)
 }
 
-// Output only. The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status, the existing data is always encrypted at rest.
-func (o EncryptionInfoOutput) EncryptionStatus() StatusPtrOutput {
-	return o.ApplyT(func(v EncryptionInfo) *Status { return v.EncryptionStatus }).(StatusPtrOutput)
+// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+func (o EncryptionConfigResponseOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionConfigResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
-// Output only. The type of encryption used to protect this resource.
-func (o EncryptionInfoOutput) EncryptionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EncryptionInfo) *string { return v.EncryptionType }).(pulumi.StringPtrOutput)
+type EncryptionConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfigResponse)(nil)).Elem()
 }
 
-// Output only. The version of the Cloud KMS key specified in the parent cluster that is in use for the data underlying this table.
-func (o EncryptionInfoOutput) KmsKeyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EncryptionInfo) *string { return v.KmsKeyVersion }).(pulumi.StringPtrOutput)
-}
-
-type EncryptionInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionInfo)(nil)).Elem()
-}
-
-func (o EncryptionInfoPtrOutput) ToEncryptionInfoPtrOutput() EncryptionInfoPtrOutput {
+func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
 	return o
 }
 
-func (o EncryptionInfoPtrOutput) ToEncryptionInfoPtrOutputWithContext(ctx context.Context) EncryptionInfoPtrOutput {
+func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
 	return o
 }
 
-func (o EncryptionInfoPtrOutput) Elem() EncryptionInfoOutput {
-	return o.ApplyT(func(v *EncryptionInfo) EncryptionInfo { return *v }).(EncryptionInfoOutput)
+func (o EncryptionConfigResponsePtrOutput) Elem() EncryptionConfigResponseOutput {
+	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse { return *v }).(EncryptionConfigResponseOutput)
 }
 
-// Output only. The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status, the existing data is always encrypted at rest.
-func (o EncryptionInfoPtrOutput) EncryptionStatus() StatusPtrOutput {
-	return o.ApplyT(func(v *EncryptionInfo) *Status {
+// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. 3) All clusters within an instance must use the same CMEK key. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}`
+func (o EncryptionConfigResponsePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionConfigResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.EncryptionStatus
-	}).(StatusPtrOutput)
-}
-
-// Output only. The type of encryption used to protect this resource.
-func (o EncryptionInfoPtrOutput) EncryptionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EncryptionType
+		return &v.KmsKeyName
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The version of the Cloud KMS key specified in the parent cluster that is in use for the data underlying this table.
-func (o EncryptionInfoPtrOutput) KmsKeyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionInfo) *string {
+// Encryption information for a given resource. If this resource is protected with customer managed encryption, the in-use Cloud Key Management Service (Cloud KMS) key version is specified along with its status.
+type EncryptionInfoResponse struct {
+	// The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status, the existing data is always encrypted at rest.
+	EncryptionStatus StatusResponse `pulumi:"encryptionStatus"`
+	// The type of encryption used to protect this resource.
+	EncryptionType string `pulumi:"encryptionType"`
+	// The version of the Cloud KMS key specified in the parent cluster that is in use for the data underlying this table.
+	KmsKeyVersion string `pulumi:"kmsKeyVersion"`
+}
+
+// EncryptionInfoResponseInput is an input type that accepts EncryptionInfoResponseArgs and EncryptionInfoResponseOutput values.
+// You can construct a concrete instance of `EncryptionInfoResponseInput` via:
+//
+//          EncryptionInfoResponseArgs{...}
+type EncryptionInfoResponseInput interface {
+	pulumi.Input
+
+	ToEncryptionInfoResponseOutput() EncryptionInfoResponseOutput
+	ToEncryptionInfoResponseOutputWithContext(context.Context) EncryptionInfoResponseOutput
+}
+
+// Encryption information for a given resource. If this resource is protected with customer managed encryption, the in-use Cloud Key Management Service (Cloud KMS) key version is specified along with its status.
+type EncryptionInfoResponseArgs struct {
+	// The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status, the existing data is always encrypted at rest.
+	EncryptionStatus StatusResponseInput `pulumi:"encryptionStatus"`
+	// The type of encryption used to protect this resource.
+	EncryptionType pulumi.StringInput `pulumi:"encryptionType"`
+	// The version of the Cloud KMS key specified in the parent cluster that is in use for the data underlying this table.
+	KmsKeyVersion pulumi.StringInput `pulumi:"kmsKeyVersion"`
+}
+
+func (EncryptionInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionInfoResponse)(nil)).Elem()
+}
+
+func (i EncryptionInfoResponseArgs) ToEncryptionInfoResponseOutput() EncryptionInfoResponseOutput {
+	return i.ToEncryptionInfoResponseOutputWithContext(context.Background())
+}
+
+func (i EncryptionInfoResponseArgs) ToEncryptionInfoResponseOutputWithContext(ctx context.Context) EncryptionInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionInfoResponseOutput)
+}
+
+func (i EncryptionInfoResponseArgs) ToEncryptionInfoResponsePtrOutput() EncryptionInfoResponsePtrOutput {
+	return i.ToEncryptionInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionInfoResponseArgs) ToEncryptionInfoResponsePtrOutputWithContext(ctx context.Context) EncryptionInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionInfoResponseOutput).ToEncryptionInfoResponsePtrOutputWithContext(ctx)
+}
+
+// EncryptionInfoResponsePtrInput is an input type that accepts EncryptionInfoResponseArgs, EncryptionInfoResponsePtr and EncryptionInfoResponsePtrOutput values.
+// You can construct a concrete instance of `EncryptionInfoResponsePtrInput` via:
+//
+//          EncryptionInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type EncryptionInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToEncryptionInfoResponsePtrOutput() EncryptionInfoResponsePtrOutput
+	ToEncryptionInfoResponsePtrOutputWithContext(context.Context) EncryptionInfoResponsePtrOutput
+}
+
+type encryptionInfoResponsePtrType EncryptionInfoResponseArgs
+
+func EncryptionInfoResponsePtr(v *EncryptionInfoResponseArgs) EncryptionInfoResponsePtrInput {
+	return (*encryptionInfoResponsePtrType)(v)
+}
+
+func (*encryptionInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionInfoResponse)(nil)).Elem()
+}
+
+func (i *encryptionInfoResponsePtrType) ToEncryptionInfoResponsePtrOutput() EncryptionInfoResponsePtrOutput {
+	return i.ToEncryptionInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionInfoResponsePtrType) ToEncryptionInfoResponsePtrOutputWithContext(ctx context.Context) EncryptionInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionInfoResponsePtrOutput)
+}
+
+// Encryption information for a given resource. If this resource is protected with customer managed encryption, the in-use Cloud Key Management Service (Cloud KMS) key version is specified along with its status.
+type EncryptionInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionInfoResponse)(nil)).Elem()
+}
+
+func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponseOutput() EncryptionInfoResponseOutput {
+	return o
+}
+
+func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponseOutputWithContext(ctx context.Context) EncryptionInfoResponseOutput {
+	return o
+}
+
+func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponsePtrOutput() EncryptionInfoResponsePtrOutput {
+	return o.ToEncryptionInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionInfoResponseOutput) ToEncryptionInfoResponsePtrOutputWithContext(ctx context.Context) EncryptionInfoResponsePtrOutput {
+	return o.ApplyT(func(v EncryptionInfoResponse) *EncryptionInfoResponse {
+		return &v
+	}).(EncryptionInfoResponsePtrOutput)
+}
+
+// The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status, the existing data is always encrypted at rest.
+func (o EncryptionInfoResponseOutput) EncryptionStatus() StatusResponseOutput {
+	return o.ApplyT(func(v EncryptionInfoResponse) StatusResponse { return v.EncryptionStatus }).(StatusResponseOutput)
+}
+
+// The type of encryption used to protect this resource.
+func (o EncryptionInfoResponseOutput) EncryptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionInfoResponse) string { return v.EncryptionType }).(pulumi.StringOutput)
+}
+
+// The version of the Cloud KMS key specified in the parent cluster that is in use for the data underlying this table.
+func (o EncryptionInfoResponseOutput) KmsKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionInfoResponse) string { return v.KmsKeyVersion }).(pulumi.StringOutput)
+}
+
+type EncryptionInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionInfoResponse)(nil)).Elem()
+}
+
+func (o EncryptionInfoResponsePtrOutput) ToEncryptionInfoResponsePtrOutput() EncryptionInfoResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionInfoResponsePtrOutput) ToEncryptionInfoResponsePtrOutputWithContext(ctx context.Context) EncryptionInfoResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionInfoResponsePtrOutput) Elem() EncryptionInfoResponseOutput {
+	return o.ApplyT(func(v *EncryptionInfoResponse) EncryptionInfoResponse { return *v }).(EncryptionInfoResponseOutput)
+}
+
+// The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status, the existing data is always encrypted at rest.
+func (o EncryptionInfoResponsePtrOutput) EncryptionStatus() StatusResponsePtrOutput {
+	return o.ApplyT(func(v *EncryptionInfoResponse) *StatusResponse {
 		if v == nil {
 			return nil
 		}
-		return v.KmsKeyVersion
+		return &v.EncryptionStatus
+	}).(StatusResponsePtrOutput)
+}
+
+// The type of encryption used to protect this resource.
+func (o EncryptionInfoResponsePtrOutput) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EncryptionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of the Cloud KMS key specified in the parent cluster that is in use for the data underlying this table.
+func (o EncryptionInfoResponsePtrOutput) KmsKeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1034,6 +1504,88 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
+// You can construct a concrete instance of `ExprResponseInput` via:
+//
+//          ExprResponseArgs{...}
+type ExprResponseInput interface {
+	pulumi.Input
+
+	ToExprResponseOutput() ExprResponseOutput
+	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
+	return i.ToExprResponseOutputWithContext(context.Background())
+}
+
+func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseOutput struct{ *pulumi.OutputState }
+
+func (ExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
+	return o
+}
+
+func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
 // A collection of Bigtable Tables and the resources that serve them. All tables in an instance are served from all Clusters in the instance.
 type InstanceType struct {
 	// Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
@@ -1042,8 +1594,6 @@ type InstanceType struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
 	Name *string `pulumi:"name"`
-	// Output only. The current state of the instance.
-	State *string `pulumi:"state"`
 	// Required. The type of the instance. Defaults to `PRODUCTION`.
 	Type *string `pulumi:"type"`
 }
@@ -1067,8 +1617,6 @@ type InstanceTypeArgs struct {
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Output only. The current state of the instance.
-	State pulumi.StringPtrInput `pulumi:"state"`
 	// Required. The type of the instance. Defaults to `PRODUCTION`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -1166,11 +1714,6 @@ func (o InstanceTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceType) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Output only. The current state of the instance.
-func (o InstanceTypeOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceType) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
 // Required. The type of the instance. Defaults to `PRODUCTION`.
 func (o InstanceTypeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceType) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -1221,16 +1764,6 @@ func (o InstanceTypePtrOutput) Name() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Output only. The current state of the instance.
-func (o InstanceTypePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1357,6 +1890,121 @@ func (o MultiClusterRoutingUseAnyPtrOutput) ToMultiClusterRoutingUseAnyPtrOutput
 
 func (o MultiClusterRoutingUseAnyPtrOutput) Elem() MultiClusterRoutingUseAnyOutput {
 	return o.ApplyT(func(v *MultiClusterRoutingUseAny) MultiClusterRoutingUseAny { return *v }).(MultiClusterRoutingUseAnyOutput)
+}
+
+// Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability.
+type MultiClusterRoutingUseAnyResponse struct {
+}
+
+// MultiClusterRoutingUseAnyResponseInput is an input type that accepts MultiClusterRoutingUseAnyResponseArgs and MultiClusterRoutingUseAnyResponseOutput values.
+// You can construct a concrete instance of `MultiClusterRoutingUseAnyResponseInput` via:
+//
+//          MultiClusterRoutingUseAnyResponseArgs{...}
+type MultiClusterRoutingUseAnyResponseInput interface {
+	pulumi.Input
+
+	ToMultiClusterRoutingUseAnyResponseOutput() MultiClusterRoutingUseAnyResponseOutput
+	ToMultiClusterRoutingUseAnyResponseOutputWithContext(context.Context) MultiClusterRoutingUseAnyResponseOutput
+}
+
+// Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability.
+type MultiClusterRoutingUseAnyResponseArgs struct {
+}
+
+func (MultiClusterRoutingUseAnyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiClusterRoutingUseAnyResponse)(nil)).Elem()
+}
+
+func (i MultiClusterRoutingUseAnyResponseArgs) ToMultiClusterRoutingUseAnyResponseOutput() MultiClusterRoutingUseAnyResponseOutput {
+	return i.ToMultiClusterRoutingUseAnyResponseOutputWithContext(context.Background())
+}
+
+func (i MultiClusterRoutingUseAnyResponseArgs) ToMultiClusterRoutingUseAnyResponseOutputWithContext(ctx context.Context) MultiClusterRoutingUseAnyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterRoutingUseAnyResponseOutput)
+}
+
+func (i MultiClusterRoutingUseAnyResponseArgs) ToMultiClusterRoutingUseAnyResponsePtrOutput() MultiClusterRoutingUseAnyResponsePtrOutput {
+	return i.ToMultiClusterRoutingUseAnyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MultiClusterRoutingUseAnyResponseArgs) ToMultiClusterRoutingUseAnyResponsePtrOutputWithContext(ctx context.Context) MultiClusterRoutingUseAnyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterRoutingUseAnyResponseOutput).ToMultiClusterRoutingUseAnyResponsePtrOutputWithContext(ctx)
+}
+
+// MultiClusterRoutingUseAnyResponsePtrInput is an input type that accepts MultiClusterRoutingUseAnyResponseArgs, MultiClusterRoutingUseAnyResponsePtr and MultiClusterRoutingUseAnyResponsePtrOutput values.
+// You can construct a concrete instance of `MultiClusterRoutingUseAnyResponsePtrInput` via:
+//
+//          MultiClusterRoutingUseAnyResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MultiClusterRoutingUseAnyResponsePtrInput interface {
+	pulumi.Input
+
+	ToMultiClusterRoutingUseAnyResponsePtrOutput() MultiClusterRoutingUseAnyResponsePtrOutput
+	ToMultiClusterRoutingUseAnyResponsePtrOutputWithContext(context.Context) MultiClusterRoutingUseAnyResponsePtrOutput
+}
+
+type multiClusterRoutingUseAnyResponsePtrType MultiClusterRoutingUseAnyResponseArgs
+
+func MultiClusterRoutingUseAnyResponsePtr(v *MultiClusterRoutingUseAnyResponseArgs) MultiClusterRoutingUseAnyResponsePtrInput {
+	return (*multiClusterRoutingUseAnyResponsePtrType)(v)
+}
+
+func (*multiClusterRoutingUseAnyResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiClusterRoutingUseAnyResponse)(nil)).Elem()
+}
+
+func (i *multiClusterRoutingUseAnyResponsePtrType) ToMultiClusterRoutingUseAnyResponsePtrOutput() MultiClusterRoutingUseAnyResponsePtrOutput {
+	return i.ToMultiClusterRoutingUseAnyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *multiClusterRoutingUseAnyResponsePtrType) ToMultiClusterRoutingUseAnyResponsePtrOutputWithContext(ctx context.Context) MultiClusterRoutingUseAnyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterRoutingUseAnyResponsePtrOutput)
+}
+
+// Read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes consistency to improve availability.
+type MultiClusterRoutingUseAnyResponseOutput struct{ *pulumi.OutputState }
+
+func (MultiClusterRoutingUseAnyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiClusterRoutingUseAnyResponse)(nil)).Elem()
+}
+
+func (o MultiClusterRoutingUseAnyResponseOutput) ToMultiClusterRoutingUseAnyResponseOutput() MultiClusterRoutingUseAnyResponseOutput {
+	return o
+}
+
+func (o MultiClusterRoutingUseAnyResponseOutput) ToMultiClusterRoutingUseAnyResponseOutputWithContext(ctx context.Context) MultiClusterRoutingUseAnyResponseOutput {
+	return o
+}
+
+func (o MultiClusterRoutingUseAnyResponseOutput) ToMultiClusterRoutingUseAnyResponsePtrOutput() MultiClusterRoutingUseAnyResponsePtrOutput {
+	return o.ToMultiClusterRoutingUseAnyResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MultiClusterRoutingUseAnyResponseOutput) ToMultiClusterRoutingUseAnyResponsePtrOutputWithContext(ctx context.Context) MultiClusterRoutingUseAnyResponsePtrOutput {
+	return o.ApplyT(func(v MultiClusterRoutingUseAnyResponse) *MultiClusterRoutingUseAnyResponse {
+		return &v
+	}).(MultiClusterRoutingUseAnyResponsePtrOutput)
+}
+
+type MultiClusterRoutingUseAnyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MultiClusterRoutingUseAnyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiClusterRoutingUseAnyResponse)(nil)).Elem()
+}
+
+func (o MultiClusterRoutingUseAnyResponsePtrOutput) ToMultiClusterRoutingUseAnyResponsePtrOutput() MultiClusterRoutingUseAnyResponsePtrOutput {
+	return o
+}
+
+func (o MultiClusterRoutingUseAnyResponsePtrOutput) ToMultiClusterRoutingUseAnyResponsePtrOutputWithContext(ctx context.Context) MultiClusterRoutingUseAnyResponsePtrOutput {
+	return o
+}
+
+func (o MultiClusterRoutingUseAnyResponsePtrOutput) Elem() MultiClusterRoutingUseAnyResponseOutput {
+	return o.ApplyT(func(v *MultiClusterRoutingUseAnyResponse) MultiClusterRoutingUseAnyResponse { return *v }).(MultiClusterRoutingUseAnyResponseOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
@@ -1551,155 +2199,155 @@ func (o PolicyPtrOutput) Version() pulumi.IntPtrOutput {
 }
 
 // Information about a table restore.
-type RestoreInfo struct {
+type RestoreInfoResponse struct {
 	// Information about the backup used to restore the table. The backup may no longer exist.
-	BackupInfo *BackupInfo `pulumi:"backupInfo"`
+	BackupInfo BackupInfoResponse `pulumi:"backupInfo"`
 	// The type of the restore source.
-	SourceType *string `pulumi:"sourceType"`
+	SourceType string `pulumi:"sourceType"`
 }
 
-// RestoreInfoInput is an input type that accepts RestoreInfoArgs and RestoreInfoOutput values.
-// You can construct a concrete instance of `RestoreInfoInput` via:
+// RestoreInfoResponseInput is an input type that accepts RestoreInfoResponseArgs and RestoreInfoResponseOutput values.
+// You can construct a concrete instance of `RestoreInfoResponseInput` via:
 //
-//          RestoreInfoArgs{...}
-type RestoreInfoInput interface {
+//          RestoreInfoResponseArgs{...}
+type RestoreInfoResponseInput interface {
 	pulumi.Input
 
-	ToRestoreInfoOutput() RestoreInfoOutput
-	ToRestoreInfoOutputWithContext(context.Context) RestoreInfoOutput
+	ToRestoreInfoResponseOutput() RestoreInfoResponseOutput
+	ToRestoreInfoResponseOutputWithContext(context.Context) RestoreInfoResponseOutput
 }
 
 // Information about a table restore.
-type RestoreInfoArgs struct {
+type RestoreInfoResponseArgs struct {
 	// Information about the backup used to restore the table. The backup may no longer exist.
-	BackupInfo BackupInfoPtrInput `pulumi:"backupInfo"`
+	BackupInfo BackupInfoResponseInput `pulumi:"backupInfo"`
 	// The type of the restore source.
-	SourceType pulumi.StringPtrInput `pulumi:"sourceType"`
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
 }
 
-func (RestoreInfoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RestoreInfo)(nil)).Elem()
+func (RestoreInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreInfoResponse)(nil)).Elem()
 }
 
-func (i RestoreInfoArgs) ToRestoreInfoOutput() RestoreInfoOutput {
-	return i.ToRestoreInfoOutputWithContext(context.Background())
+func (i RestoreInfoResponseArgs) ToRestoreInfoResponseOutput() RestoreInfoResponseOutput {
+	return i.ToRestoreInfoResponseOutputWithContext(context.Background())
 }
 
-func (i RestoreInfoArgs) ToRestoreInfoOutputWithContext(ctx context.Context) RestoreInfoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RestoreInfoOutput)
+func (i RestoreInfoResponseArgs) ToRestoreInfoResponseOutputWithContext(ctx context.Context) RestoreInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreInfoResponseOutput)
 }
 
-func (i RestoreInfoArgs) ToRestoreInfoPtrOutput() RestoreInfoPtrOutput {
-	return i.ToRestoreInfoPtrOutputWithContext(context.Background())
+func (i RestoreInfoResponseArgs) ToRestoreInfoResponsePtrOutput() RestoreInfoResponsePtrOutput {
+	return i.ToRestoreInfoResponsePtrOutputWithContext(context.Background())
 }
 
-func (i RestoreInfoArgs) ToRestoreInfoPtrOutputWithContext(ctx context.Context) RestoreInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RestoreInfoOutput).ToRestoreInfoPtrOutputWithContext(ctx)
+func (i RestoreInfoResponseArgs) ToRestoreInfoResponsePtrOutputWithContext(ctx context.Context) RestoreInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreInfoResponseOutput).ToRestoreInfoResponsePtrOutputWithContext(ctx)
 }
 
-// RestoreInfoPtrInput is an input type that accepts RestoreInfoArgs, RestoreInfoPtr and RestoreInfoPtrOutput values.
-// You can construct a concrete instance of `RestoreInfoPtrInput` via:
+// RestoreInfoResponsePtrInput is an input type that accepts RestoreInfoResponseArgs, RestoreInfoResponsePtr and RestoreInfoResponsePtrOutput values.
+// You can construct a concrete instance of `RestoreInfoResponsePtrInput` via:
 //
-//          RestoreInfoArgs{...}
+//          RestoreInfoResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type RestoreInfoPtrInput interface {
+type RestoreInfoResponsePtrInput interface {
 	pulumi.Input
 
-	ToRestoreInfoPtrOutput() RestoreInfoPtrOutput
-	ToRestoreInfoPtrOutputWithContext(context.Context) RestoreInfoPtrOutput
+	ToRestoreInfoResponsePtrOutput() RestoreInfoResponsePtrOutput
+	ToRestoreInfoResponsePtrOutputWithContext(context.Context) RestoreInfoResponsePtrOutput
 }
 
-type restoreInfoPtrType RestoreInfoArgs
+type restoreInfoResponsePtrType RestoreInfoResponseArgs
 
-func RestoreInfoPtr(v *RestoreInfoArgs) RestoreInfoPtrInput {
-	return (*restoreInfoPtrType)(v)
+func RestoreInfoResponsePtr(v *RestoreInfoResponseArgs) RestoreInfoResponsePtrInput {
+	return (*restoreInfoResponsePtrType)(v)
 }
 
-func (*restoreInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RestoreInfo)(nil)).Elem()
+func (*restoreInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreInfoResponse)(nil)).Elem()
 }
 
-func (i *restoreInfoPtrType) ToRestoreInfoPtrOutput() RestoreInfoPtrOutput {
-	return i.ToRestoreInfoPtrOutputWithContext(context.Background())
+func (i *restoreInfoResponsePtrType) ToRestoreInfoResponsePtrOutput() RestoreInfoResponsePtrOutput {
+	return i.ToRestoreInfoResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *restoreInfoPtrType) ToRestoreInfoPtrOutputWithContext(ctx context.Context) RestoreInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RestoreInfoPtrOutput)
+func (i *restoreInfoResponsePtrType) ToRestoreInfoResponsePtrOutputWithContext(ctx context.Context) RestoreInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestoreInfoResponsePtrOutput)
 }
 
 // Information about a table restore.
-type RestoreInfoOutput struct{ *pulumi.OutputState }
+type RestoreInfoResponseOutput struct{ *pulumi.OutputState }
 
-func (RestoreInfoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RestoreInfo)(nil)).Elem()
+func (RestoreInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestoreInfoResponse)(nil)).Elem()
 }
 
-func (o RestoreInfoOutput) ToRestoreInfoOutput() RestoreInfoOutput {
+func (o RestoreInfoResponseOutput) ToRestoreInfoResponseOutput() RestoreInfoResponseOutput {
 	return o
 }
 
-func (o RestoreInfoOutput) ToRestoreInfoOutputWithContext(ctx context.Context) RestoreInfoOutput {
+func (o RestoreInfoResponseOutput) ToRestoreInfoResponseOutputWithContext(ctx context.Context) RestoreInfoResponseOutput {
 	return o
 }
 
-func (o RestoreInfoOutput) ToRestoreInfoPtrOutput() RestoreInfoPtrOutput {
-	return o.ToRestoreInfoPtrOutputWithContext(context.Background())
+func (o RestoreInfoResponseOutput) ToRestoreInfoResponsePtrOutput() RestoreInfoResponsePtrOutput {
+	return o.ToRestoreInfoResponsePtrOutputWithContext(context.Background())
 }
 
-func (o RestoreInfoOutput) ToRestoreInfoPtrOutputWithContext(ctx context.Context) RestoreInfoPtrOutput {
-	return o.ApplyT(func(v RestoreInfo) *RestoreInfo {
+func (o RestoreInfoResponseOutput) ToRestoreInfoResponsePtrOutputWithContext(ctx context.Context) RestoreInfoResponsePtrOutput {
+	return o.ApplyT(func(v RestoreInfoResponse) *RestoreInfoResponse {
 		return &v
-	}).(RestoreInfoPtrOutput)
+	}).(RestoreInfoResponsePtrOutput)
 }
 
 // Information about the backup used to restore the table. The backup may no longer exist.
-func (o RestoreInfoOutput) BackupInfo() BackupInfoPtrOutput {
-	return o.ApplyT(func(v RestoreInfo) *BackupInfo { return v.BackupInfo }).(BackupInfoPtrOutput)
+func (o RestoreInfoResponseOutput) BackupInfo() BackupInfoResponseOutput {
+	return o.ApplyT(func(v RestoreInfoResponse) BackupInfoResponse { return v.BackupInfo }).(BackupInfoResponseOutput)
 }
 
 // The type of the restore source.
-func (o RestoreInfoOutput) SourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RestoreInfo) *string { return v.SourceType }).(pulumi.StringPtrOutput)
+func (o RestoreInfoResponseOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v RestoreInfoResponse) string { return v.SourceType }).(pulumi.StringOutput)
 }
 
-type RestoreInfoPtrOutput struct{ *pulumi.OutputState }
+type RestoreInfoResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (RestoreInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RestoreInfo)(nil)).Elem()
+func (RestoreInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestoreInfoResponse)(nil)).Elem()
 }
 
-func (o RestoreInfoPtrOutput) ToRestoreInfoPtrOutput() RestoreInfoPtrOutput {
+func (o RestoreInfoResponsePtrOutput) ToRestoreInfoResponsePtrOutput() RestoreInfoResponsePtrOutput {
 	return o
 }
 
-func (o RestoreInfoPtrOutput) ToRestoreInfoPtrOutputWithContext(ctx context.Context) RestoreInfoPtrOutput {
+func (o RestoreInfoResponsePtrOutput) ToRestoreInfoResponsePtrOutputWithContext(ctx context.Context) RestoreInfoResponsePtrOutput {
 	return o
 }
 
-func (o RestoreInfoPtrOutput) Elem() RestoreInfoOutput {
-	return o.ApplyT(func(v *RestoreInfo) RestoreInfo { return *v }).(RestoreInfoOutput)
+func (o RestoreInfoResponsePtrOutput) Elem() RestoreInfoResponseOutput {
+	return o.ApplyT(func(v *RestoreInfoResponse) RestoreInfoResponse { return *v }).(RestoreInfoResponseOutput)
 }
 
 // Information about the backup used to restore the table. The backup may no longer exist.
-func (o RestoreInfoPtrOutput) BackupInfo() BackupInfoPtrOutput {
-	return o.ApplyT(func(v *RestoreInfo) *BackupInfo {
+func (o RestoreInfoResponsePtrOutput) BackupInfo() BackupInfoResponsePtrOutput {
+	return o.ApplyT(func(v *RestoreInfoResponse) *BackupInfoResponse {
 		if v == nil {
 			return nil
 		}
-		return v.BackupInfo
-	}).(BackupInfoPtrOutput)
+		return &v.BackupInfo
+	}).(BackupInfoResponsePtrOutput)
 }
 
 // The type of the restore source.
-func (o RestoreInfoPtrOutput) SourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RestoreInfo) *string {
+func (o RestoreInfoResponsePtrOutput) SourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestoreInfoResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.SourceType
+		return &v.SourceType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1856,6 +2504,159 @@ func (o SingleClusterRoutingPtrOutput) ClusterId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Unconditionally routes all read/write requests to a specific cluster. This option preserves read-your-writes consistency but does not improve availability.
+type SingleClusterRoutingResponse struct {
+	// Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters.
+	AllowTransactionalWrites bool `pulumi:"allowTransactionalWrites"`
+	// The cluster to which read/write requests should be routed.
+	ClusterId string `pulumi:"clusterId"`
+}
+
+// SingleClusterRoutingResponseInput is an input type that accepts SingleClusterRoutingResponseArgs and SingleClusterRoutingResponseOutput values.
+// You can construct a concrete instance of `SingleClusterRoutingResponseInput` via:
+//
+//          SingleClusterRoutingResponseArgs{...}
+type SingleClusterRoutingResponseInput interface {
+	pulumi.Input
+
+	ToSingleClusterRoutingResponseOutput() SingleClusterRoutingResponseOutput
+	ToSingleClusterRoutingResponseOutputWithContext(context.Context) SingleClusterRoutingResponseOutput
+}
+
+// Unconditionally routes all read/write requests to a specific cluster. This option preserves read-your-writes consistency but does not improve availability.
+type SingleClusterRoutingResponseArgs struct {
+	// Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters.
+	AllowTransactionalWrites pulumi.BoolInput `pulumi:"allowTransactionalWrites"`
+	// The cluster to which read/write requests should be routed.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+}
+
+func (SingleClusterRoutingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleClusterRoutingResponse)(nil)).Elem()
+}
+
+func (i SingleClusterRoutingResponseArgs) ToSingleClusterRoutingResponseOutput() SingleClusterRoutingResponseOutput {
+	return i.ToSingleClusterRoutingResponseOutputWithContext(context.Background())
+}
+
+func (i SingleClusterRoutingResponseArgs) ToSingleClusterRoutingResponseOutputWithContext(ctx context.Context) SingleClusterRoutingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleClusterRoutingResponseOutput)
+}
+
+func (i SingleClusterRoutingResponseArgs) ToSingleClusterRoutingResponsePtrOutput() SingleClusterRoutingResponsePtrOutput {
+	return i.ToSingleClusterRoutingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SingleClusterRoutingResponseArgs) ToSingleClusterRoutingResponsePtrOutputWithContext(ctx context.Context) SingleClusterRoutingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleClusterRoutingResponseOutput).ToSingleClusterRoutingResponsePtrOutputWithContext(ctx)
+}
+
+// SingleClusterRoutingResponsePtrInput is an input type that accepts SingleClusterRoutingResponseArgs, SingleClusterRoutingResponsePtr and SingleClusterRoutingResponsePtrOutput values.
+// You can construct a concrete instance of `SingleClusterRoutingResponsePtrInput` via:
+//
+//          SingleClusterRoutingResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SingleClusterRoutingResponsePtrInput interface {
+	pulumi.Input
+
+	ToSingleClusterRoutingResponsePtrOutput() SingleClusterRoutingResponsePtrOutput
+	ToSingleClusterRoutingResponsePtrOutputWithContext(context.Context) SingleClusterRoutingResponsePtrOutput
+}
+
+type singleClusterRoutingResponsePtrType SingleClusterRoutingResponseArgs
+
+func SingleClusterRoutingResponsePtr(v *SingleClusterRoutingResponseArgs) SingleClusterRoutingResponsePtrInput {
+	return (*singleClusterRoutingResponsePtrType)(v)
+}
+
+func (*singleClusterRoutingResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleClusterRoutingResponse)(nil)).Elem()
+}
+
+func (i *singleClusterRoutingResponsePtrType) ToSingleClusterRoutingResponsePtrOutput() SingleClusterRoutingResponsePtrOutput {
+	return i.ToSingleClusterRoutingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *singleClusterRoutingResponsePtrType) ToSingleClusterRoutingResponsePtrOutputWithContext(ctx context.Context) SingleClusterRoutingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleClusterRoutingResponsePtrOutput)
+}
+
+// Unconditionally routes all read/write requests to a specific cluster. This option preserves read-your-writes consistency but does not improve availability.
+type SingleClusterRoutingResponseOutput struct{ *pulumi.OutputState }
+
+func (SingleClusterRoutingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleClusterRoutingResponse)(nil)).Elem()
+}
+
+func (o SingleClusterRoutingResponseOutput) ToSingleClusterRoutingResponseOutput() SingleClusterRoutingResponseOutput {
+	return o
+}
+
+func (o SingleClusterRoutingResponseOutput) ToSingleClusterRoutingResponseOutputWithContext(ctx context.Context) SingleClusterRoutingResponseOutput {
+	return o
+}
+
+func (o SingleClusterRoutingResponseOutput) ToSingleClusterRoutingResponsePtrOutput() SingleClusterRoutingResponsePtrOutput {
+	return o.ToSingleClusterRoutingResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SingleClusterRoutingResponseOutput) ToSingleClusterRoutingResponsePtrOutputWithContext(ctx context.Context) SingleClusterRoutingResponsePtrOutput {
+	return o.ApplyT(func(v SingleClusterRoutingResponse) *SingleClusterRoutingResponse {
+		return &v
+	}).(SingleClusterRoutingResponsePtrOutput)
+}
+
+// Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters.
+func (o SingleClusterRoutingResponseOutput) AllowTransactionalWrites() pulumi.BoolOutput {
+	return o.ApplyT(func(v SingleClusterRoutingResponse) bool { return v.AllowTransactionalWrites }).(pulumi.BoolOutput)
+}
+
+// The cluster to which read/write requests should be routed.
+func (o SingleClusterRoutingResponseOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleClusterRoutingResponse) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+type SingleClusterRoutingResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SingleClusterRoutingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleClusterRoutingResponse)(nil)).Elem()
+}
+
+func (o SingleClusterRoutingResponsePtrOutput) ToSingleClusterRoutingResponsePtrOutput() SingleClusterRoutingResponsePtrOutput {
+	return o
+}
+
+func (o SingleClusterRoutingResponsePtrOutput) ToSingleClusterRoutingResponsePtrOutputWithContext(ctx context.Context) SingleClusterRoutingResponsePtrOutput {
+	return o
+}
+
+func (o SingleClusterRoutingResponsePtrOutput) Elem() SingleClusterRoutingResponseOutput {
+	return o.ApplyT(func(v *SingleClusterRoutingResponse) SingleClusterRoutingResponse { return *v }).(SingleClusterRoutingResponseOutput)
+}
+
+// Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters.
+func (o SingleClusterRoutingResponsePtrOutput) AllowTransactionalWrites() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SingleClusterRoutingResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.AllowTransactionalWrites
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The cluster to which read/write requests should be routed.
+func (o SingleClusterRoutingResponsePtrOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleClusterRoutingResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // An initial split point for a newly created table.
 type Split struct {
 	// Row key to use as an initial tablet boundary.
@@ -1957,160 +2758,160 @@ func (o SplitArrayOutput) Index(i pulumi.IntInput) SplitOutput {
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type Status struct {
+type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
-	Code *int `pulumi:"code"`
+	Code int `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
 	Details []map[string]string `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message *string `pulumi:"message"`
+	Message string `pulumi:"message"`
 }
 
-// StatusInput is an input type that accepts StatusArgs and StatusOutput values.
-// You can construct a concrete instance of `StatusInput` via:
+// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
+// You can construct a concrete instance of `StatusResponseInput` via:
 //
-//          StatusArgs{...}
-type StatusInput interface {
+//          StatusResponseArgs{...}
+type StatusResponseInput interface {
 	pulumi.Input
 
-	ToStatusOutput() StatusOutput
-	ToStatusOutputWithContext(context.Context) StatusOutput
+	ToStatusResponseOutput() StatusResponseOutput
+	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusArgs struct {
+type StatusResponseArgs struct {
 	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntPtrInput `pulumi:"code"`
+	Code pulumi.IntInput `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
 	Details pulumi.StringMapArrayInput `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringPtrInput `pulumi:"message"`
+	Message pulumi.StringInput `pulumi:"message"`
 }
 
-func (StatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Status)(nil)).Elem()
+func (StatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
 }
 
-func (i StatusArgs) ToStatusOutput() StatusOutput {
-	return i.ToStatusOutputWithContext(context.Background())
+func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
+	return i.ToStatusResponseOutputWithContext(context.Background())
 }
 
-func (i StatusArgs) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusOutput)
+func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
 }
 
-func (i StatusArgs) ToStatusPtrOutput() StatusPtrOutput {
-	return i.ToStatusPtrOutputWithContext(context.Background())
+func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
 }
 
-func (i StatusArgs) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusOutput).ToStatusPtrOutputWithContext(ctx)
+func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
 }
 
-// StatusPtrInput is an input type that accepts StatusArgs, StatusPtr and StatusPtrOutput values.
-// You can construct a concrete instance of `StatusPtrInput` via:
+// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
+// You can construct a concrete instance of `StatusResponsePtrInput` via:
 //
-//          StatusArgs{...}
+//          StatusResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type StatusPtrInput interface {
+type StatusResponsePtrInput interface {
 	pulumi.Input
 
-	ToStatusPtrOutput() StatusPtrOutput
-	ToStatusPtrOutputWithContext(context.Context) StatusPtrOutput
+	ToStatusResponsePtrOutput() StatusResponsePtrOutput
+	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
 }
 
-type statusPtrType StatusArgs
+type statusResponsePtrType StatusResponseArgs
 
-func StatusPtr(v *StatusArgs) StatusPtrInput {
-	return (*statusPtrType)(v)
+func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
+	return (*statusResponsePtrType)(v)
 }
 
-func (*statusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Status)(nil)).Elem()
+func (*statusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
 }
 
-func (i *statusPtrType) ToStatusPtrOutput() StatusPtrOutput {
-	return i.ToStatusPtrOutputWithContext(context.Background())
+func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *statusPtrType) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusPtrOutput)
+func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusOutput struct{ *pulumi.OutputState }
+type StatusResponseOutput struct{ *pulumi.OutputState }
 
-func (StatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Status)(nil)).Elem()
+func (StatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
 }
 
-func (o StatusOutput) ToStatusOutput() StatusOutput {
+func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 	return o
 }
 
-func (o StatusOutput) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
+func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
 }
 
-func (o StatusOutput) ToStatusPtrOutput() StatusPtrOutput {
-	return o.ToStatusPtrOutputWithContext(context.Background())
+func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o.ToStatusResponsePtrOutputWithContext(context.Background())
 }
 
-func (o StatusOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return o.ApplyT(func(v Status) *Status {
+func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o.ApplyT(func(v StatusResponse) *StatusResponse {
 		return &v
-	}).(StatusPtrOutput)
+	}).(StatusResponsePtrOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
-func (o StatusOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Status) *int { return v.Code }).(pulumi.IntPtrOutput)
+func (o StatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v Status) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Status) *string { return v.Message }).(pulumi.StringPtrOutput)
+func (o StatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
-type StatusPtrOutput struct{ *pulumi.OutputState }
+type StatusResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (StatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Status)(nil)).Elem()
+func (StatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
 }
 
-func (o StatusPtrOutput) ToStatusPtrOutput() StatusPtrOutput {
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
 	return o
 }
 
-func (o StatusPtrOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
 	return o
 }
 
-func (o StatusPtrOutput) Elem() StatusOutput {
-	return o.ApplyT(func(v *Status) Status { return *v }).(StatusOutput)
+func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
+	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
-func (o StatusPtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Status) *int {
+func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *int {
 		if v == nil {
 			return nil
 		}
-		return v.Code
+		return &v.Code
 	}).(pulumi.IntPtrOutput)
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusPtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *Status) []map[string]string {
+func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *StatusResponse) []map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -2119,27 +2920,23 @@ func (o StatusPtrOutput) Details() pulumi.StringMapArrayOutput {
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusPtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Status) *string {
+func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Message
+		return &v.Message
 	}).(pulumi.StringPtrOutput)
 }
 
 // A collection of user data indexed by row, column, and timestamp. Each table is served using the resources of its parent cluster.
 type Table struct {
-	// Output only. Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
-	ClusterStates map[string]string `pulumi:"clusterStates"`
 	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
 	ColumnFamilies map[string]string `pulumi:"columnFamilies"`
 	// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
 	Granularity *string `pulumi:"granularity"`
 	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
 	Name *string `pulumi:"name"`
-	// Output only. If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
-	RestoreInfo *RestoreInfo `pulumi:"restoreInfo"`
 }
 
 // TableInput is an input type that accepts TableArgs and TableOutput values.
@@ -2155,16 +2952,12 @@ type TableInput interface {
 
 // A collection of user data indexed by row, column, and timestamp. Each table is served using the resources of its parent cluster.
 type TableArgs struct {
-	// Output only. Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
-	ClusterStates pulumi.StringMapInput `pulumi:"clusterStates"`
 	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
 	ColumnFamilies pulumi.StringMapInput `pulumi:"columnFamilies"`
 	// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
 	Granularity pulumi.StringPtrInput `pulumi:"granularity"`
 	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Output only. If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
-	RestoreInfo RestoreInfoPtrInput `pulumi:"restoreInfo"`
 }
 
 func (TableArgs) ElementType() reflect.Type {
@@ -2245,11 +3038,6 @@ func (o TableOutput) ToTablePtrOutputWithContext(ctx context.Context) TablePtrOu
 	}).(TablePtrOutput)
 }
 
-// Output only. Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
-func (o TableOutput) ClusterStates() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Table) map[string]string { return v.ClusterStates }).(pulumi.StringMapOutput)
-}
-
 // The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
 func (o TableOutput) ColumnFamilies() pulumi.StringMapOutput {
 	return o.ApplyT(func(v Table) map[string]string { return v.ColumnFamilies }).(pulumi.StringMapOutput)
@@ -2263,11 +3051,6 @@ func (o TableOutput) Granularity() pulumi.StringPtrOutput {
 // The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
 func (o TableOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Table) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Output only. If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
-func (o TableOutput) RestoreInfo() RestoreInfoPtrOutput {
-	return o.ApplyT(func(v Table) *RestoreInfo { return v.RestoreInfo }).(RestoreInfoPtrOutput)
 }
 
 type TablePtrOutput struct{ *pulumi.OutputState }
@@ -2286,16 +3069,6 @@ func (o TablePtrOutput) ToTablePtrOutputWithContext(ctx context.Context) TablePt
 
 func (o TablePtrOutput) Elem() TableOutput {
 	return o.ApplyT(func(v *Table) Table { return *v }).(TableOutput)
-}
-
-// Output only. Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
-func (o TablePtrOutput) ClusterStates() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Table) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterStates
-	}).(pulumi.StringMapOutput)
 }
 
 // The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
@@ -2328,45 +3101,48 @@ func (o TablePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
-func (o TablePtrOutput) RestoreInfo() RestoreInfoPtrOutput {
-	return o.ApplyT(func(v *Table) *RestoreInfo {
-		if v == nil {
-			return nil
-		}
-		return v.RestoreInfo
-	}).(RestoreInfoPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
-	pulumi.RegisterOutputType(BackupInfoOutput{})
-	pulumi.RegisterOutputType(BackupInfoPtrOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(BackupInfoResponseOutput{})
+	pulumi.RegisterOutputType(BackupInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingResponseOutput{})
+	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
-	pulumi.RegisterOutputType(EncryptionInfoOutput{})
-	pulumi.RegisterOutputType(EncryptionInfoPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(EncryptionInfoResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(InstanceTypeOutput{})
 	pulumi.RegisterOutputType(InstanceTypePtrOutput{})
 	pulumi.RegisterOutputType(MultiClusterRoutingUseAnyOutput{})
 	pulumi.RegisterOutputType(MultiClusterRoutingUseAnyPtrOutput{})
+	pulumi.RegisterOutputType(MultiClusterRoutingUseAnyResponseOutput{})
+	pulumi.RegisterOutputType(MultiClusterRoutingUseAnyResponsePtrOutput{})
 	pulumi.RegisterOutputType(PolicyOutput{})
 	pulumi.RegisterOutputType(PolicyPtrOutput{})
-	pulumi.RegisterOutputType(RestoreInfoOutput{})
-	pulumi.RegisterOutputType(RestoreInfoPtrOutput{})
+	pulumi.RegisterOutputType(RestoreInfoResponseOutput{})
+	pulumi.RegisterOutputType(RestoreInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(SingleClusterRoutingOutput{})
 	pulumi.RegisterOutputType(SingleClusterRoutingPtrOutput{})
+	pulumi.RegisterOutputType(SingleClusterRoutingResponseOutput{})
+	pulumi.RegisterOutputType(SingleClusterRoutingResponsePtrOutput{})
 	pulumi.RegisterOutputType(SplitOutput{})
 	pulumi.RegisterOutputType(SplitArrayOutput{})
-	pulumi.RegisterOutputType(StatusOutput{})
-	pulumi.RegisterOutputType(StatusPtrOutput{})
+	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(TableOutput{})
 	pulumi.RegisterOutputType(TablePtrOutput{})
 }

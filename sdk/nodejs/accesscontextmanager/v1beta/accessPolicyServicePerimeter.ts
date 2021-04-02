@@ -35,6 +35,26 @@ export class AccessPolicyServicePerimeter extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessPolicyServicePerimeter.__pulumiType;
     }
 
+    /**
+     * Description of the `ServicePerimeter` and its use. Does not affect behavior.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
+     */
+    public readonly perimeterType!: pulumi.Output<string>;
+    /**
+     * Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
+     */
+    public readonly status!: pulumi.Output<outputs.accesscontextmanager.v1beta.ServicePerimeterConfigResponse>;
+    /**
+     * Human readable title. Must be unique within the Policy.
+     */
+    public readonly title!: pulumi.Output<string>;
 
     /**
      * Create a AccessPolicyServicePerimeter resource with the given unique name, arguments, and options.
@@ -61,6 +81,11 @@ export class AccessPolicyServicePerimeter extends pulumi.CustomResource {
             inputs["status"] = args ? args.status : undefined;
             inputs["title"] = args ? args.title : undefined;
         } else {
+            inputs["description"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["perimeterType"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["title"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

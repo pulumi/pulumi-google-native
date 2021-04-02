@@ -101,7 +101,61 @@ class OrganizationEnvironmentApiRevisionDebugsession(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["count"] = None
+        __props__["filter"] = None
+        __props__["name"] = None
+        __props__["timeout"] = None
+        __props__["tracesize"] = None
+        __props__["validity"] = None
         return OrganizationEnvironmentApiRevisionDebugsession(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def count(self) -> pulumi.Output[int]:
+        """
+        Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Output[str]:
+        """
+        Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        A unique ID for this DebugSession.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Output[str]:
+        """
+        Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
+        """
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter
+    def tracesize(self) -> pulumi.Output[int]:
+        """
+        Optional. The maximum number of bytes captured from the response payload. Min = 0, Max = 5120, Default = 5120.
+        """
+        return pulumi.get(self, "tracesize")
+
+    @property
+    @pulumi.getter
+    def validity(self) -> pulumi.Output[int]:
+        """
+        Optional. The length of time, in seconds, that this debug session is valid, starting from when it's received in the control plane. Min = 1, Max = 15, Default = 10.
+        """
+        return pulumi.get(self, "validity")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

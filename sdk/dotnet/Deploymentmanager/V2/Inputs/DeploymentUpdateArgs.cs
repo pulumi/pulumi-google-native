@@ -13,7 +13,7 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.V2.Inputs
     public sealed class DeploymentUpdateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. An optional user-provided description of the deployment after the current update has been applied.
+        /// An optional user-provided description of the deployment after the current update has been applied.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleCloud.Deploymentmanager.V2.Inputs
         }
 
         /// <summary>
-        /// Output only. URL of the manifest representing the update configuration of this deployment.
+        /// URL of the manifest representing the update configuration of this deployment.
         /// </summary>
         [Input("manifest")]
         public Input<string>? Manifest { get; set; }

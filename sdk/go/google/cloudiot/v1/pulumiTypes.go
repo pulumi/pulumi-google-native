@@ -128,6 +128,124 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
+// Associates `members` with a `role`.
+type BindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
+// You can construct a concrete instance of `BindingResponseInput` via:
+//
+//          BindingResponseArgs{...}
+type BindingResponseInput interface {
+	pulumi.Input
+
+	ToBindingResponseOutput() BindingResponseOutput
+	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
+}
+
+// Associates `members` with a `role`.
+type BindingResponseArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
+	return i.ToBindingResponseOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
+}
+
+// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
+// You can construct a concrete instance of `BindingResponseArrayInput` via:
+//
+//          BindingResponseArray{ BindingResponseArgs{...} }
+type BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToBindingResponseArrayOutput() BindingResponseArrayOutput
+	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
+}
+
+type BindingResponseArray []BindingResponseInput
+
+func (BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return i.ToBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
+		return vs[0].([]BindingResponse)[vs[1].(int)]
+	}).(BindingResponseOutput)
+}
+
 // The device configuration. Eventually delivered to devices.
 type DeviceConfig struct {
 	// The device configuration data.
@@ -319,6 +437,197 @@ func (o DeviceConfigPtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The device configuration. Eventually delivered to devices.
+type DeviceConfigResponse struct {
+	// The device configuration data.
+	BinaryData string `pulumi:"binaryData"`
+	// [Output only] The time at which this configuration version was updated in Cloud IoT Core. This timestamp is set by the server.
+	CloudUpdateTime string `pulumi:"cloudUpdateTime"`
+	// [Output only] The time at which Cloud IoT Core received the acknowledgment from the device, indicating that the device has received this configuration version. If this field is not present, the device has not yet acknowledged that it received this version. Note that when the config was sent to the device, many config versions may have been available in Cloud IoT Core while the device was disconnected, and on connection, only the latest version is sent to the device. Some versions may never be sent to the device, and therefore are never acknowledged. This timestamp is set by Cloud IoT Core.
+	DeviceAckTime string `pulumi:"deviceAckTime"`
+	// [Output only] The version of this update. The version number is assigned by the server, and is always greater than 0 after device creation. The version must be 0 on the `CreateDevice` request if a `config` is specified; the response of `CreateDevice` will always have a value of 1.
+	Version string `pulumi:"version"`
+}
+
+// DeviceConfigResponseInput is an input type that accepts DeviceConfigResponseArgs and DeviceConfigResponseOutput values.
+// You can construct a concrete instance of `DeviceConfigResponseInput` via:
+//
+//          DeviceConfigResponseArgs{...}
+type DeviceConfigResponseInput interface {
+	pulumi.Input
+
+	ToDeviceConfigResponseOutput() DeviceConfigResponseOutput
+	ToDeviceConfigResponseOutputWithContext(context.Context) DeviceConfigResponseOutput
+}
+
+// The device configuration. Eventually delivered to devices.
+type DeviceConfigResponseArgs struct {
+	// The device configuration data.
+	BinaryData pulumi.StringInput `pulumi:"binaryData"`
+	// [Output only] The time at which this configuration version was updated in Cloud IoT Core. This timestamp is set by the server.
+	CloudUpdateTime pulumi.StringInput `pulumi:"cloudUpdateTime"`
+	// [Output only] The time at which Cloud IoT Core received the acknowledgment from the device, indicating that the device has received this configuration version. If this field is not present, the device has not yet acknowledged that it received this version. Note that when the config was sent to the device, many config versions may have been available in Cloud IoT Core while the device was disconnected, and on connection, only the latest version is sent to the device. Some versions may never be sent to the device, and therefore are never acknowledged. This timestamp is set by Cloud IoT Core.
+	DeviceAckTime pulumi.StringInput `pulumi:"deviceAckTime"`
+	// [Output only] The version of this update. The version number is assigned by the server, and is always greater than 0 after device creation. The version must be 0 on the `CreateDevice` request if a `config` is specified; the response of `CreateDevice` will always have a value of 1.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (DeviceConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceConfigResponse)(nil)).Elem()
+}
+
+func (i DeviceConfigResponseArgs) ToDeviceConfigResponseOutput() DeviceConfigResponseOutput {
+	return i.ToDeviceConfigResponseOutputWithContext(context.Background())
+}
+
+func (i DeviceConfigResponseArgs) ToDeviceConfigResponseOutputWithContext(ctx context.Context) DeviceConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceConfigResponseOutput)
+}
+
+func (i DeviceConfigResponseArgs) ToDeviceConfigResponsePtrOutput() DeviceConfigResponsePtrOutput {
+	return i.ToDeviceConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DeviceConfigResponseArgs) ToDeviceConfigResponsePtrOutputWithContext(ctx context.Context) DeviceConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceConfigResponseOutput).ToDeviceConfigResponsePtrOutputWithContext(ctx)
+}
+
+// DeviceConfigResponsePtrInput is an input type that accepts DeviceConfigResponseArgs, DeviceConfigResponsePtr and DeviceConfigResponsePtrOutput values.
+// You can construct a concrete instance of `DeviceConfigResponsePtrInput` via:
+//
+//          DeviceConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DeviceConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToDeviceConfigResponsePtrOutput() DeviceConfigResponsePtrOutput
+	ToDeviceConfigResponsePtrOutputWithContext(context.Context) DeviceConfigResponsePtrOutput
+}
+
+type deviceConfigResponsePtrType DeviceConfigResponseArgs
+
+func DeviceConfigResponsePtr(v *DeviceConfigResponseArgs) DeviceConfigResponsePtrInput {
+	return (*deviceConfigResponsePtrType)(v)
+}
+
+func (*deviceConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceConfigResponse)(nil)).Elem()
+}
+
+func (i *deviceConfigResponsePtrType) ToDeviceConfigResponsePtrOutput() DeviceConfigResponsePtrOutput {
+	return i.ToDeviceConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *deviceConfigResponsePtrType) ToDeviceConfigResponsePtrOutputWithContext(ctx context.Context) DeviceConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceConfigResponsePtrOutput)
+}
+
+// The device configuration. Eventually delivered to devices.
+type DeviceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DeviceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceConfigResponse)(nil)).Elem()
+}
+
+func (o DeviceConfigResponseOutput) ToDeviceConfigResponseOutput() DeviceConfigResponseOutput {
+	return o
+}
+
+func (o DeviceConfigResponseOutput) ToDeviceConfigResponseOutputWithContext(ctx context.Context) DeviceConfigResponseOutput {
+	return o
+}
+
+func (o DeviceConfigResponseOutput) ToDeviceConfigResponsePtrOutput() DeviceConfigResponsePtrOutput {
+	return o.ToDeviceConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DeviceConfigResponseOutput) ToDeviceConfigResponsePtrOutputWithContext(ctx context.Context) DeviceConfigResponsePtrOutput {
+	return o.ApplyT(func(v DeviceConfigResponse) *DeviceConfigResponse {
+		return &v
+	}).(DeviceConfigResponsePtrOutput)
+}
+
+// The device configuration data.
+func (o DeviceConfigResponseOutput) BinaryData() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceConfigResponse) string { return v.BinaryData }).(pulumi.StringOutput)
+}
+
+// [Output only] The time at which this configuration version was updated in Cloud IoT Core. This timestamp is set by the server.
+func (o DeviceConfigResponseOutput) CloudUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceConfigResponse) string { return v.CloudUpdateTime }).(pulumi.StringOutput)
+}
+
+// [Output only] The time at which Cloud IoT Core received the acknowledgment from the device, indicating that the device has received this configuration version. If this field is not present, the device has not yet acknowledged that it received this version. Note that when the config was sent to the device, many config versions may have been available in Cloud IoT Core while the device was disconnected, and on connection, only the latest version is sent to the device. Some versions may never be sent to the device, and therefore are never acknowledged. This timestamp is set by Cloud IoT Core.
+func (o DeviceConfigResponseOutput) DeviceAckTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceConfigResponse) string { return v.DeviceAckTime }).(pulumi.StringOutput)
+}
+
+// [Output only] The version of this update. The version number is assigned by the server, and is always greater than 0 after device creation. The version must be 0 on the `CreateDevice` request if a `config` is specified; the response of `CreateDevice` will always have a value of 1.
+func (o DeviceConfigResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceConfigResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type DeviceConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceConfigResponse)(nil)).Elem()
+}
+
+func (o DeviceConfigResponsePtrOutput) ToDeviceConfigResponsePtrOutput() DeviceConfigResponsePtrOutput {
+	return o
+}
+
+func (o DeviceConfigResponsePtrOutput) ToDeviceConfigResponsePtrOutputWithContext(ctx context.Context) DeviceConfigResponsePtrOutput {
+	return o
+}
+
+func (o DeviceConfigResponsePtrOutput) Elem() DeviceConfigResponseOutput {
+	return o.ApplyT(func(v *DeviceConfigResponse) DeviceConfigResponse { return *v }).(DeviceConfigResponseOutput)
+}
+
+// The device configuration data.
+func (o DeviceConfigResponsePtrOutput) BinaryData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BinaryData
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Output only] The time at which this configuration version was updated in Cloud IoT Core. This timestamp is set by the server.
+func (o DeviceConfigResponsePtrOutput) CloudUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CloudUpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Output only] The time at which Cloud IoT Core received the acknowledgment from the device, indicating that the device has received this configuration version. If this field is not present, the device has not yet acknowledged that it received this version. Note that when the config was sent to the device, many config versions may have been available in Cloud IoT Core while the device was disconnected, and on connection, only the latest version is sent to the device. Some versions may never be sent to the device, and therefore are never acknowledged. This timestamp is set by Cloud IoT Core.
+func (o DeviceConfigResponsePtrOutput) DeviceAckTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeviceAckTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Output only] The version of this update. The version number is assigned by the server, and is always greater than 0 after device creation. The version must be 0 on the `CreateDevice` request if a `config` is specified; the response of `CreateDevice` will always have a value of 1.
+func (o DeviceConfigResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 // A server-stored device credential used for authentication.
 type DeviceCredential struct {
 	// [Optional] The time at which this credential becomes invalid. This credential will be ignored for new client authentication requests after this timestamp; however, it will not be automatically deleted.
@@ -426,6 +735,115 @@ func (o DeviceCredentialArrayOutput) Index(i pulumi.IntInput) DeviceCredentialOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceCredential {
 		return vs[0].([]DeviceCredential)[vs[1].(int)]
 	}).(DeviceCredentialOutput)
+}
+
+// A server-stored device credential used for authentication.
+type DeviceCredentialResponse struct {
+	// [Optional] The time at which this credential becomes invalid. This credential will be ignored for new client authentication requests after this timestamp; however, it will not be automatically deleted.
+	ExpirationTime string `pulumi:"expirationTime"`
+	// A public key used to verify the signature of JSON Web Tokens (JWTs). When adding a new device credential, either via device creation or via modifications, this public key credential may be required to be signed by one of the registry level certificates. More specifically, if the registry contains at least one certificate, any new device credential must be signed by one of the registry certificates. As a result, when the registry contains certificates, only X.509 certificates are accepted as device credentials. However, if the registry does not contain a certificate, self-signed certificates and public keys will be accepted. New device credentials must be different from every registry-level certificate.
+	PublicKey PublicKeyCredentialResponse `pulumi:"publicKey"`
+}
+
+// DeviceCredentialResponseInput is an input type that accepts DeviceCredentialResponseArgs and DeviceCredentialResponseOutput values.
+// You can construct a concrete instance of `DeviceCredentialResponseInput` via:
+//
+//          DeviceCredentialResponseArgs{...}
+type DeviceCredentialResponseInput interface {
+	pulumi.Input
+
+	ToDeviceCredentialResponseOutput() DeviceCredentialResponseOutput
+	ToDeviceCredentialResponseOutputWithContext(context.Context) DeviceCredentialResponseOutput
+}
+
+// A server-stored device credential used for authentication.
+type DeviceCredentialResponseArgs struct {
+	// [Optional] The time at which this credential becomes invalid. This credential will be ignored for new client authentication requests after this timestamp; however, it will not be automatically deleted.
+	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
+	// A public key used to verify the signature of JSON Web Tokens (JWTs). When adding a new device credential, either via device creation or via modifications, this public key credential may be required to be signed by one of the registry level certificates. More specifically, if the registry contains at least one certificate, any new device credential must be signed by one of the registry certificates. As a result, when the registry contains certificates, only X.509 certificates are accepted as device credentials. However, if the registry does not contain a certificate, self-signed certificates and public keys will be accepted. New device credentials must be different from every registry-level certificate.
+	PublicKey PublicKeyCredentialResponseInput `pulumi:"publicKey"`
+}
+
+func (DeviceCredentialResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceCredentialResponse)(nil)).Elem()
+}
+
+func (i DeviceCredentialResponseArgs) ToDeviceCredentialResponseOutput() DeviceCredentialResponseOutput {
+	return i.ToDeviceCredentialResponseOutputWithContext(context.Background())
+}
+
+func (i DeviceCredentialResponseArgs) ToDeviceCredentialResponseOutputWithContext(ctx context.Context) DeviceCredentialResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceCredentialResponseOutput)
+}
+
+// DeviceCredentialResponseArrayInput is an input type that accepts DeviceCredentialResponseArray and DeviceCredentialResponseArrayOutput values.
+// You can construct a concrete instance of `DeviceCredentialResponseArrayInput` via:
+//
+//          DeviceCredentialResponseArray{ DeviceCredentialResponseArgs{...} }
+type DeviceCredentialResponseArrayInput interface {
+	pulumi.Input
+
+	ToDeviceCredentialResponseArrayOutput() DeviceCredentialResponseArrayOutput
+	ToDeviceCredentialResponseArrayOutputWithContext(context.Context) DeviceCredentialResponseArrayOutput
+}
+
+type DeviceCredentialResponseArray []DeviceCredentialResponseInput
+
+func (DeviceCredentialResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceCredentialResponse)(nil)).Elem()
+}
+
+func (i DeviceCredentialResponseArray) ToDeviceCredentialResponseArrayOutput() DeviceCredentialResponseArrayOutput {
+	return i.ToDeviceCredentialResponseArrayOutputWithContext(context.Background())
+}
+
+func (i DeviceCredentialResponseArray) ToDeviceCredentialResponseArrayOutputWithContext(ctx context.Context) DeviceCredentialResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceCredentialResponseArrayOutput)
+}
+
+// A server-stored device credential used for authentication.
+type DeviceCredentialResponseOutput struct{ *pulumi.OutputState }
+
+func (DeviceCredentialResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceCredentialResponse)(nil)).Elem()
+}
+
+func (o DeviceCredentialResponseOutput) ToDeviceCredentialResponseOutput() DeviceCredentialResponseOutput {
+	return o
+}
+
+func (o DeviceCredentialResponseOutput) ToDeviceCredentialResponseOutputWithContext(ctx context.Context) DeviceCredentialResponseOutput {
+	return o
+}
+
+// [Optional] The time at which this credential becomes invalid. This credential will be ignored for new client authentication requests after this timestamp; however, it will not be automatically deleted.
+func (o DeviceCredentialResponseOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceCredentialResponse) string { return v.ExpirationTime }).(pulumi.StringOutput)
+}
+
+// A public key used to verify the signature of JSON Web Tokens (JWTs). When adding a new device credential, either via device creation or via modifications, this public key credential may be required to be signed by one of the registry level certificates. More specifically, if the registry contains at least one certificate, any new device credential must be signed by one of the registry certificates. As a result, when the registry contains certificates, only X.509 certificates are accepted as device credentials. However, if the registry does not contain a certificate, self-signed certificates and public keys will be accepted. New device credentials must be different from every registry-level certificate.
+func (o DeviceCredentialResponseOutput) PublicKey() PublicKeyCredentialResponseOutput {
+	return o.ApplyT(func(v DeviceCredentialResponse) PublicKeyCredentialResponse { return v.PublicKey }).(PublicKeyCredentialResponseOutput)
+}
+
+type DeviceCredentialResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DeviceCredentialResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceCredentialResponse)(nil)).Elem()
+}
+
+func (o DeviceCredentialResponseArrayOutput) ToDeviceCredentialResponseArrayOutput() DeviceCredentialResponseArrayOutput {
+	return o
+}
+
+func (o DeviceCredentialResponseArrayOutput) ToDeviceCredentialResponseArrayOutputWithContext(ctx context.Context) DeviceCredentialResponseArrayOutput {
+	return o
+}
+
+func (o DeviceCredentialResponseArrayOutput) Index(i pulumi.IntInput) DeviceCredentialResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceCredentialResponse {
+		return vs[0].([]DeviceCredentialResponse)[vs[1].(int)]
+	}).(DeviceCredentialResponseOutput)
 }
 
 // The device state, as reported by the device.
@@ -581,6 +999,159 @@ func (o DeviceStatePtrOutput) UpdateTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The device state, as reported by the device.
+type DeviceStateResponse struct {
+	// The device state data.
+	BinaryData string `pulumi:"binaryData"`
+	// [Output only] The time at which this state version was updated in Cloud IoT Core.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// DeviceStateResponseInput is an input type that accepts DeviceStateResponseArgs and DeviceStateResponseOutput values.
+// You can construct a concrete instance of `DeviceStateResponseInput` via:
+//
+//          DeviceStateResponseArgs{...}
+type DeviceStateResponseInput interface {
+	pulumi.Input
+
+	ToDeviceStateResponseOutput() DeviceStateResponseOutput
+	ToDeviceStateResponseOutputWithContext(context.Context) DeviceStateResponseOutput
+}
+
+// The device state, as reported by the device.
+type DeviceStateResponseArgs struct {
+	// The device state data.
+	BinaryData pulumi.StringInput `pulumi:"binaryData"`
+	// [Output only] The time at which this state version was updated in Cloud IoT Core.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (DeviceStateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceStateResponse)(nil)).Elem()
+}
+
+func (i DeviceStateResponseArgs) ToDeviceStateResponseOutput() DeviceStateResponseOutput {
+	return i.ToDeviceStateResponseOutputWithContext(context.Background())
+}
+
+func (i DeviceStateResponseArgs) ToDeviceStateResponseOutputWithContext(ctx context.Context) DeviceStateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateResponseOutput)
+}
+
+func (i DeviceStateResponseArgs) ToDeviceStateResponsePtrOutput() DeviceStateResponsePtrOutput {
+	return i.ToDeviceStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DeviceStateResponseArgs) ToDeviceStateResponsePtrOutputWithContext(ctx context.Context) DeviceStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateResponseOutput).ToDeviceStateResponsePtrOutputWithContext(ctx)
+}
+
+// DeviceStateResponsePtrInput is an input type that accepts DeviceStateResponseArgs, DeviceStateResponsePtr and DeviceStateResponsePtrOutput values.
+// You can construct a concrete instance of `DeviceStateResponsePtrInput` via:
+//
+//          DeviceStateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DeviceStateResponsePtrInput interface {
+	pulumi.Input
+
+	ToDeviceStateResponsePtrOutput() DeviceStateResponsePtrOutput
+	ToDeviceStateResponsePtrOutputWithContext(context.Context) DeviceStateResponsePtrOutput
+}
+
+type deviceStateResponsePtrType DeviceStateResponseArgs
+
+func DeviceStateResponsePtr(v *DeviceStateResponseArgs) DeviceStateResponsePtrInput {
+	return (*deviceStateResponsePtrType)(v)
+}
+
+func (*deviceStateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceStateResponse)(nil)).Elem()
+}
+
+func (i *deviceStateResponsePtrType) ToDeviceStateResponsePtrOutput() DeviceStateResponsePtrOutput {
+	return i.ToDeviceStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *deviceStateResponsePtrType) ToDeviceStateResponsePtrOutputWithContext(ctx context.Context) DeviceStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceStateResponsePtrOutput)
+}
+
+// The device state, as reported by the device.
+type DeviceStateResponseOutput struct{ *pulumi.OutputState }
+
+func (DeviceStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceStateResponse)(nil)).Elem()
+}
+
+func (o DeviceStateResponseOutput) ToDeviceStateResponseOutput() DeviceStateResponseOutput {
+	return o
+}
+
+func (o DeviceStateResponseOutput) ToDeviceStateResponseOutputWithContext(ctx context.Context) DeviceStateResponseOutput {
+	return o
+}
+
+func (o DeviceStateResponseOutput) ToDeviceStateResponsePtrOutput() DeviceStateResponsePtrOutput {
+	return o.ToDeviceStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DeviceStateResponseOutput) ToDeviceStateResponsePtrOutputWithContext(ctx context.Context) DeviceStateResponsePtrOutput {
+	return o.ApplyT(func(v DeviceStateResponse) *DeviceStateResponse {
+		return &v
+	}).(DeviceStateResponsePtrOutput)
+}
+
+// The device state data.
+func (o DeviceStateResponseOutput) BinaryData() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceStateResponse) string { return v.BinaryData }).(pulumi.StringOutput)
+}
+
+// [Output only] The time at which this state version was updated in Cloud IoT Core.
+func (o DeviceStateResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DeviceStateResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type DeviceStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceStateResponse)(nil)).Elem()
+}
+
+func (o DeviceStateResponsePtrOutput) ToDeviceStateResponsePtrOutput() DeviceStateResponsePtrOutput {
+	return o
+}
+
+func (o DeviceStateResponsePtrOutput) ToDeviceStateResponsePtrOutputWithContext(ctx context.Context) DeviceStateResponsePtrOutput {
+	return o
+}
+
+func (o DeviceStateResponsePtrOutput) Elem() DeviceStateResponseOutput {
+	return o.ApplyT(func(v *DeviceStateResponse) DeviceStateResponse { return *v }).(DeviceStateResponseOutput)
+}
+
+// The device state data.
+func (o DeviceStateResponsePtrOutput) BinaryData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BinaryData
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Output only] The time at which this state version was updated in Cloud IoT Core.
+func (o DeviceStateResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeviceStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
 // The configuration for forwarding telemetry events.
 type EventNotificationConfig struct {
 	// A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
@@ -688,6 +1259,115 @@ func (o EventNotificationConfigArrayOutput) Index(i pulumi.IntInput) EventNotifi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventNotificationConfig {
 		return vs[0].([]EventNotificationConfig)[vs[1].(int)]
 	}).(EventNotificationConfigOutput)
+}
+
+// The configuration for forwarding telemetry events.
+type EventNotificationConfigResponse struct {
+	// A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
+	PubsubTopicName string `pulumi:"pubsubTopicName"`
+	// If the subfolder name matches this string exactly, this configuration will be used. The string must not include the leading '/' character. If empty, all strings are matched. This field is used only for telemetry events; subfolders are not supported for state changes.
+	SubfolderMatches string `pulumi:"subfolderMatches"`
+}
+
+// EventNotificationConfigResponseInput is an input type that accepts EventNotificationConfigResponseArgs and EventNotificationConfigResponseOutput values.
+// You can construct a concrete instance of `EventNotificationConfigResponseInput` via:
+//
+//          EventNotificationConfigResponseArgs{...}
+type EventNotificationConfigResponseInput interface {
+	pulumi.Input
+
+	ToEventNotificationConfigResponseOutput() EventNotificationConfigResponseOutput
+	ToEventNotificationConfigResponseOutputWithContext(context.Context) EventNotificationConfigResponseOutput
+}
+
+// The configuration for forwarding telemetry events.
+type EventNotificationConfigResponseArgs struct {
+	// A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
+	PubsubTopicName pulumi.StringInput `pulumi:"pubsubTopicName"`
+	// If the subfolder name matches this string exactly, this configuration will be used. The string must not include the leading '/' character. If empty, all strings are matched. This field is used only for telemetry events; subfolders are not supported for state changes.
+	SubfolderMatches pulumi.StringInput `pulumi:"subfolderMatches"`
+}
+
+func (EventNotificationConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotificationConfigResponse)(nil)).Elem()
+}
+
+func (i EventNotificationConfigResponseArgs) ToEventNotificationConfigResponseOutput() EventNotificationConfigResponseOutput {
+	return i.ToEventNotificationConfigResponseOutputWithContext(context.Background())
+}
+
+func (i EventNotificationConfigResponseArgs) ToEventNotificationConfigResponseOutputWithContext(ctx context.Context) EventNotificationConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotificationConfigResponseOutput)
+}
+
+// EventNotificationConfigResponseArrayInput is an input type that accepts EventNotificationConfigResponseArray and EventNotificationConfigResponseArrayOutput values.
+// You can construct a concrete instance of `EventNotificationConfigResponseArrayInput` via:
+//
+//          EventNotificationConfigResponseArray{ EventNotificationConfigResponseArgs{...} }
+type EventNotificationConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToEventNotificationConfigResponseArrayOutput() EventNotificationConfigResponseArrayOutput
+	ToEventNotificationConfigResponseArrayOutputWithContext(context.Context) EventNotificationConfigResponseArrayOutput
+}
+
+type EventNotificationConfigResponseArray []EventNotificationConfigResponseInput
+
+func (EventNotificationConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventNotificationConfigResponse)(nil)).Elem()
+}
+
+func (i EventNotificationConfigResponseArray) ToEventNotificationConfigResponseArrayOutput() EventNotificationConfigResponseArrayOutput {
+	return i.ToEventNotificationConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i EventNotificationConfigResponseArray) ToEventNotificationConfigResponseArrayOutputWithContext(ctx context.Context) EventNotificationConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventNotificationConfigResponseArrayOutput)
+}
+
+// The configuration for forwarding telemetry events.
+type EventNotificationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (EventNotificationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventNotificationConfigResponse)(nil)).Elem()
+}
+
+func (o EventNotificationConfigResponseOutput) ToEventNotificationConfigResponseOutput() EventNotificationConfigResponseOutput {
+	return o
+}
+
+func (o EventNotificationConfigResponseOutput) ToEventNotificationConfigResponseOutputWithContext(ctx context.Context) EventNotificationConfigResponseOutput {
+	return o
+}
+
+// A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
+func (o EventNotificationConfigResponseOutput) PubsubTopicName() pulumi.StringOutput {
+	return o.ApplyT(func(v EventNotificationConfigResponse) string { return v.PubsubTopicName }).(pulumi.StringOutput)
+}
+
+// If the subfolder name matches this string exactly, this configuration will be used. The string must not include the leading '/' character. If empty, all strings are matched. This field is used only for telemetry events; subfolders are not supported for state changes.
+func (o EventNotificationConfigResponseOutput) SubfolderMatches() pulumi.StringOutput {
+	return o.ApplyT(func(v EventNotificationConfigResponse) string { return v.SubfolderMatches }).(pulumi.StringOutput)
+}
+
+type EventNotificationConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EventNotificationConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventNotificationConfigResponse)(nil)).Elem()
+}
+
+func (o EventNotificationConfigResponseArrayOutput) ToEventNotificationConfigResponseArrayOutput() EventNotificationConfigResponseArrayOutput {
+	return o
+}
+
+func (o EventNotificationConfigResponseArrayOutput) ToEventNotificationConfigResponseArrayOutputWithContext(ctx context.Context) EventNotificationConfigResponseArrayOutput {
+	return o
+}
+
+func (o EventNotificationConfigResponseArrayOutput) Index(i pulumi.IntInput) EventNotificationConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventNotificationConfigResponse {
+		return vs[0].([]EventNotificationConfigResponse)[vs[1].(int)]
+	}).(EventNotificationConfigResponseOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -881,6 +1561,88 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
+// You can construct a concrete instance of `ExprResponseInput` via:
+//
+//          ExprResponseArgs{...}
+type ExprResponseInput interface {
+	pulumi.Input
+
+	ToExprResponseOutput() ExprResponseOutput
+	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
+	return i.ToExprResponseOutputWithContext(context.Background())
+}
+
+func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseOutput struct{ *pulumi.OutputState }
+
+func (ExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
+	return o
+}
+
+func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
 // Gateway-related configuration and state.
 type GatewayConfig struct {
 	// Indicates how to authorize and/or authenticate devices to access the gateway.
@@ -1072,6 +1834,197 @@ func (o GatewayConfigPtrOutput) LastAccessedGatewayTime() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Gateway-related configuration and state.
+type GatewayConfigResponse struct {
+	// Indicates how to authorize and/or authenticate devices to access the gateway.
+	GatewayAuthMethod string `pulumi:"gatewayAuthMethod"`
+	// Indicates whether the device is a gateway.
+	GatewayType string `pulumi:"gatewayType"`
+	// [Output only] The ID of the gateway the device accessed most recently.
+	LastAccessedGatewayId string `pulumi:"lastAccessedGatewayId"`
+	// [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
+	LastAccessedGatewayTime string `pulumi:"lastAccessedGatewayTime"`
+}
+
+// GatewayConfigResponseInput is an input type that accepts GatewayConfigResponseArgs and GatewayConfigResponseOutput values.
+// You can construct a concrete instance of `GatewayConfigResponseInput` via:
+//
+//          GatewayConfigResponseArgs{...}
+type GatewayConfigResponseInput interface {
+	pulumi.Input
+
+	ToGatewayConfigResponseOutput() GatewayConfigResponseOutput
+	ToGatewayConfigResponseOutputWithContext(context.Context) GatewayConfigResponseOutput
+}
+
+// Gateway-related configuration and state.
+type GatewayConfigResponseArgs struct {
+	// Indicates how to authorize and/or authenticate devices to access the gateway.
+	GatewayAuthMethod pulumi.StringInput `pulumi:"gatewayAuthMethod"`
+	// Indicates whether the device is a gateway.
+	GatewayType pulumi.StringInput `pulumi:"gatewayType"`
+	// [Output only] The ID of the gateway the device accessed most recently.
+	LastAccessedGatewayId pulumi.StringInput `pulumi:"lastAccessedGatewayId"`
+	// [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
+	LastAccessedGatewayTime pulumi.StringInput `pulumi:"lastAccessedGatewayTime"`
+}
+
+func (GatewayConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayConfigResponse)(nil)).Elem()
+}
+
+func (i GatewayConfigResponseArgs) ToGatewayConfigResponseOutput() GatewayConfigResponseOutput {
+	return i.ToGatewayConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GatewayConfigResponseArgs) ToGatewayConfigResponseOutputWithContext(ctx context.Context) GatewayConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayConfigResponseOutput)
+}
+
+func (i GatewayConfigResponseArgs) ToGatewayConfigResponsePtrOutput() GatewayConfigResponsePtrOutput {
+	return i.ToGatewayConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GatewayConfigResponseArgs) ToGatewayConfigResponsePtrOutputWithContext(ctx context.Context) GatewayConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayConfigResponseOutput).ToGatewayConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GatewayConfigResponsePtrInput is an input type that accepts GatewayConfigResponseArgs, GatewayConfigResponsePtr and GatewayConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GatewayConfigResponsePtrInput` via:
+//
+//          GatewayConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GatewayConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGatewayConfigResponsePtrOutput() GatewayConfigResponsePtrOutput
+	ToGatewayConfigResponsePtrOutputWithContext(context.Context) GatewayConfigResponsePtrOutput
+}
+
+type gatewayConfigResponsePtrType GatewayConfigResponseArgs
+
+func GatewayConfigResponsePtr(v *GatewayConfigResponseArgs) GatewayConfigResponsePtrInput {
+	return (*gatewayConfigResponsePtrType)(v)
+}
+
+func (*gatewayConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayConfigResponse)(nil)).Elem()
+}
+
+func (i *gatewayConfigResponsePtrType) ToGatewayConfigResponsePtrOutput() GatewayConfigResponsePtrOutput {
+	return i.ToGatewayConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayConfigResponsePtrType) ToGatewayConfigResponsePtrOutputWithContext(ctx context.Context) GatewayConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayConfigResponsePtrOutput)
+}
+
+// Gateway-related configuration and state.
+type GatewayConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayConfigResponse)(nil)).Elem()
+}
+
+func (o GatewayConfigResponseOutput) ToGatewayConfigResponseOutput() GatewayConfigResponseOutput {
+	return o
+}
+
+func (o GatewayConfigResponseOutput) ToGatewayConfigResponseOutputWithContext(ctx context.Context) GatewayConfigResponseOutput {
+	return o
+}
+
+func (o GatewayConfigResponseOutput) ToGatewayConfigResponsePtrOutput() GatewayConfigResponsePtrOutput {
+	return o.ToGatewayConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GatewayConfigResponseOutput) ToGatewayConfigResponsePtrOutputWithContext(ctx context.Context) GatewayConfigResponsePtrOutput {
+	return o.ApplyT(func(v GatewayConfigResponse) *GatewayConfigResponse {
+		return &v
+	}).(GatewayConfigResponsePtrOutput)
+}
+
+// Indicates how to authorize and/or authenticate devices to access the gateway.
+func (o GatewayConfigResponseOutput) GatewayAuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayConfigResponse) string { return v.GatewayAuthMethod }).(pulumi.StringOutput)
+}
+
+// Indicates whether the device is a gateway.
+func (o GatewayConfigResponseOutput) GatewayType() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayConfigResponse) string { return v.GatewayType }).(pulumi.StringOutput)
+}
+
+// [Output only] The ID of the gateway the device accessed most recently.
+func (o GatewayConfigResponseOutput) LastAccessedGatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayConfigResponse) string { return v.LastAccessedGatewayId }).(pulumi.StringOutput)
+}
+
+// [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
+func (o GatewayConfigResponseOutput) LastAccessedGatewayTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayConfigResponse) string { return v.LastAccessedGatewayTime }).(pulumi.StringOutput)
+}
+
+type GatewayConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayConfigResponse)(nil)).Elem()
+}
+
+func (o GatewayConfigResponsePtrOutput) ToGatewayConfigResponsePtrOutput() GatewayConfigResponsePtrOutput {
+	return o
+}
+
+func (o GatewayConfigResponsePtrOutput) ToGatewayConfigResponsePtrOutputWithContext(ctx context.Context) GatewayConfigResponsePtrOutput {
+	return o
+}
+
+func (o GatewayConfigResponsePtrOutput) Elem() GatewayConfigResponseOutput {
+	return o.ApplyT(func(v *GatewayConfigResponse) GatewayConfigResponse { return *v }).(GatewayConfigResponseOutput)
+}
+
+// Indicates how to authorize and/or authenticate devices to access the gateway.
+func (o GatewayConfigResponsePtrOutput) GatewayAuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GatewayAuthMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the device is a gateway.
+func (o GatewayConfigResponsePtrOutput) GatewayType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GatewayType
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Output only] The ID of the gateway the device accessed most recently.
+func (o GatewayConfigResponsePtrOutput) LastAccessedGatewayId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LastAccessedGatewayId
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
+func (o GatewayConfigResponsePtrOutput) LastAccessedGatewayTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LastAccessedGatewayTime
+	}).(pulumi.StringPtrOutput)
+}
+
 // The configuration of the HTTP bridge for a device registry.
 type HttpConfig struct {
 	// If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
@@ -1206,6 +2159,140 @@ func (o HttpConfigPtrOutput) HttpEnabledState() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The configuration of the HTTP bridge for a device registry.
+type HttpConfigResponse struct {
+	// If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
+	HttpEnabledState string `pulumi:"httpEnabledState"`
+}
+
+// HttpConfigResponseInput is an input type that accepts HttpConfigResponseArgs and HttpConfigResponseOutput values.
+// You can construct a concrete instance of `HttpConfigResponseInput` via:
+//
+//          HttpConfigResponseArgs{...}
+type HttpConfigResponseInput interface {
+	pulumi.Input
+
+	ToHttpConfigResponseOutput() HttpConfigResponseOutput
+	ToHttpConfigResponseOutputWithContext(context.Context) HttpConfigResponseOutput
+}
+
+// The configuration of the HTTP bridge for a device registry.
+type HttpConfigResponseArgs struct {
+	// If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
+	HttpEnabledState pulumi.StringInput `pulumi:"httpEnabledState"`
+}
+
+func (HttpConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpConfigResponse)(nil)).Elem()
+}
+
+func (i HttpConfigResponseArgs) ToHttpConfigResponseOutput() HttpConfigResponseOutput {
+	return i.ToHttpConfigResponseOutputWithContext(context.Background())
+}
+
+func (i HttpConfigResponseArgs) ToHttpConfigResponseOutputWithContext(ctx context.Context) HttpConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpConfigResponseOutput)
+}
+
+func (i HttpConfigResponseArgs) ToHttpConfigResponsePtrOutput() HttpConfigResponsePtrOutput {
+	return i.ToHttpConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i HttpConfigResponseArgs) ToHttpConfigResponsePtrOutputWithContext(ctx context.Context) HttpConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpConfigResponseOutput).ToHttpConfigResponsePtrOutputWithContext(ctx)
+}
+
+// HttpConfigResponsePtrInput is an input type that accepts HttpConfigResponseArgs, HttpConfigResponsePtr and HttpConfigResponsePtrOutput values.
+// You can construct a concrete instance of `HttpConfigResponsePtrInput` via:
+//
+//          HttpConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type HttpConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToHttpConfigResponsePtrOutput() HttpConfigResponsePtrOutput
+	ToHttpConfigResponsePtrOutputWithContext(context.Context) HttpConfigResponsePtrOutput
+}
+
+type httpConfigResponsePtrType HttpConfigResponseArgs
+
+func HttpConfigResponsePtr(v *HttpConfigResponseArgs) HttpConfigResponsePtrInput {
+	return (*httpConfigResponsePtrType)(v)
+}
+
+func (*httpConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpConfigResponse)(nil)).Elem()
+}
+
+func (i *httpConfigResponsePtrType) ToHttpConfigResponsePtrOutput() HttpConfigResponsePtrOutput {
+	return i.ToHttpConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *httpConfigResponsePtrType) ToHttpConfigResponsePtrOutputWithContext(ctx context.Context) HttpConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpConfigResponsePtrOutput)
+}
+
+// The configuration of the HTTP bridge for a device registry.
+type HttpConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpConfigResponse)(nil)).Elem()
+}
+
+func (o HttpConfigResponseOutput) ToHttpConfigResponseOutput() HttpConfigResponseOutput {
+	return o
+}
+
+func (o HttpConfigResponseOutput) ToHttpConfigResponseOutputWithContext(ctx context.Context) HttpConfigResponseOutput {
+	return o
+}
+
+func (o HttpConfigResponseOutput) ToHttpConfigResponsePtrOutput() HttpConfigResponsePtrOutput {
+	return o.ToHttpConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o HttpConfigResponseOutput) ToHttpConfigResponsePtrOutputWithContext(ctx context.Context) HttpConfigResponsePtrOutput {
+	return o.ApplyT(func(v HttpConfigResponse) *HttpConfigResponse {
+		return &v
+	}).(HttpConfigResponsePtrOutput)
+}
+
+// If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
+func (o HttpConfigResponseOutput) HttpEnabledState() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpConfigResponse) string { return v.HttpEnabledState }).(pulumi.StringOutput)
+}
+
+type HttpConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpConfigResponse)(nil)).Elem()
+}
+
+func (o HttpConfigResponsePtrOutput) ToHttpConfigResponsePtrOutput() HttpConfigResponsePtrOutput {
+	return o
+}
+
+func (o HttpConfigResponsePtrOutput) ToHttpConfigResponsePtrOutputWithContext(ctx context.Context) HttpConfigResponsePtrOutput {
+	return o
+}
+
+func (o HttpConfigResponsePtrOutput) Elem() HttpConfigResponseOutput {
+	return o.ApplyT(func(v *HttpConfigResponse) HttpConfigResponse { return *v }).(HttpConfigResponseOutput)
+}
+
+// If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
+func (o HttpConfigResponsePtrOutput) HttpEnabledState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HttpEnabledState
+	}).(pulumi.StringPtrOutput)
+}
+
 // The configuration of MQTT for a device registry.
 type MqttConfig struct {
 	// If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
@@ -1337,6 +2424,140 @@ func (o MqttConfigPtrOutput) MqttEnabledState() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.MqttEnabledState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration of MQTT for a device registry.
+type MqttConfigResponse struct {
+	// If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
+	MqttEnabledState string `pulumi:"mqttEnabledState"`
+}
+
+// MqttConfigResponseInput is an input type that accepts MqttConfigResponseArgs and MqttConfigResponseOutput values.
+// You can construct a concrete instance of `MqttConfigResponseInput` via:
+//
+//          MqttConfigResponseArgs{...}
+type MqttConfigResponseInput interface {
+	pulumi.Input
+
+	ToMqttConfigResponseOutput() MqttConfigResponseOutput
+	ToMqttConfigResponseOutputWithContext(context.Context) MqttConfigResponseOutput
+}
+
+// The configuration of MQTT for a device registry.
+type MqttConfigResponseArgs struct {
+	// If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
+	MqttEnabledState pulumi.StringInput `pulumi:"mqttEnabledState"`
+}
+
+func (MqttConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MqttConfigResponse)(nil)).Elem()
+}
+
+func (i MqttConfigResponseArgs) ToMqttConfigResponseOutput() MqttConfigResponseOutput {
+	return i.ToMqttConfigResponseOutputWithContext(context.Background())
+}
+
+func (i MqttConfigResponseArgs) ToMqttConfigResponseOutputWithContext(ctx context.Context) MqttConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MqttConfigResponseOutput)
+}
+
+func (i MqttConfigResponseArgs) ToMqttConfigResponsePtrOutput() MqttConfigResponsePtrOutput {
+	return i.ToMqttConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MqttConfigResponseArgs) ToMqttConfigResponsePtrOutputWithContext(ctx context.Context) MqttConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MqttConfigResponseOutput).ToMqttConfigResponsePtrOutputWithContext(ctx)
+}
+
+// MqttConfigResponsePtrInput is an input type that accepts MqttConfigResponseArgs, MqttConfigResponsePtr and MqttConfigResponsePtrOutput values.
+// You can construct a concrete instance of `MqttConfigResponsePtrInput` via:
+//
+//          MqttConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MqttConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToMqttConfigResponsePtrOutput() MqttConfigResponsePtrOutput
+	ToMqttConfigResponsePtrOutputWithContext(context.Context) MqttConfigResponsePtrOutput
+}
+
+type mqttConfigResponsePtrType MqttConfigResponseArgs
+
+func MqttConfigResponsePtr(v *MqttConfigResponseArgs) MqttConfigResponsePtrInput {
+	return (*mqttConfigResponsePtrType)(v)
+}
+
+func (*mqttConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MqttConfigResponse)(nil)).Elem()
+}
+
+func (i *mqttConfigResponsePtrType) ToMqttConfigResponsePtrOutput() MqttConfigResponsePtrOutput {
+	return i.ToMqttConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *mqttConfigResponsePtrType) ToMqttConfigResponsePtrOutputWithContext(ctx context.Context) MqttConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MqttConfigResponsePtrOutput)
+}
+
+// The configuration of MQTT for a device registry.
+type MqttConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (MqttConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MqttConfigResponse)(nil)).Elem()
+}
+
+func (o MqttConfigResponseOutput) ToMqttConfigResponseOutput() MqttConfigResponseOutput {
+	return o
+}
+
+func (o MqttConfigResponseOutput) ToMqttConfigResponseOutputWithContext(ctx context.Context) MqttConfigResponseOutput {
+	return o
+}
+
+func (o MqttConfigResponseOutput) ToMqttConfigResponsePtrOutput() MqttConfigResponsePtrOutput {
+	return o.ToMqttConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MqttConfigResponseOutput) ToMqttConfigResponsePtrOutputWithContext(ctx context.Context) MqttConfigResponsePtrOutput {
+	return o.ApplyT(func(v MqttConfigResponse) *MqttConfigResponse {
+		return &v
+	}).(MqttConfigResponsePtrOutput)
+}
+
+// If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
+func (o MqttConfigResponseOutput) MqttEnabledState() pulumi.StringOutput {
+	return o.ApplyT(func(v MqttConfigResponse) string { return v.MqttEnabledState }).(pulumi.StringOutput)
+}
+
+type MqttConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MqttConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MqttConfigResponse)(nil)).Elem()
+}
+
+func (o MqttConfigResponsePtrOutput) ToMqttConfigResponsePtrOutput() MqttConfigResponsePtrOutput {
+	return o
+}
+
+func (o MqttConfigResponsePtrOutput) ToMqttConfigResponsePtrOutputWithContext(ctx context.Context) MqttConfigResponsePtrOutput {
+	return o
+}
+
+func (o MqttConfigResponsePtrOutput) Elem() MqttConfigResponseOutput {
+	return o.ApplyT(func(v *MqttConfigResponse) MqttConfigResponse { return *v }).(MqttConfigResponseOutput)
+}
+
+// If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
+func (o MqttConfigResponsePtrOutput) MqttEnabledState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MqttConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MqttEnabledState
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1684,6 +2905,79 @@ func (o PublicKeyCertificatePtrOutput) X509Details() X509CertificateDetailsPtrOu
 	}).(X509CertificateDetailsPtrOutput)
 }
 
+// A public key certificate format and data.
+type PublicKeyCertificateResponse struct {
+	// The certificate data.
+	Certificate string `pulumi:"certificate"`
+	// The certificate format.
+	Format string `pulumi:"format"`
+	// [Output only] The certificate details. Used only for X.509 certificates.
+	X509Details X509CertificateDetailsResponse `pulumi:"x509Details"`
+}
+
+// PublicKeyCertificateResponseInput is an input type that accepts PublicKeyCertificateResponseArgs and PublicKeyCertificateResponseOutput values.
+// You can construct a concrete instance of `PublicKeyCertificateResponseInput` via:
+//
+//          PublicKeyCertificateResponseArgs{...}
+type PublicKeyCertificateResponseInput interface {
+	pulumi.Input
+
+	ToPublicKeyCertificateResponseOutput() PublicKeyCertificateResponseOutput
+	ToPublicKeyCertificateResponseOutputWithContext(context.Context) PublicKeyCertificateResponseOutput
+}
+
+// A public key certificate format and data.
+type PublicKeyCertificateResponseArgs struct {
+	// The certificate data.
+	Certificate pulumi.StringInput `pulumi:"certificate"`
+	// The certificate format.
+	Format pulumi.StringInput `pulumi:"format"`
+	// [Output only] The certificate details. Used only for X.509 certificates.
+	X509Details X509CertificateDetailsResponseInput `pulumi:"x509Details"`
+}
+
+func (PublicKeyCertificateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicKeyCertificateResponse)(nil)).Elem()
+}
+
+func (i PublicKeyCertificateResponseArgs) ToPublicKeyCertificateResponseOutput() PublicKeyCertificateResponseOutput {
+	return i.ToPublicKeyCertificateResponseOutputWithContext(context.Background())
+}
+
+func (i PublicKeyCertificateResponseArgs) ToPublicKeyCertificateResponseOutputWithContext(ctx context.Context) PublicKeyCertificateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicKeyCertificateResponseOutput)
+}
+
+// A public key certificate format and data.
+type PublicKeyCertificateResponseOutput struct{ *pulumi.OutputState }
+
+func (PublicKeyCertificateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicKeyCertificateResponse)(nil)).Elem()
+}
+
+func (o PublicKeyCertificateResponseOutput) ToPublicKeyCertificateResponseOutput() PublicKeyCertificateResponseOutput {
+	return o
+}
+
+func (o PublicKeyCertificateResponseOutput) ToPublicKeyCertificateResponseOutputWithContext(ctx context.Context) PublicKeyCertificateResponseOutput {
+	return o
+}
+
+// The certificate data.
+func (o PublicKeyCertificateResponseOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicKeyCertificateResponse) string { return v.Certificate }).(pulumi.StringOutput)
+}
+
+// The certificate format.
+func (o PublicKeyCertificateResponseOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicKeyCertificateResponse) string { return v.Format }).(pulumi.StringOutput)
+}
+
+// [Output only] The certificate details. Used only for X.509 certificates.
+func (o PublicKeyCertificateResponseOutput) X509Details() X509CertificateDetailsResponseOutput {
+	return o.ApplyT(func(v PublicKeyCertificateResponse) X509CertificateDetailsResponse { return v.X509Details }).(X509CertificateDetailsResponseOutput)
+}
+
 // A public key format and data.
 type PublicKeyCredential struct {
 	// The format of the key.
@@ -1837,6 +3131,70 @@ func (o PublicKeyCredentialPtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A public key format and data.
+type PublicKeyCredentialResponse struct {
+	// The format of the key.
+	Format string `pulumi:"format"`
+	// The key data.
+	Key string `pulumi:"key"`
+}
+
+// PublicKeyCredentialResponseInput is an input type that accepts PublicKeyCredentialResponseArgs and PublicKeyCredentialResponseOutput values.
+// You can construct a concrete instance of `PublicKeyCredentialResponseInput` via:
+//
+//          PublicKeyCredentialResponseArgs{...}
+type PublicKeyCredentialResponseInput interface {
+	pulumi.Input
+
+	ToPublicKeyCredentialResponseOutput() PublicKeyCredentialResponseOutput
+	ToPublicKeyCredentialResponseOutputWithContext(context.Context) PublicKeyCredentialResponseOutput
+}
+
+// A public key format and data.
+type PublicKeyCredentialResponseArgs struct {
+	// The format of the key.
+	Format pulumi.StringInput `pulumi:"format"`
+	// The key data.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (PublicKeyCredentialResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicKeyCredentialResponse)(nil)).Elem()
+}
+
+func (i PublicKeyCredentialResponseArgs) ToPublicKeyCredentialResponseOutput() PublicKeyCredentialResponseOutput {
+	return i.ToPublicKeyCredentialResponseOutputWithContext(context.Background())
+}
+
+func (i PublicKeyCredentialResponseArgs) ToPublicKeyCredentialResponseOutputWithContext(ctx context.Context) PublicKeyCredentialResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicKeyCredentialResponseOutput)
+}
+
+// A public key format and data.
+type PublicKeyCredentialResponseOutput struct{ *pulumi.OutputState }
+
+func (PublicKeyCredentialResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicKeyCredentialResponse)(nil)).Elem()
+}
+
+func (o PublicKeyCredentialResponseOutput) ToPublicKeyCredentialResponseOutput() PublicKeyCredentialResponseOutput {
+	return o
+}
+
+func (o PublicKeyCredentialResponseOutput) ToPublicKeyCredentialResponseOutputWithContext(ctx context.Context) PublicKeyCredentialResponseOutput {
+	return o
+}
+
+// The format of the key.
+func (o PublicKeyCredentialResponseOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicKeyCredentialResponse) string { return v.Format }).(pulumi.StringOutput)
+}
+
+// The key data.
+func (o PublicKeyCredentialResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicKeyCredentialResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
 // A server-stored registry credential used to validate device credentials.
 type RegistryCredential struct {
 	// A public key certificate used to verify the device credentials.
@@ -1935,6 +3293,106 @@ func (o RegistryCredentialArrayOutput) Index(i pulumi.IntInput) RegistryCredenti
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistryCredential {
 		return vs[0].([]RegistryCredential)[vs[1].(int)]
 	}).(RegistryCredentialOutput)
+}
+
+// A server-stored registry credential used to validate device credentials.
+type RegistryCredentialResponse struct {
+	// A public key certificate used to verify the device credentials.
+	PublicKeyCertificate PublicKeyCertificateResponse `pulumi:"publicKeyCertificate"`
+}
+
+// RegistryCredentialResponseInput is an input type that accepts RegistryCredentialResponseArgs and RegistryCredentialResponseOutput values.
+// You can construct a concrete instance of `RegistryCredentialResponseInput` via:
+//
+//          RegistryCredentialResponseArgs{...}
+type RegistryCredentialResponseInput interface {
+	pulumi.Input
+
+	ToRegistryCredentialResponseOutput() RegistryCredentialResponseOutput
+	ToRegistryCredentialResponseOutputWithContext(context.Context) RegistryCredentialResponseOutput
+}
+
+// A server-stored registry credential used to validate device credentials.
+type RegistryCredentialResponseArgs struct {
+	// A public key certificate used to verify the device credentials.
+	PublicKeyCertificate PublicKeyCertificateResponseInput `pulumi:"publicKeyCertificate"`
+}
+
+func (RegistryCredentialResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryCredentialResponse)(nil)).Elem()
+}
+
+func (i RegistryCredentialResponseArgs) ToRegistryCredentialResponseOutput() RegistryCredentialResponseOutput {
+	return i.ToRegistryCredentialResponseOutputWithContext(context.Background())
+}
+
+func (i RegistryCredentialResponseArgs) ToRegistryCredentialResponseOutputWithContext(ctx context.Context) RegistryCredentialResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryCredentialResponseOutput)
+}
+
+// RegistryCredentialResponseArrayInput is an input type that accepts RegistryCredentialResponseArray and RegistryCredentialResponseArrayOutput values.
+// You can construct a concrete instance of `RegistryCredentialResponseArrayInput` via:
+//
+//          RegistryCredentialResponseArray{ RegistryCredentialResponseArgs{...} }
+type RegistryCredentialResponseArrayInput interface {
+	pulumi.Input
+
+	ToRegistryCredentialResponseArrayOutput() RegistryCredentialResponseArrayOutput
+	ToRegistryCredentialResponseArrayOutputWithContext(context.Context) RegistryCredentialResponseArrayOutput
+}
+
+type RegistryCredentialResponseArray []RegistryCredentialResponseInput
+
+func (RegistryCredentialResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegistryCredentialResponse)(nil)).Elem()
+}
+
+func (i RegistryCredentialResponseArray) ToRegistryCredentialResponseArrayOutput() RegistryCredentialResponseArrayOutput {
+	return i.ToRegistryCredentialResponseArrayOutputWithContext(context.Background())
+}
+
+func (i RegistryCredentialResponseArray) ToRegistryCredentialResponseArrayOutputWithContext(ctx context.Context) RegistryCredentialResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegistryCredentialResponseArrayOutput)
+}
+
+// A server-stored registry credential used to validate device credentials.
+type RegistryCredentialResponseOutput struct{ *pulumi.OutputState }
+
+func (RegistryCredentialResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryCredentialResponse)(nil)).Elem()
+}
+
+func (o RegistryCredentialResponseOutput) ToRegistryCredentialResponseOutput() RegistryCredentialResponseOutput {
+	return o
+}
+
+func (o RegistryCredentialResponseOutput) ToRegistryCredentialResponseOutputWithContext(ctx context.Context) RegistryCredentialResponseOutput {
+	return o
+}
+
+// A public key certificate used to verify the device credentials.
+func (o RegistryCredentialResponseOutput) PublicKeyCertificate() PublicKeyCertificateResponseOutput {
+	return o.ApplyT(func(v RegistryCredentialResponse) PublicKeyCertificateResponse { return v.PublicKeyCertificate }).(PublicKeyCertificateResponseOutput)
+}
+
+type RegistryCredentialResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RegistryCredentialResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegistryCredentialResponse)(nil)).Elem()
+}
+
+func (o RegistryCredentialResponseArrayOutput) ToRegistryCredentialResponseArrayOutput() RegistryCredentialResponseArrayOutput {
+	return o
+}
+
+func (o RegistryCredentialResponseArrayOutput) ToRegistryCredentialResponseArrayOutputWithContext(ctx context.Context) RegistryCredentialResponseArrayOutput {
+	return o
+}
+
+func (o RegistryCredentialResponseArrayOutput) Index(i pulumi.IntInput) RegistryCredentialResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistryCredentialResponse {
+		return vs[0].([]RegistryCredentialResponse)[vs[1].(int)]
+	}).(RegistryCredentialResponseOutput)
 }
 
 // The configuration for notification of new states received from the device.
@@ -2068,6 +3526,140 @@ func (o StateNotificationConfigPtrOutput) PubsubTopicName() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.PubsubTopicName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration for notification of new states received from the device.
+type StateNotificationConfigResponse struct {
+	// A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
+	PubsubTopicName string `pulumi:"pubsubTopicName"`
+}
+
+// StateNotificationConfigResponseInput is an input type that accepts StateNotificationConfigResponseArgs and StateNotificationConfigResponseOutput values.
+// You can construct a concrete instance of `StateNotificationConfigResponseInput` via:
+//
+//          StateNotificationConfigResponseArgs{...}
+type StateNotificationConfigResponseInput interface {
+	pulumi.Input
+
+	ToStateNotificationConfigResponseOutput() StateNotificationConfigResponseOutput
+	ToStateNotificationConfigResponseOutputWithContext(context.Context) StateNotificationConfigResponseOutput
+}
+
+// The configuration for notification of new states received from the device.
+type StateNotificationConfigResponseArgs struct {
+	// A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
+	PubsubTopicName pulumi.StringInput `pulumi:"pubsubTopicName"`
+}
+
+func (StateNotificationConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StateNotificationConfigResponse)(nil)).Elem()
+}
+
+func (i StateNotificationConfigResponseArgs) ToStateNotificationConfigResponseOutput() StateNotificationConfigResponseOutput {
+	return i.ToStateNotificationConfigResponseOutputWithContext(context.Background())
+}
+
+func (i StateNotificationConfigResponseArgs) ToStateNotificationConfigResponseOutputWithContext(ctx context.Context) StateNotificationConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StateNotificationConfigResponseOutput)
+}
+
+func (i StateNotificationConfigResponseArgs) ToStateNotificationConfigResponsePtrOutput() StateNotificationConfigResponsePtrOutput {
+	return i.ToStateNotificationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i StateNotificationConfigResponseArgs) ToStateNotificationConfigResponsePtrOutputWithContext(ctx context.Context) StateNotificationConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StateNotificationConfigResponseOutput).ToStateNotificationConfigResponsePtrOutputWithContext(ctx)
+}
+
+// StateNotificationConfigResponsePtrInput is an input type that accepts StateNotificationConfigResponseArgs, StateNotificationConfigResponsePtr and StateNotificationConfigResponsePtrOutput values.
+// You can construct a concrete instance of `StateNotificationConfigResponsePtrInput` via:
+//
+//          StateNotificationConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type StateNotificationConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToStateNotificationConfigResponsePtrOutput() StateNotificationConfigResponsePtrOutput
+	ToStateNotificationConfigResponsePtrOutputWithContext(context.Context) StateNotificationConfigResponsePtrOutput
+}
+
+type stateNotificationConfigResponsePtrType StateNotificationConfigResponseArgs
+
+func StateNotificationConfigResponsePtr(v *StateNotificationConfigResponseArgs) StateNotificationConfigResponsePtrInput {
+	return (*stateNotificationConfigResponsePtrType)(v)
+}
+
+func (*stateNotificationConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StateNotificationConfigResponse)(nil)).Elem()
+}
+
+func (i *stateNotificationConfigResponsePtrType) ToStateNotificationConfigResponsePtrOutput() StateNotificationConfigResponsePtrOutput {
+	return i.ToStateNotificationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *stateNotificationConfigResponsePtrType) ToStateNotificationConfigResponsePtrOutputWithContext(ctx context.Context) StateNotificationConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StateNotificationConfigResponsePtrOutput)
+}
+
+// The configuration for notification of new states received from the device.
+type StateNotificationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (StateNotificationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StateNotificationConfigResponse)(nil)).Elem()
+}
+
+func (o StateNotificationConfigResponseOutput) ToStateNotificationConfigResponseOutput() StateNotificationConfigResponseOutput {
+	return o
+}
+
+func (o StateNotificationConfigResponseOutput) ToStateNotificationConfigResponseOutputWithContext(ctx context.Context) StateNotificationConfigResponseOutput {
+	return o
+}
+
+func (o StateNotificationConfigResponseOutput) ToStateNotificationConfigResponsePtrOutput() StateNotificationConfigResponsePtrOutput {
+	return o.ToStateNotificationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o StateNotificationConfigResponseOutput) ToStateNotificationConfigResponsePtrOutputWithContext(ctx context.Context) StateNotificationConfigResponsePtrOutput {
+	return o.ApplyT(func(v StateNotificationConfigResponse) *StateNotificationConfigResponse {
+		return &v
+	}).(StateNotificationConfigResponsePtrOutput)
+}
+
+// A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
+func (o StateNotificationConfigResponseOutput) PubsubTopicName() pulumi.StringOutput {
+	return o.ApplyT(func(v StateNotificationConfigResponse) string { return v.PubsubTopicName }).(pulumi.StringOutput)
+}
+
+type StateNotificationConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StateNotificationConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StateNotificationConfigResponse)(nil)).Elem()
+}
+
+func (o StateNotificationConfigResponsePtrOutput) ToStateNotificationConfigResponsePtrOutput() StateNotificationConfigResponsePtrOutput {
+	return o
+}
+
+func (o StateNotificationConfigResponsePtrOutput) ToStateNotificationConfigResponsePtrOutputWithContext(ctx context.Context) StateNotificationConfigResponsePtrOutput {
+	return o
+}
+
+func (o StateNotificationConfigResponsePtrOutput) Elem() StateNotificationConfigResponseOutput {
+	return o.ApplyT(func(v *StateNotificationConfigResponse) StateNotificationConfigResponse { return *v }).(StateNotificationConfigResponseOutput)
+}
+
+// A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
+func (o StateNotificationConfigResponsePtrOutput) PubsubTopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StateNotificationConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PubsubTopicName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2240,6 +3832,178 @@ func (o StatusPtrOutput) Message() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponse struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code int `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message string `pulumi:"message"`
+}
+
+// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
+// You can construct a concrete instance of `StatusResponseInput` via:
+//
+//          StatusResponseArgs{...}
+type StatusResponseInput interface {
+	pulumi.Input
+
+	ToStatusResponseOutput() StatusResponseOutput
+	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponseArgs struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntInput `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (StatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
+	return i.ToStatusResponseOutputWithContext(context.Background())
+}
+
+func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
+}
+
+func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
+}
+
+// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
+// You can construct a concrete instance of `StatusResponsePtrInput` via:
+//
+//          StatusResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type StatusResponsePtrInput interface {
+	pulumi.Input
+
+	ToStatusResponsePtrOutput() StatusResponsePtrOutput
+	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
+}
+
+type statusResponsePtrType StatusResponseArgs
+
+func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
+	return (*statusResponsePtrType)(v)
+}
+
+func (*statusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
+}
+
+func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+		return &v
+	}).(StatusResponsePtrOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type StatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o
+}
+
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o
+}
+
+func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
+	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *StatusResponse) []map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Message
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2472,37 +4236,163 @@ func (o X509CertificateDetailsPtrOutput) Subject() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Details of an X.509 certificate. For informational purposes only.
+type X509CertificateDetailsResponse struct {
+	// The time the certificate becomes invalid.
+	ExpiryTime string `pulumi:"expiryTime"`
+	// The entity that signed the certificate.
+	Issuer string `pulumi:"issuer"`
+	// The type of public key in the certificate.
+	PublicKeyType string `pulumi:"publicKeyType"`
+	// The algorithm used to sign the certificate.
+	SignatureAlgorithm string `pulumi:"signatureAlgorithm"`
+	// The time the certificate becomes valid.
+	StartTime string `pulumi:"startTime"`
+	// The entity the certificate and public key belong to.
+	Subject string `pulumi:"subject"`
+}
+
+// X509CertificateDetailsResponseInput is an input type that accepts X509CertificateDetailsResponseArgs and X509CertificateDetailsResponseOutput values.
+// You can construct a concrete instance of `X509CertificateDetailsResponseInput` via:
+//
+//          X509CertificateDetailsResponseArgs{...}
+type X509CertificateDetailsResponseInput interface {
+	pulumi.Input
+
+	ToX509CertificateDetailsResponseOutput() X509CertificateDetailsResponseOutput
+	ToX509CertificateDetailsResponseOutputWithContext(context.Context) X509CertificateDetailsResponseOutput
+}
+
+// Details of an X.509 certificate. For informational purposes only.
+type X509CertificateDetailsResponseArgs struct {
+	// The time the certificate becomes invalid.
+	ExpiryTime pulumi.StringInput `pulumi:"expiryTime"`
+	// The entity that signed the certificate.
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+	// The type of public key in the certificate.
+	PublicKeyType pulumi.StringInput `pulumi:"publicKeyType"`
+	// The algorithm used to sign the certificate.
+	SignatureAlgorithm pulumi.StringInput `pulumi:"signatureAlgorithm"`
+	// The time the certificate becomes valid.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// The entity the certificate and public key belong to.
+	Subject pulumi.StringInput `pulumi:"subject"`
+}
+
+func (X509CertificateDetailsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*X509CertificateDetailsResponse)(nil)).Elem()
+}
+
+func (i X509CertificateDetailsResponseArgs) ToX509CertificateDetailsResponseOutput() X509CertificateDetailsResponseOutput {
+	return i.ToX509CertificateDetailsResponseOutputWithContext(context.Background())
+}
+
+func (i X509CertificateDetailsResponseArgs) ToX509CertificateDetailsResponseOutputWithContext(ctx context.Context) X509CertificateDetailsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(X509CertificateDetailsResponseOutput)
+}
+
+// Details of an X.509 certificate. For informational purposes only.
+type X509CertificateDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (X509CertificateDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*X509CertificateDetailsResponse)(nil)).Elem()
+}
+
+func (o X509CertificateDetailsResponseOutput) ToX509CertificateDetailsResponseOutput() X509CertificateDetailsResponseOutput {
+	return o
+}
+
+func (o X509CertificateDetailsResponseOutput) ToX509CertificateDetailsResponseOutputWithContext(ctx context.Context) X509CertificateDetailsResponseOutput {
+	return o
+}
+
+// The time the certificate becomes invalid.
+func (o X509CertificateDetailsResponseOutput) ExpiryTime() pulumi.StringOutput {
+	return o.ApplyT(func(v X509CertificateDetailsResponse) string { return v.ExpiryTime }).(pulumi.StringOutput)
+}
+
+// The entity that signed the certificate.
+func (o X509CertificateDetailsResponseOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v X509CertificateDetailsResponse) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// The type of public key in the certificate.
+func (o X509CertificateDetailsResponseOutput) PublicKeyType() pulumi.StringOutput {
+	return o.ApplyT(func(v X509CertificateDetailsResponse) string { return v.PublicKeyType }).(pulumi.StringOutput)
+}
+
+// The algorithm used to sign the certificate.
+func (o X509CertificateDetailsResponseOutput) SignatureAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v X509CertificateDetailsResponse) string { return v.SignatureAlgorithm }).(pulumi.StringOutput)
+}
+
+// The time the certificate becomes valid.
+func (o X509CertificateDetailsResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v X509CertificateDetailsResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The entity the certificate and public key belong to.
+func (o X509CertificateDetailsResponseOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v X509CertificateDetailsResponse) string { return v.Subject }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingResponseOutput{})
+	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(DeviceConfigOutput{})
 	pulumi.RegisterOutputType(DeviceConfigPtrOutput{})
+	pulumi.RegisterOutputType(DeviceConfigResponseOutput{})
+	pulumi.RegisterOutputType(DeviceConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeviceCredentialOutput{})
 	pulumi.RegisterOutputType(DeviceCredentialArrayOutput{})
+	pulumi.RegisterOutputType(DeviceCredentialResponseOutput{})
+	pulumi.RegisterOutputType(DeviceCredentialResponseArrayOutput{})
 	pulumi.RegisterOutputType(DeviceStateOutput{})
 	pulumi.RegisterOutputType(DeviceStatePtrOutput{})
+	pulumi.RegisterOutputType(DeviceStateResponseOutput{})
+	pulumi.RegisterOutputType(DeviceStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(EventNotificationConfigOutput{})
 	pulumi.RegisterOutputType(EventNotificationConfigArrayOutput{})
+	pulumi.RegisterOutputType(EventNotificationConfigResponseOutput{})
+	pulumi.RegisterOutputType(EventNotificationConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(GatewayConfigOutput{})
 	pulumi.RegisterOutputType(GatewayConfigPtrOutput{})
+	pulumi.RegisterOutputType(GatewayConfigResponseOutput{})
+	pulumi.RegisterOutputType(GatewayConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(HttpConfigOutput{})
 	pulumi.RegisterOutputType(HttpConfigPtrOutput{})
+	pulumi.RegisterOutputType(HttpConfigResponseOutput{})
+	pulumi.RegisterOutputType(HttpConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(MqttConfigOutput{})
 	pulumi.RegisterOutputType(MqttConfigPtrOutput{})
+	pulumi.RegisterOutputType(MqttConfigResponseOutput{})
+	pulumi.RegisterOutputType(MqttConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(PolicyOutput{})
 	pulumi.RegisterOutputType(PolicyPtrOutput{})
 	pulumi.RegisterOutputType(PublicKeyCertificateOutput{})
 	pulumi.RegisterOutputType(PublicKeyCertificatePtrOutput{})
+	pulumi.RegisterOutputType(PublicKeyCertificateResponseOutput{})
 	pulumi.RegisterOutputType(PublicKeyCredentialOutput{})
 	pulumi.RegisterOutputType(PublicKeyCredentialPtrOutput{})
+	pulumi.RegisterOutputType(PublicKeyCredentialResponseOutput{})
 	pulumi.RegisterOutputType(RegistryCredentialOutput{})
 	pulumi.RegisterOutputType(RegistryCredentialArrayOutput{})
+	pulumi.RegisterOutputType(RegistryCredentialResponseOutput{})
+	pulumi.RegisterOutputType(RegistryCredentialResponseArrayOutput{})
 	pulumi.RegisterOutputType(StateNotificationConfigOutput{})
 	pulumi.RegisterOutputType(StateNotificationConfigPtrOutput{})
+	pulumi.RegisterOutputType(StateNotificationConfigResponseOutput{})
+	pulumi.RegisterOutputType(StateNotificationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(StatusOutput{})
 	pulumi.RegisterOutputType(StatusPtrOutput{})
+	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(X509CertificateDetailsOutput{})
 	pulumi.RegisterOutputType(X509CertificateDetailsPtrOutput{})
+	pulumi.RegisterOutputType(X509CertificateDetailsResponseOutput{})
 }

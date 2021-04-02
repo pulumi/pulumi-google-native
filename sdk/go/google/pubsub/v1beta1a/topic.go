@@ -14,6 +14,9 @@ import (
 // Creates the given topic with the given name.
 type Topic struct {
 	pulumi.CustomResourceState
+
+	// Name of the topic.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewTopic registers a new resource with the given unique name, arguments, and options.
@@ -48,9 +51,13 @@ func GetTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Topic resources.
 type topicState struct {
+	// Name of the topic.
+	Name *string `pulumi:"name"`
 }
 
 type TopicState struct {
+	// Name of the topic.
+	Name pulumi.StringPtrInput
 }
 
 func (TopicState) ElementType() reflect.Type {

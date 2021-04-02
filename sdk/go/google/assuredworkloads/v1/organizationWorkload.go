@@ -14,6 +14,27 @@ import (
 // Creates Assured Workload.
 type OrganizationWorkload struct {
 	pulumi.CustomResourceState
+
+	// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+	BillingAccount pulumi.StringOutput `pulumi:"billingAccount"`
+	// Required. Immutable. Compliance Regime associated with this workload.
+	ComplianceRegime pulumi.StringOutput `pulumi:"complianceRegime"`
+	// Immutable. The Workload creation timestamp.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+	KmsSettings GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput `pulumi:"kmsSettings"`
+	// Optional. Labels applied to the workload.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
+	ProvisionedResourcesParent pulumi.StringOutput `pulumi:"provisionedResourcesParent"`
+	// The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
+	Resources GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput `pulumi:"resources"`
 }
 
 // NewOrganizationWorkload registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +75,49 @@ func GetOrganizationWorkload(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationWorkload resources.
 type organizationWorkloadState struct {
+	// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+	BillingAccount *string `pulumi:"billingAccount"`
+	// Required. Immutable. Compliance Regime associated with this workload.
+	ComplianceRegime *string `pulumi:"complianceRegime"`
+	// Immutable. The Workload creation timestamp.
+	CreateTime *string `pulumi:"createTime"`
+	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+	DisplayName *string `pulumi:"displayName"`
+	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
+	Etag *string `pulumi:"etag"`
+	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+	KmsSettings *GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse `pulumi:"kmsSettings"`
+	// Optional. Labels applied to the workload.
+	Labels map[string]string `pulumi:"labels"`
+	// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+	Name *string `pulumi:"name"`
+	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
+	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
+	// The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
+	Resources []GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse `pulumi:"resources"`
 }
 
 type OrganizationWorkloadState struct {
+	// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+	BillingAccount pulumi.StringPtrInput
+	// Required. Immutable. Compliance Regime associated with this workload.
+	ComplianceRegime pulumi.StringPtrInput
+	// Immutable. The Workload creation timestamp.
+	CreateTime pulumi.StringPtrInput
+	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+	DisplayName pulumi.StringPtrInput
+	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
+	Etag pulumi.StringPtrInput
+	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+	KmsSettings GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponsePtrInput
+	// Optional. Labels applied to the workload.
+	Labels pulumi.StringMapInput
+	// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+	Name pulumi.StringPtrInput
+	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
+	ProvisionedResourcesParent pulumi.StringPtrInput
+	// The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
+	Resources GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayInput
 }
 
 func (OrganizationWorkloadState) ElementType() reflect.Type {
@@ -68,8 +129,6 @@ type organizationWorkloadArgs struct {
 	BillingAccount *string `pulumi:"billingAccount"`
 	// Required. Immutable. Compliance Regime associated with this workload.
 	ComplianceRegime *string `pulumi:"complianceRegime"`
-	// Output only. Immutable. The Workload creation timestamp.
-	CreateTime *string `pulumi:"createTime"`
 	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
@@ -84,9 +143,7 @@ type organizationWorkloadArgs struct {
 	OrganizationsId string  `pulumi:"organizationsId"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
-	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
-	Resources   []GoogleCloudAssuredworkloadsV1WorkloadResourceInfo `pulumi:"resources"`
-	WorkloadsId string                                              `pulumi:"workloadsId"`
+	WorkloadsId                string  `pulumi:"workloadsId"`
 }
 
 // The set of arguments for constructing a OrganizationWorkload resource.
@@ -95,8 +152,6 @@ type OrganizationWorkloadArgs struct {
 	BillingAccount pulumi.StringPtrInput
 	// Required. Immutable. Compliance Regime associated with this workload.
 	ComplianceRegime pulumi.StringPtrInput
-	// Output only. Immutable. The Workload creation timestamp.
-	CreateTime pulumi.StringPtrInput
 	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName pulumi.StringPtrInput
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
@@ -111,9 +166,7 @@ type OrganizationWorkloadArgs struct {
 	OrganizationsId pulumi.StringInput
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
 	ProvisionedResourcesParent pulumi.StringPtrInput
-	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
-	Resources   GoogleCloudAssuredworkloadsV1WorkloadResourceInfoArrayInput
-	WorkloadsId pulumi.StringInput
+	WorkloadsId                pulumi.StringInput
 }
 
 func (OrganizationWorkloadArgs) ElementType() reflect.Type {

@@ -70,12 +70,6 @@ namespace Pulumi.GoogleCloud.Datamigration.V1beta1.Inputs
         public Input<string>? RootPassword { get; set; }
 
         /// <summary>
-        /// Output only. Indicates If this connection profile root password is stored.
-        /// </summary>
-        [Input("rootPasswordSet")]
-        public Input<bool>? RootPasswordSet { get; set; }
-
-        /// <summary>
         /// The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
         /// </summary>
         [Input("sourceId")]

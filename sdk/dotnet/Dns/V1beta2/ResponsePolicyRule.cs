@@ -16,6 +16,34 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2
     public partial class ResponsePolicyRule : Pulumi.CustomResource
     {
         /// <summary>
+        /// Answer this query with a behavior rather than DNS data.
+        /// </summary>
+        [Output("behavior")]
+        public Output<string> Behavior { get; private set; } = null!;
+
+        /// <summary>
+        /// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
+        /// </summary>
+        [Output("dnsName")]
+        public Output<string> DnsName { get; private set; } = null!;
+
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
+        /// </summary>
+        [Output("localData")]
+        public Output<Outputs.ResponsePolicyRuleLocalDataResponse> LocalData { get; private set; } = null!;
+
+        /// <summary>
+        /// An identifier for this rule. Must be unique with the ResponsePolicy.
+        /// </summary>
+        [Output("ruleName")]
+        public Output<string> RuleName { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ResponsePolicyRule resource with the given unique name, arguments, and options.
         /// </summary>
         ///

@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Vpcaccess.V1
     public partial class Connector : Pulumi.CustomResource
     {
         /// <summary>
+        /// List of projects using the connector.
+        /// </summary>
+        [Output("connectedProjects")]
+        public Output<ImmutableArray<string>> ConnectedProjects { get; private set; } = null!;
+
+        /// <summary>
+        /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
+        /// </summary>
+        [Output("ipCidrRange")]
+        public Output<string> IpCidrRange { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+        /// </summary>
+        [Output("maxThroughput")]
+        public Output<int> MaxThroughput { get; private set; } = null!;
+
+        /// <summary>
+        /// Minimum throughput of the connector in Mbps. Default and min is 200.
+        /// </summary>
+        [Output("minThroughput")]
+        public Output<int> MinThroughput { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name in the format `projects/*/locations/*/connectors/*`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of a VPC network.
+        /// </summary>
+        [Output("network")]
+        public Output<string> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the VPC access connector.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The subnet in which to house the VPC Access Connector.
+        /// </summary>
+        [Output("subnet")]
+        public Output<Outputs.SubnetResponse> Subnet { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Connector resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,18 +108,6 @@ namespace Pulumi.GoogleCloud.Vpcaccess.V1
 
     public sealed class ConnectorArgs : Pulumi.ResourceArgs
     {
-        [Input("connectedProjects")]
-        private InputList<string>? _connectedProjects;
-
-        /// <summary>
-        /// Output only. List of projects using the connector.
-        /// </summary>
-        public InputList<string> ConnectedProjects
-        {
-            get => _connectedProjects ?? (_connectedProjects = new InputList<string>());
-            set => _connectedProjects = value;
-        }
-
         [Input("connectorsId", required: true)]
         public Input<string> ConnectorsId { get; set; } = null!;
 
@@ -109,12 +146,6 @@ namespace Pulumi.GoogleCloud.Vpcaccess.V1
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. State of the VPC access connector.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         /// <summary>
         /// The subnet in which to house the VPC Access Connector.

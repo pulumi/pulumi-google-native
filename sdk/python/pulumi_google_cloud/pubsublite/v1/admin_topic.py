@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['AdminTopic']
@@ -85,7 +86,34 @@ class AdminTopic(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["name"] = None
+        __props__["partition_config"] = None
+        __props__["retention_config"] = None
         return AdminTopic(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="partitionConfig")
+    def partition_config(self) -> pulumi.Output['outputs.PartitionConfigResponse']:
+        """
+        The settings for this topic's partitions.
+        """
+        return pulumi.get(self, "partition_config")
+
+    @property
+    @pulumi.getter(name="retentionConfig")
+    def retention_config(self) -> pulumi.Output['outputs.RetentionConfigResponse']:
+        """
+        The settings for this topic's message retention.
+        """
+        return pulumi.get(self, "retention_config")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

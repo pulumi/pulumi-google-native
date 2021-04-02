@@ -163,7 +163,162 @@ func (o SubnetPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The subnet in which to house the connector
+type SubnetResponse struct {
+	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}
+	Name string `pulumi:"name"`
+	// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
+	ProjectId string `pulumi:"projectId"`
+}
+
+// SubnetResponseInput is an input type that accepts SubnetResponseArgs and SubnetResponseOutput values.
+// You can construct a concrete instance of `SubnetResponseInput` via:
+//
+//          SubnetResponseArgs{...}
+type SubnetResponseInput interface {
+	pulumi.Input
+
+	ToSubnetResponseOutput() SubnetResponseOutput
+	ToSubnetResponseOutputWithContext(context.Context) SubnetResponseOutput
+}
+
+// The subnet in which to house the connector
+type SubnetResponseArgs struct {
+	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}
+	Name pulumi.StringInput `pulumi:"name"`
+	// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (SubnetResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetResponse)(nil)).Elem()
+}
+
+func (i SubnetResponseArgs) ToSubnetResponseOutput() SubnetResponseOutput {
+	return i.ToSubnetResponseOutputWithContext(context.Background())
+}
+
+func (i SubnetResponseArgs) ToSubnetResponseOutputWithContext(ctx context.Context) SubnetResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetResponseOutput)
+}
+
+func (i SubnetResponseArgs) ToSubnetResponsePtrOutput() SubnetResponsePtrOutput {
+	return i.ToSubnetResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SubnetResponseArgs) ToSubnetResponsePtrOutputWithContext(ctx context.Context) SubnetResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetResponseOutput).ToSubnetResponsePtrOutputWithContext(ctx)
+}
+
+// SubnetResponsePtrInput is an input type that accepts SubnetResponseArgs, SubnetResponsePtr and SubnetResponsePtrOutput values.
+// You can construct a concrete instance of `SubnetResponsePtrInput` via:
+//
+//          SubnetResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SubnetResponsePtrInput interface {
+	pulumi.Input
+
+	ToSubnetResponsePtrOutput() SubnetResponsePtrOutput
+	ToSubnetResponsePtrOutputWithContext(context.Context) SubnetResponsePtrOutput
+}
+
+type subnetResponsePtrType SubnetResponseArgs
+
+func SubnetResponsePtr(v *SubnetResponseArgs) SubnetResponsePtrInput {
+	return (*subnetResponsePtrType)(v)
+}
+
+func (*subnetResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetResponse)(nil)).Elem()
+}
+
+func (i *subnetResponsePtrType) ToSubnetResponsePtrOutput() SubnetResponsePtrOutput {
+	return i.ToSubnetResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *subnetResponsePtrType) ToSubnetResponsePtrOutputWithContext(ctx context.Context) SubnetResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetResponsePtrOutput)
+}
+
+// The subnet in which to house the connector
+type SubnetResponseOutput struct{ *pulumi.OutputState }
+
+func (SubnetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetResponse)(nil)).Elem()
+}
+
+func (o SubnetResponseOutput) ToSubnetResponseOutput() SubnetResponseOutput {
+	return o
+}
+
+func (o SubnetResponseOutput) ToSubnetResponseOutputWithContext(ctx context.Context) SubnetResponseOutput {
+	return o
+}
+
+func (o SubnetResponseOutput) ToSubnetResponsePtrOutput() SubnetResponsePtrOutput {
+	return o.ToSubnetResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SubnetResponseOutput) ToSubnetResponsePtrOutputWithContext(ctx context.Context) SubnetResponsePtrOutput {
+	return o.ApplyT(func(v SubnetResponse) *SubnetResponse {
+		return &v
+	}).(SubnetResponsePtrOutput)
+}
+
+// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}
+func (o SubnetResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
+func (o SubnetResponseOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type SubnetResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SubnetResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetResponse)(nil)).Elem()
+}
+
+func (o SubnetResponsePtrOutput) ToSubnetResponsePtrOutput() SubnetResponsePtrOutput {
+	return o
+}
+
+func (o SubnetResponsePtrOutput) ToSubnetResponsePtrOutputWithContext(ctx context.Context) SubnetResponsePtrOutput {
+	return o
+}
+
+func (o SubnetResponsePtrOutput) Elem() SubnetResponseOutput {
+	return o.ApplyT(func(v *SubnetResponse) SubnetResponse { return *v }).(SubnetResponseOutput)
+}
+
+// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}
+func (o SubnetResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
+func (o SubnetResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SubnetOutput{})
 	pulumi.RegisterOutputType(SubnetPtrOutput{})
+	pulumi.RegisterOutputType(SubnetResponseOutput{})
+	pulumi.RegisterOutputType(SubnetResponsePtrOutput{})
 }

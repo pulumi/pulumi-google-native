@@ -35,6 +35,63 @@ export class ManagedZone extends pulumi.CustomResource {
         return obj['__pulumiType'] === ManagedZone.__pulumiType;
     }
 
+    /**
+     * The time that this resource was created on the server. This is in RFC3339 text format. Output only.
+     */
+    public readonly creationTime!: pulumi.Output<string>;
+    /**
+     * A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * The DNS name of this managed zone, for instance "example.com.".
+     */
+    public readonly dnsName!: pulumi.Output<string>;
+    /**
+     * DNSSEC configuration.
+     */
+    public readonly dnssecConfig!: pulumi.Output<outputs.dns.v1beta2.ManagedZoneDnsSecConfigResponse>;
+    /**
+     * The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
+     */
+    public readonly forwardingConfig!: pulumi.Output<outputs.dns.v1beta2.ManagedZoneForwardingConfigResponse>;
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * User labels.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
+     */
+    public readonly nameServerSet!: pulumi.Output<string>;
+    /**
+     * Delegate your managed_zone to these virtual name servers; defined by the server (output only)
+     */
+    public readonly nameServers!: pulumi.Output<string[]>;
+    /**
+     * The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
+     */
+    public readonly peeringConfig!: pulumi.Output<outputs.dns.v1beta2.ManagedZonePeeringConfigResponse>;
+    /**
+     * For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+     */
+    public readonly privateVisibilityConfig!: pulumi.Output<outputs.dns.v1beta2.ManagedZonePrivateVisibilityConfigResponse>;
+    /**
+     * The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
+     */
+    public readonly reverseLookupConfig!: pulumi.Output<outputs.dns.v1beta2.ManagedZoneReverseLookupConfigResponse>;
+    /**
+     * This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
+     */
+    public readonly serviceDirectoryConfig!: pulumi.Output<outputs.dns.v1beta2.ManagedZoneServiceDirectoryConfigResponse>;
+    /**
+     * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+     */
+    public readonly visibility!: pulumi.Output<string>;
 
     /**
      * Create a ManagedZone resource with the given unique name, arguments, and options.
@@ -72,6 +129,21 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["serviceDirectoryConfig"] = args ? args.serviceDirectoryConfig : undefined;
             inputs["visibility"] = args ? args.visibility : undefined;
         } else {
+            inputs["creationTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["dnsName"] = undefined /*out*/;
+            inputs["dnssecConfig"] = undefined /*out*/;
+            inputs["forwardingConfig"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["nameServerSet"] = undefined /*out*/;
+            inputs["nameServers"] = undefined /*out*/;
+            inputs["peeringConfig"] = undefined /*out*/;
+            inputs["privateVisibilityConfig"] = undefined /*out*/;
+            inputs["reverseLookupConfig"] = undefined /*out*/;
+            inputs["serviceDirectoryConfig"] = undefined /*out*/;
+            inputs["visibility"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

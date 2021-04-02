@@ -16,6 +16,57 @@ namespace Pulumi.GoogleCloud.Compute.V1
     public partial class InstanceTemplate : Pulumi.CustomResource
     {
         /// <summary>
+        /// [Output Only] The creation timestamp for this instance template in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The resource type, which is always compute#instanceTemplate for instance templates.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The instance properties for this instance template.
+        /// </summary>
+        [Output("properties")]
+        public Output<Outputs.InstancePropertiesResponse> Properties { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The URL for this instance template. The server defines this URL.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
+        /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
+        /// - projects/project/zones/zone/instances/instance
+        /// </summary>
+        [Output("sourceInstance")]
+        public Output<string> SourceInstance { get; private set; } = null!;
+
+        /// <summary>
+        /// The source instance params to use to create this instance template.
+        /// </summary>
+        [Output("sourceInstanceParams")]
+        public Output<Outputs.SourceInstanceParamsResponse> SourceInstanceParams { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a InstanceTemplate resource with the given unique name, arguments, and options.
         /// </summary>
         ///

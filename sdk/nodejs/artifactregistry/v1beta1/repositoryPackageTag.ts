@@ -34,6 +34,14 @@ export class RepositoryPackageTag extends pulumi.CustomResource {
         return obj['__pulumiType'] === RepositoryPackageTag.__pulumiType;
     }
 
+    /**
+     * The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+     */
+    public readonly version!: pulumi.Output<string>;
 
     /**
      * Create a RepositoryPackageTag resource with the given unique name, arguments, and options.
@@ -69,6 +77,8 @@ export class RepositoryPackageTag extends pulumi.CustomResource {
             inputs["tagsId"] = args ? args.tagsId : undefined;
             inputs["version"] = args ? args.version : undefined;
         } else {
+            inputs["name"] = undefined /*out*/;
+            inputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

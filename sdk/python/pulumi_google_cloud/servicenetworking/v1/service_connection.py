@@ -16,9 +16,7 @@ class ServiceConnection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 peering: Optional[pulumi.Input[str]] = None,
                  reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 service: Optional[pulumi.Input[str]] = None,
                  services_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -29,9 +27,7 @@ class ServiceConnection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] network: The name of service consumer's VPC network that's connected with service producer network, in the following format: `projects/{project}/global/networks/{network}`. `{project}` is a project number, such as in `12345` that includes the VPC service consumer's VPC network. `{network}` is the name of the service consumer's VPC network.
-        :param pulumi.Input[str] peering: Output only. The name of the VPC Network Peering connection that was created by the service producer.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_peering_ranges: The name of one or more allocated IP address ranges for this service producer of type `PEERING`. Note that invoking CreateConnection method with a different range when connection is already established will not modify already provisioned service producer subnetworks. If CreateConnection method is invoked repeatedly to reconnect when peering connection had been disconnected on the consumer side, leaving this field empty will restore previously allocated IP ranges.
-        :param pulumi.Input[str] service: Output only. The name of the peering service that's associated with this connection, in the following format: `services/{service name}`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -51,9 +47,7 @@ class ServiceConnection(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['network'] = network
-            __props__['peering'] = peering
             __props__['reserved_peering_ranges'] = reserved_peering_ranges
-            __props__['service'] = service
             if services_id is None and not opts.urn:
                 raise TypeError("Missing required property 'services_id'")
             __props__['services_id'] = services_id

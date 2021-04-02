@@ -16,6 +16,97 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1beta1
     public partial class Occurrence : Pulumi.CustomResource
     {
         /// <summary>
+        /// Describes an attestation of an artifact.
+        /// </summary>
+        [Output("attestation")]
+        public Output<Outputs.DetailsResponse> Attestation { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes a verifiable build.
+        /// </summary>
+        [Output("build")]
+        public Output<Outputs.GrafeasV1beta1BuildDetailsResponse> Build { get; private set; } = null!;
+
+        /// <summary>
+        /// The time this occurrence was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes the deployment of an artifact on a runtime.
+        /// </summary>
+        [Output("deployment")]
+        public Output<Outputs.GrafeasV1beta1DeploymentDetailsResponse> Deployment { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes how this resource derives from the basis in the associated note.
+        /// </summary>
+        [Output("derivedImage")]
+        public Output<Outputs.GrafeasV1beta1ImageDetailsResponse> DerivedImage { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes when a resource was discovered.
+        /// </summary>
+        [Output("discovered")]
+        public Output<Outputs.GrafeasV1beta1DiscoveryDetailsResponse> Discovered { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes the installation of a package on the linked resource.
+        /// </summary>
+        [Output("installation")]
+        public Output<Outputs.GrafeasV1beta1PackageDetailsResponse> Installation { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes a specific in-toto link.
+        /// </summary>
+        [Output("intoto")]
+        public Output<Outputs.GrafeasV1beta1IntotoDetailsResponse> Intoto { get; private set; } = null!;
+
+        /// <summary>
+        /// This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+        /// </summary>
+        [Output("noteName")]
+        public Output<string> NoteName { get; private set; } = null!;
+
+        /// <summary>
+        /// A description of actions that can be taken to remedy the note.
+        /// </summary>
+        [Output("remediation")]
+        public Output<string> Remediation { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. The resource for which the occurrence applies.
+        /// </summary>
+        [Output("resource")]
+        public Output<Outputs.ResourceResponse> Resource { get; private set; } = null!;
+
+        /// <summary>
+        /// The time this occurrence was last updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes a security vulnerability.
+        /// </summary>
+        [Output("vulnerability")]
+        public Output<Outputs.GrafeasV1beta1VulnerabilityDetailsResponse> Vulnerability { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Occurrence resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -72,7 +163,7 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1beta1
         public Input<Inputs.GrafeasV1beta1BuildDetailsArgs>? Build { get; set; }
 
         /// <summary>
-        /// Output only. The time this occurrence was created.
+        /// The time this occurrence was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -108,13 +199,13 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1beta1
         public Input<Inputs.GrafeasV1beta1IntotoDetailsArgs>? Intoto { get; set; }
 
         /// <summary>
-        /// Output only. This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
+        /// This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// Output only. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+        /// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -144,7 +235,7 @@ namespace Pulumi.GoogleCloud.Containeranalysis.V1beta1
         public Input<Inputs.ResourceArgs>? Resource { get; set; }
 
         /// <summary>
-        /// Output only. The time this occurrence was last updated.
+        /// The time this occurrence was last updated.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

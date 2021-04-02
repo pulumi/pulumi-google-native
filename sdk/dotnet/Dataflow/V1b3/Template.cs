@@ -16,6 +16,31 @@ namespace Pulumi.GoogleCloud.Dataflow.V1b3
     public partial class Template : Pulumi.CustomResource
     {
         /// <summary>
+        /// The template metadata describing the template name, available parameters, etc.
+        /// </summary>
+        [Output("metadata")]
+        public Output<Outputs.TemplateMetadataResponse> Metadata { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes the runtime metadata with SDKInfo and available parameters.
+        /// </summary>
+        [Output("runtimeMetadata")]
+        public Output<Outputs.RuntimeMetadataResponse> RuntimeMetadata { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the get template request. Any problems with the request will be indicated in the error_details.
+        /// </summary>
+        [Output("status")]
+        public Output<Outputs.StatusResponse> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Template Type.
+        /// </summary>
+        [Output("templateType")]
+        public Output<string> TemplateType { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Template resource with the given unique name, arguments, and options.
         /// </summary>
         ///

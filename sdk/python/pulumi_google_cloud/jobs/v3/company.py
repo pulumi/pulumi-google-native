@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Company']
@@ -53,6 +54,19 @@ class Company(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['career_site_uri'] = None
+            __props__['derived_info'] = None
+            __props__['display_name'] = None
+            __props__['eeo_text'] = None
+            __props__['external_id'] = None
+            __props__['headquarters_address'] = None
+            __props__['hiring_agency'] = None
+            __props__['image_uri'] = None
+            __props__['keyword_searchable_job_custom_attributes'] = None
+            __props__['name'] = None
+            __props__['size'] = None
+            __props__['suspended'] = None
+            __props__['website_uri'] = None
         super(Company, __self__).__init__(
             'google-cloud:jobs/v3:Company',
             resource_name,
@@ -75,7 +89,124 @@ class Company(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["career_site_uri"] = None
+        __props__["derived_info"] = None
+        __props__["display_name"] = None
+        __props__["eeo_text"] = None
+        __props__["external_id"] = None
+        __props__["headquarters_address"] = None
+        __props__["hiring_agency"] = None
+        __props__["image_uri"] = None
+        __props__["keyword_searchable_job_custom_attributes"] = None
+        __props__["name"] = None
+        __props__["size"] = None
+        __props__["suspended"] = None
+        __props__["website_uri"] = None
         return Company(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="careerSiteUri")
+    def career_site_uri(self) -> pulumi.Output[str]:
+        """
+        Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
+        """
+        return pulumi.get(self, "career_site_uri")
+
+    @property
+    @pulumi.getter(name="derivedInfo")
+    def derived_info(self) -> pulumi.Output['outputs.CompanyDerivedInfoResponse']:
+        """
+        Derived details about the company.
+        """
+        return pulumi.get(self, "derived_info")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. The display name of the company, for example, "Google LLC".
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="eeoText")
+    def eeo_text(self) -> pulumi.Output[str]:
+        """
+        Optional. Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500.
+        """
+        return pulumi.get(self, "eeo_text")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> pulumi.Output[str]:
+        """
+        Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+        """
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter(name="headquartersAddress")
+    def headquarters_address(self) -> pulumi.Output[str]:
+        """
+        Optional. The street address of the company's main headquarters, which may be different from the job location. The service attempts to geolocate the provided address, and populates a more specific location wherever possible in DerivedInfo.headquarters_location.
+        """
+        return pulumi.get(self, "headquarters_address")
+
+    @property
+    @pulumi.getter(name="hiringAgency")
+    def hiring_agency(self) -> pulumi.Output[bool]:
+        """
+        Optional. Set to true if it is the hiring agency that post jobs for other employers. Defaults to false if not provided.
+        """
+        return pulumi.get(self, "hiring_agency")
+
+    @property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> pulumi.Output[str]:
+        """
+        Optional. A URI that hosts the employer's company logo.
+        """
+        return pulumi.get(self, "image_uri")
+
+    @property
+    @pulumi.getter(name="keywordSearchableJobCustomAttributes")
+    def keyword_searchable_job_custom_attributes(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Optional. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword search. Jobs with `string_values` under these specified field keys are returned if any of the values matches the search keyword. Custom field values with parenthesis, brackets and special symbols won't be properly searchable, and those keyword queries need to be surrounded by quotes.
+        """
+        return pulumi.get(self, "keyword_searchable_job_custom_attributes")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required during company update. The resource name for a company. This is generated by the service when a company is created. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo".
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def size(self) -> pulumi.Output[str]:
+        """
+        Optional. The employer's company size.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def suspended(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
+        """
+        return pulumi.get(self, "suspended")
+
+    @property
+    @pulumi.getter(name="websiteUri")
+    def website_uri(self) -> pulumi.Output[str]:
+        """
+        Optional. The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.
+        """
+        return pulumi.get(self, "website_uri")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

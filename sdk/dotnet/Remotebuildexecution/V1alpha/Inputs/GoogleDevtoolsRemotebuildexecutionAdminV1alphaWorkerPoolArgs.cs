@@ -34,7 +34,7 @@ namespace Pulumi.GoogleCloud.Remotebuildexecution.V1alpha.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Output only. State of the worker pool.
+        /// State of the worker pool.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

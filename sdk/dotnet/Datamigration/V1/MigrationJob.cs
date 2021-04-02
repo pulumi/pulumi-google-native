@@ -16,6 +16,121 @@ namespace Pulumi.GoogleCloud.Datamigration.V1
     public partial class MigrationJob : Pulumi.CustomResource
     {
         /// <summary>
+        /// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The resource name (URI) of the destination connection profile.
+        /// </summary>
+        [Output("destination")]
+        public Output<string> Destination { get; private set; } = null!;
+
+        /// <summary>
+        /// The database engine type and provider of the destination.
+        /// </summary>
+        [Output("destinationDatabase")]
+        public Output<Outputs.DatabaseTypeResponse> DestinationDatabase { get; private set; } = null!;
+
+        /// <summary>
+        /// The migration job display name.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+        /// </summary>
+        [Output("dumpPath")]
+        public Output<string> DumpPath { get; private set; } = null!;
+
+        /// <summary>
+        /// The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
+        [Output("duration")]
+        public Output<string> Duration { get; private set; } = null!;
+
+        /// <summary>
+        /// If the migration job is completed, the time when it was completed.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The error details in case of state FAILED.
+        /// </summary>
+        [Output("error")]
+        public Output<Outputs.StatusResponse> Error { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The current migration job phase.
+        /// </summary>
+        [Output("phase")]
+        public Output<string> Phase { get; private set; } = null!;
+
+        /// <summary>
+        /// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
+        /// </summary>
+        [Output("reverseSshConnectivity")]
+        public Output<Outputs.ReverseSshConnectivityResponse> ReverseSshConnectivity { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The resource name (URI) of the source connection profile.
+        /// </summary>
+        [Output("source")]
+        public Output<string> Source { get; private set; } = null!;
+
+        /// <summary>
+        /// The database engine type and provider of the source.
+        /// </summary>
+        [Output("sourceDatabase")]
+        public Output<Outputs.DatabaseTypeResponse> SourceDatabase { get; private set; } = null!;
+
+        /// <summary>
+        /// The current migration job state.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// static ip connectivity data (default, no additional details needed).
+        /// </summary>
+        [Output("staticIpConnectivity")]
+        public Output<Outputs.StaticIpConnectivityResponse> StaticIpConnectivity { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The migration job type.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The details of the VPC network that the source database is located in.
+        /// </summary>
+        [Output("vpcPeeringConnectivity")]
+        public Output<Outputs.VpcPeeringConnectivityResponse> VpcPeeringConnectivity { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a MigrationJob resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +175,6 @@ namespace Pulumi.GoogleCloud.Datamigration.V1
     public sealed class MigrationJobArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Required. The resource name (URI) of the destination connection profile.
         /// </summary>
         [Input("destination")]
@@ -88,24 +197,6 @@ namespace Pulumi.GoogleCloud.Datamigration.V1
         /// </summary>
         [Input("dumpPath")]
         public Input<string>? DumpPath { get; set; }
-
-        /// <summary>
-        /// Output only. The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        /// </summary>
-        [Input("duration")]
-        public Input<string>? Duration { get; set; }
-
-        /// <summary>
-        /// Output only. If the migration job is completed, the time when it was completed.
-        /// </summary>
-        [Input("endTime")]
-        public Input<string>? EndTime { get; set; }
-
-        /// <summary>
-        /// Output only. The error details in case of state FAILED.
-        /// </summary>
-        [Input("error")]
-        public Input<Inputs.StatusArgs>? Error { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -130,12 +221,6 @@ namespace Pulumi.GoogleCloud.Datamigration.V1
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Output only. The current migration job phase.
-        /// </summary>
-        [Input("phase")]
-        public Input<string>? Phase { get; set; }
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
@@ -175,12 +260,6 @@ namespace Pulumi.GoogleCloud.Datamigration.V1
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
-
-        /// <summary>
-        /// Output only. The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
         /// The details of the VPC network that the source database is located in.

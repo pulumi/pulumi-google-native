@@ -14,6 +14,13 @@ import (
 // Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by IAP. Requires that the brand for the project exists and that it is set for internal-only use.
 type BrandIdentityAwareProxyClient struct {
 	pulumi.CustomResourceState
+
+	// Human-friendly name given to the OAuth client.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Unique identifier of the OAuth client.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Client secret of the OAuth client.
+	Secret pulumi.StringOutput `pulumi:"secret"`
 }
 
 // NewBrandIdentityAwareProxyClient registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +61,21 @@ func GetBrandIdentityAwareProxyClient(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BrandIdentityAwareProxyClient resources.
 type brandIdentityAwareProxyClientState struct {
+	// Human-friendly name given to the OAuth client.
+	DisplayName *string `pulumi:"displayName"`
+	// Unique identifier of the OAuth client.
+	Name *string `pulumi:"name"`
+	// Client secret of the OAuth client.
+	Secret *string `pulumi:"secret"`
 }
 
 type BrandIdentityAwareProxyClientState struct {
+	// Human-friendly name given to the OAuth client.
+	DisplayName pulumi.StringPtrInput
+	// Unique identifier of the OAuth client.
+	Name pulumi.StringPtrInput
+	// Client secret of the OAuth client.
+	Secret pulumi.StringPtrInput
 }
 
 func (BrandIdentityAwareProxyClientState) ElementType() reflect.Type {
@@ -68,11 +87,7 @@ type brandIdentityAwareProxyClientArgs struct {
 	// Human-friendly name given to the OAuth client.
 	DisplayName                 *string `pulumi:"displayName"`
 	IdentityAwareProxyClientsId string  `pulumi:"identityAwareProxyClientsId"`
-	// Output only. Unique identifier of the OAuth client.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	// Output only. Client secret of the OAuth client.
-	Secret *string `pulumi:"secret"`
+	ProjectsId                  string  `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a BrandIdentityAwareProxyClient resource.
@@ -81,11 +96,7 @@ type BrandIdentityAwareProxyClientArgs struct {
 	// Human-friendly name given to the OAuth client.
 	DisplayName                 pulumi.StringPtrInput
 	IdentityAwareProxyClientsId pulumi.StringInput
-	// Output only. Unique identifier of the OAuth client.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	// Output only. Client secret of the OAuth client.
-	Secret pulumi.StringPtrInput
+	ProjectsId                  pulumi.StringInput
 }
 
 func (BrandIdentityAwareProxyClientArgs) ElementType() reflect.Type {

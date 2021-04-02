@@ -21,18 +21,6 @@ namespace Pulumi.GoogleCloud.Dataproc.V1.Inputs
         [Input("enableHttpPortAccess")]
         public Input<bool>? EnableHttpPortAccess { get; set; }
 
-        [Input("httpPorts")]
-        private InputMap<string>? _httpPorts;
-
-        /// <summary>
-        /// Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
-        /// </summary>
-        public InputMap<string> HttpPorts
-        {
-            get => _httpPorts ?? (_httpPorts = new InputMap<string>());
-            set => _httpPorts = value;
-        }
-
         public EndpointConfigArgs()
         {
         }

@@ -60,12 +60,6 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V3
     public sealed class TagBindingArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The name of the TagBinding. This is a String of the form: `tagBindings/{full-resource-name}/{tag-value-name}` (e.g. `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagValues/456`).
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// The full resource name of the resource the TagValue is bound to. E.g. `//cloudresourcemanager.googleapis.com/projects/123`
         /// </summary>
         [Input("parent")]

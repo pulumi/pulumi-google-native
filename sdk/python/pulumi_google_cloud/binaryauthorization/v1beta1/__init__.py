@@ -7,6 +7,7 @@ from .attestor import *
 from .attestor_iam_policy import *
 from .policy_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

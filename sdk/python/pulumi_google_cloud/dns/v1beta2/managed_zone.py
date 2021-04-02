@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['ManagedZone']
@@ -119,7 +120,139 @@ class ManagedZone(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["creation_time"] = None
+        __props__["description"] = None
+        __props__["dns_name"] = None
+        __props__["dnssec_config"] = None
+        __props__["forwarding_config"] = None
+        __props__["kind"] = None
+        __props__["labels"] = None
+        __props__["name"] = None
+        __props__["name_server_set"] = None
+        __props__["name_servers"] = None
+        __props__["peering_config"] = None
+        __props__["private_visibility_config"] = None
+        __props__["reverse_lookup_config"] = None
+        __props__["service_directory_config"] = None
+        __props__["visibility"] = None
         return ManagedZone(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> pulumi.Output[str]:
+        """
+        The time that this resource was created on the server. This is in RFC3339 text format. Output only.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> pulumi.Output[str]:
+        """
+        The DNS name of this managed zone, for instance "example.com.".
+        """
+        return pulumi.get(self, "dns_name")
+
+    @property
+    @pulumi.getter(name="dnssecConfig")
+    def dnssec_config(self) -> pulumi.Output['outputs.ManagedZoneDnsSecConfigResponse']:
+        """
+        DNSSEC configuration.
+        """
+        return pulumi.get(self, "dnssec_config")
+
+    @property
+    @pulumi.getter(name="forwardingConfig")
+    def forwarding_config(self) -> pulumi.Output['outputs.ManagedZoneForwardingConfigResponse']:
+        """
+        The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
+        """
+        return pulumi.get(self, "forwarding_config")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        User labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nameServerSet")
+    def name_server_set(self) -> pulumi.Output[str]:
+        """
+        Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
+        """
+        return pulumi.get(self, "name_server_set")
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Delegate your managed_zone to these virtual name servers; defined by the server (output only)
+        """
+        return pulumi.get(self, "name_servers")
+
+    @property
+    @pulumi.getter(name="peeringConfig")
+    def peering_config(self) -> pulumi.Output['outputs.ManagedZonePeeringConfigResponse']:
+        """
+        The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
+        """
+        return pulumi.get(self, "peering_config")
+
+    @property
+    @pulumi.getter(name="privateVisibilityConfig")
+    def private_visibility_config(self) -> pulumi.Output['outputs.ManagedZonePrivateVisibilityConfigResponse']:
+        """
+        For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+        """
+        return pulumi.get(self, "private_visibility_config")
+
+    @property
+    @pulumi.getter(name="reverseLookupConfig")
+    def reverse_lookup_config(self) -> pulumi.Output['outputs.ManagedZoneReverseLookupConfigResponse']:
+        """
+        The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
+        """
+        return pulumi.get(self, "reverse_lookup_config")
+
+    @property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> pulumi.Output['outputs.ManagedZoneServiceDirectoryConfigResponse']:
+        """
+        This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
+        """
+        return pulumi.get(self, "service_directory_config")
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> pulumi.Output[str]:
+        """
+        The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+        """
+        return pulumi.get(self, "visibility")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

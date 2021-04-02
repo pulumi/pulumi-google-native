@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['RealmGameServerCluster']
@@ -18,7 +19,6 @@ class RealmGameServerCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocation_priority: Optional[pulumi.Input[str]] = None,
                  connection_info: Optional[pulumi.Input[pulumi.InputType['GameServerClusterConnectionInfoArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  game_server_clusters_id: Optional[pulumi.Input[str]] = None,
@@ -27,7 +27,6 @@ class RealmGameServerCluster(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  realms_id: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -38,12 +37,10 @@ class RealmGameServerCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] allocation_priority: Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
         :param pulumi.Input[pulumi.InputType['GameServerClusterConnectionInfoArgs']] connection_info: The game server cluster connection information. This information is used to manage game server clusters.
-        :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input[str] description: Human readable description of the cluster.
         :param pulumi.Input[str] etag: ETag of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server cluster. Each label is a key-value pair.
         :param pulumi.Input[str] name: Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
-        :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -64,7 +61,6 @@ class RealmGameServerCluster(pulumi.CustomResource):
 
             __props__['allocation_priority'] = allocation_priority
             __props__['connection_info'] = connection_info
-            __props__['create_time'] = create_time
             __props__['description'] = description
             __props__['etag'] = etag
             if game_server_clusters_id is None and not opts.urn:
@@ -81,7 +77,8 @@ class RealmGameServerCluster(pulumi.CustomResource):
             if realms_id is None and not opts.urn:
                 raise TypeError("Missing required property 'realms_id'")
             __props__['realms_id'] = realms_id
-            __props__['update_time'] = update_time
+            __props__['create_time'] = None
+            __props__['update_time'] = None
         super(RealmGameServerCluster, __self__).__init__(
             'google-cloud:gameservices/v1beta:RealmGameServerCluster',
             resource_name,
@@ -104,7 +101,79 @@ class RealmGameServerCluster(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["allocation_priority"] = None
+        __props__["connection_info"] = None
+        __props__["create_time"] = None
+        __props__["description"] = None
+        __props__["etag"] = None
+        __props__["labels"] = None
+        __props__["name"] = None
+        __props__["update_time"] = None
         return RealmGameServerCluster(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allocationPriority")
+    def allocation_priority(self) -> pulumi.Output[str]:
+        """
+        Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
+        """
+        return pulumi.get(self, "allocation_priority")
+
+    @property
+    @pulumi.getter(name="connectionInfo")
+    def connection_info(self) -> pulumi.Output['outputs.GameServerClusterConnectionInfoResponse']:
+        """
+        The game server cluster connection information. This information is used to manage game server clusters.
+        """
+        return pulumi.get(self, "connection_info")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Human readable description of the cluster.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        ETag of the resource.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The labels associated with this game server cluster. Each label is a key-value pair.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The last-modified time.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -88,7 +88,34 @@ class OrganizationEnvironmentResourcefile(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["content_type"] = None
+        __props__["data"] = None
+        __props__["extensions"] = None
         return OrganizationEnvironmentResourcefile(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> pulumi.Output[str]:
+        """
+        The HTTP Content-Type header value specifying the content type of the body.
+        """
+        return pulumi.get(self, "content_type")
+
+    @property
+    @pulumi.getter
+    def data(self) -> pulumi.Output[str]:
+        """
+        The HTTP request/response body as raw binary.
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def extensions(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+        """
+        Application specific response metadata. Must be set in the first response for streaming APIs.
+        """
+        return pulumi.get(self, "extensions")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

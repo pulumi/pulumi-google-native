@@ -16,6 +16,139 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationReport : Pulumi.CustomResource
     {
         /// <summary>
+        /// This field contains the chart type for the report
+        /// </summary>
+        [Output("chartType")]
+        public Output<string> ChartType { get; private set; } = null!;
+
+        /// <summary>
+        /// Legacy field: not used. This field contains a list of comments associated with custom report
+        /// </summary>
+        [Output("comments")]
+        public Output<ImmutableArray<string>> Comments { get; private set; } = null!;
+
+        /// <summary>
+        /// Unix time when the app was created json key: createdAt
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// This contains the list of dimensions for the report
+        /// </summary>
+        [Output("dimensions")]
+        public Output<ImmutableArray<string>> Dimensions { get; private set; } = null!;
+
+        /// <summary>
+        /// This is the display name for the report
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Environment name
+        /// </summary>
+        [Output("environment")]
+        public Output<string> Environment { get; private set; } = null!;
+
+        /// <summary>
+        /// This field contains the filter expression
+        /// </summary>
+        [Output("filter")]
+        public Output<string> Filter { get; private set; } = null!;
+
+        /// <summary>
+        /// Legacy field: not used. Contains the from time for the report
+        /// </summary>
+        [Output("fromTime")]
+        public Output<string> FromTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Modified time of this entity as milliseconds since epoch. json key: lastModifiedAt
+        /// </summary>
+        [Output("lastModifiedAt")]
+        public Output<string> LastModifiedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Last viewed time of this entity as milliseconds since epoch
+        /// </summary>
+        [Output("lastViewedAt")]
+        public Output<string> LastViewedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Legacy field: not used This field contains the limit for the result retrieved
+        /// </summary>
+        [Output("limit")]
+        public Output<string> Limit { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. This contains the list of metrics
+        /// </summary>
+        [Output("metrics")]
+        public Output<ImmutableArray<Outputs.GoogleCloudApigeeV1CustomReportMetricResponse>> Metrics { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Legacy field: not used. This field contains the offset for the data
+        /// </summary>
+        [Output("offset")]
+        public Output<string> Offset { get; private set; } = null!;
+
+        /// <summary>
+        /// Organization name
+        /// </summary>
+        [Output("organization")]
+        public Output<string> Organization { get; private set; } = null!;
+
+        /// <summary>
+        /// This field contains report properties such as ui metadata etc.
+        /// </summary>
+        [Output("properties")]
+        public Output<ImmutableArray<Outputs.GoogleCloudApigeeV1ReportPropertyResponse>> Properties { get; private set; } = null!;
+
+        /// <summary>
+        /// Legacy field: not used much. Contains the list of sort by columns
+        /// </summary>
+        [Output("sortByCols")]
+        public Output<ImmutableArray<string>> SortByCols { get; private set; } = null!;
+
+        /// <summary>
+        /// Legacy field: not used much. Contains the sort order for the sort columns
+        /// </summary>
+        [Output("sortOrder")]
+        public Output<string> SortOrder { get; private set; } = null!;
+
+        /// <summary>
+        /// Legacy field: not used. This field contains a list of tags associated with custom report
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// This field contains the time unit of aggregation for the report
+        /// </summary>
+        [Output("timeUnit")]
+        public Output<string> TimeUnit { get; private set; } = null!;
+
+        /// <summary>
+        /// Legacy field: not used. Contains the end time for the report
+        /// </summary>
+        [Output("toTime")]
+        public Output<string> ToTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Legacy field: not used. This field contains the top k parameter value for restricting the result
+        /// </summary>
+        [Output("topk")]
+        public Output<string> Topk { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationReport resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -77,12 +210,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
             set => _comments = value;
         }
 
-        /// <summary>
-        /// Output only. Unix time when the app was created json key: createdAt
-        /// </summary>
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
         [Input("dimensions")]
         private InputList<string>? _dimensions;
 
@@ -102,12 +229,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Output only. Environment name
-        /// </summary>
-        [Input("environment")]
-        public Input<string>? Environment { get; set; }
-
-        /// <summary>
         /// This field contains the filter expression
         /// </summary>
         [Input("filter")]
@@ -118,18 +239,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// </summary>
         [Input("fromTime")]
         public Input<string>? FromTime { get; set; }
-
-        /// <summary>
-        /// Output only. Modified time of this entity as milliseconds since epoch. json key: lastModifiedAt
-        /// </summary>
-        [Input("lastModifiedAt")]
-        public Input<string>? LastModifiedAt { get; set; }
-
-        /// <summary>
-        /// Output only. Last viewed time of this entity as milliseconds since epoch
-        /// </summary>
-        [Input("lastViewedAt")]
-        public Input<string>? LastViewedAt { get; set; }
 
         /// <summary>
         /// Legacy field: not used This field contains the limit for the result retrieved
@@ -160,12 +269,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// </summary>
         [Input("offset")]
         public Input<string>? Offset { get; set; }
-
-        /// <summary>
-        /// Output only. Organization name
-        /// </summary>
-        [Input("organization")]
-        public Input<string>? Organization { get; set; }
 
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;

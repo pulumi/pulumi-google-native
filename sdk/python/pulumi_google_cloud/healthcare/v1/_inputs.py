@@ -23,14 +23,12 @@ __all__ = [
     'ImageArgs',
     'MessageArgs',
     'NotificationConfigArgs',
-    'ParsedDataArgs',
     'ParserConfigArgs',
     'PatientIdArgs',
     'PolicyArgs',
     'SchemaConfigArgs',
     'SchemaPackageArgs',
     'SchematizedDataArgs',
-    'SegmentArgs',
     'SignatureArgs',
     'StreamConfigArgs',
     'TypeArgs',
@@ -648,31 +646,25 @@ class ImageArgs:
 @pulumi.input_type
 class MessageArgs:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parsed_data: Optional[pulumi.Input['ParsedDataArgs']] = None,
                  patient_ids: Optional[pulumi.Input[Sequence[pulumi.Input['PatientIdArgs']]]] = None,
                  schematized_data: Optional[pulumi.Input['SchematizedDataArgs']] = None,
                  send_facility: Optional[pulumi.Input[str]] = None,
                  send_time: Optional[pulumi.Input[str]] = None):
         """
         A complete HL7v2 message. See [Introduction to HL7 Standards] (https://www.hl7.org/implement/standards/index.cfm?ref=common) for details on the standard.
-        :param pulumi.Input[str] create_time: Output only. The datetime when the message was created. Set by the server.
         :param pulumi.Input[str] data: Raw message bytes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         :param pulumi.Input[str] message_type: The message type for this message. MSH-9.1.
         :param pulumi.Input[str] name: Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
-        :param pulumi.Input['ParsedDataArgs'] parsed_data: Output only. The parsed version of the raw message data.
         :param pulumi.Input[Sequence[pulumi.Input['PatientIdArgs']]] patient_ids: All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
         :param pulumi.Input['SchematizedDataArgs'] schematized_data: The parsed version of the raw message data schematized according to this store's schemas and type definitions.
         :param pulumi.Input[str] send_facility: The hospital that this message came from. MSH-4.
         :param pulumi.Input[str] send_time: The datetime the sending application sent this message. MSH-7.
         """
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
         if data is not None:
             pulumi.set(__self__, "data", data)
         if labels is not None:
@@ -681,8 +673,6 @@ class MessageArgs:
             pulumi.set(__self__, "message_type", message_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if parsed_data is not None:
-            pulumi.set(__self__, "parsed_data", parsed_data)
         if patient_ids is not None:
             pulumi.set(__self__, "patient_ids", patient_ids)
         if schematized_data is not None:
@@ -691,18 +681,6 @@ class MessageArgs:
             pulumi.set(__self__, "send_facility", send_facility)
         if send_time is not None:
             pulumi.set(__self__, "send_time", send_time)
-
-    @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The datetime when the message was created. Set by the server.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
@@ -751,18 +729,6 @@ class MessageArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="parsedData")
-    def parsed_data(self) -> Optional[pulumi.Input['ParsedDataArgs']]:
-        """
-        Output only. The parsed version of the raw message data.
-        """
-        return pulumi.get(self, "parsed_data")
-
-    @parsed_data.setter
-    def parsed_data(self, value: Optional[pulumi.Input['ParsedDataArgs']]):
-        pulumi.set(self, "parsed_data", value)
 
     @property
     @pulumi.getter(name="patientIds")
@@ -835,26 +801,6 @@ class NotificationConfigArgs:
     @pubsub_topic.setter
     def pubsub_topic(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pubsub_topic", value)
-
-
-@pulumi.input_type
-class ParsedDataArgs:
-    def __init__(__self__, *,
-                 segments: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentArgs']]]] = None):
-        """
-        The content of a HL7v2 message in a structured format.
-        """
-        if segments is not None:
-            pulumi.set(__self__, "segments", segments)
-
-    @property
-    @pulumi.getter
-    def segments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SegmentArgs']]]]:
-        return pulumi.get(self, "segments")
-
-    @segments.setter
-    def segments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SegmentArgs']]]]):
-        pulumi.set(self, "segments", value)
 
 
 @pulumi.input_type
@@ -1175,62 +1121,6 @@ class SchematizedDataArgs:
     @error.setter
     def error(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "error", value)
-
-
-@pulumi.input_type
-class SegmentArgs:
-    def __init__(__self__, *,
-                 fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 segment_id: Optional[pulumi.Input[str]] = None,
-                 set_id: Optional[pulumi.Input[str]] = None):
-        """
-        A segment in a structured format.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: A mapping from the positional location to the value. The key string uses zero-based indexes separated by dots to identify Fields, components and sub-components. A bracket notation is also used to identify different instances of a repeated field. Regex for key: (\d+)(\[\d+\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1, "hemoglobin") denotes that the first component of Field 0 has the value "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of the first component of Field 1 has the value "CBC". * (1[0].1, "HbA1c") denotes that the first component of the first Instance of Field 1, which is repeated, has the value "HbA1c".
-        :param pulumi.Input[str] segment_id: A string that indicates the type of segment. For example, EVN or PID.
-        :param pulumi.Input[str] set_id: Set ID for segments that can be in a set. This can be empty if it's missing or isn't applicable.
-        """
-        if fields is not None:
-            pulumi.set(__self__, "fields", fields)
-        if segment_id is not None:
-            pulumi.set(__self__, "segment_id", segment_id)
-        if set_id is not None:
-            pulumi.set(__self__, "set_id", set_id)
-
-    @property
-    @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        A mapping from the positional location to the value. The key string uses zero-based indexes separated by dots to identify Fields, components and sub-components. A bracket notation is also used to identify different instances of a repeated field. Regex for key: (\d+)(\[\d+\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1, "hemoglobin") denotes that the first component of Field 0 has the value "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of the first component of Field 1 has the value "CBC". * (1[0].1, "HbA1c") denotes that the first component of the first Instance of Field 1, which is repeated, has the value "HbA1c".
-        """
-        return pulumi.get(self, "fields")
-
-    @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "fields", value)
-
-    @property
-    @pulumi.getter(name="segmentId")
-    def segment_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        A string that indicates the type of segment. For example, EVN or PID.
-        """
-        return pulumi.get(self, "segment_id")
-
-    @segment_id.setter
-    def segment_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "segment_id", value)
-
-    @property
-    @pulumi.getter(name="setId")
-    def set_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Set ID for segments that can be in a set. This can be empty if it's missing or isn't applicable.
-        """
-        return pulumi.get(self, "set_id")
-
-    @set_id.setter
-    def set_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "set_id", value)
 
 
 @pulumi.input_type

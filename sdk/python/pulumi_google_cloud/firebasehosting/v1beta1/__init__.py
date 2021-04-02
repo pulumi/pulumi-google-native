@@ -10,6 +10,7 @@ from .site_domain import *
 from .site_release import *
 from .site_version import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

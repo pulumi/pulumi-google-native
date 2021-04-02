@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['InstanceGroupManager']
@@ -168,7 +169,258 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["auto_healing_policies"] = None
+        __props__["base_instance_name"] = None
+        __props__["creation_timestamp"] = None
+        __props__["current_actions"] = None
+        __props__["description"] = None
+        __props__["distribution_policy"] = None
+        __props__["failover_action"] = None
+        __props__["fingerprint"] = None
+        __props__["instance_group"] = None
+        __props__["instance_lifecycle_policy"] = None
+        __props__["instance_template"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["named_ports"] = None
+        __props__["region"] = None
+        __props__["self_link"] = None
+        __props__["self_link_with_id"] = None
+        __props__["service_account"] = None
+        __props__["stateful_policy"] = None
+        __props__["status"] = None
+        __props__["target_pools"] = None
+        __props__["target_size"] = None
+        __props__["target_stopped_size"] = None
+        __props__["target_suspended_size"] = None
+        __props__["update_policy"] = None
+        __props__["versions"] = None
+        __props__["zone"] = None
         return InstanceGroupManager(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoHealingPolicies")
+    def auto_healing_policies(self) -> pulumi.Output[Sequence['outputs.InstanceGroupManagerAutoHealingPolicyResponse']]:
+        """
+        The autohealing policy for this managed instance group. You can specify only one value.
+        """
+        return pulumi.get(self, "auto_healing_policies")
+
+    @property
+    @pulumi.getter(name="baseInstanceName")
+    def base_instance_name(self) -> pulumi.Output[str]:
+        """
+        The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
+        """
+        return pulumi.get(self, "base_instance_name")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The creation timestamp for this managed instance group in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="currentActions")
+    def current_actions(self) -> pulumi.Output['outputs.InstanceGroupManagerActionsSummaryResponse']:
+        """
+        [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
+        """
+        return pulumi.get(self, "current_actions")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="distributionPolicy")
+    def distribution_policy(self) -> pulumi.Output['outputs.DistributionPolicyResponse']:
+        """
+        Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
+        """
+        return pulumi.get(self, "distribution_policy")
+
+    @property
+    @pulumi.getter(name="failoverAction")
+    def failover_action(self) -> pulumi.Output[str]:
+        """
+        The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
+        """
+        return pulumi.get(self, "failover_action")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> pulumi.Output[str]:
+        """
+        Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
+
+        To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="instanceGroup")
+    def instance_group(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The URL of the Instance Group resource.
+        """
+        return pulumi.get(self, "instance_group")
+
+    @property
+    @pulumi.getter(name="instanceLifecyclePolicy")
+    def instance_lifecycle_policy(self) -> pulumi.Output['outputs.InstanceGroupManagerInstanceLifecyclePolicyResponse']:
+        """
+        Instance lifecycle policy for this Instance Group Manager.
+        """
+        return pulumi.get(self, "instance_lifecycle_policy")
+
+    @property
+    @pulumi.getter(name="instanceTemplate")
+    def instance_template(self) -> pulumi.Output[str]:
+        """
+        The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
+        """
+        return pulumi.get(self, "instance_template")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The resource type, which is always compute#instanceGroupManager for managed instance groups.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namedPorts")
+    def named_ports(self) -> pulumi.Output[Sequence['outputs.NamedPortResponse']]:
+        """
+        Named ports configured for the Instance Groups complementary to this Instance Group Manager.
+        """
+        return pulumi.get(self, "named_ports")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The URL of the region where the managed instance group resides (for regional resources).
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The URL for this managed instance group. The server defines this URL.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for this resource with the resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[str]:
+        """
+        The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="statefulPolicy")
+    def stateful_policy(self) -> pulumi.Output['outputs.StatefulPolicyResponse']:
+        """
+        Stateful configuration for this Instanced Group Manager
+        """
+        return pulumi.get(self, "stateful_policy")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output['outputs.InstanceGroupManagerStatusResponse']:
+        """
+        [Output Only] The status of this managed instance group.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="targetPools")
+    def target_pools(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
+        """
+        return pulumi.get(self, "target_pools")
+
+    @property
+    @pulumi.getter(name="targetSize")
+    def target_size(self) -> pulumi.Output[int]:
+        """
+        The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
+        """
+        return pulumi.get(self, "target_size")
+
+    @property
+    @pulumi.getter(name="targetStoppedSize")
+    def target_stopped_size(self) -> pulumi.Output[int]:
+        """
+        The target number of stopped instances for this managed instance group. This number changes when you:  
+        - Stop instance using the stopInstances method or start instances using the startInstances method. 
+        - Manually change the targetStoppedSize using the update method.
+        """
+        return pulumi.get(self, "target_stopped_size")
+
+    @property
+    @pulumi.getter(name="targetSuspendedSize")
+    def target_suspended_size(self) -> pulumi.Output[int]:
+        """
+        The target number of suspended instances for this managed instance group. This number changes when you:  
+        - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. 
+        - Manually change the targetSuspendedSize using the update method.
+        """
+        return pulumi.get(self, "target_suspended_size")
+
+    @property
+    @pulumi.getter(name="updatePolicy")
+    def update_policy(self) -> pulumi.Output['outputs.InstanceGroupManagerUpdatePolicyResponse']:
+        """
+        The update policy for this managed instance group.
+        """
+        return pulumi.get(self, "update_policy")
+
+    @property
+    @pulumi.getter
+    def versions(self) -> pulumi.Output[Sequence['outputs.InstanceGroupManagerVersionResponse']]:
+        """
+        Specifies the instance templates used by this managed instance group to create instances.
+
+        Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+        """
+        return pulumi.get(self, "versions")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
+        """
+        return pulumi.get(self, "zone")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

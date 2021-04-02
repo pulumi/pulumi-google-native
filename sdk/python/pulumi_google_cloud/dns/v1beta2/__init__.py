@@ -10,6 +10,7 @@ from .policy import *
 from .response_policy import *
 from .response_policy_rule import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

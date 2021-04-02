@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Gameservices.V1beta
     public partial class Realm : Pulumi.CustomResource
     {
         /// <summary>
+        /// The creation time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Human readable description of the realm.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// ETag of the resource.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// The labels associated with this realm. Each label is a key-value pair.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+        /// </summary>
+        [Output("timeZone")]
+        public Output<string> TimeZone { get; private set; } = null!;
+
+        /// <summary>
+        /// The last-modified time.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Realm resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +103,6 @@ namespace Pulumi.GoogleCloud.Gameservices.V1beta
     public sealed class RealmArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The creation time.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Human readable description of the realm.
         /// </summary>
         [Input("description")]
@@ -109,12 +146,6 @@ namespace Pulumi.GoogleCloud.Gameservices.V1beta
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
-
-        /// <summary>
-        /// Output only. The last-modified time.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public RealmArgs()
         {

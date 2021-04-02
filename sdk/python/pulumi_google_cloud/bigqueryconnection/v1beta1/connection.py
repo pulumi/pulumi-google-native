@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Connection']
@@ -18,11 +19,8 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_sql: Optional[pulumi.Input[pulumi.InputType['CloudSqlPropertiesArgs']]] = None,
                  connections_id: Optional[pulumi.Input[str]] = None,
-                 creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
-                 has_credential: Optional[pulumi.Input[bool]] = None,
-                 last_modified_time: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -35,11 +33,8 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CloudSqlPropertiesArgs']] cloud_sql: Cloud SQL properties.
-        :param pulumi.Input[str] creation_time: Output only. The creation timestamp of the connection.
         :param pulumi.Input[str] description: User provided description.
         :param pulumi.Input[str] friendly_name: User provided display name for the connection.
-        :param pulumi.Input[bool] has_credential: Output only. True, if credential is configured for this connection.
-        :param pulumi.Input[str] last_modified_time: Output only. The last update timestamp of the connection.
         :param pulumi.Input[str] name: The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
         """
         if __name__ is not None:
@@ -63,11 +58,8 @@ class Connection(pulumi.CustomResource):
             if connections_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connections_id'")
             __props__['connections_id'] = connections_id
-            __props__['creation_time'] = creation_time
             __props__['description'] = description
             __props__['friendly_name'] = friendly_name
-            __props__['has_credential'] = has_credential
-            __props__['last_modified_time'] = last_modified_time
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
@@ -75,6 +67,9 @@ class Connection(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['creation_time'] = None
+            __props__['has_credential'] = None
+            __props__['last_modified_time'] = None
         super(Connection, __self__).__init__(
             'google-cloud:bigqueryconnection/v1beta1:Connection',
             resource_name,
@@ -97,7 +92,70 @@ class Connection(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["cloud_sql"] = None
+        __props__["creation_time"] = None
+        __props__["description"] = None
+        __props__["friendly_name"] = None
+        __props__["has_credential"] = None
+        __props__["last_modified_time"] = None
+        __props__["name"] = None
         return Connection(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="cloudSql")
+    def cloud_sql(self) -> pulumi.Output['outputs.CloudSqlPropertiesResponse']:
+        """
+        Cloud SQL properties.
+        """
+        return pulumi.get(self, "cloud_sql")
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> pulumi.Output[str]:
+        """
+        The creation timestamp of the connection.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        User provided description.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="friendlyName")
+    def friendly_name(self) -> pulumi.Output[str]:
+        """
+        User provided display name for the connection.
+        """
+        return pulumi.get(self, "friendly_name")
+
+    @property
+    @pulumi.getter(name="hasCredential")
+    def has_credential(self) -> pulumi.Output[bool]:
+        """
+        True, if credential is configured for this connection.
+        """
+        return pulumi.get(self, "has_credential")
+
+    @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> pulumi.Output[str]:
+        """
+        The last update timestamp of the connection.
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
+        """
+        return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

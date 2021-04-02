@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Cloudtasks.V2beta2
     public partial class Queue : Pulumi.CustomResource
     {
         /// <summary>
+        /// App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.
+        /// </summary>
+        [Output("appEngineHttpTarget")]
+        public Output<Outputs.AppEngineHttpTargetResponse> AppEngineHttpTarget { get; private set; } = null!;
+
+        /// <summary>
+        /// Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Pull target. A pull queue is a queue that has a PullTarget.
+        /// </summary>
+        [Output("pullTarget")]
+        public Output<Outputs.PullTargetResponse> PullTarget { get; private set; } = null!;
+
+        /// <summary>
+        /// The last time this queue was purged. All tasks that were created before this time were purged. A queue can be purged using PurgeQueue, the [App Engine Task Queue SDK, or the Cloud Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue). Purge time will be truncated to the nearest microsecond. Purge time will be unset if the queue has never been purged.
+        /// </summary>
+        [Output("purgeTime")]
+        public Output<string> PurgeTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Rate limits for task dispatches. rate_limits and retry_config are related because they both control task attempts however they control how tasks are attempted in different ways: * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what happens to particular a task after its first attempt fails. That is, retry_config controls task retries (the second attempt, third attempt, etc).
+        /// </summary>
+        [Output("rateLimits")]
+        public Output<Outputs.RateLimitsResponse> RateLimits { get; private set; } = null!;
+
+        /// <summary>
+        /// Settings that determine the retry behavior. * For tasks created using Cloud Tasks: the queue-level retry settings apply to all tasks in the queue that were created using Cloud Tasks. Retry settings cannot be set on individual tasks. * For tasks created using the App Engine SDK: the queue-level retry settings apply to all tasks in the queue which do not have retry settings explicitly set on the task and were created by the App Engine SDK. See [App Engine documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
+        /// </summary>
+        [Output("retryConfig")]
+        public Output<Outputs.RetryConfigResponse> RetryConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The realtime, informational statistics for a queue. In order to receive the statistics the caller should include this field in the FieldMask.
+        /// </summary>
+        [Output("stats")]
+        public Output<Outputs.QueueStatsResponse> Stats { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum amount of time that a task will be retained in this queue. Queues created by Cloud Tasks have a default `task_ttl` of 31 days. After a task has lived for `task_ttl`, the task will be deleted regardless of whether it was dispatched or not. The `task_ttl` for queues created via queue.yaml/xml is equal to the maximum duration because there is a [storage quota](https://cloud.google.com/appengine/quotas#Task_Queue) for these queues. To view the maximum valid duration, see the documentation for Duration.
+        /// </summary>
+        [Output("taskTtl")]
+        public Output<string> TaskTtl { get; private set; } = null!;
+
+        /// <summary>
+        /// The task tombstone time to live (TTL). After a task is deleted or completed, the task's tombstone is retained for the length of time specified by `tombstone_ttl`. The tombstone is used by task de-duplication; another task with the same name can't be created until the tombstone has expired. For more information about task de-duplication, see the documentation for CreateTaskRequest. Queues created by Cloud Tasks have a default `tombstone_ttl` of 1 hour.
+        /// </summary>
+        [Output("tombstoneTtl")]
+        public Output<string> TombstoneTtl { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Queue resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -84,7 +145,7 @@ namespace Pulumi.GoogleCloud.Cloudtasks.V2beta2
         public Input<Inputs.PullTargetArgs>? PullTarget { get; set; }
 
         /// <summary>
-        /// Output only. The last time this queue was purged. All tasks that were created before this time were purged. A queue can be purged using PurgeQueue, the [App Engine Task Queue SDK, or the Cloud Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue). Purge time will be truncated to the nearest microsecond. Purge time will be unset if the queue has never been purged.
+        /// The last time this queue was purged. All tasks that were created before this time were purged. A queue can be purged using PurgeQueue, the [App Engine Task Queue SDK, or the Cloud Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue). Purge time will be truncated to the nearest microsecond. Purge time will be unset if the queue has never been purged.
         /// </summary>
         [Input("purgeTime")]
         public Input<string>? PurgeTime { get; set; }
@@ -105,16 +166,10 @@ namespace Pulumi.GoogleCloud.Cloudtasks.V2beta2
         public Input<Inputs.RetryConfigArgs>? RetryConfig { get; set; }
 
         /// <summary>
-        /// Output only. The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
+        /// The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. The realtime, informational statistics for a queue. In order to receive the statistics the caller should include this field in the FieldMask.
-        /// </summary>
-        [Input("stats")]
-        public Input<Inputs.QueueStatsArgs>? Stats { get; set; }
 
         /// <summary>
         /// The maximum amount of time that a task will be retained in this queue. Queues created by Cloud Tasks have a default `task_ttl` of 31 days. After a task has lived for `task_ttl`, the task will be deleted regardless of whether it was dispatched or not. The `task_ttl` for queues created via queue.yaml/xml is equal to the maximum duration because there is a [storage quota](https://cloud.google.com/appengine/quotas#Task_Queue) for these queues. To view the maximum valid duration, see the documentation for Duration.

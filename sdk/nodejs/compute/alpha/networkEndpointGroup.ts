@@ -35,6 +35,90 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === NetworkEndpointGroup.__pulumiType;
     }
 
+    /**
+     * Metadata defined as annotations on the network endpoint group.
+     */
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+     */
+    public readonly appEngine!: pulumi.Output<outputs.compute.alpha.NetworkEndpointGroupAppEngineResponse>;
+    /**
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+     */
+    public readonly cloudFunction!: pulumi.Output<outputs.compute.alpha.NetworkEndpointGroupCloudFunctionResponse>;
+    /**
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+     */
+    public readonly cloudRun!: pulumi.Output<outputs.compute.alpha.NetworkEndpointGroupCloudRunResponse>;
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * The default port used if the port number is not specified in the network endpoint.
+     */
+    public readonly defaultPort!: pulumi.Output<number>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
+     */
+    public readonly loadBalancer!: pulumi.Output<outputs.compute.alpha.NetworkEndpointGroupLbNetworkEndpointGroupResponse>;
+    /**
+     * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+     */
+    public readonly network!: pulumi.Output<string>;
+    /**
+     * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+     */
+    public readonly networkEndpointType!: pulumi.Output<string>;
+    /**
+     * The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+     */
+    public readonly pscTargetService!: pulumi.Output<string>;
+    /**
+     * [Output Only] The URL of the region where the network endpoint group is located.
+     */
+    public readonly region!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for this resource with the resource id.
+     */
+    public readonly selfLinkWithId!: pulumi.Output<string>;
+    /**
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+     */
+    public readonly serverlessDeployment!: pulumi.Output<outputs.compute.alpha.NetworkEndpointGroupServerlessDeploymentResponse>;
+    /**
+     * [Output only] Number of network endpoints in the network endpoint group.
+     */
+    public readonly size!: pulumi.Output<number>;
+    /**
+     * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+     */
+    public readonly subnetwork!: pulumi.Output<string>;
+    /**
+     * Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
+     */
+    public readonly type!: pulumi.Output<string>;
+    /**
+     * [Output Only] The URL of the zone where the network endpoint group is located.
+     */
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a NetworkEndpointGroup resource with the given unique name, arguments, and options.
@@ -81,6 +165,27 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         } else {
+            inputs["annotations"] = undefined /*out*/;
+            inputs["appEngine"] = undefined /*out*/;
+            inputs["cloudFunction"] = undefined /*out*/;
+            inputs["cloudRun"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["defaultPort"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["loadBalancer"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["network"] = undefined /*out*/;
+            inputs["networkEndpointType"] = undefined /*out*/;
+            inputs["pscTargetService"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["selfLinkWithId"] = undefined /*out*/;
+            inputs["serverlessDeployment"] = undefined /*out*/;
+            inputs["size"] = undefined /*out*/;
+            inputs["subnetwork"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
+            inputs["zone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

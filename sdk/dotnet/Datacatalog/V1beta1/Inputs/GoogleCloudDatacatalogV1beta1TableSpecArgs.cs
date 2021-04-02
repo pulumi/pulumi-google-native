@@ -15,12 +15,6 @@ namespace Pulumi.GoogleCloud.Datacatalog.V1beta1.Inputs
     /// </summary>
     public sealed class GoogleCloudDatacatalogV1beta1TableSpecArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. If the table is a dated shard, i.e., with name pattern `[prefix]YYYYMMDD`, `grouped_entry` is the Data Catalog resource name of the date sharded grouped entry, for example, `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`. Otherwise, `grouped_entry` is empty.
-        /// </summary>
-        [Input("groupedEntry")]
-        public Input<string>? GroupedEntry { get; set; }
-
         public GoogleCloudDatacatalogV1beta1TableSpecArgs()
         {
         }

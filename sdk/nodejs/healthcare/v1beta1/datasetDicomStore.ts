@@ -35,6 +35,22 @@ export class DatasetDicomStore extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatasetDicomStore.__pulumiType;
     }
 
+    /**
+     * User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Notification destination for new DICOM instances. Supplied by the client.
+     */
+    public readonly notificationConfig!: pulumi.Output<outputs.healthcare.v1beta1.NotificationConfigResponse>;
+    /**
+     * A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
+     */
+    public readonly streamConfigs!: pulumi.Output<outputs.healthcare.v1beta1.GoogleCloudHealthcareV1beta1DicomStreamConfigResponse[]>;
 
     /**
      * Create a DatasetDicomStore resource with the given unique name, arguments, and options.
@@ -68,6 +84,10 @@ export class DatasetDicomStore extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["streamConfigs"] = args ? args.streamConfigs : undefined;
         } else {
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["notificationConfig"] = undefined /*out*/;
+            inputs["streamConfigs"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

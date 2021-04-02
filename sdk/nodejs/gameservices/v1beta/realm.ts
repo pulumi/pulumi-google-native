@@ -34,6 +34,34 @@ export class Realm extends pulumi.CustomResource {
         return obj['__pulumiType'] === Realm.__pulumiType;
     }
 
+    /**
+     * The creation time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Human readable description of the realm.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * ETag of the resource.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * The labels associated with this realm. Each label is a key-value pair.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+     */
+    public readonly timeZone!: pulumi.Output<string>;
+    /**
+     * The last-modified time.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Realm resource with the given unique name, arguments, and options.
@@ -55,7 +83,6 @@ export class Realm extends pulumi.CustomResource {
             if ((!args || args.realmsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'realmsId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -64,8 +91,16 @@ export class Realm extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["realmsId"] = args ? args.realmsId : undefined;
             inputs["timeZone"] = args ? args.timeZone : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["timeZone"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -78,10 +113,6 @@ export class Realm extends pulumi.CustomResource {
  * The set of arguments for constructing a Realm resource.
  */
 export interface RealmArgs {
-    /**
-     * Output only. The creation time.
-     */
-    readonly createTime?: pulumi.Input<string>;
     /**
      * Human readable description of the realm.
      */
@@ -105,8 +136,4 @@ export interface RealmArgs {
      * Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
      */
     readonly timeZone?: pulumi.Input<string>;
-    /**
-     * Output only. The last-modified time.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

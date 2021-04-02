@@ -804,7 +804,7 @@ class DeploymentArgs:
         :param pulumi.Input[str] config: Configuration used to create this deployment.
         :param pulumi.Input[str] deploy_time: Beginning of the lifetime of this deployment.
         :param pulumi.Input[str] platform: Platform hosting this deployment.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_uri: Output only. Resource URI for the artifact being deployed taken from the deployable field with the same name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_uri: Resource URI for the artifact being deployed taken from the deployable field with the same name.
         :param pulumi.Input[str] undeploy_time: End of the lifetime of this deployment.
         :param pulumi.Input[str] user_email: Identity of the user that triggered this deployment.
         """
@@ -875,7 +875,7 @@ class DeploymentArgs:
     @pulumi.getter(name="resourceUri")
     def resource_uri(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Output only. Resource URI for the artifact being deployed taken from the deployable field with the same name.
+        Resource URI for the artifact being deployed taken from the deployable field with the same name.
         """
         return pulumi.get(self, "resource_uri")
 
@@ -917,8 +917,8 @@ class DerivedArgs:
                  layer_info: Optional[pulumi.Input[Sequence[pulumi.Input['LayerArgs']]]] = None):
         """
         Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
-        :param pulumi.Input[str] base_resource_url: Output only. This contains the base image URL for the derived image occurrence.
-        :param pulumi.Input[int] distance: Output only. The number of layers by which this image differs from the associated image basis.
+        :param pulumi.Input[str] base_resource_url: This contains the base image URL for the derived image occurrence.
+        :param pulumi.Input[int] distance: The number of layers by which this image differs from the associated image basis.
         :param pulumi.Input['FingerprintArgs'] fingerprint: The fingerprint of the derived image.
         :param pulumi.Input[Sequence[pulumi.Input['LayerArgs']]] layer_info: This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
         """
@@ -935,7 +935,7 @@ class DerivedArgs:
     @pulumi.getter(name="baseResourceUrl")
     def base_resource_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. This contains the base image URL for the derived image occurrence.
+        This contains the base image URL for the derived image occurrence.
         """
         return pulumi.get(self, "base_resource_url")
 
@@ -947,7 +947,7 @@ class DerivedArgs:
     @pulumi.getter
     def distance(self) -> Optional[pulumi.Input[int]]:
         """
-        Output only. The number of layers by which this image differs from the associated image basis.
+        The number of layers by which this image differs from the associated image basis.
         """
         return pulumi.get(self, "distance")
 
@@ -1162,7 +1162,7 @@ class DiscoveredArgs:
         :param pulumi.Input['StatusArgs'] analysis_status_error: When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
         :param pulumi.Input[str] continuous_analysis: Whether the resource is continuously analyzed.
         :param pulumi.Input[str] cpe: The CPE of the resource being scanned.
-        :param pulumi.Input['OperationArgs'] operation: Output only. An operation that indicates the status of the current scan. This field is deprecated, do not use.
+        :param pulumi.Input['OperationArgs'] operation: An operation that indicates the status of the current scan. This field is deprecated, do not use.
         """
         if analysis_status is not None:
             pulumi.set(__self__, "analysis_status", analysis_status)
@@ -1227,7 +1227,7 @@ class DiscoveredArgs:
     @pulumi.getter
     def operation(self) -> Optional[pulumi.Input['OperationArgs']]:
         """
-        Output only. An operation that indicates the status of the current scan. This field is deprecated, do not use.
+        An operation that indicates the status of the current scan. This field is deprecated, do not use.
         """
         return pulumi.get(self, "operation")
 
@@ -1446,7 +1446,7 @@ class FingerprintArgs:
         A set of properties that uniquely identify a given Docker image.
         :param pulumi.Input[str] v1_name: The layer-id of the final layer in the Docker image's v1 representation. This field can be used as a filter in list requests.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] v2_blob: The ordered list of v2 blobs that represent a given image.
-        :param pulumi.Input[str] v2_name: Output only. The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
+        :param pulumi.Input[str] v2_name: The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
         """
         if v1_name is not None:
             pulumi.set(__self__, "v1_name", v1_name)
@@ -1483,7 +1483,7 @@ class FingerprintArgs:
     @pulumi.getter(name="v2Name")
     def v2_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
+        The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. This field can be used as a filter in list requests.
         """
         return pulumi.get(self, "v2_name")
 
@@ -1900,7 +1900,7 @@ class InstallationArgs:
         """
         This represents how a particular software package may be installed on a system.
         :param pulumi.Input[Sequence[pulumi.Input['LocationArgs']]] location: All of the places within the filesystem versions of this package have been found.
-        :param pulumi.Input[str] name: Output only. The name of the installed package.
+        :param pulumi.Input[str] name: The name of the installed package.
         """
         if location is not None:
             pulumi.set(__self__, "location", location)
@@ -1923,7 +1923,7 @@ class InstallationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The name of the installed package.
+        The name of the installed package.
         """
         return pulumi.get(self, "name")
 
@@ -3002,10 +3002,10 @@ class VulnerabilityDetailsArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Used by Occurrence to point to where the vulnerability exists and how to fix it.
-        :param pulumi.Input[float] cvss_score: Output only. The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
+        :param pulumi.Input[float] cvss_score: The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
         :param pulumi.Input[str] effective_severity: The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
         :param pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]] package_issue: The set of affected locations and their fixes (if available) within the associated resource.
-        :param pulumi.Input[str] severity: Output only. The note provider assigned Severity of the vulnerability.
+        :param pulumi.Input[str] severity: The note provider assigned Severity of the vulnerability.
         :param pulumi.Input[str] type: The type of package; whether native or non native(ruby gems, node.js packages etc)
         """
         if cvss_score is not None:
@@ -3023,7 +3023,7 @@ class VulnerabilityDetailsArgs:
     @pulumi.getter(name="cvssScore")
     def cvss_score(self) -> Optional[pulumi.Input[float]]:
         """
-        Output only. The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
+        The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
         """
         return pulumi.get(self, "cvss_score")
 
@@ -3059,7 +3059,7 @@ class VulnerabilityDetailsArgs:
     @pulumi.getter
     def severity(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The note provider assigned Severity of the vulnerability.
+        The note provider assigned Severity of the vulnerability.
         """
         return pulumi.get(self, "severity")
 

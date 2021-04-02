@@ -92,7 +92,58 @@ class ManagedZoneRrset(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["rrdatas"] = None
+        __props__["signature_rrdatas"] = None
+        __props__["ttl"] = None
+        __props__["type"] = None
         return ManagedZoneRrset(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        For example, www.example.com.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> pulumi.Output[Sequence[str]]:
+        """
+        As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
+        """
+        return pulumi.get(self, "rrdatas")
+
+    @property
+    @pulumi.getter(name="signatureRrdatas")
+    def signature_rrdatas(self) -> pulumi.Output[Sequence[str]]:
+        """
+        As defined in RFC 4034 (section 3.2).
+        """
+        return pulumi.get(self, "signature_rrdatas")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> pulumi.Output[int]:
+        """
+        Number of seconds that this ResourceRecordSet can be cached by resolvers.
+        """
+        return pulumi.get(self, "ttl")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        The identifier of a supported record type. See the list of Supported DNS record types.
+        """
+        return pulumi.get(self, "type")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

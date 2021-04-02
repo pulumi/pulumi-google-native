@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['ProductReferenceImage']
@@ -89,7 +90,34 @@ class ProductReferenceImage(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["bounding_polys"] = None
+        __props__["name"] = None
+        __props__["uri"] = None
         return ProductReferenceImage(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="boundingPolys")
+    def bounding_polys(self) -> pulumi.Output[Sequence['outputs.BoundingPolyResponse']]:
+        """
+        Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
+        """
+        return pulumi.get(self, "bounding_polys")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Output[str]:
+        """
+        Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+        """
+        return pulumi.get(self, "uri")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

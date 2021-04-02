@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1alpha1
     public partial class WorkerPool : Pulumi.CustomResource
     {
         /// <summary>
+        /// Time at which the request to create the `WorkerPool` was received.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Time at which the request to delete the `WorkerPool` was received.
+        /// </summary>
+        [Output("deleteTime")]
+        public Output<string> DeleteTime { get; private set; } = null!;
+
+        /// <summary>
+        /// User-defined name of the `WorkerPool`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The project ID of the GCP project for which the `WorkerPool` is created.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
+        /// </summary>
+        [Output("regions")]
+        public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
+
+        /// <summary>
+        /// The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
+        /// </summary>
+        [Output("serviceAccountEmail")]
+        public Output<string> ServiceAccountEmail { get; private set; } = null!;
+
+        /// <summary>
+        /// WorkerPool Status.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Time at which the request to update the `WorkerPool` was received.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration to be used for a creating workers in the `WorkerPool`.
+        /// </summary>
+        [Output("workerConfig")]
+        public Output<Outputs.WorkerConfigResponse> WorkerConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Total number of workers to be created across all requested regions.
+        /// </summary>
+        [Output("workerCount")]
+        public Output<string> WorkerCount { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a WorkerPool resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,13 +121,13 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1alpha1
     public sealed class WorkerPoolArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Time at which the request to create the `WorkerPool` was received.
+        /// Time at which the request to create the `WorkerPool` was received.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Output only. Time at which the request to delete the `WorkerPool` was received.
+        /// Time at which the request to delete the `WorkerPool` was received.
         /// </summary>
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
@@ -99,19 +160,19 @@ namespace Pulumi.GoogleCloud.Cloudbuild.V1alpha1
         }
 
         /// <summary>
-        /// Output only. The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
+        /// The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
         /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
 
         /// <summary>
-        /// Output only. WorkerPool Status.
+        /// WorkerPool Status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Output only. Time at which the request to update the `WorkerPool` was received.
+        /// Time at which the request to update the `WorkerPool` was received.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

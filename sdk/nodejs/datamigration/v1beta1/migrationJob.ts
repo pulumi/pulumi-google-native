@@ -35,6 +35,82 @@ export class MigrationJob extends pulumi.CustomResource {
         return obj['__pulumiType'] === MigrationJob.__pulumiType;
     }
 
+    /**
+     * The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Required. The resource name (URI) of the destination connection profile.
+     */
+    public readonly destination!: pulumi.Output<string>;
+    /**
+     * The database engine type and provider of the destination.
+     */
+    public readonly destinationDatabase!: pulumi.Output<outputs.datamigration.v1beta1.DatabaseTypeResponse>;
+    /**
+     * The migration job display name.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+     */
+    public readonly dumpPath!: pulumi.Output<string>;
+    /**
+     * The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+     */
+    public /*out*/ readonly duration!: pulumi.Output<string>;
+    /**
+     * If the migration job is completed, the time when it was completed.
+     */
+    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    /**
+     * The error details in case of state FAILED.
+     */
+    public /*out*/ readonly error!: pulumi.Output<outputs.datamigration.v1beta1.StatusResponse>;
+    /**
+     * The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The current migration job phase.
+     */
+    public /*out*/ readonly phase!: pulumi.Output<string>;
+    /**
+     * The details needed to communicate to the source over Reverse SSH tunnel connectivity.
+     */
+    public readonly reverseSshConnectivity!: pulumi.Output<outputs.datamigration.v1beta1.ReverseSshConnectivityResponse>;
+    /**
+     * Required. The resource name (URI) of the source connection profile.
+     */
+    public readonly source!: pulumi.Output<string>;
+    /**
+     * The database engine type and provider of the source.
+     */
+    public readonly sourceDatabase!: pulumi.Output<outputs.datamigration.v1beta1.DatabaseTypeResponse>;
+    /**
+     * The current migration job state.
+     */
+    public readonly state!: pulumi.Output<string>;
+    /**
+     * static ip connectivity data (default, no additional details needed).
+     */
+    public readonly staticIpConnectivity!: pulumi.Output<outputs.datamigration.v1beta1.StaticIpConnectivityResponse>;
+    /**
+     * Required. The migration job type.
+     */
+    public readonly type!: pulumi.Output<string>;
+    /**
+     * The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * The details of the VPC network that the source database is located in.
+     */
+    public readonly vpcPeeringConnectivity!: pulumi.Output<outputs.datamigration.v1beta1.VpcPeeringConnectivityResponse>;
 
     /**
      * Create a MigrationJob resource with the given unique name, arguments, and options.
@@ -56,19 +132,14 @@ export class MigrationJob extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["destination"] = args ? args.destination : undefined;
             inputs["destinationDatabase"] = args ? args.destinationDatabase : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["dumpPath"] = args ? args.dumpPath : undefined;
-            inputs["duration"] = args ? args.duration : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["error"] = args ? args.error : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["migrationJobsId"] = args ? args.migrationJobsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["phase"] = args ? args.phase : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["reverseSshConnectivity"] = args ? args.reverseSshConnectivity : undefined;
             inputs["source"] = args ? args.source : undefined;
@@ -76,9 +147,33 @@ export class MigrationJob extends pulumi.CustomResource {
             inputs["state"] = args ? args.state : undefined;
             inputs["staticIpConnectivity"] = args ? args.staticIpConnectivity : undefined;
             inputs["type"] = args ? args.type : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["vpcPeeringConnectivity"] = args ? args.vpcPeeringConnectivity : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["duration"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["error"] = undefined /*out*/;
+            inputs["phase"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["destination"] = undefined /*out*/;
+            inputs["destinationDatabase"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["dumpPath"] = undefined /*out*/;
+            inputs["duration"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["error"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["phase"] = undefined /*out*/;
+            inputs["reverseSshConnectivity"] = undefined /*out*/;
+            inputs["source"] = undefined /*out*/;
+            inputs["sourceDatabase"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["staticIpConnectivity"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
+            inputs["vpcPeeringConnectivity"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -91,10 +186,6 @@ export class MigrationJob extends pulumi.CustomResource {
  * The set of arguments for constructing a MigrationJob resource.
  */
 export interface MigrationJobArgs {
-    /**
-     * Output only. The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-     */
-    readonly createTime?: pulumi.Input<string>;
     /**
      * Required. The resource name (URI) of the destination connection profile.
      */
@@ -112,18 +203,6 @@ export interface MigrationJobArgs {
      */
     readonly dumpPath?: pulumi.Input<string>;
     /**
-     * Output only. The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-     */
-    readonly duration?: pulumi.Input<string>;
-    /**
-     * Output only. If the migration job is completed, the time when it was completed.
-     */
-    readonly endTime?: pulumi.Input<string>;
-    /**
-     * Output only. The error details in case of state FAILED.
-     */
-    readonly error?: pulumi.Input<inputs.datamigration.v1beta1.Status>;
-    /**
      * The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -133,10 +212,6 @@ export interface MigrationJobArgs {
      * The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Output only. The current migration job phase.
-     */
-    readonly phase?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * The details needed to communicate to the source over Reverse SSH tunnel connectivity.
@@ -162,10 +237,6 @@ export interface MigrationJobArgs {
      * Required. The migration job type.
      */
     readonly type?: pulumi.Input<string>;
-    /**
-     * Output only. The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-     */
-    readonly updateTime?: pulumi.Input<string>;
     /**
      * The details of the VPC network that the source database is located in.
      */

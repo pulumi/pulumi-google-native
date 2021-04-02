@@ -34,6 +34,34 @@ export class SecuritySetting extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecuritySetting.__pulumiType;
     }
 
+    /**
+     * Required. The human-readable name of the security settings, unique within the location.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+     */
+    public readonly inspectTemplate!: pulumi.Output<string>;
+    /**
+     * Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * List of types of data to remove when retention settings triggers purge.
+     */
+    public readonly purgeDataTypes!: pulumi.Output<string[]>;
+    /**
+     * Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+     */
+    public readonly redactionScope!: pulumi.Output<string>;
+    /**
+     * Strategy that defines how we do redaction.
+     */
+    public readonly redactionStrategy!: pulumi.Output<string>;
+    /**
+     * Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
+     */
+    public readonly retentionWindowDays!: pulumi.Output<number>;
 
     /**
      * Create a SecuritySetting resource with the given unique name, arguments, and options.
@@ -66,6 +94,13 @@ export class SecuritySetting extends pulumi.CustomResource {
             inputs["retentionWindowDays"] = args ? args.retentionWindowDays : undefined;
             inputs["securitySettingsId"] = args ? args.securitySettingsId : undefined;
         } else {
+            inputs["displayName"] = undefined /*out*/;
+            inputs["inspectTemplate"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["purgeDataTypes"] = undefined /*out*/;
+            inputs["redactionScope"] = undefined /*out*/;
+            inputs["redactionStrategy"] = undefined /*out*/;
+            inputs["retentionWindowDays"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

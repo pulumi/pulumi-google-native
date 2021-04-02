@@ -35,6 +35,46 @@ export class ConnectionProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConnectionProfile.__pulumiType;
     }
 
+    /**
+     * A CloudSQL database connection profile.
+     */
+    public readonly cloudsql!: pulumi.Output<outputs.datamigration.v1beta1.CloudSqlConnectionProfileResponse>;
+    /**
+     * The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The connection profile display name.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * The error details in case of state FAILED.
+     */
+    public /*out*/ readonly error!: pulumi.Output<outputs.datamigration.v1beta1.StatusResponse>;
+    /**
+     * The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * A MySQL database connection profile.
+     */
+    public readonly mysql!: pulumi.Output<outputs.datamigration.v1beta1.MySqlConnectionProfileResponse>;
+    /**
+     * The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The database provider.
+     */
+    public readonly provider!: pulumi.Output<string>;
+    /**
+     * The current connection profile state (e.g. DRAFT, READY, or FAILED).
+     */
+    public readonly state!: pulumi.Output<string>;
+    /**
+     * The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a ConnectionProfile resource with the given unique name, arguments, and options.
@@ -58,9 +98,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             }
             inputs["cloudsql"] = args ? args.cloudsql : undefined;
             inputs["connectionProfilesId"] = args ? args.connectionProfilesId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["error"] = args ? args.error : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["mysql"] = args ? args.mysql : undefined;
@@ -68,8 +106,20 @@ export class ConnectionProfile extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["provider"] = args ? args.provider : undefined;
             inputs["state"] = args ? args.state : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["error"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["cloudsql"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["error"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["mysql"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["provider"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -88,17 +138,9 @@ export interface ConnectionProfileArgs {
     readonly cloudsql?: pulumi.Input<inputs.datamigration.v1beta1.CloudSqlConnectionProfile>;
     readonly connectionProfilesId: pulumi.Input<string>;
     /**
-     * Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * The connection profile display name.
      */
     readonly displayName?: pulumi.Input<string>;
-    /**
-     * Output only. The error details in case of state FAILED.
-     */
-    readonly error?: pulumi.Input<inputs.datamigration.v1beta1.Status>;
     /**
      * The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
@@ -121,8 +163,4 @@ export interface ConnectionProfileArgs {
      * The current connection profile state (e.g. DRAFT, READY, or FAILED).
      */
     readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

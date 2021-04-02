@@ -7,7 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
-from ._inputs import *
+from . import outputs
 
 __all__ = ['KeyRingImportJob']
 
@@ -16,20 +16,12 @@ class KeyRingImportJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation: Optional[pulumi.Input[pulumi.InputType['KeyOperationAttestationArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 expire_event_time: Optional[pulumi.Input[str]] = None,
-                 expire_time: Optional[pulumi.Input[str]] = None,
-                 generate_time: Optional[pulumi.Input[str]] = None,
                  import_jobs_id: Optional[pulumi.Input[str]] = None,
                  import_method: Optional[pulumi.Input[str]] = None,
                  key_rings_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  protection_level: Optional[pulumi.Input[str]] = None,
-                 public_key: Optional[pulumi.Input[pulumi.InputType['WrappingPublicKeyArgs']]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -38,16 +30,8 @@ class KeyRingImportJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['KeyOperationAttestationArgs']] attestation: Output only. Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen ImportMethod is one with a protection level of HSM.
-        :param pulumi.Input[str] create_time: Output only. The time at which this ImportJob was created.
-        :param pulumi.Input[str] expire_event_time: Output only. The time this ImportJob expired. Only present if state is EXPIRED.
-        :param pulumi.Input[str] expire_time: Output only. The time at which this ImportJob is scheduled for expiration and can no longer be used to import key material.
-        :param pulumi.Input[str] generate_time: Output only. The time this ImportJob's key material was generated.
         :param pulumi.Input[str] import_method: Required. Immutable. The wrapping method to be used for incoming key material.
-        :param pulumi.Input[str] name: Output only. The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`.
         :param pulumi.Input[str] protection_level: Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
-        :param pulumi.Input[pulumi.InputType['WrappingPublicKeyArgs']] public_key: Output only. The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
-        :param pulumi.Input[str] state: Output only. The current state of the ImportJob, indicating if it can be used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -66,11 +50,6 @@ class KeyRingImportJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['attestation'] = attestation
-            __props__['create_time'] = create_time
-            __props__['expire_event_time'] = expire_event_time
-            __props__['expire_time'] = expire_time
-            __props__['generate_time'] = generate_time
             if import_jobs_id is None and not opts.urn:
                 raise TypeError("Missing required property 'import_jobs_id'")
             __props__['import_jobs_id'] = import_jobs_id
@@ -81,13 +60,18 @@ class KeyRingImportJob(pulumi.CustomResource):
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
             __props__['protection_level'] = protection_level
-            __props__['public_key'] = public_key
-            __props__['state'] = state
+            __props__['attestation'] = None
+            __props__['create_time'] = None
+            __props__['expire_event_time'] = None
+            __props__['expire_time'] = None
+            __props__['generate_time'] = None
+            __props__['name'] = None
+            __props__['public_key'] = None
+            __props__['state'] = None
         super(KeyRingImportJob, __self__).__init__(
             'google-cloud:cloudkms/v1:KeyRingImportJob',
             resource_name,
@@ -110,7 +94,97 @@ class KeyRingImportJob(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["attestation"] = None
+        __props__["create_time"] = None
+        __props__["expire_event_time"] = None
+        __props__["expire_time"] = None
+        __props__["generate_time"] = None
+        __props__["import_method"] = None
+        __props__["name"] = None
+        __props__["protection_level"] = None
+        __props__["public_key"] = None
+        __props__["state"] = None
         return KeyRingImportJob(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def attestation(self) -> pulumi.Output['outputs.KeyOperationAttestationResponse']:
+        """
+        Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen ImportMethod is one with a protection level of HSM.
+        """
+        return pulumi.get(self, "attestation")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time at which this ImportJob was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="expireEventTime")
+    def expire_event_time(self) -> pulumi.Output[str]:
+        """
+        The time this ImportJob expired. Only present if state is EXPIRED.
+        """
+        return pulumi.get(self, "expire_event_time")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        The time at which this ImportJob is scheduled for expiration and can no longer be used to import key material.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter(name="generateTime")
+    def generate_time(self) -> pulumi.Output[str]:
+        """
+        The time this ImportJob's key material was generated.
+        """
+        return pulumi.get(self, "generate_time")
+
+    @property
+    @pulumi.getter(name="importMethod")
+    def import_method(self) -> pulumi.Output[str]:
+        """
+        Required. Immutable. The wrapping method to be used for incoming key material.
+        """
+        return pulumi.get(self, "import_method")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="protectionLevel")
+    def protection_level(self) -> pulumi.Output[str]:
+        """
+        Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+        """
+        return pulumi.get(self, "protection_level")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> pulumi.Output['outputs.WrappingPublicKeyResponse']:
+        """
+        The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
+        """
+        return pulumi.get(self, "public_key")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The current state of the ImportJob, indicating if it can be used.
+        """
+        return pulumi.get(self, "state")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -14,6 +14,19 @@ import (
 // Creates a new reservation resource.
 type Reservation struct {
 	pulumi.CustomResourceState
+
+	// Creation time of the reservation.
+	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
+	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+	IgnoreIdleSlots pulumi.BoolOutput `pulumi:"ignoreIdleSlots"`
+	// Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
+	MaxConcurrency pulumi.StringOutput `pulumi:"maxConcurrency"`
+	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
+	SlotCapacity pulumi.StringOutput `pulumi:"slotCapacity"`
+	// Last update time of the reservation.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewReservation registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +67,33 @@ func GetReservation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Reservation resources.
 type reservationState struct {
+	// Creation time of the reservation.
+	CreationTime *string `pulumi:"creationTime"`
+	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+	IgnoreIdleSlots *bool `pulumi:"ignoreIdleSlots"`
+	// Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
+	MaxConcurrency *string `pulumi:"maxConcurrency"`
+	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+	Name *string `pulumi:"name"`
+	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
+	SlotCapacity *string `pulumi:"slotCapacity"`
+	// Last update time of the reservation.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ReservationState struct {
+	// Creation time of the reservation.
+	CreationTime pulumi.StringPtrInput
+	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+	IgnoreIdleSlots pulumi.BoolPtrInput
+	// Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
+	MaxConcurrency pulumi.StringPtrInput
+	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+	Name pulumi.StringPtrInput
+	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
+	SlotCapacity pulumi.StringPtrInput
+	// Last update time of the reservation.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (ReservationState) ElementType() reflect.Type {
@@ -64,8 +101,6 @@ func (ReservationState) ElementType() reflect.Type {
 }
 
 type reservationArgs struct {
-	// Output only. Creation time of the reservation.
-	CreationTime *string `pulumi:"creationTime"`
 	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
 	IgnoreIdleSlots *bool  `pulumi:"ignoreIdleSlots"`
 	LocationsId     string `pulumi:"locationsId"`
@@ -77,14 +112,10 @@ type reservationArgs struct {
 	ReservationsId string  `pulumi:"reservationsId"`
 	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
 	SlotCapacity *string `pulumi:"slotCapacity"`
-	// Output only. Last update time of the reservation.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Reservation resource.
 type ReservationArgs struct {
-	// Output only. Creation time of the reservation.
-	CreationTime pulumi.StringPtrInput
 	// If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
 	IgnoreIdleSlots pulumi.BoolPtrInput
 	LocationsId     pulumi.StringInput
@@ -96,8 +127,6 @@ type ReservationArgs struct {
 	ReservationsId pulumi.StringInput
 	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
 	SlotCapacity pulumi.StringPtrInput
-	// Output only. Last update time of the reservation.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (ReservationArgs) ElementType() reflect.Type {

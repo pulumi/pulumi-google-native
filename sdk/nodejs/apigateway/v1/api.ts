@@ -34,6 +34,34 @@ export class Api extends pulumi.CustomResource {
         return obj['__pulumiType'] === Api.__pulumiType;
     }
 
+    /**
+     * Created time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Optional. Display name.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
+     */
+    public readonly managedService!: pulumi.Output<string>;
+    /**
+     * Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * State of the API.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Updated time.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Api resource with the given unique name, arguments, and options.
@@ -56,16 +84,23 @@ export class Api extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["apisId"] = args ? args.apisId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["managedService"] = args ? args.managedService : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["managedService"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -80,10 +115,6 @@ export class Api extends pulumi.CustomResource {
 export interface ApiArgs {
     readonly apisId: pulumi.Input<string>;
     /**
-     * Output only. Created time.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * Optional. Display name.
      */
     readonly displayName?: pulumi.Input<string>;
@@ -96,17 +127,5 @@ export interface ApiArgs {
      * Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
      */
     readonly managedService?: pulumi.Input<string>;
-    /**
-     * Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. State of the API.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. Updated time.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

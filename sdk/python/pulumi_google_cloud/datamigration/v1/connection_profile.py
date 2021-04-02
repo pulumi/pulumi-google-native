@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['ConnectionProfile']
@@ -18,9 +19,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloudsql: Optional[pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']]] = None,
                  connection_profiles_id: Optional[pulumi.Input[str]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 error: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']]] = None,
@@ -29,7 +28,6 @@ class ConnectionProfile(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -39,16 +37,13 @@ class ConnectionProfile(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']] cloudsql: A CloudSQL database connection profile.
-        :param pulumi.Input[str] create_time: Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] display_name: The connection profile display name.
-        :param pulumi.Input[pulumi.InputType['StatusArgs']] error: Output only. The error details in case of state FAILED.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']] mysql: A MySQL database connection profile.
         :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
         :param pulumi.Input[pulumi.InputType['PostgreSqlConnectionProfileArgs']] postgresql: A PostgreSQL database connection profile.
         :param pulumi.Input[str] provider: The database provider.
         :param pulumi.Input[str] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
-        :param pulumi.Input[str] update_time: Output only. The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,9 +66,7 @@ class ConnectionProfile(pulumi.CustomResource):
             if connection_profiles_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_profiles_id'")
             __props__['connection_profiles_id'] = connection_profiles_id
-            __props__['create_time'] = create_time
             __props__['display_name'] = display_name
-            __props__['error'] = error
             __props__['labels'] = labels
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
@@ -86,7 +79,9 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__['projects_id'] = projects_id
             __props__['provider'] = provider
             __props__['state'] = state
-            __props__['update_time'] = update_time
+            __props__['create_time'] = None
+            __props__['error'] = None
+            __props__['update_time'] = None
         super(ConnectionProfile, __self__).__init__(
             'google-cloud:datamigration/v1:ConnectionProfile',
             resource_name,
@@ -109,7 +104,106 @@ class ConnectionProfile(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["cloudsql"] = None
+        __props__["create_time"] = None
+        __props__["display_name"] = None
+        __props__["error"] = None
+        __props__["labels"] = None
+        __props__["mysql"] = None
+        __props__["name"] = None
+        __props__["postgresql"] = None
+        __props__["provider"] = None
+        __props__["state"] = None
+        __props__["update_time"] = None
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def cloudsql(self) -> pulumi.Output['outputs.CloudSqlConnectionProfileResponse']:
+        """
+        A CloudSQL database connection profile.
+        """
+        return pulumi.get(self, "cloudsql")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        The connection profile display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def error(self) -> pulumi.Output['outputs.StatusResponse']:
+        """
+        The error details in case of state FAILED.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def mysql(self) -> pulumi.Output['outputs.MySqlConnectionProfileResponse']:
+        """
+        A MySQL database connection profile.
+        """
+        return pulumi.get(self, "mysql")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def postgresql(self) -> pulumi.Output['outputs.PostgreSqlConnectionProfileResponse']:
+        """
+        A PostgreSQL database connection profile.
+        """
+        return pulumi.get(self, "postgresql")
+
+    @property
+    @pulumi.getter
+    def provider(self) -> pulumi.Output[str]:
+        """
+        The database provider.
+        """
+        return pulumi.get(self, "provider")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The current connection profile state (e.g. DRAFT, READY, or FAILED).
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -11,6 +11,7 @@ from .model_version import *
 from .study import *
 from .study_trial import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

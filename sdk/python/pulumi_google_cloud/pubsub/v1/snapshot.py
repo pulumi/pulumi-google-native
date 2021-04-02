@@ -55,6 +55,9 @@ class Snapshot(pulumi.CustomResource):
                 raise TypeError("Missing required property 'snapshots_id'")
             __props__['snapshots_id'] = snapshots_id
             __props__['subscription'] = subscription
+            __props__['expire_time'] = None
+            __props__['name'] = None
+            __props__['topic'] = None
         super(Snapshot, __self__).__init__(
             'google-cloud:pubsub/v1:Snapshot',
             resource_name,
@@ -77,7 +80,43 @@ class Snapshot(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["expire_time"] = None
+        __props__["labels"] = None
+        __props__["name"] = None
+        __props__["topic"] = None
         return Snapshot(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        The snapshot is guaranteed to exist up until this time. A newly-created snapshot expires no later than 7 days from the time of its creation. Its exact lifetime is determined at creation by the existing backlog in the source subscription. Specifically, the lifetime of the snapshot is `7 days - (age of oldest unacked message in the subscription)`. For example, consider a subscription whose oldest unacked message is 3 days old. If a snapshot is created from this subscription, the snapshot -- which will always capture this 3-day-old backlog as long as the snapshot exists -- will expire in 4 days. The service will refuse to create a snapshot that would expire in less than 1 hour after creation.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name of the snapshot.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> pulumi.Output[str]:
+        """
+        The name of the topic from which this snapshot is retaining messages.
+        """
+        return pulumi.get(self, "topic")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

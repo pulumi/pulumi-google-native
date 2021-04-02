@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['InstanceDatabase']
@@ -63,6 +64,13 @@ class InstanceDatabase(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['create_time'] = None
+            __props__['earliest_version_time'] = None
+            __props__['encryption_info'] = None
+            __props__['name'] = None
+            __props__['restore_info'] = None
+            __props__['state'] = None
+            __props__['version_retention_period'] = None
         super(InstanceDatabase, __self__).__init__(
             'google-cloud:spanner/v1:InstanceDatabase',
             resource_name,
@@ -85,7 +93,79 @@ class InstanceDatabase(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["earliest_version_time"] = None
+        __props__["encryption_config"] = None
+        __props__["encryption_info"] = None
+        __props__["name"] = None
+        __props__["restore_info"] = None
+        __props__["state"] = None
+        __props__["version_retention_period"] = None
         return InstanceDatabase(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        If exists, the time at which the database creation started.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="earliestVersionTime")
+    def earliest_version_time(self) -> pulumi.Output[str]:
+        """
+        Earliest timestamp at which older versions of the data can be read. This value is continuously updated by Cloud Spanner and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+        """
+        return pulumi.get(self, "earliest_version_time")
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> pulumi.Output['outputs.EncryptionConfigResponse']:
+        """
+        For databases that are using customer managed encryption, this field contains the encryption configuration for the database. For databases that are using Google default or other types of encryption, this field is empty.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @property
+    @pulumi.getter(name="encryptionInfo")
+    def encryption_info(self) -> pulumi.Output[Sequence['outputs.EncryptionInfoResponse']]:
+        """
+        For databases that are using customer managed encryption, this field contains the encryption information for the database, such as encryption state and the Cloud KMS key versions that are in use. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field.
+        """
+        return pulumi.get(self, "encryption_info")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required. The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="restoreInfo")
+    def restore_info(self) -> pulumi.Output['outputs.RestoreInfoResponse']:
+        """
+        Applicable only for restored databases. Contains information about the restore source.
+        """
+        return pulumi.get(self, "restore_info")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The current database state.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="versionRetentionPeriod")
+    def version_retention_period(self) -> pulumi.Output[str]:
+        """
+        The period in which Cloud Spanner retains all versions of data for the database. This is the same as the value of version_retention_period database option set using UpdateDatabaseDdl. Defaults to 1 hour, if not set.
+        """
+        return pulumi.get(self, "version_retention_period")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

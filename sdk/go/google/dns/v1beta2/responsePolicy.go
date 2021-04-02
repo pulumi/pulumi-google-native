@@ -14,6 +14,14 @@ import (
 // Creates a new Response Policy
 type ResponsePolicy struct {
 	pulumi.CustomResourceState
+
+	// User-provided description for this Response Policy.
+	Description pulumi.StringOutput `pulumi:"description"`
+	Kind        pulumi.StringOutput `pulumi:"kind"`
+	// List of network names specifying networks to which this policy is applied.
+	Networks ResponsePolicyNetworkResponseArrayOutput `pulumi:"networks"`
+	// User assigned name for this Response Policy.
+	ResponsePolicyName pulumi.StringOutput `pulumi:"responsePolicyName"`
 }
 
 // NewResponsePolicy registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +59,23 @@ func GetResponsePolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResponsePolicy resources.
 type responsePolicyState struct {
+	// User-provided description for this Response Policy.
+	Description *string `pulumi:"description"`
+	Kind        *string `pulumi:"kind"`
+	// List of network names specifying networks to which this policy is applied.
+	Networks []ResponsePolicyNetworkResponse `pulumi:"networks"`
+	// User assigned name for this Response Policy.
+	ResponsePolicyName *string `pulumi:"responsePolicyName"`
 }
 
 type ResponsePolicyState struct {
+	// User-provided description for this Response Policy.
+	Description pulumi.StringPtrInput
+	Kind        pulumi.StringPtrInput
+	// List of network names specifying networks to which this policy is applied.
+	Networks ResponsePolicyNetworkResponseArrayInput
+	// User assigned name for this Response Policy.
+	ResponsePolicyName pulumi.StringPtrInput
 }
 
 func (ResponsePolicyState) ElementType() reflect.Type {

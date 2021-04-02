@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Firebasehosting.V1beta1
     public partial class Site : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
+        /// </summary>
+        [Output("appId")]
+        public Output<string> AppId { get; private set; } = null!;
+
+        /// <summary>
+        /// The default URL for the Hosting site.
+        /// </summary>
+        [Output("defaultUrl")]
+        public Output<string> DefaultUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. User-specified labels for the Hosting site.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The fully-qualified resource name of the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when Hosting is provisioned for the project. All additional sites are `USER_SITE`.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Site resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -65,12 +96,6 @@ namespace Pulumi.GoogleCloud.Firebasehosting.V1beta1
         [Input("appId")]
         public Input<string>? AppId { get; set; }
 
-        /// <summary>
-        /// Output only. The default URL for the Hosting site.
-        /// </summary>
-        [Input("defaultUrl")]
-        public Input<string>? DefaultUrl { get; set; }
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -83,23 +108,11 @@ namespace Pulumi.GoogleCloud.Firebasehosting.V1beta1
             set => _labels = value;
         }
 
-        /// <summary>
-        /// Output only. The fully-qualified resource name of the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
         [Input("sitesId", required: true)]
         public Input<string> SitesId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when Hosting is provisioned for the project. All additional sites are `USER_SITE`.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
 
         public SiteArgs()
         {

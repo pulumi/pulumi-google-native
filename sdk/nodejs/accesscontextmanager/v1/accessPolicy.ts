@@ -34,6 +34,22 @@ export class AccessPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessPolicy.__pulumiType;
     }
 
+    /**
+     * An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+     */
+    public readonly parent!: pulumi.Output<string>;
+    /**
+     * Required. Human readable title. Does not affect behavior.
+     */
+    public readonly title!: pulumi.Output<string>;
 
     /**
      * Create a AccessPolicy resource with the given unique name, arguments, and options.
@@ -55,6 +71,10 @@ export class AccessPolicy extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
             inputs["title"] = args ? args.title : undefined;
         } else {
+            inputs["etag"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["parent"] = undefined /*out*/;
+            inputs["title"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -69,11 +89,11 @@ export class AccessPolicy extends pulumi.CustomResource {
 export interface AccessPolicyArgs {
     readonly accessPoliciesId: pulumi.Input<string>;
     /**
-     * Output only. An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
+     * An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format.
      */
     readonly etag?: pulumi.Input<string>;
     /**
-     * Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+     * Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
      */
     readonly name?: pulumi.Input<string>;
     /**

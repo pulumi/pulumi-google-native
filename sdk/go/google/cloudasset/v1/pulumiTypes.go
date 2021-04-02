@@ -201,6 +201,197 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
+// You can construct a concrete instance of `ExprResponseInput` via:
+//
+//          ExprResponseArgs{...}
+type ExprResponseInput interface {
+	pulumi.Input
+
+	ToExprResponseOutput() ExprResponseOutput
+	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
+	return i.ToExprResponseOutputWithContext(context.Background())
+}
+
+func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
+}
+
+func (i ExprResponseArgs) ToExprResponsePtrOutput() ExprResponsePtrOutput {
+	return i.ToExprResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ExprResponseArgs) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput).ToExprResponsePtrOutputWithContext(ctx)
+}
+
+// ExprResponsePtrInput is an input type that accepts ExprResponseArgs, ExprResponsePtr and ExprResponsePtrOutput values.
+// You can construct a concrete instance of `ExprResponsePtrInput` via:
+//
+//          ExprResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ExprResponsePtrInput interface {
+	pulumi.Input
+
+	ToExprResponsePtrOutput() ExprResponsePtrOutput
+	ToExprResponsePtrOutputWithContext(context.Context) ExprResponsePtrOutput
+}
+
+type exprResponsePtrType ExprResponseArgs
+
+func ExprResponsePtr(v *ExprResponseArgs) ExprResponsePtrInput {
+	return (*exprResponsePtrType)(v)
+}
+
+func (*exprResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExprResponse)(nil)).Elem()
+}
+
+func (i *exprResponsePtrType) ToExprResponsePtrOutput() ExprResponsePtrOutput {
+	return i.ToExprResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *exprResponsePtrType) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponsePtrOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseOutput struct{ *pulumi.OutputState }
+
+func (ExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
+	return o
+}
+
+func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return o
+}
+
+func (o ExprResponseOutput) ToExprResponsePtrOutput() ExprResponsePtrOutput {
+	return o.ToExprResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ExprResponseOutput) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
+	return o.ApplyT(func(v ExprResponse) *ExprResponse {
+		return &v
+	}).(ExprResponsePtrOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ExprResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExprResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExprResponse)(nil)).Elem()
+}
+
+func (o ExprResponsePtrOutput) ToExprResponsePtrOutput() ExprResponsePtrOutput {
+	return o
+}
+
+func (o ExprResponsePtrOutput) ToExprResponsePtrOutputWithContext(ctx context.Context) ExprResponsePtrOutput {
+	return o
+}
+
+func (o ExprResponsePtrOutput) Elem() ExprResponseOutput {
+	return o.ApplyT(func(v *ExprResponse) ExprResponse { return *v }).(ExprResponseOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExprResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponsePtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExprResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponsePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExprResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponsePtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExprResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 // An asset feed used to export asset updates to a destinations. An asset feed filter controls what updates are exported. The asset feed must be created within a project, organization, or folder. Supported destinations are: Pub/Sub topics.
 type FeedType struct {
 	// A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
@@ -564,6 +755,140 @@ func (o FeedOutputConfigPtrOutput) PubsubDestination() PubsubDestinationPtrOutpu
 	}).(PubsubDestinationPtrOutput)
 }
 
+// Output configuration for asset feed destination.
+type FeedOutputConfigResponse struct {
+	// Destination on Pub/Sub.
+	PubsubDestination PubsubDestinationResponse `pulumi:"pubsubDestination"`
+}
+
+// FeedOutputConfigResponseInput is an input type that accepts FeedOutputConfigResponseArgs and FeedOutputConfigResponseOutput values.
+// You can construct a concrete instance of `FeedOutputConfigResponseInput` via:
+//
+//          FeedOutputConfigResponseArgs{...}
+type FeedOutputConfigResponseInput interface {
+	pulumi.Input
+
+	ToFeedOutputConfigResponseOutput() FeedOutputConfigResponseOutput
+	ToFeedOutputConfigResponseOutputWithContext(context.Context) FeedOutputConfigResponseOutput
+}
+
+// Output configuration for asset feed destination.
+type FeedOutputConfigResponseArgs struct {
+	// Destination on Pub/Sub.
+	PubsubDestination PubsubDestinationResponseInput `pulumi:"pubsubDestination"`
+}
+
+func (FeedOutputConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeedOutputConfigResponse)(nil)).Elem()
+}
+
+func (i FeedOutputConfigResponseArgs) ToFeedOutputConfigResponseOutput() FeedOutputConfigResponseOutput {
+	return i.ToFeedOutputConfigResponseOutputWithContext(context.Background())
+}
+
+func (i FeedOutputConfigResponseArgs) ToFeedOutputConfigResponseOutputWithContext(ctx context.Context) FeedOutputConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeedOutputConfigResponseOutput)
+}
+
+func (i FeedOutputConfigResponseArgs) ToFeedOutputConfigResponsePtrOutput() FeedOutputConfigResponsePtrOutput {
+	return i.ToFeedOutputConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i FeedOutputConfigResponseArgs) ToFeedOutputConfigResponsePtrOutputWithContext(ctx context.Context) FeedOutputConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeedOutputConfigResponseOutput).ToFeedOutputConfigResponsePtrOutputWithContext(ctx)
+}
+
+// FeedOutputConfigResponsePtrInput is an input type that accepts FeedOutputConfigResponseArgs, FeedOutputConfigResponsePtr and FeedOutputConfigResponsePtrOutput values.
+// You can construct a concrete instance of `FeedOutputConfigResponsePtrInput` via:
+//
+//          FeedOutputConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type FeedOutputConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToFeedOutputConfigResponsePtrOutput() FeedOutputConfigResponsePtrOutput
+	ToFeedOutputConfigResponsePtrOutputWithContext(context.Context) FeedOutputConfigResponsePtrOutput
+}
+
+type feedOutputConfigResponsePtrType FeedOutputConfigResponseArgs
+
+func FeedOutputConfigResponsePtr(v *FeedOutputConfigResponseArgs) FeedOutputConfigResponsePtrInput {
+	return (*feedOutputConfigResponsePtrType)(v)
+}
+
+func (*feedOutputConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeedOutputConfigResponse)(nil)).Elem()
+}
+
+func (i *feedOutputConfigResponsePtrType) ToFeedOutputConfigResponsePtrOutput() FeedOutputConfigResponsePtrOutput {
+	return i.ToFeedOutputConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *feedOutputConfigResponsePtrType) ToFeedOutputConfigResponsePtrOutputWithContext(ctx context.Context) FeedOutputConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeedOutputConfigResponsePtrOutput)
+}
+
+// Output configuration for asset feed destination.
+type FeedOutputConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (FeedOutputConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeedOutputConfigResponse)(nil)).Elem()
+}
+
+func (o FeedOutputConfigResponseOutput) ToFeedOutputConfigResponseOutput() FeedOutputConfigResponseOutput {
+	return o
+}
+
+func (o FeedOutputConfigResponseOutput) ToFeedOutputConfigResponseOutputWithContext(ctx context.Context) FeedOutputConfigResponseOutput {
+	return o
+}
+
+func (o FeedOutputConfigResponseOutput) ToFeedOutputConfigResponsePtrOutput() FeedOutputConfigResponsePtrOutput {
+	return o.ToFeedOutputConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o FeedOutputConfigResponseOutput) ToFeedOutputConfigResponsePtrOutputWithContext(ctx context.Context) FeedOutputConfigResponsePtrOutput {
+	return o.ApplyT(func(v FeedOutputConfigResponse) *FeedOutputConfigResponse {
+		return &v
+	}).(FeedOutputConfigResponsePtrOutput)
+}
+
+// Destination on Pub/Sub.
+func (o FeedOutputConfigResponseOutput) PubsubDestination() PubsubDestinationResponseOutput {
+	return o.ApplyT(func(v FeedOutputConfigResponse) PubsubDestinationResponse { return v.PubsubDestination }).(PubsubDestinationResponseOutput)
+}
+
+type FeedOutputConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FeedOutputConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeedOutputConfigResponse)(nil)).Elem()
+}
+
+func (o FeedOutputConfigResponsePtrOutput) ToFeedOutputConfigResponsePtrOutput() FeedOutputConfigResponsePtrOutput {
+	return o
+}
+
+func (o FeedOutputConfigResponsePtrOutput) ToFeedOutputConfigResponsePtrOutputWithContext(ctx context.Context) FeedOutputConfigResponsePtrOutput {
+	return o
+}
+
+func (o FeedOutputConfigResponsePtrOutput) Elem() FeedOutputConfigResponseOutput {
+	return o.ApplyT(func(v *FeedOutputConfigResponse) FeedOutputConfigResponse { return *v }).(FeedOutputConfigResponseOutput)
+}
+
+// Destination on Pub/Sub.
+func (o FeedOutputConfigResponsePtrOutput) PubsubDestination() PubsubDestinationResponsePtrOutput {
+	return o.ApplyT(func(v *FeedOutputConfigResponse) *PubsubDestinationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.PubsubDestination
+	}).(PubsubDestinationResponsePtrOutput)
+}
+
 // A Pub/Sub destination.
 type PubsubDestination struct {
 	// The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
@@ -698,13 +1023,153 @@ func (o PubsubDestinationPtrOutput) Topic() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A Pub/Sub destination.
+type PubsubDestinationResponse struct {
+	// The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
+	Topic string `pulumi:"topic"`
+}
+
+// PubsubDestinationResponseInput is an input type that accepts PubsubDestinationResponseArgs and PubsubDestinationResponseOutput values.
+// You can construct a concrete instance of `PubsubDestinationResponseInput` via:
+//
+//          PubsubDestinationResponseArgs{...}
+type PubsubDestinationResponseInput interface {
+	pulumi.Input
+
+	ToPubsubDestinationResponseOutput() PubsubDestinationResponseOutput
+	ToPubsubDestinationResponseOutputWithContext(context.Context) PubsubDestinationResponseOutput
+}
+
+// A Pub/Sub destination.
+type PubsubDestinationResponseArgs struct {
+	// The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
+	Topic pulumi.StringInput `pulumi:"topic"`
+}
+
+func (PubsubDestinationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubsubDestinationResponse)(nil)).Elem()
+}
+
+func (i PubsubDestinationResponseArgs) ToPubsubDestinationResponseOutput() PubsubDestinationResponseOutput {
+	return i.ToPubsubDestinationResponseOutputWithContext(context.Background())
+}
+
+func (i PubsubDestinationResponseArgs) ToPubsubDestinationResponseOutputWithContext(ctx context.Context) PubsubDestinationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubsubDestinationResponseOutput)
+}
+
+func (i PubsubDestinationResponseArgs) ToPubsubDestinationResponsePtrOutput() PubsubDestinationResponsePtrOutput {
+	return i.ToPubsubDestinationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PubsubDestinationResponseArgs) ToPubsubDestinationResponsePtrOutputWithContext(ctx context.Context) PubsubDestinationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubsubDestinationResponseOutput).ToPubsubDestinationResponsePtrOutputWithContext(ctx)
+}
+
+// PubsubDestinationResponsePtrInput is an input type that accepts PubsubDestinationResponseArgs, PubsubDestinationResponsePtr and PubsubDestinationResponsePtrOutput values.
+// You can construct a concrete instance of `PubsubDestinationResponsePtrInput` via:
+//
+//          PubsubDestinationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PubsubDestinationResponsePtrInput interface {
+	pulumi.Input
+
+	ToPubsubDestinationResponsePtrOutput() PubsubDestinationResponsePtrOutput
+	ToPubsubDestinationResponsePtrOutputWithContext(context.Context) PubsubDestinationResponsePtrOutput
+}
+
+type pubsubDestinationResponsePtrType PubsubDestinationResponseArgs
+
+func PubsubDestinationResponsePtr(v *PubsubDestinationResponseArgs) PubsubDestinationResponsePtrInput {
+	return (*pubsubDestinationResponsePtrType)(v)
+}
+
+func (*pubsubDestinationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PubsubDestinationResponse)(nil)).Elem()
+}
+
+func (i *pubsubDestinationResponsePtrType) ToPubsubDestinationResponsePtrOutput() PubsubDestinationResponsePtrOutput {
+	return i.ToPubsubDestinationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *pubsubDestinationResponsePtrType) ToPubsubDestinationResponsePtrOutputWithContext(ctx context.Context) PubsubDestinationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubsubDestinationResponsePtrOutput)
+}
+
+// A Pub/Sub destination.
+type PubsubDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (PubsubDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubsubDestinationResponse)(nil)).Elem()
+}
+
+func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponseOutput() PubsubDestinationResponseOutput {
+	return o
+}
+
+func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponseOutputWithContext(ctx context.Context) PubsubDestinationResponseOutput {
+	return o
+}
+
+func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponsePtrOutput() PubsubDestinationResponsePtrOutput {
+	return o.ToPubsubDestinationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PubsubDestinationResponseOutput) ToPubsubDestinationResponsePtrOutputWithContext(ctx context.Context) PubsubDestinationResponsePtrOutput {
+	return o.ApplyT(func(v PubsubDestinationResponse) *PubsubDestinationResponse {
+		return &v
+	}).(PubsubDestinationResponsePtrOutput)
+}
+
+// The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
+func (o PubsubDestinationResponseOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v PubsubDestinationResponse) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type PubsubDestinationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PubsubDestinationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PubsubDestinationResponse)(nil)).Elem()
+}
+
+func (o PubsubDestinationResponsePtrOutput) ToPubsubDestinationResponsePtrOutput() PubsubDestinationResponsePtrOutput {
+	return o
+}
+
+func (o PubsubDestinationResponsePtrOutput) ToPubsubDestinationResponsePtrOutputWithContext(ctx context.Context) PubsubDestinationResponsePtrOutput {
+	return o
+}
+
+func (o PubsubDestinationResponsePtrOutput) Elem() PubsubDestinationResponseOutput {
+	return o.ApplyT(func(v *PubsubDestinationResponse) PubsubDestinationResponse { return *v }).(PubsubDestinationResponseOutput)
+}
+
+// The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
+func (o PubsubDestinationResponsePtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PubsubDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(ExprResponsePtrOutput{})
 	pulumi.RegisterOutputType(FeedTypeOutput{})
 	pulumi.RegisterOutputType(FeedTypePtrOutput{})
 	pulumi.RegisterOutputType(FeedOutputConfigOutput{})
 	pulumi.RegisterOutputType(FeedOutputConfigPtrOutput{})
+	pulumi.RegisterOutputType(FeedOutputConfigResponseOutput{})
+	pulumi.RegisterOutputType(FeedOutputConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(PubsubDestinationOutput{})
 	pulumi.RegisterOutputType(PubsubDestinationPtrOutput{})
+	pulumi.RegisterOutputType(PubsubDestinationResponseOutput{})
+	pulumi.RegisterOutputType(PubsubDestinationResponsePtrOutput{})
 }

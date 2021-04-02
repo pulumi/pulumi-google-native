@@ -14,6 +14,23 @@ import (
 // Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
 type KeyRingCryptoKey struct {
 	pulumi.CustomResourceState
+
+	// The time at which this CryptoKey was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The resource name for this CryptoKey in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
+	NextRotationTime pulumi.StringOutput `pulumi:"nextRotationTime"`
+	// A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when this CryptoKey is given in EncryptRequest.name. The CryptoKey's primary version can be updated via UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be omitted.
+	Primary CryptoKeyVersionResponseOutput `pulumi:"primary"`
+	// Immutable. The immutable purpose of this CryptoKey.
+	Purpose pulumi.StringOutput `pulumi:"purpose"`
+	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
+	RotationPeriod pulumi.StringOutput `pulumi:"rotationPeriod"`
+	// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
+	VersionTemplate CryptoKeyVersionTemplateResponseOutput `pulumi:"versionTemplate"`
 }
 
 // NewKeyRingCryptoKey registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +74,41 @@ func GetKeyRingCryptoKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KeyRingCryptoKey resources.
 type keyRingCryptoKeyState struct {
+	// The time at which this CryptoKey was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
+	Labels map[string]string `pulumi:"labels"`
+	// The resource name for this CryptoKey in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	Name *string `pulumi:"name"`
+	// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
+	NextRotationTime *string `pulumi:"nextRotationTime"`
+	// A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when this CryptoKey is given in EncryptRequest.name. The CryptoKey's primary version can be updated via UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be omitted.
+	Primary *CryptoKeyVersionResponse `pulumi:"primary"`
+	// Immutable. The immutable purpose of this CryptoKey.
+	Purpose *string `pulumi:"purpose"`
+	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
+	RotationPeriod *string `pulumi:"rotationPeriod"`
+	// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
+	VersionTemplate *CryptoKeyVersionTemplateResponse `pulumi:"versionTemplate"`
 }
 
 type KeyRingCryptoKeyState struct {
+	// The time at which this CryptoKey was created.
+	CreateTime pulumi.StringPtrInput
+	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
+	Labels pulumi.StringMapInput
+	// The resource name for this CryptoKey in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	Name pulumi.StringPtrInput
+	// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
+	NextRotationTime pulumi.StringPtrInput
+	// A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when this CryptoKey is given in EncryptRequest.name. The CryptoKey's primary version can be updated via UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be omitted.
+	Primary CryptoKeyVersionResponsePtrInput
+	// Immutable. The immutable purpose of this CryptoKey.
+	Purpose pulumi.StringPtrInput
+	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
+	RotationPeriod pulumi.StringPtrInput
+	// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
+	VersionTemplate CryptoKeyVersionTemplateResponsePtrInput
 }
 
 func (KeyRingCryptoKeyState) ElementType() reflect.Type {
@@ -67,20 +116,14 @@ func (KeyRingCryptoKeyState) ElementType() reflect.Type {
 }
 
 type keyRingCryptoKeyArgs struct {
-	// Output only. The time at which this CryptoKey was created.
-	CreateTime   *string `pulumi:"createTime"`
-	CryptoKeysId string  `pulumi:"cryptoKeysId"`
-	KeyRingsId   string  `pulumi:"keyRingsId"`
+	CryptoKeysId string `pulumi:"cryptoKeysId"`
+	KeyRingsId   string `pulumi:"keyRingsId"`
 	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
 	Labels      map[string]string `pulumi:"labels"`
 	LocationsId string            `pulumi:"locationsId"`
-	// Output only. The resource name for this CryptoKey in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-	Name *string `pulumi:"name"`
 	// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
 	NextRotationTime *string `pulumi:"nextRotationTime"`
-	// Output only. A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when this CryptoKey is given in EncryptRequest.name. The CryptoKey's primary version can be updated via UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be omitted.
-	Primary    *CryptoKeyVersion `pulumi:"primary"`
-	ProjectsId string            `pulumi:"projectsId"`
+	ProjectsId       string  `pulumi:"projectsId"`
 	// Immutable. The immutable purpose of this CryptoKey.
 	Purpose *string `pulumi:"purpose"`
 	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
@@ -91,20 +134,14 @@ type keyRingCryptoKeyArgs struct {
 
 // The set of arguments for constructing a KeyRingCryptoKey resource.
 type KeyRingCryptoKeyArgs struct {
-	// Output only. The time at which this CryptoKey was created.
-	CreateTime   pulumi.StringPtrInput
 	CryptoKeysId pulumi.StringInput
 	KeyRingsId   pulumi.StringInput
 	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
 	Labels      pulumi.StringMapInput
 	LocationsId pulumi.StringInput
-	// Output only. The resource name for this CryptoKey in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-	Name pulumi.StringPtrInput
 	// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
 	NextRotationTime pulumi.StringPtrInput
-	// Output only. A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when this CryptoKey is given in EncryptRequest.name. The CryptoKey's primary version can be updated via UpdateCryptoKeyPrimaryVersion. Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be omitted.
-	Primary    CryptoKeyVersionPtrInput
-	ProjectsId pulumi.StringInput
+	ProjectsId       pulumi.StringInput
 	// Immutable. The immutable purpose of this CryptoKey.
 	Purpose pulumi.StringPtrInput
 	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.

@@ -35,6 +35,26 @@ export class AgentWebhook extends pulumi.CustomResource {
         return obj['__pulumiType'] === AgentWebhook.__pulumiType;
     }
 
+    /**
+     * Indicates whether the webhook is disabled.
+     */
+    public readonly disabled!: pulumi.Output<boolean>;
+    /**
+     * Required. The human-readable name of the webhook, unique within the agent.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Configuration for a generic web service.
+     */
+    public readonly genericWebService!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse>;
+    /**
+     * The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
+     */
+    public readonly timeout!: pulumi.Output<string>;
 
     /**
      * Create a AgentWebhook resource with the given unique name, arguments, and options.
@@ -69,6 +89,11 @@ export class AgentWebhook extends pulumi.CustomResource {
             inputs["timeout"] = args ? args.timeout : undefined;
             inputs["webhooksId"] = args ? args.webhooksId : undefined;
         } else {
+            inputs["disabled"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["genericWebService"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["timeout"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

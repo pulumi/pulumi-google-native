@@ -35,6 +35,22 @@ export class DatabaseIndex extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatabaseIndex.__pulumiType;
     }
 
+    /**
+     * The collection ID to which this index applies. Required.
+     */
+    public readonly collectionId!: pulumi.Output<string>;
+    /**
+     * The fields to index.
+     */
+    public readonly fields!: pulumi.Output<outputs.firestore.v1beta1.GoogleFirestoreAdminV1beta1IndexFieldResponse[]>;
+    /**
+     * The resource name of the index. Output only.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The state of the index. Output only.
+     */
+    public readonly state!: pulumi.Output<string>;
 
     /**
      * Create a DatabaseIndex resource with the given unique name, arguments, and options.
@@ -64,6 +80,10 @@ export class DatabaseIndex extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["state"] = args ? args.state : undefined;
         } else {
+            inputs["collectionId"] = undefined /*out*/;
+            inputs["fields"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

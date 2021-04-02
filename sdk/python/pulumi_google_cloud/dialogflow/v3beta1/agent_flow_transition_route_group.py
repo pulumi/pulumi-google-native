@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['AgentFlowTransitionRouteGroup']
@@ -93,7 +94,34 @@ class AgentFlowTransitionRouteGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["display_name"] = None
+        __props__["name"] = None
+        __props__["transition_routes"] = None
         return AgentFlowTransitionRouteGroup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="transitionRoutes")
+    def transition_routes(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDialogflowCxV3beta1TransitionRouteResponse']]:
+        """
+        Transition routes associated with the TransitionRouteGroup.
+        """
+        return pulumi.get(self, "transition_routes")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Network']
@@ -123,7 +124,139 @@ class Network(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["i_pv4_range"] = None
+        __props__["auto_create_subnetworks"] = None
+        __props__["creation_timestamp"] = None
+        __props__["description"] = None
+        __props__["firewall_policy"] = None
+        __props__["gateway_i_pv4"] = None
+        __props__["kind"] = None
+        __props__["mtu"] = None
+        __props__["name"] = None
+        __props__["peerings"] = None
+        __props__["routing_config"] = None
+        __props__["self_link"] = None
+        __props__["self_link_with_id"] = None
+        __props__["subnetworks"] = None
         return Network(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="IPv4Range")
+    def i_pv4_range(self) -> pulumi.Output[str]:
+        """
+        Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+        """
+        return pulumi.get(self, "i_pv4_range")
+
+    @property
+    @pulumi.getter(name="autoCreateSubnetworks")
+    def auto_create_subnetworks(self) -> pulumi.Output[bool]:
+        """
+        Must be set to create a VPC network. If not set, a legacy network is created.
+
+        When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
+
+        An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
+
+        For custom mode VPC networks, you can add subnets using the subnetworks insert method.
+        """
+        return pulumi.get(self, "auto_create_subnetworks")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this field when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="firewallPolicy")
+    def firewall_policy(self) -> pulumi.Output[str]:
+        """
+        [Output Only] URL of the firewall policy the network is associated with.
+        """
+        return pulumi.get(self, "firewall_policy")
+
+    @property
+    @pulumi.getter(name="gatewayIPv4")
+    def gateway_i_pv4(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The gateway address for default routing out of the network, selected by GCP.
+        """
+        return pulumi.get(self, "gateway_i_pv4")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#network for networks.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def mtu(self) -> pulumi.Output[int]:
+        """
+        Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes.
+        """
+        return pulumi.get(self, "mtu")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def peerings(self) -> pulumi.Output[Sequence['outputs.NetworkPeeringResponse']]:
+        """
+        [Output Only] A list of network peerings for the resource.
+        """
+        return pulumi.get(self, "peerings")
+
+    @property
+    @pulumi.getter(name="routingConfig")
+    def routing_config(self) -> pulumi.Output['outputs.NetworkRoutingConfigResponse']:
+        """
+        The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
+        """
+        return pulumi.get(self, "routing_config")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for this resource with the resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter
+    def subnetworks(self) -> pulumi.Output[Sequence[str]]:
+        """
+        [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
+        """
+        return pulumi.get(self, "subnetworks")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Logging.V2
     public partial class Bucket : Pulumi.CustomResource
     {
         /// <summary>
+        /// The creation timestamp of the bucket. This is not set for any of the default buckets.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes this bucket.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The bucket lifecycle state.
+        /// </summary>
+        [Output("lifecycleState")]
+        public Output<string> LifecycleState { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
+        /// </summary>
+        [Output("locked")]
+        public Output<bool> Locked { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+        /// </summary>
+        [Output("retentionDays")]
+        public Output<int> RetentionDays { get; private set; } = null!;
+
+        /// <summary>
+        /// The last update timestamp of the bucket.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Bucket resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -63,22 +106,10 @@ namespace Pulumi.GoogleCloud.Logging.V2
         public Input<string> BucketsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The creation timestamp of the bucket. This is not set for any of the default buckets.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Describes this bucket.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Output only. The bucket lifecycle state.
-        /// </summary>
-        [Input("lifecycleState")]
-        public Input<string>? LifecycleState { get; set; }
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
@@ -89,12 +120,6 @@ namespace Pulumi.GoogleCloud.Logging.V2
         [Input("locked")]
         public Input<bool>? Locked { get; set; }
 
-        /// <summary>
-        /// Output only. The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
@@ -103,12 +128,6 @@ namespace Pulumi.GoogleCloud.Logging.V2
         /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }
-
-        /// <summary>
-        /// Output only. The last update timestamp of the bucket.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public BucketArgs()
         {

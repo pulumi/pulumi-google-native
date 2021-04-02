@@ -34,6 +34,38 @@ export class Folder extends pulumi.CustomResource {
         return obj['__pulumiType'] === Folder.__pulumiType;
     }
 
+    /**
+     * Timestamp when the folder was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Timestamp when the folder was requested to be deleted.
+     */
+    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    /**
+     * The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * A checksum computed by the server based on the current value of the folder resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
+     */
+    public readonly parent!: pulumi.Output<string>;
+    /**
+     * The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Timestamp when the folder was last modified.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Folder resource with the given unique name, arguments, and options.
@@ -49,16 +81,24 @@ export class Folder extends pulumi.CustomResource {
             if ((!args || args.foldersId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'foldersId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["deleteTime"] = args ? args.deleteTime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
             inputs["foldersId"] = args ? args.foldersId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deleteTime"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deleteTime"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["parent"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -72,36 +112,12 @@ export class Folder extends pulumi.CustomResource {
  */
 export interface FolderArgs {
     /**
-     * Output only. Timestamp when the folder was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
-     * Output only. Timestamp when the folder was requested to be deleted.
-     */
-    readonly deleteTime?: pulumi.Input<string>;
-    /**
      * The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
      */
     readonly displayName?: pulumi.Input<string>;
-    /**
-     * Output only. A checksum computed by the server based on the current value of the folder resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-     */
-    readonly etag?: pulumi.Input<string>;
     readonly foldersId: pulumi.Input<string>;
-    /**
-     * Output only. The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
-     */
-    readonly name?: pulumi.Input<string>;
     /**
      * Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
      */
     readonly parent?: pulumi.Input<string>;
-    /**
-     * Output only. The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. Timestamp when the folder was last modified.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

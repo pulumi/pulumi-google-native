@@ -11,8 +11,6 @@ from ... import _utilities, _tables
 __all__ = [
     'GoogleCloudDialogflowV2AutomatedAgentConfigArgs',
     'GoogleCloudDialogflowV2ContextArgs',
-    'GoogleCloudDialogflowV2ConversationPhoneNumberArgs',
-    'GoogleCloudDialogflowV2DocumentReloadStatusArgs',
     'GoogleCloudDialogflowV2EntityTypeEntityArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs',
@@ -64,7 +62,6 @@ __all__ = [
     'GoogleCloudDialogflowV2NotificationConfigArgs',
     'GoogleCloudDialogflowV2SpeechToTextConfigArgs',
     'GoogleCloudDialogflowV2SuggestionFeatureArgs',
-    'GoogleRpcStatusArgs',
 ]
 
 @pulumi.input_type
@@ -145,70 +142,6 @@ class GoogleCloudDialogflowV2ContextArgs:
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2ConversationPhoneNumberArgs:
-    def __init__(__self__, *,
-                 phone_number: Optional[pulumi.Input[str]] = None):
-        """
-        Represents a phone number for telephony integration. It allows for connecting a particular conversation over telephony.
-        :param pulumi.Input[str] phone_number: Output only. The phone number to connect to this conversation.
-        """
-        if phone_number is not None:
-            pulumi.set(__self__, "phone_number", phone_number)
-
-    @property
-    @pulumi.getter(name="phoneNumber")
-    def phone_number(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The phone number to connect to this conversation.
-        """
-        return pulumi.get(self, "phone_number")
-
-    @phone_number.setter
-    def phone_number(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "phone_number", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2DocumentReloadStatusArgs:
-    def __init__(__self__, *,
-                 status: Optional[pulumi.Input['GoogleRpcStatusArgs']] = None,
-                 time: Optional[pulumi.Input[str]] = None):
-        """
-        The status of a reload attempt.
-        :param pulumi.Input['GoogleRpcStatusArgs'] status: The status of a reload attempt or the initial load.
-        :param pulumi.Input[str] time: The time of a reload attempt. This reload may have been triggered automatically or manually and may not have succeeded.
-        """
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if time is not None:
-            pulumi.set(__self__, "time", time)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['GoogleRpcStatusArgs']]:
-        """
-        The status of a reload attempt or the initial load.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['GoogleRpcStatusArgs']]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter
-    def time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time of a reload attempt. This reload may have been triggered automatically or manually and may not have succeeded.
-        """
-        return pulumi.get(self, "time")
-
-    @time.setter
-    def time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "time", value)
 
 
 @pulumi.input_type
@@ -2660,7 +2593,7 @@ class GoogleCloudDialogflowV2IntentTrainingPhraseArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Represents an example that the agent is trained on.
-        :param pulumi.Input[str] name: Output only. The unique identifier of this training phrase.
+        :param pulumi.Input[str] name: The unique identifier of this training phrase.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs']]] parts: Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
         :param pulumi.Input[int] times_added_count: Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
         :param pulumi.Input[str] type: Required. The type of the training phrase.
@@ -2678,7 +2611,7 @@ class GoogleCloudDialogflowV2IntentTrainingPhraseArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The unique identifier of this training phrase.
+        The unique identifier of this training phrase.
         """
         return pulumi.get(self, "name")
 
@@ -2905,61 +2838,5 @@ class GoogleCloudDialogflowV2SuggestionFeatureArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
-class GoogleRpcStatusArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
-                 message: Optional[pulumi.Input[str]] = None):
-        """
-        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-        :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if details is not None:
-            pulumi.set(__self__, "details", details)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[int]]:
-        """
-        The status code, which should be an enum value of google.rpc.Code.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
-        """
-        A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        """
-        return pulumi.get(self, "details")
-
-    @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
-        pulumi.set(self, "details", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
 
 

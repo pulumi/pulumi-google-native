@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['RegionCommitment']
@@ -128,7 +129,160 @@ class RegionCommitment(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["category"] = None
+        __props__["creation_timestamp"] = None
+        __props__["description"] = None
+        __props__["end_timestamp"] = None
+        __props__["kind"] = None
+        __props__["license_resource"] = None
+        __props__["name"] = None
+        __props__["plan"] = None
+        __props__["region"] = None
+        __props__["reservations"] = None
+        __props__["resources"] = None
+        __props__["self_link"] = None
+        __props__["self_link_with_id"] = None
+        __props__["start_timestamp"] = None
+        __props__["status"] = None
+        __props__["status_message"] = None
+        __props__["type"] = None
         return RegionCommitment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def category(self) -> pulumi.Output[str]:
+        """
+        The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="endTimestamp")
+    def end_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Commitment end time in RFC3339 text format.
+        """
+        return pulumi.get(self, "end_timestamp")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#commitment for commitments.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="licenseResource")
+    def license_resource(self) -> pulumi.Output['outputs.LicenseResourceCommitmentResponse']:
+        """
+        The license specification required as part of a license commitment.
+        """
+        return pulumi.get(self, "license_resource")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def plan(self) -> pulumi.Output[str]:
+        """
+        The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
+        """
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        [Output Only] URL of the region where this commitment may be used.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def reservations(self) -> pulumi.Output[Sequence['outputs.ReservationResponse']]:
+        """
+        List of reservations in this commitment.
+        """
+        return pulumi.get(self, "reservations")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> pulumi.Output[Sequence['outputs.ResourceCommitmentResponse']]:
+        """
+        A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
+        """
+        return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for this resource with the resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="startTimestamp")
+    def start_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Commitment start time in RFC3339 text format.
+        """
+        return pulumi.get(self, "start_timestamp")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> pulumi.Output[str]:
+        """
+        [Output Only] An optional, human-readable explanation of the status.
+        """
+        return pulumi.get(self, "status_message")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+        """
+        return pulumi.get(self, "type")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

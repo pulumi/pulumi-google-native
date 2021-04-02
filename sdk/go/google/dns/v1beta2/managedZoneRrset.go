@@ -14,6 +14,18 @@ import (
 // Creates a new ResourceRecordSet.
 type ManagedZoneRrset struct {
 	pulumi.CustomResourceState
+
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// For example, www.example.com.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
+	Rrdatas pulumi.StringArrayOutput `pulumi:"rrdatas"`
+	// As defined in RFC 4034 (section 3.2).
+	SignatureRrdatas pulumi.StringArrayOutput `pulumi:"signatureRrdatas"`
+	// Number of seconds that this ResourceRecordSet can be cached by resolvers.
+	Ttl pulumi.IntOutput `pulumi:"ttl"`
+	// The identifier of a supported record type. See the list of Supported DNS record types.
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewManagedZoneRrset registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +69,31 @@ func GetManagedZoneRrset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ManagedZoneRrset resources.
 type managedZoneRrsetState struct {
+	Kind *string `pulumi:"kind"`
+	// For example, www.example.com.
+	Name *string `pulumi:"name"`
+	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
+	Rrdatas []string `pulumi:"rrdatas"`
+	// As defined in RFC 4034 (section 3.2).
+	SignatureRrdatas []string `pulumi:"signatureRrdatas"`
+	// Number of seconds that this ResourceRecordSet can be cached by resolvers.
+	Ttl *int `pulumi:"ttl"`
+	// The identifier of a supported record type. See the list of Supported DNS record types.
+	Type *string `pulumi:"type"`
 }
 
 type ManagedZoneRrsetState struct {
+	Kind pulumi.StringPtrInput
+	// For example, www.example.com.
+	Name pulumi.StringPtrInput
+	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
+	Rrdatas pulumi.StringArrayInput
+	// As defined in RFC 4034 (section 3.2).
+	SignatureRrdatas pulumi.StringArrayInput
+	// Number of seconds that this ResourceRecordSet can be cached by resolvers.
+	Ttl pulumi.IntPtrInput
+	// The identifier of a supported record type. See the list of Supported DNS record types.
+	Type pulumi.StringPtrInput
 }
 
 func (ManagedZoneRrsetState) ElementType() reflect.Type {

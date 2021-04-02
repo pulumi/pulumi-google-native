@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2
     public partial class KnowledgeBase : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
+        /// </summary>
+        [Output("languageCode")]
+        public Output<string> LanguageCode { get; private set; } = null!;
+
+        /// <summary>
+        /// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a KnowledgeBase resource with the given unique name, arguments, and options.
         /// </summary>
         ///

@@ -35,6 +35,38 @@ export class Dataset extends pulumi.CustomResource {
         return obj['__pulumiType'] === Dataset.__pulumiType;
     }
 
+    /**
+     * The names of any related resources that are blocking changes to the dataset.
+     */
+    public /*out*/ readonly blockingResources!: pulumi.Output<string[]>;
+    /**
+     * Time the dataset is created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The number of data items in the dataset.
+     */
+    public /*out*/ readonly dataItemCount!: pulumi.Output<string>;
+    /**
+     * Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
+     */
+    public /*out*/ readonly description!: pulumi.Output<string>;
+    /**
+     * Required. The display name of the dataset. Maximum of 64 characters.
+     */
+    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    /**
+     * This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
+     */
+    public /*out*/ readonly inputConfigs!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1InputConfigResponse[]>;
+    /**
+     * Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
+     */
+    public /*out*/ readonly lastMigrateTime!: pulumi.Output<string>;
+    /**
+     * Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Dataset resource with the given unique name, arguments, and options.
@@ -56,7 +88,23 @@ export class Dataset extends pulumi.CustomResource {
             inputs["dataset"] = args ? args.dataset : undefined;
             inputs["datasetsId"] = args ? args.datasetsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["blockingResources"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["dataItemCount"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["inputConfigs"] = undefined /*out*/;
+            inputs["lastMigrateTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         } else {
+            inputs["blockingResources"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["dataItemCount"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["inputConfigs"] = undefined /*out*/;
+            inputs["lastMigrateTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -35,6 +35,42 @@ export class InstanceBackup extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceBackup.__pulumiType;
     }
 
+    /**
+     * The time the CreateBackup request is received. If the request does not specify `version_time`, the `version_time` of the backup will be equivalent to the `create_time`.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
+     */
+    public readonly database!: pulumi.Output<string>;
+    /**
+     * The encryption information for the backup.
+     */
+    public /*out*/ readonly encryptionInfo!: pulumi.Output<outputs.spanner.v1.EncryptionInfoResponse>;
+    /**
+     * Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
+     */
+    public readonly expireTime!: pulumi.Output<string>;
+    /**
+     * Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The names of the restored databases that reference the backup. The database names are of the form `projects//instances//databases/`. Referencing databases may exist in different instances. The existence of any referencing database prevents the backup from being deleted. When a restored database from the backup enters the `READY` state, the reference to the backup is removed.
+     */
+    public /*out*/ readonly referencingDatabases!: pulumi.Output<string[]>;
+    /**
+     * Size of the backup in bytes.
+     */
+    public /*out*/ readonly sizeBytes!: pulumi.Output<string>;
+    /**
+     * The current state of the backup.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.
+     */
+    public readonly versionTime!: pulumi.Output<string>;
 
     /**
      * Create a InstanceBackup resource with the given unique name, arguments, and options.
@@ -57,18 +93,27 @@ export class InstanceBackup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["backupsId"] = args ? args.backupsId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["database"] = args ? args.database : undefined;
-            inputs["encryptionInfo"] = args ? args.encryptionInfo : undefined;
             inputs["expireTime"] = args ? args.expireTime : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["referencingDatabases"] = args ? args.referencingDatabases : undefined;
-            inputs["sizeBytes"] = args ? args.sizeBytes : undefined;
-            inputs["state"] = args ? args.state : undefined;
             inputs["versionTime"] = args ? args.versionTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["encryptionInfo"] = undefined /*out*/;
+            inputs["referencingDatabases"] = undefined /*out*/;
+            inputs["sizeBytes"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["database"] = undefined /*out*/;
+            inputs["encryptionInfo"] = undefined /*out*/;
+            inputs["expireTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["referencingDatabases"] = undefined /*out*/;
+            inputs["sizeBytes"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["versionTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -83,17 +128,9 @@ export class InstanceBackup extends pulumi.CustomResource {
 export interface InstanceBackupArgs {
     readonly backupsId: pulumi.Input<string>;
     /**
-     * Output only. The time the CreateBackup request is received. If the request does not specify `version_time`, the `version_time` of the backup will be equivalent to the `create_time`.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
      */
     readonly database?: pulumi.Input<string>;
-    /**
-     * Output only. The encryption information for the backup.
-     */
-    readonly encryptionInfo?: pulumi.Input<inputs.spanner.v1.EncryptionInfo>;
     /**
      * Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
      */
@@ -104,18 +141,6 @@ export interface InstanceBackupArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. The names of the restored databases that reference the backup. The database names are of the form `projects//instances//databases/`. Referencing databases may exist in different instances. The existence of any referencing database prevents the backup from being deleted. When a restored database from the backup enters the `READY` state, the reference to the backup is removed.
-     */
-    readonly referencingDatabases?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Output only. Size of the backup in bytes.
-     */
-    readonly sizeBytes?: pulumi.Input<string>;
-    /**
-     * Output only. The current state of the backup.
-     */
-    readonly state?: pulumi.Input<string>;
     /**
      * The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.
      */

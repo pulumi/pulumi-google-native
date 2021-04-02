@@ -14,6 +14,29 @@ import (
 // Creates an Apigee runtime instance. The instance is accessible from the authorized network configured on the organization. **Note:** Not supported for Apigee hybrid.
 type OrganizationInstance struct {
 	pulumi.CustomResourceState
+
+	// Time the instance was created in milliseconds since epoch.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Optional. Description of the instance.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+	DiskEncryptionKeyName pulumi.StringOutput `pulumi:"diskEncryptionKeyName"`
+	// Optional. Display name for the instance.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
+	Host pulumi.StringOutput `pulumi:"host"`
+	// Time the instance was last modified in milliseconds since epoch.
+	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
+	// Required. Compute Engine location where the instance resides.
+	Location pulumi.StringOutput `pulumi:"location"`
+	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
+	PeeringCidrRange pulumi.StringOutput `pulumi:"peeringCidrRange"`
+	// Port number of the exposed Apigee endpoint.
+	Port pulumi.StringOutput `pulumi:"port"`
+	// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewOrganizationInstance registers a new resource with the given unique name, arguments, and options.
@@ -51,17 +74,7 @@ func GetOrganizationInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationInstance resources.
 type organizationInstanceState struct {
-}
-
-type OrganizationInstanceState struct {
-}
-
-func (OrganizationInstanceState) ElementType() reflect.Type {
-	return reflect.TypeOf((*organizationInstanceState)(nil)).Elem()
-}
-
-type organizationInstanceArgs struct {
-	// Output only. Time the instance was created in milliseconds since epoch.
+	// Time the instance was created in milliseconds since epoch.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Optional. Description of the instance.
 	Description *string `pulumi:"description"`
@@ -69,27 +82,24 @@ type organizationInstanceArgs struct {
 	DiskEncryptionKeyName *string `pulumi:"diskEncryptionKeyName"`
 	// Optional. Display name for the instance.
 	DisplayName *string `pulumi:"displayName"`
-	// Output only. Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
-	Host        *string `pulumi:"host"`
-	InstancesId string  `pulumi:"instancesId"`
-	// Output only. Time the instance was last modified in milliseconds since epoch.
+	// Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
+	Host *string `pulumi:"host"`
+	// Time the instance was last modified in milliseconds since epoch.
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
 	// Required. Compute Engine location where the instance resides.
 	Location *string `pulumi:"location"`
 	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Name *string `pulumi:"name"`
 	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
 	PeeringCidrRange *string `pulumi:"peeringCidrRange"`
-	// Output only. Port number of the exposed Apigee endpoint.
+	// Port number of the exposed Apigee endpoint.
 	Port *string `pulumi:"port"`
-	// Output only. State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
+	// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
 	State *string `pulumi:"state"`
 }
 
-// The set of arguments for constructing a OrganizationInstance resource.
-type OrganizationInstanceArgs struct {
-	// Output only. Time the instance was created in milliseconds since epoch.
+type OrganizationInstanceState struct {
+	// Time the instance was created in milliseconds since epoch.
 	CreatedAt pulumi.StringPtrInput
 	// Optional. Description of the instance.
 	Description pulumi.StringPtrInput
@@ -97,11 +107,52 @@ type OrganizationInstanceArgs struct {
 	DiskEncryptionKeyName pulumi.StringPtrInput
 	// Optional. Display name for the instance.
 	DisplayName pulumi.StringPtrInput
-	// Output only. Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
-	Host        pulumi.StringPtrInput
-	InstancesId pulumi.StringInput
-	// Output only. Time the instance was last modified in milliseconds since epoch.
+	// Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
+	Host pulumi.StringPtrInput
+	// Time the instance was last modified in milliseconds since epoch.
 	LastModifiedAt pulumi.StringPtrInput
+	// Required. Compute Engine location where the instance resides.
+	Location pulumi.StringPtrInput
+	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+	Name pulumi.StringPtrInput
+	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
+	PeeringCidrRange pulumi.StringPtrInput
+	// Port number of the exposed Apigee endpoint.
+	Port pulumi.StringPtrInput
+	// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
+	State pulumi.StringPtrInput
+}
+
+func (OrganizationInstanceState) ElementType() reflect.Type {
+	return reflect.TypeOf((*organizationInstanceState)(nil)).Elem()
+}
+
+type organizationInstanceArgs struct {
+	// Optional. Description of the instance.
+	Description *string `pulumi:"description"`
+	// Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+	DiskEncryptionKeyName *string `pulumi:"diskEncryptionKeyName"`
+	// Optional. Display name for the instance.
+	DisplayName *string `pulumi:"displayName"`
+	InstancesId string  `pulumi:"instancesId"`
+	// Required. Compute Engine location where the instance resides.
+	Location *string `pulumi:"location"`
+	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+	Name            *string `pulumi:"name"`
+	OrganizationsId string  `pulumi:"organizationsId"`
+	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
+	PeeringCidrRange *string `pulumi:"peeringCidrRange"`
+}
+
+// The set of arguments for constructing a OrganizationInstance resource.
+type OrganizationInstanceArgs struct {
+	// Optional. Description of the instance.
+	Description pulumi.StringPtrInput
+	// Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+	DiskEncryptionKeyName pulumi.StringPtrInput
+	// Optional. Display name for the instance.
+	DisplayName pulumi.StringPtrInput
+	InstancesId pulumi.StringInput
 	// Required. Compute Engine location where the instance resides.
 	Location pulumi.StringPtrInput
 	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
@@ -109,10 +160,6 @@ type OrganizationInstanceArgs struct {
 	OrganizationsId pulumi.StringInput
 	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
 	PeeringCidrRange pulumi.StringPtrInput
-	// Output only. Port number of the exposed Apigee endpoint.
-	Port pulumi.StringPtrInput
-	// Output only. State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
-	State pulumi.StringPtrInput
 }
 
 func (OrganizationInstanceArgs) ElementType() reflect.Type {

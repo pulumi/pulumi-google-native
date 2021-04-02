@@ -35,6 +35,54 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === UptimeCheckConfig.__pulumiType;
     }
 
+    /**
+     * The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
+     */
+    public readonly contentMatchers!: pulumi.Output<outputs.monitoring.v3.ContentMatcherResponse[]>;
+    /**
+     * A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Contains information needed to make an HTTP or HTTPS check.
+     */
+    public readonly httpCheck!: pulumi.Output<outputs.monitoring.v3.HttpCheckResponse>;
+    /**
+     * The internal checkers that this check will egress from. If is_internal is true and this list is empty, the check will egress from all the InternalCheckers configured for the project that owns this UptimeCheckConfig.
+     */
+    public readonly internalCheckers!: pulumi.Output<outputs.monitoring.v3.InternalCheckerResponse[]>;
+    /**
+     * If this is true, then checks are made only from the 'internal_checkers'. If it is false, then checks are made only from the 'selected_regions'. It is an error to provide 'selected_regions' when is_internal is true, or to provide 'internal_checkers' when is_internal is false.
+     */
+    public readonly isInternal!: pulumi.Output<boolean>;
+    /**
+     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are valid for this field: uptime_url, gce_instance, gae_app, aws_ec2_instance, aws_elb_load_balancer
+     */
+    public readonly monitoredResource!: pulumi.Output<outputs.monitoring.v3.MonitoredResourceResponse>;
+    /**
+     * A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
+     */
+    public readonly period!: pulumi.Output<string>;
+    /**
+     * The group resource associated with the configuration.
+     */
+    public readonly resourceGroup!: pulumi.Output<outputs.monitoring.v3.ResourceGroupResponse>;
+    /**
+     * The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
+     */
+    public readonly selectedRegions!: pulumi.Output<string[]>;
+    /**
+     * Contains information needed to make a TCP check.
+     */
+    public readonly tcpCheck!: pulumi.Output<outputs.monitoring.v3.TcpCheckResponse>;
+    /**
+     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
+     */
+    public readonly timeout!: pulumi.Output<string>;
 
     /**
      * Create a UptimeCheckConfig resource with the given unique name, arguments, and options.
@@ -68,6 +116,18 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             inputs["timeout"] = args ? args.timeout : undefined;
             inputs["uptimeCheckConfigsId"] = args ? args.uptimeCheckConfigsId : undefined;
         } else {
+            inputs["contentMatchers"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["httpCheck"] = undefined /*out*/;
+            inputs["internalCheckers"] = undefined /*out*/;
+            inputs["isInternal"] = undefined /*out*/;
+            inputs["monitoredResource"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["period"] = undefined /*out*/;
+            inputs["resourceGroup"] = undefined /*out*/;
+            inputs["selectedRegions"] = undefined /*out*/;
+            inputs["tcpCheck"] = undefined /*out*/;
+            inputs["timeout"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

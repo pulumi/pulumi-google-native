@@ -16,25 +16,25 @@ namespace Pulumi.GoogleCloud.Testing.V1.Inputs
     public sealed class ToolResultsStepArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. A tool results execution ID.
+        /// A tool results execution ID.
         /// </summary>
         [Input("executionId")]
         public Input<string>? ExecutionId { get; set; }
 
         /// <summary>
-        /// Output only. A tool results history ID.
+        /// A tool results history ID.
         /// </summary>
         [Input("historyId")]
         public Input<string>? HistoryId { get; set; }
 
         /// <summary>
-        /// Output only. The cloud project that owns the tool results step.
+        /// The cloud project that owns the tool results step.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Output only. A tool results step ID.
+        /// A tool results step ID.
         /// </summary>
         [Input("stepId")]
         public Input<string>? StepId { get; set; }

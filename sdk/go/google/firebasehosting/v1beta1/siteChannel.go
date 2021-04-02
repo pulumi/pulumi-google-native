@@ -14,6 +14,25 @@ import (
 // Creates a new channel in the specified site.
 type SiteChannel struct {
 	pulumi.CustomResourceState
+
+	// The time at which the channel was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
+	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
+	// Text labels used for extra metadata and/or filtering.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The current release for the channel, if any.
+	Release ReleaseResponseOutput `pulumi:"release"`
+	// The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
+	RetainedReleaseCount pulumi.IntOutput `pulumi:"retainedReleaseCount"`
+	// Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
+	Ttl pulumi.StringOutput `pulumi:"ttl"`
+	// The time at which the channel was last updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// The URL at which the content of this channel's current release can be viewed. This URL is a Firebase-provided subdomain of `web.app`. The content of this channel's current release can also be viewed at the Firebase-provided subdomain of `firebaseapp.com`. If this channel is the `live` channel for the Hosting site, then the content of this channel's current release can also be viewed at any connected custom domains.
+	Url pulumi.StringOutput `pulumi:"url"`
 }
 
 // NewSiteChannel registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +70,45 @@ func GetSiteChannel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SiteChannel resources.
 type siteChannelState struct {
+	// The time at which the channel was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
+	ExpireTime *string `pulumi:"expireTime"`
+	// Text labels used for extra metadata and/or filtering.
+	Labels map[string]string `pulumi:"labels"`
+	// The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
+	Name *string `pulumi:"name"`
+	// The current release for the channel, if any.
+	Release *ReleaseResponse `pulumi:"release"`
+	// The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
+	RetainedReleaseCount *int `pulumi:"retainedReleaseCount"`
+	// Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
+	Ttl *string `pulumi:"ttl"`
+	// The time at which the channel was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
+	// The URL at which the content of this channel's current release can be viewed. This URL is a Firebase-provided subdomain of `web.app`. The content of this channel's current release can also be viewed at the Firebase-provided subdomain of `firebaseapp.com`. If this channel is the `live` channel for the Hosting site, then the content of this channel's current release can also be viewed at any connected custom domains.
+	Url *string `pulumi:"url"`
 }
 
 type SiteChannelState struct {
+	// The time at which the channel was created.
+	CreateTime pulumi.StringPtrInput
+	// The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
+	ExpireTime pulumi.StringPtrInput
+	// Text labels used for extra metadata and/or filtering.
+	Labels pulumi.StringMapInput
+	// The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
+	Name pulumi.StringPtrInput
+	// The current release for the channel, if any.
+	Release ReleaseResponsePtrInput
+	// The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
+	RetainedReleaseCount pulumi.IntPtrInput
+	// Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
+	Ttl pulumi.StringPtrInput
+	// The time at which the channel was last updated.
+	UpdateTime pulumi.StringPtrInput
+	// The URL at which the content of this channel's current release can be viewed. This URL is a Firebase-provided subdomain of `web.app`. The content of this channel's current release can also be viewed at the Firebase-provided subdomain of `firebaseapp.com`. If this channel is the `live` channel for the Hosting site, then the content of this channel's current release can also be viewed at any connected custom domains.
+	Url pulumi.StringPtrInput
 }
 
 func (SiteChannelState) ElementType() reflect.Type {
@@ -62,49 +117,33 @@ func (SiteChannelState) ElementType() reflect.Type {
 
 type siteChannelArgs struct {
 	ChannelsId string `pulumi:"channelsId"`
-	// Output only. The time at which the channel was created.
-	CreateTime *string `pulumi:"createTime"`
 	// The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
 	ExpireTime *string `pulumi:"expireTime"`
 	// Text labels used for extra metadata and/or filtering.
 	Labels map[string]string `pulumi:"labels"`
 	// The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
 	Name *string `pulumi:"name"`
-	// Output only. The current release for the channel, if any.
-	Release *Release `pulumi:"release"`
 	// The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
 	RetainedReleaseCount *int   `pulumi:"retainedReleaseCount"`
 	SitesId              string `pulumi:"sitesId"`
 	// Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
 	Ttl *string `pulumi:"ttl"`
-	// Output only. The time at which the channel was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
-	// Output only. The URL at which the content of this channel's current release can be viewed. This URL is a Firebase-provided subdomain of `web.app`. The content of this channel's current release can also be viewed at the Firebase-provided subdomain of `firebaseapp.com`. If this channel is the `live` channel for the Hosting site, then the content of this channel's current release can also be viewed at any connected custom domains.
-	Url *string `pulumi:"url"`
 }
 
 // The set of arguments for constructing a SiteChannel resource.
 type SiteChannelArgs struct {
 	ChannelsId pulumi.StringInput
-	// Output only. The time at which the channel was created.
-	CreateTime pulumi.StringPtrInput
 	// The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
 	ExpireTime pulumi.StringPtrInput
 	// Text labels used for extra metadata and/or filtering.
 	Labels pulumi.StringMapInput
 	// The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
 	Name pulumi.StringPtrInput
-	// Output only. The current release for the channel, if any.
-	Release ReleasePtrInput
 	// The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
 	RetainedReleaseCount pulumi.IntPtrInput
 	SitesId              pulumi.StringInput
 	// Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
 	Ttl pulumi.StringPtrInput
-	// Output only. The time at which the channel was last updated.
-	UpdateTime pulumi.StringPtrInput
-	// Output only. The URL at which the content of this channel's current release can be viewed. This URL is a Firebase-provided subdomain of `web.app`. The content of this channel's current release can also be viewed at the Firebase-provided subdomain of `firebaseapp.com`. If this channel is the `live` channel for the Hosting site, then the content of this channel's current release can also be viewed at any connected custom domains.
-	Url pulumi.StringPtrInput
 }
 
 func (SiteChannelArgs) ElementType() reflect.Type {

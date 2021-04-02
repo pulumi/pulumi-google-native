@@ -14,6 +14,13 @@ import (
 // Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
 type AppDomainMapping struct {
 	pulumi.CustomResourceState
+
+	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+	ResourceRecords ResourceRecordResponseArrayOutput `pulumi:"resourceRecords"`
+	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+	SslSettings SslSettingsResponseOutput `pulumi:"sslSettings"`
 }
 
 // NewAppDomainMapping registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +58,21 @@ func GetAppDomainMapping(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AppDomainMapping resources.
 type appDomainMappingState struct {
+	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
+	Name *string `pulumi:"name"`
+	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+	ResourceRecords []ResourceRecordResponse `pulumi:"resourceRecords"`
+	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+	SslSettings *SslSettingsResponse `pulumi:"sslSettings"`
 }
 
 type AppDomainMappingState struct {
+	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
+	Name pulumi.StringPtrInput
+	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
+	ResourceRecords ResourceRecordResponseArrayInput
+	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+	SslSettings SslSettingsResponsePtrInput
 }
 
 func (AppDomainMappingState) ElementType() reflect.Type {

@@ -16,6 +16,79 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1
     public partial class AccountChannelPartnerLinkCustomer : Pulumi.CustomResource
     {
         /// <summary>
+        /// Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+        /// </summary>
+        [Output("alternateEmail")]
+        public Output<string> AlternateEmail { get; private set; } = null!;
+
+        /// <summary>
+        /// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
+        /// </summary>
+        [Output("channelPartnerId")]
+        public Output<string> ChannelPartnerId { get; private set; } = null!;
+
+        /// <summary>
+        /// Customer's cloud_identity_id. Populated only if a Cloud Identity resource exists for this customer.
+        /// </summary>
+        [Output("cloudIdentityId")]
+        public Output<string> CloudIdentityId { get; private set; } = null!;
+
+        /// <summary>
+        /// Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
+        /// </summary>
+        [Output("cloudIdentityInfo")]
+        public Output<Outputs.GoogleCloudChannelV1CloudIdentityInfoResponse> CloudIdentityInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which the customer is created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        /// </summary>
+        [Output("domain")]
+        public Output<string> Domain { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// </summary>
+        [Output("languageCode")]
+        public Output<string> LanguageCode { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Name of the organization that the customer entity represents.
+        /// </summary>
+        [Output("orgDisplayName")]
+        public Output<string> OrgDisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+        /// </summary>
+        [Output("orgPostalAddress")]
+        public Output<Outputs.GoogleTypePostalAddressResponse> OrgPostalAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// Primary contact info.
+        /// </summary>
+        [Output("primaryContactInfo")]
+        public Output<Outputs.GoogleCloudChannelV1ContactInfoResponse> PrimaryContactInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which the customer is updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AccountChannelPartnerLinkCustomer resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -77,24 +150,6 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1
         [Input("channelPartnerLinksId", required: true)]
         public Input<string> ChannelPartnerLinksId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. Customer's cloud_identity_id. Populated only if a Cloud Identity resource exists for this customer.
-        /// </summary>
-        [Input("cloudIdentityId")]
-        public Input<string>? CloudIdentityId { get; set; }
-
-        /// <summary>
-        /// Output only. Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
-        /// </summary>
-        [Input("cloudIdentityInfo")]
-        public Input<Inputs.GoogleCloudChannelV1CloudIdentityInfoArgs>? CloudIdentityInfo { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which the customer is created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
         [Input("customersId", required: true)]
         public Input<string> CustomersId { get; set; } = null!;
 
@@ -109,12 +164,6 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1
         /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
-
-        /// <summary>
-        /// Output only. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id}
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Required. Name of the organization that the customer entity represents.
@@ -133,12 +182,6 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1
         /// </summary>
         [Input("primaryContactInfo")]
         public Input<Inputs.GoogleCloudChannelV1ContactInfoArgs>? PrimaryContactInfo { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which the customer is updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public AccountChannelPartnerLinkCustomerArgs()
         {

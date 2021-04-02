@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['InstanceWorkerpool']
@@ -63,6 +64,12 @@ class InstanceWorkerpool(pulumi.CustomResource):
             if workerpools_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workerpools_id'")
             __props__['workerpools_id'] = workerpools_id
+            __props__['autoscale'] = None
+            __props__['channel'] = None
+            __props__['name'] = None
+            __props__['state'] = None
+            __props__['worker_config'] = None
+            __props__['worker_count'] = None
         super(InstanceWorkerpool, __self__).__init__(
             'google-cloud:remotebuildexecution/v1alpha:InstanceWorkerpool',
             resource_name,
@@ -85,7 +92,61 @@ class InstanceWorkerpool(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["autoscale"] = None
+        __props__["channel"] = None
+        __props__["name"] = None
+        __props__["state"] = None
+        __props__["worker_config"] = None
+        __props__["worker_count"] = None
         return InstanceWorkerpool(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def autoscale(self) -> pulumi.Output['outputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse']:
+        """
+        The autoscale policy to apply on a pool.
+        """
+        return pulumi.get(self, "autoscale")
+
+    @property
+    @pulumi.getter
+    def channel(self) -> pulumi.Output[str]:
+        """
+        Channel specifies the release channel of the pool.
+        """
+        return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        State of the worker pool.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="workerConfig")
+    def worker_config(self) -> pulumi.Output['outputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse']:
+        """
+        Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
+        """
+        return pulumi.get(self, "worker_config")
+
+    @property
+    @pulumi.getter(name="workerCount")
+    def worker_count(self) -> pulumi.Output[str]:
+        """
+        The desired number of workers in the worker pool. Must be a value between 0 and 15000.
+        """
+        return pulumi.get(self, "worker_count")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -14,6 +14,19 @@ import (
 // Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.
 type BillingAccountExclusion struct {
 	pulumi.CustomResourceState
+
+	// The creation timestamp of the exclusion.This field may not be present for older exclusions.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. A description of this exclusion.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
+	Disabled pulumi.BoolOutput `pulumi:"disabled"`
+	// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+	Filter pulumi.StringOutput `pulumi:"filter"`
+	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The last update timestamp of the exclusion.This field may not be present for older exclusions.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewBillingAccountExclusion registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +64,33 @@ func GetBillingAccountExclusion(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BillingAccountExclusion resources.
 type billingAccountExclusionState struct {
+	// The creation timestamp of the exclusion.This field may not be present for older exclusions.
+	CreateTime *string `pulumi:"createTime"`
+	// Optional. A description of this exclusion.
+	Description *string `pulumi:"description"`
+	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
+	Disabled *bool `pulumi:"disabled"`
+	// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+	Filter *string `pulumi:"filter"`
+	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	Name *string `pulumi:"name"`
+	// The last update timestamp of the exclusion.This field may not be present for older exclusions.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type BillingAccountExclusionState struct {
+	// The creation timestamp of the exclusion.This field may not be present for older exclusions.
+	CreateTime pulumi.StringPtrInput
+	// Optional. A description of this exclusion.
+	Description pulumi.StringPtrInput
+	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
+	Disabled pulumi.BoolPtrInput
+	// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+	Filter pulumi.StringPtrInput
+	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	Name pulumi.StringPtrInput
+	// The last update timestamp of the exclusion.This field may not be present for older exclusions.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (BillingAccountExclusionState) ElementType() reflect.Type {
@@ -62,8 +99,6 @@ func (BillingAccountExclusionState) ElementType() reflect.Type {
 
 type billingAccountExclusionArgs struct {
 	BillingAccountsId string `pulumi:"billingAccountsId"`
-	// Output only. The creation timestamp of the exclusion.This field may not be present for older exclusions.
-	CreateTime *string `pulumi:"createTime"`
 	// Optional. A description of this exclusion.
 	Description *string `pulumi:"description"`
 	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
@@ -73,15 +108,11 @@ type billingAccountExclusionArgs struct {
 	Filter *string `pulumi:"filter"`
 	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name *string `pulumi:"name"`
-	// Output only. The last update timestamp of the exclusion.This field may not be present for older exclusions.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a BillingAccountExclusion resource.
 type BillingAccountExclusionArgs struct {
 	BillingAccountsId pulumi.StringInput
-	// Output only. The creation timestamp of the exclusion.This field may not be present for older exclusions.
-	CreateTime pulumi.StringPtrInput
 	// Optional. A description of this exclusion.
 	Description pulumi.StringPtrInput
 	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
@@ -91,8 +122,6 @@ type BillingAccountExclusionArgs struct {
 	Filter pulumi.StringPtrInput
 	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringPtrInput
-	// Output only. The last update timestamp of the exclusion.This field may not be present for older exclusions.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (BillingAccountExclusionArgs) ElementType() reflect.Type {

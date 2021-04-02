@@ -64,16 +64,16 @@ type siteChannelReleaseArgs struct {
 	ChannelsId string `pulumi:"channelsId"`
 	// The deploy description when the release was created. The value can be up to 512 characters.
 	Message *string `pulumi:"message"`
-	// Output only. The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create).
+	// The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create).
 	Name *string `pulumi:"name"`
-	// Output only. The time at which the version is set to be public.
+	// The time at which the version is set to be public.
 	ReleaseTime *string `pulumi:"releaseTime"`
-	// Output only. Identifies the user who created the release.
+	// Identifies the user who created the release.
 	ReleaseUser *ActingUser `pulumi:"releaseUser"`
 	SitesId     string      `pulumi:"sitesId"`
 	// Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
 	Type *string `pulumi:"type"`
-	// Output only. The configuration and content that was released.
+	// The configuration and content that was released.
 	Version *Version `pulumi:"version"`
 }
 
@@ -82,16 +82,16 @@ type SiteChannelReleaseArgs struct {
 	ChannelsId pulumi.StringInput
 	// The deploy description when the release was created. The value can be up to 512 characters.
 	Message pulumi.StringPtrInput
-	// Output only. The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create).
+	// The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create).
 	Name pulumi.StringPtrInput
-	// Output only. The time at which the version is set to be public.
+	// The time at which the version is set to be public.
 	ReleaseTime pulumi.StringPtrInput
-	// Output only. Identifies the user who created the release.
+	// Identifies the user who created the release.
 	ReleaseUser ActingUserPtrInput
 	SitesId     pulumi.StringInput
 	// Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
 	Type pulumi.StringPtrInput
-	// Output only. The configuration and content that was released.
+	// The configuration and content that was released.
 	Version VersionPtrInput
 }
 

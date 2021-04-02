@@ -14,6 +14,13 @@ import (
 // Creates a schema.
 type Schema struct {
 	pulumi.CustomResourceState
+
+	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
+	Definition pulumi.StringOutput `pulumi:"definition"`
+	// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The type of the schema definition.
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewSchema registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +58,21 @@ func GetSchema(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Schema resources.
 type schemaState struct {
+	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
+	Definition *string `pulumi:"definition"`
+	// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+	Name *string `pulumi:"name"`
+	// The type of the schema definition.
+	Type *string `pulumi:"type"`
 }
 
 type SchemaState struct {
+	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
+	Definition pulumi.StringPtrInput
+	// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+	Name pulumi.StringPtrInput
+	// The type of the schema definition.
+	Type pulumi.StringPtrInput
 }
 
 func (SchemaState) ElementType() reflect.Type {

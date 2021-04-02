@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Instance']
@@ -163,7 +164,286 @@ class Instance(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["backend_type"] = None
+        __props__["connection_name"] = None
+        __props__["current_disk_size"] = None
+        __props__["database_version"] = None
+        __props__["disk_encryption_configuration"] = None
+        __props__["disk_encryption_status"] = None
+        __props__["etag"] = None
+        __props__["failover_replica"] = None
+        __props__["gce_zone"] = None
+        __props__["instance_type"] = None
+        __props__["ip_addresses"] = None
+        __props__["ipv6_address"] = None
+        __props__["kind"] = None
+        __props__["master_instance_name"] = None
+        __props__["max_disk_size"] = None
+        __props__["name"] = None
+        __props__["on_premises_configuration"] = None
+        __props__["project"] = None
+        __props__["region"] = None
+        __props__["replica_configuration"] = None
+        __props__["replica_names"] = None
+        __props__["root_password"] = None
+        __props__["satisfies_pzs"] = None
+        __props__["scheduled_maintenance"] = None
+        __props__["secondary_gce_zone"] = None
+        __props__["self_link"] = None
+        __props__["server_ca_cert"] = None
+        __props__["service_account_email_address"] = None
+        __props__["settings"] = None
+        __props__["state"] = None
+        __props__["suspension_reason"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="backendType")
+    def backend_type(self) -> pulumi.Output[str]:
+        """
+         *SECOND_GEN*: Cloud SQL database instance. *EXTERNAL*: A database server that is not managed by Google. This property is read-only; use the *tier* property in the *settings* object to determine the database type.
+        """
+        return pulumi.get(self, "backend_type")
+
+    @property
+    @pulumi.getter(name="connectionName")
+    def connection_name(self) -> pulumi.Output[str]:
+        """
+        Connection name of the Cloud SQL instance used in connection strings.
+        """
+        return pulumi.get(self, "connection_name")
+
+    @property
+    @pulumi.getter(name="currentDiskSize")
+    def current_disk_size(self) -> pulumi.Output[str]:
+        """
+        The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see this announcement for details.
+        """
+        return pulumi.get(self, "current_disk_size")
+
+    @property
+    @pulumi.getter(name="databaseVersion")
+    def database_version(self) -> pulumi.Output[str]:
+        """
+        The database engine type and version. The *databaseVersion* field cannot be changed after instance creation. MySQL instances: *MYSQL_8_0*, *MYSQL_5_7* (default), or *MYSQL_5_6*. PostgreSQL instances: *POSTGRES_9_6*, *POSTGRES_10*, *POSTGRES_11*, *POSTGRES_12*, or *POSTGRES_13* (default). SQL Server instances: *SQLSERVER_2017_STANDARD* (default), *SQLSERVER_2017_ENTERPRISE*, *SQLSERVER_2017_EXPRESS*, or *SQLSERVER_2017_WEB*.
+        """
+        return pulumi.get(self, "database_version")
+
+    @property
+    @pulumi.getter(name="diskEncryptionConfiguration")
+    def disk_encryption_configuration(self) -> pulumi.Output['outputs.DiskEncryptionConfigurationResponse']:
+        """
+        Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
+        """
+        return pulumi.get(self, "disk_encryption_configuration")
+
+    @property
+    @pulumi.getter(name="diskEncryptionStatus")
+    def disk_encryption_status(self) -> pulumi.Output['outputs.DiskEncryptionStatusResponse']:
+        """
+        Disk encryption status specific to an instance. Applies only to Second Generation instances.
+        """
+        return pulumi.get(self, "disk_encryption_status")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="failoverReplica")
+    def failover_replica(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The name and status of the failover replica. This property is applicable only to Second Generation instances.
+        """
+        return pulumi.get(self, "failover_replica")
+
+    @property
+    @pulumi.getter(name="gceZone")
+    def gce_zone(self) -> pulumi.Output[str]:
+        """
+        The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
+        """
+        return pulumi.get(self, "gce_zone")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> pulumi.Output[str]:
+        """
+        The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="ipAddresses")
+    def ip_addresses(self) -> pulumi.Output[Sequence['outputs.IpMappingResponse']]:
+        """
+        The assigned IP addresses for the instance.
+        """
+        return pulumi.get(self, "ip_addresses")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> pulumi.Output[str]:
+        """
+        The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
+        """
+        return pulumi.get(self, "ipv6_address")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        This is always *sql#instance*.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="masterInstanceName")
+    def master_instance_name(self) -> pulumi.Output[str]:
+        """
+        The name of the instance which will act as primary in the replication setup.
+        """
+        return pulumi.get(self, "master_instance_name")
+
+    @property
+    @pulumi.getter(name="maxDiskSize")
+    def max_disk_size(self) -> pulumi.Output[str]:
+        """
+        The maximum disk size of the instance in bytes.
+        """
+        return pulumi.get(self, "max_disk_size")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the Cloud SQL instance. This does not include the project ID.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="onPremisesConfiguration")
+    def on_premises_configuration(self) -> pulumi.Output['outputs.OnPremisesConfigurationResponse']:
+        """
+        Configuration specific to on-premises instances.
+        """
+        return pulumi.get(self, "on_premises_configuration")
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
+        """
+        The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        The geographical region. Can be *us-central* (*FIRST_GEN* instances only) *us-central1* (*SECOND_GEN* instances only) *asia-east1* or *europe-west1*. Defaults to *us-central* or *us-central1* depending on the instance type. The region cannot be changed after instance creation.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="replicaConfiguration")
+    def replica_configuration(self) -> pulumi.Output['outputs.ReplicaConfigurationResponse']:
+        """
+        Configuration specific to failover replicas and read replicas.
+        """
+        return pulumi.get(self, "replica_configuration")
+
+    @property
+    @pulumi.getter(name="replicaNames")
+    def replica_names(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The replicas of the instance.
+        """
+        return pulumi.get(self, "replica_names")
+
+    @property
+    @pulumi.getter(name="rootPassword")
+    def root_password(self) -> pulumi.Output[str]:
+        """
+        Initial root password. Use only on creation.
+        """
+        return pulumi.get(self, "root_password")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        The status indicating if instance satisfiesPzs. Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
+    @pulumi.getter(name="scheduledMaintenance")
+    def scheduled_maintenance(self) -> pulumi.Output['outputs.SqlScheduledMaintenanceResponse']:
+        """
+        The start time of any upcoming scheduled maintenance for this instance.
+        """
+        return pulumi.get(self, "scheduled_maintenance")
+
+    @property
+    @pulumi.getter(name="secondaryGceZone")
+    def secondary_gce_zone(self) -> pulumi.Output[str]:
+        """
+        The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
+        """
+        return pulumi.get(self, "secondary_gce_zone")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        The URI of this resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="serverCaCert")
+    def server_ca_cert(self) -> pulumi.Output['outputs.SslCertResponse']:
+        """
+        SSL configuration.
+        """
+        return pulumi.get(self, "server_ca_cert")
+
+    @property
+    @pulumi.getter(name="serviceAccountEmailAddress")
+    def service_account_email_address(self) -> pulumi.Output[str]:
+        """
+        The service account email address assigned to the instance. This property is applicable only to Second Generation instances.
+        """
+        return pulumi.get(self, "service_account_email_address")
+
+    @property
+    @pulumi.getter
+    def settings(self) -> pulumi.Output['outputs.SettingsResponse']:
+        """
+        The user settings.
+        """
+        return pulumi.get(self, "settings")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="suspensionReason")
+    def suspension_reason(self) -> pulumi.Output[Sequence[str]]:
+        """
+        If the instance state is SUSPENDED, the reason for the suspension.
+        """
+        return pulumi.get(self, "suspension_reason")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

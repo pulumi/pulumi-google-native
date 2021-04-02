@@ -15,9 +15,7 @@ __all__ = [
     'BasicYarnAutoscalingConfigArgs',
     'BindingArgs',
     'ClusterConfigArgs',
-    'ClusterMetricsArgs',
     'ClusterSelectorArgs',
-    'ClusterStatusArgs',
     'DiskConfigArgs',
     'EncryptionConfigArgs',
     'EndpointConfigArgs',
@@ -29,13 +27,11 @@ __all__ = [
     'IdentityConfigArgs',
     'InstanceGroupAutoscalingPolicyConfigArgs',
     'InstanceGroupConfigArgs',
-    'InstanceReferenceArgs',
     'JobSchedulingArgs',
     'KerberosConfigArgs',
     'LifecycleConfigArgs',
     'LoggingConfigArgs',
     'ManagedClusterArgs',
-    'ManagedGroupConfigArgs',
     'MetastoreConfigArgs',
     'NamespacedGkeDeploymentTargetArgs',
     'NodeGroupAffinityArgs',
@@ -557,46 +553,6 @@ class ClusterConfigArgs:
 
 
 @pulumi.input_type
-class ClusterMetricsArgs:
-    def __init__(__self__, *,
-                 hdfs_metrics: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 yarn_metrics: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
-        """
-        Contains cluster daemon metrics, such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] hdfs_metrics: The HDFS metrics.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] yarn_metrics: The YARN metrics.
-        """
-        if hdfs_metrics is not None:
-            pulumi.set(__self__, "hdfs_metrics", hdfs_metrics)
-        if yarn_metrics is not None:
-            pulumi.set(__self__, "yarn_metrics", yarn_metrics)
-
-    @property
-    @pulumi.getter(name="hdfsMetrics")
-    def hdfs_metrics(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The HDFS metrics.
-        """
-        return pulumi.get(self, "hdfs_metrics")
-
-    @hdfs_metrics.setter
-    def hdfs_metrics(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "hdfs_metrics", value)
-
-    @property
-    @pulumi.getter(name="yarnMetrics")
-    def yarn_metrics(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The YARN metrics.
-        """
-        return pulumi.get(self, "yarn_metrics")
-
-    @yarn_metrics.setter
-    def yarn_metrics(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "yarn_metrics", value)
-
-
-@pulumi.input_type
 class ClusterSelectorArgs:
     def __init__(__self__, *,
                  cluster_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -634,78 +590,6 @@ class ClusterSelectorArgs:
     @zone.setter
     def zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone", value)
-
-
-@pulumi.input_type
-class ClusterStatusArgs:
-    def __init__(__self__, *,
-                 detail: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 state_start_time: Optional[pulumi.Input[str]] = None,
-                 substate: Optional[pulumi.Input[str]] = None):
-        """
-        The status of a cluster and its instances.
-        :param pulumi.Input[str] detail: Optional. Output only. Details of cluster's state.
-        :param pulumi.Input[str] state: Output only. The cluster's state.
-        :param pulumi.Input[str] state_start_time: Output only. Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        :param pulumi.Input[str] substate: Output only. Additional state information that includes status reported by the agent.
-        """
-        if detail is not None:
-            pulumi.set(__self__, "detail", detail)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-        if state_start_time is not None:
-            pulumi.set(__self__, "state_start_time", state_start_time)
-        if substate is not None:
-            pulumi.set(__self__, "substate", substate)
-
-    @property
-    @pulumi.getter
-    def detail(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Output only. Details of cluster's state.
-        """
-        return pulumi.get(self, "detail")
-
-    @detail.setter
-    def detail(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "detail", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The cluster's state.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "state", value)
-
-    @property
-    @pulumi.getter(name="stateStartTime")
-    def state_start_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        """
-        return pulumi.get(self, "state_start_time")
-
-    @state_start_time.setter
-    def state_start_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "state_start_time", value)
-
-    @property
-    @pulumi.getter
-    def substate(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. Additional state information that includes status reported by the agent.
-        """
-        return pulumi.get(self, "substate")
-
-    @substate.setter
-    def substate(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "substate", value)
 
 
 @pulumi.input_type
@@ -791,17 +675,13 @@ class EncryptionConfigArgs:
 @pulumi.input_type
 class EndpointConfigArgs:
     def __init__(__self__, *,
-                 enable_http_port_access: Optional[pulumi.Input[bool]] = None,
-                 http_ports: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 enable_http_port_access: Optional[pulumi.Input[bool]] = None):
         """
         Endpoint config for this cluster
         :param pulumi.Input[bool] enable_http_port_access: Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] http_ports: Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
         """
         if enable_http_port_access is not None:
             pulumi.set(__self__, "enable_http_port_access", enable_http_port_access)
-        if http_ports is not None:
-            pulumi.set(__self__, "http_ports", http_ports)
 
     @property
     @pulumi.getter(name="enableHttpPortAccess")
@@ -814,18 +694,6 @@ class EndpointConfigArgs:
     @enable_http_port_access.setter
     def enable_http_port_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_http_port_access", value)
-
-    @property
-    @pulumi.getter(name="httpPorts")
-    def http_ports(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
-        """
-        return pulumi.get(self, "http_ports")
-
-    @http_ports.setter
-    def http_ports(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "http_ports", value)
 
 
 @pulumi.input_type
@@ -1450,11 +1318,7 @@ class InstanceGroupConfigArgs:
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
                  disk_config: Optional[pulumi.Input['DiskConfigArgs']] = None,
                  image_uri: Optional[pulumi.Input[str]] = None,
-                 instance_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 instance_references: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceReferenceArgs']]]] = None,
-                 is_preemptible: Optional[pulumi.Input[bool]] = None,
                  machine_type_uri: Optional[pulumi.Input[str]] = None,
-                 managed_group_config: Optional[pulumi.Input['ManagedGroupConfigArgs']] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  num_instances: Optional[pulumi.Input[int]] = None,
                  preemptibility: Optional[pulumi.Input[str]] = None):
@@ -1463,11 +1327,7 @@ class InstanceGroupConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] accelerators: Optional. The Compute Engine accelerator configuration for these instances.
         :param pulumi.Input['DiskConfigArgs'] disk_config: Optional. Disk option config settings.
         :param pulumi.Input[str] image_uri: Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most recent image from the family: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_names: Output only. The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceReferenceArgs']]] instance_references: Output only. List of references to Compute Engine instances.
-        :param pulumi.Input[bool] is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
         :param pulumi.Input[str] machine_type_uri: Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
-        :param pulumi.Input['ManagedGroupConfigArgs'] managed_group_config: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
         :param pulumi.Input[str] min_cpu_platform: Optional. Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
         :param pulumi.Input[int] num_instances: Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
         :param pulumi.Input[str] preemptibility: Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
@@ -1478,16 +1338,8 @@ class InstanceGroupConfigArgs:
             pulumi.set(__self__, "disk_config", disk_config)
         if image_uri is not None:
             pulumi.set(__self__, "image_uri", image_uri)
-        if instance_names is not None:
-            pulumi.set(__self__, "instance_names", instance_names)
-        if instance_references is not None:
-            pulumi.set(__self__, "instance_references", instance_references)
-        if is_preemptible is not None:
-            pulumi.set(__self__, "is_preemptible", is_preemptible)
         if machine_type_uri is not None:
             pulumi.set(__self__, "machine_type_uri", machine_type_uri)
-        if managed_group_config is not None:
-            pulumi.set(__self__, "managed_group_config", managed_group_config)
         if min_cpu_platform is not None:
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if num_instances is not None:
@@ -1532,42 +1384,6 @@ class InstanceGroupConfigArgs:
         pulumi.set(self, "image_uri", value)
 
     @property
-    @pulumi.getter(name="instanceNames")
-    def instance_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Output only. The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group.
-        """
-        return pulumi.get(self, "instance_names")
-
-    @instance_names.setter
-    def instance_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "instance_names", value)
-
-    @property
-    @pulumi.getter(name="instanceReferences")
-    def instance_references(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceReferenceArgs']]]]:
-        """
-        Output only. List of references to Compute Engine instances.
-        """
-        return pulumi.get(self, "instance_references")
-
-    @instance_references.setter
-    def instance_references(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceReferenceArgs']]]]):
-        pulumi.set(self, "instance_references", value)
-
-    @property
-    @pulumi.getter(name="isPreemptible")
-    def is_preemptible(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Output only. Specifies that this instance group contains preemptible instances.
-        """
-        return pulumi.get(self, "is_preemptible")
-
-    @is_preemptible.setter
-    def is_preemptible(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "is_preemptible", value)
-
-    @property
     @pulumi.getter(name="machineTypeUri")
     def machine_type_uri(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1578,18 +1394,6 @@ class InstanceGroupConfigArgs:
     @machine_type_uri.setter
     def machine_type_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "machine_type_uri", value)
-
-    @property
-    @pulumi.getter(name="managedGroupConfig")
-    def managed_group_config(self) -> Optional[pulumi.Input['ManagedGroupConfigArgs']]:
-        """
-        Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-        """
-        return pulumi.get(self, "managed_group_config")
-
-    @managed_group_config.setter
-    def managed_group_config(self, value: Optional[pulumi.Input['ManagedGroupConfigArgs']]):
-        pulumi.set(self, "managed_group_config", value)
 
     @property
     @pulumi.getter(name="minCpuPlatform")
@@ -1626,62 +1430,6 @@ class InstanceGroupConfigArgs:
     @preemptibility.setter
     def preemptibility(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "preemptibility", value)
-
-
-@pulumi.input_type
-class InstanceReferenceArgs:
-    def __init__(__self__, *,
-                 instance_id: Optional[pulumi.Input[str]] = None,
-                 instance_name: Optional[pulumi.Input[str]] = None,
-                 public_key: Optional[pulumi.Input[str]] = None):
-        """
-        A reference to a Compute Engine instance.
-        :param pulumi.Input[str] instance_id: The unique identifier of the Compute Engine instance.
-        :param pulumi.Input[str] instance_name: The user-friendly name of the Compute Engine instance.
-        :param pulumi.Input[str] public_key: The public key used for sharing data with this instance.
-        """
-        if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
-        if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
-        if public_key is not None:
-            pulumi.set(__self__, "public_key", public_key)
-
-    @property
-    @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The unique identifier of the Compute Engine instance.
-        """
-        return pulumi.get(self, "instance_id")
-
-    @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "instance_id", value)
-
-    @property
-    @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user-friendly name of the Compute Engine instance.
-        """
-        return pulumi.get(self, "instance_name")
-
-    @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "instance_name", value)
-
-    @property
-    @pulumi.getter(name="publicKey")
-    def public_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        The public key used for sharing data with this instance.
-        """
-        return pulumi.get(self, "public_key")
-
-    @public_key.setter
-    def public_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "public_key", value)
 
 
 @pulumi.input_type
@@ -1977,14 +1725,12 @@ class LifecycleConfigArgs:
     def __init__(__self__, *,
                  auto_delete_time: Optional[pulumi.Input[str]] = None,
                  auto_delete_ttl: Optional[pulumi.Input[str]] = None,
-                 idle_delete_ttl: Optional[pulumi.Input[str]] = None,
-                 idle_start_time: Optional[pulumi.Input[str]] = None):
+                 idle_delete_ttl: Optional[pulumi.Input[str]] = None):
         """
         Specifies the cluster auto-delete schedule configuration.
         :param pulumi.Input[str] auto_delete_time: Optional. The time when cluster will be auto-deleted (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         :param pulumi.Input[str] auto_delete_ttl: Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         :param pulumi.Input[str] idle_delete_ttl: Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        :param pulumi.Input[str] idle_start_time: Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         """
         if auto_delete_time is not None:
             pulumi.set(__self__, "auto_delete_time", auto_delete_time)
@@ -1992,8 +1738,6 @@ class LifecycleConfigArgs:
             pulumi.set(__self__, "auto_delete_ttl", auto_delete_ttl)
         if idle_delete_ttl is not None:
             pulumi.set(__self__, "idle_delete_ttl", idle_delete_ttl)
-        if idle_start_time is not None:
-            pulumi.set(__self__, "idle_start_time", idle_start_time)
 
     @property
     @pulumi.getter(name="autoDeleteTime")
@@ -2030,18 +1774,6 @@ class LifecycleConfigArgs:
     @idle_delete_ttl.setter
     def idle_delete_ttl(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "idle_delete_ttl", value)
-
-    @property
-    @pulumi.getter(name="idleStartTime")
-    def idle_start_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        """
-        return pulumi.get(self, "idle_start_time")
-
-    @idle_start_time.setter
-    def idle_start_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "idle_start_time", value)
 
 
 @pulumi.input_type
@@ -2122,46 +1854,6 @@ class ManagedClusterArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
-
-
-@pulumi.input_type
-class ManagedGroupConfigArgs:
-    def __init__(__self__, *,
-                 instance_group_manager_name: Optional[pulumi.Input[str]] = None,
-                 instance_template_name: Optional[pulumi.Input[str]] = None):
-        """
-        Specifies the resources used to actively manage an instance group.
-        :param pulumi.Input[str] instance_group_manager_name: Output only. The name of the Instance Group Manager for this group.
-        :param pulumi.Input[str] instance_template_name: Output only. The name of the Instance Template used for the Managed Instance Group.
-        """
-        if instance_group_manager_name is not None:
-            pulumi.set(__self__, "instance_group_manager_name", instance_group_manager_name)
-        if instance_template_name is not None:
-            pulumi.set(__self__, "instance_template_name", instance_template_name)
-
-    @property
-    @pulumi.getter(name="instanceGroupManagerName")
-    def instance_group_manager_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The name of the Instance Group Manager for this group.
-        """
-        return pulumi.get(self, "instance_group_manager_name")
-
-    @instance_group_manager_name.setter
-    def instance_group_manager_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "instance_group_manager_name", value)
-
-    @property
-    @pulumi.getter(name="instanceTemplateName")
-    def instance_template_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The name of the Instance Template used for the Managed Instance Group.
-        """
-        return pulumi.get(self, "instance_template_name")
-
-    @instance_template_name.setter
-    def instance_template_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "instance_template_name", value)
 
 
 @pulumi.input_type

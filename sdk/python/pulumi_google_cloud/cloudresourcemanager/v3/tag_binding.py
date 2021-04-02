@@ -15,7 +15,6 @@ class TagBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  tag_bindings_id: Optional[pulumi.Input[str]] = None,
                  tag_value: Optional[pulumi.Input[str]] = None,
@@ -27,7 +26,6 @@ class TagBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Output only. The name of the TagBinding. This is a String of the form: `tagBindings/{full-resource-name}/{tag-value-name}` (e.g. `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagValues/456`).
         :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. `//cloudresourcemanager.googleapis.com/projects/123`
         :param pulumi.Input[str] tag_value: The TagValue of the TagBinding. Must be of the form `tagValues/456`.
         """
@@ -48,7 +46,6 @@ class TagBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['name'] = name
             __props__['parent'] = parent
             if tag_bindings_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_bindings_id'")

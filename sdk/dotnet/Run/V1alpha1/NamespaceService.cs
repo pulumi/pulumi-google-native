@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Run.V1alpha1
     public partial class NamespaceService : Pulumi.CustomResource
     {
         /// <summary>
+        /// The API version for this call such as "serving.knative.dev/v1alpha1".
+        /// </summary>
+        [Output("apiVersion")]
+        public Output<string> ApiVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The kind of resource, in this case "Service".
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Metadata associated with this Service, including name, namespace, labels, and annotations.
+        /// </summary>
+        [Output("metadata")]
+        public Output<Outputs.ObjectMetaResponse> Metadata { get; private set; } = null!;
+
+        /// <summary>
+        /// Spec holds the desired state of the Service (from the client).
+        /// </summary>
+        [Output("spec")]
+        public Output<Outputs.ServiceSpecResponse> Spec { get; private set; } = null!;
+
+        /// <summary>
+        /// Status communicates the observed state of the Service (from the controller).
+        /// </summary>
+        [Output("status")]
+        public Output<Outputs.ServiceStatusResponse> Status { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a NamespaceService resource with the given unique name, arguments, and options.
         /// </summary>
         ///

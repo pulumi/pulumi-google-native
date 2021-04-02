@@ -35,6 +35,50 @@ export class CertificateAuthorityCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === CertificateAuthorityCertificate.__pulumiType;
     }
 
+    /**
+     * A structured description of the issued X.509 certificate.
+     */
+    public /*out*/ readonly certificateDescription!: pulumi.Output<outputs.privateca.v1beta1.CertificateDescriptionResponse>;
+    /**
+     * Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
+     */
+    public readonly config!: pulumi.Output<outputs.privateca.v1beta1.CertificateConfigResponse>;
+    /**
+     * The time at which this Certificate was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Optional. Labels with user-defined metadata.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+     */
+    public readonly lifetime!: pulumi.Output<string>;
+    /**
+     * The resource path for this Certificate in the format `projects/*&#47;locations/*&#47;certificateAuthorities/*&#47;certificates/*`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The pem-encoded, signed X.509 certificate.
+     */
+    public /*out*/ readonly pemCertificate!: pulumi.Output<string>;
+    /**
+     * The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
+     */
+    public /*out*/ readonly pemCertificateChain!: pulumi.Output<string[]>;
+    /**
+     * Immutable. A pem-encoded X.509 certificate signing request (CSR).
+     */
+    public readonly pemCsr!: pulumi.Output<string>;
+    /**
+     * Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+     */
+    public /*out*/ readonly revocationDetails!: pulumi.Output<outputs.privateca.v1beta1.RevocationDetailsResponse>;
+    /**
+     * The time at which this Certificate was updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a CertificateAuthorityCertificate resource with the given unique name, arguments, and options.
@@ -60,21 +104,32 @@ export class CertificateAuthorityCertificate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["certificateAuthoritiesId"] = args ? args.certificateAuthoritiesId : undefined;
-            inputs["certificateDescription"] = args ? args.certificateDescription : undefined;
             inputs["certificatesId"] = args ? args.certificatesId : undefined;
             inputs["config"] = args ? args.config : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["lifetime"] = args ? args.lifetime : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["pemCertificate"] = args ? args.pemCertificate : undefined;
-            inputs["pemCertificateChain"] = args ? args.pemCertificateChain : undefined;
             inputs["pemCsr"] = args ? args.pemCsr : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["revocationDetails"] = args ? args.revocationDetails : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["certificateDescription"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["pemCertificate"] = undefined /*out*/;
+            inputs["pemCertificateChain"] = undefined /*out*/;
+            inputs["revocationDetails"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["certificateDescription"] = undefined /*out*/;
+            inputs["config"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["lifetime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["pemCertificate"] = undefined /*out*/;
+            inputs["pemCertificateChain"] = undefined /*out*/;
+            inputs["pemCsr"] = undefined /*out*/;
+            inputs["revocationDetails"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -88,19 +143,11 @@ export class CertificateAuthorityCertificate extends pulumi.CustomResource {
  */
 export interface CertificateAuthorityCertificateArgs {
     readonly certificateAuthoritiesId: pulumi.Input<string>;
-    /**
-     * Output only. A structured description of the issued X.509 certificate.
-     */
-    readonly certificateDescription?: pulumi.Input<inputs.privateca.v1beta1.CertificateDescription>;
     readonly certificatesId: pulumi.Input<string>;
     /**
      * Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
      */
     readonly config?: pulumi.Input<inputs.privateca.v1beta1.CertificateConfig>;
-    /**
-     * Output only. The time at which this Certificate was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
     /**
      * Optional. Labels with user-defined metadata.
      */
@@ -111,28 +158,8 @@ export interface CertificateAuthorityCertificateArgs {
     readonly lifetime?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
-     * Output only. The resource path for this Certificate in the format `projects/*&#47;locations/*&#47;certificateAuthorities/*&#47;certificates/*`.
-     */
-    readonly name?: pulumi.Input<string>;
-    /**
-     * Output only. The pem-encoded, signed X.509 certificate.
-     */
-    readonly pemCertificate?: pulumi.Input<string>;
-    /**
-     * Output only. The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
-     */
-    readonly pemCertificateChain?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      */
     readonly pemCsr?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
-     */
-    readonly revocationDetails?: pulumi.Input<inputs.privateca.v1beta1.RevocationDetails>;
-    /**
-     * Output only. The time at which this Certificate was updated.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

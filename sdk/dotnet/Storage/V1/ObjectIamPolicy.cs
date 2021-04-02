@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Storage.V1
     public partial class ObjectIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
+        /// An association between a role, which comes with a set of permissions, and members who may assume that role.
+        /// </summary>
+        [Output("bindings")]
+        public Output<ImmutableArray<ImmutableDictionary<string, string>>> Bindings { get; private set; } = null!;
+
+        /// <summary>
+        /// HTTP 1.1  Entity tag for the policy.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
+        /// </summary>
+        [Output("resourceId")]
+        public Output<string> ResourceId { get; private set; } = null!;
+
+        /// <summary>
+        /// The IAM policy format version.
+        /// </summary>
+        [Output("version")]
+        public Output<int> Version { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ObjectIamPolicy resource with the given unique name, arguments, and options.
         /// </summary>
         ///

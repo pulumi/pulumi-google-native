@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Index']
@@ -21,7 +22,6 @@ class Index(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleDatastoreAdminV1IndexedPropertyArgs']]]]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -31,11 +31,8 @@ class Index(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ancestor: Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
-        :param pulumi.Input[str] index_id: Output only. The resource ID of the index.
         :param pulumi.Input[str] kind: Required. The entity kind to which this index applies.
-        :param pulumi.Input[str] project_id: Output only. Project ID.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleDatastoreAdminV1IndexedPropertyArgs']]]] properties: Required. An ordered sequence of property names and their index attributes.
-        :param pulumi.Input[str] state: Output only. The state of the index.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -63,7 +60,7 @@ class Index(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project_id'")
             __props__['project_id'] = project_id
             __props__['properties'] = properties
-            __props__['state'] = state
+            __props__['state'] = None
         super(Index, __self__).__init__(
             'google-cloud:datastore/v1:Index',
             resource_name,
@@ -86,7 +83,61 @@ class Index(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["ancestor"] = None
+        __props__["index_id"] = None
+        __props__["kind"] = None
+        __props__["project_id"] = None
+        __props__["properties"] = None
+        __props__["state"] = None
         return Index(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def ancestor(self) -> pulumi.Output[str]:
+        """
+        Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+        """
+        return pulumi.get(self, "ancestor")
+
+    @property
+    @pulumi.getter(name="indexId")
+    def index_id(self) -> pulumi.Output[str]:
+        """
+        The resource ID of the index.
+        """
+        return pulumi.get(self, "index_id")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        Required. The entity kind to which this index applies.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        Project ID.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> pulumi.Output[Sequence['outputs.GoogleDatastoreAdminV1IndexedPropertyResponse']]:
+        """
+        Required. An ordered sequence of property names and their index attributes.
+        """
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The state of the index.
+        """
+        return pulumi.get(self, "state")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

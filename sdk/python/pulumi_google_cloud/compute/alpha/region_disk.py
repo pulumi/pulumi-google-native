@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['RegionDisk']
@@ -258,7 +259,458 @@ class RegionDisk(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["creation_timestamp"] = None
+        __props__["description"] = None
+        __props__["disk_encryption_key"] = None
+        __props__["erase_windows_vss_signature"] = None
+        __props__["guest_os_features"] = None
+        __props__["interface"] = None
+        __props__["kind"] = None
+        __props__["label_fingerprint"] = None
+        __props__["labels"] = None
+        __props__["last_attach_timestamp"] = None
+        __props__["last_detach_timestamp"] = None
+        __props__["license_codes"] = None
+        __props__["licenses"] = None
+        __props__["location_hint"] = None
+        __props__["multi_writer"] = None
+        __props__["name"] = None
+        __props__["options"] = None
+        __props__["physical_block_size_bytes"] = None
+        __props__["provisioned_iops"] = None
+        __props__["region"] = None
+        __props__["replica_zones"] = None
+        __props__["resource_policies"] = None
+        __props__["satisfies_pzs"] = None
+        __props__["self_link"] = None
+        __props__["self_link_with_id"] = None
+        __props__["size_gb"] = None
+        __props__["source_disk"] = None
+        __props__["source_disk_id"] = None
+        __props__["source_image"] = None
+        __props__["source_image_encryption_key"] = None
+        __props__["source_image_id"] = None
+        __props__["source_in_place_snapshot"] = None
+        __props__["source_in_place_snapshot_id"] = None
+        __props__["source_instant_snapshot"] = None
+        __props__["source_instant_snapshot_id"] = None
+        __props__["source_snapshot"] = None
+        __props__["source_snapshot_encryption_key"] = None
+        __props__["source_snapshot_id"] = None
+        __props__["source_storage_object"] = None
+        __props__["status"] = None
+        __props__["storage_type"] = None
+        __props__["type"] = None
+        __props__["user_licenses"] = None
+        __props__["users"] = None
+        __props__["zone"] = None
         return RegionDisk(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKey")
+    def disk_encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
+        """
+        Encrypts the disk using a customer-supplied encryption key.
+
+        After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine).
+
+        Customer-supplied encryption keys do not protect access to metadata of the disk.
+
+        If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+        """
+        return pulumi.get(self, "disk_encryption_key")
+
+    @property
+    @pulumi.getter(name="eraseWindowsVssSignature")
+    def erase_windows_vss_signature(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
+        """
+        return pulumi.get(self, "erase_windows_vss_signature")
+
+    @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> pulumi.Output[Sequence['outputs.GuestOsFeatureResponse']]:
+        """
+        A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> pulumi.Output[str]:
+        """
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        """
+        return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#disk for disks.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> pulumi.Output[str]:
+        """
+        A fingerprint for the labels being applied to this disk, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet.
+
+        To see the latest fingerprint, make a get() request to retrieve a disk.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Labels to apply to this disk. These can be later modified by the setLabels method.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="lastAttachTimestamp")
+    def last_attach_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Last attach timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_attach_timestamp")
+
+    @property
+    @pulumi.getter(name="lastDetachTimestamp")
+    def last_detach_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Last detach timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "last_detach_timestamp")
+
+    @property
+    @pulumi.getter(name="licenseCodes")
+    def license_codes(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Integer license codes indicating which licenses are attached to this disk.
+        """
+        return pulumi.get(self, "license_codes")
+
+    @property
+    @pulumi.getter
+    def licenses(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of publicly visible licenses. Reserved for Google's use.
+        """
+        return pulumi.get(self, "licenses")
+
+    @property
+    @pulumi.getter(name="locationHint")
+    def location_hint(self) -> pulumi.Output[str]:
+        """
+        An opaque location hint used to place the disk close to other resources. This field is for use by internal tools that use the public API.
+        """
+        return pulumi.get(self, "location_hint")
+
+    @property
+    @pulumi.getter(name="multiWriter")
+    def multi_writer(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether or not the disk can be read/write attached to more than one instance.
+        """
+        return pulumi.get(self, "multi_writer")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def options(self) -> pulumi.Output[str]:
+        """
+        Internal use only.
+        """
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter(name="physicalBlockSizeBytes")
+    def physical_block_size_bytes(self) -> pulumi.Output[str]:
+        """
+        Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
+        """
+        return pulumi.get(self, "physical_block_size_bytes")
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> pulumi.Output[str]:
+        """
+        Indicates how many IOPS must be provisioned for the disk.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="replicaZones")
+    def replica_zones(self) -> pulumi.Output[Sequence[str]]:
+        """
+        URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
+        """
+        return pulumi.get(self, "replica_zones")
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Resource policies applied to this disk for automatic snapshot creations.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        [Output Only] Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined fully-qualified URL for this resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for this resource's resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> pulumi.Output[str]:
+        """
+        Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk.
+
+        If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        """
+        return pulumi.get(self, "size_gb")
+
+    @property
+    @pulumi.getter(name="sourceDisk")
+    def source_disk(self) -> pulumi.Output[str]:
+        """
+        The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
+        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk  
+        - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk  
+        - projects/project/zones/zone/disks/disk  
+        - projects/project/regions/region/disks/disk  
+        - zones/zone/disks/disk  
+        - regions/region/disks/disk
+        """
+        return pulumi.get(self, "source_disk")
+
+    @property
+    @pulumi.getter(name="sourceDiskId")
+    def source_disk_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used.
+        """
+        return pulumi.get(self, "source_disk_id")
+
+    @property
+    @pulumi.getter(name="sourceImage")
+    def source_image(self) -> pulumi.Output[str]:
+        """
+        The source image used to create this disk. If the source image is deleted, this field will not be set.
+
+        To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image:
+        projects/debian-cloud/global/images/family/debian-9
+
+
+        Alternatively, use a specific version of a public operating system image:
+        projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD
+
+
+        To create a disk with a custom image that you created, specify the image name in the following format:
+        global/images/my-custom-image
+
+
+        You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name:
+        global/images/family/my-image-family
+        """
+        return pulumi.get(self, "source_image")
+
+    @property
+    @pulumi.getter(name="sourceImageEncryptionKey")
+    def source_image_encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
+        """
+        The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
+        """
+        return pulumi.get(self, "source_image_encryption_key")
+
+    @property
+    @pulumi.getter(name="sourceImageId")
+    def source_image_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
+        """
+        return pulumi.get(self, "source_image_id")
+
+    @property
+    @pulumi.getter(name="sourceInPlaceSnapshot")
+    def source_in_place_snapshot(self) -> pulumi.Output[str]:
+        """
+        [Deprecated] The source in-place snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
+        - https://www.googleapis.com/compute/v1/projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
+        - projects/project/global/inPlaceSnapshots/inPlaceSnapshots 
+        - global/inPlaceSnapshots/inPlaceSnapshots
+        """
+        return pulumi.get(self, "source_in_place_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceInPlaceSnapshotId")
+    def source_in_place_snapshot_id(self) -> pulumi.Output[str]:
+        """
+        [Deprecated] [Output Only] The unique ID of the in-place snapshot used to create this disk. This value identifies the exact in-place snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an in-place snapshot that was later deleted and recreated under the same name, the source in-place snapshot ID would identify the exact version of the in-place snapshot that was used.
+        """
+        return pulumi.get(self, "source_in_place_snapshot_id")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshot")
+    def source_instant_snapshot(self) -> pulumi.Output[str]:
+        """
+        The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
+        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot 
+        - projects/project/zones/zone/instantSnapshots/instantSnapshot 
+        - zones/zone/instantSnapshots/instantSnapshot
+        """
+        return pulumi.get(self, "source_instant_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceInstantSnapshotId")
+    def source_instant_snapshot_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.
+        """
+        return pulumi.get(self, "source_instant_snapshot_id")
+
+    @property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> pulumi.Output[str]:
+        """
+        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
+        - https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot 
+        - projects/project/global/snapshots/snapshot 
+        - global/snapshots/snapshot
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotEncryptionKey")
+    def source_snapshot_encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
+        """
+        The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
+        """
+        return pulumi.get(self, "source_snapshot_encryption_key")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotId")
+    def source_snapshot_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+        """
+        return pulumi.get(self, "source_snapshot_id")
+
+    @property
+    @pulumi.getter(name="sourceStorageObject")
+    def source_storage_object(self) -> pulumi.Output[str]:
+        """
+        The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
+        """
+        return pulumi.get(self, "source_storage_object")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The status of disk creation.  
+        - CREATING: Disk is provisioning. 
+        - RESTORING: Source data is being copied into the disk. 
+        - FAILED: Disk creation failed. 
+        - READY: Disk is ready for use. 
+        - DELETING: Disk is deleting.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> pulumi.Output[str]:
+        """
+        [Deprecated] Storage type of the persistent disk.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="userLicenses")
+    def user_licenses(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license:
+        https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
+        """
+        return pulumi.get(self, "user_licenses")
+
+    @property
+    @pulumi.getter
+    def users(self) -> pulumi.Output[Sequence[str]]:
+        """
+        [Output Only] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
+        """
+        return pulumi.get(self, "users")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[str]:
+        """
+        [Output Only] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        """
+        return pulumi.get(self, "zone")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Secret']
@@ -16,10 +17,8 @@ class Secret(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  replication: Optional[pulumi.Input[pulumi.InputType['ReplicationArgs']]] = None,
                  rotation: Optional[pulumi.Input[pulumi.InputType['RotationArgs']]] = None,
@@ -34,10 +33,8 @@ class Secret(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. The time at which the Secret was created.
         :param pulumi.Input[str] expire_time: Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
-        :param pulumi.Input[str] name: Output only. The resource name of the Secret in the format `projects/*/secrets/*`.
         :param pulumi.Input[pulumi.InputType['ReplicationArgs']] replication: Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
         :param pulumi.Input[pulumi.InputType['RotationArgs']] rotation: Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TopicArgs']]]] topics: Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
@@ -60,10 +57,8 @@ class Secret(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['create_time'] = create_time
             __props__['expire_time'] = expire_time
             __props__['labels'] = labels
-            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
@@ -74,6 +69,8 @@ class Secret(pulumi.CustomResource):
             __props__['secrets_id'] = secrets_id
             __props__['topics'] = topics
             __props__['ttl'] = ttl
+            __props__['create_time'] = None
+            __props__['name'] = None
         super(Secret, __self__).__init__(
             'google-cloud:secretmanager/v1:Secret',
             resource_name,
@@ -96,7 +93,79 @@ class Secret(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["expire_time"] = None
+        __props__["labels"] = None
+        __props__["name"] = None
+        __props__["replication"] = None
+        __props__["rotation"] = None
+        __props__["topics"] = None
+        __props__["ttl"] = None
         return Secret(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time at which the Secret was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the Secret in the format `projects/*/secrets/*`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def replication(self) -> pulumi.Output['outputs.ReplicationResponse']:
+        """
+        Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+        """
+        return pulumi.get(self, "replication")
+
+    @property
+    @pulumi.getter
+    def rotation(self) -> pulumi.Output['outputs.RotationResponse']:
+        """
+        Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
+        """
+        return pulumi.get(self, "rotation")
+
+    @property
+    @pulumi.getter
+    def topics(self) -> pulumi.Output[Sequence['outputs.TopicResponse']]:
+        """
+        Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        """
+        return pulumi.get(self, "topics")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> pulumi.Output[str]:
+        """
+        Input only. The TTL for the Secret.
+        """
+        return pulumi.get(self, "ttl")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

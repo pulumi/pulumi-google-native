@@ -16,6 +16,73 @@ namespace Pulumi.GoogleCloud.Networkconnectivity.V1alpha1
     public partial class Spoke : Pulumi.CustomResource
     {
         /// <summary>
+        /// The time when the Spoke was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Short description of the spoke resource
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource URL of the hub resource that the spoke is attached to
+        /// </summary>
+        [Output("hub")]
+        public Output<string> Hub { get; private set; } = null!;
+
+        /// <summary>
+        /// User-defined labels.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The URIs of linked interconnect attachment resources
+        /// </summary>
+        [Output("linkedInterconnectAttachments")]
+        public Output<ImmutableArray<string>> LinkedInterconnectAttachments { get; private set; } = null!;
+
+        /// <summary>
+        /// The URIs of linked Router appliance resources
+        /// </summary>
+        [Output("linkedRouterApplianceInstances")]
+        public Output<ImmutableArray<Outputs.RouterApplianceInstanceResponse>> LinkedRouterApplianceInstances { get; private set; } = null!;
+
+        /// <summary>
+        /// The URIs of linked VPN tunnel resources
+        /// </summary>
+        [Output("linkedVpnTunnels")]
+        public Output<ImmutableArray<string>> LinkedVpnTunnels { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The name of a Spoke resource.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The current lifecycle state of this Hub.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Google-generated UUID for this resource. This is unique across all Spoke resources. If a Spoke resource is deleted and another with the same name is created, it gets a different unique_id.
+        /// </summary>
+        [Output("uniqueId")]
+        public Output<string> UniqueId { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the Spoke was updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Spoke resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -139,18 +206,6 @@ namespace Pulumi.GoogleCloud.Networkconnectivity.V1alpha1
 
         [Input("spokesId", required: true)]
         public Input<string> SpokesId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The current lifecycle state of this Hub.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. Google-generated UUID for this resource. This is unique across all Spoke resources. If a Spoke resource is deleted and another with the same name is created, it gets a different unique_id.
-        /// </summary>
-        [Input("uniqueId")]
-        public Input<string>? UniqueId { get; set; }
 
         /// <summary>
         /// The time when the Spoke was updated.

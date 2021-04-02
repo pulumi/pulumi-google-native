@@ -16,6 +16,31 @@ namespace Pulumi.GoogleCloud.Iap.V1
     public partial class Brand : Pulumi.CustomResource
     {
         /// <summary>
+        /// Application name displayed on OAuth consent screen.
+        /// </summary>
+        [Output("applicationTitle")]
+        public Output<string> ApplicationTitle { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the brand is only intended for usage inside the G Suite organization only.
+        /// </summary>
+        [Output("orgInternalOnly")]
+        public Output<bool> OrgInternalOnly { get; private set; } = null!;
+
+        /// <summary>
+        /// Support email displayed on the OAuth consent screen.
+        /// </summary>
+        [Output("supportEmail")]
+        public Output<string> SupportEmail { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Brand resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -67,18 +92,6 @@ namespace Pulumi.GoogleCloud.Iap.V1
 
         [Input("brandsId", required: true)]
         public Input<string> BrandsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Output only. Whether the brand is only intended for usage inside the G Suite organization only.
-        /// </summary>
-        [Input("orgInternalOnly")]
-        public Input<bool>? OrgInternalOnly { get; set; }
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;

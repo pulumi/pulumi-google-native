@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['OrganizationApiproduct']
@@ -119,7 +120,148 @@ class OrganizationApiproduct(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["api_resources"] = None
+        __props__["approval_type"] = None
+        __props__["attributes"] = None
+        __props__["created_at"] = None
+        __props__["description"] = None
+        __props__["display_name"] = None
+        __props__["environments"] = None
+        __props__["graphql_operation_group"] = None
+        __props__["last_modified_at"] = None
+        __props__["name"] = None
+        __props__["operation_group"] = None
+        __props__["proxies"] = None
+        __props__["quota"] = None
+        __props__["quota_interval"] = None
+        __props__["quota_time_unit"] = None
+        __props__["scopes"] = None
         return OrganizationApiproduct(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiResources")
+    def api_resources(self) -> pulumi.Output[Sequence[str]]:
+        return pulumi.get(self, "api_resources")
+
+    @property
+    @pulumi.getter(name="approvalType")
+    def approval_type(self) -> pulumi.Output[str]:
+        """
+        Flag that specifies how API keys are approved to access the APIs defined by the API product. If set to `manual`, the consumer key is generated and returned in "pending" state. In this case, the API keys won't work until they have been explicitly approved. If set to `auto`, the consumer key is generated and returned in "approved" state and can be used immediately. **Note:** Typically, `auto` is used to provide access to free or trial API products that provide limited quota or capabilities.
+        """
+        return pulumi.get(self, "approval_type")
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> pulumi.Output[Sequence['outputs.GoogleCloudApigeeV1AttributeResponse']]:
+        """
+        Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes. Use this property to specify the access level of the API product as either `public`, `private`, or `internal`. Only products marked `public` are available to developers in the Apigee developer portal. For example, you can set a product to `internal` while it is in development and then change access to `public` when it is ready to release on the portal. API products marked as `private` do not appear on the portal, but can be accessed by external developers.
+        """
+        return pulumi.get(self, "attributes")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        """
+        Response only. Creation time of this environment as milliseconds since epoch.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Description of the API product. Include key information about the API product that is not captured by other fields. Comma-separated list of API resources to be bundled in the API product. By default, the resource paths are mapped from the `proxy.pathsuffix` variable. The proxy path suffix is defined as the URI fragment following the ProxyEndpoint base path. For example, if the `apiResources` element is defined to be `/forecastrss` and the base path defined for the API proxy is `/weather`, then only requests to `/weather/forecastrss` are permitted by the API product. You can select a specific path, or you can select all subpaths with the following wildcard: - `/**`: Indicates that all sub-URIs are included. - `/*` : Indicates that only URIs one level down are included. By default, / supports the same resources as /** as well as the base path defined by the API proxy. For example, if the base path of the API proxy is `/v1/weatherapikey`, then the API product supports requests to `/v1/weatherapikey` and to any sub-URIs, such as `/v1/weatherapikey/forecastrss`, `/v1/weatherapikey/region/CA`, and so on. For more information, see Managing API products.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Name displayed in the UI or developer portal to developers registering for API access.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def environments(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected. By specifying one or more environments, you can bind the resources listed in the API product to a specific environment, preventing developers from accessing those resources through API proxies deployed in another environment. This setting is used, for example, to prevent resources associated with API proxies in `prod` from being accessed by API proxies deployed in `test`.
+        """
+        return pulumi.get(self, "environments")
+
+    @property
+    @pulumi.getter(name="graphqlOperationGroup")
+    def graphql_operation_group(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1GraphQLOperationGroupResponse']:
+        """
+        Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
+        """
+        return pulumi.get(self, "graphql_operation_group")
+
+    @property
+    @pulumi.getter(name="lastModifiedAt")
+    def last_modified_at(self) -> pulumi.Output[str]:
+        """
+        Response only. Modified time of this environment as milliseconds since epoch.
+        """
+        return pulumi.get(self, "last_modified_at")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Internal name of the API product. Characters you can use in the name are restricted to: `A-Z0-9._\-$ %`. **Note:** The internal name cannot be edited when updating the API product.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="operationGroup")
+    def operation_group(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1OperationGroupResponse']:
+        """
+        Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the `quota` setting). **Note:** The `api_resources` setting cannot be specified for both the API product and operation group; otherwise the call will fail.
+        """
+        return pulumi.get(self, "operation_group")
+
+    @property
+    @pulumi.getter
+    def proxies(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Comma-separated list of API proxy names to which this API product is bound. By specifying API proxies, you can associate resources in the API product with specific API proxies, preventing developers from accessing those resources through other API proxies. Apigee rejects requests to API proxies that are not listed. **Note:** The API proxy names must already exist in the specified environment as they will be validated upon creation.
+        """
+        return pulumi.get(self, "proxies")
+
+    @property
+    @pulumi.getter
+    def quota(self) -> pulumi.Output[str]:
+        """
+        Number of request messages permitted per app by this API product for the specified `quotaInterval` and `quotaTimeUnit`. For example, a `quota` of 50, for a `quotaInterval` of 12 and a `quotaTimeUnit` of hours means 50 requests are allowed every 12 hours.
+        """
+        return pulumi.get(self, "quota")
+
+    @property
+    @pulumi.getter(name="quotaInterval")
+    def quota_interval(self) -> pulumi.Output[str]:
+        """
+        Time interval over which the number of request messages is calculated.
+        """
+        return pulumi.get(self, "quota_interval")
+
+    @property
+    @pulumi.getter(name="quotaTimeUnit")
+    def quota_time_unit(self) -> pulumi.Output[str]:
+        """
+        Time unit defined for the `quotaInterval`. Valid values include `minute`, `hour`, `day`, or `month`.
+        """
+        return pulumi.get(self, "quota_time_unit")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Comma-separated list of OAuth scopes that are validated at runtime. Apigee validates that the scopes in any access token presented match the scopes defined in the OAuth policy associated with the API product.
+        """
+        return pulumi.get(self, "scopes")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

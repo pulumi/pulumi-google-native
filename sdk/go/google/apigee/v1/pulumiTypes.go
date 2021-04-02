@@ -10,110 +10,436 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-type GoogleCloudApigeeV1ApiProductRef struct {
-	// Name of the API product.
-	Apiproduct *string `pulumi:"apiproduct"`
-	// Status of the API product.
-	Status *string `pulumi:"status"`
+// the Api category resource.
+type GoogleCloudApigeeV1ApiCategoryDataResponse struct {
+	// Name of the category.
+	Name string `pulumi:"name"`
+	// Name of the portal.
+	SiteId string `pulumi:"siteId"`
+	// Time the category was last modified in milliseconds since epoch.
+	UpdateTime string `pulumi:"updateTime"`
 }
 
-// GoogleCloudApigeeV1ApiProductRefInput is an input type that accepts GoogleCloudApigeeV1ApiProductRefArgs and GoogleCloudApigeeV1ApiProductRefOutput values.
-// You can construct a concrete instance of `GoogleCloudApigeeV1ApiProductRefInput` via:
+// GoogleCloudApigeeV1ApiCategoryDataResponseInput is an input type that accepts GoogleCloudApigeeV1ApiCategoryDataResponseArgs and GoogleCloudApigeeV1ApiCategoryDataResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1ApiCategoryDataResponseInput` via:
 //
-//          GoogleCloudApigeeV1ApiProductRefArgs{...}
-type GoogleCloudApigeeV1ApiProductRefInput interface {
+//          GoogleCloudApigeeV1ApiCategoryDataResponseArgs{...}
+type GoogleCloudApigeeV1ApiCategoryDataResponseInput interface {
 	pulumi.Input
 
-	ToGoogleCloudApigeeV1ApiProductRefOutput() GoogleCloudApigeeV1ApiProductRefOutput
-	ToGoogleCloudApigeeV1ApiProductRefOutputWithContext(context.Context) GoogleCloudApigeeV1ApiProductRefOutput
+	ToGoogleCloudApigeeV1ApiCategoryDataResponseOutput() GoogleCloudApigeeV1ApiCategoryDataResponseOutput
+	ToGoogleCloudApigeeV1ApiCategoryDataResponseOutputWithContext(context.Context) GoogleCloudApigeeV1ApiCategoryDataResponseOutput
 }
 
-type GoogleCloudApigeeV1ApiProductRefArgs struct {
-	// Name of the API product.
-	Apiproduct pulumi.StringPtrInput `pulumi:"apiproduct"`
-	// Status of the API product.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+// the Api category resource.
+type GoogleCloudApigeeV1ApiCategoryDataResponseArgs struct {
+	// Name of the category.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Name of the portal.
+	SiteId pulumi.StringInput `pulumi:"siteId"`
+	// Time the category was last modified in milliseconds since epoch.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
 }
 
-func (GoogleCloudApigeeV1ApiProductRefArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudApigeeV1ApiProductRef)(nil)).Elem()
+func (GoogleCloudApigeeV1ApiCategoryDataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1ApiCategoryDataResponse)(nil)).Elem()
 }
 
-func (i GoogleCloudApigeeV1ApiProductRefArgs) ToGoogleCloudApigeeV1ApiProductRefOutput() GoogleCloudApigeeV1ApiProductRefOutput {
-	return i.ToGoogleCloudApigeeV1ApiProductRefOutputWithContext(context.Background())
+func (i GoogleCloudApigeeV1ApiCategoryDataResponseArgs) ToGoogleCloudApigeeV1ApiCategoryDataResponseOutput() GoogleCloudApigeeV1ApiCategoryDataResponseOutput {
+	return i.ToGoogleCloudApigeeV1ApiCategoryDataResponseOutputWithContext(context.Background())
 }
 
-func (i GoogleCloudApigeeV1ApiProductRefArgs) ToGoogleCloudApigeeV1ApiProductRefOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiProductRefOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ApiProductRefOutput)
+func (i GoogleCloudApigeeV1ApiCategoryDataResponseArgs) ToGoogleCloudApigeeV1ApiCategoryDataResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiCategoryDataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ApiCategoryDataResponseOutput)
 }
 
-// GoogleCloudApigeeV1ApiProductRefArrayInput is an input type that accepts GoogleCloudApigeeV1ApiProductRefArray and GoogleCloudApigeeV1ApiProductRefArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudApigeeV1ApiProductRefArrayInput` via:
+func (i GoogleCloudApigeeV1ApiCategoryDataResponseArgs) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput() GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1ApiCategoryDataResponseArgs) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ApiCategoryDataResponseOutput).ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1ApiCategoryDataResponsePtrInput is an input type that accepts GoogleCloudApigeeV1ApiCategoryDataResponseArgs, GoogleCloudApigeeV1ApiCategoryDataResponsePtr and GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1ApiCategoryDataResponsePtrInput` via:
 //
-//          GoogleCloudApigeeV1ApiProductRefArray{ GoogleCloudApigeeV1ApiProductRefArgs{...} }
-type GoogleCloudApigeeV1ApiProductRefArrayInput interface {
+//          GoogleCloudApigeeV1ApiCategoryDataResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1ApiCategoryDataResponsePtrInput interface {
 	pulumi.Input
 
-	ToGoogleCloudApigeeV1ApiProductRefArrayOutput() GoogleCloudApigeeV1ApiProductRefArrayOutput
-	ToGoogleCloudApigeeV1ApiProductRefArrayOutputWithContext(context.Context) GoogleCloudApigeeV1ApiProductRefArrayOutput
+	ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput() GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput
+	ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput
 }
 
-type GoogleCloudApigeeV1ApiProductRefArray []GoogleCloudApigeeV1ApiProductRefInput
+type googleCloudApigeeV1ApiCategoryDataResponsePtrType GoogleCloudApigeeV1ApiCategoryDataResponseArgs
 
-func (GoogleCloudApigeeV1ApiProductRefArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudApigeeV1ApiProductRef)(nil)).Elem()
+func GoogleCloudApigeeV1ApiCategoryDataResponsePtr(v *GoogleCloudApigeeV1ApiCategoryDataResponseArgs) GoogleCloudApigeeV1ApiCategoryDataResponsePtrInput {
+	return (*googleCloudApigeeV1ApiCategoryDataResponsePtrType)(v)
 }
 
-func (i GoogleCloudApigeeV1ApiProductRefArray) ToGoogleCloudApigeeV1ApiProductRefArrayOutput() GoogleCloudApigeeV1ApiProductRefArrayOutput {
-	return i.ToGoogleCloudApigeeV1ApiProductRefArrayOutputWithContext(context.Background())
+func (*googleCloudApigeeV1ApiCategoryDataResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1ApiCategoryDataResponse)(nil)).Elem()
 }
 
-func (i GoogleCloudApigeeV1ApiProductRefArray) ToGoogleCloudApigeeV1ApiProductRefArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiProductRefArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ApiProductRefArrayOutput)
+func (i *googleCloudApigeeV1ApiCategoryDataResponsePtrType) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput() GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(context.Background())
 }
 
-type GoogleCloudApigeeV1ApiProductRefOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudApigeeV1ApiProductRefOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudApigeeV1ApiProductRef)(nil)).Elem()
+func (i *googleCloudApigeeV1ApiCategoryDataResponsePtrType) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput)
 }
 
-func (o GoogleCloudApigeeV1ApiProductRefOutput) ToGoogleCloudApigeeV1ApiProductRefOutput() GoogleCloudApigeeV1ApiProductRefOutput {
+// the Api category resource.
+type GoogleCloudApigeeV1ApiCategoryDataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1ApiCategoryDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1ApiCategoryDataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) ToGoogleCloudApigeeV1ApiCategoryDataResponseOutput() GoogleCloudApigeeV1ApiCategoryDataResponseOutput {
 	return o
 }
 
-func (o GoogleCloudApigeeV1ApiProductRefOutput) ToGoogleCloudApigeeV1ApiProductRefOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiProductRefOutput {
+func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) ToGoogleCloudApigeeV1ApiCategoryDataResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiCategoryDataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput() GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiCategoryDataResponse) *GoogleCloudApigeeV1ApiCategoryDataResponse {
+		return &v
+	}).(GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput)
+}
+
+// Name of the category.
+func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiCategoryDataResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of the portal.
+func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiCategoryDataResponse) string { return v.SiteId }).(pulumi.StringOutput)
+}
+
+// Time the category was last modified in milliseconds since epoch.
+func (o GoogleCloudApigeeV1ApiCategoryDataResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiCategoryDataResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1ApiCategoryDataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput() GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput) ToGoogleCloudApigeeV1ApiCategoryDataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput) Elem() GoogleCloudApigeeV1ApiCategoryDataResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1ApiCategoryDataResponse) GoogleCloudApigeeV1ApiCategoryDataResponse {
+		return *v
+	}).(GoogleCloudApigeeV1ApiCategoryDataResponseOutput)
+}
+
+// Name of the category.
+func (o GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1ApiCategoryDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the portal.
+func (o GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput) SiteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1ApiCategoryDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SiteId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time the category was last modified in milliseconds since epoch.
+func (o GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1ApiCategoryDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudApigeeV1ApiProductRefResponse struct {
+	// Name of the API product.
+	Apiproduct string `pulumi:"apiproduct"`
+	// Status of the API product.
+	Status string `pulumi:"status"`
+}
+
+// GoogleCloudApigeeV1ApiProductRefResponseInput is an input type that accepts GoogleCloudApigeeV1ApiProductRefResponseArgs and GoogleCloudApigeeV1ApiProductRefResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1ApiProductRefResponseInput` via:
+//
+//          GoogleCloudApigeeV1ApiProductRefResponseArgs{...}
+type GoogleCloudApigeeV1ApiProductRefResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1ApiProductRefResponseOutput() GoogleCloudApigeeV1ApiProductRefResponseOutput
+	ToGoogleCloudApigeeV1ApiProductRefResponseOutputWithContext(context.Context) GoogleCloudApigeeV1ApiProductRefResponseOutput
+}
+
+type GoogleCloudApigeeV1ApiProductRefResponseArgs struct {
+	// Name of the API product.
+	Apiproduct pulumi.StringInput `pulumi:"apiproduct"`
+	// Status of the API product.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GoogleCloudApigeeV1ApiProductRefResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1ApiProductRefResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1ApiProductRefResponseArgs) ToGoogleCloudApigeeV1ApiProductRefResponseOutput() GoogleCloudApigeeV1ApiProductRefResponseOutput {
+	return i.ToGoogleCloudApigeeV1ApiProductRefResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1ApiProductRefResponseArgs) ToGoogleCloudApigeeV1ApiProductRefResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiProductRefResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ApiProductRefResponseOutput)
+}
+
+// GoogleCloudApigeeV1ApiProductRefResponseArrayInput is an input type that accepts GoogleCloudApigeeV1ApiProductRefResponseArray and GoogleCloudApigeeV1ApiProductRefResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1ApiProductRefResponseArrayInput` via:
+//
+//          GoogleCloudApigeeV1ApiProductRefResponseArray{ GoogleCloudApigeeV1ApiProductRefResponseArgs{...} }
+type GoogleCloudApigeeV1ApiProductRefResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1ApiProductRefResponseArrayOutput() GoogleCloudApigeeV1ApiProductRefResponseArrayOutput
+	ToGoogleCloudApigeeV1ApiProductRefResponseArrayOutputWithContext(context.Context) GoogleCloudApigeeV1ApiProductRefResponseArrayOutput
+}
+
+type GoogleCloudApigeeV1ApiProductRefResponseArray []GoogleCloudApigeeV1ApiProductRefResponseInput
+
+func (GoogleCloudApigeeV1ApiProductRefResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1ApiProductRefResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1ApiProductRefResponseArray) ToGoogleCloudApigeeV1ApiProductRefResponseArrayOutput() GoogleCloudApigeeV1ApiProductRefResponseArrayOutput {
+	return i.ToGoogleCloudApigeeV1ApiProductRefResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1ApiProductRefResponseArray) ToGoogleCloudApigeeV1ApiProductRefResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiProductRefResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ApiProductRefResponseArrayOutput)
+}
+
+type GoogleCloudApigeeV1ApiProductRefResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1ApiProductRefResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1ApiProductRefResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1ApiProductRefResponseOutput) ToGoogleCloudApigeeV1ApiProductRefResponseOutput() GoogleCloudApigeeV1ApiProductRefResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1ApiProductRefResponseOutput) ToGoogleCloudApigeeV1ApiProductRefResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiProductRefResponseOutput {
 	return o
 }
 
 // Name of the API product.
-func (o GoogleCloudApigeeV1ApiProductRefOutput) Apiproduct() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1ApiProductRef) *string { return v.Apiproduct }).(pulumi.StringPtrOutput)
+func (o GoogleCloudApigeeV1ApiProductRefResponseOutput) Apiproduct() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiProductRefResponse) string { return v.Apiproduct }).(pulumi.StringOutput)
 }
 
 // Status of the API product.
-func (o GoogleCloudApigeeV1ApiProductRefOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1ApiProductRef) *string { return v.Status }).(pulumi.StringPtrOutput)
+func (o GoogleCloudApigeeV1ApiProductRefResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ApiProductRefResponse) string { return v.Status }).(pulumi.StringOutput)
 }
 
-type GoogleCloudApigeeV1ApiProductRefArrayOutput struct{ *pulumi.OutputState }
+type GoogleCloudApigeeV1ApiProductRefResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudApigeeV1ApiProductRefArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudApigeeV1ApiProductRef)(nil)).Elem()
+func (GoogleCloudApigeeV1ApiProductRefResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1ApiProductRefResponse)(nil)).Elem()
 }
 
-func (o GoogleCloudApigeeV1ApiProductRefArrayOutput) ToGoogleCloudApigeeV1ApiProductRefArrayOutput() GoogleCloudApigeeV1ApiProductRefArrayOutput {
+func (o GoogleCloudApigeeV1ApiProductRefResponseArrayOutput) ToGoogleCloudApigeeV1ApiProductRefResponseArrayOutput() GoogleCloudApigeeV1ApiProductRefResponseArrayOutput {
 	return o
 }
 
-func (o GoogleCloudApigeeV1ApiProductRefArrayOutput) ToGoogleCloudApigeeV1ApiProductRefArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiProductRefArrayOutput {
+func (o GoogleCloudApigeeV1ApiProductRefResponseArrayOutput) ToGoogleCloudApigeeV1ApiProductRefResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ApiProductRefResponseArrayOutput {
 	return o
 }
 
-func (o GoogleCloudApigeeV1ApiProductRefArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1ApiProductRefOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1ApiProductRef {
-		return vs[0].([]GoogleCloudApigeeV1ApiProductRef)[vs[1].(int)]
-	}).(GoogleCloudApigeeV1ApiProductRefOutput)
+func (o GoogleCloudApigeeV1ApiProductRefResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1ApiProductRefResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1ApiProductRefResponse {
+		return vs[0].([]GoogleCloudApigeeV1ApiProductRefResponse)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1ApiProductRefResponseOutput)
+}
+
+type GoogleCloudApigeeV1AsyncQueryResultResponse struct {
+	// Query result will be unaccessable after this time.
+	Expires string `pulumi:"expires"`
+	// Self link of the query results. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
+	Self string `pulumi:"self"`
+}
+
+// GoogleCloudApigeeV1AsyncQueryResultResponseInput is an input type that accepts GoogleCloudApigeeV1AsyncQueryResultResponseArgs and GoogleCloudApigeeV1AsyncQueryResultResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1AsyncQueryResultResponseInput` via:
+//
+//          GoogleCloudApigeeV1AsyncQueryResultResponseArgs{...}
+type GoogleCloudApigeeV1AsyncQueryResultResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1AsyncQueryResultResponseOutput() GoogleCloudApigeeV1AsyncQueryResultResponseOutput
+	ToGoogleCloudApigeeV1AsyncQueryResultResponseOutputWithContext(context.Context) GoogleCloudApigeeV1AsyncQueryResultResponseOutput
+}
+
+type GoogleCloudApigeeV1AsyncQueryResultResponseArgs struct {
+	// Query result will be unaccessable after this time.
+	Expires pulumi.StringInput `pulumi:"expires"`
+	// Self link of the query results. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
+	Self pulumi.StringInput `pulumi:"self"`
+}
+
+func (GoogleCloudApigeeV1AsyncQueryResultResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1AsyncQueryResultResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1AsyncQueryResultResponseArgs) ToGoogleCloudApigeeV1AsyncQueryResultResponseOutput() GoogleCloudApigeeV1AsyncQueryResultResponseOutput {
+	return i.ToGoogleCloudApigeeV1AsyncQueryResultResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1AsyncQueryResultResponseArgs) ToGoogleCloudApigeeV1AsyncQueryResultResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AsyncQueryResultResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AsyncQueryResultResponseOutput)
+}
+
+func (i GoogleCloudApigeeV1AsyncQueryResultResponseArgs) ToGoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput() GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1AsyncQueryResultResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1AsyncQueryResultResponseArgs) ToGoogleCloudApigeeV1AsyncQueryResultResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AsyncQueryResultResponseOutput).ToGoogleCloudApigeeV1AsyncQueryResultResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1AsyncQueryResultResponsePtrInput is an input type that accepts GoogleCloudApigeeV1AsyncQueryResultResponseArgs, GoogleCloudApigeeV1AsyncQueryResultResponsePtr and GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1AsyncQueryResultResponsePtrInput` via:
+//
+//          GoogleCloudApigeeV1AsyncQueryResultResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1AsyncQueryResultResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput() GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput
+	ToGoogleCloudApigeeV1AsyncQueryResultResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput
+}
+
+type googleCloudApigeeV1AsyncQueryResultResponsePtrType GoogleCloudApigeeV1AsyncQueryResultResponseArgs
+
+func GoogleCloudApigeeV1AsyncQueryResultResponsePtr(v *GoogleCloudApigeeV1AsyncQueryResultResponseArgs) GoogleCloudApigeeV1AsyncQueryResultResponsePtrInput {
+	return (*googleCloudApigeeV1AsyncQueryResultResponsePtrType)(v)
+}
+
+func (*googleCloudApigeeV1AsyncQueryResultResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1AsyncQueryResultResponse)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1AsyncQueryResultResponsePtrType) ToGoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput() GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1AsyncQueryResultResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1AsyncQueryResultResponsePtrType) ToGoogleCloudApigeeV1AsyncQueryResultResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput)
+}
+
+type GoogleCloudApigeeV1AsyncQueryResultResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1AsyncQueryResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1AsyncQueryResultResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1AsyncQueryResultResponseOutput) ToGoogleCloudApigeeV1AsyncQueryResultResponseOutput() GoogleCloudApigeeV1AsyncQueryResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AsyncQueryResultResponseOutput) ToGoogleCloudApigeeV1AsyncQueryResultResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AsyncQueryResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AsyncQueryResultResponseOutput) ToGoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput() GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1AsyncQueryResultResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1AsyncQueryResultResponseOutput) ToGoogleCloudApigeeV1AsyncQueryResultResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AsyncQueryResultResponse) *GoogleCloudApigeeV1AsyncQueryResultResponse {
+		return &v
+	}).(GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput)
+}
+
+// Query result will be unaccessable after this time.
+func (o GoogleCloudApigeeV1AsyncQueryResultResponseOutput) Expires() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AsyncQueryResultResponse) string { return v.Expires }).(pulumi.StringOutput)
+}
+
+// Self link of the query results. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
+func (o GoogleCloudApigeeV1AsyncQueryResultResponseOutput) Self() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AsyncQueryResultResponse) string { return v.Self }).(pulumi.StringOutput)
+}
+
+type GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1AsyncQueryResultResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput) ToGoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput() GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput) ToGoogleCloudApigeeV1AsyncQueryResultResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput) Elem() GoogleCloudApigeeV1AsyncQueryResultResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AsyncQueryResultResponse) GoogleCloudApigeeV1AsyncQueryResultResponse {
+		return *v
+	}).(GoogleCloudApigeeV1AsyncQueryResultResponseOutput)
+}
+
+// Query result will be unaccessable after this time.
+func (o GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput) Expires() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AsyncQueryResultResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expires
+	}).(pulumi.StringPtrOutput)
+}
+
+// Self link of the query results. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
+func (o GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput) Self() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AsyncQueryResultResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Self
+	}).(pulumi.StringPtrOutput)
 }
 
 // Key-value pair to store extra metadata.
@@ -223,6 +549,115 @@ func (o GoogleCloudApigeeV1AttributeArrayOutput) Index(i pulumi.IntInput) Google
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1Attribute {
 		return vs[0].([]GoogleCloudApigeeV1Attribute)[vs[1].(int)]
 	}).(GoogleCloudApigeeV1AttributeOutput)
+}
+
+// Key-value pair to store extra metadata.
+type GoogleCloudApigeeV1AttributeResponse struct {
+	// API key of the attribute.
+	Name string `pulumi:"name"`
+	// Value of the attribute.
+	Value string `pulumi:"value"`
+}
+
+// GoogleCloudApigeeV1AttributeResponseInput is an input type that accepts GoogleCloudApigeeV1AttributeResponseArgs and GoogleCloudApigeeV1AttributeResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1AttributeResponseInput` via:
+//
+//          GoogleCloudApigeeV1AttributeResponseArgs{...}
+type GoogleCloudApigeeV1AttributeResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1AttributeResponseOutput() GoogleCloudApigeeV1AttributeResponseOutput
+	ToGoogleCloudApigeeV1AttributeResponseOutputWithContext(context.Context) GoogleCloudApigeeV1AttributeResponseOutput
+}
+
+// Key-value pair to store extra metadata.
+type GoogleCloudApigeeV1AttributeResponseArgs struct {
+	// API key of the attribute.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value of the attribute.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GoogleCloudApigeeV1AttributeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1AttributeResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1AttributeResponseArgs) ToGoogleCloudApigeeV1AttributeResponseOutput() GoogleCloudApigeeV1AttributeResponseOutput {
+	return i.ToGoogleCloudApigeeV1AttributeResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1AttributeResponseArgs) ToGoogleCloudApigeeV1AttributeResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AttributeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AttributeResponseOutput)
+}
+
+// GoogleCloudApigeeV1AttributeResponseArrayInput is an input type that accepts GoogleCloudApigeeV1AttributeResponseArray and GoogleCloudApigeeV1AttributeResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1AttributeResponseArrayInput` via:
+//
+//          GoogleCloudApigeeV1AttributeResponseArray{ GoogleCloudApigeeV1AttributeResponseArgs{...} }
+type GoogleCloudApigeeV1AttributeResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1AttributeResponseArrayOutput() GoogleCloudApigeeV1AttributeResponseArrayOutput
+	ToGoogleCloudApigeeV1AttributeResponseArrayOutputWithContext(context.Context) GoogleCloudApigeeV1AttributeResponseArrayOutput
+}
+
+type GoogleCloudApigeeV1AttributeResponseArray []GoogleCloudApigeeV1AttributeResponseInput
+
+func (GoogleCloudApigeeV1AttributeResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1AttributeResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1AttributeResponseArray) ToGoogleCloudApigeeV1AttributeResponseArrayOutput() GoogleCloudApigeeV1AttributeResponseArrayOutput {
+	return i.ToGoogleCloudApigeeV1AttributeResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1AttributeResponseArray) ToGoogleCloudApigeeV1AttributeResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AttributeResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AttributeResponseArrayOutput)
+}
+
+// Key-value pair to store extra metadata.
+type GoogleCloudApigeeV1AttributeResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1AttributeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1AttributeResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1AttributeResponseOutput) ToGoogleCloudApigeeV1AttributeResponseOutput() GoogleCloudApigeeV1AttributeResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AttributeResponseOutput) ToGoogleCloudApigeeV1AttributeResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AttributeResponseOutput {
+	return o
+}
+
+// API key of the attribute.
+func (o GoogleCloudApigeeV1AttributeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AttributeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Value of the attribute.
+func (o GoogleCloudApigeeV1AttributeResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AttributeResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GoogleCloudApigeeV1AttributeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1AttributeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1AttributeResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1AttributeResponseArrayOutput) ToGoogleCloudApigeeV1AttributeResponseArrayOutput() GoogleCloudApigeeV1AttributeResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AttributeResponseArrayOutput) ToGoogleCloudApigeeV1AttributeResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AttributeResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AttributeResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1AttributeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1AttributeResponse {
+		return vs[0].([]GoogleCloudApigeeV1AttributeResponse)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1AttributeResponseOutput)
 }
 
 // Labels that can be used to filter Apigee metrics.
@@ -399,164 +834,665 @@ func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput) Location() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-type GoogleCloudApigeeV1Credential struct {
-	// List of API products this credential can be used for.
-	ApiProducts []GoogleCloudApigeeV1ApiProductRef `pulumi:"apiProducts"`
-	// List of attributes associated with this credential.
-	Attributes []GoogleCloudApigeeV1Attribute `pulumi:"attributes"`
-	// Consumer key.
-	ConsumerKey *string `pulumi:"consumerKey"`
-	// Secret key.
-	ConsumerSecret *string `pulumi:"consumerSecret"`
-	// Time the credential will expire in milliseconds since epoch.
-	ExpiresAt *string `pulumi:"expiresAt"`
-	// Time the credential was issued in milliseconds since epoch.
-	IssuedAt *string `pulumi:"issuedAt"`
-	// List of scopes to apply to the app. Specified scopes must already exist on the API product that you associate with the app.
-	Scopes []string `pulumi:"scopes"`
-	// Status of the credential.
-	Status *string `pulumi:"status"`
+// Labels that can be used to filter Apigee metrics.
+type GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse struct {
+	// The environment ID associated with the metrics.
+	Env string `pulumi:"env"`
+	// Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
+	Instance_id string `pulumi:"instance_id"`
+	// Required. The location associated with the metrics.
+	Location string `pulumi:"location"`
 }
 
-// GoogleCloudApigeeV1CredentialInput is an input type that accepts GoogleCloudApigeeV1CredentialArgs and GoogleCloudApigeeV1CredentialOutput values.
-// You can construct a concrete instance of `GoogleCloudApigeeV1CredentialInput` via:
+// GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseInput is an input type that accepts GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseArgs and GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseInput` via:
 //
-//          GoogleCloudApigeeV1CredentialArgs{...}
-type GoogleCloudApigeeV1CredentialInput interface {
+//          GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseArgs{...}
+type GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseInput interface {
 	pulumi.Input
 
-	ToGoogleCloudApigeeV1CredentialOutput() GoogleCloudApigeeV1CredentialOutput
-	ToGoogleCloudApigeeV1CredentialOutputWithContext(context.Context) GoogleCloudApigeeV1CredentialOutput
+	ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput
+	ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutputWithContext(context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput
 }
 
-type GoogleCloudApigeeV1CredentialArgs struct {
-	// List of API products this credential can be used for.
-	ApiProducts GoogleCloudApigeeV1ApiProductRefArrayInput `pulumi:"apiProducts"`
-	// List of attributes associated with this credential.
-	Attributes GoogleCloudApigeeV1AttributeArrayInput `pulumi:"attributes"`
-	// Consumer key.
-	ConsumerKey pulumi.StringPtrInput `pulumi:"consumerKey"`
-	// Secret key.
-	ConsumerSecret pulumi.StringPtrInput `pulumi:"consumerSecret"`
-	// Time the credential will expire in milliseconds since epoch.
-	ExpiresAt pulumi.StringPtrInput `pulumi:"expiresAt"`
-	// Time the credential was issued in milliseconds since epoch.
-	IssuedAt pulumi.StringPtrInput `pulumi:"issuedAt"`
-	// List of scopes to apply to the app. Specified scopes must already exist on the API product that you associate with the app.
-	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-	// Status of the credential.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+// Labels that can be used to filter Apigee metrics.
+type GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseArgs struct {
+	// The environment ID associated with the metrics.
+	Env pulumi.StringInput `pulumi:"env"`
+	// Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
+	Instance_id pulumi.StringInput `pulumi:"instance_id"`
+	// Required. The location associated with the metrics.
+	Location pulumi.StringInput `pulumi:"location"`
 }
 
-func (GoogleCloudApigeeV1CredentialArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudApigeeV1Credential)(nil)).Elem()
+func (GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse)(nil)).Elem()
 }
 
-func (i GoogleCloudApigeeV1CredentialArgs) ToGoogleCloudApigeeV1CredentialOutput() GoogleCloudApigeeV1CredentialOutput {
-	return i.ToGoogleCloudApigeeV1CredentialOutputWithContext(context.Background())
+func (i GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseArgs) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput {
+	return i.ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutputWithContext(context.Background())
 }
 
-func (i GoogleCloudApigeeV1CredentialArgs) ToGoogleCloudApigeeV1CredentialOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CredentialOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CredentialOutput)
+func (i GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseArgs) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput)
 }
 
-// GoogleCloudApigeeV1CredentialArrayInput is an input type that accepts GoogleCloudApigeeV1CredentialArray and GoogleCloudApigeeV1CredentialArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudApigeeV1CredentialArrayInput` via:
+func (i GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseArgs) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseArgs) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput).ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrInput is an input type that accepts GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseArgs, GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtr and GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrInput` via:
 //
-//          GoogleCloudApigeeV1CredentialArray{ GoogleCloudApigeeV1CredentialArgs{...} }
-type GoogleCloudApigeeV1CredentialArrayInput interface {
+//          GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrInput interface {
 	pulumi.Input
 
-	ToGoogleCloudApigeeV1CredentialArrayOutput() GoogleCloudApigeeV1CredentialArrayOutput
-	ToGoogleCloudApigeeV1CredentialArrayOutputWithContext(context.Context) GoogleCloudApigeeV1CredentialArrayOutput
+	ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput
+	ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput
 }
 
-type GoogleCloudApigeeV1CredentialArray []GoogleCloudApigeeV1CredentialInput
+type googleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrType GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseArgs
 
-func (GoogleCloudApigeeV1CredentialArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudApigeeV1Credential)(nil)).Elem()
+func GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtr(v *GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseArgs) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrInput {
+	return (*googleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrType)(v)
 }
 
-func (i GoogleCloudApigeeV1CredentialArray) ToGoogleCloudApigeeV1CredentialArrayOutput() GoogleCloudApigeeV1CredentialArrayOutput {
-	return i.ToGoogleCloudApigeeV1CredentialArrayOutputWithContext(context.Background())
+func (*googleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse)(nil)).Elem()
 }
 
-func (i GoogleCloudApigeeV1CredentialArray) ToGoogleCloudApigeeV1CredentialArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CredentialArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CredentialArrayOutput)
+func (i *googleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrType) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutputWithContext(context.Background())
 }
 
-type GoogleCloudApigeeV1CredentialOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudApigeeV1CredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudApigeeV1Credential)(nil)).Elem()
+func (i *googleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrType) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput)
 }
 
-func (o GoogleCloudApigeeV1CredentialOutput) ToGoogleCloudApigeeV1CredentialOutput() GoogleCloudApigeeV1CredentialOutput {
+// Labels that can be used to filter Apigee metrics.
+type GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput {
 	return o
 }
 
-func (o GoogleCloudApigeeV1CredentialOutput) ToGoogleCloudApigeeV1CredentialOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CredentialOutput {
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse) *GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse {
+		return &v
+	}).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput)
+}
+
+// The environment ID associated with the metrics.
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) Env() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse) string { return v.Env }).(pulumi.StringOutput)
+}
+
+// Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) Instance_id() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse) string { return v.Instance_id }).(pulumi.StringOutput)
+}
+
+// Required. The location associated with the metrics.
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+type GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput) ToGoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput) Elem() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse {
+		return *v
+	}).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput)
+}
+
+// The environment ID associated with the metrics.
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput) Env() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Env
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput) Instance_id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Instance_id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The location associated with the metrics.
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// X.509 certificate as defined in RFC 5280.
+type GoogleCloudApigeeV1CertInfoResponse struct {
+	// X.509 basic constraints extension.
+	BasicConstraints string `pulumi:"basicConstraints"`
+	// X.509 `notAfter` validity period in milliseconds since epoch.
+	ExpiryDate string `pulumi:"expiryDate"`
+	// Flag that specifies whether the certificate is valid. Flag is set to `Yes` if the certificate is valid, `No` if expired, or `Not yet` if not yet valid.
+	IsValid string `pulumi:"isValid"`
+	// X.509 issuer.
+	Issuer string `pulumi:"issuer"`
+	// Public key component of the X.509 subject public key info.
+	PublicKey string `pulumi:"publicKey"`
+	// X.509 serial number.
+	SerialNumber string `pulumi:"serialNumber"`
+	// X.509 signatureAlgorithm.
+	SigAlgName string `pulumi:"sigAlgName"`
+	// X.509 subject.
+	Subject string `pulumi:"subject"`
+	// X.509 subject alternative names (SANs) extension.
+	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
+	// X.509 `notBefore` validity period in milliseconds since epoch.
+	ValidFrom string `pulumi:"validFrom"`
+	// X.509 version.
+	Version int `pulumi:"version"`
+}
+
+// GoogleCloudApigeeV1CertInfoResponseInput is an input type that accepts GoogleCloudApigeeV1CertInfoResponseArgs and GoogleCloudApigeeV1CertInfoResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1CertInfoResponseInput` via:
+//
+//          GoogleCloudApigeeV1CertInfoResponseArgs{...}
+type GoogleCloudApigeeV1CertInfoResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1CertInfoResponseOutput() GoogleCloudApigeeV1CertInfoResponseOutput
+	ToGoogleCloudApigeeV1CertInfoResponseOutputWithContext(context.Context) GoogleCloudApigeeV1CertInfoResponseOutput
+}
+
+// X.509 certificate as defined in RFC 5280.
+type GoogleCloudApigeeV1CertInfoResponseArgs struct {
+	// X.509 basic constraints extension.
+	BasicConstraints pulumi.StringInput `pulumi:"basicConstraints"`
+	// X.509 `notAfter` validity period in milliseconds since epoch.
+	ExpiryDate pulumi.StringInput `pulumi:"expiryDate"`
+	// Flag that specifies whether the certificate is valid. Flag is set to `Yes` if the certificate is valid, `No` if expired, or `Not yet` if not yet valid.
+	IsValid pulumi.StringInput `pulumi:"isValid"`
+	// X.509 issuer.
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+	// Public key component of the X.509 subject public key info.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+	// X.509 serial number.
+	SerialNumber pulumi.StringInput `pulumi:"serialNumber"`
+	// X.509 signatureAlgorithm.
+	SigAlgName pulumi.StringInput `pulumi:"sigAlgName"`
+	// X.509 subject.
+	Subject pulumi.StringInput `pulumi:"subject"`
+	// X.509 subject alternative names (SANs) extension.
+	SubjectAlternativeNames pulumi.StringArrayInput `pulumi:"subjectAlternativeNames"`
+	// X.509 `notBefore` validity period in milliseconds since epoch.
+	ValidFrom pulumi.StringInput `pulumi:"validFrom"`
+	// X.509 version.
+	Version pulumi.IntInput `pulumi:"version"`
+}
+
+func (GoogleCloudApigeeV1CertInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1CertInfoResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1CertInfoResponseArgs) ToGoogleCloudApigeeV1CertInfoResponseOutput() GoogleCloudApigeeV1CertInfoResponseOutput {
+	return i.ToGoogleCloudApigeeV1CertInfoResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1CertInfoResponseArgs) ToGoogleCloudApigeeV1CertInfoResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CertInfoResponseOutput)
+}
+
+// GoogleCloudApigeeV1CertInfoResponseArrayInput is an input type that accepts GoogleCloudApigeeV1CertInfoResponseArray and GoogleCloudApigeeV1CertInfoResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1CertInfoResponseArrayInput` via:
+//
+//          GoogleCloudApigeeV1CertInfoResponseArray{ GoogleCloudApigeeV1CertInfoResponseArgs{...} }
+type GoogleCloudApigeeV1CertInfoResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1CertInfoResponseArrayOutput() GoogleCloudApigeeV1CertInfoResponseArrayOutput
+	ToGoogleCloudApigeeV1CertInfoResponseArrayOutputWithContext(context.Context) GoogleCloudApigeeV1CertInfoResponseArrayOutput
+}
+
+type GoogleCloudApigeeV1CertInfoResponseArray []GoogleCloudApigeeV1CertInfoResponseInput
+
+func (GoogleCloudApigeeV1CertInfoResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1CertInfoResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1CertInfoResponseArray) ToGoogleCloudApigeeV1CertInfoResponseArrayOutput() GoogleCloudApigeeV1CertInfoResponseArrayOutput {
+	return i.ToGoogleCloudApigeeV1CertInfoResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1CertInfoResponseArray) ToGoogleCloudApigeeV1CertInfoResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertInfoResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CertInfoResponseArrayOutput)
+}
+
+// X.509 certificate as defined in RFC 5280.
+type GoogleCloudApigeeV1CertInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1CertInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1CertInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1CertInfoResponseOutput) ToGoogleCloudApigeeV1CertInfoResponseOutput() GoogleCloudApigeeV1CertInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CertInfoResponseOutput) ToGoogleCloudApigeeV1CertInfoResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertInfoResponseOutput {
+	return o
+}
+
+// X.509 basic constraints extension.
+func (o GoogleCloudApigeeV1CertInfoResponseOutput) BasicConstraints() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CertInfoResponse) string { return v.BasicConstraints }).(pulumi.StringOutput)
+}
+
+// X.509 `notAfter` validity period in milliseconds since epoch.
+func (o GoogleCloudApigeeV1CertInfoResponseOutput) ExpiryDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CertInfoResponse) string { return v.ExpiryDate }).(pulumi.StringOutput)
+}
+
+// Flag that specifies whether the certificate is valid. Flag is set to `Yes` if the certificate is valid, `No` if expired, or `Not yet` if not yet valid.
+func (o GoogleCloudApigeeV1CertInfoResponseOutput) IsValid() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CertInfoResponse) string { return v.IsValid }).(pulumi.StringOutput)
+}
+
+// X.509 issuer.
+func (o GoogleCloudApigeeV1CertInfoResponseOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CertInfoResponse) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// Public key component of the X.509 subject public key info.
+func (o GoogleCloudApigeeV1CertInfoResponseOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CertInfoResponse) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// X.509 serial number.
+func (o GoogleCloudApigeeV1CertInfoResponseOutput) SerialNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CertInfoResponse) string { return v.SerialNumber }).(pulumi.StringOutput)
+}
+
+// X.509 signatureAlgorithm.
+func (o GoogleCloudApigeeV1CertInfoResponseOutput) SigAlgName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CertInfoResponse) string { return v.SigAlgName }).(pulumi.StringOutput)
+}
+
+// X.509 subject.
+func (o GoogleCloudApigeeV1CertInfoResponseOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CertInfoResponse) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+// X.509 subject alternative names (SANs) extension.
+func (o GoogleCloudApigeeV1CertInfoResponseOutput) SubjectAlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CertInfoResponse) []string { return v.SubjectAlternativeNames }).(pulumi.StringArrayOutput)
+}
+
+// X.509 `notBefore` validity period in milliseconds since epoch.
+func (o GoogleCloudApigeeV1CertInfoResponseOutput) ValidFrom() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CertInfoResponse) string { return v.ValidFrom }).(pulumi.StringOutput)
+}
+
+// X.509 version.
+func (o GoogleCloudApigeeV1CertInfoResponseOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CertInfoResponse) int { return v.Version }).(pulumi.IntOutput)
+}
+
+type GoogleCloudApigeeV1CertInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1CertInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1CertInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1CertInfoResponseArrayOutput) ToGoogleCloudApigeeV1CertInfoResponseArrayOutput() GoogleCloudApigeeV1CertInfoResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CertInfoResponseArrayOutput) ToGoogleCloudApigeeV1CertInfoResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertInfoResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CertInfoResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1CertInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1CertInfoResponse {
+		return vs[0].([]GoogleCloudApigeeV1CertInfoResponse)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1CertInfoResponseOutput)
+}
+
+type GoogleCloudApigeeV1CertificateResponse struct {
+	// Chain of certificates under this name.
+	CertInfo []GoogleCloudApigeeV1CertInfoResponse `pulumi:"certInfo"`
+}
+
+// GoogleCloudApigeeV1CertificateResponseInput is an input type that accepts GoogleCloudApigeeV1CertificateResponseArgs and GoogleCloudApigeeV1CertificateResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1CertificateResponseInput` via:
+//
+//          GoogleCloudApigeeV1CertificateResponseArgs{...}
+type GoogleCloudApigeeV1CertificateResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1CertificateResponseOutput() GoogleCloudApigeeV1CertificateResponseOutput
+	ToGoogleCloudApigeeV1CertificateResponseOutputWithContext(context.Context) GoogleCloudApigeeV1CertificateResponseOutput
+}
+
+type GoogleCloudApigeeV1CertificateResponseArgs struct {
+	// Chain of certificates under this name.
+	CertInfo GoogleCloudApigeeV1CertInfoResponseArrayInput `pulumi:"certInfo"`
+}
+
+func (GoogleCloudApigeeV1CertificateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1CertificateResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1CertificateResponseArgs) ToGoogleCloudApigeeV1CertificateResponseOutput() GoogleCloudApigeeV1CertificateResponseOutput {
+	return i.ToGoogleCloudApigeeV1CertificateResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1CertificateResponseArgs) ToGoogleCloudApigeeV1CertificateResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertificateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CertificateResponseOutput)
+}
+
+func (i GoogleCloudApigeeV1CertificateResponseArgs) ToGoogleCloudApigeeV1CertificateResponsePtrOutput() GoogleCloudApigeeV1CertificateResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1CertificateResponseArgs) ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertificateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CertificateResponseOutput).ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1CertificateResponsePtrInput is an input type that accepts GoogleCloudApigeeV1CertificateResponseArgs, GoogleCloudApigeeV1CertificateResponsePtr and GoogleCloudApigeeV1CertificateResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1CertificateResponsePtrInput` via:
+//
+//          GoogleCloudApigeeV1CertificateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1CertificateResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1CertificateResponsePtrOutput() GoogleCloudApigeeV1CertificateResponsePtrOutput
+	ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1CertificateResponsePtrOutput
+}
+
+type googleCloudApigeeV1CertificateResponsePtrType GoogleCloudApigeeV1CertificateResponseArgs
+
+func GoogleCloudApigeeV1CertificateResponsePtr(v *GoogleCloudApigeeV1CertificateResponseArgs) GoogleCloudApigeeV1CertificateResponsePtrInput {
+	return (*googleCloudApigeeV1CertificateResponsePtrType)(v)
+}
+
+func (*googleCloudApigeeV1CertificateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1CertificateResponse)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1CertificateResponsePtrType) ToGoogleCloudApigeeV1CertificateResponsePtrOutput() GoogleCloudApigeeV1CertificateResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1CertificateResponsePtrType) ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertificateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CertificateResponsePtrOutput)
+}
+
+type GoogleCloudApigeeV1CertificateResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1CertificateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1CertificateResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1CertificateResponseOutput) ToGoogleCloudApigeeV1CertificateResponseOutput() GoogleCloudApigeeV1CertificateResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CertificateResponseOutput) ToGoogleCloudApigeeV1CertificateResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertificateResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CertificateResponseOutput) ToGoogleCloudApigeeV1CertificateResponsePtrOutput() GoogleCloudApigeeV1CertificateResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1CertificateResponseOutput) ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertificateResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CertificateResponse) *GoogleCloudApigeeV1CertificateResponse {
+		return &v
+	}).(GoogleCloudApigeeV1CertificateResponsePtrOutput)
+}
+
+// Chain of certificates under this name.
+func (o GoogleCloudApigeeV1CertificateResponseOutput) CertInfo() GoogleCloudApigeeV1CertInfoResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CertificateResponse) []GoogleCloudApigeeV1CertInfoResponse {
+		return v.CertInfo
+	}).(GoogleCloudApigeeV1CertInfoResponseArrayOutput)
+}
+
+type GoogleCloudApigeeV1CertificateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1CertificateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1CertificateResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1CertificateResponsePtrOutput) ToGoogleCloudApigeeV1CertificateResponsePtrOutput() GoogleCloudApigeeV1CertificateResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CertificateResponsePtrOutput) ToGoogleCloudApigeeV1CertificateResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CertificateResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CertificateResponsePtrOutput) Elem() GoogleCloudApigeeV1CertificateResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1CertificateResponse) GoogleCloudApigeeV1CertificateResponse { return *v }).(GoogleCloudApigeeV1CertificateResponseOutput)
+}
+
+// Chain of certificates under this name.
+func (o GoogleCloudApigeeV1CertificateResponsePtrOutput) CertInfo() GoogleCloudApigeeV1CertInfoResponseArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1CertificateResponse) []GoogleCloudApigeeV1CertInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CertInfo
+	}).(GoogleCloudApigeeV1CertInfoResponseArrayOutput)
+}
+
+type GoogleCloudApigeeV1CredentialResponse struct {
+	// List of API products this credential can be used for.
+	ApiProducts []GoogleCloudApigeeV1ApiProductRefResponse `pulumi:"apiProducts"`
+	// List of attributes associated with this credential.
+	Attributes []GoogleCloudApigeeV1AttributeResponse `pulumi:"attributes"`
+	// Consumer key.
+	ConsumerKey string `pulumi:"consumerKey"`
+	// Secret key.
+	ConsumerSecret string `pulumi:"consumerSecret"`
+	// Time the credential will expire in milliseconds since epoch.
+	ExpiresAt string `pulumi:"expiresAt"`
+	// Time the credential was issued in milliseconds since epoch.
+	IssuedAt string `pulumi:"issuedAt"`
+	// List of scopes to apply to the app. Specified scopes must already exist on the API product that you associate with the app.
+	Scopes []string `pulumi:"scopes"`
+	// Status of the credential.
+	Status string `pulumi:"status"`
+}
+
+// GoogleCloudApigeeV1CredentialResponseInput is an input type that accepts GoogleCloudApigeeV1CredentialResponseArgs and GoogleCloudApigeeV1CredentialResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1CredentialResponseInput` via:
+//
+//          GoogleCloudApigeeV1CredentialResponseArgs{...}
+type GoogleCloudApigeeV1CredentialResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1CredentialResponseOutput() GoogleCloudApigeeV1CredentialResponseOutput
+	ToGoogleCloudApigeeV1CredentialResponseOutputWithContext(context.Context) GoogleCloudApigeeV1CredentialResponseOutput
+}
+
+type GoogleCloudApigeeV1CredentialResponseArgs struct {
+	// List of API products this credential can be used for.
+	ApiProducts GoogleCloudApigeeV1ApiProductRefResponseArrayInput `pulumi:"apiProducts"`
+	// List of attributes associated with this credential.
+	Attributes GoogleCloudApigeeV1AttributeResponseArrayInput `pulumi:"attributes"`
+	// Consumer key.
+	ConsumerKey pulumi.StringInput `pulumi:"consumerKey"`
+	// Secret key.
+	ConsumerSecret pulumi.StringInput `pulumi:"consumerSecret"`
+	// Time the credential will expire in milliseconds since epoch.
+	ExpiresAt pulumi.StringInput `pulumi:"expiresAt"`
+	// Time the credential was issued in milliseconds since epoch.
+	IssuedAt pulumi.StringInput `pulumi:"issuedAt"`
+	// List of scopes to apply to the app. Specified scopes must already exist on the API product that you associate with the app.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// Status of the credential.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GoogleCloudApigeeV1CredentialResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1CredentialResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1CredentialResponseArgs) ToGoogleCloudApigeeV1CredentialResponseOutput() GoogleCloudApigeeV1CredentialResponseOutput {
+	return i.ToGoogleCloudApigeeV1CredentialResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1CredentialResponseArgs) ToGoogleCloudApigeeV1CredentialResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CredentialResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CredentialResponseOutput)
+}
+
+// GoogleCloudApigeeV1CredentialResponseArrayInput is an input type that accepts GoogleCloudApigeeV1CredentialResponseArray and GoogleCloudApigeeV1CredentialResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1CredentialResponseArrayInput` via:
+//
+//          GoogleCloudApigeeV1CredentialResponseArray{ GoogleCloudApigeeV1CredentialResponseArgs{...} }
+type GoogleCloudApigeeV1CredentialResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1CredentialResponseArrayOutput() GoogleCloudApigeeV1CredentialResponseArrayOutput
+	ToGoogleCloudApigeeV1CredentialResponseArrayOutputWithContext(context.Context) GoogleCloudApigeeV1CredentialResponseArrayOutput
+}
+
+type GoogleCloudApigeeV1CredentialResponseArray []GoogleCloudApigeeV1CredentialResponseInput
+
+func (GoogleCloudApigeeV1CredentialResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1CredentialResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1CredentialResponseArray) ToGoogleCloudApigeeV1CredentialResponseArrayOutput() GoogleCloudApigeeV1CredentialResponseArrayOutput {
+	return i.ToGoogleCloudApigeeV1CredentialResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1CredentialResponseArray) ToGoogleCloudApigeeV1CredentialResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CredentialResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CredentialResponseArrayOutput)
+}
+
+type GoogleCloudApigeeV1CredentialResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1CredentialResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1CredentialResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1CredentialResponseOutput) ToGoogleCloudApigeeV1CredentialResponseOutput() GoogleCloudApigeeV1CredentialResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CredentialResponseOutput) ToGoogleCloudApigeeV1CredentialResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CredentialResponseOutput {
 	return o
 }
 
 // List of API products this credential can be used for.
-func (o GoogleCloudApigeeV1CredentialOutput) ApiProducts() GoogleCloudApigeeV1ApiProductRefArrayOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1Credential) []GoogleCloudApigeeV1ApiProductRef { return v.ApiProducts }).(GoogleCloudApigeeV1ApiProductRefArrayOutput)
+func (o GoogleCloudApigeeV1CredentialResponseOutput) ApiProducts() GoogleCloudApigeeV1ApiProductRefResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CredentialResponse) []GoogleCloudApigeeV1ApiProductRefResponse {
+		return v.ApiProducts
+	}).(GoogleCloudApigeeV1ApiProductRefResponseArrayOutput)
 }
 
 // List of attributes associated with this credential.
-func (o GoogleCloudApigeeV1CredentialOutput) Attributes() GoogleCloudApigeeV1AttributeArrayOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1Credential) []GoogleCloudApigeeV1Attribute { return v.Attributes }).(GoogleCloudApigeeV1AttributeArrayOutput)
+func (o GoogleCloudApigeeV1CredentialResponseOutput) Attributes() GoogleCloudApigeeV1AttributeResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CredentialResponse) []GoogleCloudApigeeV1AttributeResponse {
+		return v.Attributes
+	}).(GoogleCloudApigeeV1AttributeResponseArrayOutput)
 }
 
 // Consumer key.
-func (o GoogleCloudApigeeV1CredentialOutput) ConsumerKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1Credential) *string { return v.ConsumerKey }).(pulumi.StringPtrOutput)
+func (o GoogleCloudApigeeV1CredentialResponseOutput) ConsumerKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CredentialResponse) string { return v.ConsumerKey }).(pulumi.StringOutput)
 }
 
 // Secret key.
-func (o GoogleCloudApigeeV1CredentialOutput) ConsumerSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1Credential) *string { return v.ConsumerSecret }).(pulumi.StringPtrOutput)
+func (o GoogleCloudApigeeV1CredentialResponseOutput) ConsumerSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CredentialResponse) string { return v.ConsumerSecret }).(pulumi.StringOutput)
 }
 
 // Time the credential will expire in milliseconds since epoch.
-func (o GoogleCloudApigeeV1CredentialOutput) ExpiresAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1Credential) *string { return v.ExpiresAt }).(pulumi.StringPtrOutput)
+func (o GoogleCloudApigeeV1CredentialResponseOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CredentialResponse) string { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
 // Time the credential was issued in milliseconds since epoch.
-func (o GoogleCloudApigeeV1CredentialOutput) IssuedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1Credential) *string { return v.IssuedAt }).(pulumi.StringPtrOutput)
+func (o GoogleCloudApigeeV1CredentialResponseOutput) IssuedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CredentialResponse) string { return v.IssuedAt }).(pulumi.StringOutput)
 }
 
 // List of scopes to apply to the app. Specified scopes must already exist on the API product that you associate with the app.
-func (o GoogleCloudApigeeV1CredentialOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1Credential) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+func (o GoogleCloudApigeeV1CredentialResponseOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CredentialResponse) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
 // Status of the credential.
-func (o GoogleCloudApigeeV1CredentialOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1Credential) *string { return v.Status }).(pulumi.StringPtrOutput)
+func (o GoogleCloudApigeeV1CredentialResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CredentialResponse) string { return v.Status }).(pulumi.StringOutput)
 }
 
-type GoogleCloudApigeeV1CredentialArrayOutput struct{ *pulumi.OutputState }
+type GoogleCloudApigeeV1CredentialResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudApigeeV1CredentialArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudApigeeV1Credential)(nil)).Elem()
+func (GoogleCloudApigeeV1CredentialResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1CredentialResponse)(nil)).Elem()
 }
 
-func (o GoogleCloudApigeeV1CredentialArrayOutput) ToGoogleCloudApigeeV1CredentialArrayOutput() GoogleCloudApigeeV1CredentialArrayOutput {
+func (o GoogleCloudApigeeV1CredentialResponseArrayOutput) ToGoogleCloudApigeeV1CredentialResponseArrayOutput() GoogleCloudApigeeV1CredentialResponseArrayOutput {
 	return o
 }
 
-func (o GoogleCloudApigeeV1CredentialArrayOutput) ToGoogleCloudApigeeV1CredentialArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CredentialArrayOutput {
+func (o GoogleCloudApigeeV1CredentialResponseArrayOutput) ToGoogleCloudApigeeV1CredentialResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CredentialResponseArrayOutput {
 	return o
 }
 
-func (o GoogleCloudApigeeV1CredentialArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1CredentialOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1Credential {
-		return vs[0].([]GoogleCloudApigeeV1Credential)[vs[1].(int)]
-	}).(GoogleCloudApigeeV1CredentialOutput)
+func (o GoogleCloudApigeeV1CredentialResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1CredentialResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1CredentialResponse {
+		return vs[0].([]GoogleCloudApigeeV1CredentialResponse)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1CredentialResponseOutput)
 }
 
 // This encapsulates a metric property of the form sum(message_count) where name is message_count and function is sum
@@ -666,6 +1602,115 @@ func (o GoogleCloudApigeeV1CustomReportMetricArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1CustomReportMetric {
 		return vs[0].([]GoogleCloudApigeeV1CustomReportMetric)[vs[1].(int)]
 	}).(GoogleCloudApigeeV1CustomReportMetricOutput)
+}
+
+// This encapsulates a metric property of the form sum(message_count) where name is message_count and function is sum
+type GoogleCloudApigeeV1CustomReportMetricResponse struct {
+	// aggregate function
+	Function string `pulumi:"function"`
+	// name of the metric
+	Name string `pulumi:"name"`
+}
+
+// GoogleCloudApigeeV1CustomReportMetricResponseInput is an input type that accepts GoogleCloudApigeeV1CustomReportMetricResponseArgs and GoogleCloudApigeeV1CustomReportMetricResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1CustomReportMetricResponseInput` via:
+//
+//          GoogleCloudApigeeV1CustomReportMetricResponseArgs{...}
+type GoogleCloudApigeeV1CustomReportMetricResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1CustomReportMetricResponseOutput() GoogleCloudApigeeV1CustomReportMetricResponseOutput
+	ToGoogleCloudApigeeV1CustomReportMetricResponseOutputWithContext(context.Context) GoogleCloudApigeeV1CustomReportMetricResponseOutput
+}
+
+// This encapsulates a metric property of the form sum(message_count) where name is message_count and function is sum
+type GoogleCloudApigeeV1CustomReportMetricResponseArgs struct {
+	// aggregate function
+	Function pulumi.StringInput `pulumi:"function"`
+	// name of the metric
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GoogleCloudApigeeV1CustomReportMetricResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1CustomReportMetricResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1CustomReportMetricResponseArgs) ToGoogleCloudApigeeV1CustomReportMetricResponseOutput() GoogleCloudApigeeV1CustomReportMetricResponseOutput {
+	return i.ToGoogleCloudApigeeV1CustomReportMetricResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1CustomReportMetricResponseArgs) ToGoogleCloudApigeeV1CustomReportMetricResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CustomReportMetricResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CustomReportMetricResponseOutput)
+}
+
+// GoogleCloudApigeeV1CustomReportMetricResponseArrayInput is an input type that accepts GoogleCloudApigeeV1CustomReportMetricResponseArray and GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1CustomReportMetricResponseArrayInput` via:
+//
+//          GoogleCloudApigeeV1CustomReportMetricResponseArray{ GoogleCloudApigeeV1CustomReportMetricResponseArgs{...} }
+type GoogleCloudApigeeV1CustomReportMetricResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1CustomReportMetricResponseArrayOutput() GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput
+	ToGoogleCloudApigeeV1CustomReportMetricResponseArrayOutputWithContext(context.Context) GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput
+}
+
+type GoogleCloudApigeeV1CustomReportMetricResponseArray []GoogleCloudApigeeV1CustomReportMetricResponseInput
+
+func (GoogleCloudApigeeV1CustomReportMetricResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1CustomReportMetricResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1CustomReportMetricResponseArray) ToGoogleCloudApigeeV1CustomReportMetricResponseArrayOutput() GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput {
+	return i.ToGoogleCloudApigeeV1CustomReportMetricResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1CustomReportMetricResponseArray) ToGoogleCloudApigeeV1CustomReportMetricResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput)
+}
+
+// This encapsulates a metric property of the form sum(message_count) where name is message_count and function is sum
+type GoogleCloudApigeeV1CustomReportMetricResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1CustomReportMetricResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1CustomReportMetricResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1CustomReportMetricResponseOutput) ToGoogleCloudApigeeV1CustomReportMetricResponseOutput() GoogleCloudApigeeV1CustomReportMetricResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CustomReportMetricResponseOutput) ToGoogleCloudApigeeV1CustomReportMetricResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CustomReportMetricResponseOutput {
+	return o
+}
+
+// aggregate function
+func (o GoogleCloudApigeeV1CustomReportMetricResponseOutput) Function() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CustomReportMetricResponse) string { return v.Function }).(pulumi.StringOutput)
+}
+
+// name of the metric
+func (o GoogleCloudApigeeV1CustomReportMetricResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CustomReportMetricResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1CustomReportMetricResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput) ToGoogleCloudApigeeV1CustomReportMetricResponseArrayOutput() GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput) ToGoogleCloudApigeeV1CustomReportMetricResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1CustomReportMetricResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1CustomReportMetricResponse {
+		return vs[0].([]GoogleCloudApigeeV1CustomReportMetricResponse)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1CustomReportMetricResponseOutput)
 }
 
 // Configuration detail for datastore
@@ -878,6 +1923,218 @@ func (o GoogleCloudApigeeV1DatastoreConfigPtrOutput) TablePrefix() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Configuration detail for datastore
+type GoogleCloudApigeeV1DatastoreConfigResponse struct {
+	// Name of the Cloud Storage bucket. Required for `gcs` target_type.
+	BucketName string `pulumi:"bucketName"`
+	// BigQuery dataset name Required for `bigquery` target_type.
+	DatasetName string `pulumi:"datasetName"`
+	// Path of Cloud Storage bucket Required for `gcs` target_type.
+	Path string `pulumi:"path"`
+	// Required. GCP project in which the datastore exists
+	ProjectId string `pulumi:"projectId"`
+	// Prefix of BigQuery table Required for `bigquery` target_type.
+	TablePrefix string `pulumi:"tablePrefix"`
+}
+
+// GoogleCloudApigeeV1DatastoreConfigResponseInput is an input type that accepts GoogleCloudApigeeV1DatastoreConfigResponseArgs and GoogleCloudApigeeV1DatastoreConfigResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1DatastoreConfigResponseInput` via:
+//
+//          GoogleCloudApigeeV1DatastoreConfigResponseArgs{...}
+type GoogleCloudApigeeV1DatastoreConfigResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1DatastoreConfigResponseOutput() GoogleCloudApigeeV1DatastoreConfigResponseOutput
+	ToGoogleCloudApigeeV1DatastoreConfigResponseOutputWithContext(context.Context) GoogleCloudApigeeV1DatastoreConfigResponseOutput
+}
+
+// Configuration detail for datastore
+type GoogleCloudApigeeV1DatastoreConfigResponseArgs struct {
+	// Name of the Cloud Storage bucket. Required for `gcs` target_type.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// BigQuery dataset name Required for `bigquery` target_type.
+	DatasetName pulumi.StringInput `pulumi:"datasetName"`
+	// Path of Cloud Storage bucket Required for `gcs` target_type.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Required. GCP project in which the datastore exists
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Prefix of BigQuery table Required for `bigquery` target_type.
+	TablePrefix pulumi.StringInput `pulumi:"tablePrefix"`
+}
+
+func (GoogleCloudApigeeV1DatastoreConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1DatastoreConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1DatastoreConfigResponseArgs) ToGoogleCloudApigeeV1DatastoreConfigResponseOutput() GoogleCloudApigeeV1DatastoreConfigResponseOutput {
+	return i.ToGoogleCloudApigeeV1DatastoreConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1DatastoreConfigResponseArgs) ToGoogleCloudApigeeV1DatastoreConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1DatastoreConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1DatastoreConfigResponseOutput)
+}
+
+func (i GoogleCloudApigeeV1DatastoreConfigResponseArgs) ToGoogleCloudApigeeV1DatastoreConfigResponsePtrOutput() GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1DatastoreConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1DatastoreConfigResponseArgs) ToGoogleCloudApigeeV1DatastoreConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1DatastoreConfigResponseOutput).ToGoogleCloudApigeeV1DatastoreConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1DatastoreConfigResponsePtrInput is an input type that accepts GoogleCloudApigeeV1DatastoreConfigResponseArgs, GoogleCloudApigeeV1DatastoreConfigResponsePtr and GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1DatastoreConfigResponsePtrInput` via:
+//
+//          GoogleCloudApigeeV1DatastoreConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1DatastoreConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1DatastoreConfigResponsePtrOutput() GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput
+	ToGoogleCloudApigeeV1DatastoreConfigResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput
+}
+
+type googleCloudApigeeV1DatastoreConfigResponsePtrType GoogleCloudApigeeV1DatastoreConfigResponseArgs
+
+func GoogleCloudApigeeV1DatastoreConfigResponsePtr(v *GoogleCloudApigeeV1DatastoreConfigResponseArgs) GoogleCloudApigeeV1DatastoreConfigResponsePtrInput {
+	return (*googleCloudApigeeV1DatastoreConfigResponsePtrType)(v)
+}
+
+func (*googleCloudApigeeV1DatastoreConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1DatastoreConfigResponse)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1DatastoreConfigResponsePtrType) ToGoogleCloudApigeeV1DatastoreConfigResponsePtrOutput() GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1DatastoreConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1DatastoreConfigResponsePtrType) ToGoogleCloudApigeeV1DatastoreConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput)
+}
+
+// Configuration detail for datastore
+type GoogleCloudApigeeV1DatastoreConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1DatastoreConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1DatastoreConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) ToGoogleCloudApigeeV1DatastoreConfigResponseOutput() GoogleCloudApigeeV1DatastoreConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) ToGoogleCloudApigeeV1DatastoreConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1DatastoreConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) ToGoogleCloudApigeeV1DatastoreConfigResponsePtrOutput() GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1DatastoreConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) ToGoogleCloudApigeeV1DatastoreConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1DatastoreConfigResponse) *GoogleCloudApigeeV1DatastoreConfigResponse {
+		return &v
+	}).(GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput)
+}
+
+// Name of the Cloud Storage bucket. Required for `gcs` target_type.
+func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1DatastoreConfigResponse) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// BigQuery dataset name Required for `bigquery` target_type.
+func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) DatasetName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1DatastoreConfigResponse) string { return v.DatasetName }).(pulumi.StringOutput)
+}
+
+// Path of Cloud Storage bucket Required for `gcs` target_type.
+func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1DatastoreConfigResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Required. GCP project in which the datastore exists
+func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1DatastoreConfigResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Prefix of BigQuery table Required for `bigquery` target_type.
+func (o GoogleCloudApigeeV1DatastoreConfigResponseOutput) TablePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1DatastoreConfigResponse) string { return v.TablePrefix }).(pulumi.StringOutput)
+}
+
+type GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1DatastoreConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput) ToGoogleCloudApigeeV1DatastoreConfigResponsePtrOutput() GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput) ToGoogleCloudApigeeV1DatastoreConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput) Elem() GoogleCloudApigeeV1DatastoreConfigResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1DatastoreConfigResponse) GoogleCloudApigeeV1DatastoreConfigResponse {
+		return *v
+	}).(GoogleCloudApigeeV1DatastoreConfigResponseOutput)
+}
+
+// Name of the Cloud Storage bucket. Required for `gcs` target_type.
+func (o GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1DatastoreConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// BigQuery dataset name Required for `bigquery` target_type.
+func (o GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput) DatasetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1DatastoreConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path of Cloud Storage bucket Required for `gcs` target_type.
+func (o GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1DatastoreConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. GCP project in which the datastore exists
+func (o GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1DatastoreConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prefix of BigQuery table Required for `bigquery` target_type.
+func (o GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput) TablePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1DatastoreConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TablePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
 // Date range of the data to export.
 type GoogleCloudApigeeV1DateRange struct {
 	// Required. End date (exclusive) of the data to export in the format `yyyy-mm-dd`. The date range ends at 00:00:00 UTC on the end date- which will not be in the output.
@@ -1028,6 +2285,180 @@ func (o GoogleCloudApigeeV1DateRangePtrOutput) Start() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Start
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metadata common to many entities in this API.
+type GoogleCloudApigeeV1EntityMetadataResponse struct {
+	// Time at which the API proxy was created, in milliseconds since epoch.
+	CreatedAt string `pulumi:"createdAt"`
+	// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+	LastModifiedAt string `pulumi:"lastModifiedAt"`
+	// The type of entity described
+	SubType string `pulumi:"subType"`
+}
+
+// GoogleCloudApigeeV1EntityMetadataResponseInput is an input type that accepts GoogleCloudApigeeV1EntityMetadataResponseArgs and GoogleCloudApigeeV1EntityMetadataResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1EntityMetadataResponseInput` via:
+//
+//          GoogleCloudApigeeV1EntityMetadataResponseArgs{...}
+type GoogleCloudApigeeV1EntityMetadataResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1EntityMetadataResponseOutput() GoogleCloudApigeeV1EntityMetadataResponseOutput
+	ToGoogleCloudApigeeV1EntityMetadataResponseOutputWithContext(context.Context) GoogleCloudApigeeV1EntityMetadataResponseOutput
+}
+
+// Metadata common to many entities in this API.
+type GoogleCloudApigeeV1EntityMetadataResponseArgs struct {
+	// Time at which the API proxy was created, in milliseconds since epoch.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+	LastModifiedAt pulumi.StringInput `pulumi:"lastModifiedAt"`
+	// The type of entity described
+	SubType pulumi.StringInput `pulumi:"subType"`
+}
+
+func (GoogleCloudApigeeV1EntityMetadataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1EntityMetadataResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1EntityMetadataResponseArgs) ToGoogleCloudApigeeV1EntityMetadataResponseOutput() GoogleCloudApigeeV1EntityMetadataResponseOutput {
+	return i.ToGoogleCloudApigeeV1EntityMetadataResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1EntityMetadataResponseArgs) ToGoogleCloudApigeeV1EntityMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1EntityMetadataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1EntityMetadataResponseOutput)
+}
+
+func (i GoogleCloudApigeeV1EntityMetadataResponseArgs) ToGoogleCloudApigeeV1EntityMetadataResponsePtrOutput() GoogleCloudApigeeV1EntityMetadataResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1EntityMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1EntityMetadataResponseArgs) ToGoogleCloudApigeeV1EntityMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1EntityMetadataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1EntityMetadataResponseOutput).ToGoogleCloudApigeeV1EntityMetadataResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1EntityMetadataResponsePtrInput is an input type that accepts GoogleCloudApigeeV1EntityMetadataResponseArgs, GoogleCloudApigeeV1EntityMetadataResponsePtr and GoogleCloudApigeeV1EntityMetadataResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1EntityMetadataResponsePtrInput` via:
+//
+//          GoogleCloudApigeeV1EntityMetadataResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1EntityMetadataResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1EntityMetadataResponsePtrOutput() GoogleCloudApigeeV1EntityMetadataResponsePtrOutput
+	ToGoogleCloudApigeeV1EntityMetadataResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1EntityMetadataResponsePtrOutput
+}
+
+type googleCloudApigeeV1EntityMetadataResponsePtrType GoogleCloudApigeeV1EntityMetadataResponseArgs
+
+func GoogleCloudApigeeV1EntityMetadataResponsePtr(v *GoogleCloudApigeeV1EntityMetadataResponseArgs) GoogleCloudApigeeV1EntityMetadataResponsePtrInput {
+	return (*googleCloudApigeeV1EntityMetadataResponsePtrType)(v)
+}
+
+func (*googleCloudApigeeV1EntityMetadataResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1EntityMetadataResponse)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1EntityMetadataResponsePtrType) ToGoogleCloudApigeeV1EntityMetadataResponsePtrOutput() GoogleCloudApigeeV1EntityMetadataResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1EntityMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1EntityMetadataResponsePtrType) ToGoogleCloudApigeeV1EntityMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1EntityMetadataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1EntityMetadataResponsePtrOutput)
+}
+
+// Metadata common to many entities in this API.
+type GoogleCloudApigeeV1EntityMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1EntityMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1EntityMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1EntityMetadataResponseOutput) ToGoogleCloudApigeeV1EntityMetadataResponseOutput() GoogleCloudApigeeV1EntityMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1EntityMetadataResponseOutput) ToGoogleCloudApigeeV1EntityMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1EntityMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1EntityMetadataResponseOutput) ToGoogleCloudApigeeV1EntityMetadataResponsePtrOutput() GoogleCloudApigeeV1EntityMetadataResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1EntityMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1EntityMetadataResponseOutput) ToGoogleCloudApigeeV1EntityMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1EntityMetadataResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1EntityMetadataResponse) *GoogleCloudApigeeV1EntityMetadataResponse {
+		return &v
+	}).(GoogleCloudApigeeV1EntityMetadataResponsePtrOutput)
+}
+
+// Time at which the API proxy was created, in milliseconds since epoch.
+func (o GoogleCloudApigeeV1EntityMetadataResponseOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1EntityMetadataResponse) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+func (o GoogleCloudApigeeV1EntityMetadataResponseOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1EntityMetadataResponse) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// The type of entity described
+func (o GoogleCloudApigeeV1EntityMetadataResponseOutput) SubType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1EntityMetadataResponse) string { return v.SubType }).(pulumi.StringOutput)
+}
+
+type GoogleCloudApigeeV1EntityMetadataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1EntityMetadataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1EntityMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1EntityMetadataResponsePtrOutput) ToGoogleCloudApigeeV1EntityMetadataResponsePtrOutput() GoogleCloudApigeeV1EntityMetadataResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1EntityMetadataResponsePtrOutput) ToGoogleCloudApigeeV1EntityMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1EntityMetadataResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1EntityMetadataResponsePtrOutput) Elem() GoogleCloudApigeeV1EntityMetadataResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1EntityMetadataResponse) GoogleCloudApigeeV1EntityMetadataResponse {
+		return *v
+	}).(GoogleCloudApigeeV1EntityMetadataResponseOutput)
+}
+
+// Time at which the API proxy was created, in milliseconds since epoch.
+func (o GoogleCloudApigeeV1EntityMetadataResponsePtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1EntityMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+func (o GoogleCloudApigeeV1EntityMetadataResponsePtrOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1EntityMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LastModifiedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of entity described
+func (o GoogleCloudApigeeV1EntityMetadataResponsePtrOutput) SubType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1EntityMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1269,6 +2700,139 @@ func (o GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput) Index(i pulumi.Int
 	}).(GoogleCloudApigeeV1GraphQLOperationConfigOutput)
 }
 
+// GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
+type GoogleCloudApigeeV1GraphQLOperationConfigResponse struct {
+	// Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+	ApiSource string `pulumi:"apiSource"`
+	// Custom attributes associated with the operation.
+	Attributes []GoogleCloudApigeeV1AttributeResponse `pulumi:"attributes"`
+	// Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+	Operations []GoogleCloudApigeeV1GraphQLOperationResponse `pulumi:"operations"`
+	// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+	Quota GoogleCloudApigeeV1QuotaResponse `pulumi:"quota"`
+}
+
+// GoogleCloudApigeeV1GraphQLOperationConfigResponseInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationConfigResponseArgs and GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationConfigResponseInput` via:
+//
+//          GoogleCloudApigeeV1GraphQLOperationConfigResponseArgs{...}
+type GoogleCloudApigeeV1GraphQLOperationConfigResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1GraphQLOperationConfigResponseOutput() GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput
+	ToGoogleCloudApigeeV1GraphQLOperationConfigResponseOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput
+}
+
+// GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
+type GoogleCloudApigeeV1GraphQLOperationConfigResponseArgs struct {
+	// Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+	ApiSource pulumi.StringInput `pulumi:"apiSource"`
+	// Custom attributes associated with the operation.
+	Attributes GoogleCloudApigeeV1AttributeResponseArrayInput `pulumi:"attributes"`
+	// Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+	Operations GoogleCloudApigeeV1GraphQLOperationResponseArrayInput `pulumi:"operations"`
+	// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+	Quota GoogleCloudApigeeV1QuotaResponseInput `pulumi:"quota"`
+}
+
+func (GoogleCloudApigeeV1GraphQLOperationConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1GraphQLOperationConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationConfigResponseArgs) ToGoogleCloudApigeeV1GraphQLOperationConfigResponseOutput() GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput {
+	return i.ToGoogleCloudApigeeV1GraphQLOperationConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationConfigResponseArgs) ToGoogleCloudApigeeV1GraphQLOperationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput)
+}
+
+// GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationConfigResponseArray and GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayInput` via:
+//
+//          GoogleCloudApigeeV1GraphQLOperationConfigResponseArray{ GoogleCloudApigeeV1GraphQLOperationConfigResponseArgs{...} }
+type GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput() GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput
+	ToGoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput
+}
+
+type GoogleCloudApigeeV1GraphQLOperationConfigResponseArray []GoogleCloudApigeeV1GraphQLOperationConfigResponseInput
+
+func (GoogleCloudApigeeV1GraphQLOperationConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1GraphQLOperationConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationConfigResponseArray) ToGoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput() GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput {
+	return i.ToGoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationConfigResponseArray) ToGoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput)
+}
+
+// GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
+type GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1GraphQLOperationConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) ToGoogleCloudApigeeV1GraphQLOperationConfigResponseOutput() GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) ToGoogleCloudApigeeV1GraphQLOperationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput {
+	return o
+}
+
+// Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) ApiSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationConfigResponse) string { return v.ApiSource }).(pulumi.StringOutput)
+}
+
+// Custom attributes associated with the operation.
+func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) Attributes() GoogleCloudApigeeV1AttributeResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationConfigResponse) []GoogleCloudApigeeV1AttributeResponse {
+		return v.Attributes
+	}).(GoogleCloudApigeeV1AttributeResponseArrayOutput)
+}
+
+// Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) Operations() GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationConfigResponse) []GoogleCloudApigeeV1GraphQLOperationResponse {
+		return v.Operations
+	}).(GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput)
+}
+
+// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput) Quota() GoogleCloudApigeeV1QuotaResponseOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationConfigResponse) GoogleCloudApigeeV1QuotaResponse {
+		return v.Quota
+	}).(GoogleCloudApigeeV1QuotaResponseOutput)
+}
+
+type GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1GraphQLOperationConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput) ToGoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput() GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput) ToGoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1GraphQLOperationConfigResponse {
+		return vs[0].([]GoogleCloudApigeeV1GraphQLOperationConfigResponse)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput)
+}
+
 // List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
 type GoogleCloudApigeeV1GraphQLOperationGroup struct {
 	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
@@ -1422,6 +2986,272 @@ func (o GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput) OperationConfigs() Go
 		}
 		return v.OperationConfigs
 	}).(GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput)
+}
+
+// List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+type GoogleCloudApigeeV1GraphQLOperationGroupResponse struct {
+	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	OperationConfigType string `pulumi:"operationConfigType"`
+	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+	OperationConfigs []GoogleCloudApigeeV1GraphQLOperationConfigResponse `pulumi:"operationConfigs"`
+}
+
+// GoogleCloudApigeeV1GraphQLOperationGroupResponseInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationGroupResponseArgs and GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationGroupResponseInput` via:
+//
+//          GoogleCloudApigeeV1GraphQLOperationGroupResponseArgs{...}
+type GoogleCloudApigeeV1GraphQLOperationGroupResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1GraphQLOperationGroupResponseOutput() GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput
+	ToGoogleCloudApigeeV1GraphQLOperationGroupResponseOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput
+}
+
+// List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+type GoogleCloudApigeeV1GraphQLOperationGroupResponseArgs struct {
+	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	OperationConfigType pulumi.StringInput `pulumi:"operationConfigType"`
+	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+	OperationConfigs GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayInput `pulumi:"operationConfigs"`
+}
+
+func (GoogleCloudApigeeV1GraphQLOperationGroupResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1GraphQLOperationGroupResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationGroupResponseArgs) ToGoogleCloudApigeeV1GraphQLOperationGroupResponseOutput() GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput {
+	return i.ToGoogleCloudApigeeV1GraphQLOperationGroupResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationGroupResponseArgs) ToGoogleCloudApigeeV1GraphQLOperationGroupResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput)
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationGroupResponseArgs) ToGoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput() GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationGroupResponseArgs) ToGoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput).ToGoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationGroupResponseArgs, GoogleCloudApigeeV1GraphQLOperationGroupResponsePtr and GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrInput` via:
+//
+//          GoogleCloudApigeeV1GraphQLOperationGroupResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput() GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput
+	ToGoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput
+}
+
+type googleCloudApigeeV1GraphQLOperationGroupResponsePtrType GoogleCloudApigeeV1GraphQLOperationGroupResponseArgs
+
+func GoogleCloudApigeeV1GraphQLOperationGroupResponsePtr(v *GoogleCloudApigeeV1GraphQLOperationGroupResponseArgs) GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrInput {
+	return (*googleCloudApigeeV1GraphQLOperationGroupResponsePtrType)(v)
+}
+
+func (*googleCloudApigeeV1GraphQLOperationGroupResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1GraphQLOperationGroupResponse)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1GraphQLOperationGroupResponsePtrType) ToGoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput() GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1GraphQLOperationGroupResponsePtrType) ToGoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput)
+}
+
+// List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+type GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1GraphQLOperationGroupResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput) ToGoogleCloudApigeeV1GraphQLOperationGroupResponseOutput() GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput) ToGoogleCloudApigeeV1GraphQLOperationGroupResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput) ToGoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput() GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput) ToGoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationGroupResponse) *GoogleCloudApigeeV1GraphQLOperationGroupResponse {
+		return &v
+	}).(GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput)
+}
+
+// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+func (o GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput) OperationConfigType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationGroupResponse) string { return v.OperationConfigType }).(pulumi.StringOutput)
+}
+
+// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+func (o GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput) OperationConfigs() GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationGroupResponse) []GoogleCloudApigeeV1GraphQLOperationConfigResponse {
+		return v.OperationConfigs
+	}).(GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput)
+}
+
+type GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1GraphQLOperationGroupResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput) ToGoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput() GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput) ToGoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput) Elem() GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1GraphQLOperationGroupResponse) GoogleCloudApigeeV1GraphQLOperationGroupResponse {
+		return *v
+	}).(GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput)
+}
+
+// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+func (o GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput) OperationConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1GraphQLOperationGroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OperationConfigType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+func (o GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput) OperationConfigs() GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1GraphQLOperationGroupResponse) []GoogleCloudApigeeV1GraphQLOperationConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return v.OperationConfigs
+	}).(GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput)
+}
+
+// GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
+type GoogleCloudApigeeV1GraphQLOperationResponse struct {
+	// GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+	Operation string `pulumi:"operation"`
+	// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+	OperationTypes []string `pulumi:"operationTypes"`
+}
+
+// GoogleCloudApigeeV1GraphQLOperationResponseInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationResponseArgs and GoogleCloudApigeeV1GraphQLOperationResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationResponseInput` via:
+//
+//          GoogleCloudApigeeV1GraphQLOperationResponseArgs{...}
+type GoogleCloudApigeeV1GraphQLOperationResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1GraphQLOperationResponseOutput() GoogleCloudApigeeV1GraphQLOperationResponseOutput
+	ToGoogleCloudApigeeV1GraphQLOperationResponseOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationResponseOutput
+}
+
+// GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
+type GoogleCloudApigeeV1GraphQLOperationResponseArgs struct {
+	// GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+	Operation pulumi.StringInput `pulumi:"operation"`
+	// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+	OperationTypes pulumi.StringArrayInput `pulumi:"operationTypes"`
+}
+
+func (GoogleCloudApigeeV1GraphQLOperationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1GraphQLOperationResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationResponseArgs) ToGoogleCloudApigeeV1GraphQLOperationResponseOutput() GoogleCloudApigeeV1GraphQLOperationResponseOutput {
+	return i.ToGoogleCloudApigeeV1GraphQLOperationResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationResponseArgs) ToGoogleCloudApigeeV1GraphQLOperationResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationResponseOutput)
+}
+
+// GoogleCloudApigeeV1GraphQLOperationResponseArrayInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationResponseArray and GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationResponseArrayInput` via:
+//
+//          GoogleCloudApigeeV1GraphQLOperationResponseArray{ GoogleCloudApigeeV1GraphQLOperationResponseArgs{...} }
+type GoogleCloudApigeeV1GraphQLOperationResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1GraphQLOperationResponseArrayOutput() GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput
+	ToGoogleCloudApigeeV1GraphQLOperationResponseArrayOutputWithContext(context.Context) GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput
+}
+
+type GoogleCloudApigeeV1GraphQLOperationResponseArray []GoogleCloudApigeeV1GraphQLOperationResponseInput
+
+func (GoogleCloudApigeeV1GraphQLOperationResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1GraphQLOperationResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationResponseArray) ToGoogleCloudApigeeV1GraphQLOperationResponseArrayOutput() GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput {
+	return i.ToGoogleCloudApigeeV1GraphQLOperationResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1GraphQLOperationResponseArray) ToGoogleCloudApigeeV1GraphQLOperationResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput)
+}
+
+// GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
+type GoogleCloudApigeeV1GraphQLOperationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1GraphQLOperationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1GraphQLOperationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationResponseOutput) ToGoogleCloudApigeeV1GraphQLOperationResponseOutput() GoogleCloudApigeeV1GraphQLOperationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationResponseOutput) ToGoogleCloudApigeeV1GraphQLOperationResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationResponseOutput {
+	return o
+}
+
+// GraphQL operation name, along with operation type which will be used to associate quotas with. If no name is specified, the quota will be applied to all graphQL operations irrespective of their operation names in the payload.
+func (o GoogleCloudApigeeV1GraphQLOperationResponseOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationResponse) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+func (o GoogleCloudApigeeV1GraphQLOperationResponseOutput) OperationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1GraphQLOperationResponse) []string { return v.OperationTypes }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1GraphQLOperationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput) ToGoogleCloudApigeeV1GraphQLOperationResponseArrayOutput() GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput) ToGoogleCloudApigeeV1GraphQLOperationResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1GraphQLOperationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1GraphQLOperationResponse {
+		return vs[0].([]GoogleCloudApigeeV1GraphQLOperationResponse)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1GraphQLOperationResponseOutput)
 }
 
 // Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
@@ -1660,6 +3490,137 @@ func (o GoogleCloudApigeeV1OperationConfigArrayOutput) Index(i pulumi.IntInput) 
 	}).(GoogleCloudApigeeV1OperationConfigOutput)
 }
 
+// OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.
+type GoogleCloudApigeeV1OperationConfigResponse struct {
+	// Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+	ApiSource string `pulumi:"apiSource"`
+	// Custom attributes associated with the operation.
+	Attributes []GoogleCloudApigeeV1AttributeResponse `pulumi:"attributes"`
+	// List of resource/method pairs for the proxy/remote service, upon which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
+	Operations []GoogleCloudApigeeV1OperationResponse `pulumi:"operations"`
+	// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+	Quota GoogleCloudApigeeV1QuotaResponse `pulumi:"quota"`
+}
+
+// GoogleCloudApigeeV1OperationConfigResponseInput is an input type that accepts GoogleCloudApigeeV1OperationConfigResponseArgs and GoogleCloudApigeeV1OperationConfigResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1OperationConfigResponseInput` via:
+//
+//          GoogleCloudApigeeV1OperationConfigResponseArgs{...}
+type GoogleCloudApigeeV1OperationConfigResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1OperationConfigResponseOutput() GoogleCloudApigeeV1OperationConfigResponseOutput
+	ToGoogleCloudApigeeV1OperationConfigResponseOutputWithContext(context.Context) GoogleCloudApigeeV1OperationConfigResponseOutput
+}
+
+// OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.
+type GoogleCloudApigeeV1OperationConfigResponseArgs struct {
+	// Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+	ApiSource pulumi.StringInput `pulumi:"apiSource"`
+	// Custom attributes associated with the operation.
+	Attributes GoogleCloudApigeeV1AttributeResponseArrayInput `pulumi:"attributes"`
+	// List of resource/method pairs for the proxy/remote service, upon which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
+	Operations GoogleCloudApigeeV1OperationResponseArrayInput `pulumi:"operations"`
+	// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+	Quota GoogleCloudApigeeV1QuotaResponseInput `pulumi:"quota"`
+}
+
+func (GoogleCloudApigeeV1OperationConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1OperationConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1OperationConfigResponseArgs) ToGoogleCloudApigeeV1OperationConfigResponseOutput() GoogleCloudApigeeV1OperationConfigResponseOutput {
+	return i.ToGoogleCloudApigeeV1OperationConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1OperationConfigResponseArgs) ToGoogleCloudApigeeV1OperationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationConfigResponseOutput)
+}
+
+// GoogleCloudApigeeV1OperationConfigResponseArrayInput is an input type that accepts GoogleCloudApigeeV1OperationConfigResponseArray and GoogleCloudApigeeV1OperationConfigResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1OperationConfigResponseArrayInput` via:
+//
+//          GoogleCloudApigeeV1OperationConfigResponseArray{ GoogleCloudApigeeV1OperationConfigResponseArgs{...} }
+type GoogleCloudApigeeV1OperationConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1OperationConfigResponseArrayOutput() GoogleCloudApigeeV1OperationConfigResponseArrayOutput
+	ToGoogleCloudApigeeV1OperationConfigResponseArrayOutputWithContext(context.Context) GoogleCloudApigeeV1OperationConfigResponseArrayOutput
+}
+
+type GoogleCloudApigeeV1OperationConfigResponseArray []GoogleCloudApigeeV1OperationConfigResponseInput
+
+func (GoogleCloudApigeeV1OperationConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1OperationConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1OperationConfigResponseArray) ToGoogleCloudApigeeV1OperationConfigResponseArrayOutput() GoogleCloudApigeeV1OperationConfigResponseArrayOutput {
+	return i.ToGoogleCloudApigeeV1OperationConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1OperationConfigResponseArray) ToGoogleCloudApigeeV1OperationConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationConfigResponseArrayOutput)
+}
+
+// OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.
+type GoogleCloudApigeeV1OperationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1OperationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1OperationConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1OperationConfigResponseOutput) ToGoogleCloudApigeeV1OperationConfigResponseOutput() GoogleCloudApigeeV1OperationConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1OperationConfigResponseOutput) ToGoogleCloudApigeeV1OperationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationConfigResponseOutput {
+	return o
+}
+
+// Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+func (o GoogleCloudApigeeV1OperationConfigResponseOutput) ApiSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1OperationConfigResponse) string { return v.ApiSource }).(pulumi.StringOutput)
+}
+
+// Custom attributes associated with the operation.
+func (o GoogleCloudApigeeV1OperationConfigResponseOutput) Attributes() GoogleCloudApigeeV1AttributeResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1OperationConfigResponse) []GoogleCloudApigeeV1AttributeResponse {
+		return v.Attributes
+	}).(GoogleCloudApigeeV1AttributeResponseArrayOutput)
+}
+
+// List of resource/method pairs for the proxy/remote service, upon which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
+func (o GoogleCloudApigeeV1OperationConfigResponseOutput) Operations() GoogleCloudApigeeV1OperationResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1OperationConfigResponse) []GoogleCloudApigeeV1OperationResponse {
+		return v.Operations
+	}).(GoogleCloudApigeeV1OperationResponseArrayOutput)
+}
+
+// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+func (o GoogleCloudApigeeV1OperationConfigResponseOutput) Quota() GoogleCloudApigeeV1QuotaResponseOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1OperationConfigResponse) GoogleCloudApigeeV1QuotaResponse { return v.Quota }).(GoogleCloudApigeeV1QuotaResponseOutput)
+}
+
+type GoogleCloudApigeeV1OperationConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1OperationConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1OperationConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1OperationConfigResponseArrayOutput) ToGoogleCloudApigeeV1OperationConfigResponseArrayOutput() GoogleCloudApigeeV1OperationConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1OperationConfigResponseArrayOutput) ToGoogleCloudApigeeV1OperationConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1OperationConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1OperationConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1OperationConfigResponse {
+		return vs[0].([]GoogleCloudApigeeV1OperationConfigResponse)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1OperationConfigResponseOutput)
+}
+
 // List of operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
 type GoogleCloudApigeeV1OperationGroup struct {
 	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
@@ -1815,6 +3776,272 @@ func (o GoogleCloudApigeeV1OperationGroupPtrOutput) OperationConfigs() GoogleClo
 	}).(GoogleCloudApigeeV1OperationConfigArrayOutput)
 }
 
+// List of operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+type GoogleCloudApigeeV1OperationGroupResponse struct {
+	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	OperationConfigType string `pulumi:"operationConfigType"`
+	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+	OperationConfigs []GoogleCloudApigeeV1OperationConfigResponse `pulumi:"operationConfigs"`
+}
+
+// GoogleCloudApigeeV1OperationGroupResponseInput is an input type that accepts GoogleCloudApigeeV1OperationGroupResponseArgs and GoogleCloudApigeeV1OperationGroupResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1OperationGroupResponseInput` via:
+//
+//          GoogleCloudApigeeV1OperationGroupResponseArgs{...}
+type GoogleCloudApigeeV1OperationGroupResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1OperationGroupResponseOutput() GoogleCloudApigeeV1OperationGroupResponseOutput
+	ToGoogleCloudApigeeV1OperationGroupResponseOutputWithContext(context.Context) GoogleCloudApigeeV1OperationGroupResponseOutput
+}
+
+// List of operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+type GoogleCloudApigeeV1OperationGroupResponseArgs struct {
+	// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+	OperationConfigType pulumi.StringInput `pulumi:"operationConfigType"`
+	// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+	OperationConfigs GoogleCloudApigeeV1OperationConfigResponseArrayInput `pulumi:"operationConfigs"`
+}
+
+func (GoogleCloudApigeeV1OperationGroupResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1OperationGroupResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1OperationGroupResponseArgs) ToGoogleCloudApigeeV1OperationGroupResponseOutput() GoogleCloudApigeeV1OperationGroupResponseOutput {
+	return i.ToGoogleCloudApigeeV1OperationGroupResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1OperationGroupResponseArgs) ToGoogleCloudApigeeV1OperationGroupResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationGroupResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationGroupResponseOutput)
+}
+
+func (i GoogleCloudApigeeV1OperationGroupResponseArgs) ToGoogleCloudApigeeV1OperationGroupResponsePtrOutput() GoogleCloudApigeeV1OperationGroupResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1OperationGroupResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1OperationGroupResponseArgs) ToGoogleCloudApigeeV1OperationGroupResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationGroupResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationGroupResponseOutput).ToGoogleCloudApigeeV1OperationGroupResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1OperationGroupResponsePtrInput is an input type that accepts GoogleCloudApigeeV1OperationGroupResponseArgs, GoogleCloudApigeeV1OperationGroupResponsePtr and GoogleCloudApigeeV1OperationGroupResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1OperationGroupResponsePtrInput` via:
+//
+//          GoogleCloudApigeeV1OperationGroupResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1OperationGroupResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1OperationGroupResponsePtrOutput() GoogleCloudApigeeV1OperationGroupResponsePtrOutput
+	ToGoogleCloudApigeeV1OperationGroupResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1OperationGroupResponsePtrOutput
+}
+
+type googleCloudApigeeV1OperationGroupResponsePtrType GoogleCloudApigeeV1OperationGroupResponseArgs
+
+func GoogleCloudApigeeV1OperationGroupResponsePtr(v *GoogleCloudApigeeV1OperationGroupResponseArgs) GoogleCloudApigeeV1OperationGroupResponsePtrInput {
+	return (*googleCloudApigeeV1OperationGroupResponsePtrType)(v)
+}
+
+func (*googleCloudApigeeV1OperationGroupResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1OperationGroupResponse)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1OperationGroupResponsePtrType) ToGoogleCloudApigeeV1OperationGroupResponsePtrOutput() GoogleCloudApigeeV1OperationGroupResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1OperationGroupResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1OperationGroupResponsePtrType) ToGoogleCloudApigeeV1OperationGroupResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationGroupResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationGroupResponsePtrOutput)
+}
+
+// List of operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
+type GoogleCloudApigeeV1OperationGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1OperationGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1OperationGroupResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1OperationGroupResponseOutput) ToGoogleCloudApigeeV1OperationGroupResponseOutput() GoogleCloudApigeeV1OperationGroupResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1OperationGroupResponseOutput) ToGoogleCloudApigeeV1OperationGroupResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationGroupResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1OperationGroupResponseOutput) ToGoogleCloudApigeeV1OperationGroupResponsePtrOutput() GoogleCloudApigeeV1OperationGroupResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1OperationGroupResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1OperationGroupResponseOutput) ToGoogleCloudApigeeV1OperationGroupResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationGroupResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1OperationGroupResponse) *GoogleCloudApigeeV1OperationGroupResponse {
+		return &v
+	}).(GoogleCloudApigeeV1OperationGroupResponsePtrOutput)
+}
+
+// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+func (o GoogleCloudApigeeV1OperationGroupResponseOutput) OperationConfigType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1OperationGroupResponse) string { return v.OperationConfigType }).(pulumi.StringOutput)
+}
+
+// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+func (o GoogleCloudApigeeV1OperationGroupResponseOutput) OperationConfigs() GoogleCloudApigeeV1OperationConfigResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1OperationGroupResponse) []GoogleCloudApigeeV1OperationConfigResponse {
+		return v.OperationConfigs
+	}).(GoogleCloudApigeeV1OperationConfigResponseArrayOutput)
+}
+
+type GoogleCloudApigeeV1OperationGroupResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1OperationGroupResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1OperationGroupResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1OperationGroupResponsePtrOutput) ToGoogleCloudApigeeV1OperationGroupResponsePtrOutput() GoogleCloudApigeeV1OperationGroupResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1OperationGroupResponsePtrOutput) ToGoogleCloudApigeeV1OperationGroupResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationGroupResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1OperationGroupResponsePtrOutput) Elem() GoogleCloudApigeeV1OperationGroupResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1OperationGroupResponse) GoogleCloudApigeeV1OperationGroupResponse {
+		return *v
+	}).(GoogleCloudApigeeV1OperationGroupResponseOutput)
+}
+
+// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values are `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
+func (o GoogleCloudApigeeV1OperationGroupResponsePtrOutput) OperationConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1OperationGroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OperationConfigType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+func (o GoogleCloudApigeeV1OperationGroupResponsePtrOutput) OperationConfigs() GoogleCloudApigeeV1OperationConfigResponseArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1OperationGroupResponse) []GoogleCloudApigeeV1OperationConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return v.OperationConfigs
+	}).(GoogleCloudApigeeV1OperationConfigResponseArrayOutput)
+}
+
+// Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
+type GoogleCloudApigeeV1OperationResponse struct {
+	// methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
+	Methods []string `pulumi:"methods"`
+	// Required. resource represents REST resource path associated with the proxy/remote service.
+	Resource string `pulumi:"resource"`
+}
+
+// GoogleCloudApigeeV1OperationResponseInput is an input type that accepts GoogleCloudApigeeV1OperationResponseArgs and GoogleCloudApigeeV1OperationResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1OperationResponseInput` via:
+//
+//          GoogleCloudApigeeV1OperationResponseArgs{...}
+type GoogleCloudApigeeV1OperationResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1OperationResponseOutput() GoogleCloudApigeeV1OperationResponseOutput
+	ToGoogleCloudApigeeV1OperationResponseOutputWithContext(context.Context) GoogleCloudApigeeV1OperationResponseOutput
+}
+
+// Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
+type GoogleCloudApigeeV1OperationResponseArgs struct {
+	// methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// Required. resource represents REST resource path associated with the proxy/remote service.
+	Resource pulumi.StringInput `pulumi:"resource"`
+}
+
+func (GoogleCloudApigeeV1OperationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1OperationResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1OperationResponseArgs) ToGoogleCloudApigeeV1OperationResponseOutput() GoogleCloudApigeeV1OperationResponseOutput {
+	return i.ToGoogleCloudApigeeV1OperationResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1OperationResponseArgs) ToGoogleCloudApigeeV1OperationResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationResponseOutput)
+}
+
+// GoogleCloudApigeeV1OperationResponseArrayInput is an input type that accepts GoogleCloudApigeeV1OperationResponseArray and GoogleCloudApigeeV1OperationResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1OperationResponseArrayInput` via:
+//
+//          GoogleCloudApigeeV1OperationResponseArray{ GoogleCloudApigeeV1OperationResponseArgs{...} }
+type GoogleCloudApigeeV1OperationResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1OperationResponseArrayOutput() GoogleCloudApigeeV1OperationResponseArrayOutput
+	ToGoogleCloudApigeeV1OperationResponseArrayOutputWithContext(context.Context) GoogleCloudApigeeV1OperationResponseArrayOutput
+}
+
+type GoogleCloudApigeeV1OperationResponseArray []GoogleCloudApigeeV1OperationResponseInput
+
+func (GoogleCloudApigeeV1OperationResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1OperationResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1OperationResponseArray) ToGoogleCloudApigeeV1OperationResponseArrayOutput() GoogleCloudApigeeV1OperationResponseArrayOutput {
+	return i.ToGoogleCloudApigeeV1OperationResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1OperationResponseArray) ToGoogleCloudApigeeV1OperationResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1OperationResponseArrayOutput)
+}
+
+// Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
+type GoogleCloudApigeeV1OperationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1OperationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1OperationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1OperationResponseOutput) ToGoogleCloudApigeeV1OperationResponseOutput() GoogleCloudApigeeV1OperationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1OperationResponseOutput) ToGoogleCloudApigeeV1OperationResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationResponseOutput {
+	return o
+}
+
+// methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
+func (o GoogleCloudApigeeV1OperationResponseOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1OperationResponse) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// Required. resource represents REST resource path associated with the proxy/remote service.
+func (o GoogleCloudApigeeV1OperationResponseOutput) Resource() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1OperationResponse) string { return v.Resource }).(pulumi.StringOutput)
+}
+
+type GoogleCloudApigeeV1OperationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1OperationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1OperationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1OperationResponseArrayOutput) ToGoogleCloudApigeeV1OperationResponseArrayOutput() GoogleCloudApigeeV1OperationResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1OperationResponseArrayOutput) ToGoogleCloudApigeeV1OperationResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1OperationResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1OperationResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1OperationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1OperationResponse {
+		return vs[0].([]GoogleCloudApigeeV1OperationResponse)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1OperationResponseOutput)
+}
+
 // Message for compatibility with legacy Edge specification for Java Properties object in JSON.
 type GoogleCloudApigeeV1Properties struct {
 	// List of all properties in the object
@@ -1949,6 +4176,140 @@ func (o GoogleCloudApigeeV1PropertiesPtrOutput) Property() GoogleCloudApigeeV1Pr
 	}).(GoogleCloudApigeeV1PropertyArrayOutput)
 }
 
+// Message for compatibility with legacy Edge specification for Java Properties object in JSON.
+type GoogleCloudApigeeV1PropertiesResponse struct {
+	// List of all properties in the object
+	Property []GoogleCloudApigeeV1PropertyResponse `pulumi:"property"`
+}
+
+// GoogleCloudApigeeV1PropertiesResponseInput is an input type that accepts GoogleCloudApigeeV1PropertiesResponseArgs and GoogleCloudApigeeV1PropertiesResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1PropertiesResponseInput` via:
+//
+//          GoogleCloudApigeeV1PropertiesResponseArgs{...}
+type GoogleCloudApigeeV1PropertiesResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1PropertiesResponseOutput() GoogleCloudApigeeV1PropertiesResponseOutput
+	ToGoogleCloudApigeeV1PropertiesResponseOutputWithContext(context.Context) GoogleCloudApigeeV1PropertiesResponseOutput
+}
+
+// Message for compatibility with legacy Edge specification for Java Properties object in JSON.
+type GoogleCloudApigeeV1PropertiesResponseArgs struct {
+	// List of all properties in the object
+	Property GoogleCloudApigeeV1PropertyResponseArrayInput `pulumi:"property"`
+}
+
+func (GoogleCloudApigeeV1PropertiesResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1PropertiesResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1PropertiesResponseArgs) ToGoogleCloudApigeeV1PropertiesResponseOutput() GoogleCloudApigeeV1PropertiesResponseOutput {
+	return i.ToGoogleCloudApigeeV1PropertiesResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1PropertiesResponseArgs) ToGoogleCloudApigeeV1PropertiesResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertiesResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1PropertiesResponseOutput)
+}
+
+func (i GoogleCloudApigeeV1PropertiesResponseArgs) ToGoogleCloudApigeeV1PropertiesResponsePtrOutput() GoogleCloudApigeeV1PropertiesResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1PropertiesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1PropertiesResponseArgs) ToGoogleCloudApigeeV1PropertiesResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertiesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1PropertiesResponseOutput).ToGoogleCloudApigeeV1PropertiesResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1PropertiesResponsePtrInput is an input type that accepts GoogleCloudApigeeV1PropertiesResponseArgs, GoogleCloudApigeeV1PropertiesResponsePtr and GoogleCloudApigeeV1PropertiesResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1PropertiesResponsePtrInput` via:
+//
+//          GoogleCloudApigeeV1PropertiesResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1PropertiesResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1PropertiesResponsePtrOutput() GoogleCloudApigeeV1PropertiesResponsePtrOutput
+	ToGoogleCloudApigeeV1PropertiesResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1PropertiesResponsePtrOutput
+}
+
+type googleCloudApigeeV1PropertiesResponsePtrType GoogleCloudApigeeV1PropertiesResponseArgs
+
+func GoogleCloudApigeeV1PropertiesResponsePtr(v *GoogleCloudApigeeV1PropertiesResponseArgs) GoogleCloudApigeeV1PropertiesResponsePtrInput {
+	return (*googleCloudApigeeV1PropertiesResponsePtrType)(v)
+}
+
+func (*googleCloudApigeeV1PropertiesResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1PropertiesResponse)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1PropertiesResponsePtrType) ToGoogleCloudApigeeV1PropertiesResponsePtrOutput() GoogleCloudApigeeV1PropertiesResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1PropertiesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1PropertiesResponsePtrType) ToGoogleCloudApigeeV1PropertiesResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertiesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1PropertiesResponsePtrOutput)
+}
+
+// Message for compatibility with legacy Edge specification for Java Properties object in JSON.
+type GoogleCloudApigeeV1PropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1PropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1PropertiesResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1PropertiesResponseOutput) ToGoogleCloudApigeeV1PropertiesResponseOutput() GoogleCloudApigeeV1PropertiesResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1PropertiesResponseOutput) ToGoogleCloudApigeeV1PropertiesResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertiesResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1PropertiesResponseOutput) ToGoogleCloudApigeeV1PropertiesResponsePtrOutput() GoogleCloudApigeeV1PropertiesResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1PropertiesResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1PropertiesResponseOutput) ToGoogleCloudApigeeV1PropertiesResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertiesResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1PropertiesResponse) *GoogleCloudApigeeV1PropertiesResponse {
+		return &v
+	}).(GoogleCloudApigeeV1PropertiesResponsePtrOutput)
+}
+
+// List of all properties in the object
+func (o GoogleCloudApigeeV1PropertiesResponseOutput) Property() GoogleCloudApigeeV1PropertyResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1PropertiesResponse) []GoogleCloudApigeeV1PropertyResponse { return v.Property }).(GoogleCloudApigeeV1PropertyResponseArrayOutput)
+}
+
+type GoogleCloudApigeeV1PropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1PropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1PropertiesResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1PropertiesResponsePtrOutput) ToGoogleCloudApigeeV1PropertiesResponsePtrOutput() GoogleCloudApigeeV1PropertiesResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1PropertiesResponsePtrOutput) ToGoogleCloudApigeeV1PropertiesResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertiesResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1PropertiesResponsePtrOutput) Elem() GoogleCloudApigeeV1PropertiesResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1PropertiesResponse) GoogleCloudApigeeV1PropertiesResponse { return *v }).(GoogleCloudApigeeV1PropertiesResponseOutput)
+}
+
+// List of all properties in the object
+func (o GoogleCloudApigeeV1PropertiesResponsePtrOutput) Property() GoogleCloudApigeeV1PropertyResponseArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1PropertiesResponse) []GoogleCloudApigeeV1PropertyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Property
+	}).(GoogleCloudApigeeV1PropertyResponseArrayOutput)
+}
+
 // A single property entry in the Properties message.
 type GoogleCloudApigeeV1Property struct {
 	// The property key
@@ -2056,6 +4417,341 @@ func (o GoogleCloudApigeeV1PropertyArrayOutput) Index(i pulumi.IntInput) GoogleC
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1Property {
 		return vs[0].([]GoogleCloudApigeeV1Property)[vs[1].(int)]
 	}).(GoogleCloudApigeeV1PropertyOutput)
+}
+
+// A single property entry in the Properties message.
+type GoogleCloudApigeeV1PropertyResponse struct {
+	// The property key
+	Name string `pulumi:"name"`
+	// The property value
+	Value string `pulumi:"value"`
+}
+
+// GoogleCloudApigeeV1PropertyResponseInput is an input type that accepts GoogleCloudApigeeV1PropertyResponseArgs and GoogleCloudApigeeV1PropertyResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1PropertyResponseInput` via:
+//
+//          GoogleCloudApigeeV1PropertyResponseArgs{...}
+type GoogleCloudApigeeV1PropertyResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1PropertyResponseOutput() GoogleCloudApigeeV1PropertyResponseOutput
+	ToGoogleCloudApigeeV1PropertyResponseOutputWithContext(context.Context) GoogleCloudApigeeV1PropertyResponseOutput
+}
+
+// A single property entry in the Properties message.
+type GoogleCloudApigeeV1PropertyResponseArgs struct {
+	// The property key
+	Name pulumi.StringInput `pulumi:"name"`
+	// The property value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GoogleCloudApigeeV1PropertyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1PropertyResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1PropertyResponseArgs) ToGoogleCloudApigeeV1PropertyResponseOutput() GoogleCloudApigeeV1PropertyResponseOutput {
+	return i.ToGoogleCloudApigeeV1PropertyResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1PropertyResponseArgs) ToGoogleCloudApigeeV1PropertyResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1PropertyResponseOutput)
+}
+
+// GoogleCloudApigeeV1PropertyResponseArrayInput is an input type that accepts GoogleCloudApigeeV1PropertyResponseArray and GoogleCloudApigeeV1PropertyResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1PropertyResponseArrayInput` via:
+//
+//          GoogleCloudApigeeV1PropertyResponseArray{ GoogleCloudApigeeV1PropertyResponseArgs{...} }
+type GoogleCloudApigeeV1PropertyResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1PropertyResponseArrayOutput() GoogleCloudApigeeV1PropertyResponseArrayOutput
+	ToGoogleCloudApigeeV1PropertyResponseArrayOutputWithContext(context.Context) GoogleCloudApigeeV1PropertyResponseArrayOutput
+}
+
+type GoogleCloudApigeeV1PropertyResponseArray []GoogleCloudApigeeV1PropertyResponseInput
+
+func (GoogleCloudApigeeV1PropertyResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1PropertyResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1PropertyResponseArray) ToGoogleCloudApigeeV1PropertyResponseArrayOutput() GoogleCloudApigeeV1PropertyResponseArrayOutput {
+	return i.ToGoogleCloudApigeeV1PropertyResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1PropertyResponseArray) ToGoogleCloudApigeeV1PropertyResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertyResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1PropertyResponseArrayOutput)
+}
+
+// A single property entry in the Properties message.
+type GoogleCloudApigeeV1PropertyResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1PropertyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1PropertyResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1PropertyResponseOutput) ToGoogleCloudApigeeV1PropertyResponseOutput() GoogleCloudApigeeV1PropertyResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1PropertyResponseOutput) ToGoogleCloudApigeeV1PropertyResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertyResponseOutput {
+	return o
+}
+
+// The property key
+func (o GoogleCloudApigeeV1PropertyResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1PropertyResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The property value
+func (o GoogleCloudApigeeV1PropertyResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1PropertyResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GoogleCloudApigeeV1PropertyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1PropertyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1PropertyResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1PropertyResponseArrayOutput) ToGoogleCloudApigeeV1PropertyResponseArrayOutput() GoogleCloudApigeeV1PropertyResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1PropertyResponseArrayOutput) ToGoogleCloudApigeeV1PropertyResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1PropertyResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1PropertyResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1PropertyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1PropertyResponse {
+		return vs[0].([]GoogleCloudApigeeV1PropertyResponse)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1PropertyResponseOutput)
+}
+
+type GoogleCloudApigeeV1QueryMetadataResponse struct {
+	// Dimensions of the AsyncQuery.
+	Dimensions []string `pulumi:"dimensions"`
+	// End timestamp of the query range.
+	EndTimestamp string `pulumi:"endTimestamp"`
+	// Metrics of the AsyncQuery. Example: ["name:message_count,func:sum,alias:sum_message_count"]
+	Metrics []string `pulumi:"metrics"`
+	// Output format.
+	OutputFormat string `pulumi:"outputFormat"`
+	// Start timestamp of the query range.
+	StartTimestamp string `pulumi:"startTimestamp"`
+	// Query GroupBy time unit.
+	TimeUnit string `pulumi:"timeUnit"`
+}
+
+// GoogleCloudApigeeV1QueryMetadataResponseInput is an input type that accepts GoogleCloudApigeeV1QueryMetadataResponseArgs and GoogleCloudApigeeV1QueryMetadataResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1QueryMetadataResponseInput` via:
+//
+//          GoogleCloudApigeeV1QueryMetadataResponseArgs{...}
+type GoogleCloudApigeeV1QueryMetadataResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1QueryMetadataResponseOutput() GoogleCloudApigeeV1QueryMetadataResponseOutput
+	ToGoogleCloudApigeeV1QueryMetadataResponseOutputWithContext(context.Context) GoogleCloudApigeeV1QueryMetadataResponseOutput
+}
+
+type GoogleCloudApigeeV1QueryMetadataResponseArgs struct {
+	// Dimensions of the AsyncQuery.
+	Dimensions pulumi.StringArrayInput `pulumi:"dimensions"`
+	// End timestamp of the query range.
+	EndTimestamp pulumi.StringInput `pulumi:"endTimestamp"`
+	// Metrics of the AsyncQuery. Example: ["name:message_count,func:sum,alias:sum_message_count"]
+	Metrics pulumi.StringArrayInput `pulumi:"metrics"`
+	// Output format.
+	OutputFormat pulumi.StringInput `pulumi:"outputFormat"`
+	// Start timestamp of the query range.
+	StartTimestamp pulumi.StringInput `pulumi:"startTimestamp"`
+	// Query GroupBy time unit.
+	TimeUnit pulumi.StringInput `pulumi:"timeUnit"`
+}
+
+func (GoogleCloudApigeeV1QueryMetadataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1QueryMetadataResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1QueryMetadataResponseArgs) ToGoogleCloudApigeeV1QueryMetadataResponseOutput() GoogleCloudApigeeV1QueryMetadataResponseOutput {
+	return i.ToGoogleCloudApigeeV1QueryMetadataResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1QueryMetadataResponseArgs) ToGoogleCloudApigeeV1QueryMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1QueryMetadataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1QueryMetadataResponseOutput)
+}
+
+func (i GoogleCloudApigeeV1QueryMetadataResponseArgs) ToGoogleCloudApigeeV1QueryMetadataResponsePtrOutput() GoogleCloudApigeeV1QueryMetadataResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1QueryMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1QueryMetadataResponseArgs) ToGoogleCloudApigeeV1QueryMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1QueryMetadataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1QueryMetadataResponseOutput).ToGoogleCloudApigeeV1QueryMetadataResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1QueryMetadataResponsePtrInput is an input type that accepts GoogleCloudApigeeV1QueryMetadataResponseArgs, GoogleCloudApigeeV1QueryMetadataResponsePtr and GoogleCloudApigeeV1QueryMetadataResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1QueryMetadataResponsePtrInput` via:
+//
+//          GoogleCloudApigeeV1QueryMetadataResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1QueryMetadataResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1QueryMetadataResponsePtrOutput() GoogleCloudApigeeV1QueryMetadataResponsePtrOutput
+	ToGoogleCloudApigeeV1QueryMetadataResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1QueryMetadataResponsePtrOutput
+}
+
+type googleCloudApigeeV1QueryMetadataResponsePtrType GoogleCloudApigeeV1QueryMetadataResponseArgs
+
+func GoogleCloudApigeeV1QueryMetadataResponsePtr(v *GoogleCloudApigeeV1QueryMetadataResponseArgs) GoogleCloudApigeeV1QueryMetadataResponsePtrInput {
+	return (*googleCloudApigeeV1QueryMetadataResponsePtrType)(v)
+}
+
+func (*googleCloudApigeeV1QueryMetadataResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1QueryMetadataResponse)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1QueryMetadataResponsePtrType) ToGoogleCloudApigeeV1QueryMetadataResponsePtrOutput() GoogleCloudApigeeV1QueryMetadataResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1QueryMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1QueryMetadataResponsePtrType) ToGoogleCloudApigeeV1QueryMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1QueryMetadataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1QueryMetadataResponsePtrOutput)
+}
+
+type GoogleCloudApigeeV1QueryMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1QueryMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1QueryMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1QueryMetadataResponseOutput) ToGoogleCloudApigeeV1QueryMetadataResponseOutput() GoogleCloudApigeeV1QueryMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1QueryMetadataResponseOutput) ToGoogleCloudApigeeV1QueryMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1QueryMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1QueryMetadataResponseOutput) ToGoogleCloudApigeeV1QueryMetadataResponsePtrOutput() GoogleCloudApigeeV1QueryMetadataResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1QueryMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1QueryMetadataResponseOutput) ToGoogleCloudApigeeV1QueryMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1QueryMetadataResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1QueryMetadataResponse) *GoogleCloudApigeeV1QueryMetadataResponse {
+		return &v
+	}).(GoogleCloudApigeeV1QueryMetadataResponsePtrOutput)
+}
+
+// Dimensions of the AsyncQuery.
+func (o GoogleCloudApigeeV1QueryMetadataResponseOutput) Dimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1QueryMetadataResponse) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
+}
+
+// End timestamp of the query range.
+func (o GoogleCloudApigeeV1QueryMetadataResponseOutput) EndTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1QueryMetadataResponse) string { return v.EndTimestamp }).(pulumi.StringOutput)
+}
+
+// Metrics of the AsyncQuery. Example: ["name:message_count,func:sum,alias:sum_message_count"]
+func (o GoogleCloudApigeeV1QueryMetadataResponseOutput) Metrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1QueryMetadataResponse) []string { return v.Metrics }).(pulumi.StringArrayOutput)
+}
+
+// Output format.
+func (o GoogleCloudApigeeV1QueryMetadataResponseOutput) OutputFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1QueryMetadataResponse) string { return v.OutputFormat }).(pulumi.StringOutput)
+}
+
+// Start timestamp of the query range.
+func (o GoogleCloudApigeeV1QueryMetadataResponseOutput) StartTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1QueryMetadataResponse) string { return v.StartTimestamp }).(pulumi.StringOutput)
+}
+
+// Query GroupBy time unit.
+func (o GoogleCloudApigeeV1QueryMetadataResponseOutput) TimeUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1QueryMetadataResponse) string { return v.TimeUnit }).(pulumi.StringOutput)
+}
+
+type GoogleCloudApigeeV1QueryMetadataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1QueryMetadataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1QueryMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1QueryMetadataResponsePtrOutput) ToGoogleCloudApigeeV1QueryMetadataResponsePtrOutput() GoogleCloudApigeeV1QueryMetadataResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1QueryMetadataResponsePtrOutput) ToGoogleCloudApigeeV1QueryMetadataResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1QueryMetadataResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1QueryMetadataResponsePtrOutput) Elem() GoogleCloudApigeeV1QueryMetadataResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1QueryMetadataResponse) GoogleCloudApigeeV1QueryMetadataResponse { return *v }).(GoogleCloudApigeeV1QueryMetadataResponseOutput)
+}
+
+// Dimensions of the AsyncQuery.
+func (o GoogleCloudApigeeV1QueryMetadataResponsePtrOutput) Dimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1QueryMetadataResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Dimensions
+	}).(pulumi.StringArrayOutput)
+}
+
+// End timestamp of the query range.
+func (o GoogleCloudApigeeV1QueryMetadataResponsePtrOutput) EndTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1QueryMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metrics of the AsyncQuery. Example: ["name:message_count,func:sum,alias:sum_message_count"]
+func (o GoogleCloudApigeeV1QueryMetadataResponsePtrOutput) Metrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1QueryMetadataResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Metrics
+	}).(pulumi.StringArrayOutput)
+}
+
+// Output format.
+func (o GoogleCloudApigeeV1QueryMetadataResponsePtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1QueryMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start timestamp of the query range.
+func (o GoogleCloudApigeeV1QueryMetadataResponsePtrOutput) StartTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1QueryMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Query GroupBy time unit.
+func (o GoogleCloudApigeeV1QueryMetadataResponsePtrOutput) TimeUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1QueryMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeUnit
+	}).(pulumi.StringPtrOutput)
 }
 
 // More info about Metric: https://docs.apigee.com/api-platform/analytics/analytics-reference#metrics
@@ -2366,6 +5062,79 @@ func (o GoogleCloudApigeeV1QuotaPtrOutput) TimeUnit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Quota contains the essential parameters needed that can be applied on a proxy/remote service, resources and methods combination associated with this API product. While setting of Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
+type GoogleCloudApigeeV1QuotaResponse struct {
+	// Required. Time interval over which the number of request messages is calculated.
+	Interval string `pulumi:"interval"`
+	// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+	Limit string `pulumi:"limit"`
+	// Time unit defined for the `interval`. Valid values include `minute`, `hour`, `day`, or `month`. If `limit` and `interval` are valid, the default value is `hour`; otherwise, the default is null.
+	TimeUnit string `pulumi:"timeUnit"`
+}
+
+// GoogleCloudApigeeV1QuotaResponseInput is an input type that accepts GoogleCloudApigeeV1QuotaResponseArgs and GoogleCloudApigeeV1QuotaResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1QuotaResponseInput` via:
+//
+//          GoogleCloudApigeeV1QuotaResponseArgs{...}
+type GoogleCloudApigeeV1QuotaResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1QuotaResponseOutput() GoogleCloudApigeeV1QuotaResponseOutput
+	ToGoogleCloudApigeeV1QuotaResponseOutputWithContext(context.Context) GoogleCloudApigeeV1QuotaResponseOutput
+}
+
+// Quota contains the essential parameters needed that can be applied on a proxy/remote service, resources and methods combination associated with this API product. While setting of Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
+type GoogleCloudApigeeV1QuotaResponseArgs struct {
+	// Required. Time interval over which the number of request messages is calculated.
+	Interval pulumi.StringInput `pulumi:"interval"`
+	// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+	Limit pulumi.StringInput `pulumi:"limit"`
+	// Time unit defined for the `interval`. Valid values include `minute`, `hour`, `day`, or `month`. If `limit` and `interval` are valid, the default value is `hour`; otherwise, the default is null.
+	TimeUnit pulumi.StringInput `pulumi:"timeUnit"`
+}
+
+func (GoogleCloudApigeeV1QuotaResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1QuotaResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1QuotaResponseArgs) ToGoogleCloudApigeeV1QuotaResponseOutput() GoogleCloudApigeeV1QuotaResponseOutput {
+	return i.ToGoogleCloudApigeeV1QuotaResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1QuotaResponseArgs) ToGoogleCloudApigeeV1QuotaResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1QuotaResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1QuotaResponseOutput)
+}
+
+// Quota contains the essential parameters needed that can be applied on a proxy/remote service, resources and methods combination associated with this API product. While setting of Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
+type GoogleCloudApigeeV1QuotaResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1QuotaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1QuotaResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1QuotaResponseOutput) ToGoogleCloudApigeeV1QuotaResponseOutput() GoogleCloudApigeeV1QuotaResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1QuotaResponseOutput) ToGoogleCloudApigeeV1QuotaResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1QuotaResponseOutput {
+	return o
+}
+
+// Required. Time interval over which the number of request messages is calculated.
+func (o GoogleCloudApigeeV1QuotaResponseOutput) Interval() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1QuotaResponse) string { return v.Interval }).(pulumi.StringOutput)
+}
+
+// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+func (o GoogleCloudApigeeV1QuotaResponseOutput) Limit() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1QuotaResponse) string { return v.Limit }).(pulumi.StringOutput)
+}
+
+// Time unit defined for the `interval`. Valid values include `minute`, `hour`, `day`, or `month`. If `limit` and `interval` are valid, the default value is `hour`; otherwise, the default is null.
+func (o GoogleCloudApigeeV1QuotaResponseOutput) TimeUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1QuotaResponse) string { return v.TimeUnit }).(pulumi.StringOutput)
+}
+
 type GoogleCloudApigeeV1ReportProperty struct {
 	// name of the property
 	Property *string `pulumi:"property"`
@@ -2470,6 +5239,114 @@ func (o GoogleCloudApigeeV1ReportPropertyArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1ReportProperty {
 		return vs[0].([]GoogleCloudApigeeV1ReportProperty)[vs[1].(int)]
 	}).(GoogleCloudApigeeV1ReportPropertyOutput)
+}
+
+type GoogleCloudApigeeV1ReportPropertyResponse struct {
+	// name of the property
+	Property string `pulumi:"property"`
+	// property values
+	Value []GoogleCloudApigeeV1AttributeResponse `pulumi:"value"`
+}
+
+// GoogleCloudApigeeV1ReportPropertyResponseInput is an input type that accepts GoogleCloudApigeeV1ReportPropertyResponseArgs and GoogleCloudApigeeV1ReportPropertyResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1ReportPropertyResponseInput` via:
+//
+//          GoogleCloudApigeeV1ReportPropertyResponseArgs{...}
+type GoogleCloudApigeeV1ReportPropertyResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1ReportPropertyResponseOutput() GoogleCloudApigeeV1ReportPropertyResponseOutput
+	ToGoogleCloudApigeeV1ReportPropertyResponseOutputWithContext(context.Context) GoogleCloudApigeeV1ReportPropertyResponseOutput
+}
+
+type GoogleCloudApigeeV1ReportPropertyResponseArgs struct {
+	// name of the property
+	Property pulumi.StringInput `pulumi:"property"`
+	// property values
+	Value GoogleCloudApigeeV1AttributeResponseArrayInput `pulumi:"value"`
+}
+
+func (GoogleCloudApigeeV1ReportPropertyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1ReportPropertyResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1ReportPropertyResponseArgs) ToGoogleCloudApigeeV1ReportPropertyResponseOutput() GoogleCloudApigeeV1ReportPropertyResponseOutput {
+	return i.ToGoogleCloudApigeeV1ReportPropertyResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1ReportPropertyResponseArgs) ToGoogleCloudApigeeV1ReportPropertyResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ReportPropertyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ReportPropertyResponseOutput)
+}
+
+// GoogleCloudApigeeV1ReportPropertyResponseArrayInput is an input type that accepts GoogleCloudApigeeV1ReportPropertyResponseArray and GoogleCloudApigeeV1ReportPropertyResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1ReportPropertyResponseArrayInput` via:
+//
+//          GoogleCloudApigeeV1ReportPropertyResponseArray{ GoogleCloudApigeeV1ReportPropertyResponseArgs{...} }
+type GoogleCloudApigeeV1ReportPropertyResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1ReportPropertyResponseArrayOutput() GoogleCloudApigeeV1ReportPropertyResponseArrayOutput
+	ToGoogleCloudApigeeV1ReportPropertyResponseArrayOutputWithContext(context.Context) GoogleCloudApigeeV1ReportPropertyResponseArrayOutput
+}
+
+type GoogleCloudApigeeV1ReportPropertyResponseArray []GoogleCloudApigeeV1ReportPropertyResponseInput
+
+func (GoogleCloudApigeeV1ReportPropertyResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1ReportPropertyResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1ReportPropertyResponseArray) ToGoogleCloudApigeeV1ReportPropertyResponseArrayOutput() GoogleCloudApigeeV1ReportPropertyResponseArrayOutput {
+	return i.ToGoogleCloudApigeeV1ReportPropertyResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1ReportPropertyResponseArray) ToGoogleCloudApigeeV1ReportPropertyResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ReportPropertyResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1ReportPropertyResponseArrayOutput)
+}
+
+type GoogleCloudApigeeV1ReportPropertyResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1ReportPropertyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1ReportPropertyResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1ReportPropertyResponseOutput) ToGoogleCloudApigeeV1ReportPropertyResponseOutput() GoogleCloudApigeeV1ReportPropertyResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1ReportPropertyResponseOutput) ToGoogleCloudApigeeV1ReportPropertyResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ReportPropertyResponseOutput {
+	return o
+}
+
+// name of the property
+func (o GoogleCloudApigeeV1ReportPropertyResponseOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ReportPropertyResponse) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// property values
+func (o GoogleCloudApigeeV1ReportPropertyResponseOutput) Value() GoogleCloudApigeeV1AttributeResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1ReportPropertyResponse) []GoogleCloudApigeeV1AttributeResponse {
+		return v.Value
+	}).(GoogleCloudApigeeV1AttributeResponseArrayOutput)
+}
+
+type GoogleCloudApigeeV1ReportPropertyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1ReportPropertyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1ReportPropertyResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1ReportPropertyResponseArrayOutput) ToGoogleCloudApigeeV1ReportPropertyResponseArrayOutput() GoogleCloudApigeeV1ReportPropertyResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1ReportPropertyResponseArrayOutput) ToGoogleCloudApigeeV1ReportPropertyResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1ReportPropertyResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1ReportPropertyResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1ReportPropertyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1ReportPropertyResponse {
+		return vs[0].([]GoogleCloudApigeeV1ReportPropertyResponse)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1ReportPropertyResponseOutput)
 }
 
 // TLS configuration information for VirtualHosts and TargetServers.
@@ -2908,6 +5785,446 @@ func (o GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput) WildcardMatch() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GoogleCloudApigeeV1TlsInfoCommonNameResponse struct {
+	// The TLS Common Name string of the certificate.
+	Value string `pulumi:"value"`
+	// Indicates whether the cert should be matched against as a wildcard cert.
+	WildcardMatch bool `pulumi:"wildcardMatch"`
+}
+
+// GoogleCloudApigeeV1TlsInfoCommonNameResponseInput is an input type that accepts GoogleCloudApigeeV1TlsInfoCommonNameResponseArgs and GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1TlsInfoCommonNameResponseInput` via:
+//
+//          GoogleCloudApigeeV1TlsInfoCommonNameResponseArgs{...}
+type GoogleCloudApigeeV1TlsInfoCommonNameResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1TlsInfoCommonNameResponseOutput() GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput
+	ToGoogleCloudApigeeV1TlsInfoCommonNameResponseOutputWithContext(context.Context) GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput
+}
+
+type GoogleCloudApigeeV1TlsInfoCommonNameResponseArgs struct {
+	// The TLS Common Name string of the certificate.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Indicates whether the cert should be matched against as a wildcard cert.
+	WildcardMatch pulumi.BoolInput `pulumi:"wildcardMatch"`
+}
+
+func (GoogleCloudApigeeV1TlsInfoCommonNameResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1TlsInfoCommonNameResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1TlsInfoCommonNameResponseArgs) ToGoogleCloudApigeeV1TlsInfoCommonNameResponseOutput() GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput {
+	return i.ToGoogleCloudApigeeV1TlsInfoCommonNameResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1TlsInfoCommonNameResponseArgs) ToGoogleCloudApigeeV1TlsInfoCommonNameResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput)
+}
+
+func (i GoogleCloudApigeeV1TlsInfoCommonNameResponseArgs) ToGoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput() GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1TlsInfoCommonNameResponseArgs) ToGoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput).ToGoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrInput is an input type that accepts GoogleCloudApigeeV1TlsInfoCommonNameResponseArgs, GoogleCloudApigeeV1TlsInfoCommonNameResponsePtr and GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrInput` via:
+//
+//          GoogleCloudApigeeV1TlsInfoCommonNameResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput() GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput
+	ToGoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput
+}
+
+type googleCloudApigeeV1TlsInfoCommonNameResponsePtrType GoogleCloudApigeeV1TlsInfoCommonNameResponseArgs
+
+func GoogleCloudApigeeV1TlsInfoCommonNameResponsePtr(v *GoogleCloudApigeeV1TlsInfoCommonNameResponseArgs) GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrInput {
+	return (*googleCloudApigeeV1TlsInfoCommonNameResponsePtrType)(v)
+}
+
+func (*googleCloudApigeeV1TlsInfoCommonNameResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1TlsInfoCommonNameResponse)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1TlsInfoCommonNameResponsePtrType) ToGoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput() GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1TlsInfoCommonNameResponsePtrType) ToGoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput)
+}
+
+type GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1TlsInfoCommonNameResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput) ToGoogleCloudApigeeV1TlsInfoCommonNameResponseOutput() GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput) ToGoogleCloudApigeeV1TlsInfoCommonNameResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput) ToGoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput() GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput) ToGoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoCommonNameResponse) *GoogleCloudApigeeV1TlsInfoCommonNameResponse {
+		return &v
+	}).(GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput)
+}
+
+// The TLS Common Name string of the certificate.
+func (o GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoCommonNameResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Indicates whether the cert should be matched against as a wildcard cert.
+func (o GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput) WildcardMatch() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoCommonNameResponse) bool { return v.WildcardMatch }).(pulumi.BoolOutput)
+}
+
+type GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1TlsInfoCommonNameResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput) ToGoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput() GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput) ToGoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput) Elem() GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoCommonNameResponse) GoogleCloudApigeeV1TlsInfoCommonNameResponse {
+		return *v
+	}).(GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput)
+}
+
+// The TLS Common Name string of the certificate.
+func (o GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoCommonNameResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the cert should be matched against as a wildcard cert.
+func (o GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput) WildcardMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoCommonNameResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.WildcardMatch
+	}).(pulumi.BoolPtrOutput)
+}
+
+// TLS configuration information for VirtualHosts and TargetServers.
+type GoogleCloudApigeeV1TlsInfoResponse struct {
+	// The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
+	Ciphers []string `pulumi:"ciphers"`
+	// Optional. Enables two-way TLS.
+	ClientAuthEnabled bool `pulumi:"clientAuthEnabled"`
+	// The TLS Common Name of the certificate.
+	CommonName GoogleCloudApigeeV1TlsInfoCommonNameResponse `pulumi:"commonName"`
+	// Required. Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+	Enabled bool `pulumi:"enabled"`
+	// If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
+	IgnoreValidationErrors bool `pulumi:"ignoreValidationErrors"`
+	// Required if `client_auth_enabled` is true. The resource ID for the alias containing the private key and cert.
+	KeyAlias string `pulumi:"keyAlias"`
+	// Required if `client_auth_enabled` is true. The resource ID of the keystore. References not yet supported.
+	KeyStore string `pulumi:"keyStore"`
+	// The TLS versioins to be used.
+	Protocols []string `pulumi:"protocols"`
+	// The resource ID of the truststore. References not yet supported.
+	TrustStore string `pulumi:"trustStore"`
+}
+
+// GoogleCloudApigeeV1TlsInfoResponseInput is an input type that accepts GoogleCloudApigeeV1TlsInfoResponseArgs and GoogleCloudApigeeV1TlsInfoResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1TlsInfoResponseInput` via:
+//
+//          GoogleCloudApigeeV1TlsInfoResponseArgs{...}
+type GoogleCloudApigeeV1TlsInfoResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1TlsInfoResponseOutput() GoogleCloudApigeeV1TlsInfoResponseOutput
+	ToGoogleCloudApigeeV1TlsInfoResponseOutputWithContext(context.Context) GoogleCloudApigeeV1TlsInfoResponseOutput
+}
+
+// TLS configuration information for VirtualHosts and TargetServers.
+type GoogleCloudApigeeV1TlsInfoResponseArgs struct {
+	// The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
+	Ciphers pulumi.StringArrayInput `pulumi:"ciphers"`
+	// Optional. Enables two-way TLS.
+	ClientAuthEnabled pulumi.BoolInput `pulumi:"clientAuthEnabled"`
+	// The TLS Common Name of the certificate.
+	CommonName GoogleCloudApigeeV1TlsInfoCommonNameResponseInput `pulumi:"commonName"`
+	// Required. Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
+	IgnoreValidationErrors pulumi.BoolInput `pulumi:"ignoreValidationErrors"`
+	// Required if `client_auth_enabled` is true. The resource ID for the alias containing the private key and cert.
+	KeyAlias pulumi.StringInput `pulumi:"keyAlias"`
+	// Required if `client_auth_enabled` is true. The resource ID of the keystore. References not yet supported.
+	KeyStore pulumi.StringInput `pulumi:"keyStore"`
+	// The TLS versioins to be used.
+	Protocols pulumi.StringArrayInput `pulumi:"protocols"`
+	// The resource ID of the truststore. References not yet supported.
+	TrustStore pulumi.StringInput `pulumi:"trustStore"`
+}
+
+func (GoogleCloudApigeeV1TlsInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1TlsInfoResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1TlsInfoResponseArgs) ToGoogleCloudApigeeV1TlsInfoResponseOutput() GoogleCloudApigeeV1TlsInfoResponseOutput {
+	return i.ToGoogleCloudApigeeV1TlsInfoResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1TlsInfoResponseArgs) ToGoogleCloudApigeeV1TlsInfoResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TlsInfoResponseOutput)
+}
+
+func (i GoogleCloudApigeeV1TlsInfoResponseArgs) ToGoogleCloudApigeeV1TlsInfoResponsePtrOutput() GoogleCloudApigeeV1TlsInfoResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1TlsInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1TlsInfoResponseArgs) ToGoogleCloudApigeeV1TlsInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TlsInfoResponseOutput).ToGoogleCloudApigeeV1TlsInfoResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1TlsInfoResponsePtrInput is an input type that accepts GoogleCloudApigeeV1TlsInfoResponseArgs, GoogleCloudApigeeV1TlsInfoResponsePtr and GoogleCloudApigeeV1TlsInfoResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1TlsInfoResponsePtrInput` via:
+//
+//          GoogleCloudApigeeV1TlsInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1TlsInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1TlsInfoResponsePtrOutput() GoogleCloudApigeeV1TlsInfoResponsePtrOutput
+	ToGoogleCloudApigeeV1TlsInfoResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1TlsInfoResponsePtrOutput
+}
+
+type googleCloudApigeeV1TlsInfoResponsePtrType GoogleCloudApigeeV1TlsInfoResponseArgs
+
+func GoogleCloudApigeeV1TlsInfoResponsePtr(v *GoogleCloudApigeeV1TlsInfoResponseArgs) GoogleCloudApigeeV1TlsInfoResponsePtrInput {
+	return (*googleCloudApigeeV1TlsInfoResponsePtrType)(v)
+}
+
+func (*googleCloudApigeeV1TlsInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1TlsInfoResponse)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1TlsInfoResponsePtrType) ToGoogleCloudApigeeV1TlsInfoResponsePtrOutput() GoogleCloudApigeeV1TlsInfoResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1TlsInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1TlsInfoResponsePtrType) ToGoogleCloudApigeeV1TlsInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TlsInfoResponsePtrOutput)
+}
+
+// TLS configuration information for VirtualHosts and TargetServers.
+type GoogleCloudApigeeV1TlsInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1TlsInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1TlsInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1TlsInfoResponseOutput) ToGoogleCloudApigeeV1TlsInfoResponseOutput() GoogleCloudApigeeV1TlsInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TlsInfoResponseOutput) ToGoogleCloudApigeeV1TlsInfoResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TlsInfoResponseOutput) ToGoogleCloudApigeeV1TlsInfoResponsePtrOutput() GoogleCloudApigeeV1TlsInfoResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1TlsInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1TlsInfoResponseOutput) ToGoogleCloudApigeeV1TlsInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) *GoogleCloudApigeeV1TlsInfoResponse {
+		return &v
+	}).(GoogleCloudApigeeV1TlsInfoResponsePtrOutput)
+}
+
+// The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
+func (o GoogleCloudApigeeV1TlsInfoResponseOutput) Ciphers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) []string { return v.Ciphers }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Enables two-way TLS.
+func (o GoogleCloudApigeeV1TlsInfoResponseOutput) ClientAuthEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) bool { return v.ClientAuthEnabled }).(pulumi.BoolOutput)
+}
+
+// The TLS Common Name of the certificate.
+func (o GoogleCloudApigeeV1TlsInfoResponseOutput) CommonName() GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) GoogleCloudApigeeV1TlsInfoCommonNameResponse {
+		return v.CommonName
+	}).(GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput)
+}
+
+// Required. Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+func (o GoogleCloudApigeeV1TlsInfoResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
+func (o GoogleCloudApigeeV1TlsInfoResponseOutput) IgnoreValidationErrors() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) bool { return v.IgnoreValidationErrors }).(pulumi.BoolOutput)
+}
+
+// Required if `client_auth_enabled` is true. The resource ID for the alias containing the private key and cert.
+func (o GoogleCloudApigeeV1TlsInfoResponseOutput) KeyAlias() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) string { return v.KeyAlias }).(pulumi.StringOutput)
+}
+
+// Required if `client_auth_enabled` is true. The resource ID of the keystore. References not yet supported.
+func (o GoogleCloudApigeeV1TlsInfoResponseOutput) KeyStore() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) string { return v.KeyStore }).(pulumi.StringOutput)
+}
+
+// The TLS versioins to be used.
+func (o GoogleCloudApigeeV1TlsInfoResponseOutput) Protocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) []string { return v.Protocols }).(pulumi.StringArrayOutput)
+}
+
+// The resource ID of the truststore. References not yet supported.
+func (o GoogleCloudApigeeV1TlsInfoResponseOutput) TrustStore() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) string { return v.TrustStore }).(pulumi.StringOutput)
+}
+
+type GoogleCloudApigeeV1TlsInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1TlsInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1TlsInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1TlsInfoResponsePtrOutput) ToGoogleCloudApigeeV1TlsInfoResponsePtrOutput() GoogleCloudApigeeV1TlsInfoResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TlsInfoResponsePtrOutput) ToGoogleCloudApigeeV1TlsInfoResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TlsInfoResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TlsInfoResponsePtrOutput) Elem() GoogleCloudApigeeV1TlsInfoResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoResponse) GoogleCloudApigeeV1TlsInfoResponse { return *v }).(GoogleCloudApigeeV1TlsInfoResponseOutput)
+}
+
+// The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
+func (o GoogleCloudApigeeV1TlsInfoResponsePtrOutput) Ciphers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ciphers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Enables two-way TLS.
+func (o GoogleCloudApigeeV1TlsInfoResponsePtrOutput) ClientAuthEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientAuthEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The TLS Common Name of the certificate.
+func (o GoogleCloudApigeeV1TlsInfoResponsePtrOutput) CommonName() GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoResponse) *GoogleCloudApigeeV1TlsInfoCommonNameResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.CommonName
+	}).(GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput)
+}
+
+// Required. Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+func (o GoogleCloudApigeeV1TlsInfoResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
+func (o GoogleCloudApigeeV1TlsInfoResponsePtrOutput) IgnoreValidationErrors() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IgnoreValidationErrors
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Required if `client_auth_enabled` is true. The resource ID for the alias containing the private key and cert.
+func (o GoogleCloudApigeeV1TlsInfoResponsePtrOutput) KeyAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyAlias
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required if `client_auth_enabled` is true. The resource ID of the keystore. References not yet supported.
+func (o GoogleCloudApigeeV1TlsInfoResponsePtrOutput) KeyStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyStore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The TLS versioins to be used.
+func (o GoogleCloudApigeeV1TlsInfoResponsePtrOutput) Protocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocols
+	}).(pulumi.StringArrayOutput)
+}
+
+// The resource ID of the truststore. References not yet supported.
+func (o GoogleCloudApigeeV1TlsInfoResponsePtrOutput) TrustStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TrustStore
+	}).(pulumi.StringPtrOutput)
+}
+
 // TraceSamplingConfig represents the detail settings of distributed tracing. Only the fields that are defined in the distributed trace configuration can be overridden using the distribute trace configuration override APIs.
 type GoogleCloudApigeeV1TraceSamplingConfig struct {
 	// Sampler of distributed tracing. OFF is the default value.
@@ -3061,6 +6378,161 @@ func (o GoogleCloudApigeeV1TraceSamplingConfigPtrOutput) SamplingRate() pulumi.F
 	}).(pulumi.Float64PtrOutput)
 }
 
+// TraceSamplingConfig represents the detail settings of distributed tracing. Only the fields that are defined in the distributed trace configuration can be overridden using the distribute trace configuration override APIs.
+type GoogleCloudApigeeV1TraceSamplingConfigResponse struct {
+	// Sampler of distributed tracing. OFF is the default value.
+	Sampler string `pulumi:"sampler"`
+	// Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are > 0 and <= 0.5.
+	SamplingRate float64 `pulumi:"samplingRate"`
+}
+
+// GoogleCloudApigeeV1TraceSamplingConfigResponseInput is an input type that accepts GoogleCloudApigeeV1TraceSamplingConfigResponseArgs and GoogleCloudApigeeV1TraceSamplingConfigResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1TraceSamplingConfigResponseInput` via:
+//
+//          GoogleCloudApigeeV1TraceSamplingConfigResponseArgs{...}
+type GoogleCloudApigeeV1TraceSamplingConfigResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1TraceSamplingConfigResponseOutput() GoogleCloudApigeeV1TraceSamplingConfigResponseOutput
+	ToGoogleCloudApigeeV1TraceSamplingConfigResponseOutputWithContext(context.Context) GoogleCloudApigeeV1TraceSamplingConfigResponseOutput
+}
+
+// TraceSamplingConfig represents the detail settings of distributed tracing. Only the fields that are defined in the distributed trace configuration can be overridden using the distribute trace configuration override APIs.
+type GoogleCloudApigeeV1TraceSamplingConfigResponseArgs struct {
+	// Sampler of distributed tracing. OFF is the default value.
+	Sampler pulumi.StringInput `pulumi:"sampler"`
+	// Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are > 0 and <= 0.5.
+	SamplingRate pulumi.Float64Input `pulumi:"samplingRate"`
+}
+
+func (GoogleCloudApigeeV1TraceSamplingConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1TraceSamplingConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1TraceSamplingConfigResponseArgs) ToGoogleCloudApigeeV1TraceSamplingConfigResponseOutput() GoogleCloudApigeeV1TraceSamplingConfigResponseOutput {
+	return i.ToGoogleCloudApigeeV1TraceSamplingConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1TraceSamplingConfigResponseArgs) ToGoogleCloudApigeeV1TraceSamplingConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TraceSamplingConfigResponseOutput)
+}
+
+func (i GoogleCloudApigeeV1TraceSamplingConfigResponseArgs) ToGoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput() GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1TraceSamplingConfigResponseArgs) ToGoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TraceSamplingConfigResponseOutput).ToGoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1TraceSamplingConfigResponsePtrInput is an input type that accepts GoogleCloudApigeeV1TraceSamplingConfigResponseArgs, GoogleCloudApigeeV1TraceSamplingConfigResponsePtr and GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1TraceSamplingConfigResponsePtrInput` via:
+//
+//          GoogleCloudApigeeV1TraceSamplingConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1TraceSamplingConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput() GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput
+	ToGoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput
+}
+
+type googleCloudApigeeV1TraceSamplingConfigResponsePtrType GoogleCloudApigeeV1TraceSamplingConfigResponseArgs
+
+func GoogleCloudApigeeV1TraceSamplingConfigResponsePtr(v *GoogleCloudApigeeV1TraceSamplingConfigResponseArgs) GoogleCloudApigeeV1TraceSamplingConfigResponsePtrInput {
+	return (*googleCloudApigeeV1TraceSamplingConfigResponsePtrType)(v)
+}
+
+func (*googleCloudApigeeV1TraceSamplingConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1TraceSamplingConfigResponse)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1TraceSamplingConfigResponsePtrType) ToGoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput() GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1TraceSamplingConfigResponsePtrType) ToGoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput)
+}
+
+// TraceSamplingConfig represents the detail settings of distributed tracing. Only the fields that are defined in the distributed trace configuration can be overridden using the distribute trace configuration override APIs.
+type GoogleCloudApigeeV1TraceSamplingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1TraceSamplingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1TraceSamplingConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigResponseOutput) ToGoogleCloudApigeeV1TraceSamplingConfigResponseOutput() GoogleCloudApigeeV1TraceSamplingConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigResponseOutput) ToGoogleCloudApigeeV1TraceSamplingConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigResponseOutput) ToGoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput() GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigResponseOutput) ToGoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TraceSamplingConfigResponse) *GoogleCloudApigeeV1TraceSamplingConfigResponse {
+		return &v
+	}).(GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput)
+}
+
+// Sampler of distributed tracing. OFF is the default value.
+func (o GoogleCloudApigeeV1TraceSamplingConfigResponseOutput) Sampler() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TraceSamplingConfigResponse) string { return v.Sampler }).(pulumi.StringOutput)
+}
+
+// Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are > 0 and <= 0.5.
+func (o GoogleCloudApigeeV1TraceSamplingConfigResponseOutput) SamplingRate() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudApigeeV1TraceSamplingConfigResponse) float64 { return v.SamplingRate }).(pulumi.Float64Output)
+}
+
+type GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1TraceSamplingConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput) ToGoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput() GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput) ToGoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput) Elem() GoogleCloudApigeeV1TraceSamplingConfigResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TraceSamplingConfigResponse) GoogleCloudApigeeV1TraceSamplingConfigResponse {
+		return *v
+	}).(GoogleCloudApigeeV1TraceSamplingConfigResponseOutput)
+}
+
+// Sampler of distributed tracing. OFF is the default value.
+func (o GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput) Sampler() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TraceSamplingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Sampler
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are > 0 and <= 0.5.
+func (o GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput) SamplingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TraceSamplingConfigResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.SamplingRate
+	}).(pulumi.Float64PtrOutput)
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type GoogleIamV1AuditConfig struct {
 	// The configuration for logging of each type of permission.
@@ -3170,6 +6642,115 @@ func (o GoogleIamV1AuditConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1A
 	}).(GoogleIamV1AuditConfigOutput)
 }
 
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type GoogleIamV1AuditConfigResponse struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs []GoogleIamV1AuditLogConfigResponse `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service string `pulumi:"service"`
+}
+
+// GoogleIamV1AuditConfigResponseInput is an input type that accepts GoogleIamV1AuditConfigResponseArgs and GoogleIamV1AuditConfigResponseOutput values.
+// You can construct a concrete instance of `GoogleIamV1AuditConfigResponseInput` via:
+//
+//          GoogleIamV1AuditConfigResponseArgs{...}
+type GoogleIamV1AuditConfigResponseInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1AuditConfigResponseOutput() GoogleIamV1AuditConfigResponseOutput
+	ToGoogleIamV1AuditConfigResponseOutputWithContext(context.Context) GoogleIamV1AuditConfigResponseOutput
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type GoogleIamV1AuditConfigResponseArgs struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs GoogleIamV1AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (GoogleIamV1AuditConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1AuditConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleIamV1AuditConfigResponseArgs) ToGoogleIamV1AuditConfigResponseOutput() GoogleIamV1AuditConfigResponseOutput {
+	return i.ToGoogleIamV1AuditConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleIamV1AuditConfigResponseArgs) ToGoogleIamV1AuditConfigResponseOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigResponseOutput)
+}
+
+// GoogleIamV1AuditConfigResponseArrayInput is an input type that accepts GoogleIamV1AuditConfigResponseArray and GoogleIamV1AuditConfigResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleIamV1AuditConfigResponseArrayInput` via:
+//
+//          GoogleIamV1AuditConfigResponseArray{ GoogleIamV1AuditConfigResponseArgs{...} }
+type GoogleIamV1AuditConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1AuditConfigResponseArrayOutput() GoogleIamV1AuditConfigResponseArrayOutput
+	ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(context.Context) GoogleIamV1AuditConfigResponseArrayOutput
+}
+
+type GoogleIamV1AuditConfigResponseArray []GoogleIamV1AuditConfigResponseInput
+
+func (GoogleIamV1AuditConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleIamV1AuditConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleIamV1AuditConfigResponseArray) ToGoogleIamV1AuditConfigResponseArrayOutput() GoogleIamV1AuditConfigResponseArrayOutput {
+	return i.ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleIamV1AuditConfigResponseArray) ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigResponseArrayOutput)
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type GoogleIamV1AuditConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1AuditConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleIamV1AuditConfigResponseOutput) ToGoogleIamV1AuditConfigResponseOutput() GoogleIamV1AuditConfigResponseOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditConfigResponseOutput) ToGoogleIamV1AuditConfigResponseOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseOutput {
+	return o
+}
+
+// The configuration for logging of each type of permission.
+func (o GoogleIamV1AuditConfigResponseOutput) AuditLogConfigs() GoogleIamV1AuditLogConfigResponseArrayOutput {
+	return o.ApplyT(func(v GoogleIamV1AuditConfigResponse) []GoogleIamV1AuditLogConfigResponse { return v.AuditLogConfigs }).(GoogleIamV1AuditLogConfigResponseArrayOutput)
+}
+
+// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+func (o GoogleIamV1AuditConfigResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleIamV1AuditConfigResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GoogleIamV1AuditConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleIamV1AuditConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigResponseArrayOutput() GoogleIamV1AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditConfigResponseArrayOutput) ToGoogleIamV1AuditConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleIamV1AuditConfigResponse {
+		return vs[0].([]GoogleIamV1AuditConfigResponse)[vs[1].(int)]
+	}).(GoogleIamV1AuditConfigResponseOutput)
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type GoogleIamV1AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -3277,6 +6858,115 @@ func (o GoogleIamV1AuditLogConfigArrayOutput) Index(i pulumi.IntInput) GoogleIam
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleIamV1AuditLogConfig {
 		return vs[0].([]GoogleIamV1AuditLogConfig)[vs[1].(int)]
 	}).(GoogleIamV1AuditLogConfigOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type GoogleIamV1AuditLogConfigResponse struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers []string `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType string `pulumi:"logType"`
+}
+
+// GoogleIamV1AuditLogConfigResponseInput is an input type that accepts GoogleIamV1AuditLogConfigResponseArgs and GoogleIamV1AuditLogConfigResponseOutput values.
+// You can construct a concrete instance of `GoogleIamV1AuditLogConfigResponseInput` via:
+//
+//          GoogleIamV1AuditLogConfigResponseArgs{...}
+type GoogleIamV1AuditLogConfigResponseInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1AuditLogConfigResponseOutput() GoogleIamV1AuditLogConfigResponseOutput
+	ToGoogleIamV1AuditLogConfigResponseOutputWithContext(context.Context) GoogleIamV1AuditLogConfigResponseOutput
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type GoogleIamV1AuditLogConfigResponseArgs struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType pulumi.StringInput `pulumi:"logType"`
+}
+
+func (GoogleIamV1AuditLogConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleIamV1AuditLogConfigResponseArgs) ToGoogleIamV1AuditLogConfigResponseOutput() GoogleIamV1AuditLogConfigResponseOutput {
+	return i.ToGoogleIamV1AuditLogConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleIamV1AuditLogConfigResponseArgs) ToGoogleIamV1AuditLogConfigResponseOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigResponseOutput)
+}
+
+// GoogleIamV1AuditLogConfigResponseArrayInput is an input type that accepts GoogleIamV1AuditLogConfigResponseArray and GoogleIamV1AuditLogConfigResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleIamV1AuditLogConfigResponseArrayInput` via:
+//
+//          GoogleIamV1AuditLogConfigResponseArray{ GoogleIamV1AuditLogConfigResponseArgs{...} }
+type GoogleIamV1AuditLogConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1AuditLogConfigResponseArrayOutput() GoogleIamV1AuditLogConfigResponseArrayOutput
+	ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(context.Context) GoogleIamV1AuditLogConfigResponseArrayOutput
+}
+
+type GoogleIamV1AuditLogConfigResponseArray []GoogleIamV1AuditLogConfigResponseInput
+
+func (GoogleIamV1AuditLogConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleIamV1AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleIamV1AuditLogConfigResponseArray) ToGoogleIamV1AuditLogConfigResponseArrayOutput() GoogleIamV1AuditLogConfigResponseArrayOutput {
+	return i.ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleIamV1AuditLogConfigResponseArray) ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditLogConfigResponseArrayOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type GoogleIamV1AuditLogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditLogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleIamV1AuditLogConfigResponseOutput) ToGoogleIamV1AuditLogConfigResponseOutput() GoogleIamV1AuditLogConfigResponseOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigResponseOutput) ToGoogleIamV1AuditLogConfigResponseOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseOutput {
+	return o
+}
+
+// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+func (o GoogleIamV1AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleIamV1AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
+// The log type that this config enables.
+func (o GoogleIamV1AuditLogConfigResponseOutput) LogType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleIamV1AuditLogConfigResponse) string { return v.LogType }).(pulumi.StringOutput)
+}
+
+type GoogleIamV1AuditLogConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditLogConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleIamV1AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfigResponseArrayOutput() GoogleIamV1AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigResponseArrayOutput) ToGoogleIamV1AuditLogConfigResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1AuditLogConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleIamV1AuditLogConfigResponse {
+		return vs[0].([]GoogleIamV1AuditLogConfigResponse)[vs[1].(int)]
+	}).(GoogleIamV1AuditLogConfigResponseOutput)
 }
 
 // Associates `members` with a `role`.
@@ -3395,6 +7085,124 @@ func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1Bindi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleIamV1Binding {
 		return vs[0].([]GoogleIamV1Binding)[vs[1].(int)]
 	}).(GoogleIamV1BindingOutput)
+}
+
+// Associates `members` with a `role`.
+type GoogleIamV1BindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition GoogleTypeExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// GoogleIamV1BindingResponseInput is an input type that accepts GoogleIamV1BindingResponseArgs and GoogleIamV1BindingResponseOutput values.
+// You can construct a concrete instance of `GoogleIamV1BindingResponseInput` via:
+//
+//          GoogleIamV1BindingResponseArgs{...}
+type GoogleIamV1BindingResponseInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1BindingResponseOutput() GoogleIamV1BindingResponseOutput
+	ToGoogleIamV1BindingResponseOutputWithContext(context.Context) GoogleIamV1BindingResponseOutput
+}
+
+// Associates `members` with a `role`.
+type GoogleIamV1BindingResponseArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition GoogleTypeExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GoogleIamV1BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1BindingResponse)(nil)).Elem()
+}
+
+func (i GoogleIamV1BindingResponseArgs) ToGoogleIamV1BindingResponseOutput() GoogleIamV1BindingResponseOutput {
+	return i.ToGoogleIamV1BindingResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleIamV1BindingResponseArgs) ToGoogleIamV1BindingResponseOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingResponseOutput)
+}
+
+// GoogleIamV1BindingResponseArrayInput is an input type that accepts GoogleIamV1BindingResponseArray and GoogleIamV1BindingResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleIamV1BindingResponseArrayInput` via:
+//
+//          GoogleIamV1BindingResponseArray{ GoogleIamV1BindingResponseArgs{...} }
+type GoogleIamV1BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1BindingResponseArrayOutput() GoogleIamV1BindingResponseArrayOutput
+	ToGoogleIamV1BindingResponseArrayOutputWithContext(context.Context) GoogleIamV1BindingResponseArrayOutput
+}
+
+type GoogleIamV1BindingResponseArray []GoogleIamV1BindingResponseInput
+
+func (GoogleIamV1BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleIamV1BindingResponse)(nil)).Elem()
+}
+
+func (i GoogleIamV1BindingResponseArray) ToGoogleIamV1BindingResponseArrayOutput() GoogleIamV1BindingResponseArrayOutput {
+	return i.ToGoogleIamV1BindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleIamV1BindingResponseArray) ToGoogleIamV1BindingResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1BindingResponseArrayOutput)
+}
+
+// Associates `members` with a `role`.
+type GoogleIamV1BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1BindingResponse)(nil)).Elem()
+}
+
+func (o GoogleIamV1BindingResponseOutput) ToGoogleIamV1BindingResponseOutput() GoogleIamV1BindingResponseOutput {
+	return o
+}
+
+func (o GoogleIamV1BindingResponseOutput) ToGoogleIamV1BindingResponseOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutput {
+	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o GoogleIamV1BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleIamV1BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o GoogleIamV1BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleIamV1BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GoogleIamV1BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleIamV1BindingResponse)(nil)).Elem()
+}
+
+func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArrayOutput() GoogleIamV1BindingResponseArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1BindingResponseArrayOutput) ToGoogleIamV1BindingResponseArrayOutputWithContext(ctx context.Context) GoogleIamV1BindingResponseArrayOutput {
+	return o
+}
+
+func (o GoogleIamV1BindingResponseArrayOutput) Index(i pulumi.IntInput) GoogleIamV1BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleIamV1BindingResponse {
+		return vs[0].([]GoogleIamV1BindingResponse)[vs[1].(int)]
+	}).(GoogleIamV1BindingResponseOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
@@ -3779,57 +7587,191 @@ func (o GoogleTypeExprPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type GoogleTypeExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// GoogleTypeExprResponseInput is an input type that accepts GoogleTypeExprResponseArgs and GoogleTypeExprResponseOutput values.
+// You can construct a concrete instance of `GoogleTypeExprResponseInput` via:
+//
+//          GoogleTypeExprResponseArgs{...}
+type GoogleTypeExprResponseInput interface {
+	pulumi.Input
+
+	ToGoogleTypeExprResponseOutput() GoogleTypeExprResponseOutput
+	ToGoogleTypeExprResponseOutputWithContext(context.Context) GoogleTypeExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type GoogleTypeExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (GoogleTypeExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeExprResponse)(nil)).Elem()
+}
+
+func (i GoogleTypeExprResponseArgs) ToGoogleTypeExprResponseOutput() GoogleTypeExprResponseOutput {
+	return i.ToGoogleTypeExprResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeExprResponseArgs) ToGoogleTypeExprResponseOutputWithContext(ctx context.Context) GoogleTypeExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeExprResponseOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type GoogleTypeExprResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeExprResponse)(nil)).Elem()
+}
+
+func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutput() GoogleTypeExprResponseOutput {
+	return o
+}
+
+func (o GoogleTypeExprResponseOutput) ToGoogleTypeExprResponseOutputWithContext(ctx context.Context) GoogleTypeExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o GoogleTypeExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o GoogleTypeExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o GoogleTypeExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o GoogleTypeExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
 func init() {
-	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiProductRefOutput{})
-	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiProductRefArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiCategoryDataResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiProductRefResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiProductRefResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1AsyncQueryResultResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1AsyncQueryResultResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1AttributeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1AttributeArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1AttributeResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1AttributeResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudApigeeV1CredentialOutput{})
-	pulumi.RegisterOutputType(GoogleCloudApigeeV1CredentialArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1CertInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1CertInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1CertificateResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1CertificateResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1CredentialResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1CredentialResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1CustomReportMetricOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1CustomReportMetricArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1CustomReportMetricResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1DatastoreConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1DatastoreConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1DatastoreConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1DatastoreConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1DateRangeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1DateRangePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1EntityMetadataResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1EntityMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationGroupOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationGroupResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationConfigArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationGroupOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationGroupPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationGroupResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationGroupResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1PropertiesOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1PropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1PropertiesResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1PropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1PropertyOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1PropertyArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1PropertyResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1PropertyResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1QueryMetadataResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1QueryMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1QueryMetricOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1QueryMetricArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1QuotaOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1QuotaPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1QuotaResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ReportPropertyOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ReportPropertyArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1ReportPropertyResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1ReportPropertyResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoCommonNameOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoCommonNameResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TraceSamplingConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TraceSamplingConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1TraceSamplingConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1TraceSamplingConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1BindingOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1BindingArrayOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1BindingResponseOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1PolicyOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1PolicyPtrOutput{})
 	pulumi.RegisterOutputType(GoogleTypeExprOutput{})
 	pulumi.RegisterOutputType(GoogleTypeExprPtrOutput{})
+	pulumi.RegisterOutputType(GoogleTypeExprResponseOutput{})
 }

@@ -16,6 +16,139 @@ namespace Pulumi.GoogleCloud.Redis.V1beta1
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two zones. If provided, it must be a different zone from the one provided in location_id.
+        /// </summary>
+        [Output("alternativeLocationId")]
+        public Output<string> AlternativeLocationId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled.
+        /// </summary>
+        [Output("authEnabled")]
+        public Output<bool> AuthEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
+        /// </summary>
+        [Output("authorizedNetwork")]
+        public Output<string> AuthorizedNetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
+        /// </summary>
+        [Output("connectMode")]
+        public Output<string> ConnectMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The time the instance was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the location_id provided by the user at creation time. For Standard Tier instances, this can be either location_id or alternative_location_id and can change after a failover event.
+        /// </summary>
+        [Output("currentLocationId")]
+        public Output<string> CurrentLocationId { get; private set; } = null!;
+
+        /// <summary>
+        /// An arbitrary and optional user-provided name for the instance.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+        /// </summary>
+        [Output("host")]
+        public Output<string> Host { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource labels to represent user provided metadata
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
+        /// </summary>
+        [Output("locationId")]
+        public Output<string> LocationId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Redis memory size in GiB.
+        /// </summary>
+        [Output("memorySizeGb")]
+        public Output<int> MemorySizeGb { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
+        /// </summary>
+        [Output("persistenceIamIdentity")]
+        public Output<string> PersistenceIamIdentity { get; private set; } = null!;
+
+        /// <summary>
+        /// The port number of the exposed Redis endpoint.
+        /// </summary>
+        [Output("port")]
+        public Output<int> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
+        /// </summary>
+        [Output("redisConfigs")]
+        public Output<ImmutableDictionary<string, string>> RedisConfigs { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility
+        /// </summary>
+        [Output("redisVersion")]
+        public Output<string> RedisVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
+        /// </summary>
+        [Output("reservedIpRange")]
+        public Output<string> ReservedIpRange { get; private set; } = null!;
+
+        /// <summary>
+        /// List of server CA certificates for the instance.
+        /// </summary>
+        [Output("serverCaCerts")]
+        public Output<ImmutableArray<Outputs.TlsCertificateResponse>> ServerCaCerts { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of this instance.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional information about the current status of this instance, if available.
+        /// </summary>
+        [Output("statusMessage")]
+        public Output<string> StatusMessage { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The service tier of the instance.
+        /// </summary>
+        [Output("tier")]
+        public Output<string> Tier { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
+        /// </summary>
+        [Output("transitEncryptionMode")]
+        public Output<string> TransitEncryptionMode { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -84,28 +217,10 @@ namespace Pulumi.GoogleCloud.Redis.V1beta1
         public Input<string>? ConnectMode { get; set; }
 
         /// <summary>
-        /// Output only. The time the instance was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Output only. The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the location_id provided by the user at creation time. For Standard Tier instances, this can be either location_id or alternative_location_id and can change after a failover event.
-        /// </summary>
-        [Input("currentLocationId")]
-        public Input<string>? CurrentLocationId { get; set; }
-
-        /// <summary>
         /// An arbitrary and optional user-provided name for the instance.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// Output only. Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
-        /// </summary>
-        [Input("host")]
-        public Input<string>? Host { get; set; }
 
         [Input("instancesId", required: true)]
         public Input<string> InstancesId { get; set; } = null!;
@@ -143,18 +258,6 @@ namespace Pulumi.GoogleCloud.Redis.V1beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
-        /// </summary>
-        [Input("persistenceIamIdentity")]
-        public Input<string>? PersistenceIamIdentity { get; set; }
-
-        /// <summary>
-        /// Output only. The port number of the exposed Redis endpoint.
-        /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
@@ -181,30 +284,6 @@ namespace Pulumi.GoogleCloud.Redis.V1beta1
         /// </summary>
         [Input("reservedIpRange")]
         public Input<string>? ReservedIpRange { get; set; }
-
-        [Input("serverCaCerts")]
-        private InputList<Inputs.TlsCertificateArgs>? _serverCaCerts;
-
-        /// <summary>
-        /// Output only. List of server CA certificates for the instance.
-        /// </summary>
-        public InputList<Inputs.TlsCertificateArgs> ServerCaCerts
-        {
-            get => _serverCaCerts ?? (_serverCaCerts = new InputList<Inputs.TlsCertificateArgs>());
-            set => _serverCaCerts = value;
-        }
-
-        /// <summary>
-        /// Output only. The current state of this instance.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. Additional information about the current status of this instance, if available.
-        /// </summary>
-        [Input("statusMessage")]
-        public Input<string>? StatusMessage { get; set; }
 
         /// <summary>
         /// Required. The service tier of the instance.

@@ -6,6 +6,7 @@
 from .instance import *
 from .instance_workerpool import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

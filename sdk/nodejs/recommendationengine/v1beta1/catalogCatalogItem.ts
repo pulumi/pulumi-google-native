@@ -35,6 +35,38 @@ export class CatalogCatalogItem extends pulumi.CustomResource {
         return obj['__pulumiType'] === CatalogCatalogItem.__pulumiType;
     }
 
+    /**
+     * Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
+     */
+    public readonly categoryHierarchies!: pulumi.Output<outputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse[]>;
+    /**
+     * Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
+     */
+    public readonly itemAttributes!: pulumi.Output<outputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1FeatureMapResponse>;
+    /**
+     * Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
+     */
+    public readonly itemGroupId!: pulumi.Output<string>;
+    /**
+     * Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+     */
+    public readonly languageCode!: pulumi.Output<string>;
+    /**
+     * Optional. Metadata specific to retail products.
+     */
+    public readonly productMetadata!: pulumi.Output<outputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse>;
+    /**
+     * Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
+     */
+    public readonly tags!: pulumi.Output<string[]>;
+    /**
+     * Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
+     */
+    public readonly title!: pulumi.Output<string>;
 
     /**
      * Create a CatalogCatalogItem resource with the given unique name, arguments, and options.
@@ -73,6 +105,14 @@ export class CatalogCatalogItem extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["title"] = args ? args.title : undefined;
         } else {
+            inputs["categoryHierarchies"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["itemAttributes"] = undefined /*out*/;
+            inputs["itemGroupId"] = undefined /*out*/;
+            inputs["languageCode"] = undefined /*out*/;
+            inputs["productMetadata"] = undefined /*out*/;
+            inputs["tags"] = undefined /*out*/;
+            inputs["title"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -34,6 +34,14 @@ export class Service extends pulumi.CustomResource {
         return obj['__pulumiType'] === Service.__pulumiType;
     }
 
+    /**
+     * ID of the project that produces and owns this service.
+     */
+    public readonly producerProjectId!: pulumi.Output<string>;
+    /**
+     * The name of the service. See the [overview](/service-management/overview) for naming requirements.
+     */
+    public readonly serviceName!: pulumi.Output<string>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -52,6 +60,8 @@ export class Service extends pulumi.CustomResource {
             inputs["producerProjectId"] = args ? args.producerProjectId : undefined;
             inputs["serviceName"] = args ? args.serviceName : undefined;
         } else {
+            inputs["producerProjectId"] = undefined /*out*/;
+            inputs["serviceName"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

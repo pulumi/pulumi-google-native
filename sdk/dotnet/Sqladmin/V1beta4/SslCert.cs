@@ -16,6 +16,61 @@ namespace Pulumi.GoogleCloud.Sqladmin.V1beta4
     public partial class SslCert : Pulumi.CustomResource
     {
         /// <summary>
+        /// PEM representation.
+        /// </summary>
+        [Output("cert")]
+        public Output<string> Cert { get; private set; } = null!;
+
+        /// <summary>
+        /// Serial number, as extracted from the certificate.
+        /// </summary>
+        [Output("certSerialNumber")]
+        public Output<string> CertSerialNumber { get; private set; } = null!;
+
+        /// <summary>
+        /// User supplied name. Constrained to [a-zA-Z.-_ ]+.
+        /// </summary>
+        [Output("commonName")]
+        public Output<string> CommonName { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
+        /// </summary>
+        [Output("expirationTime")]
+        public Output<string> ExpirationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the database instance.
+        /// </summary>
+        [Output("instance")]
+        public Output<string> Instance { get; private set; } = null!;
+
+        /// <summary>
+        /// This is always *sql#sslCert*.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The URI of this resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// Sha1 Fingerprint.
+        /// </summary>
+        [Output("sha1Fingerprint")]
+        public Output<string> Sha1Fingerprint { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a SslCert resource with the given unique name, arguments, and options.
         /// </summary>
         ///

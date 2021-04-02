@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Remotebuildexecution.V1alpha
     public partial class InstanceWorkerpool : Pulumi.CustomResource
     {
         /// <summary>
+        /// The autoscale policy to apply on a pool.
+        /// </summary>
+        [Output("autoscale")]
+        public Output<Outputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse> Autoscale { get; private set; } = null!;
+
+        /// <summary>
+        /// Channel specifies the release channel of the pool.
+        /// </summary>
+        [Output("channel")]
+        public Output<string> Channel { get; private set; } = null!;
+
+        /// <summary>
+        /// WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the worker pool.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
+        /// </summary>
+        [Output("workerConfig")]
+        public Output<Outputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse> WorkerConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The desired number of workers in the worker pool. Must be a value between 0 and 15000.
+        /// </summary>
+        [Output("workerCount")]
+        public Output<string> WorkerCount { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a InstanceWorkerpool resource with the given unique name, arguments, and options.
         /// </summary>
         ///

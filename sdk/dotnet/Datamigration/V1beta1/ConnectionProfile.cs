@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Datamigration.V1beta1
     public partial class ConnectionProfile : Pulumi.CustomResource
     {
         /// <summary>
+        /// A CloudSQL database connection profile.
+        /// </summary>
+        [Output("cloudsql")]
+        public Output<Outputs.CloudSqlConnectionProfileResponse> Cloudsql { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The connection profile display name.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The error details in case of state FAILED.
+        /// </summary>
+        [Output("error")]
+        public Output<Outputs.StatusResponse> Error { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// A MySQL database connection profile.
+        /// </summary>
+        [Output("mysql")]
+        public Output<Outputs.MySqlConnectionProfileResponse> Mysql { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The database provider.
+        /// </summary>
+        [Output("provider")]
+        public Output<string> Provider { get; private set; } = null!;
+
+        /// <summary>
+        /// The current connection profile state (e.g. DRAFT, READY, or FAILED).
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ConnectionProfile resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -69,22 +130,10 @@ namespace Pulumi.GoogleCloud.Datamigration.V1beta1
         public Input<string> ConnectionProfilesId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// The connection profile display name.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// Output only. The error details in case of state FAILED.
-        /// </summary>
-        [Input("error")]
-        public Input<Inputs.StatusArgs>? Error { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -127,12 +176,6 @@ namespace Pulumi.GoogleCloud.Datamigration.V1beta1
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public ConnectionProfileArgs()
         {

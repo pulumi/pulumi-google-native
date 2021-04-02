@@ -16,6 +16,61 @@ namespace Pulumi.GoogleCloud.Spanner.V1
     public partial class InstanceBackup : Pulumi.CustomResource
     {
         /// <summary>
+        /// The time the CreateBackup request is received. If the request does not specify `version_time`, the `version_time` of the backup will be equivalent to the `create_time`.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
+        /// </summary>
+        [Output("database")]
+        public Output<string> Database { get; private set; } = null!;
+
+        /// <summary>
+        /// The encryption information for the backup.
+        /// </summary>
+        [Output("encryptionInfo")]
+        public Output<Outputs.EncryptionInfoResponse> EncryptionInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The names of the restored databases that reference the backup. The database names are of the form `projects//instances//databases/`. Referencing databases may exist in different instances. The existence of any referencing database prevents the backup from being deleted. When a restored database from the backup enters the `READY` state, the reference to the backup is removed.
+        /// </summary>
+        [Output("referencingDatabases")]
+        public Output<ImmutableArray<string>> ReferencingDatabases { get; private set; } = null!;
+
+        /// <summary>
+        /// Size of the backup in bytes.
+        /// </summary>
+        [Output("sizeBytes")]
+        public Output<string> SizeBytes { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the backup.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.
+        /// </summary>
+        [Output("versionTime")]
+        public Output<string> VersionTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a InstanceBackup resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -63,22 +118,10 @@ namespace Pulumi.GoogleCloud.Spanner.V1
         public Input<string> BackupsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The time the CreateBackup request is received. If the request does not specify `version_time`, the `version_time` of the backup will be equivalent to the `create_time`.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
-
-        /// <summary>
-        /// Output only. The encryption information for the backup.
-        /// </summary>
-        [Input("encryptionInfo")]
-        public Input<Inputs.EncryptionInfoArgs>? EncryptionInfo { get; set; }
 
         /// <summary>
         /// Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
@@ -97,30 +140,6 @@ namespace Pulumi.GoogleCloud.Spanner.V1
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        [Input("referencingDatabases")]
-        private InputList<string>? _referencingDatabases;
-
-        /// <summary>
-        /// Output only. The names of the restored databases that reference the backup. The database names are of the form `projects//instances//databases/`. Referencing databases may exist in different instances. The existence of any referencing database prevents the backup from being deleted. When a restored database from the backup enters the `READY` state, the reference to the backup is removed.
-        /// </summary>
-        public InputList<string> ReferencingDatabases
-        {
-            get => _referencingDatabases ?? (_referencingDatabases = new InputList<string>());
-            set => _referencingDatabases = value;
-        }
-
-        /// <summary>
-        /// Output only. Size of the backup in bytes.
-        /// </summary>
-        [Input("sizeBytes")]
-        public Input<string>? SizeBytes { get; set; }
-
-        /// <summary>
-        /// Output only. The current state of the backup.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         /// <summary>
         /// The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.

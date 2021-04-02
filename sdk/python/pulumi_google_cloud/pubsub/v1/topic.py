@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Topic']
@@ -90,7 +91,61 @@ class Topic(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["kms_key_name"] = None
+        __props__["labels"] = None
+        __props__["message_storage_policy"] = None
+        __props__["name"] = None
+        __props__["satisfies_pzs"] = None
+        __props__["schema_settings"] = None
         return Topic(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="messageStoragePolicy")
+    def message_storage_policy(self) -> pulumi.Output['outputs.MessageStoragePolicyResponse']:
+        """
+        Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
+        """
+        return pulumi.get(self, "message_storage_policy")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
+    @pulumi.getter(name="schemaSettings")
+    def schema_settings(self) -> pulumi.Output['outputs.SchemaSettingsResponse']:
+        """
+        Settings for validating messages published against a schema.
+        """
+        return pulumi.get(self, "schema_settings")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

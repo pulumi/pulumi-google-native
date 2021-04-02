@@ -16,7 +16,6 @@ class OrganizationEnvgroupAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attachments_id: Optional[pulumi.Input[str]] = None,
-                 created_at: Optional[pulumi.Input[str]] = None,
                  envgroups_id: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -29,7 +28,6 @@ class OrganizationEnvgroupAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] created_at: Output only. The time at which the environment group attachment was created as milliseconds since epoch.
         :param pulumi.Input[str] environment: Required. ID of the attached environment.
         :param pulumi.Input[str] name: ID of the environment group attachment.
         """
@@ -53,7 +51,6 @@ class OrganizationEnvgroupAttachment(pulumi.CustomResource):
             if attachments_id is None and not opts.urn:
                 raise TypeError("Missing required property 'attachments_id'")
             __props__['attachments_id'] = attachments_id
-            __props__['created_at'] = created_at
             if envgroups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'envgroups_id'")
             __props__['envgroups_id'] = envgroups_id
@@ -62,6 +59,7 @@ class OrganizationEnvgroupAttachment(pulumi.CustomResource):
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
+            __props__['created_at'] = None
         super(OrganizationEnvgroupAttachment, __self__).__init__(
             'google-cloud:apigee/v1:OrganizationEnvgroupAttachment',
             resource_name,
@@ -84,7 +82,34 @@ class OrganizationEnvgroupAttachment(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["created_at"] = None
+        __props__["environment"] = None
+        __props__["name"] = None
         return OrganizationEnvgroupAttachment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[str]:
+        """
+        The time at which the environment group attachment was created as milliseconds since epoch.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def environment(self) -> pulumi.Output[str]:
+        """
+        Required. ID of the attached environment.
+        """
+        return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        ID of the environment group attachment.
+        """
+        return pulumi.get(self, "name")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

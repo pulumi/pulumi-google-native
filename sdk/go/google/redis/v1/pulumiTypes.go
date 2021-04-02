@@ -11,142 +11,142 @@ import (
 )
 
 // TlsCertificate Resource
-type TlsCertificate struct {
+type TlsCertificateResponse struct {
 	// PEM representation.
-	Cert *string `pulumi:"cert"`
-	// Output only. The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
-	CreateTime *string `pulumi:"createTime"`
-	// Output only. The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
-	ExpireTime *string `pulumi:"expireTime"`
+	Cert string `pulumi:"cert"`
+	// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
+	CreateTime string `pulumi:"createTime"`
+	// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
+	ExpireTime string `pulumi:"expireTime"`
 	// Serial number, as extracted from the certificate.
-	SerialNumber *string `pulumi:"serialNumber"`
+	SerialNumber string `pulumi:"serialNumber"`
 	// Sha1 Fingerprint of the certificate.
-	Sha1Fingerprint *string `pulumi:"sha1Fingerprint"`
+	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
 }
 
-// TlsCertificateInput is an input type that accepts TlsCertificateArgs and TlsCertificateOutput values.
-// You can construct a concrete instance of `TlsCertificateInput` via:
+// TlsCertificateResponseInput is an input type that accepts TlsCertificateResponseArgs and TlsCertificateResponseOutput values.
+// You can construct a concrete instance of `TlsCertificateResponseInput` via:
 //
-//          TlsCertificateArgs{...}
-type TlsCertificateInput interface {
+//          TlsCertificateResponseArgs{...}
+type TlsCertificateResponseInput interface {
 	pulumi.Input
 
-	ToTlsCertificateOutput() TlsCertificateOutput
-	ToTlsCertificateOutputWithContext(context.Context) TlsCertificateOutput
+	ToTlsCertificateResponseOutput() TlsCertificateResponseOutput
+	ToTlsCertificateResponseOutputWithContext(context.Context) TlsCertificateResponseOutput
 }
 
 // TlsCertificate Resource
-type TlsCertificateArgs struct {
+type TlsCertificateResponseArgs struct {
 	// PEM representation.
-	Cert pulumi.StringPtrInput `pulumi:"cert"`
-	// Output only. The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
-	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// Output only. The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
-	ExpireTime pulumi.StringPtrInput `pulumi:"expireTime"`
+	Cert pulumi.StringInput `pulumi:"cert"`
+	// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
 	// Serial number, as extracted from the certificate.
-	SerialNumber pulumi.StringPtrInput `pulumi:"serialNumber"`
+	SerialNumber pulumi.StringInput `pulumi:"serialNumber"`
 	// Sha1 Fingerprint of the certificate.
-	Sha1Fingerprint pulumi.StringPtrInput `pulumi:"sha1Fingerprint"`
+	Sha1Fingerprint pulumi.StringInput `pulumi:"sha1Fingerprint"`
 }
 
-func (TlsCertificateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TlsCertificate)(nil)).Elem()
+func (TlsCertificateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsCertificateResponse)(nil)).Elem()
 }
 
-func (i TlsCertificateArgs) ToTlsCertificateOutput() TlsCertificateOutput {
-	return i.ToTlsCertificateOutputWithContext(context.Background())
+func (i TlsCertificateResponseArgs) ToTlsCertificateResponseOutput() TlsCertificateResponseOutput {
+	return i.ToTlsCertificateResponseOutputWithContext(context.Background())
 }
 
-func (i TlsCertificateArgs) ToTlsCertificateOutputWithContext(ctx context.Context) TlsCertificateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TlsCertificateOutput)
+func (i TlsCertificateResponseArgs) ToTlsCertificateResponseOutputWithContext(ctx context.Context) TlsCertificateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TlsCertificateResponseOutput)
 }
 
-// TlsCertificateArrayInput is an input type that accepts TlsCertificateArray and TlsCertificateArrayOutput values.
-// You can construct a concrete instance of `TlsCertificateArrayInput` via:
+// TlsCertificateResponseArrayInput is an input type that accepts TlsCertificateResponseArray and TlsCertificateResponseArrayOutput values.
+// You can construct a concrete instance of `TlsCertificateResponseArrayInput` via:
 //
-//          TlsCertificateArray{ TlsCertificateArgs{...} }
-type TlsCertificateArrayInput interface {
+//          TlsCertificateResponseArray{ TlsCertificateResponseArgs{...} }
+type TlsCertificateResponseArrayInput interface {
 	pulumi.Input
 
-	ToTlsCertificateArrayOutput() TlsCertificateArrayOutput
-	ToTlsCertificateArrayOutputWithContext(context.Context) TlsCertificateArrayOutput
+	ToTlsCertificateResponseArrayOutput() TlsCertificateResponseArrayOutput
+	ToTlsCertificateResponseArrayOutputWithContext(context.Context) TlsCertificateResponseArrayOutput
 }
 
-type TlsCertificateArray []TlsCertificateInput
+type TlsCertificateResponseArray []TlsCertificateResponseInput
 
-func (TlsCertificateArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TlsCertificate)(nil)).Elem()
+func (TlsCertificateResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TlsCertificateResponse)(nil)).Elem()
 }
 
-func (i TlsCertificateArray) ToTlsCertificateArrayOutput() TlsCertificateArrayOutput {
-	return i.ToTlsCertificateArrayOutputWithContext(context.Background())
+func (i TlsCertificateResponseArray) ToTlsCertificateResponseArrayOutput() TlsCertificateResponseArrayOutput {
+	return i.ToTlsCertificateResponseArrayOutputWithContext(context.Background())
 }
 
-func (i TlsCertificateArray) ToTlsCertificateArrayOutputWithContext(ctx context.Context) TlsCertificateArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TlsCertificateArrayOutput)
+func (i TlsCertificateResponseArray) ToTlsCertificateResponseArrayOutputWithContext(ctx context.Context) TlsCertificateResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TlsCertificateResponseArrayOutput)
 }
 
 // TlsCertificate Resource
-type TlsCertificateOutput struct{ *pulumi.OutputState }
+type TlsCertificateResponseOutput struct{ *pulumi.OutputState }
 
-func (TlsCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TlsCertificate)(nil)).Elem()
+func (TlsCertificateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsCertificateResponse)(nil)).Elem()
 }
 
-func (o TlsCertificateOutput) ToTlsCertificateOutput() TlsCertificateOutput {
+func (o TlsCertificateResponseOutput) ToTlsCertificateResponseOutput() TlsCertificateResponseOutput {
 	return o
 }
 
-func (o TlsCertificateOutput) ToTlsCertificateOutputWithContext(ctx context.Context) TlsCertificateOutput {
+func (o TlsCertificateResponseOutput) ToTlsCertificateResponseOutputWithContext(ctx context.Context) TlsCertificateResponseOutput {
 	return o
 }
 
 // PEM representation.
-func (o TlsCertificateOutput) Cert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TlsCertificate) *string { return v.Cert }).(pulumi.StringPtrOutput)
+func (o TlsCertificateResponseOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v TlsCertificateResponse) string { return v.Cert }).(pulumi.StringOutput)
 }
 
-// Output only. The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
-func (o TlsCertificateOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TlsCertificate) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
+func (o TlsCertificateResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v TlsCertificateResponse) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Output only. The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
-func (o TlsCertificateOutput) ExpireTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TlsCertificate) *string { return v.ExpireTime }).(pulumi.StringPtrOutput)
+// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
+func (o TlsCertificateResponseOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v TlsCertificateResponse) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 // Serial number, as extracted from the certificate.
-func (o TlsCertificateOutput) SerialNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TlsCertificate) *string { return v.SerialNumber }).(pulumi.StringPtrOutput)
+func (o TlsCertificateResponseOutput) SerialNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v TlsCertificateResponse) string { return v.SerialNumber }).(pulumi.StringOutput)
 }
 
 // Sha1 Fingerprint of the certificate.
-func (o TlsCertificateOutput) Sha1Fingerprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TlsCertificate) *string { return v.Sha1Fingerprint }).(pulumi.StringPtrOutput)
+func (o TlsCertificateResponseOutput) Sha1Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v TlsCertificateResponse) string { return v.Sha1Fingerprint }).(pulumi.StringOutput)
 }
 
-type TlsCertificateArrayOutput struct{ *pulumi.OutputState }
+type TlsCertificateResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (TlsCertificateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TlsCertificate)(nil)).Elem()
+func (TlsCertificateResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TlsCertificateResponse)(nil)).Elem()
 }
 
-func (o TlsCertificateArrayOutput) ToTlsCertificateArrayOutput() TlsCertificateArrayOutput {
+func (o TlsCertificateResponseArrayOutput) ToTlsCertificateResponseArrayOutput() TlsCertificateResponseArrayOutput {
 	return o
 }
 
-func (o TlsCertificateArrayOutput) ToTlsCertificateArrayOutputWithContext(ctx context.Context) TlsCertificateArrayOutput {
+func (o TlsCertificateResponseArrayOutput) ToTlsCertificateResponseArrayOutputWithContext(ctx context.Context) TlsCertificateResponseArrayOutput {
 	return o
 }
 
-func (o TlsCertificateArrayOutput) Index(i pulumi.IntInput) TlsCertificateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TlsCertificate {
-		return vs[0].([]TlsCertificate)[vs[1].(int)]
-	}).(TlsCertificateOutput)
+func (o TlsCertificateResponseArrayOutput) Index(i pulumi.IntInput) TlsCertificateResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TlsCertificateResponse {
+		return vs[0].([]TlsCertificateResponse)[vs[1].(int)]
+	}).(TlsCertificateResponseOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(TlsCertificateOutput{})
-	pulumi.RegisterOutputType(TlsCertificateArrayOutput{})
+	pulumi.RegisterOutputType(TlsCertificateResponseOutput{})
+	pulumi.RegisterOutputType(TlsCertificateResponseArrayOutput{})
 }

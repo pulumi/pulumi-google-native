@@ -16,6 +16,61 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationDeveloperAppKey : Pulumi.CustomResource
     {
         /// <summary>
+        /// List of API products for which the credential can be used. **Note**: Do not specify the list of API products when creating a consumer key and secret for a developer app. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created.
+        /// </summary>
+        [Output("apiProducts")]
+        public Output<ImmutableArray<object>> ApiProducts { get; private set; } = null!;
+
+        /// <summary>
+        /// List of attributes associated with the credential.
+        /// </summary>
+        [Output("attributes")]
+        public Output<ImmutableArray<Outputs.GoogleCloudApigeeV1AttributeResponse>> Attributes { get; private set; } = null!;
+
+        /// <summary>
+        /// Consumer key.
+        /// </summary>
+        [Output("consumerKey")]
+        public Output<string> ConsumerKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Secret key.
+        /// </summary>
+        [Output("consumerSecret")]
+        public Output<string> ConsumerSecret { get; private set; } = null!;
+
+        /// <summary>
+        /// Time the developer app expires in milliseconds since epoch.
+        /// </summary>
+        [Output("expiresAt")]
+        public Output<string> ExpiresAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Input only. Expiration time, in seconds, for the consumer key. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+        /// </summary>
+        [Output("expiresInSeconds")]
+        public Output<string> ExpiresInSeconds { get; private set; } = null!;
+
+        /// <summary>
+        /// Time the developer app was created in milliseconds since epoch.
+        /// </summary>
+        [Output("issuedAt")]
+        public Output<string> IssuedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Scopes to apply to the app. The specified scope names must already be defined for the API product that you associate with the app.
+        /// </summary>
+        [Output("scopes")]
+        public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of the credential. Valid values include `approved` or `revoked`.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationDeveloperAppKey resource with the given unique name, arguments, and options.
         /// </summary>
         ///

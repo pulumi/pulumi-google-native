@@ -35,6 +35,26 @@ export class AgentEnvironment extends pulumi.CustomResource {
         return obj['__pulumiType'] === AgentEnvironment.__pulumiType;
     }
 
+    /**
+     * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * The name of the environment. Format: `projects//locations//agents//environments/`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Update time of this environment.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+     */
+    public readonly versionConfigs!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse[]>;
 
     /**
      * Create a AgentEnvironment resource with the given unique name, arguments, and options.
@@ -66,9 +86,14 @@ export class AgentEnvironment extends pulumi.CustomResource {
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["versionConfigs"] = args ? args.versionConfigs : undefined;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
+            inputs["versionConfigs"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -97,10 +122,6 @@ export interface AgentEnvironmentArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. Update time of this environment.
-     */
-    readonly updateTime?: pulumi.Input<string>;
     /**
      * Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
      */

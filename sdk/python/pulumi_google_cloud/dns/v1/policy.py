@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Policy']
@@ -95,7 +96,67 @@ class Policy(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["alternative_name_server_config"] = None
+        __props__["description"] = None
+        __props__["enable_inbound_forwarding"] = None
+        __props__["enable_logging"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["networks"] = None
         return Policy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="alternativeNameServerConfig")
+    def alternative_name_server_config(self) -> pulumi.Output['outputs.PolicyAlternativeNameServerConfigResponse']:
+        """
+        Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
+        """
+        return pulumi.get(self, "alternative_name_server_config")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableInboundForwarding")
+    def enable_inbound_forwarding(self) -> pulumi.Output[bool]:
+        """
+        Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
+        """
+        return pulumi.get(self, "enable_inbound_forwarding")
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> pulumi.Output[bool]:
+        """
+        Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        User-assigned name for this policy.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def networks(self) -> pulumi.Output[Sequence['outputs.PolicyNetworkResponse']]:
+        """
+        List of network names specifying networks to which this policy is applied.
+        """
+        return pulumi.get(self, "networks")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

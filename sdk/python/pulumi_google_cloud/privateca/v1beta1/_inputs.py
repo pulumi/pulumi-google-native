@@ -9,7 +9,6 @@ from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
 
 __all__ = [
-    'AccessUrlsArgs',
     'AllowedConfigListArgs',
     'AllowedSubjectAltNamesArgs',
     'AuditConfigArgs',
@@ -18,13 +17,10 @@ __all__ = [
     'CaOptionsArgs',
     'CertificateAuthorityPolicyArgs',
     'CertificateConfigArgs',
-    'CertificateDescriptionArgs',
-    'CertificateFingerprintArgs',
     'ExprArgs',
     'ExtendedKeyUsageOptionsArgs',
     'IssuanceModesArgs',
     'IssuingOptionsArgs',
-    'KeyIdArgs',
     'KeyUsageArgs',
     'KeyUsageOptionsArgs',
     'KeyVersionSpecArgs',
@@ -33,55 +29,13 @@ __all__ = [
     'PublicKeyArgs',
     'ReusableConfigValuesArgs',
     'ReusableConfigWrapperArgs',
-    'RevocationDetailsArgs',
     'SubjectArgs',
     'SubjectAltNamesArgs',
     'SubjectConfigArgs',
-    'SubjectDescriptionArgs',
     'SubordinateConfigArgs',
     'SubordinateConfigChainArgs',
     'X509ExtensionArgs',
 ]
-
-@pulumi.input_type
-class AccessUrlsArgs:
-    def __init__(__self__, *,
-                 ca_certificate_access_url: Optional[pulumi.Input[str]] = None,
-                 crl_access_url: Optional[pulumi.Input[str]] = None):
-        """
-        URLs where a CertificateAuthority will publish content.
-        :param pulumi.Input[str] ca_certificate_access_url: The URL where this CertificateAuthority's CA certificate is published. This will only be set for CAs that have been activated.
-        :param pulumi.Input[str] crl_access_url: The URL where this CertificateAuthority's CRLs are published. This will only be set for CAs that have been activated.
-        """
-        if ca_certificate_access_url is not None:
-            pulumi.set(__self__, "ca_certificate_access_url", ca_certificate_access_url)
-        if crl_access_url is not None:
-            pulumi.set(__self__, "crl_access_url", crl_access_url)
-
-    @property
-    @pulumi.getter(name="caCertificateAccessUrl")
-    def ca_certificate_access_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URL where this CertificateAuthority's CA certificate is published. This will only be set for CAs that have been activated.
-        """
-        return pulumi.get(self, "ca_certificate_access_url")
-
-    @ca_certificate_access_url.setter
-    def ca_certificate_access_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ca_certificate_access_url", value)
-
-    @property
-    @pulumi.getter(name="crlAccessUrl")
-    def crl_access_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URL where this CertificateAuthority's CRLs are published. This will only be set for CAs that have been activated.
-        """
-        return pulumi.get(self, "crl_access_url")
-
-    @crl_access_url.setter
-    def crl_access_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "crl_access_url", value)
-
 
 @pulumi.input_type
 class AllowedConfigListArgs:
@@ -563,166 +517,6 @@ class CertificateConfigArgs:
 
 
 @pulumi.input_type
-class CertificateDescriptionArgs:
-    def __init__(__self__, *,
-                 aia_issuing_certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 authority_key_id: Optional[pulumi.Input['KeyIdArgs']] = None,
-                 cert_fingerprint: Optional[pulumi.Input['CertificateFingerprintArgs']] = None,
-                 config_values: Optional[pulumi.Input['ReusableConfigValuesArgs']] = None,
-                 crl_distribution_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 public_key: Optional[pulumi.Input['PublicKeyArgs']] = None,
-                 subject_description: Optional[pulumi.Input['SubjectDescriptionArgs']] = None,
-                 subject_key_id: Optional[pulumi.Input['KeyIdArgs']] = None):
-        """
-        A CertificateDescription describes an X.509 certificate or CSR that has been issued, as an alternative to using ASN.1 / X.509.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_issuing_certificate_urls: Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
-        :param pulumi.Input['KeyIdArgs'] authority_key_id: Identifies the subject_key_id of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
-        :param pulumi.Input['CertificateFingerprintArgs'] cert_fingerprint: The hash of the x.509 certificate.
-        :param pulumi.Input['ReusableConfigValuesArgs'] config_values: Describes some of the technical fields in a certificate.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] crl_distribution_points: Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
-        :param pulumi.Input['PublicKeyArgs'] public_key: The public key that corresponds to an issued certificate.
-        :param pulumi.Input['SubjectDescriptionArgs'] subject_description: Describes some of the values in a certificate that are related to the subject and lifetime.
-        :param pulumi.Input['KeyIdArgs'] subject_key_id: Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
-        """
-        if aia_issuing_certificate_urls is not None:
-            pulumi.set(__self__, "aia_issuing_certificate_urls", aia_issuing_certificate_urls)
-        if authority_key_id is not None:
-            pulumi.set(__self__, "authority_key_id", authority_key_id)
-        if cert_fingerprint is not None:
-            pulumi.set(__self__, "cert_fingerprint", cert_fingerprint)
-        if config_values is not None:
-            pulumi.set(__self__, "config_values", config_values)
-        if crl_distribution_points is not None:
-            pulumi.set(__self__, "crl_distribution_points", crl_distribution_points)
-        if public_key is not None:
-            pulumi.set(__self__, "public_key", public_key)
-        if subject_description is not None:
-            pulumi.set(__self__, "subject_description", subject_description)
-        if subject_key_id is not None:
-            pulumi.set(__self__, "subject_key_id", subject_key_id)
-
-    @property
-    @pulumi.getter(name="aiaIssuingCertificateUrls")
-    def aia_issuing_certificate_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
-        """
-        return pulumi.get(self, "aia_issuing_certificate_urls")
-
-    @aia_issuing_certificate_urls.setter
-    def aia_issuing_certificate_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "aia_issuing_certificate_urls", value)
-
-    @property
-    @pulumi.getter(name="authorityKeyId")
-    def authority_key_id(self) -> Optional[pulumi.Input['KeyIdArgs']]:
-        """
-        Identifies the subject_key_id of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
-        """
-        return pulumi.get(self, "authority_key_id")
-
-    @authority_key_id.setter
-    def authority_key_id(self, value: Optional[pulumi.Input['KeyIdArgs']]):
-        pulumi.set(self, "authority_key_id", value)
-
-    @property
-    @pulumi.getter(name="certFingerprint")
-    def cert_fingerprint(self) -> Optional[pulumi.Input['CertificateFingerprintArgs']]:
-        """
-        The hash of the x.509 certificate.
-        """
-        return pulumi.get(self, "cert_fingerprint")
-
-    @cert_fingerprint.setter
-    def cert_fingerprint(self, value: Optional[pulumi.Input['CertificateFingerprintArgs']]):
-        pulumi.set(self, "cert_fingerprint", value)
-
-    @property
-    @pulumi.getter(name="configValues")
-    def config_values(self) -> Optional[pulumi.Input['ReusableConfigValuesArgs']]:
-        """
-        Describes some of the technical fields in a certificate.
-        """
-        return pulumi.get(self, "config_values")
-
-    @config_values.setter
-    def config_values(self, value: Optional[pulumi.Input['ReusableConfigValuesArgs']]):
-        pulumi.set(self, "config_values", value)
-
-    @property
-    @pulumi.getter(name="crlDistributionPoints")
-    def crl_distribution_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
-        """
-        return pulumi.get(self, "crl_distribution_points")
-
-    @crl_distribution_points.setter
-    def crl_distribution_points(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "crl_distribution_points", value)
-
-    @property
-    @pulumi.getter(name="publicKey")
-    def public_key(self) -> Optional[pulumi.Input['PublicKeyArgs']]:
-        """
-        The public key that corresponds to an issued certificate.
-        """
-        return pulumi.get(self, "public_key")
-
-    @public_key.setter
-    def public_key(self, value: Optional[pulumi.Input['PublicKeyArgs']]):
-        pulumi.set(self, "public_key", value)
-
-    @property
-    @pulumi.getter(name="subjectDescription")
-    def subject_description(self) -> Optional[pulumi.Input['SubjectDescriptionArgs']]:
-        """
-        Describes some of the values in a certificate that are related to the subject and lifetime.
-        """
-        return pulumi.get(self, "subject_description")
-
-    @subject_description.setter
-    def subject_description(self, value: Optional[pulumi.Input['SubjectDescriptionArgs']]):
-        pulumi.set(self, "subject_description", value)
-
-    @property
-    @pulumi.getter(name="subjectKeyId")
-    def subject_key_id(self) -> Optional[pulumi.Input['KeyIdArgs']]:
-        """
-        Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
-        """
-        return pulumi.get(self, "subject_key_id")
-
-    @subject_key_id.setter
-    def subject_key_id(self, value: Optional[pulumi.Input['KeyIdArgs']]):
-        pulumi.set(self, "subject_key_id", value)
-
-
-@pulumi.input_type
-class CertificateFingerprintArgs:
-    def __init__(__self__, *,
-                 sha256_hash: Optional[pulumi.Input[str]] = None):
-        """
-        A group of fingerprints for the x509 certificate.
-        :param pulumi.Input[str] sha256_hash: The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
-        """
-        if sha256_hash is not None:
-            pulumi.set(__self__, "sha256_hash", sha256_hash)
-
-    @property
-    @pulumi.getter(name="sha256Hash")
-    def sha256_hash(self) -> Optional[pulumi.Input[str]]:
-        """
-        The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
-        """
-        return pulumi.get(self, "sha256_hash")
-
-    @sha256_hash.setter
-    def sha256_hash(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "sha256_hash", value)
-
-
-@pulumi.input_type
 class ExprArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
@@ -976,30 +770,6 @@ class IssuingOptionsArgs:
     @include_crl_access_url.setter
     def include_crl_access_url(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "include_crl_access_url", value)
-
-
-@pulumi.input_type
-class KeyIdArgs:
-    def __init__(__self__, *,
-                 key_id: Optional[pulumi.Input[str]] = None):
-        """
-        A KeyId identifies a specific public key, usually by hashing the public key.
-        :param pulumi.Input[str] key_id: Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
-        """
-        if key_id is not None:
-            pulumi.set(__self__, "key_id", key_id)
-
-    @property
-    @pulumi.getter(name="keyId")
-    def key_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
-        """
-        return pulumi.get(self, "key_id")
-
-    @key_id.setter
-    def key_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "key_id", value)
 
 
 @pulumi.input_type
@@ -1515,46 +1285,6 @@ class ReusableConfigWrapperArgs:
 
 
 @pulumi.input_type
-class RevocationDetailsArgs:
-    def __init__(__self__, *,
-                 revocation_state: Optional[pulumi.Input[str]] = None,
-                 revocation_time: Optional[pulumi.Input[str]] = None):
-        """
-        Describes fields that are relavent to the revocation of a Certificate.
-        :param pulumi.Input[str] revocation_state: Indicates why a Certificate was revoked.
-        :param pulumi.Input[str] revocation_time: The time at which this Certificate was revoked.
-        """
-        if revocation_state is not None:
-            pulumi.set(__self__, "revocation_state", revocation_state)
-        if revocation_time is not None:
-            pulumi.set(__self__, "revocation_time", revocation_time)
-
-    @property
-    @pulumi.getter(name="revocationState")
-    def revocation_state(self) -> Optional[pulumi.Input[str]]:
-        """
-        Indicates why a Certificate was revoked.
-        """
-        return pulumi.get(self, "revocation_state")
-
-    @revocation_state.setter
-    def revocation_state(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "revocation_state", value)
-
-    @property
-    @pulumi.getter(name="revocationTime")
-    def revocation_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time at which this Certificate was revoked.
-        """
-        return pulumi.get(self, "revocation_time")
-
-    @revocation_time.setter
-    def revocation_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "revocation_time", value)
-
-
-@pulumi.input_type
 class SubjectArgs:
     def __init__(__self__, *,
                  country_code: Optional[pulumi.Input[str]] = None,
@@ -1810,126 +1540,6 @@ class SubjectConfigArgs:
     def subject_alt_name(self) -> Optional[pulumi.Input['SubjectAltNamesArgs']]:
         """
         Optional. The subject alternative name fields.
-        """
-        return pulumi.get(self, "subject_alt_name")
-
-    @subject_alt_name.setter
-    def subject_alt_name(self, value: Optional[pulumi.Input['SubjectAltNamesArgs']]):
-        pulumi.set(self, "subject_alt_name", value)
-
-
-@pulumi.input_type
-class SubjectDescriptionArgs:
-    def __init__(__self__, *,
-                 common_name: Optional[pulumi.Input[str]] = None,
-                 hex_serial_number: Optional[pulumi.Input[str]] = None,
-                 lifetime: Optional[pulumi.Input[str]] = None,
-                 not_after_time: Optional[pulumi.Input[str]] = None,
-                 not_before_time: Optional[pulumi.Input[str]] = None,
-                 subject: Optional[pulumi.Input['SubjectArgs']] = None,
-                 subject_alt_name: Optional[pulumi.Input['SubjectAltNamesArgs']] = None):
-        """
-        These values describe fields in an issued X.509 certificate such as the distinguished name, subject alternative names, serial number, and lifetime.
-        :param pulumi.Input[str] common_name: The "common name" of the distinguished name.
-        :param pulumi.Input[str] hex_serial_number: The serial number encoded in lowercase hexadecimal.
-        :param pulumi.Input[str] lifetime: For convenience, the actual lifetime of an issued certificate. Corresponds to 'not_after_time' - 'not_before_time'.
-        :param pulumi.Input[str] not_after_time: The time at which the certificate expires.
-        :param pulumi.Input[str] not_before_time: The time at which the certificate becomes valid.
-        :param pulumi.Input['SubjectArgs'] subject: Contains distinguished name fields such as the location and organization.
-        :param pulumi.Input['SubjectAltNamesArgs'] subject_alt_name: The subject alternative name fields.
-        """
-        if common_name is not None:
-            pulumi.set(__self__, "common_name", common_name)
-        if hex_serial_number is not None:
-            pulumi.set(__self__, "hex_serial_number", hex_serial_number)
-        if lifetime is not None:
-            pulumi.set(__self__, "lifetime", lifetime)
-        if not_after_time is not None:
-            pulumi.set(__self__, "not_after_time", not_after_time)
-        if not_before_time is not None:
-            pulumi.set(__self__, "not_before_time", not_before_time)
-        if subject is not None:
-            pulumi.set(__self__, "subject", subject)
-        if subject_alt_name is not None:
-            pulumi.set(__self__, "subject_alt_name", subject_alt_name)
-
-    @property
-    @pulumi.getter(name="commonName")
-    def common_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The "common name" of the distinguished name.
-        """
-        return pulumi.get(self, "common_name")
-
-    @common_name.setter
-    def common_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "common_name", value)
-
-    @property
-    @pulumi.getter(name="hexSerialNumber")
-    def hex_serial_number(self) -> Optional[pulumi.Input[str]]:
-        """
-        The serial number encoded in lowercase hexadecimal.
-        """
-        return pulumi.get(self, "hex_serial_number")
-
-    @hex_serial_number.setter
-    def hex_serial_number(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "hex_serial_number", value)
-
-    @property
-    @pulumi.getter
-    def lifetime(self) -> Optional[pulumi.Input[str]]:
-        """
-        For convenience, the actual lifetime of an issued certificate. Corresponds to 'not_after_time' - 'not_before_time'.
-        """
-        return pulumi.get(self, "lifetime")
-
-    @lifetime.setter
-    def lifetime(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "lifetime", value)
-
-    @property
-    @pulumi.getter(name="notAfterTime")
-    def not_after_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time at which the certificate expires.
-        """
-        return pulumi.get(self, "not_after_time")
-
-    @not_after_time.setter
-    def not_after_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "not_after_time", value)
-
-    @property
-    @pulumi.getter(name="notBeforeTime")
-    def not_before_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time at which the certificate becomes valid.
-        """
-        return pulumi.get(self, "not_before_time")
-
-    @not_before_time.setter
-    def not_before_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "not_before_time", value)
-
-    @property
-    @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input['SubjectArgs']]:
-        """
-        Contains distinguished name fields such as the location and organization.
-        """
-        return pulumi.get(self, "subject")
-
-    @subject.setter
-    def subject(self, value: Optional[pulumi.Input['SubjectArgs']]):
-        pulumi.set(self, "subject", value)
-
-    @property
-    @pulumi.getter(name="subjectAltName")
-    def subject_alt_name(self) -> Optional[pulumi.Input['SubjectAltNamesArgs']]:
-        """
-        The subject alternative name fields.
         """
         return pulumi.get(self, "subject_alt_name")
 

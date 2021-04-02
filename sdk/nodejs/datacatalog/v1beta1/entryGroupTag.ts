@@ -66,7 +66,6 @@ export class EntryGroupTag extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["tagsId"] = args ? args.tagsId : undefined;
             inputs["template"] = args ? args.template : undefined;
-            inputs["templateDisplayName"] = args ? args.templateDisplayName : undefined;
         } else {
         }
         if (!opts.version) {
@@ -100,8 +99,4 @@ export interface EntryGroupTagArgs {
      * Required. The resource name of the tag template that this tag uses. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} This field cannot be modified after creation.
      */
     readonly template?: pulumi.Input<string>;
-    /**
-     * Output only. The display name of the tag template.
-     */
-    readonly templateDisplayName?: pulumi.Input<string>;
 }

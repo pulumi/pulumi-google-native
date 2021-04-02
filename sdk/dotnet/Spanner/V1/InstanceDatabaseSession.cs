@@ -16,6 +16,31 @@ namespace Pulumi.GoogleCloud.Spanner.V1
     public partial class InstanceDatabaseSession : Pulumi.CustomResource
     {
         /// <summary>
+        /// The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.
+        /// </summary>
+        [Output("approximateLastUseTime")]
+        public Output<string> ApproximateLastUseTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp when the session is created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the session. This is always system-assigned.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a InstanceDatabaseSession resource with the given unique name, arguments, and options.
         /// </summary>
         ///

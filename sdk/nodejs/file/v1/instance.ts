@@ -35,6 +35,46 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
+    /**
+     * The time when the instance was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The description of the instance (2048 characters or less).
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * File system shares on the instance. For this version, only a single file share is supported.
+     */
+    public readonly fileShares!: pulumi.Output<outputs.file.v1.FileShareConfigResponse[]>;
+    /**
+     * Resource labels to represent user provided metadata.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The resource name of the instance, in the format projects/{project}/locations/{location}/instances/{instance}.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * VPC networks to which the instance is connected. For this version, only a single network is supported.
+     */
+    public readonly networks!: pulumi.Output<outputs.file.v1.NetworkConfigResponse[]>;
+    /**
+     * The instance state.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Additional information about the instance state, if available.
+     */
+    public /*out*/ readonly statusMessage!: pulumi.Output<string>;
+    /**
+     * The service tier of the instance.
+     */
+    public readonly tier!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -56,20 +96,30 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["fileShares"] = args ? args.fileShares : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["networks"] = args ? args.networks : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["statusMessage"] = args ? args.statusMessage : undefined;
             inputs["tier"] = args ? args.tier : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["fileShares"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["networks"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["statusMessage"] = undefined /*out*/;
+            inputs["tier"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -82,10 +132,6 @@ export class Instance extends pulumi.CustomResource {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
-    /**
-     * Output only. The time when the instance was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
     /**
      * The description of the instance (2048 characters or less).
      */
@@ -105,22 +151,10 @@ export interface InstanceArgs {
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly locationsId: pulumi.Input<string>;
     /**
-     * Output only. The resource name of the instance, in the format projects/{project}/locations/{location}/instances/{instance}.
-     */
-    readonly name?: pulumi.Input<string>;
-    /**
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */
     readonly networks?: pulumi.Input<pulumi.Input<inputs.file.v1.NetworkConfig>[]>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. The instance state.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. Additional information about the instance state, if available.
-     */
-    readonly statusMessage?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
      */

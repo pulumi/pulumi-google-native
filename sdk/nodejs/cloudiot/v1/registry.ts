@@ -35,6 +35,34 @@ export class Registry extends pulumi.CustomResource {
         return obj['__pulumiType'] === Registry.__pulumiType;
     }
 
+    /**
+     * The credentials used to verify the device credentials. No more than 10 credentials can be bound to a single registry at a time. The verification process occurs at the time of device creation or update. If this field is empty, no verification is performed. Otherwise, the credentials of a newly created device or added credentials of an updated device should be signed with one of these registry credentials. Note, however, that existing devices will never be affected by modifications to this list of credentials: after a device has been successfully created in a registry, it should be able to connect even if its registry credentials are revoked, deleted, or modified.
+     */
+    public readonly credentials!: pulumi.Output<outputs.cloudiot.v1.RegistryCredentialResponse[]>;
+    /**
+     * The configuration for notification of telemetry events received from the device. All telemetry events that were successfully published by the device and acknowledged by Cloud IoT Core are guaranteed to be delivered to Cloud Pub/Sub. If multiple configurations match a message, only the first matching configuration is used. If you try to publish a device telemetry event using MQTT without specifying a Cloud Pub/Sub topic for the device's registry, the connection closes automatically. If you try to do so using an HTTP connection, an error is returned. Up to 10 configurations may be provided.
+     */
+    public readonly eventNotificationConfigs!: pulumi.Output<outputs.cloudiot.v1.EventNotificationConfigResponse[]>;
+    /**
+     * The DeviceService (HTTP) configuration for this device registry.
+     */
+    public readonly httpConfig!: pulumi.Output<outputs.cloudiot.v1.HttpConfigResponse>;
+    /**
+     * **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
+     */
+    public readonly logLevel!: pulumi.Output<string>;
+    /**
+     * The MQTT configuration for this device registry.
+     */
+    public readonly mqttConfig!: pulumi.Output<outputs.cloudiot.v1.MqttConfigResponse>;
+    /**
+     * The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
+     */
+    public readonly stateNotificationConfig!: pulumi.Output<outputs.cloudiot.v1.StateNotificationConfigResponse>;
 
     /**
      * Create a Registry resource with the given unique name, arguments, and options.
@@ -68,6 +96,13 @@ export class Registry extends pulumi.CustomResource {
             inputs["registriesId"] = args ? args.registriesId : undefined;
             inputs["stateNotificationConfig"] = args ? args.stateNotificationConfig : undefined;
         } else {
+            inputs["credentials"] = undefined /*out*/;
+            inputs["eventNotificationConfigs"] = undefined /*out*/;
+            inputs["httpConfig"] = undefined /*out*/;
+            inputs["logLevel"] = undefined /*out*/;
+            inputs["mqttConfig"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["stateNotificationConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

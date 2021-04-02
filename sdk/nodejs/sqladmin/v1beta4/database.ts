@@ -35,6 +35,39 @@ export class Database extends pulumi.CustomResource {
         return obj['__pulumiType'] === Database.__pulumiType;
     }
 
+    /**
+     * The Cloud SQL charset value.
+     */
+    public readonly charset!: pulumi.Output<string>;
+    /**
+     * The Cloud SQL collation value.
+     */
+    public readonly collation!: pulumi.Output<string>;
+    /**
+     * This field is deprecated and will be removed from a future version of the API.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * The name of the Cloud SQL instance. This does not include the project ID.
+     */
+    public readonly instance!: pulumi.Output<string>;
+    /**
+     * This is always *sql#database*.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
+     */
+    public readonly project!: pulumi.Output<string>;
+    /**
+     * The URI of this resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    public readonly sqlserverDatabaseDetails!: pulumi.Output<outputs.sqladmin.v1beta4.SqlServerDatabaseDetailsResponse>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -67,6 +100,15 @@ export class Database extends pulumi.CustomResource {
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["sqlserverDatabaseDetails"] = args ? args.sqlserverDatabaseDetails : undefined;
         } else {
+            inputs["charset"] = undefined /*out*/;
+            inputs["collation"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["instance"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["sqlserverDatabaseDetails"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

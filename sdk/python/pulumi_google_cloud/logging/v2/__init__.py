@@ -21,6 +21,7 @@ from .organization_exclusion import *
 from .organization_sink import *
 from .sink import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

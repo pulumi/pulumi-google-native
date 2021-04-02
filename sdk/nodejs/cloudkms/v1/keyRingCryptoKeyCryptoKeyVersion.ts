@@ -35,6 +35,58 @@ export class KeyRingCryptoKeyCryptoKeyVersion extends pulumi.CustomResource {
         return obj['__pulumiType'] === KeyRingCryptoKeyCryptoKeyVersion.__pulumiType;
     }
 
+    /**
+     * The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+     */
+    public /*out*/ readonly algorithm!: pulumi.Output<string>;
+    /**
+     * Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
+     */
+    public /*out*/ readonly attestation!: pulumi.Output<outputs.cloudkms.v1.KeyOperationAttestationResponse>;
+    /**
+     * The time at which this CryptoKeyVersion was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
+     */
+    public /*out*/ readonly destroyEventTime!: pulumi.Output<string>;
+    /**
+     * The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
+     */
+    public /*out*/ readonly destroyTime!: pulumi.Output<string>;
+    /**
+     * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+     */
+    public readonly externalProtectionLevelOptions!: pulumi.Output<outputs.cloudkms.v1.ExternalProtectionLevelOptionsResponse>;
+    /**
+     * The time this CryptoKeyVersion's key material was generated.
+     */
+    public /*out*/ readonly generateTime!: pulumi.Output<string>;
+    /**
+     * The root cause of an import failure. Only present if state is IMPORT_FAILED.
+     */
+    public /*out*/ readonly importFailureReason!: pulumi.Output<string>;
+    /**
+     * The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
+     */
+    public /*out*/ readonly importJob!: pulumi.Output<string>;
+    /**
+     * The time at which this CryptoKeyVersion's key material was imported.
+     */
+    public /*out*/ readonly importTime!: pulumi.Output<string>;
+    /**
+     * The resource name for this CryptoKeyVersion in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
+     */
+    public /*out*/ readonly protectionLevel!: pulumi.Output<string>;
+    /**
+     * The current state of the CryptoKeyVersion.
+     */
+    public readonly state!: pulumi.Output<string>;
 
     /**
      * Create a KeyRingCryptoKeyCryptoKeyVersion resource with the given unique name, arguments, and options.
@@ -62,25 +114,38 @@ export class KeyRingCryptoKeyCryptoKeyVersion extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["algorithm"] = args ? args.algorithm : undefined;
-            inputs["attestation"] = args ? args.attestation : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["cryptoKeyVersionsId"] = args ? args.cryptoKeyVersionsId : undefined;
             inputs["cryptoKeysId"] = args ? args.cryptoKeysId : undefined;
-            inputs["destroyEventTime"] = args ? args.destroyEventTime : undefined;
-            inputs["destroyTime"] = args ? args.destroyTime : undefined;
             inputs["externalProtectionLevelOptions"] = args ? args.externalProtectionLevelOptions : undefined;
-            inputs["generateTime"] = args ? args.generateTime : undefined;
-            inputs["importFailureReason"] = args ? args.importFailureReason : undefined;
-            inputs["importJob"] = args ? args.importJob : undefined;
-            inputs["importTime"] = args ? args.importTime : undefined;
             inputs["keyRingsId"] = args ? args.keyRingsId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["protectionLevel"] = args ? args.protectionLevel : undefined;
             inputs["state"] = args ? args.state : undefined;
+            inputs["algorithm"] = undefined /*out*/;
+            inputs["attestation"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["destroyEventTime"] = undefined /*out*/;
+            inputs["destroyTime"] = undefined /*out*/;
+            inputs["generateTime"] = undefined /*out*/;
+            inputs["importFailureReason"] = undefined /*out*/;
+            inputs["importJob"] = undefined /*out*/;
+            inputs["importTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["protectionLevel"] = undefined /*out*/;
         } else {
+            inputs["algorithm"] = undefined /*out*/;
+            inputs["attestation"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["destroyEventTime"] = undefined /*out*/;
+            inputs["destroyTime"] = undefined /*out*/;
+            inputs["externalProtectionLevelOptions"] = undefined /*out*/;
+            inputs["generateTime"] = undefined /*out*/;
+            inputs["importFailureReason"] = undefined /*out*/;
+            inputs["importJob"] = undefined /*out*/;
+            inputs["importTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["protectionLevel"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -93,59 +158,15 @@ export class KeyRingCryptoKeyCryptoKeyVersion extends pulumi.CustomResource {
  * The set of arguments for constructing a KeyRingCryptoKeyCryptoKeyVersion resource.
  */
 export interface KeyRingCryptoKeyCryptoKeyVersionArgs {
-    /**
-     * Output only. The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-     */
-    readonly algorithm?: pulumi.Input<string>;
-    /**
-     * Output only. Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
-     */
-    readonly attestation?: pulumi.Input<inputs.cloudkms.v1.KeyOperationAttestation>;
-    /**
-     * Output only. The time at which this CryptoKeyVersion was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
     readonly cryptoKeyVersionsId: pulumi.Input<string>;
     readonly cryptoKeysId: pulumi.Input<string>;
-    /**
-     * Output only. The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
-     */
-    readonly destroyEventTime?: pulumi.Input<string>;
-    /**
-     * Output only. The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
-     */
-    readonly destroyTime?: pulumi.Input<string>;
     /**
      * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
      */
     readonly externalProtectionLevelOptions?: pulumi.Input<inputs.cloudkms.v1.ExternalProtectionLevelOptions>;
-    /**
-     * Output only. The time this CryptoKeyVersion's key material was generated.
-     */
-    readonly generateTime?: pulumi.Input<string>;
-    /**
-     * Output only. The root cause of an import failure. Only present if state is IMPORT_FAILED.
-     */
-    readonly importFailureReason?: pulumi.Input<string>;
-    /**
-     * Output only. The name of the ImportJob used to import this CryptoKeyVersion. Only present if the underlying key material was imported.
-     */
-    readonly importJob?: pulumi.Input<string>;
-    /**
-     * Output only. The time at which this CryptoKeyVersion's key material was imported.
-     */
-    readonly importTime?: pulumi.Input<string>;
     readonly keyRingsId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. The resource name for this CryptoKeyVersion in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`.
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
-     */
-    readonly protectionLevel?: pulumi.Input<string>;
     /**
      * The current state of the CryptoKeyVersion.
      */

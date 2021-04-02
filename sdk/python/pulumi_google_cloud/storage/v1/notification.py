@@ -98,7 +98,79 @@ class Notification(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["custom_attributes"] = None
+        __props__["etag"] = None
+        __props__["event_types"] = None
+        __props__["kind"] = None
+        __props__["object_name_prefix"] = None
+        __props__["payload_format"] = None
+        __props__["self_link"] = None
+        __props__["topic"] = None
         return Notification(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def custom_attributes(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        HTTP 1.1 Entity tag for this subscription notification.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
+    def event_types(self) -> pulumi.Output[Sequence[str]]:
+        """
+        If present, only send notifications about listed event types. If empty, sent notifications for all event types.
+        """
+        return pulumi.get(self, "event_types")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        The kind of item this is. For notifications, this is always storage#notification.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def object_name_prefix(self) -> pulumi.Output[str]:
+        """
+        If present, only apply this notification configuration to object names that begin with this prefix.
+        """
+        return pulumi.get(self, "object_name_prefix")
+
+    @property
+    @pulumi.getter
+    def payload_format(self) -> pulumi.Output[str]:
+        """
+        The desired content of the Payload.
+        """
+        return pulumi.get(self, "payload_format")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        The canonical URL of this notification.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> pulumi.Output[str]:
+        """
+        The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
+        """
+        return pulumi.get(self, "topic")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

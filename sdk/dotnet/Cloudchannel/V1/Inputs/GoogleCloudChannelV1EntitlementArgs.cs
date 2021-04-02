@@ -28,18 +28,6 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1.Inputs
         public Input<Inputs.GoogleCloudChannelV1CommitmentSettingsArgs>? CommitmentSettings { get; set; }
 
         /// <summary>
-        /// Output only. The time at which the entitlement is created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Output only. Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
         /// </summary>
         [Input("offer")]
@@ -58,46 +46,10 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1.Inputs
         }
 
         /// <summary>
-        /// Output only. Service provisioning details for the entitlement.
-        /// </summary>
-        [Input("provisionedService")]
-        public Input<Inputs.GoogleCloudChannelV1ProvisionedServiceArgs>? ProvisionedService { get; set; }
-
-        /// <summary>
-        /// Output only. Current provisioning state of the entitlement.
-        /// </summary>
-        [Input("provisioningState")]
-        public Input<string>? ProvisioningState { get; set; }
-
-        /// <summary>
         /// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
         /// </summary>
         [Input("purchaseOrderId")]
         public Input<string>? PurchaseOrderId { get; set; }
-
-        [Input("suspensionReasons")]
-        private InputList<string>? _suspensionReasons;
-
-        /// <summary>
-        /// Output only. Enumerable of all current suspension reasons for an entitlement.
-        /// </summary>
-        public InputList<string> SuspensionReasons
-        {
-            get => _suspensionReasons ?? (_suspensionReasons = new InputList<string>());
-            set => _suspensionReasons = value;
-        }
-
-        /// <summary>
-        /// Output only. Settings for trial offers.
-        /// </summary>
-        [Input("trialSettings")]
-        public Input<Inputs.GoogleCloudChannelV1TrialSettingsArgs>? TrialSettings { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which the entitlement is updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public GoogleCloudChannelV1EntitlementArgs()
         {

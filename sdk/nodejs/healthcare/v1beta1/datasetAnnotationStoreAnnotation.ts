@@ -35,6 +35,30 @@ export class DatasetAnnotationStoreAnnotation extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatasetAnnotationStoreAnnotation.__pulumiType;
     }
 
+    /**
+     * Details of the source.
+     */
+    public readonly annotationSource!: pulumi.Output<outputs.healthcare.v1beta1.AnnotationSourceResponse>;
+    /**
+     * Additional information for this annotation record, such as annotator and verifier information or study campaign.
+     */
+    public readonly customData!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Annotations for images. For example, bounding polygons.
+     */
+    public readonly imageAnnotation!: pulumi.Output<outputs.healthcare.v1beta1.ImageAnnotationResponse>;
+    /**
+     * Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Annotations for resource. For example, classification tags.
+     */
+    public readonly resourceAnnotation!: pulumi.Output<outputs.healthcare.v1beta1.ResourceAnnotationResponse>;
+    /**
+     * Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
+     */
+    public readonly textAnnotation!: pulumi.Output<outputs.healthcare.v1beta1.SensitiveTextAnnotationResponse>;
 
     /**
      * Create a DatasetAnnotationStoreAnnotation resource with the given unique name, arguments, and options.
@@ -74,6 +98,12 @@ export class DatasetAnnotationStoreAnnotation extends pulumi.CustomResource {
             inputs["resourceAnnotation"] = args ? args.resourceAnnotation : undefined;
             inputs["textAnnotation"] = args ? args.textAnnotation : undefined;
         } else {
+            inputs["annotationSource"] = undefined /*out*/;
+            inputs["customData"] = undefined /*out*/;
+            inputs["imageAnnotation"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["resourceAnnotation"] = undefined /*out*/;
+            inputs["textAnnotation"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

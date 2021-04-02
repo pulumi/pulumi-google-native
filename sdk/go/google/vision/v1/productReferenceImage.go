@@ -14,6 +14,13 @@ import (
 // Creates and returns a new ReferenceImage resource. The `bounding_poly` field is optional. If `bounding_poly` is not specified, the system will try to detect regions of interest in the image that are compatible with the product_category on the parent product. If it is specified, detection is ALWAYS skipped. The system converts polygons into non-rotated rectangles. Note that the pipeline will resize the image if the image resolution is too large to process (above 50MP). Possible errors: * Returns INVALID_ARGUMENT if the image_uri is missing or longer than 4096 characters. * Returns INVALID_ARGUMENT if the product does not exist. * Returns INVALID_ARGUMENT if bounding_poly is not provided, and nothing compatible with the parent product's product_category is detected. * Returns INVALID_ARGUMENT if bounding_poly contains more than 10 polygons.
 type ProductReferenceImage struct {
 	pulumi.CustomResourceState
+
+	// Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
+	BoundingPolys BoundingPolyResponseArrayOutput `pulumi:"boundingPolys"`
+	// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+	Uri pulumi.StringOutput `pulumi:"uri"`
 }
 
 // NewProductReferenceImage registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +64,21 @@ func GetProductReferenceImage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProductReferenceImage resources.
 type productReferenceImageState struct {
+	// Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
+	BoundingPolys []BoundingPolyResponse `pulumi:"boundingPolys"`
+	// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
+	Name *string `pulumi:"name"`
+	// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+	Uri *string `pulumi:"uri"`
 }
 
 type ProductReferenceImageState struct {
+	// Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
+	BoundingPolys BoundingPolyResponseArrayInput
+	// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
+	Name pulumi.StringPtrInput
+	// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+	Uri pulumi.StringPtrInput
 }
 
 func (ProductReferenceImageState) ElementType() reflect.Type {

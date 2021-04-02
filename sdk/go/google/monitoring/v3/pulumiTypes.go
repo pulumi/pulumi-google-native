@@ -137,6 +137,133 @@ func (o AggregationArrayOutput) Index(i pulumi.IntInput) AggregationOutput {
 	}).(AggregationOutput)
 }
 
+// Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).
+type AggregationResponse struct {
+	// The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 104 weeks (2 years) for charts, and 90,000 seconds (25 hours) for alerting policies.
+	AlignmentPeriod string `pulumi:"alignmentPeriod"`
+	// The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+	CrossSeriesReducer string `pulumi:"crossSeriesReducer"`
+	// The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored.
+	GroupByFields []string `pulumi:"groupByFields"`
+	// An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
+	PerSeriesAligner string `pulumi:"perSeriesAligner"`
+}
+
+// AggregationResponseInput is an input type that accepts AggregationResponseArgs and AggregationResponseOutput values.
+// You can construct a concrete instance of `AggregationResponseInput` via:
+//
+//          AggregationResponseArgs{...}
+type AggregationResponseInput interface {
+	pulumi.Input
+
+	ToAggregationResponseOutput() AggregationResponseOutput
+	ToAggregationResponseOutputWithContext(context.Context) AggregationResponseOutput
+}
+
+// Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).
+type AggregationResponseArgs struct {
+	// The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 104 weeks (2 years) for charts, and 90,000 seconds (25 hours) for alerting policies.
+	AlignmentPeriod pulumi.StringInput `pulumi:"alignmentPeriod"`
+	// The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+	CrossSeriesReducer pulumi.StringInput `pulumi:"crossSeriesReducer"`
+	// The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored.
+	GroupByFields pulumi.StringArrayInput `pulumi:"groupByFields"`
+	// An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
+	PerSeriesAligner pulumi.StringInput `pulumi:"perSeriesAligner"`
+}
+
+func (AggregationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationResponse)(nil)).Elem()
+}
+
+func (i AggregationResponseArgs) ToAggregationResponseOutput() AggregationResponseOutput {
+	return i.ToAggregationResponseOutputWithContext(context.Background())
+}
+
+func (i AggregationResponseArgs) ToAggregationResponseOutputWithContext(ctx context.Context) AggregationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationResponseOutput)
+}
+
+// AggregationResponseArrayInput is an input type that accepts AggregationResponseArray and AggregationResponseArrayOutput values.
+// You can construct a concrete instance of `AggregationResponseArrayInput` via:
+//
+//          AggregationResponseArray{ AggregationResponseArgs{...} }
+type AggregationResponseArrayInput interface {
+	pulumi.Input
+
+	ToAggregationResponseArrayOutput() AggregationResponseArrayOutput
+	ToAggregationResponseArrayOutputWithContext(context.Context) AggregationResponseArrayOutput
+}
+
+type AggregationResponseArray []AggregationResponseInput
+
+func (AggregationResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AggregationResponse)(nil)).Elem()
+}
+
+func (i AggregationResponseArray) ToAggregationResponseArrayOutput() AggregationResponseArrayOutput {
+	return i.ToAggregationResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AggregationResponseArray) ToAggregationResponseArrayOutputWithContext(ctx context.Context) AggregationResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationResponseArrayOutput)
+}
+
+// Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).
+type AggregationResponseOutput struct{ *pulumi.OutputState }
+
+func (AggregationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationResponse)(nil)).Elem()
+}
+
+func (o AggregationResponseOutput) ToAggregationResponseOutput() AggregationResponseOutput {
+	return o
+}
+
+func (o AggregationResponseOutput) ToAggregationResponseOutputWithContext(ctx context.Context) AggregationResponseOutput {
+	return o
+}
+
+// The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 104 weeks (2 years) for charts, and 90,000 seconds (25 hours) for alerting policies.
+func (o AggregationResponseOutput) AlignmentPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v AggregationResponse) string { return v.AlignmentPeriod }).(pulumi.StringOutput)
+}
+
+// The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+func (o AggregationResponseOutput) CrossSeriesReducer() pulumi.StringOutput {
+	return o.ApplyT(func(v AggregationResponse) string { return v.CrossSeriesReducer }).(pulumi.StringOutput)
+}
+
+// The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored.
+func (o AggregationResponseOutput) GroupByFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AggregationResponse) []string { return v.GroupByFields }).(pulumi.StringArrayOutput)
+}
+
+// An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
+func (o AggregationResponseOutput) PerSeriesAligner() pulumi.StringOutput {
+	return o.ApplyT(func(v AggregationResponse) string { return v.PerSeriesAligner }).(pulumi.StringOutput)
+}
+
+type AggregationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AggregationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AggregationResponse)(nil)).Elem()
+}
+
+func (o AggregationResponseArrayOutput) ToAggregationResponseArrayOutput() AggregationResponseArrayOutput {
+	return o
+}
+
+func (o AggregationResponseArrayOutput) ToAggregationResponseArrayOutputWithContext(ctx context.Context) AggregationResponseArrayOutput {
+	return o
+}
+
+func (o AggregationResponseArrayOutput) Index(i pulumi.IntInput) AggregationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AggregationResponse {
+		return vs[0].([]AggregationResponse)[vs[1].(int)]
+	}).(AggregationResponseOutput)
+}
+
 // App Engine service. Learn more at https://cloud.google.com/appengine.
 type AppEngine struct {
 	// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
@@ -271,6 +398,140 @@ func (o AppEnginePtrOutput) ModuleId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// App Engine service. Learn more at https://cloud.google.com/appengine.
+type AppEngineResponse struct {
+	// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+	ModuleId string `pulumi:"moduleId"`
+}
+
+// AppEngineResponseInput is an input type that accepts AppEngineResponseArgs and AppEngineResponseOutput values.
+// You can construct a concrete instance of `AppEngineResponseInput` via:
+//
+//          AppEngineResponseArgs{...}
+type AppEngineResponseInput interface {
+	pulumi.Input
+
+	ToAppEngineResponseOutput() AppEngineResponseOutput
+	ToAppEngineResponseOutputWithContext(context.Context) AppEngineResponseOutput
+}
+
+// App Engine service. Learn more at https://cloud.google.com/appengine.
+type AppEngineResponseArgs struct {
+	// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+	ModuleId pulumi.StringInput `pulumi:"moduleId"`
+}
+
+func (AppEngineResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEngineResponse)(nil)).Elem()
+}
+
+func (i AppEngineResponseArgs) ToAppEngineResponseOutput() AppEngineResponseOutput {
+	return i.ToAppEngineResponseOutputWithContext(context.Background())
+}
+
+func (i AppEngineResponseArgs) ToAppEngineResponseOutputWithContext(ctx context.Context) AppEngineResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineResponseOutput)
+}
+
+func (i AppEngineResponseArgs) ToAppEngineResponsePtrOutput() AppEngineResponsePtrOutput {
+	return i.ToAppEngineResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AppEngineResponseArgs) ToAppEngineResponsePtrOutputWithContext(ctx context.Context) AppEngineResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineResponseOutput).ToAppEngineResponsePtrOutputWithContext(ctx)
+}
+
+// AppEngineResponsePtrInput is an input type that accepts AppEngineResponseArgs, AppEngineResponsePtr and AppEngineResponsePtrOutput values.
+// You can construct a concrete instance of `AppEngineResponsePtrInput` via:
+//
+//          AppEngineResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AppEngineResponsePtrInput interface {
+	pulumi.Input
+
+	ToAppEngineResponsePtrOutput() AppEngineResponsePtrOutput
+	ToAppEngineResponsePtrOutputWithContext(context.Context) AppEngineResponsePtrOutput
+}
+
+type appEngineResponsePtrType AppEngineResponseArgs
+
+func AppEngineResponsePtr(v *AppEngineResponseArgs) AppEngineResponsePtrInput {
+	return (*appEngineResponsePtrType)(v)
+}
+
+func (*appEngineResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppEngineResponse)(nil)).Elem()
+}
+
+func (i *appEngineResponsePtrType) ToAppEngineResponsePtrOutput() AppEngineResponsePtrOutput {
+	return i.ToAppEngineResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *appEngineResponsePtrType) ToAppEngineResponsePtrOutputWithContext(ctx context.Context) AppEngineResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineResponsePtrOutput)
+}
+
+// App Engine service. Learn more at https://cloud.google.com/appengine.
+type AppEngineResponseOutput struct{ *pulumi.OutputState }
+
+func (AppEngineResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEngineResponse)(nil)).Elem()
+}
+
+func (o AppEngineResponseOutput) ToAppEngineResponseOutput() AppEngineResponseOutput {
+	return o
+}
+
+func (o AppEngineResponseOutput) ToAppEngineResponseOutputWithContext(ctx context.Context) AppEngineResponseOutput {
+	return o
+}
+
+func (o AppEngineResponseOutput) ToAppEngineResponsePtrOutput() AppEngineResponsePtrOutput {
+	return o.ToAppEngineResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AppEngineResponseOutput) ToAppEngineResponsePtrOutputWithContext(ctx context.Context) AppEngineResponsePtrOutput {
+	return o.ApplyT(func(v AppEngineResponse) *AppEngineResponse {
+		return &v
+	}).(AppEngineResponsePtrOutput)
+}
+
+// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+func (o AppEngineResponseOutput) ModuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v AppEngineResponse) string { return v.ModuleId }).(pulumi.StringOutput)
+}
+
+type AppEngineResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AppEngineResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppEngineResponse)(nil)).Elem()
+}
+
+func (o AppEngineResponsePtrOutput) ToAppEngineResponsePtrOutput() AppEngineResponsePtrOutput {
+	return o
+}
+
+func (o AppEngineResponsePtrOutput) ToAppEngineResponsePtrOutputWithContext(ctx context.Context) AppEngineResponsePtrOutput {
+	return o
+}
+
+func (o AppEngineResponsePtrOutput) Elem() AppEngineResponseOutput {
+	return o.ApplyT(func(v *AppEngineResponse) AppEngineResponse { return *v }).(AppEngineResponseOutput)
+}
+
+// The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource: https://cloud.google.com/monitoring/api/resources#tag_gae_app
+func (o AppEngineResponsePtrOutput) ModuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppEngineResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ModuleId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Future parameters for the availability SLI.
 type AvailabilityCriteria struct {
 }
@@ -384,6 +645,121 @@ func (o AvailabilityCriteriaPtrOutput) ToAvailabilityCriteriaPtrOutputWithContex
 
 func (o AvailabilityCriteriaPtrOutput) Elem() AvailabilityCriteriaOutput {
 	return o.ApplyT(func(v *AvailabilityCriteria) AvailabilityCriteria { return *v }).(AvailabilityCriteriaOutput)
+}
+
+// Future parameters for the availability SLI.
+type AvailabilityCriteriaResponse struct {
+}
+
+// AvailabilityCriteriaResponseInput is an input type that accepts AvailabilityCriteriaResponseArgs and AvailabilityCriteriaResponseOutput values.
+// You can construct a concrete instance of `AvailabilityCriteriaResponseInput` via:
+//
+//          AvailabilityCriteriaResponseArgs{...}
+type AvailabilityCriteriaResponseInput interface {
+	pulumi.Input
+
+	ToAvailabilityCriteriaResponseOutput() AvailabilityCriteriaResponseOutput
+	ToAvailabilityCriteriaResponseOutputWithContext(context.Context) AvailabilityCriteriaResponseOutput
+}
+
+// Future parameters for the availability SLI.
+type AvailabilityCriteriaResponseArgs struct {
+}
+
+func (AvailabilityCriteriaResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilityCriteriaResponse)(nil)).Elem()
+}
+
+func (i AvailabilityCriteriaResponseArgs) ToAvailabilityCriteriaResponseOutput() AvailabilityCriteriaResponseOutput {
+	return i.ToAvailabilityCriteriaResponseOutputWithContext(context.Background())
+}
+
+func (i AvailabilityCriteriaResponseArgs) ToAvailabilityCriteriaResponseOutputWithContext(ctx context.Context) AvailabilityCriteriaResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityCriteriaResponseOutput)
+}
+
+func (i AvailabilityCriteriaResponseArgs) ToAvailabilityCriteriaResponsePtrOutput() AvailabilityCriteriaResponsePtrOutput {
+	return i.ToAvailabilityCriteriaResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AvailabilityCriteriaResponseArgs) ToAvailabilityCriteriaResponsePtrOutputWithContext(ctx context.Context) AvailabilityCriteriaResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityCriteriaResponseOutput).ToAvailabilityCriteriaResponsePtrOutputWithContext(ctx)
+}
+
+// AvailabilityCriteriaResponsePtrInput is an input type that accepts AvailabilityCriteriaResponseArgs, AvailabilityCriteriaResponsePtr and AvailabilityCriteriaResponsePtrOutput values.
+// You can construct a concrete instance of `AvailabilityCriteriaResponsePtrInput` via:
+//
+//          AvailabilityCriteriaResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AvailabilityCriteriaResponsePtrInput interface {
+	pulumi.Input
+
+	ToAvailabilityCriteriaResponsePtrOutput() AvailabilityCriteriaResponsePtrOutput
+	ToAvailabilityCriteriaResponsePtrOutputWithContext(context.Context) AvailabilityCriteriaResponsePtrOutput
+}
+
+type availabilityCriteriaResponsePtrType AvailabilityCriteriaResponseArgs
+
+func AvailabilityCriteriaResponsePtr(v *AvailabilityCriteriaResponseArgs) AvailabilityCriteriaResponsePtrInput {
+	return (*availabilityCriteriaResponsePtrType)(v)
+}
+
+func (*availabilityCriteriaResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityCriteriaResponse)(nil)).Elem()
+}
+
+func (i *availabilityCriteriaResponsePtrType) ToAvailabilityCriteriaResponsePtrOutput() AvailabilityCriteriaResponsePtrOutput {
+	return i.ToAvailabilityCriteriaResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *availabilityCriteriaResponsePtrType) ToAvailabilityCriteriaResponsePtrOutputWithContext(ctx context.Context) AvailabilityCriteriaResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityCriteriaResponsePtrOutput)
+}
+
+// Future parameters for the availability SLI.
+type AvailabilityCriteriaResponseOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityCriteriaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilityCriteriaResponse)(nil)).Elem()
+}
+
+func (o AvailabilityCriteriaResponseOutput) ToAvailabilityCriteriaResponseOutput() AvailabilityCriteriaResponseOutput {
+	return o
+}
+
+func (o AvailabilityCriteriaResponseOutput) ToAvailabilityCriteriaResponseOutputWithContext(ctx context.Context) AvailabilityCriteriaResponseOutput {
+	return o
+}
+
+func (o AvailabilityCriteriaResponseOutput) ToAvailabilityCriteriaResponsePtrOutput() AvailabilityCriteriaResponsePtrOutput {
+	return o.ToAvailabilityCriteriaResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AvailabilityCriteriaResponseOutput) ToAvailabilityCriteriaResponsePtrOutputWithContext(ctx context.Context) AvailabilityCriteriaResponsePtrOutput {
+	return o.ApplyT(func(v AvailabilityCriteriaResponse) *AvailabilityCriteriaResponse {
+		return &v
+	}).(AvailabilityCriteriaResponsePtrOutput)
+}
+
+type AvailabilityCriteriaResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityCriteriaResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityCriteriaResponse)(nil)).Elem()
+}
+
+func (o AvailabilityCriteriaResponsePtrOutput) ToAvailabilityCriteriaResponsePtrOutput() AvailabilityCriteriaResponsePtrOutput {
+	return o
+}
+
+func (o AvailabilityCriteriaResponsePtrOutput) ToAvailabilityCriteriaResponsePtrOutputWithContext(ctx context.Context) AvailabilityCriteriaResponsePtrOutput {
+	return o
+}
+
+func (o AvailabilityCriteriaResponsePtrOutput) Elem() AvailabilityCriteriaResponseOutput {
+	return o.ApplyT(func(v *AvailabilityCriteriaResponse) AvailabilityCriteriaResponse { return *v }).(AvailabilityCriteriaResponseOutput)
 }
 
 // The authentication parameters to provide to the specified resource or URL that requires a username and password. Currently, only Basic HTTP authentication (https://tools.ietf.org/html/rfc7617) is supported in Uptime checks.
@@ -536,6 +912,159 @@ func (o BasicAuthenticationPtrOutput) Username() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication parameters to provide to the specified resource or URL that requires a username and password. Currently, only Basic HTTP authentication (https://tools.ietf.org/html/rfc7617) is supported in Uptime checks.
+type BasicAuthenticationResponse struct {
+	// The password to use when authenticating with the HTTP server.
+	Password string `pulumi:"password"`
+	// The username to use when authenticating with the HTTP server.
+	Username string `pulumi:"username"`
+}
+
+// BasicAuthenticationResponseInput is an input type that accepts BasicAuthenticationResponseArgs and BasicAuthenticationResponseOutput values.
+// You can construct a concrete instance of `BasicAuthenticationResponseInput` via:
+//
+//          BasicAuthenticationResponseArgs{...}
+type BasicAuthenticationResponseInput interface {
+	pulumi.Input
+
+	ToBasicAuthenticationResponseOutput() BasicAuthenticationResponseOutput
+	ToBasicAuthenticationResponseOutputWithContext(context.Context) BasicAuthenticationResponseOutput
+}
+
+// The authentication parameters to provide to the specified resource or URL that requires a username and password. Currently, only Basic HTTP authentication (https://tools.ietf.org/html/rfc7617) is supported in Uptime checks.
+type BasicAuthenticationResponseArgs struct {
+	// The password to use when authenticating with the HTTP server.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The username to use when authenticating with the HTTP server.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (BasicAuthenticationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicAuthenticationResponse)(nil)).Elem()
+}
+
+func (i BasicAuthenticationResponseArgs) ToBasicAuthenticationResponseOutput() BasicAuthenticationResponseOutput {
+	return i.ToBasicAuthenticationResponseOutputWithContext(context.Background())
+}
+
+func (i BasicAuthenticationResponseArgs) ToBasicAuthenticationResponseOutputWithContext(ctx context.Context) BasicAuthenticationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicAuthenticationResponseOutput)
+}
+
+func (i BasicAuthenticationResponseArgs) ToBasicAuthenticationResponsePtrOutput() BasicAuthenticationResponsePtrOutput {
+	return i.ToBasicAuthenticationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BasicAuthenticationResponseArgs) ToBasicAuthenticationResponsePtrOutputWithContext(ctx context.Context) BasicAuthenticationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicAuthenticationResponseOutput).ToBasicAuthenticationResponsePtrOutputWithContext(ctx)
+}
+
+// BasicAuthenticationResponsePtrInput is an input type that accepts BasicAuthenticationResponseArgs, BasicAuthenticationResponsePtr and BasicAuthenticationResponsePtrOutput values.
+// You can construct a concrete instance of `BasicAuthenticationResponsePtrInput` via:
+//
+//          BasicAuthenticationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BasicAuthenticationResponsePtrInput interface {
+	pulumi.Input
+
+	ToBasicAuthenticationResponsePtrOutput() BasicAuthenticationResponsePtrOutput
+	ToBasicAuthenticationResponsePtrOutputWithContext(context.Context) BasicAuthenticationResponsePtrOutput
+}
+
+type basicAuthenticationResponsePtrType BasicAuthenticationResponseArgs
+
+func BasicAuthenticationResponsePtr(v *BasicAuthenticationResponseArgs) BasicAuthenticationResponsePtrInput {
+	return (*basicAuthenticationResponsePtrType)(v)
+}
+
+func (*basicAuthenticationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasicAuthenticationResponse)(nil)).Elem()
+}
+
+func (i *basicAuthenticationResponsePtrType) ToBasicAuthenticationResponsePtrOutput() BasicAuthenticationResponsePtrOutput {
+	return i.ToBasicAuthenticationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *basicAuthenticationResponsePtrType) ToBasicAuthenticationResponsePtrOutputWithContext(ctx context.Context) BasicAuthenticationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicAuthenticationResponsePtrOutput)
+}
+
+// The authentication parameters to provide to the specified resource or URL that requires a username and password. Currently, only Basic HTTP authentication (https://tools.ietf.org/html/rfc7617) is supported in Uptime checks.
+type BasicAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (BasicAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicAuthenticationResponse)(nil)).Elem()
+}
+
+func (o BasicAuthenticationResponseOutput) ToBasicAuthenticationResponseOutput() BasicAuthenticationResponseOutput {
+	return o
+}
+
+func (o BasicAuthenticationResponseOutput) ToBasicAuthenticationResponseOutputWithContext(ctx context.Context) BasicAuthenticationResponseOutput {
+	return o
+}
+
+func (o BasicAuthenticationResponseOutput) ToBasicAuthenticationResponsePtrOutput() BasicAuthenticationResponsePtrOutput {
+	return o.ToBasicAuthenticationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BasicAuthenticationResponseOutput) ToBasicAuthenticationResponsePtrOutputWithContext(ctx context.Context) BasicAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v BasicAuthenticationResponse) *BasicAuthenticationResponse {
+		return &v
+	}).(BasicAuthenticationResponsePtrOutput)
+}
+
+// The password to use when authenticating with the HTTP server.
+func (o BasicAuthenticationResponseOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v BasicAuthenticationResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The username to use when authenticating with the HTTP server.
+func (o BasicAuthenticationResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v BasicAuthenticationResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type BasicAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BasicAuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasicAuthenticationResponse)(nil)).Elem()
+}
+
+func (o BasicAuthenticationResponsePtrOutput) ToBasicAuthenticationResponsePtrOutput() BasicAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o BasicAuthenticationResponsePtrOutput) ToBasicAuthenticationResponsePtrOutputWithContext(ctx context.Context) BasicAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o BasicAuthenticationResponsePtrOutput) Elem() BasicAuthenticationResponseOutput {
+	return o.ApplyT(func(v *BasicAuthenticationResponse) BasicAuthenticationResponse { return *v }).(BasicAuthenticationResponseOutput)
+}
+
+// The password to use when authenticating with the HTTP server.
+func (o BasicAuthenticationResponsePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BasicAuthenticationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username to use when authenticating with the HTTP server.
+func (o BasicAuthenticationResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BasicAuthenticationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -742,6 +1271,216 @@ func (o BasicSliPtrOutput) Method() pulumi.StringArrayOutput {
 // OPTIONAL: The set of API versions to which this SLI is relevant. Telemetry from other API versions will not be used to calculate performance for this SLI. If omitted, this SLI applies to all API versions. For service types that don't support breaking down by version, setting this field will result in an error.
 func (o BasicSliPtrOutput) Version() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BasicSli) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringArrayOutput)
+}
+
+// An SLI measuring performance on a well-known service type. Performance will be computed on the basis of pre-defined metrics. The type of the service_resource determines the metrics to use and the service_resource.labels and metric_labels are used to construct a monitoring filter to filter that metric down to just the data relevant to this service.
+type BasicSliResponse struct {
+	// Good service is defined to be the count of requests made to this service that return successfully.
+	Availability AvailabilityCriteriaResponse `pulumi:"availability"`
+	// Good service is defined to be the count of requests made to this service that are fast enough with respect to latency.threshold.
+	Latency LatencyCriteriaResponse `pulumi:"latency"`
+	// OPTIONAL: The set of locations to which this SLI is relevant. Telemetry from other locations will not be used to calculate performance for this SLI. If omitted, this SLI applies to all locations in which the Service has activity. For service types that don't support breaking down by location, setting this field will result in an error.
+	Location []string `pulumi:"location"`
+	// OPTIONAL: The set of RPCs to which this SLI is relevant. Telemetry from other methods will not be used to calculate performance for this SLI. If omitted, this SLI applies to all the Service's methods. For service types that don't support breaking down by method, setting this field will result in an error.
+	Method []string `pulumi:"method"`
+	// OPTIONAL: The set of API versions to which this SLI is relevant. Telemetry from other API versions will not be used to calculate performance for this SLI. If omitted, this SLI applies to all API versions. For service types that don't support breaking down by version, setting this field will result in an error.
+	Version []string `pulumi:"version"`
+}
+
+// BasicSliResponseInput is an input type that accepts BasicSliResponseArgs and BasicSliResponseOutput values.
+// You can construct a concrete instance of `BasicSliResponseInput` via:
+//
+//          BasicSliResponseArgs{...}
+type BasicSliResponseInput interface {
+	pulumi.Input
+
+	ToBasicSliResponseOutput() BasicSliResponseOutput
+	ToBasicSliResponseOutputWithContext(context.Context) BasicSliResponseOutput
+}
+
+// An SLI measuring performance on a well-known service type. Performance will be computed on the basis of pre-defined metrics. The type of the service_resource determines the metrics to use and the service_resource.labels and metric_labels are used to construct a monitoring filter to filter that metric down to just the data relevant to this service.
+type BasicSliResponseArgs struct {
+	// Good service is defined to be the count of requests made to this service that return successfully.
+	Availability AvailabilityCriteriaResponseInput `pulumi:"availability"`
+	// Good service is defined to be the count of requests made to this service that are fast enough with respect to latency.threshold.
+	Latency LatencyCriteriaResponseInput `pulumi:"latency"`
+	// OPTIONAL: The set of locations to which this SLI is relevant. Telemetry from other locations will not be used to calculate performance for this SLI. If omitted, this SLI applies to all locations in which the Service has activity. For service types that don't support breaking down by location, setting this field will result in an error.
+	Location pulumi.StringArrayInput `pulumi:"location"`
+	// OPTIONAL: The set of RPCs to which this SLI is relevant. Telemetry from other methods will not be used to calculate performance for this SLI. If omitted, this SLI applies to all the Service's methods. For service types that don't support breaking down by method, setting this field will result in an error.
+	Method pulumi.StringArrayInput `pulumi:"method"`
+	// OPTIONAL: The set of API versions to which this SLI is relevant. Telemetry from other API versions will not be used to calculate performance for this SLI. If omitted, this SLI applies to all API versions. For service types that don't support breaking down by version, setting this field will result in an error.
+	Version pulumi.StringArrayInput `pulumi:"version"`
+}
+
+func (BasicSliResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicSliResponse)(nil)).Elem()
+}
+
+func (i BasicSliResponseArgs) ToBasicSliResponseOutput() BasicSliResponseOutput {
+	return i.ToBasicSliResponseOutputWithContext(context.Background())
+}
+
+func (i BasicSliResponseArgs) ToBasicSliResponseOutputWithContext(ctx context.Context) BasicSliResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicSliResponseOutput)
+}
+
+func (i BasicSliResponseArgs) ToBasicSliResponsePtrOutput() BasicSliResponsePtrOutput {
+	return i.ToBasicSliResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BasicSliResponseArgs) ToBasicSliResponsePtrOutputWithContext(ctx context.Context) BasicSliResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicSliResponseOutput).ToBasicSliResponsePtrOutputWithContext(ctx)
+}
+
+// BasicSliResponsePtrInput is an input type that accepts BasicSliResponseArgs, BasicSliResponsePtr and BasicSliResponsePtrOutput values.
+// You can construct a concrete instance of `BasicSliResponsePtrInput` via:
+//
+//          BasicSliResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BasicSliResponsePtrInput interface {
+	pulumi.Input
+
+	ToBasicSliResponsePtrOutput() BasicSliResponsePtrOutput
+	ToBasicSliResponsePtrOutputWithContext(context.Context) BasicSliResponsePtrOutput
+}
+
+type basicSliResponsePtrType BasicSliResponseArgs
+
+func BasicSliResponsePtr(v *BasicSliResponseArgs) BasicSliResponsePtrInput {
+	return (*basicSliResponsePtrType)(v)
+}
+
+func (*basicSliResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasicSliResponse)(nil)).Elem()
+}
+
+func (i *basicSliResponsePtrType) ToBasicSliResponsePtrOutput() BasicSliResponsePtrOutput {
+	return i.ToBasicSliResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *basicSliResponsePtrType) ToBasicSliResponsePtrOutputWithContext(ctx context.Context) BasicSliResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicSliResponsePtrOutput)
+}
+
+// An SLI measuring performance on a well-known service type. Performance will be computed on the basis of pre-defined metrics. The type of the service_resource determines the metrics to use and the service_resource.labels and metric_labels are used to construct a monitoring filter to filter that metric down to just the data relevant to this service.
+type BasicSliResponseOutput struct{ *pulumi.OutputState }
+
+func (BasicSliResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicSliResponse)(nil)).Elem()
+}
+
+func (o BasicSliResponseOutput) ToBasicSliResponseOutput() BasicSliResponseOutput {
+	return o
+}
+
+func (o BasicSliResponseOutput) ToBasicSliResponseOutputWithContext(ctx context.Context) BasicSliResponseOutput {
+	return o
+}
+
+func (o BasicSliResponseOutput) ToBasicSliResponsePtrOutput() BasicSliResponsePtrOutput {
+	return o.ToBasicSliResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BasicSliResponseOutput) ToBasicSliResponsePtrOutputWithContext(ctx context.Context) BasicSliResponsePtrOutput {
+	return o.ApplyT(func(v BasicSliResponse) *BasicSliResponse {
+		return &v
+	}).(BasicSliResponsePtrOutput)
+}
+
+// Good service is defined to be the count of requests made to this service that return successfully.
+func (o BasicSliResponseOutput) Availability() AvailabilityCriteriaResponseOutput {
+	return o.ApplyT(func(v BasicSliResponse) AvailabilityCriteriaResponse { return v.Availability }).(AvailabilityCriteriaResponseOutput)
+}
+
+// Good service is defined to be the count of requests made to this service that are fast enough with respect to latency.threshold.
+func (o BasicSliResponseOutput) Latency() LatencyCriteriaResponseOutput {
+	return o.ApplyT(func(v BasicSliResponse) LatencyCriteriaResponse { return v.Latency }).(LatencyCriteriaResponseOutput)
+}
+
+// OPTIONAL: The set of locations to which this SLI is relevant. Telemetry from other locations will not be used to calculate performance for this SLI. If omitted, this SLI applies to all locations in which the Service has activity. For service types that don't support breaking down by location, setting this field will result in an error.
+func (o BasicSliResponseOutput) Location() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BasicSliResponse) []string { return v.Location }).(pulumi.StringArrayOutput)
+}
+
+// OPTIONAL: The set of RPCs to which this SLI is relevant. Telemetry from other methods will not be used to calculate performance for this SLI. If omitted, this SLI applies to all the Service's methods. For service types that don't support breaking down by method, setting this field will result in an error.
+func (o BasicSliResponseOutput) Method() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BasicSliResponse) []string { return v.Method }).(pulumi.StringArrayOutput)
+}
+
+// OPTIONAL: The set of API versions to which this SLI is relevant. Telemetry from other API versions will not be used to calculate performance for this SLI. If omitted, this SLI applies to all API versions. For service types that don't support breaking down by version, setting this field will result in an error.
+func (o BasicSliResponseOutput) Version() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BasicSliResponse) []string { return v.Version }).(pulumi.StringArrayOutput)
+}
+
+type BasicSliResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BasicSliResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasicSliResponse)(nil)).Elem()
+}
+
+func (o BasicSliResponsePtrOutput) ToBasicSliResponsePtrOutput() BasicSliResponsePtrOutput {
+	return o
+}
+
+func (o BasicSliResponsePtrOutput) ToBasicSliResponsePtrOutputWithContext(ctx context.Context) BasicSliResponsePtrOutput {
+	return o
+}
+
+func (o BasicSliResponsePtrOutput) Elem() BasicSliResponseOutput {
+	return o.ApplyT(func(v *BasicSliResponse) BasicSliResponse { return *v }).(BasicSliResponseOutput)
+}
+
+// Good service is defined to be the count of requests made to this service that return successfully.
+func (o BasicSliResponsePtrOutput) Availability() AvailabilityCriteriaResponsePtrOutput {
+	return o.ApplyT(func(v *BasicSliResponse) *AvailabilityCriteriaResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Availability
+	}).(AvailabilityCriteriaResponsePtrOutput)
+}
+
+// Good service is defined to be the count of requests made to this service that are fast enough with respect to latency.threshold.
+func (o BasicSliResponsePtrOutput) Latency() LatencyCriteriaResponsePtrOutput {
+	return o.ApplyT(func(v *BasicSliResponse) *LatencyCriteriaResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Latency
+	}).(LatencyCriteriaResponsePtrOutput)
+}
+
+// OPTIONAL: The set of locations to which this SLI is relevant. Telemetry from other locations will not be used to calculate performance for this SLI. If omitted, this SLI applies to all locations in which the Service has activity. For service types that don't support breaking down by location, setting this field will result in an error.
+func (o BasicSliResponsePtrOutput) Location() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BasicSliResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringArrayOutput)
+}
+
+// OPTIONAL: The set of RPCs to which this SLI is relevant. Telemetry from other methods will not be used to calculate performance for this SLI. If omitted, this SLI applies to all the Service's methods. For service types that don't support breaking down by method, setting this field will result in an error.
+func (o BasicSliResponsePtrOutput) Method() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BasicSliResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.StringArrayOutput)
+}
+
+// OPTIONAL: The set of API versions to which this SLI is relevant. Telemetry from other API versions will not be used to calculate performance for this SLI. If omitted, this SLI applies to all API versions. For service types that don't support breaking down by version, setting this field will result in an error.
+func (o BasicSliResponsePtrOutput) Version() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BasicSliResponse) []string {
 		if v == nil {
 			return nil
 		}
@@ -1055,6 +1794,140 @@ func (o CloudEndpointsPtrOutput) Service() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
+type CloudEndpointsResponse struct {
+	// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
+	Service string `pulumi:"service"`
+}
+
+// CloudEndpointsResponseInput is an input type that accepts CloudEndpointsResponseArgs and CloudEndpointsResponseOutput values.
+// You can construct a concrete instance of `CloudEndpointsResponseInput` via:
+//
+//          CloudEndpointsResponseArgs{...}
+type CloudEndpointsResponseInput interface {
+	pulumi.Input
+
+	ToCloudEndpointsResponseOutput() CloudEndpointsResponseOutput
+	ToCloudEndpointsResponseOutputWithContext(context.Context) CloudEndpointsResponseOutput
+}
+
+// Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
+type CloudEndpointsResponseArgs struct {
+	// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (CloudEndpointsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudEndpointsResponse)(nil)).Elem()
+}
+
+func (i CloudEndpointsResponseArgs) ToCloudEndpointsResponseOutput() CloudEndpointsResponseOutput {
+	return i.ToCloudEndpointsResponseOutputWithContext(context.Background())
+}
+
+func (i CloudEndpointsResponseArgs) ToCloudEndpointsResponseOutputWithContext(ctx context.Context) CloudEndpointsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudEndpointsResponseOutput)
+}
+
+func (i CloudEndpointsResponseArgs) ToCloudEndpointsResponsePtrOutput() CloudEndpointsResponsePtrOutput {
+	return i.ToCloudEndpointsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CloudEndpointsResponseArgs) ToCloudEndpointsResponsePtrOutputWithContext(ctx context.Context) CloudEndpointsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudEndpointsResponseOutput).ToCloudEndpointsResponsePtrOutputWithContext(ctx)
+}
+
+// CloudEndpointsResponsePtrInput is an input type that accepts CloudEndpointsResponseArgs, CloudEndpointsResponsePtr and CloudEndpointsResponsePtrOutput values.
+// You can construct a concrete instance of `CloudEndpointsResponsePtrInput` via:
+//
+//          CloudEndpointsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CloudEndpointsResponsePtrInput interface {
+	pulumi.Input
+
+	ToCloudEndpointsResponsePtrOutput() CloudEndpointsResponsePtrOutput
+	ToCloudEndpointsResponsePtrOutputWithContext(context.Context) CloudEndpointsResponsePtrOutput
+}
+
+type cloudEndpointsResponsePtrType CloudEndpointsResponseArgs
+
+func CloudEndpointsResponsePtr(v *CloudEndpointsResponseArgs) CloudEndpointsResponsePtrInput {
+	return (*cloudEndpointsResponsePtrType)(v)
+}
+
+func (*cloudEndpointsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudEndpointsResponse)(nil)).Elem()
+}
+
+func (i *cloudEndpointsResponsePtrType) ToCloudEndpointsResponsePtrOutput() CloudEndpointsResponsePtrOutput {
+	return i.ToCloudEndpointsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudEndpointsResponsePtrType) ToCloudEndpointsResponsePtrOutputWithContext(ctx context.Context) CloudEndpointsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudEndpointsResponsePtrOutput)
+}
+
+// Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
+type CloudEndpointsResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudEndpointsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudEndpointsResponse)(nil)).Elem()
+}
+
+func (o CloudEndpointsResponseOutput) ToCloudEndpointsResponseOutput() CloudEndpointsResponseOutput {
+	return o
+}
+
+func (o CloudEndpointsResponseOutput) ToCloudEndpointsResponseOutputWithContext(ctx context.Context) CloudEndpointsResponseOutput {
+	return o
+}
+
+func (o CloudEndpointsResponseOutput) ToCloudEndpointsResponsePtrOutput() CloudEndpointsResponsePtrOutput {
+	return o.ToCloudEndpointsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CloudEndpointsResponseOutput) ToCloudEndpointsResponsePtrOutputWithContext(ctx context.Context) CloudEndpointsResponsePtrOutput {
+	return o.ApplyT(func(v CloudEndpointsResponse) *CloudEndpointsResponse {
+		return &v
+	}).(CloudEndpointsResponsePtrOutput)
+}
+
+// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
+func (o CloudEndpointsResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudEndpointsResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type CloudEndpointsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudEndpointsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudEndpointsResponse)(nil)).Elem()
+}
+
+func (o CloudEndpointsResponsePtrOutput) ToCloudEndpointsResponsePtrOutput() CloudEndpointsResponsePtrOutput {
+	return o
+}
+
+func (o CloudEndpointsResponsePtrOutput) ToCloudEndpointsResponsePtrOutputWithContext(ctx context.Context) CloudEndpointsResponsePtrOutput {
+	return o
+}
+
+func (o CloudEndpointsResponsePtrOutput) Elem() CloudEndpointsResponseOutput {
+	return o.ApplyT(func(v *CloudEndpointsResponse) CloudEndpointsResponse { return *v }).(CloudEndpointsResponseOutput)
+}
+
+// The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource: https://cloud.google.com/monitoring/api/resources#tag_api
+func (o CloudEndpointsResponsePtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudEndpointsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
 // Istio service scoped to a single Kubernetes cluster. Learn more at https://istio.io. Clusters running OSS Istio will have their services ingested as this type.
 type ClusterIstio struct {
 	// The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the cluster_name resource label in k8s_cluster resources.
@@ -1243,6 +2116,197 @@ func (o ClusterIstioPtrOutput) ServiceNamespace() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ServiceNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Istio service scoped to a single Kubernetes cluster. Learn more at https://istio.io. Clusters running OSS Istio will have their services ingested as this type.
+type ClusterIstioResponse struct {
+	// The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the cluster_name resource label in k8s_cluster resources.
+	ClusterName string `pulumi:"clusterName"`
+	// The location of the Kubernetes cluster in which this Istio service is defined. Corresponds to the location resource label in k8s_cluster resources.
+	Location string `pulumi:"location"`
+	// The name of the Istio service underlying this service. Corresponds to the destination_service_name metric label in Istio metrics.
+	ServiceName string `pulumi:"serviceName"`
+	// The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics.
+	ServiceNamespace string `pulumi:"serviceNamespace"`
+}
+
+// ClusterIstioResponseInput is an input type that accepts ClusterIstioResponseArgs and ClusterIstioResponseOutput values.
+// You can construct a concrete instance of `ClusterIstioResponseInput` via:
+//
+//          ClusterIstioResponseArgs{...}
+type ClusterIstioResponseInput interface {
+	pulumi.Input
+
+	ToClusterIstioResponseOutput() ClusterIstioResponseOutput
+	ToClusterIstioResponseOutputWithContext(context.Context) ClusterIstioResponseOutput
+}
+
+// Istio service scoped to a single Kubernetes cluster. Learn more at https://istio.io. Clusters running OSS Istio will have their services ingested as this type.
+type ClusterIstioResponseArgs struct {
+	// The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the cluster_name resource label in k8s_cluster resources.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The location of the Kubernetes cluster in which this Istio service is defined. Corresponds to the location resource label in k8s_cluster resources.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The name of the Istio service underlying this service. Corresponds to the destination_service_name metric label in Istio metrics.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics.
+	ServiceNamespace pulumi.StringInput `pulumi:"serviceNamespace"`
+}
+
+func (ClusterIstioResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIstioResponse)(nil)).Elem()
+}
+
+func (i ClusterIstioResponseArgs) ToClusterIstioResponseOutput() ClusterIstioResponseOutput {
+	return i.ToClusterIstioResponseOutputWithContext(context.Background())
+}
+
+func (i ClusterIstioResponseArgs) ToClusterIstioResponseOutputWithContext(ctx context.Context) ClusterIstioResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIstioResponseOutput)
+}
+
+func (i ClusterIstioResponseArgs) ToClusterIstioResponsePtrOutput() ClusterIstioResponsePtrOutput {
+	return i.ToClusterIstioResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterIstioResponseArgs) ToClusterIstioResponsePtrOutputWithContext(ctx context.Context) ClusterIstioResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIstioResponseOutput).ToClusterIstioResponsePtrOutputWithContext(ctx)
+}
+
+// ClusterIstioResponsePtrInput is an input type that accepts ClusterIstioResponseArgs, ClusterIstioResponsePtr and ClusterIstioResponsePtrOutput values.
+// You can construct a concrete instance of `ClusterIstioResponsePtrInput` via:
+//
+//          ClusterIstioResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterIstioResponsePtrInput interface {
+	pulumi.Input
+
+	ToClusterIstioResponsePtrOutput() ClusterIstioResponsePtrOutput
+	ToClusterIstioResponsePtrOutputWithContext(context.Context) ClusterIstioResponsePtrOutput
+}
+
+type clusterIstioResponsePtrType ClusterIstioResponseArgs
+
+func ClusterIstioResponsePtr(v *ClusterIstioResponseArgs) ClusterIstioResponsePtrInput {
+	return (*clusterIstioResponsePtrType)(v)
+}
+
+func (*clusterIstioResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIstioResponse)(nil)).Elem()
+}
+
+func (i *clusterIstioResponsePtrType) ToClusterIstioResponsePtrOutput() ClusterIstioResponsePtrOutput {
+	return i.ToClusterIstioResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterIstioResponsePtrType) ToClusterIstioResponsePtrOutputWithContext(ctx context.Context) ClusterIstioResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIstioResponsePtrOutput)
+}
+
+// Istio service scoped to a single Kubernetes cluster. Learn more at https://istio.io. Clusters running OSS Istio will have their services ingested as this type.
+type ClusterIstioResponseOutput struct{ *pulumi.OutputState }
+
+func (ClusterIstioResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIstioResponse)(nil)).Elem()
+}
+
+func (o ClusterIstioResponseOutput) ToClusterIstioResponseOutput() ClusterIstioResponseOutput {
+	return o
+}
+
+func (o ClusterIstioResponseOutput) ToClusterIstioResponseOutputWithContext(ctx context.Context) ClusterIstioResponseOutput {
+	return o
+}
+
+func (o ClusterIstioResponseOutput) ToClusterIstioResponsePtrOutput() ClusterIstioResponsePtrOutput {
+	return o.ToClusterIstioResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterIstioResponseOutput) ToClusterIstioResponsePtrOutputWithContext(ctx context.Context) ClusterIstioResponsePtrOutput {
+	return o.ApplyT(func(v ClusterIstioResponse) *ClusterIstioResponse {
+		return &v
+	}).(ClusterIstioResponsePtrOutput)
+}
+
+// The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the cluster_name resource label in k8s_cluster resources.
+func (o ClusterIstioResponseOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterIstioResponse) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// The location of the Kubernetes cluster in which this Istio service is defined. Corresponds to the location resource label in k8s_cluster resources.
+func (o ClusterIstioResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterIstioResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the Istio service underlying this service. Corresponds to the destination_service_name metric label in Istio metrics.
+func (o ClusterIstioResponseOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterIstioResponse) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics.
+func (o ClusterIstioResponseOutput) ServiceNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterIstioResponse) string { return v.ServiceNamespace }).(pulumi.StringOutput)
+}
+
+type ClusterIstioResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterIstioResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIstioResponse)(nil)).Elem()
+}
+
+func (o ClusterIstioResponsePtrOutput) ToClusterIstioResponsePtrOutput() ClusterIstioResponsePtrOutput {
+	return o
+}
+
+func (o ClusterIstioResponsePtrOutput) ToClusterIstioResponsePtrOutputWithContext(ctx context.Context) ClusterIstioResponsePtrOutput {
+	return o
+}
+
+func (o ClusterIstioResponsePtrOutput) Elem() ClusterIstioResponseOutput {
+	return o.ApplyT(func(v *ClusterIstioResponse) ClusterIstioResponse { return *v }).(ClusterIstioResponseOutput)
+}
+
+// The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the cluster_name resource label in k8s_cluster resources.
+func (o ClusterIstioResponsePtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterIstioResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The location of the Kubernetes cluster in which this Istio service is defined. Corresponds to the location resource label in k8s_cluster resources.
+func (o ClusterIstioResponsePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterIstioResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Istio service underlying this service. Corresponds to the destination_service_name metric label in Istio metrics.
+func (o ClusterIstioResponsePtrOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterIstioResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics.
+func (o ClusterIstioResponsePtrOutput) ServiceNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterIstioResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceNamespace
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1663,6 +2727,144 @@ func (o ConditionArrayOutput) Index(i pulumi.IntInput) ConditionOutput {
 	}).(ConditionOutput)
 }
 
+// A condition is a true/false test that determines when an alerting policy should open an incident. If a condition evaluates to true, it signifies that something is wrong.
+type ConditionResponse struct {
+	// A condition that checks that a time series continues to receive new data points.
+	ConditionAbsent MetricAbsenceResponse `pulumi:"conditionAbsent"`
+	// A condition that uses the Monitoring Query Language to define alerts.
+	ConditionMonitoringQueryLanguage MonitoringQueryLanguageConditionResponse `pulumi:"conditionMonitoringQueryLanguage"`
+	// A condition that compares a time series against a threshold.
+	ConditionThreshold MetricThresholdResponse `pulumi:"conditionThreshold"`
+	// A short name or phrase used to identify the condition in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple conditions in the same policy.
+	DisplayName string `pulumi:"displayName"`
+	// Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
+	Name string `pulumi:"name"`
+}
+
+// ConditionResponseInput is an input type that accepts ConditionResponseArgs and ConditionResponseOutput values.
+// You can construct a concrete instance of `ConditionResponseInput` via:
+//
+//          ConditionResponseArgs{...}
+type ConditionResponseInput interface {
+	pulumi.Input
+
+	ToConditionResponseOutput() ConditionResponseOutput
+	ToConditionResponseOutputWithContext(context.Context) ConditionResponseOutput
+}
+
+// A condition is a true/false test that determines when an alerting policy should open an incident. If a condition evaluates to true, it signifies that something is wrong.
+type ConditionResponseArgs struct {
+	// A condition that checks that a time series continues to receive new data points.
+	ConditionAbsent MetricAbsenceResponseInput `pulumi:"conditionAbsent"`
+	// A condition that uses the Monitoring Query Language to define alerts.
+	ConditionMonitoringQueryLanguage MonitoringQueryLanguageConditionResponseInput `pulumi:"conditionMonitoringQueryLanguage"`
+	// A condition that compares a time series against a threshold.
+	ConditionThreshold MetricThresholdResponseInput `pulumi:"conditionThreshold"`
+	// A short name or phrase used to identify the condition in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple conditions in the same policy.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ConditionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionResponse)(nil)).Elem()
+}
+
+func (i ConditionResponseArgs) ToConditionResponseOutput() ConditionResponseOutput {
+	return i.ToConditionResponseOutputWithContext(context.Background())
+}
+
+func (i ConditionResponseArgs) ToConditionResponseOutputWithContext(ctx context.Context) ConditionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionResponseOutput)
+}
+
+// ConditionResponseArrayInput is an input type that accepts ConditionResponseArray and ConditionResponseArrayOutput values.
+// You can construct a concrete instance of `ConditionResponseArrayInput` via:
+//
+//          ConditionResponseArray{ ConditionResponseArgs{...} }
+type ConditionResponseArrayInput interface {
+	pulumi.Input
+
+	ToConditionResponseArrayOutput() ConditionResponseArrayOutput
+	ToConditionResponseArrayOutputWithContext(context.Context) ConditionResponseArrayOutput
+}
+
+type ConditionResponseArray []ConditionResponseInput
+
+func (ConditionResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionResponse)(nil)).Elem()
+}
+
+func (i ConditionResponseArray) ToConditionResponseArrayOutput() ConditionResponseArrayOutput {
+	return i.ToConditionResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ConditionResponseArray) ToConditionResponseArrayOutputWithContext(ctx context.Context) ConditionResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionResponseArrayOutput)
+}
+
+// A condition is a true/false test that determines when an alerting policy should open an incident. If a condition evaluates to true, it signifies that something is wrong.
+type ConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (ConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionResponse)(nil)).Elem()
+}
+
+func (o ConditionResponseOutput) ToConditionResponseOutput() ConditionResponseOutput {
+	return o
+}
+
+func (o ConditionResponseOutput) ToConditionResponseOutputWithContext(ctx context.Context) ConditionResponseOutput {
+	return o
+}
+
+// A condition that checks that a time series continues to receive new data points.
+func (o ConditionResponseOutput) ConditionAbsent() MetricAbsenceResponseOutput {
+	return o.ApplyT(func(v ConditionResponse) MetricAbsenceResponse { return v.ConditionAbsent }).(MetricAbsenceResponseOutput)
+}
+
+// A condition that uses the Monitoring Query Language to define alerts.
+func (o ConditionResponseOutput) ConditionMonitoringQueryLanguage() MonitoringQueryLanguageConditionResponseOutput {
+	return o.ApplyT(func(v ConditionResponse) MonitoringQueryLanguageConditionResponse {
+		return v.ConditionMonitoringQueryLanguage
+	}).(MonitoringQueryLanguageConditionResponseOutput)
+}
+
+// A condition that compares a time series against a threshold.
+func (o ConditionResponseOutput) ConditionThreshold() MetricThresholdResponseOutput {
+	return o.ApplyT(func(v ConditionResponse) MetricThresholdResponse { return v.ConditionThreshold }).(MetricThresholdResponseOutput)
+}
+
+// A short name or phrase used to identify the condition in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple conditions in the same policy.
+func (o ConditionResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v ConditionResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
+func (o ConditionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConditionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ConditionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConditionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionResponse)(nil)).Elem()
+}
+
+func (o ConditionResponseArrayOutput) ToConditionResponseArrayOutput() ConditionResponseArrayOutput {
+	return o
+}
+
+func (o ConditionResponseArrayOutput) ToConditionResponseArrayOutputWithContext(ctx context.Context) ConditionResponseArrayOutput {
+	return o
+}
+
+func (o ConditionResponseArrayOutput) Index(i pulumi.IntInput) ConditionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionResponse {
+		return vs[0].([]ConditionResponse)[vs[1].(int)]
+	}).(ConditionResponseOutput)
+}
+
 // Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching.
 type ContentMatcher struct {
 	// String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
@@ -1770,6 +2972,115 @@ func (o ContentMatcherArrayOutput) Index(i pulumi.IntInput) ContentMatcherOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContentMatcher {
 		return vs[0].([]ContentMatcher)[vs[1].(int)]
 	}).(ContentMatcherOutput)
+}
+
+// Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching.
+type ContentMatcherResponse struct {
+	// String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
+	Content string `pulumi:"content"`
+	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+	Matcher string `pulumi:"matcher"`
+}
+
+// ContentMatcherResponseInput is an input type that accepts ContentMatcherResponseArgs and ContentMatcherResponseOutput values.
+// You can construct a concrete instance of `ContentMatcherResponseInput` via:
+//
+//          ContentMatcherResponseArgs{...}
+type ContentMatcherResponseInput interface {
+	pulumi.Input
+
+	ToContentMatcherResponseOutput() ContentMatcherResponseOutput
+	ToContentMatcherResponseOutputWithContext(context.Context) ContentMatcherResponseOutput
+}
+
+// Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching.
+type ContentMatcherResponseArgs struct {
+	// String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+	Matcher pulumi.StringInput `pulumi:"matcher"`
+}
+
+func (ContentMatcherResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentMatcherResponse)(nil)).Elem()
+}
+
+func (i ContentMatcherResponseArgs) ToContentMatcherResponseOutput() ContentMatcherResponseOutput {
+	return i.ToContentMatcherResponseOutputWithContext(context.Background())
+}
+
+func (i ContentMatcherResponseArgs) ToContentMatcherResponseOutputWithContext(ctx context.Context) ContentMatcherResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentMatcherResponseOutput)
+}
+
+// ContentMatcherResponseArrayInput is an input type that accepts ContentMatcherResponseArray and ContentMatcherResponseArrayOutput values.
+// You can construct a concrete instance of `ContentMatcherResponseArrayInput` via:
+//
+//          ContentMatcherResponseArray{ ContentMatcherResponseArgs{...} }
+type ContentMatcherResponseArrayInput interface {
+	pulumi.Input
+
+	ToContentMatcherResponseArrayOutput() ContentMatcherResponseArrayOutput
+	ToContentMatcherResponseArrayOutputWithContext(context.Context) ContentMatcherResponseArrayOutput
+}
+
+type ContentMatcherResponseArray []ContentMatcherResponseInput
+
+func (ContentMatcherResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContentMatcherResponse)(nil)).Elem()
+}
+
+func (i ContentMatcherResponseArray) ToContentMatcherResponseArrayOutput() ContentMatcherResponseArrayOutput {
+	return i.ToContentMatcherResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ContentMatcherResponseArray) ToContentMatcherResponseArrayOutputWithContext(ctx context.Context) ContentMatcherResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentMatcherResponseArrayOutput)
+}
+
+// Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching.
+type ContentMatcherResponseOutput struct{ *pulumi.OutputState }
+
+func (ContentMatcherResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentMatcherResponse)(nil)).Elem()
+}
+
+func (o ContentMatcherResponseOutput) ToContentMatcherResponseOutput() ContentMatcherResponseOutput {
+	return o
+}
+
+func (o ContentMatcherResponseOutput) ToContentMatcherResponseOutputWithContext(ctx context.Context) ContentMatcherResponseOutput {
+	return o
+}
+
+// String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
+func (o ContentMatcherResponseOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentMatcherResponse) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
+func (o ContentMatcherResponseOutput) Matcher() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentMatcherResponse) string { return v.Matcher }).(pulumi.StringOutput)
+}
+
+type ContentMatcherResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ContentMatcherResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContentMatcherResponse)(nil)).Elem()
+}
+
+func (o ContentMatcherResponseArrayOutput) ToContentMatcherResponseArrayOutput() ContentMatcherResponseArrayOutput {
+	return o
+}
+
+func (o ContentMatcherResponseArrayOutput) ToContentMatcherResponseArrayOutputWithContext(ctx context.Context) ContentMatcherResponseArrayOutput {
+	return o
+}
+
+func (o ContentMatcherResponseArrayOutput) Index(i pulumi.IntInput) ContentMatcherResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContentMatcherResponse {
+		return vs[0].([]ContentMatcherResponse)[vs[1].(int)]
+	}).(ContentMatcherResponseOutput)
 }
 
 // Custom view of service telemetry. Currently a place-holder pending final design.
@@ -1885,6 +3196,121 @@ func (o CustomPtrOutput) ToCustomPtrOutputWithContext(ctx context.Context) Custo
 
 func (o CustomPtrOutput) Elem() CustomOutput {
 	return o.ApplyT(func(v *Custom) Custom { return *v }).(CustomOutput)
+}
+
+// Custom view of service telemetry. Currently a place-holder pending final design.
+type CustomResponse struct {
+}
+
+// CustomResponseInput is an input type that accepts CustomResponseArgs and CustomResponseOutput values.
+// You can construct a concrete instance of `CustomResponseInput` via:
+//
+//          CustomResponseArgs{...}
+type CustomResponseInput interface {
+	pulumi.Input
+
+	ToCustomResponseOutput() CustomResponseOutput
+	ToCustomResponseOutputWithContext(context.Context) CustomResponseOutput
+}
+
+// Custom view of service telemetry. Currently a place-holder pending final design.
+type CustomResponseArgs struct {
+}
+
+func (CustomResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomResponse)(nil)).Elem()
+}
+
+func (i CustomResponseArgs) ToCustomResponseOutput() CustomResponseOutput {
+	return i.ToCustomResponseOutputWithContext(context.Background())
+}
+
+func (i CustomResponseArgs) ToCustomResponseOutputWithContext(ctx context.Context) CustomResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResponseOutput)
+}
+
+func (i CustomResponseArgs) ToCustomResponsePtrOutput() CustomResponsePtrOutput {
+	return i.ToCustomResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CustomResponseArgs) ToCustomResponsePtrOutputWithContext(ctx context.Context) CustomResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResponseOutput).ToCustomResponsePtrOutputWithContext(ctx)
+}
+
+// CustomResponsePtrInput is an input type that accepts CustomResponseArgs, CustomResponsePtr and CustomResponsePtrOutput values.
+// You can construct a concrete instance of `CustomResponsePtrInput` via:
+//
+//          CustomResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomResponsePtrInput interface {
+	pulumi.Input
+
+	ToCustomResponsePtrOutput() CustomResponsePtrOutput
+	ToCustomResponsePtrOutputWithContext(context.Context) CustomResponsePtrOutput
+}
+
+type customResponsePtrType CustomResponseArgs
+
+func CustomResponsePtr(v *CustomResponseArgs) CustomResponsePtrInput {
+	return (*customResponsePtrType)(v)
+}
+
+func (*customResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResponse)(nil)).Elem()
+}
+
+func (i *customResponsePtrType) ToCustomResponsePtrOutput() CustomResponsePtrOutput {
+	return i.ToCustomResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *customResponsePtrType) ToCustomResponsePtrOutputWithContext(ctx context.Context) CustomResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomResponsePtrOutput)
+}
+
+// Custom view of service telemetry. Currently a place-holder pending final design.
+type CustomResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomResponse)(nil)).Elem()
+}
+
+func (o CustomResponseOutput) ToCustomResponseOutput() CustomResponseOutput {
+	return o
+}
+
+func (o CustomResponseOutput) ToCustomResponseOutputWithContext(ctx context.Context) CustomResponseOutput {
+	return o
+}
+
+func (o CustomResponseOutput) ToCustomResponsePtrOutput() CustomResponsePtrOutput {
+	return o.ToCustomResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CustomResponseOutput) ToCustomResponsePtrOutputWithContext(ctx context.Context) CustomResponsePtrOutput {
+	return o.ApplyT(func(v CustomResponse) *CustomResponse {
+		return &v
+	}).(CustomResponsePtrOutput)
+}
+
+type CustomResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomResponse)(nil)).Elem()
+}
+
+func (o CustomResponsePtrOutput) ToCustomResponsePtrOutput() CustomResponsePtrOutput {
+	return o
+}
+
+func (o CustomResponsePtrOutput) ToCustomResponsePtrOutputWithContext(ctx context.Context) CustomResponsePtrOutput {
+	return o
+}
+
+func (o CustomResponsePtrOutput) Elem() CustomResponseOutput {
+	return o.ApplyT(func(v *CustomResponse) CustomResponse { return *v }).(CustomResponseOutput)
 }
 
 // Distribution contains summary statistics for a population of values. It optionally contains a histogram representing the distribution of those values across a set of buckets.The summary statistics are the count, mean, sum of the squared deviation from the mean, the minimum, and the maximum of the set of population of values. The histogram is based on a sequence of buckets and gives a count of values that fall into each bucket. The boundaries of the buckets are given either explicitly or by formulas for buckets of fixed or exponentially increasing widths.Although it is not forbidden, it is generally a bad idea to include non-finite values (infinities or NaNs) in the population of values, as this will render the mean and sum_of_squared_deviation fields meaningless.
@@ -2288,6 +3714,159 @@ func (o DistributionCutPtrOutput) Range() GoogleMonitoringV3RangePtrOutput {
 	}).(GoogleMonitoringV3RangePtrOutput)
 }
 
+// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the count of values x in the Distribution such that range.min <= x < range.max.
+type DistributionCutResponse struct {
+	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
+	DistributionFilter string `pulumi:"distributionFilter"`
+	// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
+	Range GoogleMonitoringV3RangeResponse `pulumi:"range"`
+}
+
+// DistributionCutResponseInput is an input type that accepts DistributionCutResponseArgs and DistributionCutResponseOutput values.
+// You can construct a concrete instance of `DistributionCutResponseInput` via:
+//
+//          DistributionCutResponseArgs{...}
+type DistributionCutResponseInput interface {
+	pulumi.Input
+
+	ToDistributionCutResponseOutput() DistributionCutResponseOutput
+	ToDistributionCutResponseOutputWithContext(context.Context) DistributionCutResponseOutput
+}
+
+// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the count of values x in the Distribution such that range.min <= x < range.max.
+type DistributionCutResponseArgs struct {
+	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
+	DistributionFilter pulumi.StringInput `pulumi:"distributionFilter"`
+	// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
+	Range GoogleMonitoringV3RangeResponseInput `pulumi:"range"`
+}
+
+func (DistributionCutResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributionCutResponse)(nil)).Elem()
+}
+
+func (i DistributionCutResponseArgs) ToDistributionCutResponseOutput() DistributionCutResponseOutput {
+	return i.ToDistributionCutResponseOutputWithContext(context.Background())
+}
+
+func (i DistributionCutResponseArgs) ToDistributionCutResponseOutputWithContext(ctx context.Context) DistributionCutResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionCutResponseOutput)
+}
+
+func (i DistributionCutResponseArgs) ToDistributionCutResponsePtrOutput() DistributionCutResponsePtrOutput {
+	return i.ToDistributionCutResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DistributionCutResponseArgs) ToDistributionCutResponsePtrOutputWithContext(ctx context.Context) DistributionCutResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionCutResponseOutput).ToDistributionCutResponsePtrOutputWithContext(ctx)
+}
+
+// DistributionCutResponsePtrInput is an input type that accepts DistributionCutResponseArgs, DistributionCutResponsePtr and DistributionCutResponsePtrOutput values.
+// You can construct a concrete instance of `DistributionCutResponsePtrInput` via:
+//
+//          DistributionCutResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DistributionCutResponsePtrInput interface {
+	pulumi.Input
+
+	ToDistributionCutResponsePtrOutput() DistributionCutResponsePtrOutput
+	ToDistributionCutResponsePtrOutputWithContext(context.Context) DistributionCutResponsePtrOutput
+}
+
+type distributionCutResponsePtrType DistributionCutResponseArgs
+
+func DistributionCutResponsePtr(v *DistributionCutResponseArgs) DistributionCutResponsePtrInput {
+	return (*distributionCutResponsePtrType)(v)
+}
+
+func (*distributionCutResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DistributionCutResponse)(nil)).Elem()
+}
+
+func (i *distributionCutResponsePtrType) ToDistributionCutResponsePtrOutput() DistributionCutResponsePtrOutput {
+	return i.ToDistributionCutResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *distributionCutResponsePtrType) ToDistributionCutResponsePtrOutputWithContext(ctx context.Context) DistributionCutResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributionCutResponsePtrOutput)
+}
+
+// A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the count of values x in the Distribution such that range.min <= x < range.max.
+type DistributionCutResponseOutput struct{ *pulumi.OutputState }
+
+func (DistributionCutResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributionCutResponse)(nil)).Elem()
+}
+
+func (o DistributionCutResponseOutput) ToDistributionCutResponseOutput() DistributionCutResponseOutput {
+	return o
+}
+
+func (o DistributionCutResponseOutput) ToDistributionCutResponseOutputWithContext(ctx context.Context) DistributionCutResponseOutput {
+	return o
+}
+
+func (o DistributionCutResponseOutput) ToDistributionCutResponsePtrOutput() DistributionCutResponsePtrOutput {
+	return o.ToDistributionCutResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DistributionCutResponseOutput) ToDistributionCutResponsePtrOutputWithContext(ctx context.Context) DistributionCutResponsePtrOutput {
+	return o.ApplyT(func(v DistributionCutResponse) *DistributionCutResponse {
+		return &v
+	}).(DistributionCutResponsePtrOutput)
+}
+
+// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o DistributionCutResponseOutput) DistributionFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributionCutResponse) string { return v.DistributionFilter }).(pulumi.StringOutput)
+}
+
+// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
+func (o DistributionCutResponseOutput) Range() GoogleMonitoringV3RangeResponseOutput {
+	return o.ApplyT(func(v DistributionCutResponse) GoogleMonitoringV3RangeResponse { return v.Range }).(GoogleMonitoringV3RangeResponseOutput)
+}
+
+type DistributionCutResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DistributionCutResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DistributionCutResponse)(nil)).Elem()
+}
+
+func (o DistributionCutResponsePtrOutput) ToDistributionCutResponsePtrOutput() DistributionCutResponsePtrOutput {
+	return o
+}
+
+func (o DistributionCutResponsePtrOutput) ToDistributionCutResponsePtrOutputWithContext(ctx context.Context) DistributionCutResponsePtrOutput {
+	return o
+}
+
+func (o DistributionCutResponsePtrOutput) Elem() DistributionCutResponseOutput {
+	return o.ApplyT(func(v *DistributionCutResponse) DistributionCutResponse { return *v }).(DistributionCutResponseOutput)
+}
+
+// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o DistributionCutResponsePtrOutput) DistributionFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DistributionCutResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DistributionFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
+func (o DistributionCutResponsePtrOutput) Range() GoogleMonitoringV3RangeResponsePtrOutput {
+	return o.ApplyT(func(v *DistributionCutResponse) *GoogleMonitoringV3RangeResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Range
+	}).(GoogleMonitoringV3RangeResponsePtrOutput)
+}
+
 // A content string and a MIME type that describes the content string's format.
 type Documentation struct {
 	// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
@@ -2438,6 +4017,159 @@ func (o DocumentationPtrOutput) MimeType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.MimeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// A content string and a MIME type that describes the content string's format.
+type DocumentationResponse struct {
+	// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+	Content string `pulumi:"content"`
+	// The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
+	MimeType string `pulumi:"mimeType"`
+}
+
+// DocumentationResponseInput is an input type that accepts DocumentationResponseArgs and DocumentationResponseOutput values.
+// You can construct a concrete instance of `DocumentationResponseInput` via:
+//
+//          DocumentationResponseArgs{...}
+type DocumentationResponseInput interface {
+	pulumi.Input
+
+	ToDocumentationResponseOutput() DocumentationResponseOutput
+	ToDocumentationResponseOutputWithContext(context.Context) DocumentationResponseOutput
+}
+
+// A content string and a MIME type that describes the content string's format.
+type DocumentationResponseArgs struct {
+	// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
+	MimeType pulumi.StringInput `pulumi:"mimeType"`
+}
+
+func (DocumentationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentationResponse)(nil)).Elem()
+}
+
+func (i DocumentationResponseArgs) ToDocumentationResponseOutput() DocumentationResponseOutput {
+	return i.ToDocumentationResponseOutputWithContext(context.Background())
+}
+
+func (i DocumentationResponseArgs) ToDocumentationResponseOutputWithContext(ctx context.Context) DocumentationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationResponseOutput)
+}
+
+func (i DocumentationResponseArgs) ToDocumentationResponsePtrOutput() DocumentationResponsePtrOutput {
+	return i.ToDocumentationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DocumentationResponseArgs) ToDocumentationResponsePtrOutputWithContext(ctx context.Context) DocumentationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationResponseOutput).ToDocumentationResponsePtrOutputWithContext(ctx)
+}
+
+// DocumentationResponsePtrInput is an input type that accepts DocumentationResponseArgs, DocumentationResponsePtr and DocumentationResponsePtrOutput values.
+// You can construct a concrete instance of `DocumentationResponsePtrInput` via:
+//
+//          DocumentationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DocumentationResponsePtrInput interface {
+	pulumi.Input
+
+	ToDocumentationResponsePtrOutput() DocumentationResponsePtrOutput
+	ToDocumentationResponsePtrOutputWithContext(context.Context) DocumentationResponsePtrOutput
+}
+
+type documentationResponsePtrType DocumentationResponseArgs
+
+func DocumentationResponsePtr(v *DocumentationResponseArgs) DocumentationResponsePtrInput {
+	return (*documentationResponsePtrType)(v)
+}
+
+func (*documentationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DocumentationResponse)(nil)).Elem()
+}
+
+func (i *documentationResponsePtrType) ToDocumentationResponsePtrOutput() DocumentationResponsePtrOutput {
+	return i.ToDocumentationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *documentationResponsePtrType) ToDocumentationResponsePtrOutputWithContext(ctx context.Context) DocumentationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DocumentationResponsePtrOutput)
+}
+
+// A content string and a MIME type that describes the content string's format.
+type DocumentationResponseOutput struct{ *pulumi.OutputState }
+
+func (DocumentationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentationResponse)(nil)).Elem()
+}
+
+func (o DocumentationResponseOutput) ToDocumentationResponseOutput() DocumentationResponseOutput {
+	return o
+}
+
+func (o DocumentationResponseOutput) ToDocumentationResponseOutputWithContext(ctx context.Context) DocumentationResponseOutput {
+	return o
+}
+
+func (o DocumentationResponseOutput) ToDocumentationResponsePtrOutput() DocumentationResponsePtrOutput {
+	return o.ToDocumentationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DocumentationResponseOutput) ToDocumentationResponsePtrOutputWithContext(ctx context.Context) DocumentationResponsePtrOutput {
+	return o.ApplyT(func(v DocumentationResponse) *DocumentationResponse {
+		return &v
+	}).(DocumentationResponsePtrOutput)
+}
+
+// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+func (o DocumentationResponseOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentationResponse) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
+func (o DocumentationResponseOutput) MimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v DocumentationResponse) string { return v.MimeType }).(pulumi.StringOutput)
+}
+
+type DocumentationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DocumentationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DocumentationResponse)(nil)).Elem()
+}
+
+func (o DocumentationResponsePtrOutput) ToDocumentationResponsePtrOutput() DocumentationResponsePtrOutput {
+	return o
+}
+
+func (o DocumentationResponsePtrOutput) ToDocumentationResponsePtrOutputWithContext(ctx context.Context) DocumentationResponsePtrOutput {
+	return o
+}
+
+func (o DocumentationResponsePtrOutput) Elem() DocumentationResponseOutput {
+	return o.ApplyT(func(v *DocumentationResponse) DocumentationResponse { return *v }).(DocumentationResponseOutput)
+}
+
+// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
+func (o DocumentationResponsePtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DocumentationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
+func (o DocumentationResponsePtrOutput) MimeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DocumentationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MimeType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3018,6 +4750,159 @@ func (o GoogleMonitoringV3RangePtrOutput) Min() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Range of numerical values, inclusive of min and exclusive of max. If the open range "< range.max" is desired, set range.min = -infinity. If the open range ">= range.min" is desired, set range.max = infinity.
+type GoogleMonitoringV3RangeResponse struct {
+	// Range maximum.
+	Max float64 `pulumi:"max"`
+	// Range minimum.
+	Min float64 `pulumi:"min"`
+}
+
+// GoogleMonitoringV3RangeResponseInput is an input type that accepts GoogleMonitoringV3RangeResponseArgs and GoogleMonitoringV3RangeResponseOutput values.
+// You can construct a concrete instance of `GoogleMonitoringV3RangeResponseInput` via:
+//
+//          GoogleMonitoringV3RangeResponseArgs{...}
+type GoogleMonitoringV3RangeResponseInput interface {
+	pulumi.Input
+
+	ToGoogleMonitoringV3RangeResponseOutput() GoogleMonitoringV3RangeResponseOutput
+	ToGoogleMonitoringV3RangeResponseOutputWithContext(context.Context) GoogleMonitoringV3RangeResponseOutput
+}
+
+// Range of numerical values, inclusive of min and exclusive of max. If the open range "< range.max" is desired, set range.min = -infinity. If the open range ">= range.min" is desired, set range.max = infinity.
+type GoogleMonitoringV3RangeResponseArgs struct {
+	// Range maximum.
+	Max pulumi.Float64Input `pulumi:"max"`
+	// Range minimum.
+	Min pulumi.Float64Input `pulumi:"min"`
+}
+
+func (GoogleMonitoringV3RangeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleMonitoringV3RangeResponse)(nil)).Elem()
+}
+
+func (i GoogleMonitoringV3RangeResponseArgs) ToGoogleMonitoringV3RangeResponseOutput() GoogleMonitoringV3RangeResponseOutput {
+	return i.ToGoogleMonitoringV3RangeResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleMonitoringV3RangeResponseArgs) ToGoogleMonitoringV3RangeResponseOutputWithContext(ctx context.Context) GoogleMonitoringV3RangeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleMonitoringV3RangeResponseOutput)
+}
+
+func (i GoogleMonitoringV3RangeResponseArgs) ToGoogleMonitoringV3RangeResponsePtrOutput() GoogleMonitoringV3RangeResponsePtrOutput {
+	return i.ToGoogleMonitoringV3RangeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleMonitoringV3RangeResponseArgs) ToGoogleMonitoringV3RangeResponsePtrOutputWithContext(ctx context.Context) GoogleMonitoringV3RangeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleMonitoringV3RangeResponseOutput).ToGoogleMonitoringV3RangeResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleMonitoringV3RangeResponsePtrInput is an input type that accepts GoogleMonitoringV3RangeResponseArgs, GoogleMonitoringV3RangeResponsePtr and GoogleMonitoringV3RangeResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleMonitoringV3RangeResponsePtrInput` via:
+//
+//          GoogleMonitoringV3RangeResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleMonitoringV3RangeResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleMonitoringV3RangeResponsePtrOutput() GoogleMonitoringV3RangeResponsePtrOutput
+	ToGoogleMonitoringV3RangeResponsePtrOutputWithContext(context.Context) GoogleMonitoringV3RangeResponsePtrOutput
+}
+
+type googleMonitoringV3RangeResponsePtrType GoogleMonitoringV3RangeResponseArgs
+
+func GoogleMonitoringV3RangeResponsePtr(v *GoogleMonitoringV3RangeResponseArgs) GoogleMonitoringV3RangeResponsePtrInput {
+	return (*googleMonitoringV3RangeResponsePtrType)(v)
+}
+
+func (*googleMonitoringV3RangeResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleMonitoringV3RangeResponse)(nil)).Elem()
+}
+
+func (i *googleMonitoringV3RangeResponsePtrType) ToGoogleMonitoringV3RangeResponsePtrOutput() GoogleMonitoringV3RangeResponsePtrOutput {
+	return i.ToGoogleMonitoringV3RangeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleMonitoringV3RangeResponsePtrType) ToGoogleMonitoringV3RangeResponsePtrOutputWithContext(ctx context.Context) GoogleMonitoringV3RangeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleMonitoringV3RangeResponsePtrOutput)
+}
+
+// Range of numerical values, inclusive of min and exclusive of max. If the open range "< range.max" is desired, set range.min = -infinity. If the open range ">= range.min" is desired, set range.max = infinity.
+type GoogleMonitoringV3RangeResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleMonitoringV3RangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleMonitoringV3RangeResponse)(nil)).Elem()
+}
+
+func (o GoogleMonitoringV3RangeResponseOutput) ToGoogleMonitoringV3RangeResponseOutput() GoogleMonitoringV3RangeResponseOutput {
+	return o
+}
+
+func (o GoogleMonitoringV3RangeResponseOutput) ToGoogleMonitoringV3RangeResponseOutputWithContext(ctx context.Context) GoogleMonitoringV3RangeResponseOutput {
+	return o
+}
+
+func (o GoogleMonitoringV3RangeResponseOutput) ToGoogleMonitoringV3RangeResponsePtrOutput() GoogleMonitoringV3RangeResponsePtrOutput {
+	return o.ToGoogleMonitoringV3RangeResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleMonitoringV3RangeResponseOutput) ToGoogleMonitoringV3RangeResponsePtrOutputWithContext(ctx context.Context) GoogleMonitoringV3RangeResponsePtrOutput {
+	return o.ApplyT(func(v GoogleMonitoringV3RangeResponse) *GoogleMonitoringV3RangeResponse {
+		return &v
+	}).(GoogleMonitoringV3RangeResponsePtrOutput)
+}
+
+// Range maximum.
+func (o GoogleMonitoringV3RangeResponseOutput) Max() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleMonitoringV3RangeResponse) float64 { return v.Max }).(pulumi.Float64Output)
+}
+
+// Range minimum.
+func (o GoogleMonitoringV3RangeResponseOutput) Min() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleMonitoringV3RangeResponse) float64 { return v.Min }).(pulumi.Float64Output)
+}
+
+type GoogleMonitoringV3RangeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleMonitoringV3RangeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleMonitoringV3RangeResponse)(nil)).Elem()
+}
+
+func (o GoogleMonitoringV3RangeResponsePtrOutput) ToGoogleMonitoringV3RangeResponsePtrOutput() GoogleMonitoringV3RangeResponsePtrOutput {
+	return o
+}
+
+func (o GoogleMonitoringV3RangeResponsePtrOutput) ToGoogleMonitoringV3RangeResponsePtrOutputWithContext(ctx context.Context) GoogleMonitoringV3RangeResponsePtrOutput {
+	return o
+}
+
+func (o GoogleMonitoringV3RangeResponsePtrOutput) Elem() GoogleMonitoringV3RangeResponseOutput {
+	return o.ApplyT(func(v *GoogleMonitoringV3RangeResponse) GoogleMonitoringV3RangeResponse { return *v }).(GoogleMonitoringV3RangeResponseOutput)
+}
+
+// Range maximum.
+func (o GoogleMonitoringV3RangeResponsePtrOutput) Max() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleMonitoringV3RangeResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Range minimum.
+func (o GoogleMonitoringV3RangeResponsePtrOutput) Min() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleMonitoringV3RangeResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.Float64PtrOutput)
+}
+
 // Information involved in an HTTP/HTTPS Uptime check request.
 type HttpCheck struct {
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.
@@ -3323,6 +5208,311 @@ func (o HttpCheckPtrOutput) ValidateSsl() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Information involved in an HTTP/HTTPS Uptime check request.
+type HttpCheckResponse struct {
+	// The authentication information. Optional when creating an HTTP check; defaults to empty.
+	AuthInfo BasicAuthenticationResponse `pulumi:"authInfo"`
+	// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+	Body string `pulumi:"body"`
+	// The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
+	ContentType string `pulumi:"contentType"`
+	// The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
+	Headers map[string]string `pulumi:"headers"`
+	// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true then the headers will be obscured with ******.
+	MaskHeaders bool `pulumi:"maskHeaders"`
+	// Optional (defaults to "/"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically.
+	Path string `pulumi:"path"`
+	// Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL.
+	Port int `pulumi:"port"`
+	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
+	RequestMethod string `pulumi:"requestMethod"`
+	// If true, use HTTPS instead of HTTP to run the check.
+	UseSsl bool `pulumi:"useSsl"`
+	// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitored_resource is set to uptime_url. If use_ssl is false, setting validate_ssl to true has no effect.
+	ValidateSsl bool `pulumi:"validateSsl"`
+}
+
+// HttpCheckResponseInput is an input type that accepts HttpCheckResponseArgs and HttpCheckResponseOutput values.
+// You can construct a concrete instance of `HttpCheckResponseInput` via:
+//
+//          HttpCheckResponseArgs{...}
+type HttpCheckResponseInput interface {
+	pulumi.Input
+
+	ToHttpCheckResponseOutput() HttpCheckResponseOutput
+	ToHttpCheckResponseOutputWithContext(context.Context) HttpCheckResponseOutput
+}
+
+// Information involved in an HTTP/HTTPS Uptime check request.
+type HttpCheckResponseArgs struct {
+	// The authentication information. Optional when creating an HTTP check; defaults to empty.
+	AuthInfo BasicAuthenticationResponseInput `pulumi:"authInfo"`
+	// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+	Body pulumi.StringInput `pulumi:"body"`
+	// The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
+	ContentType pulumi.StringInput `pulumi:"contentType"`
+	// The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
+	Headers pulumi.StringMapInput `pulumi:"headers"`
+	// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true then the headers will be obscured with ******.
+	MaskHeaders pulumi.BoolInput `pulumi:"maskHeaders"`
+	// Optional (defaults to "/"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
+	RequestMethod pulumi.StringInput `pulumi:"requestMethod"`
+	// If true, use HTTPS instead of HTTP to run the check.
+	UseSsl pulumi.BoolInput `pulumi:"useSsl"`
+	// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitored_resource is set to uptime_url. If use_ssl is false, setting validate_ssl to true has no effect.
+	ValidateSsl pulumi.BoolInput `pulumi:"validateSsl"`
+}
+
+func (HttpCheckResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpCheckResponse)(nil)).Elem()
+}
+
+func (i HttpCheckResponseArgs) ToHttpCheckResponseOutput() HttpCheckResponseOutput {
+	return i.ToHttpCheckResponseOutputWithContext(context.Background())
+}
+
+func (i HttpCheckResponseArgs) ToHttpCheckResponseOutputWithContext(ctx context.Context) HttpCheckResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpCheckResponseOutput)
+}
+
+func (i HttpCheckResponseArgs) ToHttpCheckResponsePtrOutput() HttpCheckResponsePtrOutput {
+	return i.ToHttpCheckResponsePtrOutputWithContext(context.Background())
+}
+
+func (i HttpCheckResponseArgs) ToHttpCheckResponsePtrOutputWithContext(ctx context.Context) HttpCheckResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpCheckResponseOutput).ToHttpCheckResponsePtrOutputWithContext(ctx)
+}
+
+// HttpCheckResponsePtrInput is an input type that accepts HttpCheckResponseArgs, HttpCheckResponsePtr and HttpCheckResponsePtrOutput values.
+// You can construct a concrete instance of `HttpCheckResponsePtrInput` via:
+//
+//          HttpCheckResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type HttpCheckResponsePtrInput interface {
+	pulumi.Input
+
+	ToHttpCheckResponsePtrOutput() HttpCheckResponsePtrOutput
+	ToHttpCheckResponsePtrOutputWithContext(context.Context) HttpCheckResponsePtrOutput
+}
+
+type httpCheckResponsePtrType HttpCheckResponseArgs
+
+func HttpCheckResponsePtr(v *HttpCheckResponseArgs) HttpCheckResponsePtrInput {
+	return (*httpCheckResponsePtrType)(v)
+}
+
+func (*httpCheckResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpCheckResponse)(nil)).Elem()
+}
+
+func (i *httpCheckResponsePtrType) ToHttpCheckResponsePtrOutput() HttpCheckResponsePtrOutput {
+	return i.ToHttpCheckResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *httpCheckResponsePtrType) ToHttpCheckResponsePtrOutputWithContext(ctx context.Context) HttpCheckResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpCheckResponsePtrOutput)
+}
+
+// Information involved in an HTTP/HTTPS Uptime check request.
+type HttpCheckResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpCheckResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpCheckResponse)(nil)).Elem()
+}
+
+func (o HttpCheckResponseOutput) ToHttpCheckResponseOutput() HttpCheckResponseOutput {
+	return o
+}
+
+func (o HttpCheckResponseOutput) ToHttpCheckResponseOutputWithContext(ctx context.Context) HttpCheckResponseOutput {
+	return o
+}
+
+func (o HttpCheckResponseOutput) ToHttpCheckResponsePtrOutput() HttpCheckResponsePtrOutput {
+	return o.ToHttpCheckResponsePtrOutputWithContext(context.Background())
+}
+
+func (o HttpCheckResponseOutput) ToHttpCheckResponsePtrOutputWithContext(ctx context.Context) HttpCheckResponsePtrOutput {
+	return o.ApplyT(func(v HttpCheckResponse) *HttpCheckResponse {
+		return &v
+	}).(HttpCheckResponsePtrOutput)
+}
+
+// The authentication information. Optional when creating an HTTP check; defaults to empty.
+func (o HttpCheckResponseOutput) AuthInfo() BasicAuthenticationResponseOutput {
+	return o.ApplyT(func(v HttpCheckResponse) BasicAuthenticationResponse { return v.AuthInfo }).(BasicAuthenticationResponseOutput)
+}
+
+// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+func (o HttpCheckResponseOutput) Body() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpCheckResponse) string { return v.Body }).(pulumi.StringOutput)
+}
+
+// The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
+func (o HttpCheckResponseOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpCheckResponse) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
+func (o HttpCheckResponseOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HttpCheckResponse) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+}
+
+// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true then the headers will be obscured with ******.
+func (o HttpCheckResponseOutput) MaskHeaders() pulumi.BoolOutput {
+	return o.ApplyT(func(v HttpCheckResponse) bool { return v.MaskHeaders }).(pulumi.BoolOutput)
+}
+
+// Optional (defaults to "/"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically.
+func (o HttpCheckResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpCheckResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL.
+func (o HttpCheckResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v HttpCheckResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
+func (o HttpCheckResponseOutput) RequestMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpCheckResponse) string { return v.RequestMethod }).(pulumi.StringOutput)
+}
+
+// If true, use HTTPS instead of HTTP to run the check.
+func (o HttpCheckResponseOutput) UseSsl() pulumi.BoolOutput {
+	return o.ApplyT(func(v HttpCheckResponse) bool { return v.UseSsl }).(pulumi.BoolOutput)
+}
+
+// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitored_resource is set to uptime_url. If use_ssl is false, setting validate_ssl to true has no effect.
+func (o HttpCheckResponseOutput) ValidateSsl() pulumi.BoolOutput {
+	return o.ApplyT(func(v HttpCheckResponse) bool { return v.ValidateSsl }).(pulumi.BoolOutput)
+}
+
+type HttpCheckResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpCheckResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpCheckResponse)(nil)).Elem()
+}
+
+func (o HttpCheckResponsePtrOutput) ToHttpCheckResponsePtrOutput() HttpCheckResponsePtrOutput {
+	return o
+}
+
+func (o HttpCheckResponsePtrOutput) ToHttpCheckResponsePtrOutputWithContext(ctx context.Context) HttpCheckResponsePtrOutput {
+	return o
+}
+
+func (o HttpCheckResponsePtrOutput) Elem() HttpCheckResponseOutput {
+	return o.ApplyT(func(v *HttpCheckResponse) HttpCheckResponse { return *v }).(HttpCheckResponseOutput)
+}
+
+// The authentication information. Optional when creating an HTTP check; defaults to empty.
+func (o HttpCheckResponsePtrOutput) AuthInfo() BasicAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v *HttpCheckResponse) *BasicAuthenticationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthInfo
+	}).(BasicAuthenticationResponsePtrOutput)
+}
+
+// The request body associated with the HTTP POST request. If content_type is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the request_method is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all bytes fields, JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+func (o HttpCheckResponsePtrOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Body
+	}).(pulumi.StringPtrOutput)
+}
+
+// The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
+func (o HttpCheckResponsePtrOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ContentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
+func (o HttpCheckResponsePtrOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HttpCheckResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(pulumi.StringMapOutput)
+}
+
+// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true then the headers will be obscured with ******.
+func (o HttpCheckResponsePtrOutput) MaskHeaders() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpCheckResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.MaskHeaders
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional (defaults to "/"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically.
+func (o HttpCheckResponsePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL.
+func (o HttpCheckResponsePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpCheckResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
+func (o HttpCheckResponsePtrOutput) RequestMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RequestMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, use HTTPS instead of HTTP to run the check.
+func (o HttpCheckResponsePtrOutput) UseSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpCheckResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UseSsl
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitored_resource is set to uptime_url. If use_ssl is false, setting validate_ssl to true has no effect.
+func (o HttpCheckResponsePtrOutput) ValidateSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpCheckResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ValidateSsl
+	}).(pulumi.BoolPtrOutput)
+}
+
 // An internal checker allows Uptime checks to run on private/internal GCP resources.
 type InternalChecker struct {
 	// The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
@@ -3466,6 +5656,151 @@ func (o InternalCheckerArrayOutput) Index(i pulumi.IntInput) InternalCheckerOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InternalChecker {
 		return vs[0].([]InternalChecker)[vs[1].(int)]
 	}).(InternalCheckerOutput)
+}
+
+// An internal checker allows Uptime checks to run on private/internal GCP resources.
+type InternalCheckerResponse struct {
+	// The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+	DisplayName string `pulumi:"displayName"`
+	// The GCP zone the Uptime check should egress from. Only respected for internal Uptime checks, where internal_network is specified.
+	GcpZone string `pulumi:"gcpZone"`
+	// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime check config associated with the internal checker.
+	Name string `pulumi:"name"`
+	// The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the internal resource lives (ex: "default").
+	Network string `pulumi:"network"`
+	// The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
+	PeerProjectId string `pulumi:"peerProjectId"`
+	// The current operational state of the internal checker.
+	State string `pulumi:"state"`
+}
+
+// InternalCheckerResponseInput is an input type that accepts InternalCheckerResponseArgs and InternalCheckerResponseOutput values.
+// You can construct a concrete instance of `InternalCheckerResponseInput` via:
+//
+//          InternalCheckerResponseArgs{...}
+type InternalCheckerResponseInput interface {
+	pulumi.Input
+
+	ToInternalCheckerResponseOutput() InternalCheckerResponseOutput
+	ToInternalCheckerResponseOutputWithContext(context.Context) InternalCheckerResponseOutput
+}
+
+// An internal checker allows Uptime checks to run on private/internal GCP resources.
+type InternalCheckerResponseArgs struct {
+	// The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The GCP zone the Uptime check should egress from. Only respected for internal Uptime checks, where internal_network is specified.
+	GcpZone pulumi.StringInput `pulumi:"gcpZone"`
+	// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime check config associated with the internal checker.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the internal resource lives (ex: "default").
+	Network pulumi.StringInput `pulumi:"network"`
+	// The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
+	PeerProjectId pulumi.StringInput `pulumi:"peerProjectId"`
+	// The current operational state of the internal checker.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (InternalCheckerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalCheckerResponse)(nil)).Elem()
+}
+
+func (i InternalCheckerResponseArgs) ToInternalCheckerResponseOutput() InternalCheckerResponseOutput {
+	return i.ToInternalCheckerResponseOutputWithContext(context.Background())
+}
+
+func (i InternalCheckerResponseArgs) ToInternalCheckerResponseOutputWithContext(ctx context.Context) InternalCheckerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternalCheckerResponseOutput)
+}
+
+// InternalCheckerResponseArrayInput is an input type that accepts InternalCheckerResponseArray and InternalCheckerResponseArrayOutput values.
+// You can construct a concrete instance of `InternalCheckerResponseArrayInput` via:
+//
+//          InternalCheckerResponseArray{ InternalCheckerResponseArgs{...} }
+type InternalCheckerResponseArrayInput interface {
+	pulumi.Input
+
+	ToInternalCheckerResponseArrayOutput() InternalCheckerResponseArrayOutput
+	ToInternalCheckerResponseArrayOutputWithContext(context.Context) InternalCheckerResponseArrayOutput
+}
+
+type InternalCheckerResponseArray []InternalCheckerResponseInput
+
+func (InternalCheckerResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InternalCheckerResponse)(nil)).Elem()
+}
+
+func (i InternalCheckerResponseArray) ToInternalCheckerResponseArrayOutput() InternalCheckerResponseArrayOutput {
+	return i.ToInternalCheckerResponseArrayOutputWithContext(context.Background())
+}
+
+func (i InternalCheckerResponseArray) ToInternalCheckerResponseArrayOutputWithContext(ctx context.Context) InternalCheckerResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternalCheckerResponseArrayOutput)
+}
+
+// An internal checker allows Uptime checks to run on private/internal GCP resources.
+type InternalCheckerResponseOutput struct{ *pulumi.OutputState }
+
+func (InternalCheckerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalCheckerResponse)(nil)).Elem()
+}
+
+func (o InternalCheckerResponseOutput) ToInternalCheckerResponseOutput() InternalCheckerResponseOutput {
+	return o
+}
+
+func (o InternalCheckerResponseOutput) ToInternalCheckerResponseOutputWithContext(ctx context.Context) InternalCheckerResponseOutput {
+	return o
+}
+
+// The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+func (o InternalCheckerResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v InternalCheckerResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The GCP zone the Uptime check should egress from. Only respected for internal Uptime checks, where internal_network is specified.
+func (o InternalCheckerResponseOutput) GcpZone() pulumi.StringOutput {
+	return o.ApplyT(func(v InternalCheckerResponse) string { return v.GcpZone }).(pulumi.StringOutput)
+}
+
+// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime check config associated with the internal checker.
+func (o InternalCheckerResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InternalCheckerResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the internal resource lives (ex: "default").
+func (o InternalCheckerResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v InternalCheckerResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
+func (o InternalCheckerResponseOutput) PeerProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v InternalCheckerResponse) string { return v.PeerProjectId }).(pulumi.StringOutput)
+}
+
+// The current operational state of the internal checker.
+func (o InternalCheckerResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v InternalCheckerResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type InternalCheckerResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InternalCheckerResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InternalCheckerResponse)(nil)).Elem()
+}
+
+func (o InternalCheckerResponseArrayOutput) ToInternalCheckerResponseArrayOutput() InternalCheckerResponseArrayOutput {
+	return o
+}
+
+func (o InternalCheckerResponseArrayOutput) ToInternalCheckerResponseArrayOutputWithContext(ctx context.Context) InternalCheckerResponseArrayOutput {
+	return o
+}
+
+func (o InternalCheckerResponseArrayOutput) Index(i pulumi.IntInput) InternalCheckerResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InternalCheckerResponse {
+		return vs[0].([]InternalCheckerResponse)[vs[1].(int)]
+	}).(InternalCheckerResponseOutput)
 }
 
 // Canonical service scoped to an Istio mesh. Anthos clusters running ASM >= 1.6.8 will have their services ingested as this type.
@@ -3640,6 +5975,178 @@ func (o IstioCanonicalServicePtrOutput) MeshUid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Canonical service scoped to an Istio mesh. Anthos clusters running ASM >= 1.6.8 will have their services ingested as this type.
+type IstioCanonicalServiceResponse struct {
+	// The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+	CanonicalService string `pulumi:"canonicalService"`
+	// The namespace of the canonical service underlying this service. Corresponds to the destination_canonical_service_namespace metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+	CanonicalServiceNamespace string `pulumi:"canonicalServiceNamespace"`
+	// Identifier for the Istio mesh in which this canonical service is defined. Corresponds to the mesh_uid metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+	MeshUid string `pulumi:"meshUid"`
+}
+
+// IstioCanonicalServiceResponseInput is an input type that accepts IstioCanonicalServiceResponseArgs and IstioCanonicalServiceResponseOutput values.
+// You can construct a concrete instance of `IstioCanonicalServiceResponseInput` via:
+//
+//          IstioCanonicalServiceResponseArgs{...}
+type IstioCanonicalServiceResponseInput interface {
+	pulumi.Input
+
+	ToIstioCanonicalServiceResponseOutput() IstioCanonicalServiceResponseOutput
+	ToIstioCanonicalServiceResponseOutputWithContext(context.Context) IstioCanonicalServiceResponseOutput
+}
+
+// Canonical service scoped to an Istio mesh. Anthos clusters running ASM >= 1.6.8 will have their services ingested as this type.
+type IstioCanonicalServiceResponseArgs struct {
+	// The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+	CanonicalService pulumi.StringInput `pulumi:"canonicalService"`
+	// The namespace of the canonical service underlying this service. Corresponds to the destination_canonical_service_namespace metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+	CanonicalServiceNamespace pulumi.StringInput `pulumi:"canonicalServiceNamespace"`
+	// Identifier for the Istio mesh in which this canonical service is defined. Corresponds to the mesh_uid metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+	MeshUid pulumi.StringInput `pulumi:"meshUid"`
+}
+
+func (IstioCanonicalServiceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IstioCanonicalServiceResponse)(nil)).Elem()
+}
+
+func (i IstioCanonicalServiceResponseArgs) ToIstioCanonicalServiceResponseOutput() IstioCanonicalServiceResponseOutput {
+	return i.ToIstioCanonicalServiceResponseOutputWithContext(context.Background())
+}
+
+func (i IstioCanonicalServiceResponseArgs) ToIstioCanonicalServiceResponseOutputWithContext(ctx context.Context) IstioCanonicalServiceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IstioCanonicalServiceResponseOutput)
+}
+
+func (i IstioCanonicalServiceResponseArgs) ToIstioCanonicalServiceResponsePtrOutput() IstioCanonicalServiceResponsePtrOutput {
+	return i.ToIstioCanonicalServiceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i IstioCanonicalServiceResponseArgs) ToIstioCanonicalServiceResponsePtrOutputWithContext(ctx context.Context) IstioCanonicalServiceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IstioCanonicalServiceResponseOutput).ToIstioCanonicalServiceResponsePtrOutputWithContext(ctx)
+}
+
+// IstioCanonicalServiceResponsePtrInput is an input type that accepts IstioCanonicalServiceResponseArgs, IstioCanonicalServiceResponsePtr and IstioCanonicalServiceResponsePtrOutput values.
+// You can construct a concrete instance of `IstioCanonicalServiceResponsePtrInput` via:
+//
+//          IstioCanonicalServiceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type IstioCanonicalServiceResponsePtrInput interface {
+	pulumi.Input
+
+	ToIstioCanonicalServiceResponsePtrOutput() IstioCanonicalServiceResponsePtrOutput
+	ToIstioCanonicalServiceResponsePtrOutputWithContext(context.Context) IstioCanonicalServiceResponsePtrOutput
+}
+
+type istioCanonicalServiceResponsePtrType IstioCanonicalServiceResponseArgs
+
+func IstioCanonicalServiceResponsePtr(v *IstioCanonicalServiceResponseArgs) IstioCanonicalServiceResponsePtrInput {
+	return (*istioCanonicalServiceResponsePtrType)(v)
+}
+
+func (*istioCanonicalServiceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IstioCanonicalServiceResponse)(nil)).Elem()
+}
+
+func (i *istioCanonicalServiceResponsePtrType) ToIstioCanonicalServiceResponsePtrOutput() IstioCanonicalServiceResponsePtrOutput {
+	return i.ToIstioCanonicalServiceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *istioCanonicalServiceResponsePtrType) ToIstioCanonicalServiceResponsePtrOutputWithContext(ctx context.Context) IstioCanonicalServiceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IstioCanonicalServiceResponsePtrOutput)
+}
+
+// Canonical service scoped to an Istio mesh. Anthos clusters running ASM >= 1.6.8 will have their services ingested as this type.
+type IstioCanonicalServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (IstioCanonicalServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IstioCanonicalServiceResponse)(nil)).Elem()
+}
+
+func (o IstioCanonicalServiceResponseOutput) ToIstioCanonicalServiceResponseOutput() IstioCanonicalServiceResponseOutput {
+	return o
+}
+
+func (o IstioCanonicalServiceResponseOutput) ToIstioCanonicalServiceResponseOutputWithContext(ctx context.Context) IstioCanonicalServiceResponseOutput {
+	return o
+}
+
+func (o IstioCanonicalServiceResponseOutput) ToIstioCanonicalServiceResponsePtrOutput() IstioCanonicalServiceResponsePtrOutput {
+	return o.ToIstioCanonicalServiceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o IstioCanonicalServiceResponseOutput) ToIstioCanonicalServiceResponsePtrOutputWithContext(ctx context.Context) IstioCanonicalServiceResponsePtrOutput {
+	return o.ApplyT(func(v IstioCanonicalServiceResponse) *IstioCanonicalServiceResponse {
+		return &v
+	}).(IstioCanonicalServiceResponsePtrOutput)
+}
+
+// The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+func (o IstioCanonicalServiceResponseOutput) CanonicalService() pulumi.StringOutput {
+	return o.ApplyT(func(v IstioCanonicalServiceResponse) string { return v.CanonicalService }).(pulumi.StringOutput)
+}
+
+// The namespace of the canonical service underlying this service. Corresponds to the destination_canonical_service_namespace metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+func (o IstioCanonicalServiceResponseOutput) CanonicalServiceNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v IstioCanonicalServiceResponse) string { return v.CanonicalServiceNamespace }).(pulumi.StringOutput)
+}
+
+// Identifier for the Istio mesh in which this canonical service is defined. Corresponds to the mesh_uid metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+func (o IstioCanonicalServiceResponseOutput) MeshUid() pulumi.StringOutput {
+	return o.ApplyT(func(v IstioCanonicalServiceResponse) string { return v.MeshUid }).(pulumi.StringOutput)
+}
+
+type IstioCanonicalServiceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IstioCanonicalServiceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IstioCanonicalServiceResponse)(nil)).Elem()
+}
+
+func (o IstioCanonicalServiceResponsePtrOutput) ToIstioCanonicalServiceResponsePtrOutput() IstioCanonicalServiceResponsePtrOutput {
+	return o
+}
+
+func (o IstioCanonicalServiceResponsePtrOutput) ToIstioCanonicalServiceResponsePtrOutputWithContext(ctx context.Context) IstioCanonicalServiceResponsePtrOutput {
+	return o
+}
+
+func (o IstioCanonicalServiceResponsePtrOutput) Elem() IstioCanonicalServiceResponseOutput {
+	return o.ApplyT(func(v *IstioCanonicalServiceResponse) IstioCanonicalServiceResponse { return *v }).(IstioCanonicalServiceResponseOutput)
+}
+
+// The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+func (o IstioCanonicalServiceResponsePtrOutput) CanonicalService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IstioCanonicalServiceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CanonicalService
+	}).(pulumi.StringPtrOutput)
+}
+
+// The namespace of the canonical service underlying this service. Corresponds to the destination_canonical_service_namespace metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+func (o IstioCanonicalServiceResponsePtrOutput) CanonicalServiceNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IstioCanonicalServiceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CanonicalServiceNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifier for the Istio mesh in which this canonical service is defined. Corresponds to the mesh_uid metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
+func (o IstioCanonicalServiceResponsePtrOutput) MeshUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IstioCanonicalServiceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MeshUid
+	}).(pulumi.StringPtrOutput)
+}
+
 // A description of a label.
 type LabelDescriptor struct {
 	// A human-readable description for the label.
@@ -3756,6 +6263,124 @@ func (o LabelDescriptorArrayOutput) Index(i pulumi.IntInput) LabelDescriptorOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LabelDescriptor {
 		return vs[0].([]LabelDescriptor)[vs[1].(int)]
 	}).(LabelDescriptorOutput)
+}
+
+// A description of a label.
+type LabelDescriptorResponse struct {
+	// A human-readable description for the label.
+	Description string `pulumi:"description"`
+	// The key for this label. The key must meet the following criteria: Does not exceed 100 characters. Matches the following regular expression: [a-zA-Z][a-zA-Z0-9_]* The first character must be an upper- or lower-case letter. The remaining characters must be letters, digits, or underscores.
+	Key string `pulumi:"key"`
+	// The type of data that can be assigned to the label.
+	ValueType string `pulumi:"valueType"`
+}
+
+// LabelDescriptorResponseInput is an input type that accepts LabelDescriptorResponseArgs and LabelDescriptorResponseOutput values.
+// You can construct a concrete instance of `LabelDescriptorResponseInput` via:
+//
+//          LabelDescriptorResponseArgs{...}
+type LabelDescriptorResponseInput interface {
+	pulumi.Input
+
+	ToLabelDescriptorResponseOutput() LabelDescriptorResponseOutput
+	ToLabelDescriptorResponseOutputWithContext(context.Context) LabelDescriptorResponseOutput
+}
+
+// A description of a label.
+type LabelDescriptorResponseArgs struct {
+	// A human-readable description for the label.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The key for this label. The key must meet the following criteria: Does not exceed 100 characters. Matches the following regular expression: [a-zA-Z][a-zA-Z0-9_]* The first character must be an upper- or lower-case letter. The remaining characters must be letters, digits, or underscores.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The type of data that can be assigned to the label.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (LabelDescriptorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelDescriptorResponse)(nil)).Elem()
+}
+
+func (i LabelDescriptorResponseArgs) ToLabelDescriptorResponseOutput() LabelDescriptorResponseOutput {
+	return i.ToLabelDescriptorResponseOutputWithContext(context.Background())
+}
+
+func (i LabelDescriptorResponseArgs) ToLabelDescriptorResponseOutputWithContext(ctx context.Context) LabelDescriptorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelDescriptorResponseOutput)
+}
+
+// LabelDescriptorResponseArrayInput is an input type that accepts LabelDescriptorResponseArray and LabelDescriptorResponseArrayOutput values.
+// You can construct a concrete instance of `LabelDescriptorResponseArrayInput` via:
+//
+//          LabelDescriptorResponseArray{ LabelDescriptorResponseArgs{...} }
+type LabelDescriptorResponseArrayInput interface {
+	pulumi.Input
+
+	ToLabelDescriptorResponseArrayOutput() LabelDescriptorResponseArrayOutput
+	ToLabelDescriptorResponseArrayOutputWithContext(context.Context) LabelDescriptorResponseArrayOutput
+}
+
+type LabelDescriptorResponseArray []LabelDescriptorResponseInput
+
+func (LabelDescriptorResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LabelDescriptorResponse)(nil)).Elem()
+}
+
+func (i LabelDescriptorResponseArray) ToLabelDescriptorResponseArrayOutput() LabelDescriptorResponseArrayOutput {
+	return i.ToLabelDescriptorResponseArrayOutputWithContext(context.Background())
+}
+
+func (i LabelDescriptorResponseArray) ToLabelDescriptorResponseArrayOutputWithContext(ctx context.Context) LabelDescriptorResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelDescriptorResponseArrayOutput)
+}
+
+// A description of a label.
+type LabelDescriptorResponseOutput struct{ *pulumi.OutputState }
+
+func (LabelDescriptorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelDescriptorResponse)(nil)).Elem()
+}
+
+func (o LabelDescriptorResponseOutput) ToLabelDescriptorResponseOutput() LabelDescriptorResponseOutput {
+	return o
+}
+
+func (o LabelDescriptorResponseOutput) ToLabelDescriptorResponseOutputWithContext(ctx context.Context) LabelDescriptorResponseOutput {
+	return o
+}
+
+// A human-readable description for the label.
+func (o LabelDescriptorResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LabelDescriptorResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The key for this label. The key must meet the following criteria: Does not exceed 100 characters. Matches the following regular expression: [a-zA-Z][a-zA-Z0-9_]* The first character must be an upper- or lower-case letter. The remaining characters must be letters, digits, or underscores.
+func (o LabelDescriptorResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v LabelDescriptorResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The type of data that can be assigned to the label.
+func (o LabelDescriptorResponseOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v LabelDescriptorResponse) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type LabelDescriptorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LabelDescriptorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LabelDescriptorResponse)(nil)).Elem()
+}
+
+func (o LabelDescriptorResponseArrayOutput) ToLabelDescriptorResponseArrayOutput() LabelDescriptorResponseArrayOutput {
+	return o
+}
+
+func (o LabelDescriptorResponseArrayOutput) ToLabelDescriptorResponseArrayOutputWithContext(ctx context.Context) LabelDescriptorResponseArrayOutput {
+	return o
+}
+
+func (o LabelDescriptorResponseArrayOutput) Index(i pulumi.IntInput) LabelDescriptorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LabelDescriptorResponse {
+		return vs[0].([]LabelDescriptorResponse)[vs[1].(int)]
+	}).(LabelDescriptorResponseOutput)
 }
 
 // Parameters for a latency threshold SLI.
@@ -3889,6 +6514,140 @@ func (o LatencyCriteriaPtrOutput) Threshold() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Threshold
+	}).(pulumi.StringPtrOutput)
+}
+
+// Parameters for a latency threshold SLI.
+type LatencyCriteriaResponse struct {
+	// Good service is defined to be the count of requests made to this service that return in no more than threshold.
+	Threshold string `pulumi:"threshold"`
+}
+
+// LatencyCriteriaResponseInput is an input type that accepts LatencyCriteriaResponseArgs and LatencyCriteriaResponseOutput values.
+// You can construct a concrete instance of `LatencyCriteriaResponseInput` via:
+//
+//          LatencyCriteriaResponseArgs{...}
+type LatencyCriteriaResponseInput interface {
+	pulumi.Input
+
+	ToLatencyCriteriaResponseOutput() LatencyCriteriaResponseOutput
+	ToLatencyCriteriaResponseOutputWithContext(context.Context) LatencyCriteriaResponseOutput
+}
+
+// Parameters for a latency threshold SLI.
+type LatencyCriteriaResponseArgs struct {
+	// Good service is defined to be the count of requests made to this service that return in no more than threshold.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+}
+
+func (LatencyCriteriaResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LatencyCriteriaResponse)(nil)).Elem()
+}
+
+func (i LatencyCriteriaResponseArgs) ToLatencyCriteriaResponseOutput() LatencyCriteriaResponseOutput {
+	return i.ToLatencyCriteriaResponseOutputWithContext(context.Background())
+}
+
+func (i LatencyCriteriaResponseArgs) ToLatencyCriteriaResponseOutputWithContext(ctx context.Context) LatencyCriteriaResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LatencyCriteriaResponseOutput)
+}
+
+func (i LatencyCriteriaResponseArgs) ToLatencyCriteriaResponsePtrOutput() LatencyCriteriaResponsePtrOutput {
+	return i.ToLatencyCriteriaResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LatencyCriteriaResponseArgs) ToLatencyCriteriaResponsePtrOutputWithContext(ctx context.Context) LatencyCriteriaResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LatencyCriteriaResponseOutput).ToLatencyCriteriaResponsePtrOutputWithContext(ctx)
+}
+
+// LatencyCriteriaResponsePtrInput is an input type that accepts LatencyCriteriaResponseArgs, LatencyCriteriaResponsePtr and LatencyCriteriaResponsePtrOutput values.
+// You can construct a concrete instance of `LatencyCriteriaResponsePtrInput` via:
+//
+//          LatencyCriteriaResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type LatencyCriteriaResponsePtrInput interface {
+	pulumi.Input
+
+	ToLatencyCriteriaResponsePtrOutput() LatencyCriteriaResponsePtrOutput
+	ToLatencyCriteriaResponsePtrOutputWithContext(context.Context) LatencyCriteriaResponsePtrOutput
+}
+
+type latencyCriteriaResponsePtrType LatencyCriteriaResponseArgs
+
+func LatencyCriteriaResponsePtr(v *LatencyCriteriaResponseArgs) LatencyCriteriaResponsePtrInput {
+	return (*latencyCriteriaResponsePtrType)(v)
+}
+
+func (*latencyCriteriaResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LatencyCriteriaResponse)(nil)).Elem()
+}
+
+func (i *latencyCriteriaResponsePtrType) ToLatencyCriteriaResponsePtrOutput() LatencyCriteriaResponsePtrOutput {
+	return i.ToLatencyCriteriaResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *latencyCriteriaResponsePtrType) ToLatencyCriteriaResponsePtrOutputWithContext(ctx context.Context) LatencyCriteriaResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LatencyCriteriaResponsePtrOutput)
+}
+
+// Parameters for a latency threshold SLI.
+type LatencyCriteriaResponseOutput struct{ *pulumi.OutputState }
+
+func (LatencyCriteriaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LatencyCriteriaResponse)(nil)).Elem()
+}
+
+func (o LatencyCriteriaResponseOutput) ToLatencyCriteriaResponseOutput() LatencyCriteriaResponseOutput {
+	return o
+}
+
+func (o LatencyCriteriaResponseOutput) ToLatencyCriteriaResponseOutputWithContext(ctx context.Context) LatencyCriteriaResponseOutput {
+	return o
+}
+
+func (o LatencyCriteriaResponseOutput) ToLatencyCriteriaResponsePtrOutput() LatencyCriteriaResponsePtrOutput {
+	return o.ToLatencyCriteriaResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LatencyCriteriaResponseOutput) ToLatencyCriteriaResponsePtrOutputWithContext(ctx context.Context) LatencyCriteriaResponsePtrOutput {
+	return o.ApplyT(func(v LatencyCriteriaResponse) *LatencyCriteriaResponse {
+		return &v
+	}).(LatencyCriteriaResponsePtrOutput)
+}
+
+// Good service is defined to be the count of requests made to this service that return in no more than threshold.
+func (o LatencyCriteriaResponseOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v LatencyCriteriaResponse) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+type LatencyCriteriaResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LatencyCriteriaResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LatencyCriteriaResponse)(nil)).Elem()
+}
+
+func (o LatencyCriteriaResponsePtrOutput) ToLatencyCriteriaResponsePtrOutput() LatencyCriteriaResponsePtrOutput {
+	return o
+}
+
+func (o LatencyCriteriaResponsePtrOutput) ToLatencyCriteriaResponsePtrOutputWithContext(ctx context.Context) LatencyCriteriaResponsePtrOutput {
+	return o
+}
+
+func (o LatencyCriteriaResponsePtrOutput) Elem() LatencyCriteriaResponseOutput {
+	return o.ApplyT(func(v *LatencyCriteriaResponse) LatencyCriteriaResponse { return *v }).(LatencyCriteriaResponseOutput)
+}
+
+// Good service is defined to be the count of requests made to this service that return in no more than threshold.
+func (o LatencyCriteriaResponsePtrOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LatencyCriteriaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Threshold
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4236,6 +6995,178 @@ func (o MeshIstioPtrOutput) ServiceNamespace() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Istio service scoped to an Istio mesh. Anthos clusters running ASM < 1.6.8 will have their services ingested as this type.
+type MeshIstioResponse struct {
+	// Identifier for the mesh in which this Istio service is defined. Corresponds to the mesh_uid metric label in Istio metrics.
+	MeshUid string `pulumi:"meshUid"`
+	// The name of the Istio service underlying this service. Corresponds to the destination_service_name metric label in Istio metrics.
+	ServiceName string `pulumi:"serviceName"`
+	// The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics.
+	ServiceNamespace string `pulumi:"serviceNamespace"`
+}
+
+// MeshIstioResponseInput is an input type that accepts MeshIstioResponseArgs and MeshIstioResponseOutput values.
+// You can construct a concrete instance of `MeshIstioResponseInput` via:
+//
+//          MeshIstioResponseArgs{...}
+type MeshIstioResponseInput interface {
+	pulumi.Input
+
+	ToMeshIstioResponseOutput() MeshIstioResponseOutput
+	ToMeshIstioResponseOutputWithContext(context.Context) MeshIstioResponseOutput
+}
+
+// Istio service scoped to an Istio mesh. Anthos clusters running ASM < 1.6.8 will have their services ingested as this type.
+type MeshIstioResponseArgs struct {
+	// Identifier for the mesh in which this Istio service is defined. Corresponds to the mesh_uid metric label in Istio metrics.
+	MeshUid pulumi.StringInput `pulumi:"meshUid"`
+	// The name of the Istio service underlying this service. Corresponds to the destination_service_name metric label in Istio metrics.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics.
+	ServiceNamespace pulumi.StringInput `pulumi:"serviceNamespace"`
+}
+
+func (MeshIstioResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshIstioResponse)(nil)).Elem()
+}
+
+func (i MeshIstioResponseArgs) ToMeshIstioResponseOutput() MeshIstioResponseOutput {
+	return i.ToMeshIstioResponseOutputWithContext(context.Background())
+}
+
+func (i MeshIstioResponseArgs) ToMeshIstioResponseOutputWithContext(ctx context.Context) MeshIstioResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshIstioResponseOutput)
+}
+
+func (i MeshIstioResponseArgs) ToMeshIstioResponsePtrOutput() MeshIstioResponsePtrOutput {
+	return i.ToMeshIstioResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MeshIstioResponseArgs) ToMeshIstioResponsePtrOutputWithContext(ctx context.Context) MeshIstioResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshIstioResponseOutput).ToMeshIstioResponsePtrOutputWithContext(ctx)
+}
+
+// MeshIstioResponsePtrInput is an input type that accepts MeshIstioResponseArgs, MeshIstioResponsePtr and MeshIstioResponsePtrOutput values.
+// You can construct a concrete instance of `MeshIstioResponsePtrInput` via:
+//
+//          MeshIstioResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MeshIstioResponsePtrInput interface {
+	pulumi.Input
+
+	ToMeshIstioResponsePtrOutput() MeshIstioResponsePtrOutput
+	ToMeshIstioResponsePtrOutputWithContext(context.Context) MeshIstioResponsePtrOutput
+}
+
+type meshIstioResponsePtrType MeshIstioResponseArgs
+
+func MeshIstioResponsePtr(v *MeshIstioResponseArgs) MeshIstioResponsePtrInput {
+	return (*meshIstioResponsePtrType)(v)
+}
+
+func (*meshIstioResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MeshIstioResponse)(nil)).Elem()
+}
+
+func (i *meshIstioResponsePtrType) ToMeshIstioResponsePtrOutput() MeshIstioResponsePtrOutput {
+	return i.ToMeshIstioResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *meshIstioResponsePtrType) ToMeshIstioResponsePtrOutputWithContext(ctx context.Context) MeshIstioResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MeshIstioResponsePtrOutput)
+}
+
+// Istio service scoped to an Istio mesh. Anthos clusters running ASM < 1.6.8 will have their services ingested as this type.
+type MeshIstioResponseOutput struct{ *pulumi.OutputState }
+
+func (MeshIstioResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MeshIstioResponse)(nil)).Elem()
+}
+
+func (o MeshIstioResponseOutput) ToMeshIstioResponseOutput() MeshIstioResponseOutput {
+	return o
+}
+
+func (o MeshIstioResponseOutput) ToMeshIstioResponseOutputWithContext(ctx context.Context) MeshIstioResponseOutput {
+	return o
+}
+
+func (o MeshIstioResponseOutput) ToMeshIstioResponsePtrOutput() MeshIstioResponsePtrOutput {
+	return o.ToMeshIstioResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MeshIstioResponseOutput) ToMeshIstioResponsePtrOutputWithContext(ctx context.Context) MeshIstioResponsePtrOutput {
+	return o.ApplyT(func(v MeshIstioResponse) *MeshIstioResponse {
+		return &v
+	}).(MeshIstioResponsePtrOutput)
+}
+
+// Identifier for the mesh in which this Istio service is defined. Corresponds to the mesh_uid metric label in Istio metrics.
+func (o MeshIstioResponseOutput) MeshUid() pulumi.StringOutput {
+	return o.ApplyT(func(v MeshIstioResponse) string { return v.MeshUid }).(pulumi.StringOutput)
+}
+
+// The name of the Istio service underlying this service. Corresponds to the destination_service_name metric label in Istio metrics.
+func (o MeshIstioResponseOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v MeshIstioResponse) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics.
+func (o MeshIstioResponseOutput) ServiceNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v MeshIstioResponse) string { return v.ServiceNamespace }).(pulumi.StringOutput)
+}
+
+type MeshIstioResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MeshIstioResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MeshIstioResponse)(nil)).Elem()
+}
+
+func (o MeshIstioResponsePtrOutput) ToMeshIstioResponsePtrOutput() MeshIstioResponsePtrOutput {
+	return o
+}
+
+func (o MeshIstioResponsePtrOutput) ToMeshIstioResponsePtrOutputWithContext(ctx context.Context) MeshIstioResponsePtrOutput {
+	return o
+}
+
+func (o MeshIstioResponsePtrOutput) Elem() MeshIstioResponseOutput {
+	return o.ApplyT(func(v *MeshIstioResponse) MeshIstioResponse { return *v }).(MeshIstioResponseOutput)
+}
+
+// Identifier for the mesh in which this Istio service is defined. Corresponds to the mesh_uid metric label in Istio metrics.
+func (o MeshIstioResponsePtrOutput) MeshUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MeshIstioResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MeshUid
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Istio service underlying this service. Corresponds to the destination_service_name metric label in Istio metrics.
+func (o MeshIstioResponsePtrOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MeshIstioResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics.
+func (o MeshIstioResponsePtrOutput) ServiceNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MeshIstioResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
 // A specific metric, identified by specifying values for all of the labels of a MetricDescriptor.
 type Metric struct {
 	// The set of label values that uniquely identify this metric. All labels listed in the MetricDescriptor must be assigned values.
@@ -4580,12 +7511,92 @@ func (o MetricAbsencePtrOutput) Trigger() TriggerPtrOutput {
 	}).(TriggerPtrOutput)
 }
 
+// A condition type that checks that monitored resources are reporting data. The configuration defines a metric and a set of monitored resources. The predicate is considered in violation when a time series for the specified metric of a monitored resource does not include any data in the specified duration.
+type MetricAbsenceResponse struct {
+	// Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
+	Aggregations []AggregationResponse `pulumi:"aggregations"`
+	// The amount of time that a time series must fail to report new data to be considered failing. The minimum value of this field is 120 seconds. Larger values that are a multiple of a minute--for example, 240 or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
+	Duration string `pulumi:"duration"`
+	// Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+	Filter string `pulumi:"filter"`
+	// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations.
+	Trigger TriggerResponse `pulumi:"trigger"`
+}
+
+// MetricAbsenceResponseInput is an input type that accepts MetricAbsenceResponseArgs and MetricAbsenceResponseOutput values.
+// You can construct a concrete instance of `MetricAbsenceResponseInput` via:
+//
+//          MetricAbsenceResponseArgs{...}
+type MetricAbsenceResponseInput interface {
+	pulumi.Input
+
+	ToMetricAbsenceResponseOutput() MetricAbsenceResponseOutput
+	ToMetricAbsenceResponseOutputWithContext(context.Context) MetricAbsenceResponseOutput
+}
+
+// A condition type that checks that monitored resources are reporting data. The configuration defines a metric and a set of monitored resources. The predicate is considered in violation when a time series for the specified metric of a monitored resource does not include any data in the specified duration.
+type MetricAbsenceResponseArgs struct {
+	// Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
+	Aggregations AggregationResponseArrayInput `pulumi:"aggregations"`
+	// The amount of time that a time series must fail to report new data to be considered failing. The minimum value of this field is 120 seconds. Larger values that are a multiple of a minute--for example, 240 or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations.
+	Trigger TriggerResponseInput `pulumi:"trigger"`
+}
+
+func (MetricAbsenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricAbsenceResponse)(nil)).Elem()
+}
+
+func (i MetricAbsenceResponseArgs) ToMetricAbsenceResponseOutput() MetricAbsenceResponseOutput {
+	return i.ToMetricAbsenceResponseOutputWithContext(context.Background())
+}
+
+func (i MetricAbsenceResponseArgs) ToMetricAbsenceResponseOutputWithContext(ctx context.Context) MetricAbsenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricAbsenceResponseOutput)
+}
+
+// A condition type that checks that monitored resources are reporting data. The configuration defines a metric and a set of monitored resources. The predicate is considered in violation when a time series for the specified metric of a monitored resource does not include any data in the specified duration.
+type MetricAbsenceResponseOutput struct{ *pulumi.OutputState }
+
+func (MetricAbsenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricAbsenceResponse)(nil)).Elem()
+}
+
+func (o MetricAbsenceResponseOutput) ToMetricAbsenceResponseOutput() MetricAbsenceResponseOutput {
+	return o
+}
+
+func (o MetricAbsenceResponseOutput) ToMetricAbsenceResponseOutputWithContext(ctx context.Context) MetricAbsenceResponseOutput {
+	return o
+}
+
+// Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
+func (o MetricAbsenceResponseOutput) Aggregations() AggregationResponseArrayOutput {
+	return o.ApplyT(func(v MetricAbsenceResponse) []AggregationResponse { return v.Aggregations }).(AggregationResponseArrayOutput)
+}
+
+// The amount of time that a time series must fail to report new data to be considered failing. The minimum value of this field is 120 seconds. Larger values that are a multiple of a minute--for example, 240 or 300 seconds--are supported. If an invalid value is given, an error will be returned. The Duration.nanos field is ignored.
+func (o MetricAbsenceResponseOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricAbsenceResponse) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+func (o MetricAbsenceResponseOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricAbsenceResponse) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations.
+func (o MetricAbsenceResponseOutput) Trigger() TriggerResponseOutput {
+	return o.ApplyT(func(v MetricAbsenceResponse) TriggerResponse { return v.Trigger }).(TriggerResponseOutput)
+}
+
 // Additional annotations that can be used to guide the usage of a metric.
 type MetricDescriptorMetadata struct {
 	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
 	IngestDelay *string `pulumi:"ingestDelay"`
-	// Deprecated. Must use the MetricDescriptor.launch_stage instead.
-	LaunchStage *string `pulumi:"launchStage"`
 	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 	SamplePeriod *string `pulumi:"samplePeriod"`
 }
@@ -4605,8 +7616,6 @@ type MetricDescriptorMetadataInput interface {
 type MetricDescriptorMetadataArgs struct {
 	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
 	IngestDelay pulumi.StringPtrInput `pulumi:"ingestDelay"`
-	// Deprecated. Must use the MetricDescriptor.launch_stage instead.
-	LaunchStage pulumi.StringPtrInput `pulumi:"launchStage"`
 	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 	SamplePeriod pulumi.StringPtrInput `pulumi:"samplePeriod"`
 }
@@ -4694,11 +7703,6 @@ func (o MetricDescriptorMetadataOutput) IngestDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricDescriptorMetadata) *string { return v.IngestDelay }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated. Must use the MetricDescriptor.launch_stage instead.
-func (o MetricDescriptorMetadataOutput) LaunchStage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MetricDescriptorMetadata) *string { return v.LaunchStage }).(pulumi.StringPtrOutput)
-}
-
 // The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 func (o MetricDescriptorMetadataOutput) SamplePeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricDescriptorMetadata) *string { return v.SamplePeriod }).(pulumi.StringPtrOutput)
@@ -4732,16 +7736,6 @@ func (o MetricDescriptorMetadataPtrOutput) IngestDelay() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated. Must use the MetricDescriptor.launch_stage instead.
-func (o MetricDescriptorMetadataPtrOutput) LaunchStage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MetricDescriptorMetadata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LaunchStage
-	}).(pulumi.StringPtrOutput)
-}
-
 // The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 func (o MetricDescriptorMetadataPtrOutput) SamplePeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricDescriptorMetadata) *string {
@@ -4749,6 +7743,159 @@ func (o MetricDescriptorMetadataPtrOutput) SamplePeriod() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.SamplePeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional annotations that can be used to guide the usage of a metric.
+type MetricDescriptorMetadataResponse struct {
+	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
+	IngestDelay string `pulumi:"ingestDelay"`
+	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
+	SamplePeriod string `pulumi:"samplePeriod"`
+}
+
+// MetricDescriptorMetadataResponseInput is an input type that accepts MetricDescriptorMetadataResponseArgs and MetricDescriptorMetadataResponseOutput values.
+// You can construct a concrete instance of `MetricDescriptorMetadataResponseInput` via:
+//
+//          MetricDescriptorMetadataResponseArgs{...}
+type MetricDescriptorMetadataResponseInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorMetadataResponseOutput() MetricDescriptorMetadataResponseOutput
+	ToMetricDescriptorMetadataResponseOutputWithContext(context.Context) MetricDescriptorMetadataResponseOutput
+}
+
+// Additional annotations that can be used to guide the usage of a metric.
+type MetricDescriptorMetadataResponseArgs struct {
+	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
+	IngestDelay pulumi.StringInput `pulumi:"ingestDelay"`
+	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
+	SamplePeriod pulumi.StringInput `pulumi:"samplePeriod"`
+}
+
+func (MetricDescriptorMetadataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorMetadataResponse)(nil)).Elem()
+}
+
+func (i MetricDescriptorMetadataResponseArgs) ToMetricDescriptorMetadataResponseOutput() MetricDescriptorMetadataResponseOutput {
+	return i.ToMetricDescriptorMetadataResponseOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptorMetadataResponseArgs) ToMetricDescriptorMetadataResponseOutputWithContext(ctx context.Context) MetricDescriptorMetadataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataResponseOutput)
+}
+
+func (i MetricDescriptorMetadataResponseArgs) ToMetricDescriptorMetadataResponsePtrOutput() MetricDescriptorMetadataResponsePtrOutput {
+	return i.ToMetricDescriptorMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptorMetadataResponseArgs) ToMetricDescriptorMetadataResponsePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataResponseOutput).ToMetricDescriptorMetadataResponsePtrOutputWithContext(ctx)
+}
+
+// MetricDescriptorMetadataResponsePtrInput is an input type that accepts MetricDescriptorMetadataResponseArgs, MetricDescriptorMetadataResponsePtr and MetricDescriptorMetadataResponsePtrOutput values.
+// You can construct a concrete instance of `MetricDescriptorMetadataResponsePtrInput` via:
+//
+//          MetricDescriptorMetadataResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MetricDescriptorMetadataResponsePtrInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorMetadataResponsePtrOutput() MetricDescriptorMetadataResponsePtrOutput
+	ToMetricDescriptorMetadataResponsePtrOutputWithContext(context.Context) MetricDescriptorMetadataResponsePtrOutput
+}
+
+type metricDescriptorMetadataResponsePtrType MetricDescriptorMetadataResponseArgs
+
+func MetricDescriptorMetadataResponsePtr(v *MetricDescriptorMetadataResponseArgs) MetricDescriptorMetadataResponsePtrInput {
+	return (*metricDescriptorMetadataResponsePtrType)(v)
+}
+
+func (*metricDescriptorMetadataResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricDescriptorMetadataResponse)(nil)).Elem()
+}
+
+func (i *metricDescriptorMetadataResponsePtrType) ToMetricDescriptorMetadataResponsePtrOutput() MetricDescriptorMetadataResponsePtrOutput {
+	return i.ToMetricDescriptorMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *metricDescriptorMetadataResponsePtrType) ToMetricDescriptorMetadataResponsePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataResponsePtrOutput)
+}
+
+// Additional annotations that can be used to guide the usage of a metric.
+type MetricDescriptorMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorMetadataResponse)(nil)).Elem()
+}
+
+func (o MetricDescriptorMetadataResponseOutput) ToMetricDescriptorMetadataResponseOutput() MetricDescriptorMetadataResponseOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataResponseOutput) ToMetricDescriptorMetadataResponseOutputWithContext(ctx context.Context) MetricDescriptorMetadataResponseOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataResponseOutput) ToMetricDescriptorMetadataResponsePtrOutput() MetricDescriptorMetadataResponsePtrOutput {
+	return o.ToMetricDescriptorMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorMetadataResponseOutput) ToMetricDescriptorMetadataResponsePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataResponsePtrOutput {
+	return o.ApplyT(func(v MetricDescriptorMetadataResponse) *MetricDescriptorMetadataResponse {
+		return &v
+	}).(MetricDescriptorMetadataResponsePtrOutput)
+}
+
+// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
+func (o MetricDescriptorMetadataResponseOutput) IngestDelay() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorMetadataResponse) string { return v.IngestDelay }).(pulumi.StringOutput)
+}
+
+// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
+func (o MetricDescriptorMetadataResponseOutput) SamplePeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorMetadataResponse) string { return v.SamplePeriod }).(pulumi.StringOutput)
+}
+
+type MetricDescriptorMetadataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorMetadataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricDescriptorMetadataResponse)(nil)).Elem()
+}
+
+func (o MetricDescriptorMetadataResponsePtrOutput) ToMetricDescriptorMetadataResponsePtrOutput() MetricDescriptorMetadataResponsePtrOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataResponsePtrOutput) ToMetricDescriptorMetadataResponsePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataResponsePtrOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataResponsePtrOutput) Elem() MetricDescriptorMetadataResponseOutput {
+	return o.ApplyT(func(v *MetricDescriptorMetadataResponse) MetricDescriptorMetadataResponse { return *v }).(MetricDescriptorMetadataResponseOutput)
+}
+
+// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
+func (o MetricDescriptorMetadataResponsePtrOutput) IngestDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IngestDelay
+	}).(pulumi.StringPtrOutput)
+}
+
+// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
+func (o MetricDescriptorMetadataResponsePtrOutput) SamplePeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SamplePeriod
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4902,6 +8049,159 @@ func (o MetricRangePtrOutput) TimeSeries() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.TimeSeries
+	}).(pulumi.StringPtrOutput)
+}
+
+// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+type MetricRangeResponse struct {
+	// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
+	Range GoogleMonitoringV3RangeResponse `pulumi:"range"`
+	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying the TimeSeries to use for evaluating window quality.
+	TimeSeries string `pulumi:"timeSeries"`
+}
+
+// MetricRangeResponseInput is an input type that accepts MetricRangeResponseArgs and MetricRangeResponseOutput values.
+// You can construct a concrete instance of `MetricRangeResponseInput` via:
+//
+//          MetricRangeResponseArgs{...}
+type MetricRangeResponseInput interface {
+	pulumi.Input
+
+	ToMetricRangeResponseOutput() MetricRangeResponseOutput
+	ToMetricRangeResponseOutputWithContext(context.Context) MetricRangeResponseOutput
+}
+
+// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+type MetricRangeResponseArgs struct {
+	// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
+	Range GoogleMonitoringV3RangeResponseInput `pulumi:"range"`
+	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying the TimeSeries to use for evaluating window quality.
+	TimeSeries pulumi.StringInput `pulumi:"timeSeries"`
+}
+
+func (MetricRangeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRangeResponse)(nil)).Elem()
+}
+
+func (i MetricRangeResponseArgs) ToMetricRangeResponseOutput() MetricRangeResponseOutput {
+	return i.ToMetricRangeResponseOutputWithContext(context.Background())
+}
+
+func (i MetricRangeResponseArgs) ToMetricRangeResponseOutputWithContext(ctx context.Context) MetricRangeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRangeResponseOutput)
+}
+
+func (i MetricRangeResponseArgs) ToMetricRangeResponsePtrOutput() MetricRangeResponsePtrOutput {
+	return i.ToMetricRangeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MetricRangeResponseArgs) ToMetricRangeResponsePtrOutputWithContext(ctx context.Context) MetricRangeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRangeResponseOutput).ToMetricRangeResponsePtrOutputWithContext(ctx)
+}
+
+// MetricRangeResponsePtrInput is an input type that accepts MetricRangeResponseArgs, MetricRangeResponsePtr and MetricRangeResponsePtrOutput values.
+// You can construct a concrete instance of `MetricRangeResponsePtrInput` via:
+//
+//          MetricRangeResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MetricRangeResponsePtrInput interface {
+	pulumi.Input
+
+	ToMetricRangeResponsePtrOutput() MetricRangeResponsePtrOutput
+	ToMetricRangeResponsePtrOutputWithContext(context.Context) MetricRangeResponsePtrOutput
+}
+
+type metricRangeResponsePtrType MetricRangeResponseArgs
+
+func MetricRangeResponsePtr(v *MetricRangeResponseArgs) MetricRangeResponsePtrInput {
+	return (*metricRangeResponsePtrType)(v)
+}
+
+func (*metricRangeResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricRangeResponse)(nil)).Elem()
+}
+
+func (i *metricRangeResponsePtrType) ToMetricRangeResponsePtrOutput() MetricRangeResponsePtrOutput {
+	return i.ToMetricRangeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *metricRangeResponsePtrType) ToMetricRangeResponsePtrOutputWithContext(ctx context.Context) MetricRangeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRangeResponsePtrOutput)
+}
+
+// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+type MetricRangeResponseOutput struct{ *pulumi.OutputState }
+
+func (MetricRangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRangeResponse)(nil)).Elem()
+}
+
+func (o MetricRangeResponseOutput) ToMetricRangeResponseOutput() MetricRangeResponseOutput {
+	return o
+}
+
+func (o MetricRangeResponseOutput) ToMetricRangeResponseOutputWithContext(ctx context.Context) MetricRangeResponseOutput {
+	return o
+}
+
+func (o MetricRangeResponseOutput) ToMetricRangeResponsePtrOutput() MetricRangeResponsePtrOutput {
+	return o.ToMetricRangeResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MetricRangeResponseOutput) ToMetricRangeResponsePtrOutputWithContext(ctx context.Context) MetricRangeResponsePtrOutput {
+	return o.ApplyT(func(v MetricRangeResponse) *MetricRangeResponse {
+		return &v
+	}).(MetricRangeResponsePtrOutput)
+}
+
+// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
+func (o MetricRangeResponseOutput) Range() GoogleMonitoringV3RangeResponseOutput {
+	return o.ApplyT(func(v MetricRangeResponse) GoogleMonitoringV3RangeResponse { return v.Range }).(GoogleMonitoringV3RangeResponseOutput)
+}
+
+// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying the TimeSeries to use for evaluating window quality.
+func (o MetricRangeResponseOutput) TimeSeries() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricRangeResponse) string { return v.TimeSeries }).(pulumi.StringOutput)
+}
+
+type MetricRangeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricRangeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricRangeResponse)(nil)).Elem()
+}
+
+func (o MetricRangeResponsePtrOutput) ToMetricRangeResponsePtrOutput() MetricRangeResponsePtrOutput {
+	return o
+}
+
+func (o MetricRangeResponsePtrOutput) ToMetricRangeResponsePtrOutputWithContext(ctx context.Context) MetricRangeResponsePtrOutput {
+	return o
+}
+
+func (o MetricRangeResponsePtrOutput) Elem() MetricRangeResponseOutput {
+	return o.ApplyT(func(v *MetricRangeResponse) MetricRangeResponse { return *v }).(MetricRangeResponseOutput)
+}
+
+// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
+func (o MetricRangeResponsePtrOutput) Range() GoogleMonitoringV3RangeResponsePtrOutput {
+	return o.ApplyT(func(v *MetricRangeResponse) *GoogleMonitoringV3RangeResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Range
+	}).(GoogleMonitoringV3RangeResponsePtrOutput)
+}
+
+// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying the TimeSeries to use for evaluating window quality.
+func (o MetricRangeResponsePtrOutput) TimeSeries() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRangeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeSeries
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5172,6 +8472,124 @@ func (o MetricThresholdPtrOutput) Trigger() TriggerPtrOutput {
 	}).(TriggerPtrOutput)
 }
 
+// A condition type that compares a collection of time series against a threshold.
+type MetricThresholdResponse struct {
+	// Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
+	Aggregations []AggregationResponse `pulumi:"aggregations"`
+	// The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently.
+	Comparison string `pulumi:"comparison"`
+	// Specifies the alignment of data points in individual time series selected by denominatorFilter as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same alignment period and produce time series that have the same periodicity and labels.
+	DenominatorAggregations []AggregationResponse `pulumi:"denominatorAggregations"`
+	// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies a time series that should be used as the denominator of a ratio that will be compared with the threshold. If a denominator_filter is specified, the time series specified by the filter field will be used as the numerator.The filter must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length.
+	DenominatorFilter string `pulumi:"denominatorFilter"`
+	// The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
+	Duration string `pulumi:"duration"`
+	// Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+	Filter string `pulumi:"filter"`
+	// A value against which to compare the time series.
+	ThresholdValue float64 `pulumi:"thresholdValue"`
+	// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
+	Trigger TriggerResponse `pulumi:"trigger"`
+}
+
+// MetricThresholdResponseInput is an input type that accepts MetricThresholdResponseArgs and MetricThresholdResponseOutput values.
+// You can construct a concrete instance of `MetricThresholdResponseInput` via:
+//
+//          MetricThresholdResponseArgs{...}
+type MetricThresholdResponseInput interface {
+	pulumi.Input
+
+	ToMetricThresholdResponseOutput() MetricThresholdResponseOutput
+	ToMetricThresholdResponseOutputWithContext(context.Context) MetricThresholdResponseOutput
+}
+
+// A condition type that compares a collection of time series against a threshold.
+type MetricThresholdResponseArgs struct {
+	// Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
+	Aggregations AggregationResponseArrayInput `pulumi:"aggregations"`
+	// The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently.
+	Comparison pulumi.StringInput `pulumi:"comparison"`
+	// Specifies the alignment of data points in individual time series selected by denominatorFilter as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same alignment period and produce time series that have the same periodicity and labels.
+	DenominatorAggregations AggregationResponseArrayInput `pulumi:"denominatorAggregations"`
+	// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies a time series that should be used as the denominator of a ratio that will be compared with the threshold. If a denominator_filter is specified, the time series specified by the filter field will be used as the numerator.The filter must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length.
+	DenominatorFilter pulumi.StringInput `pulumi:"denominatorFilter"`
+	// The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// A value against which to compare the time series.
+	ThresholdValue pulumi.Float64Input `pulumi:"thresholdValue"`
+	// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
+	Trigger TriggerResponseInput `pulumi:"trigger"`
+}
+
+func (MetricThresholdResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricThresholdResponse)(nil)).Elem()
+}
+
+func (i MetricThresholdResponseArgs) ToMetricThresholdResponseOutput() MetricThresholdResponseOutput {
+	return i.ToMetricThresholdResponseOutputWithContext(context.Background())
+}
+
+func (i MetricThresholdResponseArgs) ToMetricThresholdResponseOutputWithContext(ctx context.Context) MetricThresholdResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricThresholdResponseOutput)
+}
+
+// A condition type that compares a collection of time series against a threshold.
+type MetricThresholdResponseOutput struct{ *pulumi.OutputState }
+
+func (MetricThresholdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricThresholdResponse)(nil)).Elem()
+}
+
+func (o MetricThresholdResponseOutput) ToMetricThresholdResponseOutput() MetricThresholdResponseOutput {
+	return o
+}
+
+func (o MetricThresholdResponseOutput) ToMetricThresholdResponseOutputWithContext(ctx context.Context) MetricThresholdResponseOutput {
+	return o
+}
+
+// Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field.
+func (o MetricThresholdResponseOutput) Aggregations() AggregationResponseArrayOutput {
+	return o.ApplyT(func(v MetricThresholdResponse) []AggregationResponse { return v.Aggregations }).(AggregationResponseArrayOutput)
+}
+
+// The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently.
+func (o MetricThresholdResponseOutput) Comparison() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricThresholdResponse) string { return v.Comparison }).(pulumi.StringOutput)
+}
+
+// Specifies the alignment of data points in individual time series selected by denominatorFilter as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same alignment period and produce time series that have the same periodicity and labels.
+func (o MetricThresholdResponseOutput) DenominatorAggregations() AggregationResponseArrayOutput {
+	return o.ApplyT(func(v MetricThresholdResponse) []AggregationResponse { return v.DenominatorAggregations }).(AggregationResponseArrayOutput)
+}
+
+// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies a time series that should be used as the denominator of a ratio that will be compared with the threshold. If a denominator_filter is specified, the time series specified by the filter field will be used as the numerator.The filter must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length.
+func (o MetricThresholdResponseOutput) DenominatorFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricThresholdResponse) string { return v.DenominatorFilter }).(pulumi.StringOutput)
+}
+
+// The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
+func (o MetricThresholdResponseOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricThresholdResponse) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+func (o MetricThresholdResponseOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricThresholdResponse) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// A value against which to compare the time series.
+func (o MetricThresholdResponseOutput) ThresholdValue() pulumi.Float64Output {
+	return o.ApplyT(func(v MetricThresholdResponse) float64 { return v.ThresholdValue }).(pulumi.Float64Output)
+}
+
+// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
+func (o MetricThresholdResponseOutput) Trigger() TriggerResponseOutput {
+	return o.ApplyT(func(v MetricThresholdResponse) TriggerResponse { return v.Trigger }).(TriggerResponseOutput)
+}
+
 // An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "zone": { "type": "gce_instance", "labels": { "instance_id": "12345678901234", "zone": "us-central1-a" }}
 type MonitoredResource struct {
 	// Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
@@ -5327,9 +8745,9 @@ func (o MonitoredResourcePtrOutput) Type() pulumi.StringPtrOutput {
 
 // Auxiliary metadata for a MonitoredResource object. MonitoredResource objects contain the minimum set of information to uniquely identify a monitored resource instance. There is some other useful auxiliary metadata. Monitoring and Logging use an ingestion pipeline to extract metadata for cloud resources of all types, and store the metadata in this message.
 type MonitoredResourceMetadata struct {
-	// Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false }
+	// Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false }
 	SystemLabels map[string]string `pulumi:"systemLabels"`
-	// Output only. A map of user-defined metadata labels.
+	// A map of user-defined metadata labels.
 	UserLabels map[string]string `pulumi:"userLabels"`
 }
 
@@ -5346,9 +8764,9 @@ type MonitoredResourceMetadataInput interface {
 
 // Auxiliary metadata for a MonitoredResource object. MonitoredResource objects contain the minimum set of information to uniquely identify a monitored resource instance. There is some other useful auxiliary metadata. Monitoring and Logging use an ingestion pipeline to extract metadata for cloud resources of all types, and store the metadata in this message.
 type MonitoredResourceMetadataArgs struct {
-	// Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false }
+	// Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false }
 	SystemLabels pulumi.StringMapInput `pulumi:"systemLabels"`
-	// Output only. A map of user-defined metadata labels.
+	// A map of user-defined metadata labels.
 	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
 }
 
@@ -5430,12 +8848,12 @@ func (o MonitoredResourceMetadataOutput) ToMonitoredResourceMetadataPtrOutputWit
 	}).(MonitoredResourceMetadataPtrOutput)
 }
 
-// Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false }
+// Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false }
 func (o MonitoredResourceMetadataOutput) SystemLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v MonitoredResourceMetadata) map[string]string { return v.SystemLabels }).(pulumi.StringMapOutput)
 }
 
-// Output only. A map of user-defined metadata labels.
+// A map of user-defined metadata labels.
 func (o MonitoredResourceMetadataOutput) UserLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v MonitoredResourceMetadata) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
 }
@@ -5458,7 +8876,7 @@ func (o MonitoredResourceMetadataPtrOutput) Elem() MonitoredResourceMetadataOutp
 	return o.ApplyT(func(v *MonitoredResourceMetadata) MonitoredResourceMetadata { return *v }).(MonitoredResourceMetadataOutput)
 }
 
-// Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false }
+// Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false }
 func (o MonitoredResourceMetadataPtrOutput) SystemLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MonitoredResourceMetadata) map[string]string {
 		if v == nil {
@@ -5468,7 +8886,7 @@ func (o MonitoredResourceMetadataPtrOutput) SystemLabels() pulumi.StringMapOutpu
 	}).(pulumi.StringMapOutput)
 }
 
-// Output only. A map of user-defined metadata labels.
+// A map of user-defined metadata labels.
 func (o MonitoredResourceMetadataPtrOutput) UserLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MonitoredResourceMetadata) map[string]string {
 		if v == nil {
@@ -5476,6 +8894,159 @@ func (o MonitoredResourceMetadataPtrOutput) UserLabels() pulumi.StringMapOutput 
 		}
 		return v.UserLabels
 	}).(pulumi.StringMapOutput)
+}
+
+// An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "zone": { "type": "gce_instance", "labels": { "instance_id": "12345678901234", "zone": "us-central1-a" }}
+type MonitoredResourceResponse struct {
+	// Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+	Labels map[string]string `pulumi:"labels"`
+	// Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+	Type string `pulumi:"type"`
+}
+
+// MonitoredResourceResponseInput is an input type that accepts MonitoredResourceResponseArgs and MonitoredResourceResponseOutput values.
+// You can construct a concrete instance of `MonitoredResourceResponseInput` via:
+//
+//          MonitoredResourceResponseArgs{...}
+type MonitoredResourceResponseInput interface {
+	pulumi.Input
+
+	ToMonitoredResourceResponseOutput() MonitoredResourceResponseOutput
+	ToMonitoredResourceResponseOutputWithContext(context.Context) MonitoredResourceResponseOutput
+}
+
+// An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "zone": { "type": "gce_instance", "labels": { "instance_id": "12345678901234", "zone": "us-central1-a" }}
+type MonitoredResourceResponseArgs struct {
+	// Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (MonitoredResourceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoredResourceResponse)(nil)).Elem()
+}
+
+func (i MonitoredResourceResponseArgs) ToMonitoredResourceResponseOutput() MonitoredResourceResponseOutput {
+	return i.ToMonitoredResourceResponseOutputWithContext(context.Background())
+}
+
+func (i MonitoredResourceResponseArgs) ToMonitoredResourceResponseOutputWithContext(ctx context.Context) MonitoredResourceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoredResourceResponseOutput)
+}
+
+func (i MonitoredResourceResponseArgs) ToMonitoredResourceResponsePtrOutput() MonitoredResourceResponsePtrOutput {
+	return i.ToMonitoredResourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MonitoredResourceResponseArgs) ToMonitoredResourceResponsePtrOutputWithContext(ctx context.Context) MonitoredResourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoredResourceResponseOutput).ToMonitoredResourceResponsePtrOutputWithContext(ctx)
+}
+
+// MonitoredResourceResponsePtrInput is an input type that accepts MonitoredResourceResponseArgs, MonitoredResourceResponsePtr and MonitoredResourceResponsePtrOutput values.
+// You can construct a concrete instance of `MonitoredResourceResponsePtrInput` via:
+//
+//          MonitoredResourceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MonitoredResourceResponsePtrInput interface {
+	pulumi.Input
+
+	ToMonitoredResourceResponsePtrOutput() MonitoredResourceResponsePtrOutput
+	ToMonitoredResourceResponsePtrOutputWithContext(context.Context) MonitoredResourceResponsePtrOutput
+}
+
+type monitoredResourceResponsePtrType MonitoredResourceResponseArgs
+
+func MonitoredResourceResponsePtr(v *MonitoredResourceResponseArgs) MonitoredResourceResponsePtrInput {
+	return (*monitoredResourceResponsePtrType)(v)
+}
+
+func (*monitoredResourceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoredResourceResponse)(nil)).Elem()
+}
+
+func (i *monitoredResourceResponsePtrType) ToMonitoredResourceResponsePtrOutput() MonitoredResourceResponsePtrOutput {
+	return i.ToMonitoredResourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *monitoredResourceResponsePtrType) ToMonitoredResourceResponsePtrOutputWithContext(ctx context.Context) MonitoredResourceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoredResourceResponsePtrOutput)
+}
+
+// An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "instance_id" and "zone": { "type": "gce_instance", "labels": { "instance_id": "12345678901234", "zone": "us-central1-a" }}
+type MonitoredResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitoredResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoredResourceResponse)(nil)).Elem()
+}
+
+func (o MonitoredResourceResponseOutput) ToMonitoredResourceResponseOutput() MonitoredResourceResponseOutput {
+	return o
+}
+
+func (o MonitoredResourceResponseOutput) ToMonitoredResourceResponseOutputWithContext(ctx context.Context) MonitoredResourceResponseOutput {
+	return o
+}
+
+func (o MonitoredResourceResponseOutput) ToMonitoredResourceResponsePtrOutput() MonitoredResourceResponsePtrOutput {
+	return o.ToMonitoredResourceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MonitoredResourceResponseOutput) ToMonitoredResourceResponsePtrOutputWithContext(ctx context.Context) MonitoredResourceResponsePtrOutput {
+	return o.ApplyT(func(v MonitoredResourceResponse) *MonitoredResourceResponse {
+		return &v
+	}).(MonitoredResourceResponsePtrOutput)
+}
+
+// Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+func (o MonitoredResourceResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v MonitoredResourceResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+func (o MonitoredResourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoredResourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type MonitoredResourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoredResourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoredResourceResponse)(nil)).Elem()
+}
+
+func (o MonitoredResourceResponsePtrOutput) ToMonitoredResourceResponsePtrOutput() MonitoredResourceResponsePtrOutput {
+	return o
+}
+
+func (o MonitoredResourceResponsePtrOutput) ToMonitoredResourceResponsePtrOutputWithContext(ctx context.Context) MonitoredResourceResponsePtrOutput {
+	return o
+}
+
+func (o MonitoredResourceResponsePtrOutput) Elem() MonitoredResourceResponseOutput {
+	return o.ApplyT(func(v *MonitoredResourceResponse) MonitoredResourceResponse { return *v }).(MonitoredResourceResponseOutput)
+}
+
+// Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+func (o MonitoredResourceResponsePtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MonitoredResourceResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+func (o MonitoredResourceResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitoredResourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // A condition type that allows alert policies to be defined using Monitoring Query Language (https://cloud.google.com/monitoring/mql).
@@ -5648,6 +9219,79 @@ func (o MonitoringQueryLanguageConditionPtrOutput) Trigger() TriggerPtrOutput {
 		}
 		return v.Trigger
 	}).(TriggerPtrOutput)
+}
+
+// A condition type that allows alert policies to be defined using Monitoring Query Language (https://cloud.google.com/monitoring/mql).
+type MonitoringQueryLanguageConditionResponse struct {
+	// The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
+	Duration string `pulumi:"duration"`
+	// Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream.
+	Query string `pulumi:"query"`
+	// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
+	Trigger TriggerResponse `pulumi:"trigger"`
+}
+
+// MonitoringQueryLanguageConditionResponseInput is an input type that accepts MonitoringQueryLanguageConditionResponseArgs and MonitoringQueryLanguageConditionResponseOutput values.
+// You can construct a concrete instance of `MonitoringQueryLanguageConditionResponseInput` via:
+//
+//          MonitoringQueryLanguageConditionResponseArgs{...}
+type MonitoringQueryLanguageConditionResponseInput interface {
+	pulumi.Input
+
+	ToMonitoringQueryLanguageConditionResponseOutput() MonitoringQueryLanguageConditionResponseOutput
+	ToMonitoringQueryLanguageConditionResponseOutputWithContext(context.Context) MonitoringQueryLanguageConditionResponseOutput
+}
+
+// A condition type that allows alert policies to be defined using Monitoring Query Language (https://cloud.google.com/monitoring/mql).
+type MonitoringQueryLanguageConditionResponseArgs struct {
+	// The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream.
+	Query pulumi.StringInput `pulumi:"query"`
+	// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
+	Trigger TriggerResponseInput `pulumi:"trigger"`
+}
+
+func (MonitoringQueryLanguageConditionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringQueryLanguageConditionResponse)(nil)).Elem()
+}
+
+func (i MonitoringQueryLanguageConditionResponseArgs) ToMonitoringQueryLanguageConditionResponseOutput() MonitoringQueryLanguageConditionResponseOutput {
+	return i.ToMonitoringQueryLanguageConditionResponseOutputWithContext(context.Background())
+}
+
+func (i MonitoringQueryLanguageConditionResponseArgs) ToMonitoringQueryLanguageConditionResponseOutputWithContext(ctx context.Context) MonitoringQueryLanguageConditionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoringQueryLanguageConditionResponseOutput)
+}
+
+// A condition type that allows alert policies to be defined using Monitoring Query Language (https://cloud.google.com/monitoring/mql).
+type MonitoringQueryLanguageConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitoringQueryLanguageConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringQueryLanguageConditionResponse)(nil)).Elem()
+}
+
+func (o MonitoringQueryLanguageConditionResponseOutput) ToMonitoringQueryLanguageConditionResponseOutput() MonitoringQueryLanguageConditionResponseOutput {
+	return o
+}
+
+func (o MonitoringQueryLanguageConditionResponseOutput) ToMonitoringQueryLanguageConditionResponseOutputWithContext(ctx context.Context) MonitoringQueryLanguageConditionResponseOutput {
+	return o
+}
+
+// The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
+func (o MonitoringQueryLanguageConditionResponseOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoringQueryLanguageConditionResponse) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Monitoring Query Language (https://cloud.google.com/monitoring/mql) query that outputs a boolean stream.
+func (o MonitoringQueryLanguageConditionResponseOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoringQueryLanguageConditionResponse) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
+func (o MonitoringQueryLanguageConditionResponseOutput) Trigger() TriggerResponseOutput {
+	return o.ApplyT(func(v MonitoringQueryLanguageConditionResponse) TriggerResponse { return v.Trigger }).(TriggerResponseOutput)
 }
 
 // Describes a change made to a configuration.
@@ -5848,6 +9492,204 @@ func (o MutationRecordArrayOutput) Index(i pulumi.IntInput) MutationRecordOutput
 	}).(MutationRecordOutput)
 }
 
+// Describes a change made to a configuration.
+type MutationRecordResponse struct {
+	// When the change occurred.
+	MutateTime string `pulumi:"mutateTime"`
+	// The email address of the user making the change.
+	MutatedBy string `pulumi:"mutatedBy"`
+}
+
+// MutationRecordResponseInput is an input type that accepts MutationRecordResponseArgs and MutationRecordResponseOutput values.
+// You can construct a concrete instance of `MutationRecordResponseInput` via:
+//
+//          MutationRecordResponseArgs{...}
+type MutationRecordResponseInput interface {
+	pulumi.Input
+
+	ToMutationRecordResponseOutput() MutationRecordResponseOutput
+	ToMutationRecordResponseOutputWithContext(context.Context) MutationRecordResponseOutput
+}
+
+// Describes a change made to a configuration.
+type MutationRecordResponseArgs struct {
+	// When the change occurred.
+	MutateTime pulumi.StringInput `pulumi:"mutateTime"`
+	// The email address of the user making the change.
+	MutatedBy pulumi.StringInput `pulumi:"mutatedBy"`
+}
+
+func (MutationRecordResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MutationRecordResponse)(nil)).Elem()
+}
+
+func (i MutationRecordResponseArgs) ToMutationRecordResponseOutput() MutationRecordResponseOutput {
+	return i.ToMutationRecordResponseOutputWithContext(context.Background())
+}
+
+func (i MutationRecordResponseArgs) ToMutationRecordResponseOutputWithContext(ctx context.Context) MutationRecordResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MutationRecordResponseOutput)
+}
+
+func (i MutationRecordResponseArgs) ToMutationRecordResponsePtrOutput() MutationRecordResponsePtrOutput {
+	return i.ToMutationRecordResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MutationRecordResponseArgs) ToMutationRecordResponsePtrOutputWithContext(ctx context.Context) MutationRecordResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MutationRecordResponseOutput).ToMutationRecordResponsePtrOutputWithContext(ctx)
+}
+
+// MutationRecordResponsePtrInput is an input type that accepts MutationRecordResponseArgs, MutationRecordResponsePtr and MutationRecordResponsePtrOutput values.
+// You can construct a concrete instance of `MutationRecordResponsePtrInput` via:
+//
+//          MutationRecordResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MutationRecordResponsePtrInput interface {
+	pulumi.Input
+
+	ToMutationRecordResponsePtrOutput() MutationRecordResponsePtrOutput
+	ToMutationRecordResponsePtrOutputWithContext(context.Context) MutationRecordResponsePtrOutput
+}
+
+type mutationRecordResponsePtrType MutationRecordResponseArgs
+
+func MutationRecordResponsePtr(v *MutationRecordResponseArgs) MutationRecordResponsePtrInput {
+	return (*mutationRecordResponsePtrType)(v)
+}
+
+func (*mutationRecordResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MutationRecordResponse)(nil)).Elem()
+}
+
+func (i *mutationRecordResponsePtrType) ToMutationRecordResponsePtrOutput() MutationRecordResponsePtrOutput {
+	return i.ToMutationRecordResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *mutationRecordResponsePtrType) ToMutationRecordResponsePtrOutputWithContext(ctx context.Context) MutationRecordResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MutationRecordResponsePtrOutput)
+}
+
+// MutationRecordResponseArrayInput is an input type that accepts MutationRecordResponseArray and MutationRecordResponseArrayOutput values.
+// You can construct a concrete instance of `MutationRecordResponseArrayInput` via:
+//
+//          MutationRecordResponseArray{ MutationRecordResponseArgs{...} }
+type MutationRecordResponseArrayInput interface {
+	pulumi.Input
+
+	ToMutationRecordResponseArrayOutput() MutationRecordResponseArrayOutput
+	ToMutationRecordResponseArrayOutputWithContext(context.Context) MutationRecordResponseArrayOutput
+}
+
+type MutationRecordResponseArray []MutationRecordResponseInput
+
+func (MutationRecordResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MutationRecordResponse)(nil)).Elem()
+}
+
+func (i MutationRecordResponseArray) ToMutationRecordResponseArrayOutput() MutationRecordResponseArrayOutput {
+	return i.ToMutationRecordResponseArrayOutputWithContext(context.Background())
+}
+
+func (i MutationRecordResponseArray) ToMutationRecordResponseArrayOutputWithContext(ctx context.Context) MutationRecordResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MutationRecordResponseArrayOutput)
+}
+
+// Describes a change made to a configuration.
+type MutationRecordResponseOutput struct{ *pulumi.OutputState }
+
+func (MutationRecordResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MutationRecordResponse)(nil)).Elem()
+}
+
+func (o MutationRecordResponseOutput) ToMutationRecordResponseOutput() MutationRecordResponseOutput {
+	return o
+}
+
+func (o MutationRecordResponseOutput) ToMutationRecordResponseOutputWithContext(ctx context.Context) MutationRecordResponseOutput {
+	return o
+}
+
+func (o MutationRecordResponseOutput) ToMutationRecordResponsePtrOutput() MutationRecordResponsePtrOutput {
+	return o.ToMutationRecordResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MutationRecordResponseOutput) ToMutationRecordResponsePtrOutputWithContext(ctx context.Context) MutationRecordResponsePtrOutput {
+	return o.ApplyT(func(v MutationRecordResponse) *MutationRecordResponse {
+		return &v
+	}).(MutationRecordResponsePtrOutput)
+}
+
+// When the change occurred.
+func (o MutationRecordResponseOutput) MutateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MutationRecordResponse) string { return v.MutateTime }).(pulumi.StringOutput)
+}
+
+// The email address of the user making the change.
+func (o MutationRecordResponseOutput) MutatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v MutationRecordResponse) string { return v.MutatedBy }).(pulumi.StringOutput)
+}
+
+type MutationRecordResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MutationRecordResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MutationRecordResponse)(nil)).Elem()
+}
+
+func (o MutationRecordResponsePtrOutput) ToMutationRecordResponsePtrOutput() MutationRecordResponsePtrOutput {
+	return o
+}
+
+func (o MutationRecordResponsePtrOutput) ToMutationRecordResponsePtrOutputWithContext(ctx context.Context) MutationRecordResponsePtrOutput {
+	return o
+}
+
+func (o MutationRecordResponsePtrOutput) Elem() MutationRecordResponseOutput {
+	return o.ApplyT(func(v *MutationRecordResponse) MutationRecordResponse { return *v }).(MutationRecordResponseOutput)
+}
+
+// When the change occurred.
+func (o MutationRecordResponsePtrOutput) MutateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MutationRecordResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MutateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The email address of the user making the change.
+func (o MutationRecordResponsePtrOutput) MutatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MutationRecordResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MutatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+type MutationRecordResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MutationRecordResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MutationRecordResponse)(nil)).Elem()
+}
+
+func (o MutationRecordResponseArrayOutput) ToMutationRecordResponseArrayOutput() MutationRecordResponseArrayOutput {
+	return o
+}
+
+func (o MutationRecordResponseArrayOutput) ToMutationRecordResponseArrayOutputWithContext(ctx context.Context) MutationRecordResponseArrayOutput {
+	return o
+}
+
+func (o MutationRecordResponseArrayOutput) Index(i pulumi.IntInput) MutationRecordResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MutationRecordResponse {
+		return vs[0].([]MutationRecordResponse)[vs[1].(int)]
+	}).(MutationRecordResponseOutput)
+}
+
 // A PerformanceThreshold is used when each window is good when that window has a sufficiently high performance.
 type PerformanceThreshold struct {
 	// BasicSli to evaluate to judge window quality.
@@ -6017,6 +9859,178 @@ func (o PerformanceThresholdPtrOutput) Threshold() pulumi.Float64PtrOutput {
 			return nil
 		}
 		return v.Threshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// A PerformanceThreshold is used when each window is good when that window has a sufficiently high performance.
+type PerformanceThresholdResponse struct {
+	// BasicSli to evaluate to judge window quality.
+	BasicSliPerformance BasicSliResponse `pulumi:"basicSliPerformance"`
+	// RequestBasedSli to evaluate to judge window quality.
+	Performance RequestBasedSliResponse `pulumi:"performance"`
+	// If window performance >= threshold, the window is counted as good.
+	Threshold float64 `pulumi:"threshold"`
+}
+
+// PerformanceThresholdResponseInput is an input type that accepts PerformanceThresholdResponseArgs and PerformanceThresholdResponseOutput values.
+// You can construct a concrete instance of `PerformanceThresholdResponseInput` via:
+//
+//          PerformanceThresholdResponseArgs{...}
+type PerformanceThresholdResponseInput interface {
+	pulumi.Input
+
+	ToPerformanceThresholdResponseOutput() PerformanceThresholdResponseOutput
+	ToPerformanceThresholdResponseOutputWithContext(context.Context) PerformanceThresholdResponseOutput
+}
+
+// A PerformanceThreshold is used when each window is good when that window has a sufficiently high performance.
+type PerformanceThresholdResponseArgs struct {
+	// BasicSli to evaluate to judge window quality.
+	BasicSliPerformance BasicSliResponseInput `pulumi:"basicSliPerformance"`
+	// RequestBasedSli to evaluate to judge window quality.
+	Performance RequestBasedSliResponseInput `pulumi:"performance"`
+	// If window performance >= threshold, the window is counted as good.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+}
+
+func (PerformanceThresholdResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerformanceThresholdResponse)(nil)).Elem()
+}
+
+func (i PerformanceThresholdResponseArgs) ToPerformanceThresholdResponseOutput() PerformanceThresholdResponseOutput {
+	return i.ToPerformanceThresholdResponseOutputWithContext(context.Background())
+}
+
+func (i PerformanceThresholdResponseArgs) ToPerformanceThresholdResponseOutputWithContext(ctx context.Context) PerformanceThresholdResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerformanceThresholdResponseOutput)
+}
+
+func (i PerformanceThresholdResponseArgs) ToPerformanceThresholdResponsePtrOutput() PerformanceThresholdResponsePtrOutput {
+	return i.ToPerformanceThresholdResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PerformanceThresholdResponseArgs) ToPerformanceThresholdResponsePtrOutputWithContext(ctx context.Context) PerformanceThresholdResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerformanceThresholdResponseOutput).ToPerformanceThresholdResponsePtrOutputWithContext(ctx)
+}
+
+// PerformanceThresholdResponsePtrInput is an input type that accepts PerformanceThresholdResponseArgs, PerformanceThresholdResponsePtr and PerformanceThresholdResponsePtrOutput values.
+// You can construct a concrete instance of `PerformanceThresholdResponsePtrInput` via:
+//
+//          PerformanceThresholdResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PerformanceThresholdResponsePtrInput interface {
+	pulumi.Input
+
+	ToPerformanceThresholdResponsePtrOutput() PerformanceThresholdResponsePtrOutput
+	ToPerformanceThresholdResponsePtrOutputWithContext(context.Context) PerformanceThresholdResponsePtrOutput
+}
+
+type performanceThresholdResponsePtrType PerformanceThresholdResponseArgs
+
+func PerformanceThresholdResponsePtr(v *PerformanceThresholdResponseArgs) PerformanceThresholdResponsePtrInput {
+	return (*performanceThresholdResponsePtrType)(v)
+}
+
+func (*performanceThresholdResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PerformanceThresholdResponse)(nil)).Elem()
+}
+
+func (i *performanceThresholdResponsePtrType) ToPerformanceThresholdResponsePtrOutput() PerformanceThresholdResponsePtrOutput {
+	return i.ToPerformanceThresholdResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *performanceThresholdResponsePtrType) ToPerformanceThresholdResponsePtrOutputWithContext(ctx context.Context) PerformanceThresholdResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerformanceThresholdResponsePtrOutput)
+}
+
+// A PerformanceThreshold is used when each window is good when that window has a sufficiently high performance.
+type PerformanceThresholdResponseOutput struct{ *pulumi.OutputState }
+
+func (PerformanceThresholdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerformanceThresholdResponse)(nil)).Elem()
+}
+
+func (o PerformanceThresholdResponseOutput) ToPerformanceThresholdResponseOutput() PerformanceThresholdResponseOutput {
+	return o
+}
+
+func (o PerformanceThresholdResponseOutput) ToPerformanceThresholdResponseOutputWithContext(ctx context.Context) PerformanceThresholdResponseOutput {
+	return o
+}
+
+func (o PerformanceThresholdResponseOutput) ToPerformanceThresholdResponsePtrOutput() PerformanceThresholdResponsePtrOutput {
+	return o.ToPerformanceThresholdResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PerformanceThresholdResponseOutput) ToPerformanceThresholdResponsePtrOutputWithContext(ctx context.Context) PerformanceThresholdResponsePtrOutput {
+	return o.ApplyT(func(v PerformanceThresholdResponse) *PerformanceThresholdResponse {
+		return &v
+	}).(PerformanceThresholdResponsePtrOutput)
+}
+
+// BasicSli to evaluate to judge window quality.
+func (o PerformanceThresholdResponseOutput) BasicSliPerformance() BasicSliResponseOutput {
+	return o.ApplyT(func(v PerformanceThresholdResponse) BasicSliResponse { return v.BasicSliPerformance }).(BasicSliResponseOutput)
+}
+
+// RequestBasedSli to evaluate to judge window quality.
+func (o PerformanceThresholdResponseOutput) Performance() RequestBasedSliResponseOutput {
+	return o.ApplyT(func(v PerformanceThresholdResponse) RequestBasedSliResponse { return v.Performance }).(RequestBasedSliResponseOutput)
+}
+
+// If window performance >= threshold, the window is counted as good.
+func (o PerformanceThresholdResponseOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v PerformanceThresholdResponse) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+type PerformanceThresholdResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PerformanceThresholdResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PerformanceThresholdResponse)(nil)).Elem()
+}
+
+func (o PerformanceThresholdResponsePtrOutput) ToPerformanceThresholdResponsePtrOutput() PerformanceThresholdResponsePtrOutput {
+	return o
+}
+
+func (o PerformanceThresholdResponsePtrOutput) ToPerformanceThresholdResponsePtrOutputWithContext(ctx context.Context) PerformanceThresholdResponsePtrOutput {
+	return o
+}
+
+func (o PerformanceThresholdResponsePtrOutput) Elem() PerformanceThresholdResponseOutput {
+	return o.ApplyT(func(v *PerformanceThresholdResponse) PerformanceThresholdResponse { return *v }).(PerformanceThresholdResponseOutput)
+}
+
+// BasicSli to evaluate to judge window quality.
+func (o PerformanceThresholdResponsePtrOutput) BasicSliPerformance() BasicSliResponsePtrOutput {
+	return o.ApplyT(func(v *PerformanceThresholdResponse) *BasicSliResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.BasicSliPerformance
+	}).(BasicSliResponsePtrOutput)
+}
+
+// RequestBasedSli to evaluate to judge window quality.
+func (o PerformanceThresholdResponsePtrOutput) Performance() RequestBasedSliResponsePtrOutput {
+	return o.ApplyT(func(v *PerformanceThresholdResponse) *RequestBasedSliResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Performance
+	}).(RequestBasedSliResponsePtrOutput)
+}
+
+// If window performance >= threshold, the window is counted as good.
+func (o PerformanceThresholdResponsePtrOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PerformanceThresholdResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Threshold
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -6435,6 +10449,159 @@ func (o RequestBasedSliPtrOutput) GoodTotalRatio() TimeSeriesRatioPtrOutput {
 	}).(TimeSeriesRatioPtrOutput)
 }
 
+// Service Level Indicators for which atomic units of service are counted directly.
+type RequestBasedSliResponse struct {
+	// distribution_cut is used when good_service is a count of values aggregated in a Distribution that fall into a good range. The total_service is the total count of all values aggregated in the Distribution.
+	DistributionCut DistributionCutResponse `pulumi:"distributionCut"`
+	// good_total_ratio is used when the ratio of good_service to total_service is computed from two TimeSeries.
+	GoodTotalRatio TimeSeriesRatioResponse `pulumi:"goodTotalRatio"`
+}
+
+// RequestBasedSliResponseInput is an input type that accepts RequestBasedSliResponseArgs and RequestBasedSliResponseOutput values.
+// You can construct a concrete instance of `RequestBasedSliResponseInput` via:
+//
+//          RequestBasedSliResponseArgs{...}
+type RequestBasedSliResponseInput interface {
+	pulumi.Input
+
+	ToRequestBasedSliResponseOutput() RequestBasedSliResponseOutput
+	ToRequestBasedSliResponseOutputWithContext(context.Context) RequestBasedSliResponseOutput
+}
+
+// Service Level Indicators for which atomic units of service are counted directly.
+type RequestBasedSliResponseArgs struct {
+	// distribution_cut is used when good_service is a count of values aggregated in a Distribution that fall into a good range. The total_service is the total count of all values aggregated in the Distribution.
+	DistributionCut DistributionCutResponseInput `pulumi:"distributionCut"`
+	// good_total_ratio is used when the ratio of good_service to total_service is computed from two TimeSeries.
+	GoodTotalRatio TimeSeriesRatioResponseInput `pulumi:"goodTotalRatio"`
+}
+
+func (RequestBasedSliResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestBasedSliResponse)(nil)).Elem()
+}
+
+func (i RequestBasedSliResponseArgs) ToRequestBasedSliResponseOutput() RequestBasedSliResponseOutput {
+	return i.ToRequestBasedSliResponseOutputWithContext(context.Background())
+}
+
+func (i RequestBasedSliResponseArgs) ToRequestBasedSliResponseOutputWithContext(ctx context.Context) RequestBasedSliResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RequestBasedSliResponseOutput)
+}
+
+func (i RequestBasedSliResponseArgs) ToRequestBasedSliResponsePtrOutput() RequestBasedSliResponsePtrOutput {
+	return i.ToRequestBasedSliResponsePtrOutputWithContext(context.Background())
+}
+
+func (i RequestBasedSliResponseArgs) ToRequestBasedSliResponsePtrOutputWithContext(ctx context.Context) RequestBasedSliResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RequestBasedSliResponseOutput).ToRequestBasedSliResponsePtrOutputWithContext(ctx)
+}
+
+// RequestBasedSliResponsePtrInput is an input type that accepts RequestBasedSliResponseArgs, RequestBasedSliResponsePtr and RequestBasedSliResponsePtrOutput values.
+// You can construct a concrete instance of `RequestBasedSliResponsePtrInput` via:
+//
+//          RequestBasedSliResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type RequestBasedSliResponsePtrInput interface {
+	pulumi.Input
+
+	ToRequestBasedSliResponsePtrOutput() RequestBasedSliResponsePtrOutput
+	ToRequestBasedSliResponsePtrOutputWithContext(context.Context) RequestBasedSliResponsePtrOutput
+}
+
+type requestBasedSliResponsePtrType RequestBasedSliResponseArgs
+
+func RequestBasedSliResponsePtr(v *RequestBasedSliResponseArgs) RequestBasedSliResponsePtrInput {
+	return (*requestBasedSliResponsePtrType)(v)
+}
+
+func (*requestBasedSliResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RequestBasedSliResponse)(nil)).Elem()
+}
+
+func (i *requestBasedSliResponsePtrType) ToRequestBasedSliResponsePtrOutput() RequestBasedSliResponsePtrOutput {
+	return i.ToRequestBasedSliResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *requestBasedSliResponsePtrType) ToRequestBasedSliResponsePtrOutputWithContext(ctx context.Context) RequestBasedSliResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RequestBasedSliResponsePtrOutput)
+}
+
+// Service Level Indicators for which atomic units of service are counted directly.
+type RequestBasedSliResponseOutput struct{ *pulumi.OutputState }
+
+func (RequestBasedSliResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestBasedSliResponse)(nil)).Elem()
+}
+
+func (o RequestBasedSliResponseOutput) ToRequestBasedSliResponseOutput() RequestBasedSliResponseOutput {
+	return o
+}
+
+func (o RequestBasedSliResponseOutput) ToRequestBasedSliResponseOutputWithContext(ctx context.Context) RequestBasedSliResponseOutput {
+	return o
+}
+
+func (o RequestBasedSliResponseOutput) ToRequestBasedSliResponsePtrOutput() RequestBasedSliResponsePtrOutput {
+	return o.ToRequestBasedSliResponsePtrOutputWithContext(context.Background())
+}
+
+func (o RequestBasedSliResponseOutput) ToRequestBasedSliResponsePtrOutputWithContext(ctx context.Context) RequestBasedSliResponsePtrOutput {
+	return o.ApplyT(func(v RequestBasedSliResponse) *RequestBasedSliResponse {
+		return &v
+	}).(RequestBasedSliResponsePtrOutput)
+}
+
+// distribution_cut is used when good_service is a count of values aggregated in a Distribution that fall into a good range. The total_service is the total count of all values aggregated in the Distribution.
+func (o RequestBasedSliResponseOutput) DistributionCut() DistributionCutResponseOutput {
+	return o.ApplyT(func(v RequestBasedSliResponse) DistributionCutResponse { return v.DistributionCut }).(DistributionCutResponseOutput)
+}
+
+// good_total_ratio is used when the ratio of good_service to total_service is computed from two TimeSeries.
+func (o RequestBasedSliResponseOutput) GoodTotalRatio() TimeSeriesRatioResponseOutput {
+	return o.ApplyT(func(v RequestBasedSliResponse) TimeSeriesRatioResponse { return v.GoodTotalRatio }).(TimeSeriesRatioResponseOutput)
+}
+
+type RequestBasedSliResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RequestBasedSliResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RequestBasedSliResponse)(nil)).Elem()
+}
+
+func (o RequestBasedSliResponsePtrOutput) ToRequestBasedSliResponsePtrOutput() RequestBasedSliResponsePtrOutput {
+	return o
+}
+
+func (o RequestBasedSliResponsePtrOutput) ToRequestBasedSliResponsePtrOutputWithContext(ctx context.Context) RequestBasedSliResponsePtrOutput {
+	return o
+}
+
+func (o RequestBasedSliResponsePtrOutput) Elem() RequestBasedSliResponseOutput {
+	return o.ApplyT(func(v *RequestBasedSliResponse) RequestBasedSliResponse { return *v }).(RequestBasedSliResponseOutput)
+}
+
+// distribution_cut is used when good_service is a count of values aggregated in a Distribution that fall into a good range. The total_service is the total count of all values aggregated in the Distribution.
+func (o RequestBasedSliResponsePtrOutput) DistributionCut() DistributionCutResponsePtrOutput {
+	return o.ApplyT(func(v *RequestBasedSliResponse) *DistributionCutResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.DistributionCut
+	}).(DistributionCutResponsePtrOutput)
+}
+
+// good_total_ratio is used when the ratio of good_service to total_service is computed from two TimeSeries.
+func (o RequestBasedSliResponsePtrOutput) GoodTotalRatio() TimeSeriesRatioResponsePtrOutput {
+	return o.ApplyT(func(v *RequestBasedSliResponse) *TimeSeriesRatioResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GoodTotalRatio
+	}).(TimeSeriesRatioResponsePtrOutput)
+}
+
 // The resource submessage for group checks. It can be used instead of a monitored resource, when multiple resources are being monitored.
 type ResourceGroup struct {
 	// The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
@@ -6585,6 +10752,159 @@ func (o ResourceGroupPtrOutput) ResourceType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource submessage for group checks. It can be used instead of a monitored resource, when multiple resources are being monitored.
+type ResourceGroupResponse struct {
+	// The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
+	GroupId string `pulumi:"groupId"`
+	// The resource type of the group members.
+	ResourceType string `pulumi:"resourceType"`
+}
+
+// ResourceGroupResponseInput is an input type that accepts ResourceGroupResponseArgs and ResourceGroupResponseOutput values.
+// You can construct a concrete instance of `ResourceGroupResponseInput` via:
+//
+//          ResourceGroupResponseArgs{...}
+type ResourceGroupResponseInput interface {
+	pulumi.Input
+
+	ToResourceGroupResponseOutput() ResourceGroupResponseOutput
+	ToResourceGroupResponseOutputWithContext(context.Context) ResourceGroupResponseOutput
+}
+
+// The resource submessage for group checks. It can be used instead of a monitored resource, when multiple resources are being monitored.
+type ResourceGroupResponseArgs struct {
+	// The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The resource type of the group members.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+}
+
+func (ResourceGroupResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGroupResponse)(nil)).Elem()
+}
+
+func (i ResourceGroupResponseArgs) ToResourceGroupResponseOutput() ResourceGroupResponseOutput {
+	return i.ToResourceGroupResponseOutputWithContext(context.Background())
+}
+
+func (i ResourceGroupResponseArgs) ToResourceGroupResponseOutputWithContext(ctx context.Context) ResourceGroupResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupResponseOutput)
+}
+
+func (i ResourceGroupResponseArgs) ToResourceGroupResponsePtrOutput() ResourceGroupResponsePtrOutput {
+	return i.ToResourceGroupResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ResourceGroupResponseArgs) ToResourceGroupResponsePtrOutputWithContext(ctx context.Context) ResourceGroupResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupResponseOutput).ToResourceGroupResponsePtrOutputWithContext(ctx)
+}
+
+// ResourceGroupResponsePtrInput is an input type that accepts ResourceGroupResponseArgs, ResourceGroupResponsePtr and ResourceGroupResponsePtrOutput values.
+// You can construct a concrete instance of `ResourceGroupResponsePtrInput` via:
+//
+//          ResourceGroupResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ResourceGroupResponsePtrInput interface {
+	pulumi.Input
+
+	ToResourceGroupResponsePtrOutput() ResourceGroupResponsePtrOutput
+	ToResourceGroupResponsePtrOutputWithContext(context.Context) ResourceGroupResponsePtrOutput
+}
+
+type resourceGroupResponsePtrType ResourceGroupResponseArgs
+
+func ResourceGroupResponsePtr(v *ResourceGroupResponseArgs) ResourceGroupResponsePtrInput {
+	return (*resourceGroupResponsePtrType)(v)
+}
+
+func (*resourceGroupResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGroupResponse)(nil)).Elem()
+}
+
+func (i *resourceGroupResponsePtrType) ToResourceGroupResponsePtrOutput() ResourceGroupResponsePtrOutput {
+	return i.ToResourceGroupResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *resourceGroupResponsePtrType) ToResourceGroupResponsePtrOutputWithContext(ctx context.Context) ResourceGroupResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupResponsePtrOutput)
+}
+
+// The resource submessage for group checks. It can be used instead of a monitored resource, when multiple resources are being monitored.
+type ResourceGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGroupResponse)(nil)).Elem()
+}
+
+func (o ResourceGroupResponseOutput) ToResourceGroupResponseOutput() ResourceGroupResponseOutput {
+	return o
+}
+
+func (o ResourceGroupResponseOutput) ToResourceGroupResponseOutputWithContext(ctx context.Context) ResourceGroupResponseOutput {
+	return o
+}
+
+func (o ResourceGroupResponseOutput) ToResourceGroupResponsePtrOutput() ResourceGroupResponsePtrOutput {
+	return o.ToResourceGroupResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ResourceGroupResponseOutput) ToResourceGroupResponsePtrOutputWithContext(ctx context.Context) ResourceGroupResponsePtrOutput {
+	return o.ApplyT(func(v ResourceGroupResponse) *ResourceGroupResponse {
+		return &v
+	}).(ResourceGroupResponsePtrOutput)
+}
+
+// The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
+func (o ResourceGroupResponseOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGroupResponse) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The resource type of the group members.
+func (o ResourceGroupResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGroupResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+type ResourceGroupResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceGroupResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGroupResponse)(nil)).Elem()
+}
+
+func (o ResourceGroupResponsePtrOutput) ToResourceGroupResponsePtrOutput() ResourceGroupResponsePtrOutput {
+	return o
+}
+
+func (o ResourceGroupResponsePtrOutput) ToResourceGroupResponsePtrOutputWithContext(ctx context.Context) ResourceGroupResponsePtrOutput {
+	return o
+}
+
+func (o ResourceGroupResponsePtrOutput) Elem() ResourceGroupResponseOutput {
+	return o.ApplyT(func(v *ResourceGroupResponse) ResourceGroupResponse { return *v }).(ResourceGroupResponseOutput)
+}
+
+// The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
+func (o ResourceGroupResponsePtrOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource type of the group members.
+func (o ResourceGroupResponsePtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6760,6 +11080,178 @@ func (o ServiceLevelIndicatorPtrOutput) WindowsBased() WindowsBasedSliPtrOutput 
 	}).(WindowsBasedSliPtrOutput)
 }
 
+// A Service-Level Indicator (SLI) describes the "performance" of a service. For some services, the SLI is well-defined. In such cases, the SLI can be described easily by referencing the well-known SLI and providing the needed parameters. Alternatively, a "custom" SLI can be defined with a query to the underlying metric store. An SLI is defined to be good_service / total_service over any queried time interval. The value of performance always falls into the range 0 <= performance <= 1. A custom SLI describes how to compute this ratio, whether this is by dividing values from a pair of time series, cutting a Distribution into good and bad counts, or counting time windows in which the service complies with a criterion. For separation of concerns, a single Service-Level Indicator measures performance for only one aspect of service quality, such as fraction of successful queries or fast-enough queries.
+type ServiceLevelIndicatorResponse struct {
+	// Basic SLI on a well-known service type.
+	BasicSli BasicSliResponse `pulumi:"basicSli"`
+	// Request-based SLIs
+	RequestBased RequestBasedSliResponse `pulumi:"requestBased"`
+	// Windows-based SLIs
+	WindowsBased WindowsBasedSliResponse `pulumi:"windowsBased"`
+}
+
+// ServiceLevelIndicatorResponseInput is an input type that accepts ServiceLevelIndicatorResponseArgs and ServiceLevelIndicatorResponseOutput values.
+// You can construct a concrete instance of `ServiceLevelIndicatorResponseInput` via:
+//
+//          ServiceLevelIndicatorResponseArgs{...}
+type ServiceLevelIndicatorResponseInput interface {
+	pulumi.Input
+
+	ToServiceLevelIndicatorResponseOutput() ServiceLevelIndicatorResponseOutput
+	ToServiceLevelIndicatorResponseOutputWithContext(context.Context) ServiceLevelIndicatorResponseOutput
+}
+
+// A Service-Level Indicator (SLI) describes the "performance" of a service. For some services, the SLI is well-defined. In such cases, the SLI can be described easily by referencing the well-known SLI and providing the needed parameters. Alternatively, a "custom" SLI can be defined with a query to the underlying metric store. An SLI is defined to be good_service / total_service over any queried time interval. The value of performance always falls into the range 0 <= performance <= 1. A custom SLI describes how to compute this ratio, whether this is by dividing values from a pair of time series, cutting a Distribution into good and bad counts, or counting time windows in which the service complies with a criterion. For separation of concerns, a single Service-Level Indicator measures performance for only one aspect of service quality, such as fraction of successful queries or fast-enough queries.
+type ServiceLevelIndicatorResponseArgs struct {
+	// Basic SLI on a well-known service type.
+	BasicSli BasicSliResponseInput `pulumi:"basicSli"`
+	// Request-based SLIs
+	RequestBased RequestBasedSliResponseInput `pulumi:"requestBased"`
+	// Windows-based SLIs
+	WindowsBased WindowsBasedSliResponseInput `pulumi:"windowsBased"`
+}
+
+func (ServiceLevelIndicatorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLevelIndicatorResponse)(nil)).Elem()
+}
+
+func (i ServiceLevelIndicatorResponseArgs) ToServiceLevelIndicatorResponseOutput() ServiceLevelIndicatorResponseOutput {
+	return i.ToServiceLevelIndicatorResponseOutputWithContext(context.Background())
+}
+
+func (i ServiceLevelIndicatorResponseArgs) ToServiceLevelIndicatorResponseOutputWithContext(ctx context.Context) ServiceLevelIndicatorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLevelIndicatorResponseOutput)
+}
+
+func (i ServiceLevelIndicatorResponseArgs) ToServiceLevelIndicatorResponsePtrOutput() ServiceLevelIndicatorResponsePtrOutput {
+	return i.ToServiceLevelIndicatorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceLevelIndicatorResponseArgs) ToServiceLevelIndicatorResponsePtrOutputWithContext(ctx context.Context) ServiceLevelIndicatorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLevelIndicatorResponseOutput).ToServiceLevelIndicatorResponsePtrOutputWithContext(ctx)
+}
+
+// ServiceLevelIndicatorResponsePtrInput is an input type that accepts ServiceLevelIndicatorResponseArgs, ServiceLevelIndicatorResponsePtr and ServiceLevelIndicatorResponsePtrOutput values.
+// You can construct a concrete instance of `ServiceLevelIndicatorResponsePtrInput` via:
+//
+//          ServiceLevelIndicatorResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceLevelIndicatorResponsePtrInput interface {
+	pulumi.Input
+
+	ToServiceLevelIndicatorResponsePtrOutput() ServiceLevelIndicatorResponsePtrOutput
+	ToServiceLevelIndicatorResponsePtrOutputWithContext(context.Context) ServiceLevelIndicatorResponsePtrOutput
+}
+
+type serviceLevelIndicatorResponsePtrType ServiceLevelIndicatorResponseArgs
+
+func ServiceLevelIndicatorResponsePtr(v *ServiceLevelIndicatorResponseArgs) ServiceLevelIndicatorResponsePtrInput {
+	return (*serviceLevelIndicatorResponsePtrType)(v)
+}
+
+func (*serviceLevelIndicatorResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceLevelIndicatorResponse)(nil)).Elem()
+}
+
+func (i *serviceLevelIndicatorResponsePtrType) ToServiceLevelIndicatorResponsePtrOutput() ServiceLevelIndicatorResponsePtrOutput {
+	return i.ToServiceLevelIndicatorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceLevelIndicatorResponsePtrType) ToServiceLevelIndicatorResponsePtrOutputWithContext(ctx context.Context) ServiceLevelIndicatorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLevelIndicatorResponsePtrOutput)
+}
+
+// A Service-Level Indicator (SLI) describes the "performance" of a service. For some services, the SLI is well-defined. In such cases, the SLI can be described easily by referencing the well-known SLI and providing the needed parameters. Alternatively, a "custom" SLI can be defined with a query to the underlying metric store. An SLI is defined to be good_service / total_service over any queried time interval. The value of performance always falls into the range 0 <= performance <= 1. A custom SLI describes how to compute this ratio, whether this is by dividing values from a pair of time series, cutting a Distribution into good and bad counts, or counting time windows in which the service complies with a criterion. For separation of concerns, a single Service-Level Indicator measures performance for only one aspect of service quality, such as fraction of successful queries or fast-enough queries.
+type ServiceLevelIndicatorResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceLevelIndicatorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLevelIndicatorResponse)(nil)).Elem()
+}
+
+func (o ServiceLevelIndicatorResponseOutput) ToServiceLevelIndicatorResponseOutput() ServiceLevelIndicatorResponseOutput {
+	return o
+}
+
+func (o ServiceLevelIndicatorResponseOutput) ToServiceLevelIndicatorResponseOutputWithContext(ctx context.Context) ServiceLevelIndicatorResponseOutput {
+	return o
+}
+
+func (o ServiceLevelIndicatorResponseOutput) ToServiceLevelIndicatorResponsePtrOutput() ServiceLevelIndicatorResponsePtrOutput {
+	return o.ToServiceLevelIndicatorResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceLevelIndicatorResponseOutput) ToServiceLevelIndicatorResponsePtrOutputWithContext(ctx context.Context) ServiceLevelIndicatorResponsePtrOutput {
+	return o.ApplyT(func(v ServiceLevelIndicatorResponse) *ServiceLevelIndicatorResponse {
+		return &v
+	}).(ServiceLevelIndicatorResponsePtrOutput)
+}
+
+// Basic SLI on a well-known service type.
+func (o ServiceLevelIndicatorResponseOutput) BasicSli() BasicSliResponseOutput {
+	return o.ApplyT(func(v ServiceLevelIndicatorResponse) BasicSliResponse { return v.BasicSli }).(BasicSliResponseOutput)
+}
+
+// Request-based SLIs
+func (o ServiceLevelIndicatorResponseOutput) RequestBased() RequestBasedSliResponseOutput {
+	return o.ApplyT(func(v ServiceLevelIndicatorResponse) RequestBasedSliResponse { return v.RequestBased }).(RequestBasedSliResponseOutput)
+}
+
+// Windows-based SLIs
+func (o ServiceLevelIndicatorResponseOutput) WindowsBased() WindowsBasedSliResponseOutput {
+	return o.ApplyT(func(v ServiceLevelIndicatorResponse) WindowsBasedSliResponse { return v.WindowsBased }).(WindowsBasedSliResponseOutput)
+}
+
+type ServiceLevelIndicatorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceLevelIndicatorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceLevelIndicatorResponse)(nil)).Elem()
+}
+
+func (o ServiceLevelIndicatorResponsePtrOutput) ToServiceLevelIndicatorResponsePtrOutput() ServiceLevelIndicatorResponsePtrOutput {
+	return o
+}
+
+func (o ServiceLevelIndicatorResponsePtrOutput) ToServiceLevelIndicatorResponsePtrOutputWithContext(ctx context.Context) ServiceLevelIndicatorResponsePtrOutput {
+	return o
+}
+
+func (o ServiceLevelIndicatorResponsePtrOutput) Elem() ServiceLevelIndicatorResponseOutput {
+	return o.ApplyT(func(v *ServiceLevelIndicatorResponse) ServiceLevelIndicatorResponse { return *v }).(ServiceLevelIndicatorResponseOutput)
+}
+
+// Basic SLI on a well-known service type.
+func (o ServiceLevelIndicatorResponsePtrOutput) BasicSli() BasicSliResponsePtrOutput {
+	return o.ApplyT(func(v *ServiceLevelIndicatorResponse) *BasicSliResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.BasicSli
+	}).(BasicSliResponsePtrOutput)
+}
+
+// Request-based SLIs
+func (o ServiceLevelIndicatorResponsePtrOutput) RequestBased() RequestBasedSliResponsePtrOutput {
+	return o.ApplyT(func(v *ServiceLevelIndicatorResponse) *RequestBasedSliResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.RequestBased
+	}).(RequestBasedSliResponsePtrOutput)
+}
+
+// Windows-based SLIs
+func (o ServiceLevelIndicatorResponsePtrOutput) WindowsBased() WindowsBasedSliResponsePtrOutput {
+	return o.ApplyT(func(v *ServiceLevelIndicatorResponse) *WindowsBasedSliResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.WindowsBased
+	}).(WindowsBasedSliResponsePtrOutput)
+}
+
 // The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces of data: error code, error message, and error details.You can find out more about this error model and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors).
 type Status struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -6932,6 +11424,178 @@ func (o StatusPtrOutput) Message() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces of data: error code, error message, and error details.You can find out more about this error model and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors).
+type StatusResponse struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code int `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message string `pulumi:"message"`
+}
+
+// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
+// You can construct a concrete instance of `StatusResponseInput` via:
+//
+//          StatusResponseArgs{...}
+type StatusResponseInput interface {
+	pulumi.Input
+
+	ToStatusResponseOutput() StatusResponseOutput
+	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
+}
+
+// The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces of data: error code, error message, and error details.You can find out more about this error model and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors).
+type StatusResponseArgs struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntInput `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (StatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
+	return i.ToStatusResponseOutputWithContext(context.Background())
+}
+
+func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
+}
+
+func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
+}
+
+// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
+// You can construct a concrete instance of `StatusResponsePtrInput` via:
+//
+//          StatusResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type StatusResponsePtrInput interface {
+	pulumi.Input
+
+	ToStatusResponsePtrOutput() StatusResponsePtrOutput
+	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
+}
+
+type statusResponsePtrType StatusResponseArgs
+
+func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
+	return (*statusResponsePtrType)(v)
+}
+
+func (*statusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
+}
+
+func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
+}
+
+// The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces of data: error code, error message, and error details.You can find out more about this error model and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors).
+type StatusResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+		return &v
+	}).(StatusResponsePtrOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type StatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o
+}
+
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o
+}
+
+func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
+	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *StatusResponse) []map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
 // Information required for a TCP Uptime check request.
 type TcpCheck struct {
 	// The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
@@ -7066,6 +11730,140 @@ func (o TcpCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Information required for a TCP Uptime check request.
+type TcpCheckResponse struct {
+	// The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
+	Port int `pulumi:"port"`
+}
+
+// TcpCheckResponseInput is an input type that accepts TcpCheckResponseArgs and TcpCheckResponseOutput values.
+// You can construct a concrete instance of `TcpCheckResponseInput` via:
+//
+//          TcpCheckResponseArgs{...}
+type TcpCheckResponseInput interface {
+	pulumi.Input
+
+	ToTcpCheckResponseOutput() TcpCheckResponseOutput
+	ToTcpCheckResponseOutputWithContext(context.Context) TcpCheckResponseOutput
+}
+
+// Information required for a TCP Uptime check request.
+type TcpCheckResponseArgs struct {
+	// The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (TcpCheckResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpCheckResponse)(nil)).Elem()
+}
+
+func (i TcpCheckResponseArgs) ToTcpCheckResponseOutput() TcpCheckResponseOutput {
+	return i.ToTcpCheckResponseOutputWithContext(context.Background())
+}
+
+func (i TcpCheckResponseArgs) ToTcpCheckResponseOutputWithContext(ctx context.Context) TcpCheckResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpCheckResponseOutput)
+}
+
+func (i TcpCheckResponseArgs) ToTcpCheckResponsePtrOutput() TcpCheckResponsePtrOutput {
+	return i.ToTcpCheckResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TcpCheckResponseArgs) ToTcpCheckResponsePtrOutputWithContext(ctx context.Context) TcpCheckResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpCheckResponseOutput).ToTcpCheckResponsePtrOutputWithContext(ctx)
+}
+
+// TcpCheckResponsePtrInput is an input type that accepts TcpCheckResponseArgs, TcpCheckResponsePtr and TcpCheckResponsePtrOutput values.
+// You can construct a concrete instance of `TcpCheckResponsePtrInput` via:
+//
+//          TcpCheckResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TcpCheckResponsePtrInput interface {
+	pulumi.Input
+
+	ToTcpCheckResponsePtrOutput() TcpCheckResponsePtrOutput
+	ToTcpCheckResponsePtrOutputWithContext(context.Context) TcpCheckResponsePtrOutput
+}
+
+type tcpCheckResponsePtrType TcpCheckResponseArgs
+
+func TcpCheckResponsePtr(v *TcpCheckResponseArgs) TcpCheckResponsePtrInput {
+	return (*tcpCheckResponsePtrType)(v)
+}
+
+func (*tcpCheckResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TcpCheckResponse)(nil)).Elem()
+}
+
+func (i *tcpCheckResponsePtrType) ToTcpCheckResponsePtrOutput() TcpCheckResponsePtrOutput {
+	return i.ToTcpCheckResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *tcpCheckResponsePtrType) ToTcpCheckResponsePtrOutputWithContext(ctx context.Context) TcpCheckResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpCheckResponsePtrOutput)
+}
+
+// Information required for a TCP Uptime check request.
+type TcpCheckResponseOutput struct{ *pulumi.OutputState }
+
+func (TcpCheckResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpCheckResponse)(nil)).Elem()
+}
+
+func (o TcpCheckResponseOutput) ToTcpCheckResponseOutput() TcpCheckResponseOutput {
+	return o
+}
+
+func (o TcpCheckResponseOutput) ToTcpCheckResponseOutputWithContext(ctx context.Context) TcpCheckResponseOutput {
+	return o
+}
+
+func (o TcpCheckResponseOutput) ToTcpCheckResponsePtrOutput() TcpCheckResponsePtrOutput {
+	return o.ToTcpCheckResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TcpCheckResponseOutput) ToTcpCheckResponsePtrOutputWithContext(ctx context.Context) TcpCheckResponsePtrOutput {
+	return o.ApplyT(func(v TcpCheckResponse) *TcpCheckResponse {
+		return &v
+	}).(TcpCheckResponsePtrOutput)
+}
+
+// The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
+func (o TcpCheckResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v TcpCheckResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type TcpCheckResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TcpCheckResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TcpCheckResponse)(nil)).Elem()
+}
+
+func (o TcpCheckResponsePtrOutput) ToTcpCheckResponsePtrOutput() TcpCheckResponsePtrOutput {
+	return o
+}
+
+func (o TcpCheckResponsePtrOutput) ToTcpCheckResponsePtrOutputWithContext(ctx context.Context) TcpCheckResponsePtrOutput {
+	return o
+}
+
+func (o TcpCheckResponsePtrOutput) Elem() TcpCheckResponseOutput {
+	return o.ApplyT(func(v *TcpCheckResponse) TcpCheckResponse { return *v }).(TcpCheckResponseOutput)
+}
+
+// The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
+func (o TcpCheckResponsePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TcpCheckResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
 // Configuration for how to query telemetry on a Service.
 type Telemetry struct {
 	// The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
@@ -7197,6 +11995,140 @@ func (o TelemetryPtrOutput) ResourceName() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for how to query telemetry on a Service.
+type TelemetryResponse struct {
+	// The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
+	ResourceName string `pulumi:"resourceName"`
+}
+
+// TelemetryResponseInput is an input type that accepts TelemetryResponseArgs and TelemetryResponseOutput values.
+// You can construct a concrete instance of `TelemetryResponseInput` via:
+//
+//          TelemetryResponseArgs{...}
+type TelemetryResponseInput interface {
+	pulumi.Input
+
+	ToTelemetryResponseOutput() TelemetryResponseOutput
+	ToTelemetryResponseOutputWithContext(context.Context) TelemetryResponseOutput
+}
+
+// Configuration for how to query telemetry on a Service.
+type TelemetryResponseArgs struct {
+	// The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+}
+
+func (TelemetryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryResponse)(nil)).Elem()
+}
+
+func (i TelemetryResponseArgs) ToTelemetryResponseOutput() TelemetryResponseOutput {
+	return i.ToTelemetryResponseOutputWithContext(context.Background())
+}
+
+func (i TelemetryResponseArgs) ToTelemetryResponseOutputWithContext(ctx context.Context) TelemetryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryResponseOutput)
+}
+
+func (i TelemetryResponseArgs) ToTelemetryResponsePtrOutput() TelemetryResponsePtrOutput {
+	return i.ToTelemetryResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TelemetryResponseArgs) ToTelemetryResponsePtrOutputWithContext(ctx context.Context) TelemetryResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryResponseOutput).ToTelemetryResponsePtrOutputWithContext(ctx)
+}
+
+// TelemetryResponsePtrInput is an input type that accepts TelemetryResponseArgs, TelemetryResponsePtr and TelemetryResponsePtrOutput values.
+// You can construct a concrete instance of `TelemetryResponsePtrInput` via:
+//
+//          TelemetryResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TelemetryResponsePtrInput interface {
+	pulumi.Input
+
+	ToTelemetryResponsePtrOutput() TelemetryResponsePtrOutput
+	ToTelemetryResponsePtrOutputWithContext(context.Context) TelemetryResponsePtrOutput
+}
+
+type telemetryResponsePtrType TelemetryResponseArgs
+
+func TelemetryResponsePtr(v *TelemetryResponseArgs) TelemetryResponsePtrInput {
+	return (*telemetryResponsePtrType)(v)
+}
+
+func (*telemetryResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryResponse)(nil)).Elem()
+}
+
+func (i *telemetryResponsePtrType) ToTelemetryResponsePtrOutput() TelemetryResponsePtrOutput {
+	return i.ToTelemetryResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *telemetryResponsePtrType) ToTelemetryResponsePtrOutputWithContext(ctx context.Context) TelemetryResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryResponsePtrOutput)
+}
+
+// Configuration for how to query telemetry on a Service.
+type TelemetryResponseOutput struct{ *pulumi.OutputState }
+
+func (TelemetryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryResponse)(nil)).Elem()
+}
+
+func (o TelemetryResponseOutput) ToTelemetryResponseOutput() TelemetryResponseOutput {
+	return o
+}
+
+func (o TelemetryResponseOutput) ToTelemetryResponseOutputWithContext(ctx context.Context) TelemetryResponseOutput {
+	return o
+}
+
+func (o TelemetryResponseOutput) ToTelemetryResponsePtrOutput() TelemetryResponsePtrOutput {
+	return o.ToTelemetryResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryResponseOutput) ToTelemetryResponsePtrOutputWithContext(ctx context.Context) TelemetryResponsePtrOutput {
+	return o.ApplyT(func(v TelemetryResponse) *TelemetryResponse {
+		return &v
+	}).(TelemetryResponsePtrOutput)
+}
+
+// The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
+func (o TelemetryResponseOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryResponse) string { return v.ResourceName }).(pulumi.StringOutput)
+}
+
+type TelemetryResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TelemetryResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryResponse)(nil)).Elem()
+}
+
+func (o TelemetryResponsePtrOutput) ToTelemetryResponsePtrOutput() TelemetryResponsePtrOutput {
+	return o
+}
+
+func (o TelemetryResponsePtrOutput) ToTelemetryResponsePtrOutputWithContext(ctx context.Context) TelemetryResponsePtrOutput {
+	return o
+}
+
+func (o TelemetryResponsePtrOutput) Elem() TelemetryResponseOutput {
+	return o.ApplyT(func(v *TelemetryResponse) TelemetryResponse { return *v }).(TelemetryResponseOutput)
+}
+
+// The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
+func (o TelemetryResponsePtrOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TelemetryResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7355,7 +12287,7 @@ func (o TimeIntervalPtrOutput) StartTime() pulumi.StringPtrOutput {
 
 // A collection of data points that describes the time-varying values of a metric. A time series is identified by a combination of a fully-specified monitored resource and a fully-specified metric. This type is used for both listing and creating time series.
 type TimeSeriesType struct {
-	// Output only. The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored.
+	// The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored.
 	Metadata *MonitoredResourceMetadata `pulumi:"metadata"`
 	// The associated metric. A fully-specified metric used to identify the time series.
 	Metric *Metric `pulumi:"metric"`
@@ -7384,7 +12316,7 @@ type TimeSeriesTypeInput interface {
 
 // A collection of data points that describes the time-varying values of a metric. A time series is identified by a combination of a fully-specified monitored resource and a fully-specified metric. This type is used for both listing and creating time series.
 type TimeSeriesTypeArgs struct {
-	// Output only. The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored.
+	// The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored.
 	Metadata MonitoredResourceMetadataPtrInput `pulumi:"metadata"`
 	// The associated metric. A fully-specified metric used to identify the time series.
 	Metric MetricPtrInput `pulumi:"metric"`
@@ -7452,7 +12384,7 @@ func (o TimeSeriesTypeOutput) ToTimeSeriesTypeOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Output only. The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored.
+// The associated monitored resource metadata. When reading a time series, this field will include metadata labels that are explicitly named in the reduction. When creating a time series, this field is ignored.
 func (o TimeSeriesTypeOutput) Metadata() MonitoredResourceMetadataPtrOutput {
 	return o.ApplyT(func(v TimeSeriesType) *MonitoredResourceMetadata { return v.Metadata }).(MonitoredResourceMetadataPtrOutput)
 }
@@ -7679,6 +12611,178 @@ func (o TimeSeriesRatioPtrOutput) TotalServiceFilter() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A TimeSeriesRatio specifies two TimeSeries to use for computing the good_service / total_service ratio. The specified TimeSeries must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two of good, bad, and total, and the relationship good_service + bad_service = total_service will be assumed.
+type TimeSeriesRatioResponse struct {
+	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying bad service, either demanded service that was not provided or demanded service that was of inadequate quality. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	BadServiceFilter string `pulumi:"badServiceFilter"`
+	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying good service provided. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	GoodServiceFilter string `pulumi:"goodServiceFilter"`
+	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying total demanded service. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	TotalServiceFilter string `pulumi:"totalServiceFilter"`
+}
+
+// TimeSeriesRatioResponseInput is an input type that accepts TimeSeriesRatioResponseArgs and TimeSeriesRatioResponseOutput values.
+// You can construct a concrete instance of `TimeSeriesRatioResponseInput` via:
+//
+//          TimeSeriesRatioResponseArgs{...}
+type TimeSeriesRatioResponseInput interface {
+	pulumi.Input
+
+	ToTimeSeriesRatioResponseOutput() TimeSeriesRatioResponseOutput
+	ToTimeSeriesRatioResponseOutputWithContext(context.Context) TimeSeriesRatioResponseOutput
+}
+
+// A TimeSeriesRatio specifies two TimeSeries to use for computing the good_service / total_service ratio. The specified TimeSeries must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two of good, bad, and total, and the relationship good_service + bad_service = total_service will be assumed.
+type TimeSeriesRatioResponseArgs struct {
+	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying bad service, either demanded service that was not provided or demanded service that was of inadequate quality. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	BadServiceFilter pulumi.StringInput `pulumi:"badServiceFilter"`
+	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying good service provided. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	GoodServiceFilter pulumi.StringInput `pulumi:"goodServiceFilter"`
+	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying total demanded service. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+	TotalServiceFilter pulumi.StringInput `pulumi:"totalServiceFilter"`
+}
+
+func (TimeSeriesRatioResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesRatioResponse)(nil)).Elem()
+}
+
+func (i TimeSeriesRatioResponseArgs) ToTimeSeriesRatioResponseOutput() TimeSeriesRatioResponseOutput {
+	return i.ToTimeSeriesRatioResponseOutputWithContext(context.Background())
+}
+
+func (i TimeSeriesRatioResponseArgs) ToTimeSeriesRatioResponseOutputWithContext(ctx context.Context) TimeSeriesRatioResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesRatioResponseOutput)
+}
+
+func (i TimeSeriesRatioResponseArgs) ToTimeSeriesRatioResponsePtrOutput() TimeSeriesRatioResponsePtrOutput {
+	return i.ToTimeSeriesRatioResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TimeSeriesRatioResponseArgs) ToTimeSeriesRatioResponsePtrOutputWithContext(ctx context.Context) TimeSeriesRatioResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesRatioResponseOutput).ToTimeSeriesRatioResponsePtrOutputWithContext(ctx)
+}
+
+// TimeSeriesRatioResponsePtrInput is an input type that accepts TimeSeriesRatioResponseArgs, TimeSeriesRatioResponsePtr and TimeSeriesRatioResponsePtrOutput values.
+// You can construct a concrete instance of `TimeSeriesRatioResponsePtrInput` via:
+//
+//          TimeSeriesRatioResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TimeSeriesRatioResponsePtrInput interface {
+	pulumi.Input
+
+	ToTimeSeriesRatioResponsePtrOutput() TimeSeriesRatioResponsePtrOutput
+	ToTimeSeriesRatioResponsePtrOutputWithContext(context.Context) TimeSeriesRatioResponsePtrOutput
+}
+
+type timeSeriesRatioResponsePtrType TimeSeriesRatioResponseArgs
+
+func TimeSeriesRatioResponsePtr(v *TimeSeriesRatioResponseArgs) TimeSeriesRatioResponsePtrInput {
+	return (*timeSeriesRatioResponsePtrType)(v)
+}
+
+func (*timeSeriesRatioResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeSeriesRatioResponse)(nil)).Elem()
+}
+
+func (i *timeSeriesRatioResponsePtrType) ToTimeSeriesRatioResponsePtrOutput() TimeSeriesRatioResponsePtrOutput {
+	return i.ToTimeSeriesRatioResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *timeSeriesRatioResponsePtrType) ToTimeSeriesRatioResponsePtrOutputWithContext(ctx context.Context) TimeSeriesRatioResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesRatioResponsePtrOutput)
+}
+
+// A TimeSeriesRatio specifies two TimeSeries to use for computing the good_service / total_service ratio. The specified TimeSeries must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two of good, bad, and total, and the relationship good_service + bad_service = total_service will be assumed.
+type TimeSeriesRatioResponseOutput struct{ *pulumi.OutputState }
+
+func (TimeSeriesRatioResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesRatioResponse)(nil)).Elem()
+}
+
+func (o TimeSeriesRatioResponseOutput) ToTimeSeriesRatioResponseOutput() TimeSeriesRatioResponseOutput {
+	return o
+}
+
+func (o TimeSeriesRatioResponseOutput) ToTimeSeriesRatioResponseOutputWithContext(ctx context.Context) TimeSeriesRatioResponseOutput {
+	return o
+}
+
+func (o TimeSeriesRatioResponseOutput) ToTimeSeriesRatioResponsePtrOutput() TimeSeriesRatioResponsePtrOutput {
+	return o.ToTimeSeriesRatioResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TimeSeriesRatioResponseOutput) ToTimeSeriesRatioResponsePtrOutputWithContext(ctx context.Context) TimeSeriesRatioResponsePtrOutput {
+	return o.ApplyT(func(v TimeSeriesRatioResponse) *TimeSeriesRatioResponse {
+		return &v
+	}).(TimeSeriesRatioResponsePtrOutput)
+}
+
+// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying bad service, either demanded service that was not provided or demanded service that was of inadequate quality. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o TimeSeriesRatioResponseOutput) BadServiceFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeSeriesRatioResponse) string { return v.BadServiceFilter }).(pulumi.StringOutput)
+}
+
+// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying good service provided. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o TimeSeriesRatioResponseOutput) GoodServiceFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeSeriesRatioResponse) string { return v.GoodServiceFilter }).(pulumi.StringOutput)
+}
+
+// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying total demanded service. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o TimeSeriesRatioResponseOutput) TotalServiceFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeSeriesRatioResponse) string { return v.TotalServiceFilter }).(pulumi.StringOutput)
+}
+
+type TimeSeriesRatioResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TimeSeriesRatioResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeSeriesRatioResponse)(nil)).Elem()
+}
+
+func (o TimeSeriesRatioResponsePtrOutput) ToTimeSeriesRatioResponsePtrOutput() TimeSeriesRatioResponsePtrOutput {
+	return o
+}
+
+func (o TimeSeriesRatioResponsePtrOutput) ToTimeSeriesRatioResponsePtrOutputWithContext(ctx context.Context) TimeSeriesRatioResponsePtrOutput {
+	return o
+}
+
+func (o TimeSeriesRatioResponsePtrOutput) Elem() TimeSeriesRatioResponseOutput {
+	return o.ApplyT(func(v *TimeSeriesRatioResponse) TimeSeriesRatioResponse { return *v }).(TimeSeriesRatioResponseOutput)
+}
+
+// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying bad service, either demanded service that was not provided or demanded service that was of inadequate quality. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o TimeSeriesRatioResponsePtrOutput) BadServiceFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TimeSeriesRatioResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BadServiceFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying good service provided. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o TimeSeriesRatioResponsePtrOutput) GoodServiceFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TimeSeriesRatioResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GoodServiceFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying total demanded service. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
+func (o TimeSeriesRatioResponsePtrOutput) TotalServiceFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TimeSeriesRatioResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TotalServiceFilter
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies how many time series must fail a predicate to trigger a condition. If not specified, then a {count: 1} trigger is used.
 type Trigger struct {
 	// The absolute number of time series that must fail the predicate for the condition to be triggered.
@@ -7830,6 +12934,70 @@ func (o TriggerPtrOutput) Percent() pulumi.Float64PtrOutput {
 		}
 		return v.Percent
 	}).(pulumi.Float64PtrOutput)
+}
+
+// Specifies how many time series must fail a predicate to trigger a condition. If not specified, then a {count: 1} trigger is used.
+type TriggerResponse struct {
+	// The absolute number of time series that must fail the predicate for the condition to be triggered.
+	Count int `pulumi:"count"`
+	// The percentage of time series that must fail the predicate for the condition to be triggered.
+	Percent float64 `pulumi:"percent"`
+}
+
+// TriggerResponseInput is an input type that accepts TriggerResponseArgs and TriggerResponseOutput values.
+// You can construct a concrete instance of `TriggerResponseInput` via:
+//
+//          TriggerResponseArgs{...}
+type TriggerResponseInput interface {
+	pulumi.Input
+
+	ToTriggerResponseOutput() TriggerResponseOutput
+	ToTriggerResponseOutputWithContext(context.Context) TriggerResponseOutput
+}
+
+// Specifies how many time series must fail a predicate to trigger a condition. If not specified, then a {count: 1} trigger is used.
+type TriggerResponseArgs struct {
+	// The absolute number of time series that must fail the predicate for the condition to be triggered.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The percentage of time series that must fail the predicate for the condition to be triggered.
+	Percent pulumi.Float64Input `pulumi:"percent"`
+}
+
+func (TriggerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerResponse)(nil)).Elem()
+}
+
+func (i TriggerResponseArgs) ToTriggerResponseOutput() TriggerResponseOutput {
+	return i.ToTriggerResponseOutputWithContext(context.Background())
+}
+
+func (i TriggerResponseArgs) ToTriggerResponseOutputWithContext(ctx context.Context) TriggerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerResponseOutput)
+}
+
+// Specifies how many time series must fail a predicate to trigger a condition. If not specified, then a {count: 1} trigger is used.
+type TriggerResponseOutput struct{ *pulumi.OutputState }
+
+func (TriggerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerResponse)(nil)).Elem()
+}
+
+func (o TriggerResponseOutput) ToTriggerResponseOutput() TriggerResponseOutput {
+	return o
+}
+
+func (o TriggerResponseOutput) ToTriggerResponseOutputWithContext(ctx context.Context) TriggerResponseOutput {
+	return o
+}
+
+// The absolute number of time series that must fail the predicate for the condition to be triggered.
+func (o TriggerResponseOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v TriggerResponse) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The percentage of time series that must fail the predicate for the condition to be triggered.
+func (o TriggerResponseOutput) Percent() pulumi.Float64Output {
+	return o.ApplyT(func(v TriggerResponse) float64 { return v.Percent }).(pulumi.Float64Output)
 }
 
 // A single strongly-typed value.
@@ -8252,39 +13420,273 @@ func (o WindowsBasedSliPtrOutput) WindowPeriod() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A WindowsBasedSli defines good_service as the count of time windows for which the provided service was of good quality. Criteria for determining if service was good are embedded in the window_criterion.
+type WindowsBasedSliResponse struct {
+	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.
+	GoodBadMetricFilter string `pulumi:"goodBadMetricFilter"`
+	// A window is good if its performance is high enough.
+	GoodTotalRatioThreshold PerformanceThresholdResponse `pulumi:"goodTotalRatioThreshold"`
+	// A window is good if the metric's value is in a good range, averaged across returned streams.
+	MetricMeanInRange MetricRangeResponse `pulumi:"metricMeanInRange"`
+	// A window is good if the metric's value is in a good range, summed across returned streams.
+	MetricSumInRange MetricRangeResponse `pulumi:"metricSumInRange"`
+	// Duration over which window quality is evaluated. Must be an integer fraction of a day and at least 60s.
+	WindowPeriod string `pulumi:"windowPeriod"`
+}
+
+// WindowsBasedSliResponseInput is an input type that accepts WindowsBasedSliResponseArgs and WindowsBasedSliResponseOutput values.
+// You can construct a concrete instance of `WindowsBasedSliResponseInput` via:
+//
+//          WindowsBasedSliResponseArgs{...}
+type WindowsBasedSliResponseInput interface {
+	pulumi.Input
+
+	ToWindowsBasedSliResponseOutput() WindowsBasedSliResponseOutput
+	ToWindowsBasedSliResponseOutputWithContext(context.Context) WindowsBasedSliResponseOutput
+}
+
+// A WindowsBasedSli defines good_service as the count of time windows for which the provided service was of good quality. Criteria for determining if service was good are embedded in the window_criterion.
+type WindowsBasedSliResponseArgs struct {
+	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.
+	GoodBadMetricFilter pulumi.StringInput `pulumi:"goodBadMetricFilter"`
+	// A window is good if its performance is high enough.
+	GoodTotalRatioThreshold PerformanceThresholdResponseInput `pulumi:"goodTotalRatioThreshold"`
+	// A window is good if the metric's value is in a good range, averaged across returned streams.
+	MetricMeanInRange MetricRangeResponseInput `pulumi:"metricMeanInRange"`
+	// A window is good if the metric's value is in a good range, summed across returned streams.
+	MetricSumInRange MetricRangeResponseInput `pulumi:"metricSumInRange"`
+	// Duration over which window quality is evaluated. Must be an integer fraction of a day and at least 60s.
+	WindowPeriod pulumi.StringInput `pulumi:"windowPeriod"`
+}
+
+func (WindowsBasedSliResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsBasedSliResponse)(nil)).Elem()
+}
+
+func (i WindowsBasedSliResponseArgs) ToWindowsBasedSliResponseOutput() WindowsBasedSliResponseOutput {
+	return i.ToWindowsBasedSliResponseOutputWithContext(context.Background())
+}
+
+func (i WindowsBasedSliResponseArgs) ToWindowsBasedSliResponseOutputWithContext(ctx context.Context) WindowsBasedSliResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsBasedSliResponseOutput)
+}
+
+func (i WindowsBasedSliResponseArgs) ToWindowsBasedSliResponsePtrOutput() WindowsBasedSliResponsePtrOutput {
+	return i.ToWindowsBasedSliResponsePtrOutputWithContext(context.Background())
+}
+
+func (i WindowsBasedSliResponseArgs) ToWindowsBasedSliResponsePtrOutputWithContext(ctx context.Context) WindowsBasedSliResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsBasedSliResponseOutput).ToWindowsBasedSliResponsePtrOutputWithContext(ctx)
+}
+
+// WindowsBasedSliResponsePtrInput is an input type that accepts WindowsBasedSliResponseArgs, WindowsBasedSliResponsePtr and WindowsBasedSliResponsePtrOutput values.
+// You can construct a concrete instance of `WindowsBasedSliResponsePtrInput` via:
+//
+//          WindowsBasedSliResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type WindowsBasedSliResponsePtrInput interface {
+	pulumi.Input
+
+	ToWindowsBasedSliResponsePtrOutput() WindowsBasedSliResponsePtrOutput
+	ToWindowsBasedSliResponsePtrOutputWithContext(context.Context) WindowsBasedSliResponsePtrOutput
+}
+
+type windowsBasedSliResponsePtrType WindowsBasedSliResponseArgs
+
+func WindowsBasedSliResponsePtr(v *WindowsBasedSliResponseArgs) WindowsBasedSliResponsePtrInput {
+	return (*windowsBasedSliResponsePtrType)(v)
+}
+
+func (*windowsBasedSliResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsBasedSliResponse)(nil)).Elem()
+}
+
+func (i *windowsBasedSliResponsePtrType) ToWindowsBasedSliResponsePtrOutput() WindowsBasedSliResponsePtrOutput {
+	return i.ToWindowsBasedSliResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *windowsBasedSliResponsePtrType) ToWindowsBasedSliResponsePtrOutputWithContext(ctx context.Context) WindowsBasedSliResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsBasedSliResponsePtrOutput)
+}
+
+// A WindowsBasedSli defines good_service as the count of time windows for which the provided service was of good quality. Criteria for determining if service was good are embedded in the window_criterion.
+type WindowsBasedSliResponseOutput struct{ *pulumi.OutputState }
+
+func (WindowsBasedSliResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsBasedSliResponse)(nil)).Elem()
+}
+
+func (o WindowsBasedSliResponseOutput) ToWindowsBasedSliResponseOutput() WindowsBasedSliResponseOutput {
+	return o
+}
+
+func (o WindowsBasedSliResponseOutput) ToWindowsBasedSliResponseOutputWithContext(ctx context.Context) WindowsBasedSliResponseOutput {
+	return o
+}
+
+func (o WindowsBasedSliResponseOutput) ToWindowsBasedSliResponsePtrOutput() WindowsBasedSliResponsePtrOutput {
+	return o.ToWindowsBasedSliResponsePtrOutputWithContext(context.Background())
+}
+
+func (o WindowsBasedSliResponseOutput) ToWindowsBasedSliResponsePtrOutputWithContext(ctx context.Context) WindowsBasedSliResponsePtrOutput {
+	return o.ApplyT(func(v WindowsBasedSliResponse) *WindowsBasedSliResponse {
+		return &v
+	}).(WindowsBasedSliResponsePtrOutput)
+}
+
+// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.
+func (o WindowsBasedSliResponseOutput) GoodBadMetricFilter() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsBasedSliResponse) string { return v.GoodBadMetricFilter }).(pulumi.StringOutput)
+}
+
+// A window is good if its performance is high enough.
+func (o WindowsBasedSliResponseOutput) GoodTotalRatioThreshold() PerformanceThresholdResponseOutput {
+	return o.ApplyT(func(v WindowsBasedSliResponse) PerformanceThresholdResponse { return v.GoodTotalRatioThreshold }).(PerformanceThresholdResponseOutput)
+}
+
+// A window is good if the metric's value is in a good range, averaged across returned streams.
+func (o WindowsBasedSliResponseOutput) MetricMeanInRange() MetricRangeResponseOutput {
+	return o.ApplyT(func(v WindowsBasedSliResponse) MetricRangeResponse { return v.MetricMeanInRange }).(MetricRangeResponseOutput)
+}
+
+// A window is good if the metric's value is in a good range, summed across returned streams.
+func (o WindowsBasedSliResponseOutput) MetricSumInRange() MetricRangeResponseOutput {
+	return o.ApplyT(func(v WindowsBasedSliResponse) MetricRangeResponse { return v.MetricSumInRange }).(MetricRangeResponseOutput)
+}
+
+// Duration over which window quality is evaluated. Must be an integer fraction of a day and at least 60s.
+func (o WindowsBasedSliResponseOutput) WindowPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsBasedSliResponse) string { return v.WindowPeriod }).(pulumi.StringOutput)
+}
+
+type WindowsBasedSliResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WindowsBasedSliResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsBasedSliResponse)(nil)).Elem()
+}
+
+func (o WindowsBasedSliResponsePtrOutput) ToWindowsBasedSliResponsePtrOutput() WindowsBasedSliResponsePtrOutput {
+	return o
+}
+
+func (o WindowsBasedSliResponsePtrOutput) ToWindowsBasedSliResponsePtrOutputWithContext(ctx context.Context) WindowsBasedSliResponsePtrOutput {
+	return o
+}
+
+func (o WindowsBasedSliResponsePtrOutput) Elem() WindowsBasedSliResponseOutput {
+	return o.ApplyT(func(v *WindowsBasedSliResponse) WindowsBasedSliResponse { return *v }).(WindowsBasedSliResponseOutput)
+}
+
+// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.
+func (o WindowsBasedSliResponsePtrOutput) GoodBadMetricFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WindowsBasedSliResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GoodBadMetricFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// A window is good if its performance is high enough.
+func (o WindowsBasedSliResponsePtrOutput) GoodTotalRatioThreshold() PerformanceThresholdResponsePtrOutput {
+	return o.ApplyT(func(v *WindowsBasedSliResponse) *PerformanceThresholdResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GoodTotalRatioThreshold
+	}).(PerformanceThresholdResponsePtrOutput)
+}
+
+// A window is good if the metric's value is in a good range, averaged across returned streams.
+func (o WindowsBasedSliResponsePtrOutput) MetricMeanInRange() MetricRangeResponsePtrOutput {
+	return o.ApplyT(func(v *WindowsBasedSliResponse) *MetricRangeResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MetricMeanInRange
+	}).(MetricRangeResponsePtrOutput)
+}
+
+// A window is good if the metric's value is in a good range, summed across returned streams.
+func (o WindowsBasedSliResponsePtrOutput) MetricSumInRange() MetricRangeResponsePtrOutput {
+	return o.ApplyT(func(v *WindowsBasedSliResponse) *MetricRangeResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MetricSumInRange
+	}).(MetricRangeResponsePtrOutput)
+}
+
+// Duration over which window quality is evaluated. Must be an integer fraction of a day and at least 60s.
+func (o WindowsBasedSliResponsePtrOutput) WindowPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WindowsBasedSliResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WindowPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AggregationOutput{})
 	pulumi.RegisterOutputType(AggregationArrayOutput{})
+	pulumi.RegisterOutputType(AggregationResponseOutput{})
+	pulumi.RegisterOutputType(AggregationResponseArrayOutput{})
 	pulumi.RegisterOutputType(AppEngineOutput{})
 	pulumi.RegisterOutputType(AppEnginePtrOutput{})
+	pulumi.RegisterOutputType(AppEngineResponseOutput{})
+	pulumi.RegisterOutputType(AppEngineResponsePtrOutput{})
 	pulumi.RegisterOutputType(AvailabilityCriteriaOutput{})
 	pulumi.RegisterOutputType(AvailabilityCriteriaPtrOutput{})
+	pulumi.RegisterOutputType(AvailabilityCriteriaResponseOutput{})
+	pulumi.RegisterOutputType(AvailabilityCriteriaResponsePtrOutput{})
 	pulumi.RegisterOutputType(BasicAuthenticationOutput{})
 	pulumi.RegisterOutputType(BasicAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(BasicAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(BasicAuthenticationResponsePtrOutput{})
 	pulumi.RegisterOutputType(BasicSliOutput{})
 	pulumi.RegisterOutputType(BasicSliPtrOutput{})
+	pulumi.RegisterOutputType(BasicSliResponseOutput{})
+	pulumi.RegisterOutputType(BasicSliResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketOptionsOutput{})
 	pulumi.RegisterOutputType(BucketOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CloudEndpointsOutput{})
 	pulumi.RegisterOutputType(CloudEndpointsPtrOutput{})
+	pulumi.RegisterOutputType(CloudEndpointsResponseOutput{})
+	pulumi.RegisterOutputType(CloudEndpointsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ClusterIstioOutput{})
 	pulumi.RegisterOutputType(ClusterIstioPtrOutput{})
+	pulumi.RegisterOutputType(ClusterIstioResponseOutput{})
+	pulumi.RegisterOutputType(ClusterIstioResponsePtrOutput{})
 	pulumi.RegisterOutputType(CollectdPayloadOutput{})
 	pulumi.RegisterOutputType(CollectdPayloadArrayOutput{})
 	pulumi.RegisterOutputType(CollectdValueOutput{})
 	pulumi.RegisterOutputType(CollectdValueArrayOutput{})
 	pulumi.RegisterOutputType(ConditionOutput{})
 	pulumi.RegisterOutputType(ConditionArrayOutput{})
+	pulumi.RegisterOutputType(ConditionResponseOutput{})
+	pulumi.RegisterOutputType(ConditionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ContentMatcherOutput{})
 	pulumi.RegisterOutputType(ContentMatcherArrayOutput{})
+	pulumi.RegisterOutputType(ContentMatcherResponseOutput{})
+	pulumi.RegisterOutputType(ContentMatcherResponseArrayOutput{})
 	pulumi.RegisterOutputType(CustomOutput{})
 	pulumi.RegisterOutputType(CustomPtrOutput{})
+	pulumi.RegisterOutputType(CustomResponseOutput{})
+	pulumi.RegisterOutputType(CustomResponsePtrOutput{})
 	pulumi.RegisterOutputType(DistributionOutput{})
 	pulumi.RegisterOutputType(DistributionPtrOutput{})
 	pulumi.RegisterOutputType(DistributionCutOutput{})
 	pulumi.RegisterOutputType(DistributionCutPtrOutput{})
+	pulumi.RegisterOutputType(DistributionCutResponseOutput{})
+	pulumi.RegisterOutputType(DistributionCutResponsePtrOutput{})
 	pulumi.RegisterOutputType(DocumentationOutput{})
 	pulumi.RegisterOutputType(DocumentationPtrOutput{})
+	pulumi.RegisterOutputType(DocumentationResponseOutput{})
+	pulumi.RegisterOutputType(DocumentationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExemplarOutput{})
 	pulumi.RegisterOutputType(ExemplarArrayOutput{})
 	pulumi.RegisterOutputType(ExplicitOutput{})
@@ -8293,67 +13695,112 @@ func init() {
 	pulumi.RegisterOutputType(ExponentialPtrOutput{})
 	pulumi.RegisterOutputType(GoogleMonitoringV3RangeOutput{})
 	pulumi.RegisterOutputType(GoogleMonitoringV3RangePtrOutput{})
+	pulumi.RegisterOutputType(GoogleMonitoringV3RangeResponseOutput{})
+	pulumi.RegisterOutputType(GoogleMonitoringV3RangeResponsePtrOutput{})
 	pulumi.RegisterOutputType(HttpCheckOutput{})
 	pulumi.RegisterOutputType(HttpCheckPtrOutput{})
+	pulumi.RegisterOutputType(HttpCheckResponseOutput{})
+	pulumi.RegisterOutputType(HttpCheckResponsePtrOutput{})
 	pulumi.RegisterOutputType(InternalCheckerOutput{})
 	pulumi.RegisterOutputType(InternalCheckerArrayOutput{})
+	pulumi.RegisterOutputType(InternalCheckerResponseOutput{})
+	pulumi.RegisterOutputType(InternalCheckerResponseArrayOutput{})
 	pulumi.RegisterOutputType(IstioCanonicalServiceOutput{})
 	pulumi.RegisterOutputType(IstioCanonicalServicePtrOutput{})
+	pulumi.RegisterOutputType(IstioCanonicalServiceResponseOutput{})
+	pulumi.RegisterOutputType(IstioCanonicalServiceResponsePtrOutput{})
 	pulumi.RegisterOutputType(LabelDescriptorOutput{})
 	pulumi.RegisterOutputType(LabelDescriptorArrayOutput{})
+	pulumi.RegisterOutputType(LabelDescriptorResponseOutput{})
+	pulumi.RegisterOutputType(LabelDescriptorResponseArrayOutput{})
 	pulumi.RegisterOutputType(LatencyCriteriaOutput{})
 	pulumi.RegisterOutputType(LatencyCriteriaPtrOutput{})
+	pulumi.RegisterOutputType(LatencyCriteriaResponseOutput{})
+	pulumi.RegisterOutputType(LatencyCriteriaResponsePtrOutput{})
 	pulumi.RegisterOutputType(LinearOutput{})
 	pulumi.RegisterOutputType(LinearPtrOutput{})
 	pulumi.RegisterOutputType(MeshIstioOutput{})
 	pulumi.RegisterOutputType(MeshIstioPtrOutput{})
+	pulumi.RegisterOutputType(MeshIstioResponseOutput{})
+	pulumi.RegisterOutputType(MeshIstioResponsePtrOutput{})
 	pulumi.RegisterOutputType(MetricOutput{})
 	pulumi.RegisterOutputType(MetricPtrOutput{})
 	pulumi.RegisterOutputType(MetricAbsenceOutput{})
 	pulumi.RegisterOutputType(MetricAbsencePtrOutput{})
+	pulumi.RegisterOutputType(MetricAbsenceResponseOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorMetadataOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorMetadataPtrOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorMetadataResponseOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(MetricRangeOutput{})
 	pulumi.RegisterOutputType(MetricRangePtrOutput{})
+	pulumi.RegisterOutputType(MetricRangeResponseOutput{})
+	pulumi.RegisterOutputType(MetricRangeResponsePtrOutput{})
 	pulumi.RegisterOutputType(MetricThresholdOutput{})
 	pulumi.RegisterOutputType(MetricThresholdPtrOutput{})
+	pulumi.RegisterOutputType(MetricThresholdResponseOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceOutput{})
 	pulumi.RegisterOutputType(MonitoredResourcePtrOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceMetadataOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceMetadataPtrOutput{})
+	pulumi.RegisterOutputType(MonitoredResourceResponseOutput{})
+	pulumi.RegisterOutputType(MonitoredResourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(MonitoringQueryLanguageConditionOutput{})
 	pulumi.RegisterOutputType(MonitoringQueryLanguageConditionPtrOutput{})
+	pulumi.RegisterOutputType(MonitoringQueryLanguageConditionResponseOutput{})
 	pulumi.RegisterOutputType(MutationRecordOutput{})
 	pulumi.RegisterOutputType(MutationRecordPtrOutput{})
 	pulumi.RegisterOutputType(MutationRecordArrayOutput{})
+	pulumi.RegisterOutputType(MutationRecordResponseOutput{})
+	pulumi.RegisterOutputType(MutationRecordResponsePtrOutput{})
+	pulumi.RegisterOutputType(MutationRecordResponseArrayOutput{})
 	pulumi.RegisterOutputType(PerformanceThresholdOutput{})
 	pulumi.RegisterOutputType(PerformanceThresholdPtrOutput{})
+	pulumi.RegisterOutputType(PerformanceThresholdResponseOutput{})
+	pulumi.RegisterOutputType(PerformanceThresholdResponsePtrOutput{})
 	pulumi.RegisterOutputType(PointOutput{})
 	pulumi.RegisterOutputType(PointArrayOutput{})
 	pulumi.RegisterOutputType(RangeOutput{})
 	pulumi.RegisterOutputType(RangePtrOutput{})
 	pulumi.RegisterOutputType(RequestBasedSliOutput{})
 	pulumi.RegisterOutputType(RequestBasedSliPtrOutput{})
+	pulumi.RegisterOutputType(RequestBasedSliResponseOutput{})
+	pulumi.RegisterOutputType(RequestBasedSliResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceGroupOutput{})
 	pulumi.RegisterOutputType(ResourceGroupPtrOutput{})
+	pulumi.RegisterOutputType(ResourceGroupResponseOutput{})
+	pulumi.RegisterOutputType(ResourceGroupResponsePtrOutput{})
 	pulumi.RegisterOutputType(ServiceLevelIndicatorOutput{})
 	pulumi.RegisterOutputType(ServiceLevelIndicatorPtrOutput{})
+	pulumi.RegisterOutputType(ServiceLevelIndicatorResponseOutput{})
+	pulumi.RegisterOutputType(ServiceLevelIndicatorResponsePtrOutput{})
 	pulumi.RegisterOutputType(StatusOutput{})
 	pulumi.RegisterOutputType(StatusPtrOutput{})
+	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(TcpCheckOutput{})
 	pulumi.RegisterOutputType(TcpCheckPtrOutput{})
+	pulumi.RegisterOutputType(TcpCheckResponseOutput{})
+	pulumi.RegisterOutputType(TcpCheckResponsePtrOutput{})
 	pulumi.RegisterOutputType(TelemetryOutput{})
 	pulumi.RegisterOutputType(TelemetryPtrOutput{})
+	pulumi.RegisterOutputType(TelemetryResponseOutput{})
+	pulumi.RegisterOutputType(TelemetryResponsePtrOutput{})
 	pulumi.RegisterOutputType(TimeIntervalOutput{})
 	pulumi.RegisterOutputType(TimeIntervalPtrOutput{})
 	pulumi.RegisterOutputType(TimeSeriesTypeOutput{})
 	pulumi.RegisterOutputType(TimeSeriesTypeArrayOutput{})
 	pulumi.RegisterOutputType(TimeSeriesRatioOutput{})
 	pulumi.RegisterOutputType(TimeSeriesRatioPtrOutput{})
+	pulumi.RegisterOutputType(TimeSeriesRatioResponseOutput{})
+	pulumi.RegisterOutputType(TimeSeriesRatioResponsePtrOutput{})
 	pulumi.RegisterOutputType(TriggerOutput{})
 	pulumi.RegisterOutputType(TriggerPtrOutput{})
+	pulumi.RegisterOutputType(TriggerResponseOutput{})
 	pulumi.RegisterOutputType(TypedValueOutput{})
 	pulumi.RegisterOutputType(TypedValuePtrOutput{})
 	pulumi.RegisterOutputType(WindowsBasedSliOutput{})
 	pulumi.RegisterOutputType(WindowsBasedSliPtrOutput{})
+	pulumi.RegisterOutputType(WindowsBasedSliResponseOutput{})
+	pulumi.RegisterOutputType(WindowsBasedSliResponsePtrOutput{})
 }

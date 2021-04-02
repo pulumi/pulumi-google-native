@@ -34,6 +34,10 @@ export class Topic extends pulumi.CustomResource {
         return obj['__pulumiType'] === Topic.__pulumiType;
     }
 
+    /**
+     * Name of the topic.
+     */
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -52,6 +56,7 @@ export class Topic extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["topicsId"] = args ? args.topicsId : undefined;
         } else {
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

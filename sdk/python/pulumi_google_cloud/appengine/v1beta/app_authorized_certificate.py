@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['AppAuthorizedCertificate']
@@ -99,7 +100,79 @@ class AppAuthorizedCertificate(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["certificate_raw_data"] = None
+        __props__["display_name"] = None
+        __props__["domain_mappings_count"] = None
+        __props__["domain_names"] = None
+        __props__["expire_time"] = None
+        __props__["managed_certificate"] = None
+        __props__["name"] = None
+        __props__["visible_domain_mappings"] = None
         return AppAuthorizedCertificate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="certificateRawData")
+    def certificate_raw_data(self) -> pulumi.Output['outputs.CertificateRawDataResponse']:
+        """
+        The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
+        """
+        return pulumi.get(self, "certificate_raw_data")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="domainMappingsCount")
+    def domain_mappings_count(self) -> pulumi.Output[int]:
+        """
+        Aggregate count of the domain mappings with this certificate mapped. This count includes domain mappings on applications for which the user does not have VIEWER permissions.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly
+        """
+        return pulumi.get(self, "domain_mappings_count")
+
+    @property
+    @pulumi.getter(name="domainNames")
+    def domain_names(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Topmost applicable domains of this certificate. This certificate applies to these domains and their subdomains. Example: example.com.@OutputOnly
+        """
+        return pulumi.get(self, "domain_names")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        The time when this certificate expires. To update the renewal time on this certificate, upload an SSL certificate with a different expiration time using AuthorizedCertificates.UpdateAuthorizedCertificate.@OutputOnly
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter(name="managedCertificate")
+    def managed_certificate(self) -> pulumi.Output['outputs.ManagedCertificateResponse']:
+        """
+        Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this certificate is manually administered by the user, this field will be empty.@OutputOnly
+        """
+        return pulumi.get(self, "managed_certificate")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Full path to the AuthorizedCertificate resource in the API. Example: apps/myapp/authorizedCertificates/12345.@OutputOnly
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="visibleDomainMappings")
+    def visible_domain_mappings(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The full paths to user visible Domain Mapping resources that have this certificate mapped. Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the user does not have VIEWER permissions on all of the applications that have this certificate mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly
+        """
+        return pulumi.get(self, "visible_domain_mappings")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

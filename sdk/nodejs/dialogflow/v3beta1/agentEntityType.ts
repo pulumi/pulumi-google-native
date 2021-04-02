@@ -35,6 +35,38 @@ export class AgentEntityType extends pulumi.CustomResource {
         return obj['__pulumiType'] === AgentEntityType.__pulumiType;
     }
 
+    /**
+     * Indicates whether the entity type can be automatically expanded.
+     */
+    public readonly autoExpansionMode!: pulumi.Output<string>;
+    /**
+     * Required. The human-readable name of the entity type, unique within the agent.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Enables fuzzy entity extraction during classification.
+     */
+    public readonly enableFuzzyExtraction!: pulumi.Output<boolean>;
+    /**
+     * The collection of entity entries associated with the entity type.
+     */
+    public readonly entities!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse[]>;
+    /**
+     * Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
+     */
+    public readonly excludedPhrases!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse[]>;
+    /**
+     * Required. Indicates the kind of entity type.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.
+     */
+    public readonly redact!: pulumi.Output<boolean>;
 
     /**
      * Create a AgentEntityType resource with the given unique name, arguments, and options.
@@ -72,6 +104,14 @@ export class AgentEntityType extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["redact"] = args ? args.redact : undefined;
         } else {
+            inputs["autoExpansionMode"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["enableFuzzyExtraction"] = undefined /*out*/;
+            inputs["entities"] = undefined /*out*/;
+            inputs["excludedPhrases"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["redact"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

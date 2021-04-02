@@ -14,6 +14,17 @@ import (
 // Creates a new environment group.
 type OrganizationEnvgroup struct {
 	pulumi.CustomResourceState
+
+	// The time at which the environment group was created as milliseconds since epoch.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Required. Host names for this environment group.
+	Hostnames pulumi.StringArrayOutput `pulumi:"hostnames"`
+	// The time at which the environment group was last updated as milliseconds since epoch.
+	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
+	// ID of the environment group.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// State of the environment group. Values other than ACTIVE means the resource is not ready to use.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewOrganizationEnvgroup registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +62,29 @@ func GetOrganizationEnvgroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationEnvgroup resources.
 type organizationEnvgroupState struct {
+	// The time at which the environment group was created as milliseconds since epoch.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Required. Host names for this environment group.
+	Hostnames []string `pulumi:"hostnames"`
+	// The time at which the environment group was last updated as milliseconds since epoch.
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// ID of the environment group.
+	Name *string `pulumi:"name"`
+	// State of the environment group. Values other than ACTIVE means the resource is not ready to use.
+	State *string `pulumi:"state"`
 }
 
 type OrganizationEnvgroupState struct {
+	// The time at which the environment group was created as milliseconds since epoch.
+	CreatedAt pulumi.StringPtrInput
+	// Required. Host names for this environment group.
+	Hostnames pulumi.StringArrayInput
+	// The time at which the environment group was last updated as milliseconds since epoch.
+	LastModifiedAt pulumi.StringPtrInput
+	// ID of the environment group.
+	Name pulumi.StringPtrInput
+	// State of the environment group. Values other than ACTIVE means the resource is not ready to use.
+	State pulumi.StringPtrInput
 }
 
 func (OrganizationEnvgroupState) ElementType() reflect.Type {
@@ -61,34 +92,22 @@ func (OrganizationEnvgroupState) ElementType() reflect.Type {
 }
 
 type organizationEnvgroupArgs struct {
-	// Output only. The time at which the environment group was created as milliseconds since epoch.
-	CreatedAt   *string `pulumi:"createdAt"`
-	EnvgroupsId string  `pulumi:"envgroupsId"`
+	EnvgroupsId string `pulumi:"envgroupsId"`
 	// Required. Host names for this environment group.
 	Hostnames []string `pulumi:"hostnames"`
-	// Output only. The time at which the environment group was last updated as milliseconds since epoch.
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
 	// ID of the environment group.
 	Name            *string `pulumi:"name"`
 	OrganizationsId string  `pulumi:"organizationsId"`
-	// Output only. State of the environment group. Values other than ACTIVE means the resource is not ready to use.
-	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a OrganizationEnvgroup resource.
 type OrganizationEnvgroupArgs struct {
-	// Output only. The time at which the environment group was created as milliseconds since epoch.
-	CreatedAt   pulumi.StringPtrInput
 	EnvgroupsId pulumi.StringInput
 	// Required. Host names for this environment group.
 	Hostnames pulumi.StringArrayInput
-	// Output only. The time at which the environment group was last updated as milliseconds since epoch.
-	LastModifiedAt pulumi.StringPtrInput
 	// ID of the environment group.
 	Name            pulumi.StringPtrInput
 	OrganizationsId pulumi.StringInput
-	// Output only. State of the environment group. Values other than ACTIVE means the resource is not ready to use.
-	State pulumi.StringPtrInput
 }
 
 func (OrganizationEnvgroupArgs) ElementType() reflect.Type {

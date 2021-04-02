@@ -134,6 +134,130 @@ func (o DnsKeySpecArrayOutput) Index(i pulumi.IntInput) DnsKeySpecOutput {
 	}).(DnsKeySpecOutput)
 }
 
+// Parameters for DnsKey key generation. Used for generating initial keys for a new ManagedZone and as default when adding a new DnsKey.
+type DnsKeySpecResponse struct {
+	// String mnemonic specifying the DNSSEC algorithm of this key.
+	Algorithm string `pulumi:"algorithm"`
+	// Length of the keys in bits.
+	KeyLength int `pulumi:"keyLength"`
+	// Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
+	KeyType string `pulumi:"keyType"`
+	Kind    string `pulumi:"kind"`
+}
+
+// DnsKeySpecResponseInput is an input type that accepts DnsKeySpecResponseArgs and DnsKeySpecResponseOutput values.
+// You can construct a concrete instance of `DnsKeySpecResponseInput` via:
+//
+//          DnsKeySpecResponseArgs{...}
+type DnsKeySpecResponseInput interface {
+	pulumi.Input
+
+	ToDnsKeySpecResponseOutput() DnsKeySpecResponseOutput
+	ToDnsKeySpecResponseOutputWithContext(context.Context) DnsKeySpecResponseOutput
+}
+
+// Parameters for DnsKey key generation. Used for generating initial keys for a new ManagedZone and as default when adding a new DnsKey.
+type DnsKeySpecResponseArgs struct {
+	// String mnemonic specifying the DNSSEC algorithm of this key.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// Length of the keys in bits.
+	KeyLength pulumi.IntInput `pulumi:"keyLength"`
+	// Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
+	KeyType pulumi.StringInput `pulumi:"keyType"`
+	Kind    pulumi.StringInput `pulumi:"kind"`
+}
+
+func (DnsKeySpecResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsKeySpecResponse)(nil)).Elem()
+}
+
+func (i DnsKeySpecResponseArgs) ToDnsKeySpecResponseOutput() DnsKeySpecResponseOutput {
+	return i.ToDnsKeySpecResponseOutputWithContext(context.Background())
+}
+
+func (i DnsKeySpecResponseArgs) ToDnsKeySpecResponseOutputWithContext(ctx context.Context) DnsKeySpecResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsKeySpecResponseOutput)
+}
+
+// DnsKeySpecResponseArrayInput is an input type that accepts DnsKeySpecResponseArray and DnsKeySpecResponseArrayOutput values.
+// You can construct a concrete instance of `DnsKeySpecResponseArrayInput` via:
+//
+//          DnsKeySpecResponseArray{ DnsKeySpecResponseArgs{...} }
+type DnsKeySpecResponseArrayInput interface {
+	pulumi.Input
+
+	ToDnsKeySpecResponseArrayOutput() DnsKeySpecResponseArrayOutput
+	ToDnsKeySpecResponseArrayOutputWithContext(context.Context) DnsKeySpecResponseArrayOutput
+}
+
+type DnsKeySpecResponseArray []DnsKeySpecResponseInput
+
+func (DnsKeySpecResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DnsKeySpecResponse)(nil)).Elem()
+}
+
+func (i DnsKeySpecResponseArray) ToDnsKeySpecResponseArrayOutput() DnsKeySpecResponseArrayOutput {
+	return i.ToDnsKeySpecResponseArrayOutputWithContext(context.Background())
+}
+
+func (i DnsKeySpecResponseArray) ToDnsKeySpecResponseArrayOutputWithContext(ctx context.Context) DnsKeySpecResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsKeySpecResponseArrayOutput)
+}
+
+// Parameters for DnsKey key generation. Used for generating initial keys for a new ManagedZone and as default when adding a new DnsKey.
+type DnsKeySpecResponseOutput struct{ *pulumi.OutputState }
+
+func (DnsKeySpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsKeySpecResponse)(nil)).Elem()
+}
+
+func (o DnsKeySpecResponseOutput) ToDnsKeySpecResponseOutput() DnsKeySpecResponseOutput {
+	return o
+}
+
+func (o DnsKeySpecResponseOutput) ToDnsKeySpecResponseOutputWithContext(ctx context.Context) DnsKeySpecResponseOutput {
+	return o
+}
+
+// String mnemonic specifying the DNSSEC algorithm of this key.
+func (o DnsKeySpecResponseOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v DnsKeySpecResponse) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// Length of the keys in bits.
+func (o DnsKeySpecResponseOutput) KeyLength() pulumi.IntOutput {
+	return o.ApplyT(func(v DnsKeySpecResponse) int { return v.KeyLength }).(pulumi.IntOutput)
+}
+
+// Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
+func (o DnsKeySpecResponseOutput) KeyType() pulumi.StringOutput {
+	return o.ApplyT(func(v DnsKeySpecResponse) string { return v.KeyType }).(pulumi.StringOutput)
+}
+
+func (o DnsKeySpecResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v DnsKeySpecResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type DnsKeySpecResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DnsKeySpecResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DnsKeySpecResponse)(nil)).Elem()
+}
+
+func (o DnsKeySpecResponseArrayOutput) ToDnsKeySpecResponseArrayOutput() DnsKeySpecResponseArrayOutput {
+	return o
+}
+
+func (o DnsKeySpecResponseArrayOutput) ToDnsKeySpecResponseArrayOutputWithContext(ctx context.Context) DnsKeySpecResponseArrayOutput {
+	return o
+}
+
+func (o DnsKeySpecResponseArrayOutput) Index(i pulumi.IntInput) DnsKeySpecResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DnsKeySpecResponse {
+		return vs[0].([]DnsKeySpecResponse)[vs[1].(int)]
+	}).(DnsKeySpecResponseOutput)
+}
+
 type ManagedZoneDnsSecConfig struct {
 	// Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.
 	DefaultKeySpecs []DnsKeySpec `pulumi:"defaultKeySpecs"`
@@ -315,6 +439,190 @@ func (o ManagedZoneDnsSecConfigPtrOutput) State() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedZoneDnsSecConfigResponse struct {
+	// Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.
+	DefaultKeySpecs []DnsKeySpecResponse `pulumi:"defaultKeySpecs"`
+	Kind            string               `pulumi:"kind"`
+	// Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF.
+	NonExistence string `pulumi:"nonExistence"`
+	// Specifies whether DNSSEC is enabled, and what mode it is in.
+	State string `pulumi:"state"`
+}
+
+// ManagedZoneDnsSecConfigResponseInput is an input type that accepts ManagedZoneDnsSecConfigResponseArgs and ManagedZoneDnsSecConfigResponseOutput values.
+// You can construct a concrete instance of `ManagedZoneDnsSecConfigResponseInput` via:
+//
+//          ManagedZoneDnsSecConfigResponseArgs{...}
+type ManagedZoneDnsSecConfigResponseInput interface {
+	pulumi.Input
+
+	ToManagedZoneDnsSecConfigResponseOutput() ManagedZoneDnsSecConfigResponseOutput
+	ToManagedZoneDnsSecConfigResponseOutputWithContext(context.Context) ManagedZoneDnsSecConfigResponseOutput
+}
+
+type ManagedZoneDnsSecConfigResponseArgs struct {
+	// Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.
+	DefaultKeySpecs DnsKeySpecResponseArrayInput `pulumi:"defaultKeySpecs"`
+	Kind            pulumi.StringInput           `pulumi:"kind"`
+	// Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF.
+	NonExistence pulumi.StringInput `pulumi:"nonExistence"`
+	// Specifies whether DNSSEC is enabled, and what mode it is in.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (ManagedZoneDnsSecConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneDnsSecConfigResponse)(nil)).Elem()
+}
+
+func (i ManagedZoneDnsSecConfigResponseArgs) ToManagedZoneDnsSecConfigResponseOutput() ManagedZoneDnsSecConfigResponseOutput {
+	return i.ToManagedZoneDnsSecConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneDnsSecConfigResponseArgs) ToManagedZoneDnsSecConfigResponseOutputWithContext(ctx context.Context) ManagedZoneDnsSecConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneDnsSecConfigResponseOutput)
+}
+
+func (i ManagedZoneDnsSecConfigResponseArgs) ToManagedZoneDnsSecConfigResponsePtrOutput() ManagedZoneDnsSecConfigResponsePtrOutput {
+	return i.ToManagedZoneDnsSecConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneDnsSecConfigResponseArgs) ToManagedZoneDnsSecConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneDnsSecConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneDnsSecConfigResponseOutput).ToManagedZoneDnsSecConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ManagedZoneDnsSecConfigResponsePtrInput is an input type that accepts ManagedZoneDnsSecConfigResponseArgs, ManagedZoneDnsSecConfigResponsePtr and ManagedZoneDnsSecConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ManagedZoneDnsSecConfigResponsePtrInput` via:
+//
+//          ManagedZoneDnsSecConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedZoneDnsSecConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToManagedZoneDnsSecConfigResponsePtrOutput() ManagedZoneDnsSecConfigResponsePtrOutput
+	ToManagedZoneDnsSecConfigResponsePtrOutputWithContext(context.Context) ManagedZoneDnsSecConfigResponsePtrOutput
+}
+
+type managedZoneDnsSecConfigResponsePtrType ManagedZoneDnsSecConfigResponseArgs
+
+func ManagedZoneDnsSecConfigResponsePtr(v *ManagedZoneDnsSecConfigResponseArgs) ManagedZoneDnsSecConfigResponsePtrInput {
+	return (*managedZoneDnsSecConfigResponsePtrType)(v)
+}
+
+func (*managedZoneDnsSecConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneDnsSecConfigResponse)(nil)).Elem()
+}
+
+func (i *managedZoneDnsSecConfigResponsePtrType) ToManagedZoneDnsSecConfigResponsePtrOutput() ManagedZoneDnsSecConfigResponsePtrOutput {
+	return i.ToManagedZoneDnsSecConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *managedZoneDnsSecConfigResponsePtrType) ToManagedZoneDnsSecConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneDnsSecConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneDnsSecConfigResponsePtrOutput)
+}
+
+type ManagedZoneDnsSecConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneDnsSecConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneDnsSecConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedZoneDnsSecConfigResponseOutput) ToManagedZoneDnsSecConfigResponseOutput() ManagedZoneDnsSecConfigResponseOutput {
+	return o
+}
+
+func (o ManagedZoneDnsSecConfigResponseOutput) ToManagedZoneDnsSecConfigResponseOutputWithContext(ctx context.Context) ManagedZoneDnsSecConfigResponseOutput {
+	return o
+}
+
+func (o ManagedZoneDnsSecConfigResponseOutput) ToManagedZoneDnsSecConfigResponsePtrOutput() ManagedZoneDnsSecConfigResponsePtrOutput {
+	return o.ToManagedZoneDnsSecConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedZoneDnsSecConfigResponseOutput) ToManagedZoneDnsSecConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneDnsSecConfigResponsePtrOutput {
+	return o.ApplyT(func(v ManagedZoneDnsSecConfigResponse) *ManagedZoneDnsSecConfigResponse {
+		return &v
+	}).(ManagedZoneDnsSecConfigResponsePtrOutput)
+}
+
+// Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.
+func (o ManagedZoneDnsSecConfigResponseOutput) DefaultKeySpecs() DnsKeySpecResponseArrayOutput {
+	return o.ApplyT(func(v ManagedZoneDnsSecConfigResponse) []DnsKeySpecResponse { return v.DefaultKeySpecs }).(DnsKeySpecResponseArrayOutput)
+}
+
+func (o ManagedZoneDnsSecConfigResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneDnsSecConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF.
+func (o ManagedZoneDnsSecConfigResponseOutput) NonExistence() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneDnsSecConfigResponse) string { return v.NonExistence }).(pulumi.StringOutput)
+}
+
+// Specifies whether DNSSEC is enabled, and what mode it is in.
+func (o ManagedZoneDnsSecConfigResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneDnsSecConfigResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type ManagedZoneDnsSecConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneDnsSecConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneDnsSecConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedZoneDnsSecConfigResponsePtrOutput) ToManagedZoneDnsSecConfigResponsePtrOutput() ManagedZoneDnsSecConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZoneDnsSecConfigResponsePtrOutput) ToManagedZoneDnsSecConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneDnsSecConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZoneDnsSecConfigResponsePtrOutput) Elem() ManagedZoneDnsSecConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedZoneDnsSecConfigResponse) ManagedZoneDnsSecConfigResponse { return *v }).(ManagedZoneDnsSecConfigResponseOutput)
+}
+
+// Specifies parameters for generating initial DnsKeys for this ManagedZone. Can only be changed while the state is OFF.
+func (o ManagedZoneDnsSecConfigResponsePtrOutput) DefaultKeySpecs() DnsKeySpecResponseArrayOutput {
+	return o.ApplyT(func(v *ManagedZoneDnsSecConfigResponse) []DnsKeySpecResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultKeySpecs
+	}).(DnsKeySpecResponseArrayOutput)
+}
+
+func (o ManagedZoneDnsSecConfigResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZoneDnsSecConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF.
+func (o ManagedZoneDnsSecConfigResponsePtrOutput) NonExistence() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZoneDnsSecConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NonExistence
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether DNSSEC is enabled, and what mode it is in.
+func (o ManagedZoneDnsSecConfigResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZoneDnsSecConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.State
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -586,6 +894,274 @@ func (o ManagedZoneForwardingConfigNameServerTargetArrayOutput) Index(i pulumi.I
 	}).(ManagedZoneForwardingConfigNameServerTargetOutput)
 }
 
+type ManagedZoneForwardingConfigNameServerTargetResponse struct {
+	// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
+	ForwardingPath string `pulumi:"forwardingPath"`
+	// IPv4 address of a target name server.
+	Ipv4Address string `pulumi:"ipv4Address"`
+	// IPv6 address of a target name server. Does not accept both fields (ipv4 & ipv6) being populated.
+	Ipv6Address string `pulumi:"ipv6Address"`
+	Kind        string `pulumi:"kind"`
+}
+
+// ManagedZoneForwardingConfigNameServerTargetResponseInput is an input type that accepts ManagedZoneForwardingConfigNameServerTargetResponseArgs and ManagedZoneForwardingConfigNameServerTargetResponseOutput values.
+// You can construct a concrete instance of `ManagedZoneForwardingConfigNameServerTargetResponseInput` via:
+//
+//          ManagedZoneForwardingConfigNameServerTargetResponseArgs{...}
+type ManagedZoneForwardingConfigNameServerTargetResponseInput interface {
+	pulumi.Input
+
+	ToManagedZoneForwardingConfigNameServerTargetResponseOutput() ManagedZoneForwardingConfigNameServerTargetResponseOutput
+	ToManagedZoneForwardingConfigNameServerTargetResponseOutputWithContext(context.Context) ManagedZoneForwardingConfigNameServerTargetResponseOutput
+}
+
+type ManagedZoneForwardingConfigNameServerTargetResponseArgs struct {
+	// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
+	ForwardingPath pulumi.StringInput `pulumi:"forwardingPath"`
+	// IPv4 address of a target name server.
+	Ipv4Address pulumi.StringInput `pulumi:"ipv4Address"`
+	// IPv6 address of a target name server. Does not accept both fields (ipv4 & ipv6) being populated.
+	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
+	Kind        pulumi.StringInput `pulumi:"kind"`
+}
+
+func (ManagedZoneForwardingConfigNameServerTargetResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneForwardingConfigNameServerTargetResponse)(nil)).Elem()
+}
+
+func (i ManagedZoneForwardingConfigNameServerTargetResponseArgs) ToManagedZoneForwardingConfigNameServerTargetResponseOutput() ManagedZoneForwardingConfigNameServerTargetResponseOutput {
+	return i.ToManagedZoneForwardingConfigNameServerTargetResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneForwardingConfigNameServerTargetResponseArgs) ToManagedZoneForwardingConfigNameServerTargetResponseOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigNameServerTargetResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneForwardingConfigNameServerTargetResponseOutput)
+}
+
+// ManagedZoneForwardingConfigNameServerTargetResponseArrayInput is an input type that accepts ManagedZoneForwardingConfigNameServerTargetResponseArray and ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput values.
+// You can construct a concrete instance of `ManagedZoneForwardingConfigNameServerTargetResponseArrayInput` via:
+//
+//          ManagedZoneForwardingConfigNameServerTargetResponseArray{ ManagedZoneForwardingConfigNameServerTargetResponseArgs{...} }
+type ManagedZoneForwardingConfigNameServerTargetResponseArrayInput interface {
+	pulumi.Input
+
+	ToManagedZoneForwardingConfigNameServerTargetResponseArrayOutput() ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput
+	ToManagedZoneForwardingConfigNameServerTargetResponseArrayOutputWithContext(context.Context) ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput
+}
+
+type ManagedZoneForwardingConfigNameServerTargetResponseArray []ManagedZoneForwardingConfigNameServerTargetResponseInput
+
+func (ManagedZoneForwardingConfigNameServerTargetResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedZoneForwardingConfigNameServerTargetResponse)(nil)).Elem()
+}
+
+func (i ManagedZoneForwardingConfigNameServerTargetResponseArray) ToManagedZoneForwardingConfigNameServerTargetResponseArrayOutput() ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput {
+	return i.ToManagedZoneForwardingConfigNameServerTargetResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneForwardingConfigNameServerTargetResponseArray) ToManagedZoneForwardingConfigNameServerTargetResponseArrayOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput)
+}
+
+type ManagedZoneForwardingConfigNameServerTargetResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneForwardingConfigNameServerTargetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneForwardingConfigNameServerTargetResponse)(nil)).Elem()
+}
+
+func (o ManagedZoneForwardingConfigNameServerTargetResponseOutput) ToManagedZoneForwardingConfigNameServerTargetResponseOutput() ManagedZoneForwardingConfigNameServerTargetResponseOutput {
+	return o
+}
+
+func (o ManagedZoneForwardingConfigNameServerTargetResponseOutput) ToManagedZoneForwardingConfigNameServerTargetResponseOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigNameServerTargetResponseOutput {
+	return o
+}
+
+// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
+func (o ManagedZoneForwardingConfigNameServerTargetResponseOutput) ForwardingPath() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneForwardingConfigNameServerTargetResponse) string { return v.ForwardingPath }).(pulumi.StringOutput)
+}
+
+// IPv4 address of a target name server.
+func (o ManagedZoneForwardingConfigNameServerTargetResponseOutput) Ipv4Address() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneForwardingConfigNameServerTargetResponse) string { return v.Ipv4Address }).(pulumi.StringOutput)
+}
+
+// IPv6 address of a target name server. Does not accept both fields (ipv4 & ipv6) being populated.
+func (o ManagedZoneForwardingConfigNameServerTargetResponseOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneForwardingConfigNameServerTargetResponse) string { return v.Ipv6Address }).(pulumi.StringOutput)
+}
+
+func (o ManagedZoneForwardingConfigNameServerTargetResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneForwardingConfigNameServerTargetResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedZoneForwardingConfigNameServerTargetResponse)(nil)).Elem()
+}
+
+func (o ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput) ToManagedZoneForwardingConfigNameServerTargetResponseArrayOutput() ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput {
+	return o
+}
+
+func (o ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput) ToManagedZoneForwardingConfigNameServerTargetResponseArrayOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput {
+	return o
+}
+
+func (o ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput) Index(i pulumi.IntInput) ManagedZoneForwardingConfigNameServerTargetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedZoneForwardingConfigNameServerTargetResponse {
+		return vs[0].([]ManagedZoneForwardingConfigNameServerTargetResponse)[vs[1].(int)]
+	}).(ManagedZoneForwardingConfigNameServerTargetResponseOutput)
+}
+
+type ManagedZoneForwardingConfigResponse struct {
+	Kind string `pulumi:"kind"`
+	// List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
+	TargetNameServers []ManagedZoneForwardingConfigNameServerTargetResponse `pulumi:"targetNameServers"`
+}
+
+// ManagedZoneForwardingConfigResponseInput is an input type that accepts ManagedZoneForwardingConfigResponseArgs and ManagedZoneForwardingConfigResponseOutput values.
+// You can construct a concrete instance of `ManagedZoneForwardingConfigResponseInput` via:
+//
+//          ManagedZoneForwardingConfigResponseArgs{...}
+type ManagedZoneForwardingConfigResponseInput interface {
+	pulumi.Input
+
+	ToManagedZoneForwardingConfigResponseOutput() ManagedZoneForwardingConfigResponseOutput
+	ToManagedZoneForwardingConfigResponseOutputWithContext(context.Context) ManagedZoneForwardingConfigResponseOutput
+}
+
+type ManagedZoneForwardingConfigResponseArgs struct {
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
+	TargetNameServers ManagedZoneForwardingConfigNameServerTargetResponseArrayInput `pulumi:"targetNameServers"`
+}
+
+func (ManagedZoneForwardingConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneForwardingConfigResponse)(nil)).Elem()
+}
+
+func (i ManagedZoneForwardingConfigResponseArgs) ToManagedZoneForwardingConfigResponseOutput() ManagedZoneForwardingConfigResponseOutput {
+	return i.ToManagedZoneForwardingConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneForwardingConfigResponseArgs) ToManagedZoneForwardingConfigResponseOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneForwardingConfigResponseOutput)
+}
+
+func (i ManagedZoneForwardingConfigResponseArgs) ToManagedZoneForwardingConfigResponsePtrOutput() ManagedZoneForwardingConfigResponsePtrOutput {
+	return i.ToManagedZoneForwardingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneForwardingConfigResponseArgs) ToManagedZoneForwardingConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneForwardingConfigResponseOutput).ToManagedZoneForwardingConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ManagedZoneForwardingConfigResponsePtrInput is an input type that accepts ManagedZoneForwardingConfigResponseArgs, ManagedZoneForwardingConfigResponsePtr and ManagedZoneForwardingConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ManagedZoneForwardingConfigResponsePtrInput` via:
+//
+//          ManagedZoneForwardingConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedZoneForwardingConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToManagedZoneForwardingConfigResponsePtrOutput() ManagedZoneForwardingConfigResponsePtrOutput
+	ToManagedZoneForwardingConfigResponsePtrOutputWithContext(context.Context) ManagedZoneForwardingConfigResponsePtrOutput
+}
+
+type managedZoneForwardingConfigResponsePtrType ManagedZoneForwardingConfigResponseArgs
+
+func ManagedZoneForwardingConfigResponsePtr(v *ManagedZoneForwardingConfigResponseArgs) ManagedZoneForwardingConfigResponsePtrInput {
+	return (*managedZoneForwardingConfigResponsePtrType)(v)
+}
+
+func (*managedZoneForwardingConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneForwardingConfigResponse)(nil)).Elem()
+}
+
+func (i *managedZoneForwardingConfigResponsePtrType) ToManagedZoneForwardingConfigResponsePtrOutput() ManagedZoneForwardingConfigResponsePtrOutput {
+	return i.ToManagedZoneForwardingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *managedZoneForwardingConfigResponsePtrType) ToManagedZoneForwardingConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneForwardingConfigResponsePtrOutput)
+}
+
+type ManagedZoneForwardingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneForwardingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneForwardingConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedZoneForwardingConfigResponseOutput) ToManagedZoneForwardingConfigResponseOutput() ManagedZoneForwardingConfigResponseOutput {
+	return o
+}
+
+func (o ManagedZoneForwardingConfigResponseOutput) ToManagedZoneForwardingConfigResponseOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigResponseOutput {
+	return o
+}
+
+func (o ManagedZoneForwardingConfigResponseOutput) ToManagedZoneForwardingConfigResponsePtrOutput() ManagedZoneForwardingConfigResponsePtrOutput {
+	return o.ToManagedZoneForwardingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedZoneForwardingConfigResponseOutput) ToManagedZoneForwardingConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigResponsePtrOutput {
+	return o.ApplyT(func(v ManagedZoneForwardingConfigResponse) *ManagedZoneForwardingConfigResponse {
+		return &v
+	}).(ManagedZoneForwardingConfigResponsePtrOutput)
+}
+func (o ManagedZoneForwardingConfigResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneForwardingConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
+func (o ManagedZoneForwardingConfigResponseOutput) TargetNameServers() ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput {
+	return o.ApplyT(func(v ManagedZoneForwardingConfigResponse) []ManagedZoneForwardingConfigNameServerTargetResponse {
+		return v.TargetNameServers
+	}).(ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput)
+}
+
+type ManagedZoneForwardingConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneForwardingConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneForwardingConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedZoneForwardingConfigResponsePtrOutput) ToManagedZoneForwardingConfigResponsePtrOutput() ManagedZoneForwardingConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZoneForwardingConfigResponsePtrOutput) ToManagedZoneForwardingConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZoneForwardingConfigResponsePtrOutput) Elem() ManagedZoneForwardingConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedZoneForwardingConfigResponse) ManagedZoneForwardingConfigResponse { return *v }).(ManagedZoneForwardingConfigResponseOutput)
+}
+
+func (o ManagedZoneForwardingConfigResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZoneForwardingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
+func (o ManagedZoneForwardingConfigResponsePtrOutput) TargetNameServers() ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput {
+	return o.ApplyT(func(v *ManagedZoneForwardingConfigResponse) []ManagedZoneForwardingConfigNameServerTargetResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TargetNameServers
+	}).(ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput)
+}
+
 type ManagedZonePeeringConfig struct {
 	Kind *string `pulumi:"kind"`
 	// The network with which to peer.
@@ -729,6 +1305,153 @@ func (o ManagedZonePeeringConfigPtrOutput) TargetNetwork() ManagedZonePeeringCon
 		}
 		return v.TargetNetwork
 	}).(ManagedZonePeeringConfigTargetNetworkPtrOutput)
+}
+
+type ManagedZonePeeringConfigResponse struct {
+	Kind string `pulumi:"kind"`
+	// The network with which to peer.
+	TargetNetwork ManagedZonePeeringConfigTargetNetworkResponse `pulumi:"targetNetwork"`
+}
+
+// ManagedZonePeeringConfigResponseInput is an input type that accepts ManagedZonePeeringConfigResponseArgs and ManagedZonePeeringConfigResponseOutput values.
+// You can construct a concrete instance of `ManagedZonePeeringConfigResponseInput` via:
+//
+//          ManagedZonePeeringConfigResponseArgs{...}
+type ManagedZonePeeringConfigResponseInput interface {
+	pulumi.Input
+
+	ToManagedZonePeeringConfigResponseOutput() ManagedZonePeeringConfigResponseOutput
+	ToManagedZonePeeringConfigResponseOutputWithContext(context.Context) ManagedZonePeeringConfigResponseOutput
+}
+
+type ManagedZonePeeringConfigResponseArgs struct {
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The network with which to peer.
+	TargetNetwork ManagedZonePeeringConfigTargetNetworkResponseInput `pulumi:"targetNetwork"`
+}
+
+func (ManagedZonePeeringConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZonePeeringConfigResponse)(nil)).Elem()
+}
+
+func (i ManagedZonePeeringConfigResponseArgs) ToManagedZonePeeringConfigResponseOutput() ManagedZonePeeringConfigResponseOutput {
+	return i.ToManagedZonePeeringConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedZonePeeringConfigResponseArgs) ToManagedZonePeeringConfigResponseOutputWithContext(ctx context.Context) ManagedZonePeeringConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePeeringConfigResponseOutput)
+}
+
+func (i ManagedZonePeeringConfigResponseArgs) ToManagedZonePeeringConfigResponsePtrOutput() ManagedZonePeeringConfigResponsePtrOutput {
+	return i.ToManagedZonePeeringConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedZonePeeringConfigResponseArgs) ToManagedZonePeeringConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePeeringConfigResponseOutput).ToManagedZonePeeringConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ManagedZonePeeringConfigResponsePtrInput is an input type that accepts ManagedZonePeeringConfigResponseArgs, ManagedZonePeeringConfigResponsePtr and ManagedZonePeeringConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ManagedZonePeeringConfigResponsePtrInput` via:
+//
+//          ManagedZonePeeringConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedZonePeeringConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToManagedZonePeeringConfigResponsePtrOutput() ManagedZonePeeringConfigResponsePtrOutput
+	ToManagedZonePeeringConfigResponsePtrOutputWithContext(context.Context) ManagedZonePeeringConfigResponsePtrOutput
+}
+
+type managedZonePeeringConfigResponsePtrType ManagedZonePeeringConfigResponseArgs
+
+func ManagedZonePeeringConfigResponsePtr(v *ManagedZonePeeringConfigResponseArgs) ManagedZonePeeringConfigResponsePtrInput {
+	return (*managedZonePeeringConfigResponsePtrType)(v)
+}
+
+func (*managedZonePeeringConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZonePeeringConfigResponse)(nil)).Elem()
+}
+
+func (i *managedZonePeeringConfigResponsePtrType) ToManagedZonePeeringConfigResponsePtrOutput() ManagedZonePeeringConfigResponsePtrOutput {
+	return i.ToManagedZonePeeringConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *managedZonePeeringConfigResponsePtrType) ToManagedZonePeeringConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePeeringConfigResponsePtrOutput)
+}
+
+type ManagedZonePeeringConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePeeringConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZonePeeringConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedZonePeeringConfigResponseOutput) ToManagedZonePeeringConfigResponseOutput() ManagedZonePeeringConfigResponseOutput {
+	return o
+}
+
+func (o ManagedZonePeeringConfigResponseOutput) ToManagedZonePeeringConfigResponseOutputWithContext(ctx context.Context) ManagedZonePeeringConfigResponseOutput {
+	return o
+}
+
+func (o ManagedZonePeeringConfigResponseOutput) ToManagedZonePeeringConfigResponsePtrOutput() ManagedZonePeeringConfigResponsePtrOutput {
+	return o.ToManagedZonePeeringConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedZonePeeringConfigResponseOutput) ToManagedZonePeeringConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigResponsePtrOutput {
+	return o.ApplyT(func(v ManagedZonePeeringConfigResponse) *ManagedZonePeeringConfigResponse {
+		return &v
+	}).(ManagedZonePeeringConfigResponsePtrOutput)
+}
+func (o ManagedZonePeeringConfigResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZonePeeringConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The network with which to peer.
+func (o ManagedZonePeeringConfigResponseOutput) TargetNetwork() ManagedZonePeeringConfigTargetNetworkResponseOutput {
+	return o.ApplyT(func(v ManagedZonePeeringConfigResponse) ManagedZonePeeringConfigTargetNetworkResponse {
+		return v.TargetNetwork
+	}).(ManagedZonePeeringConfigTargetNetworkResponseOutput)
+}
+
+type ManagedZonePeeringConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePeeringConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZonePeeringConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedZonePeeringConfigResponsePtrOutput) ToManagedZonePeeringConfigResponsePtrOutput() ManagedZonePeeringConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZonePeeringConfigResponsePtrOutput) ToManagedZonePeeringConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZonePeeringConfigResponsePtrOutput) Elem() ManagedZonePeeringConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedZonePeeringConfigResponse) ManagedZonePeeringConfigResponse { return *v }).(ManagedZonePeeringConfigResponseOutput)
+}
+
+func (o ManagedZonePeeringConfigResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZonePeeringConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The network with which to peer.
+func (o ManagedZonePeeringConfigResponsePtrOutput) TargetNetwork() ManagedZonePeeringConfigTargetNetworkResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedZonePeeringConfigResponse) *ManagedZonePeeringConfigTargetNetworkResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetNetwork
+	}).(ManagedZonePeeringConfigTargetNetworkResponsePtrOutput)
 }
 
 type ManagedZonePeeringConfigTargetNetwork struct {
@@ -893,6 +1616,173 @@ func (o ManagedZonePeeringConfigTargetNetworkPtrOutput) NetworkUrl() pulumi.Stri
 			return nil
 		}
 		return v.NetworkUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedZonePeeringConfigTargetNetworkResponse struct {
+	// The time at which the zone was deactivated, in RFC 3339 date-time format. An empty string indicates that the peering connection is active. The producer network can deactivate a zone. The zone is automatically deactivated if the producer network that the zone targeted is deleted. Output only.
+	DeactivateTime string `pulumi:"deactivateTime"`
+	Kind           string `pulumi:"kind"`
+	// The fully qualified URL of the VPC network to forward queries to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+	NetworkUrl string `pulumi:"networkUrl"`
+}
+
+// ManagedZonePeeringConfigTargetNetworkResponseInput is an input type that accepts ManagedZonePeeringConfigTargetNetworkResponseArgs and ManagedZonePeeringConfigTargetNetworkResponseOutput values.
+// You can construct a concrete instance of `ManagedZonePeeringConfigTargetNetworkResponseInput` via:
+//
+//          ManagedZonePeeringConfigTargetNetworkResponseArgs{...}
+type ManagedZonePeeringConfigTargetNetworkResponseInput interface {
+	pulumi.Input
+
+	ToManagedZonePeeringConfigTargetNetworkResponseOutput() ManagedZonePeeringConfigTargetNetworkResponseOutput
+	ToManagedZonePeeringConfigTargetNetworkResponseOutputWithContext(context.Context) ManagedZonePeeringConfigTargetNetworkResponseOutput
+}
+
+type ManagedZonePeeringConfigTargetNetworkResponseArgs struct {
+	// The time at which the zone was deactivated, in RFC 3339 date-time format. An empty string indicates that the peering connection is active. The producer network can deactivate a zone. The zone is automatically deactivated if the producer network that the zone targeted is deleted. Output only.
+	DeactivateTime pulumi.StringInput `pulumi:"deactivateTime"`
+	Kind           pulumi.StringInput `pulumi:"kind"`
+	// The fully qualified URL of the VPC network to forward queries to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
+}
+
+func (ManagedZonePeeringConfigTargetNetworkResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZonePeeringConfigTargetNetworkResponse)(nil)).Elem()
+}
+
+func (i ManagedZonePeeringConfigTargetNetworkResponseArgs) ToManagedZonePeeringConfigTargetNetworkResponseOutput() ManagedZonePeeringConfigTargetNetworkResponseOutput {
+	return i.ToManagedZonePeeringConfigTargetNetworkResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedZonePeeringConfigTargetNetworkResponseArgs) ToManagedZonePeeringConfigTargetNetworkResponseOutputWithContext(ctx context.Context) ManagedZonePeeringConfigTargetNetworkResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePeeringConfigTargetNetworkResponseOutput)
+}
+
+func (i ManagedZonePeeringConfigTargetNetworkResponseArgs) ToManagedZonePeeringConfigTargetNetworkResponsePtrOutput() ManagedZonePeeringConfigTargetNetworkResponsePtrOutput {
+	return i.ToManagedZonePeeringConfigTargetNetworkResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedZonePeeringConfigTargetNetworkResponseArgs) ToManagedZonePeeringConfigTargetNetworkResponsePtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigTargetNetworkResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePeeringConfigTargetNetworkResponseOutput).ToManagedZonePeeringConfigTargetNetworkResponsePtrOutputWithContext(ctx)
+}
+
+// ManagedZonePeeringConfigTargetNetworkResponsePtrInput is an input type that accepts ManagedZonePeeringConfigTargetNetworkResponseArgs, ManagedZonePeeringConfigTargetNetworkResponsePtr and ManagedZonePeeringConfigTargetNetworkResponsePtrOutput values.
+// You can construct a concrete instance of `ManagedZonePeeringConfigTargetNetworkResponsePtrInput` via:
+//
+//          ManagedZonePeeringConfigTargetNetworkResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedZonePeeringConfigTargetNetworkResponsePtrInput interface {
+	pulumi.Input
+
+	ToManagedZonePeeringConfigTargetNetworkResponsePtrOutput() ManagedZonePeeringConfigTargetNetworkResponsePtrOutput
+	ToManagedZonePeeringConfigTargetNetworkResponsePtrOutputWithContext(context.Context) ManagedZonePeeringConfigTargetNetworkResponsePtrOutput
+}
+
+type managedZonePeeringConfigTargetNetworkResponsePtrType ManagedZonePeeringConfigTargetNetworkResponseArgs
+
+func ManagedZonePeeringConfigTargetNetworkResponsePtr(v *ManagedZonePeeringConfigTargetNetworkResponseArgs) ManagedZonePeeringConfigTargetNetworkResponsePtrInput {
+	return (*managedZonePeeringConfigTargetNetworkResponsePtrType)(v)
+}
+
+func (*managedZonePeeringConfigTargetNetworkResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZonePeeringConfigTargetNetworkResponse)(nil)).Elem()
+}
+
+func (i *managedZonePeeringConfigTargetNetworkResponsePtrType) ToManagedZonePeeringConfigTargetNetworkResponsePtrOutput() ManagedZonePeeringConfigTargetNetworkResponsePtrOutput {
+	return i.ToManagedZonePeeringConfigTargetNetworkResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *managedZonePeeringConfigTargetNetworkResponsePtrType) ToManagedZonePeeringConfigTargetNetworkResponsePtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigTargetNetworkResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePeeringConfigTargetNetworkResponsePtrOutput)
+}
+
+type ManagedZonePeeringConfigTargetNetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePeeringConfigTargetNetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZonePeeringConfigTargetNetworkResponse)(nil)).Elem()
+}
+
+func (o ManagedZonePeeringConfigTargetNetworkResponseOutput) ToManagedZonePeeringConfigTargetNetworkResponseOutput() ManagedZonePeeringConfigTargetNetworkResponseOutput {
+	return o
+}
+
+func (o ManagedZonePeeringConfigTargetNetworkResponseOutput) ToManagedZonePeeringConfigTargetNetworkResponseOutputWithContext(ctx context.Context) ManagedZonePeeringConfigTargetNetworkResponseOutput {
+	return o
+}
+
+func (o ManagedZonePeeringConfigTargetNetworkResponseOutput) ToManagedZonePeeringConfigTargetNetworkResponsePtrOutput() ManagedZonePeeringConfigTargetNetworkResponsePtrOutput {
+	return o.ToManagedZonePeeringConfigTargetNetworkResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedZonePeeringConfigTargetNetworkResponseOutput) ToManagedZonePeeringConfigTargetNetworkResponsePtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigTargetNetworkResponsePtrOutput {
+	return o.ApplyT(func(v ManagedZonePeeringConfigTargetNetworkResponse) *ManagedZonePeeringConfigTargetNetworkResponse {
+		return &v
+	}).(ManagedZonePeeringConfigTargetNetworkResponsePtrOutput)
+}
+
+// The time at which the zone was deactivated, in RFC 3339 date-time format. An empty string indicates that the peering connection is active. The producer network can deactivate a zone. The zone is automatically deactivated if the producer network that the zone targeted is deleted. Output only.
+func (o ManagedZonePeeringConfigTargetNetworkResponseOutput) DeactivateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZonePeeringConfigTargetNetworkResponse) string { return v.DeactivateTime }).(pulumi.StringOutput)
+}
+
+func (o ManagedZonePeeringConfigTargetNetworkResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZonePeeringConfigTargetNetworkResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The fully qualified URL of the VPC network to forward queries to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+func (o ManagedZonePeeringConfigTargetNetworkResponseOutput) NetworkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZonePeeringConfigTargetNetworkResponse) string { return v.NetworkUrl }).(pulumi.StringOutput)
+}
+
+type ManagedZonePeeringConfigTargetNetworkResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePeeringConfigTargetNetworkResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZonePeeringConfigTargetNetworkResponse)(nil)).Elem()
+}
+
+func (o ManagedZonePeeringConfigTargetNetworkResponsePtrOutput) ToManagedZonePeeringConfigTargetNetworkResponsePtrOutput() ManagedZonePeeringConfigTargetNetworkResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZonePeeringConfigTargetNetworkResponsePtrOutput) ToManagedZonePeeringConfigTargetNetworkResponsePtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigTargetNetworkResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZonePeeringConfigTargetNetworkResponsePtrOutput) Elem() ManagedZonePeeringConfigTargetNetworkResponseOutput {
+	return o.ApplyT(func(v *ManagedZonePeeringConfigTargetNetworkResponse) ManagedZonePeeringConfigTargetNetworkResponse {
+		return *v
+	}).(ManagedZonePeeringConfigTargetNetworkResponseOutput)
+}
+
+// The time at which the zone was deactivated, in RFC 3339 date-time format. An empty string indicates that the peering connection is active. The producer network can deactivate a zone. The zone is automatically deactivated if the producer network that the zone targeted is deleted. Output only.
+func (o ManagedZonePeeringConfigTargetNetworkResponsePtrOutput) DeactivateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZonePeeringConfigTargetNetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeactivateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedZonePeeringConfigTargetNetworkResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZonePeeringConfigTargetNetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified URL of the VPC network to forward queries to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+func (o ManagedZonePeeringConfigTargetNetworkResponsePtrOutput) NetworkUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZonePeeringConfigTargetNetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkUrl
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1146,6 +2036,258 @@ func (o ManagedZonePrivateVisibilityConfigNetworkArrayOutput) Index(i pulumi.Int
 	}).(ManagedZonePrivateVisibilityConfigNetworkOutput)
 }
 
+type ManagedZonePrivateVisibilityConfigNetworkResponse struct {
+	Kind string `pulumi:"kind"`
+	// The fully qualified URL of the VPC network to bind to. Format this URL like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+	NetworkUrl string `pulumi:"networkUrl"`
+}
+
+// ManagedZonePrivateVisibilityConfigNetworkResponseInput is an input type that accepts ManagedZonePrivateVisibilityConfigNetworkResponseArgs and ManagedZonePrivateVisibilityConfigNetworkResponseOutput values.
+// You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigNetworkResponseInput` via:
+//
+//          ManagedZonePrivateVisibilityConfigNetworkResponseArgs{...}
+type ManagedZonePrivateVisibilityConfigNetworkResponseInput interface {
+	pulumi.Input
+
+	ToManagedZonePrivateVisibilityConfigNetworkResponseOutput() ManagedZonePrivateVisibilityConfigNetworkResponseOutput
+	ToManagedZonePrivateVisibilityConfigNetworkResponseOutputWithContext(context.Context) ManagedZonePrivateVisibilityConfigNetworkResponseOutput
+}
+
+type ManagedZonePrivateVisibilityConfigNetworkResponseArgs struct {
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The fully qualified URL of the VPC network to bind to. Format this URL like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
+}
+
+func (ManagedZonePrivateVisibilityConfigNetworkResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZonePrivateVisibilityConfigNetworkResponse)(nil)).Elem()
+}
+
+func (i ManagedZonePrivateVisibilityConfigNetworkResponseArgs) ToManagedZonePrivateVisibilityConfigNetworkResponseOutput() ManagedZonePrivateVisibilityConfigNetworkResponseOutput {
+	return i.ToManagedZonePrivateVisibilityConfigNetworkResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedZonePrivateVisibilityConfigNetworkResponseArgs) ToManagedZonePrivateVisibilityConfigNetworkResponseOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigNetworkResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigNetworkResponseOutput)
+}
+
+// ManagedZonePrivateVisibilityConfigNetworkResponseArrayInput is an input type that accepts ManagedZonePrivateVisibilityConfigNetworkResponseArray and ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput values.
+// You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigNetworkResponseArrayInput` via:
+//
+//          ManagedZonePrivateVisibilityConfigNetworkResponseArray{ ManagedZonePrivateVisibilityConfigNetworkResponseArgs{...} }
+type ManagedZonePrivateVisibilityConfigNetworkResponseArrayInput interface {
+	pulumi.Input
+
+	ToManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput() ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput
+	ToManagedZonePrivateVisibilityConfigNetworkResponseArrayOutputWithContext(context.Context) ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput
+}
+
+type ManagedZonePrivateVisibilityConfigNetworkResponseArray []ManagedZonePrivateVisibilityConfigNetworkResponseInput
+
+func (ManagedZonePrivateVisibilityConfigNetworkResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedZonePrivateVisibilityConfigNetworkResponse)(nil)).Elem()
+}
+
+func (i ManagedZonePrivateVisibilityConfigNetworkResponseArray) ToManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput() ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput {
+	return i.ToManagedZonePrivateVisibilityConfigNetworkResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedZonePrivateVisibilityConfigNetworkResponseArray) ToManagedZonePrivateVisibilityConfigNetworkResponseArrayOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigNetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePrivateVisibilityConfigNetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZonePrivateVisibilityConfigNetworkResponse)(nil)).Elem()
+}
+
+func (o ManagedZonePrivateVisibilityConfigNetworkResponseOutput) ToManagedZonePrivateVisibilityConfigNetworkResponseOutput() ManagedZonePrivateVisibilityConfigNetworkResponseOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigNetworkResponseOutput) ToManagedZonePrivateVisibilityConfigNetworkResponseOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigNetworkResponseOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigNetworkResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigNetworkResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The fully qualified URL of the VPC network to bind to. Format this URL like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+func (o ManagedZonePrivateVisibilityConfigNetworkResponseOutput) NetworkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigNetworkResponse) string { return v.NetworkUrl }).(pulumi.StringOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedZonePrivateVisibilityConfigNetworkResponse)(nil)).Elem()
+}
+
+func (o ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput) ToManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput() ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput) ToManagedZonePrivateVisibilityConfigNetworkResponseArrayOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput) Index(i pulumi.IntInput) ManagedZonePrivateVisibilityConfigNetworkResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedZonePrivateVisibilityConfigNetworkResponse {
+		return vs[0].([]ManagedZonePrivateVisibilityConfigNetworkResponse)[vs[1].(int)]
+	}).(ManagedZonePrivateVisibilityConfigNetworkResponseOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigResponse struct {
+	Kind string `pulumi:"kind"`
+	// The list of VPC networks that can see this zone.
+	Networks []ManagedZonePrivateVisibilityConfigNetworkResponse `pulumi:"networks"`
+}
+
+// ManagedZonePrivateVisibilityConfigResponseInput is an input type that accepts ManagedZonePrivateVisibilityConfigResponseArgs and ManagedZonePrivateVisibilityConfigResponseOutput values.
+// You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigResponseInput` via:
+//
+//          ManagedZonePrivateVisibilityConfigResponseArgs{...}
+type ManagedZonePrivateVisibilityConfigResponseInput interface {
+	pulumi.Input
+
+	ToManagedZonePrivateVisibilityConfigResponseOutput() ManagedZonePrivateVisibilityConfigResponseOutput
+	ToManagedZonePrivateVisibilityConfigResponseOutputWithContext(context.Context) ManagedZonePrivateVisibilityConfigResponseOutput
+}
+
+type ManagedZonePrivateVisibilityConfigResponseArgs struct {
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The list of VPC networks that can see this zone.
+	Networks ManagedZonePrivateVisibilityConfigNetworkResponseArrayInput `pulumi:"networks"`
+}
+
+func (ManagedZonePrivateVisibilityConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZonePrivateVisibilityConfigResponse)(nil)).Elem()
+}
+
+func (i ManagedZonePrivateVisibilityConfigResponseArgs) ToManagedZonePrivateVisibilityConfigResponseOutput() ManagedZonePrivateVisibilityConfigResponseOutput {
+	return i.ToManagedZonePrivateVisibilityConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedZonePrivateVisibilityConfigResponseArgs) ToManagedZonePrivateVisibilityConfigResponseOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigResponseOutput)
+}
+
+func (i ManagedZonePrivateVisibilityConfigResponseArgs) ToManagedZonePrivateVisibilityConfigResponsePtrOutput() ManagedZonePrivateVisibilityConfigResponsePtrOutput {
+	return i.ToManagedZonePrivateVisibilityConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedZonePrivateVisibilityConfigResponseArgs) ToManagedZonePrivateVisibilityConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigResponseOutput).ToManagedZonePrivateVisibilityConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ManagedZonePrivateVisibilityConfigResponsePtrInput is an input type that accepts ManagedZonePrivateVisibilityConfigResponseArgs, ManagedZonePrivateVisibilityConfigResponsePtr and ManagedZonePrivateVisibilityConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigResponsePtrInput` via:
+//
+//          ManagedZonePrivateVisibilityConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedZonePrivateVisibilityConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToManagedZonePrivateVisibilityConfigResponsePtrOutput() ManagedZonePrivateVisibilityConfigResponsePtrOutput
+	ToManagedZonePrivateVisibilityConfigResponsePtrOutputWithContext(context.Context) ManagedZonePrivateVisibilityConfigResponsePtrOutput
+}
+
+type managedZonePrivateVisibilityConfigResponsePtrType ManagedZonePrivateVisibilityConfigResponseArgs
+
+func ManagedZonePrivateVisibilityConfigResponsePtr(v *ManagedZonePrivateVisibilityConfigResponseArgs) ManagedZonePrivateVisibilityConfigResponsePtrInput {
+	return (*managedZonePrivateVisibilityConfigResponsePtrType)(v)
+}
+
+func (*managedZonePrivateVisibilityConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZonePrivateVisibilityConfigResponse)(nil)).Elem()
+}
+
+func (i *managedZonePrivateVisibilityConfigResponsePtrType) ToManagedZonePrivateVisibilityConfigResponsePtrOutput() ManagedZonePrivateVisibilityConfigResponsePtrOutput {
+	return i.ToManagedZonePrivateVisibilityConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *managedZonePrivateVisibilityConfigResponsePtrType) ToManagedZonePrivateVisibilityConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigResponsePtrOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePrivateVisibilityConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZonePrivateVisibilityConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedZonePrivateVisibilityConfigResponseOutput) ToManagedZonePrivateVisibilityConfigResponseOutput() ManagedZonePrivateVisibilityConfigResponseOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigResponseOutput) ToManagedZonePrivateVisibilityConfigResponseOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigResponseOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigResponseOutput) ToManagedZonePrivateVisibilityConfigResponsePtrOutput() ManagedZonePrivateVisibilityConfigResponsePtrOutput {
+	return o.ToManagedZonePrivateVisibilityConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedZonePrivateVisibilityConfigResponseOutput) ToManagedZonePrivateVisibilityConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigResponsePtrOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigResponse) *ManagedZonePrivateVisibilityConfigResponse {
+		return &v
+	}).(ManagedZonePrivateVisibilityConfigResponsePtrOutput)
+}
+func (o ManagedZonePrivateVisibilityConfigResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The list of VPC networks that can see this zone.
+func (o ManagedZonePrivateVisibilityConfigResponseOutput) Networks() ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigResponse) []ManagedZonePrivateVisibilityConfigNetworkResponse {
+		return v.Networks
+	}).(ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePrivateVisibilityConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZonePrivateVisibilityConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedZonePrivateVisibilityConfigResponsePtrOutput) ToManagedZonePrivateVisibilityConfigResponsePtrOutput() ManagedZonePrivateVisibilityConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigResponsePtrOutput) ToManagedZonePrivateVisibilityConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigResponsePtrOutput) Elem() ManagedZonePrivateVisibilityConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfigResponse) ManagedZonePrivateVisibilityConfigResponse {
+		return *v
+	}).(ManagedZonePrivateVisibilityConfigResponseOutput)
+}
+
+func (o ManagedZonePrivateVisibilityConfigResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of VPC networks that can see this zone.
+func (o ManagedZonePrivateVisibilityConfigResponsePtrOutput) Networks() ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput {
+	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfigResponse) []ManagedZonePrivateVisibilityConfigNetworkResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Networks
+	}).(ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput)
+}
+
 type ManagedZoneReverseLookupConfig struct {
 	Kind *string `pulumi:"kind"`
 }
@@ -1269,6 +2411,132 @@ func (o ManagedZoneReverseLookupConfigPtrOutput) Kind() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedZoneReverseLookupConfigResponse struct {
+	Kind string `pulumi:"kind"`
+}
+
+// ManagedZoneReverseLookupConfigResponseInput is an input type that accepts ManagedZoneReverseLookupConfigResponseArgs and ManagedZoneReverseLookupConfigResponseOutput values.
+// You can construct a concrete instance of `ManagedZoneReverseLookupConfigResponseInput` via:
+//
+//          ManagedZoneReverseLookupConfigResponseArgs{...}
+type ManagedZoneReverseLookupConfigResponseInput interface {
+	pulumi.Input
+
+	ToManagedZoneReverseLookupConfigResponseOutput() ManagedZoneReverseLookupConfigResponseOutput
+	ToManagedZoneReverseLookupConfigResponseOutputWithContext(context.Context) ManagedZoneReverseLookupConfigResponseOutput
+}
+
+type ManagedZoneReverseLookupConfigResponseArgs struct {
+	Kind pulumi.StringInput `pulumi:"kind"`
+}
+
+func (ManagedZoneReverseLookupConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneReverseLookupConfigResponse)(nil)).Elem()
+}
+
+func (i ManagedZoneReverseLookupConfigResponseArgs) ToManagedZoneReverseLookupConfigResponseOutput() ManagedZoneReverseLookupConfigResponseOutput {
+	return i.ToManagedZoneReverseLookupConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneReverseLookupConfigResponseArgs) ToManagedZoneReverseLookupConfigResponseOutputWithContext(ctx context.Context) ManagedZoneReverseLookupConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneReverseLookupConfigResponseOutput)
+}
+
+func (i ManagedZoneReverseLookupConfigResponseArgs) ToManagedZoneReverseLookupConfigResponsePtrOutput() ManagedZoneReverseLookupConfigResponsePtrOutput {
+	return i.ToManagedZoneReverseLookupConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneReverseLookupConfigResponseArgs) ToManagedZoneReverseLookupConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneReverseLookupConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneReverseLookupConfigResponseOutput).ToManagedZoneReverseLookupConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ManagedZoneReverseLookupConfigResponsePtrInput is an input type that accepts ManagedZoneReverseLookupConfigResponseArgs, ManagedZoneReverseLookupConfigResponsePtr and ManagedZoneReverseLookupConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ManagedZoneReverseLookupConfigResponsePtrInput` via:
+//
+//          ManagedZoneReverseLookupConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedZoneReverseLookupConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToManagedZoneReverseLookupConfigResponsePtrOutput() ManagedZoneReverseLookupConfigResponsePtrOutput
+	ToManagedZoneReverseLookupConfigResponsePtrOutputWithContext(context.Context) ManagedZoneReverseLookupConfigResponsePtrOutput
+}
+
+type managedZoneReverseLookupConfigResponsePtrType ManagedZoneReverseLookupConfigResponseArgs
+
+func ManagedZoneReverseLookupConfigResponsePtr(v *ManagedZoneReverseLookupConfigResponseArgs) ManagedZoneReverseLookupConfigResponsePtrInput {
+	return (*managedZoneReverseLookupConfigResponsePtrType)(v)
+}
+
+func (*managedZoneReverseLookupConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneReverseLookupConfigResponse)(nil)).Elem()
+}
+
+func (i *managedZoneReverseLookupConfigResponsePtrType) ToManagedZoneReverseLookupConfigResponsePtrOutput() ManagedZoneReverseLookupConfigResponsePtrOutput {
+	return i.ToManagedZoneReverseLookupConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *managedZoneReverseLookupConfigResponsePtrType) ToManagedZoneReverseLookupConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneReverseLookupConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneReverseLookupConfigResponsePtrOutput)
+}
+
+type ManagedZoneReverseLookupConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneReverseLookupConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneReverseLookupConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedZoneReverseLookupConfigResponseOutput) ToManagedZoneReverseLookupConfigResponseOutput() ManagedZoneReverseLookupConfigResponseOutput {
+	return o
+}
+
+func (o ManagedZoneReverseLookupConfigResponseOutput) ToManagedZoneReverseLookupConfigResponseOutputWithContext(ctx context.Context) ManagedZoneReverseLookupConfigResponseOutput {
+	return o
+}
+
+func (o ManagedZoneReverseLookupConfigResponseOutput) ToManagedZoneReverseLookupConfigResponsePtrOutput() ManagedZoneReverseLookupConfigResponsePtrOutput {
+	return o.ToManagedZoneReverseLookupConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedZoneReverseLookupConfigResponseOutput) ToManagedZoneReverseLookupConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneReverseLookupConfigResponsePtrOutput {
+	return o.ApplyT(func(v ManagedZoneReverseLookupConfigResponse) *ManagedZoneReverseLookupConfigResponse {
+		return &v
+	}).(ManagedZoneReverseLookupConfigResponsePtrOutput)
+}
+func (o ManagedZoneReverseLookupConfigResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneReverseLookupConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type ManagedZoneReverseLookupConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneReverseLookupConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneReverseLookupConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedZoneReverseLookupConfigResponsePtrOutput) ToManagedZoneReverseLookupConfigResponsePtrOutput() ManagedZoneReverseLookupConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZoneReverseLookupConfigResponsePtrOutput) ToManagedZoneReverseLookupConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneReverseLookupConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZoneReverseLookupConfigResponsePtrOutput) Elem() ManagedZoneReverseLookupConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedZoneReverseLookupConfigResponse) ManagedZoneReverseLookupConfigResponse { return *v }).(ManagedZoneReverseLookupConfigResponseOutput)
+}
+
+func (o ManagedZoneReverseLookupConfigResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZoneReverseLookupConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1589,6 +2857,325 @@ func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) NamespaceUrl() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+type ManagedZoneServiceDirectoryConfigNamespaceResponse struct {
+	// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
+	DeletionTime string `pulumi:"deletionTime"`
+	Kind         string `pulumi:"kind"`
+	// The fully qualified URL of the namespace associated with the zone. Format must be https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+	NamespaceUrl string `pulumi:"namespaceUrl"`
+}
+
+// ManagedZoneServiceDirectoryConfigNamespaceResponseInput is an input type that accepts ManagedZoneServiceDirectoryConfigNamespaceResponseArgs and ManagedZoneServiceDirectoryConfigNamespaceResponseOutput values.
+// You can construct a concrete instance of `ManagedZoneServiceDirectoryConfigNamespaceResponseInput` via:
+//
+//          ManagedZoneServiceDirectoryConfigNamespaceResponseArgs{...}
+type ManagedZoneServiceDirectoryConfigNamespaceResponseInput interface {
+	pulumi.Input
+
+	ToManagedZoneServiceDirectoryConfigNamespaceResponseOutput() ManagedZoneServiceDirectoryConfigNamespaceResponseOutput
+	ToManagedZoneServiceDirectoryConfigNamespaceResponseOutputWithContext(context.Context) ManagedZoneServiceDirectoryConfigNamespaceResponseOutput
+}
+
+type ManagedZoneServiceDirectoryConfigNamespaceResponseArgs struct {
+	// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
+	DeletionTime pulumi.StringInput `pulumi:"deletionTime"`
+	Kind         pulumi.StringInput `pulumi:"kind"`
+	// The fully qualified URL of the namespace associated with the zone. Format must be https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+	NamespaceUrl pulumi.StringInput `pulumi:"namespaceUrl"`
+}
+
+func (ManagedZoneServiceDirectoryConfigNamespaceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneServiceDirectoryConfigNamespaceResponse)(nil)).Elem()
+}
+
+func (i ManagedZoneServiceDirectoryConfigNamespaceResponseArgs) ToManagedZoneServiceDirectoryConfigNamespaceResponseOutput() ManagedZoneServiceDirectoryConfigNamespaceResponseOutput {
+	return i.ToManagedZoneServiceDirectoryConfigNamespaceResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneServiceDirectoryConfigNamespaceResponseArgs) ToManagedZoneServiceDirectoryConfigNamespaceResponseOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespaceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigNamespaceResponseOutput)
+}
+
+func (i ManagedZoneServiceDirectoryConfigNamespaceResponseArgs) ToManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput() ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput {
+	return i.ToManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneServiceDirectoryConfigNamespaceResponseArgs) ToManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigNamespaceResponseOutput).ToManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutputWithContext(ctx)
+}
+
+// ManagedZoneServiceDirectoryConfigNamespaceResponsePtrInput is an input type that accepts ManagedZoneServiceDirectoryConfigNamespaceResponseArgs, ManagedZoneServiceDirectoryConfigNamespaceResponsePtr and ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput values.
+// You can construct a concrete instance of `ManagedZoneServiceDirectoryConfigNamespaceResponsePtrInput` via:
+//
+//          ManagedZoneServiceDirectoryConfigNamespaceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedZoneServiceDirectoryConfigNamespaceResponsePtrInput interface {
+	pulumi.Input
+
+	ToManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput() ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput
+	ToManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutputWithContext(context.Context) ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput
+}
+
+type managedZoneServiceDirectoryConfigNamespaceResponsePtrType ManagedZoneServiceDirectoryConfigNamespaceResponseArgs
+
+func ManagedZoneServiceDirectoryConfigNamespaceResponsePtr(v *ManagedZoneServiceDirectoryConfigNamespaceResponseArgs) ManagedZoneServiceDirectoryConfigNamespaceResponsePtrInput {
+	return (*managedZoneServiceDirectoryConfigNamespaceResponsePtrType)(v)
+}
+
+func (*managedZoneServiceDirectoryConfigNamespaceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneServiceDirectoryConfigNamespaceResponse)(nil)).Elem()
+}
+
+func (i *managedZoneServiceDirectoryConfigNamespaceResponsePtrType) ToManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput() ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput {
+	return i.ToManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *managedZoneServiceDirectoryConfigNamespaceResponsePtrType) ToManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput)
+}
+
+type ManagedZoneServiceDirectoryConfigNamespaceResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneServiceDirectoryConfigNamespaceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneServiceDirectoryConfigNamespaceResponse)(nil)).Elem()
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespaceResponseOutput) ToManagedZoneServiceDirectoryConfigNamespaceResponseOutput() ManagedZoneServiceDirectoryConfigNamespaceResponseOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespaceResponseOutput) ToManagedZoneServiceDirectoryConfigNamespaceResponseOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespaceResponseOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespaceResponseOutput) ToManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput() ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput {
+	return o.ToManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespaceResponseOutput) ToManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput {
+	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigNamespaceResponse) *ManagedZoneServiceDirectoryConfigNamespaceResponse {
+		return &v
+	}).(ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput)
+}
+
+// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
+func (o ManagedZoneServiceDirectoryConfigNamespaceResponseOutput) DeletionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigNamespaceResponse) string { return v.DeletionTime }).(pulumi.StringOutput)
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespaceResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigNamespaceResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The fully qualified URL of the namespace associated with the zone. Format must be https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+func (o ManagedZoneServiceDirectoryConfigNamespaceResponseOutput) NamespaceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigNamespaceResponse) string { return v.NamespaceUrl }).(pulumi.StringOutput)
+}
+
+type ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneServiceDirectoryConfigNamespaceResponse)(nil)).Elem()
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput) ToManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput() ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput) ToManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput) Elem() ManagedZoneServiceDirectoryConfigNamespaceResponseOutput {
+	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfigNamespaceResponse) ManagedZoneServiceDirectoryConfigNamespaceResponse {
+		return *v
+	}).(ManagedZoneServiceDirectoryConfigNamespaceResponseOutput)
+}
+
+// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
+func (o ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput) DeletionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfigNamespaceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeletionTime
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfigNamespaceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified URL of the namespace associated with the zone. Format must be https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+func (o ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput) NamespaceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfigNamespaceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NamespaceUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains information about Service Directory-backed zones.
+type ManagedZoneServiceDirectoryConfigResponse struct {
+	Kind string `pulumi:"kind"`
+	// Contains information about the namespace associated with the zone.
+	Namespace ManagedZoneServiceDirectoryConfigNamespaceResponse `pulumi:"namespace"`
+}
+
+// ManagedZoneServiceDirectoryConfigResponseInput is an input type that accepts ManagedZoneServiceDirectoryConfigResponseArgs and ManagedZoneServiceDirectoryConfigResponseOutput values.
+// You can construct a concrete instance of `ManagedZoneServiceDirectoryConfigResponseInput` via:
+//
+//          ManagedZoneServiceDirectoryConfigResponseArgs{...}
+type ManagedZoneServiceDirectoryConfigResponseInput interface {
+	pulumi.Input
+
+	ToManagedZoneServiceDirectoryConfigResponseOutput() ManagedZoneServiceDirectoryConfigResponseOutput
+	ToManagedZoneServiceDirectoryConfigResponseOutputWithContext(context.Context) ManagedZoneServiceDirectoryConfigResponseOutput
+}
+
+// Contains information about Service Directory-backed zones.
+type ManagedZoneServiceDirectoryConfigResponseArgs struct {
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Contains information about the namespace associated with the zone.
+	Namespace ManagedZoneServiceDirectoryConfigNamespaceResponseInput `pulumi:"namespace"`
+}
+
+func (ManagedZoneServiceDirectoryConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneServiceDirectoryConfigResponse)(nil)).Elem()
+}
+
+func (i ManagedZoneServiceDirectoryConfigResponseArgs) ToManagedZoneServiceDirectoryConfigResponseOutput() ManagedZoneServiceDirectoryConfigResponseOutput {
+	return i.ToManagedZoneServiceDirectoryConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneServiceDirectoryConfigResponseArgs) ToManagedZoneServiceDirectoryConfigResponseOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigResponseOutput)
+}
+
+func (i ManagedZoneServiceDirectoryConfigResponseArgs) ToManagedZoneServiceDirectoryConfigResponsePtrOutput() ManagedZoneServiceDirectoryConfigResponsePtrOutput {
+	return i.ToManagedZoneServiceDirectoryConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneServiceDirectoryConfigResponseArgs) ToManagedZoneServiceDirectoryConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigResponseOutput).ToManagedZoneServiceDirectoryConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ManagedZoneServiceDirectoryConfigResponsePtrInput is an input type that accepts ManagedZoneServiceDirectoryConfigResponseArgs, ManagedZoneServiceDirectoryConfigResponsePtr and ManagedZoneServiceDirectoryConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ManagedZoneServiceDirectoryConfigResponsePtrInput` via:
+//
+//          ManagedZoneServiceDirectoryConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedZoneServiceDirectoryConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToManagedZoneServiceDirectoryConfigResponsePtrOutput() ManagedZoneServiceDirectoryConfigResponsePtrOutput
+	ToManagedZoneServiceDirectoryConfigResponsePtrOutputWithContext(context.Context) ManagedZoneServiceDirectoryConfigResponsePtrOutput
+}
+
+type managedZoneServiceDirectoryConfigResponsePtrType ManagedZoneServiceDirectoryConfigResponseArgs
+
+func ManagedZoneServiceDirectoryConfigResponsePtr(v *ManagedZoneServiceDirectoryConfigResponseArgs) ManagedZoneServiceDirectoryConfigResponsePtrInput {
+	return (*managedZoneServiceDirectoryConfigResponsePtrType)(v)
+}
+
+func (*managedZoneServiceDirectoryConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneServiceDirectoryConfigResponse)(nil)).Elem()
+}
+
+func (i *managedZoneServiceDirectoryConfigResponsePtrType) ToManagedZoneServiceDirectoryConfigResponsePtrOutput() ManagedZoneServiceDirectoryConfigResponsePtrOutput {
+	return i.ToManagedZoneServiceDirectoryConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *managedZoneServiceDirectoryConfigResponsePtrType) ToManagedZoneServiceDirectoryConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigResponsePtrOutput)
+}
+
+// Contains information about Service Directory-backed zones.
+type ManagedZoneServiceDirectoryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneServiceDirectoryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZoneServiceDirectoryConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedZoneServiceDirectoryConfigResponseOutput) ToManagedZoneServiceDirectoryConfigResponseOutput() ManagedZoneServiceDirectoryConfigResponseOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigResponseOutput) ToManagedZoneServiceDirectoryConfigResponseOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigResponseOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigResponseOutput) ToManagedZoneServiceDirectoryConfigResponsePtrOutput() ManagedZoneServiceDirectoryConfigResponsePtrOutput {
+	return o.ToManagedZoneServiceDirectoryConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedZoneServiceDirectoryConfigResponseOutput) ToManagedZoneServiceDirectoryConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigResponsePtrOutput {
+	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigResponse) *ManagedZoneServiceDirectoryConfigResponse {
+		return &v
+	}).(ManagedZoneServiceDirectoryConfigResponsePtrOutput)
+}
+func (o ManagedZoneServiceDirectoryConfigResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Contains information about the namespace associated with the zone.
+func (o ManagedZoneServiceDirectoryConfigResponseOutput) Namespace() ManagedZoneServiceDirectoryConfigNamespaceResponseOutput {
+	return o.ApplyT(func(v ManagedZoneServiceDirectoryConfigResponse) ManagedZoneServiceDirectoryConfigNamespaceResponse {
+		return v.Namespace
+	}).(ManagedZoneServiceDirectoryConfigNamespaceResponseOutput)
+}
+
+type ManagedZoneServiceDirectoryConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneServiceDirectoryConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZoneServiceDirectoryConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedZoneServiceDirectoryConfigResponsePtrOutput) ToManagedZoneServiceDirectoryConfigResponsePtrOutput() ManagedZoneServiceDirectoryConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigResponsePtrOutput) ToManagedZoneServiceDirectoryConfigResponsePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigResponsePtrOutput) Elem() ManagedZoneServiceDirectoryConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfigResponse) ManagedZoneServiceDirectoryConfigResponse {
+		return *v
+	}).(ManagedZoneServiceDirectoryConfigResponseOutput)
+}
+
+func (o ManagedZoneServiceDirectoryConfigResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains information about the namespace associated with the zone.
+func (o ManagedZoneServiceDirectoryConfigResponsePtrOutput) Namespace() ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedZoneServiceDirectoryConfigResponse) *ManagedZoneServiceDirectoryConfigNamespaceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Namespace
+	}).(ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput)
+}
+
 type PolicyAlternativeNameServerConfig struct {
 	Kind *string `pulumi:"kind"`
 	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
@@ -1736,6 +3323,155 @@ func (o PolicyAlternativeNameServerConfigPtrOutput) TargetNameServers() PolicyAl
 	}).(PolicyAlternativeNameServerConfigTargetNameServerArrayOutput)
 }
 
+type PolicyAlternativeNameServerConfigResponse struct {
+	Kind string `pulumi:"kind"`
+	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
+	TargetNameServers []PolicyAlternativeNameServerConfigTargetNameServerResponse `pulumi:"targetNameServers"`
+}
+
+// PolicyAlternativeNameServerConfigResponseInput is an input type that accepts PolicyAlternativeNameServerConfigResponseArgs and PolicyAlternativeNameServerConfigResponseOutput values.
+// You can construct a concrete instance of `PolicyAlternativeNameServerConfigResponseInput` via:
+//
+//          PolicyAlternativeNameServerConfigResponseArgs{...}
+type PolicyAlternativeNameServerConfigResponseInput interface {
+	pulumi.Input
+
+	ToPolicyAlternativeNameServerConfigResponseOutput() PolicyAlternativeNameServerConfigResponseOutput
+	ToPolicyAlternativeNameServerConfigResponseOutputWithContext(context.Context) PolicyAlternativeNameServerConfigResponseOutput
+}
+
+type PolicyAlternativeNameServerConfigResponseArgs struct {
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
+	TargetNameServers PolicyAlternativeNameServerConfigTargetNameServerResponseArrayInput `pulumi:"targetNameServers"`
+}
+
+func (PolicyAlternativeNameServerConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAlternativeNameServerConfigResponse)(nil)).Elem()
+}
+
+func (i PolicyAlternativeNameServerConfigResponseArgs) ToPolicyAlternativeNameServerConfigResponseOutput() PolicyAlternativeNameServerConfigResponseOutput {
+	return i.ToPolicyAlternativeNameServerConfigResponseOutputWithContext(context.Background())
+}
+
+func (i PolicyAlternativeNameServerConfigResponseArgs) ToPolicyAlternativeNameServerConfigResponseOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAlternativeNameServerConfigResponseOutput)
+}
+
+func (i PolicyAlternativeNameServerConfigResponseArgs) ToPolicyAlternativeNameServerConfigResponsePtrOutput() PolicyAlternativeNameServerConfigResponsePtrOutput {
+	return i.ToPolicyAlternativeNameServerConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PolicyAlternativeNameServerConfigResponseArgs) ToPolicyAlternativeNameServerConfigResponsePtrOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAlternativeNameServerConfigResponseOutput).ToPolicyAlternativeNameServerConfigResponsePtrOutputWithContext(ctx)
+}
+
+// PolicyAlternativeNameServerConfigResponsePtrInput is an input type that accepts PolicyAlternativeNameServerConfigResponseArgs, PolicyAlternativeNameServerConfigResponsePtr and PolicyAlternativeNameServerConfigResponsePtrOutput values.
+// You can construct a concrete instance of `PolicyAlternativeNameServerConfigResponsePtrInput` via:
+//
+//          PolicyAlternativeNameServerConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PolicyAlternativeNameServerConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToPolicyAlternativeNameServerConfigResponsePtrOutput() PolicyAlternativeNameServerConfigResponsePtrOutput
+	ToPolicyAlternativeNameServerConfigResponsePtrOutputWithContext(context.Context) PolicyAlternativeNameServerConfigResponsePtrOutput
+}
+
+type policyAlternativeNameServerConfigResponsePtrType PolicyAlternativeNameServerConfigResponseArgs
+
+func PolicyAlternativeNameServerConfigResponsePtr(v *PolicyAlternativeNameServerConfigResponseArgs) PolicyAlternativeNameServerConfigResponsePtrInput {
+	return (*policyAlternativeNameServerConfigResponsePtrType)(v)
+}
+
+func (*policyAlternativeNameServerConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyAlternativeNameServerConfigResponse)(nil)).Elem()
+}
+
+func (i *policyAlternativeNameServerConfigResponsePtrType) ToPolicyAlternativeNameServerConfigResponsePtrOutput() PolicyAlternativeNameServerConfigResponsePtrOutput {
+	return i.ToPolicyAlternativeNameServerConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *policyAlternativeNameServerConfigResponsePtrType) ToPolicyAlternativeNameServerConfigResponsePtrOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAlternativeNameServerConfigResponsePtrOutput)
+}
+
+type PolicyAlternativeNameServerConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PolicyAlternativeNameServerConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAlternativeNameServerConfigResponse)(nil)).Elem()
+}
+
+func (o PolicyAlternativeNameServerConfigResponseOutput) ToPolicyAlternativeNameServerConfigResponseOutput() PolicyAlternativeNameServerConfigResponseOutput {
+	return o
+}
+
+func (o PolicyAlternativeNameServerConfigResponseOutput) ToPolicyAlternativeNameServerConfigResponseOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigResponseOutput {
+	return o
+}
+
+func (o PolicyAlternativeNameServerConfigResponseOutput) ToPolicyAlternativeNameServerConfigResponsePtrOutput() PolicyAlternativeNameServerConfigResponsePtrOutput {
+	return o.ToPolicyAlternativeNameServerConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PolicyAlternativeNameServerConfigResponseOutput) ToPolicyAlternativeNameServerConfigResponsePtrOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigResponsePtrOutput {
+	return o.ApplyT(func(v PolicyAlternativeNameServerConfigResponse) *PolicyAlternativeNameServerConfigResponse {
+		return &v
+	}).(PolicyAlternativeNameServerConfigResponsePtrOutput)
+}
+func (o PolicyAlternativeNameServerConfigResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyAlternativeNameServerConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
+func (o PolicyAlternativeNameServerConfigResponseOutput) TargetNameServers() PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput {
+	return o.ApplyT(func(v PolicyAlternativeNameServerConfigResponse) []PolicyAlternativeNameServerConfigTargetNameServerResponse {
+		return v.TargetNameServers
+	}).(PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput)
+}
+
+type PolicyAlternativeNameServerConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyAlternativeNameServerConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyAlternativeNameServerConfigResponse)(nil)).Elem()
+}
+
+func (o PolicyAlternativeNameServerConfigResponsePtrOutput) ToPolicyAlternativeNameServerConfigResponsePtrOutput() PolicyAlternativeNameServerConfigResponsePtrOutput {
+	return o
+}
+
+func (o PolicyAlternativeNameServerConfigResponsePtrOutput) ToPolicyAlternativeNameServerConfigResponsePtrOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigResponsePtrOutput {
+	return o
+}
+
+func (o PolicyAlternativeNameServerConfigResponsePtrOutput) Elem() PolicyAlternativeNameServerConfigResponseOutput {
+	return o.ApplyT(func(v *PolicyAlternativeNameServerConfigResponse) PolicyAlternativeNameServerConfigResponse {
+		return *v
+	}).(PolicyAlternativeNameServerConfigResponseOutput)
+}
+
+func (o PolicyAlternativeNameServerConfigResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyAlternativeNameServerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
+func (o PolicyAlternativeNameServerConfigResponsePtrOutput) TargetNameServers() PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput {
+	return o.ApplyT(func(v *PolicyAlternativeNameServerConfigResponse) []PolicyAlternativeNameServerConfigTargetNameServerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TargetNameServers
+	}).(PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput)
+}
+
 type PolicyAlternativeNameServerConfigTargetNameServer struct {
 	// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
 	ForwardingPath *string `pulumi:"forwardingPath"`
@@ -1857,6 +3593,127 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerArrayOutput) Index(i pu
 	}).(PolicyAlternativeNameServerConfigTargetNameServerOutput)
 }
 
+type PolicyAlternativeNameServerConfigTargetNameServerResponse struct {
+	// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
+	ForwardingPath string `pulumi:"forwardingPath"`
+	// IPv4 address to forward to.
+	Ipv4Address string `pulumi:"ipv4Address"`
+	// IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being populated.
+	Ipv6Address string `pulumi:"ipv6Address"`
+	Kind        string `pulumi:"kind"`
+}
+
+// PolicyAlternativeNameServerConfigTargetNameServerResponseInput is an input type that accepts PolicyAlternativeNameServerConfigTargetNameServerResponseArgs and PolicyAlternativeNameServerConfigTargetNameServerResponseOutput values.
+// You can construct a concrete instance of `PolicyAlternativeNameServerConfigTargetNameServerResponseInput` via:
+//
+//          PolicyAlternativeNameServerConfigTargetNameServerResponseArgs{...}
+type PolicyAlternativeNameServerConfigTargetNameServerResponseInput interface {
+	pulumi.Input
+
+	ToPolicyAlternativeNameServerConfigTargetNameServerResponseOutput() PolicyAlternativeNameServerConfigTargetNameServerResponseOutput
+	ToPolicyAlternativeNameServerConfigTargetNameServerResponseOutputWithContext(context.Context) PolicyAlternativeNameServerConfigTargetNameServerResponseOutput
+}
+
+type PolicyAlternativeNameServerConfigTargetNameServerResponseArgs struct {
+	// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
+	ForwardingPath pulumi.StringInput `pulumi:"forwardingPath"`
+	// IPv4 address to forward to.
+	Ipv4Address pulumi.StringInput `pulumi:"ipv4Address"`
+	// IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being populated.
+	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
+	Kind        pulumi.StringInput `pulumi:"kind"`
+}
+
+func (PolicyAlternativeNameServerConfigTargetNameServerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAlternativeNameServerConfigTargetNameServerResponse)(nil)).Elem()
+}
+
+func (i PolicyAlternativeNameServerConfigTargetNameServerResponseArgs) ToPolicyAlternativeNameServerConfigTargetNameServerResponseOutput() PolicyAlternativeNameServerConfigTargetNameServerResponseOutput {
+	return i.ToPolicyAlternativeNameServerConfigTargetNameServerResponseOutputWithContext(context.Background())
+}
+
+func (i PolicyAlternativeNameServerConfigTargetNameServerResponseArgs) ToPolicyAlternativeNameServerConfigTargetNameServerResponseOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigTargetNameServerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAlternativeNameServerConfigTargetNameServerResponseOutput)
+}
+
+// PolicyAlternativeNameServerConfigTargetNameServerResponseArrayInput is an input type that accepts PolicyAlternativeNameServerConfigTargetNameServerResponseArray and PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput values.
+// You can construct a concrete instance of `PolicyAlternativeNameServerConfigTargetNameServerResponseArrayInput` via:
+//
+//          PolicyAlternativeNameServerConfigTargetNameServerResponseArray{ PolicyAlternativeNameServerConfigTargetNameServerResponseArgs{...} }
+type PolicyAlternativeNameServerConfigTargetNameServerResponseArrayInput interface {
+	pulumi.Input
+
+	ToPolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput() PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput
+	ToPolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutputWithContext(context.Context) PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput
+}
+
+type PolicyAlternativeNameServerConfigTargetNameServerResponseArray []PolicyAlternativeNameServerConfigTargetNameServerResponseInput
+
+func (PolicyAlternativeNameServerConfigTargetNameServerResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAlternativeNameServerConfigTargetNameServerResponse)(nil)).Elem()
+}
+
+func (i PolicyAlternativeNameServerConfigTargetNameServerResponseArray) ToPolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput() PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput {
+	return i.ToPolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyAlternativeNameServerConfigTargetNameServerResponseArray) ToPolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput)
+}
+
+type PolicyAlternativeNameServerConfigTargetNameServerResponseOutput struct{ *pulumi.OutputState }
+
+func (PolicyAlternativeNameServerConfigTargetNameServerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyAlternativeNameServerConfigTargetNameServerResponse)(nil)).Elem()
+}
+
+func (o PolicyAlternativeNameServerConfigTargetNameServerResponseOutput) ToPolicyAlternativeNameServerConfigTargetNameServerResponseOutput() PolicyAlternativeNameServerConfigTargetNameServerResponseOutput {
+	return o
+}
+
+func (o PolicyAlternativeNameServerConfigTargetNameServerResponseOutput) ToPolicyAlternativeNameServerConfigTargetNameServerResponseOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigTargetNameServerResponseOutput {
+	return o
+}
+
+// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
+func (o PolicyAlternativeNameServerConfigTargetNameServerResponseOutput) ForwardingPath() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyAlternativeNameServerConfigTargetNameServerResponse) string { return v.ForwardingPath }).(pulumi.StringOutput)
+}
+
+// IPv4 address to forward to.
+func (o PolicyAlternativeNameServerConfigTargetNameServerResponseOutput) Ipv4Address() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyAlternativeNameServerConfigTargetNameServerResponse) string { return v.Ipv4Address }).(pulumi.StringOutput)
+}
+
+// IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being populated.
+func (o PolicyAlternativeNameServerConfigTargetNameServerResponseOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyAlternativeNameServerConfigTargetNameServerResponse) string { return v.Ipv6Address }).(pulumi.StringOutput)
+}
+
+func (o PolicyAlternativeNameServerConfigTargetNameServerResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyAlternativeNameServerConfigTargetNameServerResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyAlternativeNameServerConfigTargetNameServerResponse)(nil)).Elem()
+}
+
+func (o PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput) ToPolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput() PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput {
+	return o
+}
+
+func (o PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput) ToPolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput {
+	return o
+}
+
+func (o PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput) Index(i pulumi.IntInput) PolicyAlternativeNameServerConfigTargetNameServerResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyAlternativeNameServerConfigTargetNameServerResponse {
+		return vs[0].([]PolicyAlternativeNameServerConfigTargetNameServerResponse)[vs[1].(int)]
+	}).(PolicyAlternativeNameServerConfigTargetNameServerResponseOutput)
+}
+
 type PolicyNetwork struct {
 	Kind *string `pulumi:"kind"`
 	// The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
@@ -1958,6 +3815,109 @@ func (o PolicyNetworkArrayOutput) Index(i pulumi.IntInput) PolicyNetworkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyNetwork {
 		return vs[0].([]PolicyNetwork)[vs[1].(int)]
 	}).(PolicyNetworkOutput)
+}
+
+type PolicyNetworkResponse struct {
+	Kind string `pulumi:"kind"`
+	// The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+	NetworkUrl string `pulumi:"networkUrl"`
+}
+
+// PolicyNetworkResponseInput is an input type that accepts PolicyNetworkResponseArgs and PolicyNetworkResponseOutput values.
+// You can construct a concrete instance of `PolicyNetworkResponseInput` via:
+//
+//          PolicyNetworkResponseArgs{...}
+type PolicyNetworkResponseInput interface {
+	pulumi.Input
+
+	ToPolicyNetworkResponseOutput() PolicyNetworkResponseOutput
+	ToPolicyNetworkResponseOutputWithContext(context.Context) PolicyNetworkResponseOutput
+}
+
+type PolicyNetworkResponseArgs struct {
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
+}
+
+func (PolicyNetworkResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyNetworkResponse)(nil)).Elem()
+}
+
+func (i PolicyNetworkResponseArgs) ToPolicyNetworkResponseOutput() PolicyNetworkResponseOutput {
+	return i.ToPolicyNetworkResponseOutputWithContext(context.Background())
+}
+
+func (i PolicyNetworkResponseArgs) ToPolicyNetworkResponseOutputWithContext(ctx context.Context) PolicyNetworkResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyNetworkResponseOutput)
+}
+
+// PolicyNetworkResponseArrayInput is an input type that accepts PolicyNetworkResponseArray and PolicyNetworkResponseArrayOutput values.
+// You can construct a concrete instance of `PolicyNetworkResponseArrayInput` via:
+//
+//          PolicyNetworkResponseArray{ PolicyNetworkResponseArgs{...} }
+type PolicyNetworkResponseArrayInput interface {
+	pulumi.Input
+
+	ToPolicyNetworkResponseArrayOutput() PolicyNetworkResponseArrayOutput
+	ToPolicyNetworkResponseArrayOutputWithContext(context.Context) PolicyNetworkResponseArrayOutput
+}
+
+type PolicyNetworkResponseArray []PolicyNetworkResponseInput
+
+func (PolicyNetworkResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyNetworkResponse)(nil)).Elem()
+}
+
+func (i PolicyNetworkResponseArray) ToPolicyNetworkResponseArrayOutput() PolicyNetworkResponseArrayOutput {
+	return i.ToPolicyNetworkResponseArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyNetworkResponseArray) ToPolicyNetworkResponseArrayOutputWithContext(ctx context.Context) PolicyNetworkResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyNetworkResponseArrayOutput)
+}
+
+type PolicyNetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (PolicyNetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyNetworkResponse)(nil)).Elem()
+}
+
+func (o PolicyNetworkResponseOutput) ToPolicyNetworkResponseOutput() PolicyNetworkResponseOutput {
+	return o
+}
+
+func (o PolicyNetworkResponseOutput) ToPolicyNetworkResponseOutputWithContext(ctx context.Context) PolicyNetworkResponseOutput {
+	return o
+}
+
+func (o PolicyNetworkResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyNetworkResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+func (o PolicyNetworkResponseOutput) NetworkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyNetworkResponse) string { return v.NetworkUrl }).(pulumi.StringOutput)
+}
+
+type PolicyNetworkResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyNetworkResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyNetworkResponse)(nil)).Elem()
+}
+
+func (o PolicyNetworkResponseArrayOutput) ToPolicyNetworkResponseArrayOutput() PolicyNetworkResponseArrayOutput {
+	return o
+}
+
+func (o PolicyNetworkResponseArrayOutput) ToPolicyNetworkResponseArrayOutputWithContext(ctx context.Context) PolicyNetworkResponseArrayOutput {
+	return o
+}
+
+func (o PolicyNetworkResponseArrayOutput) Index(i pulumi.IntInput) PolicyNetworkResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyNetworkResponse {
+		return vs[0].([]PolicyNetworkResponse)[vs[1].(int)]
+	}).(PolicyNetworkResponseOutput)
 }
 
 // A unit of data that is returned by the DNS servers.
@@ -2102,6 +4062,148 @@ func (o ResourceRecordSetArrayOutput) Index(i pulumi.IntInput) ResourceRecordSet
 	}).(ResourceRecordSetOutput)
 }
 
+// A unit of data that is returned by the DNS servers.
+type ResourceRecordSetResponse struct {
+	Kind string `pulumi:"kind"`
+	// For example, www.example.com.
+	Name string `pulumi:"name"`
+	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
+	Rrdatas []string `pulumi:"rrdatas"`
+	// As defined in RFC 4034 (section 3.2).
+	SignatureRrdatas []string `pulumi:"signatureRrdatas"`
+	// Number of seconds that this ResourceRecordSet can be cached by resolvers.
+	Ttl int `pulumi:"ttl"`
+	// The identifier of a supported record type. See the list of Supported DNS record types.
+	Type string `pulumi:"type"`
+}
+
+// ResourceRecordSetResponseInput is an input type that accepts ResourceRecordSetResponseArgs and ResourceRecordSetResponseOutput values.
+// You can construct a concrete instance of `ResourceRecordSetResponseInput` via:
+//
+//          ResourceRecordSetResponseArgs{...}
+type ResourceRecordSetResponseInput interface {
+	pulumi.Input
+
+	ToResourceRecordSetResponseOutput() ResourceRecordSetResponseOutput
+	ToResourceRecordSetResponseOutputWithContext(context.Context) ResourceRecordSetResponseOutput
+}
+
+// A unit of data that is returned by the DNS servers.
+type ResourceRecordSetResponseArgs struct {
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// For example, www.example.com.
+	Name pulumi.StringInput `pulumi:"name"`
+	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
+	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
+	// As defined in RFC 4034 (section 3.2).
+	SignatureRrdatas pulumi.StringArrayInput `pulumi:"signatureRrdatas"`
+	// Number of seconds that this ResourceRecordSet can be cached by resolvers.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+	// The identifier of a supported record type. See the list of Supported DNS record types.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ResourceRecordSetResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRecordSetResponse)(nil)).Elem()
+}
+
+func (i ResourceRecordSetResponseArgs) ToResourceRecordSetResponseOutput() ResourceRecordSetResponseOutput {
+	return i.ToResourceRecordSetResponseOutputWithContext(context.Background())
+}
+
+func (i ResourceRecordSetResponseArgs) ToResourceRecordSetResponseOutputWithContext(ctx context.Context) ResourceRecordSetResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordSetResponseOutput)
+}
+
+// ResourceRecordSetResponseArrayInput is an input type that accepts ResourceRecordSetResponseArray and ResourceRecordSetResponseArrayOutput values.
+// You can construct a concrete instance of `ResourceRecordSetResponseArrayInput` via:
+//
+//          ResourceRecordSetResponseArray{ ResourceRecordSetResponseArgs{...} }
+type ResourceRecordSetResponseArrayInput interface {
+	pulumi.Input
+
+	ToResourceRecordSetResponseArrayOutput() ResourceRecordSetResponseArrayOutput
+	ToResourceRecordSetResponseArrayOutputWithContext(context.Context) ResourceRecordSetResponseArrayOutput
+}
+
+type ResourceRecordSetResponseArray []ResourceRecordSetResponseInput
+
+func (ResourceRecordSetResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceRecordSetResponse)(nil)).Elem()
+}
+
+func (i ResourceRecordSetResponseArray) ToResourceRecordSetResponseArrayOutput() ResourceRecordSetResponseArrayOutput {
+	return i.ToResourceRecordSetResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ResourceRecordSetResponseArray) ToResourceRecordSetResponseArrayOutputWithContext(ctx context.Context) ResourceRecordSetResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordSetResponseArrayOutput)
+}
+
+// A unit of data that is returned by the DNS servers.
+type ResourceRecordSetResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceRecordSetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRecordSetResponse)(nil)).Elem()
+}
+
+func (o ResourceRecordSetResponseOutput) ToResourceRecordSetResponseOutput() ResourceRecordSetResponseOutput {
+	return o
+}
+
+func (o ResourceRecordSetResponseOutput) ToResourceRecordSetResponseOutputWithContext(ctx context.Context) ResourceRecordSetResponseOutput {
+	return o
+}
+
+func (o ResourceRecordSetResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRecordSetResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// For example, www.example.com.
+func (o ResourceRecordSetResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRecordSetResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
+func (o ResourceRecordSetResponseOutput) Rrdatas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceRecordSetResponse) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
+}
+
+// As defined in RFC 4034 (section 3.2).
+func (o ResourceRecordSetResponseOutput) SignatureRrdatas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ResourceRecordSetResponse) []string { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
+}
+
+// Number of seconds that this ResourceRecordSet can be cached by resolvers.
+func (o ResourceRecordSetResponseOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v ResourceRecordSetResponse) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// The identifier of a supported record type. See the list of Supported DNS record types.
+func (o ResourceRecordSetResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRecordSetResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ResourceRecordSetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceRecordSetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceRecordSetResponse)(nil)).Elem()
+}
+
+func (o ResourceRecordSetResponseArrayOutput) ToResourceRecordSetResponseArrayOutput() ResourceRecordSetResponseArrayOutput {
+	return o
+}
+
+func (o ResourceRecordSetResponseArrayOutput) ToResourceRecordSetResponseArrayOutputWithContext(ctx context.Context) ResourceRecordSetResponseArrayOutput {
+	return o
+}
+
+func (o ResourceRecordSetResponseArrayOutput) Index(i pulumi.IntInput) ResourceRecordSetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceRecordSetResponse {
+		return vs[0].([]ResourceRecordSetResponse)[vs[1].(int)]
+	}).(ResourceRecordSetResponseOutput)
+}
+
 type ResponsePolicyNetwork struct {
 	Kind *string `pulumi:"kind"`
 	// The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
@@ -2203,6 +4305,109 @@ func (o ResponsePolicyNetworkArrayOutput) Index(i pulumi.IntInput) ResponsePolic
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResponsePolicyNetwork {
 		return vs[0].([]ResponsePolicyNetwork)[vs[1].(int)]
 	}).(ResponsePolicyNetworkOutput)
+}
+
+type ResponsePolicyNetworkResponse struct {
+	Kind string `pulumi:"kind"`
+	// The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+	NetworkUrl string `pulumi:"networkUrl"`
+}
+
+// ResponsePolicyNetworkResponseInput is an input type that accepts ResponsePolicyNetworkResponseArgs and ResponsePolicyNetworkResponseOutput values.
+// You can construct a concrete instance of `ResponsePolicyNetworkResponseInput` via:
+//
+//          ResponsePolicyNetworkResponseArgs{...}
+type ResponsePolicyNetworkResponseInput interface {
+	pulumi.Input
+
+	ToResponsePolicyNetworkResponseOutput() ResponsePolicyNetworkResponseOutput
+	ToResponsePolicyNetworkResponseOutputWithContext(context.Context) ResponsePolicyNetworkResponseOutput
+}
+
+type ResponsePolicyNetworkResponseArgs struct {
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
+}
+
+func (ResponsePolicyNetworkResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyNetworkResponse)(nil)).Elem()
+}
+
+func (i ResponsePolicyNetworkResponseArgs) ToResponsePolicyNetworkResponseOutput() ResponsePolicyNetworkResponseOutput {
+	return i.ToResponsePolicyNetworkResponseOutputWithContext(context.Background())
+}
+
+func (i ResponsePolicyNetworkResponseArgs) ToResponsePolicyNetworkResponseOutputWithContext(ctx context.Context) ResponsePolicyNetworkResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyNetworkResponseOutput)
+}
+
+// ResponsePolicyNetworkResponseArrayInput is an input type that accepts ResponsePolicyNetworkResponseArray and ResponsePolicyNetworkResponseArrayOutput values.
+// You can construct a concrete instance of `ResponsePolicyNetworkResponseArrayInput` via:
+//
+//          ResponsePolicyNetworkResponseArray{ ResponsePolicyNetworkResponseArgs{...} }
+type ResponsePolicyNetworkResponseArrayInput interface {
+	pulumi.Input
+
+	ToResponsePolicyNetworkResponseArrayOutput() ResponsePolicyNetworkResponseArrayOutput
+	ToResponsePolicyNetworkResponseArrayOutputWithContext(context.Context) ResponsePolicyNetworkResponseArrayOutput
+}
+
+type ResponsePolicyNetworkResponseArray []ResponsePolicyNetworkResponseInput
+
+func (ResponsePolicyNetworkResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResponsePolicyNetworkResponse)(nil)).Elem()
+}
+
+func (i ResponsePolicyNetworkResponseArray) ToResponsePolicyNetworkResponseArrayOutput() ResponsePolicyNetworkResponseArrayOutput {
+	return i.ToResponsePolicyNetworkResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ResponsePolicyNetworkResponseArray) ToResponsePolicyNetworkResponseArrayOutputWithContext(ctx context.Context) ResponsePolicyNetworkResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyNetworkResponseArrayOutput)
+}
+
+type ResponsePolicyNetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyNetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyNetworkResponse)(nil)).Elem()
+}
+
+func (o ResponsePolicyNetworkResponseOutput) ToResponsePolicyNetworkResponseOutput() ResponsePolicyNetworkResponseOutput {
+	return o
+}
+
+func (o ResponsePolicyNetworkResponseOutput) ToResponsePolicyNetworkResponseOutputWithContext(ctx context.Context) ResponsePolicyNetworkResponseOutput {
+	return o
+}
+
+func (o ResponsePolicyNetworkResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ResponsePolicyNetworkResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+func (o ResponsePolicyNetworkResponseOutput) NetworkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ResponsePolicyNetworkResponse) string { return v.NetworkUrl }).(pulumi.StringOutput)
+}
+
+type ResponsePolicyNetworkResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyNetworkResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResponsePolicyNetworkResponse)(nil)).Elem()
+}
+
+func (o ResponsePolicyNetworkResponseArrayOutput) ToResponsePolicyNetworkResponseArrayOutput() ResponsePolicyNetworkResponseArrayOutput {
+	return o
+}
+
+func (o ResponsePolicyNetworkResponseArrayOutput) ToResponsePolicyNetworkResponseArrayOutputWithContext(ctx context.Context) ResponsePolicyNetworkResponseArrayOutput {
+	return o
+}
+
+func (o ResponsePolicyNetworkResponseArrayOutput) Index(i pulumi.IntInput) ResponsePolicyNetworkResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResponsePolicyNetworkResponse {
+		return vs[0].([]ResponsePolicyNetworkResponse)[vs[1].(int)]
+	}).(ResponsePolicyNetworkResponseOutput)
 }
 
 type ResponsePolicyRuleLocalData struct {
@@ -2336,39 +4541,204 @@ func (o ResponsePolicyRuleLocalDataPtrOutput) LocalDatas() ResourceRecordSetArra
 	}).(ResourceRecordSetArrayOutput)
 }
 
+type ResponsePolicyRuleLocalDataResponse struct {
+	// All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+	LocalDatas []ResourceRecordSetResponse `pulumi:"localDatas"`
+}
+
+// ResponsePolicyRuleLocalDataResponseInput is an input type that accepts ResponsePolicyRuleLocalDataResponseArgs and ResponsePolicyRuleLocalDataResponseOutput values.
+// You can construct a concrete instance of `ResponsePolicyRuleLocalDataResponseInput` via:
+//
+//          ResponsePolicyRuleLocalDataResponseArgs{...}
+type ResponsePolicyRuleLocalDataResponseInput interface {
+	pulumi.Input
+
+	ToResponsePolicyRuleLocalDataResponseOutput() ResponsePolicyRuleLocalDataResponseOutput
+	ToResponsePolicyRuleLocalDataResponseOutputWithContext(context.Context) ResponsePolicyRuleLocalDataResponseOutput
+}
+
+type ResponsePolicyRuleLocalDataResponseArgs struct {
+	// All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+	LocalDatas ResourceRecordSetResponseArrayInput `pulumi:"localDatas"`
+}
+
+func (ResponsePolicyRuleLocalDataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyRuleLocalDataResponse)(nil)).Elem()
+}
+
+func (i ResponsePolicyRuleLocalDataResponseArgs) ToResponsePolicyRuleLocalDataResponseOutput() ResponsePolicyRuleLocalDataResponseOutput {
+	return i.ToResponsePolicyRuleLocalDataResponseOutputWithContext(context.Background())
+}
+
+func (i ResponsePolicyRuleLocalDataResponseArgs) ToResponsePolicyRuleLocalDataResponseOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleLocalDataResponseOutput)
+}
+
+func (i ResponsePolicyRuleLocalDataResponseArgs) ToResponsePolicyRuleLocalDataResponsePtrOutput() ResponsePolicyRuleLocalDataResponsePtrOutput {
+	return i.ToResponsePolicyRuleLocalDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ResponsePolicyRuleLocalDataResponseArgs) ToResponsePolicyRuleLocalDataResponsePtrOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleLocalDataResponseOutput).ToResponsePolicyRuleLocalDataResponsePtrOutputWithContext(ctx)
+}
+
+// ResponsePolicyRuleLocalDataResponsePtrInput is an input type that accepts ResponsePolicyRuleLocalDataResponseArgs, ResponsePolicyRuleLocalDataResponsePtr and ResponsePolicyRuleLocalDataResponsePtrOutput values.
+// You can construct a concrete instance of `ResponsePolicyRuleLocalDataResponsePtrInput` via:
+//
+//          ResponsePolicyRuleLocalDataResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ResponsePolicyRuleLocalDataResponsePtrInput interface {
+	pulumi.Input
+
+	ToResponsePolicyRuleLocalDataResponsePtrOutput() ResponsePolicyRuleLocalDataResponsePtrOutput
+	ToResponsePolicyRuleLocalDataResponsePtrOutputWithContext(context.Context) ResponsePolicyRuleLocalDataResponsePtrOutput
+}
+
+type responsePolicyRuleLocalDataResponsePtrType ResponsePolicyRuleLocalDataResponseArgs
+
+func ResponsePolicyRuleLocalDataResponsePtr(v *ResponsePolicyRuleLocalDataResponseArgs) ResponsePolicyRuleLocalDataResponsePtrInput {
+	return (*responsePolicyRuleLocalDataResponsePtrType)(v)
+}
+
+func (*responsePolicyRuleLocalDataResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResponsePolicyRuleLocalDataResponse)(nil)).Elem()
+}
+
+func (i *responsePolicyRuleLocalDataResponsePtrType) ToResponsePolicyRuleLocalDataResponsePtrOutput() ResponsePolicyRuleLocalDataResponsePtrOutput {
+	return i.ToResponsePolicyRuleLocalDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *responsePolicyRuleLocalDataResponsePtrType) ToResponsePolicyRuleLocalDataResponsePtrOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleLocalDataResponsePtrOutput)
+}
+
+type ResponsePolicyRuleLocalDataResponseOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyRuleLocalDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyRuleLocalDataResponse)(nil)).Elem()
+}
+
+func (o ResponsePolicyRuleLocalDataResponseOutput) ToResponsePolicyRuleLocalDataResponseOutput() ResponsePolicyRuleLocalDataResponseOutput {
+	return o
+}
+
+func (o ResponsePolicyRuleLocalDataResponseOutput) ToResponsePolicyRuleLocalDataResponseOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataResponseOutput {
+	return o
+}
+
+func (o ResponsePolicyRuleLocalDataResponseOutput) ToResponsePolicyRuleLocalDataResponsePtrOutput() ResponsePolicyRuleLocalDataResponsePtrOutput {
+	return o.ToResponsePolicyRuleLocalDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ResponsePolicyRuleLocalDataResponseOutput) ToResponsePolicyRuleLocalDataResponsePtrOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataResponsePtrOutput {
+	return o.ApplyT(func(v ResponsePolicyRuleLocalDataResponse) *ResponsePolicyRuleLocalDataResponse {
+		return &v
+	}).(ResponsePolicyRuleLocalDataResponsePtrOutput)
+}
+
+// All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+func (o ResponsePolicyRuleLocalDataResponseOutput) LocalDatas() ResourceRecordSetResponseArrayOutput {
+	return o.ApplyT(func(v ResponsePolicyRuleLocalDataResponse) []ResourceRecordSetResponse { return v.LocalDatas }).(ResourceRecordSetResponseArrayOutput)
+}
+
+type ResponsePolicyRuleLocalDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyRuleLocalDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResponsePolicyRuleLocalDataResponse)(nil)).Elem()
+}
+
+func (o ResponsePolicyRuleLocalDataResponsePtrOutput) ToResponsePolicyRuleLocalDataResponsePtrOutput() ResponsePolicyRuleLocalDataResponsePtrOutput {
+	return o
+}
+
+func (o ResponsePolicyRuleLocalDataResponsePtrOutput) ToResponsePolicyRuleLocalDataResponsePtrOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataResponsePtrOutput {
+	return o
+}
+
+func (o ResponsePolicyRuleLocalDataResponsePtrOutput) Elem() ResponsePolicyRuleLocalDataResponseOutput {
+	return o.ApplyT(func(v *ResponsePolicyRuleLocalDataResponse) ResponsePolicyRuleLocalDataResponse { return *v }).(ResponsePolicyRuleLocalDataResponseOutput)
+}
+
+// All resource record sets for this selector, one per resource record type. The name must match the dns_name.
+func (o ResponsePolicyRuleLocalDataResponsePtrOutput) LocalDatas() ResourceRecordSetResponseArrayOutput {
+	return o.ApplyT(func(v *ResponsePolicyRuleLocalDataResponse) []ResourceRecordSetResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LocalDatas
+	}).(ResourceRecordSetResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DnsKeySpecOutput{})
 	pulumi.RegisterOutputType(DnsKeySpecArrayOutput{})
+	pulumi.RegisterOutputType(DnsKeySpecResponseOutput{})
+	pulumi.RegisterOutputType(DnsKeySpecResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedZoneDnsSecConfigOutput{})
 	pulumi.RegisterOutputType(ManagedZoneDnsSecConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedZoneDnsSecConfigResponseOutput{})
+	pulumi.RegisterOutputType(ManagedZoneDnsSecConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedZoneForwardingConfigOutput{})
 	pulumi.RegisterOutputType(ManagedZoneForwardingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ManagedZoneForwardingConfigNameServerTargetOutput{})
 	pulumi.RegisterOutputType(ManagedZoneForwardingConfigNameServerTargetArrayOutput{})
+	pulumi.RegisterOutputType(ManagedZoneForwardingConfigNameServerTargetResponseOutput{})
+	pulumi.RegisterOutputType(ManagedZoneForwardingConfigNameServerTargetResponseArrayOutput{})
+	pulumi.RegisterOutputType(ManagedZoneForwardingConfigResponseOutput{})
+	pulumi.RegisterOutputType(ManagedZoneForwardingConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedZonePeeringConfigOutput{})
 	pulumi.RegisterOutputType(ManagedZonePeeringConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedZonePeeringConfigResponseOutput{})
+	pulumi.RegisterOutputType(ManagedZonePeeringConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedZonePeeringConfigTargetNetworkOutput{})
 	pulumi.RegisterOutputType(ManagedZonePeeringConfigTargetNetworkPtrOutput{})
+	pulumi.RegisterOutputType(ManagedZonePeeringConfigTargetNetworkResponseOutput{})
+	pulumi.RegisterOutputType(ManagedZonePeeringConfigTargetNetworkResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigPtrOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigNetworkOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigNetworkArrayOutput{})
+	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigNetworkResponseOutput{})
+	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput{})
+	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigResponseOutput{})
+	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedZoneReverseLookupConfigOutput{})
 	pulumi.RegisterOutputType(ManagedZoneReverseLookupConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedZoneReverseLookupConfigResponseOutput{})
+	pulumi.RegisterOutputType(ManagedZoneReverseLookupConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedZoneServiceDirectoryConfigOutput{})
 	pulumi.RegisterOutputType(ManagedZoneServiceDirectoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(ManagedZoneServiceDirectoryConfigNamespaceOutput{})
 	pulumi.RegisterOutputType(ManagedZoneServiceDirectoryConfigNamespacePtrOutput{})
+	pulumi.RegisterOutputType(ManagedZoneServiceDirectoryConfigNamespaceResponseOutput{})
+	pulumi.RegisterOutputType(ManagedZoneServiceDirectoryConfigNamespaceResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedZoneServiceDirectoryConfigResponseOutput{})
+	pulumi.RegisterOutputType(ManagedZoneServiceDirectoryConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigOutput{})
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigPtrOutput{})
+	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigResponseOutput{})
+	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerOutput{})
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerArrayOutput{})
+	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerResponseOutput{})
+	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerResponseArrayOutput{})
 	pulumi.RegisterOutputType(PolicyNetworkOutput{})
 	pulumi.RegisterOutputType(PolicyNetworkArrayOutput{})
+	pulumi.RegisterOutputType(PolicyNetworkResponseOutput{})
+	pulumi.RegisterOutputType(PolicyNetworkResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourceRecordSetOutput{})
 	pulumi.RegisterOutputType(ResourceRecordSetArrayOutput{})
+	pulumi.RegisterOutputType(ResourceRecordSetResponseOutput{})
+	pulumi.RegisterOutputType(ResourceRecordSetResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyNetworkOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyNetworkArrayOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyNetworkResponseOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyNetworkResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyRuleLocalDataOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyRuleLocalDataPtrOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyRuleLocalDataResponseOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyRuleLocalDataResponsePtrOutput{})
 }

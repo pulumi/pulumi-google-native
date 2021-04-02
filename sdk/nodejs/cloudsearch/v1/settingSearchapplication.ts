@@ -35,6 +35,38 @@ export class SettingSearchapplication extends pulumi.CustomResource {
         return obj['__pulumiType'] === SettingSearchapplication.__pulumiType;
     }
 
+    /**
+     * Retrictions applied to the configurations. The maximum number of elements is 10.
+     */
+    public readonly dataSourceRestrictions!: pulumi.Output<outputs.cloudsearch.v1.DataSourceRestrictionResponse[]>;
+    /**
+     * The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
+     */
+    public readonly defaultFacetOptions!: pulumi.Output<outputs.cloudsearch.v1.FacetOptionsResponse[]>;
+    /**
+     * The default options for sorting the search results
+     */
+    public readonly defaultSortOptions!: pulumi.Output<outputs.cloudsearch.v1.SortOptionsResponse>;
+    /**
+     * Display name of the Search Application. The maximum length is 300 characters.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Name of the Search Application. Format: searchapplications/{application_id}.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
+     */
+    public /*out*/ readonly operationIds!: pulumi.Output<string[]>;
+    /**
+     * Configuration for ranking results.
+     */
+    public readonly scoringConfig!: pulumi.Output<outputs.cloudsearch.v1.ScoringConfigResponse>;
+    /**
+     * Configuration for a sources specified in data_source_restrictions.
+     */
+    public readonly sourceConfig!: pulumi.Output<outputs.cloudsearch.v1.SourceConfigResponse[]>;
 
     /**
      * Create a SettingSearchapplication resource with the given unique name, arguments, and options.
@@ -55,11 +87,19 @@ export class SettingSearchapplication extends pulumi.CustomResource {
             inputs["defaultSortOptions"] = args ? args.defaultSortOptions : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["operationIds"] = args ? args.operationIds : undefined;
             inputs["scoringConfig"] = args ? args.scoringConfig : undefined;
             inputs["searchapplicationsId"] = args ? args.searchapplicationsId : undefined;
             inputs["sourceConfig"] = args ? args.sourceConfig : undefined;
+            inputs["operationIds"] = undefined /*out*/;
         } else {
+            inputs["dataSourceRestrictions"] = undefined /*out*/;
+            inputs["defaultFacetOptions"] = undefined /*out*/;
+            inputs["defaultSortOptions"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["operationIds"] = undefined /*out*/;
+            inputs["scoringConfig"] = undefined /*out*/;
+            inputs["sourceConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -92,10 +132,6 @@ export interface SettingSearchapplicationArgs {
      * Name of the Search Application. Format: searchapplications/{application_id}.
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * Output only. IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
-     */
-    readonly operationIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configuration for ranking results.
      */

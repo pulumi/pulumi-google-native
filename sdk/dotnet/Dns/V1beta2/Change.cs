@@ -16,6 +16,40 @@ namespace Pulumi.GoogleCloud.Dns.V1beta2
     public partial class Change : Pulumi.CustomResource
     {
         /// <summary>
+        /// Which ResourceRecordSets to add?
+        /// </summary>
+        [Output("additions")]
+        public Output<ImmutableArray<Outputs.ResourceRecordSetResponse>> Additions { get; private set; } = null!;
+
+        /// <summary>
+        /// Which ResourceRecordSets to remove? Must match existing data exactly.
+        /// </summary>
+        [Output("deletions")]
+        public Output<ImmutableArray<Outputs.ResourceRecordSetResponse>> Deletions { get; private set; } = null!;
+
+        /// <summary>
+        /// If the DNS queries for the zone will be served.
+        /// </summary>
+        [Output("isServing")]
+        public Output<bool> IsServing { get; private set; } = null!;
+
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The time that this operation was started by the server (output only). This is in RFC3339 text format.
+        /// </summary>
+        [Output("startTime")]
+        public Output<string> StartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Change resource with the given unique name, arguments, and options.
         /// </summary>
         ///

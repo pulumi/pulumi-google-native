@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V3
     public partial class TagValue : Pulumi.CustomResource
     {
         /// <summary>
+        /// Creation time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. User-assigned description of the TagValue. Must not exceed 256 characters. Read-write.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagValueRequest for details.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. Resource name for TagValue in the format `tagValues/456`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Namespaced name of the TagValue. Must be in the format `{organization_id}/{tag_key_short_name}/{short_name}`.
+        /// </summary>
+        [Output("namespacedName")]
+        public Output<string> NamespacedName { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
+        /// </summary>
+        [Output("parent")]
+        public Output<string> Parent { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// </summary>
+        [Output("shortName")]
+        public Output<string> ShortName { get; private set; } = null!;
+
+        /// <summary>
+        /// Update time.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a TagValue resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +109,6 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V3
     public sealed class TagValueArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Creation time.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Optional. User-assigned description of the TagValue. Must not exceed 256 characters. Read-write.
         /// </summary>
         [Input("description")]
@@ -84,12 +127,6 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V3
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Output only. Namespaced name of the TagValue. Must be in the format `{organization_id}/{tag_key_short_name}/{short_name}`.
-        /// </summary>
-        [Input("namespacedName")]
-        public Input<string>? NamespacedName { get; set; }
-
-        /// <summary>
         /// Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
         /// </summary>
         [Input("parent")]
@@ -103,12 +140,6 @@ namespace Pulumi.GoogleCloud.Cloudresourcemanager.V3
 
         [Input("tagValuesId", required: true)]
         public Input<string> TagValuesId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Update time.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public TagValueArgs()
         {

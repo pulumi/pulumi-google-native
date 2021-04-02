@@ -35,6 +35,34 @@ export class Connection extends pulumi.CustomResource {
         return obj['__pulumiType'] === Connection.__pulumiType;
     }
 
+    /**
+     * Cloud SQL properties.
+     */
+    public readonly cloudSql!: pulumi.Output<outputs.bigqueryconnection.v1beta1.CloudSqlPropertiesResponse>;
+    /**
+     * The creation timestamp of the connection.
+     */
+    public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    /**
+     * User provided description.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * User provided display name for the connection.
+     */
+    public readonly friendlyName!: pulumi.Output<string>;
+    /**
+     * True, if credential is configured for this connection.
+     */
+    public /*out*/ readonly hasCredential!: pulumi.Output<boolean>;
+    /**
+     * The last update timestamp of the connection.
+     */
+    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    /**
+     * The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
+     */
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -58,15 +86,22 @@ export class Connection extends pulumi.CustomResource {
             }
             inputs["cloudSql"] = args ? args.cloudSql : undefined;
             inputs["connectionsId"] = args ? args.connectionsId : undefined;
-            inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["friendlyName"] = args ? args.friendlyName : undefined;
-            inputs["hasCredential"] = args ? args.hasCredential : undefined;
-            inputs["lastModifiedTime"] = args ? args.lastModifiedTime : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["creationTime"] = undefined /*out*/;
+            inputs["hasCredential"] = undefined /*out*/;
+            inputs["lastModifiedTime"] = undefined /*out*/;
         } else {
+            inputs["cloudSql"] = undefined /*out*/;
+            inputs["creationTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["friendlyName"] = undefined /*out*/;
+            inputs["hasCredential"] = undefined /*out*/;
+            inputs["lastModifiedTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -85,10 +120,6 @@ export interface ConnectionArgs {
     readonly cloudSql?: pulumi.Input<inputs.bigqueryconnection.v1beta1.CloudSqlProperties>;
     readonly connectionsId: pulumi.Input<string>;
     /**
-     * Output only. The creation timestamp of the connection.
-     */
-    readonly creationTime?: pulumi.Input<string>;
-    /**
      * User provided description.
      */
     readonly description?: pulumi.Input<string>;
@@ -96,14 +127,6 @@ export interface ConnectionArgs {
      * User provided display name for the connection.
      */
     readonly friendlyName?: pulumi.Input<string>;
-    /**
-     * Output only. True, if credential is configured for this connection.
-     */
-    readonly hasCredential?: pulumi.Input<boolean>;
-    /**
-     * Output only. The last update timestamp of the connection.
-     */
-    readonly lastModifiedTime?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`

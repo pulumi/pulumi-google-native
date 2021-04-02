@@ -16,6 +16,58 @@ namespace Pulumi.GoogleCloud.Sqladmin.V1beta4
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>
+        /// The Cloud SQL charset value.
+        /// </summary>
+        [Output("charset")]
+        public Output<string> Charset { get; private set; } = null!;
+
+        /// <summary>
+        /// The Cloud SQL collation value.
+        /// </summary>
+        [Output("collation")]
+        public Output<string> Collation { get; private set; } = null!;
+
+        /// <summary>
+        /// This field is deprecated and will be removed from a future version of the API.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the Cloud SQL instance. This does not include the project ID.
+        /// </summary>
+        [Output("instance")]
+        public Output<string> Instance { get; private set; } = null!;
+
+        /// <summary>
+        /// This is always *sql#database*.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
+        /// </summary>
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The URI of this resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        [Output("sqlserverDatabaseDetails")]
+        public Output<Outputs.SqlServerDatabaseDetailsResponse> SqlserverDatabaseDetails { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Database resource with the given unique name, arguments, and options.
         /// </summary>
         ///

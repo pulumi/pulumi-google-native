@@ -14,6 +14,25 @@ import (
 // Creates a new canary evaluation for an organization.
 type OrganizationInstanceCanaryevaluation struct {
 	pulumi.CustomResourceState
+
+	// Required. The stable version that is serving requests.
+	Control pulumi.StringOutput `pulumi:"control"`
+	// Create time of the canary evaluation.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Required. End time for the evaluation's analysis.
+	EndTime pulumi.StringOutput `pulumi:"endTime"`
+	// Required. Labels used to filter the metrics used for a canary evaluation.
+	MetricLabels GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput `pulumi:"metricLabels"`
+	// Name of the canary evalution.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. Start time for the canary evaluation's analysis.
+	StartTime pulumi.StringOutput `pulumi:"startTime"`
+	// The current state of the canary evaluation.
+	State pulumi.StringOutput `pulumi:"state"`
+	// Required. The newer version that is serving requests.
+	Treatment pulumi.StringOutput `pulumi:"treatment"`
+	// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
+	Verdict pulumi.StringOutput `pulumi:"verdict"`
 }
 
 // NewOrganizationInstanceCanaryevaluation registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +73,45 @@ func GetOrganizationInstanceCanaryevaluation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationInstanceCanaryevaluation resources.
 type organizationInstanceCanaryevaluationState struct {
+	// Required. The stable version that is serving requests.
+	Control *string `pulumi:"control"`
+	// Create time of the canary evaluation.
+	CreateTime *string `pulumi:"createTime"`
+	// Required. End time for the evaluation's analysis.
+	EndTime *string `pulumi:"endTime"`
+	// Required. Labels used to filter the metrics used for a canary evaluation.
+	MetricLabels *GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse `pulumi:"metricLabels"`
+	// Name of the canary evalution.
+	Name *string `pulumi:"name"`
+	// Required. Start time for the canary evaluation's analysis.
+	StartTime *string `pulumi:"startTime"`
+	// The current state of the canary evaluation.
+	State *string `pulumi:"state"`
+	// Required. The newer version that is serving requests.
+	Treatment *string `pulumi:"treatment"`
+	// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
+	Verdict *string `pulumi:"verdict"`
 }
 
 type OrganizationInstanceCanaryevaluationState struct {
+	// Required. The stable version that is serving requests.
+	Control pulumi.StringPtrInput
+	// Create time of the canary evaluation.
+	CreateTime pulumi.StringPtrInput
+	// Required. End time for the evaluation's analysis.
+	EndTime pulumi.StringPtrInput
+	// Required. Labels used to filter the metrics used for a canary evaluation.
+	MetricLabels GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrInput
+	// Name of the canary evalution.
+	Name pulumi.StringPtrInput
+	// Required. Start time for the canary evaluation's analysis.
+	StartTime pulumi.StringPtrInput
+	// The current state of the canary evaluation.
+	State pulumi.StringPtrInput
+	// Required. The newer version that is serving requests.
+	Treatment pulumi.StringPtrInput
+	// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
+	Verdict pulumi.StringPtrInput
 }
 
 func (OrganizationInstanceCanaryevaluationState) ElementType() reflect.Type {
@@ -67,24 +122,16 @@ type organizationInstanceCanaryevaluationArgs struct {
 	CanaryevaluationsId string `pulumi:"canaryevaluationsId"`
 	// Required. The stable version that is serving requests.
 	Control *string `pulumi:"control"`
-	// Output only. Create time of the canary evaluation.
-	CreateTime *string `pulumi:"createTime"`
 	// Required. End time for the evaluation's analysis.
 	EndTime     *string `pulumi:"endTime"`
 	InstancesId string  `pulumi:"instancesId"`
 	// Required. Labels used to filter the metrics used for a canary evaluation.
-	MetricLabels *GoogleCloudApigeeV1CanaryEvaluationMetricLabels `pulumi:"metricLabels"`
-	// Output only. Name of the canary evalution.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	MetricLabels    *GoogleCloudApigeeV1CanaryEvaluationMetricLabels `pulumi:"metricLabels"`
+	OrganizationsId string                                           `pulumi:"organizationsId"`
 	// Required. Start time for the canary evaluation's analysis.
 	StartTime *string `pulumi:"startTime"`
-	// Output only. The current state of the canary evaluation.
-	State *string `pulumi:"state"`
 	// Required. The newer version that is serving requests.
 	Treatment *string `pulumi:"treatment"`
-	// Output only. The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
-	Verdict *string `pulumi:"verdict"`
 }
 
 // The set of arguments for constructing a OrganizationInstanceCanaryevaluation resource.
@@ -92,24 +139,16 @@ type OrganizationInstanceCanaryevaluationArgs struct {
 	CanaryevaluationsId pulumi.StringInput
 	// Required. The stable version that is serving requests.
 	Control pulumi.StringPtrInput
-	// Output only. Create time of the canary evaluation.
-	CreateTime pulumi.StringPtrInput
 	// Required. End time for the evaluation's analysis.
 	EndTime     pulumi.StringPtrInput
 	InstancesId pulumi.StringInput
 	// Required. Labels used to filter the metrics used for a canary evaluation.
-	MetricLabels GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrInput
-	// Output only. Name of the canary evalution.
-	Name            pulumi.StringPtrInput
+	MetricLabels    GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrInput
 	OrganizationsId pulumi.StringInput
 	// Required. Start time for the canary evaluation's analysis.
 	StartTime pulumi.StringPtrInput
-	// Output only. The current state of the canary evaluation.
-	State pulumi.StringPtrInput
 	// Required. The newer version that is serving requests.
 	Treatment pulumi.StringPtrInput
-	// Output only. The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
-	Verdict pulumi.StringPtrInput
 }
 
 func (OrganizationInstanceCanaryevaluationArgs) ElementType() reflect.Type {

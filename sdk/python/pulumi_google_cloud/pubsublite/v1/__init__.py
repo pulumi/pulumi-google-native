@@ -6,6 +6,7 @@
 from .admin_subscription import *
 from .admin_topic import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

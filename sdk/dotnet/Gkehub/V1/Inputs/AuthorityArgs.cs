@@ -16,22 +16,10 @@ namespace Pulumi.GoogleCloud.Gkehub.V1.Inputs
     public sealed class AuthorityArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. An identity provider that reflects the `issuer` in the workload identity pool.
-        /// </summary>
-        [Input("identityProvider")]
-        public Input<string>? IdentityProvider { get; set; }
-
-        /// <summary>
         /// Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length &lt;2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
         /// </summary>
         [Input("issuer")]
         public Input<string>? Issuer { get; set; }
-
-        /// <summary>
-        /// Output only. The name of the workload identity pool in which `issuer` will be recognized. There is a single Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to change in newer versions of this API.
-        /// </summary>
-        [Input("workloadIdentityPool")]
-        public Input<string>? WorkloadIdentityPool { get; set; }
 
         public AuthorityArgs()
         {

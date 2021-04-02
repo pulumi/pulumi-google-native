@@ -6,6 +6,7 @@
 from .connectivity_test import *
 from .connectivity_test_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

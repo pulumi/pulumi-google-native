@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['RegionAutoscaler']
@@ -122,7 +123,130 @@ class RegionAutoscaler(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["autoscaling_policy"] = None
+        __props__["creation_timestamp"] = None
+        __props__["description"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["recommended_size"] = None
+        __props__["region"] = None
+        __props__["scaling_schedule_status"] = None
+        __props__["self_link"] = None
+        __props__["status"] = None
+        __props__["status_details"] = None
+        __props__["target"] = None
+        __props__["zone"] = None
         return RegionAutoscaler(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoscalingPolicy")
+    def autoscaling_policy(self) -> pulumi.Output['outputs.AutoscalingPolicyResponse']:
+        """
+        The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
+
+        If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        """
+        return pulumi.get(self, "autoscaling_policy")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#autoscaler for autoscalers.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="recommendedSize")
+    def recommended_size(self) -> pulumi.Output[int]:
+        """
+        [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
+        """
+        return pulumi.get(self, "recommended_size")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="scalingScheduleStatus")
+    def scaling_schedule_status(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        [Output Only] Status information of existing scaling schedules.
+        """
+        return pulumi.get(self, "scaling_schedule_status")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The status of the autoscaler configuration. Current set of possible values:  
+        - PENDING: Autoscaler backend hasn't read new/updated configuration. 
+        - DELETING: Configuration is being deleted. 
+        - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
+        - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="statusDetails")
+    def status_details(self) -> pulumi.Output[Sequence['outputs.AutoscalerStatusDetailsResponse']]:
+        """
+        [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
+        """
+        return pulumi.get(self, "status_details")
+
+    @property
+    @pulumi.getter
+    def target(self) -> pulumi.Output[str]:
+        """
+        URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
+        """
+        return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[str]:
+        """
+        [Output Only] URL of the zone where the instance group resides (for autoscalers living in zonal scope).
+        """
+        return pulumi.get(self, "zone")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

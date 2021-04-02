@@ -16,6 +16,64 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
     public partial class Schedule : Pulumi.CustomResource
     {
         /// <summary>
+        /// Time the schedule was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+        /// </summary>
+        [Output("cronSchedule")]
+        public Output<string> CronSchedule { get; private set; } = null!;
+
+        /// <summary>
+        /// A brief description of this environment.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Notebook Execution Template corresponding to this schedule.
+        /// </summary>
+        [Output("executionTemplate")]
+        public Output<Outputs.ExecutionTemplateResponse> ExecutionTemplate { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The most recent execution names triggered from this schedule and their corresponding states.
+        /// </summary>
+        [Output("recentExecutions")]
+        public Output<ImmutableArray<Outputs.ExecutionResponse>> RecentExecutions { get; private set; } = null!;
+
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
+        /// </summary>
+        [Output("timeZone")]
+        public Output<string> TimeZone { get; private set; } = null!;
+
+        /// <summary>
+        /// Time the schedule was last updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Schedule resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +118,6 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
     public sealed class ScheduleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Time the schedule was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
         /// </summary>
         [Input("cronSchedule")]
@@ -78,12 +130,6 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Output only. Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
         /// Notebook Execution Template corresponding to this schedule.
         /// </summary>
         [Input("executionTemplate")]
@@ -92,26 +138,8 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        [Input("recentExecutions")]
-        private InputList<Inputs.ExecutionArgs>? _recentExecutions;
-
-        /// <summary>
-        /// Output only. The most recent execution names triggered from this schedule and their corresponding states.
-        /// </summary>
-        public InputList<Inputs.ExecutionArgs> RecentExecutions
-        {
-            get => _recentExecutions ?? (_recentExecutions = new InputList<Inputs.ExecutionArgs>());
-            set => _recentExecutions = value;
-        }
 
         [Input("schedulesId", required: true)]
         public Input<string> SchedulesId { get; set; } = null!;
@@ -124,12 +152,6 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
-
-        /// <summary>
-        /// Output only. Time the schedule was last updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public ScheduleArgs()
         {

@@ -16,6 +16,85 @@ namespace Pulumi.GoogleCloud.Datacatalog.V1beta1
     public partial class EntryGroupEntry : Pulumi.CustomResource
     {
         /// <summary>
+        /// Specification for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        /// </summary>
+        [Output("bigqueryDateShardedSpec")]
+        public Output<Outputs.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse> BigqueryDateShardedSpec { get; private set; } = null!;
+
+        /// <summary>
+        /// Specification that applies to a BigQuery table. This is only valid on entries of type `TABLE`.
+        /// </summary>
+        [Output("bigqueryTableSpec")]
+        public Output<Outputs.GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse> BigqueryTableSpec { get; private set; } = null!;
+
+        /// <summary>
+        /// Entry description, which can consist of several sentences or paragraphs that describe entry contents. Default value is an empty string.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Display information such as title and description. A short name to identify the entry, for example, "Analytics Data - Jan 2011". Default value is an empty string.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+        /// </summary>
+        [Output("gcsFilesetSpec")]
+        public Output<Outputs.GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse> GcsFilesetSpec { get; private set; } = null!;
+
+        /// <summary>
+        /// This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
+        /// </summary>
+        [Output("integratedSystem")]
+        public Output<string> IntegratedSystem { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
+        /// </summary>
+        [Output("linkedResource")]
+        public Output<string> LinkedResource { get; private set; } = null!;
+
+        /// <summary>
+        /// The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Schema of the entry. An entry might not have any schema attached to it.
+        /// </summary>
+        [Output("schema")]
+        public Output<Outputs.GoogleCloudDatacatalogV1beta1SchemaResponse> Schema { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamps about the underlying resource, not about this Data Catalog entry. Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty timestamp.
+        /// </summary>
+        [Output("sourceSystemTimestamps")]
+        public Output<Outputs.GoogleCloudDatacatalogV1beta1SystemTimestampsResponse> SourceSystemTimestamps { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the entry. Only used for Entries with types in the EntryType enum.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
+        /// </summary>
+        [Output("userSpecifiedSystem")]
+        public Output<string> UserSpecifiedSystem { get; private set; } = null!;
+
+        /// <summary>
+        /// Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.
+        /// </summary>
+        [Output("userSpecifiedType")]
+        public Output<string> UserSpecifiedType { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a EntryGroupEntry resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -96,12 +175,6 @@ namespace Pulumi.GoogleCloud.Datacatalog.V1beta1
         public Input<Inputs.GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs>? GcsFilesetSpec { get; set; }
 
         /// <summary>
-        /// Output only. This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
-        /// </summary>
-        [Input("integratedSystem")]
-        public Input<string>? IntegratedSystem { get; set; }
-
-        /// <summary>
         /// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
         /// </summary>
         [Input("linkedResource")]
@@ -109,12 +182,6 @@ namespace Pulumi.GoogleCloud.Datacatalog.V1beta1
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
@@ -124,12 +191,6 @@ namespace Pulumi.GoogleCloud.Datacatalog.V1beta1
         /// </summary>
         [Input("schema")]
         public Input<Inputs.GoogleCloudDatacatalogV1beta1SchemaArgs>? Schema { get; set; }
-
-        /// <summary>
-        /// Output only. Timestamps about the underlying resource, not about this Data Catalog entry. Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty timestamp.
-        /// </summary>
-        [Input("sourceSystemTimestamps")]
-        public Input<Inputs.GoogleCloudDatacatalogV1beta1SystemTimestampsArgs>? SourceSystemTimestamps { get; set; }
 
         /// <summary>
         /// The type of the entry. Only used for Entries with types in the EntryType enum.

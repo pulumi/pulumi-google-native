@@ -14,6 +14,13 @@ import (
 // Creates an alias from a key/certificate pair. The structure of the request is controlled by the `format` query parameter: - `keycertfile` - Separate PEM-encoded key and certificate files are uploaded. Set `Content-Type: multipart/form-data` and include the `keyFile`, `certFile`, and `password` (if keys are encrypted) fields in the request body. If uploading to a truststore, omit `keyFile`. - `pkcs12` - A PKCS12 file is uploaded. Set `Content-Type: multipart/form-data`, provide the file in the `file` field, and include the `password` field if the file is encrypted in the request body. - `selfsignedcert` - A new private key and certificate are generated. Set `Content-Type: application/json` and include CertificateGenerationSpec in the request body.
 type OrganizationEnvironmentKeystoreAlias struct {
 	pulumi.CustomResourceState
+
+	// Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
+	Alias pulumi.StringOutput `pulumi:"alias"`
+	// Chain of certificates under this alias.
+	CertsInfo GoogleCloudApigeeV1CertificateResponseOutput `pulumi:"certsInfo"`
+	// Type of alias.
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewOrganizationEnvironmentKeystoreAlias registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +64,21 @@ func GetOrganizationEnvironmentKeystoreAlias(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationEnvironmentKeystoreAlias resources.
 type organizationEnvironmentKeystoreAliasState struct {
+	// Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
+	Alias *string `pulumi:"alias"`
+	// Chain of certificates under this alias.
+	CertsInfo *GoogleCloudApigeeV1CertificateResponse `pulumi:"certsInfo"`
+	// Type of alias.
+	Type *string `pulumi:"type"`
 }
 
 type OrganizationEnvironmentKeystoreAliasState struct {
+	// Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
+	Alias pulumi.StringPtrInput
+	// Chain of certificates under this alias.
+	CertsInfo GoogleCloudApigeeV1CertificateResponsePtrInput
+	// Type of alias.
+	Type pulumi.StringPtrInput
 }
 
 func (OrganizationEnvironmentKeystoreAliasState) ElementType() reflect.Type {

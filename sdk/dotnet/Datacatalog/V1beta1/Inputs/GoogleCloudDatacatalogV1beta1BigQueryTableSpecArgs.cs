@@ -16,12 +16,6 @@ namespace Pulumi.GoogleCloud.Datacatalog.V1beta1.Inputs
     public sealed class GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The table source type.
-        /// </summary>
-        [Input("tableSourceType")]
-        public Input<string>? TableSourceType { get; set; }
-
-        /// <summary>
         /// Spec of a BigQuery table. This field should only be populated if `table_source_type` is `BIGQUERY_TABLE`.
         /// </summary>
         [Input("tableSpec")]

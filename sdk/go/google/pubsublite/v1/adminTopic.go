@@ -14,6 +14,13 @@ import (
 // Creates a new topic.
 type AdminTopic struct {
 	pulumi.CustomResourceState
+
+	// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The settings for this topic's partitions.
+	PartitionConfig PartitionConfigResponseOutput `pulumi:"partitionConfig"`
+	// The settings for this topic's message retention.
+	RetentionConfig RetentionConfigResponseOutput `pulumi:"retentionConfig"`
 }
 
 // NewAdminTopic registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +61,21 @@ func GetAdminTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AdminTopic resources.
 type adminTopicState struct {
+	// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+	Name *string `pulumi:"name"`
+	// The settings for this topic's partitions.
+	PartitionConfig *PartitionConfigResponse `pulumi:"partitionConfig"`
+	// The settings for this topic's message retention.
+	RetentionConfig *RetentionConfigResponse `pulumi:"retentionConfig"`
 }
 
 type AdminTopicState struct {
+	// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+	Name pulumi.StringPtrInput
+	// The settings for this topic's partitions.
+	PartitionConfig PartitionConfigResponsePtrInput
+	// The settings for this topic's message retention.
+	RetentionConfig RetentionConfigResponsePtrInput
 }
 
 func (AdminTopicState) ElementType() reflect.Type {

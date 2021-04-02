@@ -35,6 +35,18 @@ export class CustomClass extends pulumi.CustomResource {
         return obj['__pulumiType'] === CustomClass.__pulumiType;
     }
 
+    /**
+     * If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
+     */
+    public readonly customClassId!: pulumi.Output<string>;
+    /**
+     * A collection of class items.
+     */
+    public /*out*/ readonly items!: pulumi.Output<outputs.speech.v1p1beta1.ClassItemResponse[]>;
+    /**
+     * The resource name of the custom class.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
 
     /**
      * Create a CustomClass resource with the given unique name, arguments, and options.
@@ -61,7 +73,12 @@ export class CustomClass extends pulumi.CustomResource {
             inputs["customClassesId"] = args ? args.customClassesId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["items"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         } else {
+            inputs["customClassId"] = undefined /*out*/;
+            inputs["items"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

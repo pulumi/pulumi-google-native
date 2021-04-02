@@ -35,6 +35,50 @@ export class Agent extends pulumi.CustomResource {
         return obj['__pulumiType'] === Agent.__pulumiType;
     }
 
+    /**
+     * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
+     */
+    public readonly avatarUri!: pulumi.Output<string>;
+    /**
+     * Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+     */
+    public readonly defaultLanguageCode!: pulumi.Output<string>;
+    /**
+     * The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Required. The human-readable name of the agent, unique within the location.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Indicates if automatic spell correction is enabled in detect intent requests.
+     */
+    public readonly enableSpellCorrection!: pulumi.Output<boolean>;
+    /**
+     * Indicates if stackdriver logging is enabled for the agent.
+     */
+    public readonly enableStackdriverLogging!: pulumi.Output<boolean>;
+    /**
+     * The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+     */
+    public readonly securitySettings!: pulumi.Output<string>;
+    /**
+     * Speech recognition related settings.
+     */
+    public readonly speechToTextSettings!: pulumi.Output<outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse>;
+    /**
+     * Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
+     */
+    public readonly startFlow!: pulumi.Output<string>;
+    /**
+     * Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+     */
+    public readonly timeZone!: pulumi.Output<string>;
 
     /**
      * Create a Agent resource with the given unique name, arguments, and options.
@@ -71,6 +115,17 @@ export class Agent extends pulumi.CustomResource {
             inputs["startFlow"] = args ? args.startFlow : undefined;
             inputs["timeZone"] = args ? args.timeZone : undefined;
         } else {
+            inputs["avatarUri"] = undefined /*out*/;
+            inputs["defaultLanguageCode"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["enableSpellCorrection"] = undefined /*out*/;
+            inputs["enableStackdriverLogging"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["securitySettings"] = undefined /*out*/;
+            inputs["speechToTextSettings"] = undefined /*out*/;
+            inputs["startFlow"] = undefined /*out*/;
+            inputs["timeZone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

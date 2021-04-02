@@ -35,6 +35,31 @@ export class Policy extends pulumi.CustomResource {
         return obj['__pulumiType'] === Policy.__pulumiType;
     }
 
+    /**
+     * Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
+     */
+    public readonly alternativeNameServerConfig!: pulumi.Output<outputs.dns.v1.PolicyAlternativeNameServerConfigResponse>;
+    /**
+     * A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
+     */
+    public readonly enableInboundForwarding!: pulumi.Output<boolean>;
+    /**
+     * Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+     */
+    public readonly enableLogging!: pulumi.Output<boolean>;
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * User-assigned name for this policy.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * List of network names specifying networks to which this policy is applied.
+     */
+    public readonly networks!: pulumi.Output<outputs.dns.v1.PolicyNetworkResponse[]>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -64,6 +89,13 @@ export class Policy extends pulumi.CustomResource {
             inputs["policy"] = args ? args.policy : undefined;
             inputs["project"] = args ? args.project : undefined;
         } else {
+            inputs["alternativeNameServerConfig"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["enableInboundForwarding"] = undefined /*out*/;
+            inputs["enableLogging"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["networks"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

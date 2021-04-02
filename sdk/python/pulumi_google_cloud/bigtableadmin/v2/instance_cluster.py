@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['InstanceCluster']
@@ -24,7 +25,6 @@ class InstanceCluster(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  serve_nodes: Optional[pulumi.Input[int]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -38,7 +38,6 @@ class InstanceCluster(pulumi.CustomResource):
         :param pulumi.Input[str] location: Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
         :param pulumi.Input[str] name: The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
         :param pulumi.Input[int] serve_nodes: Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
-        :param pulumi.Input[str] state: Output only. The current state of the cluster.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,7 +70,7 @@ class InstanceCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
             __props__['serve_nodes'] = serve_nodes
-            __props__['state'] = state
+            __props__['state'] = None
         super(InstanceCluster, __self__).__init__(
             'google-cloud:bigtableadmin/v2:InstanceCluster',
             resource_name,
@@ -94,7 +93,61 @@ class InstanceCluster(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["default_storage_type"] = None
+        __props__["encryption_config"] = None
+        __props__["location"] = None
+        __props__["name"] = None
+        __props__["serve_nodes"] = None
+        __props__["state"] = None
         return InstanceCluster(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="defaultStorageType")
+    def default_storage_type(self) -> pulumi.Output[str]:
+        """
+        Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
+        """
+        return pulumi.get(self, "default_storage_type")
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> pulumi.Output['outputs.EncryptionConfigResponse']:
+        """
+        Immutable. The encryption configuration for CMEK-protected clusters.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[str]:
+        """
+        Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="serveNodes")
+    def serve_nodes(self) -> pulumi.Output[int]:
+        """
+        Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+        """
+        return pulumi.get(self, "serve_nodes")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The current state of the cluster.
+        """
+        return pulumi.get(self, "state")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

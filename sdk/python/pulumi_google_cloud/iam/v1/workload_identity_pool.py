@@ -19,9 +19,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
                  workload_identity_pools_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -34,8 +32,6 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         :param pulumi.Input[str] display_name: A display name for the pool. Cannot exceed 32 characters.
-        :param pulumi.Input[str] name: Output only. The resource name of the pool.
-        :param pulumi.Input[str] state: Output only. The state of the pool.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -60,14 +56,14 @@ class WorkloadIdentityPool(pulumi.CustomResource):
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['state'] = state
             if workload_identity_pools_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workload_identity_pools_id'")
             __props__['workload_identity_pools_id'] = workload_identity_pools_id
+            __props__['name'] = None
+            __props__['state'] = None
         super(WorkloadIdentityPool, __self__).__init__(
             'google-cloud:iam/v1:WorkloadIdentityPool',
             resource_name,
@@ -90,7 +86,52 @@ class WorkloadIdentityPool(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["description"] = None
+        __props__["disabled"] = None
+        __props__["display_name"] = None
+        __props__["name"] = None
+        __props__["state"] = None
         return WorkloadIdentityPool(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        A description of the pool. Cannot exceed 256 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Output[bool]:
+        """
+        Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        A display name for the pool. Cannot exceed 32 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the pool.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The state of the pool.
+        """
+        return pulumi.get(self, "state")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

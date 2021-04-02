@@ -16,18 +16,6 @@ namespace Pulumi.GoogleCloud.Composer.V1beta1.Inputs
     public sealed class EnvironmentConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
-        /// </summary>
-        [Input("airflowUri")]
-        public Input<string>? AirflowUri { get; set; }
-
-        /// <summary>
-        /// Output only. The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
-        /// </summary>
-        [Input("dagGcsPrefix")]
-        public Input<string>? DagGcsPrefix { get; set; }
-
-        /// <summary>
         /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         /// </summary>
         [Input("databaseConfig")]
@@ -38,12 +26,6 @@ namespace Pulumi.GoogleCloud.Composer.V1beta1.Inputs
         /// </summary>
         [Input("encryptionConfig")]
         public Input<Inputs.EncryptionConfigArgs>? EncryptionConfig { get; set; }
-
-        /// <summary>
-        /// Output only. The Kubernetes Engine cluster used to run this environment.
-        /// </summary>
-        [Input("gkeCluster")]
-        public Input<string>? GkeCluster { get; set; }
 
         /// <summary>
         /// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.

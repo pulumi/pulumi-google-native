@@ -302,9 +302,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceArgs:
         Instance conceptually encapsulates all Remote Build Execution resources for remote builds. An instance consists of storage and compute resources (for example, `ContentAddressableStorage`, `ActionCache`, `WorkerPools`) used for running remote builds. All Remote Build Execution API calls are scoped to an instance.
         :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs'] feature_policy: The policy to define whether or not RBE features can be used or how they can be used.
         :param pulumi.Input[str] location: The location is a GCP region. Currently only `us-central1` is supported.
-        :param pulumi.Input[bool] logging_enabled: Output only. Whether stack driver logging is enabled for the instance.
-        :param pulumi.Input[str] name: Output only. Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
-        :param pulumi.Input[str] state: Output only. State of the instance.
+        :param pulumi.Input[bool] logging_enabled: Whether stack driver logging is enabled for the instance.
+        :param pulumi.Input[str] name: Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
+        :param pulumi.Input[str] state: State of the instance.
         """
         if feature_policy is not None:
             pulumi.set(__self__, "feature_policy", feature_policy)
@@ -345,7 +345,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceArgs:
     @pulumi.getter(name="loggingEnabled")
     def logging_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Output only. Whether stack driver logging is enabled for the instance.
+        Whether stack driver logging is enabled for the instance.
         """
         return pulumi.get(self, "logging_enabled")
 
@@ -357,7 +357,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
+        Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
         """
         return pulumi.get(self, "name")
 
@@ -369,7 +369,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. State of the instance.
+        State of the instance.
         """
         return pulumi.get(self, "state")
 
@@ -576,7 +576,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPoolArgs:
         :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs'] autoscale: The autoscale policy to apply on a pool.
         :param pulumi.Input[str] channel: Channel specifies the release channel of the pool.
         :param pulumi.Input[str] name: WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
-        :param pulumi.Input[str] state: Output only. State of the worker pool.
+        :param pulumi.Input[str] state: State of the worker pool.
         :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs'] worker_config: Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
         :param pulumi.Input[str] worker_count: The desired number of workers in the worker pool. Must be a value between 0 and 15000.
         """
@@ -633,7 +633,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPoolArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. State of the worker pool.
+        State of the worker pool.
         """
         return pulumi.get(self, "state")
 

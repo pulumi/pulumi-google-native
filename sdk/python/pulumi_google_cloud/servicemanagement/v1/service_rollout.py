@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['ServiceRollout']
@@ -89,7 +90,70 @@ class ServiceRollout(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["created_by"] = None
+        __props__["delete_service_strategy"] = None
+        __props__["rollout_id"] = None
+        __props__["service_name"] = None
+        __props__["status"] = None
+        __props__["traffic_percent_strategy"] = None
         return ServiceRollout(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Creation time of the rollout. Readonly.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> pulumi.Output[str]:
+        """
+        This field is deprecated and will be deleted. Please remove usage of this field.
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="deleteServiceStrategy")
+    def delete_service_strategy(self) -> pulumi.Output['outputs.DeleteServiceStrategyResponse']:
+        """
+        The strategy associated with a rollout to delete a `ManagedService`. Readonly.
+        """
+        return pulumi.get(self, "delete_service_strategy")
+
+    @property
+    @pulumi.getter(name="rolloutId")
+    def rollout_id(self) -> pulumi.Output[str]:
+        """
+        Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
+        """
+        return pulumi.get(self, "rollout_id")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Output[str]:
+        """
+        The name of the service associated with this Rollout.
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="trafficPercentStrategy")
+    def traffic_percent_strategy(self) -> pulumi.Output['outputs.TrafficPercentStrategyResponse']:
+        """
+        Google Service Control selects service configurations based on traffic percentage.
+        """
+        return pulumi.get(self, "traffic_percent_strategy")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

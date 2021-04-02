@@ -16,6 +16,31 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationSharedflow : Pulumi.CustomResource
     {
         /// <summary>
+        /// The id of the most recently created revision for this shared flow.
+        /// </summary>
+        [Output("latestRevisionId")]
+        public Output<string> LatestRevisionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Metadata describing the shared flow.
+        /// </summary>
+        [Output("metaData")]
+        public Output<Outputs.GoogleCloudApigeeV1EntityMetadataResponse> MetaData { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the shared flow.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of revisions of this shared flow.
+        /// </summary>
+        [Output("revision")]
+        public Output<ImmutableArray<string>> Revision { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationSharedflow resource with the given unique name, arguments, and options.
         /// </summary>
         ///

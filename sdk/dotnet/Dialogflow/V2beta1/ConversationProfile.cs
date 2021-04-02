@@ -16,6 +16,79 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2beta1
     public partial class ConversationProfile : Pulumi.CustomResource
     {
         /// <summary>
+        /// Configuration for an automated agent to use with this profile.
+        /// </summary>
+        [Output("automatedAgentConfig")]
+        public Output<Outputs.GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse> AutomatedAgentConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Create time of the conversation profile.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Human readable name for this profile. Max length 1024 bytes.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for agent assistance to use with this profile.
+        /// </summary>
+        [Output("humanAgentAssistantConfig")]
+        public Output<Outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse> HumanAgentAssistantConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
+        /// </summary>
+        [Output("humanAgentHandoffConfig")]
+        public Output<Outputs.GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponse> HumanAgentHandoffConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages.
+        /// </summary>
+        [Output("languageCode")]
+        public Output<string> LanguageCode { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for logging conversation lifecycle events.
+        /// </summary>
+        [Output("loggingConfig")]
+        public Output<Outputs.GoogleCloudDialogflowV2beta1LoggingConfigResponse> LoggingConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for publishing new message events. Event will be sent in format of ConversationEvent
+        /// </summary>
+        [Output("newMessageEventNotificationConfig")]
+        public Output<Outputs.GoogleCloudDialogflowV2beta1NotificationConfigResponse> NewMessageEventNotificationConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for publishing conversation lifecycle events.
+        /// </summary>
+        [Output("notificationConfig")]
+        public Output<Outputs.GoogleCloudDialogflowV2beta1NotificationConfigResponse> NotificationConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Settings for speech transcription.
+        /// </summary>
+        [Output("sttConfig")]
+        public Output<Outputs.GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse> SttConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Update time of the conversation profile.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ConversationProfile resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -67,12 +140,6 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2beta1
 
         [Input("conversationProfilesId", required: true)]
         public Input<string> ConversationProfilesId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Create time of the conversation profile.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// Required. Human readable name for this profile. Max length 1024 bytes.
@@ -133,12 +200,6 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2beta1
         /// </summary>
         [Input("sttConfig")]
         public Input<Inputs.GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs>? SttConfig { get; set; }
-
-        /// <summary>
-        /// Output only. Update time of the conversation profile.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public ConversationProfileArgs()
         {

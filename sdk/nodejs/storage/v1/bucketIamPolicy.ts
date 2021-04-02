@@ -34,6 +34,26 @@ export class BucketIamPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === BucketIamPolicy.__pulumiType;
     }
 
+    /**
+     * An association between a role, which comes with a set of permissions, and members who may assume that role.
+     */
+    public readonly bindings!: pulumi.Output<{[key: string]: string}[]>;
+    /**
+     * HTTP 1.1  Entity tag for the policy.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
+     */
+    public readonly resourceId!: pulumi.Output<string>;
+    /**
+     * The IAM policy format version.
+     */
+    public readonly version!: pulumi.Output<number>;
 
     /**
      * Create a BucketIamPolicy resource with the given unique name, arguments, and options.
@@ -56,6 +76,11 @@ export class BucketIamPolicy extends pulumi.CustomResource {
             inputs["resourceId"] = args ? args.resourceId : undefined;
             inputs["version"] = args ? args.version : undefined;
         } else {
+            inputs["bindings"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["resourceId"] = undefined /*out*/;
+            inputs["version"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

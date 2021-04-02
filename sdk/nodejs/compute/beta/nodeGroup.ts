@@ -35,6 +35,53 @@ export class NodeGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === NodeGroup.__pulumiType;
     }
 
+    /**
+     * Specifies how autoscaling should behave.
+     */
+    public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.beta.NodeGroupAutoscalingPolicyResponse>;
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    public readonly fingerprint!: pulumi.Output<string>;
+    /**
+     * [Output Only] The type of the resource. Always compute#nodeGroup for node group.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
+     */
+    public readonly locationHint!: pulumi.Output<string>;
+    /**
+     * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+     */
+    public readonly maintenancePolicy!: pulumi.Output<string>;
+    public readonly maintenanceWindow!: pulumi.Output<outputs.compute.beta.NodeGroupMaintenanceWindowResponse>;
+    /**
+     * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * URL of the node template to create the node group from.
+     */
+    public readonly nodeTemplate!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * [Output Only] The total number of nodes in the node group.
+     */
+    public readonly size!: pulumi.Output<number>;
+    public readonly status!: pulumi.Output<string>;
+    /**
+     * [Output Only] The name of the zone where the node group resides, such as us-central1-a.
+     */
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a NodeGroup resource with the given unique name, arguments, and options.
@@ -78,6 +125,20 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["status"] = args ? args.status : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         } else {
+            inputs["autoscalingPolicy"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["fingerprint"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["locationHint"] = undefined /*out*/;
+            inputs["maintenancePolicy"] = undefined /*out*/;
+            inputs["maintenanceWindow"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["nodeTemplate"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["size"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
+            inputs["zone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

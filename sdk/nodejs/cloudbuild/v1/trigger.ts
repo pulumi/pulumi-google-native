@@ -35,6 +35,54 @@ export class Trigger extends pulumi.CustomResource {
         return obj['__pulumiType'] === Trigger.__pulumiType;
     }
 
+    /**
+     * Contents of the build template.
+     */
+    public readonly build!: pulumi.Output<outputs.cloudbuild.v1.BuildResponse>;
+    /**
+     * Time when the trigger was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Human-readable description of this trigger.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * If true, the trigger will never automatically execute a build.
+     */
+    public readonly disabled!: pulumi.Output<boolean>;
+    /**
+     * Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
+     */
+    public readonly filename!: pulumi.Output<string>;
+    /**
+     * GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
+     */
+    public readonly github!: pulumi.Output<outputs.cloudbuild.v1.GitHubEventsConfigResponse>;
+    /**
+     * ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
+     */
+    public readonly ignoredFiles!: pulumi.Output<string[]>;
+    /**
+     * If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
+     */
+    public readonly includedFiles!: pulumi.Output<string[]>;
+    /**
+     * User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
+     */
+    public readonly substitutions!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Tags for annotation of a `BuildTrigger`
+     */
+    public readonly tags!: pulumi.Output<string[]>;
+    /**
+     * Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
+     */
+    public readonly triggerTemplate!: pulumi.Output<outputs.cloudbuild.v1.RepoSourceResponse>;
 
     /**
      * Create a Trigger resource with the given unique name, arguments, and options.
@@ -54,12 +102,10 @@ export class Trigger extends pulumi.CustomResource {
                 throw new Error("Missing required property 'triggerId'");
             }
             inputs["build"] = args ? args.build : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["filename"] = args ? args.filename : undefined;
             inputs["github"] = args ? args.github : undefined;
-            inputs["id"] = args ? args.id : undefined;
             inputs["ignoredFiles"] = args ? args.ignoredFiles : undefined;
             inputs["includedFiles"] = args ? args.includedFiles : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -68,7 +114,20 @@ export class Trigger extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["triggerId"] = args ? args.triggerId : undefined;
             inputs["triggerTemplate"] = args ? args.triggerTemplate : undefined;
+            inputs["createTime"] = undefined /*out*/;
         } else {
+            inputs["build"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["disabled"] = undefined /*out*/;
+            inputs["filename"] = undefined /*out*/;
+            inputs["github"] = undefined /*out*/;
+            inputs["ignoredFiles"] = undefined /*out*/;
+            inputs["includedFiles"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["substitutions"] = undefined /*out*/;
+            inputs["tags"] = undefined /*out*/;
+            inputs["triggerTemplate"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -86,10 +145,6 @@ export interface TriggerArgs {
      */
     readonly build?: pulumi.Input<inputs.cloudbuild.v1.Build>;
     /**
-     * Output only. Time when the trigger was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * Human-readable description of this trigger.
      */
     readonly description?: pulumi.Input<string>;
@@ -105,10 +160,6 @@ export interface TriggerArgs {
      * GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
      */
     readonly github?: pulumi.Input<inputs.cloudbuild.v1.GitHubEventsConfig>;
-    /**
-     * Output only. Unique identifier of the trigger.
-     */
-    readonly id?: pulumi.Input<string>;
     /**
      * ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
      */

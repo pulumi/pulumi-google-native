@@ -16,13 +16,13 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1alpha1.Inputs
     public sealed class TrustArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The time the instance was created.
+        /// The time the instance was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Output only. The last heartbeat time when the trust was known to be connected.
+        /// The last heartbeat time when the trust was known to be connected.
         /// </summary>
         [Input("lastKnownTrustConnectedHeartbeatTime")]
         public Input<string>? LastKnownTrustConnectedHeartbeatTime { get; set; }
@@ -34,13 +34,13 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1alpha1.Inputs
         public Input<bool>? SelectiveAuthentication { get; set; }
 
         /// <summary>
-        /// Output only. The current state of this trust.
+        /// The current state of this trust.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Output only. Additional information about the current state of this trust, if available.
+        /// Additional information about the current state of this trust, if available.
         /// </summary>
         [Input("stateDescription")]
         public Input<string>? StateDescription { get; set; }
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1alpha1.Inputs
         public Input<string>? TrustType { get; set; }
 
         /// <summary>
-        /// Output only. Last update time.
+        /// Last update time.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

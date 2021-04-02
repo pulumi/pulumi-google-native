@@ -16,6 +16,85 @@ namespace Pulumi.GoogleCloud.Testing.V1
     public partial class TestMatrix : Pulumi.CustomResource
     {
         /// <summary>
+        /// Information about the client which invoked the test.
+        /// </summary>
+        [Output("clientInfo")]
+        public Output<Outputs.ClientInfoResponse> ClientInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The devices the tests are being executed on.
+        /// </summary>
+        [Output("environmentMatrix")]
+        public Output<Outputs.EnvironmentMatrixResponse> EnvironmentMatrix { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
+        /// </summary>
+        [Output("failFast")]
+        public Output<bool> FailFast { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
+        /// </summary>
+        [Output("flakyTestAttempts")]
+        public Output<int> FlakyTestAttempts { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
+        /// </summary>
+        [Output("invalidMatrixDetails")]
+        public Output<string> InvalidMatrixDetails { get; private set; } = null!;
+
+        /// <summary>
+        /// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
+        /// </summary>
+        [Output("outcomeSummary")]
+        public Output<string> OutcomeSummary { get; private set; } = null!;
+
+        /// <summary>
+        /// The cloud project that owns the test matrix.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Where the results for the matrix are written.
+        /// </summary>
+        [Output("resultStorage")]
+        public Output<Outputs.ResultStorageResponse> ResultStorage { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates the current progress of the test matrix.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of test executions that the service creates for this matrix.
+        /// </summary>
+        [Output("testExecutions")]
+        public Output<ImmutableArray<Outputs.TestExecutionResponse>> TestExecutions { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique id set by the service.
+        /// </summary>
+        [Output("testMatrixId")]
+        public Output<string> TestMatrixId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. How to run the test.
+        /// </summary>
+        [Output("testSpecification")]
+        public Output<Outputs.TestSpecificationResponse> TestSpecification { get; private set; } = null!;
+
+        /// <summary>
+        /// The time this test matrix was initially created.
+        /// </summary>
+        [Output("timestamp")]
+        public Output<string> Timestamp { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a TestMatrix resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -84,7 +163,7 @@ namespace Pulumi.GoogleCloud.Testing.V1
         public Input<int>? FlakyTestAttempts { get; set; }
 
         /// <summary>
-        /// Output only. Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
+        /// Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
         /// </summary>
         [Input("invalidMatrixDetails")]
         public Input<string>? InvalidMatrixDetails { get; set; }
@@ -108,7 +187,7 @@ namespace Pulumi.GoogleCloud.Testing.V1
         public Input<Inputs.ResultStorageArgs>? ResultStorage { get; set; }
 
         /// <summary>
-        /// Output only. Indicates the current progress of the test matrix.
+        /// Indicates the current progress of the test matrix.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -117,7 +196,7 @@ namespace Pulumi.GoogleCloud.Testing.V1
         private InputList<Inputs.TestExecutionArgs>? _testExecutions;
 
         /// <summary>
-        /// Output only. The list of test executions that the service creates for this matrix.
+        /// The list of test executions that the service creates for this matrix.
         /// </summary>
         public InputList<Inputs.TestExecutionArgs> TestExecutions
         {
@@ -126,7 +205,7 @@ namespace Pulumi.GoogleCloud.Testing.V1
         }
 
         /// <summary>
-        /// Output only. Unique id set by the service.
+        /// Unique id set by the service.
         /// </summary>
         [Input("testMatrixId", required: true)]
         public Input<string> TestMatrixId { get; set; } = null!;
@@ -138,7 +217,7 @@ namespace Pulumi.GoogleCloud.Testing.V1
         public Input<Inputs.TestSpecificationArgs>? TestSpecification { get; set; }
 
         /// <summary>
-        /// Output only. The time this test matrix was initially created.
+        /// The time this test matrix was initially created.
         /// </summary>
         [Input("timestamp")]
         public Input<string>? Timestamp { get; set; }

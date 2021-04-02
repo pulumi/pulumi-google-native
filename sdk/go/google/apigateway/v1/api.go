@@ -14,6 +14,21 @@ import (
 // Creates a new Api in a given project and location.
 type Api struct {
 	pulumi.CustomResourceState
+
+	// Created time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. Display name.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
+	ManagedService pulumi.StringOutput `pulumi:"managedService"`
+	// Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// State of the API.
+	State pulumi.StringOutput `pulumi:"state"`
+	// Updated time.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewApi registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +69,37 @@ func GetApi(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Api resources.
 type apiState struct {
+	// Created time.
+	CreateTime *string `pulumi:"createTime"`
+	// Optional. Display name.
+	DisplayName *string `pulumi:"displayName"`
+	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+	Labels map[string]string `pulumi:"labels"`
+	// Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
+	ManagedService *string `pulumi:"managedService"`
+	// Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
+	Name *string `pulumi:"name"`
+	// State of the API.
+	State *string `pulumi:"state"`
+	// Updated time.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ApiState struct {
+	// Created time.
+	CreateTime pulumi.StringPtrInput
+	// Optional. Display name.
+	DisplayName pulumi.StringPtrInput
+	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+	Labels pulumi.StringMapInput
+	// Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
+	ManagedService pulumi.StringPtrInput
+	// Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
+	Name pulumi.StringPtrInput
+	// State of the API.
+	State pulumi.StringPtrInput
+	// Updated time.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (ApiState) ElementType() reflect.Type {
@@ -65,8 +108,6 @@ func (ApiState) ElementType() reflect.Type {
 
 type apiArgs struct {
 	ApisId string `pulumi:"apisId"`
-	// Output only. Created time.
-	CreateTime *string `pulumi:"createTime"`
 	// Optional. Display name.
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
@@ -74,20 +115,12 @@ type apiArgs struct {
 	LocationsId string            `pulumi:"locationsId"`
 	// Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
 	ManagedService *string `pulumi:"managedService"`
-	// Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	// Output only. State of the API.
-	State *string `pulumi:"state"`
-	// Output only. Updated time.
-	UpdateTime *string `pulumi:"updateTime"`
+	ProjectsId     string  `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a Api resource.
 type ApiArgs struct {
 	ApisId pulumi.StringInput
-	// Output only. Created time.
-	CreateTime pulumi.StringPtrInput
 	// Optional. Display name.
 	DisplayName pulumi.StringPtrInput
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
@@ -95,13 +128,7 @@ type ApiArgs struct {
 	LocationsId pulumi.StringInput
 	// Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
 	ManagedService pulumi.StringPtrInput
-	// Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	// Output only. State of the API.
-	State pulumi.StringPtrInput
-	// Output only. Updated time.
-	UpdateTime pulumi.StringPtrInput
+	ProjectsId     pulumi.StringInput
 }
 
 func (ApiArgs) ElementType() reflect.Type {

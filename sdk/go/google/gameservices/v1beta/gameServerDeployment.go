@@ -14,6 +14,19 @@ import (
 // Creates a new game server deployment in a given project and location.
 type GameServerDeployment struct {
 	pulumi.CustomResourceState
+
+	// The creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Human readable description of the game server delpoyment.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// ETag of the resource.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The labels associated with this game server deployment. Each label is a key-value pair.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The last-modified time.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewGameServerDeployment registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +67,33 @@ func GetGameServerDeployment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GameServerDeployment resources.
 type gameServerDeploymentState struct {
+	// The creation time.
+	CreateTime *string `pulumi:"createTime"`
+	// Human readable description of the game server delpoyment.
+	Description *string `pulumi:"description"`
+	// ETag of the resource.
+	Etag *string `pulumi:"etag"`
+	// The labels associated with this game server deployment. Each label is a key-value pair.
+	Labels map[string]string `pulumi:"labels"`
+	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+	Name *string `pulumi:"name"`
+	// The last-modified time.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type GameServerDeploymentState struct {
+	// The creation time.
+	CreateTime pulumi.StringPtrInput
+	// Human readable description of the game server delpoyment.
+	Description pulumi.StringPtrInput
+	// ETag of the resource.
+	Etag pulumi.StringPtrInput
+	// The labels associated with this game server deployment. Each label is a key-value pair.
+	Labels pulumi.StringMapInput
+	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+	Name pulumi.StringPtrInput
+	// The last-modified time.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (GameServerDeploymentState) ElementType() reflect.Type {
@@ -64,8 +101,6 @@ func (GameServerDeploymentState) ElementType() reflect.Type {
 }
 
 type gameServerDeploymentArgs struct {
-	// Output only. The creation time.
-	CreateTime *string `pulumi:"createTime"`
 	// Human readable description of the game server delpoyment.
 	Description *string `pulumi:"description"`
 	// ETag of the resource.
@@ -77,14 +112,10 @@ type gameServerDeploymentArgs struct {
 	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
-	// Output only. The last-modified time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a GameServerDeployment resource.
 type GameServerDeploymentArgs struct {
-	// Output only. The creation time.
-	CreateTime pulumi.StringPtrInput
 	// Human readable description of the game server delpoyment.
 	Description pulumi.StringPtrInput
 	// ETag of the resource.
@@ -96,8 +127,6 @@ type GameServerDeploymentArgs struct {
 	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
-	// Output only. The last-modified time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (GameServerDeploymentArgs) ElementType() reflect.Type {

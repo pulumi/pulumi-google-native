@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['AgentWebhook']
@@ -95,7 +96,52 @@ class AgentWebhook(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["disabled"] = None
+        __props__["display_name"] = None
+        __props__["generic_web_service"] = None
+        __props__["name"] = None
+        __props__["timeout"] = None
         return AgentWebhook(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether the webhook is disabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. The human-readable name of the webhook, unique within the agent.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="genericWebService")
+    def generic_web_service(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse']:
+        """
+        Configuration for a generic web service.
+        """
+        return pulumi.get(self, "generic_web_service")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Output[str]:
+        """
+        Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
+        """
+        return pulumi.get(self, "timeout")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Apigateway.V1beta
     public partial class Gateway : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+        /// </summary>
+        [Output("apiConfig")]
+        public Output<string> ApiConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Created time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
+        /// </summary>
+        [Output("defaultHostname")]
+        public Output<string> DefaultHostname { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Display name.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the Gateway.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Updated time.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Gateway resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -66,18 +115,6 @@ namespace Pulumi.GoogleCloud.Apigateway.V1beta
         public Input<string>? ApiConfig { get; set; }
 
         /// <summary>
-        /// Output only. Created time.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Output only. The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
-        /// </summary>
-        [Input("defaultHostname")]
-        public Input<string>? DefaultHostname { get; set; }
-
-        /// <summary>
         /// Optional. Display name.
         /// </summary>
         [Input("displayName")]
@@ -101,26 +138,8 @@ namespace Pulumi.GoogleCloud.Apigateway.V1beta
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The current state of the Gateway.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. Updated time.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public GatewayArgs()
         {

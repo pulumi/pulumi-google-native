@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Assuredworkloads.V1
     public partial class OrganizationWorkload : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        /// </summary>
+        [Output("billingAccount")]
+        public Output<string> BillingAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. Compliance Regime associated with this workload.
+        /// </summary>
+        [Output("complianceRegime")]
+        public Output<string> ComplianceRegime { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The Workload creation timestamp.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update &amp; Delete operations.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+        /// </summary>
+        [Output("kmsSettings")]
+        public Output<Outputs.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse> KmsSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Labels applied to the workload.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
+        /// </summary>
+        [Output("provisionedResourcesParent")]
+        public Output<string> ProvisionedResourcesParent { get; private set; } = null!;
+
+        /// <summary>
+        /// The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
+        /// </summary>
+        [Output("resources")]
+        public Output<ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse>> Resources { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationWorkload resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -72,12 +133,6 @@ namespace Pulumi.GoogleCloud.Assuredworkloads.V1
         public Input<string>? ComplianceRegime { get; set; }
 
         /// <summary>
-        /// Output only. Immutable. The Workload creation timestamp.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         /// </summary>
         [Input("displayName")]
@@ -124,18 +179,6 @@ namespace Pulumi.GoogleCloud.Assuredworkloads.V1
         /// </summary>
         [Input("provisionedResourcesParent")]
         public Input<string>? ProvisionedResourcesParent { get; set; }
-
-        [Input("resources")]
-        private InputList<Inputs.GoogleCloudAssuredworkloadsV1WorkloadResourceInfoArgs>? _resources;
-
-        /// <summary>
-        /// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
-        /// </summary>
-        public InputList<Inputs.GoogleCloudAssuredworkloadsV1WorkloadResourceInfoArgs> Resources
-        {
-            get => _resources ?? (_resources = new InputList<Inputs.GoogleCloudAssuredworkloadsV1WorkloadResourceInfoArgs>());
-            set => _resources = value;
-        }
 
         [Input("workloadsId", required: true)]
         public Input<string> WorkloadsId { get; set; } = null!;

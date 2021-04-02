@@ -35,6 +35,66 @@ export class Job extends pulumi.CustomResource {
         return obj['__pulumiType'] === Job.__pulumiType;
     }
 
+    /**
+     * The configuration for this job.
+     */
+    public readonly config!: pulumi.Output<outputs.transcoder.v1beta1.JobConfigResponse>;
+    /**
+     * The time the job was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The time the transcoding finished.
+     */
+    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    /**
+     * List of failure details. This property may contain additional information about the failure when `failure_reason` is present. *Note*: This feature is not yet available.
+     */
+    public /*out*/ readonly failureDetails!: pulumi.Output<outputs.transcoder.v1beta1.FailureDetailResponse[]>;
+    /**
+     * A description of the reason for the failure. This property is always present when `state` is `FAILED`.
+     */
+    public /*out*/ readonly failureReason!: pulumi.Output<string>;
+    /**
+     * Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
+     */
+    public readonly inputUri!: pulumi.Output<string>;
+    /**
+     * The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The origin URI. *Note*: This feature is not yet available.
+     */
+    public /*out*/ readonly originUri!: pulumi.Output<outputs.transcoder.v1beta1.OriginUriResponse>;
+    /**
+     * Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
+     */
+    public readonly outputUri!: pulumi.Output<string>;
+    /**
+     * Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
+     */
+    public readonly priority!: pulumi.Output<number>;
+    /**
+     * Estimated fractional progress, from `0` to `1` for each step. *Note*: This feature is not yet available.
+     */
+    public /*out*/ readonly progress!: pulumi.Output<outputs.transcoder.v1beta1.ProgressResponse>;
+    /**
+     * The time the transcoding started.
+     */
+    public /*out*/ readonly startTime!: pulumi.Output<string>;
+    /**
+     * The current state of the job.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+     */
+    public readonly templateId!: pulumi.Output<string>;
+    /**
+     * Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
+     */
+    public readonly ttlAfterCompletionDays!: pulumi.Output<number>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -57,24 +117,39 @@ export class Job extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["config"] = args ? args.config : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["failureDetails"] = args ? args.failureDetails : undefined;
-            inputs["failureReason"] = args ? args.failureReason : undefined;
             inputs["inputUri"] = args ? args.inputUri : undefined;
             inputs["jobsId"] = args ? args.jobsId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["originUri"] = args ? args.originUri : undefined;
             inputs["outputUri"] = args ? args.outputUri : undefined;
             inputs["priority"] = args ? args.priority : undefined;
-            inputs["progress"] = args ? args.progress : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["state"] = args ? args.state : undefined;
             inputs["templateId"] = args ? args.templateId : undefined;
             inputs["ttlAfterCompletionDays"] = args ? args.ttlAfterCompletionDays : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["failureDetails"] = undefined /*out*/;
+            inputs["failureReason"] = undefined /*out*/;
+            inputs["originUri"] = undefined /*out*/;
+            inputs["progress"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["config"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["failureDetails"] = undefined /*out*/;
+            inputs["failureReason"] = undefined /*out*/;
+            inputs["inputUri"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["originUri"] = undefined /*out*/;
+            inputs["outputUri"] = undefined /*out*/;
+            inputs["priority"] = undefined /*out*/;
+            inputs["progress"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["templateId"] = undefined /*out*/;
+            inputs["ttlAfterCompletionDays"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -92,22 +167,6 @@ export interface JobArgs {
      */
     readonly config?: pulumi.Input<inputs.transcoder.v1beta1.JobConfig>;
     /**
-     * Output only. The time the job was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
-     * Output only. The time the transcoding finished.
-     */
-    readonly endTime?: pulumi.Input<string>;
-    /**
-     * Output only. List of failure details. This property may contain additional information about the failure when `failure_reason` is present. *Note*: This feature is not yet available.
-     */
-    readonly failureDetails?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.FailureDetail>[]>;
-    /**
-     * Output only. A description of the reason for the failure. This property is always present when `state` is `FAILED`.
-     */
-    readonly failureReason?: pulumi.Input<string>;
-    /**
      * Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
      */
     readonly inputUri?: pulumi.Input<string>;
@@ -118,10 +177,6 @@ export interface JobArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Output only. The origin URI. *Note*: This feature is not yet available.
-     */
-    readonly originUri?: pulumi.Input<inputs.transcoder.v1beta1.OriginUri>;
-    /**
      * Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
      */
     readonly outputUri?: pulumi.Input<string>;
@@ -129,19 +184,7 @@ export interface JobArgs {
      * Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
      */
     readonly priority?: pulumi.Input<number>;
-    /**
-     * Output only. Estimated fractional progress, from `0` to `1` for each step. *Note*: This feature is not yet available.
-     */
-    readonly progress?: pulumi.Input<inputs.transcoder.v1beta1.Progress>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. The time the transcoding started.
-     */
-    readonly startTime?: pulumi.Input<string>;
-    /**
-     * Output only. The current state of the job.
-     */
-    readonly state?: pulumi.Input<string>;
     /**
      * Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
      */

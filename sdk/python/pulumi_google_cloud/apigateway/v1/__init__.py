@@ -10,6 +10,7 @@ from .api_iam_policy import *
 from .gateway import *
 from .gateway_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

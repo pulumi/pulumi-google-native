@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['OrganizationEnvironmentQuery']
@@ -87,6 +88,16 @@ class OrganizationEnvironmentQuery(pulumi.CustomResource):
             __props__['queries_id'] = queries_id
             __props__['report_definition_id'] = report_definition_id
             __props__['time_range'] = time_range
+            __props__['created'] = None
+            __props__['error'] = None
+            __props__['execution_time'] = None
+            __props__['query_params'] = None
+            __props__['result'] = None
+            __props__['result_file_size'] = None
+            __props__['result_rows'] = None
+            __props__['self'] = None
+            __props__['state'] = None
+            __props__['updated'] = None
         super(OrganizationEnvironmentQuery, __self__).__init__(
             'google-cloud:apigee/v1:OrganizationEnvironmentQuery',
             resource_name,
@@ -109,7 +120,124 @@ class OrganizationEnvironmentQuery(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["created"] = None
+        __props__["envgroup_hostname"] = None
+        __props__["error"] = None
+        __props__["execution_time"] = None
+        __props__["name"] = None
+        __props__["query_params"] = None
+        __props__["report_definition_id"] = None
+        __props__["result"] = None
+        __props__["result_file_size"] = None
+        __props__["result_rows"] = None
+        __props__["self"] = None
+        __props__["state"] = None
+        __props__["updated"] = None
         return OrganizationEnvironmentQuery(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def created(self) -> pulumi.Output[str]:
+        """
+        Creation time of the query.
+        """
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter(name="envgroupHostname")
+    def envgroup_hostname(self) -> pulumi.Output[str]:
+        """
+        Hostname is available only when query is executed at host level.
+        """
+        return pulumi.get(self, "envgroup_hostname")
+
+    @property
+    @pulumi.getter
+    def error(self) -> pulumi.Output[str]:
+        """
+        Error is set when query fails.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter(name="executionTime")
+    def execution_time(self) -> pulumi.Output[str]:
+        """
+        ExecutionTime is available only after the query is completed.
+        """
+        return pulumi.get(self, "execution_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Asynchronous Query Name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="queryParams")
+    def query_params(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1QueryMetadataResponse']:
+        """
+        Contains information like metrics, dimenstions etc of the AsyncQuery.
+        """
+        return pulumi.get(self, "query_params")
+
+    @property
+    @pulumi.getter(name="reportDefinitionId")
+    def report_definition_id(self) -> pulumi.Output[str]:
+        """
+        Asynchronous Report ID.
+        """
+        return pulumi.get(self, "report_definition_id")
+
+    @property
+    @pulumi.getter
+    def result(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1AsyncQueryResultResponse']:
+        """
+        Result is available only after the query is completed.
+        """
+        return pulumi.get(self, "result")
+
+    @property
+    @pulumi.getter(name="resultFileSize")
+    def result_file_size(self) -> pulumi.Output[str]:
+        """
+        ResultFileSize is available only after the query is completed.
+        """
+        return pulumi.get(self, "result_file_size")
+
+    @property
+    @pulumi.getter(name="resultRows")
+    def result_rows(self) -> pulumi.Output[str]:
+        """
+        ResultRows is available only after the query is completed.
+        """
+        return pulumi.get(self, "result_rows")
+
+    @property
+    @pulumi.getter
+    def self(self) -> pulumi.Output[str]:
+        """
+        Self link of the query. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+        """
+        return pulumi.get(self, "self")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        Query state could be "enqueued", "running", "completed", "failed".
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> pulumi.Output[str]:
+        """
+        Last updated timestamp for the query.
+        """
+        return pulumi.get(self, "updated")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

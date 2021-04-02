@@ -16,6 +16,103 @@ namespace Pulumi.GoogleCloud.Container.V1beta1
     public partial class ClusterNodePool : Pulumi.CustomResource
     {
         /// <summary>
+        /// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
+        /// </summary>
+        [Output("autoscaling")]
+        public Output<Outputs.NodePoolAutoscalingResponse> Autoscaling { get; private set; } = null!;
+
+        /// <summary>
+        /// Which conditions caused the current node pool state.
+        /// </summary>
+        [Output("conditions")]
+        public Output<ImmutableArray<Outputs.StatusConditionResponse>> Conditions { get; private set; } = null!;
+
+        /// <summary>
+        /// The node configuration of the pool.
+        /// </summary>
+        [Output("config")]
+        public Output<Outputs.NodeConfigResponse> Config { get; private set; } = null!;
+
+        /// <summary>
+        /// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
+        /// </summary>
+        [Output("initialNodeCount")]
+        public Output<int> InitialNodeCount { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+        /// </summary>
+        [Output("instanceGroupUrls")]
+        public Output<ImmutableArray<string>> InstanceGroupUrls { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
+        /// </summary>
+        [Output("locations")]
+        public Output<ImmutableArray<string>> Locations { get; private set; } = null!;
+
+        /// <summary>
+        /// NodeManagement configuration for this NodePool.
+        /// </summary>
+        [Output("management")]
+        public Output<Outputs.NodeManagementResponse> Management { get; private set; } = null!;
+
+        /// <summary>
+        /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        /// </summary>
+        [Output("maxPodsConstraint")]
+        public Output<Outputs.MaxPodsConstraintResponse> MaxPodsConstraint { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the node pool.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        /// </summary>
+        [Output("networkConfig")]
+        public Output<Outputs.NodeNetworkConfigResponse> NetworkConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output only] The pod CIDR block size per node in this node pool.
+        /// </summary>
+        [Output("podIpv4CidrSize")]
+        public Output<int> PodIpv4CidrSize { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output only] Server-defined URL for the resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output only] The status of the nodes in this pool instance.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+        /// </summary>
+        [Output("statusMessage")]
+        public Output<string> StatusMessage { get; private set; } = null!;
+
+        /// <summary>
+        /// Upgrade settings control disruption and speed of the upgrade.
+        /// </summary>
+        [Output("upgradeSettings")]
+        public Output<Outputs.UpgradeSettingsResponse> UpgradeSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the Kubernetes of this node.
+        /// </summary>
+        [Output("version")]
+        public Output<string> Version { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a ClusterNodePool resource with the given unique name, arguments, and options.
         /// </summary>
         ///

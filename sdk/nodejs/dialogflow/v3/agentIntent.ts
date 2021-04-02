@@ -35,6 +35,38 @@ export class AgentIntent extends pulumi.CustomResource {
         return obj['__pulumiType'] === AgentIntent.__pulumiType;
     }
 
+    /**
+     * Optional. Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Required. The human-readable name of the intent, unique within the agent.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+     */
+    public readonly isFallback!: pulumi.Output<boolean>;
+    /**
+     * Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys." is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys.head * sys.contextual The above labels do not require value. "sys.head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The collection of parameters associated with the intent.
+     */
+    public readonly parameters!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3IntentParameterResponse[]>;
+    /**
+     * The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
+     */
+    public readonly priority!: pulumi.Output<number>;
+    /**
+     * The collection of training phrases the agent is trained on to identify the intent.
+     */
+    public readonly trainingPhrases!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3IntentTrainingPhraseResponse[]>;
 
     /**
      * Create a AgentIntent resource with the given unique name, arguments, and options.
@@ -72,6 +104,14 @@ export class AgentIntent extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["trainingPhrases"] = args ? args.trainingPhrases : undefined;
         } else {
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["isFallback"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["parameters"] = undefined /*out*/;
+            inputs["priority"] = undefined /*out*/;
+            inputs["trainingPhrases"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

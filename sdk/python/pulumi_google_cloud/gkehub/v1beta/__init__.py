@@ -7,6 +7,7 @@ from .feature import *
 from .feature_iam_policy import *
 from .membership_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

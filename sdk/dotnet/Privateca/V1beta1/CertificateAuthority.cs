@@ -16,6 +16,115 @@ namespace Pulumi.GoogleCloud.Privateca.V1beta1
     public partial class CertificateAuthority : Pulumi.CustomResource
     {
         /// <summary>
+        /// URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+        /// </summary>
+        [Output("accessUrls")]
+        public Output<Outputs.AccessUrlsResponse> AccessUrls { get; private set; } = null!;
+
+        /// <summary>
+        /// A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
+        /// </summary>
+        [Output("caCertificateDescriptions")]
+        public Output<ImmutableArray<Outputs.CertificateDescriptionResponse>> CaCertificateDescriptions { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
+        /// </summary>
+        [Output("certificatePolicy")]
+        public Output<Outputs.CertificateAuthorityPolicyResponse> CertificatePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
+        /// </summary>
+        [Output("config")]
+        public Output<Outputs.CertificateConfigResponse> Config { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which this CertificateAuthority was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which this CertificateAuthority will be deleted, if scheduled for deletion.
+        /// </summary>
+        [Output("deleteTime")]
+        public Output<string> DeleteTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
+        /// </summary>
+        [Output("gcsBucket")]
+        public Output<string> GcsBucket { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The IssuingOptions to follow when issuing Certificates from this CertificateAuthority.
+        /// </summary>
+        [Output("issuingOptions")]
+        public Output<Outputs.IssuingOptionsResponse> IssuingOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
+        /// </summary>
+        [Output("keySpec")]
+        public Output<Outputs.KeyVersionSpecResponse> KeySpec { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Labels with user-defined metadata.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        /// </summary>
+        [Output("lifetime")]
+        public Output<string> Lifetime { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate.
+        /// </summary>
+        [Output("pemCaCertificates")]
+        public Output<ImmutableArray<string>> PemCaCertificates { get; private set; } = null!;
+
+        /// <summary>
+        /// The State for this CertificateAuthority.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
+        /// </summary>
+        [Output("subordinateConfig")]
+        public Output<Outputs.SubordinateConfigResponse> SubordinateConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. The Tier of this CertificateAuthority.
+        /// </summary>
+        [Output("tier")]
+        public Output<string> Tier { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Immutable. The Type of this CertificateAuthority.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which this CertificateAuthority was updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a CertificateAuthority resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,24 +168,6 @@ namespace Pulumi.GoogleCloud.Privateca.V1beta1
 
     public sealed class CertificateAuthorityArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. URLs for accessing content published by this CA, such as the CA certificate and CRLs.
-        /// </summary>
-        [Input("accessUrls")]
-        public Input<Inputs.AccessUrlsArgs>? AccessUrls { get; set; }
-
-        [Input("caCertificateDescriptions")]
-        private InputList<Inputs.CertificateDescriptionArgs>? _caCertificateDescriptions;
-
-        /// <summary>
-        /// Output only. A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
-        /// </summary>
-        public InputList<Inputs.CertificateDescriptionArgs> CaCertificateDescriptions
-        {
-            get => _caCertificateDescriptions ?? (_caCertificateDescriptions = new InputList<Inputs.CertificateDescriptionArgs>());
-            set => _caCertificateDescriptions = value;
-        }
-
         [Input("certificateAuthoritiesId", required: true)]
         public Input<string> CertificateAuthoritiesId { get; set; } = null!;
 
@@ -91,18 +182,6 @@ namespace Pulumi.GoogleCloud.Privateca.V1beta1
         /// </summary>
         [Input("config")]
         public Input<Inputs.CertificateConfigArgs>? Config { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which this CertificateAuthority was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which this CertificateAuthority will be deleted, if scheduled for deletion.
-        /// </summary>
-        [Input("deleteTime")]
-        public Input<string>? DeleteTime { get; set; }
 
         /// <summary>
         /// Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
@@ -143,32 +222,8 @@ namespace Pulumi.GoogleCloud.Privateca.V1beta1
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        [Input("pemCaCertificates")]
-        private InputList<string>? _pemCaCertificates;
-
-        /// <summary>
-        /// Output only. This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate.
-        /// </summary>
-        public InputList<string> PemCaCertificates
-        {
-            get => _pemCaCertificates ?? (_pemCaCertificates = new InputList<string>());
-            set => _pemCaCertificates = value;
-        }
-
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The State for this CertificateAuthority.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         /// <summary>
         /// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
@@ -187,12 +242,6 @@ namespace Pulumi.GoogleCloud.Privateca.V1beta1
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
-
-        /// <summary>
-        /// Output only. The time at which this CertificateAuthority was updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public CertificateAuthorityArgs()
         {

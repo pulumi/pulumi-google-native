@@ -35,6 +35,34 @@ export class GameServerDeploymentConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === GameServerDeploymentConfig.__pulumiType;
     }
 
+    /**
+     * The creation time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The description of the game server config.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
+     */
+    public readonly fleetConfigs!: pulumi.Output<outputs.gameservices.v1beta.FleetConfigResponse[]>;
+    /**
+     * The labels associated with this game server config. Each label is a key-value pair.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The autoscaling settings.
+     */
+    public readonly scalingConfigs!: pulumi.Output<outputs.gameservices.v1beta.ScalingConfigResponse[]>;
+    /**
+     * The last-modified time.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a GameServerDeploymentConfig resource with the given unique name, arguments, and options.
@@ -60,7 +88,6 @@ export class GameServerDeploymentConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["configsId"] = args ? args.configsId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["fleetConfigs"] = args ? args.fleetConfigs : undefined;
             inputs["gameServerDeploymentsId"] = args ? args.gameServerDeploymentsId : undefined;
@@ -69,8 +96,16 @@ export class GameServerDeploymentConfig extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["scalingConfigs"] = args ? args.scalingConfigs : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["fleetConfigs"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["scalingConfigs"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -84,10 +119,6 @@ export class GameServerDeploymentConfig extends pulumi.CustomResource {
  */
 export interface GameServerDeploymentConfigArgs {
     readonly configsId: pulumi.Input<string>;
-    /**
-     * Output only. The creation time.
-     */
-    readonly createTime?: pulumi.Input<string>;
     /**
      * The description of the game server config.
      */
@@ -111,8 +142,4 @@ export interface GameServerDeploymentConfigArgs {
      * The autoscaling settings.
      */
     readonly scalingConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.v1beta.ScalingConfig>[]>;
-    /**
-     * Output only. The last-modified time.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

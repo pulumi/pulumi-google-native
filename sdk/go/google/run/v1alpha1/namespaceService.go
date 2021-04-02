@@ -14,6 +14,17 @@ import (
 // Rpc to create a service.
 type NamespaceService struct {
 	pulumi.CustomResourceState
+
+	// The API version for this call such as "serving.knative.dev/v1alpha1".
+	ApiVersion pulumi.StringOutput `pulumi:"apiVersion"`
+	// The kind of resource, in this case "Service".
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// Metadata associated with this Service, including name, namespace, labels, and annotations.
+	Metadata ObjectMetaResponseOutput `pulumi:"metadata"`
+	// Spec holds the desired state of the Service (from the client).
+	Spec ServiceSpecResponseOutput `pulumi:"spec"`
+	// Status communicates the observed state of the Service (from the controller).
+	Status ServiceStatusResponseOutput `pulumi:"status"`
 }
 
 // NewNamespaceService registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +62,29 @@ func GetNamespaceService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NamespaceService resources.
 type namespaceServiceState struct {
+	// The API version for this call such as "serving.knative.dev/v1alpha1".
+	ApiVersion *string `pulumi:"apiVersion"`
+	// The kind of resource, in this case "Service".
+	Kind *string `pulumi:"kind"`
+	// Metadata associated with this Service, including name, namespace, labels, and annotations.
+	Metadata *ObjectMetaResponse `pulumi:"metadata"`
+	// Spec holds the desired state of the Service (from the client).
+	Spec *ServiceSpecResponse `pulumi:"spec"`
+	// Status communicates the observed state of the Service (from the controller).
+	Status *ServiceStatusResponse `pulumi:"status"`
 }
 
 type NamespaceServiceState struct {
+	// The API version for this call such as "serving.knative.dev/v1alpha1".
+	ApiVersion pulumi.StringPtrInput
+	// The kind of resource, in this case "Service".
+	Kind pulumi.StringPtrInput
+	// Metadata associated with this Service, including name, namespace, labels, and annotations.
+	Metadata ObjectMetaResponsePtrInput
+	// Spec holds the desired state of the Service (from the client).
+	Spec ServiceSpecResponsePtrInput
+	// Status communicates the observed state of the Service (from the controller).
+	Status ServiceStatusResponsePtrInput
 }
 
 func (NamespaceServiceState) ElementType() reflect.Type {

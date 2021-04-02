@@ -34,6 +34,38 @@ export class Notification extends pulumi.CustomResource {
         return obj['__pulumiType'] === Notification.__pulumiType;
     }
 
+    /**
+     * An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
+     */
+    public readonly custom_attributes!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * HTTP 1.1 Entity tag for this subscription notification.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
+     * If present, only send notifications about listed event types. If empty, sent notifications for all event types.
+     */
+    public readonly event_types!: pulumi.Output<string[]>;
+    /**
+     * The kind of item this is. For notifications, this is always storage#notification.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * If present, only apply this notification configuration to object names that begin with this prefix.
+     */
+    public readonly object_name_prefix!: pulumi.Output<string>;
+    /**
+     * The desired content of the Payload.
+     */
+    public readonly payload_format!: pulumi.Output<string>;
+    /**
+     * The canonical URL of this notification.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
+     */
+    public readonly topic!: pulumi.Output<string>;
 
     /**
      * Create a Notification resource with the given unique name, arguments, and options.
@@ -64,6 +96,14 @@ export class Notification extends pulumi.CustomResource {
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["topic"] = args ? args.topic : undefined;
         } else {
+            inputs["custom_attributes"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["event_types"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["object_name_prefix"] = undefined /*out*/;
+            inputs["payload_format"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["topic"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

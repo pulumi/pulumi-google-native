@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Change']
@@ -96,7 +97,58 @@ class Change(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["additions"] = None
+        __props__["deletions"] = None
+        __props__["is_serving"] = None
+        __props__["kind"] = None
+        __props__["start_time"] = None
+        __props__["status"] = None
         return Change(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def additions(self) -> pulumi.Output[Sequence['outputs.ResourceRecordSetResponse']]:
+        """
+        Which ResourceRecordSets to add?
+        """
+        return pulumi.get(self, "additions")
+
+    @property
+    @pulumi.getter
+    def deletions(self) -> pulumi.Output[Sequence['outputs.ResourceRecordSetResponse']]:
+        """
+        Which ResourceRecordSets to remove? Must match existing data exactly.
+        """
+        return pulumi.get(self, "deletions")
+
+    @property
+    @pulumi.getter(name="isServing")
+    def is_serving(self) -> pulumi.Output[bool]:
+        """
+        If the DNS queries for the zone will be served.
+        """
+        return pulumi.get(self, "is_serving")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Output[str]:
+        """
+        The time that this operation was started by the server (output only). This is in RFC3339 text format.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
+        """
+        return pulumi.get(self, "status")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

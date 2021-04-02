@@ -17,14 +17,10 @@ class BillingAccountBucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_accounts_id: Optional[pulumi.Input[str]] = None,
                  buckets_id: Optional[pulumi.Input[str]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 lifecycle_state: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -33,13 +29,9 @@ class BillingAccountBucket(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. The creation timestamp of the bucket. This is not set for any of the default buckets.
         :param pulumi.Input[str] description: Describes this bucket.
-        :param pulumi.Input[str] lifecycle_state: Output only. The bucket lifecycle state.
         :param pulumi.Input[bool] locked: Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
-        :param pulumi.Input[str] name: Output only. The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
-        :param pulumi.Input[str] update_time: Output only. The last update timestamp of the bucket.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -64,16 +56,12 @@ class BillingAccountBucket(pulumi.CustomResource):
             if buckets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'buckets_id'")
             __props__['buckets_id'] = buckets_id
-            __props__['create_time'] = create_time
             __props__['description'] = description
-            __props__['lifecycle_state'] = lifecycle_state
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
             __props__['locked'] = locked
-            __props__['name'] = name
             __props__['retention_days'] = retention_days
-            __props__['update_time'] = update_time
         super(BillingAccountBucket, __self__).__init__(
             'google-cloud:logging/v2:BillingAccountBucket',
             resource_name,

@@ -34,6 +34,30 @@ export class WebApp extends pulumi.CustomResource {
         return obj['__pulumiType'] === WebApp.__pulumiType;
     }
 
+    /**
+     * Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified.
+     */
+    public readonly appId!: pulumi.Output<string>;
+    /**
+     * The URLs where the `WebApp` is hosted.
+     */
+    public readonly appUrls!: pulumi.Output<string[]>;
+    /**
+     * The user-assigned display name for the `WebApp`.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
+     * Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
+     */
+    public /*out*/ readonly webId!: pulumi.Output<string>;
 
     /**
      * Create a WebApp resource with the given unique name, arguments, and options.
@@ -59,8 +83,14 @@ export class WebApp extends pulumi.CustomResource {
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["webAppsId"] = args ? args.webAppsId : undefined;
-            inputs["webId"] = args ? args.webId : undefined;
+            inputs["webId"] = undefined /*out*/;
         } else {
+            inputs["appId"] = undefined /*out*/;
+            inputs["appUrls"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["projectId"] = undefined /*out*/;
+            inputs["webId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -95,8 +125,4 @@ export interface WebAppArgs {
     readonly projectId?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     readonly webAppsId: pulumi.Input<string>;
-    /**
-     * Output only. Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
-     */
-    readonly webId?: pulumi.Input<string>;
 }

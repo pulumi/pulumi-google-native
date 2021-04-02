@@ -35,6 +35,19 @@ export class RegionAutoscalingPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegionAutoscalingPolicy.__pulumiType;
     }
 
+    public readonly basicAlgorithm!: pulumi.Output<outputs.dataproc.v1beta2.BasicAutoscalingAlgorithmResponse>;
+    /**
+     * The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. Describes how the autoscaler will operate for secondary workers.
+     */
+    public readonly secondaryWorkerConfig!: pulumi.Output<outputs.dataproc.v1beta2.InstanceGroupAutoscalingPolicyConfigResponse>;
+    /**
+     * Required. Describes how the autoscaler will operate for primary workers.
+     */
+    public readonly workerConfig!: pulumi.Output<outputs.dataproc.v1beta2.InstanceGroupAutoscalingPolicyConfigResponse>;
 
     /**
      * Create a RegionAutoscalingPolicy resource with the given unique name, arguments, and options.
@@ -59,12 +72,16 @@ export class RegionAutoscalingPolicy extends pulumi.CustomResource {
             inputs["autoscalingPoliciesId"] = args ? args.autoscalingPoliciesId : undefined;
             inputs["basicAlgorithm"] = args ? args.basicAlgorithm : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["regionsId"] = args ? args.regionsId : undefined;
             inputs["secondaryWorkerConfig"] = args ? args.secondaryWorkerConfig : undefined;
             inputs["workerConfig"] = args ? args.workerConfig : undefined;
+            inputs["name"] = undefined /*out*/;
         } else {
+            inputs["basicAlgorithm"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["secondaryWorkerConfig"] = undefined /*out*/;
+            inputs["workerConfig"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -83,10 +100,6 @@ export interface RegionAutoscalingPolicyArgs {
      * Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
      */
     readonly id?: pulumi.Input<string>;
-    /**
-     * Output only. The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     readonly regionsId: pulumi.Input<string>;
     /**

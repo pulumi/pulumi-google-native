@@ -128,6 +128,124 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
+// Associates `members` with a `role`.
+type BindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
+// You can construct a concrete instance of `BindingResponseInput` via:
+//
+//          BindingResponseArgs{...}
+type BindingResponseInput interface {
+	pulumi.Input
+
+	ToBindingResponseOutput() BindingResponseOutput
+	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
+}
+
+// Associates `members` with a `role`.
+type BindingResponseArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
+	return i.ToBindingResponseOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
+}
+
+// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
+// You can construct a concrete instance of `BindingResponseArrayInput` via:
+//
+//          BindingResponseArray{ BindingResponseArgs{...} }
+type BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToBindingResponseArrayOutput() BindingResponseArrayOutput
+	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
+}
+
+type BindingResponseArray []BindingResponseInput
+
+func (BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return i.ToBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
+		return vs[0].([]BindingResponse)[vs[1].(int)]
+	}).(BindingResponseOutput)
+}
+
 // A Cardinality condition for the Waiter resource. A cardinality condition is met when the number of variables under a specified path prefix reaches a predefined number. For example, if you set a Cardinality condition where the `path` is set to `/foo` and the number of paths is set to `2`, the following variables would meet the condition in a RuntimeConfig resource: + `/foo/variable1 = "value1"` + `/foo/variable2 = "value2"` + `/bar/variable3 = "value3"` It would not satisfy the same condition with the `number` set to `3`, however, because there is only 2 paths that start with `/foo`. Cardinality conditions are recursive; all subtrees under the specific path prefix are counted.
 type Cardinality struct {
 	// The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified.
@@ -281,6 +399,159 @@ func (o CardinalityPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A Cardinality condition for the Waiter resource. A cardinality condition is met when the number of variables under a specified path prefix reaches a predefined number. For example, if you set a Cardinality condition where the `path` is set to `/foo` and the number of paths is set to `2`, the following variables would meet the condition in a RuntimeConfig resource: + `/foo/variable1 = "value1"` + `/foo/variable2 = "value2"` + `/bar/variable3 = "value3"` It would not satisfy the same condition with the `number` set to `3`, however, because there is only 2 paths that start with `/foo`. Cardinality conditions are recursive; all subtrees under the specific path prefix are counted.
+type CardinalityResponse struct {
+	// The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified.
+	Number int `pulumi:"number"`
+	// The root of the variable subtree to monitor. For example, `/foo`.
+	Path string `pulumi:"path"`
+}
+
+// CardinalityResponseInput is an input type that accepts CardinalityResponseArgs and CardinalityResponseOutput values.
+// You can construct a concrete instance of `CardinalityResponseInput` via:
+//
+//          CardinalityResponseArgs{...}
+type CardinalityResponseInput interface {
+	pulumi.Input
+
+	ToCardinalityResponseOutput() CardinalityResponseOutput
+	ToCardinalityResponseOutputWithContext(context.Context) CardinalityResponseOutput
+}
+
+// A Cardinality condition for the Waiter resource. A cardinality condition is met when the number of variables under a specified path prefix reaches a predefined number. For example, if you set a Cardinality condition where the `path` is set to `/foo` and the number of paths is set to `2`, the following variables would meet the condition in a RuntimeConfig resource: + `/foo/variable1 = "value1"` + `/foo/variable2 = "value2"` + `/bar/variable3 = "value3"` It would not satisfy the same condition with the `number` set to `3`, however, because there is only 2 paths that start with `/foo`. Cardinality conditions are recursive; all subtrees under the specific path prefix are counted.
+type CardinalityResponseArgs struct {
+	// The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified.
+	Number pulumi.IntInput `pulumi:"number"`
+	// The root of the variable subtree to monitor. For example, `/foo`.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (CardinalityResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CardinalityResponse)(nil)).Elem()
+}
+
+func (i CardinalityResponseArgs) ToCardinalityResponseOutput() CardinalityResponseOutput {
+	return i.ToCardinalityResponseOutputWithContext(context.Background())
+}
+
+func (i CardinalityResponseArgs) ToCardinalityResponseOutputWithContext(ctx context.Context) CardinalityResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CardinalityResponseOutput)
+}
+
+func (i CardinalityResponseArgs) ToCardinalityResponsePtrOutput() CardinalityResponsePtrOutput {
+	return i.ToCardinalityResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CardinalityResponseArgs) ToCardinalityResponsePtrOutputWithContext(ctx context.Context) CardinalityResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CardinalityResponseOutput).ToCardinalityResponsePtrOutputWithContext(ctx)
+}
+
+// CardinalityResponsePtrInput is an input type that accepts CardinalityResponseArgs, CardinalityResponsePtr and CardinalityResponsePtrOutput values.
+// You can construct a concrete instance of `CardinalityResponsePtrInput` via:
+//
+//          CardinalityResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CardinalityResponsePtrInput interface {
+	pulumi.Input
+
+	ToCardinalityResponsePtrOutput() CardinalityResponsePtrOutput
+	ToCardinalityResponsePtrOutputWithContext(context.Context) CardinalityResponsePtrOutput
+}
+
+type cardinalityResponsePtrType CardinalityResponseArgs
+
+func CardinalityResponsePtr(v *CardinalityResponseArgs) CardinalityResponsePtrInput {
+	return (*cardinalityResponsePtrType)(v)
+}
+
+func (*cardinalityResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CardinalityResponse)(nil)).Elem()
+}
+
+func (i *cardinalityResponsePtrType) ToCardinalityResponsePtrOutput() CardinalityResponsePtrOutput {
+	return i.ToCardinalityResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *cardinalityResponsePtrType) ToCardinalityResponsePtrOutputWithContext(ctx context.Context) CardinalityResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CardinalityResponsePtrOutput)
+}
+
+// A Cardinality condition for the Waiter resource. A cardinality condition is met when the number of variables under a specified path prefix reaches a predefined number. For example, if you set a Cardinality condition where the `path` is set to `/foo` and the number of paths is set to `2`, the following variables would meet the condition in a RuntimeConfig resource: + `/foo/variable1 = "value1"` + `/foo/variable2 = "value2"` + `/bar/variable3 = "value3"` It would not satisfy the same condition with the `number` set to `3`, however, because there is only 2 paths that start with `/foo`. Cardinality conditions are recursive; all subtrees under the specific path prefix are counted.
+type CardinalityResponseOutput struct{ *pulumi.OutputState }
+
+func (CardinalityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CardinalityResponse)(nil)).Elem()
+}
+
+func (o CardinalityResponseOutput) ToCardinalityResponseOutput() CardinalityResponseOutput {
+	return o
+}
+
+func (o CardinalityResponseOutput) ToCardinalityResponseOutputWithContext(ctx context.Context) CardinalityResponseOutput {
+	return o
+}
+
+func (o CardinalityResponseOutput) ToCardinalityResponsePtrOutput() CardinalityResponsePtrOutput {
+	return o.ToCardinalityResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CardinalityResponseOutput) ToCardinalityResponsePtrOutputWithContext(ctx context.Context) CardinalityResponsePtrOutput {
+	return o.ApplyT(func(v CardinalityResponse) *CardinalityResponse {
+		return &v
+	}).(CardinalityResponsePtrOutput)
+}
+
+// The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified.
+func (o CardinalityResponseOutput) Number() pulumi.IntOutput {
+	return o.ApplyT(func(v CardinalityResponse) int { return v.Number }).(pulumi.IntOutput)
+}
+
+// The root of the variable subtree to monitor. For example, `/foo`.
+func (o CardinalityResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v CardinalityResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type CardinalityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CardinalityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CardinalityResponse)(nil)).Elem()
+}
+
+func (o CardinalityResponsePtrOutput) ToCardinalityResponsePtrOutput() CardinalityResponsePtrOutput {
+	return o
+}
+
+func (o CardinalityResponsePtrOutput) ToCardinalityResponsePtrOutputWithContext(ctx context.Context) CardinalityResponsePtrOutput {
+	return o
+}
+
+func (o CardinalityResponsePtrOutput) Elem() CardinalityResponseOutput {
+	return o.ApplyT(func(v *CardinalityResponse) CardinalityResponse { return *v }).(CardinalityResponseOutput)
+}
+
+// The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified.
+func (o CardinalityResponsePtrOutput) Number() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CardinalityResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Number
+	}).(pulumi.IntPtrOutput)
+}
+
+// The root of the variable subtree to monitor. For example, `/foo`.
+func (o CardinalityResponsePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CardinalityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
 // The condition that a Waiter resource is waiting for.
 type EndCondition struct {
 	// The cardinality of the `EndCondition`.
@@ -413,6 +684,140 @@ func (o EndConditionPtrOutput) Cardinality() CardinalityPtrOutput {
 		}
 		return v.Cardinality
 	}).(CardinalityPtrOutput)
+}
+
+// The condition that a Waiter resource is waiting for.
+type EndConditionResponse struct {
+	// The cardinality of the `EndCondition`.
+	Cardinality CardinalityResponse `pulumi:"cardinality"`
+}
+
+// EndConditionResponseInput is an input type that accepts EndConditionResponseArgs and EndConditionResponseOutput values.
+// You can construct a concrete instance of `EndConditionResponseInput` via:
+//
+//          EndConditionResponseArgs{...}
+type EndConditionResponseInput interface {
+	pulumi.Input
+
+	ToEndConditionResponseOutput() EndConditionResponseOutput
+	ToEndConditionResponseOutputWithContext(context.Context) EndConditionResponseOutput
+}
+
+// The condition that a Waiter resource is waiting for.
+type EndConditionResponseArgs struct {
+	// The cardinality of the `EndCondition`.
+	Cardinality CardinalityResponseInput `pulumi:"cardinality"`
+}
+
+func (EndConditionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndConditionResponse)(nil)).Elem()
+}
+
+func (i EndConditionResponseArgs) ToEndConditionResponseOutput() EndConditionResponseOutput {
+	return i.ToEndConditionResponseOutputWithContext(context.Background())
+}
+
+func (i EndConditionResponseArgs) ToEndConditionResponseOutputWithContext(ctx context.Context) EndConditionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndConditionResponseOutput)
+}
+
+func (i EndConditionResponseArgs) ToEndConditionResponsePtrOutput() EndConditionResponsePtrOutput {
+	return i.ToEndConditionResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EndConditionResponseArgs) ToEndConditionResponsePtrOutputWithContext(ctx context.Context) EndConditionResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndConditionResponseOutput).ToEndConditionResponsePtrOutputWithContext(ctx)
+}
+
+// EndConditionResponsePtrInput is an input type that accepts EndConditionResponseArgs, EndConditionResponsePtr and EndConditionResponsePtrOutput values.
+// You can construct a concrete instance of `EndConditionResponsePtrInput` via:
+//
+//          EndConditionResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type EndConditionResponsePtrInput interface {
+	pulumi.Input
+
+	ToEndConditionResponsePtrOutput() EndConditionResponsePtrOutput
+	ToEndConditionResponsePtrOutputWithContext(context.Context) EndConditionResponsePtrOutput
+}
+
+type endConditionResponsePtrType EndConditionResponseArgs
+
+func EndConditionResponsePtr(v *EndConditionResponseArgs) EndConditionResponsePtrInput {
+	return (*endConditionResponsePtrType)(v)
+}
+
+func (*endConditionResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndConditionResponse)(nil)).Elem()
+}
+
+func (i *endConditionResponsePtrType) ToEndConditionResponsePtrOutput() EndConditionResponsePtrOutput {
+	return i.ToEndConditionResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *endConditionResponsePtrType) ToEndConditionResponsePtrOutputWithContext(ctx context.Context) EndConditionResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndConditionResponsePtrOutput)
+}
+
+// The condition that a Waiter resource is waiting for.
+type EndConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (EndConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndConditionResponse)(nil)).Elem()
+}
+
+func (o EndConditionResponseOutput) ToEndConditionResponseOutput() EndConditionResponseOutput {
+	return o
+}
+
+func (o EndConditionResponseOutput) ToEndConditionResponseOutputWithContext(ctx context.Context) EndConditionResponseOutput {
+	return o
+}
+
+func (o EndConditionResponseOutput) ToEndConditionResponsePtrOutput() EndConditionResponsePtrOutput {
+	return o.ToEndConditionResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EndConditionResponseOutput) ToEndConditionResponsePtrOutputWithContext(ctx context.Context) EndConditionResponsePtrOutput {
+	return o.ApplyT(func(v EndConditionResponse) *EndConditionResponse {
+		return &v
+	}).(EndConditionResponsePtrOutput)
+}
+
+// The cardinality of the `EndCondition`.
+func (o EndConditionResponseOutput) Cardinality() CardinalityResponseOutput {
+	return o.ApplyT(func(v EndConditionResponse) CardinalityResponse { return v.Cardinality }).(CardinalityResponseOutput)
+}
+
+type EndConditionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EndConditionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndConditionResponse)(nil)).Elem()
+}
+
+func (o EndConditionResponsePtrOutput) ToEndConditionResponsePtrOutput() EndConditionResponsePtrOutput {
+	return o
+}
+
+func (o EndConditionResponsePtrOutput) ToEndConditionResponsePtrOutputWithContext(ctx context.Context) EndConditionResponsePtrOutput {
+	return o
+}
+
+func (o EndConditionResponsePtrOutput) Elem() EndConditionResponseOutput {
+	return o.ApplyT(func(v *EndConditionResponse) EndConditionResponse { return *v }).(EndConditionResponseOutput)
+}
+
+// The cardinality of the `EndCondition`.
+func (o EndConditionResponsePtrOutput) Cardinality() CardinalityResponsePtrOutput {
+	return o.ApplyT(func(v *EndConditionResponse) *CardinalityResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Cardinality
+	}).(CardinalityResponsePtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -604,6 +1009,88 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 		}
 		return v.Title
 	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
+// You can construct a concrete instance of `ExprResponseInput` via:
+//
+//          ExprResponseArgs{...}
+type ExprResponseInput interface {
+	pulumi.Input
+
+	ToExprResponseOutput() ExprResponseOutput
+	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
+	return i.ToExprResponseOutputWithContext(context.Background())
+}
+
+func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseOutput struct{ *pulumi.OutputState }
+
+func (ExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
+	return o
+}
+
+func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
@@ -950,17 +1437,198 @@ func (o StatusPtrOutput) Message() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponse struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code int `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details []map[string]string `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message string `pulumi:"message"`
+}
+
+// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
+// You can construct a concrete instance of `StatusResponseInput` via:
+//
+//          StatusResponseArgs{...}
+type StatusResponseInput interface {
+	pulumi.Input
+
+	ToStatusResponseOutput() StatusResponseOutput
+	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponseArgs struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntInput `pulumi:"code"`
+	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (StatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
+	return i.ToStatusResponseOutputWithContext(context.Background())
+}
+
+func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
+}
+
+func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
+}
+
+// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
+// You can construct a concrete instance of `StatusResponsePtrInput` via:
+//
+//          StatusResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type StatusResponsePtrInput interface {
+	pulumi.Input
+
+	ToStatusResponsePtrOutput() StatusResponsePtrOutput
+	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
+}
+
+type statusResponsePtrType StatusResponseArgs
+
+func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
+	return (*statusResponsePtrType)(v)
+}
+
+func (*statusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
+}
+
+func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
+}
+
+// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+type StatusResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return o
+}
+
+func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o.ToStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o.ApplyT(func(v StatusResponse) *StatusResponse {
+		return &v
+	}).(StatusResponsePtrOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type StatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o
+}
+
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o
+}
+
+func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
+	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *StatusResponse) []map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(pulumi.StringMapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingResponseOutput{})
+	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(CardinalityOutput{})
 	pulumi.RegisterOutputType(CardinalityPtrOutput{})
+	pulumi.RegisterOutputType(CardinalityResponseOutput{})
+	pulumi.RegisterOutputType(CardinalityResponsePtrOutput{})
 	pulumi.RegisterOutputType(EndConditionOutput{})
 	pulumi.RegisterOutputType(EndConditionPtrOutput{})
+	pulumi.RegisterOutputType(EndConditionResponseOutput{})
+	pulumi.RegisterOutputType(EndConditionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(PolicyOutput{})
 	pulumi.RegisterOutputType(PolicyPtrOutput{})
 	pulumi.RegisterOutputType(StatusOutput{})
 	pulumi.RegisterOutputType(StatusPtrOutput{})
+	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 }

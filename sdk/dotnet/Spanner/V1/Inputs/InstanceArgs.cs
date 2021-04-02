@@ -27,18 +27,6 @@ namespace Pulumi.GoogleCloud.Spanner.V1.Inputs
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("endpointUris")]
-        private InputList<string>? _endpointUris;
-
-        /// <summary>
-        /// Deprecated. This field is not populated.
-        /// </summary>
-        public InputList<string> EndpointUris
-        {
-            get => _endpointUris ?? (_endpointUris = new InputList<string>());
-            set => _endpointUris = value;
-        }
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -62,12 +50,6 @@ namespace Pulumi.GoogleCloud.Spanner.V1.Inputs
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
-
-        /// <summary>
-        /// Output only. The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         public InstanceArgs()
         {

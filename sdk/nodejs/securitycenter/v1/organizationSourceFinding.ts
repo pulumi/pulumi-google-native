@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -62,7 +61,6 @@ export class OrganizationSourceFinding extends pulumi.CustomResource {
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["resourceName"] = args ? args.resourceName : undefined;
-            inputs["securityMarks"] = args ? args.securityMarks : undefined;
             inputs["severity"] = args ? args.severity : undefined;
             inputs["sourceProperties"] = args ? args.sourceProperties : undefined;
             inputs["sourcesId"] = args ? args.sourcesId : undefined;
@@ -113,10 +111,6 @@ export interface OrganizationSourceFindingArgs {
      * For findings on Google Cloud resources, the full resource name of the Google Cloud resource this finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding is for a non-Google Cloud resource, the resourceName can be a customer or partner defined string. This field is immutable after creation time.
      */
     readonly resourceName?: pulumi.Input<string>;
-    /**
-     * Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.
-     */
-    readonly securityMarks?: pulumi.Input<inputs.securitycenter.v1.SecurityMarks>;
     /**
      * The severity of the finding. This field is managed by the source that writes the finding.
      */

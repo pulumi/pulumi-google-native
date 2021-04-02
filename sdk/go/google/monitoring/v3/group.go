@@ -14,6 +14,17 @@ import (
 // Creates a new group.
 type Group struct {
 	pulumi.CustomResourceState
+
+	// A user-assigned name for this group, used only for display purposes.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// The filter used to determine which monitored resources belong to this group.
+	Filter pulumi.StringOutput `pulumi:"filter"`
+	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
+	IsCluster pulumi.BoolOutput `pulumi:"isCluster"`
+	// The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
+	ParentName pulumi.StringOutput `pulumi:"parentName"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +62,29 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
+	// A user-assigned name for this group, used only for display purposes.
+	DisplayName *string `pulumi:"displayName"`
+	// The filter used to determine which monitored resources belong to this group.
+	Filter *string `pulumi:"filter"`
+	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
+	IsCluster *bool `pulumi:"isCluster"`
+	// The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
+	Name *string `pulumi:"name"`
+	// The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
+	ParentName *string `pulumi:"parentName"`
 }
 
 type GroupState struct {
+	// A user-assigned name for this group, used only for display purposes.
+	DisplayName pulumi.StringPtrInput
+	// The filter used to determine which monitored resources belong to this group.
+	Filter pulumi.StringPtrInput
+	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
+	IsCluster pulumi.BoolPtrInput
+	// The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
+	Name pulumi.StringPtrInput
+	// The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
+	ParentName pulumi.StringPtrInput
 }
 
 func (GroupState) ElementType() reflect.Type {
@@ -68,7 +99,7 @@ type groupArgs struct {
 	GroupsId string  `pulumi:"groupsId"`
 	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
 	IsCluster *bool `pulumi:"isCluster"`
-	// Output only. The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
+	// The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
 	Name *string `pulumi:"name"`
 	// The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
 	ParentName *string `pulumi:"parentName"`
@@ -84,7 +115,7 @@ type GroupArgs struct {
 	GroupsId pulumi.StringInput
 	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
 	IsCluster pulumi.BoolPtrInput
-	// Output only. The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
+	// The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
 	Name pulumi.StringPtrInput
 	// The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
 	ParentName pulumi.StringPtrInput

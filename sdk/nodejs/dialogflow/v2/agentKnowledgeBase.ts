@@ -34,6 +34,18 @@ export class AgentKnowledgeBase extends pulumi.CustomResource {
         return obj['__pulumiType'] === AgentKnowledgeBase.__pulumiType;
     }
 
+    /**
+     * Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
+     */
+    public readonly languageCode!: pulumi.Output<string>;
+    /**
+     * The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
+     */
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a AgentKnowledgeBase resource with the given unique name, arguments, and options.
@@ -58,6 +70,9 @@ export class AgentKnowledgeBase extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
+            inputs["displayName"] = undefined /*out*/;
+            inputs["languageCode"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

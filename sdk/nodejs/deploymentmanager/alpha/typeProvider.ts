@@ -35,6 +35,50 @@ export class TypeProvider extends pulumi.CustomResource {
         return obj['__pulumiType'] === TypeProvider.__pulumiType;
     }
 
+    /**
+     * Allows resource handling overrides for specific collections
+     */
+    public readonly collectionOverrides!: pulumi.Output<outputs.deploymentmanager.alpha.CollectionOverrideResponse[]>;
+    /**
+     * Credential used when interacting with this type.
+     */
+    public readonly credential!: pulumi.Output<outputs.deploymentmanager.alpha.CredentialResponse>;
+    /**
+     * List of up to 2 custom certificate authority roots to use for TLS authentication when making calls on behalf of this type provider. If set, TLS authentication will exclusively use these roots instead of relying on publicly trusted certificate authorities when validating TLS certificate authenticity. The certificates must be in base64-encoded PEM format. The maximum size of each certificate must not exceed 10KB.
+     */
+    public readonly customCertificateAuthorityRoots!: pulumi.Output<string[]>;
+    /**
+     * An optional textual description of the resource; provided by the client when the resource is created.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Descriptor Url for the this type provider.
+     */
+    public readonly descriptorUrl!: pulumi.Output<string>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    public readonly insertTime!: pulumi.Output<string>;
+    /**
+     * Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`
+     */
+    public readonly labels!: pulumi.Output<outputs.deploymentmanager.alpha.TypeProviderLabelEntryResponse[]>;
+    /**
+     * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The Operation that most recently ran, or is currently running, on this type provider.
+     */
+    public readonly operation!: pulumi.Output<outputs.deploymentmanager.alpha.OperationResponse>;
+    /**
+     * Options to apply when handling any resources in this service.
+     */
+    public readonly options!: pulumi.Output<outputs.deploymentmanager.alpha.OptionsResponse>;
+    /**
+     * Self link for the type provider.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
 
     /**
      * Create a TypeProvider resource with the given unique name, arguments, and options.
@@ -68,6 +112,17 @@ export class TypeProvider extends pulumi.CustomResource {
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["typeProvider"] = args ? args.typeProvider : undefined;
         } else {
+            inputs["collectionOverrides"] = undefined /*out*/;
+            inputs["credential"] = undefined /*out*/;
+            inputs["customCertificateAuthorityRoots"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["descriptorUrl"] = undefined /*out*/;
+            inputs["insertTime"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["operation"] = undefined /*out*/;
+            inputs["options"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -101,11 +156,11 @@ export interface TypeProviderArgs {
      */
     readonly descriptorUrl?: pulumi.Input<string>;
     /**
-     * Output only. Unique identifier for the resource defined by the server.
+     * Unique identifier for the resource defined by the server.
      */
     readonly id?: pulumi.Input<string>;
     /**
-     * Output only. Creation timestamp in RFC3339 text format.
+     * Creation timestamp in RFC3339 text format.
      */
     readonly insertTime?: pulumi.Input<string>;
     /**
@@ -117,7 +172,7 @@ export interface TypeProviderArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Output only. The Operation that most recently ran, or is currently running, on this type provider.
+     * The Operation that most recently ran, or is currently running, on this type provider.
      */
     readonly operation?: pulumi.Input<inputs.deploymentmanager.alpha.Operation>;
     /**
@@ -126,7 +181,7 @@ export interface TypeProviderArgs {
     readonly options?: pulumi.Input<inputs.deploymentmanager.alpha.Options>;
     readonly project: pulumi.Input<string>;
     /**
-     * Output only. Self link for the type provider.
+     * Self link for the type provider.
      */
     readonly selfLink?: pulumi.Input<string>;
     readonly typeProvider: pulumi.Input<string>;

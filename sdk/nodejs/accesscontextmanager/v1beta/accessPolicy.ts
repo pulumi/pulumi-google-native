@@ -34,6 +34,18 @@ export class AccessPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessPolicy.__pulumiType;
     }
 
+    /**
+     * Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+     */
+    public readonly parent!: pulumi.Output<string>;
+    /**
+     * Required. Human readable title. Does not affect behavior.
+     */
+    public readonly title!: pulumi.Output<string>;
 
     /**
      * Create a AccessPolicy resource with the given unique name, arguments, and options.
@@ -54,6 +66,9 @@ export class AccessPolicy extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
             inputs["title"] = args ? args.title : undefined;
         } else {
+            inputs["name"] = undefined /*out*/;
+            inputs["parent"] = undefined /*out*/;
+            inputs["title"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -68,7 +83,7 @@ export class AccessPolicy extends pulumi.CustomResource {
 export interface AccessPolicyArgs {
     readonly accessPoliciesId: pulumi.Input<string>;
     /**
-     * Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+     * Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
      */
     readonly name?: pulumi.Input<string>;
     /**

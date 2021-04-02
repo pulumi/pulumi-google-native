@@ -34,6 +34,42 @@ export class HmacKey extends pulumi.CustomResource {
         return obj['__pulumiType'] === HmacKey.__pulumiType;
     }
 
+    /**
+     * The ID of the HMAC Key.
+     */
+    public readonly accessId!: pulumi.Output<string>;
+    /**
+     * HTTP 1.1 Entity tag for the HMAC key.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
+     */
+    public /*out*/ readonly kind!: pulumi.Output<string>;
+    /**
+     * Project ID owning the service account to which the key authenticates.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
+     * The link to this resource.
+     */
+    public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The email address of the key's associated service account.
+     */
+    public readonly serviceAccountEmail!: pulumi.Output<string>;
+    /**
+     * The state of the key. Can be one of ACTIVE, INACTIVE, or DELETED.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The creation time of the HMAC key in RFC 3339 format.
+     */
+    public /*out*/ readonly timeCreated!: pulumi.Output<string>;
+    /**
+     * The last modification time of the HMAC key metadata in RFC 3339 format.
+     */
+    public /*out*/ readonly updated!: pulumi.Output<string>;
 
     /**
      * Create a HmacKey resource with the given unique name, arguments, and options.
@@ -58,7 +94,22 @@ export class HmacKey extends pulumi.CustomResource {
             inputs["accessId"] = args ? args.accessId : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
+            inputs["etag"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["timeCreated"] = undefined /*out*/;
+            inputs["updated"] = undefined /*out*/;
         } else {
+            inputs["accessId"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["projectId"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["serviceAccountEmail"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["timeCreated"] = undefined /*out*/;
+            inputs["updated"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

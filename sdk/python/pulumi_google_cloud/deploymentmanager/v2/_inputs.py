@@ -229,9 +229,9 @@ class DeploymentUpdateArgs:
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentUpdateLabelEntryArgs']]]] = None,
                  manifest: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] description: Output only. An optional user-provided description of the deployment after the current update has been applied.
+        :param pulumi.Input[str] description: An optional user-provided description of the deployment after the current update has been applied.
         :param pulumi.Input[Sequence[pulumi.Input['DeploymentUpdateLabelEntryArgs']]] labels: Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-        :param pulumi.Input[str] manifest: Output only. URL of the manifest representing the update configuration of this deployment.
+        :param pulumi.Input[str] manifest: URL of the manifest representing the update configuration of this deployment.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -244,7 +244,7 @@ class DeploymentUpdateArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. An optional user-provided description of the deployment after the current update has been applied.
+        An optional user-provided description of the deployment after the current update has been applied.
         """
         return pulumi.get(self, "description")
 
@@ -268,7 +268,7 @@ class DeploymentUpdateArgs:
     @pulumi.getter
     def manifest(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. URL of the manifest representing the update configuration of this deployment.
+        URL of the manifest representing the update configuration of this deployment.
         """
         return pulumi.get(self, "manifest")
 

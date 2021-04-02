@@ -14,6 +14,19 @@ import (
 // Creates a `Membership`.
 type GroupMembership struct {
 	pulumi.CustomResourceState
+
+	// The time when the `Membership` was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. Immutable. The `EntityKey` of the member.
+	PreferredMemberKey EntityKeyResponseOutput `pulumi:"preferredMemberKey"`
+	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
+	Roles MembershipRoleResponseArrayOutput `pulumi:"roles"`
+	// The type of the membership.
+	Type pulumi.StringOutput `pulumi:"type"`
+	// The time when the `Membership` was last updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewGroupMembership registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +64,33 @@ func GetGroupMembership(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupMembership resources.
 type groupMembershipState struct {
+	// The time when the `Membership` was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
+	Name *string `pulumi:"name"`
+	// Required. Immutable. The `EntityKey` of the member.
+	PreferredMemberKey *EntityKeyResponse `pulumi:"preferredMemberKey"`
+	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
+	Roles []MembershipRoleResponse `pulumi:"roles"`
+	// The type of the membership.
+	Type *string `pulumi:"type"`
+	// The time when the `Membership` was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type GroupMembershipState struct {
+	// The time when the `Membership` was created.
+	CreateTime pulumi.StringPtrInput
+	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
+	Name pulumi.StringPtrInput
+	// Required. Immutable. The `EntityKey` of the member.
+	PreferredMemberKey EntityKeyResponsePtrInput
+	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
+	Roles MembershipRoleResponseArrayInput
+	// The type of the membership.
+	Type pulumi.StringPtrInput
+	// The time when the `Membership` was last updated.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (GroupMembershipState) ElementType() reflect.Type {
@@ -61,38 +98,22 @@ func (GroupMembershipState) ElementType() reflect.Type {
 }
 
 type groupMembershipArgs struct {
-	// Output only. The time when the `Membership` was created.
-	CreateTime    *string `pulumi:"createTime"`
-	GroupsId      string  `pulumi:"groupsId"`
-	MembershipsId string  `pulumi:"membershipsId"`
-	// Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
-	Name *string `pulumi:"name"`
+	GroupsId      string `pulumi:"groupsId"`
+	MembershipsId string `pulumi:"membershipsId"`
 	// Required. Immutable. The `EntityKey` of the member.
 	PreferredMemberKey *EntityKey `pulumi:"preferredMemberKey"`
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
 	Roles []MembershipRole `pulumi:"roles"`
-	// Output only. The type of the membership.
-	Type *string `pulumi:"type"`
-	// Output only. The time when the `Membership` was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a GroupMembership resource.
 type GroupMembershipArgs struct {
-	// Output only. The time when the `Membership` was created.
-	CreateTime    pulumi.StringPtrInput
 	GroupsId      pulumi.StringInput
 	MembershipsId pulumi.StringInput
-	// Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
-	Name pulumi.StringPtrInput
 	// Required. Immutable. The `EntityKey` of the member.
 	PreferredMemberKey EntityKeyPtrInput
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
 	Roles MembershipRoleArrayInput
-	// Output only. The type of the membership.
-	Type pulumi.StringPtrInput
-	// Output only. The time when the `Membership` was last updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (GroupMembershipArgs) ElementType() reflect.Type {

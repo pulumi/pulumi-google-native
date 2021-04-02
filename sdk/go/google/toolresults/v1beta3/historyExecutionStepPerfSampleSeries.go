@@ -14,6 +14,19 @@ import (
 // Creates a PerfSampleSeries. May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist
 type HistoryExecutionStepPerfSampleSeries struct {
 	pulumi.CustomResourceState
+
+	// Basic series represented by a line chart
+	BasicPerfSampleSeries BasicPerfSampleSeriesResponseOutput `pulumi:"basicPerfSampleSeries"`
+	// A tool results execution ID. @OutputOnly
+	ExecutionId pulumi.StringOutput `pulumi:"executionId"`
+	// A tool results history ID. @OutputOnly
+	HistoryId pulumi.StringOutput `pulumi:"historyId"`
+	// The cloud project @OutputOnly
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// A sample series id @OutputOnly
+	SampleSeriesId pulumi.StringOutput `pulumi:"sampleSeriesId"`
+	// A tool results step ID. @OutputOnly
+	StepId pulumi.StringOutput `pulumi:"stepId"`
 }
 
 // NewHistoryExecutionStepPerfSampleSeries registers a new resource with the given unique name, arguments, and options.
@@ -60,9 +73,33 @@ func GetHistoryExecutionStepPerfSampleSeries(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HistoryExecutionStepPerfSampleSeries resources.
 type historyExecutionStepPerfSampleSeriesState struct {
+	// Basic series represented by a line chart
+	BasicPerfSampleSeries *BasicPerfSampleSeriesResponse `pulumi:"basicPerfSampleSeries"`
+	// A tool results execution ID. @OutputOnly
+	ExecutionId *string `pulumi:"executionId"`
+	// A tool results history ID. @OutputOnly
+	HistoryId *string `pulumi:"historyId"`
+	// The cloud project @OutputOnly
+	ProjectId *string `pulumi:"projectId"`
+	// A sample series id @OutputOnly
+	SampleSeriesId *string `pulumi:"sampleSeriesId"`
+	// A tool results step ID. @OutputOnly
+	StepId *string `pulumi:"stepId"`
 }
 
 type HistoryExecutionStepPerfSampleSeriesState struct {
+	// Basic series represented by a line chart
+	BasicPerfSampleSeries BasicPerfSampleSeriesResponsePtrInput
+	// A tool results execution ID. @OutputOnly
+	ExecutionId pulumi.StringPtrInput
+	// A tool results history ID. @OutputOnly
+	HistoryId pulumi.StringPtrInput
+	// The cloud project @OutputOnly
+	ProjectId pulumi.StringPtrInput
+	// A sample series id @OutputOnly
+	SampleSeriesId pulumi.StringPtrInput
+	// A tool results step ID. @OutputOnly
+	StepId pulumi.StringPtrInput
 }
 
 func (HistoryExecutionStepPerfSampleSeriesState) ElementType() reflect.Type {

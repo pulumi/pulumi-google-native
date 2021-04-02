@@ -14,6 +14,21 @@ import (
 // Creates an environment in an organization.
 type OrganizationEnvironment struct {
 	pulumi.CustomResourceState
+
+	// Creation time of this environment as milliseconds since epoch.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Optional. Description of the environment.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. Display name for this environment.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Last modification time of this environment as milliseconds since epoch.
+	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
+	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. Key-value pairs that may be used for customizing the environment.
+	Properties GoogleCloudApigeeV1PropertiesResponseOutput `pulumi:"properties"`
+	// State of the environment. Values other than ACTIVE means the resource is not ready to use.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewOrganizationEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +66,37 @@ func GetOrganizationEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationEnvironment resources.
 type organizationEnvironmentState struct {
+	// Creation time of this environment as milliseconds since epoch.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Optional. Description of the environment.
+	Description *string `pulumi:"description"`
+	// Optional. Display name for this environment.
+	DisplayName *string `pulumi:"displayName"`
+	// Last modification time of this environment as milliseconds since epoch.
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+	Name *string `pulumi:"name"`
+	// Optional. Key-value pairs that may be used for customizing the environment.
+	Properties *GoogleCloudApigeeV1PropertiesResponse `pulumi:"properties"`
+	// State of the environment. Values other than ACTIVE means the resource is not ready to use.
+	State *string `pulumi:"state"`
 }
 
 type OrganizationEnvironmentState struct {
+	// Creation time of this environment as milliseconds since epoch.
+	CreatedAt pulumi.StringPtrInput
+	// Optional. Description of the environment.
+	Description pulumi.StringPtrInput
+	// Optional. Display name for this environment.
+	DisplayName pulumi.StringPtrInput
+	// Last modification time of this environment as milliseconds since epoch.
+	LastModifiedAt pulumi.StringPtrInput
+	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+	Name pulumi.StringPtrInput
+	// Optional. Key-value pairs that may be used for customizing the environment.
+	Properties GoogleCloudApigeeV1PropertiesResponsePtrInput
+	// State of the environment. Values other than ACTIVE means the resource is not ready to use.
+	State pulumi.StringPtrInput
 }
 
 func (OrganizationEnvironmentState) ElementType() reflect.Type {
@@ -61,42 +104,30 @@ func (OrganizationEnvironmentState) ElementType() reflect.Type {
 }
 
 type organizationEnvironmentArgs struct {
-	// Output only. Creation time of this environment as milliseconds since epoch.
-	CreatedAt *string `pulumi:"createdAt"`
 	// Optional. Description of the environment.
 	Description *string `pulumi:"description"`
 	// Optional. Display name for this environment.
 	DisplayName    *string `pulumi:"displayName"`
 	EnvironmentsId string  `pulumi:"environmentsId"`
-	// Output only. Last modification time of this environment as milliseconds since epoch.
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
 	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 	Name            *string `pulumi:"name"`
 	OrganizationsId string  `pulumi:"organizationsId"`
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties *GoogleCloudApigeeV1Properties `pulumi:"properties"`
-	// Output only. State of the environment. Values other than ACTIVE means the resource is not ready to use.
-	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a OrganizationEnvironment resource.
 type OrganizationEnvironmentArgs struct {
-	// Output only. Creation time of this environment as milliseconds since epoch.
-	CreatedAt pulumi.StringPtrInput
 	// Optional. Description of the environment.
 	Description pulumi.StringPtrInput
 	// Optional. Display name for this environment.
 	DisplayName    pulumi.StringPtrInput
 	EnvironmentsId pulumi.StringInput
-	// Output only. Last modification time of this environment as milliseconds since epoch.
-	LastModifiedAt pulumi.StringPtrInput
 	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 	Name            pulumi.StringPtrInput
 	OrganizationsId pulumi.StringInput
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties GoogleCloudApigeeV1PropertiesPtrInput
-	// Output only. State of the environment. Values other than ACTIVE means the resource is not ready to use.
-	State pulumi.StringPtrInput
 }
 
 func (OrganizationEnvironmentArgs) ElementType() reflect.Type {

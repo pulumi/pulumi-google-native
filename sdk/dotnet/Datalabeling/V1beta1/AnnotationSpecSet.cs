@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Datalabeling.V1beta1
     public partial class AnnotationSpecSet : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+        /// </summary>
+        [Output("annotationSpecs")]
+        public Output<ImmutableArray<Outputs.GoogleCloudDatalabelingV1beta1AnnotationSpecResponse>> AnnotationSpecs { get; private set; } = null!;
+
+        /// <summary>
+        /// The names of any related resources that are blocking changes to the annotation spec set.
+        /// </summary>
+        [Output("blockingResources")]
+        public Output<ImmutableArray<string>> BlockingResources { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AnnotationSpecSet resource with the given unique name, arguments, and options.
         /// </summary>
         ///

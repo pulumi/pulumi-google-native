@@ -11,12 +11,10 @@ from ... import _utilities, _tables
 __all__ = [
     'BindingArgs',
     'EncryptionConfigArgs',
-    'EncryptionInfoArgs',
     'ExprArgs',
     'InstanceArgs',
     'PolicyArgs',
     'SessionArgs',
-    'StatusArgs',
 ]
 
 @pulumi.input_type
@@ -100,62 +98,6 @@ class EncryptionConfigArgs:
 
 
 @pulumi.input_type
-class EncryptionInfoArgs:
-    def __init__(__self__, *,
-                 encryption_status: Optional[pulumi.Input['StatusArgs']] = None,
-                 encryption_type: Optional[pulumi.Input[str]] = None,
-                 kms_key_version: Optional[pulumi.Input[str]] = None):
-        """
-        Encryption information for a Cloud Spanner database or backup.
-        :param pulumi.Input['StatusArgs'] encryption_status: Output only. If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest.
-        :param pulumi.Input[str] encryption_type: Output only. The type of encryption.
-        :param pulumi.Input[str] kms_key_version: Output only. A Cloud KMS key version that is being used to protect the database or backup.
-        """
-        if encryption_status is not None:
-            pulumi.set(__self__, "encryption_status", encryption_status)
-        if encryption_type is not None:
-            pulumi.set(__self__, "encryption_type", encryption_type)
-        if kms_key_version is not None:
-            pulumi.set(__self__, "kms_key_version", kms_key_version)
-
-    @property
-    @pulumi.getter(name="encryptionStatus")
-    def encryption_status(self) -> Optional[pulumi.Input['StatusArgs']]:
-        """
-        Output only. If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest.
-        """
-        return pulumi.get(self, "encryption_status")
-
-    @encryption_status.setter
-    def encryption_status(self, value: Optional[pulumi.Input['StatusArgs']]):
-        pulumi.set(self, "encryption_status", value)
-
-    @property
-    @pulumi.getter(name="encryptionType")
-    def encryption_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The type of encryption.
-        """
-        return pulumi.get(self, "encryption_type")
-
-    @encryption_type.setter
-    def encryption_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "encryption_type", value)
-
-    @property
-    @pulumi.getter(name="kmsKeyVersion")
-    def kms_key_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. A Cloud KMS key version that is being used to protect the database or backup.
-        """
-        return pulumi.get(self, "kms_key_version")
-
-    @kms_key_version.setter
-    def kms_key_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kms_key_version", value)
-
-
-@pulumi.input_type
 class ExprArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
@@ -232,35 +174,27 @@ class InstanceArgs:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 endpoint_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_count: Optional[pulumi.Input[int]] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 node_count: Optional[pulumi.Input[int]] = None):
         """
         An isolated set of Cloud Spanner resources on which databases can be hosted.
         :param pulumi.Input[str] config: Required. The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
         :param pulumi.Input[str] display_name: Required. The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_uris: Deprecated. This field is not populated.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Cloud Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. Cloud Labels can be used to filter collections of resources. They can be used to control how resource metrics are aggregated. And they can be used as arguments to policy management rules (e.g. route, firewall, load balancing, etc.). * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given resource. See https://goo.gl/xmQnxf for more information on and examples of labels. If you plan to use labels in your own code, please note that additional characters may be allowed in the future. And so you are advised to use an internal label representation, such as JSON, which doesn't rely upon specific characters being disallowed. For example, representing labels as the string: name + "_" + value would prove problematic if we were to allow "_" in a future release.
         :param pulumi.Input[str] name: Required. A unique identifier for the instance, which cannot be changed after the instance is created. Values are of the form `projects//instances/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length.
         :param pulumi.Input[int] node_count: The number of nodes allocated to this instance. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/instances#node_count) for more information about nodes.
-        :param pulumi.Input[str] state: Output only. The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
-        if endpoint_uris is not None:
-            pulumi.set(__self__, "endpoint_uris", endpoint_uris)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_count is not None:
             pulumi.set(__self__, "node_count", node_count)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -285,18 +219,6 @@ class InstanceArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter(name="endpointUris")
-    def endpoint_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Deprecated. This field is not populated.
-        """
-        return pulumi.get(self, "endpoint_uris")
-
-    @endpoint_uris.setter
-    def endpoint_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "endpoint_uris", value)
 
     @property
     @pulumi.getter
@@ -333,18 +255,6 @@ class InstanceArgs:
     @node_count.setter
     def node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "node_count", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "state", value)
 
 
 @pulumi.input_type
@@ -406,49 +316,13 @@ class PolicyArgs:
 @pulumi.input_type
 class SessionArgs:
     def __init__(__self__, *,
-                 approximate_last_use_time: Optional[pulumi.Input[str]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         A session in the Cloud Spanner API.
-        :param pulumi.Input[str] approximate_last_use_time: Output only. The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.
-        :param pulumi.Input[str] create_time: Output only. The timestamp when the session is created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
-        :param pulumi.Input[str] name: Output only. The name of the session. This is always system-assigned.
         """
-        if approximate_last_use_time is not None:
-            pulumi.set(__self__, "approximate_last_use_time", approximate_last_use_time)
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="approximateLastUseTime")
-    def approximate_last_use_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.
-        """
-        return pulumi.get(self, "approximate_last_use_time")
-
-    @approximate_last_use_time.setter
-    def approximate_last_use_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "approximate_last_use_time", value)
-
-    @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The timestamp when the session is created.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
@@ -461,73 +335,5 @@ class SessionArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The name of the session. This is always system-assigned.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-
-@pulumi.input_type
-class StatusArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input[int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
-                 message: Optional[pulumi.Input[str]] = None):
-        """
-        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-        :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        :param pulumi.Input[str] message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if details is not None:
-            pulumi.set(__self__, "details", details)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[int]]:
-        """
-        The status code, which should be an enum value of google.rpc.Code.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
-        """
-        A list of messages that carry the error details. There is a common set of message types for APIs to use.
-        """
-        return pulumi.get(self, "details")
-
-    @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
-        pulumi.set(self, "details", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
 
 

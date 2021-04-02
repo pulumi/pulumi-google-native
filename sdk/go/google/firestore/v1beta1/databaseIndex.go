@@ -14,6 +14,15 @@ import (
 // Creates the specified index. A newly created index's initial state is `CREATING`. On completion of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists, the call will return an `ALREADY_EXISTS` status. During creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with delete, then re-creating the index with create. Indexes with a single field cannot be created.
 type DatabaseIndex struct {
 	pulumi.CustomResourceState
+
+	// The collection ID to which this index applies. Required.
+	CollectionId pulumi.StringOutput `pulumi:"collectionId"`
+	// The fields to index.
+	Fields GoogleFirestoreAdminV1beta1IndexFieldResponseArrayOutput `pulumi:"fields"`
+	// The resource name of the index. Output only.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The state of the index. Output only.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewDatabaseIndex registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +63,25 @@ func GetDatabaseIndex(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseIndex resources.
 type databaseIndexState struct {
+	// The collection ID to which this index applies. Required.
+	CollectionId *string `pulumi:"collectionId"`
+	// The fields to index.
+	Fields []GoogleFirestoreAdminV1beta1IndexFieldResponse `pulumi:"fields"`
+	// The resource name of the index. Output only.
+	Name *string `pulumi:"name"`
+	// The state of the index. Output only.
+	State *string `pulumi:"state"`
 }
 
 type DatabaseIndexState struct {
+	// The collection ID to which this index applies. Required.
+	CollectionId pulumi.StringPtrInput
+	// The fields to index.
+	Fields GoogleFirestoreAdminV1beta1IndexFieldResponseArrayInput
+	// The resource name of the index. Output only.
+	Name pulumi.StringPtrInput
+	// The state of the index. Output only.
+	State pulumi.StringPtrInput
 }
 
 func (DatabaseIndexState) ElementType() reflect.Type {

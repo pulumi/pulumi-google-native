@@ -22,12 +22,6 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3.Inputs
         public Input<string>? Event { get; set; }
 
         /// <summary>
-        /// Output only. The unique identifier of this event handler.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// The target flow to transition to. Format: `projects//locations//agents//flows/`.
         /// </summary>
         [Input("targetFlow")]

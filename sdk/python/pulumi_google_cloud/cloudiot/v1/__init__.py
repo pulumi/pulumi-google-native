@@ -8,6 +8,7 @@ from .registry_device import *
 from .registry_group_iam_policy import *
 from .registry_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

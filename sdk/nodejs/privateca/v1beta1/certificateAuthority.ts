@@ -35,6 +35,78 @@ export class CertificateAuthority extends pulumi.CustomResource {
         return obj['__pulumiType'] === CertificateAuthority.__pulumiType;
     }
 
+    /**
+     * URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+     */
+    public /*out*/ readonly accessUrls!: pulumi.Output<outputs.privateca.v1beta1.AccessUrlsResponse>;
+    /**
+     * A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
+     */
+    public /*out*/ readonly caCertificateDescriptions!: pulumi.Output<outputs.privateca.v1beta1.CertificateDescriptionResponse[]>;
+    /**
+     * Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
+     */
+    public readonly certificatePolicy!: pulumi.Output<outputs.privateca.v1beta1.CertificateAuthorityPolicyResponse>;
+    /**
+     * Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
+     */
+    public readonly config!: pulumi.Output<outputs.privateca.v1beta1.CertificateConfigResponse>;
+    /**
+     * The time at which this CertificateAuthority was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The time at which this CertificateAuthority will be deleted, if scheduled for deletion.
+     */
+    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    /**
+     * Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
+     */
+    public readonly gcsBucket!: pulumi.Output<string>;
+    /**
+     * Optional. The IssuingOptions to follow when issuing Certificates from this CertificateAuthority.
+     */
+    public readonly issuingOptions!: pulumi.Output<outputs.privateca.v1beta1.IssuingOptionsResponse>;
+    /**
+     * Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
+     */
+    public readonly keySpec!: pulumi.Output<outputs.privateca.v1beta1.KeyVersionSpecResponse>;
+    /**
+     * Optional. Labels with user-defined metadata.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+     */
+    public readonly lifetime!: pulumi.Output<string>;
+    /**
+     * The resource name for this CertificateAuthority in the format `projects/*&#47;locations/*&#47;certificateAuthorities/*`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate.
+     */
+    public /*out*/ readonly pemCaCertificates!: pulumi.Output<string[]>;
+    /**
+     * The State for this CertificateAuthority.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
+     */
+    public readonly subordinateConfig!: pulumi.Output<outputs.privateca.v1beta1.SubordinateConfigResponse>;
+    /**
+     * Required. Immutable. The Tier of this CertificateAuthority.
+     */
+    public readonly tier!: pulumi.Output<string>;
+    /**
+     * Required. Immutable. The Type of this CertificateAuthority.
+     */
+    public readonly type!: pulumi.Output<string>;
+    /**
+     * The time at which this CertificateAuthority was updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a CertificateAuthority resource with the given unique name, arguments, and options.
@@ -56,28 +128,46 @@ export class CertificateAuthority extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["accessUrls"] = args ? args.accessUrls : undefined;
-            inputs["caCertificateDescriptions"] = args ? args.caCertificateDescriptions : undefined;
             inputs["certificateAuthoritiesId"] = args ? args.certificateAuthoritiesId : undefined;
             inputs["certificatePolicy"] = args ? args.certificatePolicy : undefined;
             inputs["config"] = args ? args.config : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
-            inputs["deleteTime"] = args ? args.deleteTime : undefined;
             inputs["gcsBucket"] = args ? args.gcsBucket : undefined;
             inputs["issuingOptions"] = args ? args.issuingOptions : undefined;
             inputs["keySpec"] = args ? args.keySpec : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["lifetime"] = args ? args.lifetime : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["pemCaCertificates"] = args ? args.pemCaCertificates : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["state"] = args ? args.state : undefined;
             inputs["subordinateConfig"] = args ? args.subordinateConfig : undefined;
             inputs["tier"] = args ? args.tier : undefined;
             inputs["type"] = args ? args.type : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["accessUrls"] = undefined /*out*/;
+            inputs["caCertificateDescriptions"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deleteTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["pemCaCertificates"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["accessUrls"] = undefined /*out*/;
+            inputs["caCertificateDescriptions"] = undefined /*out*/;
+            inputs["certificatePolicy"] = undefined /*out*/;
+            inputs["config"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["deleteTime"] = undefined /*out*/;
+            inputs["gcsBucket"] = undefined /*out*/;
+            inputs["issuingOptions"] = undefined /*out*/;
+            inputs["keySpec"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["lifetime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["pemCaCertificates"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["subordinateConfig"] = undefined /*out*/;
+            inputs["tier"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -90,14 +180,6 @@ export class CertificateAuthority extends pulumi.CustomResource {
  * The set of arguments for constructing a CertificateAuthority resource.
  */
 export interface CertificateAuthorityArgs {
-    /**
-     * Output only. URLs for accessing content published by this CA, such as the CA certificate and CRLs.
-     */
-    readonly accessUrls?: pulumi.Input<inputs.privateca.v1beta1.AccessUrls>;
-    /**
-     * Output only. A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
-     */
-    readonly caCertificateDescriptions?: pulumi.Input<pulumi.Input<inputs.privateca.v1beta1.CertificateDescription>[]>;
     readonly certificateAuthoritiesId: pulumi.Input<string>;
     /**
      * Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
@@ -107,14 +189,6 @@ export interface CertificateAuthorityArgs {
      * Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
      */
     readonly config?: pulumi.Input<inputs.privateca.v1beta1.CertificateConfig>;
-    /**
-     * Output only. The time at which this CertificateAuthority was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
-     * Output only. The time at which this CertificateAuthority will be deleted, if scheduled for deletion.
-     */
-    readonly deleteTime?: pulumi.Input<string>;
     /**
      * Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
      */
@@ -136,19 +210,7 @@ export interface CertificateAuthorityArgs {
      */
     readonly lifetime?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. The resource name for this CertificateAuthority in the format `projects/*&#47;locations/*&#47;certificateAuthorities/*`.
-     */
-    readonly name?: pulumi.Input<string>;
-    /**
-     * Output only. This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate.
-     */
-    readonly pemCaCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. The State for this CertificateAuthority.
-     */
-    readonly state?: pulumi.Input<string>;
     /**
      * Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
      */
@@ -161,8 +223,4 @@ export interface CertificateAuthorityArgs {
      * Required. Immutable. The Type of this CertificateAuthority.
      */
     readonly type?: pulumi.Input<string>;
-    /**
-     * Output only. The time at which this CertificateAuthority was updated.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

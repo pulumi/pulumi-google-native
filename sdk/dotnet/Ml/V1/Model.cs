@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Ml.V1
     public partial class Model : Pulumi.CustomResource
     {
         /// <summary>
+        /// The default version of the model. This version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.models.versions.setDefault.
+        /// </summary>
+        [Output("defaultVersion")]
+        public Output<Outputs.GoogleCloudMlV1__VersionResponse> DefaultVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The description specified for the model when it was created.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetModel`, and systems are expected to put that etag in the request to `UpdateModel` to ensure that their change will be applied to the model as intended.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Cloud Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can incur higher cost. However, they are helpful for debugging. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate your costs before enabling this option. Default is false.
+        /// </summary>
+        [Output("onlinePredictionConsoleLogging")]
+        public Output<bool> OnlinePredictionConsoleLogging { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. If true, online prediction access logs are sent to Cloud Logging. These logs are like standard server access logs, containing information like timestamp and latency for each request. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option. Default is false.
+        /// </summary>
+        [Output("onlinePredictionLogging")]
+        public Output<bool> OnlinePredictionLogging { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The list of regions where the model is going to be deployed. Only one region per model is supported. Defaults to 'us-central1' if nothing is set. See the available regions for AI Platform services. Note: * No matter where a model is deployed, it can always be accessed by users from anywhere, both for online and batch prediction. * The region for a batch prediction job is set by the region field when submitting the batch prediction job and does not take its value from this field.
+        /// </summary>
+        [Output("regions")]
+        public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Model resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,7 +109,7 @@ namespace Pulumi.GoogleCloud.Ml.V1
     public sealed class ModelArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The default version of the model. This version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.models.versions.setDefault.
+        /// The default version of the model. This version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.models.versions.setDefault.
         /// </summary>
         [Input("defaultVersion")]
         public Input<Inputs.GoogleCloudMlV1__VersionArgs>? DefaultVersion { get; set; }

@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.Workflows.V1
     public partial class Workflow : Pulumi.CustomResource
     {
         /// <summary>
+        /// The timestamp of when the workflow was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp that the latest revision of the workflow was created.
+        /// </summary>
+        [Output("revisionCreateTime")]
+        public Output<string> RevisionCreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
+        /// </summary>
+        [Output("revisionId")]
+        public Output<string> RevisionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// Workflow code to be executed. The size limit is 128KB.
+        /// </summary>
+        [Output("sourceContents")]
+        public Output<string> SourceContents { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the workflow deployment.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The last update timestamp of the workflow.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Workflow resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +121,6 @@ namespace Pulumi.GoogleCloud.Workflows.V1
     public sealed class WorkflowArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The timestamp of when the workflow was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         /// </summary>
         [Input("description")]
@@ -96,18 +151,6 @@ namespace Pulumi.GoogleCloud.Workflows.V1
         public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. The timestamp that the latest revision of the workflow was created.
-        /// </summary>
-        [Input("revisionCreateTime")]
-        public Input<string>? RevisionCreateTime { get; set; }
-
-        /// <summary>
-        /// Output only. The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
-        /// </summary>
-        [Input("revisionId")]
-        public Input<string>? RevisionId { get; set; }
-
-        /// <summary>
         /// Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
         /// </summary>
         [Input("serviceAccount")]
@@ -118,18 +161,6 @@ namespace Pulumi.GoogleCloud.Workflows.V1
         /// </summary>
         [Input("sourceContents")]
         public Input<string>? SourceContents { get; set; }
-
-        /// <summary>
-        /// Output only. State of the workflow deployment.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. The last update timestamp of the workflow.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         [Input("workflowsId", required: true)]
         public Input<string> WorkflowsId { get; set; } = null!;

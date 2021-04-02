@@ -14,6 +14,19 @@ import (
 // Creates a cluster within an instance.
 type InstanceCluster struct {
 	pulumi.CustomResourceState
+
+	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
+	DefaultStorageType pulumi.StringOutput `pulumi:"defaultStorageType"`
+	// Immutable. The encryption configuration for CMEK-protected clusters.
+	EncryptionConfig EncryptionConfigResponseOutput `pulumi:"encryptionConfig"`
+	// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
+	Location pulumi.StringOutput `pulumi:"location"`
+	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+	ServeNodes pulumi.IntOutput `pulumi:"serveNodes"`
+	// The current state of the cluster.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewInstanceCluster registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +67,33 @@ func GetInstanceCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceCluster resources.
 type instanceClusterState struct {
+	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
+	DefaultStorageType *string `pulumi:"defaultStorageType"`
+	// Immutable. The encryption configuration for CMEK-protected clusters.
+	EncryptionConfig *EncryptionConfigResponse `pulumi:"encryptionConfig"`
+	// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
+	Location *string `pulumi:"location"`
+	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
+	Name *string `pulumi:"name"`
+	// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+	ServeNodes *int `pulumi:"serveNodes"`
+	// The current state of the cluster.
+	State *string `pulumi:"state"`
 }
 
 type InstanceClusterState struct {
+	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
+	DefaultStorageType pulumi.StringPtrInput
+	// Immutable. The encryption configuration for CMEK-protected clusters.
+	EncryptionConfig EncryptionConfigResponsePtrInput
+	// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
+	Location pulumi.StringPtrInput
+	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
+	Name pulumi.StringPtrInput
+	// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+	ServeNodes pulumi.IntPtrInput
+	// The current state of the cluster.
+	State pulumi.StringPtrInput
 }
 
 func (InstanceClusterState) ElementType() reflect.Type {
@@ -77,8 +114,6 @@ type instanceClusterArgs struct {
 	ProjectsId string  `pulumi:"projectsId"`
 	// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
 	ServeNodes *int `pulumi:"serveNodes"`
-	// Output only. The current state of the cluster.
-	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a InstanceCluster resource.
@@ -96,8 +131,6 @@ type InstanceClusterArgs struct {
 	ProjectsId pulumi.StringInput
 	// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
 	ServeNodes pulumi.IntPtrInput
-	// Output only. The current state of the cluster.
-	State pulumi.StringPtrInput
 }
 
 func (InstanceClusterArgs) ElementType() reflect.Type {

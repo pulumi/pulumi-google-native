@@ -52,7 +52,7 @@ namespace Pulumi.GoogleCloud.Run.V1alpha1.Inputs
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// Output only. URL displays the URL for accessing named traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc. Not currently supported in Cloud Run.
+        /// URL displays the URL for accessing named traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc. Not currently supported in Cloud Run.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

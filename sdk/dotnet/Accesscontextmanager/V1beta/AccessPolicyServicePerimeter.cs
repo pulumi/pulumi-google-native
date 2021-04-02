@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Accesscontextmanager.V1beta
     public partial class AccessPolicyServicePerimeter : Pulumi.CustomResource
     {
         /// <summary>
+        /// Description of the `ServicePerimeter` and its use. Does not affect behavior.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
+        /// </summary>
+        [Output("perimeterType")]
+        public Output<string> PerimeterType { get; private set; } = null!;
+
+        /// <summary>
+        /// Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
+        /// </summary>
+        [Output("status")]
+        public Output<Outputs.ServicePerimeterConfigResponse> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Human readable title. Must be unique within the Policy.
+        /// </summary>
+        [Output("title")]
+        public Output<string> Title { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AccessPolicyServicePerimeter resource with the given unique name, arguments, and options.
         /// </summary>
         ///

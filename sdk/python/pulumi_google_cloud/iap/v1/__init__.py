@@ -7,6 +7,7 @@ from .brand import *
 from .brand_identity_aware_proxy_client import *
 from .v1_iam_policy import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

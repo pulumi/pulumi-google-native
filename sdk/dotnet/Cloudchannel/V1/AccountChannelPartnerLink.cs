@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1
     public partial class AccountChannelPartnerLink : Pulumi.CustomResource
     {
         /// <summary>
+        /// Cloud Identity info of the channel partner (IR).
+        /// </summary>
+        [Output("channelPartnerCloudIdentityInfo")]
+        public Output<Outputs.GoogleCloudChannelV1CloudIdentityInfoResponse> ChannelPartnerCloudIdentityInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp of when the channel partner link is created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// URI of the web page where partner accepts the link invitation.
+        /// </summary>
+        [Output("inviteLinkUri")]
+        public Output<string> InviteLinkUri { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. State of the channel partner link.
+        /// </summary>
+        [Output("linkState")]
+        public Output<string> LinkState { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
+        /// </summary>
+        [Output("publicId")]
+        public Output<string> PublicId { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Cloud Identity ID of the linked reseller.
+        /// </summary>
+        [Output("resellerCloudIdentityId")]
+        public Output<string> ResellerCloudIdentityId { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp of when the channel partner link is updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AccountChannelPartnerLink resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -62,26 +111,8 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1
         [Input("accountsId", required: true)]
         public Input<string> AccountsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. Cloud Identity info of the channel partner (IR).
-        /// </summary>
-        [Input("channelPartnerCloudIdentityInfo")]
-        public Input<Inputs.GoogleCloudChannelV1CloudIdentityInfoArgs>? ChannelPartnerCloudIdentityInfo { get; set; }
-
         [Input("channelPartnerLinksId", required: true)]
         public Input<string> ChannelPartnerLinksId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Timestamp of when the channel partner link is created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
-        /// Output only. URI of the web page where partner accepts the link invitation.
-        /// </summary>
-        [Input("inviteLinkUri")]
-        public Input<string>? InviteLinkUri { get; set; }
 
         /// <summary>
         /// Required. State of the channel partner link.
@@ -90,28 +121,10 @@ namespace Pulumi.GoogleCloud.Cloudchannel.V1
         public Input<string>? LinkState { get; set; }
 
         /// <summary>
-        /// Output only. Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Output only. Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
-        /// </summary>
-        [Input("publicId")]
-        public Input<string>? PublicId { get; set; }
-
-        /// <summary>
         /// Required. Cloud Identity ID of the linked reseller.
         /// </summary>
         [Input("resellerCloudIdentityId")]
         public Input<string>? ResellerCloudIdentityId { get; set; }
-
-        /// <summary>
-        /// Output only. Timestamp of when the channel partner link is updated.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public AccountChannelPartnerLinkArgs()
         {

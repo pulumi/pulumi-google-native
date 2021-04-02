@@ -15,6 +15,28 @@ namespace Pulumi.GoogleCloud.Dataproc.V1beta2
     [GoogleCloudResourceType("google-cloud:dataproc/v1beta2:RegionAutoscalingPolicy")]
     public partial class RegionAutoscalingPolicy : Pulumi.CustomResource
     {
+        [Output("basicAlgorithm")]
+        public Output<Outputs.BasicAutoscalingAlgorithmResponse> BasicAlgorithm { get; private set; } = null!;
+
+        /// <summary>
+        /// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Describes how the autoscaler will operate for secondary workers.
+        /// </summary>
+        [Output("secondaryWorkerConfig")]
+        public Output<Outputs.InstanceGroupAutoscalingPolicyConfigResponse> SecondaryWorkerConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Describes how the autoscaler will operate for primary workers.
+        /// </summary>
+        [Output("workerConfig")]
+        public Output<Outputs.InstanceGroupAutoscalingPolicyConfigResponse> WorkerConfig { get; private set; } = null!;
+
+
         /// <summary>
         /// Create a RegionAutoscalingPolicy resource with the given unique name, arguments, and options.
         /// </summary>
@@ -70,12 +92,6 @@ namespace Pulumi.GoogleCloud.Dataproc.V1beta2
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// Output only. The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;

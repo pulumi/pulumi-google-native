@@ -16,6 +16,49 @@ namespace Pulumi.GoogleCloud.Gameservices.V1
     public partial class GameServerDeploymentConfig : Pulumi.CustomResource
     {
         /// <summary>
+        /// The creation time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the game server config.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
+        /// </summary>
+        [Output("fleetConfigs")]
+        public Output<ImmutableArray<Outputs.FleetConfigResponse>> FleetConfigs { get; private set; } = null!;
+
+        /// <summary>
+        /// The labels associated with this game server config. Each label is a key-value pair.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The autoscaling settings.
+        /// </summary>
+        [Output("scalingConfigs")]
+        public Output<ImmutableArray<Outputs.ScalingConfigResponse>> ScalingConfigs { get; private set; } = null!;
+
+        /// <summary>
+        /// The last-modified time.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a GameServerDeploymentConfig resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -61,12 +104,6 @@ namespace Pulumi.GoogleCloud.Gameservices.V1
     {
         [Input("configsId", required: true)]
         public Input<string> ConfigsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The creation time.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// The description of the game server config.
@@ -124,12 +161,6 @@ namespace Pulumi.GoogleCloud.Gameservices.V1
             get => _scalingConfigs ?? (_scalingConfigs = new InputList<Inputs.ScalingConfigArgs>());
             set => _scalingConfigs = value;
         }
-
-        /// <summary>
-        /// Output only. The last-modified time.
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         public GameServerDeploymentConfigArgs()
         {

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['TransferJob']
@@ -16,10 +17,7 @@ class TransferJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 creation_time: Optional[pulumi.Input[str]] = None,
-                 deletion_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 last_modification_time: Optional[pulumi.Input[str]] = None,
                  latest_operation_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
@@ -36,10 +34,7 @@ class TransferJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] creation_time: Output only. The time that the transfer job was created.
-        :param pulumi.Input[str] deletion_time: Output only. The time that the transfer job was deleted.
         :param pulumi.Input[str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
-        :param pulumi.Input[str] last_modification_time: Output only. The time that the transfer job was last modified.
         :param pulumi.Input[str] latest_operation_name: The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
         :param pulumi.Input[str] name: A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service will assign a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. Example: `"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Invalid job names will fail with an INVALID_ARGUMENT error.
         :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Notification configuration.
@@ -65,10 +60,7 @@ class TransferJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['creation_time'] = creation_time
-            __props__['deletion_time'] = deletion_time
             __props__['description'] = description
-            __props__['last_modification_time'] = last_modification_time
             __props__['latest_operation_name'] = latest_operation_name
             __props__['name'] = name
             __props__['notification_config'] = notification_config
@@ -79,6 +71,9 @@ class TransferJob(pulumi.CustomResource):
                 raise TypeError("Missing required property 'transfer_jobs_id'")
             __props__['transfer_jobs_id'] = transfer_jobs_id
             __props__['transfer_spec'] = transfer_spec
+            __props__['creation_time'] = None
+            __props__['deletion_time'] = None
+            __props__['last_modification_time'] = None
         super(TransferJob, __self__).__init__(
             'google-cloud:storagetransfer/v1:TransferJob',
             resource_name,
@@ -101,7 +96,106 @@ class TransferJob(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["creation_time"] = None
+        __props__["deletion_time"] = None
+        __props__["description"] = None
+        __props__["last_modification_time"] = None
+        __props__["latest_operation_name"] = None
+        __props__["name"] = None
+        __props__["notification_config"] = None
+        __props__["project_id"] = None
+        __props__["schedule"] = None
+        __props__["status"] = None
+        __props__["transfer_spec"] = None
         return TransferJob(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> pulumi.Output[str]:
+        """
+        The time that the transfer job was created.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter(name="deletionTime")
+    def deletion_time(self) -> pulumi.Output[str]:
+        """
+        The time that the transfer job was deleted.
+        """
+        return pulumi.get(self, "deletion_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="lastModificationTime")
+    def last_modification_time(self) -> pulumi.Output[str]:
+        """
+        The time that the transfer job was last modified.
+        """
+        return pulumi.get(self, "last_modification_time")
+
+    @property
+    @pulumi.getter(name="latestOperationName")
+    def latest_operation_name(self) -> pulumi.Output[str]:
+        """
+        The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
+        """
+        return pulumi.get(self, "latest_operation_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service will assign a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. Example: `"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Invalid job names will fail with an INVALID_ARGUMENT error.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="notificationConfig")
+    def notification_config(self) -> pulumi.Output['outputs.NotificationConfigResponse']:
+        """
+        Notification configuration.
+        """
+        return pulumi.get(self, "notification_config")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the Google Cloud Platform Project that owns the job.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> pulumi.Output['outputs.ScheduleResponse']:
+        """
+        Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transferSpec")
+    def transfer_spec(self) -> pulumi.Output['outputs.TransferSpecResponse']:
+        """
+        Transfer specification.
+        """
+        return pulumi.get(self, "transfer_spec")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['PublicAdvertisedPrefix']
@@ -113,7 +114,117 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["creation_timestamp"] = None
+        __props__["description"] = None
+        __props__["dns_verification_ip"] = None
+        __props__["fingerprint"] = None
+        __props__["ip_cidr_range"] = None
+        __props__["kind"] = None
+        __props__["name"] = None
+        __props__["public_delegated_prefixs"] = None
+        __props__["self_link"] = None
+        __props__["self_link_with_id"] = None
+        __props__["shared_secret"] = None
+        __props__["status"] = None
         return PublicAdvertisedPrefix(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dnsVerificationIp")
+    def dns_verification_ip(self) -> pulumi.Output[str]:
+        """
+        The IPv4 address to be used for reverse DNS verification.
+        """
+        return pulumi.get(self, "dns_verification_ip")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> pulumi.Output[str]:
+        """
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet.
+
+        To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="ipCidrRange")
+    def ip_cidr_range(self) -> pulumi.Output[str]:
+        """
+        The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+        """
+        return pulumi.get(self, "ip_cidr_range")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="publicDelegatedPrefixs")
+    def public_delegated_prefixs(self) -> pulumi.Output[Sequence['outputs.PublicAdvertisedPrefixPublicDelegatedPrefixResponse']]:
+        """
+        [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
+        """
+        return pulumi.get(self, "public_delegated_prefixs")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL with id for the resource.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="sharedSecret")
+    def shared_secret(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The shared secret to be used for reverse DNS verification.
+        """
+        return pulumi.get(self, "shared_secret")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        The status of the public advertised prefix.
+        """
+        return pulumi.get(self, "status")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

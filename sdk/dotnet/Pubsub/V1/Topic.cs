@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Pubsub.V1
     public partial class Topic : Pulumi.CustomResource
     {
         /// <summary>
+        /// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string> KmsKeyName { get; private set; } = null!;
+
+        /// <summary>
+        /// See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
+        /// </summary>
+        [Output("messageStoragePolicy")]
+        public Output<Outputs.MessageStoragePolicyResponse> MessageStoragePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
+
+        /// <summary>
+        /// Settings for validating messages published against a schema.
+        /// </summary>
+        [Output("schemaSettings")]
+        public Output<Outputs.SchemaSettingsResponse> SchemaSettings { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Topic resource with the given unique name, arguments, and options.
         /// </summary>
         ///

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Model']
@@ -16,18 +17,13 @@ class Model(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active_operations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OperationArgs']]]]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 etag: Optional[pulumi.Input[str]] = None,
-                 model_hash: Optional[pulumi.Input[str]] = None,
                  models_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[pulumi.InputType['ModelStateArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tflite_model: Optional[pulumi.Input[pulumi.InputType['TfLiteModelArgs']]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -36,16 +32,11 @@ class Model(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OperationArgs']]]] active_operations: Output only. Lists operation ids associated with this model whose status is NOT done.
-        :param pulumi.Input[str] create_time: Output only. Timestamp when this model was created in Firebase ML.
         :param pulumi.Input[str] display_name: Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
-        :param pulumi.Input[str] etag: Output only. See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
-        :param pulumi.Input[str] model_hash: Output only. The model_hash will change if a new file is available for download.
         :param pulumi.Input[str] name: The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
         :param pulumi.Input[pulumi.InputType['ModelStateArgs']] state: State common to all model types. Includes publishing and validation information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: User defined tags which can be used to group/filter models during listing
         :param pulumi.Input[pulumi.InputType['TfLiteModelArgs']] tflite_model: A TFLite Model
-        :param pulumi.Input[str] update_time: Output only. Timestamp when this model was updated in Firebase ML.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -64,11 +55,7 @@ class Model(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['active_operations'] = active_operations
-            __props__['create_time'] = create_time
             __props__['display_name'] = display_name
-            __props__['etag'] = etag
-            __props__['model_hash'] = model_hash
             if models_id is None and not opts.urn:
                 raise TypeError("Missing required property 'models_id'")
             __props__['models_id'] = models_id
@@ -79,7 +66,11 @@ class Model(pulumi.CustomResource):
             __props__['state'] = state
             __props__['tags'] = tags
             __props__['tflite_model'] = tflite_model
-            __props__['update_time'] = update_time
+            __props__['active_operations'] = None
+            __props__['create_time'] = None
+            __props__['etag'] = None
+            __props__['model_hash'] = None
+            __props__['update_time'] = None
         super(Model, __self__).__init__(
             'google-cloud:firebaseml/v1beta2:Model',
             resource_name,
@@ -102,7 +93,97 @@ class Model(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["active_operations"] = None
+        __props__["create_time"] = None
+        __props__["display_name"] = None
+        __props__["etag"] = None
+        __props__["model_hash"] = None
+        __props__["name"] = None
+        __props__["state"] = None
+        __props__["tags"] = None
+        __props__["tflite_model"] = None
+        __props__["update_time"] = None
         return Model(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="activeOperations")
+    def active_operations(self) -> pulumi.Output[Sequence['outputs.OperationResponse']]:
+        """
+        Lists operation ids associated with this model whose status is NOT done.
+        """
+        return pulumi.get(self, "active_operations")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Timestamp when this model was created in Firebase ML.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="modelHash")
+    def model_hash(self) -> pulumi.Output[str]:
+        """
+        The model_hash will change if a new file is available for download.
+        """
+        return pulumi.get(self, "model_hash")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output['outputs.ModelStateResponse']:
+        """
+        State common to all model types. Includes publishing and validation information.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Sequence[str]]:
+        """
+        User defined tags which can be used to group/filter models during listing
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tfliteModel")
+    def tflite_model(self) -> pulumi.Output['outputs.TfLiteModelResponse']:
+        """
+        A TFLite Model
+        """
+        return pulumi.get(self, "tflite_model")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        Timestamp when this model was updated in Firebase ML.
+        """
+        return pulumi.get(self, "update_time")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

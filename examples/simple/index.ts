@@ -1,4 +1,4 @@
-import { asset } from "@pulumi/pulumi";
+import * as pulumi from "@pulumi/pulumi";
 import * as cloud from "@pulumi/google-cloud";
 
 const project = "pulumi-development";
@@ -26,14 +26,14 @@ const service = new cloud.run.v1.Service("service", {
 const iamHello = new cloud.run.v1.ServiceIamPolicy("allow-all", {
     projectsId: project,
     locationsId: region,
-    servicesId: runName,
+    servicesId: service.metadata.name,
     policy: {
         bindings: [{
             members: ["allUsers"],
             role: "roles/run.invoker",
         }],
     },
-}, { dependsOn: [service] });
+});
 
 const bucketName = "bucket-nextgen";
 const bucket = new cloud.storage.v1.Bucket("bucket", {
@@ -46,11 +46,11 @@ const archiveName = "zip2";
 const bucketObject = new cloud.storage.v1.BucketObject(archiveName, {
     object: archiveName,
     name: archiveName,
-    bucket: bucketName,
-    source: new asset.AssetArchive({
-        ".": new asset.FileArchive("./pythonfunc"),
+    bucket: bucket.name,
+    source: new pulumi.asset.AssetArchive({
+        ".": new pulumi.asset.FileArchive("./pythonfunc"),
     }),
-}, { dependsOn: [bucket] });
+});
 
 const functionName = "python-func";
 const functionPython = new cloud.cloudfunctions.v1.Function(functionName, {
@@ -58,15 +58,14 @@ const functionPython = new cloud.cloudfunctions.v1.Function(functionName, {
     locationsId: region,
     functionsId: functionName,
     name: `projects/${project}/locations/${region}/functions/${functionName}`,
-    sourceArchiveUrl: `gs://${bucketName}/${archiveName}`,
+    sourceArchiveUrl: pulumi.interpolate`gs://${bucket.name}/${bucketObject.name}`,
     httpsTrigger: {},
     entryPoint: "handler",
     timeout: "60s",
     availableMemoryMb: 128,
     runtime: "python37",
     ingressSettings: "ALLOW_ALL",
-    versionId: "1",
-}, { dependsOn: [bucketObject] });
+});
 
 const pyInvoker = new cloud.cloudfunctions.v1.FunctionIamPolicy("py-invoker", {
     projectsId: project,
@@ -82,7 +81,7 @@ const pyInvoker = new cloud.cloudfunctions.v1.FunctionIamPolicy("py-invoker", {
     },
 }, { dependsOn: [functionPython] });
 
-export const functionUrl = `https://${region}-${project}.cloudfunctions.net/${functionName}`;
+export const functionUrl = functionPython.httpsTrigger.url;
 
 const clusterName = "gke-native";
 const cluster = new cloud.container.v1.Cluster("cluster", {
@@ -116,7 +115,7 @@ const nodePoolName = "extra-node-pool";
 const pool = new cloud.container.v1.ClusterNodePool(nodePoolName, {
     projectsId: project,
     locationsId: region,
-    clustersId: clusterName,
+    clustersId: cluster.name,
     nodePoolsId: nodePoolName,
     parent: `projects/${project}/locations/${region}/clusters/${clusterName}`,
     nodePool: {
@@ -137,4 +136,4 @@ const pool = new cloud.container.v1.ClusterNodePool(nodePoolName, {
         name: nodePoolName,
         version: "1.18.16-gke.500",
     },
-}, {dependsOn: [cluster]});
+});

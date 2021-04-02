@@ -35,6 +35,30 @@ export class ServiceBackup extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServiceBackup.__pulumiType;
     }
 
+    /**
+     * The time when the backup was started.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The description of the backup.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * The time when the backup finished creating.
+     */
+    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    /**
+     * Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The revision of the service at the time of backup.
+     */
+    public /*out*/ readonly serviceRevision!: pulumi.Output<outputs.metastore.v1alpha.ServiceResponse>;
+    /**
+     * The current state of the backup.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a ServiceBackup resource with the given unique name, arguments, and options.
@@ -60,16 +84,22 @@ export class ServiceBackup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'servicesId'");
             }
             inputs["backupsId"] = args ? args.backupsId : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["serviceRevision"] = args ? args.serviceRevision : undefined;
             inputs["servicesId"] = args ? args.servicesId : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["serviceRevision"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["serviceRevision"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -84,30 +114,14 @@ export class ServiceBackup extends pulumi.CustomResource {
 export interface ServiceBackupArgs {
     readonly backupsId: pulumi.Input<string>;
     /**
-     * Output only. The time when the backup was started.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * The description of the backup.
      */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Output only. The time when the backup finished creating.
-     */
-    readonly endTime?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. The revision of the service at the time of backup.
-     */
-    readonly serviceRevision?: pulumi.Input<inputs.metastore.v1alpha.Service>;
     readonly servicesId: pulumi.Input<string>;
-    /**
-     * Output only. The current state of the backup.
-     */
-    readonly state?: pulumi.Input<string>;
 }

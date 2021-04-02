@@ -34,7 +34,7 @@ namespace Pulumi.GoogleCloud.Ml.V1.Inputs
         public Input<Inputs.GoogleCloudMlV1__ContainerSpecArgs>? Container { get; set; }
 
         /// <summary>
-        /// Output only. The time the version was created.
+        /// The time the version was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleCloud.Ml.V1.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Output only. The details of a failure or a cancellation.
+        /// The details of a failure or a cancellation.
         /// </summary>
         [Input("errorMessage")]
         public Input<string>? ErrorMessage { get; set; }
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleCloud.Ml.V1.Inputs
         public Input<string>? Framework { get; set; }
 
         /// <summary>
-        /// Output only. If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
+        /// If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
         /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
@@ -94,19 +94,7 @@ namespace Pulumi.GoogleCloud.Ml.V1.Inputs
         }
 
         /// <summary>
-        /// Output only. The [AI Platform (Unified) `Model`](https://cloud.google.com/ai-platform-unified/docs/reference/rest/v1beta1/projects.locations.models) ID for the last [model migration](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
-        /// </summary>
-        [Input("lastMigrationModelId")]
-        public Input<string>? LastMigrationModelId { get; set; }
-
-        /// <summary>
-        /// Output only. The last time this version was successfully [migrated to AI Platform (Unified)](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
-        /// </summary>
-        [Input("lastMigrationTime")]
-        public Input<string>? LastMigrationTime { get; set; }
-
-        /// <summary>
-        /// Output only. The time the version was last used for prediction.
+        /// The time the version was last used for prediction.
         /// </summary>
         [Input("lastUseTime")]
         public Input<string>? LastUseTime { get; set; }
@@ -178,7 +166,7 @@ namespace Pulumi.GoogleCloud.Ml.V1.Inputs
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
-        /// Output only. The state of a version.
+        /// The state of a version.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

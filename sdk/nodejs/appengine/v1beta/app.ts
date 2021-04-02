@@ -35,6 +35,55 @@ export class App extends pulumi.CustomResource {
         return obj['__pulumiType'] === App.__pulumiType;
     }
 
+    /**
+     * Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
+     */
+    public readonly authDomain!: pulumi.Output<string>;
+    /**
+     * Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.@OutputOnly
+     */
+    public readonly codeBucket!: pulumi.Output<string>;
+    /**
+     * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+     */
+    public readonly databaseType!: pulumi.Output<string>;
+    /**
+     * Google Cloud Storage bucket that can be used by this application to store content.@OutputOnly
+     */
+    public readonly defaultBucket!: pulumi.Output<string>;
+    /**
+     * Cookie expiration policy for this application.
+     */
+    public readonly defaultCookieExpiration!: pulumi.Output<string>;
+    /**
+     * Hostname used to reach this application, as resolved by App Engine.@OutputOnly
+     */
+    public readonly defaultHostname!: pulumi.Output<string>;
+    /**
+     * HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
+     */
+    public readonly dispatchRules!: pulumi.Output<outputs.appengine.v1beta.UrlDispatchRuleResponse[]>;
+    /**
+     * The feature specific settings to be used in the application.
+     */
+    public readonly featureSettings!: pulumi.Output<outputs.appengine.v1beta.FeatureSettingsResponse>;
+    /**
+     * The Google Container Registry domain used for storing managed build docker images for this application.
+     */
+    public readonly gcrDomain!: pulumi.Output<string>;
+    public readonly iap!: pulumi.Output<outputs.appengine.v1beta.IdentityAwareProxyResponse>;
+    /**
+     * Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
+     */
+    public readonly locationId!: pulumi.Output<string>;
+    /**
+     * Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Serving status of this application.
+     */
+    public readonly servingStatus!: pulumi.Output<string>;
 
     /**
      * Create a App resource with the given unique name, arguments, and options.
@@ -66,6 +115,19 @@ export class App extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["servingStatus"] = args ? args.servingStatus : undefined;
         } else {
+            inputs["authDomain"] = undefined /*out*/;
+            inputs["codeBucket"] = undefined /*out*/;
+            inputs["databaseType"] = undefined /*out*/;
+            inputs["defaultBucket"] = undefined /*out*/;
+            inputs["defaultCookieExpiration"] = undefined /*out*/;
+            inputs["defaultHostname"] = undefined /*out*/;
+            inputs["dispatchRules"] = undefined /*out*/;
+            inputs["featureSettings"] = undefined /*out*/;
+            inputs["gcrDomain"] = undefined /*out*/;
+            inputs["iap"] = undefined /*out*/;
+            inputs["locationId"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["servingStatus"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -16,6 +16,31 @@ namespace Pulumi.GoogleCloud.Policysimulator.V1beta1
     public partial class FolderReplay : Pulumi.CustomResource
     {
         /// <summary>
+        /// Required. The configuration used for the `Replay`.
+        /// </summary>
+        [Output("config")]
+        public Output<Outputs.GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse> Config { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Summary statistics about the replayed log entries.
+        /// </summary>
+        [Output("resultsSummary")]
+        public Output<Outputs.GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse> ResultsSummary { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the `Replay`.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a FolderReplay resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -71,26 +96,8 @@ namespace Pulumi.GoogleCloud.Policysimulator.V1beta1
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("replaysId", required: true)]
         public Input<string> ReplaysId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Summary statistics about the replayed log entries.
-        /// </summary>
-        [Input("resultsSummary")]
-        public Input<Inputs.GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryArgs>? ResultsSummary { get; set; }
-
-        /// <summary>
-        /// Output only. The current state of the `Replay`.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         public FolderReplayArgs()
         {

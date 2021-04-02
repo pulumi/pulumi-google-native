@@ -16,6 +16,67 @@ namespace Pulumi.GoogleCloud.File.V1
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// The time when the instance was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the instance (2048 characters or less).
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// File system shares on the instance. For this version, only a single file share is supported.
+        /// </summary>
+        [Output("fileShares")]
+        public Output<ImmutableArray<Outputs.FileShareConfigResponse>> FileShares { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource labels to represent user provided metadata.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the instance, in the format projects/{project}/locations/{location}/instances/{instance}.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// VPC networks to which the instance is connected. For this version, only a single network is supported.
+        /// </summary>
+        [Output("networks")]
+        public Output<ImmutableArray<Outputs.NetworkConfigResponse>> Networks { get; private set; } = null!;
+
+        /// <summary>
+        /// The instance state.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional information about the instance state, if available.
+        /// </summary>
+        [Output("statusMessage")]
+        public Output<string> StatusMessage { get; private set; } = null!;
+
+        /// <summary>
+        /// The service tier of the instance.
+        /// </summary>
+        [Output("tier")]
+        public Output<string> Tier { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +121,6 @@ namespace Pulumi.GoogleCloud.File.V1
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The time when the instance was created.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
-
-        /// <summary>
         /// The description of the instance (2048 characters or less).
         /// </summary>
         [Input("description")]
@@ -107,12 +162,6 @@ namespace Pulumi.GoogleCloud.File.V1
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
-        /// <summary>
-        /// Output only. The resource name of the instance, in the format projects/{project}/locations/{location}/instances/{instance}.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("networks")]
         private InputList<Inputs.NetworkConfigArgs>? _networks;
 
@@ -127,18 +176,6 @@ namespace Pulumi.GoogleCloud.File.V1
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. The instance state.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Output only. Additional information about the instance state, if available.
-        /// </summary>
-        [Input("statusMessage")]
-        public Input<string>? StatusMessage { get; set; }
 
         /// <summary>
         /// The service tier of the instance.

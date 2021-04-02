@@ -14,6 +14,19 @@ import (
 // Creates a debug session for a deployed API Proxy revision.
 type OrganizationEnvironmentApiRevisionDebugsession struct {
 	pulumi.CustomResourceState
+
+	// Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
+	Count pulumi.IntOutput `pulumi:"count"`
+	// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
+	Filter pulumi.StringOutput `pulumi:"filter"`
+	// A unique ID for this DebugSession.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
+	Timeout pulumi.StringOutput `pulumi:"timeout"`
+	// Optional. The maximum number of bytes captured from the response payload. Min = 0, Max = 5120, Default = 5120.
+	Tracesize pulumi.IntOutput `pulumi:"tracesize"`
+	// Optional. The length of time, in seconds, that this debug session is valid, starting from when it's received in the control plane. Min = 1, Max = 15, Default = 10.
+	Validity pulumi.IntOutput `pulumi:"validity"`
 }
 
 // NewOrganizationEnvironmentApiRevisionDebugsession registers a new resource with the given unique name, arguments, and options.
@@ -60,9 +73,33 @@ func GetOrganizationEnvironmentApiRevisionDebugsession(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationEnvironmentApiRevisionDebugsession resources.
 type organizationEnvironmentApiRevisionDebugsessionState struct {
+	// Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
+	Count *int `pulumi:"count"`
+	// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
+	Filter *string `pulumi:"filter"`
+	// A unique ID for this DebugSession.
+	Name *string `pulumi:"name"`
+	// Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
+	Timeout *string `pulumi:"timeout"`
+	// Optional. The maximum number of bytes captured from the response payload. Min = 0, Max = 5120, Default = 5120.
+	Tracesize *int `pulumi:"tracesize"`
+	// Optional. The length of time, in seconds, that this debug session is valid, starting from when it's received in the control plane. Min = 1, Max = 15, Default = 10.
+	Validity *int `pulumi:"validity"`
 }
 
 type OrganizationEnvironmentApiRevisionDebugsessionState struct {
+	// Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
+	Count pulumi.IntPtrInput
+	// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
+	Filter pulumi.StringPtrInput
+	// A unique ID for this DebugSession.
+	Name pulumi.StringPtrInput
+	// Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
+	Timeout pulumi.StringPtrInput
+	// Optional. The maximum number of bytes captured from the response payload. Min = 0, Max = 5120, Default = 5120.
+	Tracesize pulumi.IntPtrInput
+	// Optional. The length of time, in seconds, that this debug session is valid, starting from when it's received in the control plane. Min = 1, Max = 15, Default = 10.
+	Validity pulumi.IntPtrInput
 }
 
 func (OrganizationEnvironmentApiRevisionDebugsessionState) ElementType() reflect.Type {

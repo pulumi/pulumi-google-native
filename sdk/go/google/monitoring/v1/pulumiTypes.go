@@ -201,6 +201,88 @@ func (o AggregationPtrOutput) PerSeriesAligner() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).
+type AggregationResponse struct {
+	// The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 2 years, or 104 weeks.
+	AlignmentPeriod string `pulumi:"alignmentPeriod"`
+	// The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+	CrossSeriesReducer string `pulumi:"crossSeriesReducer"`
+	// The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored.
+	GroupByFields []string `pulumi:"groupByFields"`
+	// An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
+	PerSeriesAligner string `pulumi:"perSeriesAligner"`
+}
+
+// AggregationResponseInput is an input type that accepts AggregationResponseArgs and AggregationResponseOutput values.
+// You can construct a concrete instance of `AggregationResponseInput` via:
+//
+//          AggregationResponseArgs{...}
+type AggregationResponseInput interface {
+	pulumi.Input
+
+	ToAggregationResponseOutput() AggregationResponseOutput
+	ToAggregationResponseOutputWithContext(context.Context) AggregationResponseOutput
+}
+
+// Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).
+type AggregationResponseArgs struct {
+	// The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 2 years, or 104 weeks.
+	AlignmentPeriod pulumi.StringInput `pulumi:"alignmentPeriod"`
+	// The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+	CrossSeriesReducer pulumi.StringInput `pulumi:"crossSeriesReducer"`
+	// The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored.
+	GroupByFields pulumi.StringArrayInput `pulumi:"groupByFields"`
+	// An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
+	PerSeriesAligner pulumi.StringInput `pulumi:"perSeriesAligner"`
+}
+
+func (AggregationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationResponse)(nil)).Elem()
+}
+
+func (i AggregationResponseArgs) ToAggregationResponseOutput() AggregationResponseOutput {
+	return i.ToAggregationResponseOutputWithContext(context.Background())
+}
+
+func (i AggregationResponseArgs) ToAggregationResponseOutputWithContext(ctx context.Context) AggregationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregationResponseOutput)
+}
+
+// Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).
+type AggregationResponseOutput struct{ *pulumi.OutputState }
+
+func (AggregationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationResponse)(nil)).Elem()
+}
+
+func (o AggregationResponseOutput) ToAggregationResponseOutput() AggregationResponseOutput {
+	return o
+}
+
+func (o AggregationResponseOutput) ToAggregationResponseOutputWithContext(ctx context.Context) AggregationResponseOutput {
+	return o
+}
+
+// The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 2 years, or 104 weeks.
+func (o AggregationResponseOutput) AlignmentPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v AggregationResponse) string { return v.AlignmentPeriod }).(pulumi.StringOutput)
+}
+
+// The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
+func (o AggregationResponseOutput) CrossSeriesReducer() pulumi.StringOutput {
+	return o.ApplyT(func(v AggregationResponse) string { return v.CrossSeriesReducer }).(pulumi.StringOutput)
+}
+
+// The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored.
+func (o AggregationResponseOutput) GroupByFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AggregationResponse) []string { return v.GroupByFields }).(pulumi.StringArrayOutput)
+}
+
+// An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
+func (o AggregationResponseOutput) PerSeriesAligner() pulumi.StringOutput {
+	return o.ApplyT(func(v AggregationResponse) string { return v.PerSeriesAligner }).(pulumi.StringOutput)
+}
+
 // A chart axis.
 type Axis struct {
 	// The label of the axis.
@@ -354,6 +436,70 @@ func (o AxisPtrOutput) Scale() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A chart axis.
+type AxisResponse struct {
+	// The label of the axis.
+	Label string `pulumi:"label"`
+	// The axis scale. By default, a linear scale is used.
+	Scale string `pulumi:"scale"`
+}
+
+// AxisResponseInput is an input type that accepts AxisResponseArgs and AxisResponseOutput values.
+// You can construct a concrete instance of `AxisResponseInput` via:
+//
+//          AxisResponseArgs{...}
+type AxisResponseInput interface {
+	pulumi.Input
+
+	ToAxisResponseOutput() AxisResponseOutput
+	ToAxisResponseOutputWithContext(context.Context) AxisResponseOutput
+}
+
+// A chart axis.
+type AxisResponseArgs struct {
+	// The label of the axis.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The axis scale. By default, a linear scale is used.
+	Scale pulumi.StringInput `pulumi:"scale"`
+}
+
+func (AxisResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AxisResponse)(nil)).Elem()
+}
+
+func (i AxisResponseArgs) ToAxisResponseOutput() AxisResponseOutput {
+	return i.ToAxisResponseOutputWithContext(context.Background())
+}
+
+func (i AxisResponseArgs) ToAxisResponseOutputWithContext(ctx context.Context) AxisResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AxisResponseOutput)
+}
+
+// A chart axis.
+type AxisResponseOutput struct{ *pulumi.OutputState }
+
+func (AxisResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AxisResponse)(nil)).Elem()
+}
+
+func (o AxisResponseOutput) ToAxisResponseOutput() AxisResponseOutput {
+	return o
+}
+
+func (o AxisResponseOutput) ToAxisResponseOutputWithContext(ctx context.Context) AxisResponseOutput {
+	return o
+}
+
+// The label of the axis.
+func (o AxisResponseOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v AxisResponse) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The axis scale. By default, a linear scale is used.
+func (o AxisResponseOutput) Scale() pulumi.StringOutput {
+	return o.ApplyT(func(v AxisResponse) string { return v.Scale }).(pulumi.StringOutput)
+}
+
 // Options to control visual rendering of a chart.
 type ChartOptions struct {
 	// The chart mode.
@@ -486,6 +632,61 @@ func (o ChartOptionsPtrOutput) Mode() pulumi.StringPtrOutput {
 		}
 		return v.Mode
 	}).(pulumi.StringPtrOutput)
+}
+
+// Options to control visual rendering of a chart.
+type ChartOptionsResponse struct {
+	// The chart mode.
+	Mode string `pulumi:"mode"`
+}
+
+// ChartOptionsResponseInput is an input type that accepts ChartOptionsResponseArgs and ChartOptionsResponseOutput values.
+// You can construct a concrete instance of `ChartOptionsResponseInput` via:
+//
+//          ChartOptionsResponseArgs{...}
+type ChartOptionsResponseInput interface {
+	pulumi.Input
+
+	ToChartOptionsResponseOutput() ChartOptionsResponseOutput
+	ToChartOptionsResponseOutputWithContext(context.Context) ChartOptionsResponseOutput
+}
+
+// Options to control visual rendering of a chart.
+type ChartOptionsResponseArgs struct {
+	// The chart mode.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (ChartOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChartOptionsResponse)(nil)).Elem()
+}
+
+func (i ChartOptionsResponseArgs) ToChartOptionsResponseOutput() ChartOptionsResponseOutput {
+	return i.ToChartOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i ChartOptionsResponseArgs) ToChartOptionsResponseOutputWithContext(ctx context.Context) ChartOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChartOptionsResponseOutput)
+}
+
+// Options to control visual rendering of a chart.
+type ChartOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (ChartOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChartOptionsResponse)(nil)).Elem()
+}
+
+func (o ChartOptionsResponseOutput) ToChartOptionsResponseOutput() ChartOptionsResponseOutput {
+	return o
+}
+
+func (o ChartOptionsResponseOutput) ToChartOptionsResponseOutputWithContext(ctx context.Context) ChartOptionsResponseOutput {
+	return o
+}
+
+// The chart mode.
+func (o ChartOptionsResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v ChartOptionsResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 // Defines the layout properties and content for a column.
@@ -731,6 +932,249 @@ func (o ColumnLayoutPtrOutput) Columns() ColumnArrayOutput {
 	}).(ColumnArrayOutput)
 }
 
+// A simplified layout that divides the available space into vertical columns and arranges a set of widgets vertically in each column.
+type ColumnLayoutResponse struct {
+	// The columns of content to display.
+	Columns []ColumnResponse `pulumi:"columns"`
+}
+
+// ColumnLayoutResponseInput is an input type that accepts ColumnLayoutResponseArgs and ColumnLayoutResponseOutput values.
+// You can construct a concrete instance of `ColumnLayoutResponseInput` via:
+//
+//          ColumnLayoutResponseArgs{...}
+type ColumnLayoutResponseInput interface {
+	pulumi.Input
+
+	ToColumnLayoutResponseOutput() ColumnLayoutResponseOutput
+	ToColumnLayoutResponseOutputWithContext(context.Context) ColumnLayoutResponseOutput
+}
+
+// A simplified layout that divides the available space into vertical columns and arranges a set of widgets vertically in each column.
+type ColumnLayoutResponseArgs struct {
+	// The columns of content to display.
+	Columns ColumnResponseArrayInput `pulumi:"columns"`
+}
+
+func (ColumnLayoutResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ColumnLayoutResponse)(nil)).Elem()
+}
+
+func (i ColumnLayoutResponseArgs) ToColumnLayoutResponseOutput() ColumnLayoutResponseOutput {
+	return i.ToColumnLayoutResponseOutputWithContext(context.Background())
+}
+
+func (i ColumnLayoutResponseArgs) ToColumnLayoutResponseOutputWithContext(ctx context.Context) ColumnLayoutResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ColumnLayoutResponseOutput)
+}
+
+func (i ColumnLayoutResponseArgs) ToColumnLayoutResponsePtrOutput() ColumnLayoutResponsePtrOutput {
+	return i.ToColumnLayoutResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ColumnLayoutResponseArgs) ToColumnLayoutResponsePtrOutputWithContext(ctx context.Context) ColumnLayoutResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ColumnLayoutResponseOutput).ToColumnLayoutResponsePtrOutputWithContext(ctx)
+}
+
+// ColumnLayoutResponsePtrInput is an input type that accepts ColumnLayoutResponseArgs, ColumnLayoutResponsePtr and ColumnLayoutResponsePtrOutput values.
+// You can construct a concrete instance of `ColumnLayoutResponsePtrInput` via:
+//
+//          ColumnLayoutResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ColumnLayoutResponsePtrInput interface {
+	pulumi.Input
+
+	ToColumnLayoutResponsePtrOutput() ColumnLayoutResponsePtrOutput
+	ToColumnLayoutResponsePtrOutputWithContext(context.Context) ColumnLayoutResponsePtrOutput
+}
+
+type columnLayoutResponsePtrType ColumnLayoutResponseArgs
+
+func ColumnLayoutResponsePtr(v *ColumnLayoutResponseArgs) ColumnLayoutResponsePtrInput {
+	return (*columnLayoutResponsePtrType)(v)
+}
+
+func (*columnLayoutResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ColumnLayoutResponse)(nil)).Elem()
+}
+
+func (i *columnLayoutResponsePtrType) ToColumnLayoutResponsePtrOutput() ColumnLayoutResponsePtrOutput {
+	return i.ToColumnLayoutResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *columnLayoutResponsePtrType) ToColumnLayoutResponsePtrOutputWithContext(ctx context.Context) ColumnLayoutResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ColumnLayoutResponsePtrOutput)
+}
+
+// A simplified layout that divides the available space into vertical columns and arranges a set of widgets vertically in each column.
+type ColumnLayoutResponseOutput struct{ *pulumi.OutputState }
+
+func (ColumnLayoutResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ColumnLayoutResponse)(nil)).Elem()
+}
+
+func (o ColumnLayoutResponseOutput) ToColumnLayoutResponseOutput() ColumnLayoutResponseOutput {
+	return o
+}
+
+func (o ColumnLayoutResponseOutput) ToColumnLayoutResponseOutputWithContext(ctx context.Context) ColumnLayoutResponseOutput {
+	return o
+}
+
+func (o ColumnLayoutResponseOutput) ToColumnLayoutResponsePtrOutput() ColumnLayoutResponsePtrOutput {
+	return o.ToColumnLayoutResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ColumnLayoutResponseOutput) ToColumnLayoutResponsePtrOutputWithContext(ctx context.Context) ColumnLayoutResponsePtrOutput {
+	return o.ApplyT(func(v ColumnLayoutResponse) *ColumnLayoutResponse {
+		return &v
+	}).(ColumnLayoutResponsePtrOutput)
+}
+
+// The columns of content to display.
+func (o ColumnLayoutResponseOutput) Columns() ColumnResponseArrayOutput {
+	return o.ApplyT(func(v ColumnLayoutResponse) []ColumnResponse { return v.Columns }).(ColumnResponseArrayOutput)
+}
+
+type ColumnLayoutResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ColumnLayoutResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ColumnLayoutResponse)(nil)).Elem()
+}
+
+func (o ColumnLayoutResponsePtrOutput) ToColumnLayoutResponsePtrOutput() ColumnLayoutResponsePtrOutput {
+	return o
+}
+
+func (o ColumnLayoutResponsePtrOutput) ToColumnLayoutResponsePtrOutputWithContext(ctx context.Context) ColumnLayoutResponsePtrOutput {
+	return o
+}
+
+func (o ColumnLayoutResponsePtrOutput) Elem() ColumnLayoutResponseOutput {
+	return o.ApplyT(func(v *ColumnLayoutResponse) ColumnLayoutResponse { return *v }).(ColumnLayoutResponseOutput)
+}
+
+// The columns of content to display.
+func (o ColumnLayoutResponsePtrOutput) Columns() ColumnResponseArrayOutput {
+	return o.ApplyT(func(v *ColumnLayoutResponse) []ColumnResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Columns
+	}).(ColumnResponseArrayOutput)
+}
+
+// Defines the layout properties and content for a column.
+type ColumnResponse struct {
+	// The relative weight of this column. The column weight is used to adjust the width of columns on the screen (relative to peers). Greater the weight, greater the width of the column on the screen. If omitted, a value of 1 is used while rendering.
+	Weight string `pulumi:"weight"`
+	// The display widgets arranged vertically in this column.
+	Widgets []WidgetResponse `pulumi:"widgets"`
+}
+
+// ColumnResponseInput is an input type that accepts ColumnResponseArgs and ColumnResponseOutput values.
+// You can construct a concrete instance of `ColumnResponseInput` via:
+//
+//          ColumnResponseArgs{...}
+type ColumnResponseInput interface {
+	pulumi.Input
+
+	ToColumnResponseOutput() ColumnResponseOutput
+	ToColumnResponseOutputWithContext(context.Context) ColumnResponseOutput
+}
+
+// Defines the layout properties and content for a column.
+type ColumnResponseArgs struct {
+	// The relative weight of this column. The column weight is used to adjust the width of columns on the screen (relative to peers). Greater the weight, greater the width of the column on the screen. If omitted, a value of 1 is used while rendering.
+	Weight pulumi.StringInput `pulumi:"weight"`
+	// The display widgets arranged vertically in this column.
+	Widgets WidgetResponseArrayInput `pulumi:"widgets"`
+}
+
+func (ColumnResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ColumnResponse)(nil)).Elem()
+}
+
+func (i ColumnResponseArgs) ToColumnResponseOutput() ColumnResponseOutput {
+	return i.ToColumnResponseOutputWithContext(context.Background())
+}
+
+func (i ColumnResponseArgs) ToColumnResponseOutputWithContext(ctx context.Context) ColumnResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ColumnResponseOutput)
+}
+
+// ColumnResponseArrayInput is an input type that accepts ColumnResponseArray and ColumnResponseArrayOutput values.
+// You can construct a concrete instance of `ColumnResponseArrayInput` via:
+//
+//          ColumnResponseArray{ ColumnResponseArgs{...} }
+type ColumnResponseArrayInput interface {
+	pulumi.Input
+
+	ToColumnResponseArrayOutput() ColumnResponseArrayOutput
+	ToColumnResponseArrayOutputWithContext(context.Context) ColumnResponseArrayOutput
+}
+
+type ColumnResponseArray []ColumnResponseInput
+
+func (ColumnResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ColumnResponse)(nil)).Elem()
+}
+
+func (i ColumnResponseArray) ToColumnResponseArrayOutput() ColumnResponseArrayOutput {
+	return i.ToColumnResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ColumnResponseArray) ToColumnResponseArrayOutputWithContext(ctx context.Context) ColumnResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ColumnResponseArrayOutput)
+}
+
+// Defines the layout properties and content for a column.
+type ColumnResponseOutput struct{ *pulumi.OutputState }
+
+func (ColumnResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ColumnResponse)(nil)).Elem()
+}
+
+func (o ColumnResponseOutput) ToColumnResponseOutput() ColumnResponseOutput {
+	return o
+}
+
+func (o ColumnResponseOutput) ToColumnResponseOutputWithContext(ctx context.Context) ColumnResponseOutput {
+	return o
+}
+
+// The relative weight of this column. The column weight is used to adjust the width of columns on the screen (relative to peers). Greater the weight, greater the width of the column on the screen. If omitted, a value of 1 is used while rendering.
+func (o ColumnResponseOutput) Weight() pulumi.StringOutput {
+	return o.ApplyT(func(v ColumnResponse) string { return v.Weight }).(pulumi.StringOutput)
+}
+
+// The display widgets arranged vertically in this column.
+func (o ColumnResponseOutput) Widgets() WidgetResponseArrayOutput {
+	return o.ApplyT(func(v ColumnResponse) []WidgetResponse { return v.Widgets }).(WidgetResponseArrayOutput)
+}
+
+type ColumnResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ColumnResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ColumnResponse)(nil)).Elem()
+}
+
+func (o ColumnResponseArrayOutput) ToColumnResponseArrayOutput() ColumnResponseArrayOutput {
+	return o
+}
+
+func (o ColumnResponseArrayOutput) ToColumnResponseArrayOutputWithContext(ctx context.Context) ColumnResponseArrayOutput {
+	return o
+}
+
+func (o ColumnResponseArrayOutput) Index(i pulumi.IntInput) ColumnResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ColumnResponse {
+		return vs[0].([]ColumnResponse)[vs[1].(int)]
+	}).(ColumnResponseOutput)
+}
+
 // Groups a time series query definition with charting options.
 type DataSet struct {
 	// A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
@@ -858,6 +1302,133 @@ func (o DataSetArrayOutput) Index(i pulumi.IntInput) DataSetOutput {
 	}).(DataSetOutput)
 }
 
+// Groups a time series query definition with charting options.
+type DataSetResponse struct {
+	// A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
+	LegendTemplate string `pulumi:"legendTemplate"`
+	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+	MinAlignmentPeriod string `pulumi:"minAlignmentPeriod"`
+	// How this data should be plotted on the chart.
+	PlotType string `pulumi:"plotType"`
+	// Required. Fields for querying time series data from the Stackdriver metrics API.
+	TimeSeriesQuery TimeSeriesQueryResponse `pulumi:"timeSeriesQuery"`
+}
+
+// DataSetResponseInput is an input type that accepts DataSetResponseArgs and DataSetResponseOutput values.
+// You can construct a concrete instance of `DataSetResponseInput` via:
+//
+//          DataSetResponseArgs{...}
+type DataSetResponseInput interface {
+	pulumi.Input
+
+	ToDataSetResponseOutput() DataSetResponseOutput
+	ToDataSetResponseOutputWithContext(context.Context) DataSetResponseOutput
+}
+
+// Groups a time series query definition with charting options.
+type DataSetResponseArgs struct {
+	// A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
+	LegendTemplate pulumi.StringInput `pulumi:"legendTemplate"`
+	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+	MinAlignmentPeriod pulumi.StringInput `pulumi:"minAlignmentPeriod"`
+	// How this data should be plotted on the chart.
+	PlotType pulumi.StringInput `pulumi:"plotType"`
+	// Required. Fields for querying time series data from the Stackdriver metrics API.
+	TimeSeriesQuery TimeSeriesQueryResponseInput `pulumi:"timeSeriesQuery"`
+}
+
+func (DataSetResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSetResponse)(nil)).Elem()
+}
+
+func (i DataSetResponseArgs) ToDataSetResponseOutput() DataSetResponseOutput {
+	return i.ToDataSetResponseOutputWithContext(context.Background())
+}
+
+func (i DataSetResponseArgs) ToDataSetResponseOutputWithContext(ctx context.Context) DataSetResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSetResponseOutput)
+}
+
+// DataSetResponseArrayInput is an input type that accepts DataSetResponseArray and DataSetResponseArrayOutput values.
+// You can construct a concrete instance of `DataSetResponseArrayInput` via:
+//
+//          DataSetResponseArray{ DataSetResponseArgs{...} }
+type DataSetResponseArrayInput interface {
+	pulumi.Input
+
+	ToDataSetResponseArrayOutput() DataSetResponseArrayOutput
+	ToDataSetResponseArrayOutputWithContext(context.Context) DataSetResponseArrayOutput
+}
+
+type DataSetResponseArray []DataSetResponseInput
+
+func (DataSetResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataSetResponse)(nil)).Elem()
+}
+
+func (i DataSetResponseArray) ToDataSetResponseArrayOutput() DataSetResponseArrayOutput {
+	return i.ToDataSetResponseArrayOutputWithContext(context.Background())
+}
+
+func (i DataSetResponseArray) ToDataSetResponseArrayOutputWithContext(ctx context.Context) DataSetResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataSetResponseArrayOutput)
+}
+
+// Groups a time series query definition with charting options.
+type DataSetResponseOutput struct{ *pulumi.OutputState }
+
+func (DataSetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSetResponse)(nil)).Elem()
+}
+
+func (o DataSetResponseOutput) ToDataSetResponseOutput() DataSetResponseOutput {
+	return o
+}
+
+func (o DataSetResponseOutput) ToDataSetResponseOutputWithContext(ctx context.Context) DataSetResponseOutput {
+	return o
+}
+
+// A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
+func (o DataSetResponseOutput) LegendTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSetResponse) string { return v.LegendTemplate }).(pulumi.StringOutput)
+}
+
+// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+func (o DataSetResponseOutput) MinAlignmentPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSetResponse) string { return v.MinAlignmentPeriod }).(pulumi.StringOutput)
+}
+
+// How this data should be plotted on the chart.
+func (o DataSetResponseOutput) PlotType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataSetResponse) string { return v.PlotType }).(pulumi.StringOutput)
+}
+
+// Required. Fields for querying time series data from the Stackdriver metrics API.
+func (o DataSetResponseOutput) TimeSeriesQuery() TimeSeriesQueryResponseOutput {
+	return o.ApplyT(func(v DataSetResponse) TimeSeriesQueryResponse { return v.TimeSeriesQuery }).(TimeSeriesQueryResponseOutput)
+}
+
+type DataSetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DataSetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataSetResponse)(nil)).Elem()
+}
+
+func (o DataSetResponseArrayOutput) ToDataSetResponseArrayOutput() DataSetResponseArrayOutput {
+	return o
+}
+
+func (o DataSetResponseArrayOutput) ToDataSetResponseArrayOutputWithContext(ctx context.Context) DataSetResponseArrayOutput {
+	return o
+}
+
+func (o DataSetResponseArrayOutput) Index(i pulumi.IntInput) DataSetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataSetResponse {
+		return vs[0].([]DataSetResponse)[vs[1].(int)]
+	}).(DataSetResponseOutput)
+}
+
 // A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty JSON object {}.
 type Empty struct {
 }
@@ -971,6 +1542,52 @@ func (o EmptyPtrOutput) ToEmptyPtrOutputWithContext(ctx context.Context) EmptyPt
 
 func (o EmptyPtrOutput) Elem() EmptyOutput {
 	return o.ApplyT(func(v *Empty) Empty { return *v }).(EmptyOutput)
+}
+
+// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty JSON object {}.
+type EmptyResponse struct {
+}
+
+// EmptyResponseInput is an input type that accepts EmptyResponseArgs and EmptyResponseOutput values.
+// You can construct a concrete instance of `EmptyResponseInput` via:
+//
+//          EmptyResponseArgs{...}
+type EmptyResponseInput interface {
+	pulumi.Input
+
+	ToEmptyResponseOutput() EmptyResponseOutput
+	ToEmptyResponseOutputWithContext(context.Context) EmptyResponseOutput
+}
+
+// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty JSON object {}.
+type EmptyResponseArgs struct {
+}
+
+func (EmptyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmptyResponse)(nil)).Elem()
+}
+
+func (i EmptyResponseArgs) ToEmptyResponseOutput() EmptyResponseOutput {
+	return i.ToEmptyResponseOutputWithContext(context.Background())
+}
+
+func (i EmptyResponseArgs) ToEmptyResponseOutputWithContext(ctx context.Context) EmptyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmptyResponseOutput)
+}
+
+// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty JSON object {}.
+type EmptyResponseOutput struct{ *pulumi.OutputState }
+
+func (EmptyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmptyResponse)(nil)).Elem()
+}
+
+func (o EmptyResponseOutput) ToEmptyResponseOutput() EmptyResponseOutput {
+	return o
+}
+
+func (o EmptyResponseOutput) ToEmptyResponseOutputWithContext(ctx context.Context) EmptyResponseOutput {
+	return o
 }
 
 // A gauge chart shows where the current value sits within a pre-defined range. The upper and lower bounds should define the possible range of values for the scorecard's query (inclusive).
@@ -1126,6 +1743,70 @@ func (o GaugeViewPtrOutput) UpperBound() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// A gauge chart shows where the current value sits within a pre-defined range. The upper and lower bounds should define the possible range of values for the scorecard's query (inclusive).
+type GaugeViewResponse struct {
+	// The lower bound for this gauge chart. The value of the chart should always be greater than or equal to this.
+	LowerBound float64 `pulumi:"lowerBound"`
+	// The upper bound for this gauge chart. The value of the chart should always be less than or equal to this.
+	UpperBound float64 `pulumi:"upperBound"`
+}
+
+// GaugeViewResponseInput is an input type that accepts GaugeViewResponseArgs and GaugeViewResponseOutput values.
+// You can construct a concrete instance of `GaugeViewResponseInput` via:
+//
+//          GaugeViewResponseArgs{...}
+type GaugeViewResponseInput interface {
+	pulumi.Input
+
+	ToGaugeViewResponseOutput() GaugeViewResponseOutput
+	ToGaugeViewResponseOutputWithContext(context.Context) GaugeViewResponseOutput
+}
+
+// A gauge chart shows where the current value sits within a pre-defined range. The upper and lower bounds should define the possible range of values for the scorecard's query (inclusive).
+type GaugeViewResponseArgs struct {
+	// The lower bound for this gauge chart. The value of the chart should always be greater than or equal to this.
+	LowerBound pulumi.Float64Input `pulumi:"lowerBound"`
+	// The upper bound for this gauge chart. The value of the chart should always be less than or equal to this.
+	UpperBound pulumi.Float64Input `pulumi:"upperBound"`
+}
+
+func (GaugeViewResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GaugeViewResponse)(nil)).Elem()
+}
+
+func (i GaugeViewResponseArgs) ToGaugeViewResponseOutput() GaugeViewResponseOutput {
+	return i.ToGaugeViewResponseOutputWithContext(context.Background())
+}
+
+func (i GaugeViewResponseArgs) ToGaugeViewResponseOutputWithContext(ctx context.Context) GaugeViewResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GaugeViewResponseOutput)
+}
+
+// A gauge chart shows where the current value sits within a pre-defined range. The upper and lower bounds should define the possible range of values for the scorecard's query (inclusive).
+type GaugeViewResponseOutput struct{ *pulumi.OutputState }
+
+func (GaugeViewResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GaugeViewResponse)(nil)).Elem()
+}
+
+func (o GaugeViewResponseOutput) ToGaugeViewResponseOutput() GaugeViewResponseOutput {
+	return o
+}
+
+func (o GaugeViewResponseOutput) ToGaugeViewResponseOutputWithContext(ctx context.Context) GaugeViewResponseOutput {
+	return o
+}
+
+// The lower bound for this gauge chart. The value of the chart should always be greater than or equal to this.
+func (o GaugeViewResponseOutput) LowerBound() pulumi.Float64Output {
+	return o.ApplyT(func(v GaugeViewResponse) float64 { return v.LowerBound }).(pulumi.Float64Output)
+}
+
+// The upper bound for this gauge chart. The value of the chart should always be less than or equal to this.
+func (o GaugeViewResponseOutput) UpperBound() pulumi.Float64Output {
+	return o.ApplyT(func(v GaugeViewResponse) float64 { return v.UpperBound }).(pulumi.Float64Output)
+}
+
 // A basic layout divides the available space into vertical columns of equal width and arranges a list of widgets using a row-first strategy.
 type GridLayout struct {
 	// The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
@@ -1279,6 +1960,159 @@ func (o GridLayoutPtrOutput) Widgets() WidgetArrayOutput {
 	}).(WidgetArrayOutput)
 }
 
+// A basic layout divides the available space into vertical columns of equal width and arranges a list of widgets using a row-first strategy.
+type GridLayoutResponse struct {
+	// The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
+	Columns string `pulumi:"columns"`
+	// The informational elements that are arranged into the columns row-first.
+	Widgets []WidgetResponse `pulumi:"widgets"`
+}
+
+// GridLayoutResponseInput is an input type that accepts GridLayoutResponseArgs and GridLayoutResponseOutput values.
+// You can construct a concrete instance of `GridLayoutResponseInput` via:
+//
+//          GridLayoutResponseArgs{...}
+type GridLayoutResponseInput interface {
+	pulumi.Input
+
+	ToGridLayoutResponseOutput() GridLayoutResponseOutput
+	ToGridLayoutResponseOutputWithContext(context.Context) GridLayoutResponseOutput
+}
+
+// A basic layout divides the available space into vertical columns of equal width and arranges a list of widgets using a row-first strategy.
+type GridLayoutResponseArgs struct {
+	// The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
+	Columns pulumi.StringInput `pulumi:"columns"`
+	// The informational elements that are arranged into the columns row-first.
+	Widgets WidgetResponseArrayInput `pulumi:"widgets"`
+}
+
+func (GridLayoutResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GridLayoutResponse)(nil)).Elem()
+}
+
+func (i GridLayoutResponseArgs) ToGridLayoutResponseOutput() GridLayoutResponseOutput {
+	return i.ToGridLayoutResponseOutputWithContext(context.Background())
+}
+
+func (i GridLayoutResponseArgs) ToGridLayoutResponseOutputWithContext(ctx context.Context) GridLayoutResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GridLayoutResponseOutput)
+}
+
+func (i GridLayoutResponseArgs) ToGridLayoutResponsePtrOutput() GridLayoutResponsePtrOutput {
+	return i.ToGridLayoutResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GridLayoutResponseArgs) ToGridLayoutResponsePtrOutputWithContext(ctx context.Context) GridLayoutResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GridLayoutResponseOutput).ToGridLayoutResponsePtrOutputWithContext(ctx)
+}
+
+// GridLayoutResponsePtrInput is an input type that accepts GridLayoutResponseArgs, GridLayoutResponsePtr and GridLayoutResponsePtrOutput values.
+// You can construct a concrete instance of `GridLayoutResponsePtrInput` via:
+//
+//          GridLayoutResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GridLayoutResponsePtrInput interface {
+	pulumi.Input
+
+	ToGridLayoutResponsePtrOutput() GridLayoutResponsePtrOutput
+	ToGridLayoutResponsePtrOutputWithContext(context.Context) GridLayoutResponsePtrOutput
+}
+
+type gridLayoutResponsePtrType GridLayoutResponseArgs
+
+func GridLayoutResponsePtr(v *GridLayoutResponseArgs) GridLayoutResponsePtrInput {
+	return (*gridLayoutResponsePtrType)(v)
+}
+
+func (*gridLayoutResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GridLayoutResponse)(nil)).Elem()
+}
+
+func (i *gridLayoutResponsePtrType) ToGridLayoutResponsePtrOutput() GridLayoutResponsePtrOutput {
+	return i.ToGridLayoutResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gridLayoutResponsePtrType) ToGridLayoutResponsePtrOutputWithContext(ctx context.Context) GridLayoutResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GridLayoutResponsePtrOutput)
+}
+
+// A basic layout divides the available space into vertical columns of equal width and arranges a list of widgets using a row-first strategy.
+type GridLayoutResponseOutput struct{ *pulumi.OutputState }
+
+func (GridLayoutResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GridLayoutResponse)(nil)).Elem()
+}
+
+func (o GridLayoutResponseOutput) ToGridLayoutResponseOutput() GridLayoutResponseOutput {
+	return o
+}
+
+func (o GridLayoutResponseOutput) ToGridLayoutResponseOutputWithContext(ctx context.Context) GridLayoutResponseOutput {
+	return o
+}
+
+func (o GridLayoutResponseOutput) ToGridLayoutResponsePtrOutput() GridLayoutResponsePtrOutput {
+	return o.ToGridLayoutResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GridLayoutResponseOutput) ToGridLayoutResponsePtrOutputWithContext(ctx context.Context) GridLayoutResponsePtrOutput {
+	return o.ApplyT(func(v GridLayoutResponse) *GridLayoutResponse {
+		return &v
+	}).(GridLayoutResponsePtrOutput)
+}
+
+// The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
+func (o GridLayoutResponseOutput) Columns() pulumi.StringOutput {
+	return o.ApplyT(func(v GridLayoutResponse) string { return v.Columns }).(pulumi.StringOutput)
+}
+
+// The informational elements that are arranged into the columns row-first.
+func (o GridLayoutResponseOutput) Widgets() WidgetResponseArrayOutput {
+	return o.ApplyT(func(v GridLayoutResponse) []WidgetResponse { return v.Widgets }).(WidgetResponseArrayOutput)
+}
+
+type GridLayoutResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GridLayoutResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GridLayoutResponse)(nil)).Elem()
+}
+
+func (o GridLayoutResponsePtrOutput) ToGridLayoutResponsePtrOutput() GridLayoutResponsePtrOutput {
+	return o
+}
+
+func (o GridLayoutResponsePtrOutput) ToGridLayoutResponsePtrOutputWithContext(ctx context.Context) GridLayoutResponsePtrOutput {
+	return o
+}
+
+func (o GridLayoutResponsePtrOutput) Elem() GridLayoutResponseOutput {
+	return o.ApplyT(func(v *GridLayoutResponse) GridLayoutResponse { return *v }).(GridLayoutResponseOutput)
+}
+
+// The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
+func (o GridLayoutResponsePtrOutput) Columns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GridLayoutResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Columns
+	}).(pulumi.StringPtrOutput)
+}
+
+// The informational elements that are arranged into the columns row-first.
+func (o GridLayoutResponsePtrOutput) Widgets() WidgetResponseArrayOutput {
+	return o.ApplyT(func(v *GridLayoutResponse) []WidgetResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Widgets
+	}).(WidgetResponseArrayOutput)
+}
+
 // A mosaic layout divides the available space into a grid of blocks, and overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid blocks and can be placed at arbitrary locations in the grid.
 type MosaicLayout struct {
 	// The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
@@ -1430,6 +2264,159 @@ func (o MosaicLayoutPtrOutput) Tiles() TileArrayOutput {
 		}
 		return v.Tiles
 	}).(TileArrayOutput)
+}
+
+// A mosaic layout divides the available space into a grid of blocks, and overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid blocks and can be placed at arbitrary locations in the grid.
+type MosaicLayoutResponse struct {
+	// The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
+	Columns int `pulumi:"columns"`
+	// The tiles to display.
+	Tiles []TileResponse `pulumi:"tiles"`
+}
+
+// MosaicLayoutResponseInput is an input type that accepts MosaicLayoutResponseArgs and MosaicLayoutResponseOutput values.
+// You can construct a concrete instance of `MosaicLayoutResponseInput` via:
+//
+//          MosaicLayoutResponseArgs{...}
+type MosaicLayoutResponseInput interface {
+	pulumi.Input
+
+	ToMosaicLayoutResponseOutput() MosaicLayoutResponseOutput
+	ToMosaicLayoutResponseOutputWithContext(context.Context) MosaicLayoutResponseOutput
+}
+
+// A mosaic layout divides the available space into a grid of blocks, and overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid blocks and can be placed at arbitrary locations in the grid.
+type MosaicLayoutResponseArgs struct {
+	// The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
+	Columns pulumi.IntInput `pulumi:"columns"`
+	// The tiles to display.
+	Tiles TileResponseArrayInput `pulumi:"tiles"`
+}
+
+func (MosaicLayoutResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MosaicLayoutResponse)(nil)).Elem()
+}
+
+func (i MosaicLayoutResponseArgs) ToMosaicLayoutResponseOutput() MosaicLayoutResponseOutput {
+	return i.ToMosaicLayoutResponseOutputWithContext(context.Background())
+}
+
+func (i MosaicLayoutResponseArgs) ToMosaicLayoutResponseOutputWithContext(ctx context.Context) MosaicLayoutResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MosaicLayoutResponseOutput)
+}
+
+func (i MosaicLayoutResponseArgs) ToMosaicLayoutResponsePtrOutput() MosaicLayoutResponsePtrOutput {
+	return i.ToMosaicLayoutResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MosaicLayoutResponseArgs) ToMosaicLayoutResponsePtrOutputWithContext(ctx context.Context) MosaicLayoutResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MosaicLayoutResponseOutput).ToMosaicLayoutResponsePtrOutputWithContext(ctx)
+}
+
+// MosaicLayoutResponsePtrInput is an input type that accepts MosaicLayoutResponseArgs, MosaicLayoutResponsePtr and MosaicLayoutResponsePtrOutput values.
+// You can construct a concrete instance of `MosaicLayoutResponsePtrInput` via:
+//
+//          MosaicLayoutResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MosaicLayoutResponsePtrInput interface {
+	pulumi.Input
+
+	ToMosaicLayoutResponsePtrOutput() MosaicLayoutResponsePtrOutput
+	ToMosaicLayoutResponsePtrOutputWithContext(context.Context) MosaicLayoutResponsePtrOutput
+}
+
+type mosaicLayoutResponsePtrType MosaicLayoutResponseArgs
+
+func MosaicLayoutResponsePtr(v *MosaicLayoutResponseArgs) MosaicLayoutResponsePtrInput {
+	return (*mosaicLayoutResponsePtrType)(v)
+}
+
+func (*mosaicLayoutResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MosaicLayoutResponse)(nil)).Elem()
+}
+
+func (i *mosaicLayoutResponsePtrType) ToMosaicLayoutResponsePtrOutput() MosaicLayoutResponsePtrOutput {
+	return i.ToMosaicLayoutResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *mosaicLayoutResponsePtrType) ToMosaicLayoutResponsePtrOutputWithContext(ctx context.Context) MosaicLayoutResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MosaicLayoutResponsePtrOutput)
+}
+
+// A mosaic layout divides the available space into a grid of blocks, and overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid blocks and can be placed at arbitrary locations in the grid.
+type MosaicLayoutResponseOutput struct{ *pulumi.OutputState }
+
+func (MosaicLayoutResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MosaicLayoutResponse)(nil)).Elem()
+}
+
+func (o MosaicLayoutResponseOutput) ToMosaicLayoutResponseOutput() MosaicLayoutResponseOutput {
+	return o
+}
+
+func (o MosaicLayoutResponseOutput) ToMosaicLayoutResponseOutputWithContext(ctx context.Context) MosaicLayoutResponseOutput {
+	return o
+}
+
+func (o MosaicLayoutResponseOutput) ToMosaicLayoutResponsePtrOutput() MosaicLayoutResponsePtrOutput {
+	return o.ToMosaicLayoutResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MosaicLayoutResponseOutput) ToMosaicLayoutResponsePtrOutputWithContext(ctx context.Context) MosaicLayoutResponsePtrOutput {
+	return o.ApplyT(func(v MosaicLayoutResponse) *MosaicLayoutResponse {
+		return &v
+	}).(MosaicLayoutResponsePtrOutput)
+}
+
+// The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
+func (o MosaicLayoutResponseOutput) Columns() pulumi.IntOutput {
+	return o.ApplyT(func(v MosaicLayoutResponse) int { return v.Columns }).(pulumi.IntOutput)
+}
+
+// The tiles to display.
+func (o MosaicLayoutResponseOutput) Tiles() TileResponseArrayOutput {
+	return o.ApplyT(func(v MosaicLayoutResponse) []TileResponse { return v.Tiles }).(TileResponseArrayOutput)
+}
+
+type MosaicLayoutResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MosaicLayoutResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MosaicLayoutResponse)(nil)).Elem()
+}
+
+func (o MosaicLayoutResponsePtrOutput) ToMosaicLayoutResponsePtrOutput() MosaicLayoutResponsePtrOutput {
+	return o
+}
+
+func (o MosaicLayoutResponsePtrOutput) ToMosaicLayoutResponsePtrOutputWithContext(ctx context.Context) MosaicLayoutResponsePtrOutput {
+	return o
+}
+
+func (o MosaicLayoutResponsePtrOutput) Elem() MosaicLayoutResponseOutput {
+	return o.ApplyT(func(v *MosaicLayoutResponse) MosaicLayoutResponse { return *v }).(MosaicLayoutResponseOutput)
+}
+
+// The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
+func (o MosaicLayoutResponsePtrOutput) Columns() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MosaicLayoutResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Columns
+	}).(pulumi.IntPtrOutput)
+}
+
+// The tiles to display.
+func (o MosaicLayoutResponsePtrOutput) Tiles() TileResponseArrayOutput {
+	return o.ApplyT(func(v *MosaicLayoutResponse) []TileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Tiles
+	}).(TileResponseArrayOutput)
 }
 
 // Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
@@ -1604,6 +2591,79 @@ func (o PickTimeSeriesFilterPtrOutput) RankingMethod() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
+type PickTimeSeriesFilterResponse struct {
+	// How to use the ranking to select time series that pass through the filter.
+	Direction string `pulumi:"direction"`
+	// How many time series to allow to pass through the filter.
+	NumTimeSeries int `pulumi:"numTimeSeries"`
+	// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+	RankingMethod string `pulumi:"rankingMethod"`
+}
+
+// PickTimeSeriesFilterResponseInput is an input type that accepts PickTimeSeriesFilterResponseArgs and PickTimeSeriesFilterResponseOutput values.
+// You can construct a concrete instance of `PickTimeSeriesFilterResponseInput` via:
+//
+//          PickTimeSeriesFilterResponseArgs{...}
+type PickTimeSeriesFilterResponseInput interface {
+	pulumi.Input
+
+	ToPickTimeSeriesFilterResponseOutput() PickTimeSeriesFilterResponseOutput
+	ToPickTimeSeriesFilterResponseOutputWithContext(context.Context) PickTimeSeriesFilterResponseOutput
+}
+
+// Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
+type PickTimeSeriesFilterResponseArgs struct {
+	// How to use the ranking to select time series that pass through the filter.
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// How many time series to allow to pass through the filter.
+	NumTimeSeries pulumi.IntInput `pulumi:"numTimeSeries"`
+	// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+	RankingMethod pulumi.StringInput `pulumi:"rankingMethod"`
+}
+
+func (PickTimeSeriesFilterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PickTimeSeriesFilterResponse)(nil)).Elem()
+}
+
+func (i PickTimeSeriesFilterResponseArgs) ToPickTimeSeriesFilterResponseOutput() PickTimeSeriesFilterResponseOutput {
+	return i.ToPickTimeSeriesFilterResponseOutputWithContext(context.Background())
+}
+
+func (i PickTimeSeriesFilterResponseArgs) ToPickTimeSeriesFilterResponseOutputWithContext(ctx context.Context) PickTimeSeriesFilterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PickTimeSeriesFilterResponseOutput)
+}
+
+// Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
+type PickTimeSeriesFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (PickTimeSeriesFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PickTimeSeriesFilterResponse)(nil)).Elem()
+}
+
+func (o PickTimeSeriesFilterResponseOutput) ToPickTimeSeriesFilterResponseOutput() PickTimeSeriesFilterResponseOutput {
+	return o
+}
+
+func (o PickTimeSeriesFilterResponseOutput) ToPickTimeSeriesFilterResponseOutputWithContext(ctx context.Context) PickTimeSeriesFilterResponseOutput {
+	return o
+}
+
+// How to use the ranking to select time series that pass through the filter.
+func (o PickTimeSeriesFilterResponseOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v PickTimeSeriesFilterResponse) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// How many time series to allow to pass through the filter.
+func (o PickTimeSeriesFilterResponseOutput) NumTimeSeries() pulumi.IntOutput {
+	return o.ApplyT(func(v PickTimeSeriesFilterResponse) int { return v.NumTimeSeries }).(pulumi.IntOutput)
+}
+
+// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+func (o PickTimeSeriesFilterResponseOutput) RankingMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v PickTimeSeriesFilterResponse) string { return v.RankingMethod }).(pulumi.StringOutput)
+}
+
 // Describes a query to build the numerator or denominator of a TimeSeriesFilterRatio.
 type RatioPart struct {
 	// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
@@ -1755,6 +2815,70 @@ func (o RatioPartPtrOutput) Filter() pulumi.StringPtrOutput {
 		}
 		return v.Filter
 	}).(pulumi.StringPtrOutput)
+}
+
+// Describes a query to build the numerator or denominator of a TimeSeriesFilterRatio.
+type RatioPartResponse struct {
+	// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+	Aggregation AggregationResponse `pulumi:"aggregation"`
+	// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+	Filter string `pulumi:"filter"`
+}
+
+// RatioPartResponseInput is an input type that accepts RatioPartResponseArgs and RatioPartResponseOutput values.
+// You can construct a concrete instance of `RatioPartResponseInput` via:
+//
+//          RatioPartResponseArgs{...}
+type RatioPartResponseInput interface {
+	pulumi.Input
+
+	ToRatioPartResponseOutput() RatioPartResponseOutput
+	ToRatioPartResponseOutputWithContext(context.Context) RatioPartResponseOutput
+}
+
+// Describes a query to build the numerator or denominator of a TimeSeriesFilterRatio.
+type RatioPartResponseArgs struct {
+	// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+	Aggregation AggregationResponseInput `pulumi:"aggregation"`
+	// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+	Filter pulumi.StringInput `pulumi:"filter"`
+}
+
+func (RatioPartResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RatioPartResponse)(nil)).Elem()
+}
+
+func (i RatioPartResponseArgs) ToRatioPartResponseOutput() RatioPartResponseOutput {
+	return i.ToRatioPartResponseOutputWithContext(context.Background())
+}
+
+func (i RatioPartResponseArgs) ToRatioPartResponseOutputWithContext(ctx context.Context) RatioPartResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RatioPartResponseOutput)
+}
+
+// Describes a query to build the numerator or denominator of a TimeSeriesFilterRatio.
+type RatioPartResponseOutput struct{ *pulumi.OutputState }
+
+func (RatioPartResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RatioPartResponse)(nil)).Elem()
+}
+
+func (o RatioPartResponseOutput) ToRatioPartResponseOutput() RatioPartResponseOutput {
+	return o
+}
+
+func (o RatioPartResponseOutput) ToRatioPartResponseOutputWithContext(ctx context.Context) RatioPartResponseOutput {
+	return o
+}
+
+// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+func (o RatioPartResponseOutput) Aggregation() AggregationResponseOutput {
+	return o.ApplyT(func(v RatioPartResponse) AggregationResponse { return v.Aggregation }).(AggregationResponseOutput)
+}
+
+// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+func (o RatioPartResponseOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v RatioPartResponse) string { return v.Filter }).(pulumi.StringOutput)
 }
 
 // Defines the layout properties and content for a row.
@@ -2000,6 +3124,249 @@ func (o RowLayoutPtrOutput) Rows() RowArrayOutput {
 	}).(RowArrayOutput)
 }
 
+// A simplified layout that divides the available space into rows and arranges a set of widgets horizontally in each row.
+type RowLayoutResponse struct {
+	// The rows of content to display.
+	Rows []RowResponse `pulumi:"rows"`
+}
+
+// RowLayoutResponseInput is an input type that accepts RowLayoutResponseArgs and RowLayoutResponseOutput values.
+// You can construct a concrete instance of `RowLayoutResponseInput` via:
+//
+//          RowLayoutResponseArgs{...}
+type RowLayoutResponseInput interface {
+	pulumi.Input
+
+	ToRowLayoutResponseOutput() RowLayoutResponseOutput
+	ToRowLayoutResponseOutputWithContext(context.Context) RowLayoutResponseOutput
+}
+
+// A simplified layout that divides the available space into rows and arranges a set of widgets horizontally in each row.
+type RowLayoutResponseArgs struct {
+	// The rows of content to display.
+	Rows RowResponseArrayInput `pulumi:"rows"`
+}
+
+func (RowLayoutResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RowLayoutResponse)(nil)).Elem()
+}
+
+func (i RowLayoutResponseArgs) ToRowLayoutResponseOutput() RowLayoutResponseOutput {
+	return i.ToRowLayoutResponseOutputWithContext(context.Background())
+}
+
+func (i RowLayoutResponseArgs) ToRowLayoutResponseOutputWithContext(ctx context.Context) RowLayoutResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RowLayoutResponseOutput)
+}
+
+func (i RowLayoutResponseArgs) ToRowLayoutResponsePtrOutput() RowLayoutResponsePtrOutput {
+	return i.ToRowLayoutResponsePtrOutputWithContext(context.Background())
+}
+
+func (i RowLayoutResponseArgs) ToRowLayoutResponsePtrOutputWithContext(ctx context.Context) RowLayoutResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RowLayoutResponseOutput).ToRowLayoutResponsePtrOutputWithContext(ctx)
+}
+
+// RowLayoutResponsePtrInput is an input type that accepts RowLayoutResponseArgs, RowLayoutResponsePtr and RowLayoutResponsePtrOutput values.
+// You can construct a concrete instance of `RowLayoutResponsePtrInput` via:
+//
+//          RowLayoutResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type RowLayoutResponsePtrInput interface {
+	pulumi.Input
+
+	ToRowLayoutResponsePtrOutput() RowLayoutResponsePtrOutput
+	ToRowLayoutResponsePtrOutputWithContext(context.Context) RowLayoutResponsePtrOutput
+}
+
+type rowLayoutResponsePtrType RowLayoutResponseArgs
+
+func RowLayoutResponsePtr(v *RowLayoutResponseArgs) RowLayoutResponsePtrInput {
+	return (*rowLayoutResponsePtrType)(v)
+}
+
+func (*rowLayoutResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RowLayoutResponse)(nil)).Elem()
+}
+
+func (i *rowLayoutResponsePtrType) ToRowLayoutResponsePtrOutput() RowLayoutResponsePtrOutput {
+	return i.ToRowLayoutResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *rowLayoutResponsePtrType) ToRowLayoutResponsePtrOutputWithContext(ctx context.Context) RowLayoutResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RowLayoutResponsePtrOutput)
+}
+
+// A simplified layout that divides the available space into rows and arranges a set of widgets horizontally in each row.
+type RowLayoutResponseOutput struct{ *pulumi.OutputState }
+
+func (RowLayoutResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RowLayoutResponse)(nil)).Elem()
+}
+
+func (o RowLayoutResponseOutput) ToRowLayoutResponseOutput() RowLayoutResponseOutput {
+	return o
+}
+
+func (o RowLayoutResponseOutput) ToRowLayoutResponseOutputWithContext(ctx context.Context) RowLayoutResponseOutput {
+	return o
+}
+
+func (o RowLayoutResponseOutput) ToRowLayoutResponsePtrOutput() RowLayoutResponsePtrOutput {
+	return o.ToRowLayoutResponsePtrOutputWithContext(context.Background())
+}
+
+func (o RowLayoutResponseOutput) ToRowLayoutResponsePtrOutputWithContext(ctx context.Context) RowLayoutResponsePtrOutput {
+	return o.ApplyT(func(v RowLayoutResponse) *RowLayoutResponse {
+		return &v
+	}).(RowLayoutResponsePtrOutput)
+}
+
+// The rows of content to display.
+func (o RowLayoutResponseOutput) Rows() RowResponseArrayOutput {
+	return o.ApplyT(func(v RowLayoutResponse) []RowResponse { return v.Rows }).(RowResponseArrayOutput)
+}
+
+type RowLayoutResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RowLayoutResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RowLayoutResponse)(nil)).Elem()
+}
+
+func (o RowLayoutResponsePtrOutput) ToRowLayoutResponsePtrOutput() RowLayoutResponsePtrOutput {
+	return o
+}
+
+func (o RowLayoutResponsePtrOutput) ToRowLayoutResponsePtrOutputWithContext(ctx context.Context) RowLayoutResponsePtrOutput {
+	return o
+}
+
+func (o RowLayoutResponsePtrOutput) Elem() RowLayoutResponseOutput {
+	return o.ApplyT(func(v *RowLayoutResponse) RowLayoutResponse { return *v }).(RowLayoutResponseOutput)
+}
+
+// The rows of content to display.
+func (o RowLayoutResponsePtrOutput) Rows() RowResponseArrayOutput {
+	return o.ApplyT(func(v *RowLayoutResponse) []RowResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rows
+	}).(RowResponseArrayOutput)
+}
+
+// Defines the layout properties and content for a row.
+type RowResponse struct {
+	// The relative weight of this row. The row weight is used to adjust the height of rows on the screen (relative to peers). Greater the weight, greater the height of the row on the screen. If omitted, a value of 1 is used while rendering.
+	Weight string `pulumi:"weight"`
+	// The display widgets arranged horizontally in this row.
+	Widgets []WidgetResponse `pulumi:"widgets"`
+}
+
+// RowResponseInput is an input type that accepts RowResponseArgs and RowResponseOutput values.
+// You can construct a concrete instance of `RowResponseInput` via:
+//
+//          RowResponseArgs{...}
+type RowResponseInput interface {
+	pulumi.Input
+
+	ToRowResponseOutput() RowResponseOutput
+	ToRowResponseOutputWithContext(context.Context) RowResponseOutput
+}
+
+// Defines the layout properties and content for a row.
+type RowResponseArgs struct {
+	// The relative weight of this row. The row weight is used to adjust the height of rows on the screen (relative to peers). Greater the weight, greater the height of the row on the screen. If omitted, a value of 1 is used while rendering.
+	Weight pulumi.StringInput `pulumi:"weight"`
+	// The display widgets arranged horizontally in this row.
+	Widgets WidgetResponseArrayInput `pulumi:"widgets"`
+}
+
+func (RowResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RowResponse)(nil)).Elem()
+}
+
+func (i RowResponseArgs) ToRowResponseOutput() RowResponseOutput {
+	return i.ToRowResponseOutputWithContext(context.Background())
+}
+
+func (i RowResponseArgs) ToRowResponseOutputWithContext(ctx context.Context) RowResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RowResponseOutput)
+}
+
+// RowResponseArrayInput is an input type that accepts RowResponseArray and RowResponseArrayOutput values.
+// You can construct a concrete instance of `RowResponseArrayInput` via:
+//
+//          RowResponseArray{ RowResponseArgs{...} }
+type RowResponseArrayInput interface {
+	pulumi.Input
+
+	ToRowResponseArrayOutput() RowResponseArrayOutput
+	ToRowResponseArrayOutputWithContext(context.Context) RowResponseArrayOutput
+}
+
+type RowResponseArray []RowResponseInput
+
+func (RowResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RowResponse)(nil)).Elem()
+}
+
+func (i RowResponseArray) ToRowResponseArrayOutput() RowResponseArrayOutput {
+	return i.ToRowResponseArrayOutputWithContext(context.Background())
+}
+
+func (i RowResponseArray) ToRowResponseArrayOutputWithContext(ctx context.Context) RowResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RowResponseArrayOutput)
+}
+
+// Defines the layout properties and content for a row.
+type RowResponseOutput struct{ *pulumi.OutputState }
+
+func (RowResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RowResponse)(nil)).Elem()
+}
+
+func (o RowResponseOutput) ToRowResponseOutput() RowResponseOutput {
+	return o
+}
+
+func (o RowResponseOutput) ToRowResponseOutputWithContext(ctx context.Context) RowResponseOutput {
+	return o
+}
+
+// The relative weight of this row. The row weight is used to adjust the height of rows on the screen (relative to peers). Greater the weight, greater the height of the row on the screen. If omitted, a value of 1 is used while rendering.
+func (o RowResponseOutput) Weight() pulumi.StringOutput {
+	return o.ApplyT(func(v RowResponse) string { return v.Weight }).(pulumi.StringOutput)
+}
+
+// The display widgets arranged horizontally in this row.
+func (o RowResponseOutput) Widgets() WidgetResponseArrayOutput {
+	return o.ApplyT(func(v RowResponse) []WidgetResponse { return v.Widgets }).(WidgetResponseArrayOutput)
+}
+
+type RowResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RowResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RowResponse)(nil)).Elem()
+}
+
+func (o RowResponseArrayOutput) ToRowResponseArrayOutput() RowResponseArrayOutput {
+	return o
+}
+
+func (o RowResponseArrayOutput) ToRowResponseArrayOutputWithContext(ctx context.Context) RowResponseArrayOutput {
+	return o
+}
+
+func (o RowResponseArrayOutput) Index(i pulumi.IntInput) RowResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RowResponse {
+		return vs[0].([]RowResponse)[vs[1].(int)]
+	}).(RowResponseOutput)
+}
+
 // A widget showing the latest value of a metric, and how this value relates to one or more thresholds.
 type Scorecard struct {
 	// Will cause the scorecard to show a gauge chart.
@@ -2191,6 +3558,88 @@ func (o ScorecardPtrOutput) TimeSeriesQuery() TimeSeriesQueryPtrOutput {
 	}).(TimeSeriesQueryPtrOutput)
 }
 
+// A widget showing the latest value of a metric, and how this value relates to one or more thresholds.
+type ScorecardResponse struct {
+	// Will cause the scorecard to show a gauge chart.
+	GaugeView GaugeViewResponse `pulumi:"gaugeView"`
+	// Will cause the scorecard to show a spark chart.
+	SparkChartView SparkChartViewResponse `pulumi:"sparkChartView"`
+	// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+	Thresholds []ThresholdResponse `pulumi:"thresholds"`
+	// Required. Fields for querying time series data from the Stackdriver metrics API.
+	TimeSeriesQuery TimeSeriesQueryResponse `pulumi:"timeSeriesQuery"`
+}
+
+// ScorecardResponseInput is an input type that accepts ScorecardResponseArgs and ScorecardResponseOutput values.
+// You can construct a concrete instance of `ScorecardResponseInput` via:
+//
+//          ScorecardResponseArgs{...}
+type ScorecardResponseInput interface {
+	pulumi.Input
+
+	ToScorecardResponseOutput() ScorecardResponseOutput
+	ToScorecardResponseOutputWithContext(context.Context) ScorecardResponseOutput
+}
+
+// A widget showing the latest value of a metric, and how this value relates to one or more thresholds.
+type ScorecardResponseArgs struct {
+	// Will cause the scorecard to show a gauge chart.
+	GaugeView GaugeViewResponseInput `pulumi:"gaugeView"`
+	// Will cause the scorecard to show a spark chart.
+	SparkChartView SparkChartViewResponseInput `pulumi:"sparkChartView"`
+	// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+	Thresholds ThresholdResponseArrayInput `pulumi:"thresholds"`
+	// Required. Fields for querying time series data from the Stackdriver metrics API.
+	TimeSeriesQuery TimeSeriesQueryResponseInput `pulumi:"timeSeriesQuery"`
+}
+
+func (ScorecardResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardResponse)(nil)).Elem()
+}
+
+func (i ScorecardResponseArgs) ToScorecardResponseOutput() ScorecardResponseOutput {
+	return i.ToScorecardResponseOutputWithContext(context.Background())
+}
+
+func (i ScorecardResponseArgs) ToScorecardResponseOutputWithContext(ctx context.Context) ScorecardResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScorecardResponseOutput)
+}
+
+// A widget showing the latest value of a metric, and how this value relates to one or more thresholds.
+type ScorecardResponseOutput struct{ *pulumi.OutputState }
+
+func (ScorecardResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScorecardResponse)(nil)).Elem()
+}
+
+func (o ScorecardResponseOutput) ToScorecardResponseOutput() ScorecardResponseOutput {
+	return o
+}
+
+func (o ScorecardResponseOutput) ToScorecardResponseOutputWithContext(ctx context.Context) ScorecardResponseOutput {
+	return o
+}
+
+// Will cause the scorecard to show a gauge chart.
+func (o ScorecardResponseOutput) GaugeView() GaugeViewResponseOutput {
+	return o.ApplyT(func(v ScorecardResponse) GaugeViewResponse { return v.GaugeView }).(GaugeViewResponseOutput)
+}
+
+// Will cause the scorecard to show a spark chart.
+func (o ScorecardResponseOutput) SparkChartView() SparkChartViewResponseOutput {
+	return o.ApplyT(func(v ScorecardResponse) SparkChartViewResponse { return v.SparkChartView }).(SparkChartViewResponseOutput)
+}
+
+// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+func (o ScorecardResponseOutput) Thresholds() ThresholdResponseArrayOutput {
+	return o.ApplyT(func(v ScorecardResponse) []ThresholdResponse { return v.Thresholds }).(ThresholdResponseArrayOutput)
+}
+
+// Required. Fields for querying time series data from the Stackdriver metrics API.
+func (o ScorecardResponseOutput) TimeSeriesQuery() TimeSeriesQueryResponseOutput {
+	return o.ApplyT(func(v ScorecardResponse) TimeSeriesQueryResponse { return v.TimeSeriesQuery }).(TimeSeriesQueryResponseOutput)
+}
+
 // A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries.
 type SparkChartView struct {
 	// The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
@@ -2342,6 +3791,70 @@ func (o SparkChartViewPtrOutput) SparkChartType() pulumi.StringPtrOutput {
 		}
 		return v.SparkChartType
 	}).(pulumi.StringPtrOutput)
+}
+
+// A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries.
+type SparkChartViewResponse struct {
+	// The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
+	MinAlignmentPeriod string `pulumi:"minAlignmentPeriod"`
+	// Required. The type of sparkchart to show in this chartView.
+	SparkChartType string `pulumi:"sparkChartType"`
+}
+
+// SparkChartViewResponseInput is an input type that accepts SparkChartViewResponseArgs and SparkChartViewResponseOutput values.
+// You can construct a concrete instance of `SparkChartViewResponseInput` via:
+//
+//          SparkChartViewResponseArgs{...}
+type SparkChartViewResponseInput interface {
+	pulumi.Input
+
+	ToSparkChartViewResponseOutput() SparkChartViewResponseOutput
+	ToSparkChartViewResponseOutputWithContext(context.Context) SparkChartViewResponseOutput
+}
+
+// A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries.
+type SparkChartViewResponseArgs struct {
+	// The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
+	MinAlignmentPeriod pulumi.StringInput `pulumi:"minAlignmentPeriod"`
+	// Required. The type of sparkchart to show in this chartView.
+	SparkChartType pulumi.StringInput `pulumi:"sparkChartType"`
+}
+
+func (SparkChartViewResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkChartViewResponse)(nil)).Elem()
+}
+
+func (i SparkChartViewResponseArgs) ToSparkChartViewResponseOutput() SparkChartViewResponseOutput {
+	return i.ToSparkChartViewResponseOutputWithContext(context.Background())
+}
+
+func (i SparkChartViewResponseArgs) ToSparkChartViewResponseOutputWithContext(ctx context.Context) SparkChartViewResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkChartViewResponseOutput)
+}
+
+// A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries.
+type SparkChartViewResponseOutput struct{ *pulumi.OutputState }
+
+func (SparkChartViewResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkChartViewResponse)(nil)).Elem()
+}
+
+func (o SparkChartViewResponseOutput) ToSparkChartViewResponseOutput() SparkChartViewResponseOutput {
+	return o
+}
+
+func (o SparkChartViewResponseOutput) ToSparkChartViewResponseOutputWithContext(ctx context.Context) SparkChartViewResponseOutput {
+	return o
+}
+
+// The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
+func (o SparkChartViewResponseOutput) MinAlignmentPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkChartViewResponse) string { return v.MinAlignmentPeriod }).(pulumi.StringOutput)
+}
+
+// Required. The type of sparkchart to show in this chartView.
+func (o SparkChartViewResponseOutput) SparkChartType() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkChartViewResponse) string { return v.SparkChartType }).(pulumi.StringOutput)
 }
 
 // A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
@@ -2497,6 +4010,70 @@ func (o StatisticalTimeSeriesFilterPtrOutput) RankingMethod() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
+type StatisticalTimeSeriesFilterResponse struct {
+	// How many time series to output.
+	NumTimeSeries int `pulumi:"numTimeSeries"`
+	// rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
+	RankingMethod string `pulumi:"rankingMethod"`
+}
+
+// StatisticalTimeSeriesFilterResponseInput is an input type that accepts StatisticalTimeSeriesFilterResponseArgs and StatisticalTimeSeriesFilterResponseOutput values.
+// You can construct a concrete instance of `StatisticalTimeSeriesFilterResponseInput` via:
+//
+//          StatisticalTimeSeriesFilterResponseArgs{...}
+type StatisticalTimeSeriesFilterResponseInput interface {
+	pulumi.Input
+
+	ToStatisticalTimeSeriesFilterResponseOutput() StatisticalTimeSeriesFilterResponseOutput
+	ToStatisticalTimeSeriesFilterResponseOutputWithContext(context.Context) StatisticalTimeSeriesFilterResponseOutput
+}
+
+// A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
+type StatisticalTimeSeriesFilterResponseArgs struct {
+	// How many time series to output.
+	NumTimeSeries pulumi.IntInput `pulumi:"numTimeSeries"`
+	// rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
+	RankingMethod pulumi.StringInput `pulumi:"rankingMethod"`
+}
+
+func (StatisticalTimeSeriesFilterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatisticalTimeSeriesFilterResponse)(nil)).Elem()
+}
+
+func (i StatisticalTimeSeriesFilterResponseArgs) ToStatisticalTimeSeriesFilterResponseOutput() StatisticalTimeSeriesFilterResponseOutput {
+	return i.ToStatisticalTimeSeriesFilterResponseOutputWithContext(context.Background())
+}
+
+func (i StatisticalTimeSeriesFilterResponseArgs) ToStatisticalTimeSeriesFilterResponseOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatisticalTimeSeriesFilterResponseOutput)
+}
+
+// A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
+type StatisticalTimeSeriesFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StatisticalTimeSeriesFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatisticalTimeSeriesFilterResponse)(nil)).Elem()
+}
+
+func (o StatisticalTimeSeriesFilterResponseOutput) ToStatisticalTimeSeriesFilterResponseOutput() StatisticalTimeSeriesFilterResponseOutput {
+	return o
+}
+
+func (o StatisticalTimeSeriesFilterResponseOutput) ToStatisticalTimeSeriesFilterResponseOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterResponseOutput {
+	return o
+}
+
+// How many time series to output.
+func (o StatisticalTimeSeriesFilterResponseOutput) NumTimeSeries() pulumi.IntOutput {
+	return o.ApplyT(func(v StatisticalTimeSeriesFilterResponse) int { return v.NumTimeSeries }).(pulumi.IntOutput)
+}
+
+// rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
+func (o StatisticalTimeSeriesFilterResponseOutput) RankingMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v StatisticalTimeSeriesFilterResponse) string { return v.RankingMethod }).(pulumi.StringOutput)
+}
+
 // A widget that displays textual content.
 type Text struct {
 	// The text content to be displayed.
@@ -2650,6 +4227,70 @@ func (o TextPtrOutput) Format() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A widget that displays textual content.
+type TextResponse struct {
+	// The text content to be displayed.
+	Content string `pulumi:"content"`
+	// How the text content is formatted.
+	Format string `pulumi:"format"`
+}
+
+// TextResponseInput is an input type that accepts TextResponseArgs and TextResponseOutput values.
+// You can construct a concrete instance of `TextResponseInput` via:
+//
+//          TextResponseArgs{...}
+type TextResponseInput interface {
+	pulumi.Input
+
+	ToTextResponseOutput() TextResponseOutput
+	ToTextResponseOutputWithContext(context.Context) TextResponseOutput
+}
+
+// A widget that displays textual content.
+type TextResponseArgs struct {
+	// The text content to be displayed.
+	Content pulumi.StringInput `pulumi:"content"`
+	// How the text content is formatted.
+	Format pulumi.StringInput `pulumi:"format"`
+}
+
+func (TextResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextResponse)(nil)).Elem()
+}
+
+func (i TextResponseArgs) ToTextResponseOutput() TextResponseOutput {
+	return i.ToTextResponseOutputWithContext(context.Background())
+}
+
+func (i TextResponseArgs) ToTextResponseOutputWithContext(ctx context.Context) TextResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextResponseOutput)
+}
+
+// A widget that displays textual content.
+type TextResponseOutput struct{ *pulumi.OutputState }
+
+func (TextResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextResponse)(nil)).Elem()
+}
+
+func (o TextResponseOutput) ToTextResponseOutput() TextResponseOutput {
+	return o
+}
+
+func (o TextResponseOutput) ToTextResponseOutputWithContext(ctx context.Context) TextResponseOutput {
+	return o
+}
+
+// The text content to be displayed.
+func (o TextResponseOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v TextResponse) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// How the text content is formatted.
+func (o TextResponseOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v TextResponse) string { return v.Format }).(pulumi.StringOutput)
+}
+
 // Defines a threshold for categorizing time series values.
 type Threshold struct {
 	// The state color for this threshold. Color is not allowed in a XyChart.
@@ -2775,6 +4416,133 @@ func (o ThresholdArrayOutput) Index(i pulumi.IntInput) ThresholdOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Threshold {
 		return vs[0].([]Threshold)[vs[1].(int)]
 	}).(ThresholdOutput)
+}
+
+// Defines a threshold for categorizing time series values.
+type ThresholdResponse struct {
+	// The state color for this threshold. Color is not allowed in a XyChart.
+	Color string `pulumi:"color"`
+	// The direction for the current threshold. Direction is not allowed in a XyChart.
+	Direction string `pulumi:"direction"`
+	// A label for the threshold.
+	Label string `pulumi:"label"`
+	// The value of the threshold. The value should be defined in the native scale of the metric.
+	Value float64 `pulumi:"value"`
+}
+
+// ThresholdResponseInput is an input type that accepts ThresholdResponseArgs and ThresholdResponseOutput values.
+// You can construct a concrete instance of `ThresholdResponseInput` via:
+//
+//          ThresholdResponseArgs{...}
+type ThresholdResponseInput interface {
+	pulumi.Input
+
+	ToThresholdResponseOutput() ThresholdResponseOutput
+	ToThresholdResponseOutputWithContext(context.Context) ThresholdResponseOutput
+}
+
+// Defines a threshold for categorizing time series values.
+type ThresholdResponseArgs struct {
+	// The state color for this threshold. Color is not allowed in a XyChart.
+	Color pulumi.StringInput `pulumi:"color"`
+	// The direction for the current threshold. Direction is not allowed in a XyChart.
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// A label for the threshold.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The value of the threshold. The value should be defined in the native scale of the metric.
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (ThresholdResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThresholdResponse)(nil)).Elem()
+}
+
+func (i ThresholdResponseArgs) ToThresholdResponseOutput() ThresholdResponseOutput {
+	return i.ToThresholdResponseOutputWithContext(context.Background())
+}
+
+func (i ThresholdResponseArgs) ToThresholdResponseOutputWithContext(ctx context.Context) ThresholdResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThresholdResponseOutput)
+}
+
+// ThresholdResponseArrayInput is an input type that accepts ThresholdResponseArray and ThresholdResponseArrayOutput values.
+// You can construct a concrete instance of `ThresholdResponseArrayInput` via:
+//
+//          ThresholdResponseArray{ ThresholdResponseArgs{...} }
+type ThresholdResponseArrayInput interface {
+	pulumi.Input
+
+	ToThresholdResponseArrayOutput() ThresholdResponseArrayOutput
+	ToThresholdResponseArrayOutputWithContext(context.Context) ThresholdResponseArrayOutput
+}
+
+type ThresholdResponseArray []ThresholdResponseInput
+
+func (ThresholdResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ThresholdResponse)(nil)).Elem()
+}
+
+func (i ThresholdResponseArray) ToThresholdResponseArrayOutput() ThresholdResponseArrayOutput {
+	return i.ToThresholdResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ThresholdResponseArray) ToThresholdResponseArrayOutputWithContext(ctx context.Context) ThresholdResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThresholdResponseArrayOutput)
+}
+
+// Defines a threshold for categorizing time series values.
+type ThresholdResponseOutput struct{ *pulumi.OutputState }
+
+func (ThresholdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThresholdResponse)(nil)).Elem()
+}
+
+func (o ThresholdResponseOutput) ToThresholdResponseOutput() ThresholdResponseOutput {
+	return o
+}
+
+func (o ThresholdResponseOutput) ToThresholdResponseOutputWithContext(ctx context.Context) ThresholdResponseOutput {
+	return o
+}
+
+// The state color for this threshold. Color is not allowed in a XyChart.
+func (o ThresholdResponseOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v ThresholdResponse) string { return v.Color }).(pulumi.StringOutput)
+}
+
+// The direction for the current threshold. Direction is not allowed in a XyChart.
+func (o ThresholdResponseOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v ThresholdResponse) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// A label for the threshold.
+func (o ThresholdResponseOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v ThresholdResponse) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The value of the threshold. The value should be defined in the native scale of the metric.
+func (o ThresholdResponseOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v ThresholdResponse) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type ThresholdResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ThresholdResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ThresholdResponse)(nil)).Elem()
+}
+
+func (o ThresholdResponseArrayOutput) ToThresholdResponseArrayOutput() ThresholdResponseArrayOutput {
+	return o
+}
+
+func (o ThresholdResponseArrayOutput) ToThresholdResponseArrayOutputWithContext(ctx context.Context) ThresholdResponseArrayOutput {
+	return o
+}
+
+func (o ThresholdResponseArrayOutput) Index(i pulumi.IntInput) ThresholdResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ThresholdResponse {
+		return vs[0].([]ThresholdResponse)[vs[1].(int)]
+	}).(ThresholdResponseOutput)
 }
 
 // A single tile in the mosaic. The placement and size of the tile are configurable.
@@ -2911,6 +4679,142 @@ func (o TileArrayOutput) Index(i pulumi.IntInput) TileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Tile {
 		return vs[0].([]Tile)[vs[1].(int)]
 	}).(TileOutput)
+}
+
+// A single tile in the mosaic. The placement and size of the tile are configurable.
+type TileResponse struct {
+	// The height of the tile, measured in grid blocks. Tiles must have a minimum height of 1.
+	Height int `pulumi:"height"`
+	// The informational widget contained in the tile. For example an XyChart.
+	Widget WidgetResponse `pulumi:"widget"`
+	// The width of the tile, measured in grid blocks. Tiles must have a minimum width of 1.
+	Width int `pulumi:"width"`
+	// The zero-indexed position of the tile in grid blocks relative to the left edge of the grid. Tiles must be contained within the specified number of columns. x_pos cannot be negative.
+	XPos int `pulumi:"xPos"`
+	// The zero-indexed position of the tile in grid blocks relative to the top edge of the grid. y_pos cannot be negative.
+	YPos int `pulumi:"yPos"`
+}
+
+// TileResponseInput is an input type that accepts TileResponseArgs and TileResponseOutput values.
+// You can construct a concrete instance of `TileResponseInput` via:
+//
+//          TileResponseArgs{...}
+type TileResponseInput interface {
+	pulumi.Input
+
+	ToTileResponseOutput() TileResponseOutput
+	ToTileResponseOutputWithContext(context.Context) TileResponseOutput
+}
+
+// A single tile in the mosaic. The placement and size of the tile are configurable.
+type TileResponseArgs struct {
+	// The height of the tile, measured in grid blocks. Tiles must have a minimum height of 1.
+	Height pulumi.IntInput `pulumi:"height"`
+	// The informational widget contained in the tile. For example an XyChart.
+	Widget WidgetResponseInput `pulumi:"widget"`
+	// The width of the tile, measured in grid blocks. Tiles must have a minimum width of 1.
+	Width pulumi.IntInput `pulumi:"width"`
+	// The zero-indexed position of the tile in grid blocks relative to the left edge of the grid. Tiles must be contained within the specified number of columns. x_pos cannot be negative.
+	XPos pulumi.IntInput `pulumi:"xPos"`
+	// The zero-indexed position of the tile in grid blocks relative to the top edge of the grid. y_pos cannot be negative.
+	YPos pulumi.IntInput `pulumi:"yPos"`
+}
+
+func (TileResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TileResponse)(nil)).Elem()
+}
+
+func (i TileResponseArgs) ToTileResponseOutput() TileResponseOutput {
+	return i.ToTileResponseOutputWithContext(context.Background())
+}
+
+func (i TileResponseArgs) ToTileResponseOutputWithContext(ctx context.Context) TileResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TileResponseOutput)
+}
+
+// TileResponseArrayInput is an input type that accepts TileResponseArray and TileResponseArrayOutput values.
+// You can construct a concrete instance of `TileResponseArrayInput` via:
+//
+//          TileResponseArray{ TileResponseArgs{...} }
+type TileResponseArrayInput interface {
+	pulumi.Input
+
+	ToTileResponseArrayOutput() TileResponseArrayOutput
+	ToTileResponseArrayOutputWithContext(context.Context) TileResponseArrayOutput
+}
+
+type TileResponseArray []TileResponseInput
+
+func (TileResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TileResponse)(nil)).Elem()
+}
+
+func (i TileResponseArray) ToTileResponseArrayOutput() TileResponseArrayOutput {
+	return i.ToTileResponseArrayOutputWithContext(context.Background())
+}
+
+func (i TileResponseArray) ToTileResponseArrayOutputWithContext(ctx context.Context) TileResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TileResponseArrayOutput)
+}
+
+// A single tile in the mosaic. The placement and size of the tile are configurable.
+type TileResponseOutput struct{ *pulumi.OutputState }
+
+func (TileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TileResponse)(nil)).Elem()
+}
+
+func (o TileResponseOutput) ToTileResponseOutput() TileResponseOutput {
+	return o
+}
+
+func (o TileResponseOutput) ToTileResponseOutputWithContext(ctx context.Context) TileResponseOutput {
+	return o
+}
+
+// The height of the tile, measured in grid blocks. Tiles must have a minimum height of 1.
+func (o TileResponseOutput) Height() pulumi.IntOutput {
+	return o.ApplyT(func(v TileResponse) int { return v.Height }).(pulumi.IntOutput)
+}
+
+// The informational widget contained in the tile. For example an XyChart.
+func (o TileResponseOutput) Widget() WidgetResponseOutput {
+	return o.ApplyT(func(v TileResponse) WidgetResponse { return v.Widget }).(WidgetResponseOutput)
+}
+
+// The width of the tile, measured in grid blocks. Tiles must have a minimum width of 1.
+func (o TileResponseOutput) Width() pulumi.IntOutput {
+	return o.ApplyT(func(v TileResponse) int { return v.Width }).(pulumi.IntOutput)
+}
+
+// The zero-indexed position of the tile in grid blocks relative to the left edge of the grid. Tiles must be contained within the specified number of columns. x_pos cannot be negative.
+func (o TileResponseOutput) XPos() pulumi.IntOutput {
+	return o.ApplyT(func(v TileResponse) int { return v.XPos }).(pulumi.IntOutput)
+}
+
+// The zero-indexed position of the tile in grid blocks relative to the top edge of the grid. y_pos cannot be negative.
+func (o TileResponseOutput) YPos() pulumi.IntOutput {
+	return o.ApplyT(func(v TileResponse) int { return v.YPos }).(pulumi.IntOutput)
+}
+
+type TileResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TileResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TileResponse)(nil)).Elem()
+}
+
+func (o TileResponseArrayOutput) ToTileResponseArrayOutput() TileResponseArrayOutput {
+	return o
+}
+
+func (o TileResponseArrayOutput) ToTileResponseArrayOutputWithContext(ctx context.Context) TileResponseArrayOutput {
+	return o
+}
+
+func (o TileResponseArrayOutput) Index(i pulumi.IntInput) TileResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TileResponse {
+		return vs[0].([]TileResponse)[vs[1].(int)]
+	}).(TileResponseOutput)
 }
 
 // A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
@@ -3333,6 +5237,192 @@ func (o TimeSeriesFilterRatioPtrOutput) StatisticalTimeSeriesFilter() Statistica
 	}).(StatisticalTimeSeriesFilterPtrOutput)
 }
 
+// A pair of time series filters that define a ratio computation. The output time series is the pair-wise division of each aligned element from the numerator and denominator time series.
+type TimeSeriesFilterRatioResponse struct {
+	// The denominator of the ratio.
+	Denominator RatioPartResponse `pulumi:"denominator"`
+	// The numerator of the ratio.
+	Numerator RatioPartResponse `pulumi:"numerator"`
+	// Ranking based time series filter.
+	PickTimeSeriesFilter PickTimeSeriesFilterResponse `pulumi:"pickTimeSeriesFilter"`
+	// Apply a second aggregation after the ratio is computed.
+	SecondaryAggregation AggregationResponse `pulumi:"secondaryAggregation"`
+	// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
+	StatisticalTimeSeriesFilter StatisticalTimeSeriesFilterResponse `pulumi:"statisticalTimeSeriesFilter"`
+}
+
+// TimeSeriesFilterRatioResponseInput is an input type that accepts TimeSeriesFilterRatioResponseArgs and TimeSeriesFilterRatioResponseOutput values.
+// You can construct a concrete instance of `TimeSeriesFilterRatioResponseInput` via:
+//
+//          TimeSeriesFilterRatioResponseArgs{...}
+type TimeSeriesFilterRatioResponseInput interface {
+	pulumi.Input
+
+	ToTimeSeriesFilterRatioResponseOutput() TimeSeriesFilterRatioResponseOutput
+	ToTimeSeriesFilterRatioResponseOutputWithContext(context.Context) TimeSeriesFilterRatioResponseOutput
+}
+
+// A pair of time series filters that define a ratio computation. The output time series is the pair-wise division of each aligned element from the numerator and denominator time series.
+type TimeSeriesFilterRatioResponseArgs struct {
+	// The denominator of the ratio.
+	Denominator RatioPartResponseInput `pulumi:"denominator"`
+	// The numerator of the ratio.
+	Numerator RatioPartResponseInput `pulumi:"numerator"`
+	// Ranking based time series filter.
+	PickTimeSeriesFilter PickTimeSeriesFilterResponseInput `pulumi:"pickTimeSeriesFilter"`
+	// Apply a second aggregation after the ratio is computed.
+	SecondaryAggregation AggregationResponseInput `pulumi:"secondaryAggregation"`
+	// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
+	StatisticalTimeSeriesFilter StatisticalTimeSeriesFilterResponseInput `pulumi:"statisticalTimeSeriesFilter"`
+}
+
+func (TimeSeriesFilterRatioResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesFilterRatioResponse)(nil)).Elem()
+}
+
+func (i TimeSeriesFilterRatioResponseArgs) ToTimeSeriesFilterRatioResponseOutput() TimeSeriesFilterRatioResponseOutput {
+	return i.ToTimeSeriesFilterRatioResponseOutputWithContext(context.Background())
+}
+
+func (i TimeSeriesFilterRatioResponseArgs) ToTimeSeriesFilterRatioResponseOutputWithContext(ctx context.Context) TimeSeriesFilterRatioResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesFilterRatioResponseOutput)
+}
+
+// A pair of time series filters that define a ratio computation. The output time series is the pair-wise division of each aligned element from the numerator and denominator time series.
+type TimeSeriesFilterRatioResponseOutput struct{ *pulumi.OutputState }
+
+func (TimeSeriesFilterRatioResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesFilterRatioResponse)(nil)).Elem()
+}
+
+func (o TimeSeriesFilterRatioResponseOutput) ToTimeSeriesFilterRatioResponseOutput() TimeSeriesFilterRatioResponseOutput {
+	return o
+}
+
+func (o TimeSeriesFilterRatioResponseOutput) ToTimeSeriesFilterRatioResponseOutputWithContext(ctx context.Context) TimeSeriesFilterRatioResponseOutput {
+	return o
+}
+
+// The denominator of the ratio.
+func (o TimeSeriesFilterRatioResponseOutput) Denominator() RatioPartResponseOutput {
+	return o.ApplyT(func(v TimeSeriesFilterRatioResponse) RatioPartResponse { return v.Denominator }).(RatioPartResponseOutput)
+}
+
+// The numerator of the ratio.
+func (o TimeSeriesFilterRatioResponseOutput) Numerator() RatioPartResponseOutput {
+	return o.ApplyT(func(v TimeSeriesFilterRatioResponse) RatioPartResponse { return v.Numerator }).(RatioPartResponseOutput)
+}
+
+// Ranking based time series filter.
+func (o TimeSeriesFilterRatioResponseOutput) PickTimeSeriesFilter() PickTimeSeriesFilterResponseOutput {
+	return o.ApplyT(func(v TimeSeriesFilterRatioResponse) PickTimeSeriesFilterResponse { return v.PickTimeSeriesFilter }).(PickTimeSeriesFilterResponseOutput)
+}
+
+// Apply a second aggregation after the ratio is computed.
+func (o TimeSeriesFilterRatioResponseOutput) SecondaryAggregation() AggregationResponseOutput {
+	return o.ApplyT(func(v TimeSeriesFilterRatioResponse) AggregationResponse { return v.SecondaryAggregation }).(AggregationResponseOutput)
+}
+
+// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
+func (o TimeSeriesFilterRatioResponseOutput) StatisticalTimeSeriesFilter() StatisticalTimeSeriesFilterResponseOutput {
+	return o.ApplyT(func(v TimeSeriesFilterRatioResponse) StatisticalTimeSeriesFilterResponse {
+		return v.StatisticalTimeSeriesFilter
+	}).(StatisticalTimeSeriesFilterResponseOutput)
+}
+
+// A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
+type TimeSeriesFilterResponse struct {
+	// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+	Aggregation AggregationResponse `pulumi:"aggregation"`
+	// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+	Filter string `pulumi:"filter"`
+	// Ranking based time series filter.
+	PickTimeSeriesFilter PickTimeSeriesFilterResponse `pulumi:"pickTimeSeriesFilter"`
+	// Apply a second aggregation after aggregation is applied.
+	SecondaryAggregation AggregationResponse `pulumi:"secondaryAggregation"`
+	// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
+	StatisticalTimeSeriesFilter StatisticalTimeSeriesFilterResponse `pulumi:"statisticalTimeSeriesFilter"`
+}
+
+// TimeSeriesFilterResponseInput is an input type that accepts TimeSeriesFilterResponseArgs and TimeSeriesFilterResponseOutput values.
+// You can construct a concrete instance of `TimeSeriesFilterResponseInput` via:
+//
+//          TimeSeriesFilterResponseArgs{...}
+type TimeSeriesFilterResponseInput interface {
+	pulumi.Input
+
+	ToTimeSeriesFilterResponseOutput() TimeSeriesFilterResponseOutput
+	ToTimeSeriesFilterResponseOutputWithContext(context.Context) TimeSeriesFilterResponseOutput
+}
+
+// A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
+type TimeSeriesFilterResponseArgs struct {
+	// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+	Aggregation AggregationResponseInput `pulumi:"aggregation"`
+	// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// Ranking based time series filter.
+	PickTimeSeriesFilter PickTimeSeriesFilterResponseInput `pulumi:"pickTimeSeriesFilter"`
+	// Apply a second aggregation after aggregation is applied.
+	SecondaryAggregation AggregationResponseInput `pulumi:"secondaryAggregation"`
+	// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
+	StatisticalTimeSeriesFilter StatisticalTimeSeriesFilterResponseInput `pulumi:"statisticalTimeSeriesFilter"`
+}
+
+func (TimeSeriesFilterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesFilterResponse)(nil)).Elem()
+}
+
+func (i TimeSeriesFilterResponseArgs) ToTimeSeriesFilterResponseOutput() TimeSeriesFilterResponseOutput {
+	return i.ToTimeSeriesFilterResponseOutputWithContext(context.Background())
+}
+
+func (i TimeSeriesFilterResponseArgs) ToTimeSeriesFilterResponseOutputWithContext(ctx context.Context) TimeSeriesFilterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesFilterResponseOutput)
+}
+
+// A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
+type TimeSeriesFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (TimeSeriesFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesFilterResponse)(nil)).Elem()
+}
+
+func (o TimeSeriesFilterResponseOutput) ToTimeSeriesFilterResponseOutput() TimeSeriesFilterResponseOutput {
+	return o
+}
+
+func (o TimeSeriesFilterResponseOutput) ToTimeSeriesFilterResponseOutputWithContext(ctx context.Context) TimeSeriesFilterResponseOutput {
+	return o
+}
+
+// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+func (o TimeSeriesFilterResponseOutput) Aggregation() AggregationResponseOutput {
+	return o.ApplyT(func(v TimeSeriesFilterResponse) AggregationResponse { return v.Aggregation }).(AggregationResponseOutput)
+}
+
+// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+func (o TimeSeriesFilterResponseOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeSeriesFilterResponse) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// Ranking based time series filter.
+func (o TimeSeriesFilterResponseOutput) PickTimeSeriesFilter() PickTimeSeriesFilterResponseOutput {
+	return o.ApplyT(func(v TimeSeriesFilterResponse) PickTimeSeriesFilterResponse { return v.PickTimeSeriesFilter }).(PickTimeSeriesFilterResponseOutput)
+}
+
+// Apply a second aggregation after aggregation is applied.
+func (o TimeSeriesFilterResponseOutput) SecondaryAggregation() AggregationResponseOutput {
+	return o.ApplyT(func(v TimeSeriesFilterResponse) AggregationResponse { return v.SecondaryAggregation }).(AggregationResponseOutput)
+}
+
+// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
+func (o TimeSeriesFilterResponseOutput) StatisticalTimeSeriesFilter() StatisticalTimeSeriesFilterResponseOutput {
+	return o.ApplyT(func(v TimeSeriesFilterResponse) StatisticalTimeSeriesFilterResponse {
+		return v.StatisticalTimeSeriesFilter
+	}).(StatisticalTimeSeriesFilterResponseOutput)
+}
+
 // TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
 type TimeSeriesQuery struct {
 	// Filter parameters to fetch time series.
@@ -3522,6 +5612,88 @@ func (o TimeSeriesQueryPtrOutput) UnitOverride() pulumi.StringPtrOutput {
 		}
 		return v.UnitOverride
 	}).(pulumi.StringPtrOutput)
+}
+
+// TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
+type TimeSeriesQueryResponse struct {
+	// Filter parameters to fetch time series.
+	TimeSeriesFilter TimeSeriesFilterResponse `pulumi:"timeSeriesFilter"`
+	// Parameters to fetch a ratio between two time series filters.
+	TimeSeriesFilterRatio TimeSeriesFilterRatioResponse `pulumi:"timeSeriesFilterRatio"`
+	// A query used to fetch time series.
+	TimeSeriesQueryLanguage string `pulumi:"timeSeriesQueryLanguage"`
+	// The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in MetricDescriptor.
+	UnitOverride string `pulumi:"unitOverride"`
+}
+
+// TimeSeriesQueryResponseInput is an input type that accepts TimeSeriesQueryResponseArgs and TimeSeriesQueryResponseOutput values.
+// You can construct a concrete instance of `TimeSeriesQueryResponseInput` via:
+//
+//          TimeSeriesQueryResponseArgs{...}
+type TimeSeriesQueryResponseInput interface {
+	pulumi.Input
+
+	ToTimeSeriesQueryResponseOutput() TimeSeriesQueryResponseOutput
+	ToTimeSeriesQueryResponseOutputWithContext(context.Context) TimeSeriesQueryResponseOutput
+}
+
+// TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
+type TimeSeriesQueryResponseArgs struct {
+	// Filter parameters to fetch time series.
+	TimeSeriesFilter TimeSeriesFilterResponseInput `pulumi:"timeSeriesFilter"`
+	// Parameters to fetch a ratio between two time series filters.
+	TimeSeriesFilterRatio TimeSeriesFilterRatioResponseInput `pulumi:"timeSeriesFilterRatio"`
+	// A query used to fetch time series.
+	TimeSeriesQueryLanguage pulumi.StringInput `pulumi:"timeSeriesQueryLanguage"`
+	// The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in MetricDescriptor.
+	UnitOverride pulumi.StringInput `pulumi:"unitOverride"`
+}
+
+func (TimeSeriesQueryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesQueryResponse)(nil)).Elem()
+}
+
+func (i TimeSeriesQueryResponseArgs) ToTimeSeriesQueryResponseOutput() TimeSeriesQueryResponseOutput {
+	return i.ToTimeSeriesQueryResponseOutputWithContext(context.Background())
+}
+
+func (i TimeSeriesQueryResponseArgs) ToTimeSeriesQueryResponseOutputWithContext(ctx context.Context) TimeSeriesQueryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesQueryResponseOutput)
+}
+
+// TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
+type TimeSeriesQueryResponseOutput struct{ *pulumi.OutputState }
+
+func (TimeSeriesQueryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesQueryResponse)(nil)).Elem()
+}
+
+func (o TimeSeriesQueryResponseOutput) ToTimeSeriesQueryResponseOutput() TimeSeriesQueryResponseOutput {
+	return o
+}
+
+func (o TimeSeriesQueryResponseOutput) ToTimeSeriesQueryResponseOutputWithContext(ctx context.Context) TimeSeriesQueryResponseOutput {
+	return o
+}
+
+// Filter parameters to fetch time series.
+func (o TimeSeriesQueryResponseOutput) TimeSeriesFilter() TimeSeriesFilterResponseOutput {
+	return o.ApplyT(func(v TimeSeriesQueryResponse) TimeSeriesFilterResponse { return v.TimeSeriesFilter }).(TimeSeriesFilterResponseOutput)
+}
+
+// Parameters to fetch a ratio between two time series filters.
+func (o TimeSeriesQueryResponseOutput) TimeSeriesFilterRatio() TimeSeriesFilterRatioResponseOutput {
+	return o.ApplyT(func(v TimeSeriesQueryResponse) TimeSeriesFilterRatioResponse { return v.TimeSeriesFilterRatio }).(TimeSeriesFilterRatioResponseOutput)
+}
+
+// A query used to fetch time series.
+func (o TimeSeriesQueryResponseOutput) TimeSeriesQueryLanguage() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeSeriesQueryResponse) string { return v.TimeSeriesQueryLanguage }).(pulumi.StringOutput)
+}
+
+// The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in MetricDescriptor.
+func (o TimeSeriesQueryResponseOutput) UnitOverride() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeSeriesQueryResponse) string { return v.UnitOverride }).(pulumi.StringOutput)
 }
 
 // Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
@@ -3779,6 +5951,142 @@ func (o WidgetArrayOutput) Index(i pulumi.IntInput) WidgetOutput {
 	}).(WidgetOutput)
 }
 
+// Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
+type WidgetResponse struct {
+	// A blank space.
+	Blank EmptyResponse `pulumi:"blank"`
+	// A scorecard summarizing time series data.
+	Scorecard ScorecardResponse `pulumi:"scorecard"`
+	// A raw string or markdown displaying textual content.
+	Text TextResponse `pulumi:"text"`
+	// Optional. The title of the widget.
+	Title string `pulumi:"title"`
+	// A chart of time series data.
+	XyChart XyChartResponse `pulumi:"xyChart"`
+}
+
+// WidgetResponseInput is an input type that accepts WidgetResponseArgs and WidgetResponseOutput values.
+// You can construct a concrete instance of `WidgetResponseInput` via:
+//
+//          WidgetResponseArgs{...}
+type WidgetResponseInput interface {
+	pulumi.Input
+
+	ToWidgetResponseOutput() WidgetResponseOutput
+	ToWidgetResponseOutputWithContext(context.Context) WidgetResponseOutput
+}
+
+// Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
+type WidgetResponseArgs struct {
+	// A blank space.
+	Blank EmptyResponseInput `pulumi:"blank"`
+	// A scorecard summarizing time series data.
+	Scorecard ScorecardResponseInput `pulumi:"scorecard"`
+	// A raw string or markdown displaying textual content.
+	Text TextResponseInput `pulumi:"text"`
+	// Optional. The title of the widget.
+	Title pulumi.StringInput `pulumi:"title"`
+	// A chart of time series data.
+	XyChart XyChartResponseInput `pulumi:"xyChart"`
+}
+
+func (WidgetResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetResponse)(nil)).Elem()
+}
+
+func (i WidgetResponseArgs) ToWidgetResponseOutput() WidgetResponseOutput {
+	return i.ToWidgetResponseOutputWithContext(context.Background())
+}
+
+func (i WidgetResponseArgs) ToWidgetResponseOutputWithContext(ctx context.Context) WidgetResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetResponseOutput)
+}
+
+// WidgetResponseArrayInput is an input type that accepts WidgetResponseArray and WidgetResponseArrayOutput values.
+// You can construct a concrete instance of `WidgetResponseArrayInput` via:
+//
+//          WidgetResponseArray{ WidgetResponseArgs{...} }
+type WidgetResponseArrayInput interface {
+	pulumi.Input
+
+	ToWidgetResponseArrayOutput() WidgetResponseArrayOutput
+	ToWidgetResponseArrayOutputWithContext(context.Context) WidgetResponseArrayOutput
+}
+
+type WidgetResponseArray []WidgetResponseInput
+
+func (WidgetResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WidgetResponse)(nil)).Elem()
+}
+
+func (i WidgetResponseArray) ToWidgetResponseArrayOutput() WidgetResponseArrayOutput {
+	return i.ToWidgetResponseArrayOutputWithContext(context.Background())
+}
+
+func (i WidgetResponseArray) ToWidgetResponseArrayOutputWithContext(ctx context.Context) WidgetResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WidgetResponseArrayOutput)
+}
+
+// Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
+type WidgetResponseOutput struct{ *pulumi.OutputState }
+
+func (WidgetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WidgetResponse)(nil)).Elem()
+}
+
+func (o WidgetResponseOutput) ToWidgetResponseOutput() WidgetResponseOutput {
+	return o
+}
+
+func (o WidgetResponseOutput) ToWidgetResponseOutputWithContext(ctx context.Context) WidgetResponseOutput {
+	return o
+}
+
+// A blank space.
+func (o WidgetResponseOutput) Blank() EmptyResponseOutput {
+	return o.ApplyT(func(v WidgetResponse) EmptyResponse { return v.Blank }).(EmptyResponseOutput)
+}
+
+// A scorecard summarizing time series data.
+func (o WidgetResponseOutput) Scorecard() ScorecardResponseOutput {
+	return o.ApplyT(func(v WidgetResponse) ScorecardResponse { return v.Scorecard }).(ScorecardResponseOutput)
+}
+
+// A raw string or markdown displaying textual content.
+func (o WidgetResponseOutput) Text() TextResponseOutput {
+	return o.ApplyT(func(v WidgetResponse) TextResponse { return v.Text }).(TextResponseOutput)
+}
+
+// Optional. The title of the widget.
+func (o WidgetResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WidgetResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// A chart of time series data.
+func (o WidgetResponseOutput) XyChart() XyChartResponseOutput {
+	return o.ApplyT(func(v WidgetResponse) XyChartResponse { return v.XyChart }).(XyChartResponseOutput)
+}
+
+type WidgetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (WidgetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WidgetResponse)(nil)).Elem()
+}
+
+func (o WidgetResponseArrayOutput) ToWidgetResponseArrayOutput() WidgetResponseArrayOutput {
+	return o
+}
+
+func (o WidgetResponseArrayOutput) ToWidgetResponseArrayOutputWithContext(ctx context.Context) WidgetResponseArrayOutput {
+	return o
+}
+
+func (o WidgetResponseArrayOutput) Index(i pulumi.IntInput) WidgetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WidgetResponse {
+		return vs[0].([]WidgetResponse)[vs[1].(int)]
+	}).(WidgetResponseOutput)
+}
+
 // A chart that displays data on a 2D (X and Y axes) plane.
 type XyChart struct {
 	// Display options for the chart.
@@ -4008,56 +6316,191 @@ func (o XyChartPtrOutput) YAxis() AxisPtrOutput {
 	}).(AxisPtrOutput)
 }
 
+// A chart that displays data on a 2D (X and Y axes) plane.
+type XyChartResponse struct {
+	// Display options for the chart.
+	ChartOptions ChartOptionsResponse `pulumi:"chartOptions"`
+	// Required. The data displayed in this chart.
+	DataSets []DataSetResponse `pulumi:"dataSets"`
+	// Threshold lines drawn horizontally across the chart.
+	Thresholds []ThresholdResponse `pulumi:"thresholds"`
+	// The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
+	TimeshiftDuration string `pulumi:"timeshiftDuration"`
+	// The properties applied to the X axis.
+	XAxis AxisResponse `pulumi:"xAxis"`
+	// The properties applied to the Y axis.
+	YAxis AxisResponse `pulumi:"yAxis"`
+}
+
+// XyChartResponseInput is an input type that accepts XyChartResponseArgs and XyChartResponseOutput values.
+// You can construct a concrete instance of `XyChartResponseInput` via:
+//
+//          XyChartResponseArgs{...}
+type XyChartResponseInput interface {
+	pulumi.Input
+
+	ToXyChartResponseOutput() XyChartResponseOutput
+	ToXyChartResponseOutputWithContext(context.Context) XyChartResponseOutput
+}
+
+// A chart that displays data on a 2D (X and Y axes) plane.
+type XyChartResponseArgs struct {
+	// Display options for the chart.
+	ChartOptions ChartOptionsResponseInput `pulumi:"chartOptions"`
+	// Required. The data displayed in this chart.
+	DataSets DataSetResponseArrayInput `pulumi:"dataSets"`
+	// Threshold lines drawn horizontally across the chart.
+	Thresholds ThresholdResponseArrayInput `pulumi:"thresholds"`
+	// The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
+	TimeshiftDuration pulumi.StringInput `pulumi:"timeshiftDuration"`
+	// The properties applied to the X axis.
+	XAxis AxisResponseInput `pulumi:"xAxis"`
+	// The properties applied to the Y axis.
+	YAxis AxisResponseInput `pulumi:"yAxis"`
+}
+
+func (XyChartResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*XyChartResponse)(nil)).Elem()
+}
+
+func (i XyChartResponseArgs) ToXyChartResponseOutput() XyChartResponseOutput {
+	return i.ToXyChartResponseOutputWithContext(context.Background())
+}
+
+func (i XyChartResponseArgs) ToXyChartResponseOutputWithContext(ctx context.Context) XyChartResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(XyChartResponseOutput)
+}
+
+// A chart that displays data on a 2D (X and Y axes) plane.
+type XyChartResponseOutput struct{ *pulumi.OutputState }
+
+func (XyChartResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*XyChartResponse)(nil)).Elem()
+}
+
+func (o XyChartResponseOutput) ToXyChartResponseOutput() XyChartResponseOutput {
+	return o
+}
+
+func (o XyChartResponseOutput) ToXyChartResponseOutputWithContext(ctx context.Context) XyChartResponseOutput {
+	return o
+}
+
+// Display options for the chart.
+func (o XyChartResponseOutput) ChartOptions() ChartOptionsResponseOutput {
+	return o.ApplyT(func(v XyChartResponse) ChartOptionsResponse { return v.ChartOptions }).(ChartOptionsResponseOutput)
+}
+
+// Required. The data displayed in this chart.
+func (o XyChartResponseOutput) DataSets() DataSetResponseArrayOutput {
+	return o.ApplyT(func(v XyChartResponse) []DataSetResponse { return v.DataSets }).(DataSetResponseArrayOutput)
+}
+
+// Threshold lines drawn horizontally across the chart.
+func (o XyChartResponseOutput) Thresholds() ThresholdResponseArrayOutput {
+	return o.ApplyT(func(v XyChartResponse) []ThresholdResponse { return v.Thresholds }).(ThresholdResponseArrayOutput)
+}
+
+// The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
+func (o XyChartResponseOutput) TimeshiftDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v XyChartResponse) string { return v.TimeshiftDuration }).(pulumi.StringOutput)
+}
+
+// The properties applied to the X axis.
+func (o XyChartResponseOutput) XAxis() AxisResponseOutput {
+	return o.ApplyT(func(v XyChartResponse) AxisResponse { return v.XAxis }).(AxisResponseOutput)
+}
+
+// The properties applied to the Y axis.
+func (o XyChartResponseOutput) YAxis() AxisResponseOutput {
+	return o.ApplyT(func(v XyChartResponse) AxisResponse { return v.YAxis }).(AxisResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AggregationOutput{})
 	pulumi.RegisterOutputType(AggregationPtrOutput{})
+	pulumi.RegisterOutputType(AggregationResponseOutput{})
 	pulumi.RegisterOutputType(AxisOutput{})
 	pulumi.RegisterOutputType(AxisPtrOutput{})
+	pulumi.RegisterOutputType(AxisResponseOutput{})
 	pulumi.RegisterOutputType(ChartOptionsOutput{})
 	pulumi.RegisterOutputType(ChartOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ChartOptionsResponseOutput{})
 	pulumi.RegisterOutputType(ColumnOutput{})
 	pulumi.RegisterOutputType(ColumnArrayOutput{})
 	pulumi.RegisterOutputType(ColumnLayoutOutput{})
 	pulumi.RegisterOutputType(ColumnLayoutPtrOutput{})
+	pulumi.RegisterOutputType(ColumnLayoutResponseOutput{})
+	pulumi.RegisterOutputType(ColumnLayoutResponsePtrOutput{})
+	pulumi.RegisterOutputType(ColumnResponseOutput{})
+	pulumi.RegisterOutputType(ColumnResponseArrayOutput{})
 	pulumi.RegisterOutputType(DataSetOutput{})
 	pulumi.RegisterOutputType(DataSetArrayOutput{})
+	pulumi.RegisterOutputType(DataSetResponseOutput{})
+	pulumi.RegisterOutputType(DataSetResponseArrayOutput{})
 	pulumi.RegisterOutputType(EmptyOutput{})
 	pulumi.RegisterOutputType(EmptyPtrOutput{})
+	pulumi.RegisterOutputType(EmptyResponseOutput{})
 	pulumi.RegisterOutputType(GaugeViewOutput{})
 	pulumi.RegisterOutputType(GaugeViewPtrOutput{})
+	pulumi.RegisterOutputType(GaugeViewResponseOutput{})
 	pulumi.RegisterOutputType(GridLayoutOutput{})
 	pulumi.RegisterOutputType(GridLayoutPtrOutput{})
+	pulumi.RegisterOutputType(GridLayoutResponseOutput{})
+	pulumi.RegisterOutputType(GridLayoutResponsePtrOutput{})
 	pulumi.RegisterOutputType(MosaicLayoutOutput{})
 	pulumi.RegisterOutputType(MosaicLayoutPtrOutput{})
+	pulumi.RegisterOutputType(MosaicLayoutResponseOutput{})
+	pulumi.RegisterOutputType(MosaicLayoutResponsePtrOutput{})
 	pulumi.RegisterOutputType(PickTimeSeriesFilterOutput{})
 	pulumi.RegisterOutputType(PickTimeSeriesFilterPtrOutput{})
+	pulumi.RegisterOutputType(PickTimeSeriesFilterResponseOutput{})
 	pulumi.RegisterOutputType(RatioPartOutput{})
 	pulumi.RegisterOutputType(RatioPartPtrOutput{})
+	pulumi.RegisterOutputType(RatioPartResponseOutput{})
 	pulumi.RegisterOutputType(RowOutput{})
 	pulumi.RegisterOutputType(RowArrayOutput{})
 	pulumi.RegisterOutputType(RowLayoutOutput{})
 	pulumi.RegisterOutputType(RowLayoutPtrOutput{})
+	pulumi.RegisterOutputType(RowLayoutResponseOutput{})
+	pulumi.RegisterOutputType(RowLayoutResponsePtrOutput{})
+	pulumi.RegisterOutputType(RowResponseOutput{})
+	pulumi.RegisterOutputType(RowResponseArrayOutput{})
 	pulumi.RegisterOutputType(ScorecardOutput{})
 	pulumi.RegisterOutputType(ScorecardPtrOutput{})
+	pulumi.RegisterOutputType(ScorecardResponseOutput{})
 	pulumi.RegisterOutputType(SparkChartViewOutput{})
 	pulumi.RegisterOutputType(SparkChartViewPtrOutput{})
+	pulumi.RegisterOutputType(SparkChartViewResponseOutput{})
 	pulumi.RegisterOutputType(StatisticalTimeSeriesFilterOutput{})
 	pulumi.RegisterOutputType(StatisticalTimeSeriesFilterPtrOutput{})
+	pulumi.RegisterOutputType(StatisticalTimeSeriesFilterResponseOutput{})
 	pulumi.RegisterOutputType(TextOutput{})
 	pulumi.RegisterOutputType(TextPtrOutput{})
+	pulumi.RegisterOutputType(TextResponseOutput{})
 	pulumi.RegisterOutputType(ThresholdOutput{})
 	pulumi.RegisterOutputType(ThresholdArrayOutput{})
+	pulumi.RegisterOutputType(ThresholdResponseOutput{})
+	pulumi.RegisterOutputType(ThresholdResponseArrayOutput{})
 	pulumi.RegisterOutputType(TileOutput{})
 	pulumi.RegisterOutputType(TileArrayOutput{})
+	pulumi.RegisterOutputType(TileResponseOutput{})
+	pulumi.RegisterOutputType(TileResponseArrayOutput{})
 	pulumi.RegisterOutputType(TimeSeriesFilterOutput{})
 	pulumi.RegisterOutputType(TimeSeriesFilterPtrOutput{})
 	pulumi.RegisterOutputType(TimeSeriesFilterRatioOutput{})
 	pulumi.RegisterOutputType(TimeSeriesFilterRatioPtrOutput{})
+	pulumi.RegisterOutputType(TimeSeriesFilterRatioResponseOutput{})
+	pulumi.RegisterOutputType(TimeSeriesFilterResponseOutput{})
 	pulumi.RegisterOutputType(TimeSeriesQueryOutput{})
 	pulumi.RegisterOutputType(TimeSeriesQueryPtrOutput{})
+	pulumi.RegisterOutputType(TimeSeriesQueryResponseOutput{})
 	pulumi.RegisterOutputType(WidgetOutput{})
 	pulumi.RegisterOutputType(WidgetPtrOutput{})
 	pulumi.RegisterOutputType(WidgetArrayOutput{})
+	pulumi.RegisterOutputType(WidgetResponseOutput{})
+	pulumi.RegisterOutputType(WidgetResponseArrayOutput{})
 	pulumi.RegisterOutputType(XyChartOutput{})
 	pulumi.RegisterOutputType(XyChartPtrOutput{})
+	pulumi.RegisterOutputType(XyChartResponseOutput{})
 }

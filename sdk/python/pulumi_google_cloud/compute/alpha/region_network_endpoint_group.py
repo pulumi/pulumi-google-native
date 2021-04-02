@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['RegionNetworkEndpointGroup']
@@ -140,7 +141,196 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["annotations"] = None
+        __props__["app_engine"] = None
+        __props__["cloud_function"] = None
+        __props__["cloud_run"] = None
+        __props__["creation_timestamp"] = None
+        __props__["default_port"] = None
+        __props__["description"] = None
+        __props__["kind"] = None
+        __props__["load_balancer"] = None
+        __props__["name"] = None
+        __props__["network"] = None
+        __props__["network_endpoint_type"] = None
+        __props__["psc_target_service"] = None
+        __props__["region"] = None
+        __props__["self_link"] = None
+        __props__["self_link_with_id"] = None
+        __props__["serverless_deployment"] = None
+        __props__["size"] = None
+        __props__["subnetwork"] = None
+        __props__["type"] = None
+        __props__["zone"] = None
         return RegionNetworkEndpointGroup(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Metadata defined as annotations on the network endpoint group.
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="appEngine")
+    def app_engine(self) -> pulumi.Output['outputs.NetworkEndpointGroupAppEngineResponse']:
+        """
+        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        """
+        return pulumi.get(self, "app_engine")
+
+    @property
+    @pulumi.getter(name="cloudFunction")
+    def cloud_function(self) -> pulumi.Output['outputs.NetworkEndpointGroupCloudFunctionResponse']:
+        """
+        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        """
+        return pulumi.get(self, "cloud_function")
+
+    @property
+    @pulumi.getter(name="cloudRun")
+    def cloud_run(self) -> pulumi.Output['outputs.NetworkEndpointGroupCloudRunResponse']:
+        """
+        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+        """
+        return pulumi.get(self, "cloud_run")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="defaultPort")
+    def default_port(self) -> pulumi.Output[int]:
+        """
+        The default port used if the port number is not specified in the network endpoint.
+        """
+        return pulumi.get(self, "default_port")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="loadBalancer")
+    def load_balancer(self) -> pulumi.Output['outputs.NetworkEndpointGroupLbNetworkEndpointGroupResponse']:
+        """
+        This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
+        """
+        return pulumi.get(self, "load_balancer")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Output[str]:
+        """
+        The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkEndpointType")
+    def network_endpoint_type(self) -> pulumi.Output[str]:
+        """
+        Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+        """
+        return pulumi.get(self, "network_endpoint_type")
+
+    @property
+    @pulumi.getter(name="pscTargetService")
+    def psc_target_service(self) -> pulumi.Output[str]:
+        """
+        The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        """
+        return pulumi.get(self, "psc_target_service")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The URL of the region where the network endpoint group is located.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        [Output Only] Server-defined URL for this resource with the resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @property
+    @pulumi.getter(name="serverlessDeployment")
+    def serverless_deployment(self) -> pulumi.Output['outputs.NetworkEndpointGroupServerlessDeploymentResponse']:
+        """
+        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+        """
+        return pulumi.get(self, "serverless_deployment")
+
+    @property
+    @pulumi.getter
+    def size(self) -> pulumi.Output[int]:
+        """
+        [Output only] Number of network endpoints in the network endpoint group.
+        """
+        return pulumi.get(self, "size")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> pulumi.Output[str]:
+        """
+        Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[str]:
+        """
+        [Output Only] The URL of the zone where the network endpoint group is located.
+        """
+        return pulumi.get(self, "zone")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

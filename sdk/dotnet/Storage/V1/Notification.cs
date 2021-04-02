@@ -16,6 +16,55 @@ namespace Pulumi.GoogleCloud.Storage.V1
     public partial class Notification : Pulumi.CustomResource
     {
         /// <summary>
+        /// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
+        /// </summary>
+        [Output("custom_attributes")]
+        public Output<ImmutableDictionary<string, string>> Custom_attributes { get; private set; } = null!;
+
+        /// <summary>
+        /// HTTP 1.1 Entity tag for this subscription notification.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
+        /// </summary>
+        [Output("event_types")]
+        public Output<ImmutableArray<string>> Event_types { get; private set; } = null!;
+
+        /// <summary>
+        /// The kind of item this is. For notifications, this is always storage#notification.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// If present, only apply this notification configuration to object names that begin with this prefix.
+        /// </summary>
+        [Output("object_name_prefix")]
+        public Output<string> Object_name_prefix { get; private set; } = null!;
+
+        /// <summary>
+        /// The desired content of the Payload.
+        /// </summary>
+        [Output("payload_format")]
+        public Output<string> Payload_format { get; private set; } = null!;
+
+        /// <summary>
+        /// The canonical URL of this notification.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
+        /// </summary>
+        [Output("topic")]
+        public Output<string> Topic { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Notification resource with the given unique name, arguments, and options.
         /// </summary>
         ///

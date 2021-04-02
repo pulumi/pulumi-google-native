@@ -89,7 +89,61 @@ class IosApp(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["app_id"] = None
+        __props__["app_store_id"] = None
+        __props__["bundle_id"] = None
+        __props__["display_name"] = None
+        __props__["name"] = None
+        __props__["project_id"] = None
         return IosApp(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Output[str]:
+        """
+        Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be treated as an opaque token, as the data format is not specified.
+        """
+        return pulumi.get(self, "app_id")
+
+    @property
+    @pulumi.getter(name="appStoreId")
+    def app_store_id(self) -> pulumi.Output[str]:
+        """
+        The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App Store.
+        """
+        return pulumi.get(self, "app_store_id")
+
+    @property
+    @pulumi.getter(name="bundleId")
+    def bundle_id(self) -> pulumi.Output[str]:
+        """
+        Immutable. The canonical bundle ID of the iOS app as it would appear in the iOS AppStore.
+        """
+        return pulumi.get(self, "bundle_id")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        The user-assigned display name for the `IosApp`.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
+        """
+        return pulumi.get(self, "project_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

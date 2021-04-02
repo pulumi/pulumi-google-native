@@ -33,12 +33,6 @@ namespace Pulumi.GoogleCloud.Dataproc.V1.Inputs
         [Input("idleDeleteTtl")]
         public Input<string>? IdleDeleteTtl { get; set; }
 
-        /// <summary>
-        /// Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        /// </summary>
-        [Input("idleStartTime")]
-        public Input<string>? IdleStartTime { get; set; }
-
         public LifecycleConfigArgs()
         {
         }

@@ -165,414 +165,577 @@ func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigPtrOutput) PolicyOverlay() 
 	}).(pulumi.StringMapOutput)
 }
 
-// Summary statistics about the replayed log entries.
-type GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary struct {
-	// The number of replayed log entries with a difference between baseline and simulated policies.
-	DifferenceCount *int `pulumi:"differenceCount"`
-	// The number of log entries that could not be replayed.
-	ErrorCount *int `pulumi:"errorCount"`
-	// The total number of log entries replayed.
-	LogCount *int `pulumi:"logCount"`
-	// The date of the newest log entry replayed.
-	NewestDate *GoogleTypeDate `pulumi:"newestDate"`
-	// The date of the oldest log entry replayed.
-	OldestDate *GoogleTypeDate `pulumi:"oldestDate"`
-	// The number of replayed log entries with no difference between baseline and simulated policies.
-	UnchangedCount *int `pulumi:"unchangedCount"`
+// The configuration used for a Replay.
+type GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse struct {
+	// The logs to use as input for the Replay.
+	LogSource string `pulumi:"logSource"`
+	// A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay.
+	PolicyOverlay map[string]string `pulumi:"policyOverlay"`
 }
 
-// GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryInput is an input type that accepts GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryArgs and GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput values.
-// You can construct a concrete instance of `GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryInput` via:
+// GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseInput is an input type that accepts GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseArgs and GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseInput` via:
 //
-//          GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryArgs{...}
-type GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryInput interface {
+//          GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseArgs{...}
+type GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseInput interface {
 	pulumi.Input
 
-	ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput
-	ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutputWithContext(context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput
+	ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput
+	ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutputWithContext(context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput
 }
 
-// Summary statistics about the replayed log entries.
-type GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryArgs struct {
-	// The number of replayed log entries with a difference between baseline and simulated policies.
-	DifferenceCount pulumi.IntPtrInput `pulumi:"differenceCount"`
-	// The number of log entries that could not be replayed.
-	ErrorCount pulumi.IntPtrInput `pulumi:"errorCount"`
-	// The total number of log entries replayed.
-	LogCount pulumi.IntPtrInput `pulumi:"logCount"`
-	// The date of the newest log entry replayed.
-	NewestDate GoogleTypeDatePtrInput `pulumi:"newestDate"`
-	// The date of the oldest log entry replayed.
-	OldestDate GoogleTypeDatePtrInput `pulumi:"oldestDate"`
-	// The number of replayed log entries with no difference between baseline and simulated policies.
-	UnchangedCount pulumi.IntPtrInput `pulumi:"unchangedCount"`
+// The configuration used for a Replay.
+type GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseArgs struct {
+	// The logs to use as input for the Replay.
+	LogSource pulumi.StringInput `pulumi:"logSource"`
+	// A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay.
+	PolicyOverlay pulumi.StringMapInput `pulumi:"policyOverlay"`
 }
 
-func (GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary)(nil)).Elem()
+func (GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse)(nil)).Elem()
 }
 
-func (i GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryArgs) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput {
-	return i.ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutputWithContext(context.Background())
+func (i GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseArgs) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput {
+	return i.ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutputWithContext(context.Background())
 }
 
-func (i GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryArgs) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput)
+func (i GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseArgs) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput)
 }
 
-func (i GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryArgs) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput {
-	return i.ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutputWithContext(context.Background())
+func (i GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseArgs) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput {
+	return i.ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutputWithContext(context.Background())
 }
 
-func (i GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryArgs) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput).ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutputWithContext(ctx)
+func (i GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseArgs) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput).ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutputWithContext(ctx)
 }
 
-// GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrInput is an input type that accepts GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryArgs, GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtr and GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrInput` via:
+// GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrInput is an input type that accepts GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseArgs, GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtr and GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrInput` via:
 //
-//          GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryArgs{...}
+//          GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrInput interface {
+type GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrInput interface {
 	pulumi.Input
 
-	ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput
-	ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutputWithContext(context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput
+	ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput
+	ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutputWithContext(context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput
 }
 
-type googleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrType GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryArgs
+type googleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrType GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseArgs
 
-func GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtr(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryArgs) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrInput {
-	return (*googleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrType)(v)
+func GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtr(v *GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseArgs) GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrInput {
+	return (*googleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrType)(v)
 }
 
-func (*googleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary)(nil)).Elem()
+func (*googleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse)(nil)).Elem()
 }
 
-func (i *googleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrType) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput {
-	return i.ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutputWithContext(context.Background())
+func (i *googleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrType) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput {
+	return i.ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *googleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrType) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput)
+func (i *googleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrType) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput)
 }
 
-// Summary statistics about the replayed log entries.
-type GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput struct{ *pulumi.OutputState }
+// The configuration used for a Replay.
+type GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary)(nil)).Elem()
+func (GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse)(nil)).Elem()
 }
 
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput {
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput {
 	return o
 }
 
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput {
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput {
 	return o
 }
 
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput {
-	return o.ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutputWithContext(context.Background())
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput {
+	return o.ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput {
-	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary) *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary {
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse) *GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse {
 		return &v
-	}).(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput)
+	}).(GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput)
 }
 
-// The number of replayed log entries with a difference between baseline and simulated policies.
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput) DifferenceCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary) *int { return v.DifferenceCount }).(pulumi.IntPtrOutput)
+// The logs to use as input for the Replay.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput) LogSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse) string { return v.LogSource }).(pulumi.StringOutput)
 }
 
-// The number of log entries that could not be replayed.
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput) ErrorCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary) *int { return v.ErrorCount }).(pulumi.IntPtrOutput)
+// A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput) PolicyOverlay() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse) map[string]string {
+		return v.PolicyOverlay
+	}).(pulumi.StringMapOutput)
 }
 
-// The total number of log entries replayed.
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput) LogCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary) *int { return v.LogCount }).(pulumi.IntPtrOutput)
+type GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse)(nil)).Elem()
 }
 
-// The date of the newest log entry replayed.
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput) NewestDate() GoogleTypeDatePtrOutput {
-	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary) *GoogleTypeDate { return v.NewestDate }).(GoogleTypeDatePtrOutput)
-}
-
-// The date of the oldest log entry replayed.
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput) OldestDate() GoogleTypeDatePtrOutput {
-	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary) *GoogleTypeDate { return v.OldestDate }).(GoogleTypeDatePtrOutput)
-}
-
-// The number of replayed log entries with no difference between baseline and simulated policies.
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput) UnchangedCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary) *int { return v.UnchangedCount }).(pulumi.IntPtrOutput)
-}
-
-type GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary)(nil)).Elem()
-}
-
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput {
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput {
 	return o
 }
 
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput {
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput {
 	return o
 }
 
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput) Elem() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput {
-	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary {
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput) Elem() GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse) GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse {
 		return *v
-	}).(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput)
+	}).(GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput)
 }
 
-// The number of replayed log entries with a difference between baseline and simulated policies.
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput) DifferenceCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary) *int {
+// The logs to use as input for the Replay.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput) LogSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DifferenceCount
-	}).(pulumi.IntPtrOutput)
+		return &v.LogSource
+	}).(pulumi.StringPtrOutput)
 }
 
-// The number of log entries that could not be replayed.
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput) ErrorCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary) *int {
+// A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput) PolicyOverlay() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse) map[string]string {
 		if v == nil {
 			return nil
 		}
-		return v.ErrorCount
-	}).(pulumi.IntPtrOutput)
+		return v.PolicyOverlay
+	}).(pulumi.StringMapOutput)
 }
 
-// The total number of log entries replayed.
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput) LogCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary) *int {
-		if v == nil {
-			return nil
-		}
-		return v.LogCount
-	}).(pulumi.IntPtrOutput)
+// Summary statistics about the replayed log entries.
+type GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse struct {
+	// The number of replayed log entries with a difference between baseline and simulated policies.
+	DifferenceCount int `pulumi:"differenceCount"`
+	// The number of log entries that could not be replayed.
+	ErrorCount int `pulumi:"errorCount"`
+	// The total number of log entries replayed.
+	LogCount int `pulumi:"logCount"`
+	// The date of the newest log entry replayed.
+	NewestDate GoogleTypeDateResponse `pulumi:"newestDate"`
+	// The date of the oldest log entry replayed.
+	OldestDate GoogleTypeDateResponse `pulumi:"oldestDate"`
+	// The number of replayed log entries with no difference between baseline and simulated policies.
+	UnchangedCount int `pulumi:"unchangedCount"`
 }
 
-// The date of the newest log entry replayed.
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput) NewestDate() GoogleTypeDatePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary) *GoogleTypeDate {
-		if v == nil {
-			return nil
-		}
-		return v.NewestDate
-	}).(GoogleTypeDatePtrOutput)
-}
-
-// The date of the oldest log entry replayed.
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput) OldestDate() GoogleTypeDatePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary) *GoogleTypeDate {
-		if v == nil {
-			return nil
-		}
-		return v.OldestDate
-	}).(GoogleTypeDatePtrOutput)
-}
-
-// The number of replayed log entries with no difference between baseline and simulated policies.
-func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput) UnchangedCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary) *int {
-		if v == nil {
-			return nil
-		}
-		return v.UnchangedCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-type GoogleTypeDate struct {
-	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-	Day *int `pulumi:"day"`
-	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-	Month *int `pulumi:"month"`
-	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-	Year *int `pulumi:"year"`
-}
-
-// GoogleTypeDateInput is an input type that accepts GoogleTypeDateArgs and GoogleTypeDateOutput values.
-// You can construct a concrete instance of `GoogleTypeDateInput` via:
+// GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseInput is an input type that accepts GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseArgs and GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseInput` via:
 //
-//          GoogleTypeDateArgs{...}
-type GoogleTypeDateInput interface {
+//          GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseArgs{...}
+type GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseInput interface {
 	pulumi.Input
 
-	ToGoogleTypeDateOutput() GoogleTypeDateOutput
-	ToGoogleTypeDateOutputWithContext(context.Context) GoogleTypeDateOutput
+	ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput
+	ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutputWithContext(context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput
 }
 
-// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-type GoogleTypeDateArgs struct {
-	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-	Day pulumi.IntPtrInput `pulumi:"day"`
-	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-	Month pulumi.IntPtrInput `pulumi:"month"`
-	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-	Year pulumi.IntPtrInput `pulumi:"year"`
+// Summary statistics about the replayed log entries.
+type GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseArgs struct {
+	// The number of replayed log entries with a difference between baseline and simulated policies.
+	DifferenceCount pulumi.IntInput `pulumi:"differenceCount"`
+	// The number of log entries that could not be replayed.
+	ErrorCount pulumi.IntInput `pulumi:"errorCount"`
+	// The total number of log entries replayed.
+	LogCount pulumi.IntInput `pulumi:"logCount"`
+	// The date of the newest log entry replayed.
+	NewestDate GoogleTypeDateResponseInput `pulumi:"newestDate"`
+	// The date of the oldest log entry replayed.
+	OldestDate GoogleTypeDateResponseInput `pulumi:"oldestDate"`
+	// The number of replayed log entries with no difference between baseline and simulated policies.
+	UnchangedCount pulumi.IntInput `pulumi:"unchangedCount"`
 }
 
-func (GoogleTypeDateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleTypeDate)(nil)).Elem()
+func (GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse)(nil)).Elem()
 }
 
-func (i GoogleTypeDateArgs) ToGoogleTypeDateOutput() GoogleTypeDateOutput {
-	return i.ToGoogleTypeDateOutputWithContext(context.Background())
+func (i GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseArgs) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput {
+	return i.ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutputWithContext(context.Background())
 }
 
-func (i GoogleTypeDateArgs) ToGoogleTypeDateOutputWithContext(ctx context.Context) GoogleTypeDateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateOutput)
+func (i GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseArgs) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput)
 }
 
-func (i GoogleTypeDateArgs) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput {
-	return i.ToGoogleTypeDatePtrOutputWithContext(context.Background())
+func (i GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseArgs) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput {
+	return i.ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutputWithContext(context.Background())
 }
 
-func (i GoogleTypeDateArgs) ToGoogleTypeDatePtrOutputWithContext(ctx context.Context) GoogleTypeDatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateOutput).ToGoogleTypeDatePtrOutputWithContext(ctx)
+func (i GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseArgs) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput).ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutputWithContext(ctx)
 }
 
-// GoogleTypeDatePtrInput is an input type that accepts GoogleTypeDateArgs, GoogleTypeDatePtr and GoogleTypeDatePtrOutput values.
-// You can construct a concrete instance of `GoogleTypeDatePtrInput` via:
+// GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrInput is an input type that accepts GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseArgs, GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtr and GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrInput` via:
 //
-//          GoogleTypeDateArgs{...}
+//          GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type GoogleTypeDatePtrInput interface {
+type GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrInput interface {
 	pulumi.Input
 
-	ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput
-	ToGoogleTypeDatePtrOutputWithContext(context.Context) GoogleTypeDatePtrOutput
+	ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput
+	ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutputWithContext(context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput
 }
 
-type googleTypeDatePtrType GoogleTypeDateArgs
+type googleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrType GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseArgs
 
-func GoogleTypeDatePtr(v *GoogleTypeDateArgs) GoogleTypeDatePtrInput {
-	return (*googleTypeDatePtrType)(v)
+func GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtr(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseArgs) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrInput {
+	return (*googleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrType)(v)
 }
 
-func (*googleTypeDatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleTypeDate)(nil)).Elem()
+func (*googleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse)(nil)).Elem()
 }
 
-func (i *googleTypeDatePtrType) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput {
-	return i.ToGoogleTypeDatePtrOutputWithContext(context.Background())
+func (i *googleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrType) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput {
+	return i.ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *googleTypeDatePtrType) ToGoogleTypeDatePtrOutputWithContext(ctx context.Context) GoogleTypeDatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDatePtrOutput)
+func (i *googleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrType) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput)
+}
+
+// Summary statistics about the replayed log entries.
+type GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput {
+	return o.ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse {
+		return &v
+	}).(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput)
+}
+
+// The number of replayed log entries with a difference between baseline and simulated policies.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput) DifferenceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) int { return v.DifferenceCount }).(pulumi.IntOutput)
+}
+
+// The number of log entries that could not be replayed.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput) ErrorCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) int { return v.ErrorCount }).(pulumi.IntOutput)
+}
+
+// The total number of log entries replayed.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput) LogCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) int { return v.LogCount }).(pulumi.IntOutput)
+}
+
+// The date of the newest log entry replayed.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput) NewestDate() GoogleTypeDateResponseOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) GoogleTypeDateResponse {
+		return v.NewestDate
+	}).(GoogleTypeDateResponseOutput)
+}
+
+// The date of the oldest log entry replayed.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput) OldestDate() GoogleTypeDateResponseOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) GoogleTypeDateResponse {
+		return v.OldestDate
+	}).(GoogleTypeDateResponseOutput)
+}
+
+// The number of replayed log entries with no difference between baseline and simulated policies.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput) UnchangedCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) int { return v.UnchangedCount }).(pulumi.IntOutput)
+}
+
+type GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput) Elem() GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse {
+		return *v
+	}).(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput)
+}
+
+// The number of replayed log entries with a difference between baseline and simulated policies.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput) DifferenceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DifferenceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of log entries that could not be replayed.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput) ErrorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ErrorCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The total number of log entries replayed.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput) LogCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.LogCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The date of the newest log entry replayed.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput) NewestDate() GoogleTypeDateResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) *GoogleTypeDateResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.NewestDate
+	}).(GoogleTypeDateResponsePtrOutput)
+}
+
+// The date of the oldest log entry replayed.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput) OldestDate() GoogleTypeDateResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) *GoogleTypeDateResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.OldestDate
+	}).(GoogleTypeDateResponsePtrOutput)
+}
+
+// The number of replayed log entries with no difference between baseline and simulated policies.
+func (o GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput) UnchangedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.UnchangedCount
+	}).(pulumi.IntPtrOutput)
 }
 
 // Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
-type GoogleTypeDateOutput struct{ *pulumi.OutputState }
-
-func (GoogleTypeDateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleTypeDate)(nil)).Elem()
+type GoogleTypeDateResponse struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year int `pulumi:"year"`
 }
 
-func (o GoogleTypeDateOutput) ToGoogleTypeDateOutput() GoogleTypeDateOutput {
+// GoogleTypeDateResponseInput is an input type that accepts GoogleTypeDateResponseArgs and GoogleTypeDateResponseOutput values.
+// You can construct a concrete instance of `GoogleTypeDateResponseInput` via:
+//
+//          GoogleTypeDateResponseArgs{...}
+type GoogleTypeDateResponseInput interface {
+	pulumi.Input
+
+	ToGoogleTypeDateResponseOutput() GoogleTypeDateResponseOutput
+	ToGoogleTypeDateResponseOutputWithContext(context.Context) GoogleTypeDateResponseOutput
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+type GoogleTypeDateResponseArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day pulumi.IntInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month pulumi.IntInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year pulumi.IntInput `pulumi:"year"`
+}
+
+func (GoogleTypeDateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeDateResponse)(nil)).Elem()
+}
+
+func (i GoogleTypeDateResponseArgs) ToGoogleTypeDateResponseOutput() GoogleTypeDateResponseOutput {
+	return i.ToGoogleTypeDateResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeDateResponseArgs) ToGoogleTypeDateResponseOutputWithContext(ctx context.Context) GoogleTypeDateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateResponseOutput)
+}
+
+func (i GoogleTypeDateResponseArgs) ToGoogleTypeDateResponsePtrOutput() GoogleTypeDateResponsePtrOutput {
+	return i.ToGoogleTypeDateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeDateResponseArgs) ToGoogleTypeDateResponsePtrOutputWithContext(ctx context.Context) GoogleTypeDateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateResponseOutput).ToGoogleTypeDateResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleTypeDateResponsePtrInput is an input type that accepts GoogleTypeDateResponseArgs, GoogleTypeDateResponsePtr and GoogleTypeDateResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleTypeDateResponsePtrInput` via:
+//
+//          GoogleTypeDateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleTypeDateResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleTypeDateResponsePtrOutput() GoogleTypeDateResponsePtrOutput
+	ToGoogleTypeDateResponsePtrOutputWithContext(context.Context) GoogleTypeDateResponsePtrOutput
+}
+
+type googleTypeDateResponsePtrType GoogleTypeDateResponseArgs
+
+func GoogleTypeDateResponsePtr(v *GoogleTypeDateResponseArgs) GoogleTypeDateResponsePtrInput {
+	return (*googleTypeDateResponsePtrType)(v)
+}
+
+func (*googleTypeDateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeDateResponse)(nil)).Elem()
+}
+
+func (i *googleTypeDateResponsePtrType) ToGoogleTypeDateResponsePtrOutput() GoogleTypeDateResponsePtrOutput {
+	return i.ToGoogleTypeDateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleTypeDateResponsePtrType) ToGoogleTypeDateResponsePtrOutputWithContext(ctx context.Context) GoogleTypeDateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateResponsePtrOutput)
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+type GoogleTypeDateResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeDateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeDateResponse)(nil)).Elem()
+}
+
+func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponseOutput() GoogleTypeDateResponseOutput {
 	return o
 }
 
-func (o GoogleTypeDateOutput) ToGoogleTypeDateOutputWithContext(ctx context.Context) GoogleTypeDateOutput {
+func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponseOutputWithContext(ctx context.Context) GoogleTypeDateResponseOutput {
 	return o
 }
 
-func (o GoogleTypeDateOutput) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput {
-	return o.ToGoogleTypeDatePtrOutputWithContext(context.Background())
+func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponsePtrOutput() GoogleTypeDateResponsePtrOutput {
+	return o.ToGoogleTypeDateResponsePtrOutputWithContext(context.Background())
 }
 
-func (o GoogleTypeDateOutput) ToGoogleTypeDatePtrOutputWithContext(ctx context.Context) GoogleTypeDatePtrOutput {
-	return o.ApplyT(func(v GoogleTypeDate) *GoogleTypeDate {
+func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponsePtrOutputWithContext(ctx context.Context) GoogleTypeDateResponsePtrOutput {
+	return o.ApplyT(func(v GoogleTypeDateResponse) *GoogleTypeDateResponse {
 		return &v
-	}).(GoogleTypeDatePtrOutput)
+	}).(GoogleTypeDateResponsePtrOutput)
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-func (o GoogleTypeDateOutput) Day() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleTypeDate) *int { return v.Day }).(pulumi.IntPtrOutput)
+func (o GoogleTypeDateResponseOutput) Day() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleTypeDateResponse) int { return v.Day }).(pulumi.IntOutput)
 }
 
 // Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-func (o GoogleTypeDateOutput) Month() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleTypeDate) *int { return v.Month }).(pulumi.IntPtrOutput)
+func (o GoogleTypeDateResponseOutput) Month() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleTypeDateResponse) int { return v.Month }).(pulumi.IntOutput)
 }
 
 // Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-func (o GoogleTypeDateOutput) Year() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleTypeDate) *int { return v.Year }).(pulumi.IntPtrOutput)
+func (o GoogleTypeDateResponseOutput) Year() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleTypeDateResponse) int { return v.Year }).(pulumi.IntOutput)
 }
 
-type GoogleTypeDatePtrOutput struct{ *pulumi.OutputState }
+type GoogleTypeDateResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (GoogleTypeDatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleTypeDate)(nil)).Elem()
+func (GoogleTypeDateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeDateResponse)(nil)).Elem()
 }
 
-func (o GoogleTypeDatePtrOutput) ToGoogleTypeDatePtrOutput() GoogleTypeDatePtrOutput {
+func (o GoogleTypeDateResponsePtrOutput) ToGoogleTypeDateResponsePtrOutput() GoogleTypeDateResponsePtrOutput {
 	return o
 }
 
-func (o GoogleTypeDatePtrOutput) ToGoogleTypeDatePtrOutputWithContext(ctx context.Context) GoogleTypeDatePtrOutput {
+func (o GoogleTypeDateResponsePtrOutput) ToGoogleTypeDateResponsePtrOutputWithContext(ctx context.Context) GoogleTypeDateResponsePtrOutput {
 	return o
 }
 
-func (o GoogleTypeDatePtrOutput) Elem() GoogleTypeDateOutput {
-	return o.ApplyT(func(v *GoogleTypeDate) GoogleTypeDate { return *v }).(GoogleTypeDateOutput)
+func (o GoogleTypeDateResponsePtrOutput) Elem() GoogleTypeDateResponseOutput {
+	return o.ApplyT(func(v *GoogleTypeDateResponse) GoogleTypeDateResponse { return *v }).(GoogleTypeDateResponseOutput)
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-func (o GoogleTypeDatePtrOutput) Day() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleTypeDate) *int {
+func (o GoogleTypeDateResponsePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeDateResponse) *int {
 		if v == nil {
 			return nil
 		}
-		return v.Day
+		return &v.Day
 	}).(pulumi.IntPtrOutput)
 }
 
 // Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-func (o GoogleTypeDatePtrOutput) Month() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleTypeDate) *int {
+func (o GoogleTypeDateResponsePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeDateResponse) *int {
 		if v == nil {
 			return nil
 		}
-		return v.Month
+		return &v.Month
 	}).(pulumi.IntPtrOutput)
 }
 
 // Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-func (o GoogleTypeDatePtrOutput) Year() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GoogleTypeDate) *int {
+func (o GoogleTypeDateResponsePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeDateResponse) *int {
 		if v == nil {
 			return nil
 		}
-		return v.Year
+		return &v.Year
 	}).(pulumi.IntPtrOutput)
 }
 
 func init() {
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1beta1ReplayConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1beta1ReplayConfigPtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryOutput{})
-	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryPtrOutput{})
-	pulumi.RegisterOutputType(GoogleTypeDateOutput{})
-	pulumi.RegisterOutputType(GoogleTypeDatePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1beta1ReplayConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1beta1ReplayConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleTypeDateResponseOutput{})
+	pulumi.RegisterOutputType(GoogleTypeDateResponsePtrOutput{})
 }

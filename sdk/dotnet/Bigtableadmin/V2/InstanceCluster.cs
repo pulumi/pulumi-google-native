@@ -16,6 +16,43 @@ namespace Pulumi.GoogleCloud.Bigtableadmin.V2
     public partial class InstanceCluster : Pulumi.CustomResource
     {
         /// <summary>
+        /// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
+        /// </summary>
+        [Output("defaultStorageType")]
+        public Output<string> DefaultStorageType { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The encryption configuration for CMEK-protected clusters.
+        /// </summary>
+        [Output("encryptionConfig")]
+        public Output<Outputs.EncryptionConfigResponse> EncryptionConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
+        /// </summary>
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+        /// </summary>
+        [Output("serveNodes")]
+        public Output<int> ServeNodes { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the cluster.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a InstanceCluster resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -97,12 +134,6 @@ namespace Pulumi.GoogleCloud.Bigtableadmin.V2
         /// </summary>
         [Input("serveNodes")]
         public Input<int>? ServeNodes { get; set; }
-
-        /// <summary>
-        /// Output only. The current state of the cluster.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         public InstanceClusterArgs()
         {

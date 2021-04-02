@@ -16,7 +16,7 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2.Inputs
     public sealed class GoogleCloudDialogflowV2IntentTrainingPhraseArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The unique identifier of this training phrase.
+        /// The unique identifier of this training phrase.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

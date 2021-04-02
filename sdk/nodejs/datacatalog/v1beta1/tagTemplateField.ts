@@ -64,7 +64,6 @@ export class TagTemplateField extends pulumi.CustomResource {
             inputs["fieldsId"] = args ? args.fieldsId : undefined;
             inputs["isRequired"] = args ? args.isRequired : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["order"] = args ? args.order : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["tagTemplatesId"] = args ? args.tagTemplatesId : undefined;
@@ -96,10 +95,6 @@ export interface TagTemplateFieldArgs {
      */
     readonly isRequired?: pulumi.Input<boolean>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. The resource name of the tag template field in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template}/fields/{field} Note that this TagTemplateField may not actually be stored in the location in this name.
-     */
-    readonly name?: pulumi.Input<string>;
     /**
      * The order of this field with respect to other fields in this tag template. A higher value indicates a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
      */

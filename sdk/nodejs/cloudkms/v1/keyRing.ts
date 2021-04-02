@@ -34,6 +34,14 @@ export class KeyRing extends pulumi.CustomResource {
         return obj['__pulumiType'] === KeyRing.__pulumiType;
     }
 
+    /**
+     * The time at which this KeyRing was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The resource name for the KeyRing in the format `projects/*&#47;locations/*&#47;keyRings/*`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
 
     /**
      * Create a KeyRing resource with the given unique name, arguments, and options.
@@ -55,12 +63,14 @@ export class KeyRing extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["keyRingsId"] = args ? args.keyRingsId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -73,15 +83,7 @@ export class KeyRing extends pulumi.CustomResource {
  * The set of arguments for constructing a KeyRing resource.
  */
 export interface KeyRingArgs {
-    /**
-     * Output only. The time at which this KeyRing was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
     readonly keyRingsId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. The resource name for the KeyRing in the format `projects/*&#47;locations/*&#47;keyRings/*`.
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
 }

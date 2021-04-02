@@ -14,6 +14,27 @@ import (
 // Adds a new Feature.
 type Feature struct {
 	pulumi.CustomResourceState
+
+	// When the Feature resource was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// When the Feature resource was deleted.
+	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// GCP labels for this Feature.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
+	MembershipSpecs pulumi.StringMapOutput `pulumi:"membershipSpecs"`
+	// Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
+	MembershipStates pulumi.StringMapOutput `pulumi:"membershipStates"`
+	// The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// State of the Feature resource itself.
+	ResourceState FeatureResourceStateResponseOutput `pulumi:"resourceState"`
+	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+	Spec CommonFeatureSpecResponseOutput `pulumi:"spec"`
+	// The Hub-wide Feature state.
+	State CommonFeatureStateResponseOutput `pulumi:"state"`
+	// When the Feature resource was last updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewFeature registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +72,49 @@ func GetFeature(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Feature resources.
 type featureState struct {
+	// When the Feature resource was created.
+	CreateTime *string `pulumi:"createTime"`
+	// When the Feature resource was deleted.
+	DeleteTime *string `pulumi:"deleteTime"`
+	// GCP labels for this Feature.
+	Labels map[string]string `pulumi:"labels"`
+	// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
+	MembershipSpecs map[string]string `pulumi:"membershipSpecs"`
+	// Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
+	MembershipStates map[string]string `pulumi:"membershipStates"`
+	// The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
+	Name *string `pulumi:"name"`
+	// State of the Feature resource itself.
+	ResourceState *FeatureResourceStateResponse `pulumi:"resourceState"`
+	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+	Spec *CommonFeatureSpecResponse `pulumi:"spec"`
+	// The Hub-wide Feature state.
+	State *CommonFeatureStateResponse `pulumi:"state"`
+	// When the Feature resource was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type FeatureState struct {
+	// When the Feature resource was created.
+	CreateTime pulumi.StringPtrInput
+	// When the Feature resource was deleted.
+	DeleteTime pulumi.StringPtrInput
+	// GCP labels for this Feature.
+	Labels pulumi.StringMapInput
+	// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
+	MembershipSpecs pulumi.StringMapInput
+	// Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
+	MembershipStates pulumi.StringMapInput
+	// The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
+	Name pulumi.StringPtrInput
+	// State of the Feature resource itself.
+	ResourceState FeatureResourceStateResponsePtrInput
+	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+	Spec CommonFeatureSpecResponsePtrInput
+	// The Hub-wide Feature state.
+	State CommonFeatureStateResponsePtrInput
+	// When the Feature resource was last updated.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (FeatureState) ElementType() reflect.Type {
@@ -61,54 +122,26 @@ func (FeatureState) ElementType() reflect.Type {
 }
 
 type featureArgs struct {
-	// Output only. When the Feature resource was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Output only. When the Feature resource was deleted.
-	DeleteTime *string `pulumi:"deleteTime"`
-	FeaturesId string  `pulumi:"featuresId"`
+	FeaturesId string `pulumi:"featuresId"`
 	// GCP labels for this Feature.
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
 	MembershipSpecs map[string]string `pulumi:"membershipSpecs"`
-	// Output only. Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
-	MembershipStates map[string]string `pulumi:"membershipStates"`
-	// Output only. The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	// Output only. State of the Feature resource itself.
-	ResourceState *FeatureResourceState `pulumi:"resourceState"`
+	ProjectsId      string            `pulumi:"projectsId"`
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
 	Spec *CommonFeatureSpec `pulumi:"spec"`
-	// Output only. The Hub-wide Feature state.
-	State *CommonFeatureState `pulumi:"state"`
-	// Output only. When the Feature resource was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Feature resource.
 type FeatureArgs struct {
-	// Output only. When the Feature resource was created.
-	CreateTime pulumi.StringPtrInput
-	// Output only. When the Feature resource was deleted.
-	DeleteTime pulumi.StringPtrInput
 	FeaturesId pulumi.StringInput
 	// GCP labels for this Feature.
 	Labels pulumi.StringMapInput
 	// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
 	MembershipSpecs pulumi.StringMapInput
-	// Output only. Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
-	MembershipStates pulumi.StringMapInput
-	// Output only. The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	// Output only. State of the Feature resource itself.
-	ResourceState FeatureResourceStatePtrInput
+	ProjectsId      pulumi.StringInput
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
 	Spec CommonFeatureSpecPtrInput
-	// Output only. The Hub-wide Feature state.
-	State CommonFeatureStatePtrInput
-	// Output only. When the Feature resource was last updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (FeatureArgs) ElementType() reflect.Type {

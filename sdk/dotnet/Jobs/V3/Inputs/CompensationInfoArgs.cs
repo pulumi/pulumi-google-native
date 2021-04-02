@@ -16,13 +16,13 @@ namespace Pulumi.GoogleCloud.Jobs.V3.Inputs
     public sealed class CompensationInfoArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+        /// Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
         /// </summary>
         [Input("annualizedBaseCompensationRange")]
         public Input<Inputs.CompensationRangeArgs>? AnnualizedBaseCompensationRange { get; set; }
 
         /// <summary>
-        /// Output only. Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+        /// Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
         /// </summary>
         [Input("annualizedTotalCompensationRange")]
         public Input<Inputs.CompensationRangeArgs>? AnnualizedTotalCompensationRange { get; set; }

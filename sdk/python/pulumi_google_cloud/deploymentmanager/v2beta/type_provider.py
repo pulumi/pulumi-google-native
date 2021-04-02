@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['TypeProvider']
@@ -43,13 +44,13 @@ class TypeProvider(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_certificate_authority_roots: List of up to 2 custom certificate authority roots to use for TLS authentication when making calls on behalf of this type provider. If set, TLS authentication will exclusively use these roots instead of relying on publicly trusted certificate authorities when validating TLS certificate authenticity. The certificates must be in base64-encoded PEM format. The maximum size of each certificate must not exceed 10KB.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the client when the resource is created.
         :param pulumi.Input[str] descriptor_url: Descriptor Url for the this type provider.
-        :param pulumi.Input[str] id: Output only. Unique identifier for the resource defined by the server.
-        :param pulumi.Input[str] insert_time: Output only. Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] id: Unique identifier for the resource defined by the server.
+        :param pulumi.Input[str] insert_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeProviderLabelEntryArgs']]]] labels: Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[pulumi.InputType['OperationArgs']] operation: Output only. The Operation that most recently ran, or is currently running, on this type provider.
+        :param pulumi.Input[pulumi.InputType['OperationArgs']] operation: The Operation that most recently ran, or is currently running, on this type provider.
         :param pulumi.Input[pulumi.InputType['OptionsArgs']] options: Options to apply when handling any resources in this service.
-        :param pulumi.Input[str] self_link: Output only. Self link for the type provider.
+        :param pulumi.Input[str] self_link: Self link for the type provider.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -108,7 +109,106 @@ class TypeProvider(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["collection_overrides"] = None
+        __props__["credential"] = None
+        __props__["custom_certificate_authority_roots"] = None
+        __props__["description"] = None
+        __props__["descriptor_url"] = None
+        __props__["insert_time"] = None
+        __props__["labels"] = None
+        __props__["name"] = None
+        __props__["operation"] = None
+        __props__["options"] = None
+        __props__["self_link"] = None
         return TypeProvider(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="collectionOverrides")
+    def collection_overrides(self) -> pulumi.Output[Sequence['outputs.CollectionOverrideResponse']]:
+        """
+        Allows resource handling overrides for specific collections
+        """
+        return pulumi.get(self, "collection_overrides")
+
+    @property
+    @pulumi.getter
+    def credential(self) -> pulumi.Output['outputs.CredentialResponse']:
+        """
+        Credential used when interacting with this type.
+        """
+        return pulumi.get(self, "credential")
+
+    @property
+    @pulumi.getter(name="customCertificateAuthorityRoots")
+    def custom_certificate_authority_roots(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of up to 2 custom certificate authority roots to use for TLS authentication when making calls on behalf of this type provider. If set, TLS authentication will exclusively use these roots instead of relying on publicly trusted certificate authorities when validating TLS certificate authenticity. The certificates must be in base64-encoded PEM format. The maximum size of each certificate must not exceed 10KB.
+        """
+        return pulumi.get(self, "custom_certificate_authority_roots")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        An optional textual description of the resource; provided by the client when the resource is created.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="descriptorUrl")
+    def descriptor_url(self) -> pulumi.Output[str]:
+        """
+        Descriptor Url for the this type provider.
+        """
+        return pulumi.get(self, "descriptor_url")
+
+    @property
+    @pulumi.getter(name="insertTime")
+    def insert_time(self) -> pulumi.Output[str]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "insert_time")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Sequence['outputs.TypeProviderLabelEntryResponse']]:
+        """
+        Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def operation(self) -> pulumi.Output['outputs.OperationResponse']:
+        """
+        The Operation that most recently ran, or is currently running, on this type provider.
+        """
+        return pulumi.get(self, "operation")
+
+    @property
+    @pulumi.getter
+    def options(self) -> pulumi.Output['outputs.OptionsResponse']:
+        """
+        Options to apply when handling any resources in this service.
+        """
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> pulumi.Output[str]:
+        """
+        Self link for the type provider.
+        """
+        return pulumi.get(self, "self_link")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

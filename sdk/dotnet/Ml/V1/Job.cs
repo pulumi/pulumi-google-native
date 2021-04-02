@@ -16,6 +16,79 @@ namespace Pulumi.GoogleCloud.Ml.V1
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>
+        /// When the job was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// When the job processing was completed.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The details of a failure or a cancellation.
+        /// </summary>
+        [Output("errorMessage")]
+        public Output<string> ErrorMessage { get; private set; } = null!;
+
+        /// <summary>
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The user-specified id of the job.
+        /// </summary>
+        [Output("jobId")]
+        public Output<string> JobId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Input parameters to create a prediction job.
+        /// </summary>
+        [Output("predictionInput")]
+        public Output<Outputs.GoogleCloudMlV1__PredictionInputResponse> PredictionInput { get; private set; } = null!;
+
+        /// <summary>
+        /// The current prediction job result.
+        /// </summary>
+        [Output("predictionOutput")]
+        public Output<Outputs.GoogleCloudMlV1__PredictionOutputResponse> PredictionOutput { get; private set; } = null!;
+
+        /// <summary>
+        /// When the job processing was started.
+        /// </summary>
+        [Output("startTime")]
+        public Output<string> StartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The detailed state of a job.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Input parameters to create a training job.
+        /// </summary>
+        [Output("trainingInput")]
+        public Output<Outputs.GoogleCloudMlV1__TrainingInputResponse> TrainingInput { get; private set; } = null!;
+
+        /// <summary>
+        /// The current training job result.
+        /// </summary>
+        [Output("trainingOutput")]
+        public Output<Outputs.GoogleCloudMlV1__TrainingOutputResponse> TrainingOutput { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Job resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,19 +133,19 @@ namespace Pulumi.GoogleCloud.Ml.V1
     public sealed class JobArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. When the job was created.
+        /// When the job was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Output only. When the job processing was completed.
+        /// When the job processing was completed.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// Output only. The details of a failure or a cancellation.
+        /// The details of a failure or a cancellation.
         /// </summary>
         [Input("errorMessage")]
         public Input<string>? ErrorMessage { get; set; }
@@ -120,13 +193,13 @@ namespace Pulumi.GoogleCloud.Ml.V1
         public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. When the job processing was started.
+        /// When the job processing was started.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
 
         /// <summary>
-        /// Output only. The detailed state of a job.
+        /// The detailed state of a job.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

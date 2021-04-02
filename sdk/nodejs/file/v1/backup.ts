@@ -34,6 +34,50 @@ export class Backup extends pulumi.CustomResource {
         return obj['__pulumiType'] === Backup.__pulumiType;
     }
 
+    /**
+     * Capacity of the source file share when the backup was created.
+     */
+    public /*out*/ readonly capacityGb!: pulumi.Output<string>;
+    /**
+     * The time when the backup was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.
+     */
+    public /*out*/ readonly downloadBytes!: pulumi.Output<string>;
+    /**
+     * Resource labels to represent user provided metadata.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Name of the file share in the source Cloud Filestore instance that the backup is created from.
+     */
+    public readonly sourceFileShare!: pulumi.Output<string>;
+    /**
+     * The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+     */
+    public readonly sourceInstance!: pulumi.Output<string>;
+    /**
+     * The service tier of the source Cloud Filestore instance that this backup is created from.
+     */
+    public /*out*/ readonly sourceInstanceTier!: pulumi.Output<string>;
+    /**
+     * The backup state.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
+     */
+    public /*out*/ readonly storageBytes!: pulumi.Output<string>;
 
     /**
      * Create a Backup resource with the given unique name, arguments, and options.
@@ -56,20 +100,31 @@ export class Backup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["backupsId"] = args ? args.backupsId : undefined;
-            inputs["capacityGb"] = args ? args.capacityGb : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["downloadBytes"] = args ? args.downloadBytes : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["sourceFileShare"] = args ? args.sourceFileShare : undefined;
             inputs["sourceInstance"] = args ? args.sourceInstance : undefined;
-            inputs["sourceInstanceTier"] = args ? args.sourceInstanceTier : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["storageBytes"] = args ? args.storageBytes : undefined;
+            inputs["capacityGb"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["downloadBytes"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["sourceInstanceTier"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["storageBytes"] = undefined /*out*/;
         } else {
+            inputs["capacityGb"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["downloadBytes"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["sourceFileShare"] = undefined /*out*/;
+            inputs["sourceInstance"] = undefined /*out*/;
+            inputs["sourceInstanceTier"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["storageBytes"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -84,30 +139,14 @@ export class Backup extends pulumi.CustomResource {
 export interface BackupArgs {
     readonly backupsId: pulumi.Input<string>;
     /**
-     * Output only. Capacity of the source file share when the backup was created.
-     */
-    readonly capacityGb?: pulumi.Input<string>;
-    /**
-     * Output only. The time when the backup was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
      */
     readonly description?: pulumi.Input<string>;
-    /**
-     * Output only. Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.
-     */
-    readonly downloadBytes?: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Output only. The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.
-     */
-    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Name of the file share in the source Cloud Filestore instance that the backup is created from.
@@ -117,16 +156,4 @@ export interface BackupArgs {
      * The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
      */
     readonly sourceInstance?: pulumi.Input<string>;
-    /**
-     * Output only. The service tier of the source Cloud Filestore instance that this backup is created from.
-     */
-    readonly sourceInstanceTier?: pulumi.Input<string>;
-    /**
-     * Output only. The backup state.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
-     */
-    readonly storageBytes?: pulumi.Input<string>;
 }

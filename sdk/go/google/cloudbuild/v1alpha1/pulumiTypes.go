@@ -182,6 +182,178 @@ func (o NetworkPtrOutput) Subnetwork() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Network describes the GCP network used to create workers in.
+type NetworkResponse struct {
+	// Network on which the workers are created. "default" network is used if empty.
+	Network string `pulumi:"network"`
+	// Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
+	ProjectId string `pulumi:"projectId"`
+	// Subnetwork on which the workers are created. "default" subnetwork is used if empty.
+	Subnetwork string `pulumi:"subnetwork"`
+}
+
+// NetworkResponseInput is an input type that accepts NetworkResponseArgs and NetworkResponseOutput values.
+// You can construct a concrete instance of `NetworkResponseInput` via:
+//
+//          NetworkResponseArgs{...}
+type NetworkResponseInput interface {
+	pulumi.Input
+
+	ToNetworkResponseOutput() NetworkResponseOutput
+	ToNetworkResponseOutputWithContext(context.Context) NetworkResponseOutput
+}
+
+// Network describes the GCP network used to create workers in.
+type NetworkResponseArgs struct {
+	// Network on which the workers are created. "default" network is used if empty.
+	Network pulumi.StringInput `pulumi:"network"`
+	// Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Subnetwork on which the workers are created. "default" subnetwork is used if empty.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+}
+
+func (NetworkResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkResponse)(nil)).Elem()
+}
+
+func (i NetworkResponseArgs) ToNetworkResponseOutput() NetworkResponseOutput {
+	return i.ToNetworkResponseOutputWithContext(context.Background())
+}
+
+func (i NetworkResponseArgs) ToNetworkResponseOutputWithContext(ctx context.Context) NetworkResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkResponseOutput)
+}
+
+func (i NetworkResponseArgs) ToNetworkResponsePtrOutput() NetworkResponsePtrOutput {
+	return i.ToNetworkResponsePtrOutputWithContext(context.Background())
+}
+
+func (i NetworkResponseArgs) ToNetworkResponsePtrOutputWithContext(ctx context.Context) NetworkResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkResponseOutput).ToNetworkResponsePtrOutputWithContext(ctx)
+}
+
+// NetworkResponsePtrInput is an input type that accepts NetworkResponseArgs, NetworkResponsePtr and NetworkResponsePtrOutput values.
+// You can construct a concrete instance of `NetworkResponsePtrInput` via:
+//
+//          NetworkResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type NetworkResponsePtrInput interface {
+	pulumi.Input
+
+	ToNetworkResponsePtrOutput() NetworkResponsePtrOutput
+	ToNetworkResponsePtrOutputWithContext(context.Context) NetworkResponsePtrOutput
+}
+
+type networkResponsePtrType NetworkResponseArgs
+
+func NetworkResponsePtr(v *NetworkResponseArgs) NetworkResponsePtrInput {
+	return (*networkResponsePtrType)(v)
+}
+
+func (*networkResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkResponse)(nil)).Elem()
+}
+
+func (i *networkResponsePtrType) ToNetworkResponsePtrOutput() NetworkResponsePtrOutput {
+	return i.ToNetworkResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *networkResponsePtrType) ToNetworkResponsePtrOutputWithContext(ctx context.Context) NetworkResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkResponsePtrOutput)
+}
+
+// Network describes the GCP network used to create workers in.
+type NetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkResponse)(nil)).Elem()
+}
+
+func (o NetworkResponseOutput) ToNetworkResponseOutput() NetworkResponseOutput {
+	return o
+}
+
+func (o NetworkResponseOutput) ToNetworkResponseOutputWithContext(ctx context.Context) NetworkResponseOutput {
+	return o
+}
+
+func (o NetworkResponseOutput) ToNetworkResponsePtrOutput() NetworkResponsePtrOutput {
+	return o.ToNetworkResponsePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkResponseOutput) ToNetworkResponsePtrOutputWithContext(ctx context.Context) NetworkResponsePtrOutput {
+	return o.ApplyT(func(v NetworkResponse) *NetworkResponse {
+		return &v
+	}).(NetworkResponsePtrOutput)
+}
+
+// Network on which the workers are created. "default" network is used if empty.
+func (o NetworkResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
+func (o NetworkResponseOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Subnetwork on which the workers are created. "default" subnetwork is used if empty.
+func (o NetworkResponseOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type NetworkResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkResponse)(nil)).Elem()
+}
+
+func (o NetworkResponsePtrOutput) ToNetworkResponsePtrOutput() NetworkResponsePtrOutput {
+	return o
+}
+
+func (o NetworkResponsePtrOutput) ToNetworkResponsePtrOutputWithContext(ctx context.Context) NetworkResponsePtrOutput {
+	return o
+}
+
+func (o NetworkResponsePtrOutput) Elem() NetworkResponseOutput {
+	return o.ApplyT(func(v *NetworkResponse) NetworkResponse { return *v }).(NetworkResponseOutput)
+}
+
+// Network on which the workers are created. "default" network is used if empty.
+func (o NetworkResponsePtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
+func (o NetworkResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subnetwork on which the workers are created. "default" subnetwork is used if empty.
+func (o NetworkResponsePtrOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subnetwork
+	}).(pulumi.StringPtrOutput)
+}
+
 // WorkerConfig defines the configuration to be used for a creating workers in the pool.
 type WorkerConfig struct {
 	// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size. `disk_size` is overridden if you specify a different disk size in `build_options`. In this case, a VM with a disk size specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.builds#buildoptions
@@ -373,9 +545,204 @@ func (o WorkerConfigPtrOutput) Tag() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// WorkerConfig defines the configuration to be used for a creating workers in the pool.
+type WorkerConfigResponse struct {
+	// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size. `disk_size` is overridden if you specify a different disk size in `build_options`. In this case, a VM with a disk size specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.builds#buildoptions
+	DiskSizeGb string `pulumi:"diskSizeGb"`
+	// Machine Type of the worker, such as n1-standard-1. See https://cloud.google.com/compute/docs/machine-types. If left blank, Cloud Build will use a standard unspecified machine to create the worker pool. `machine_type` is overridden if you specify a different machine type in `build_options`. In this case, the VM specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/speeding-up-builds#using_custom_virtual_machine_sizes
+	MachineType string `pulumi:"machineType"`
+	// The network definition used to create the worker. If this section is left empty, the workers will be created in WorkerPool.project_id on the default network.
+	Network NetworkResponse `pulumi:"network"`
+	// The tag applied to the worker, and the same tag used by the firewall rule. It is used to identify the Cloud Build workers among other VMs. The default value for tag is `worker`.
+	Tag string `pulumi:"tag"`
+}
+
+// WorkerConfigResponseInput is an input type that accepts WorkerConfigResponseArgs and WorkerConfigResponseOutput values.
+// You can construct a concrete instance of `WorkerConfigResponseInput` via:
+//
+//          WorkerConfigResponseArgs{...}
+type WorkerConfigResponseInput interface {
+	pulumi.Input
+
+	ToWorkerConfigResponseOutput() WorkerConfigResponseOutput
+	ToWorkerConfigResponseOutputWithContext(context.Context) WorkerConfigResponseOutput
+}
+
+// WorkerConfig defines the configuration to be used for a creating workers in the pool.
+type WorkerConfigResponseArgs struct {
+	// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size. `disk_size` is overridden if you specify a different disk size in `build_options`. In this case, a VM with a disk size specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.builds#buildoptions
+	DiskSizeGb pulumi.StringInput `pulumi:"diskSizeGb"`
+	// Machine Type of the worker, such as n1-standard-1. See https://cloud.google.com/compute/docs/machine-types. If left blank, Cloud Build will use a standard unspecified machine to create the worker pool. `machine_type` is overridden if you specify a different machine type in `build_options`. In this case, the VM specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/speeding-up-builds#using_custom_virtual_machine_sizes
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// The network definition used to create the worker. If this section is left empty, the workers will be created in WorkerPool.project_id on the default network.
+	Network NetworkResponseInput `pulumi:"network"`
+	// The tag applied to the worker, and the same tag used by the firewall rule. It is used to identify the Cloud Build workers among other VMs. The default value for tag is `worker`.
+	Tag pulumi.StringInput `pulumi:"tag"`
+}
+
+func (WorkerConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerConfigResponse)(nil)).Elem()
+}
+
+func (i WorkerConfigResponseArgs) ToWorkerConfigResponseOutput() WorkerConfigResponseOutput {
+	return i.ToWorkerConfigResponseOutputWithContext(context.Background())
+}
+
+func (i WorkerConfigResponseArgs) ToWorkerConfigResponseOutputWithContext(ctx context.Context) WorkerConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerConfigResponseOutput)
+}
+
+func (i WorkerConfigResponseArgs) ToWorkerConfigResponsePtrOutput() WorkerConfigResponsePtrOutput {
+	return i.ToWorkerConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i WorkerConfigResponseArgs) ToWorkerConfigResponsePtrOutputWithContext(ctx context.Context) WorkerConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerConfigResponseOutput).ToWorkerConfigResponsePtrOutputWithContext(ctx)
+}
+
+// WorkerConfigResponsePtrInput is an input type that accepts WorkerConfigResponseArgs, WorkerConfigResponsePtr and WorkerConfigResponsePtrOutput values.
+// You can construct a concrete instance of `WorkerConfigResponsePtrInput` via:
+//
+//          WorkerConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkerConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToWorkerConfigResponsePtrOutput() WorkerConfigResponsePtrOutput
+	ToWorkerConfigResponsePtrOutputWithContext(context.Context) WorkerConfigResponsePtrOutput
+}
+
+type workerConfigResponsePtrType WorkerConfigResponseArgs
+
+func WorkerConfigResponsePtr(v *WorkerConfigResponseArgs) WorkerConfigResponsePtrInput {
+	return (*workerConfigResponsePtrType)(v)
+}
+
+func (*workerConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerConfigResponse)(nil)).Elem()
+}
+
+func (i *workerConfigResponsePtrType) ToWorkerConfigResponsePtrOutput() WorkerConfigResponsePtrOutput {
+	return i.ToWorkerConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *workerConfigResponsePtrType) ToWorkerConfigResponsePtrOutputWithContext(ctx context.Context) WorkerConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerConfigResponsePtrOutput)
+}
+
+// WorkerConfig defines the configuration to be used for a creating workers in the pool.
+type WorkerConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkerConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerConfigResponse)(nil)).Elem()
+}
+
+func (o WorkerConfigResponseOutput) ToWorkerConfigResponseOutput() WorkerConfigResponseOutput {
+	return o
+}
+
+func (o WorkerConfigResponseOutput) ToWorkerConfigResponseOutputWithContext(ctx context.Context) WorkerConfigResponseOutput {
+	return o
+}
+
+func (o WorkerConfigResponseOutput) ToWorkerConfigResponsePtrOutput() WorkerConfigResponsePtrOutput {
+	return o.ToWorkerConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o WorkerConfigResponseOutput) ToWorkerConfigResponsePtrOutputWithContext(ctx context.Context) WorkerConfigResponsePtrOutput {
+	return o.ApplyT(func(v WorkerConfigResponse) *WorkerConfigResponse {
+		return &v
+	}).(WorkerConfigResponsePtrOutput)
+}
+
+// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size. `disk_size` is overridden if you specify a different disk size in `build_options`. In this case, a VM with a disk size specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.builds#buildoptions
+func (o WorkerConfigResponseOutput) DiskSizeGb() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerConfigResponse) string { return v.DiskSizeGb }).(pulumi.StringOutput)
+}
+
+// Machine Type of the worker, such as n1-standard-1. See https://cloud.google.com/compute/docs/machine-types. If left blank, Cloud Build will use a standard unspecified machine to create the worker pool. `machine_type` is overridden if you specify a different machine type in `build_options`. In this case, the VM specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/speeding-up-builds#using_custom_virtual_machine_sizes
+func (o WorkerConfigResponseOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerConfigResponse) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// The network definition used to create the worker. If this section is left empty, the workers will be created in WorkerPool.project_id on the default network.
+func (o WorkerConfigResponseOutput) Network() NetworkResponseOutput {
+	return o.ApplyT(func(v WorkerConfigResponse) NetworkResponse { return v.Network }).(NetworkResponseOutput)
+}
+
+// The tag applied to the worker, and the same tag used by the firewall rule. It is used to identify the Cloud Build workers among other VMs. The default value for tag is `worker`.
+func (o WorkerConfigResponseOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerConfigResponse) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+type WorkerConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerConfigResponse)(nil)).Elem()
+}
+
+func (o WorkerConfigResponsePtrOutput) ToWorkerConfigResponsePtrOutput() WorkerConfigResponsePtrOutput {
+	return o
+}
+
+func (o WorkerConfigResponsePtrOutput) ToWorkerConfigResponsePtrOutputWithContext(ctx context.Context) WorkerConfigResponsePtrOutput {
+	return o
+}
+
+func (o WorkerConfigResponsePtrOutput) Elem() WorkerConfigResponseOutput {
+	return o.ApplyT(func(v *WorkerConfigResponse) WorkerConfigResponse { return *v }).(WorkerConfigResponseOutput)
+}
+
+// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size. `disk_size` is overridden if you specify a different disk size in `build_options`. In this case, a VM with a disk size specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.builds#buildoptions
+func (o WorkerConfigResponsePtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskSizeGb
+	}).(pulumi.StringPtrOutput)
+}
+
+// Machine Type of the worker, such as n1-standard-1. See https://cloud.google.com/compute/docs/machine-types. If left blank, Cloud Build will use a standard unspecified machine to create the worker pool. `machine_type` is overridden if you specify a different machine type in `build_options`. In this case, the VM specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/speeding-up-builds#using_custom_virtual_machine_sizes
+func (o WorkerConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The network definition used to create the worker. If this section is left empty, the workers will be created in WorkerPool.project_id on the default network.
+func (o WorkerConfigResponsePtrOutput) Network() NetworkResponsePtrOutput {
+	return o.ApplyT(func(v *WorkerConfigResponse) *NetworkResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(NetworkResponsePtrOutput)
+}
+
+// The tag applied to the worker, and the same tag used by the firewall rule. It is used to identify the Cloud Build workers among other VMs. The default value for tag is `worker`.
+func (o WorkerConfigResponsePtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkOutput{})
 	pulumi.RegisterOutputType(NetworkPtrOutput{})
+	pulumi.RegisterOutputType(NetworkResponseOutput{})
+	pulumi.RegisterOutputType(NetworkResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkerConfigOutput{})
 	pulumi.RegisterOutputType(WorkerConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkerConfigResponseOutput{})
+	pulumi.RegisterOutputType(WorkerConfigResponsePtrOutput{})
 }

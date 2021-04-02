@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['ModelVersion']
@@ -28,8 +29,6 @@ class ModelVersion(pulumi.CustomResource):
                  framework: Optional[pulumi.Input[str]] = None,
                  is_default: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 last_migration_model_id: Optional[pulumi.Input[str]] = None,
-                 last_migration_time: Optional[pulumi.Input[str]] = None,
                  last_use_time: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  manual_scaling: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__ManualScalingArgs']]] = None,
@@ -56,18 +55,16 @@ class ModelVersion(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__AcceleratorConfigArgs']] accelerator_config: Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__AutoScalingArgs']] auto_scaling: Automatically scale the number of nodes used to serve the model in response to increases and decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or you will start seeing increases in latency and 429 response codes.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__ContainerSpecArgs']] container: Optional. Specifies a custom container to use for serving predictions. If you specify this field, then `machineType` is required. If you specify this field, then `deploymentUri` is optional. If you specify this field, then you must not specify `runtimeVersion`, `packageUris`, `framework`, `pythonVersion`, or `predictionClass`.
-        :param pulumi.Input[str] create_time: Output only. The time the version was created.
+        :param pulumi.Input[str] create_time: The time the version was created.
         :param pulumi.Input[str] deployment_uri: The Cloud Storage URI of a directory containing trained model artifacts to be used to create the model version. See the [guide to deploying models](/ai-platform/prediction/docs/deploying-models) for more information. The total number of files under this directory must not exceed 1000. During projects.models.versions.create, AI Platform Prediction copies all files from the specified directory to a location managed by the service. From then on, AI Platform Prediction uses these copies of the model artifacts to serve predictions, not the original files in Cloud Storage, so this location is useful only as a historical record. If you specify container, then this field is optional. Otherwise, it is required. Learn [how to use this field with a custom container](/ai-platform/prediction/docs/custom-container-requirements#artifacts).
         :param pulumi.Input[str] description: Optional. The description specified for the version when it was created.
-        :param pulumi.Input[str] error_message: Output only. The details of a failure or a cancellation.
+        :param pulumi.Input[str] error_message: The details of a failure or a cancellation.
         :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetVersion`, and systems are expected to put that etag in the request to `UpdateVersion` to ensure that their change will be applied to the model as intended.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__ExplanationConfigArgs']] explanation_config: Optional. Configures explainability features on the model's version. Some explanation features require additional metadata to be loaded as part of the model payload.
         :param pulumi.Input[str] framework: Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
-        :param pulumi.Input[bool] is_default: Output only. If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
+        :param pulumi.Input[bool] is_default: If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
-        :param pulumi.Input[str] last_migration_model_id: Output only. The [AI Platform (Unified) `Model`](https://cloud.google.com/ai-platform-unified/docs/reference/rest/v1beta1/projects.locations.models) ID for the last [model migration](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
-        :param pulumi.Input[str] last_migration_time: Output only. The last time this version was successfully [migrated to AI Platform (Unified)](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
-        :param pulumi.Input[str] last_use_time: Output only. The time the version was last used for prediction.
+        :param pulumi.Input[str] last_use_time: The time the version was last used for prediction.
         :param pulumi.Input[str] machine_type: Optional. The type of machine on which to serve the model. Currently only applies to online prediction service. To learn about valid values for this field, read [Choosing a machine type for online prediction](/ai-platform/prediction/docs/machine-types-online-prediction). If this field is not specified and you are using a [regional endpoint](/ai-platform/prediction/docs/regional-endpoints), then the machine type defaults to `n1-standard-2`. If this field is not specified and you are using the global endpoint (`ml.googleapis.com`), then the machine type defaults to `mls1-c1-m2`.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__ManualScalingArgs']] manual_scaling: Manually select the number of nodes to use for serving the model. You should generally use `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more predictable billing. Beware that latency and error rates will increase if the traffic exceeds that capability of the system to serve it based on the selected number of nodes.
         :param pulumi.Input[str] name: Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
@@ -78,7 +75,7 @@ class ModelVersion(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__RouteMapArgs']] routes: Optional. Specifies paths on a custom container's HTTP server where AI Platform Prediction sends certain requests. If you specify this field, then you must also specify the `container` field. If you specify the `container` field and do not specify this field, it defaults to the following: ```json { "predict": "/v1/models/MODEL/versions/VERSION:predict", "health": "/v1/models/MODEL/versions/VERSION" } ``` See RouteMap for more details about these default values.
         :param pulumi.Input[str] runtime_version: Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
         :param pulumi.Input[str] service_account: Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
-        :param pulumi.Input[str] state: Output only. The state of a version.
+        :param pulumi.Input[str] state: The state of a version.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -109,8 +106,6 @@ class ModelVersion(pulumi.CustomResource):
             __props__['framework'] = framework
             __props__['is_default'] = is_default
             __props__['labels'] = labels
-            __props__['last_migration_model_id'] = last_migration_model_id
-            __props__['last_migration_time'] = last_migration_time
             __props__['last_use_time'] = last_use_time
             __props__['machine_type'] = machine_type
             __props__['manual_scaling'] = manual_scaling
@@ -132,6 +127,8 @@ class ModelVersion(pulumi.CustomResource):
             if versions_id is None and not opts.urn:
                 raise TypeError("Missing required property 'versions_id'")
             __props__['versions_id'] = versions_id
+            __props__['last_migration_model_id'] = None
+            __props__['last_migration_time'] = None
         super(ModelVersion, __self__).__init__(
             'google-cloud:ml/v1:ModelVersion',
             resource_name,
@@ -154,7 +151,241 @@ class ModelVersion(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["accelerator_config"] = None
+        __props__["auto_scaling"] = None
+        __props__["container"] = None
+        __props__["create_time"] = None
+        __props__["deployment_uri"] = None
+        __props__["description"] = None
+        __props__["error_message"] = None
+        __props__["etag"] = None
+        __props__["explanation_config"] = None
+        __props__["framework"] = None
+        __props__["is_default"] = None
+        __props__["labels"] = None
+        __props__["last_migration_model_id"] = None
+        __props__["last_migration_time"] = None
+        __props__["last_use_time"] = None
+        __props__["machine_type"] = None
+        __props__["manual_scaling"] = None
+        __props__["name"] = None
+        __props__["package_uris"] = None
+        __props__["prediction_class"] = None
+        __props__["python_version"] = None
+        __props__["request_logging_config"] = None
+        __props__["routes"] = None
+        __props__["runtime_version"] = None
+        __props__["service_account"] = None
+        __props__["state"] = None
         return ModelVersion(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="acceleratorConfig")
+    def accelerator_config(self) -> pulumi.Output['outputs.GoogleCloudMlV1__AcceleratorConfigResponse']:
+        """
+        Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
+        """
+        return pulumi.get(self, "accelerator_config")
+
+    @property
+    @pulumi.getter(name="autoScaling")
+    def auto_scaling(self) -> pulumi.Output['outputs.GoogleCloudMlV1__AutoScalingResponse']:
+        """
+        Automatically scale the number of nodes used to serve the model in response to increases and decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or you will start seeing increases in latency and 429 response codes.
+        """
+        return pulumi.get(self, "auto_scaling")
+
+    @property
+    @pulumi.getter
+    def container(self) -> pulumi.Output['outputs.GoogleCloudMlV1__ContainerSpecResponse']:
+        """
+        Optional. Specifies a custom container to use for serving predictions. If you specify this field, then `machineType` is required. If you specify this field, then `deploymentUri` is optional. If you specify this field, then you must not specify `runtimeVersion`, `packageUris`, `framework`, `pythonVersion`, or `predictionClass`.
+        """
+        return pulumi.get(self, "container")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time the version was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deploymentUri")
+    def deployment_uri(self) -> pulumi.Output[str]:
+        """
+        The Cloud Storage URI of a directory containing trained model artifacts to be used to create the model version. See the [guide to deploying models](/ai-platform/prediction/docs/deploying-models) for more information. The total number of files under this directory must not exceed 1000. During projects.models.versions.create, AI Platform Prediction copies all files from the specified directory to a location managed by the service. From then on, AI Platform Prediction uses these copies of the model artifacts to serve predictions, not the original files in Cloud Storage, so this location is useful only as a historical record. If you specify container, then this field is optional. Otherwise, it is required. Learn [how to use this field with a custom container](/ai-platform/prediction/docs/custom-container-requirements#artifacts).
+        """
+        return pulumi.get(self, "deployment_uri")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        Optional. The description specified for the version when it was created.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> pulumi.Output[str]:
+        """
+        The details of a failure or a cancellation.
+        """
+        return pulumi.get(self, "error_message")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetVersion`, and systems are expected to put that etag in the request to `UpdateVersion` to ensure that their change will be applied to the model as intended.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="explanationConfig")
+    def explanation_config(self) -> pulumi.Output['outputs.GoogleCloudMlV1__ExplanationConfigResponse']:
+        """
+        Optional. Configures explainability features on the model's version. Some explanation features require additional metadata to be loaded as part of the model payload.
+        """
+        return pulumi.get(self, "explanation_config")
+
+    @property
+    @pulumi.getter
+    def framework(self) -> pulumi.Output[str]:
+        """
+        Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
+        """
+        return pulumi.get(self, "framework")
+
+    @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> pulumi.Output[bool]:
+        """
+        If true, this version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.methods.versions.setDefault.
+        """
+        return pulumi.get(self, "is_default")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="lastMigrationModelId")
+    def last_migration_model_id(self) -> pulumi.Output[str]:
+        """
+        The [AI Platform (Unified) `Model`](https://cloud.google.com/ai-platform-unified/docs/reference/rest/v1beta1/projects.locations.models) ID for the last [model migration](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
+        """
+        return pulumi.get(self, "last_migration_model_id")
+
+    @property
+    @pulumi.getter(name="lastMigrationTime")
+    def last_migration_time(self) -> pulumi.Output[str]:
+        """
+        The last time this version was successfully [migrated to AI Platform (Unified)](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
+        """
+        return pulumi.get(self, "last_migration_time")
+
+    @property
+    @pulumi.getter(name="lastUseTime")
+    def last_use_time(self) -> pulumi.Output[str]:
+        """
+        The time the version was last used for prediction.
+        """
+        return pulumi.get(self, "last_use_time")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> pulumi.Output[str]:
+        """
+        Optional. The type of machine on which to serve the model. Currently only applies to online prediction service. To learn about valid values for this field, read [Choosing a machine type for online prediction](/ai-platform/prediction/docs/machine-types-online-prediction). If this field is not specified and you are using a [regional endpoint](/ai-platform/prediction/docs/regional-endpoints), then the machine type defaults to `n1-standard-2`. If this field is not specified and you are using the global endpoint (`ml.googleapis.com`), then the machine type defaults to `mls1-c1-m2`.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="manualScaling")
+    def manual_scaling(self) -> pulumi.Output['outputs.GoogleCloudMlV1__ManualScalingResponse']:
+        """
+        Manually select the number of nodes to use for serving the model. You should generally use `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more predictable billing. Beware that latency and error rates will increase if the traffic exceeds that capability of the system to serve it based on the selected number of nodes.
+        """
+        return pulumi.get(self, "manual_scaling")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="packageUris")
+    def package_uris(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Optional. Cloud Storage paths (`gs://…`) of packages for [custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines) or [scikit-learn pipelines with custom code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code). For a custom prediction routine, one of these packages must contain your Predictor class (see [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally, include any dependencies used by your Predictor or scikit-learn pipeline uses that are not already included in your selected [runtime version](/ml-engine/docs/tensorflow/runtime-version-list). If you specify this field, you must also set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
+        """
+        return pulumi.get(self, "package_uris")
+
+    @property
+    @pulumi.getter(name="predictionClass")
+    def prediction_class(self) -> pulumi.Output[str]:
+        """
+        Optional. The fully qualified name (module_name.class_name) of a class that implements the Predictor interface described in this reference field. The module containing this class should be included in a package provided to the [`packageUris` field](#Version.FIELDS.package_uris). Specify this field if and only if you are deploying a [custom prediction routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines). If you specify this field, you must set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and you must set `machineType` to a [legacy (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction). The following code sample provides the Predictor interface: class Predictor(object): \"\"\"Interface for constructing custom predictors.\"\"\" def predict(self, instances, **kwargs): \"\"\"Performs custom prediction. Instances are the decoded values from the request. They have already been deserialized from JSON. Args: instances: A list of prediction input instances. **kwargs: A dictionary of keyword args provided as additional fields on the predict request body. Returns: A list of outputs containing the prediction results. This list must be JSON serializable. \"\"\" raise NotImplementedError() @classmethod def from_path(cls, model_dir): \"\"\"Creates an instance of Predictor using the given path. Loading of the predictor should be done in this method. Args: model_dir: The local directory that contains the exported model file along with any additional files uploaded when creating the version resource. Returns: An instance implementing this Predictor class. \"\"\" raise NotImplementedError() Learn more about [the Predictor interface and custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
+        """
+        return pulumi.get(self, "prediction_class")
+
+    @property
+    @pulumi.getter(name="pythonVersion")
+    def python_version(self) -> pulumi.Output[str]:
+        """
+        Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+        """
+        return pulumi.get(self, "python_version")
+
+    @property
+    @pulumi.getter(name="requestLoggingConfig")
+    def request_logging_config(self) -> pulumi.Output['outputs.GoogleCloudMlV1__RequestLoggingConfigResponse']:
+        """
+        Optional. *Only* specify this field in a projects.models.versions.patch request. Specifying it in a projects.models.versions.create request has no effect. Configures the request-response pair logging on predictions from this Version.
+        """
+        return pulumi.get(self, "request_logging_config")
+
+    @property
+    @pulumi.getter
+    def routes(self) -> pulumi.Output['outputs.GoogleCloudMlV1__RouteMapResponse']:
+        """
+        Optional. Specifies paths on a custom container's HTTP server where AI Platform Prediction sends certain requests. If you specify this field, then you must also specify the `container` field. If you specify the `container` field and do not specify this field, it defaults to the following: ```json { "predict": "/v1/models/MODEL/versions/VERSION:predict", "health": "/v1/models/MODEL/versions/VERSION" } ``` See RouteMap for more details about these default values.
+        """
+        return pulumi.get(self, "routes")
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> pulumi.Output[str]:
+        """
+        Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+        """
+        return pulumi.get(self, "runtime_version")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[str]:
+        """
+        Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The state of a version.
+        """
+        return pulumi.get(self, "state")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

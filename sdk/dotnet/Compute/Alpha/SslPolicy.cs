@@ -16,6 +16,88 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
     public partial class SslPolicy : Pulumi.CustomResource
     {
         /// <summary>
+        /// [Output Only] Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of features enabled when the selected profile is CUSTOM. The
+        /// - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+        /// </summary>
+        [Output("customFeatures")]
+        public Output<ImmutableArray<string>> CustomFeatures { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The list of features enabled in the SSL policy.
+        /// </summary>
+        [Output("enabledFeatures")]
+        public Output<ImmutableArray<string>> EnabledFeatures { get; private set; } = null!;
+
+        /// <summary>
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
+        /// 
+        /// To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+        /// </summary>
+        [Output("fingerprint")]
+        public Output<string> Fingerprint { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output only] Type of the resource. Always compute#sslPolicyfor SSL policies.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
+        /// </summary>
+        [Output("minTlsVersion")]
+        public Output<string> MinTlsVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
+        /// </summary>
+        [Output("profile")]
+        public Output<string> Profile { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Server-defined URL for the resource.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] Server-defined URL for this resource with the resource id.
+        /// </summary>
+        [Output("selfLinkWithId")]
+        public Output<string> SelfLinkWithId { get; private set; } = null!;
+
+        /// <summary>
+        /// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        /// </summary>
+        [Output("tlsSettings")]
+        public Output<Outputs.ServerTlsSettingsResponse> TlsSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
+        /// </summary>
+        [Output("warnings")]
+        public Output<ImmutableArray<ImmutableDictionary<string, string>>> Warnings { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a SslPolicy resource with the given unique name, arguments, and options.
         /// </summary>
         ///

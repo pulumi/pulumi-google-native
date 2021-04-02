@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Pubsublite.V1
     public partial class AdminSubscription : Pulumi.CustomResource
     {
         /// <summary>
+        /// The settings for this subscription's message delivery.
+        /// </summary>
+        [Output("deliveryConfig")]
+        public Output<Outputs.DeliveryConfigResponse> DeliveryConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+        /// </summary>
+        [Output("topic")]
+        public Output<string> Topic { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AdminSubscription resource with the given unique name, arguments, and options.
         /// </summary>
         ///

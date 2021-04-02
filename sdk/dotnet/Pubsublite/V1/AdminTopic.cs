@@ -16,6 +16,25 @@ namespace Pulumi.GoogleCloud.Pubsublite.V1
     public partial class AdminTopic : Pulumi.CustomResource
     {
         /// <summary>
+        /// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The settings for this topic's partitions.
+        /// </summary>
+        [Output("partitionConfig")]
+        public Output<Outputs.PartitionConfigResponse> PartitionConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// The settings for this topic's message retention.
+        /// </summary>
+        [Output("retentionConfig")]
+        public Output<Outputs.RetentionConfigResponse> RetentionConfig { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a AdminTopic resource with the given unique name, arguments, and options.
         /// </summary>
         ///

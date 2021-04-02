@@ -35,6 +35,34 @@ export class Environment extends pulumi.CustomResource {
         return obj['__pulumiType'] === Environment.__pulumiType;
     }
 
+    /**
+     * Configuration parameters for this environment.
+     */
+    public readonly config!: pulumi.Output<outputs.composer.v1beta1.EnvironmentConfigResponse>;
+    /**
+     * The time at which this environment was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The current state of the environment.
+     */
+    public readonly state!: pulumi.Output<string>;
+    /**
+     * The time at which this environment was last modified.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
+     */
+    public /*out*/ readonly uuid!: pulumi.Output<string>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -57,16 +85,23 @@ export class Environment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["config"] = args ? args.config : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["environmentsId"] = args ? args.environmentsId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["state"] = args ? args.state : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
-            inputs["uuid"] = args ? args.uuid : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
+            inputs["uuid"] = undefined /*out*/;
         } else {
+            inputs["config"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
+            inputs["uuid"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -83,10 +118,6 @@ export interface EnvironmentArgs {
      * Configuration parameters for this environment.
      */
     readonly config?: pulumi.Input<inputs.composer.v1beta1.EnvironmentConfig>;
-    /**
-     * Output only. The time at which this environment was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
     readonly environmentsId: pulumi.Input<string>;
     /**
      * Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
@@ -102,12 +133,4 @@ export interface EnvironmentArgs {
      * The current state of the environment.
      */
     readonly state?: pulumi.Input<string>;
-    /**
-     * Output only. The time at which this environment was last modified.
-     */
-    readonly updateTime?: pulumi.Input<string>;
-    /**
-     * Output only. The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
-     */
-    readonly uuid?: pulumi.Input<string>;
 }

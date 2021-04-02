@@ -14,6 +14,13 @@ import (
 // Creates a trace configuration override. The response contains a system-generated UUID, that can be used to view, update, or delete the configuration override. Use the List API to view the existing trace configuration overrides.
 type OrganizationEnvironmentTraceConfigOverride struct {
 	pulumi.CustomResourceState
+
+	// ID of the API proxy that will have its trace configuration overridden.
+	ApiProxy pulumi.StringOutput `pulumi:"apiProxy"`
+	// ID of the trace configuration override specified as a system-generated UUID.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Trace configuration to override.
+	SamplingConfig GoogleCloudApigeeV1TraceSamplingConfigResponseOutput `pulumi:"samplingConfig"`
 }
 
 // NewOrganizationEnvironmentTraceConfigOverride registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +61,21 @@ func GetOrganizationEnvironmentTraceConfigOverride(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationEnvironmentTraceConfigOverride resources.
 type organizationEnvironmentTraceConfigOverrideState struct {
+	// ID of the API proxy that will have its trace configuration overridden.
+	ApiProxy *string `pulumi:"apiProxy"`
+	// ID of the trace configuration override specified as a system-generated UUID.
+	Name *string `pulumi:"name"`
+	// Trace configuration to override.
+	SamplingConfig *GoogleCloudApigeeV1TraceSamplingConfigResponse `pulumi:"samplingConfig"`
 }
 
 type OrganizationEnvironmentTraceConfigOverrideState struct {
+	// ID of the API proxy that will have its trace configuration overridden.
+	ApiProxy pulumi.StringPtrInput
+	// ID of the trace configuration override specified as a system-generated UUID.
+	Name pulumi.StringPtrInput
+	// Trace configuration to override.
+	SamplingConfig GoogleCloudApigeeV1TraceSamplingConfigResponsePtrInput
 }
 
 func (OrganizationEnvironmentTraceConfigOverrideState) ElementType() reflect.Type {

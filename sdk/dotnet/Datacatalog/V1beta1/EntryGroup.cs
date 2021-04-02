@@ -16,6 +16,31 @@ namespace Pulumi.GoogleCloud.Datacatalog.V1beta1
     public partial class EntryGroup : Pulumi.CustomResource
     {
         /// <summary>
+        /// Timestamps about this EntryGroup. Default value is empty timestamps.
+        /// </summary>
+        [Output("dataCatalogTimestamps")]
+        public Output<Outputs.GoogleCloudDatacatalogV1beta1SystemTimestampsResponse> DataCatalogTimestamps { get; private set; } = null!;
+
+        /// <summary>
+        /// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a EntryGroup resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -59,12 +84,6 @@ namespace Pulumi.GoogleCloud.Datacatalog.V1beta1
 
     public sealed class EntryGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Output only. Timestamps about this EntryGroup. Default value is empty timestamps.
-        /// </summary>
-        [Input("dataCatalogTimestamps")]
-        public Input<Inputs.GoogleCloudDatacatalogV1beta1SystemTimestampsArgs>? DataCatalogTimestamps { get; set; }
-
         /// <summary>
         /// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.
         /// </summary>

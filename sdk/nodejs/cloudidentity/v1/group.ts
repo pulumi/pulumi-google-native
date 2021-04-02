@@ -35,6 +35,42 @@ export class Group extends pulumi.CustomResource {
         return obj['__pulumiType'] === Group.__pulumiType;
     }
 
+    /**
+     * The time when the `Group` was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * The display name of the `Group`.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * Optional. Dynamic group metadata like queries and status.
+     */
+    public readonly dynamicGroupMetadata!: pulumi.Output<outputs.cloudidentity.v1.DynamicGroupMetadataResponse>;
+    /**
+     * Required. Immutable. The `EntityKey` of the `Group`.
+     */
+    public readonly groupKey!: pulumi.Output<outputs.cloudidentity.v1.EntityKeyResponse>;
+    /**
+     * Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
+     */
+    public readonly parent!: pulumi.Output<string>;
+    /**
+     * The time when the `Group` was last updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -50,17 +86,26 @@ export class Group extends pulumi.CustomResource {
             if ((!args || args.groupsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupsId'");
             }
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["dynamicGroupMetadata"] = args ? args.dynamicGroupMetadata : undefined;
             inputs["groupKey"] = args ? args.groupKey : undefined;
             inputs["groupsId"] = args ? args.groupsId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["displayName"] = undefined /*out*/;
+            inputs["dynamicGroupMetadata"] = undefined /*out*/;
+            inputs["groupKey"] = undefined /*out*/;
+            inputs["labels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["parent"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -73,10 +118,6 @@ export class Group extends pulumi.CustomResource {
  * The set of arguments for constructing a Group resource.
  */
 export interface GroupArgs {
-    /**
-     * Output only. The time when the `Group` was created.
-     */
-    readonly createTime?: pulumi.Input<string>;
     /**
      * An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
      */
@@ -99,15 +140,7 @@ export interface GroupArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`.
-     */
-    readonly name?: pulumi.Input<string>;
-    /**
      * Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
      */
     readonly parent?: pulumi.Input<string>;
-    /**
-     * Output only. The time when the `Group` was last updated.
-     */
-    readonly updateTime?: pulumi.Input<string>;
 }

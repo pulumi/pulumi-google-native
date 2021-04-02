@@ -16,6 +16,73 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationInstance : Pulumi.CustomResource
     {
         /// <summary>
+        /// Time the instance was created in milliseconds since epoch.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Description of the instance.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+        /// </summary>
+        [Output("diskEncryptionKeyName")]
+        public Output<string> DiskEncryptionKeyName { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Display name for the instance.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
+        /// </summary>
+        [Output("host")]
+        public Output<string> Host { get; private set; } = null!;
+
+        /// <summary>
+        /// Time the instance was last modified in milliseconds since epoch.
+        /// </summary>
+        [Output("lastModifiedAt")]
+        public Output<string> LastModifiedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Compute Engine location where the instance resides.
+        /// </summary>
+        [Output("location")]
+        public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
+        /// </summary>
+        [Output("peeringCidrRange")]
+        public Output<string> PeeringCidrRange { get; private set; } = null!;
+
+        /// <summary>
+        /// Port number of the exposed Apigee endpoint.
+        /// </summary>
+        [Output("port")]
+        public Output<string> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationInstance resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -60,12 +127,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public sealed class OrganizationInstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Time the instance was created in milliseconds since epoch.
-        /// </summary>
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
-        /// <summary>
         /// Optional. Description of the instance.
         /// </summary>
         [Input("description")]
@@ -83,20 +144,8 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        /// <summary>
-        /// Output only. Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
-        /// </summary>
-        [Input("host")]
-        public Input<string>? Host { get; set; }
-
         [Input("instancesId", required: true)]
         public Input<string> InstancesId { get; set; } = null!;
-
-        /// <summary>
-        /// Output only. Time the instance was last modified in milliseconds since epoch.
-        /// </summary>
-        [Input("lastModifiedAt")]
-        public Input<string>? LastModifiedAt { get; set; }
 
         /// <summary>
         /// Required. Compute Engine location where the instance resides.
@@ -118,18 +167,6 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// </summary>
         [Input("peeringCidrRange")]
         public Input<string>? PeeringCidrRange { get; set; }
-
-        /// <summary>
-        /// Output only. Port number of the exposed Apigee endpoint.
-        /// </summary>
-        [Input("port")]
-        public Input<string>? Port { get; set; }
-
-        /// <summary>
-        /// Output only. State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         public OrganizationInstanceArgs()
         {

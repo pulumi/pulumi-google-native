@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['AppServiceVersion']
@@ -193,7 +194,349 @@ class AppServiceVersion(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["api_config"] = None
+        __props__["automatic_scaling"] = None
+        __props__["basic_scaling"] = None
+        __props__["beta_settings"] = None
+        __props__["build_env_variables"] = None
+        __props__["create_time"] = None
+        __props__["created_by"] = None
+        __props__["default_expiration"] = None
+        __props__["deployment"] = None
+        __props__["disk_usage_bytes"] = None
+        __props__["endpoints_api_service"] = None
+        __props__["entrypoint"] = None
+        __props__["env"] = None
+        __props__["env_variables"] = None
+        __props__["error_handlers"] = None
+        __props__["handlers"] = None
+        __props__["health_check"] = None
+        __props__["inbound_services"] = None
+        __props__["instance_class"] = None
+        __props__["libraries"] = None
+        __props__["liveness_check"] = None
+        __props__["manual_scaling"] = None
+        __props__["name"] = None
+        __props__["network"] = None
+        __props__["nobuild_files_regex"] = None
+        __props__["readiness_check"] = None
+        __props__["resources"] = None
+        __props__["runtime"] = None
+        __props__["runtime_api_version"] = None
+        __props__["runtime_channel"] = None
+        __props__["runtime_main_executable_path"] = None
+        __props__["service_account"] = None
+        __props__["serving_status"] = None
+        __props__["threadsafe"] = None
+        __props__["version_url"] = None
+        __props__["vm"] = None
+        __props__["vpc_access_connector"] = None
+        __props__["zones"] = None
         return AppServiceVersion(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiConfig")
+    def api_config(self) -> pulumi.Output['outputs.ApiConfigHandlerResponse']:
+        """
+        Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
+        """
+        return pulumi.get(self, "api_config")
+
+    @property
+    @pulumi.getter(name="automaticScaling")
+    def automatic_scaling(self) -> pulumi.Output['outputs.AutomaticScalingResponse']:
+        """
+        Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
+        """
+        return pulumi.get(self, "automatic_scaling")
+
+    @property
+    @pulumi.getter(name="basicScaling")
+    def basic_scaling(self) -> pulumi.Output['outputs.BasicScalingResponse']:
+        """
+        A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+        """
+        return pulumi.get(self, "basic_scaling")
+
+    @property
+    @pulumi.getter(name="betaSettings")
+    def beta_settings(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Metadata settings that are supplied to this version to enable beta runtime features.
+        """
+        return pulumi.get(self, "beta_settings")
+
+    @property
+    @pulumi.getter(name="buildEnvVariables")
+    def build_env_variables(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
+        """
+        return pulumi.get(self, "build_env_variables")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Time that this version was created.@OutputOnly
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> pulumi.Output[str]:
+        """
+        Email address of the user who created this version.@OutputOnly
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter(name="defaultExpiration")
+    def default_expiration(self) -> pulumi.Output[str]:
+        """
+        Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
+        """
+        return pulumi.get(self, "default_expiration")
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> pulumi.Output['outputs.DeploymentResponse']:
+        """
+        Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
+        """
+        return pulumi.get(self, "deployment")
+
+    @property
+    @pulumi.getter(name="diskUsageBytes")
+    def disk_usage_bytes(self) -> pulumi.Output[str]:
+        """
+        Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
+        """
+        return pulumi.get(self, "disk_usage_bytes")
+
+    @property
+    @pulumi.getter(name="endpointsApiService")
+    def endpoints_api_service(self) -> pulumi.Output['outputs.EndpointsApiServiceResponse']:
+        """
+        Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
+        """
+        return pulumi.get(self, "endpoints_api_service")
+
+    @property
+    @pulumi.getter
+    def entrypoint(self) -> pulumi.Output['outputs.EntrypointResponse']:
+        """
+        The entrypoint for the application.
+        """
+        return pulumi.get(self, "entrypoint")
+
+    @property
+    @pulumi.getter
+    def env(self) -> pulumi.Output[str]:
+        """
+        App Engine execution environment for this version.Defaults to standard.
+        """
+        return pulumi.get(self, "env")
+
+    @property
+    @pulumi.getter(name="envVariables")
+    def env_variables(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Environment variables available to the application.Only returned in GET requests if view=FULL is set.
+        """
+        return pulumi.get(self, "env_variables")
+
+    @property
+    @pulumi.getter(name="errorHandlers")
+    def error_handlers(self) -> pulumi.Output[Sequence['outputs.ErrorHandlerResponse']]:
+        """
+        Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
+        """
+        return pulumi.get(self, "error_handlers")
+
+    @property
+    @pulumi.getter
+    def handlers(self) -> pulumi.Output[Sequence['outputs.UrlMapResponse']]:
+        """
+        An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
+        """
+        return pulumi.get(self, "handlers")
+
+    @property
+    @pulumi.getter(name="healthCheck")
+    def health_check(self) -> pulumi.Output['outputs.HealthCheckResponse']:
+        """
+        Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+        """
+        return pulumi.get(self, "health_check")
+
+    @property
+    @pulumi.getter(name="inboundServices")
+    def inbound_services(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+        """
+        return pulumi.get(self, "inbound_services")
+
+    @property
+    @pulumi.getter(name="instanceClass")
+    def instance_class(self) -> pulumi.Output[str]:
+        """
+        Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
+        """
+        return pulumi.get(self, "instance_class")
+
+    @property
+    @pulumi.getter
+    def libraries(self) -> pulumi.Output[Sequence['outputs.LibraryResponse']]:
+        """
+        Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
+        """
+        return pulumi.get(self, "libraries")
+
+    @property
+    @pulumi.getter(name="livenessCheck")
+    def liveness_check(self) -> pulumi.Output['outputs.LivenessCheckResponse']:
+        """
+        Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+        """
+        return pulumi.get(self, "liveness_check")
+
+    @property
+    @pulumi.getter(name="manualScaling")
+    def manual_scaling(self) -> pulumi.Output['outputs.ManualScalingResponse']:
+        """
+        A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
+        """
+        return pulumi.get(self, "manual_scaling")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Output['outputs.NetworkResponse']:
+        """
+        Extra network settings. Only applicable in the App Engine flexible environment.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="nobuildFilesRegex")
+    def nobuild_files_regex(self) -> pulumi.Output[str]:
+        """
+        Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
+        """
+        return pulumi.get(self, "nobuild_files_regex")
+
+    @property
+    @pulumi.getter(name="readinessCheck")
+    def readiness_check(self) -> pulumi.Output['outputs.ReadinessCheckResponse']:
+        """
+        Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+        """
+        return pulumi.get(self, "readiness_check")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> pulumi.Output['outputs.ResourcesResponse']:
+        """
+        Machine resources for this version. Only applicable in the App Engine flexible environment.
+        """
+        return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter
+    def runtime(self) -> pulumi.Output[str]:
+        """
+        Desired runtime. Example: python27.
+        """
+        return pulumi.get(self, "runtime")
+
+    @property
+    @pulumi.getter(name="runtimeApiVersion")
+    def runtime_api_version(self) -> pulumi.Output[str]:
+        """
+        The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+        """
+        return pulumi.get(self, "runtime_api_version")
+
+    @property
+    @pulumi.getter(name="runtimeChannel")
+    def runtime_channel(self) -> pulumi.Output[str]:
+        """
+        The channel of the runtime to use. Only available for some runtimes. Defaults to the default channel.
+        """
+        return pulumi.get(self, "runtime_channel")
+
+    @property
+    @pulumi.getter(name="runtimeMainExecutablePath")
+    def runtime_main_executable_path(self) -> pulumi.Output[str]:
+        """
+        The path or name of the app's main executable.
+        """
+        return pulumi.get(self, "runtime_main_executable_path")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[str]:
+        """
+        The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="servingStatus")
+    def serving_status(self) -> pulumi.Output[str]:
+        """
+        Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
+        """
+        return pulumi.get(self, "serving_status")
+
+    @property
+    @pulumi.getter
+    def threadsafe(self) -> pulumi.Output[bool]:
+        """
+        Whether multiple requests can be dispatched to this version at once.
+        """
+        return pulumi.get(self, "threadsafe")
+
+    @property
+    @pulumi.getter(name="versionUrl")
+    def version_url(self) -> pulumi.Output[str]:
+        """
+        Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
+        """
+        return pulumi.get(self, "version_url")
+
+    @property
+    @pulumi.getter
+    def vm(self) -> pulumi.Output[bool]:
+        """
+        Whether to deploy this version in a container on a virtual machine.
+        """
+        return pulumi.get(self, "vm")
+
+    @property
+    @pulumi.getter(name="vpcAccessConnector")
+    def vpc_access_connector(self) -> pulumi.Output['outputs.VpcAccessConnectorResponse']:
+        """
+        Enables VPC connectivity for standard apps.
+        """
+        return pulumi.get(self, "vpc_access_connector")
+
+    @property
+    @pulumi.getter
+    def zones(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+        """
+        return pulumi.get(self, "zones")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -14,6 +14,15 @@ import (
 // Creates an API proxy. The API proxy created will not be accessible at runtime until it is deployed to an environment. Create a new API proxy by setting the `name` query parameter to the name of the API proxy. Import an API proxy configuration bundle stored in zip format on your local machine to your organization by doing the following: * Set the `name` query parameter to the name of the API proxy. * Set the `action` query parameter to `import`. * Set the `Content-Type` header to `multipart/form-data`. * Pass as a file the name of API proxy configuration bundle stored in zip format on your local machine using the `file` form field. **Note**: To validate the API proxy configuration bundle only without importing it, set the `action` query parameter to `validate`. When importing an API proxy configuration bundle, if the API proxy does not exist, it will be created. If the API proxy exists, then a new revision is created. Invalid API proxy configurations are rejected, and a list of validation errors is returned to the client.
 type OrganizationApi struct {
 	pulumi.CustomResourceState
+
+	// The id of the most recently created revision for this api proxy.
+	LatestRevisionId pulumi.StringOutput `pulumi:"latestRevisionId"`
+	// Metadata describing the API proxy.
+	MetaData GoogleCloudApigeeV1EntityMetadataResponseOutput `pulumi:"metaData"`
+	// Name of the API proxy.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// List of revisons defined for the API proxy.
+	Revision pulumi.StringArrayOutput `pulumi:"revision"`
 }
 
 // NewOrganizationApi registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +60,25 @@ func GetOrganizationApi(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationApi resources.
 type organizationApiState struct {
+	// The id of the most recently created revision for this api proxy.
+	LatestRevisionId *string `pulumi:"latestRevisionId"`
+	// Metadata describing the API proxy.
+	MetaData *GoogleCloudApigeeV1EntityMetadataResponse `pulumi:"metaData"`
+	// Name of the API proxy.
+	Name *string `pulumi:"name"`
+	// List of revisons defined for the API proxy.
+	Revision []string `pulumi:"revision"`
 }
 
 type OrganizationApiState struct {
+	// The id of the most recently created revision for this api proxy.
+	LatestRevisionId pulumi.StringPtrInput
+	// Metadata describing the API proxy.
+	MetaData GoogleCloudApigeeV1EntityMetadataResponsePtrInput
+	// Name of the API proxy.
+	Name pulumi.StringPtrInput
+	// List of revisons defined for the API proxy.
+	Revision pulumi.StringArrayInput
 }
 
 func (OrganizationApiState) ElementType() reflect.Type {

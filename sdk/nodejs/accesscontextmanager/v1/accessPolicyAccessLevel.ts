@@ -35,6 +35,26 @@ export class AccessPolicyAccessLevel extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessPolicyAccessLevel.__pulumiType;
     }
 
+    /**
+     * A `BasicLevel` composed of `Conditions`.
+     */
+    public readonly basic!: pulumi.Output<outputs.accesscontextmanager.v1.BasicLevelResponse>;
+    /**
+     * A `CustomLevel` written in the Common Expression Language.
+     */
+    public readonly custom!: pulumi.Output<outputs.accesscontextmanager.v1.CustomLevelResponse>;
+    /**
+     * Description of the `AccessLevel` and its use. Does not affect behavior.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Required. Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length of the `short_name` component is 50 characters.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Human readable title. Must be unique within the Policy.
+     */
+    public readonly title!: pulumi.Output<string>;
 
     /**
      * Create a AccessPolicyAccessLevel resource with the given unique name, arguments, and options.
@@ -61,6 +81,11 @@ export class AccessPolicyAccessLevel extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["title"] = args ? args.title : undefined;
         } else {
+            inputs["basic"] = undefined /*out*/;
+            inputs["custom"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["title"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

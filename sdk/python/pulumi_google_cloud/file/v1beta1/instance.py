@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['Instance']
@@ -16,18 +17,14 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 status_message: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -37,15 +34,11 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. The time when the instance was created.
         :param pulumi.Input[str] description: The description of the instance (2048 characters or less).
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
-        :param pulumi.Input[str] name: Output only. The resource name of the instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
-        :param pulumi.Input[str] state: Output only. The instance state.
-        :param pulumi.Input[str] status_message: Output only. Additional information about the instance state, if available.
         :param pulumi.Input[str] tier: The service tier of the instance.
         """
         if __name__ is not None:
@@ -65,7 +58,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['create_time'] = create_time
             __props__['description'] = description
             __props__['etag'] = etag
             __props__['file_shares'] = file_shares
@@ -76,14 +68,15 @@ class Instance(pulumi.CustomResource):
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['name'] = name
             __props__['networks'] = networks
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['state'] = state
-            __props__['status_message'] = status_message
             __props__['tier'] = tier
+            __props__['create_time'] = None
+            __props__['name'] = None
+            __props__['state'] = None
+            __props__['status_message'] = None
         super(Instance, __self__).__init__(
             'google-cloud:file/v1beta1:Instance',
             resource_name,
@@ -106,7 +99,97 @@ class Instance(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["description"] = None
+        __props__["etag"] = None
+        __props__["file_shares"] = None
+        __props__["labels"] = None
+        __props__["name"] = None
+        __props__["networks"] = None
+        __props__["state"] = None
+        __props__["status_message"] = None
+        __props__["tier"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time when the instance was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[str]:
+        """
+        The description of the instance (2048 characters or less).
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="fileShares")
+    def file_shares(self) -> pulumi.Output[Sequence['outputs.FileShareConfigResponse']]:
+        """
+        File system shares on the instance. For this version, only a single file share is supported.
+        """
+        return pulumi.get(self, "file_shares")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Resource labels to represent user provided metadata.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def networks(self) -> pulumi.Output[Sequence['outputs.NetworkConfigResponse']]:
+        """
+        VPC networks to which the instance is connected. For this version, only a single network is supported.
+        """
+        return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The instance state.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> pulumi.Output[str]:
+        """
+        Additional information about the instance state, if available.
+        """
+        return pulumi.get(self, "status_message")
+
+    @property
+    @pulumi.getter
+    def tier(self) -> pulumi.Output[str]:
+        """
+        The service tier of the instance.
+        """
+        return pulumi.get(self, "tier")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

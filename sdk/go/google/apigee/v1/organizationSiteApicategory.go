@@ -14,6 +14,17 @@ import (
 // Creates a new category on the portal.
 type OrganizationSiteApicategory struct {
 	pulumi.CustomResourceState
+
+	// Details of category.
+	Data GoogleCloudApigeeV1ApiCategoryDataResponseOutput `pulumi:"data"`
+	// ID that can be used to find errors in the log files.
+	ErrorCode pulumi.StringOutput `pulumi:"errorCode"`
+	// Description of the operation.
+	Message pulumi.StringOutput `pulumi:"message"`
+	// ID that can be used to find request details in the log files.
+	RequestId pulumi.StringOutput `pulumi:"requestId"`
+	// Status of the operation.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewOrganizationSiteApicategory registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +65,29 @@ func GetOrganizationSiteApicategory(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationSiteApicategory resources.
 type organizationSiteApicategoryState struct {
+	// Details of category.
+	Data *GoogleCloudApigeeV1ApiCategoryDataResponse `pulumi:"data"`
+	// ID that can be used to find errors in the log files.
+	ErrorCode *string `pulumi:"errorCode"`
+	// Description of the operation.
+	Message *string `pulumi:"message"`
+	// ID that can be used to find request details in the log files.
+	RequestId *string `pulumi:"requestId"`
+	// Status of the operation.
+	Status *string `pulumi:"status"`
 }
 
 type OrganizationSiteApicategoryState struct {
+	// Details of category.
+	Data GoogleCloudApigeeV1ApiCategoryDataResponsePtrInput
+	// ID that can be used to find errors in the log files.
+	ErrorCode pulumi.StringPtrInput
+	// Description of the operation.
+	Message pulumi.StringPtrInput
+	// ID that can be used to find request details in the log files.
+	RequestId pulumi.StringPtrInput
+	// Status of the operation.
+	Status pulumi.StringPtrInput
 }
 
 func (OrganizationSiteApicategoryState) ElementType() reflect.Type {

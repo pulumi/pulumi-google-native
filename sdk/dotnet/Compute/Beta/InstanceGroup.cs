@@ -16,6 +16,83 @@ namespace Pulumi.GoogleCloud.Compute.Beta
     public partial class InstanceGroup : Pulumi.CustomResource
     {
         /// <summary>
+        /// [Output Only] The creation timestamp for this instance group in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional description of this resource. Provide this property when you create the resource.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The fingerprint of the named ports. The system uses this fingerprint to detect conflicts when multiple users change the named ports concurrently.
+        /// </summary>
+        [Output("fingerprint")]
+        public Output<string> Fingerprint { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The resource type, which is always compute#instanceGroup for instance groups.
+        /// </summary>
+        [Output("kind")]
+        public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the instance group. The name must be 1-63 characters long, and comply with RFC1035.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Assigns a name to a port number. For example: {name: "http", port: 80}
+        /// 
+        /// This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] 
+        /// 
+        /// Named ports apply to all instances in this instance group.
+        /// </summary>
+        [Output("namedPorts")]
+        public Output<ImmutableArray<Outputs.NamedPortResponse>> NamedPorts { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
+        /// </summary>
+        [Output("network")]
+        public Output<string> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The URL of the region where the instance group is located (for regional resources).
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The URL for this instance group. The server generates this URL.
+        /// </summary>
+        [Output("selfLink")]
+        public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The total number of instances in the instance group.
+        /// </summary>
+        [Output("size")]
+        public Output<int> Size { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
+        /// </summary>
+        [Output("subnetwork")]
+        public Output<string> Subnetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The URL of the zone where the instance group is located (for zonal resources).
+        /// </summary>
+        [Output("zone")]
+        public Output<string> Zone { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a InstanceGroup resource with the given unique name, arguments, and options.
         /// </summary>
         ///

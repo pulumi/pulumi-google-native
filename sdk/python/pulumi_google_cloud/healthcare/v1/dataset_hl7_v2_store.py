@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['DatasetHl7V2Store']
@@ -95,7 +96,52 @@ class DatasetHl7V2Store(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["labels"] = None
+        __props__["name"] = None
+        __props__["notification_configs"] = None
+        __props__["parser_config"] = None
+        __props__["reject_duplicate_message"] = None
         return DatasetHl7V2Store(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name of the HL7v2 store, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="notificationConfigs")
+    def notification_configs(self) -> pulumi.Output[Sequence['outputs.Hl7V2NotificationConfigResponse']]:
+        """
+        A list of notification configs. Each configuration uses a filter to determine whether to publish a message (both Ingest & Create) on the corresponding notification destination. Only the message name is sent as part of the notification. Supplied by the client.
+        """
+        return pulumi.get(self, "notification_configs")
+
+    @property
+    @pulumi.getter(name="parserConfig")
+    def parser_config(self) -> pulumi.Output['outputs.ParserConfigResponse']:
+        """
+        The configuration for the parser. It determines how the server parses the messages.
+        """
+        return pulumi.get(self, "parser_config")
+
+    @property
+    @pulumi.getter(name="rejectDuplicateMessage")
+    def reject_duplicate_message(self) -> pulumi.Output[bool]:
+        """
+        Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.
+        """
+        return pulumi.get(self, "reject_duplicate_message")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

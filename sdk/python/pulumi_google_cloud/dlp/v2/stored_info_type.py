@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['StoredInfoType']
@@ -17,7 +18,6 @@ class StoredInfoType(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']]] = None,
-                 location_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  stored_info_type_id: Optional[pulumi.Input[str]] = None,
                  stored_info_types_id: Optional[pulumi.Input[str]] = None,
@@ -30,7 +30,6 @@ class StoredInfoType(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']] config: Required. Configuration of the storedInfoType to create.
-        :param pulumi.Input[str] location_id: Deprecated. This field has no effect.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         if __name__ is not None:
@@ -51,7 +50,6 @@ class StoredInfoType(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['config'] = config
-            __props__['location_id'] = location_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
@@ -59,6 +57,9 @@ class StoredInfoType(pulumi.CustomResource):
             if stored_info_types_id is None and not opts.urn:
                 raise TypeError("Missing required property 'stored_info_types_id'")
             __props__['stored_info_types_id'] = stored_info_types_id
+            __props__['current_version'] = None
+            __props__['name'] = None
+            __props__['pending_versions'] = None
         super(StoredInfoType, __self__).__init__(
             'google-cloud:dlp/v2:StoredInfoType',
             resource_name,
@@ -81,7 +82,34 @@ class StoredInfoType(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["current_version"] = None
+        __props__["name"] = None
+        __props__["pending_versions"] = None
         return StoredInfoType(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="currentVersion")
+    def current_version(self) -> pulumi.Output['outputs.GooglePrivacyDlpV2StoredInfoTypeVersionResponse']:
+        """
+        Current version of the stored info type.
+        """
+        return pulumi.get(self, "current_version")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        Resource name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pendingVersions")
+    def pending_versions(self) -> pulumi.Output[Sequence['outputs.GooglePrivacyDlpV2StoredInfoTypeVersionResponse']]:
+        """
+        Pending versions of the stored info type. Empty if no versions are pending.
+        """
+        return pulumi.get(self, "pending_versions")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

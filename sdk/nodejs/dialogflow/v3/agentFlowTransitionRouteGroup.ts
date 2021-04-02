@@ -35,6 +35,18 @@ export class AgentFlowTransitionRouteGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === AgentFlowTransitionRouteGroup.__pulumiType;
     }
 
+    /**
+     * Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
+     * The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Transition routes associated with the TransitionRouteGroup.
+     */
+    public readonly transitionRoutes!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3TransitionRouteResponse[]>;
 
     /**
      * Create a AgentFlowTransitionRouteGroup resource with the given unique name, arguments, and options.
@@ -71,6 +83,9 @@ export class AgentFlowTransitionRouteGroup extends pulumi.CustomResource {
             inputs["transitionRouteGroupsId"] = args ? args.transitionRouteGroupsId : undefined;
             inputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
         } else {
+            inputs["displayName"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["transitionRoutes"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

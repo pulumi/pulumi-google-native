@@ -23,17 +23,13 @@ __all__ = [
 @pulumi.input_type
 class BigQueryOptionsArgs:
     def __init__(__self__, *,
-                 use_partitioned_tables: Optional[pulumi.Input[bool]] = None,
-                 uses_timestamp_column_partitioning: Optional[pulumi.Input[bool]] = None):
+                 use_partitioned_tables: Optional[pulumi.Input[bool]] = None):
         """
         Options that change functionality of a sink exporting data to BigQuery.
         :param pulumi.Input[bool] use_partitioned_tables: Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/bigquery/docs/partitioned-tables). By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned tables the date suffix is no longer present and special query syntax (https://cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used instead. In both cases, tables are sharded based on UTC timezone.
-        :param pulumi.Input[bool] uses_timestamp_column_partitioning: Output only. True if new timestamp column based partitioning is in use, false if legacy ingestion-time partitioning is in use. All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false.
         """
         if use_partitioned_tables is not None:
             pulumi.set(__self__, "use_partitioned_tables", use_partitioned_tables)
-        if uses_timestamp_column_partitioning is not None:
-            pulumi.set(__self__, "uses_timestamp_column_partitioning", uses_timestamp_column_partitioning)
 
     @property
     @pulumi.getter(name="usePartitionedTables")
@@ -46,18 +42,6 @@ class BigQueryOptionsArgs:
     @use_partitioned_tables.setter
     def use_partitioned_tables(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_partitioned_tables", value)
-
-    @property
-    @pulumi.getter(name="usesTimestampColumnPartitioning")
-    def uses_timestamp_column_partitioning(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Output only. True if new timestamp column based partitioning is in use, false if legacy ingestion-time partitioning is in use. All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false.
-        """
-        return pulumi.get(self, "uses_timestamp_column_partitioning")
-
-    @uses_timestamp_column_partitioning.setter
-    def uses_timestamp_column_partitioning(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "uses_timestamp_column_partitioning", value)
 
 
 @pulumi.input_type
@@ -311,23 +295,17 @@ class LinearArgs:
 @pulumi.input_type
 class LogExclusionArgs:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None):
         """
         Specifies a set of log entries that are not to be stored in Logging. If your GCP resource receives a large volume of logs, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
-        :param pulumi.Input[str] create_time: Output only. The creation timestamp of the exclusion.This field may not be present for older exclusions.
         :param pulumi.Input[str] description: Optional. A description of this exclusion.
         :param pulumi.Input[bool] disabled: Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
         :param pulumi.Input[str] filter: Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
         :param pulumi.Input[str] name: Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
-        :param pulumi.Input[str] update_time: Output only. The last update timestamp of the exclusion.This field may not be present for older exclusions.
         """
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -336,20 +314,6 @@ class LogExclusionArgs:
             pulumi.set(__self__, "filter", filter)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
-
-    @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The creation timestamp of the exclusion.This field may not be present for older exclusions.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
@@ -398,18 +362,6 @@ class LogExclusionArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Output only. The last update timestamp of the exclusion.This field may not be present for older exclusions.
-        """
-        return pulumi.get(self, "update_time")
-
-    @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_time", value)
 
 
 @pulumi.input_type
@@ -600,18 +552,14 @@ class MetricDescriptorArgs:
 class MetricDescriptorMetadataArgs:
     def __init__(__self__, *,
                  ingest_delay: Optional[pulumi.Input[str]] = None,
-                 launch_stage: Optional[pulumi.Input[str]] = None,
                  sample_period: Optional[pulumi.Input[str]] = None):
         """
         Additional annotations that can be used to guide the usage of a metric.
         :param pulumi.Input[str] ingest_delay: The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
-        :param pulumi.Input[str] launch_stage: Deprecated. Must use the MetricDescriptor.launch_stage instead.
         :param pulumi.Input[str] sample_period: The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
         """
         if ingest_delay is not None:
             pulumi.set(__self__, "ingest_delay", ingest_delay)
-        if launch_stage is not None:
-            pulumi.set(__self__, "launch_stage", launch_stage)
         if sample_period is not None:
             pulumi.set(__self__, "sample_period", sample_period)
 
@@ -626,18 +574,6 @@ class MetricDescriptorMetadataArgs:
     @ingest_delay.setter
     def ingest_delay(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ingest_delay", value)
-
-    @property
-    @pulumi.getter(name="launchStage")
-    def launch_stage(self) -> Optional[pulumi.Input[str]]:
-        """
-        Deprecated. Must use the MetricDescriptor.launch_stage instead.
-        """
-        return pulumi.get(self, "launch_stage")
-
-    @launch_stage.setter
-    def launch_stage(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "launch_stage", value)
 
     @property
     @pulumi.getter(name="samplePeriod")

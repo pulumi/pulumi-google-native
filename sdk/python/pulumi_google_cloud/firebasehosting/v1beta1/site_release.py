@@ -32,11 +32,11 @@ class SiteRelease(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] message: The deploy description when the release was created. The value can be up to 512 characters.
-        :param pulumi.Input[str] name: Output only. The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create).
-        :param pulumi.Input[str] release_time: Output only. The time at which the version is set to be public.
-        :param pulumi.Input[pulumi.InputType['ActingUserArgs']] release_user: Output only. Identifies the user who created the release.
+        :param pulumi.Input[str] name: The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create).
+        :param pulumi.Input[str] release_time: The time at which the version is set to be public.
+        :param pulumi.Input[pulumi.InputType['ActingUserArgs']] release_user: Identifies the user who created the release.
         :param pulumi.Input[str] type: Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
-        :param pulumi.Input[pulumi.InputType['VersionArgs']] version: Output only. The configuration and content that was released.
+        :param pulumi.Input[pulumi.InputType['VersionArgs']] version: The configuration and content that was released.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

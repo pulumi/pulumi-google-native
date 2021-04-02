@@ -9,6 +9,7 @@ from .dataset_annotated_dataset_feedback_thread_feedback_message import *
 from .evaluation_job import *
 from .instruction import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

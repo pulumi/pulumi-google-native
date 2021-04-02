@@ -14,6 +14,17 @@ import (
 // Creates a new data collector.
 type OrganizationDatacollector struct {
 	pulumi.CustomResourceState
+
+	// The time at which the data collector was created in milliseconds since the epoch.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// A description of the data collector.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// The time at which the Data Collector was last updated in milliseconds since the epoch.
+	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
+	// ID of the data collector. Must begin with `dc_`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Immutable. The type of data this data collector will collect.
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewOrganizationDatacollector registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +62,29 @@ func GetOrganizationDatacollector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationDatacollector resources.
 type organizationDatacollectorState struct {
+	// The time at which the data collector was created in milliseconds since the epoch.
+	CreatedAt *string `pulumi:"createdAt"`
+	// A description of the data collector.
+	Description *string `pulumi:"description"`
+	// The time at which the Data Collector was last updated in milliseconds since the epoch.
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// ID of the data collector. Must begin with `dc_`.
+	Name *string `pulumi:"name"`
+	// Immutable. The type of data this data collector will collect.
+	Type *string `pulumi:"type"`
 }
 
 type OrganizationDatacollectorState struct {
+	// The time at which the data collector was created in milliseconds since the epoch.
+	CreatedAt pulumi.StringPtrInput
+	// A description of the data collector.
+	Description pulumi.StringPtrInput
+	// The time at which the Data Collector was last updated in milliseconds since the epoch.
+	LastModifiedAt pulumi.StringPtrInput
+	// ID of the data collector. Must begin with `dc_`.
+	Name pulumi.StringPtrInput
+	// Immutable. The type of data this data collector will collect.
+	Type pulumi.StringPtrInput
 }
 
 func (OrganizationDatacollectorState) ElementType() reflect.Type {
@@ -61,13 +92,9 @@ func (OrganizationDatacollectorState) ElementType() reflect.Type {
 }
 
 type organizationDatacollectorArgs struct {
-	// Output only. The time at which the data collector was created in milliseconds since the epoch.
-	CreatedAt        *string `pulumi:"createdAt"`
-	DatacollectorsId string  `pulumi:"datacollectorsId"`
+	DatacollectorsId string `pulumi:"datacollectorsId"`
 	// A description of the data collector.
 	Description *string `pulumi:"description"`
-	// Output only. The time at which the Data Collector was last updated in milliseconds since the epoch.
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
 	// ID of the data collector. Must begin with `dc_`.
 	Name            *string `pulumi:"name"`
 	OrganizationsId string  `pulumi:"organizationsId"`
@@ -77,13 +104,9 @@ type organizationDatacollectorArgs struct {
 
 // The set of arguments for constructing a OrganizationDatacollector resource.
 type OrganizationDatacollectorArgs struct {
-	// Output only. The time at which the data collector was created in milliseconds since the epoch.
-	CreatedAt        pulumi.StringPtrInput
 	DatacollectorsId pulumi.StringInput
 	// A description of the data collector.
 	Description pulumi.StringPtrInput
-	// Output only. The time at which the Data Collector was last updated in milliseconds since the epoch.
-	LastModifiedAt pulumi.StringPtrInput
 	// ID of the data collector. Must begin with `dc_`.
 	Name            pulumi.StringPtrInput
 	OrganizationsId pulumi.StringInput

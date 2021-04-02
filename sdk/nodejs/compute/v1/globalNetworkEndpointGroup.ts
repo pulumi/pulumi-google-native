@@ -35,6 +35,70 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === GlobalNetworkEndpointGroup.__pulumiType;
     }
 
+    /**
+     * Metadata defined as annotations on the network endpoint group.
+     */
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+     */
+    public readonly appEngine!: pulumi.Output<outputs.compute.v1.NetworkEndpointGroupAppEngineResponse>;
+    /**
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+     */
+    public readonly cloudFunction!: pulumi.Output<outputs.compute.v1.NetworkEndpointGroupCloudFunctionResponse>;
+    /**
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+     */
+    public readonly cloudRun!: pulumi.Output<outputs.compute.v1.NetworkEndpointGroupCloudRunResponse>;
+    /**
+     * [Output Only] Creation timestamp in RFC3339 text format.
+     */
+    public readonly creationTimestamp!: pulumi.Output<string>;
+    /**
+     * The default port used if the port number is not specified in the network endpoint.
+     */
+    public readonly defaultPort!: pulumi.Output<number>;
+    /**
+     * An optional description of this resource. Provide this property when you create the resource.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * [Output Only] Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+     */
+    public readonly network!: pulumi.Output<string>;
+    /**
+     * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, or SERVERLESS.
+     */
+    public readonly networkEndpointType!: pulumi.Output<string>;
+    /**
+     * [Output Only] The URL of the region where the network endpoint group is located.
+     */
+    public readonly region!: pulumi.Output<string>;
+    /**
+     * [Output Only] Server-defined URL for the resource.
+     */
+    public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * [Output only] Number of network endpoints in the network endpoint group.
+     */
+    public readonly size!: pulumi.Output<number>;
+    /**
+     * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+     */
+    public readonly subnetwork!: pulumi.Output<string>;
+    /**
+     * [Output Only] The URL of the zone where the network endpoint group is located.
+     */
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a GlobalNetworkEndpointGroup resource with the given unique name, arguments, and options.
@@ -73,6 +137,22 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         } else {
+            inputs["annotations"] = undefined /*out*/;
+            inputs["appEngine"] = undefined /*out*/;
+            inputs["cloudFunction"] = undefined /*out*/;
+            inputs["cloudRun"] = undefined /*out*/;
+            inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["defaultPort"] = undefined /*out*/;
+            inputs["description"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["network"] = undefined /*out*/;
+            inputs["networkEndpointType"] = undefined /*out*/;
+            inputs["region"] = undefined /*out*/;
+            inputs["selfLink"] = undefined /*out*/;
+            inputs["size"] = undefined /*out*/;
+            inputs["subnetwork"] = undefined /*out*/;
+            inputs["zone"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

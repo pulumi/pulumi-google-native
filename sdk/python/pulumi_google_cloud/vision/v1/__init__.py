@@ -7,6 +7,7 @@ from .product import *
 from .product_reference_image import *
 from .product_set import *
 from ._inputs import *
+from . import outputs
 
 def _register_module():
     import pulumi

@@ -16,6 +16,85 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1alpha1
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+        /// </summary>
+        [Output("auditLogsEnabled")]
+        public Output<bool> AuditLogsEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Network can be added using UpdateDomain later. Domain is only available on network part of authorized_networks. Caller needs to make sure that CIDR subnets do not overlap between networks, else domain creation will fail.
+        /// </summary>
+        [Output("authorizedNetworks")]
+        public Output<ImmutableArray<string>> AuthorizedNetworks { get; private set; } = null!;
+
+        /// <summary>
+        /// The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
+        /// </summary>
+        [Output("fqdn")]
+        public Output<string> Fqdn { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Resource labels to represent user provided metadata
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+        /// </summary>
+        [Output("locations")]
+        public Output<ImmutableArray<string>> Locations { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
+        /// </summary>
+        [Output("managedIdentitiesAdminName")]
+        public Output<string> ManagedIdentitiesAdminName { get; private set; } = null!;
+
+        /// <summary>
+        /// Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+        /// </summary>
+        [Output("reservedIpRange")]
+        public Output<string> ReservedIpRange { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of this domain.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional information about the current status of this domain, if available.
+        /// </summary>
+        [Output("statusMessage")]
+        public Output<string> StatusMessage { get; private set; } = null!;
+
+        /// <summary>
+        /// The current trusts associated with the domain.
+        /// </summary>
+        [Output("trusts")]
+        public Output<ImmutableArray<Outputs.TrustResponse>> Trusts { get; private set; } = null!;
+
+        /// <summary>
+        /// Last update time. Synthetic field is populated automatically by CCFE.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Domain resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -78,7 +157,7 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1alpha1
         }
 
         /// <summary>
-        /// Output only. The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
+        /// The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -87,7 +166,7 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1alpha1
         public Input<string> DomainsId { get; set; } = null!;
 
         /// <summary>
-        /// Output only. Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
+        /// Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
         /// </summary>
         [Input("fqdn")]
         public Input<string>? Fqdn { get; set; }
@@ -123,7 +202,7 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1alpha1
         public Input<string>? ManagedIdentitiesAdminName { get; set; }
 
         /// <summary>
-        /// Output only. Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
+        /// Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -138,13 +217,13 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1alpha1
         public Input<string>? ReservedIpRange { get; set; }
 
         /// <summary>
-        /// Output only. The current state of this domain.
+        /// The current state of this domain.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Output only. Additional information about the current status of this domain, if available.
+        /// Additional information about the current status of this domain, if available.
         /// </summary>
         [Input("statusMessage")]
         public Input<string>? StatusMessage { get; set; }
@@ -153,7 +232,7 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1alpha1
         private InputList<Inputs.TrustArgs>? _trusts;
 
         /// <summary>
-        /// Output only. The current trusts associated with the domain.
+        /// The current trusts associated with the domain.
         /// </summary>
         public InputList<Inputs.TrustArgs> Trusts
         {
@@ -162,7 +241,7 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1alpha1
         }
 
         /// <summary>
-        /// Output only. Last update time. Synthetic field is populated automatically by CCFE.
+        /// Last update time. Synthetic field is populated automatically by CCFE.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

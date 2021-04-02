@@ -14,6 +14,37 @@ import (
 // Creates a job in the specified region.
 type Job struct {
 	pulumi.CustomResourceState
+
+	// The configuration for this job.
+	Config JobConfigResponseOutput `pulumi:"config"`
+	// The time the job was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The time the transcoding finished.
+	EndTime pulumi.StringOutput `pulumi:"endTime"`
+	// List of failure details. This property may contain additional information about the failure when `failure_reason` is present. *Note*: This feature is not yet available.
+	FailureDetails FailureDetailResponseArrayOutput `pulumi:"failureDetails"`
+	// A description of the reason for the failure. This property is always present when `state` is `FAILED`.
+	FailureReason pulumi.StringOutput `pulumi:"failureReason"`
+	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
+	InputUri pulumi.StringOutput `pulumi:"inputUri"`
+	// The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The origin URI. *Note*: This feature is not yet available.
+	OriginUri OriginUriResponseOutput `pulumi:"originUri"`
+	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
+	OutputUri pulumi.StringOutput `pulumi:"outputUri"`
+	// Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
+	Priority pulumi.IntOutput `pulumi:"priority"`
+	// Estimated fractional progress, from `0` to `1` for each step. *Note*: This feature is not yet available.
+	Progress ProgressResponseOutput `pulumi:"progress"`
+	// The time the transcoding started.
+	StartTime pulumi.StringOutput `pulumi:"startTime"`
+	// The current state of the job.
+	State pulumi.StringOutput `pulumi:"state"`
+	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+	TemplateId pulumi.StringOutput `pulumi:"templateId"`
+	// Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
+	TtlAfterCompletionDays pulumi.IntOutput `pulumi:"ttlAfterCompletionDays"`
 }
 
 // NewJob registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +85,69 @@ func GetJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Job resources.
 type jobState struct {
+	// The configuration for this job.
+	Config *JobConfigResponse `pulumi:"config"`
+	// The time the job was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The time the transcoding finished.
+	EndTime *string `pulumi:"endTime"`
+	// List of failure details. This property may contain additional information about the failure when `failure_reason` is present. *Note*: This feature is not yet available.
+	FailureDetails []FailureDetailResponse `pulumi:"failureDetails"`
+	// A description of the reason for the failure. This property is always present when `state` is `FAILED`.
+	FailureReason *string `pulumi:"failureReason"`
+	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
+	InputUri *string `pulumi:"inputUri"`
+	// The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
+	Name *string `pulumi:"name"`
+	// The origin URI. *Note*: This feature is not yet available.
+	OriginUri *OriginUriResponse `pulumi:"originUri"`
+	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
+	OutputUri *string `pulumi:"outputUri"`
+	// Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
+	Priority *int `pulumi:"priority"`
+	// Estimated fractional progress, from `0` to `1` for each step. *Note*: This feature is not yet available.
+	Progress *ProgressResponse `pulumi:"progress"`
+	// The time the transcoding started.
+	StartTime *string `pulumi:"startTime"`
+	// The current state of the job.
+	State *string `pulumi:"state"`
+	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+	TemplateId *string `pulumi:"templateId"`
+	// Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
+	TtlAfterCompletionDays *int `pulumi:"ttlAfterCompletionDays"`
 }
 
 type JobState struct {
+	// The configuration for this job.
+	Config JobConfigResponsePtrInput
+	// The time the job was created.
+	CreateTime pulumi.StringPtrInput
+	// The time the transcoding finished.
+	EndTime pulumi.StringPtrInput
+	// List of failure details. This property may contain additional information about the failure when `failure_reason` is present. *Note*: This feature is not yet available.
+	FailureDetails FailureDetailResponseArrayInput
+	// A description of the reason for the failure. This property is always present when `state` is `FAILED`.
+	FailureReason pulumi.StringPtrInput
+	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
+	InputUri pulumi.StringPtrInput
+	// The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
+	Name pulumi.StringPtrInput
+	// The origin URI. *Note*: This feature is not yet available.
+	OriginUri OriginUriResponsePtrInput
+	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
+	OutputUri pulumi.StringPtrInput
+	// Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
+	Priority pulumi.IntPtrInput
+	// Estimated fractional progress, from `0` to `1` for each step. *Note*: This feature is not yet available.
+	Progress ProgressResponsePtrInput
+	// The time the transcoding started.
+	StartTime pulumi.StringPtrInput
+	// The current state of the job.
+	State pulumi.StringPtrInput
+	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+	TemplateId pulumi.StringPtrInput
+	// Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
+	TtlAfterCompletionDays pulumi.IntPtrInput
 }
 
 func (JobState) ElementType() reflect.Type {
@@ -66,33 +157,17 @@ func (JobState) ElementType() reflect.Type {
 type jobArgs struct {
 	// The configuration for this job.
 	Config *JobConfig `pulumi:"config"`
-	// Output only. The time the job was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Output only. The time the transcoding finished.
-	EndTime *string `pulumi:"endTime"`
-	// Output only. List of failure details. This property may contain additional information about the failure when `failure_reason` is present. *Note*: This feature is not yet available.
-	FailureDetails []FailureDetail `pulumi:"failureDetails"`
-	// Output only. A description of the reason for the failure. This property is always present when `state` is `FAILED`.
-	FailureReason *string `pulumi:"failureReason"`
 	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
 	InputUri    *string `pulumi:"inputUri"`
 	JobsId      string  `pulumi:"jobsId"`
 	LocationsId string  `pulumi:"locationsId"`
 	// The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
 	Name *string `pulumi:"name"`
-	// Output only. The origin URI. *Note*: This feature is not yet available.
-	OriginUri *OriginUri `pulumi:"originUri"`
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
 	OutputUri *string `pulumi:"outputUri"`
 	// Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
-	Priority *int `pulumi:"priority"`
-	// Output only. Estimated fractional progress, from `0` to `1` for each step. *Note*: This feature is not yet available.
-	Progress   *Progress `pulumi:"progress"`
-	ProjectsId string    `pulumi:"projectsId"`
-	// Output only. The time the transcoding started.
-	StartTime *string `pulumi:"startTime"`
-	// Output only. The current state of the job.
-	State *string `pulumi:"state"`
+	Priority   *int   `pulumi:"priority"`
+	ProjectsId string `pulumi:"projectsId"`
 	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
 	TemplateId *string `pulumi:"templateId"`
 	// Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
@@ -103,33 +178,17 @@ type jobArgs struct {
 type JobArgs struct {
 	// The configuration for this job.
 	Config JobConfigPtrInput
-	// Output only. The time the job was created.
-	CreateTime pulumi.StringPtrInput
-	// Output only. The time the transcoding finished.
-	EndTime pulumi.StringPtrInput
-	// Output only. List of failure details. This property may contain additional information about the failure when `failure_reason` is present. *Note*: This feature is not yet available.
-	FailureDetails FailureDetailArrayInput
-	// Output only. A description of the reason for the failure. This property is always present when `state` is `FAILED`.
-	FailureReason pulumi.StringPtrInput
 	// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
 	InputUri    pulumi.StringPtrInput
 	JobsId      pulumi.StringInput
 	LocationsId pulumi.StringInput
 	// The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
 	Name pulumi.StringPtrInput
-	// Output only. The origin URI. *Note*: This feature is not yet available.
-	OriginUri OriginUriPtrInput
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
 	OutputUri pulumi.StringPtrInput
 	// Specify the priority of the job. Enter a value between 0 and 100, where 0 is the lowest priority and 100 is the highest priority. The default is 0.
-	Priority pulumi.IntPtrInput
-	// Output only. Estimated fractional progress, from `0` to `1` for each step. *Note*: This feature is not yet available.
-	Progress   ProgressPtrInput
+	Priority   pulumi.IntPtrInput
 	ProjectsId pulumi.StringInput
-	// Output only. The time the transcoding started.
-	StartTime pulumi.StringPtrInput
-	// Output only. The current state of the job.
-	State pulumi.StringPtrInput
 	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
 	TemplateId pulumi.StringPtrInput
 	// Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.

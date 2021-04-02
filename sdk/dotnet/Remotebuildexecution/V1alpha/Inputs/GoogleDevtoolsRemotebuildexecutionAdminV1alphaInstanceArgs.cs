@@ -28,19 +28,19 @@ namespace Pulumi.GoogleCloud.Remotebuildexecution.V1alpha.Inputs
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Output only. Whether stack driver logging is enabled for the instance.
+        /// Whether stack driver logging is enabled for the instance.
         /// </summary>
         [Input("loggingEnabled")]
         public Input<bool>? LoggingEnabled { get; set; }
 
         /// <summary>
-        /// Output only. Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
+        /// Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Output only. State of the instance.
+        /// State of the instance.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

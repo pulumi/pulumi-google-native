@@ -14,6 +14,19 @@ import (
 // Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
 type InspectTemplate struct {
 	pulumi.CustomResourceState
+
+	// The creation timestamp of an inspectTemplate.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Short description (max 256 chars).
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Display name (max 256 chars).
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// The core content of the template. Configuration of the scanning process.
+	InspectConfig GooglePrivacyDlpV2InspectConfigResponseOutput `pulumi:"inspectConfig"`
+	// The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The last update timestamp of an inspectTemplate.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewInspectTemplate registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +67,33 @@ func GetInspectTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InspectTemplate resources.
 type inspectTemplateState struct {
+	// The creation timestamp of an inspectTemplate.
+	CreateTime *string `pulumi:"createTime"`
+	// Short description (max 256 chars).
+	Description *string `pulumi:"description"`
+	// Display name (max 256 chars).
+	DisplayName *string `pulumi:"displayName"`
+	// The core content of the template. Configuration of the scanning process.
+	InspectConfig *GooglePrivacyDlpV2InspectConfigResponse `pulumi:"inspectConfig"`
+	// The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
+	Name *string `pulumi:"name"`
+	// The last update timestamp of an inspectTemplate.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type InspectTemplateState struct {
+	// The creation timestamp of an inspectTemplate.
+	CreateTime pulumi.StringPtrInput
+	// Short description (max 256 chars).
+	Description pulumi.StringPtrInput
+	// Display name (max 256 chars).
+	DisplayName pulumi.StringPtrInput
+	// The core content of the template. Configuration of the scanning process.
+	InspectConfig GooglePrivacyDlpV2InspectConfigResponsePtrInput
+	// The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
+	Name pulumi.StringPtrInput
+	// The last update timestamp of an inspectTemplate.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (InspectTemplateState) ElementType() reflect.Type {
@@ -67,10 +104,8 @@ type inspectTemplateArgs struct {
 	// Required. The InspectTemplate to create.
 	InspectTemplate    *GooglePrivacyDlpV2InspectTemplate `pulumi:"inspectTemplate"`
 	InspectTemplatesId string                             `pulumi:"inspectTemplatesId"`
-	// Deprecated. This field has no effect.
-	LocationId  *string `pulumi:"locationId"`
-	LocationsId string  `pulumi:"locationsId"`
-	ProjectsId  string  `pulumi:"projectsId"`
+	LocationsId        string                             `pulumi:"locationsId"`
+	ProjectsId         string                             `pulumi:"projectsId"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId *string `pulumi:"templateId"`
 }
@@ -80,10 +115,8 @@ type InspectTemplateArgs struct {
 	// Required. The InspectTemplate to create.
 	InspectTemplate    GooglePrivacyDlpV2InspectTemplatePtrInput
 	InspectTemplatesId pulumi.StringInput
-	// Deprecated. This field has no effect.
-	LocationId  pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
-	ProjectsId  pulumi.StringInput
+	LocationsId        pulumi.StringInput
+	ProjectsId         pulumi.StringInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId pulumi.StringPtrInput
 }

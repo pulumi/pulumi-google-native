@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
+from . import outputs
 from ._inputs import *
 
 __all__ = ['MigrationJob']
@@ -16,19 +17,14 @@ class MigrationJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  destination_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
-                 duration: Optional[pulumi.Input[str]] = None,
-                 end_time: Optional[pulumi.Input[str]] = None,
-                 error: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  migration_jobs_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 phase: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  reverse_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']]] = None,
                  source: Optional[pulumi.Input[str]] = None,
@@ -36,7 +32,6 @@ class MigrationJob(pulumi.CustomResource):
                  state: Optional[pulumi.Input[str]] = None,
                  static_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticIpConnectivityArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None,
                  vpc_peering_connectivity: Optional[pulumi.Input[pulumi.InputType['VpcPeeringConnectivityArgs']]] = None,
                  __props__=None,
                  __name__=None,
@@ -46,24 +41,18 @@ class MigrationJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] destination: Required. The resource name (URI) of the destination connection profile.
         :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] destination_database: The database engine type and provider of the destination.
         :param pulumi.Input[str] display_name: The migration job display name.
         :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
-        :param pulumi.Input[str] duration: Output only. The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        :param pulumi.Input[str] end_time: Output only. If the migration job is completed, the time when it was completed.
-        :param pulumi.Input[pulumi.InputType['StatusArgs']] error: Output only. The error details in case of state FAILED.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
-        :param pulumi.Input[str] phase: Output only. The current migration job phase.
         :param pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
         :param pulumi.Input[str] source: Required. The resource name (URI) of the source connection profile.
         :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] source_database: The database engine type and provider of the source.
         :param pulumi.Input[str] state: The current migration job state.
         :param pulumi.Input[pulumi.InputType['StaticIpConnectivityArgs']] static_ip_connectivity: static ip connectivity data (default, no additional details needed).
         :param pulumi.Input[str] type: Required. The migration job type.
-        :param pulumi.Input[str] update_time: Output only. The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[pulumi.InputType['VpcPeeringConnectivityArgs']] vpc_peering_connectivity: The details of the VPC network that the source database is located in.
         """
         if __name__ is not None:
@@ -83,14 +72,10 @@ class MigrationJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['create_time'] = create_time
             __props__['destination'] = destination
             __props__['destination_database'] = destination_database
             __props__['display_name'] = display_name
             __props__['dump_path'] = dump_path
-            __props__['duration'] = duration
-            __props__['end_time'] = end_time
-            __props__['error'] = error
             __props__['labels'] = labels
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
@@ -99,7 +84,6 @@ class MigrationJob(pulumi.CustomResource):
                 raise TypeError("Missing required property 'migration_jobs_id'")
             __props__['migration_jobs_id'] = migration_jobs_id
             __props__['name'] = name
-            __props__['phase'] = phase
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
@@ -109,8 +93,13 @@ class MigrationJob(pulumi.CustomResource):
             __props__['state'] = state
             __props__['static_ip_connectivity'] = static_ip_connectivity
             __props__['type'] = type
-            __props__['update_time'] = update_time
             __props__['vpc_peering_connectivity'] = vpc_peering_connectivity
+            __props__['create_time'] = None
+            __props__['duration'] = None
+            __props__['end_time'] = None
+            __props__['error'] = None
+            __props__['phase'] = None
+            __props__['update_time'] = None
         super(MigrationJob, __self__).__init__(
             'google-cloud:datamigration/v1beta1:MigrationJob',
             resource_name,
@@ -133,7 +122,178 @@ class MigrationJob(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["create_time"] = None
+        __props__["destination"] = None
+        __props__["destination_database"] = None
+        __props__["display_name"] = None
+        __props__["dump_path"] = None
+        __props__["duration"] = None
+        __props__["end_time"] = None
+        __props__["error"] = None
+        __props__["labels"] = None
+        __props__["name"] = None
+        __props__["phase"] = None
+        __props__["reverse_ssh_connectivity"] = None
+        __props__["source"] = None
+        __props__["source_database"] = None
+        __props__["state"] = None
+        __props__["static_ip_connectivity"] = None
+        __props__["type"] = None
+        __props__["update_time"] = None
+        __props__["vpc_peering_connectivity"] = None
         return MigrationJob(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def destination(self) -> pulumi.Output[str]:
+        """
+        Required. The resource name (URI) of the destination connection profile.
+        """
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter(name="destinationDatabase")
+    def destination_database(self) -> pulumi.Output['outputs.DatabaseTypeResponse']:
+        """
+        The database engine type and provider of the destination.
+        """
+        return pulumi.get(self, "destination_database")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        The migration job display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="dumpPath")
+    def dump_path(self) -> pulumi.Output[str]:
+        """
+        The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+        """
+        return pulumi.get(self, "dump_path")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Output[str]:
+        """
+        The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Output[str]:
+        """
+        If the migration job is completed, the time when it was completed.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter
+    def error(self) -> pulumi.Output['outputs.StatusResponse']:
+        """
+        The error details in case of state FAILED.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[str]:
+        """
+        The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def phase(self) -> pulumi.Output[str]:
+        """
+        The current migration job phase.
+        """
+        return pulumi.get(self, "phase")
+
+    @property
+    @pulumi.getter(name="reverseSshConnectivity")
+    def reverse_ssh_connectivity(self) -> pulumi.Output['outputs.ReverseSshConnectivityResponse']:
+        """
+        The details needed to communicate to the source over Reverse SSH tunnel connectivity.
+        """
+        return pulumi.get(self, "reverse_ssh_connectivity")
+
+    @property
+    @pulumi.getter
+    def source(self) -> pulumi.Output[str]:
+        """
+        Required. The resource name (URI) of the source connection profile.
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="sourceDatabase")
+    def source_database(self) -> pulumi.Output['outputs.DatabaseTypeResponse']:
+        """
+        The database engine type and provider of the source.
+        """
+        return pulumi.get(self, "source_database")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The current migration job state.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="staticIpConnectivity")
+    def static_ip_connectivity(self) -> pulumi.Output['outputs.StaticIpConnectivityResponse']:
+        """
+        static ip connectivity data (default, no additional details needed).
+        """
+        return pulumi.get(self, "static_ip_connectivity")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        Required. The migration job type.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="vpcPeeringConnectivity")
+    def vpc_peering_connectivity(self) -> pulumi.Output['outputs.VpcPeeringConnectivityResponse']:
+        """
+        The details of the VPC network that the source database is located in.
+        """
+        return pulumi.get(self, "vpc_peering_connectivity")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

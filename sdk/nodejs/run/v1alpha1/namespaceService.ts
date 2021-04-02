@@ -35,6 +35,26 @@ export class NamespaceService extends pulumi.CustomResource {
         return obj['__pulumiType'] === NamespaceService.__pulumiType;
     }
 
+    /**
+     * The API version for this call such as "serving.knative.dev/v1alpha1".
+     */
+    public readonly apiVersion!: pulumi.Output<string>;
+    /**
+     * The kind of resource, in this case "Service".
+     */
+    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Metadata associated with this Service, including name, namespace, labels, and annotations.
+     */
+    public readonly metadata!: pulumi.Output<outputs.run.v1alpha1.ObjectMetaResponse>;
+    /**
+     * Spec holds the desired state of the Service (from the client).
+     */
+    public readonly spec!: pulumi.Output<outputs.run.v1alpha1.ServiceSpecResponse>;
+    /**
+     * Status communicates the observed state of the Service (from the controller).
+     */
+    public readonly status!: pulumi.Output<outputs.run.v1alpha1.ServiceStatusResponse>;
 
     /**
      * Create a NamespaceService resource with the given unique name, arguments, and options.
@@ -61,6 +81,11 @@ export class NamespaceService extends pulumi.CustomResource {
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
+            inputs["apiVersion"] = undefined /*out*/;
+            inputs["kind"] = undefined /*out*/;
+            inputs["metadata"] = undefined /*out*/;
+            inputs["spec"] = undefined /*out*/;
+            inputs["status"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

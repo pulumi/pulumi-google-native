@@ -35,6 +35,22 @@ export class Attestor extends pulumi.CustomResource {
         return obj['__pulumiType'] === Attestor.__pulumiType;
     }
 
+    /**
+     * Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Required. The resource name, in the format: `projects/*&#47;attestors/*`. This field may not be updated.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Time when the attestor was last updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * This specifies how an attestation will be read, and how it will be used during policy enforcement.
+     */
+    public readonly userOwnedGrafeasNote!: pulumi.Output<outputs.binaryauthorization.v1.UserOwnedGrafeasNoteResponse>;
 
     /**
      * Create a Attestor resource with the given unique name, arguments, and options.
@@ -57,9 +73,13 @@ export class Attestor extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["userOwnedGrafeasNote"] = args ? args.userOwnedGrafeasNote : undefined;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["description"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
+            inputs["userOwnedGrafeasNote"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -82,10 +102,6 @@ export interface AttestorArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
-    /**
-     * Output only. Time when the attestor was last updated.
-     */
-    readonly updateTime?: pulumi.Input<string>;
     /**
      * This specifies how an attestation will be read, and how it will be used during policy enforcement.
      */

@@ -14,6 +14,15 @@ import (
 // Creates a new Secret containing no SecretVersions.
 type Secret struct {
 	pulumi.CustomResourceState
+
+	// The time at which the Secret was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The resource name of the Secret in the format `projects/*/secrets/*`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+	Replication ReplicationResponseOutput `pulumi:"replication"`
 }
 
 // NewSecret registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +60,25 @@ func GetSecret(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Secret resources.
 type secretState struct {
+	// The time at which the Secret was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
+	Labels map[string]string `pulumi:"labels"`
+	// The resource name of the Secret in the format `projects/*/secrets/*`.
+	Name *string `pulumi:"name"`
+	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+	Replication *ReplicationResponse `pulumi:"replication"`
 }
 
 type SecretState struct {
+	// The time at which the Secret was created.
+	CreateTime pulumi.StringPtrInput
+	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
+	Labels pulumi.StringMapInput
+	// The resource name of the Secret in the format `projects/*/secrets/*`.
+	Name pulumi.StringPtrInput
+	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+	Replication ReplicationResponsePtrInput
 }
 
 func (SecretState) ElementType() reflect.Type {
@@ -61,13 +86,9 @@ func (SecretState) ElementType() reflect.Type {
 }
 
 type secretArgs struct {
-	// Output only. The time at which the Secret was created.
-	CreateTime *string `pulumi:"createTime"`
 	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
-	Labels map[string]string `pulumi:"labels"`
-	// Output only. The resource name of the Secret in the format `projects/*/secrets/*`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Labels     map[string]string `pulumi:"labels"`
+	ProjectsId string            `pulumi:"projectsId"`
 	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication *Replication `pulumi:"replication"`
 	SecretsId   string       `pulumi:"secretsId"`
@@ -75,12 +96,8 @@ type secretArgs struct {
 
 // The set of arguments for constructing a Secret resource.
 type SecretArgs struct {
-	// Output only. The time at which the Secret was created.
-	CreateTime pulumi.StringPtrInput
 	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
-	Labels pulumi.StringMapInput
-	// Output only. The resource name of the Secret in the format `projects/*/secrets/*`.
-	Name       pulumi.StringPtrInput
+	Labels     pulumi.StringMapInput
 	ProjectsId pulumi.StringInput
 	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication ReplicationPtrInput

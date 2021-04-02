@@ -35,6 +35,42 @@ export class OrganizationInstanceCanaryevaluation extends pulumi.CustomResource 
         return obj['__pulumiType'] === OrganizationInstanceCanaryevaluation.__pulumiType;
     }
 
+    /**
+     * Required. The stable version that is serving requests.
+     */
+    public readonly control!: pulumi.Output<string>;
+    /**
+     * Create time of the canary evaluation.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Required. End time for the evaluation's analysis.
+     */
+    public readonly endTime!: pulumi.Output<string>;
+    /**
+     * Required. Labels used to filter the metrics used for a canary evaluation.
+     */
+    public readonly metricLabels!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse>;
+    /**
+     * Name of the canary evalution.
+     */
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Required. Start time for the canary evaluation's analysis.
+     */
+    public readonly startTime!: pulumi.Output<string>;
+    /**
+     * The current state of the canary evaluation.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Required. The newer version that is serving requests.
+     */
+    public readonly treatment!: pulumi.Output<string>;
+    /**
+     * The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
+     */
+    public /*out*/ readonly verdict!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationInstanceCanaryevaluation resource with the given unique name, arguments, and options.
@@ -58,17 +94,26 @@ export class OrganizationInstanceCanaryevaluation extends pulumi.CustomResource 
             }
             inputs["canaryevaluationsId"] = args ? args.canaryevaluationsId : undefined;
             inputs["control"] = args ? args.control : undefined;
-            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["metricLabels"] = args ? args.metricLabels : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["state"] = args ? args.state : undefined;
             inputs["treatment"] = args ? args.treatment : undefined;
-            inputs["verdict"] = args ? args.verdict : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["verdict"] = undefined /*out*/;
         } else {
+            inputs["control"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["endTime"] = undefined /*out*/;
+            inputs["metricLabels"] = undefined /*out*/;
+            inputs["name"] = undefined /*out*/;
+            inputs["startTime"] = undefined /*out*/;
+            inputs["state"] = undefined /*out*/;
+            inputs["treatment"] = undefined /*out*/;
+            inputs["verdict"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -87,10 +132,6 @@ export interface OrganizationInstanceCanaryevaluationArgs {
      */
     readonly control?: pulumi.Input<string>;
     /**
-     * Output only. Create time of the canary evaluation.
-     */
-    readonly createTime?: pulumi.Input<string>;
-    /**
      * Required. End time for the evaluation's analysis.
      */
     readonly endTime?: pulumi.Input<string>;
@@ -99,25 +140,13 @@ export interface OrganizationInstanceCanaryevaluationArgs {
      * Required. Labels used to filter the metrics used for a canary evaluation.
      */
     readonly metricLabels?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CanaryEvaluationMetricLabels>;
-    /**
-     * Output only. Name of the canary evalution.
-     */
-    readonly name?: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
     /**
      * Required. Start time for the canary evaluation's analysis.
      */
     readonly startTime?: pulumi.Input<string>;
     /**
-     * Output only. The current state of the canary evaluation.
-     */
-    readonly state?: pulumi.Input<string>;
-    /**
      * Required. The newer version that is serving requests.
      */
     readonly treatment?: pulumi.Input<string>;
-    /**
-     * Output only. The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
-     */
-    readonly verdict?: pulumi.Input<string>;
 }

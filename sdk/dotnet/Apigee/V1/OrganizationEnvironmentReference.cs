@@ -16,6 +16,31 @@ namespace Pulumi.GoogleCloud.Apigee.V1
     public partial class OrganizationEnvironmentReference : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. A human-readable description of this reference.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+        /// </summary>
+        [Output("refers")]
+        public Output<string> Refers { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
+        /// </summary>
+        [Output("resourceType")]
+        public Output<string> ResourceType { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a OrganizationEnvironmentReference resource with the given unique name, arguments, and options.
         /// </summary>
         ///

@@ -14,6 +14,29 @@ import (
 // Creates a backup.
 type Backup struct {
 	pulumi.CustomResourceState
+
+	// Capacity of the source file share when the backup was created.
+	CapacityGb pulumi.StringOutput `pulumi:"capacityGb"`
+	// The time when the backup was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.
+	DownloadBytes pulumi.StringOutput `pulumi:"downloadBytes"`
+	// Resource labels to represent user provided metadata.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
+	SourceFileShare pulumi.StringOutput `pulumi:"sourceFileShare"`
+	// The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+	SourceInstance pulumi.StringOutput `pulumi:"sourceInstance"`
+	// The service tier of the source Cloud Filestore instance that this backup is created from.
+	SourceInstanceTier pulumi.StringOutput `pulumi:"sourceInstanceTier"`
+	// The backup state.
+	State pulumi.StringOutput `pulumi:"state"`
+	// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
+	StorageBytes pulumi.StringOutput `pulumi:"storageBytes"`
 }
 
 // NewBackup registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +77,53 @@ func GetBackup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Backup resources.
 type backupState struct {
+	// Capacity of the source file share when the backup was created.
+	CapacityGb *string `pulumi:"capacityGb"`
+	// The time when the backup was created.
+	CreateTime *string `pulumi:"createTime"`
+	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
+	Description *string `pulumi:"description"`
+	// Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.
+	DownloadBytes *string `pulumi:"downloadBytes"`
+	// Resource labels to represent user provided metadata.
+	Labels map[string]string `pulumi:"labels"`
+	// The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.
+	Name *string `pulumi:"name"`
+	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
+	SourceFileShare *string `pulumi:"sourceFileShare"`
+	// The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+	SourceInstance *string `pulumi:"sourceInstance"`
+	// The service tier of the source Cloud Filestore instance that this backup is created from.
+	SourceInstanceTier *string `pulumi:"sourceInstanceTier"`
+	// The backup state.
+	State *string `pulumi:"state"`
+	// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
+	StorageBytes *string `pulumi:"storageBytes"`
 }
 
 type BackupState struct {
+	// Capacity of the source file share when the backup was created.
+	CapacityGb pulumi.StringPtrInput
+	// The time when the backup was created.
+	CreateTime pulumi.StringPtrInput
+	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
+	Description pulumi.StringPtrInput
+	// Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.
+	DownloadBytes pulumi.StringPtrInput
+	// Resource labels to represent user provided metadata.
+	Labels pulumi.StringMapInput
+	// The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.
+	Name pulumi.StringPtrInput
+	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
+	SourceFileShare pulumi.StringPtrInput
+	// The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+	SourceInstance pulumi.StringPtrInput
+	// The service tier of the source Cloud Filestore instance that this backup is created from.
+	SourceInstanceTier pulumi.StringPtrInput
+	// The backup state.
+	State pulumi.StringPtrInput
+	// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
+	StorageBytes pulumi.StringPtrInput
 }
 
 func (BackupState) ElementType() reflect.Type {
@@ -65,59 +132,31 @@ func (BackupState) ElementType() reflect.Type {
 
 type backupArgs struct {
 	BackupsId string `pulumi:"backupsId"`
-	// Output only. Capacity of the source file share when the backup was created.
-	CapacityGb *string `pulumi:"capacityGb"`
-	// Output only. The time when the backup was created.
-	CreateTime *string `pulumi:"createTime"`
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description *string `pulumi:"description"`
-	// Output only. Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.
-	DownloadBytes *string `pulumi:"downloadBytes"`
 	// Resource labels to represent user provided metadata.
 	Labels      map[string]string `pulumi:"labels"`
 	LocationsId string            `pulumi:"locationsId"`
-	// Output only. The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	ProjectsId  string            `pulumi:"projectsId"`
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare *string `pulumi:"sourceFileShare"`
 	// The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
 	SourceInstance *string `pulumi:"sourceInstance"`
-	// Output only. The service tier of the source Cloud Filestore instance that this backup is created from.
-	SourceInstanceTier *string `pulumi:"sourceInstanceTier"`
-	// Output only. The backup state.
-	State *string `pulumi:"state"`
-	// Output only. The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
-	StorageBytes *string `pulumi:"storageBytes"`
 }
 
 // The set of arguments for constructing a Backup resource.
 type BackupArgs struct {
 	BackupsId pulumi.StringInput
-	// Output only. Capacity of the source file share when the backup was created.
-	CapacityGb pulumi.StringPtrInput
-	// Output only. The time when the backup was created.
-	CreateTime pulumi.StringPtrInput
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringPtrInput
-	// Output only. Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.
-	DownloadBytes pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
 	Labels      pulumi.StringMapInput
 	LocationsId pulumi.StringInput
-	// Output only. The resource name of the backup, in the format projects/{project_number}/locations/{location_id}/backups/{backup_id}.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	ProjectsId  pulumi.StringInput
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare pulumi.StringPtrInput
 	// The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
 	SourceInstance pulumi.StringPtrInput
-	// Output only. The service tier of the source Cloud Filestore instance that this backup is created from.
-	SourceInstanceTier pulumi.StringPtrInput
-	// Output only. The backup state.
-	State pulumi.StringPtrInput
-	// Output only. The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
-	StorageBytes pulumi.StringPtrInput
 }
 
 func (BackupArgs) ElementType() reflect.Type {

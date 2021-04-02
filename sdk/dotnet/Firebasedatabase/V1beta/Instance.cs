@@ -16,6 +16,37 @@ namespace Pulumi.GoogleCloud.Firebasedatabase.V1beta
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// Immutable. The globally unique hostname of the database.
+        /// </summary>
+        [Output("databaseUrl")]
+        public Output<string> DatabaseUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
+        /// </summary>
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The database's lifecycle state. Read-only.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
         /// </summary>
         ///
