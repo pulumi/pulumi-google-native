@@ -38,23 +38,23 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The policy to define whether or not RBE features can be used or how they can be used.
      */
-    public /*out*/ readonly featurePolicy!: pulumi.Output<outputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse>;
+    public readonly featurePolicy!: pulumi.Output<outputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse>;
     /**
      * The location is a GCP region. Currently only `us-central1` is supported.
      */
-    public /*out*/ readonly location!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Whether stack driver logging is enabled for the instance.
      */
-    public /*out*/ readonly loggingEnabled!: pulumi.Output<boolean>;
+    public readonly loggingEnabled!: pulumi.Output<boolean>;
     /**
      * Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * State of the instance.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    public readonly state!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -73,16 +73,15 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["instance"] = args ? args.instance : undefined;
+            inputs["featurePolicy"] = args ? args.featurePolicy : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["loggingEnabled"] = args ? args.loggingEnabled : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["featurePolicy"] = undefined /*out*/;
-            inputs["location"] = undefined /*out*/;
-            inputs["loggingEnabled"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            inputs["state"] = args ? args.state : undefined;
         } else {
             inputs["featurePolicy"] = undefined /*out*/;
             inputs["location"] = undefined /*out*/;
@@ -102,17 +101,33 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceArgs {
     /**
-     * Specifies the instance to create. The name in the instance, if specified in the instance, is ignored.
+     * The policy to define whether or not RBE features can be used or how they can be used.
      */
-    readonly instance?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance>;
+    readonly featurePolicy?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy>;
     /**
      * ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
      */
     readonly instanceId?: pulumi.Input<string>;
     readonly instancesId: pulumi.Input<string>;
     /**
+     * The location is a GCP region. Currently only `us-central1` is supported.
+     */
+    readonly location?: pulumi.Input<string>;
+    /**
+     * Whether stack driver logging is enabled for the instance.
+     */
+    readonly loggingEnabled?: pulumi.Input<boolean>;
+    /**
+     * Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
+     */
+    readonly name?: pulumi.Input<string>;
+    /**
      * Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
      */
     readonly parent?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    /**
+     * State of the instance.
+     */
+    readonly state?: pulumi.Input<string>;
 }

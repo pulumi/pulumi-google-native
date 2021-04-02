@@ -38,31 +38,31 @@ export class QueueTask extends pulumi.CustomResource {
     /**
      * App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
      */
-    public /*out*/ readonly appEngineHttpRequest!: pulumi.Output<outputs.cloudtasks.v2beta2.AppEngineHttpRequestResponse>;
+    public readonly appEngineHttpRequest!: pulumi.Output<outputs.cloudtasks.v2beta2.AppEngineHttpRequestResponse>;
     /**
      * The time that the task was created. `create_time` will be truncated to the nearest second.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly createTime!: pulumi.Output<string>;
     /**
      * Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is a task that has PullMessage set.
      */
-    public /*out*/ readonly pullMessage!: pulumi.Output<outputs.cloudtasks.v2beta2.PullMessageResponse>;
+    public readonly pullMessage!: pulumi.Output<outputs.cloudtasks.v2beta2.PullMessageResponse>;
     /**
      * The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if a task is currently leased, this is the time when the current lease expires, that is, the time that the task was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.
      */
-    public /*out*/ readonly scheduleTime!: pulumi.Output<string>;
+    public readonly scheduleTime!: pulumi.Output<string>;
     /**
      * The task status.
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.cloudtasks.v2beta2.TaskStatusResponse>;
+    public readonly status!: pulumi.Output<outputs.cloudtasks.v2beta2.TaskStatusResponse>;
     /**
      * The view specifies which subset of the Task has been returned.
      */
-    public /*out*/ readonly view!: pulumi.Output<string>;
+    public readonly view!: pulumi.Output<string>;
 
     /**
      * Create a QueueTask resource with the given unique name, arguments, and options.
@@ -87,19 +87,18 @@ export class QueueTask extends pulumi.CustomResource {
             if ((!args || args.tasksId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tasksId'");
             }
+            inputs["appEngineHttpRequest"] = args ? args.appEngineHttpRequest : undefined;
+            inputs["createTime"] = args ? args.createTime : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["pullMessage"] = args ? args.pullMessage : undefined;
             inputs["queuesId"] = args ? args.queuesId : undefined;
             inputs["responseView"] = args ? args.responseView : undefined;
-            inputs["task"] = args ? args.task : undefined;
+            inputs["scheduleTime"] = args ? args.scheduleTime : undefined;
+            inputs["status"] = args ? args.status : undefined;
             inputs["tasksId"] = args ? args.tasksId : undefined;
-            inputs["appEngineHttpRequest"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["pullMessage"] = undefined /*out*/;
-            inputs["scheduleTime"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["view"] = undefined /*out*/;
+            inputs["view"] = args ? args.view : undefined;
         } else {
             inputs["appEngineHttpRequest"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
@@ -120,16 +119,40 @@ export class QueueTask extends pulumi.CustomResource {
  * The set of arguments for constructing a QueueTask resource.
  */
 export interface QueueTaskArgs {
+    /**
+     * App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
+     */
+    readonly appEngineHttpRequest?: pulumi.Input<inputs.cloudtasks.v2beta2.AppEngineHttpRequest>;
+    /**
+     * The time that the task was created. `create_time` will be truncated to the nearest second.
+     */
+    readonly createTime?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
+    /**
+     * Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
+     */
+    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    /**
+     * LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is a task that has PullMessage set.
+     */
+    readonly pullMessage?: pulumi.Input<inputs.cloudtasks.v2beta2.PullMessage>;
     readonly queuesId: pulumi.Input<string>;
     /**
      * The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
      */
     readonly responseView?: pulumi.Input<string>;
     /**
-     * Required. The task to add. Task names have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`. The user can optionally specify a task name. If a name is not specified then the system will generate a random unique task id, which will be set in the task returned in the response. If schedule_time is not set or is in the past then Cloud Tasks will set it to the current time. Task De-duplication: Explicitly specifying a task ID enables task de-duplication. If a task's ID is identical to that of an existing task or a task that was deleted or completed recently then the call will fail with ALREADY_EXISTS. If the task's queue was created using Cloud Tasks, then another task with the same name can't be created for ~1hour after the original task was deleted or completed. If the task's queue was created using queue.yaml or queue.xml, then another task with the same name can't be created for ~9days after the original task was deleted or completed. Because there is an extra lookup cost to identify duplicate task names, these CreateTask calls have significantly increased latency. Using hashed strings for the task id or for the prefix of the task id is recommended. Choosing task ids that are sequential or have sequential prefixes, for example using a timestamp, causes an increase in latency and error rates in all task commands. The infrastructure relies on an approximately uniform distribution of task ids to store and serve tasks efficiently.
+     * The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if a task is currently leased, this is the time when the current lease expires, that is, the time that the task was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.
      */
-    readonly task?: pulumi.Input<inputs.cloudtasks.v2beta2.Task>;
+    readonly scheduleTime?: pulumi.Input<string>;
+    /**
+     * The task status.
+     */
+    readonly status?: pulumi.Input<inputs.cloudtasks.v2beta2.TaskStatus>;
     readonly tasksId: pulumi.Input<string>;
+    /**
+     * The view specifies which subset of the Task has been returned.
+     */
+    readonly view?: pulumi.Input<string>;
 }

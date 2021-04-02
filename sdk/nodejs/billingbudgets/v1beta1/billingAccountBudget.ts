@@ -38,23 +38,23 @@ export class BillingAccountBudget extends pulumi.CustomResource {
     /**
      * Optional. Rules to apply to notifications sent based on budget spend and thresholds.
      */
-    public /*out*/ readonly allUpdatesRule!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse>;
+    public readonly allUpdatesRule!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse>;
     /**
      * Required. Budgeted amount.
      */
-    public /*out*/ readonly amount!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse>;
+    public readonly amount!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse>;
     /**
      * Optional. Filters that define which resources are used to compute the actual spend against the budget.
      */
-    public /*out*/ readonly budgetFilter!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1FilterResponse>;
+    public readonly budgetFilter!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1FilterResponse>;
     /**
      * User data for display name in UI. Validation: <= 60 chars.
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string>;
     /**
      * Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    public readonly etag!: pulumi.Output<string>;
     /**
      * Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
      */
@@ -62,7 +62,7 @@ export class BillingAccountBudget extends pulumi.CustomResource {
     /**
      * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
      */
-    public /*out*/ readonly thresholdRules!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse[]>;
+    public readonly thresholdRules!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse[]>;
 
     /**
      * Create a BillingAccountBudget resource with the given unique name, arguments, and options.
@@ -81,16 +81,15 @@ export class BillingAccountBudget extends pulumi.CustomResource {
             if ((!args || args.budgetsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'budgetsId'");
             }
+            inputs["allUpdatesRule"] = args ? args.allUpdatesRule : undefined;
+            inputs["amount"] = args ? args.amount : undefined;
             inputs["billingAccountsId"] = args ? args.billingAccountsId : undefined;
-            inputs["budget"] = args ? args.budget : undefined;
+            inputs["budgetFilter"] = args ? args.budgetFilter : undefined;
             inputs["budgetsId"] = args ? args.budgetsId : undefined;
-            inputs["allUpdatesRule"] = undefined /*out*/;
-            inputs["amount"] = undefined /*out*/;
-            inputs["budgetFilter"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["etag"] = undefined /*out*/;
+            inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["etag"] = args ? args.etag : undefined;
+            inputs["thresholdRules"] = args ? args.thresholdRules : undefined;
             inputs["name"] = undefined /*out*/;
-            inputs["thresholdRules"] = undefined /*out*/;
         } else {
             inputs["allUpdatesRule"] = undefined /*out*/;
             inputs["amount"] = undefined /*out*/;
@@ -111,10 +110,30 @@ export class BillingAccountBudget extends pulumi.CustomResource {
  * The set of arguments for constructing a BillingAccountBudget resource.
  */
 export interface BillingAccountBudgetArgs {
+    /**
+     * Optional. Rules to apply to notifications sent based on budget spend and thresholds.
+     */
+    readonly allUpdatesRule?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1AllUpdatesRule>;
+    /**
+     * Required. Budgeted amount.
+     */
+    readonly amount?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1BudgetAmount>;
     readonly billingAccountsId: pulumi.Input<string>;
     /**
-     * Required. Budget to create.
+     * Optional. Filters that define which resources are used to compute the actual spend against the budget.
      */
-    readonly budget?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1Budget>;
+    readonly budgetFilter?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1Filter>;
     readonly budgetsId: pulumi.Input<string>;
+    /**
+     * User data for display name in UI. Validation: <= 60 chars.
+     */
+    readonly displayName?: pulumi.Input<string>;
+    /**
+     * Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+     */
+    readonly etag?: pulumi.Input<string>;
+    /**
+     * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+     */
+    readonly thresholdRules?: pulumi.Input<pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1ThresholdRule>[]>;
 }

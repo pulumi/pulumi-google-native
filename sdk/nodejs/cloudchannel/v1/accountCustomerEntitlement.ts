@@ -38,11 +38,11 @@ export class AccountCustomerEntitlement extends pulumi.CustomResource {
     /**
      * Association information to other entitlements.
      */
-    public /*out*/ readonly associationInfo!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1AssociationInfoResponse>;
+    public readonly associationInfo!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1AssociationInfoResponse>;
     /**
      * Commitment settings for a commitment-based Offer. Required for commitment based offers.
      */
-    public /*out*/ readonly commitmentSettings!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1CommitmentSettingsResponse>;
+    public readonly commitmentSettings!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1CommitmentSettingsResponse>;
     /**
      * The time at which the entitlement is created.
      */
@@ -54,11 +54,11 @@ export class AccountCustomerEntitlement extends pulumi.CustomResource {
     /**
      * Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
      */
-    public /*out*/ readonly offer!: pulumi.Output<string>;
+    public readonly offer!: pulumi.Output<string>;
     /**
      * Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
      */
-    public /*out*/ readonly parameters!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1ParameterResponse[]>;
+    public readonly parameters!: pulumi.Output<outputs.cloudchannel.v1.GoogleCloudChannelV1ParameterResponse[]>;
     /**
      * Service provisioning details for the entitlement.
      */
@@ -70,7 +70,7 @@ export class AccountCustomerEntitlement extends pulumi.CustomResource {
     /**
      * Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
      */
-    public /*out*/ readonly purchaseOrderId!: pulumi.Output<string>;
+    public readonly purchaseOrderId!: pulumi.Output<string>;
     /**
      * Enumerable of all current suspension reasons for an entitlement.
      */
@@ -105,19 +105,18 @@ export class AccountCustomerEntitlement extends pulumi.CustomResource {
                 throw new Error("Missing required property 'entitlementsId'");
             }
             inputs["accountsId"] = args ? args.accountsId : undefined;
+            inputs["associationInfo"] = args ? args.associationInfo : undefined;
+            inputs["commitmentSettings"] = args ? args.commitmentSettings : undefined;
             inputs["customersId"] = args ? args.customersId : undefined;
-            inputs["entitlement"] = args ? args.entitlement : undefined;
             inputs["entitlementsId"] = args ? args.entitlementsId : undefined;
+            inputs["offer"] = args ? args.offer : undefined;
+            inputs["parameters"] = args ? args.parameters : undefined;
+            inputs["purchaseOrderId"] = args ? args.purchaseOrderId : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["associationInfo"] = undefined /*out*/;
-            inputs["commitmentSettings"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
-            inputs["offer"] = undefined /*out*/;
-            inputs["parameters"] = undefined /*out*/;
             inputs["provisionedService"] = undefined /*out*/;
             inputs["provisioningState"] = undefined /*out*/;
-            inputs["purchaseOrderId"] = undefined /*out*/;
             inputs["suspensionReasons"] = undefined /*out*/;
             inputs["trialSettings"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -147,12 +146,28 @@ export class AccountCustomerEntitlement extends pulumi.CustomResource {
  */
 export interface AccountCustomerEntitlementArgs {
     readonly accountsId: pulumi.Input<string>;
-    readonly customersId: pulumi.Input<string>;
     /**
-     * Required. The entitlement to create.
+     * Association information to other entitlements.
      */
-    readonly entitlement?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1Entitlement>;
+    readonly associationInfo?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1AssociationInfo>;
+    /**
+     * Commitment settings for a commitment-based Offer. Required for commitment based offers.
+     */
+    readonly commitmentSettings?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1CommitmentSettings>;
+    readonly customersId: pulumi.Input<string>;
     readonly entitlementsId: pulumi.Input<string>;
+    /**
+     * Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+     */
+    readonly offer?: pulumi.Input<string>;
+    /**
+     * Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+     */
+    readonly parameters?: pulumi.Input<pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1Parameter>[]>;
+    /**
+     * Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
+     */
+    readonly purchaseOrderId?: pulumi.Input<string>;
     /**
      * Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`).
      */

@@ -38,43 +38,43 @@ export class EvaluationJob extends pulumi.CustomResource {
     /**
      * Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
      */
-    public /*out*/ readonly annotationSpecSet!: pulumi.Output<string>;
+    public readonly annotationSpecSet!: pulumi.Output<string>;
     /**
      * Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
      */
-    public /*out*/ readonly attempts!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AttemptResponse[]>;
+    public readonly attempts!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AttemptResponse[]>;
     /**
      * Timestamp of when this evaluation job was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly createTime!: pulumi.Output<string>;
     /**
      * Required. Description of the job. The description can be up to 25,000 characters long.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Required. Configuration details for the evaluation job.
      */
-    public /*out*/ readonly evaluationJobConfig!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse>;
+    public readonly evaluationJobConfig!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse>;
     /**
      * Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
      */
-    public /*out*/ readonly labelMissingGroundTruth!: pulumi.Output<boolean>;
+    public readonly labelMissingGroundTruth!: pulumi.Output<boolean>;
     /**
      * Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
      */
-    public /*out*/ readonly modelVersion!: pulumi.Output<string>;
+    public readonly modelVersion!: pulumi.Output<string>;
     /**
      * After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
      */
-    public /*out*/ readonly schedule!: pulumi.Output<string>;
+    public readonly schedule!: pulumi.Output<string>;
     /**
      * Describes the current state of the job.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    public readonly state!: pulumi.Output<string>;
 
     /**
      * Create a EvaluationJob resource with the given unique name, arguments, and options.
@@ -93,19 +93,18 @@ export class EvaluationJob extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["annotationSpecSet"] = args ? args.annotationSpecSet : undefined;
+            inputs["attempts"] = args ? args.attempts : undefined;
+            inputs["createTime"] = args ? args.createTime : undefined;
+            inputs["description"] = args ? args.description : undefined;
+            inputs["evaluationJobConfig"] = args ? args.evaluationJobConfig : undefined;
             inputs["evaluationJobsId"] = args ? args.evaluationJobsId : undefined;
-            inputs["job"] = args ? args.job : undefined;
+            inputs["labelMissingGroundTruth"] = args ? args.labelMissingGroundTruth : undefined;
+            inputs["modelVersion"] = args ? args.modelVersion : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["annotationSpecSet"] = undefined /*out*/;
-            inputs["attempts"] = undefined /*out*/;
-            inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["evaluationJobConfig"] = undefined /*out*/;
-            inputs["labelMissingGroundTruth"] = undefined /*out*/;
-            inputs["modelVersion"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["schedule"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
+            inputs["schedule"] = args ? args.schedule : undefined;
+            inputs["state"] = args ? args.state : undefined;
         } else {
             inputs["annotationSpecSet"] = undefined /*out*/;
             inputs["attempts"] = undefined /*out*/;
@@ -129,10 +128,46 @@ export class EvaluationJob extends pulumi.CustomResource {
  * The set of arguments for constructing a EvaluationJob resource.
  */
 export interface EvaluationJobArgs {
+    /**
+     * Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+     */
+    readonly annotationSpecSet?: pulumi.Input<string>;
+    /**
+     * Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
+     */
+    readonly attempts?: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1Attempt>[]>;
+    /**
+     * Timestamp of when this evaluation job was created.
+     */
+    readonly createTime?: pulumi.Input<string>;
+    /**
+     * Required. Description of the job. The description can be up to 25,000 characters long.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
+     * Required. Configuration details for the evaluation job.
+     */
+    readonly evaluationJobConfig?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1EvaluationJobConfig>;
     readonly evaluationJobsId: pulumi.Input<string>;
     /**
-     * Required. The evaluation job to create.
+     * Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
      */
-    readonly job?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1EvaluationJob>;
+    readonly labelMissingGroundTruth?: pulumi.Input<boolean>;
+    /**
+     * Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
+     */
+    readonly modelVersion?: pulumi.Input<string>;
+    /**
+     * After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
+     */
+    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    /**
+     * Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
+     */
+    readonly schedule?: pulumi.Input<string>;
+    /**
+     * Describes the current state of the job.
+     */
+    readonly state?: pulumi.Input<string>;
 }

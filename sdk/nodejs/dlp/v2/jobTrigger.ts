@@ -42,11 +42,11 @@ export class JobTrigger extends pulumi.CustomResource {
     /**
      * User provided description (max 256 chars)
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Display name (max 100 chars)
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    public readonly displayName!: pulumi.Output<string>;
     /**
      * A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
      */
@@ -54,7 +54,7 @@ export class JobTrigger extends pulumi.CustomResource {
     /**
      * For inspect jobs, a snapshot of the configuration.
      */
-    public /*out*/ readonly inspectJob!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2InspectJobConfigResponse>;
+    public readonly inspectJob!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2InspectJobConfigResponse>;
     /**
      * The timestamp of the last time this trigger executed.
      */
@@ -62,15 +62,15 @@ export class JobTrigger extends pulumi.CustomResource {
     /**
      * Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Required. A status for this trigger.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string>;
     /**
      * A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
      */
-    public /*out*/ readonly triggers!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2TriggerResponse[]>;
+    public readonly triggers!: pulumi.Output<outputs.dlp.v2.GooglePrivacyDlpV2TriggerResponse[]>;
     /**
      * The last update timestamp of a triggeredJob.
      */
@@ -96,20 +96,19 @@ export class JobTrigger extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
-            inputs["jobTrigger"] = args ? args.jobTrigger : undefined;
+            inputs["description"] = args ? args.description : undefined;
+            inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["inspectJob"] = args ? args.inspectJob : undefined;
             inputs["jobTriggersId"] = args ? args.jobTriggersId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["status"] = args ? args.status : undefined;
             inputs["triggerId"] = args ? args.triggerId : undefined;
+            inputs["triggers"] = args ? args.triggers : undefined;
             inputs["createTime"] = undefined /*out*/;
-            inputs["description"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
             inputs["errors"] = undefined /*out*/;
-            inputs["inspectJob"] = undefined /*out*/;
             inputs["lastRunTime"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["triggers"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         } else {
             inputs["createTime"] = undefined /*out*/;
@@ -135,14 +134,34 @@ export class JobTrigger extends pulumi.CustomResource {
  */
 export interface JobTriggerArgs {
     /**
-     * Required. The JobTrigger to create.
+     * User provided description (max 256 chars)
      */
-    readonly jobTrigger?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2JobTrigger>;
+    readonly description?: pulumi.Input<string>;
+    /**
+     * Display name (max 100 chars)
+     */
+    readonly displayName?: pulumi.Input<string>;
+    /**
+     * For inspect jobs, a snapshot of the configuration.
+     */
+    readonly inspectJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectJobConfig>;
     readonly jobTriggersId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
+    /**
+     * Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
+     */
+    readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    /**
+     * Required. A status for this trigger.
+     */
+    readonly status?: pulumi.Input<string>;
     /**
      * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
     readonly triggerId?: pulumi.Input<string>;
+    /**
+     * A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
+     */
+    readonly triggers?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2Trigger>[]>;
 }

@@ -38,27 +38,27 @@ export class InstanceWorkerpool extends pulumi.CustomResource {
     /**
      * The autoscale policy to apply on a pool.
      */
-    public /*out*/ readonly autoscale!: pulumi.Output<outputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse>;
+    public readonly autoscale!: pulumi.Output<outputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse>;
     /**
      * Channel specifies the release channel of the pool.
      */
-    public /*out*/ readonly channel!: pulumi.Output<string>;
+    public readonly channel!: pulumi.Output<string>;
     /**
      * WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * State of the worker pool.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    public readonly state!: pulumi.Output<string>;
     /**
      * Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
      */
-    public /*out*/ readonly workerConfig!: pulumi.Output<outputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse>;
+    public readonly workerConfig!: pulumi.Output<outputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse>;
     /**
      * The desired number of workers in the worker pool. Must be a value between 0 and 15000.
      */
-    public /*out*/ readonly workerCount!: pulumi.Output<string>;
+    public readonly workerCount!: pulumi.Output<string>;
 
     /**
      * Create a InstanceWorkerpool resource with the given unique name, arguments, and options.
@@ -80,18 +80,17 @@ export class InstanceWorkerpool extends pulumi.CustomResource {
             if ((!args || args.workerpoolsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerpoolsId'");
             }
+            inputs["autoscale"] = args ? args.autoscale : undefined;
+            inputs["channel"] = args ? args.channel : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["poolId"] = args ? args.poolId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["workerPool"] = args ? args.workerPool : undefined;
+            inputs["state"] = args ? args.state : undefined;
+            inputs["workerConfig"] = args ? args.workerConfig : undefined;
+            inputs["workerCount"] = args ? args.workerCount : undefined;
             inputs["workerpoolsId"] = args ? args.workerpoolsId : undefined;
-            inputs["autoscale"] = undefined /*out*/;
-            inputs["channel"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
-            inputs["state"] = undefined /*out*/;
-            inputs["workerConfig"] = undefined /*out*/;
-            inputs["workerCount"] = undefined /*out*/;
         } else {
             inputs["autoscale"] = undefined /*out*/;
             inputs["channel"] = undefined /*out*/;
@@ -111,7 +110,19 @@ export class InstanceWorkerpool extends pulumi.CustomResource {
  * The set of arguments for constructing a InstanceWorkerpool resource.
  */
 export interface InstanceWorkerpoolArgs {
+    /**
+     * The autoscale policy to apply on a pool.
+     */
+    readonly autoscale?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale>;
+    /**
+     * Channel specifies the release channel of the pool.
+     */
+    readonly channel?: pulumi.Input<string>;
     readonly instancesId: pulumi.Input<string>;
+    /**
+     * WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
+     */
+    readonly name?: pulumi.Input<string>;
     /**
      * Resource name of the instance in which to create the new worker pool. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
      */
@@ -122,8 +133,16 @@ export interface InstanceWorkerpoolArgs {
     readonly poolId?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**
-     * Specifies the worker pool to create. The name in the worker pool, if specified, is ignored.
+     * State of the worker pool.
      */
-    readonly workerPool?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool>;
+    readonly state?: pulumi.Input<string>;
+    /**
+     * Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
+     */
+    readonly workerConfig?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig>;
+    /**
+     * The desired number of workers in the worker pool. Must be a value between 0 and 15000.
+     */
+    readonly workerCount?: pulumi.Input<string>;
     readonly workerpoolsId: pulumi.Input<string>;
 }
