@@ -128,6 +128,124 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	}).(BindingOutput)
 }
 
+// Associates `members` with a `role`.
+type BindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
+// You can construct a concrete instance of `BindingResponseInput` via:
+//
+//          BindingResponseArgs{...}
+type BindingResponseInput interface {
+	pulumi.Input
+
+	ToBindingResponseOutput() BindingResponseOutput
+	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
+}
+
+// Associates `members` with a `role`.
+type BindingResponseArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
+	return i.ToBindingResponseOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
+}
+
+// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
+// You can construct a concrete instance of `BindingResponseArrayInput` via:
+//
+//          BindingResponseArray{ BindingResponseArgs{...} }
+type BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToBindingResponseArrayOutput() BindingResponseArrayOutput
+	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
+}
+
+type BindingResponseArray []BindingResponseInput
+
+func (BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return i.ToBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
+		return vs[0].([]BindingResponse)[vs[1].(int)]
+	}).(BindingResponseOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -319,6 +437,88 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
+// You can construct a concrete instance of `ExprResponseInput` via:
+//
+//          ExprResponseArgs{...}
+type ExprResponseInput interface {
+	pulumi.Input
+
+	ToExprResponseOutput() ExprResponseOutput
+	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
+	return i.ToExprResponseOutputWithContext(context.Background())
+}
+
+func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseOutput struct{ *pulumi.OutputState }
+
+func (ExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
+	return o
+}
+
+func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
 type Policy struct {
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
@@ -492,202 +692,205 @@ func (o PolicyPtrOutput) Version() pulumi.IntPtrOutput {
 }
 
 // Represents a relationship between two domains. This allows a controller in one domain to authenticate a user in another domain.
-type Trust struct {
-	// Output only. The time the instance was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Output only. The last heartbeat time when the trust was known to be connected.
-	LastTrustHeartbeatTime *string `pulumi:"lastTrustHeartbeatTime"`
+type TrustResponse struct {
+	// The time the instance was created.
+	CreateTime string `pulumi:"createTime"`
+	// The last heartbeat time when the trust was known to be connected.
+	LastTrustHeartbeatTime string `pulumi:"lastTrustHeartbeatTime"`
 	// The trust authentication type, which decides whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
-	SelectiveAuthentication *bool `pulumi:"selectiveAuthentication"`
-	// Output only. The current state of the trust.
-	State *string `pulumi:"state"`
-	// Output only. Additional information about the current state of the trust, if available.
-	StateDescription *string `pulumi:"stateDescription"`
+	SelectiveAuthentication bool `pulumi:"selectiveAuthentication"`
+	// The current state of the trust.
+	State string `pulumi:"state"`
+	// Additional information about the current state of the trust, if available.
+	StateDescription string `pulumi:"stateDescription"`
 	// The target DNS server IP addresses which can resolve the remote domain involved in the trust.
 	TargetDnsIpAddresses []string `pulumi:"targetDnsIpAddresses"`
 	// The fully qualified target domain name which will be in trust with the current domain.
-	TargetDomainName *string `pulumi:"targetDomainName"`
+	TargetDomainName string `pulumi:"targetDomainName"`
 	// The trust direction, which decides if the current domain is trusted, trusting, or both.
-	TrustDirection *string `pulumi:"trustDirection"`
+	TrustDirection string `pulumi:"trustDirection"`
 	// Input only. The trust secret used for the handshake with the target domain. It will not be stored.
-	TrustHandshakeSecret *string `pulumi:"trustHandshakeSecret"`
+	TrustHandshakeSecret string `pulumi:"trustHandshakeSecret"`
 	// The type of trust represented by the trust resource.
-	TrustType *string `pulumi:"trustType"`
-	// Output only. The last update time.
-	UpdateTime *string `pulumi:"updateTime"`
+	TrustType string `pulumi:"trustType"`
+	// The last update time.
+	UpdateTime string `pulumi:"updateTime"`
 }
 
-// TrustInput is an input type that accepts TrustArgs and TrustOutput values.
-// You can construct a concrete instance of `TrustInput` via:
+// TrustResponseInput is an input type that accepts TrustResponseArgs and TrustResponseOutput values.
+// You can construct a concrete instance of `TrustResponseInput` via:
 //
-//          TrustArgs{...}
-type TrustInput interface {
+//          TrustResponseArgs{...}
+type TrustResponseInput interface {
 	pulumi.Input
 
-	ToTrustOutput() TrustOutput
-	ToTrustOutputWithContext(context.Context) TrustOutput
+	ToTrustResponseOutput() TrustResponseOutput
+	ToTrustResponseOutputWithContext(context.Context) TrustResponseOutput
 }
 
 // Represents a relationship between two domains. This allows a controller in one domain to authenticate a user in another domain.
-type TrustArgs struct {
-	// Output only. The time the instance was created.
-	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// Output only. The last heartbeat time when the trust was known to be connected.
-	LastTrustHeartbeatTime pulumi.StringPtrInput `pulumi:"lastTrustHeartbeatTime"`
+type TrustResponseArgs struct {
+	// The time the instance was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The last heartbeat time when the trust was known to be connected.
+	LastTrustHeartbeatTime pulumi.StringInput `pulumi:"lastTrustHeartbeatTime"`
 	// The trust authentication type, which decides whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
-	SelectiveAuthentication pulumi.BoolPtrInput `pulumi:"selectiveAuthentication"`
-	// Output only. The current state of the trust.
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// Output only. Additional information about the current state of the trust, if available.
-	StateDescription pulumi.StringPtrInput `pulumi:"stateDescription"`
+	SelectiveAuthentication pulumi.BoolInput `pulumi:"selectiveAuthentication"`
+	// The current state of the trust.
+	State pulumi.StringInput `pulumi:"state"`
+	// Additional information about the current state of the trust, if available.
+	StateDescription pulumi.StringInput `pulumi:"stateDescription"`
 	// The target DNS server IP addresses which can resolve the remote domain involved in the trust.
 	TargetDnsIpAddresses pulumi.StringArrayInput `pulumi:"targetDnsIpAddresses"`
 	// The fully qualified target domain name which will be in trust with the current domain.
-	TargetDomainName pulumi.StringPtrInput `pulumi:"targetDomainName"`
+	TargetDomainName pulumi.StringInput `pulumi:"targetDomainName"`
 	// The trust direction, which decides if the current domain is trusted, trusting, or both.
-	TrustDirection pulumi.StringPtrInput `pulumi:"trustDirection"`
+	TrustDirection pulumi.StringInput `pulumi:"trustDirection"`
 	// Input only. The trust secret used for the handshake with the target domain. It will not be stored.
-	TrustHandshakeSecret pulumi.StringPtrInput `pulumi:"trustHandshakeSecret"`
+	TrustHandshakeSecret pulumi.StringInput `pulumi:"trustHandshakeSecret"`
 	// The type of trust represented by the trust resource.
-	TrustType pulumi.StringPtrInput `pulumi:"trustType"`
-	// Output only. The last update time.
-	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+	TrustType pulumi.StringInput `pulumi:"trustType"`
+	// The last update time.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
 }
 
-func (TrustArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Trust)(nil)).Elem()
+func (TrustResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrustResponse)(nil)).Elem()
 }
 
-func (i TrustArgs) ToTrustOutput() TrustOutput {
-	return i.ToTrustOutputWithContext(context.Background())
+func (i TrustResponseArgs) ToTrustResponseOutput() TrustResponseOutput {
+	return i.ToTrustResponseOutputWithContext(context.Background())
 }
 
-func (i TrustArgs) ToTrustOutputWithContext(ctx context.Context) TrustOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrustOutput)
+func (i TrustResponseArgs) ToTrustResponseOutputWithContext(ctx context.Context) TrustResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrustResponseOutput)
 }
 
-// TrustArrayInput is an input type that accepts TrustArray and TrustArrayOutput values.
-// You can construct a concrete instance of `TrustArrayInput` via:
+// TrustResponseArrayInput is an input type that accepts TrustResponseArray and TrustResponseArrayOutput values.
+// You can construct a concrete instance of `TrustResponseArrayInput` via:
 //
-//          TrustArray{ TrustArgs{...} }
-type TrustArrayInput interface {
+//          TrustResponseArray{ TrustResponseArgs{...} }
+type TrustResponseArrayInput interface {
 	pulumi.Input
 
-	ToTrustArrayOutput() TrustArrayOutput
-	ToTrustArrayOutputWithContext(context.Context) TrustArrayOutput
+	ToTrustResponseArrayOutput() TrustResponseArrayOutput
+	ToTrustResponseArrayOutputWithContext(context.Context) TrustResponseArrayOutput
 }
 
-type TrustArray []TrustInput
+type TrustResponseArray []TrustResponseInput
 
-func (TrustArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Trust)(nil)).Elem()
+func (TrustResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrustResponse)(nil)).Elem()
 }
 
-func (i TrustArray) ToTrustArrayOutput() TrustArrayOutput {
-	return i.ToTrustArrayOutputWithContext(context.Background())
+func (i TrustResponseArray) ToTrustResponseArrayOutput() TrustResponseArrayOutput {
+	return i.ToTrustResponseArrayOutputWithContext(context.Background())
 }
 
-func (i TrustArray) ToTrustArrayOutputWithContext(ctx context.Context) TrustArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrustArrayOutput)
+func (i TrustResponseArray) ToTrustResponseArrayOutputWithContext(ctx context.Context) TrustResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrustResponseArrayOutput)
 }
 
 // Represents a relationship between two domains. This allows a controller in one domain to authenticate a user in another domain.
-type TrustOutput struct{ *pulumi.OutputState }
+type TrustResponseOutput struct{ *pulumi.OutputState }
 
-func (TrustOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Trust)(nil)).Elem()
+func (TrustResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrustResponse)(nil)).Elem()
 }
 
-func (o TrustOutput) ToTrustOutput() TrustOutput {
+func (o TrustResponseOutput) ToTrustResponseOutput() TrustResponseOutput {
 	return o
 }
 
-func (o TrustOutput) ToTrustOutputWithContext(ctx context.Context) TrustOutput {
+func (o TrustResponseOutput) ToTrustResponseOutputWithContext(ctx context.Context) TrustResponseOutput {
 	return o
 }
 
-// Output only. The time the instance was created.
-func (o TrustOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Trust) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+// The time the instance was created.
+func (o TrustResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v TrustResponse) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Output only. The last heartbeat time when the trust was known to be connected.
-func (o TrustOutput) LastTrustHeartbeatTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Trust) *string { return v.LastTrustHeartbeatTime }).(pulumi.StringPtrOutput)
+// The last heartbeat time when the trust was known to be connected.
+func (o TrustResponseOutput) LastTrustHeartbeatTime() pulumi.StringOutput {
+	return o.ApplyT(func(v TrustResponse) string { return v.LastTrustHeartbeatTime }).(pulumi.StringOutput)
 }
 
 // The trust authentication type, which decides whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
-func (o TrustOutput) SelectiveAuthentication() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Trust) *bool { return v.SelectiveAuthentication }).(pulumi.BoolPtrOutput)
+func (o TrustResponseOutput) SelectiveAuthentication() pulumi.BoolOutput {
+	return o.ApplyT(func(v TrustResponse) bool { return v.SelectiveAuthentication }).(pulumi.BoolOutput)
 }
 
-// Output only. The current state of the trust.
-func (o TrustOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Trust) *string { return v.State }).(pulumi.StringPtrOutput)
+// The current state of the trust.
+func (o TrustResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v TrustResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Output only. Additional information about the current state of the trust, if available.
-func (o TrustOutput) StateDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Trust) *string { return v.StateDescription }).(pulumi.StringPtrOutput)
+// Additional information about the current state of the trust, if available.
+func (o TrustResponseOutput) StateDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v TrustResponse) string { return v.StateDescription }).(pulumi.StringOutput)
 }
 
 // The target DNS server IP addresses which can resolve the remote domain involved in the trust.
-func (o TrustOutput) TargetDnsIpAddresses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v Trust) []string { return v.TargetDnsIpAddresses }).(pulumi.StringArrayOutput)
+func (o TrustResponseOutput) TargetDnsIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TrustResponse) []string { return v.TargetDnsIpAddresses }).(pulumi.StringArrayOutput)
 }
 
 // The fully qualified target domain name which will be in trust with the current domain.
-func (o TrustOutput) TargetDomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Trust) *string { return v.TargetDomainName }).(pulumi.StringPtrOutput)
+func (o TrustResponseOutput) TargetDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v TrustResponse) string { return v.TargetDomainName }).(pulumi.StringOutput)
 }
 
 // The trust direction, which decides if the current domain is trusted, trusting, or both.
-func (o TrustOutput) TrustDirection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Trust) *string { return v.TrustDirection }).(pulumi.StringPtrOutput)
+func (o TrustResponseOutput) TrustDirection() pulumi.StringOutput {
+	return o.ApplyT(func(v TrustResponse) string { return v.TrustDirection }).(pulumi.StringOutput)
 }
 
 // Input only. The trust secret used for the handshake with the target domain. It will not be stored.
-func (o TrustOutput) TrustHandshakeSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Trust) *string { return v.TrustHandshakeSecret }).(pulumi.StringPtrOutput)
+func (o TrustResponseOutput) TrustHandshakeSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v TrustResponse) string { return v.TrustHandshakeSecret }).(pulumi.StringOutput)
 }
 
 // The type of trust represented by the trust resource.
-func (o TrustOutput) TrustType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Trust) *string { return v.TrustType }).(pulumi.StringPtrOutput)
+func (o TrustResponseOutput) TrustType() pulumi.StringOutput {
+	return o.ApplyT(func(v TrustResponse) string { return v.TrustType }).(pulumi.StringOutput)
 }
 
-// Output only. The last update time.
-func (o TrustOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Trust) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+// The last update time.
+func (o TrustResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v TrustResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-type TrustArrayOutput struct{ *pulumi.OutputState }
+type TrustResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (TrustArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Trust)(nil)).Elem()
+func (TrustResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrustResponse)(nil)).Elem()
 }
 
-func (o TrustArrayOutput) ToTrustArrayOutput() TrustArrayOutput {
+func (o TrustResponseArrayOutput) ToTrustResponseArrayOutput() TrustResponseArrayOutput {
 	return o
 }
 
-func (o TrustArrayOutput) ToTrustArrayOutputWithContext(ctx context.Context) TrustArrayOutput {
+func (o TrustResponseArrayOutput) ToTrustResponseArrayOutputWithContext(ctx context.Context) TrustResponseArrayOutput {
 	return o
 }
 
-func (o TrustArrayOutput) Index(i pulumi.IntInput) TrustOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Trust {
-		return vs[0].([]Trust)[vs[1].(int)]
-	}).(TrustOutput)
+func (o TrustResponseArrayOutput) Index(i pulumi.IntInput) TrustResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrustResponse {
+		return vs[0].([]TrustResponse)[vs[1].(int)]
+	}).(TrustResponseOutput)
 }
 
 func init() {
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingResponseOutput{})
+	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(PolicyOutput{})
 	pulumi.RegisterOutputType(PolicyPtrOutput{})
-	pulumi.RegisterOutputType(TrustOutput{})
-	pulumi.RegisterOutputType(TrustArrayOutput{})
+	pulumi.RegisterOutputType(TrustResponseOutput{})
+	pulumi.RegisterOutputType(TrustResponseArrayOutput{})
 }

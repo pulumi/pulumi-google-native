@@ -163,6 +163,159 @@ func (o AcceleratorConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
+type AcceleratorConfigResponse struct {
+	// Count of cores of this accelerator.
+	CoreCount string `pulumi:"coreCount"`
+	// Type of this accelerator.
+	Type string `pulumi:"type"`
+}
+
+// AcceleratorConfigResponseInput is an input type that accepts AcceleratorConfigResponseArgs and AcceleratorConfigResponseOutput values.
+// You can construct a concrete instance of `AcceleratorConfigResponseInput` via:
+//
+//          AcceleratorConfigResponseArgs{...}
+type AcceleratorConfigResponseInput interface {
+	pulumi.Input
+
+	ToAcceleratorConfigResponseOutput() AcceleratorConfigResponseOutput
+	ToAcceleratorConfigResponseOutputWithContext(context.Context) AcceleratorConfigResponseOutput
+}
+
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
+type AcceleratorConfigResponseArgs struct {
+	// Count of cores of this accelerator.
+	CoreCount pulumi.StringInput `pulumi:"coreCount"`
+	// Type of this accelerator.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AcceleratorConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorConfigResponse)(nil)).Elem()
+}
+
+func (i AcceleratorConfigResponseArgs) ToAcceleratorConfigResponseOutput() AcceleratorConfigResponseOutput {
+	return i.ToAcceleratorConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AcceleratorConfigResponseArgs) ToAcceleratorConfigResponseOutputWithContext(ctx context.Context) AcceleratorConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorConfigResponseOutput)
+}
+
+func (i AcceleratorConfigResponseArgs) ToAcceleratorConfigResponsePtrOutput() AcceleratorConfigResponsePtrOutput {
+	return i.ToAcceleratorConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AcceleratorConfigResponseArgs) ToAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) AcceleratorConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorConfigResponseOutput).ToAcceleratorConfigResponsePtrOutputWithContext(ctx)
+}
+
+// AcceleratorConfigResponsePtrInput is an input type that accepts AcceleratorConfigResponseArgs, AcceleratorConfigResponsePtr and AcceleratorConfigResponsePtrOutput values.
+// You can construct a concrete instance of `AcceleratorConfigResponsePtrInput` via:
+//
+//          AcceleratorConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AcceleratorConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToAcceleratorConfigResponsePtrOutput() AcceleratorConfigResponsePtrOutput
+	ToAcceleratorConfigResponsePtrOutputWithContext(context.Context) AcceleratorConfigResponsePtrOutput
+}
+
+type acceleratorConfigResponsePtrType AcceleratorConfigResponseArgs
+
+func AcceleratorConfigResponsePtr(v *AcceleratorConfigResponseArgs) AcceleratorConfigResponsePtrInput {
+	return (*acceleratorConfigResponsePtrType)(v)
+}
+
+func (*acceleratorConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorConfigResponse)(nil)).Elem()
+}
+
+func (i *acceleratorConfigResponsePtrType) ToAcceleratorConfigResponsePtrOutput() AcceleratorConfigResponsePtrOutput {
+	return i.ToAcceleratorConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *acceleratorConfigResponsePtrType) ToAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) AcceleratorConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorConfigResponsePtrOutput)
+}
+
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
+type AcceleratorConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorConfigResponse)(nil)).Elem()
+}
+
+func (o AcceleratorConfigResponseOutput) ToAcceleratorConfigResponseOutput() AcceleratorConfigResponseOutput {
+	return o
+}
+
+func (o AcceleratorConfigResponseOutput) ToAcceleratorConfigResponseOutputWithContext(ctx context.Context) AcceleratorConfigResponseOutput {
+	return o
+}
+
+func (o AcceleratorConfigResponseOutput) ToAcceleratorConfigResponsePtrOutput() AcceleratorConfigResponsePtrOutput {
+	return o.ToAcceleratorConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorConfigResponseOutput) ToAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) AcceleratorConfigResponsePtrOutput {
+	return o.ApplyT(func(v AcceleratorConfigResponse) *AcceleratorConfigResponse {
+		return &v
+	}).(AcceleratorConfigResponsePtrOutput)
+}
+
+// Count of cores of this accelerator.
+func (o AcceleratorConfigResponseOutput) CoreCount() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorConfigResponse) string { return v.CoreCount }).(pulumi.StringOutput)
+}
+
+// Type of this accelerator.
+func (o AcceleratorConfigResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorConfigResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AcceleratorConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorConfigResponse)(nil)).Elem()
+}
+
+func (o AcceleratorConfigResponsePtrOutput) ToAcceleratorConfigResponsePtrOutput() AcceleratorConfigResponsePtrOutput {
+	return o
+}
+
+func (o AcceleratorConfigResponsePtrOutput) ToAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) AcceleratorConfigResponsePtrOutput {
+	return o
+}
+
+func (o AcceleratorConfigResponsePtrOutput) Elem() AcceleratorConfigResponseOutput {
+	return o.ApplyT(func(v *AcceleratorConfigResponse) AcceleratorConfigResponse { return *v }).(AcceleratorConfigResponseOutput)
+}
+
+// Count of cores of this accelerator.
+func (o AcceleratorConfigResponsePtrOutput) CoreCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AcceleratorConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CoreCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of this accelerator.
+func (o AcceleratorConfigResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AcceleratorConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // Associates `members` with a `role`.
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -279,6 +432,124 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Binding {
 		return vs[0].([]Binding)[vs[1].(int)]
 	}).(BindingOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
+// You can construct a concrete instance of `BindingResponseInput` via:
+//
+//          BindingResponseArgs{...}
+type BindingResponseInput interface {
+	pulumi.Input
+
+	ToBindingResponseOutput() BindingResponseOutput
+	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
+}
+
+// Associates `members` with a `role`.
+type BindingResponseArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
+	return i.ToBindingResponseOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
+}
+
+// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
+// You can construct a concrete instance of `BindingResponseArrayInput` via:
+//
+//          BindingResponseArray{ BindingResponseArgs{...} }
+type BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToBindingResponseArrayOutput() BindingResponseArrayOutput
+	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
+}
+
+type BindingResponseArray []BindingResponseInput
+
+func (BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return i.ToBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
+		return vs[0].([]BindingResponse)[vs[1].(int)]
+	}).(BindingResponseOutput)
 }
 
 // Definition of a container image for starting a notebook instance with the environment installed in a container.
@@ -434,366 +705,519 @@ func (o ContainerImagePtrOutput) Tag() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An instance-attached disk resource.
-type Disk struct {
-	// Indicates whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
-	AutoDelete *bool `pulumi:"autoDelete"`
-	// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
-	Boot *bool `pulumi:"boot"`
-	// Indicates a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine.This field is only applicable for persistent disks.
-	DeviceName *string `pulumi:"deviceName"`
-	// Indicates the size of the disk in base-2 GB.
-	DiskSizeGb *string `pulumi:"diskSizeGb"`
-	// Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
-	GuestOsFeatures []GuestOsFeature `pulumi:"guestOsFeatures"`
-	// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
-	Index *string `pulumi:"index"`
-	// Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
-	Interface *string `pulumi:"interface"`
-	// Type of the resource. Always compute#attachedDisk for attached disks.
-	Kind *string `pulumi:"kind"`
-	// A list of publicly visible licenses. Reserved for Google's use. A License represents billing and aggregate usage data for public and marketplace images.
-	Licenses []string `pulumi:"licenses"`
-	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
-	Mode *string `pulumi:"mode"`
-	// Indicates a valid partial or full URL to an existing Persistent Disk resource.
-	Source *string `pulumi:"source"`
-	// Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: PERSISTENT SCRATCH
-	Type *string `pulumi:"type"`
+// Definition of a container image for starting a notebook instance with the environment installed in a container.
+type ContainerImageResponse struct {
+	// Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+	Repository string `pulumi:"repository"`
+	// The tag of the container image. If not specified, this defaults to the latest tag.
+	Tag string `pulumi:"tag"`
 }
 
-// DiskInput is an input type that accepts DiskArgs and DiskOutput values.
-// You can construct a concrete instance of `DiskInput` via:
+// ContainerImageResponseInput is an input type that accepts ContainerImageResponseArgs and ContainerImageResponseOutput values.
+// You can construct a concrete instance of `ContainerImageResponseInput` via:
 //
-//          DiskArgs{...}
-type DiskInput interface {
+//          ContainerImageResponseArgs{...}
+type ContainerImageResponseInput interface {
 	pulumi.Input
 
-	ToDiskOutput() DiskOutput
-	ToDiskOutputWithContext(context.Context) DiskOutput
+	ToContainerImageResponseOutput() ContainerImageResponseOutput
+	ToContainerImageResponseOutputWithContext(context.Context) ContainerImageResponseOutput
 }
 
-// An instance-attached disk resource.
-type DiskArgs struct {
-	// Indicates whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
-	AutoDelete pulumi.BoolPtrInput `pulumi:"autoDelete"`
-	// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
-	Boot pulumi.BoolPtrInput `pulumi:"boot"`
-	// Indicates a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine.This field is only applicable for persistent disks.
-	DeviceName pulumi.StringPtrInput `pulumi:"deviceName"`
-	// Indicates the size of the disk in base-2 GB.
-	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
-	// Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
-	GuestOsFeatures GuestOsFeatureArrayInput `pulumi:"guestOsFeatures"`
-	// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
-	Index pulumi.StringPtrInput `pulumi:"index"`
-	// Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
-	Interface pulumi.StringPtrInput `pulumi:"interface"`
-	// Type of the resource. Always compute#attachedDisk for attached disks.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// A list of publicly visible licenses. Reserved for Google's use. A License represents billing and aggregate usage data for public and marketplace images.
-	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
-	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// Indicates a valid partial or full URL to an existing Persistent Disk resource.
-	Source pulumi.StringPtrInput `pulumi:"source"`
-	// Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: PERSISTENT SCRATCH
-	Type pulumi.StringPtrInput `pulumi:"type"`
+// Definition of a container image for starting a notebook instance with the environment installed in a container.
+type ContainerImageResponseArgs struct {
+	// Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+	Repository pulumi.StringInput `pulumi:"repository"`
+	// The tag of the container image. If not specified, this defaults to the latest tag.
+	Tag pulumi.StringInput `pulumi:"tag"`
 }
 
-func (DiskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Disk)(nil)).Elem()
+func (ContainerImageResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerImageResponse)(nil)).Elem()
 }
 
-func (i DiskArgs) ToDiskOutput() DiskOutput {
-	return i.ToDiskOutputWithContext(context.Background())
+func (i ContainerImageResponseArgs) ToContainerImageResponseOutput() ContainerImageResponseOutput {
+	return i.ToContainerImageResponseOutputWithContext(context.Background())
 }
 
-func (i DiskArgs) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskOutput)
+func (i ContainerImageResponseArgs) ToContainerImageResponseOutputWithContext(ctx context.Context) ContainerImageResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerImageResponseOutput)
 }
 
-// DiskArrayInput is an input type that accepts DiskArray and DiskArrayOutput values.
-// You can construct a concrete instance of `DiskArrayInput` via:
+func (i ContainerImageResponseArgs) ToContainerImageResponsePtrOutput() ContainerImageResponsePtrOutput {
+	return i.ToContainerImageResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ContainerImageResponseArgs) ToContainerImageResponsePtrOutputWithContext(ctx context.Context) ContainerImageResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerImageResponseOutput).ToContainerImageResponsePtrOutputWithContext(ctx)
+}
+
+// ContainerImageResponsePtrInput is an input type that accepts ContainerImageResponseArgs, ContainerImageResponsePtr and ContainerImageResponsePtrOutput values.
+// You can construct a concrete instance of `ContainerImageResponsePtrInput` via:
 //
-//          DiskArray{ DiskArgs{...} }
-type DiskArrayInput interface {
+//          ContainerImageResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ContainerImageResponsePtrInput interface {
 	pulumi.Input
 
-	ToDiskArrayOutput() DiskArrayOutput
-	ToDiskArrayOutputWithContext(context.Context) DiskArrayOutput
+	ToContainerImageResponsePtrOutput() ContainerImageResponsePtrOutput
+	ToContainerImageResponsePtrOutputWithContext(context.Context) ContainerImageResponsePtrOutput
 }
 
-type DiskArray []DiskInput
+type containerImageResponsePtrType ContainerImageResponseArgs
 
-func (DiskArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Disk)(nil)).Elem()
+func ContainerImageResponsePtr(v *ContainerImageResponseArgs) ContainerImageResponsePtrInput {
+	return (*containerImageResponsePtrType)(v)
 }
 
-func (i DiskArray) ToDiskArrayOutput() DiskArrayOutput {
-	return i.ToDiskArrayOutputWithContext(context.Background())
+func (*containerImageResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerImageResponse)(nil)).Elem()
 }
 
-func (i DiskArray) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DiskArrayOutput)
+func (i *containerImageResponsePtrType) ToContainerImageResponsePtrOutput() ContainerImageResponsePtrOutput {
+	return i.ToContainerImageResponsePtrOutputWithContext(context.Background())
 }
 
-// An instance-attached disk resource.
-type DiskOutput struct{ *pulumi.OutputState }
-
-func (DiskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Disk)(nil)).Elem()
+func (i *containerImageResponsePtrType) ToContainerImageResponsePtrOutputWithContext(ctx context.Context) ContainerImageResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerImageResponsePtrOutput)
 }
 
-func (o DiskOutput) ToDiskOutput() DiskOutput {
+// Definition of a container image for starting a notebook instance with the environment installed in a container.
+type ContainerImageResponseOutput struct{ *pulumi.OutputState }
+
+func (ContainerImageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerImageResponse)(nil)).Elem()
+}
+
+func (o ContainerImageResponseOutput) ToContainerImageResponseOutput() ContainerImageResponseOutput {
 	return o
 }
 
-func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
+func (o ContainerImageResponseOutput) ToContainerImageResponseOutputWithContext(ctx context.Context) ContainerImageResponseOutput {
+	return o
+}
+
+func (o ContainerImageResponseOutput) ToContainerImageResponsePtrOutput() ContainerImageResponsePtrOutput {
+	return o.ToContainerImageResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ContainerImageResponseOutput) ToContainerImageResponsePtrOutputWithContext(ctx context.Context) ContainerImageResponsePtrOutput {
+	return o.ApplyT(func(v ContainerImageResponse) *ContainerImageResponse {
+		return &v
+	}).(ContainerImageResponsePtrOutput)
+}
+
+// Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+func (o ContainerImageResponseOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerImageResponse) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// The tag of the container image. If not specified, this defaults to the latest tag.
+func (o ContainerImageResponseOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerImageResponse) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+type ContainerImageResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerImageResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerImageResponse)(nil)).Elem()
+}
+
+func (o ContainerImageResponsePtrOutput) ToContainerImageResponsePtrOutput() ContainerImageResponsePtrOutput {
+	return o
+}
+
+func (o ContainerImageResponsePtrOutput) ToContainerImageResponsePtrOutputWithContext(ctx context.Context) ContainerImageResponsePtrOutput {
+	return o
+}
+
+func (o ContainerImageResponsePtrOutput) Elem() ContainerImageResponseOutput {
+	return o.ApplyT(func(v *ContainerImageResponse) ContainerImageResponse { return *v }).(ContainerImageResponseOutput)
+}
+
+// Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+func (o ContainerImageResponsePtrOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerImageResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Repository
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tag of the container image. If not specified, this defaults to the latest tag.
+func (o ContainerImageResponsePtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerImageResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+// An instance-attached disk resource.
+type DiskResponse struct {
+	// Indicates whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
+	AutoDelete bool `pulumi:"autoDelete"`
+	// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+	Boot bool `pulumi:"boot"`
+	// Indicates a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine.This field is only applicable for persistent disks.
+	DeviceName string `pulumi:"deviceName"`
+	// Indicates the size of the disk in base-2 GB.
+	DiskSizeGb string `pulumi:"diskSizeGb"`
+	// Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+	GuestOsFeatures []GuestOsFeatureResponse `pulumi:"guestOsFeatures"`
+	// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+	Index string `pulumi:"index"`
+	// Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+	Interface string `pulumi:"interface"`
+	// Type of the resource. Always compute#attachedDisk for attached disks.
+	Kind string `pulumi:"kind"`
+	// A list of publicly visible licenses. Reserved for Google's use. A License represents billing and aggregate usage data for public and marketplace images.
+	Licenses []string `pulumi:"licenses"`
+	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+	Mode string `pulumi:"mode"`
+	// Indicates a valid partial or full URL to an existing Persistent Disk resource.
+	Source string `pulumi:"source"`
+	// Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: PERSISTENT SCRATCH
+	Type string `pulumi:"type"`
+}
+
+// DiskResponseInput is an input type that accepts DiskResponseArgs and DiskResponseOutput values.
+// You can construct a concrete instance of `DiskResponseInput` via:
+//
+//          DiskResponseArgs{...}
+type DiskResponseInput interface {
+	pulumi.Input
+
+	ToDiskResponseOutput() DiskResponseOutput
+	ToDiskResponseOutputWithContext(context.Context) DiskResponseOutput
+}
+
+// An instance-attached disk resource.
+type DiskResponseArgs struct {
+	// Indicates whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
+	AutoDelete pulumi.BoolInput `pulumi:"autoDelete"`
+	// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+	Boot pulumi.BoolInput `pulumi:"boot"`
+	// Indicates a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine.This field is only applicable for persistent disks.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// Indicates the size of the disk in base-2 GB.
+	DiskSizeGb pulumi.StringInput `pulumi:"diskSizeGb"`
+	// Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+	GuestOsFeatures GuestOsFeatureResponseArrayInput `pulumi:"guestOsFeatures"`
+	// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+	Index pulumi.StringInput `pulumi:"index"`
+	// Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+	Interface pulumi.StringInput `pulumi:"interface"`
+	// Type of the resource. Always compute#attachedDisk for attached disks.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// A list of publicly visible licenses. Reserved for Google's use. A License represents billing and aggregate usage data for public and marketplace images.
+	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
+	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Indicates a valid partial or full URL to an existing Persistent Disk resource.
+	Source pulumi.StringInput `pulumi:"source"`
+	// Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: PERSISTENT SCRATCH
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (DiskResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskResponse)(nil)).Elem()
+}
+
+func (i DiskResponseArgs) ToDiskResponseOutput() DiskResponseOutput {
+	return i.ToDiskResponseOutputWithContext(context.Background())
+}
+
+func (i DiskResponseArgs) ToDiskResponseOutputWithContext(ctx context.Context) DiskResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskResponseOutput)
+}
+
+// DiskResponseArrayInput is an input type that accepts DiskResponseArray and DiskResponseArrayOutput values.
+// You can construct a concrete instance of `DiskResponseArrayInput` via:
+//
+//          DiskResponseArray{ DiskResponseArgs{...} }
+type DiskResponseArrayInput interface {
+	pulumi.Input
+
+	ToDiskResponseArrayOutput() DiskResponseArrayOutput
+	ToDiskResponseArrayOutputWithContext(context.Context) DiskResponseArrayOutput
+}
+
+type DiskResponseArray []DiskResponseInput
+
+func (DiskResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiskResponse)(nil)).Elem()
+}
+
+func (i DiskResponseArray) ToDiskResponseArrayOutput() DiskResponseArrayOutput {
+	return i.ToDiskResponseArrayOutputWithContext(context.Background())
+}
+
+func (i DiskResponseArray) ToDiskResponseArrayOutputWithContext(ctx context.Context) DiskResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskResponseArrayOutput)
+}
+
+// An instance-attached disk resource.
+type DiskResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskResponse)(nil)).Elem()
+}
+
+func (o DiskResponseOutput) ToDiskResponseOutput() DiskResponseOutput {
+	return o
+}
+
+func (o DiskResponseOutput) ToDiskResponseOutputWithContext(ctx context.Context) DiskResponseOutput {
 	return o
 }
 
 // Indicates whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
-func (o DiskOutput) AutoDelete() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Disk) *bool { return v.AutoDelete }).(pulumi.BoolPtrOutput)
+func (o DiskResponseOutput) AutoDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v DiskResponse) bool { return v.AutoDelete }).(pulumi.BoolOutput)
 }
 
 // Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
-func (o DiskOutput) Boot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Disk) *bool { return v.Boot }).(pulumi.BoolPtrOutput)
+func (o DiskResponseOutput) Boot() pulumi.BoolOutput {
+	return o.ApplyT(func(v DiskResponse) bool { return v.Boot }).(pulumi.BoolOutput)
 }
 
 // Indicates a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine.This field is only applicable for persistent disks.
-func (o DiskOutput) DeviceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Disk) *string { return v.DeviceName }).(pulumi.StringPtrOutput)
+func (o DiskResponseOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskResponse) string { return v.DeviceName }).(pulumi.StringOutput)
 }
 
 // Indicates the size of the disk in base-2 GB.
-func (o DiskOutput) DiskSizeGb() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Disk) *string { return v.DiskSizeGb }).(pulumi.StringPtrOutput)
+func (o DiskResponseOutput) DiskSizeGb() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskResponse) string { return v.DiskSizeGb }).(pulumi.StringOutput)
 }
 
 // Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
-func (o DiskOutput) GuestOsFeatures() GuestOsFeatureArrayOutput {
-	return o.ApplyT(func(v Disk) []GuestOsFeature { return v.GuestOsFeatures }).(GuestOsFeatureArrayOutput)
+func (o DiskResponseOutput) GuestOsFeatures() GuestOsFeatureResponseArrayOutput {
+	return o.ApplyT(func(v DiskResponse) []GuestOsFeatureResponse { return v.GuestOsFeatures }).(GuestOsFeatureResponseArrayOutput)
 }
 
 // A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
-func (o DiskOutput) Index() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Disk) *string { return v.Index }).(pulumi.StringPtrOutput)
+func (o DiskResponseOutput) Index() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskResponse) string { return v.Index }).(pulumi.StringOutput)
 }
 
 // Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
-func (o DiskOutput) Interface() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Disk) *string { return v.Interface }).(pulumi.StringPtrOutput)
+func (o DiskResponseOutput) Interface() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskResponse) string { return v.Interface }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#attachedDisk for attached disks.
-func (o DiskOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Disk) *string { return v.Kind }).(pulumi.StringPtrOutput)
+func (o DiskResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // A list of publicly visible licenses. Reserved for Google's use. A License represents billing and aggregate usage data for public and marketplace images.
-func (o DiskOutput) Licenses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v Disk) []string { return v.Licenses }).(pulumi.StringArrayOutput)
+func (o DiskResponseOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DiskResponse) []string { return v.Licenses }).(pulumi.StringArrayOutput)
 }
 
 // The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
-func (o DiskOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Disk) *string { return v.Mode }).(pulumi.StringPtrOutput)
+func (o DiskResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
 
 // Indicates a valid partial or full URL to an existing Persistent Disk resource.
-func (o DiskOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Disk) *string { return v.Source }).(pulumi.StringPtrOutput)
+func (o DiskResponseOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskResponse) string { return v.Source }).(pulumi.StringOutput)
 }
 
 // Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: PERSISTENT SCRATCH
-func (o DiskOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Disk) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o DiskResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type DiskArrayOutput struct{ *pulumi.OutputState }
+type DiskResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (DiskArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Disk)(nil)).Elem()
+func (DiskResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiskResponse)(nil)).Elem()
 }
 
-func (o DiskArrayOutput) ToDiskArrayOutput() DiskArrayOutput {
+func (o DiskResponseArrayOutput) ToDiskResponseArrayOutput() DiskResponseArrayOutput {
 	return o
 }
 
-func (o DiskArrayOutput) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOutput {
+func (o DiskResponseArrayOutput) ToDiskResponseArrayOutputWithContext(ctx context.Context) DiskResponseArrayOutput {
 	return o
 }
 
-func (o DiskArrayOutput) Index(i pulumi.IntInput) DiskOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Disk {
-		return vs[0].([]Disk)[vs[1].(int)]
-	}).(DiskOutput)
+func (o DiskResponseArrayOutput) Index(i pulumi.IntInput) DiskResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskResponse {
+		return vs[0].([]DiskResponse)[vs[1].(int)]
+	}).(DiskResponseOutput)
 }
 
 // The definition of a single executed notebook.
-type ExecutionType struct {
-	// Output only. Time the Execution was instantiated.
-	CreateTime *string `pulumi:"createTime"`
+type ExecutionResponse struct {
+	// Time the Execution was instantiated.
+	CreateTime string `pulumi:"createTime"`
 	// A brief description of this execution.
-	Description *string `pulumi:"description"`
-	// Output only. Name used for UI purposes. Name can only contain alphanumeric characters and underscores '_'.
-	DisplayName *string `pulumi:"displayName"`
+	Description string `pulumi:"description"`
+	// Name used for UI purposes. Name can only contain alphanumeric characters and underscores '_'.
+	DisplayName string `pulumi:"displayName"`
 	// execute metadata including name, hardware spec, region, labels, etc.
-	ExecutionTemplate *ExecutionTemplate `pulumi:"executionTemplate"`
-	// Output only. The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
-	Name *string `pulumi:"name"`
+	ExecutionTemplate ExecutionTemplateResponse `pulumi:"executionTemplate"`
+	// The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
+	Name string `pulumi:"name"`
 	// Output notebook file generated by this execution
-	OutputNotebookFile *string `pulumi:"outputNotebookFile"`
-	// Output only. State of the underlying AI Platform job.
-	State *string `pulumi:"state"`
-	// Output only. Time the Execution was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
+	OutputNotebookFile string `pulumi:"outputNotebookFile"`
+	// State of the underlying AI Platform job.
+	State string `pulumi:"state"`
+	// Time the Execution was last updated.
+	UpdateTime string `pulumi:"updateTime"`
 }
 
-// ExecutionTypeInput is an input type that accepts ExecutionTypeArgs and ExecutionTypeOutput values.
-// You can construct a concrete instance of `ExecutionTypeInput` via:
+// ExecutionResponseInput is an input type that accepts ExecutionResponseArgs and ExecutionResponseOutput values.
+// You can construct a concrete instance of `ExecutionResponseInput` via:
 //
-//          ExecutionTypeArgs{...}
-type ExecutionTypeInput interface {
+//          ExecutionResponseArgs{...}
+type ExecutionResponseInput interface {
 	pulumi.Input
 
-	ToExecutionTypeOutput() ExecutionTypeOutput
-	ToExecutionTypeOutputWithContext(context.Context) ExecutionTypeOutput
+	ToExecutionResponseOutput() ExecutionResponseOutput
+	ToExecutionResponseOutputWithContext(context.Context) ExecutionResponseOutput
 }
 
 // The definition of a single executed notebook.
-type ExecutionTypeArgs struct {
-	// Output only. Time the Execution was instantiated.
-	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+type ExecutionResponseArgs struct {
+	// Time the Execution was instantiated.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// A brief description of this execution.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Output only. Name used for UI purposes. Name can only contain alphanumeric characters and underscores '_'.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	Description pulumi.StringInput `pulumi:"description"`
+	// Name used for UI purposes. Name can only contain alphanumeric characters and underscores '_'.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// execute metadata including name, hardware spec, region, labels, etc.
-	ExecutionTemplate ExecutionTemplatePtrInput `pulumi:"executionTemplate"`
-	// Output only. The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	ExecutionTemplate ExecutionTemplateResponseInput `pulumi:"executionTemplate"`
+	// The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
+	Name pulumi.StringInput `pulumi:"name"`
 	// Output notebook file generated by this execution
-	OutputNotebookFile pulumi.StringPtrInput `pulumi:"outputNotebookFile"`
-	// Output only. State of the underlying AI Platform job.
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// Output only. Time the Execution was last updated.
-	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+	OutputNotebookFile pulumi.StringInput `pulumi:"outputNotebookFile"`
+	// State of the underlying AI Platform job.
+	State pulumi.StringInput `pulumi:"state"`
+	// Time the Execution was last updated.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
 }
 
-func (ExecutionTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExecutionType)(nil)).Elem()
+func (ExecutionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecutionResponse)(nil)).Elem()
 }
 
-func (i ExecutionTypeArgs) ToExecutionTypeOutput() ExecutionTypeOutput {
-	return i.ToExecutionTypeOutputWithContext(context.Background())
+func (i ExecutionResponseArgs) ToExecutionResponseOutput() ExecutionResponseOutput {
+	return i.ToExecutionResponseOutputWithContext(context.Background())
 }
 
-func (i ExecutionTypeArgs) ToExecutionTypeOutputWithContext(ctx context.Context) ExecutionTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecutionTypeOutput)
+func (i ExecutionResponseArgs) ToExecutionResponseOutputWithContext(ctx context.Context) ExecutionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecutionResponseOutput)
 }
 
-// ExecutionTypeArrayInput is an input type that accepts ExecutionTypeArray and ExecutionTypeArrayOutput values.
-// You can construct a concrete instance of `ExecutionTypeArrayInput` via:
+// ExecutionResponseArrayInput is an input type that accepts ExecutionResponseArray and ExecutionResponseArrayOutput values.
+// You can construct a concrete instance of `ExecutionResponseArrayInput` via:
 //
-//          ExecutionTypeArray{ ExecutionTypeArgs{...} }
-type ExecutionTypeArrayInput interface {
+//          ExecutionResponseArray{ ExecutionResponseArgs{...} }
+type ExecutionResponseArrayInput interface {
 	pulumi.Input
 
-	ToExecutionTypeArrayOutput() ExecutionTypeArrayOutput
-	ToExecutionTypeArrayOutputWithContext(context.Context) ExecutionTypeArrayOutput
+	ToExecutionResponseArrayOutput() ExecutionResponseArrayOutput
+	ToExecutionResponseArrayOutputWithContext(context.Context) ExecutionResponseArrayOutput
 }
 
-type ExecutionTypeArray []ExecutionTypeInput
+type ExecutionResponseArray []ExecutionResponseInput
 
-func (ExecutionTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExecutionType)(nil)).Elem()
+func (ExecutionResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExecutionResponse)(nil)).Elem()
 }
 
-func (i ExecutionTypeArray) ToExecutionTypeArrayOutput() ExecutionTypeArrayOutput {
-	return i.ToExecutionTypeArrayOutputWithContext(context.Background())
+func (i ExecutionResponseArray) ToExecutionResponseArrayOutput() ExecutionResponseArrayOutput {
+	return i.ToExecutionResponseArrayOutputWithContext(context.Background())
 }
 
-func (i ExecutionTypeArray) ToExecutionTypeArrayOutputWithContext(ctx context.Context) ExecutionTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExecutionTypeArrayOutput)
+func (i ExecutionResponseArray) ToExecutionResponseArrayOutputWithContext(ctx context.Context) ExecutionResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecutionResponseArrayOutput)
 }
 
 // The definition of a single executed notebook.
-type ExecutionTypeOutput struct{ *pulumi.OutputState }
+type ExecutionResponseOutput struct{ *pulumi.OutputState }
 
-func (ExecutionTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExecutionType)(nil)).Elem()
+func (ExecutionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecutionResponse)(nil)).Elem()
 }
 
-func (o ExecutionTypeOutput) ToExecutionTypeOutput() ExecutionTypeOutput {
+func (o ExecutionResponseOutput) ToExecutionResponseOutput() ExecutionResponseOutput {
 	return o
 }
 
-func (o ExecutionTypeOutput) ToExecutionTypeOutputWithContext(ctx context.Context) ExecutionTypeOutput {
+func (o ExecutionResponseOutput) ToExecutionResponseOutputWithContext(ctx context.Context) ExecutionResponseOutput {
 	return o
 }
 
-// Output only. Time the Execution was instantiated.
-func (o ExecutionTypeOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExecutionType) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+// Time the Execution was instantiated.
+func (o ExecutionResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionResponse) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // A brief description of this execution.
-func (o ExecutionTypeOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExecutionType) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o ExecutionResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Output only. Name used for UI purposes. Name can only contain alphanumeric characters and underscores '_'.
-func (o ExecutionTypeOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExecutionType) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+// Name used for UI purposes. Name can only contain alphanumeric characters and underscores '_'.
+func (o ExecutionResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // execute metadata including name, hardware spec, region, labels, etc.
-func (o ExecutionTypeOutput) ExecutionTemplate() ExecutionTemplatePtrOutput {
-	return o.ApplyT(func(v ExecutionType) *ExecutionTemplate { return v.ExecutionTemplate }).(ExecutionTemplatePtrOutput)
+func (o ExecutionResponseOutput) ExecutionTemplate() ExecutionTemplateResponseOutput {
+	return o.ApplyT(func(v ExecutionResponse) ExecutionTemplateResponse { return v.ExecutionTemplate }).(ExecutionTemplateResponseOutput)
 }
 
-// Output only. The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
-func (o ExecutionTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExecutionType) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The resource name of the execute. Format: `projects/{project_id}/locations/{location}/execution/{execution_id}
+func (o ExecutionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Output notebook file generated by this execution
-func (o ExecutionTypeOutput) OutputNotebookFile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExecutionType) *string { return v.OutputNotebookFile }).(pulumi.StringPtrOutput)
+func (o ExecutionResponseOutput) OutputNotebookFile() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionResponse) string { return v.OutputNotebookFile }).(pulumi.StringOutput)
 }
 
-// Output only. State of the underlying AI Platform job.
-func (o ExecutionTypeOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExecutionType) *string { return v.State }).(pulumi.StringPtrOutput)
+// State of the underlying AI Platform job.
+func (o ExecutionResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Output only. Time the Execution was last updated.
-func (o ExecutionTypeOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExecutionType) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+// Time the Execution was last updated.
+func (o ExecutionResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-type ExecutionTypeArrayOutput struct{ *pulumi.OutputState }
+type ExecutionResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (ExecutionTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExecutionType)(nil)).Elem()
+func (ExecutionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExecutionResponse)(nil)).Elem()
 }
 
-func (o ExecutionTypeArrayOutput) ToExecutionTypeArrayOutput() ExecutionTypeArrayOutput {
+func (o ExecutionResponseArrayOutput) ToExecutionResponseArrayOutput() ExecutionResponseArrayOutput {
 	return o
 }
 
-func (o ExecutionTypeArrayOutput) ToExecutionTypeArrayOutputWithContext(ctx context.Context) ExecutionTypeArrayOutput {
+func (o ExecutionResponseArrayOutput) ToExecutionResponseArrayOutputWithContext(ctx context.Context) ExecutionResponseArrayOutput {
 	return o
 }
 
-func (o ExecutionTypeArrayOutput) Index(i pulumi.IntInput) ExecutionTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExecutionType {
-		return vs[0].([]ExecutionType)[vs[1].(int)]
-	}).(ExecutionTypeOutput)
+func (o ExecutionResponseArrayOutput) Index(i pulumi.IntInput) ExecutionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExecutionResponse {
+		return vs[0].([]ExecutionResponse)[vs[1].(int)]
+	}).(ExecutionResponseOutput)
 }
 
 // The description a notebook execution workload.
@@ -1082,6 +1506,292 @@ func (o ExecutionTemplatePtrOutput) ScaleTier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The description a notebook execution workload.
+type ExecutionTemplateResponse struct {
+	// Configuration (count and accelerator type) for hardware running notebook execution.
+	AcceleratorConfig SchedulerAcceleratorConfigResponse `pulumi:"acceleratorConfig"`
+	// Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
+	ContainerImageUri string `pulumi:"containerImageUri"`
+	// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+	InputNotebookFile string `pulumi:"inputNotebookFile"`
+	// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
+	Labels map[string]string `pulumi:"labels"`
+	// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
+	MasterType string `pulumi:"masterType"`
+	// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+	OutputNotebookFolder string `pulumi:"outputNotebookFolder"`
+	// Parameters used within the 'input_notebook_file' notebook.
+	Parameters string `pulumi:"parameters"`
+	// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
+	ParamsYamlFile string `pulumi:"paramsYamlFile"`
+	// Required. Scale tier of the hardware used for notebook execution.
+	ScaleTier string `pulumi:"scaleTier"`
+}
+
+// ExecutionTemplateResponseInput is an input type that accepts ExecutionTemplateResponseArgs and ExecutionTemplateResponseOutput values.
+// You can construct a concrete instance of `ExecutionTemplateResponseInput` via:
+//
+//          ExecutionTemplateResponseArgs{...}
+type ExecutionTemplateResponseInput interface {
+	pulumi.Input
+
+	ToExecutionTemplateResponseOutput() ExecutionTemplateResponseOutput
+	ToExecutionTemplateResponseOutputWithContext(context.Context) ExecutionTemplateResponseOutput
+}
+
+// The description a notebook execution workload.
+type ExecutionTemplateResponseArgs struct {
+	// Configuration (count and accelerator type) for hardware running notebook execution.
+	AcceleratorConfig SchedulerAcceleratorConfigResponseInput `pulumi:"acceleratorConfig"`
+	// Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
+	ContainerImageUri pulumi.StringInput `pulumi:"containerImageUri"`
+	// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+	InputNotebookFile pulumi.StringInput `pulumi:"inputNotebookFile"`
+	// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
+	MasterType pulumi.StringInput `pulumi:"masterType"`
+	// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+	OutputNotebookFolder pulumi.StringInput `pulumi:"outputNotebookFolder"`
+	// Parameters used within the 'input_notebook_file' notebook.
+	Parameters pulumi.StringInput `pulumi:"parameters"`
+	// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
+	ParamsYamlFile pulumi.StringInput `pulumi:"paramsYamlFile"`
+	// Required. Scale tier of the hardware used for notebook execution.
+	ScaleTier pulumi.StringInput `pulumi:"scaleTier"`
+}
+
+func (ExecutionTemplateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecutionTemplateResponse)(nil)).Elem()
+}
+
+func (i ExecutionTemplateResponseArgs) ToExecutionTemplateResponseOutput() ExecutionTemplateResponseOutput {
+	return i.ToExecutionTemplateResponseOutputWithContext(context.Background())
+}
+
+func (i ExecutionTemplateResponseArgs) ToExecutionTemplateResponseOutputWithContext(ctx context.Context) ExecutionTemplateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecutionTemplateResponseOutput)
+}
+
+func (i ExecutionTemplateResponseArgs) ToExecutionTemplateResponsePtrOutput() ExecutionTemplateResponsePtrOutput {
+	return i.ToExecutionTemplateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ExecutionTemplateResponseArgs) ToExecutionTemplateResponsePtrOutputWithContext(ctx context.Context) ExecutionTemplateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecutionTemplateResponseOutput).ToExecutionTemplateResponsePtrOutputWithContext(ctx)
+}
+
+// ExecutionTemplateResponsePtrInput is an input type that accepts ExecutionTemplateResponseArgs, ExecutionTemplateResponsePtr and ExecutionTemplateResponsePtrOutput values.
+// You can construct a concrete instance of `ExecutionTemplateResponsePtrInput` via:
+//
+//          ExecutionTemplateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ExecutionTemplateResponsePtrInput interface {
+	pulumi.Input
+
+	ToExecutionTemplateResponsePtrOutput() ExecutionTemplateResponsePtrOutput
+	ToExecutionTemplateResponsePtrOutputWithContext(context.Context) ExecutionTemplateResponsePtrOutput
+}
+
+type executionTemplateResponsePtrType ExecutionTemplateResponseArgs
+
+func ExecutionTemplateResponsePtr(v *ExecutionTemplateResponseArgs) ExecutionTemplateResponsePtrInput {
+	return (*executionTemplateResponsePtrType)(v)
+}
+
+func (*executionTemplateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExecutionTemplateResponse)(nil)).Elem()
+}
+
+func (i *executionTemplateResponsePtrType) ToExecutionTemplateResponsePtrOutput() ExecutionTemplateResponsePtrOutput {
+	return i.ToExecutionTemplateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *executionTemplateResponsePtrType) ToExecutionTemplateResponsePtrOutputWithContext(ctx context.Context) ExecutionTemplateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecutionTemplateResponsePtrOutput)
+}
+
+// The description a notebook execution workload.
+type ExecutionTemplateResponseOutput struct{ *pulumi.OutputState }
+
+func (ExecutionTemplateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecutionTemplateResponse)(nil)).Elem()
+}
+
+func (o ExecutionTemplateResponseOutput) ToExecutionTemplateResponseOutput() ExecutionTemplateResponseOutput {
+	return o
+}
+
+func (o ExecutionTemplateResponseOutput) ToExecutionTemplateResponseOutputWithContext(ctx context.Context) ExecutionTemplateResponseOutput {
+	return o
+}
+
+func (o ExecutionTemplateResponseOutput) ToExecutionTemplateResponsePtrOutput() ExecutionTemplateResponsePtrOutput {
+	return o.ToExecutionTemplateResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ExecutionTemplateResponseOutput) ToExecutionTemplateResponsePtrOutputWithContext(ctx context.Context) ExecutionTemplateResponsePtrOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) *ExecutionTemplateResponse {
+		return &v
+	}).(ExecutionTemplateResponsePtrOutput)
+}
+
+// Configuration (count and accelerator type) for hardware running notebook execution.
+func (o ExecutionTemplateResponseOutput) AcceleratorConfig() SchedulerAcceleratorConfigResponseOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) SchedulerAcceleratorConfigResponse { return v.AcceleratorConfig }).(SchedulerAcceleratorConfigResponseOutput)
+}
+
+// Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
+func (o ExecutionTemplateResponseOutput) ContainerImageUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.ContainerImageUri }).(pulumi.StringOutput)
+}
+
+// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+func (o ExecutionTemplateResponseOutput) InputNotebookFile() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.InputNotebookFile }).(pulumi.StringOutput)
+}
+
+// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
+func (o ExecutionTemplateResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
+func (o ExecutionTemplateResponseOutput) MasterType() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.MasterType }).(pulumi.StringOutput)
+}
+
+// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+func (o ExecutionTemplateResponseOutput) OutputNotebookFolder() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.OutputNotebookFolder }).(pulumi.StringOutput)
+}
+
+// Parameters used within the 'input_notebook_file' notebook.
+func (o ExecutionTemplateResponseOutput) Parameters() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.Parameters }).(pulumi.StringOutput)
+}
+
+// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
+func (o ExecutionTemplateResponseOutput) ParamsYamlFile() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.ParamsYamlFile }).(pulumi.StringOutput)
+}
+
+// Required. Scale tier of the hardware used for notebook execution.
+func (o ExecutionTemplateResponseOutput) ScaleTier() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.ScaleTier }).(pulumi.StringOutput)
+}
+
+type ExecutionTemplateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExecutionTemplateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExecutionTemplateResponse)(nil)).Elem()
+}
+
+func (o ExecutionTemplateResponsePtrOutput) ToExecutionTemplateResponsePtrOutput() ExecutionTemplateResponsePtrOutput {
+	return o
+}
+
+func (o ExecutionTemplateResponsePtrOutput) ToExecutionTemplateResponsePtrOutputWithContext(ctx context.Context) ExecutionTemplateResponsePtrOutput {
+	return o
+}
+
+func (o ExecutionTemplateResponsePtrOutput) Elem() ExecutionTemplateResponseOutput {
+	return o.ApplyT(func(v *ExecutionTemplateResponse) ExecutionTemplateResponse { return *v }).(ExecutionTemplateResponseOutput)
+}
+
+// Configuration (count and accelerator type) for hardware running notebook execution.
+func (o ExecutionTemplateResponsePtrOutput) AcceleratorConfig() SchedulerAcceleratorConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplateResponse) *SchedulerAcceleratorConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AcceleratorConfig
+	}).(SchedulerAcceleratorConfigResponsePtrOutput)
+}
+
+// Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
+func (o ExecutionTemplateResponsePtrOutput) ContainerImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ContainerImageUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
+func (o ExecutionTemplateResponsePtrOutput) InputNotebookFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InputNotebookFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Labels for execution. If execution is scheduled, a field included will be 'nbs-scheduled'. Otherwise, it is an immediate execution, and an included field will be 'nbs-immediate'. Use fields to efficiently index between various types of executions.
+func (o ExecutionTemplateResponsePtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ExecutionTemplateResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. The following types are supported: - `n1-standard-4` - `n1-standard-8` - `n1-standard-16` - `n1-standard-32` - `n1-standard-64` - `n1-standard-96` - `n1-highmem-2` - `n1-highmem-4` - `n1-highmem-8` - `n1-highmem-16` - `n1-highmem-32` - `n1-highmem-64` - `n1-highmem-96` - `n1-highcpu-16` - `n1-highcpu-32` - `n1-highcpu-64` - `n1-highcpu-96` Alternatively, you can use the following legacy machine types: - `standard` - `large_model` - `complex_model_s` - `complex_model_m` - `complex_model_l` - `standard_gpu` - `complex_model_m_gpu` - `complex_model_l_gpu` - `standard_p100` - `complex_model_m_p100` - `standard_v100` - `large_model_v100` - `complex_model_m_v100` - `complex_model_l_v100` Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPU.
+func (o ExecutionTemplateResponsePtrOutput) MasterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
+func (o ExecutionTemplateResponsePtrOutput) OutputNotebookFolder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OutputNotebookFolder
+	}).(pulumi.StringPtrOutput)
+}
+
+// Parameters used within the 'input_notebook_file' notebook.
+func (o ExecutionTemplateResponsePtrOutput) Parameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Parameters
+	}).(pulumi.StringPtrOutput)
+}
+
+// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
+func (o ExecutionTemplateResponsePtrOutput) ParamsYamlFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ParamsYamlFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Scale tier of the hardware used for notebook execution.
+func (o ExecutionTemplateResponsePtrOutput) ScaleTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleTier
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1273,104 +1983,186 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Guest OS features for boot disk.
-type GuestOsFeature struct {
-	// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
-	Type *string `pulumi:"type"`
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
 }
 
-// GuestOsFeatureInput is an input type that accepts GuestOsFeatureArgs and GuestOsFeatureOutput values.
-// You can construct a concrete instance of `GuestOsFeatureInput` via:
+// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
+// You can construct a concrete instance of `ExprResponseInput` via:
 //
-//          GuestOsFeatureArgs{...}
-type GuestOsFeatureInput interface {
+//          ExprResponseArgs{...}
+type ExprResponseInput interface {
 	pulumi.Input
 
-	ToGuestOsFeatureOutput() GuestOsFeatureOutput
-	ToGuestOsFeatureOutputWithContext(context.Context) GuestOsFeatureOutput
+	ToExprResponseOutput() ExprResponseOutput
+	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
 }
 
-// Guest OS features for boot disk.
-type GuestOsFeatureArgs struct {
-	// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
-	Type pulumi.StringPtrInput `pulumi:"type"`
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
-func (GuestOsFeatureArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GuestOsFeature)(nil)).Elem()
+func (ExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
 }
 
-func (i GuestOsFeatureArgs) ToGuestOsFeatureOutput() GuestOsFeatureOutput {
-	return i.ToGuestOsFeatureOutputWithContext(context.Background())
+func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
+	return i.ToExprResponseOutputWithContext(context.Background())
 }
 
-func (i GuestOsFeatureArgs) ToGuestOsFeatureOutputWithContext(ctx context.Context) GuestOsFeatureOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GuestOsFeatureOutput)
+func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
 }
 
-// GuestOsFeatureArrayInput is an input type that accepts GuestOsFeatureArray and GuestOsFeatureArrayOutput values.
-// You can construct a concrete instance of `GuestOsFeatureArrayInput` via:
-//
-//          GuestOsFeatureArray{ GuestOsFeatureArgs{...} }
-type GuestOsFeatureArrayInput interface {
-	pulumi.Input
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseOutput struct{ *pulumi.OutputState }
 
-	ToGuestOsFeatureArrayOutput() GuestOsFeatureArrayOutput
-	ToGuestOsFeatureArrayOutputWithContext(context.Context) GuestOsFeatureArrayOutput
+func (ExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
 }
 
-type GuestOsFeatureArray []GuestOsFeatureInput
-
-func (GuestOsFeatureArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GuestOsFeature)(nil)).Elem()
-}
-
-func (i GuestOsFeatureArray) ToGuestOsFeatureArrayOutput() GuestOsFeatureArrayOutput {
-	return i.ToGuestOsFeatureArrayOutputWithContext(context.Background())
-}
-
-func (i GuestOsFeatureArray) ToGuestOsFeatureArrayOutputWithContext(ctx context.Context) GuestOsFeatureArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GuestOsFeatureArrayOutput)
-}
-
-// Guest OS features for boot disk.
-type GuestOsFeatureOutput struct{ *pulumi.OutputState }
-
-func (GuestOsFeatureOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GuestOsFeature)(nil)).Elem()
-}
-
-func (o GuestOsFeatureOutput) ToGuestOsFeatureOutput() GuestOsFeatureOutput {
+func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
 	return o
 }
 
-func (o GuestOsFeatureOutput) ToGuestOsFeatureOutputWithContext(ctx context.Context) GuestOsFeatureOutput {
+func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// Guest OS features for boot disk.
+type GuestOsFeatureResponse struct {
+	// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+	Type string `pulumi:"type"`
+}
+
+// GuestOsFeatureResponseInput is an input type that accepts GuestOsFeatureResponseArgs and GuestOsFeatureResponseOutput values.
+// You can construct a concrete instance of `GuestOsFeatureResponseInput` via:
+//
+//          GuestOsFeatureResponseArgs{...}
+type GuestOsFeatureResponseInput interface {
+	pulumi.Input
+
+	ToGuestOsFeatureResponseOutput() GuestOsFeatureResponseOutput
+	ToGuestOsFeatureResponseOutputWithContext(context.Context) GuestOsFeatureResponseOutput
+}
+
+// Guest OS features for boot disk.
+type GuestOsFeatureResponseArgs struct {
+	// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GuestOsFeatureResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestOsFeatureResponse)(nil)).Elem()
+}
+
+func (i GuestOsFeatureResponseArgs) ToGuestOsFeatureResponseOutput() GuestOsFeatureResponseOutput {
+	return i.ToGuestOsFeatureResponseOutputWithContext(context.Background())
+}
+
+func (i GuestOsFeatureResponseArgs) ToGuestOsFeatureResponseOutputWithContext(ctx context.Context) GuestOsFeatureResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestOsFeatureResponseOutput)
+}
+
+// GuestOsFeatureResponseArrayInput is an input type that accepts GuestOsFeatureResponseArray and GuestOsFeatureResponseArrayOutput values.
+// You can construct a concrete instance of `GuestOsFeatureResponseArrayInput` via:
+//
+//          GuestOsFeatureResponseArray{ GuestOsFeatureResponseArgs{...} }
+type GuestOsFeatureResponseArrayInput interface {
+	pulumi.Input
+
+	ToGuestOsFeatureResponseArrayOutput() GuestOsFeatureResponseArrayOutput
+	ToGuestOsFeatureResponseArrayOutputWithContext(context.Context) GuestOsFeatureResponseArrayOutput
+}
+
+type GuestOsFeatureResponseArray []GuestOsFeatureResponseInput
+
+func (GuestOsFeatureResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestOsFeatureResponse)(nil)).Elem()
+}
+
+func (i GuestOsFeatureResponseArray) ToGuestOsFeatureResponseArrayOutput() GuestOsFeatureResponseArrayOutput {
+	return i.ToGuestOsFeatureResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GuestOsFeatureResponseArray) ToGuestOsFeatureResponseArrayOutputWithContext(ctx context.Context) GuestOsFeatureResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestOsFeatureResponseArrayOutput)
+}
+
+// Guest OS features for boot disk.
+type GuestOsFeatureResponseOutput struct{ *pulumi.OutputState }
+
+func (GuestOsFeatureResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestOsFeatureResponse)(nil)).Elem()
+}
+
+func (o GuestOsFeatureResponseOutput) ToGuestOsFeatureResponseOutput() GuestOsFeatureResponseOutput {
+	return o
+}
+
+func (o GuestOsFeatureResponseOutput) ToGuestOsFeatureResponseOutputWithContext(ctx context.Context) GuestOsFeatureResponseOutput {
 	return o
 }
 
 // The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
-func (o GuestOsFeatureOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GuestOsFeature) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o GuestOsFeatureResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestOsFeatureResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GuestOsFeatureArrayOutput struct{ *pulumi.OutputState }
+type GuestOsFeatureResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (GuestOsFeatureArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GuestOsFeature)(nil)).Elem()
+func (GuestOsFeatureResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestOsFeatureResponse)(nil)).Elem()
 }
 
-func (o GuestOsFeatureArrayOutput) ToGuestOsFeatureArrayOutput() GuestOsFeatureArrayOutput {
+func (o GuestOsFeatureResponseArrayOutput) ToGuestOsFeatureResponseArrayOutput() GuestOsFeatureResponseArrayOutput {
 	return o
 }
 
-func (o GuestOsFeatureArrayOutput) ToGuestOsFeatureArrayOutputWithContext(ctx context.Context) GuestOsFeatureArrayOutput {
+func (o GuestOsFeatureResponseArrayOutput) ToGuestOsFeatureResponseArrayOutputWithContext(ctx context.Context) GuestOsFeatureResponseArrayOutput {
 	return o
 }
 
-func (o GuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GuestOsFeatureOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuestOsFeature {
-		return vs[0].([]GuestOsFeature)[vs[1].(int)]
-	}).(GuestOsFeatureOutput)
+func (o GuestOsFeatureResponseArrayOutput) Index(i pulumi.IntInput) GuestOsFeatureResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuestOsFeatureResponse {
+		return vs[0].([]GuestOsFeatureResponse)[vs[1].(int)]
+	}).(GuestOsFeatureResponseOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
@@ -1698,6 +2490,159 @@ func (o SchedulerAcceleratorConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
+type SchedulerAcceleratorConfigResponse struct {
+	// Count of cores of this accelerator.
+	CoreCount string `pulumi:"coreCount"`
+	// Type of this accelerator.
+	Type string `pulumi:"type"`
+}
+
+// SchedulerAcceleratorConfigResponseInput is an input type that accepts SchedulerAcceleratorConfigResponseArgs and SchedulerAcceleratorConfigResponseOutput values.
+// You can construct a concrete instance of `SchedulerAcceleratorConfigResponseInput` via:
+//
+//          SchedulerAcceleratorConfigResponseArgs{...}
+type SchedulerAcceleratorConfigResponseInput interface {
+	pulumi.Input
+
+	ToSchedulerAcceleratorConfigResponseOutput() SchedulerAcceleratorConfigResponseOutput
+	ToSchedulerAcceleratorConfigResponseOutputWithContext(context.Context) SchedulerAcceleratorConfigResponseOutput
+}
+
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
+type SchedulerAcceleratorConfigResponseArgs struct {
+	// Count of cores of this accelerator.
+	CoreCount pulumi.StringInput `pulumi:"coreCount"`
+	// Type of this accelerator.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SchedulerAcceleratorConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulerAcceleratorConfigResponse)(nil)).Elem()
+}
+
+func (i SchedulerAcceleratorConfigResponseArgs) ToSchedulerAcceleratorConfigResponseOutput() SchedulerAcceleratorConfigResponseOutput {
+	return i.ToSchedulerAcceleratorConfigResponseOutputWithContext(context.Background())
+}
+
+func (i SchedulerAcceleratorConfigResponseArgs) ToSchedulerAcceleratorConfigResponseOutputWithContext(ctx context.Context) SchedulerAcceleratorConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulerAcceleratorConfigResponseOutput)
+}
+
+func (i SchedulerAcceleratorConfigResponseArgs) ToSchedulerAcceleratorConfigResponsePtrOutput() SchedulerAcceleratorConfigResponsePtrOutput {
+	return i.ToSchedulerAcceleratorConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SchedulerAcceleratorConfigResponseArgs) ToSchedulerAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) SchedulerAcceleratorConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulerAcceleratorConfigResponseOutput).ToSchedulerAcceleratorConfigResponsePtrOutputWithContext(ctx)
+}
+
+// SchedulerAcceleratorConfigResponsePtrInput is an input type that accepts SchedulerAcceleratorConfigResponseArgs, SchedulerAcceleratorConfigResponsePtr and SchedulerAcceleratorConfigResponsePtrOutput values.
+// You can construct a concrete instance of `SchedulerAcceleratorConfigResponsePtrInput` via:
+//
+//          SchedulerAcceleratorConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SchedulerAcceleratorConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToSchedulerAcceleratorConfigResponsePtrOutput() SchedulerAcceleratorConfigResponsePtrOutput
+	ToSchedulerAcceleratorConfigResponsePtrOutputWithContext(context.Context) SchedulerAcceleratorConfigResponsePtrOutput
+}
+
+type schedulerAcceleratorConfigResponsePtrType SchedulerAcceleratorConfigResponseArgs
+
+func SchedulerAcceleratorConfigResponsePtr(v *SchedulerAcceleratorConfigResponseArgs) SchedulerAcceleratorConfigResponsePtrInput {
+	return (*schedulerAcceleratorConfigResponsePtrType)(v)
+}
+
+func (*schedulerAcceleratorConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulerAcceleratorConfigResponse)(nil)).Elem()
+}
+
+func (i *schedulerAcceleratorConfigResponsePtrType) ToSchedulerAcceleratorConfigResponsePtrOutput() SchedulerAcceleratorConfigResponsePtrOutput {
+	return i.ToSchedulerAcceleratorConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *schedulerAcceleratorConfigResponsePtrType) ToSchedulerAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) SchedulerAcceleratorConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulerAcceleratorConfigResponsePtrOutput)
+}
+
+// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
+type SchedulerAcceleratorConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SchedulerAcceleratorConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulerAcceleratorConfigResponse)(nil)).Elem()
+}
+
+func (o SchedulerAcceleratorConfigResponseOutput) ToSchedulerAcceleratorConfigResponseOutput() SchedulerAcceleratorConfigResponseOutput {
+	return o
+}
+
+func (o SchedulerAcceleratorConfigResponseOutput) ToSchedulerAcceleratorConfigResponseOutputWithContext(ctx context.Context) SchedulerAcceleratorConfigResponseOutput {
+	return o
+}
+
+func (o SchedulerAcceleratorConfigResponseOutput) ToSchedulerAcceleratorConfigResponsePtrOutput() SchedulerAcceleratorConfigResponsePtrOutput {
+	return o.ToSchedulerAcceleratorConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SchedulerAcceleratorConfigResponseOutput) ToSchedulerAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) SchedulerAcceleratorConfigResponsePtrOutput {
+	return o.ApplyT(func(v SchedulerAcceleratorConfigResponse) *SchedulerAcceleratorConfigResponse {
+		return &v
+	}).(SchedulerAcceleratorConfigResponsePtrOutput)
+}
+
+// Count of cores of this accelerator.
+func (o SchedulerAcceleratorConfigResponseOutput) CoreCount() pulumi.StringOutput {
+	return o.ApplyT(func(v SchedulerAcceleratorConfigResponse) string { return v.CoreCount }).(pulumi.StringOutput)
+}
+
+// Type of this accelerator.
+func (o SchedulerAcceleratorConfigResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SchedulerAcceleratorConfigResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SchedulerAcceleratorConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SchedulerAcceleratorConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulerAcceleratorConfigResponse)(nil)).Elem()
+}
+
+func (o SchedulerAcceleratorConfigResponsePtrOutput) ToSchedulerAcceleratorConfigResponsePtrOutput() SchedulerAcceleratorConfigResponsePtrOutput {
+	return o
+}
+
+func (o SchedulerAcceleratorConfigResponsePtrOutput) ToSchedulerAcceleratorConfigResponsePtrOutputWithContext(ctx context.Context) SchedulerAcceleratorConfigResponsePtrOutput {
+	return o
+}
+
+func (o SchedulerAcceleratorConfigResponsePtrOutput) Elem() SchedulerAcceleratorConfigResponseOutput {
+	return o.ApplyT(func(v *SchedulerAcceleratorConfigResponse) SchedulerAcceleratorConfigResponse { return *v }).(SchedulerAcceleratorConfigResponseOutput)
+}
+
+// Count of cores of this accelerator.
+func (o SchedulerAcceleratorConfigResponsePtrOutput) CoreCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchedulerAcceleratorConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CoreCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of this accelerator.
+func (o SchedulerAcceleratorConfigResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SchedulerAcceleratorConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
 type ShieldedInstanceConfig struct {
 	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
@@ -1867,6 +2812,178 @@ func (o ShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.EnableVtpm
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+type ShieldedInstanceConfigResponse struct {
+	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+	EnableIntegrityMonitoring bool `pulumi:"enableIntegrityMonitoring"`
+	// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+	EnableSecureBoot bool `pulumi:"enableSecureBoot"`
+	// Defines whether the instance has the vTPM enabled. Enabled by default.
+	EnableVtpm bool `pulumi:"enableVtpm"`
+}
+
+// ShieldedInstanceConfigResponseInput is an input type that accepts ShieldedInstanceConfigResponseArgs and ShieldedInstanceConfigResponseOutput values.
+// You can construct a concrete instance of `ShieldedInstanceConfigResponseInput` via:
+//
+//          ShieldedInstanceConfigResponseArgs{...}
+type ShieldedInstanceConfigResponseInput interface {
+	pulumi.Input
+
+	ToShieldedInstanceConfigResponseOutput() ShieldedInstanceConfigResponseOutput
+	ToShieldedInstanceConfigResponseOutputWithContext(context.Context) ShieldedInstanceConfigResponseOutput
+}
+
+// A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+type ShieldedInstanceConfigResponseArgs struct {
+	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+	EnableIntegrityMonitoring pulumi.BoolInput `pulumi:"enableIntegrityMonitoring"`
+	// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+	EnableSecureBoot pulumi.BoolInput `pulumi:"enableSecureBoot"`
+	// Defines whether the instance has the vTPM enabled. Enabled by default.
+	EnableVtpm pulumi.BoolInput `pulumi:"enableVtpm"`
+}
+
+func (ShieldedInstanceConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShieldedInstanceConfigResponse)(nil)).Elem()
+}
+
+func (i ShieldedInstanceConfigResponseArgs) ToShieldedInstanceConfigResponseOutput() ShieldedInstanceConfigResponseOutput {
+	return i.ToShieldedInstanceConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ShieldedInstanceConfigResponseArgs) ToShieldedInstanceConfigResponseOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShieldedInstanceConfigResponseOutput)
+}
+
+func (i ShieldedInstanceConfigResponseArgs) ToShieldedInstanceConfigResponsePtrOutput() ShieldedInstanceConfigResponsePtrOutput {
+	return i.ToShieldedInstanceConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ShieldedInstanceConfigResponseArgs) ToShieldedInstanceConfigResponsePtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShieldedInstanceConfigResponseOutput).ToShieldedInstanceConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ShieldedInstanceConfigResponsePtrInput is an input type that accepts ShieldedInstanceConfigResponseArgs, ShieldedInstanceConfigResponsePtr and ShieldedInstanceConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ShieldedInstanceConfigResponsePtrInput` via:
+//
+//          ShieldedInstanceConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ShieldedInstanceConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToShieldedInstanceConfigResponsePtrOutput() ShieldedInstanceConfigResponsePtrOutput
+	ToShieldedInstanceConfigResponsePtrOutputWithContext(context.Context) ShieldedInstanceConfigResponsePtrOutput
+}
+
+type shieldedInstanceConfigResponsePtrType ShieldedInstanceConfigResponseArgs
+
+func ShieldedInstanceConfigResponsePtr(v *ShieldedInstanceConfigResponseArgs) ShieldedInstanceConfigResponsePtrInput {
+	return (*shieldedInstanceConfigResponsePtrType)(v)
+}
+
+func (*shieldedInstanceConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShieldedInstanceConfigResponse)(nil)).Elem()
+}
+
+func (i *shieldedInstanceConfigResponsePtrType) ToShieldedInstanceConfigResponsePtrOutput() ShieldedInstanceConfigResponsePtrOutput {
+	return i.ToShieldedInstanceConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *shieldedInstanceConfigResponsePtrType) ToShieldedInstanceConfigResponsePtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShieldedInstanceConfigResponsePtrOutput)
+}
+
+// A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+type ShieldedInstanceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ShieldedInstanceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShieldedInstanceConfigResponse)(nil)).Elem()
+}
+
+func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponseOutput() ShieldedInstanceConfigResponseOutput {
+	return o
+}
+
+func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponseOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponseOutput {
+	return o
+}
+
+func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponsePtrOutput() ShieldedInstanceConfigResponsePtrOutput {
+	return o.ToShieldedInstanceConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponsePtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponsePtrOutput {
+	return o.ApplyT(func(v ShieldedInstanceConfigResponse) *ShieldedInstanceConfigResponse {
+		return &v
+	}).(ShieldedInstanceConfigResponsePtrOutput)
+}
+
+// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+func (o ShieldedInstanceConfigResponseOutput) EnableIntegrityMonitoring() pulumi.BoolOutput {
+	return o.ApplyT(func(v ShieldedInstanceConfigResponse) bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolOutput)
+}
+
+// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+func (o ShieldedInstanceConfigResponseOutput) EnableSecureBoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v ShieldedInstanceConfigResponse) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
+}
+
+// Defines whether the instance has the vTPM enabled. Enabled by default.
+func (o ShieldedInstanceConfigResponseOutput) EnableVtpm() pulumi.BoolOutput {
+	return o.ApplyT(func(v ShieldedInstanceConfigResponse) bool { return v.EnableVtpm }).(pulumi.BoolOutput)
+}
+
+type ShieldedInstanceConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ShieldedInstanceConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShieldedInstanceConfigResponse)(nil)).Elem()
+}
+
+func (o ShieldedInstanceConfigResponsePtrOutput) ToShieldedInstanceConfigResponsePtrOutput() ShieldedInstanceConfigResponsePtrOutput {
+	return o
+}
+
+func (o ShieldedInstanceConfigResponsePtrOutput) ToShieldedInstanceConfigResponsePtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponsePtrOutput {
+	return o
+}
+
+func (o ShieldedInstanceConfigResponsePtrOutput) Elem() ShieldedInstanceConfigResponseOutput {
+	return o.ApplyT(func(v *ShieldedInstanceConfigResponse) ShieldedInstanceConfigResponse { return *v }).(ShieldedInstanceConfigResponseOutput)
+}
+
+// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+func (o ShieldedInstanceConfigResponsePtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ShieldedInstanceConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+func (o ShieldedInstanceConfigResponsePtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ShieldedInstanceConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the instance has the vTPM enabled. Enabled by default.
+func (o ShieldedInstanceConfigResponsePtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ShieldedInstanceConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableVtpm
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -2051,6 +3168,187 @@ func (o UpgradeHistoryEntryArrayOutput) Index(i pulumi.IntInput) UpgradeHistoryE
 	}).(UpgradeHistoryEntryOutput)
 }
 
+// The entry of VM image upgrade history.
+type UpgradeHistoryEntryResponse struct {
+	// Action. Rolloback or Upgrade.
+	Action string `pulumi:"action"`
+	// The container image before this instance upgrade.
+	ContainerImage string `pulumi:"containerImage"`
+	// The time that this instance upgrade history entry is created.
+	CreateTime string `pulumi:"createTime"`
+	// The framework of this notebook instance.
+	Framework string `pulumi:"framework"`
+	// The snapshot of the boot disk of this notebook instance before upgrade.
+	Snapshot string `pulumi:"snapshot"`
+	// The state of this instance upgrade history entry.
+	State string `pulumi:"state"`
+	// Target VM Image. Format: ainotebooks-vm/project/image-name/name.
+	TargetImage string `pulumi:"targetImage"`
+	// Target VM Version, like m63.
+	TargetVersion string `pulumi:"targetVersion"`
+	// The version of the notebook instance before this upgrade.
+	Version string `pulumi:"version"`
+	// The VM image before this instance upgrade.
+	VmImage string `pulumi:"vmImage"`
+}
+
+// UpgradeHistoryEntryResponseInput is an input type that accepts UpgradeHistoryEntryResponseArgs and UpgradeHistoryEntryResponseOutput values.
+// You can construct a concrete instance of `UpgradeHistoryEntryResponseInput` via:
+//
+//          UpgradeHistoryEntryResponseArgs{...}
+type UpgradeHistoryEntryResponseInput interface {
+	pulumi.Input
+
+	ToUpgradeHistoryEntryResponseOutput() UpgradeHistoryEntryResponseOutput
+	ToUpgradeHistoryEntryResponseOutputWithContext(context.Context) UpgradeHistoryEntryResponseOutput
+}
+
+// The entry of VM image upgrade history.
+type UpgradeHistoryEntryResponseArgs struct {
+	// Action. Rolloback or Upgrade.
+	Action pulumi.StringInput `pulumi:"action"`
+	// The container image before this instance upgrade.
+	ContainerImage pulumi.StringInput `pulumi:"containerImage"`
+	// The time that this instance upgrade history entry is created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The framework of this notebook instance.
+	Framework pulumi.StringInput `pulumi:"framework"`
+	// The snapshot of the boot disk of this notebook instance before upgrade.
+	Snapshot pulumi.StringInput `pulumi:"snapshot"`
+	// The state of this instance upgrade history entry.
+	State pulumi.StringInput `pulumi:"state"`
+	// Target VM Image. Format: ainotebooks-vm/project/image-name/name.
+	TargetImage pulumi.StringInput `pulumi:"targetImage"`
+	// Target VM Version, like m63.
+	TargetVersion pulumi.StringInput `pulumi:"targetVersion"`
+	// The version of the notebook instance before this upgrade.
+	Version pulumi.StringInput `pulumi:"version"`
+	// The VM image before this instance upgrade.
+	VmImage pulumi.StringInput `pulumi:"vmImage"`
+}
+
+func (UpgradeHistoryEntryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeHistoryEntryResponse)(nil)).Elem()
+}
+
+func (i UpgradeHistoryEntryResponseArgs) ToUpgradeHistoryEntryResponseOutput() UpgradeHistoryEntryResponseOutput {
+	return i.ToUpgradeHistoryEntryResponseOutputWithContext(context.Background())
+}
+
+func (i UpgradeHistoryEntryResponseArgs) ToUpgradeHistoryEntryResponseOutputWithContext(ctx context.Context) UpgradeHistoryEntryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeHistoryEntryResponseOutput)
+}
+
+// UpgradeHistoryEntryResponseArrayInput is an input type that accepts UpgradeHistoryEntryResponseArray and UpgradeHistoryEntryResponseArrayOutput values.
+// You can construct a concrete instance of `UpgradeHistoryEntryResponseArrayInput` via:
+//
+//          UpgradeHistoryEntryResponseArray{ UpgradeHistoryEntryResponseArgs{...} }
+type UpgradeHistoryEntryResponseArrayInput interface {
+	pulumi.Input
+
+	ToUpgradeHistoryEntryResponseArrayOutput() UpgradeHistoryEntryResponseArrayOutput
+	ToUpgradeHistoryEntryResponseArrayOutputWithContext(context.Context) UpgradeHistoryEntryResponseArrayOutput
+}
+
+type UpgradeHistoryEntryResponseArray []UpgradeHistoryEntryResponseInput
+
+func (UpgradeHistoryEntryResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UpgradeHistoryEntryResponse)(nil)).Elem()
+}
+
+func (i UpgradeHistoryEntryResponseArray) ToUpgradeHistoryEntryResponseArrayOutput() UpgradeHistoryEntryResponseArrayOutput {
+	return i.ToUpgradeHistoryEntryResponseArrayOutputWithContext(context.Background())
+}
+
+func (i UpgradeHistoryEntryResponseArray) ToUpgradeHistoryEntryResponseArrayOutputWithContext(ctx context.Context) UpgradeHistoryEntryResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeHistoryEntryResponseArrayOutput)
+}
+
+// The entry of VM image upgrade history.
+type UpgradeHistoryEntryResponseOutput struct{ *pulumi.OutputState }
+
+func (UpgradeHistoryEntryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeHistoryEntryResponse)(nil)).Elem()
+}
+
+func (o UpgradeHistoryEntryResponseOutput) ToUpgradeHistoryEntryResponseOutput() UpgradeHistoryEntryResponseOutput {
+	return o
+}
+
+func (o UpgradeHistoryEntryResponseOutput) ToUpgradeHistoryEntryResponseOutputWithContext(ctx context.Context) UpgradeHistoryEntryResponseOutput {
+	return o
+}
+
+// Action. Rolloback or Upgrade.
+func (o UpgradeHistoryEntryResponseOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeHistoryEntryResponse) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// The container image before this instance upgrade.
+func (o UpgradeHistoryEntryResponseOutput) ContainerImage() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeHistoryEntryResponse) string { return v.ContainerImage }).(pulumi.StringOutput)
+}
+
+// The time that this instance upgrade history entry is created.
+func (o UpgradeHistoryEntryResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeHistoryEntryResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The framework of this notebook instance.
+func (o UpgradeHistoryEntryResponseOutput) Framework() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeHistoryEntryResponse) string { return v.Framework }).(pulumi.StringOutput)
+}
+
+// The snapshot of the boot disk of this notebook instance before upgrade.
+func (o UpgradeHistoryEntryResponseOutput) Snapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeHistoryEntryResponse) string { return v.Snapshot }).(pulumi.StringOutput)
+}
+
+// The state of this instance upgrade history entry.
+func (o UpgradeHistoryEntryResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeHistoryEntryResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Target VM Image. Format: ainotebooks-vm/project/image-name/name.
+func (o UpgradeHistoryEntryResponseOutput) TargetImage() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeHistoryEntryResponse) string { return v.TargetImage }).(pulumi.StringOutput)
+}
+
+// Target VM Version, like m63.
+func (o UpgradeHistoryEntryResponseOutput) TargetVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeHistoryEntryResponse) string { return v.TargetVersion }).(pulumi.StringOutput)
+}
+
+// The version of the notebook instance before this upgrade.
+func (o UpgradeHistoryEntryResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeHistoryEntryResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// The VM image before this instance upgrade.
+func (o UpgradeHistoryEntryResponseOutput) VmImage() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradeHistoryEntryResponse) string { return v.VmImage }).(pulumi.StringOutput)
+}
+
+type UpgradeHistoryEntryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (UpgradeHistoryEntryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UpgradeHistoryEntryResponse)(nil)).Elem()
+}
+
+func (o UpgradeHistoryEntryResponseArrayOutput) ToUpgradeHistoryEntryResponseArrayOutput() UpgradeHistoryEntryResponseArrayOutput {
+	return o
+}
+
+func (o UpgradeHistoryEntryResponseArrayOutput) ToUpgradeHistoryEntryResponseArrayOutputWithContext(ctx context.Context) UpgradeHistoryEntryResponseArrayOutput {
+	return o
+}
+
+func (o UpgradeHistoryEntryResponseArrayOutput) Index(i pulumi.IntInput) UpgradeHistoryEntryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UpgradeHistoryEntryResponse {
+		return vs[0].([]UpgradeHistoryEntryResponse)[vs[1].(int)]
+	}).(UpgradeHistoryEntryResponseOutput)
+}
+
 // Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the environment installed directly on the VM.
 type VmImage struct {
 	// Use this VM image family to find the image; the newest image in this family will be used.
@@ -2223,31 +3521,220 @@ func (o VmImagePtrOutput) Project() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the environment installed directly on the VM.
+type VmImageResponse struct {
+	// Use this VM image family to find the image; the newest image in this family will be used.
+	ImageFamily string `pulumi:"imageFamily"`
+	// Use VM image name to find the image.
+	ImageName string `pulumi:"imageName"`
+	// Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+	Project string `pulumi:"project"`
+}
+
+// VmImageResponseInput is an input type that accepts VmImageResponseArgs and VmImageResponseOutput values.
+// You can construct a concrete instance of `VmImageResponseInput` via:
+//
+//          VmImageResponseArgs{...}
+type VmImageResponseInput interface {
+	pulumi.Input
+
+	ToVmImageResponseOutput() VmImageResponseOutput
+	ToVmImageResponseOutputWithContext(context.Context) VmImageResponseOutput
+}
+
+// Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the environment installed directly on the VM.
+type VmImageResponseArgs struct {
+	// Use this VM image family to find the image; the newest image in this family will be used.
+	ImageFamily pulumi.StringInput `pulumi:"imageFamily"`
+	// Use VM image name to find the image.
+	ImageName pulumi.StringInput `pulumi:"imageName"`
+	// Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+	Project pulumi.StringInput `pulumi:"project"`
+}
+
+func (VmImageResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmImageResponse)(nil)).Elem()
+}
+
+func (i VmImageResponseArgs) ToVmImageResponseOutput() VmImageResponseOutput {
+	return i.ToVmImageResponseOutputWithContext(context.Background())
+}
+
+func (i VmImageResponseArgs) ToVmImageResponseOutputWithContext(ctx context.Context) VmImageResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmImageResponseOutput)
+}
+
+func (i VmImageResponseArgs) ToVmImageResponsePtrOutput() VmImageResponsePtrOutput {
+	return i.ToVmImageResponsePtrOutputWithContext(context.Background())
+}
+
+func (i VmImageResponseArgs) ToVmImageResponsePtrOutputWithContext(ctx context.Context) VmImageResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmImageResponseOutput).ToVmImageResponsePtrOutputWithContext(ctx)
+}
+
+// VmImageResponsePtrInput is an input type that accepts VmImageResponseArgs, VmImageResponsePtr and VmImageResponsePtrOutput values.
+// You can construct a concrete instance of `VmImageResponsePtrInput` via:
+//
+//          VmImageResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type VmImageResponsePtrInput interface {
+	pulumi.Input
+
+	ToVmImageResponsePtrOutput() VmImageResponsePtrOutput
+	ToVmImageResponsePtrOutputWithContext(context.Context) VmImageResponsePtrOutput
+}
+
+type vmImageResponsePtrType VmImageResponseArgs
+
+func VmImageResponsePtr(v *VmImageResponseArgs) VmImageResponsePtrInput {
+	return (*vmImageResponsePtrType)(v)
+}
+
+func (*vmImageResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmImageResponse)(nil)).Elem()
+}
+
+func (i *vmImageResponsePtrType) ToVmImageResponsePtrOutput() VmImageResponsePtrOutput {
+	return i.ToVmImageResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *vmImageResponsePtrType) ToVmImageResponsePtrOutputWithContext(ctx context.Context) VmImageResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmImageResponsePtrOutput)
+}
+
+// Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the environment installed directly on the VM.
+type VmImageResponseOutput struct{ *pulumi.OutputState }
+
+func (VmImageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmImageResponse)(nil)).Elem()
+}
+
+func (o VmImageResponseOutput) ToVmImageResponseOutput() VmImageResponseOutput {
+	return o
+}
+
+func (o VmImageResponseOutput) ToVmImageResponseOutputWithContext(ctx context.Context) VmImageResponseOutput {
+	return o
+}
+
+func (o VmImageResponseOutput) ToVmImageResponsePtrOutput() VmImageResponsePtrOutput {
+	return o.ToVmImageResponsePtrOutputWithContext(context.Background())
+}
+
+func (o VmImageResponseOutput) ToVmImageResponsePtrOutputWithContext(ctx context.Context) VmImageResponsePtrOutput {
+	return o.ApplyT(func(v VmImageResponse) *VmImageResponse {
+		return &v
+	}).(VmImageResponsePtrOutput)
+}
+
+// Use this VM image family to find the image; the newest image in this family will be used.
+func (o VmImageResponseOutput) ImageFamily() pulumi.StringOutput {
+	return o.ApplyT(func(v VmImageResponse) string { return v.ImageFamily }).(pulumi.StringOutput)
+}
+
+// Use VM image name to find the image.
+func (o VmImageResponseOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v VmImageResponse) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+func (o VmImageResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v VmImageResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type VmImageResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VmImageResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmImageResponse)(nil)).Elem()
+}
+
+func (o VmImageResponsePtrOutput) ToVmImageResponsePtrOutput() VmImageResponsePtrOutput {
+	return o
+}
+
+func (o VmImageResponsePtrOutput) ToVmImageResponsePtrOutputWithContext(ctx context.Context) VmImageResponsePtrOutput {
+	return o
+}
+
+func (o VmImageResponsePtrOutput) Elem() VmImageResponseOutput {
+	return o.ApplyT(func(v *VmImageResponse) VmImageResponse { return *v }).(VmImageResponseOutput)
+}
+
+// Use this VM image family to find the image; the newest image in this family will be used.
+func (o VmImageResponsePtrOutput) ImageFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmImageResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImageFamily
+	}).(pulumi.StringPtrOutput)
+}
+
+// Use VM image name to find the image.
+func (o VmImageResponsePtrOutput) ImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmImageResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImageName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+func (o VmImageResponsePtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmImageResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AcceleratorConfigOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigPtrOutput{})
+	pulumi.RegisterOutputType(AcceleratorConfigResponseOutput{})
+	pulumi.RegisterOutputType(AcceleratorConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingResponseOutput{})
+	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(ContainerImageOutput{})
 	pulumi.RegisterOutputType(ContainerImagePtrOutput{})
-	pulumi.RegisterOutputType(DiskOutput{})
-	pulumi.RegisterOutputType(DiskArrayOutput{})
-	pulumi.RegisterOutputType(ExecutionTypeOutput{})
-	pulumi.RegisterOutputType(ExecutionTypeArrayOutput{})
+	pulumi.RegisterOutputType(ContainerImageResponseOutput{})
+	pulumi.RegisterOutputType(ContainerImageResponsePtrOutput{})
+	pulumi.RegisterOutputType(DiskResponseOutput{})
+	pulumi.RegisterOutputType(DiskResponseArrayOutput{})
+	pulumi.RegisterOutputType(ExecutionResponseOutput{})
+	pulumi.RegisterOutputType(ExecutionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExecutionTemplateOutput{})
 	pulumi.RegisterOutputType(ExecutionTemplatePtrOutput{})
+	pulumi.RegisterOutputType(ExecutionTemplateResponseOutput{})
+	pulumi.RegisterOutputType(ExecutionTemplateResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
-	pulumi.RegisterOutputType(GuestOsFeatureOutput{})
-	pulumi.RegisterOutputType(GuestOsFeatureArrayOutput{})
+	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(GuestOsFeatureResponseOutput{})
+	pulumi.RegisterOutputType(GuestOsFeatureResponseArrayOutput{})
 	pulumi.RegisterOutputType(PolicyOutput{})
 	pulumi.RegisterOutputType(PolicyPtrOutput{})
 	pulumi.RegisterOutputType(SchedulerAcceleratorConfigOutput{})
 	pulumi.RegisterOutputType(SchedulerAcceleratorConfigPtrOutput{})
+	pulumi.RegisterOutputType(SchedulerAcceleratorConfigResponseOutput{})
+	pulumi.RegisterOutputType(SchedulerAcceleratorConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(ShieldedInstanceConfigResponseOutput{})
+	pulumi.RegisterOutputType(ShieldedInstanceConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(UpgradeHistoryEntryOutput{})
 	pulumi.RegisterOutputType(UpgradeHistoryEntryArrayOutput{})
+	pulumi.RegisterOutputType(UpgradeHistoryEntryResponseOutput{})
+	pulumi.RegisterOutputType(UpgradeHistoryEntryResponseArrayOutput{})
 	pulumi.RegisterOutputType(VmImageOutput{})
 	pulumi.RegisterOutputType(VmImagePtrOutput{})
+	pulumi.RegisterOutputType(VmImageResponseOutput{})
+	pulumi.RegisterOutputType(VmImageResponsePtrOutput{})
 }

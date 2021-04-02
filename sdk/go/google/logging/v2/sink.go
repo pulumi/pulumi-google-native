@@ -14,6 +14,29 @@ import (
 // Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
 type Sink struct {
 	pulumi.CustomResourceState
+
+	// Optional. Options that affect sinks exporting data to BigQuery.
+	BigqueryOptions BigQueryOptionsResponseOutput `pulumi:"bigqueryOptions"`
+	// The creation timestamp of the sink.This field may not be present for older sinks.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. A description of this sink. The maximum length of the description is 8000 characters.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+	Destination pulumi.StringOutput `pulumi:"destination"`
+	// Optional. If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled pulumi.BoolOutput `pulumi:"disabled"`
+	// Optional. Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.
+	Exclusions LogExclusionResponseArrayOutput `pulumi:"exclusions"`
+	// Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only exported log entries are those that are in the resource owning the sink and that match the filter. For example: logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
+	Filter pulumi.StringOutput `pulumi:"filter"`
+	// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
+	IncludeChildren pulumi.BoolOutput `pulumi:"includeChildren"`
+	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The last update timestamp of the sink.This field may not be present for older sinks.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// An IAM identity—a service account or group—under which Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.
+	WriterIdentity pulumi.StringOutput `pulumi:"writerIdentity"`
 }
 
 // NewSink registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +77,53 @@ func GetSink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Sink resources.
 type sinkState struct {
+	// Optional. Options that affect sinks exporting data to BigQuery.
+	BigqueryOptions *BigQueryOptionsResponse `pulumi:"bigqueryOptions"`
+	// The creation timestamp of the sink.This field may not be present for older sinks.
+	CreateTime *string `pulumi:"createTime"`
+	// Optional. A description of this sink. The maximum length of the description is 8000 characters.
+	Description *string `pulumi:"description"`
+	// Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+	Destination *string `pulumi:"destination"`
+	// Optional. If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled *bool `pulumi:"disabled"`
+	// Optional. Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.
+	Exclusions []LogExclusionResponse `pulumi:"exclusions"`
+	// Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only exported log entries are those that are in the resource owning the sink and that match the filter. For example: logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
+	Filter *string `pulumi:"filter"`
+	// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
+	IncludeChildren *bool `pulumi:"includeChildren"`
+	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+	Name *string `pulumi:"name"`
+	// The last update timestamp of the sink.This field may not be present for older sinks.
+	UpdateTime *string `pulumi:"updateTime"`
+	// An IAM identity—a service account or group—under which Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.
+	WriterIdentity *string `pulumi:"writerIdentity"`
 }
 
 type SinkState struct {
+	// Optional. Options that affect sinks exporting data to BigQuery.
+	BigqueryOptions BigQueryOptionsResponsePtrInput
+	// The creation timestamp of the sink.This field may not be present for older sinks.
+	CreateTime pulumi.StringPtrInput
+	// Optional. A description of this sink. The maximum length of the description is 8000 characters.
+	Description pulumi.StringPtrInput
+	// Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+	Destination pulumi.StringPtrInput
+	// Optional. If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled pulumi.BoolPtrInput
+	// Optional. Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.
+	Exclusions LogExclusionResponseArrayInput
+	// Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only exported log entries are those that are in the resource owning the sink and that match the filter. For example: logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
+	Filter pulumi.StringPtrInput
+	// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
+	IncludeChildren pulumi.BoolPtrInput
+	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+	Name pulumi.StringPtrInput
+	// The last update timestamp of the sink.This field may not be present for older sinks.
+	UpdateTime pulumi.StringPtrInput
+	// An IAM identity—a service account or group—under which Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.
+	WriterIdentity pulumi.StringPtrInput
 }
 
 func (SinkState) ElementType() reflect.Type {
@@ -66,8 +133,6 @@ func (SinkState) ElementType() reflect.Type {
 type sinkArgs struct {
 	// Optional. Options that affect sinks exporting data to BigQuery.
 	BigqueryOptions *BigQueryOptions `pulumi:"bigqueryOptions"`
-	// Output only. The creation timestamp of the sink.This field may not be present for older sinks.
-	CreateTime *string `pulumi:"createTime"`
 	// Optional. A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
 	// Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
@@ -81,24 +146,16 @@ type sinkArgs struct {
 	// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
 	IncludeChildren *bool `pulumi:"includeChildren"`
 	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
-	Name *string `pulumi:"name"`
-	// Deprecated. This field is unused.
-	OutputVersionFormat *string `pulumi:"outputVersionFormat"`
-	SinksId             string  `pulumi:"sinksId"`
-	// Output only. The last update timestamp of the sink.This field may not be present for older sinks.
-	UpdateTime *string `pulumi:"updateTime"`
-	V2Id       string  `pulumi:"v2Id"`
-	V2Id1      string  `pulumi:"v2Id1"`
-	// Output only. An IAM identity—a service account or group—under which Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.
-	WriterIdentity *string `pulumi:"writerIdentity"`
+	Name    *string `pulumi:"name"`
+	SinksId string  `pulumi:"sinksId"`
+	V2Id    string  `pulumi:"v2Id"`
+	V2Id1   string  `pulumi:"v2Id1"`
 }
 
 // The set of arguments for constructing a Sink resource.
 type SinkArgs struct {
 	// Optional. Options that affect sinks exporting data to BigQuery.
 	BigqueryOptions BigQueryOptionsPtrInput
-	// Output only. The creation timestamp of the sink.This field may not be present for older sinks.
-	CreateTime pulumi.StringPtrInput
 	// Optional. A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
 	// Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
@@ -112,16 +169,10 @@ type SinkArgs struct {
 	// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
 	IncludeChildren pulumi.BoolPtrInput
 	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
-	Name pulumi.StringPtrInput
-	// Deprecated. This field is unused.
-	OutputVersionFormat pulumi.StringPtrInput
-	SinksId             pulumi.StringInput
-	// Output only. The last update timestamp of the sink.This field may not be present for older sinks.
-	UpdateTime pulumi.StringPtrInput
-	V2Id       pulumi.StringInput
-	V2Id1      pulumi.StringInput
-	// Output only. An IAM identity—a service account or group—under which Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.
-	WriterIdentity pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	SinksId pulumi.StringInput
+	V2Id    pulumi.StringInput
+	V2Id1   pulumi.StringInput
 }
 
 func (SinkArgs) ElementType() reflect.Type {

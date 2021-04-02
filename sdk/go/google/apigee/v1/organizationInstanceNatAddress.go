@@ -14,6 +14,13 @@ import (
 // Creates a NAT address. The address is created in the RESERVED state and a static external IP address will be provisioned. At this time, the instance will not use this IP address for Internet egress traffic. The address can be activated for use once any required firewall IP whitelisting has been completed. **Note:** Not supported for Apigee hybrid.
 type OrganizationInstanceNatAddress struct {
 	pulumi.CustomResourceState
+
+	// The static IPV4 address.
+	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
+	// Required. Resource ID of the NAT address.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// State of the nat address.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewOrganizationInstanceNatAddress registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +61,21 @@ func GetOrganizationInstanceNatAddress(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationInstanceNatAddress resources.
 type organizationInstanceNatAddressState struct {
+	// The static IPV4 address.
+	IpAddress *string `pulumi:"ipAddress"`
+	// Required. Resource ID of the NAT address.
+	Name *string `pulumi:"name"`
+	// State of the nat address.
+	State *string `pulumi:"state"`
 }
 
 type OrganizationInstanceNatAddressState struct {
+	// The static IPV4 address.
+	IpAddress pulumi.StringPtrInput
+	// Required. Resource ID of the NAT address.
+	Name pulumi.StringPtrInput
+	// State of the nat address.
+	State pulumi.StringPtrInput
 }
 
 func (OrganizationInstanceNatAddressState) ElementType() reflect.Type {
@@ -65,27 +84,19 @@ func (OrganizationInstanceNatAddressState) ElementType() reflect.Type {
 
 type organizationInstanceNatAddressArgs struct {
 	InstancesId string `pulumi:"instancesId"`
-	// Output only. The static IPV4 address.
-	IpAddress *string `pulumi:"ipAddress"`
 	// Required. Resource ID of the NAT address.
 	Name            *string `pulumi:"name"`
 	NatAddressesId  string  `pulumi:"natAddressesId"`
 	OrganizationsId string  `pulumi:"organizationsId"`
-	// Output only. State of the nat address.
-	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a OrganizationInstanceNatAddress resource.
 type OrganizationInstanceNatAddressArgs struct {
 	InstancesId pulumi.StringInput
-	// Output only. The static IPV4 address.
-	IpAddress pulumi.StringPtrInput
 	// Required. Resource ID of the NAT address.
 	Name            pulumi.StringPtrInput
 	NatAddressesId  pulumi.StringInput
 	OrganizationsId pulumi.StringInput
-	// Output only. State of the nat address.
-	State pulumi.StringPtrInput
 }
 
 func (OrganizationInstanceNatAddressArgs) ElementType() reflect.Type {

@@ -14,6 +14,23 @@ import (
 // Creates a Serverless VPC Access connector, returns an operation.
 type Connector struct {
 	pulumi.CustomResourceState
+
+	// List of projects using the connector.
+	ConnectedProjects pulumi.StringArrayOutput `pulumi:"connectedProjects"`
+	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
+	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
+	// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+	MaxThroughput pulumi.IntOutput `pulumi:"maxThroughput"`
+	// Minimum throughput of the connector in Mbps. Default and min is 200.
+	MinThroughput pulumi.IntOutput `pulumi:"minThroughput"`
+	// The resource name in the format `projects/*/locations/*/connectors/*`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Name of a VPC network.
+	Network pulumi.StringOutput `pulumi:"network"`
+	// State of the VPC access connector.
+	State pulumi.StringOutput `pulumi:"state"`
+	// The subnet in which to house the VPC Access Connector.
+	Subnet SubnetResponseOutput `pulumi:"subnet"`
 }
 
 // NewConnector registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +71,41 @@ func GetConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connector resources.
 type connectorState struct {
+	// List of projects using the connector.
+	ConnectedProjects []string `pulumi:"connectedProjects"`
+	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
+	IpCidrRange *string `pulumi:"ipCidrRange"`
+	// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+	MaxThroughput *int `pulumi:"maxThroughput"`
+	// Minimum throughput of the connector in Mbps. Default and min is 200.
+	MinThroughput *int `pulumi:"minThroughput"`
+	// The resource name in the format `projects/*/locations/*/connectors/*`.
+	Name *string `pulumi:"name"`
+	// Name of a VPC network.
+	Network *string `pulumi:"network"`
+	// State of the VPC access connector.
+	State *string `pulumi:"state"`
+	// The subnet in which to house the VPC Access Connector.
+	Subnet *SubnetResponse `pulumi:"subnet"`
 }
 
 type ConnectorState struct {
+	// List of projects using the connector.
+	ConnectedProjects pulumi.StringArrayInput
+	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
+	IpCidrRange pulumi.StringPtrInput
+	// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+	MaxThroughput pulumi.IntPtrInput
+	// Minimum throughput of the connector in Mbps. Default and min is 200.
+	MinThroughput pulumi.IntPtrInput
+	// The resource name in the format `projects/*/locations/*/connectors/*`.
+	Name pulumi.StringPtrInput
+	// Name of a VPC network.
+	Network pulumi.StringPtrInput
+	// State of the VPC access connector.
+	State pulumi.StringPtrInput
+	// The subnet in which to house the VPC Access Connector.
+	Subnet SubnetResponsePtrInput
 }
 
 func (ConnectorState) ElementType() reflect.Type {
@@ -64,9 +113,7 @@ func (ConnectorState) ElementType() reflect.Type {
 }
 
 type connectorArgs struct {
-	// Output only. List of projects using the connector.
-	ConnectedProjects []string `pulumi:"connectedProjects"`
-	ConnectorsId      string   `pulumi:"connectorsId"`
+	ConnectorsId string `pulumi:"connectorsId"`
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	LocationsId string  `pulumi:"locationsId"`
@@ -79,17 +126,13 @@ type connectorArgs struct {
 	// Name of a VPC network.
 	Network    *string `pulumi:"network"`
 	ProjectsId string  `pulumi:"projectsId"`
-	// Output only. State of the VPC access connector.
-	State *string `pulumi:"state"`
 	// The subnet in which to house the VPC Access Connector.
 	Subnet *Subnet `pulumi:"subnet"`
 }
 
 // The set of arguments for constructing a Connector resource.
 type ConnectorArgs struct {
-	// Output only. List of projects using the connector.
-	ConnectedProjects pulumi.StringArrayInput
-	ConnectorsId      pulumi.StringInput
+	ConnectorsId pulumi.StringInput
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange pulumi.StringPtrInput
 	LocationsId pulumi.StringInput
@@ -102,8 +145,6 @@ type ConnectorArgs struct {
 	// Name of a VPC network.
 	Network    pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
-	// Output only. State of the VPC access connector.
-	State pulumi.StringPtrInput
 	// The subnet in which to house the VPC Access Connector.
 	Subnet SubnetPtrInput
 }

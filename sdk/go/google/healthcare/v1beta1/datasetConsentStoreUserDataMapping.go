@@ -14,6 +14,19 @@ import (
 // Creates a new User data mapping in the parent consent store.
 type DatasetConsentStoreUserDataMapping struct {
 	pulumi.CustomResourceState
+
+	// Indicates the time when this mapping was archived.
+	ArchiveTime pulumi.StringOutput `pulumi:"archiveTime"`
+	// Indicates whether this mapping is archived.
+	Archived pulumi.BoolOutput `pulumi:"archived"`
+	// Required. A unique identifier for the mapped resource.
+	DataId pulumi.StringOutput `pulumi:"dataId"`
+	// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
+	ResourceAttributes AttributeResponseArrayOutput `pulumi:"resourceAttributes"`
+	// Required. User's UUID provided by the client.
+	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
 // NewDatasetConsentStoreUserDataMapping registers a new resource with the given unique name, arguments, and options.
@@ -60,9 +73,33 @@ func GetDatasetConsentStoreUserDataMapping(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatasetConsentStoreUserDataMapping resources.
 type datasetConsentStoreUserDataMappingState struct {
+	// Indicates the time when this mapping was archived.
+	ArchiveTime *string `pulumi:"archiveTime"`
+	// Indicates whether this mapping is archived.
+	Archived *bool `pulumi:"archived"`
+	// Required. A unique identifier for the mapped resource.
+	DataId *string `pulumi:"dataId"`
+	// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
+	Name *string `pulumi:"name"`
+	// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
+	ResourceAttributes []AttributeResponse `pulumi:"resourceAttributes"`
+	// Required. User's UUID provided by the client.
+	UserId *string `pulumi:"userId"`
 }
 
 type DatasetConsentStoreUserDataMappingState struct {
+	// Indicates the time when this mapping was archived.
+	ArchiveTime pulumi.StringPtrInput
+	// Indicates whether this mapping is archived.
+	Archived pulumi.BoolPtrInput
+	// Required. A unique identifier for the mapped resource.
+	DataId pulumi.StringPtrInput
+	// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
+	Name pulumi.StringPtrInput
+	// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
+	ResourceAttributes AttributeResponseArrayInput
+	// Required. User's UUID provided by the client.
+	UserId pulumi.StringPtrInput
 }
 
 func (DatasetConsentStoreUserDataMappingState) ElementType() reflect.Type {
@@ -70,10 +107,6 @@ func (DatasetConsentStoreUserDataMappingState) ElementType() reflect.Type {
 }
 
 type datasetConsentStoreUserDataMappingArgs struct {
-	// Output only. Indicates the time when this mapping was archived.
-	ArchiveTime *string `pulumi:"archiveTime"`
-	// Output only. Indicates whether this mapping is archived.
-	Archived        *bool  `pulumi:"archived"`
 	ConsentStoresId string `pulumi:"consentStoresId"`
 	// Required. A unique identifier for the mapped resource.
 	DataId      *string `pulumi:"dataId"`
@@ -91,10 +124,6 @@ type datasetConsentStoreUserDataMappingArgs struct {
 
 // The set of arguments for constructing a DatasetConsentStoreUserDataMapping resource.
 type DatasetConsentStoreUserDataMappingArgs struct {
-	// Output only. Indicates the time when this mapping was archived.
-	ArchiveTime pulumi.StringPtrInput
-	// Output only. Indicates whether this mapping is archived.
-	Archived        pulumi.BoolPtrInput
 	ConsentStoresId pulumi.StringInput
 	// Required. A unique identifier for the mapped resource.
 	DataId      pulumi.StringPtrInput

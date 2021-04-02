@@ -14,6 +14,33 @@ import (
 // Creates a Microsoft AD domain.
 type Domain struct {
 	pulumi.CustomResourceState
+
+	// Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
+	Admin pulumi.StringOutput `pulumi:"admin"`
+	// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+	AuditLogsEnabled pulumi.BoolOutput `pulumi:"auditLogsEnabled"`
+	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
+	AuthorizedNetworks pulumi.StringArrayOutput `pulumi:"authorizedNetworks"`
+	// The time the instance was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
+	Fqdn pulumi.StringOutput `pulumi:"fqdn"`
+	// Optional. Resource labels that can contain user-provided metadata.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+	Locations pulumi.StringArrayOutput `pulumi:"locations"`
+	// The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+	ReservedIpRange pulumi.StringOutput `pulumi:"reservedIpRange"`
+	// The current state of this domain.
+	State pulumi.StringOutput `pulumi:"state"`
+	// Additional information about the current status of this domain, if available.
+	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
+	// The current trusts associated with the domain.
+	Trusts TrustResponseArrayOutput `pulumi:"trusts"`
+	// The last update time.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewDomain registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +78,61 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
+	// Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
+	Admin *string `pulumi:"admin"`
+	// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+	AuditLogsEnabled *bool `pulumi:"auditLogsEnabled"`
+	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
+	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
+	// The time the instance was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
+	Fqdn *string `pulumi:"fqdn"`
+	// Optional. Resource labels that can contain user-provided metadata.
+	Labels map[string]string `pulumi:"labels"`
+	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+	Locations []string `pulumi:"locations"`
+	// The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
+	Name *string `pulumi:"name"`
+	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+	ReservedIpRange *string `pulumi:"reservedIpRange"`
+	// The current state of this domain.
+	State *string `pulumi:"state"`
+	// Additional information about the current status of this domain, if available.
+	StatusMessage *string `pulumi:"statusMessage"`
+	// The current trusts associated with the domain.
+	Trusts []TrustResponse `pulumi:"trusts"`
+	// The last update time.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type DomainState struct {
+	// Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
+	Admin pulumi.StringPtrInput
+	// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+	AuditLogsEnabled pulumi.BoolPtrInput
+	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
+	AuthorizedNetworks pulumi.StringArrayInput
+	// The time the instance was created.
+	CreateTime pulumi.StringPtrInput
+	// The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
+	Fqdn pulumi.StringPtrInput
+	// Optional. Resource labels that can contain user-provided metadata.
+	Labels pulumi.StringMapInput
+	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+	Locations pulumi.StringArrayInput
+	// The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
+	Name pulumi.StringPtrInput
+	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+	ReservedIpRange pulumi.StringPtrInput
+	// The current state of this domain.
+	State pulumi.StringPtrInput
+	// Additional information about the current status of this domain, if available.
+	StatusMessage pulumi.StringPtrInput
+	// The current trusts associated with the domain.
+	Trusts TrustResponseArrayInput
+	// The last update time.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (DomainState) ElementType() reflect.Type {
@@ -67,28 +146,14 @@ type domainArgs struct {
 	AuditLogsEnabled *bool `pulumi:"auditLogsEnabled"`
 	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
-	// Output only. The time the instance was created.
-	CreateTime *string `pulumi:"createTime"`
-	DomainsId  string  `pulumi:"domainsId"`
-	// Output only. The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
-	Fqdn *string `pulumi:"fqdn"`
+	DomainsId          string   `pulumi:"domainsId"`
 	// Optional. Resource labels that can contain user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
-	Locations []string `pulumi:"locations"`
-	// Output only. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Locations  []string `pulumi:"locations"`
+	ProjectsId string   `pulumi:"projectsId"`
 	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
-	// Output only. The current state of this domain.
-	State *string `pulumi:"state"`
-	// Output only. Additional information about the current status of this domain, if available.
-	StatusMessage *string `pulumi:"statusMessage"`
-	// Output only. The current trusts associated with the domain.
-	Trusts []Trust `pulumi:"trusts"`
-	// Output only. The last update time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Domain resource.
@@ -99,28 +164,14 @@ type DomainArgs struct {
 	AuditLogsEnabled pulumi.BoolPtrInput
 	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayInput
-	// Output only. The time the instance was created.
-	CreateTime pulumi.StringPtrInput
-	DomainsId  pulumi.StringInput
-	// Output only. The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory set up on an internal network.
-	Fqdn pulumi.StringPtrInput
+	DomainsId          pulumi.StringInput
 	// Optional. Resource labels that can contain user-provided metadata.
 	Labels pulumi.StringMapInput
 	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
-	Locations pulumi.StringArrayInput
-	// Output only. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
-	Name       pulumi.StringPtrInput
+	Locations  pulumi.StringArrayInput
 	ProjectsId pulumi.StringInput
 	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange pulumi.StringPtrInput
-	// Output only. The current state of this domain.
-	State pulumi.StringPtrInput
-	// Output only. Additional information about the current status of this domain, if available.
-	StatusMessage pulumi.StringPtrInput
-	// Output only. The current trusts associated with the domain.
-	Trusts TrustArrayInput
-	// Output only. The last update time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (DomainArgs) ElementType() reflect.Type {

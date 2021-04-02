@@ -14,6 +14,27 @@ import (
 // Adds a user provided trial to a study.
 type StudyTrial struct {
 	pulumi.CustomResourceState
+
+	// The identifier of the client that originally requested this trial.
+	ClientId pulumi.StringOutput `pulumi:"clientId"`
+	// Time at which the trial's status changed to COMPLETED.
+	EndTime pulumi.StringOutput `pulumi:"endTime"`
+	// The final measurement containing the objective value.
+	FinalMeasurement GoogleCloudMlV1__MeasurementResponseOutput `pulumi:"finalMeasurement"`
+	// A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
+	InfeasibleReason pulumi.StringOutput `pulumi:"infeasibleReason"`
+	// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
+	Measurements GoogleCloudMlV1__MeasurementResponseArrayOutput `pulumi:"measurements"`
+	// Name of the trial assigned by the service.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The parameters of the trial.
+	Parameters GoogleCloudMlV1_Trial_ParameterResponseArrayOutput `pulumi:"parameters"`
+	// Time at which the trial was started.
+	StartTime pulumi.StringOutput `pulumi:"startTime"`
+	// The detailed state of a trial.
+	State pulumi.StringOutput `pulumi:"state"`
+	// If true, the parameters in this trial are not attempted again.
+	TrialInfeasible pulumi.BoolOutput `pulumi:"trialInfeasible"`
 }
 
 // NewStudyTrial registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +78,49 @@ func GetStudyTrial(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StudyTrial resources.
 type studyTrialState struct {
+	// The identifier of the client that originally requested this trial.
+	ClientId *string `pulumi:"clientId"`
+	// Time at which the trial's status changed to COMPLETED.
+	EndTime *string `pulumi:"endTime"`
+	// The final measurement containing the objective value.
+	FinalMeasurement *GoogleCloudMlV1__MeasurementResponse `pulumi:"finalMeasurement"`
+	// A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
+	InfeasibleReason *string `pulumi:"infeasibleReason"`
+	// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
+	Measurements []GoogleCloudMlV1__MeasurementResponse `pulumi:"measurements"`
+	// Name of the trial assigned by the service.
+	Name *string `pulumi:"name"`
+	// The parameters of the trial.
+	Parameters []GoogleCloudMlV1_Trial_ParameterResponse `pulumi:"parameters"`
+	// Time at which the trial was started.
+	StartTime *string `pulumi:"startTime"`
+	// The detailed state of a trial.
+	State *string `pulumi:"state"`
+	// If true, the parameters in this trial are not attempted again.
+	TrialInfeasible *bool `pulumi:"trialInfeasible"`
 }
 
 type StudyTrialState struct {
+	// The identifier of the client that originally requested this trial.
+	ClientId pulumi.StringPtrInput
+	// Time at which the trial's status changed to COMPLETED.
+	EndTime pulumi.StringPtrInput
+	// The final measurement containing the objective value.
+	FinalMeasurement GoogleCloudMlV1__MeasurementResponsePtrInput
+	// A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
+	InfeasibleReason pulumi.StringPtrInput
+	// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
+	Measurements GoogleCloudMlV1__MeasurementResponseArrayInput
+	// Name of the trial assigned by the service.
+	Name pulumi.StringPtrInput
+	// The parameters of the trial.
+	Parameters GoogleCloudMlV1_Trial_ParameterResponseArrayInput
+	// Time at which the trial was started.
+	StartTime pulumi.StringPtrInput
+	// The detailed state of a trial.
+	State pulumi.StringPtrInput
+	// If true, the parameters in this trial are not attempted again.
+	TrialInfeasible pulumi.BoolPtrInput
 }
 
 func (StudyTrialState) ElementType() reflect.Type {
@@ -67,58 +128,34 @@ func (StudyTrialState) ElementType() reflect.Type {
 }
 
 type studyTrialArgs struct {
-	// Output only. The identifier of the client that originally requested this trial.
-	ClientId *string `pulumi:"clientId"`
-	// Output only. Time at which the trial's status changed to COMPLETED.
-	EndTime *string `pulumi:"endTime"`
 	// The final measurement containing the objective value.
 	FinalMeasurement *GoogleCloudMlV1__Measurement `pulumi:"finalMeasurement"`
-	// Output only. A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
-	InfeasibleReason *string `pulumi:"infeasibleReason"`
-	LocationsId      string  `pulumi:"locationsId"`
+	LocationsId      string                        `pulumi:"locationsId"`
 	// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
 	Measurements []GoogleCloudMlV1__Measurement `pulumi:"measurements"`
-	// Output only. Name of the trial assigned by the service.
-	Name *string `pulumi:"name"`
 	// The parameters of the trial.
 	Parameters []GoogleCloudMlV1_Trial_Parameter `pulumi:"parameters"`
 	ProjectsId string                            `pulumi:"projectsId"`
-	// Output only. Time at which the trial was started.
-	StartTime *string `pulumi:"startTime"`
 	// The detailed state of a trial.
 	State     *string `pulumi:"state"`
 	StudiesId string  `pulumi:"studiesId"`
-	// Output only. If true, the parameters in this trial are not attempted again.
-	TrialInfeasible *bool  `pulumi:"trialInfeasible"`
-	TrialsId        string `pulumi:"trialsId"`
+	TrialsId  string  `pulumi:"trialsId"`
 }
 
 // The set of arguments for constructing a StudyTrial resource.
 type StudyTrialArgs struct {
-	// Output only. The identifier of the client that originally requested this trial.
-	ClientId pulumi.StringPtrInput
-	// Output only. Time at which the trial's status changed to COMPLETED.
-	EndTime pulumi.StringPtrInput
 	// The final measurement containing the objective value.
 	FinalMeasurement GoogleCloudMlV1__MeasurementPtrInput
-	// Output only. A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
-	InfeasibleReason pulumi.StringPtrInput
 	LocationsId      pulumi.StringInput
 	// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
 	Measurements GoogleCloudMlV1__MeasurementArrayInput
-	// Output only. Name of the trial assigned by the service.
-	Name pulumi.StringPtrInput
 	// The parameters of the trial.
 	Parameters GoogleCloudMlV1_Trial_ParameterArrayInput
 	ProjectsId pulumi.StringInput
-	// Output only. Time at which the trial was started.
-	StartTime pulumi.StringPtrInput
 	// The detailed state of a trial.
 	State     pulumi.StringPtrInput
 	StudiesId pulumi.StringInput
-	// Output only. If true, the parameters in this trial are not attempted again.
-	TrialInfeasible pulumi.BoolPtrInput
-	TrialsId        pulumi.StringInput
+	TrialsId  pulumi.StringInput
 }
 
 func (StudyTrialArgs) ElementType() reflect.Type {

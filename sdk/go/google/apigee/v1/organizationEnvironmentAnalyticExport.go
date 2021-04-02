@@ -14,6 +14,25 @@ import (
 // Submit a data export job to be processed in the background. If the request is successful, the API returns a 201 status, a URI that can be used to retrieve the status of the export job, and the `state` value of "enqueued".
 type OrganizationEnvironmentAnalyticExport struct {
 	pulumi.CustomResourceState
+
+	// Time the export job was created.
+	Created pulumi.StringOutput `pulumi:"created"`
+	// Name of the datastore that is the destination of the export job [datastore]
+	DatastoreName pulumi.StringOutput `pulumi:"datastoreName"`
+	// Description of the export job.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Error is set when export fails
+	Error pulumi.StringOutput `pulumi:"error"`
+	// Execution time for this export job. If the job is still in progress, it will be set to the amount of time that has elapsed since`created`, in seconds. Else, it will set to (`updated` - `created`), in seconds.
+	ExecutionTime pulumi.StringOutput `pulumi:"executionTime"`
+	// Display name of the export job.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Self link of the export job. A URI that can be used to retrieve the status of an export job. Example: `/organizations/myorg/environments/myenv/analytics/exports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+	Self pulumi.StringOutput `pulumi:"self"`
+	// Status of the export job. Valid values include `enqueued`, `running`, `completed`, and `failed`.
+	State pulumi.StringOutput `pulumi:"state"`
+	// Time the export job was last updated.
+	Updated pulumi.StringOutput `pulumi:"updated"`
 }
 
 // NewOrganizationEnvironmentAnalyticExport registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +73,45 @@ func GetOrganizationEnvironmentAnalyticExport(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationEnvironmentAnalyticExport resources.
 type organizationEnvironmentAnalyticExportState struct {
+	// Time the export job was created.
+	Created *string `pulumi:"created"`
+	// Name of the datastore that is the destination of the export job [datastore]
+	DatastoreName *string `pulumi:"datastoreName"`
+	// Description of the export job.
+	Description *string `pulumi:"description"`
+	// Error is set when export fails
+	Error *string `pulumi:"error"`
+	// Execution time for this export job. If the job is still in progress, it will be set to the amount of time that has elapsed since`created`, in seconds. Else, it will set to (`updated` - `created`), in seconds.
+	ExecutionTime *string `pulumi:"executionTime"`
+	// Display name of the export job.
+	Name *string `pulumi:"name"`
+	// Self link of the export job. A URI that can be used to retrieve the status of an export job. Example: `/organizations/myorg/environments/myenv/analytics/exports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+	Self *string `pulumi:"self"`
+	// Status of the export job. Valid values include `enqueued`, `running`, `completed`, and `failed`.
+	State *string `pulumi:"state"`
+	// Time the export job was last updated.
+	Updated *string `pulumi:"updated"`
 }
 
 type OrganizationEnvironmentAnalyticExportState struct {
+	// Time the export job was created.
+	Created pulumi.StringPtrInput
+	// Name of the datastore that is the destination of the export job [datastore]
+	DatastoreName pulumi.StringPtrInput
+	// Description of the export job.
+	Description pulumi.StringPtrInput
+	// Error is set when export fails
+	Error pulumi.StringPtrInput
+	// Execution time for this export job. If the job is still in progress, it will be set to the amount of time that has elapsed since`created`, in seconds. Else, it will set to (`updated` - `created`), in seconds.
+	ExecutionTime pulumi.StringPtrInput
+	// Display name of the export job.
+	Name pulumi.StringPtrInput
+	// Self link of the export job. A URI that can be used to retrieve the status of an export job. Example: `/organizations/myorg/environments/myenv/analytics/exports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+	Self pulumi.StringPtrInput
+	// Status of the export job. Valid values include `enqueued`, `running`, `completed`, and `failed`.
+	State pulumi.StringPtrInput
+	// Time the export job was last updated.
+	Updated pulumi.StringPtrInput
 }
 
 func (OrganizationEnvironmentAnalyticExportState) ElementType() reflect.Type {

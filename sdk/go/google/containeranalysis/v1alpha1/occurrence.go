@@ -14,6 +14,39 @@ import (
 // Creates a new `Occurrence`. Use this method to create `Occurrences` for a resource.
 type Occurrence struct {
 	pulumi.CustomResourceState
+
+	// Describes an attestation of an artifact.
+	Attestation AttestationResponseOutput `pulumi:"attestation"`
+	// Build details for a verifiable build.
+	BuildDetails BuildDetailsResponseOutput `pulumi:"buildDetails"`
+	// The time this `Occurrence` was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Describes the deployment of an artifact on a runtime.
+	Deployment DeploymentResponseOutput `pulumi:"deployment"`
+	// Describes how this resource derives from the basis in the associated note.
+	DerivedImage DerivedResponseOutput `pulumi:"derivedImage"`
+	// Describes the initial scan status for this resource.
+	Discovered DiscoveredResponseOutput `pulumi:"discovered"`
+	// Describes the installation of a package on the linked resource.
+	Installation InstallationResponseOutput `pulumi:"installation"`
+	// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
+	Name pulumi.StringOutput `pulumi:"name"`
+	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
+	NoteName pulumi.StringOutput `pulumi:"noteName"`
+	// A description of actions that can be taken to remedy the `Note`
+	Remediation pulumi.StringOutput `pulumi:"remediation"`
+	//  The resource for which the `Occurrence` applies.
+	Resource ResourceResponseOutput `pulumi:"resource"`
+	// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
+	ResourceUrl pulumi.StringOutput `pulumi:"resourceUrl"`
+	// The time this `Occurrence` was last updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Describes an upgrade.
+	Upgrade UpgradeOccurrenceResponseOutput `pulumi:"upgrade"`
+	// Details of a security vulnerability note.
+	VulnerabilityDetails VulnerabilityDetailsResponseOutput `pulumi:"vulnerabilityDetails"`
 }
 
 // NewOccurrence registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +84,73 @@ func GetOccurrence(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Occurrence resources.
 type occurrenceState struct {
+	// Describes an attestation of an artifact.
+	Attestation *AttestationResponse `pulumi:"attestation"`
+	// Build details for a verifiable build.
+	BuildDetails *BuildDetailsResponse `pulumi:"buildDetails"`
+	// The time this `Occurrence` was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Describes the deployment of an artifact on a runtime.
+	Deployment *DeploymentResponse `pulumi:"deployment"`
+	// Describes how this resource derives from the basis in the associated note.
+	DerivedImage *DerivedResponse `pulumi:"derivedImage"`
+	// Describes the initial scan status for this resource.
+	Discovered *DiscoveredResponse `pulumi:"discovered"`
+	// Describes the installation of a package on the linked resource.
+	Installation *InstallationResponse `pulumi:"installation"`
+	// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
+	Kind *string `pulumi:"kind"`
+	// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
+	Name *string `pulumi:"name"`
+	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
+	NoteName *string `pulumi:"noteName"`
+	// A description of actions that can be taken to remedy the `Note`
+	Remediation *string `pulumi:"remediation"`
+	//  The resource for which the `Occurrence` applies.
+	Resource *ResourceResponse `pulumi:"resource"`
+	// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
+	ResourceUrl *string `pulumi:"resourceUrl"`
+	// The time this `Occurrence` was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
+	// Describes an upgrade.
+	Upgrade *UpgradeOccurrenceResponse `pulumi:"upgrade"`
+	// Details of a security vulnerability note.
+	VulnerabilityDetails *VulnerabilityDetailsResponse `pulumi:"vulnerabilityDetails"`
 }
 
 type OccurrenceState struct {
+	// Describes an attestation of an artifact.
+	Attestation AttestationResponsePtrInput
+	// Build details for a verifiable build.
+	BuildDetails BuildDetailsResponsePtrInput
+	// The time this `Occurrence` was created.
+	CreateTime pulumi.StringPtrInput
+	// Describes the deployment of an artifact on a runtime.
+	Deployment DeploymentResponsePtrInput
+	// Describes how this resource derives from the basis in the associated note.
+	DerivedImage DerivedResponsePtrInput
+	// Describes the initial scan status for this resource.
+	Discovered DiscoveredResponsePtrInput
+	// Describes the installation of a package on the linked resource.
+	Installation InstallationResponsePtrInput
+	// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
+	Kind pulumi.StringPtrInput
+	// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
+	Name pulumi.StringPtrInput
+	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
+	NoteName pulumi.StringPtrInput
+	// A description of actions that can be taken to remedy the `Note`
+	Remediation pulumi.StringPtrInput
+	//  The resource for which the `Occurrence` applies.
+	Resource ResourceResponsePtrInput
+	// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
+	ResourceUrl pulumi.StringPtrInput
+	// The time this `Occurrence` was last updated.
+	UpdateTime pulumi.StringPtrInput
+	// Describes an upgrade.
+	Upgrade UpgradeOccurrenceResponsePtrInput
+	// Details of a security vulnerability note.
+	VulnerabilityDetails VulnerabilityDetailsResponsePtrInput
 }
 
 func (OccurrenceState) ElementType() reflect.Type {
@@ -65,7 +162,7 @@ type occurrenceArgs struct {
 	Attestation *Attestation `pulumi:"attestation"`
 	// Build details for a verifiable build.
 	BuildDetails *BuildDetails `pulumi:"buildDetails"`
-	// Output only. The time this `Occurrence` was created.
+	// The time this `Occurrence` was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Describes the deployment of an artifact on a runtime.
 	Deployment *Deployment `pulumi:"deployment"`
@@ -75,9 +172,9 @@ type occurrenceArgs struct {
 	Discovered *Discovered `pulumi:"discovered"`
 	// Describes the installation of a package on the linked resource.
 	Installation *Installation `pulumi:"installation"`
-	// Output only. This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
+	// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
 	Kind *string `pulumi:"kind"`
-	// Output only. The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
+	// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
 	Name *string `pulumi:"name"`
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
 	NoteName      *string `pulumi:"noteName"`
@@ -89,7 +186,7 @@ type occurrenceArgs struct {
 	Resource *Resource `pulumi:"resource"`
 	// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
 	ResourceUrl *string `pulumi:"resourceUrl"`
-	// Output only. The time this `Occurrence` was last updated.
+	// The time this `Occurrence` was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Describes an upgrade.
 	Upgrade *UpgradeOccurrence `pulumi:"upgrade"`
@@ -103,7 +200,7 @@ type OccurrenceArgs struct {
 	Attestation AttestationPtrInput
 	// Build details for a verifiable build.
 	BuildDetails BuildDetailsPtrInput
-	// Output only. The time this `Occurrence` was created.
+	// The time this `Occurrence` was created.
 	CreateTime pulumi.StringPtrInput
 	// Describes the deployment of an artifact on a runtime.
 	Deployment DeploymentPtrInput
@@ -113,9 +210,9 @@ type OccurrenceArgs struct {
 	Discovered DiscoveredPtrInput
 	// Describes the installation of a package on the linked resource.
 	Installation InstallationPtrInput
-	// Output only. This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
+	// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
 	Kind pulumi.StringPtrInput
-	// Output only. The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
+	// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
 	Name pulumi.StringPtrInput
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
 	NoteName      pulumi.StringPtrInput
@@ -127,7 +224,7 @@ type OccurrenceArgs struct {
 	Resource ResourcePtrInput
 	// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
 	ResourceUrl pulumi.StringPtrInput
-	// Output only. The time this `Occurrence` was last updated.
+	// The time this `Occurrence` was last updated.
 	UpdateTime pulumi.StringPtrInput
 	// Describes an upgrade.
 	Upgrade UpgradeOccurrencePtrInput

@@ -14,6 +14,19 @@ import (
 // Requests the creation of a new IosApp in the specified FirebaseProject. The result of this call is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically deleted after completion, so there is no need to call `DeleteOperation`.
 type IosApp struct {
 	pulumi.CustomResourceState
+
+	// Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be treated as an opaque token, as the data format is not specified.
+	AppId pulumi.StringOutput `pulumi:"appId"`
+	// The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App Store.
+	AppStoreId pulumi.StringOutput `pulumi:"appStoreId"`
+	// Immutable. The canonical bundle ID of the iOS app as it would appear in the iOS AppStore.
+	BundleId pulumi.StringOutput `pulumi:"bundleId"`
+	// The user-assigned display name for the `IosApp`.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 }
 
 // NewIosApp registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +64,33 @@ func GetIosApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IosApp resources.
 type iosAppState struct {
+	// Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be treated as an opaque token, as the data format is not specified.
+	AppId *string `pulumi:"appId"`
+	// The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App Store.
+	AppStoreId *string `pulumi:"appStoreId"`
+	// Immutable. The canonical bundle ID of the iOS app as it would appear in the iOS AppStore.
+	BundleId *string `pulumi:"bundleId"`
+	// The user-assigned display name for the `IosApp`.
+	DisplayName *string `pulumi:"displayName"`
+	// The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
+	Name *string `pulumi:"name"`
+	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
+	ProjectId *string `pulumi:"projectId"`
 }
 
 type IosAppState struct {
+	// Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be treated as an opaque token, as the data format is not specified.
+	AppId pulumi.StringPtrInput
+	// The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App Store.
+	AppStoreId pulumi.StringPtrInput
+	// Immutable. The canonical bundle ID of the iOS app as it would appear in the iOS AppStore.
+	BundleId pulumi.StringPtrInput
+	// The user-assigned display name for the `IosApp`.
+	DisplayName pulumi.StringPtrInput
+	// The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
+	Name pulumi.StringPtrInput
+	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
+	ProjectId pulumi.StringPtrInput
 }
 
 func (IosAppState) ElementType() reflect.Type {

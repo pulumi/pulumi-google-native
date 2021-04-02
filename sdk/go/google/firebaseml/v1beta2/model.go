@@ -14,6 +14,27 @@ import (
 // Creates a model in Firebase ML. The longrunning operation will eventually return a Model
 type Model struct {
 	pulumi.CustomResourceState
+
+	// Lists operation ids associated with this model whose status is NOT done.
+	ActiveOperations OperationResponseArrayOutput `pulumi:"activeOperations"`
+	// Timestamp when this model was created in Firebase ML.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The model_hash will change if a new file is available for download.
+	ModelHash pulumi.StringOutput `pulumi:"modelHash"`
+	// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// State common to all model types. Includes publishing and validation information.
+	State ModelStateResponseOutput `pulumi:"state"`
+	// User defined tags which can be used to group/filter models during listing
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// A TFLite Model
+	TfliteModel TfLiteModelResponseOutput `pulumi:"tfliteModel"`
+	// Timestamp when this model was updated in Firebase ML.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewModel registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +72,49 @@ func GetModel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Model resources.
 type modelState struct {
+	// Lists operation ids associated with this model whose status is NOT done.
+	ActiveOperations []OperationResponse `pulumi:"activeOperations"`
+	// Timestamp when this model was created in Firebase ML.
+	CreateTime *string `pulumi:"createTime"`
+	// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+	DisplayName *string `pulumi:"displayName"`
+	// See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
+	Etag *string `pulumi:"etag"`
+	// The model_hash will change if a new file is available for download.
+	ModelHash *string `pulumi:"modelHash"`
+	// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
+	Name *string `pulumi:"name"`
+	// State common to all model types. Includes publishing and validation information.
+	State *ModelStateResponse `pulumi:"state"`
+	// User defined tags which can be used to group/filter models during listing
+	Tags []string `pulumi:"tags"`
+	// A TFLite Model
+	TfliteModel *TfLiteModelResponse `pulumi:"tfliteModel"`
+	// Timestamp when this model was updated in Firebase ML.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ModelState struct {
+	// Lists operation ids associated with this model whose status is NOT done.
+	ActiveOperations OperationResponseArrayInput
+	// Timestamp when this model was created in Firebase ML.
+	CreateTime pulumi.StringPtrInput
+	// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+	DisplayName pulumi.StringPtrInput
+	// See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
+	Etag pulumi.StringPtrInput
+	// The model_hash will change if a new file is available for download.
+	ModelHash pulumi.StringPtrInput
+	// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
+	Name pulumi.StringPtrInput
+	// State common to all model types. Includes publishing and validation information.
+	State ModelStateResponsePtrInput
+	// User defined tags which can be used to group/filter models during listing
+	Tags pulumi.StringArrayInput
+	// A TFLite Model
+	TfliteModel TfLiteModelResponsePtrInput
+	// Timestamp when this model was updated in Firebase ML.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (ModelState) ElementType() reflect.Type {
@@ -61,17 +122,9 @@ func (ModelState) ElementType() reflect.Type {
 }
 
 type modelArgs struct {
-	// Output only. Lists operation ids associated with this model whose status is NOT done.
-	ActiveOperations []Operation `pulumi:"activeOperations"`
-	// Output only. Timestamp when this model was created in Firebase ML.
-	CreateTime *string `pulumi:"createTime"`
 	// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
 	DisplayName *string `pulumi:"displayName"`
-	// Output only. See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
-	Etag *string `pulumi:"etag"`
-	// Output only. The model_hash will change if a new file is available for download.
-	ModelHash *string `pulumi:"modelHash"`
-	ModelsId  string  `pulumi:"modelsId"`
+	ModelsId    string  `pulumi:"modelsId"`
 	// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
@@ -81,23 +134,13 @@ type modelArgs struct {
 	Tags []string `pulumi:"tags"`
 	// A TFLite Model
 	TfliteModel *TfLiteModel `pulumi:"tfliteModel"`
-	// Output only. Timestamp when this model was updated in Firebase ML.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Model resource.
 type ModelArgs struct {
-	// Output only. Lists operation ids associated with this model whose status is NOT done.
-	ActiveOperations OperationArrayInput
-	// Output only. Timestamp when this model was created in Firebase ML.
-	CreateTime pulumi.StringPtrInput
 	// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
 	DisplayName pulumi.StringPtrInput
-	// Output only. See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
-	Etag pulumi.StringPtrInput
-	// Output only. The model_hash will change if a new file is available for download.
-	ModelHash pulumi.StringPtrInput
-	ModelsId  pulumi.StringInput
+	ModelsId    pulumi.StringInput
 	// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
@@ -107,8 +150,6 @@ type ModelArgs struct {
 	Tags pulumi.StringArrayInput
 	// A TFLite Model
 	TfliteModel TfLiteModelPtrInput
-	// Output only. Timestamp when this model was updated in Firebase ML.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (ModelArgs) ElementType() reflect.Type {

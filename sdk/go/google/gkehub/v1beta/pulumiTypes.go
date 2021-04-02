@@ -119,6 +119,115 @@ func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
 	}).(AuditConfigOutput)
 }
 
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponse struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs []AuditLogConfigResponse `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service string `pulumi:"service"`
+}
+
+// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
+// You can construct a concrete instance of `AuditConfigResponseInput` via:
+//
+//          AuditConfigResponseArgs{...}
+type AuditConfigResponseInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseOutput() AuditConfigResponseOutput
+	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseArgs struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (AuditConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return i.ToAuditConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
+}
+
+// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
+//
+//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
+type AuditConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
+	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
+}
+
+type AuditConfigResponseArray []AuditConfigResponseInput
+
+func (AuditConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return o
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return o
+}
+
+// The configuration for logging of each type of permission.
+func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
+	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
+}
+
+// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+func (o AuditConfigResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditConfigResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type AuditConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditConfigResponse {
+		return vs[0].([]AuditConfigResponse)[vs[1].(int)]
+	}).(AuditConfigResponseOutput)
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -226,6 +335,115 @@ func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfig {
 		return vs[0].([]AuditLogConfig)[vs[1].(int)]
 	}).(AuditLogConfigOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponse struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers []string `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType string `pulumi:"logType"`
+}
+
+// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
+//
+//          AuditLogConfigResponseArgs{...}
+type AuditLogConfigResponseInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
+	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseArgs struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType pulumi.StringInput `pulumi:"logType"`
+}
+
+func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
+}
+
+// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
+//
+//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
+type AuditLogConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
+	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
+}
+
+type AuditLogConfigResponseArray []AuditLogConfigResponseInput
+
+func (AuditLogConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return o
+}
+
+// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
+// The log type that this config enables.
+func (o AuditLogConfigResponseOutput) LogType() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) string { return v.LogType }).(pulumi.StringOutput)
+}
+
+type AuditLogConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfigResponse {
+		return vs[0].([]AuditLogConfigResponse)[vs[1].(int)]
+	}).(AuditLogConfigResponseOutput)
 }
 
 // Associates `members` with a `role`.
@@ -344,6 +562,124 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Binding {
 		return vs[0].([]Binding)[vs[1].(int)]
 	}).(BindingOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
+// You can construct a concrete instance of `BindingResponseInput` via:
+//
+//          BindingResponseArgs{...}
+type BindingResponseInput interface {
+	pulumi.Input
+
+	ToBindingResponseOutput() BindingResponseOutput
+	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
+}
+
+// Associates `members` with a `role`.
+type BindingResponseArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
+	return i.ToBindingResponseOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
+}
+
+// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
+// You can construct a concrete instance of `BindingResponseArrayInput` via:
+//
+//          BindingResponseArray{ BindingResponseArgs{...} }
+type BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToBindingResponseArrayOutput() BindingResponseArrayOutput
+	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
+}
+
+type BindingResponseArray []BindingResponseInput
+
+func (BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return i.ToBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
+		return vs[0].([]BindingResponse)[vs[1].(int)]
+	}).(BindingResponseOutput)
 }
 
 // CommonFeatureSpec contains Hub-wide configuration information
@@ -480,138 +816,272 @@ func (o CommonFeatureSpecPtrOutput) Multiclusteringress() MultiClusterIngressFea
 	}).(MultiClusterIngressFeatureSpecPtrOutput)
 }
 
-// CommonFeatureState contains Hub-wide Feature status information.
-type CommonFeatureState struct {
-	// Output only. The "running state" of the Feature in this Hub.
-	State *FeatureStateType `pulumi:"state"`
+// CommonFeatureSpec contains Hub-wide configuration information
+type CommonFeatureSpecResponse struct {
+	// Multicluster Ingress-specific spec.
+	Multiclusteringress MultiClusterIngressFeatureSpecResponse `pulumi:"multiclusteringress"`
 }
 
-// CommonFeatureStateInput is an input type that accepts CommonFeatureStateArgs and CommonFeatureStateOutput values.
-// You can construct a concrete instance of `CommonFeatureStateInput` via:
+// CommonFeatureSpecResponseInput is an input type that accepts CommonFeatureSpecResponseArgs and CommonFeatureSpecResponseOutput values.
+// You can construct a concrete instance of `CommonFeatureSpecResponseInput` via:
 //
-//          CommonFeatureStateArgs{...}
-type CommonFeatureStateInput interface {
+//          CommonFeatureSpecResponseArgs{...}
+type CommonFeatureSpecResponseInput interface {
 	pulumi.Input
 
-	ToCommonFeatureStateOutput() CommonFeatureStateOutput
-	ToCommonFeatureStateOutputWithContext(context.Context) CommonFeatureStateOutput
+	ToCommonFeatureSpecResponseOutput() CommonFeatureSpecResponseOutput
+	ToCommonFeatureSpecResponseOutputWithContext(context.Context) CommonFeatureSpecResponseOutput
 }
 
-// CommonFeatureState contains Hub-wide Feature status information.
-type CommonFeatureStateArgs struct {
-	// Output only. The "running state" of the Feature in this Hub.
-	State FeatureStateTypePtrInput `pulumi:"state"`
+// CommonFeatureSpec contains Hub-wide configuration information
+type CommonFeatureSpecResponseArgs struct {
+	// Multicluster Ingress-specific spec.
+	Multiclusteringress MultiClusterIngressFeatureSpecResponseInput `pulumi:"multiclusteringress"`
 }
 
-func (CommonFeatureStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CommonFeatureState)(nil)).Elem()
+func (CommonFeatureSpecResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFeatureSpecResponse)(nil)).Elem()
 }
 
-func (i CommonFeatureStateArgs) ToCommonFeatureStateOutput() CommonFeatureStateOutput {
-	return i.ToCommonFeatureStateOutputWithContext(context.Background())
+func (i CommonFeatureSpecResponseArgs) ToCommonFeatureSpecResponseOutput() CommonFeatureSpecResponseOutput {
+	return i.ToCommonFeatureSpecResponseOutputWithContext(context.Background())
 }
 
-func (i CommonFeatureStateArgs) ToCommonFeatureStateOutputWithContext(ctx context.Context) CommonFeatureStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureStateOutput)
+func (i CommonFeatureSpecResponseArgs) ToCommonFeatureSpecResponseOutputWithContext(ctx context.Context) CommonFeatureSpecResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureSpecResponseOutput)
 }
 
-func (i CommonFeatureStateArgs) ToCommonFeatureStatePtrOutput() CommonFeatureStatePtrOutput {
-	return i.ToCommonFeatureStatePtrOutputWithContext(context.Background())
+func (i CommonFeatureSpecResponseArgs) ToCommonFeatureSpecResponsePtrOutput() CommonFeatureSpecResponsePtrOutput {
+	return i.ToCommonFeatureSpecResponsePtrOutputWithContext(context.Background())
 }
 
-func (i CommonFeatureStateArgs) ToCommonFeatureStatePtrOutputWithContext(ctx context.Context) CommonFeatureStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureStateOutput).ToCommonFeatureStatePtrOutputWithContext(ctx)
+func (i CommonFeatureSpecResponseArgs) ToCommonFeatureSpecResponsePtrOutputWithContext(ctx context.Context) CommonFeatureSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureSpecResponseOutput).ToCommonFeatureSpecResponsePtrOutputWithContext(ctx)
 }
 
-// CommonFeatureStatePtrInput is an input type that accepts CommonFeatureStateArgs, CommonFeatureStatePtr and CommonFeatureStatePtrOutput values.
-// You can construct a concrete instance of `CommonFeatureStatePtrInput` via:
+// CommonFeatureSpecResponsePtrInput is an input type that accepts CommonFeatureSpecResponseArgs, CommonFeatureSpecResponsePtr and CommonFeatureSpecResponsePtrOutput values.
+// You can construct a concrete instance of `CommonFeatureSpecResponsePtrInput` via:
 //
-//          CommonFeatureStateArgs{...}
+//          CommonFeatureSpecResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type CommonFeatureStatePtrInput interface {
+type CommonFeatureSpecResponsePtrInput interface {
 	pulumi.Input
 
-	ToCommonFeatureStatePtrOutput() CommonFeatureStatePtrOutput
-	ToCommonFeatureStatePtrOutputWithContext(context.Context) CommonFeatureStatePtrOutput
+	ToCommonFeatureSpecResponsePtrOutput() CommonFeatureSpecResponsePtrOutput
+	ToCommonFeatureSpecResponsePtrOutputWithContext(context.Context) CommonFeatureSpecResponsePtrOutput
 }
 
-type commonFeatureStatePtrType CommonFeatureStateArgs
+type commonFeatureSpecResponsePtrType CommonFeatureSpecResponseArgs
 
-func CommonFeatureStatePtr(v *CommonFeatureStateArgs) CommonFeatureStatePtrInput {
-	return (*commonFeatureStatePtrType)(v)
+func CommonFeatureSpecResponsePtr(v *CommonFeatureSpecResponseArgs) CommonFeatureSpecResponsePtrInput {
+	return (*commonFeatureSpecResponsePtrType)(v)
 }
 
-func (*commonFeatureStatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CommonFeatureState)(nil)).Elem()
+func (*commonFeatureSpecResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFeatureSpecResponse)(nil)).Elem()
 }
 
-func (i *commonFeatureStatePtrType) ToCommonFeatureStatePtrOutput() CommonFeatureStatePtrOutput {
-	return i.ToCommonFeatureStatePtrOutputWithContext(context.Background())
+func (i *commonFeatureSpecResponsePtrType) ToCommonFeatureSpecResponsePtrOutput() CommonFeatureSpecResponsePtrOutput {
+	return i.ToCommonFeatureSpecResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *commonFeatureStatePtrType) ToCommonFeatureStatePtrOutputWithContext(ctx context.Context) CommonFeatureStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureStatePtrOutput)
+func (i *commonFeatureSpecResponsePtrType) ToCommonFeatureSpecResponsePtrOutputWithContext(ctx context.Context) CommonFeatureSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureSpecResponsePtrOutput)
 }
 
-// CommonFeatureState contains Hub-wide Feature status information.
-type CommonFeatureStateOutput struct{ *pulumi.OutputState }
+// CommonFeatureSpec contains Hub-wide configuration information
+type CommonFeatureSpecResponseOutput struct{ *pulumi.OutputState }
 
-func (CommonFeatureStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CommonFeatureState)(nil)).Elem()
+func (CommonFeatureSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFeatureSpecResponse)(nil)).Elem()
 }
 
-func (o CommonFeatureStateOutput) ToCommonFeatureStateOutput() CommonFeatureStateOutput {
+func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponseOutput() CommonFeatureSpecResponseOutput {
 	return o
 }
 
-func (o CommonFeatureStateOutput) ToCommonFeatureStateOutputWithContext(ctx context.Context) CommonFeatureStateOutput {
+func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponseOutputWithContext(ctx context.Context) CommonFeatureSpecResponseOutput {
 	return o
 }
 
-func (o CommonFeatureStateOutput) ToCommonFeatureStatePtrOutput() CommonFeatureStatePtrOutput {
-	return o.ToCommonFeatureStatePtrOutputWithContext(context.Background())
+func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponsePtrOutput() CommonFeatureSpecResponsePtrOutput {
+	return o.ToCommonFeatureSpecResponsePtrOutputWithContext(context.Background())
 }
 
-func (o CommonFeatureStateOutput) ToCommonFeatureStatePtrOutputWithContext(ctx context.Context) CommonFeatureStatePtrOutput {
-	return o.ApplyT(func(v CommonFeatureState) *CommonFeatureState {
+func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponsePtrOutputWithContext(ctx context.Context) CommonFeatureSpecResponsePtrOutput {
+	return o.ApplyT(func(v CommonFeatureSpecResponse) *CommonFeatureSpecResponse {
 		return &v
-	}).(CommonFeatureStatePtrOutput)
+	}).(CommonFeatureSpecResponsePtrOutput)
 }
 
-// Output only. The "running state" of the Feature in this Hub.
-func (o CommonFeatureStateOutput) State() FeatureStateTypePtrOutput {
-	return o.ApplyT(func(v CommonFeatureState) *FeatureStateType { return v.State }).(FeatureStateTypePtrOutput)
+// Multicluster Ingress-specific spec.
+func (o CommonFeatureSpecResponseOutput) Multiclusteringress() MultiClusterIngressFeatureSpecResponseOutput {
+	return o.ApplyT(func(v CommonFeatureSpecResponse) MultiClusterIngressFeatureSpecResponse { return v.Multiclusteringress }).(MultiClusterIngressFeatureSpecResponseOutput)
 }
 
-type CommonFeatureStatePtrOutput struct{ *pulumi.OutputState }
+type CommonFeatureSpecResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (CommonFeatureStatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CommonFeatureState)(nil)).Elem()
+func (CommonFeatureSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFeatureSpecResponse)(nil)).Elem()
 }
 
-func (o CommonFeatureStatePtrOutput) ToCommonFeatureStatePtrOutput() CommonFeatureStatePtrOutput {
+func (o CommonFeatureSpecResponsePtrOutput) ToCommonFeatureSpecResponsePtrOutput() CommonFeatureSpecResponsePtrOutput {
 	return o
 }
 
-func (o CommonFeatureStatePtrOutput) ToCommonFeatureStatePtrOutputWithContext(ctx context.Context) CommonFeatureStatePtrOutput {
+func (o CommonFeatureSpecResponsePtrOutput) ToCommonFeatureSpecResponsePtrOutputWithContext(ctx context.Context) CommonFeatureSpecResponsePtrOutput {
 	return o
 }
 
-func (o CommonFeatureStatePtrOutput) Elem() CommonFeatureStateOutput {
-	return o.ApplyT(func(v *CommonFeatureState) CommonFeatureState { return *v }).(CommonFeatureStateOutput)
+func (o CommonFeatureSpecResponsePtrOutput) Elem() CommonFeatureSpecResponseOutput {
+	return o.ApplyT(func(v *CommonFeatureSpecResponse) CommonFeatureSpecResponse { return *v }).(CommonFeatureSpecResponseOutput)
 }
 
-// Output only. The "running state" of the Feature in this Hub.
-func (o CommonFeatureStatePtrOutput) State() FeatureStateTypePtrOutput {
-	return o.ApplyT(func(v *CommonFeatureState) *FeatureStateType {
+// Multicluster Ingress-specific spec.
+func (o CommonFeatureSpecResponsePtrOutput) Multiclusteringress() MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return o.ApplyT(func(v *CommonFeatureSpecResponse) *MultiClusterIngressFeatureSpecResponse {
 		if v == nil {
 			return nil
 		}
-		return v.State
-	}).(FeatureStateTypePtrOutput)
+		return &v.Multiclusteringress
+	}).(MultiClusterIngressFeatureSpecResponsePtrOutput)
+}
+
+// CommonFeatureState contains Hub-wide Feature status information.
+type CommonFeatureStateResponse struct {
+	// The "running state" of the Feature in this Hub.
+	State FeatureStateResponse `pulumi:"state"`
+}
+
+// CommonFeatureStateResponseInput is an input type that accepts CommonFeatureStateResponseArgs and CommonFeatureStateResponseOutput values.
+// You can construct a concrete instance of `CommonFeatureStateResponseInput` via:
+//
+//          CommonFeatureStateResponseArgs{...}
+type CommonFeatureStateResponseInput interface {
+	pulumi.Input
+
+	ToCommonFeatureStateResponseOutput() CommonFeatureStateResponseOutput
+	ToCommonFeatureStateResponseOutputWithContext(context.Context) CommonFeatureStateResponseOutput
+}
+
+// CommonFeatureState contains Hub-wide Feature status information.
+type CommonFeatureStateResponseArgs struct {
+	// The "running state" of the Feature in this Hub.
+	State FeatureStateResponseInput `pulumi:"state"`
+}
+
+func (CommonFeatureStateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFeatureStateResponse)(nil)).Elem()
+}
+
+func (i CommonFeatureStateResponseArgs) ToCommonFeatureStateResponseOutput() CommonFeatureStateResponseOutput {
+	return i.ToCommonFeatureStateResponseOutputWithContext(context.Background())
+}
+
+func (i CommonFeatureStateResponseArgs) ToCommonFeatureStateResponseOutputWithContext(ctx context.Context) CommonFeatureStateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureStateResponseOutput)
+}
+
+func (i CommonFeatureStateResponseArgs) ToCommonFeatureStateResponsePtrOutput() CommonFeatureStateResponsePtrOutput {
+	return i.ToCommonFeatureStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CommonFeatureStateResponseArgs) ToCommonFeatureStateResponsePtrOutputWithContext(ctx context.Context) CommonFeatureStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureStateResponseOutput).ToCommonFeatureStateResponsePtrOutputWithContext(ctx)
+}
+
+// CommonFeatureStateResponsePtrInput is an input type that accepts CommonFeatureStateResponseArgs, CommonFeatureStateResponsePtr and CommonFeatureStateResponsePtrOutput values.
+// You can construct a concrete instance of `CommonFeatureStateResponsePtrInput` via:
+//
+//          CommonFeatureStateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CommonFeatureStateResponsePtrInput interface {
+	pulumi.Input
+
+	ToCommonFeatureStateResponsePtrOutput() CommonFeatureStateResponsePtrOutput
+	ToCommonFeatureStateResponsePtrOutputWithContext(context.Context) CommonFeatureStateResponsePtrOutput
+}
+
+type commonFeatureStateResponsePtrType CommonFeatureStateResponseArgs
+
+func CommonFeatureStateResponsePtr(v *CommonFeatureStateResponseArgs) CommonFeatureStateResponsePtrInput {
+	return (*commonFeatureStateResponsePtrType)(v)
+}
+
+func (*commonFeatureStateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFeatureStateResponse)(nil)).Elem()
+}
+
+func (i *commonFeatureStateResponsePtrType) ToCommonFeatureStateResponsePtrOutput() CommonFeatureStateResponsePtrOutput {
+	return i.ToCommonFeatureStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *commonFeatureStateResponsePtrType) ToCommonFeatureStateResponsePtrOutputWithContext(ctx context.Context) CommonFeatureStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureStateResponsePtrOutput)
+}
+
+// CommonFeatureState contains Hub-wide Feature status information.
+type CommonFeatureStateResponseOutput struct{ *pulumi.OutputState }
+
+func (CommonFeatureStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFeatureStateResponse)(nil)).Elem()
+}
+
+func (o CommonFeatureStateResponseOutput) ToCommonFeatureStateResponseOutput() CommonFeatureStateResponseOutput {
+	return o
+}
+
+func (o CommonFeatureStateResponseOutput) ToCommonFeatureStateResponseOutputWithContext(ctx context.Context) CommonFeatureStateResponseOutput {
+	return o
+}
+
+func (o CommonFeatureStateResponseOutput) ToCommonFeatureStateResponsePtrOutput() CommonFeatureStateResponsePtrOutput {
+	return o.ToCommonFeatureStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CommonFeatureStateResponseOutput) ToCommonFeatureStateResponsePtrOutputWithContext(ctx context.Context) CommonFeatureStateResponsePtrOutput {
+	return o.ApplyT(func(v CommonFeatureStateResponse) *CommonFeatureStateResponse {
+		return &v
+	}).(CommonFeatureStateResponsePtrOutput)
+}
+
+// The "running state" of the Feature in this Hub.
+func (o CommonFeatureStateResponseOutput) State() FeatureStateResponseOutput {
+	return o.ApplyT(func(v CommonFeatureStateResponse) FeatureStateResponse { return v.State }).(FeatureStateResponseOutput)
+}
+
+type CommonFeatureStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CommonFeatureStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFeatureStateResponse)(nil)).Elem()
+}
+
+func (o CommonFeatureStateResponsePtrOutput) ToCommonFeatureStateResponsePtrOutput() CommonFeatureStateResponsePtrOutput {
+	return o
+}
+
+func (o CommonFeatureStateResponsePtrOutput) ToCommonFeatureStateResponsePtrOutputWithContext(ctx context.Context) CommonFeatureStateResponsePtrOutput {
+	return o
+}
+
+func (o CommonFeatureStateResponsePtrOutput) Elem() CommonFeatureStateResponseOutput {
+	return o.ApplyT(func(v *CommonFeatureStateResponse) CommonFeatureStateResponse { return *v }).(CommonFeatureStateResponseOutput)
+}
+
+// The "running state" of the Feature in this Hub.
+func (o CommonFeatureStateResponsePtrOutput) State() FeatureStateResponsePtrOutput {
+	return o.ApplyT(func(v *CommonFeatureStateResponse) *FeatureStateResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.State
+	}).(FeatureStateResponsePtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -805,309 +1275,391 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Hub and across Memberships.
-type FeatureResourceState struct {
-	// The current state of the Feature resource in the Hub API.
-	State *string `pulumi:"state"`
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
 }
 
-// FeatureResourceStateInput is an input type that accepts FeatureResourceStateArgs and FeatureResourceStateOutput values.
-// You can construct a concrete instance of `FeatureResourceStateInput` via:
+// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
+// You can construct a concrete instance of `ExprResponseInput` via:
 //
-//          FeatureResourceStateArgs{...}
-type FeatureResourceStateInput interface {
+//          ExprResponseArgs{...}
+type ExprResponseInput interface {
 	pulumi.Input
 
-	ToFeatureResourceStateOutput() FeatureResourceStateOutput
-	ToFeatureResourceStateOutputWithContext(context.Context) FeatureResourceStateOutput
+	ToExprResponseOutput() ExprResponseOutput
+	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
+	return i.ToExprResponseOutputWithContext(context.Background())
+}
+
+func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseOutput struct{ *pulumi.OutputState }
+
+func (ExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
+	return o
+}
+
+func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
 // FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Hub and across Memberships.
-type FeatureResourceStateArgs struct {
+type FeatureResourceStateResponse struct {
 	// The current state of the Feature resource in the Hub API.
-	State pulumi.StringPtrInput `pulumi:"state"`
+	State string `pulumi:"state"`
 }
 
-func (FeatureResourceStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FeatureResourceState)(nil)).Elem()
-}
-
-func (i FeatureResourceStateArgs) ToFeatureResourceStateOutput() FeatureResourceStateOutput {
-	return i.ToFeatureResourceStateOutputWithContext(context.Background())
-}
-
-func (i FeatureResourceStateArgs) ToFeatureResourceStateOutputWithContext(ctx context.Context) FeatureResourceStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateOutput)
-}
-
-func (i FeatureResourceStateArgs) ToFeatureResourceStatePtrOutput() FeatureResourceStatePtrOutput {
-	return i.ToFeatureResourceStatePtrOutputWithContext(context.Background())
-}
-
-func (i FeatureResourceStateArgs) ToFeatureResourceStatePtrOutputWithContext(ctx context.Context) FeatureResourceStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateOutput).ToFeatureResourceStatePtrOutputWithContext(ctx)
-}
-
-// FeatureResourceStatePtrInput is an input type that accepts FeatureResourceStateArgs, FeatureResourceStatePtr and FeatureResourceStatePtrOutput values.
-// You can construct a concrete instance of `FeatureResourceStatePtrInput` via:
+// FeatureResourceStateResponseInput is an input type that accepts FeatureResourceStateResponseArgs and FeatureResourceStateResponseOutput values.
+// You can construct a concrete instance of `FeatureResourceStateResponseInput` via:
 //
-//          FeatureResourceStateArgs{...}
+//          FeatureResourceStateResponseArgs{...}
+type FeatureResourceStateResponseInput interface {
+	pulumi.Input
+
+	ToFeatureResourceStateResponseOutput() FeatureResourceStateResponseOutput
+	ToFeatureResourceStateResponseOutputWithContext(context.Context) FeatureResourceStateResponseOutput
+}
+
+// FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Hub and across Memberships.
+type FeatureResourceStateResponseArgs struct {
+	// The current state of the Feature resource in the Hub API.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (FeatureResourceStateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureResourceStateResponse)(nil)).Elem()
+}
+
+func (i FeatureResourceStateResponseArgs) ToFeatureResourceStateResponseOutput() FeatureResourceStateResponseOutput {
+	return i.ToFeatureResourceStateResponseOutputWithContext(context.Background())
+}
+
+func (i FeatureResourceStateResponseArgs) ToFeatureResourceStateResponseOutputWithContext(ctx context.Context) FeatureResourceStateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateResponseOutput)
+}
+
+func (i FeatureResourceStateResponseArgs) ToFeatureResourceStateResponsePtrOutput() FeatureResourceStateResponsePtrOutput {
+	return i.ToFeatureResourceStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i FeatureResourceStateResponseArgs) ToFeatureResourceStateResponsePtrOutputWithContext(ctx context.Context) FeatureResourceStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateResponseOutput).ToFeatureResourceStateResponsePtrOutputWithContext(ctx)
+}
+
+// FeatureResourceStateResponsePtrInput is an input type that accepts FeatureResourceStateResponseArgs, FeatureResourceStateResponsePtr and FeatureResourceStateResponsePtrOutput values.
+// You can construct a concrete instance of `FeatureResourceStateResponsePtrInput` via:
+//
+//          FeatureResourceStateResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type FeatureResourceStatePtrInput interface {
+type FeatureResourceStateResponsePtrInput interface {
 	pulumi.Input
 
-	ToFeatureResourceStatePtrOutput() FeatureResourceStatePtrOutput
-	ToFeatureResourceStatePtrOutputWithContext(context.Context) FeatureResourceStatePtrOutput
+	ToFeatureResourceStateResponsePtrOutput() FeatureResourceStateResponsePtrOutput
+	ToFeatureResourceStateResponsePtrOutputWithContext(context.Context) FeatureResourceStateResponsePtrOutput
 }
 
-type featureResourceStatePtrType FeatureResourceStateArgs
+type featureResourceStateResponsePtrType FeatureResourceStateResponseArgs
 
-func FeatureResourceStatePtr(v *FeatureResourceStateArgs) FeatureResourceStatePtrInput {
-	return (*featureResourceStatePtrType)(v)
+func FeatureResourceStateResponsePtr(v *FeatureResourceStateResponseArgs) FeatureResourceStateResponsePtrInput {
+	return (*featureResourceStateResponsePtrType)(v)
 }
 
-func (*featureResourceStatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeatureResourceState)(nil)).Elem()
+func (*featureResourceStateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureResourceStateResponse)(nil)).Elem()
 }
 
-func (i *featureResourceStatePtrType) ToFeatureResourceStatePtrOutput() FeatureResourceStatePtrOutput {
-	return i.ToFeatureResourceStatePtrOutputWithContext(context.Background())
+func (i *featureResourceStateResponsePtrType) ToFeatureResourceStateResponsePtrOutput() FeatureResourceStateResponsePtrOutput {
+	return i.ToFeatureResourceStateResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *featureResourceStatePtrType) ToFeatureResourceStatePtrOutputWithContext(ctx context.Context) FeatureResourceStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStatePtrOutput)
+func (i *featureResourceStateResponsePtrType) ToFeatureResourceStateResponsePtrOutputWithContext(ctx context.Context) FeatureResourceStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateResponsePtrOutput)
 }
 
 // FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Hub and across Memberships.
-type FeatureResourceStateOutput struct{ *pulumi.OutputState }
+type FeatureResourceStateResponseOutput struct{ *pulumi.OutputState }
 
-func (FeatureResourceStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FeatureResourceState)(nil)).Elem()
+func (FeatureResourceStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureResourceStateResponse)(nil)).Elem()
 }
 
-func (o FeatureResourceStateOutput) ToFeatureResourceStateOutput() FeatureResourceStateOutput {
+func (o FeatureResourceStateResponseOutput) ToFeatureResourceStateResponseOutput() FeatureResourceStateResponseOutput {
 	return o
 }
 
-func (o FeatureResourceStateOutput) ToFeatureResourceStateOutputWithContext(ctx context.Context) FeatureResourceStateOutput {
+func (o FeatureResourceStateResponseOutput) ToFeatureResourceStateResponseOutputWithContext(ctx context.Context) FeatureResourceStateResponseOutput {
 	return o
 }
 
-func (o FeatureResourceStateOutput) ToFeatureResourceStatePtrOutput() FeatureResourceStatePtrOutput {
-	return o.ToFeatureResourceStatePtrOutputWithContext(context.Background())
+func (o FeatureResourceStateResponseOutput) ToFeatureResourceStateResponsePtrOutput() FeatureResourceStateResponsePtrOutput {
+	return o.ToFeatureResourceStateResponsePtrOutputWithContext(context.Background())
 }
 
-func (o FeatureResourceStateOutput) ToFeatureResourceStatePtrOutputWithContext(ctx context.Context) FeatureResourceStatePtrOutput {
-	return o.ApplyT(func(v FeatureResourceState) *FeatureResourceState {
+func (o FeatureResourceStateResponseOutput) ToFeatureResourceStateResponsePtrOutputWithContext(ctx context.Context) FeatureResourceStateResponsePtrOutput {
+	return o.ApplyT(func(v FeatureResourceStateResponse) *FeatureResourceStateResponse {
 		return &v
-	}).(FeatureResourceStatePtrOutput)
+	}).(FeatureResourceStateResponsePtrOutput)
 }
 
 // The current state of the Feature resource in the Hub API.
-func (o FeatureResourceStateOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FeatureResourceState) *string { return v.State }).(pulumi.StringPtrOutput)
+func (o FeatureResourceStateResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureResourceStateResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
-type FeatureResourceStatePtrOutput struct{ *pulumi.OutputState }
+type FeatureResourceStateResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (FeatureResourceStatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeatureResourceState)(nil)).Elem()
+func (FeatureResourceStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureResourceStateResponse)(nil)).Elem()
 }
 
-func (o FeatureResourceStatePtrOutput) ToFeatureResourceStatePtrOutput() FeatureResourceStatePtrOutput {
+func (o FeatureResourceStateResponsePtrOutput) ToFeatureResourceStateResponsePtrOutput() FeatureResourceStateResponsePtrOutput {
 	return o
 }
 
-func (o FeatureResourceStatePtrOutput) ToFeatureResourceStatePtrOutputWithContext(ctx context.Context) FeatureResourceStatePtrOutput {
+func (o FeatureResourceStateResponsePtrOutput) ToFeatureResourceStateResponsePtrOutputWithContext(ctx context.Context) FeatureResourceStateResponsePtrOutput {
 	return o
 }
 
-func (o FeatureResourceStatePtrOutput) Elem() FeatureResourceStateOutput {
-	return o.ApplyT(func(v *FeatureResourceState) FeatureResourceState { return *v }).(FeatureResourceStateOutput)
+func (o FeatureResourceStateResponsePtrOutput) Elem() FeatureResourceStateResponseOutput {
+	return o.ApplyT(func(v *FeatureResourceStateResponse) FeatureResourceStateResponse { return *v }).(FeatureResourceStateResponseOutput)
 }
 
 // The current state of the Feature resource in the Hub API.
-func (o FeatureResourceStatePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FeatureResourceState) *string {
+func (o FeatureResourceStateResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureResourceStateResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.State
+		return &v.State
 	}).(pulumi.StringPtrOutput)
 }
 
 // FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context.
-type FeatureStateType struct {
+type FeatureStateResponse struct {
 	// The high-level, machine-readable status of this Feature.
-	Code *string `pulumi:"code"`
+	Code string `pulumi:"code"`
 	// A human-readable description of the current status.
-	Description *string `pulumi:"description"`
+	Description string `pulumi:"description"`
 	// The time this status and any related Feature-specific details were updated.
-	UpdateTime *string `pulumi:"updateTime"`
+	UpdateTime string `pulumi:"updateTime"`
 }
 
-// FeatureStateTypeInput is an input type that accepts FeatureStateTypeArgs and FeatureStateTypeOutput values.
-// You can construct a concrete instance of `FeatureStateTypeInput` via:
+// FeatureStateResponseInput is an input type that accepts FeatureStateResponseArgs and FeatureStateResponseOutput values.
+// You can construct a concrete instance of `FeatureStateResponseInput` via:
 //
-//          FeatureStateTypeArgs{...}
-type FeatureStateTypeInput interface {
+//          FeatureStateResponseArgs{...}
+type FeatureStateResponseInput interface {
 	pulumi.Input
 
-	ToFeatureStateTypeOutput() FeatureStateTypeOutput
-	ToFeatureStateTypeOutputWithContext(context.Context) FeatureStateTypeOutput
+	ToFeatureStateResponseOutput() FeatureStateResponseOutput
+	ToFeatureStateResponseOutputWithContext(context.Context) FeatureStateResponseOutput
 }
 
 // FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context.
-type FeatureStateTypeArgs struct {
+type FeatureStateResponseArgs struct {
 	// The high-level, machine-readable status of this Feature.
-	Code pulumi.StringPtrInput `pulumi:"code"`
+	Code pulumi.StringInput `pulumi:"code"`
 	// A human-readable description of the current status.
-	Description pulumi.StringPtrInput `pulumi:"description"`
+	Description pulumi.StringInput `pulumi:"description"`
 	// The time this status and any related Feature-specific details were updated.
-	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
 }
 
-func (FeatureStateTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FeatureStateType)(nil)).Elem()
+func (FeatureStateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureStateResponse)(nil)).Elem()
 }
 
-func (i FeatureStateTypeArgs) ToFeatureStateTypeOutput() FeatureStateTypeOutput {
-	return i.ToFeatureStateTypeOutputWithContext(context.Background())
+func (i FeatureStateResponseArgs) ToFeatureStateResponseOutput() FeatureStateResponseOutput {
+	return i.ToFeatureStateResponseOutputWithContext(context.Background())
 }
 
-func (i FeatureStateTypeArgs) ToFeatureStateTypeOutputWithContext(ctx context.Context) FeatureStateTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateTypeOutput)
+func (i FeatureStateResponseArgs) ToFeatureStateResponseOutputWithContext(ctx context.Context) FeatureStateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateResponseOutput)
 }
 
-func (i FeatureStateTypeArgs) ToFeatureStateTypePtrOutput() FeatureStateTypePtrOutput {
-	return i.ToFeatureStateTypePtrOutputWithContext(context.Background())
+func (i FeatureStateResponseArgs) ToFeatureStateResponsePtrOutput() FeatureStateResponsePtrOutput {
+	return i.ToFeatureStateResponsePtrOutputWithContext(context.Background())
 }
 
-func (i FeatureStateTypeArgs) ToFeatureStateTypePtrOutputWithContext(ctx context.Context) FeatureStateTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateTypeOutput).ToFeatureStateTypePtrOutputWithContext(ctx)
+func (i FeatureStateResponseArgs) ToFeatureStateResponsePtrOutputWithContext(ctx context.Context) FeatureStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateResponseOutput).ToFeatureStateResponsePtrOutputWithContext(ctx)
 }
 
-// FeatureStateTypePtrInput is an input type that accepts FeatureStateTypeArgs, FeatureStateTypePtr and FeatureStateTypePtrOutput values.
-// You can construct a concrete instance of `FeatureStateTypePtrInput` via:
+// FeatureStateResponsePtrInput is an input type that accepts FeatureStateResponseArgs, FeatureStateResponsePtr and FeatureStateResponsePtrOutput values.
+// You can construct a concrete instance of `FeatureStateResponsePtrInput` via:
 //
-//          FeatureStateTypeArgs{...}
+//          FeatureStateResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type FeatureStateTypePtrInput interface {
+type FeatureStateResponsePtrInput interface {
 	pulumi.Input
 
-	ToFeatureStateTypePtrOutput() FeatureStateTypePtrOutput
-	ToFeatureStateTypePtrOutputWithContext(context.Context) FeatureStateTypePtrOutput
+	ToFeatureStateResponsePtrOutput() FeatureStateResponsePtrOutput
+	ToFeatureStateResponsePtrOutputWithContext(context.Context) FeatureStateResponsePtrOutput
 }
 
-type featureStateTypePtrType FeatureStateTypeArgs
+type featureStateResponsePtrType FeatureStateResponseArgs
 
-func FeatureStateTypePtr(v *FeatureStateTypeArgs) FeatureStateTypePtrInput {
-	return (*featureStateTypePtrType)(v)
+func FeatureStateResponsePtr(v *FeatureStateResponseArgs) FeatureStateResponsePtrInput {
+	return (*featureStateResponsePtrType)(v)
 }
 
-func (*featureStateTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeatureStateType)(nil)).Elem()
+func (*featureStateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureStateResponse)(nil)).Elem()
 }
 
-func (i *featureStateTypePtrType) ToFeatureStateTypePtrOutput() FeatureStateTypePtrOutput {
-	return i.ToFeatureStateTypePtrOutputWithContext(context.Background())
+func (i *featureStateResponsePtrType) ToFeatureStateResponsePtrOutput() FeatureStateResponsePtrOutput {
+	return i.ToFeatureStateResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *featureStateTypePtrType) ToFeatureStateTypePtrOutputWithContext(ctx context.Context) FeatureStateTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateTypePtrOutput)
+func (i *featureStateResponsePtrType) ToFeatureStateResponsePtrOutputWithContext(ctx context.Context) FeatureStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateResponsePtrOutput)
 }
 
 // FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context.
-type FeatureStateTypeOutput struct{ *pulumi.OutputState }
+type FeatureStateResponseOutput struct{ *pulumi.OutputState }
 
-func (FeatureStateTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FeatureStateType)(nil)).Elem()
+func (FeatureStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureStateResponse)(nil)).Elem()
 }
 
-func (o FeatureStateTypeOutput) ToFeatureStateTypeOutput() FeatureStateTypeOutput {
+func (o FeatureStateResponseOutput) ToFeatureStateResponseOutput() FeatureStateResponseOutput {
 	return o
 }
 
-func (o FeatureStateTypeOutput) ToFeatureStateTypeOutputWithContext(ctx context.Context) FeatureStateTypeOutput {
+func (o FeatureStateResponseOutput) ToFeatureStateResponseOutputWithContext(ctx context.Context) FeatureStateResponseOutput {
 	return o
 }
 
-func (o FeatureStateTypeOutput) ToFeatureStateTypePtrOutput() FeatureStateTypePtrOutput {
-	return o.ToFeatureStateTypePtrOutputWithContext(context.Background())
+func (o FeatureStateResponseOutput) ToFeatureStateResponsePtrOutput() FeatureStateResponsePtrOutput {
+	return o.ToFeatureStateResponsePtrOutputWithContext(context.Background())
 }
 
-func (o FeatureStateTypeOutput) ToFeatureStateTypePtrOutputWithContext(ctx context.Context) FeatureStateTypePtrOutput {
-	return o.ApplyT(func(v FeatureStateType) *FeatureStateType {
+func (o FeatureStateResponseOutput) ToFeatureStateResponsePtrOutputWithContext(ctx context.Context) FeatureStateResponsePtrOutput {
+	return o.ApplyT(func(v FeatureStateResponse) *FeatureStateResponse {
 		return &v
-	}).(FeatureStateTypePtrOutput)
+	}).(FeatureStateResponsePtrOutput)
 }
 
 // The high-level, machine-readable status of this Feature.
-func (o FeatureStateTypeOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FeatureStateType) *string { return v.Code }).(pulumi.StringPtrOutput)
+func (o FeatureStateResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureStateResponse) string { return v.Code }).(pulumi.StringOutput)
 }
 
 // A human-readable description of the current status.
-func (o FeatureStateTypeOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FeatureStateType) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o FeatureStateResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureStateResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The time this status and any related Feature-specific details were updated.
-func (o FeatureStateTypeOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FeatureStateType) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+func (o FeatureStateResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureStateResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-type FeatureStateTypePtrOutput struct{ *pulumi.OutputState }
+type FeatureStateResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (FeatureStateTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FeatureStateType)(nil)).Elem()
+func (FeatureStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureStateResponse)(nil)).Elem()
 }
 
-func (o FeatureStateTypePtrOutput) ToFeatureStateTypePtrOutput() FeatureStateTypePtrOutput {
+func (o FeatureStateResponsePtrOutput) ToFeatureStateResponsePtrOutput() FeatureStateResponsePtrOutput {
 	return o
 }
 
-func (o FeatureStateTypePtrOutput) ToFeatureStateTypePtrOutputWithContext(ctx context.Context) FeatureStateTypePtrOutput {
+func (o FeatureStateResponsePtrOutput) ToFeatureStateResponsePtrOutputWithContext(ctx context.Context) FeatureStateResponsePtrOutput {
 	return o
 }
 
-func (o FeatureStateTypePtrOutput) Elem() FeatureStateTypeOutput {
-	return o.ApplyT(func(v *FeatureStateType) FeatureStateType { return *v }).(FeatureStateTypeOutput)
+func (o FeatureStateResponsePtrOutput) Elem() FeatureStateResponseOutput {
+	return o.ApplyT(func(v *FeatureStateResponse) FeatureStateResponse { return *v }).(FeatureStateResponseOutput)
 }
 
 // The high-level, machine-readable status of this Feature.
-func (o FeatureStateTypePtrOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FeatureStateType) *string {
+func (o FeatureStateResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureStateResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Code
+		return &v.Code
 	}).(pulumi.StringPtrOutput)
 }
 
 // A human-readable description of the current status.
-func (o FeatureStateTypePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FeatureStateType) *string {
+func (o FeatureStateResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureStateResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Description
+		return &v.Description
 	}).(pulumi.StringPtrOutput)
 }
 
 // The time this status and any related Feature-specific details were updated.
-func (o FeatureStateTypePtrOutput) UpdateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FeatureStateType) *string {
+func (o FeatureStateResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureStateResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.UpdateTime
+		return &v.UpdateTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1242,6 +1794,140 @@ func (o MultiClusterIngressFeatureSpecPtrOutput) ConfigMembership() pulumi.Strin
 			return nil
 		}
 		return v.ConfigMembership
+	}).(pulumi.StringPtrOutput)
+}
+
+// FeatureSpec contains the input for the MultiClusterIngress feature.
+type MultiClusterIngressFeatureSpecResponse struct {
+	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+	ConfigMembership string `pulumi:"configMembership"`
+}
+
+// MultiClusterIngressFeatureSpecResponseInput is an input type that accepts MultiClusterIngressFeatureSpecResponseArgs and MultiClusterIngressFeatureSpecResponseOutput values.
+// You can construct a concrete instance of `MultiClusterIngressFeatureSpecResponseInput` via:
+//
+//          MultiClusterIngressFeatureSpecResponseArgs{...}
+type MultiClusterIngressFeatureSpecResponseInput interface {
+	pulumi.Input
+
+	ToMultiClusterIngressFeatureSpecResponseOutput() MultiClusterIngressFeatureSpecResponseOutput
+	ToMultiClusterIngressFeatureSpecResponseOutputWithContext(context.Context) MultiClusterIngressFeatureSpecResponseOutput
+}
+
+// FeatureSpec contains the input for the MultiClusterIngress feature.
+type MultiClusterIngressFeatureSpecResponseArgs struct {
+	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+	ConfigMembership pulumi.StringInput `pulumi:"configMembership"`
+}
+
+func (MultiClusterIngressFeatureSpecResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiClusterIngressFeatureSpecResponse)(nil)).Elem()
+}
+
+func (i MultiClusterIngressFeatureSpecResponseArgs) ToMultiClusterIngressFeatureSpecResponseOutput() MultiClusterIngressFeatureSpecResponseOutput {
+	return i.ToMultiClusterIngressFeatureSpecResponseOutputWithContext(context.Background())
+}
+
+func (i MultiClusterIngressFeatureSpecResponseArgs) ToMultiClusterIngressFeatureSpecResponseOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterIngressFeatureSpecResponseOutput)
+}
+
+func (i MultiClusterIngressFeatureSpecResponseArgs) ToMultiClusterIngressFeatureSpecResponsePtrOutput() MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return i.ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MultiClusterIngressFeatureSpecResponseArgs) ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterIngressFeatureSpecResponseOutput).ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(ctx)
+}
+
+// MultiClusterIngressFeatureSpecResponsePtrInput is an input type that accepts MultiClusterIngressFeatureSpecResponseArgs, MultiClusterIngressFeatureSpecResponsePtr and MultiClusterIngressFeatureSpecResponsePtrOutput values.
+// You can construct a concrete instance of `MultiClusterIngressFeatureSpecResponsePtrInput` via:
+//
+//          MultiClusterIngressFeatureSpecResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MultiClusterIngressFeatureSpecResponsePtrInput interface {
+	pulumi.Input
+
+	ToMultiClusterIngressFeatureSpecResponsePtrOutput() MultiClusterIngressFeatureSpecResponsePtrOutput
+	ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(context.Context) MultiClusterIngressFeatureSpecResponsePtrOutput
+}
+
+type multiClusterIngressFeatureSpecResponsePtrType MultiClusterIngressFeatureSpecResponseArgs
+
+func MultiClusterIngressFeatureSpecResponsePtr(v *MultiClusterIngressFeatureSpecResponseArgs) MultiClusterIngressFeatureSpecResponsePtrInput {
+	return (*multiClusterIngressFeatureSpecResponsePtrType)(v)
+}
+
+func (*multiClusterIngressFeatureSpecResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiClusterIngressFeatureSpecResponse)(nil)).Elem()
+}
+
+func (i *multiClusterIngressFeatureSpecResponsePtrType) ToMultiClusterIngressFeatureSpecResponsePtrOutput() MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return i.ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *multiClusterIngressFeatureSpecResponsePtrType) ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterIngressFeatureSpecResponsePtrOutput)
+}
+
+// FeatureSpec contains the input for the MultiClusterIngress feature.
+type MultiClusterIngressFeatureSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (MultiClusterIngressFeatureSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiClusterIngressFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatureSpecResponseOutput() MultiClusterIngressFeatureSpecResponseOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatureSpecResponseOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecResponseOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatureSpecResponsePtrOutput() MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return o.ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return o.ApplyT(func(v MultiClusterIngressFeatureSpecResponse) *MultiClusterIngressFeatureSpecResponse {
+		return &v
+	}).(MultiClusterIngressFeatureSpecResponsePtrOutput)
+}
+
+// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+func (o MultiClusterIngressFeatureSpecResponseOutput) ConfigMembership() pulumi.StringOutput {
+	return o.ApplyT(func(v MultiClusterIngressFeatureSpecResponse) string { return v.ConfigMembership }).(pulumi.StringOutput)
+}
+
+type MultiClusterIngressFeatureSpecResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MultiClusterIngressFeatureSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiClusterIngressFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o MultiClusterIngressFeatureSpecResponsePtrOutput) ToMultiClusterIngressFeatureSpecResponsePtrOutput() MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecResponsePtrOutput) ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecResponsePtrOutput) Elem() MultiClusterIngressFeatureSpecResponseOutput {
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpecResponse) MultiClusterIngressFeatureSpecResponse { return *v }).(MultiClusterIngressFeatureSpecResponseOutput)
+}
+
+// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+func (o MultiClusterIngressFeatureSpecResponsePtrOutput) ConfigMembership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigMembership
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1439,22 +2125,33 @@ func (o PolicyPtrOutput) Version() pulumi.IntPtrOutput {
 func init() {
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingResponseOutput{})
+	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(CommonFeatureSpecOutput{})
 	pulumi.RegisterOutputType(CommonFeatureSpecPtrOutput{})
-	pulumi.RegisterOutputType(CommonFeatureStateOutput{})
-	pulumi.RegisterOutputType(CommonFeatureStatePtrOutput{})
+	pulumi.RegisterOutputType(CommonFeatureSpecResponseOutput{})
+	pulumi.RegisterOutputType(CommonFeatureSpecResponsePtrOutput{})
+	pulumi.RegisterOutputType(CommonFeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(CommonFeatureStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
-	pulumi.RegisterOutputType(FeatureResourceStateOutput{})
-	pulumi.RegisterOutputType(FeatureResourceStatePtrOutput{})
-	pulumi.RegisterOutputType(FeatureStateTypeOutput{})
-	pulumi.RegisterOutputType(FeatureStateTypePtrOutput{})
+	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(FeatureResourceStateResponseOutput{})
+	pulumi.RegisterOutputType(FeatureResourceStateResponsePtrOutput{})
+	pulumi.RegisterOutputType(FeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(FeatureStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecOutput{})
 	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecResponseOutput{})
+	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(PolicyOutput{})
 	pulumi.RegisterOutputType(PolicyPtrOutput{})
 }

@@ -14,6 +14,17 @@ import (
 // Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.
 type OrganizationBucketView struct {
 	pulumi.CustomResourceState
+
+	// The creation timestamp of the view.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Describes this view.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log id Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+	Filter pulumi.StringOutput `pulumi:"filter"`
+	// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The last update timestamp of the view.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewOrganizationBucketView registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +68,29 @@ func GetOrganizationBucketView(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationBucketView resources.
 type organizationBucketViewState struct {
+	// The creation timestamp of the view.
+	CreateTime *string `pulumi:"createTime"`
+	// Describes this view.
+	Description *string `pulumi:"description"`
+	// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log id Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+	Filter *string `pulumi:"filter"`
+	// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
+	Name *string `pulumi:"name"`
+	// The last update timestamp of the view.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type OrganizationBucketViewState struct {
+	// The creation timestamp of the view.
+	CreateTime pulumi.StringPtrInput
+	// Describes this view.
+	Description pulumi.StringPtrInput
+	// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log id Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
+	Filter pulumi.StringPtrInput
+	// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
+	Name pulumi.StringPtrInput
+	// The last update timestamp of the view.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (OrganizationBucketViewState) ElementType() reflect.Type {
@@ -68,8 +99,6 @@ func (OrganizationBucketViewState) ElementType() reflect.Type {
 
 type organizationBucketViewArgs struct {
 	BucketsId string `pulumi:"bucketsId"`
-	// Output only. The creation timestamp of the view.
-	CreateTime *string `pulumi:"createTime"`
 	// Describes this view.
 	Description *string `pulumi:"description"`
 	// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log id Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
@@ -78,16 +107,12 @@ type organizationBucketViewArgs struct {
 	// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
 	Name            *string `pulumi:"name"`
 	OrganizationsId string  `pulumi:"organizationsId"`
-	// Output only. The last update timestamp of the view.
-	UpdateTime *string `pulumi:"updateTime"`
-	ViewsId    string  `pulumi:"viewsId"`
+	ViewsId         string  `pulumi:"viewsId"`
 }
 
 // The set of arguments for constructing a OrganizationBucketView resource.
 type OrganizationBucketViewArgs struct {
 	BucketsId pulumi.StringInput
-	// Output only. The creation timestamp of the view.
-	CreateTime pulumi.StringPtrInput
 	// Describes this view.
 	Description pulumi.StringPtrInput
 	// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log id Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
@@ -96,9 +121,7 @@ type OrganizationBucketViewArgs struct {
 	// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
 	Name            pulumi.StringPtrInput
 	OrganizationsId pulumi.StringInput
-	// Output only. The last update timestamp of the view.
-	UpdateTime pulumi.StringPtrInput
-	ViewsId    pulumi.StringInput
+	ViewsId         pulumi.StringInput
 }
 
 func (OrganizationBucketViewArgs) ElementType() reflect.Type {

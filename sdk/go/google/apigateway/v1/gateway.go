@@ -14,6 +14,23 @@ import (
 // Creates a new Gateway in a given project and location.
 type Gateway struct {
 	pulumi.CustomResourceState
+
+	// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+	ApiConfig pulumi.StringOutput `pulumi:"apiConfig"`
+	// Created time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
+	DefaultHostname pulumi.StringOutput `pulumi:"defaultHostname"`
+	// Optional. Display name.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The current state of the Gateway.
+	State pulumi.StringOutput `pulumi:"state"`
+	// Updated time.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewGateway registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +71,41 @@ func GetGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Gateway resources.
 type gatewayState struct {
+	// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+	ApiConfig *string `pulumi:"apiConfig"`
+	// Created time.
+	CreateTime *string `pulumi:"createTime"`
+	// The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
+	DefaultHostname *string `pulumi:"defaultHostname"`
+	// Optional. Display name.
+	DisplayName *string `pulumi:"displayName"`
+	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+	Labels map[string]string `pulumi:"labels"`
+	// Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
+	Name *string `pulumi:"name"`
+	// The current state of the Gateway.
+	State *string `pulumi:"state"`
+	// Updated time.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type GatewayState struct {
+	// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+	ApiConfig pulumi.StringPtrInput
+	// Created time.
+	CreateTime pulumi.StringPtrInput
+	// The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
+	DefaultHostname pulumi.StringPtrInput
+	// Optional. Display name.
+	DisplayName pulumi.StringPtrInput
+	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+	Labels pulumi.StringMapInput
+	// Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
+	Name pulumi.StringPtrInput
+	// The current state of the Gateway.
+	State pulumi.StringPtrInput
+	// Updated time.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (GatewayState) ElementType() reflect.Type {
@@ -66,46 +115,26 @@ func (GatewayState) ElementType() reflect.Type {
 type gatewayArgs struct {
 	// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
 	ApiConfig *string `pulumi:"apiConfig"`
-	// Output only. Created time.
-	CreateTime *string `pulumi:"createTime"`
-	// Output only. The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
-	DefaultHostname *string `pulumi:"defaultHostname"`
 	// Optional. Display name.
 	DisplayName *string `pulumi:"displayName"`
 	GatewaysId  string  `pulumi:"gatewaysId"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels      map[string]string `pulumi:"labels"`
 	LocationsId string            `pulumi:"locationsId"`
-	// Output only. Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	// Output only. The current state of the Gateway.
-	State *string `pulumi:"state"`
-	// Output only. Updated time.
-	UpdateTime *string `pulumi:"updateTime"`
+	ProjectsId  string            `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
 	// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
 	ApiConfig pulumi.StringPtrInput
-	// Output only. Created time.
-	CreateTime pulumi.StringPtrInput
-	// Output only. The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
-	DefaultHostname pulumi.StringPtrInput
 	// Optional. Display name.
 	DisplayName pulumi.StringPtrInput
 	GatewaysId  pulumi.StringInput
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels      pulumi.StringMapInput
 	LocationsId pulumi.StringInput
-	// Output only. Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	// Output only. The current state of the Gateway.
-	State pulumi.StringPtrInput
-	// Output only. Updated time.
-	UpdateTime pulumi.StringPtrInput
+	ProjectsId  pulumi.StringInput
 }
 
 func (GatewayArgs) ElementType() reflect.Type {

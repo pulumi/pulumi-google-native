@@ -14,6 +14,11 @@ import (
 // Creates a job template in the specified region.
 type JobTemplate struct {
 	pulumi.CustomResourceState
+
+	// The configuration for this template.
+	Config JobConfigResponseOutput `pulumi:"config"`
+	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewJobTemplate registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +59,17 @@ func GetJobTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering JobTemplate resources.
 type jobTemplateState struct {
+	// The configuration for this template.
+	Config *JobConfigResponse `pulumi:"config"`
+	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
+	Name *string `pulumi:"name"`
 }
 
 type JobTemplateState struct {
+	// The configuration for this template.
+	Config JobConfigResponsePtrInput
+	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
+	Name pulumi.StringPtrInput
 }
 
 func (JobTemplateState) ElementType() reflect.Type {

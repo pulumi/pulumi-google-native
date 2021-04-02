@@ -220,6 +220,216 @@ func (o ApiConfigHandlerPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+type ApiConfigHandlerResponse struct {
+	// Action to take when users access resources that require authentication. Defaults to redirect.
+	AuthFailAction string `pulumi:"authFailAction"`
+	// Level of login required to access this resource. Defaults to optional.
+	Login string `pulumi:"login"`
+	// Path to the script from the application root directory.
+	Script string `pulumi:"script"`
+	// Security (HTTPS) enforcement for this URL.
+	SecurityLevel string `pulumi:"securityLevel"`
+	// URL to serve the endpoint at.
+	Url string `pulumi:"url"`
+}
+
+// ApiConfigHandlerResponseInput is an input type that accepts ApiConfigHandlerResponseArgs and ApiConfigHandlerResponseOutput values.
+// You can construct a concrete instance of `ApiConfigHandlerResponseInput` via:
+//
+//          ApiConfigHandlerResponseArgs{...}
+type ApiConfigHandlerResponseInput interface {
+	pulumi.Input
+
+	ToApiConfigHandlerResponseOutput() ApiConfigHandlerResponseOutput
+	ToApiConfigHandlerResponseOutputWithContext(context.Context) ApiConfigHandlerResponseOutput
+}
+
+// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+type ApiConfigHandlerResponseArgs struct {
+	// Action to take when users access resources that require authentication. Defaults to redirect.
+	AuthFailAction pulumi.StringInput `pulumi:"authFailAction"`
+	// Level of login required to access this resource. Defaults to optional.
+	Login pulumi.StringInput `pulumi:"login"`
+	// Path to the script from the application root directory.
+	Script pulumi.StringInput `pulumi:"script"`
+	// Security (HTTPS) enforcement for this URL.
+	SecurityLevel pulumi.StringInput `pulumi:"securityLevel"`
+	// URL to serve the endpoint at.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (ApiConfigHandlerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiConfigHandlerResponse)(nil)).Elem()
+}
+
+func (i ApiConfigHandlerResponseArgs) ToApiConfigHandlerResponseOutput() ApiConfigHandlerResponseOutput {
+	return i.ToApiConfigHandlerResponseOutputWithContext(context.Background())
+}
+
+func (i ApiConfigHandlerResponseArgs) ToApiConfigHandlerResponseOutputWithContext(ctx context.Context) ApiConfigHandlerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigHandlerResponseOutput)
+}
+
+func (i ApiConfigHandlerResponseArgs) ToApiConfigHandlerResponsePtrOutput() ApiConfigHandlerResponsePtrOutput {
+	return i.ToApiConfigHandlerResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ApiConfigHandlerResponseArgs) ToApiConfigHandlerResponsePtrOutputWithContext(ctx context.Context) ApiConfigHandlerResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigHandlerResponseOutput).ToApiConfigHandlerResponsePtrOutputWithContext(ctx)
+}
+
+// ApiConfigHandlerResponsePtrInput is an input type that accepts ApiConfigHandlerResponseArgs, ApiConfigHandlerResponsePtr and ApiConfigHandlerResponsePtrOutput values.
+// You can construct a concrete instance of `ApiConfigHandlerResponsePtrInput` via:
+//
+//          ApiConfigHandlerResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ApiConfigHandlerResponsePtrInput interface {
+	pulumi.Input
+
+	ToApiConfigHandlerResponsePtrOutput() ApiConfigHandlerResponsePtrOutput
+	ToApiConfigHandlerResponsePtrOutputWithContext(context.Context) ApiConfigHandlerResponsePtrOutput
+}
+
+type apiConfigHandlerResponsePtrType ApiConfigHandlerResponseArgs
+
+func ApiConfigHandlerResponsePtr(v *ApiConfigHandlerResponseArgs) ApiConfigHandlerResponsePtrInput {
+	return (*apiConfigHandlerResponsePtrType)(v)
+}
+
+func (*apiConfigHandlerResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiConfigHandlerResponse)(nil)).Elem()
+}
+
+func (i *apiConfigHandlerResponsePtrType) ToApiConfigHandlerResponsePtrOutput() ApiConfigHandlerResponsePtrOutput {
+	return i.ToApiConfigHandlerResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *apiConfigHandlerResponsePtrType) ToApiConfigHandlerResponsePtrOutputWithContext(ctx context.Context) ApiConfigHandlerResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigHandlerResponsePtrOutput)
+}
+
+// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+type ApiConfigHandlerResponseOutput struct{ *pulumi.OutputState }
+
+func (ApiConfigHandlerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiConfigHandlerResponse)(nil)).Elem()
+}
+
+func (o ApiConfigHandlerResponseOutput) ToApiConfigHandlerResponseOutput() ApiConfigHandlerResponseOutput {
+	return o
+}
+
+func (o ApiConfigHandlerResponseOutput) ToApiConfigHandlerResponseOutputWithContext(ctx context.Context) ApiConfigHandlerResponseOutput {
+	return o
+}
+
+func (o ApiConfigHandlerResponseOutput) ToApiConfigHandlerResponsePtrOutput() ApiConfigHandlerResponsePtrOutput {
+	return o.ToApiConfigHandlerResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ApiConfigHandlerResponseOutput) ToApiConfigHandlerResponsePtrOutputWithContext(ctx context.Context) ApiConfigHandlerResponsePtrOutput {
+	return o.ApplyT(func(v ApiConfigHandlerResponse) *ApiConfigHandlerResponse {
+		return &v
+	}).(ApiConfigHandlerResponsePtrOutput)
+}
+
+// Action to take when users access resources that require authentication. Defaults to redirect.
+func (o ApiConfigHandlerResponseOutput) AuthFailAction() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiConfigHandlerResponse) string { return v.AuthFailAction }).(pulumi.StringOutput)
+}
+
+// Level of login required to access this resource. Defaults to optional.
+func (o ApiConfigHandlerResponseOutput) Login() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiConfigHandlerResponse) string { return v.Login }).(pulumi.StringOutput)
+}
+
+// Path to the script from the application root directory.
+func (o ApiConfigHandlerResponseOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiConfigHandlerResponse) string { return v.Script }).(pulumi.StringOutput)
+}
+
+// Security (HTTPS) enforcement for this URL.
+func (o ApiConfigHandlerResponseOutput) SecurityLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiConfigHandlerResponse) string { return v.SecurityLevel }).(pulumi.StringOutput)
+}
+
+// URL to serve the endpoint at.
+func (o ApiConfigHandlerResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiConfigHandlerResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type ApiConfigHandlerResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiConfigHandlerResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiConfigHandlerResponse)(nil)).Elem()
+}
+
+func (o ApiConfigHandlerResponsePtrOutput) ToApiConfigHandlerResponsePtrOutput() ApiConfigHandlerResponsePtrOutput {
+	return o
+}
+
+func (o ApiConfigHandlerResponsePtrOutput) ToApiConfigHandlerResponsePtrOutputWithContext(ctx context.Context) ApiConfigHandlerResponsePtrOutput {
+	return o
+}
+
+func (o ApiConfigHandlerResponsePtrOutput) Elem() ApiConfigHandlerResponseOutput {
+	return o.ApplyT(func(v *ApiConfigHandlerResponse) ApiConfigHandlerResponse { return *v }).(ApiConfigHandlerResponseOutput)
+}
+
+// Action to take when users access resources that require authentication. Defaults to redirect.
+func (o ApiConfigHandlerResponsePtrOutput) AuthFailAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiConfigHandlerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthFailAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Level of login required to access this resource. Defaults to optional.
+func (o ApiConfigHandlerResponsePtrOutput) Login() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiConfigHandlerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Login
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to the script from the application root directory.
+func (o ApiConfigHandlerResponsePtrOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiConfigHandlerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
+// Security (HTTPS) enforcement for this URL.
+func (o ApiConfigHandlerResponsePtrOutput) SecurityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiConfigHandlerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecurityLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL to serve the endpoint at.
+func (o ApiConfigHandlerResponsePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiConfigHandlerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
 // Uses Google Cloud Endpoints to handle requests.
 type ApiEndpointHandler struct {
 	// Path to the script from the application root directory.
@@ -352,6 +562,61 @@ func (o ApiEndpointHandlerPtrOutput) ScriptPath() pulumi.StringPtrOutput {
 		}
 		return v.ScriptPath
 	}).(pulumi.StringPtrOutput)
+}
+
+// Uses Google Cloud Endpoints to handle requests.
+type ApiEndpointHandlerResponse struct {
+	// Path to the script from the application root directory.
+	ScriptPath string `pulumi:"scriptPath"`
+}
+
+// ApiEndpointHandlerResponseInput is an input type that accepts ApiEndpointHandlerResponseArgs and ApiEndpointHandlerResponseOutput values.
+// You can construct a concrete instance of `ApiEndpointHandlerResponseInput` via:
+//
+//          ApiEndpointHandlerResponseArgs{...}
+type ApiEndpointHandlerResponseInput interface {
+	pulumi.Input
+
+	ToApiEndpointHandlerResponseOutput() ApiEndpointHandlerResponseOutput
+	ToApiEndpointHandlerResponseOutputWithContext(context.Context) ApiEndpointHandlerResponseOutput
+}
+
+// Uses Google Cloud Endpoints to handle requests.
+type ApiEndpointHandlerResponseArgs struct {
+	// Path to the script from the application root directory.
+	ScriptPath pulumi.StringInput `pulumi:"scriptPath"`
+}
+
+func (ApiEndpointHandlerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiEndpointHandlerResponse)(nil)).Elem()
+}
+
+func (i ApiEndpointHandlerResponseArgs) ToApiEndpointHandlerResponseOutput() ApiEndpointHandlerResponseOutput {
+	return i.ToApiEndpointHandlerResponseOutputWithContext(context.Background())
+}
+
+func (i ApiEndpointHandlerResponseArgs) ToApiEndpointHandlerResponseOutputWithContext(ctx context.Context) ApiEndpointHandlerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiEndpointHandlerResponseOutput)
+}
+
+// Uses Google Cloud Endpoints to handle requests.
+type ApiEndpointHandlerResponseOutput struct{ *pulumi.OutputState }
+
+func (ApiEndpointHandlerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiEndpointHandlerResponse)(nil)).Elem()
+}
+
+func (o ApiEndpointHandlerResponseOutput) ToApiEndpointHandlerResponseOutput() ApiEndpointHandlerResponseOutput {
+	return o
+}
+
+func (o ApiEndpointHandlerResponseOutput) ToApiEndpointHandlerResponseOutputWithContext(ctx context.Context) ApiEndpointHandlerResponseOutput {
+	return o
+}
+
+// Path to the script from the application root directory.
+func (o ApiEndpointHandlerResponseOutput) ScriptPath() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiEndpointHandlerResponse) string { return v.ScriptPath }).(pulumi.StringOutput)
 }
 
 // Automatic scaling is based on request rate, response latencies, and other application metrics.
@@ -716,6 +981,368 @@ func (o AutomaticScalingPtrOutput) StandardSchedulerSettings() StandardScheduler
 	}).(StandardSchedulerSettingsPtrOutput)
 }
 
+// Automatic scaling is based on request rate, response latencies, and other application metrics.
+type AutomaticScalingResponse struct {
+	// The time period that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. Only applicable in the App Engine flexible environment.
+	CoolDownPeriod string `pulumi:"coolDownPeriod"`
+	// Target scaling by CPU usage.
+	CpuUtilization CpuUtilizationResponse `pulumi:"cpuUtilization"`
+	// Target scaling by disk usage.
+	DiskUtilization DiskUtilizationResponse `pulumi:"diskUtilization"`
+	// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.Defaults to a runtime-specific value.
+	MaxConcurrentRequests int `pulumi:"maxConcurrentRequests"`
+	// Maximum number of idle instances that should be maintained for this version.
+	MaxIdleInstances int `pulumi:"maxIdleInstances"`
+	// Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
+	MaxPendingLatency string `pulumi:"maxPendingLatency"`
+	// Maximum number of instances that should be started to handle requests for this version.
+	MaxTotalInstances int `pulumi:"maxTotalInstances"`
+	// Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+	MinIdleInstances int `pulumi:"minIdleInstances"`
+	// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
+	MinPendingLatency string `pulumi:"minPendingLatency"`
+	// Minimum number of running instances that should be maintained for this version.
+	MinTotalInstances int `pulumi:"minTotalInstances"`
+	// Target scaling by network usage.
+	NetworkUtilization NetworkUtilizationResponse `pulumi:"networkUtilization"`
+	// Target scaling by request utilization.
+	RequestUtilization RequestUtilizationResponse `pulumi:"requestUtilization"`
+	// Scheduler settings for standard environment.
+	StandardSchedulerSettings StandardSchedulerSettingsResponse `pulumi:"standardSchedulerSettings"`
+}
+
+// AutomaticScalingResponseInput is an input type that accepts AutomaticScalingResponseArgs and AutomaticScalingResponseOutput values.
+// You can construct a concrete instance of `AutomaticScalingResponseInput` via:
+//
+//          AutomaticScalingResponseArgs{...}
+type AutomaticScalingResponseInput interface {
+	pulumi.Input
+
+	ToAutomaticScalingResponseOutput() AutomaticScalingResponseOutput
+	ToAutomaticScalingResponseOutputWithContext(context.Context) AutomaticScalingResponseOutput
+}
+
+// Automatic scaling is based on request rate, response latencies, and other application metrics.
+type AutomaticScalingResponseArgs struct {
+	// The time period that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. Only applicable in the App Engine flexible environment.
+	CoolDownPeriod pulumi.StringInput `pulumi:"coolDownPeriod"`
+	// Target scaling by CPU usage.
+	CpuUtilization CpuUtilizationResponseInput `pulumi:"cpuUtilization"`
+	// Target scaling by disk usage.
+	DiskUtilization DiskUtilizationResponseInput `pulumi:"diskUtilization"`
+	// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.Defaults to a runtime-specific value.
+	MaxConcurrentRequests pulumi.IntInput `pulumi:"maxConcurrentRequests"`
+	// Maximum number of idle instances that should be maintained for this version.
+	MaxIdleInstances pulumi.IntInput `pulumi:"maxIdleInstances"`
+	// Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
+	MaxPendingLatency pulumi.StringInput `pulumi:"maxPendingLatency"`
+	// Maximum number of instances that should be started to handle requests for this version.
+	MaxTotalInstances pulumi.IntInput `pulumi:"maxTotalInstances"`
+	// Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+	MinIdleInstances pulumi.IntInput `pulumi:"minIdleInstances"`
+	// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
+	MinPendingLatency pulumi.StringInput `pulumi:"minPendingLatency"`
+	// Minimum number of running instances that should be maintained for this version.
+	MinTotalInstances pulumi.IntInput `pulumi:"minTotalInstances"`
+	// Target scaling by network usage.
+	NetworkUtilization NetworkUtilizationResponseInput `pulumi:"networkUtilization"`
+	// Target scaling by request utilization.
+	RequestUtilization RequestUtilizationResponseInput `pulumi:"requestUtilization"`
+	// Scheduler settings for standard environment.
+	StandardSchedulerSettings StandardSchedulerSettingsResponseInput `pulumi:"standardSchedulerSettings"`
+}
+
+func (AutomaticScalingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomaticScalingResponse)(nil)).Elem()
+}
+
+func (i AutomaticScalingResponseArgs) ToAutomaticScalingResponseOutput() AutomaticScalingResponseOutput {
+	return i.ToAutomaticScalingResponseOutputWithContext(context.Background())
+}
+
+func (i AutomaticScalingResponseArgs) ToAutomaticScalingResponseOutputWithContext(ctx context.Context) AutomaticScalingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomaticScalingResponseOutput)
+}
+
+func (i AutomaticScalingResponseArgs) ToAutomaticScalingResponsePtrOutput() AutomaticScalingResponsePtrOutput {
+	return i.ToAutomaticScalingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AutomaticScalingResponseArgs) ToAutomaticScalingResponsePtrOutputWithContext(ctx context.Context) AutomaticScalingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomaticScalingResponseOutput).ToAutomaticScalingResponsePtrOutputWithContext(ctx)
+}
+
+// AutomaticScalingResponsePtrInput is an input type that accepts AutomaticScalingResponseArgs, AutomaticScalingResponsePtr and AutomaticScalingResponsePtrOutput values.
+// You can construct a concrete instance of `AutomaticScalingResponsePtrInput` via:
+//
+//          AutomaticScalingResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AutomaticScalingResponsePtrInput interface {
+	pulumi.Input
+
+	ToAutomaticScalingResponsePtrOutput() AutomaticScalingResponsePtrOutput
+	ToAutomaticScalingResponsePtrOutputWithContext(context.Context) AutomaticScalingResponsePtrOutput
+}
+
+type automaticScalingResponsePtrType AutomaticScalingResponseArgs
+
+func AutomaticScalingResponsePtr(v *AutomaticScalingResponseArgs) AutomaticScalingResponsePtrInput {
+	return (*automaticScalingResponsePtrType)(v)
+}
+
+func (*automaticScalingResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomaticScalingResponse)(nil)).Elem()
+}
+
+func (i *automaticScalingResponsePtrType) ToAutomaticScalingResponsePtrOutput() AutomaticScalingResponsePtrOutput {
+	return i.ToAutomaticScalingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *automaticScalingResponsePtrType) ToAutomaticScalingResponsePtrOutputWithContext(ctx context.Context) AutomaticScalingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomaticScalingResponsePtrOutput)
+}
+
+// Automatic scaling is based on request rate, response latencies, and other application metrics.
+type AutomaticScalingResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomaticScalingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomaticScalingResponse)(nil)).Elem()
+}
+
+func (o AutomaticScalingResponseOutput) ToAutomaticScalingResponseOutput() AutomaticScalingResponseOutput {
+	return o
+}
+
+func (o AutomaticScalingResponseOutput) ToAutomaticScalingResponseOutputWithContext(ctx context.Context) AutomaticScalingResponseOutput {
+	return o
+}
+
+func (o AutomaticScalingResponseOutput) ToAutomaticScalingResponsePtrOutput() AutomaticScalingResponsePtrOutput {
+	return o.ToAutomaticScalingResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AutomaticScalingResponseOutput) ToAutomaticScalingResponsePtrOutputWithContext(ctx context.Context) AutomaticScalingResponsePtrOutput {
+	return o.ApplyT(func(v AutomaticScalingResponse) *AutomaticScalingResponse {
+		return &v
+	}).(AutomaticScalingResponsePtrOutput)
+}
+
+// The time period that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. Only applicable in the App Engine flexible environment.
+func (o AutomaticScalingResponseOutput) CoolDownPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomaticScalingResponse) string { return v.CoolDownPeriod }).(pulumi.StringOutput)
+}
+
+// Target scaling by CPU usage.
+func (o AutomaticScalingResponseOutput) CpuUtilization() CpuUtilizationResponseOutput {
+	return o.ApplyT(func(v AutomaticScalingResponse) CpuUtilizationResponse { return v.CpuUtilization }).(CpuUtilizationResponseOutput)
+}
+
+// Target scaling by disk usage.
+func (o AutomaticScalingResponseOutput) DiskUtilization() DiskUtilizationResponseOutput {
+	return o.ApplyT(func(v AutomaticScalingResponse) DiskUtilizationResponse { return v.DiskUtilization }).(DiskUtilizationResponseOutput)
+}
+
+// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.Defaults to a runtime-specific value.
+func (o AutomaticScalingResponseOutput) MaxConcurrentRequests() pulumi.IntOutput {
+	return o.ApplyT(func(v AutomaticScalingResponse) int { return v.MaxConcurrentRequests }).(pulumi.IntOutput)
+}
+
+// Maximum number of idle instances that should be maintained for this version.
+func (o AutomaticScalingResponseOutput) MaxIdleInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v AutomaticScalingResponse) int { return v.MaxIdleInstances }).(pulumi.IntOutput)
+}
+
+// Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
+func (o AutomaticScalingResponseOutput) MaxPendingLatency() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomaticScalingResponse) string { return v.MaxPendingLatency }).(pulumi.StringOutput)
+}
+
+// Maximum number of instances that should be started to handle requests for this version.
+func (o AutomaticScalingResponseOutput) MaxTotalInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v AutomaticScalingResponse) int { return v.MaxTotalInstances }).(pulumi.IntOutput)
+}
+
+// Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+func (o AutomaticScalingResponseOutput) MinIdleInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v AutomaticScalingResponse) int { return v.MinIdleInstances }).(pulumi.IntOutput)
+}
+
+// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
+func (o AutomaticScalingResponseOutput) MinPendingLatency() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomaticScalingResponse) string { return v.MinPendingLatency }).(pulumi.StringOutput)
+}
+
+// Minimum number of running instances that should be maintained for this version.
+func (o AutomaticScalingResponseOutput) MinTotalInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v AutomaticScalingResponse) int { return v.MinTotalInstances }).(pulumi.IntOutput)
+}
+
+// Target scaling by network usage.
+func (o AutomaticScalingResponseOutput) NetworkUtilization() NetworkUtilizationResponseOutput {
+	return o.ApplyT(func(v AutomaticScalingResponse) NetworkUtilizationResponse { return v.NetworkUtilization }).(NetworkUtilizationResponseOutput)
+}
+
+// Target scaling by request utilization.
+func (o AutomaticScalingResponseOutput) RequestUtilization() RequestUtilizationResponseOutput {
+	return o.ApplyT(func(v AutomaticScalingResponse) RequestUtilizationResponse { return v.RequestUtilization }).(RequestUtilizationResponseOutput)
+}
+
+// Scheduler settings for standard environment.
+func (o AutomaticScalingResponseOutput) StandardSchedulerSettings() StandardSchedulerSettingsResponseOutput {
+	return o.ApplyT(func(v AutomaticScalingResponse) StandardSchedulerSettingsResponse { return v.StandardSchedulerSettings }).(StandardSchedulerSettingsResponseOutput)
+}
+
+type AutomaticScalingResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AutomaticScalingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomaticScalingResponse)(nil)).Elem()
+}
+
+func (o AutomaticScalingResponsePtrOutput) ToAutomaticScalingResponsePtrOutput() AutomaticScalingResponsePtrOutput {
+	return o
+}
+
+func (o AutomaticScalingResponsePtrOutput) ToAutomaticScalingResponsePtrOutputWithContext(ctx context.Context) AutomaticScalingResponsePtrOutput {
+	return o
+}
+
+func (o AutomaticScalingResponsePtrOutput) Elem() AutomaticScalingResponseOutput {
+	return o.ApplyT(func(v *AutomaticScalingResponse) AutomaticScalingResponse { return *v }).(AutomaticScalingResponseOutput)
+}
+
+// The time period that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. Only applicable in the App Engine flexible environment.
+func (o AutomaticScalingResponsePtrOutput) CoolDownPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomaticScalingResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CoolDownPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target scaling by CPU usage.
+func (o AutomaticScalingResponsePtrOutput) CpuUtilization() CpuUtilizationResponsePtrOutput {
+	return o.ApplyT(func(v *AutomaticScalingResponse) *CpuUtilizationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.CpuUtilization
+	}).(CpuUtilizationResponsePtrOutput)
+}
+
+// Target scaling by disk usage.
+func (o AutomaticScalingResponsePtrOutput) DiskUtilization() DiskUtilizationResponsePtrOutput {
+	return o.ApplyT(func(v *AutomaticScalingResponse) *DiskUtilizationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskUtilization
+	}).(DiskUtilizationResponsePtrOutput)
+}
+
+// Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.Defaults to a runtime-specific value.
+func (o AutomaticScalingResponsePtrOutput) MaxConcurrentRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutomaticScalingResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxConcurrentRequests
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of idle instances that should be maintained for this version.
+func (o AutomaticScalingResponsePtrOutput) MaxIdleInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutomaticScalingResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxIdleInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
+func (o AutomaticScalingResponsePtrOutput) MaxPendingLatency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomaticScalingResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxPendingLatency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of instances that should be started to handle requests for this version.
+func (o AutomaticScalingResponsePtrOutput) MaxTotalInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutomaticScalingResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxTotalInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
+func (o AutomaticScalingResponsePtrOutput) MinIdleInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutomaticScalingResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinIdleInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
+func (o AutomaticScalingResponsePtrOutput) MinPendingLatency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomaticScalingResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MinPendingLatency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Minimum number of running instances that should be maintained for this version.
+func (o AutomaticScalingResponsePtrOutput) MinTotalInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AutomaticScalingResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinTotalInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Target scaling by network usage.
+func (o AutomaticScalingResponsePtrOutput) NetworkUtilization() NetworkUtilizationResponsePtrOutput {
+	return o.ApplyT(func(v *AutomaticScalingResponse) *NetworkUtilizationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkUtilization
+	}).(NetworkUtilizationResponsePtrOutput)
+}
+
+// Target scaling by request utilization.
+func (o AutomaticScalingResponsePtrOutput) RequestUtilization() RequestUtilizationResponsePtrOutput {
+	return o.ApplyT(func(v *AutomaticScalingResponse) *RequestUtilizationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.RequestUtilization
+	}).(RequestUtilizationResponsePtrOutput)
+}
+
+// Scheduler settings for standard environment.
+func (o AutomaticScalingResponsePtrOutput) StandardSchedulerSettings() StandardSchedulerSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *AutomaticScalingResponse) *StandardSchedulerSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.StandardSchedulerSettings
+	}).(StandardSchedulerSettingsResponsePtrOutput)
+}
+
 // A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
 type BasicScaling struct {
 	// Duration of time after the last request that an instance must wait before the instance is shut down.
@@ -866,6 +1493,159 @@ func (o BasicScalingPtrOutput) MaxInstances() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.MaxInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+type BasicScalingResponse struct {
+	// Duration of time after the last request that an instance must wait before the instance is shut down.
+	IdleTimeout string `pulumi:"idleTimeout"`
+	// Maximum number of instances to create for this version.
+	MaxInstances int `pulumi:"maxInstances"`
+}
+
+// BasicScalingResponseInput is an input type that accepts BasicScalingResponseArgs and BasicScalingResponseOutput values.
+// You can construct a concrete instance of `BasicScalingResponseInput` via:
+//
+//          BasicScalingResponseArgs{...}
+type BasicScalingResponseInput interface {
+	pulumi.Input
+
+	ToBasicScalingResponseOutput() BasicScalingResponseOutput
+	ToBasicScalingResponseOutputWithContext(context.Context) BasicScalingResponseOutput
+}
+
+// A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+type BasicScalingResponseArgs struct {
+	// Duration of time after the last request that an instance must wait before the instance is shut down.
+	IdleTimeout pulumi.StringInput `pulumi:"idleTimeout"`
+	// Maximum number of instances to create for this version.
+	MaxInstances pulumi.IntInput `pulumi:"maxInstances"`
+}
+
+func (BasicScalingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicScalingResponse)(nil)).Elem()
+}
+
+func (i BasicScalingResponseArgs) ToBasicScalingResponseOutput() BasicScalingResponseOutput {
+	return i.ToBasicScalingResponseOutputWithContext(context.Background())
+}
+
+func (i BasicScalingResponseArgs) ToBasicScalingResponseOutputWithContext(ctx context.Context) BasicScalingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicScalingResponseOutput)
+}
+
+func (i BasicScalingResponseArgs) ToBasicScalingResponsePtrOutput() BasicScalingResponsePtrOutput {
+	return i.ToBasicScalingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BasicScalingResponseArgs) ToBasicScalingResponsePtrOutputWithContext(ctx context.Context) BasicScalingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicScalingResponseOutput).ToBasicScalingResponsePtrOutputWithContext(ctx)
+}
+
+// BasicScalingResponsePtrInput is an input type that accepts BasicScalingResponseArgs, BasicScalingResponsePtr and BasicScalingResponsePtrOutput values.
+// You can construct a concrete instance of `BasicScalingResponsePtrInput` via:
+//
+//          BasicScalingResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BasicScalingResponsePtrInput interface {
+	pulumi.Input
+
+	ToBasicScalingResponsePtrOutput() BasicScalingResponsePtrOutput
+	ToBasicScalingResponsePtrOutputWithContext(context.Context) BasicScalingResponsePtrOutput
+}
+
+type basicScalingResponsePtrType BasicScalingResponseArgs
+
+func BasicScalingResponsePtr(v *BasicScalingResponseArgs) BasicScalingResponsePtrInput {
+	return (*basicScalingResponsePtrType)(v)
+}
+
+func (*basicScalingResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasicScalingResponse)(nil)).Elem()
+}
+
+func (i *basicScalingResponsePtrType) ToBasicScalingResponsePtrOutput() BasicScalingResponsePtrOutput {
+	return i.ToBasicScalingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *basicScalingResponsePtrType) ToBasicScalingResponsePtrOutputWithContext(ctx context.Context) BasicScalingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicScalingResponsePtrOutput)
+}
+
+// A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+type BasicScalingResponseOutput struct{ *pulumi.OutputState }
+
+func (BasicScalingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicScalingResponse)(nil)).Elem()
+}
+
+func (o BasicScalingResponseOutput) ToBasicScalingResponseOutput() BasicScalingResponseOutput {
+	return o
+}
+
+func (o BasicScalingResponseOutput) ToBasicScalingResponseOutputWithContext(ctx context.Context) BasicScalingResponseOutput {
+	return o
+}
+
+func (o BasicScalingResponseOutput) ToBasicScalingResponsePtrOutput() BasicScalingResponsePtrOutput {
+	return o.ToBasicScalingResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BasicScalingResponseOutput) ToBasicScalingResponsePtrOutputWithContext(ctx context.Context) BasicScalingResponsePtrOutput {
+	return o.ApplyT(func(v BasicScalingResponse) *BasicScalingResponse {
+		return &v
+	}).(BasicScalingResponsePtrOutput)
+}
+
+// Duration of time after the last request that an instance must wait before the instance is shut down.
+func (o BasicScalingResponseOutput) IdleTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v BasicScalingResponse) string { return v.IdleTimeout }).(pulumi.StringOutput)
+}
+
+// Maximum number of instances to create for this version.
+func (o BasicScalingResponseOutput) MaxInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v BasicScalingResponse) int { return v.MaxInstances }).(pulumi.IntOutput)
+}
+
+type BasicScalingResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BasicScalingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasicScalingResponse)(nil)).Elem()
+}
+
+func (o BasicScalingResponsePtrOutput) ToBasicScalingResponsePtrOutput() BasicScalingResponsePtrOutput {
+	return o
+}
+
+func (o BasicScalingResponsePtrOutput) ToBasicScalingResponsePtrOutputWithContext(ctx context.Context) BasicScalingResponsePtrOutput {
+	return o
+}
+
+func (o BasicScalingResponsePtrOutput) Elem() BasicScalingResponseOutput {
+	return o.ApplyT(func(v *BasicScalingResponse) BasicScalingResponse { return *v }).(BasicScalingResponseOutput)
+}
+
+// Duration of time after the last request that an instance must wait before the instance is shut down.
+func (o BasicScalingResponsePtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BasicScalingResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of instances to create for this version.
+func (o BasicScalingResponsePtrOutput) MaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BasicScalingResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxInstances
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -1022,6 +1802,159 @@ func (o CertificateRawDataPtrOutput) PublicCertificate() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// An SSL certificate obtained from a certificate authority.
+type CertificateRawDataResponse struct {
+	// Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
+	PrivateKey string `pulumi:"privateKey"`
+	// PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+	PublicCertificate string `pulumi:"publicCertificate"`
+}
+
+// CertificateRawDataResponseInput is an input type that accepts CertificateRawDataResponseArgs and CertificateRawDataResponseOutput values.
+// You can construct a concrete instance of `CertificateRawDataResponseInput` via:
+//
+//          CertificateRawDataResponseArgs{...}
+type CertificateRawDataResponseInput interface {
+	pulumi.Input
+
+	ToCertificateRawDataResponseOutput() CertificateRawDataResponseOutput
+	ToCertificateRawDataResponseOutputWithContext(context.Context) CertificateRawDataResponseOutput
+}
+
+// An SSL certificate obtained from a certificate authority.
+type CertificateRawDataResponseArgs struct {
+	// Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
+	PrivateKey pulumi.StringInput `pulumi:"privateKey"`
+	// PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+	PublicCertificate pulumi.StringInput `pulumi:"publicCertificate"`
+}
+
+func (CertificateRawDataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateRawDataResponse)(nil)).Elem()
+}
+
+func (i CertificateRawDataResponseArgs) ToCertificateRawDataResponseOutput() CertificateRawDataResponseOutput {
+	return i.ToCertificateRawDataResponseOutputWithContext(context.Background())
+}
+
+func (i CertificateRawDataResponseArgs) ToCertificateRawDataResponseOutputWithContext(ctx context.Context) CertificateRawDataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateRawDataResponseOutput)
+}
+
+func (i CertificateRawDataResponseArgs) ToCertificateRawDataResponsePtrOutput() CertificateRawDataResponsePtrOutput {
+	return i.ToCertificateRawDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CertificateRawDataResponseArgs) ToCertificateRawDataResponsePtrOutputWithContext(ctx context.Context) CertificateRawDataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateRawDataResponseOutput).ToCertificateRawDataResponsePtrOutputWithContext(ctx)
+}
+
+// CertificateRawDataResponsePtrInput is an input type that accepts CertificateRawDataResponseArgs, CertificateRawDataResponsePtr and CertificateRawDataResponsePtrOutput values.
+// You can construct a concrete instance of `CertificateRawDataResponsePtrInput` via:
+//
+//          CertificateRawDataResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateRawDataResponsePtrInput interface {
+	pulumi.Input
+
+	ToCertificateRawDataResponsePtrOutput() CertificateRawDataResponsePtrOutput
+	ToCertificateRawDataResponsePtrOutputWithContext(context.Context) CertificateRawDataResponsePtrOutput
+}
+
+type certificateRawDataResponsePtrType CertificateRawDataResponseArgs
+
+func CertificateRawDataResponsePtr(v *CertificateRawDataResponseArgs) CertificateRawDataResponsePtrInput {
+	return (*certificateRawDataResponsePtrType)(v)
+}
+
+func (*certificateRawDataResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateRawDataResponse)(nil)).Elem()
+}
+
+func (i *certificateRawDataResponsePtrType) ToCertificateRawDataResponsePtrOutput() CertificateRawDataResponsePtrOutput {
+	return i.ToCertificateRawDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *certificateRawDataResponsePtrType) ToCertificateRawDataResponsePtrOutputWithContext(ctx context.Context) CertificateRawDataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateRawDataResponsePtrOutput)
+}
+
+// An SSL certificate obtained from a certificate authority.
+type CertificateRawDataResponseOutput struct{ *pulumi.OutputState }
+
+func (CertificateRawDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateRawDataResponse)(nil)).Elem()
+}
+
+func (o CertificateRawDataResponseOutput) ToCertificateRawDataResponseOutput() CertificateRawDataResponseOutput {
+	return o
+}
+
+func (o CertificateRawDataResponseOutput) ToCertificateRawDataResponseOutputWithContext(ctx context.Context) CertificateRawDataResponseOutput {
+	return o
+}
+
+func (o CertificateRawDataResponseOutput) ToCertificateRawDataResponsePtrOutput() CertificateRawDataResponsePtrOutput {
+	return o.ToCertificateRawDataResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CertificateRawDataResponseOutput) ToCertificateRawDataResponsePtrOutputWithContext(ctx context.Context) CertificateRawDataResponsePtrOutput {
+	return o.ApplyT(func(v CertificateRawDataResponse) *CertificateRawDataResponse {
+		return &v
+	}).(CertificateRawDataResponsePtrOutput)
+}
+
+// Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
+func (o CertificateRawDataResponseOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateRawDataResponse) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+// PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+func (o CertificateRawDataResponseOutput) PublicCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateRawDataResponse) string { return v.PublicCertificate }).(pulumi.StringOutput)
+}
+
+type CertificateRawDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateRawDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateRawDataResponse)(nil)).Elem()
+}
+
+func (o CertificateRawDataResponsePtrOutput) ToCertificateRawDataResponsePtrOutput() CertificateRawDataResponsePtrOutput {
+	return o
+}
+
+func (o CertificateRawDataResponsePtrOutput) ToCertificateRawDataResponsePtrOutputWithContext(ctx context.Context) CertificateRawDataResponsePtrOutput {
+	return o
+}
+
+func (o CertificateRawDataResponsePtrOutput) Elem() CertificateRawDataResponseOutput {
+	return o.ApplyT(func(v *CertificateRawDataResponse) CertificateRawDataResponse { return *v }).(CertificateRawDataResponseOutput)
+}
+
+// Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
+func (o CertificateRawDataResponsePtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateRawDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+func (o CertificateRawDataResponsePtrOutput) PublicCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateRawDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PublicCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
 // Options for the build operations performed as a part of the version deployment. Only applicable for App Engine flexible environment when creating a version using source code directly.
 type CloudBuildOptions struct {
 	// Path to the yaml file used in deployment, used to determine runtime configuration details.Required for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref for more details.
@@ -1175,6 +2108,159 @@ func (o CloudBuildOptionsPtrOutput) CloudBuildTimeout() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Options for the build operations performed as a part of the version deployment. Only applicable for App Engine flexible environment when creating a version using source code directly.
+type CloudBuildOptionsResponse struct {
+	// Path to the yaml file used in deployment, used to determine runtime configuration details.Required for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref for more details.
+	AppYamlPath string `pulumi:"appYamlPath"`
+	// The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
+	CloudBuildTimeout string `pulumi:"cloudBuildTimeout"`
+}
+
+// CloudBuildOptionsResponseInput is an input type that accepts CloudBuildOptionsResponseArgs and CloudBuildOptionsResponseOutput values.
+// You can construct a concrete instance of `CloudBuildOptionsResponseInput` via:
+//
+//          CloudBuildOptionsResponseArgs{...}
+type CloudBuildOptionsResponseInput interface {
+	pulumi.Input
+
+	ToCloudBuildOptionsResponseOutput() CloudBuildOptionsResponseOutput
+	ToCloudBuildOptionsResponseOutputWithContext(context.Context) CloudBuildOptionsResponseOutput
+}
+
+// Options for the build operations performed as a part of the version deployment. Only applicable for App Engine flexible environment when creating a version using source code directly.
+type CloudBuildOptionsResponseArgs struct {
+	// Path to the yaml file used in deployment, used to determine runtime configuration details.Required for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref for more details.
+	AppYamlPath pulumi.StringInput `pulumi:"appYamlPath"`
+	// The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
+	CloudBuildTimeout pulumi.StringInput `pulumi:"cloudBuildTimeout"`
+}
+
+func (CloudBuildOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBuildOptionsResponse)(nil)).Elem()
+}
+
+func (i CloudBuildOptionsResponseArgs) ToCloudBuildOptionsResponseOutput() CloudBuildOptionsResponseOutput {
+	return i.ToCloudBuildOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i CloudBuildOptionsResponseArgs) ToCloudBuildOptionsResponseOutputWithContext(ctx context.Context) CloudBuildOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBuildOptionsResponseOutput)
+}
+
+func (i CloudBuildOptionsResponseArgs) ToCloudBuildOptionsResponsePtrOutput() CloudBuildOptionsResponsePtrOutput {
+	return i.ToCloudBuildOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CloudBuildOptionsResponseArgs) ToCloudBuildOptionsResponsePtrOutputWithContext(ctx context.Context) CloudBuildOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBuildOptionsResponseOutput).ToCloudBuildOptionsResponsePtrOutputWithContext(ctx)
+}
+
+// CloudBuildOptionsResponsePtrInput is an input type that accepts CloudBuildOptionsResponseArgs, CloudBuildOptionsResponsePtr and CloudBuildOptionsResponsePtrOutput values.
+// You can construct a concrete instance of `CloudBuildOptionsResponsePtrInput` via:
+//
+//          CloudBuildOptionsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CloudBuildOptionsResponsePtrInput interface {
+	pulumi.Input
+
+	ToCloudBuildOptionsResponsePtrOutput() CloudBuildOptionsResponsePtrOutput
+	ToCloudBuildOptionsResponsePtrOutputWithContext(context.Context) CloudBuildOptionsResponsePtrOutput
+}
+
+type cloudBuildOptionsResponsePtrType CloudBuildOptionsResponseArgs
+
+func CloudBuildOptionsResponsePtr(v *CloudBuildOptionsResponseArgs) CloudBuildOptionsResponsePtrInput {
+	return (*cloudBuildOptionsResponsePtrType)(v)
+}
+
+func (*cloudBuildOptionsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBuildOptionsResponse)(nil)).Elem()
+}
+
+func (i *cloudBuildOptionsResponsePtrType) ToCloudBuildOptionsResponsePtrOutput() CloudBuildOptionsResponsePtrOutput {
+	return i.ToCloudBuildOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudBuildOptionsResponsePtrType) ToCloudBuildOptionsResponsePtrOutputWithContext(ctx context.Context) CloudBuildOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudBuildOptionsResponsePtrOutput)
+}
+
+// Options for the build operations performed as a part of the version deployment. Only applicable for App Engine flexible environment when creating a version using source code directly.
+type CloudBuildOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudBuildOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudBuildOptionsResponse)(nil)).Elem()
+}
+
+func (o CloudBuildOptionsResponseOutput) ToCloudBuildOptionsResponseOutput() CloudBuildOptionsResponseOutput {
+	return o
+}
+
+func (o CloudBuildOptionsResponseOutput) ToCloudBuildOptionsResponseOutputWithContext(ctx context.Context) CloudBuildOptionsResponseOutput {
+	return o
+}
+
+func (o CloudBuildOptionsResponseOutput) ToCloudBuildOptionsResponsePtrOutput() CloudBuildOptionsResponsePtrOutput {
+	return o.ToCloudBuildOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CloudBuildOptionsResponseOutput) ToCloudBuildOptionsResponsePtrOutputWithContext(ctx context.Context) CloudBuildOptionsResponsePtrOutput {
+	return o.ApplyT(func(v CloudBuildOptionsResponse) *CloudBuildOptionsResponse {
+		return &v
+	}).(CloudBuildOptionsResponsePtrOutput)
+}
+
+// Path to the yaml file used in deployment, used to determine runtime configuration details.Required for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref for more details.
+func (o CloudBuildOptionsResponseOutput) AppYamlPath() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudBuildOptionsResponse) string { return v.AppYamlPath }).(pulumi.StringOutput)
+}
+
+// The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
+func (o CloudBuildOptionsResponseOutput) CloudBuildTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudBuildOptionsResponse) string { return v.CloudBuildTimeout }).(pulumi.StringOutput)
+}
+
+type CloudBuildOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudBuildOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudBuildOptionsResponse)(nil)).Elem()
+}
+
+func (o CloudBuildOptionsResponsePtrOutput) ToCloudBuildOptionsResponsePtrOutput() CloudBuildOptionsResponsePtrOutput {
+	return o
+}
+
+func (o CloudBuildOptionsResponsePtrOutput) ToCloudBuildOptionsResponsePtrOutputWithContext(ctx context.Context) CloudBuildOptionsResponsePtrOutput {
+	return o
+}
+
+func (o CloudBuildOptionsResponsePtrOutput) Elem() CloudBuildOptionsResponseOutput {
+	return o.ApplyT(func(v *CloudBuildOptionsResponse) CloudBuildOptionsResponse { return *v }).(CloudBuildOptionsResponseOutput)
+}
+
+// Path to the yaml file used in deployment, used to determine runtime configuration details.Required for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref for more details.
+func (o CloudBuildOptionsResponsePtrOutput) AppYamlPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudBuildOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppYamlPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
+func (o CloudBuildOptionsResponsePtrOutput) CloudBuildTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudBuildOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CloudBuildTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
 // Docker image that is used to create a container and start a VM instance for the version that you deploy. Only applicable for instances running in the App Engine flexible environment.
 type ContainerInfo struct {
 	// URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest. Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
@@ -1306,6 +2392,140 @@ func (o ContainerInfoPtrOutput) Image() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+// Docker image that is used to create a container and start a VM instance for the version that you deploy. Only applicable for instances running in the App Engine flexible environment.
+type ContainerInfoResponse struct {
+	// URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest. Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
+	Image string `pulumi:"image"`
+}
+
+// ContainerInfoResponseInput is an input type that accepts ContainerInfoResponseArgs and ContainerInfoResponseOutput values.
+// You can construct a concrete instance of `ContainerInfoResponseInput` via:
+//
+//          ContainerInfoResponseArgs{...}
+type ContainerInfoResponseInput interface {
+	pulumi.Input
+
+	ToContainerInfoResponseOutput() ContainerInfoResponseOutput
+	ToContainerInfoResponseOutputWithContext(context.Context) ContainerInfoResponseOutput
+}
+
+// Docker image that is used to create a container and start a VM instance for the version that you deploy. Only applicable for instances running in the App Engine flexible environment.
+type ContainerInfoResponseArgs struct {
+	// URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest. Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
+	Image pulumi.StringInput `pulumi:"image"`
+}
+
+func (ContainerInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerInfoResponse)(nil)).Elem()
+}
+
+func (i ContainerInfoResponseArgs) ToContainerInfoResponseOutput() ContainerInfoResponseOutput {
+	return i.ToContainerInfoResponseOutputWithContext(context.Background())
+}
+
+func (i ContainerInfoResponseArgs) ToContainerInfoResponseOutputWithContext(ctx context.Context) ContainerInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerInfoResponseOutput)
+}
+
+func (i ContainerInfoResponseArgs) ToContainerInfoResponsePtrOutput() ContainerInfoResponsePtrOutput {
+	return i.ToContainerInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ContainerInfoResponseArgs) ToContainerInfoResponsePtrOutputWithContext(ctx context.Context) ContainerInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerInfoResponseOutput).ToContainerInfoResponsePtrOutputWithContext(ctx)
+}
+
+// ContainerInfoResponsePtrInput is an input type that accepts ContainerInfoResponseArgs, ContainerInfoResponsePtr and ContainerInfoResponsePtrOutput values.
+// You can construct a concrete instance of `ContainerInfoResponsePtrInput` via:
+//
+//          ContainerInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ContainerInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToContainerInfoResponsePtrOutput() ContainerInfoResponsePtrOutput
+	ToContainerInfoResponsePtrOutputWithContext(context.Context) ContainerInfoResponsePtrOutput
+}
+
+type containerInfoResponsePtrType ContainerInfoResponseArgs
+
+func ContainerInfoResponsePtr(v *ContainerInfoResponseArgs) ContainerInfoResponsePtrInput {
+	return (*containerInfoResponsePtrType)(v)
+}
+
+func (*containerInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerInfoResponse)(nil)).Elem()
+}
+
+func (i *containerInfoResponsePtrType) ToContainerInfoResponsePtrOutput() ContainerInfoResponsePtrOutput {
+	return i.ToContainerInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *containerInfoResponsePtrType) ToContainerInfoResponsePtrOutputWithContext(ctx context.Context) ContainerInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerInfoResponsePtrOutput)
+}
+
+// Docker image that is used to create a container and start a VM instance for the version that you deploy. Only applicable for instances running in the App Engine flexible environment.
+type ContainerInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ContainerInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerInfoResponse)(nil)).Elem()
+}
+
+func (o ContainerInfoResponseOutput) ToContainerInfoResponseOutput() ContainerInfoResponseOutput {
+	return o
+}
+
+func (o ContainerInfoResponseOutput) ToContainerInfoResponseOutputWithContext(ctx context.Context) ContainerInfoResponseOutput {
+	return o
+}
+
+func (o ContainerInfoResponseOutput) ToContainerInfoResponsePtrOutput() ContainerInfoResponsePtrOutput {
+	return o.ToContainerInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ContainerInfoResponseOutput) ToContainerInfoResponsePtrOutputWithContext(ctx context.Context) ContainerInfoResponsePtrOutput {
+	return o.ApplyT(func(v ContainerInfoResponse) *ContainerInfoResponse {
+		return &v
+	}).(ContainerInfoResponsePtrOutput)
+}
+
+// URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest. Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
+func (o ContainerInfoResponseOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerInfoResponse) string { return v.Image }).(pulumi.StringOutput)
+}
+
+type ContainerInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerInfoResponse)(nil)).Elem()
+}
+
+func (o ContainerInfoResponsePtrOutput) ToContainerInfoResponsePtrOutput() ContainerInfoResponsePtrOutput {
+	return o
+}
+
+func (o ContainerInfoResponsePtrOutput) ToContainerInfoResponsePtrOutputWithContext(ctx context.Context) ContainerInfoResponsePtrOutput {
+	return o
+}
+
+func (o ContainerInfoResponsePtrOutput) Elem() ContainerInfoResponseOutput {
+	return o.ApplyT(func(v *ContainerInfoResponse) ContainerInfoResponse { return *v }).(ContainerInfoResponseOutput)
+}
+
+// URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest. Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
+func (o ContainerInfoResponsePtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Image
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1459,6 +2679,159 @@ func (o CpuUtilizationPtrOutput) TargetUtilization() pulumi.Float64PtrOutput {
 			return nil
 		}
 		return v.TargetUtilization
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Target scaling by CPU usage.
+type CpuUtilizationResponse struct {
+	// Period of time over which CPU utilization is calculated.
+	AggregationWindowLength string `pulumi:"aggregationWindowLength"`
+	// Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
+	TargetUtilization float64 `pulumi:"targetUtilization"`
+}
+
+// CpuUtilizationResponseInput is an input type that accepts CpuUtilizationResponseArgs and CpuUtilizationResponseOutput values.
+// You can construct a concrete instance of `CpuUtilizationResponseInput` via:
+//
+//          CpuUtilizationResponseArgs{...}
+type CpuUtilizationResponseInput interface {
+	pulumi.Input
+
+	ToCpuUtilizationResponseOutput() CpuUtilizationResponseOutput
+	ToCpuUtilizationResponseOutputWithContext(context.Context) CpuUtilizationResponseOutput
+}
+
+// Target scaling by CPU usage.
+type CpuUtilizationResponseArgs struct {
+	// Period of time over which CPU utilization is calculated.
+	AggregationWindowLength pulumi.StringInput `pulumi:"aggregationWindowLength"`
+	// Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
+	TargetUtilization pulumi.Float64Input `pulumi:"targetUtilization"`
+}
+
+func (CpuUtilizationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CpuUtilizationResponse)(nil)).Elem()
+}
+
+func (i CpuUtilizationResponseArgs) ToCpuUtilizationResponseOutput() CpuUtilizationResponseOutput {
+	return i.ToCpuUtilizationResponseOutputWithContext(context.Background())
+}
+
+func (i CpuUtilizationResponseArgs) ToCpuUtilizationResponseOutputWithContext(ctx context.Context) CpuUtilizationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CpuUtilizationResponseOutput)
+}
+
+func (i CpuUtilizationResponseArgs) ToCpuUtilizationResponsePtrOutput() CpuUtilizationResponsePtrOutput {
+	return i.ToCpuUtilizationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CpuUtilizationResponseArgs) ToCpuUtilizationResponsePtrOutputWithContext(ctx context.Context) CpuUtilizationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CpuUtilizationResponseOutput).ToCpuUtilizationResponsePtrOutputWithContext(ctx)
+}
+
+// CpuUtilizationResponsePtrInput is an input type that accepts CpuUtilizationResponseArgs, CpuUtilizationResponsePtr and CpuUtilizationResponsePtrOutput values.
+// You can construct a concrete instance of `CpuUtilizationResponsePtrInput` via:
+//
+//          CpuUtilizationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CpuUtilizationResponsePtrInput interface {
+	pulumi.Input
+
+	ToCpuUtilizationResponsePtrOutput() CpuUtilizationResponsePtrOutput
+	ToCpuUtilizationResponsePtrOutputWithContext(context.Context) CpuUtilizationResponsePtrOutput
+}
+
+type cpuUtilizationResponsePtrType CpuUtilizationResponseArgs
+
+func CpuUtilizationResponsePtr(v *CpuUtilizationResponseArgs) CpuUtilizationResponsePtrInput {
+	return (*cpuUtilizationResponsePtrType)(v)
+}
+
+func (*cpuUtilizationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CpuUtilizationResponse)(nil)).Elem()
+}
+
+func (i *cpuUtilizationResponsePtrType) ToCpuUtilizationResponsePtrOutput() CpuUtilizationResponsePtrOutput {
+	return i.ToCpuUtilizationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *cpuUtilizationResponsePtrType) ToCpuUtilizationResponsePtrOutputWithContext(ctx context.Context) CpuUtilizationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CpuUtilizationResponsePtrOutput)
+}
+
+// Target scaling by CPU usage.
+type CpuUtilizationResponseOutput struct{ *pulumi.OutputState }
+
+func (CpuUtilizationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CpuUtilizationResponse)(nil)).Elem()
+}
+
+func (o CpuUtilizationResponseOutput) ToCpuUtilizationResponseOutput() CpuUtilizationResponseOutput {
+	return o
+}
+
+func (o CpuUtilizationResponseOutput) ToCpuUtilizationResponseOutputWithContext(ctx context.Context) CpuUtilizationResponseOutput {
+	return o
+}
+
+func (o CpuUtilizationResponseOutput) ToCpuUtilizationResponsePtrOutput() CpuUtilizationResponsePtrOutput {
+	return o.ToCpuUtilizationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CpuUtilizationResponseOutput) ToCpuUtilizationResponsePtrOutputWithContext(ctx context.Context) CpuUtilizationResponsePtrOutput {
+	return o.ApplyT(func(v CpuUtilizationResponse) *CpuUtilizationResponse {
+		return &v
+	}).(CpuUtilizationResponsePtrOutput)
+}
+
+// Period of time over which CPU utilization is calculated.
+func (o CpuUtilizationResponseOutput) AggregationWindowLength() pulumi.StringOutput {
+	return o.ApplyT(func(v CpuUtilizationResponse) string { return v.AggregationWindowLength }).(pulumi.StringOutput)
+}
+
+// Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
+func (o CpuUtilizationResponseOutput) TargetUtilization() pulumi.Float64Output {
+	return o.ApplyT(func(v CpuUtilizationResponse) float64 { return v.TargetUtilization }).(pulumi.Float64Output)
+}
+
+type CpuUtilizationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CpuUtilizationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CpuUtilizationResponse)(nil)).Elem()
+}
+
+func (o CpuUtilizationResponsePtrOutput) ToCpuUtilizationResponsePtrOutput() CpuUtilizationResponsePtrOutput {
+	return o
+}
+
+func (o CpuUtilizationResponsePtrOutput) ToCpuUtilizationResponsePtrOutputWithContext(ctx context.Context) CpuUtilizationResponsePtrOutput {
+	return o
+}
+
+func (o CpuUtilizationResponsePtrOutput) Elem() CpuUtilizationResponseOutput {
+	return o.ApplyT(func(v *CpuUtilizationResponse) CpuUtilizationResponse { return *v }).(CpuUtilizationResponseOutput)
+}
+
+// Period of time over which CPU utilization is calculated.
+func (o CpuUtilizationResponsePtrOutput) AggregationWindowLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CpuUtilizationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AggregationWindowLength
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
+func (o CpuUtilizationResponsePtrOutput) TargetUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CpuUtilizationResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetUtilization
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -1653,6 +3026,197 @@ func (o DeploymentPtrOutput) Zip() ZipInfoPtrOutput {
 	}).(ZipInfoPtrOutput)
 }
 
+// Code and application artifacts used to deploy a version to App Engine.
+type DeploymentResponse struct {
+	// Options for any Google Cloud Build builds created as a part of this deployment.These options will only be used if a new build is created, such as when deploying to the App Engine flexible environment using files or zip.
+	CloudBuildOptions CloudBuildOptionsResponse `pulumi:"cloudBuildOptions"`
+	// The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
+	Container ContainerInfoResponse `pulumi:"container"`
+	// Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
+	Files map[string]string `pulumi:"files"`
+	// The zip file for this deployment, if this is a zip deployment.
+	Zip ZipInfoResponse `pulumi:"zip"`
+}
+
+// DeploymentResponseInput is an input type that accepts DeploymentResponseArgs and DeploymentResponseOutput values.
+// You can construct a concrete instance of `DeploymentResponseInput` via:
+//
+//          DeploymentResponseArgs{...}
+type DeploymentResponseInput interface {
+	pulumi.Input
+
+	ToDeploymentResponseOutput() DeploymentResponseOutput
+	ToDeploymentResponseOutputWithContext(context.Context) DeploymentResponseOutput
+}
+
+// Code and application artifacts used to deploy a version to App Engine.
+type DeploymentResponseArgs struct {
+	// Options for any Google Cloud Build builds created as a part of this deployment.These options will only be used if a new build is created, such as when deploying to the App Engine flexible environment using files or zip.
+	CloudBuildOptions CloudBuildOptionsResponseInput `pulumi:"cloudBuildOptions"`
+	// The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
+	Container ContainerInfoResponseInput `pulumi:"container"`
+	// Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
+	Files pulumi.StringMapInput `pulumi:"files"`
+	// The zip file for this deployment, if this is a zip deployment.
+	Zip ZipInfoResponseInput `pulumi:"zip"`
+}
+
+func (DeploymentResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentResponse)(nil)).Elem()
+}
+
+func (i DeploymentResponseArgs) ToDeploymentResponseOutput() DeploymentResponseOutput {
+	return i.ToDeploymentResponseOutputWithContext(context.Background())
+}
+
+func (i DeploymentResponseArgs) ToDeploymentResponseOutputWithContext(ctx context.Context) DeploymentResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentResponseOutput)
+}
+
+func (i DeploymentResponseArgs) ToDeploymentResponsePtrOutput() DeploymentResponsePtrOutput {
+	return i.ToDeploymentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentResponseArgs) ToDeploymentResponsePtrOutputWithContext(ctx context.Context) DeploymentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentResponseOutput).ToDeploymentResponsePtrOutputWithContext(ctx)
+}
+
+// DeploymentResponsePtrInput is an input type that accepts DeploymentResponseArgs, DeploymentResponsePtr and DeploymentResponsePtrOutput values.
+// You can construct a concrete instance of `DeploymentResponsePtrInput` via:
+//
+//          DeploymentResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DeploymentResponsePtrInput interface {
+	pulumi.Input
+
+	ToDeploymentResponsePtrOutput() DeploymentResponsePtrOutput
+	ToDeploymentResponsePtrOutputWithContext(context.Context) DeploymentResponsePtrOutput
+}
+
+type deploymentResponsePtrType DeploymentResponseArgs
+
+func DeploymentResponsePtr(v *DeploymentResponseArgs) DeploymentResponsePtrInput {
+	return (*deploymentResponsePtrType)(v)
+}
+
+func (*deploymentResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentResponse)(nil)).Elem()
+}
+
+func (i *deploymentResponsePtrType) ToDeploymentResponsePtrOutput() DeploymentResponsePtrOutput {
+	return i.ToDeploymentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentResponsePtrType) ToDeploymentResponsePtrOutputWithContext(ctx context.Context) DeploymentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentResponsePtrOutput)
+}
+
+// Code and application artifacts used to deploy a version to App Engine.
+type DeploymentResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentResponse)(nil)).Elem()
+}
+
+func (o DeploymentResponseOutput) ToDeploymentResponseOutput() DeploymentResponseOutput {
+	return o
+}
+
+func (o DeploymentResponseOutput) ToDeploymentResponseOutputWithContext(ctx context.Context) DeploymentResponseOutput {
+	return o
+}
+
+func (o DeploymentResponseOutput) ToDeploymentResponsePtrOutput() DeploymentResponsePtrOutput {
+	return o.ToDeploymentResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentResponseOutput) ToDeploymentResponsePtrOutputWithContext(ctx context.Context) DeploymentResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentResponse) *DeploymentResponse {
+		return &v
+	}).(DeploymentResponsePtrOutput)
+}
+
+// Options for any Google Cloud Build builds created as a part of this deployment.These options will only be used if a new build is created, such as when deploying to the App Engine flexible environment using files or zip.
+func (o DeploymentResponseOutput) CloudBuildOptions() CloudBuildOptionsResponseOutput {
+	return o.ApplyT(func(v DeploymentResponse) CloudBuildOptionsResponse { return v.CloudBuildOptions }).(CloudBuildOptionsResponseOutput)
+}
+
+// The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
+func (o DeploymentResponseOutput) Container() ContainerInfoResponseOutput {
+	return o.ApplyT(func(v DeploymentResponse) ContainerInfoResponse { return v.Container }).(ContainerInfoResponseOutput)
+}
+
+// Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
+func (o DeploymentResponseOutput) Files() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeploymentResponse) map[string]string { return v.Files }).(pulumi.StringMapOutput)
+}
+
+// The zip file for this deployment, if this is a zip deployment.
+func (o DeploymentResponseOutput) Zip() ZipInfoResponseOutput {
+	return o.ApplyT(func(v DeploymentResponse) ZipInfoResponse { return v.Zip }).(ZipInfoResponseOutput)
+}
+
+type DeploymentResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentResponse)(nil)).Elem()
+}
+
+func (o DeploymentResponsePtrOutput) ToDeploymentResponsePtrOutput() DeploymentResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentResponsePtrOutput) ToDeploymentResponsePtrOutputWithContext(ctx context.Context) DeploymentResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentResponsePtrOutput) Elem() DeploymentResponseOutput {
+	return o.ApplyT(func(v *DeploymentResponse) DeploymentResponse { return *v }).(DeploymentResponseOutput)
+}
+
+// Options for any Google Cloud Build builds created as a part of this deployment.These options will only be used if a new build is created, such as when deploying to the App Engine flexible environment using files or zip.
+func (o DeploymentResponsePtrOutput) CloudBuildOptions() CloudBuildOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *DeploymentResponse) *CloudBuildOptionsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.CloudBuildOptions
+	}).(CloudBuildOptionsResponsePtrOutput)
+}
+
+// The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
+func (o DeploymentResponsePtrOutput) Container() ContainerInfoResponsePtrOutput {
+	return o.ApplyT(func(v *DeploymentResponse) *ContainerInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Container
+	}).(ContainerInfoResponsePtrOutput)
+}
+
+// Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
+func (o DeploymentResponsePtrOutput) Files() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeploymentResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Files
+	}).(pulumi.StringMapOutput)
+}
+
+// The zip file for this deployment, if this is a zip deployment.
+func (o DeploymentResponsePtrOutput) Zip() ZipInfoResponsePtrOutput {
+	return o.ApplyT(func(v *DeploymentResponse) *ZipInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Zip
+	}).(ZipInfoResponsePtrOutput)
+}
+
 // Target scaling by disk usage. Only applicable in the App Engine flexible environment.
 type DiskUtilization struct {
 	// Target bytes read per second.
@@ -1841,6 +3405,197 @@ func (o DiskUtilizationPtrOutput) TargetWriteOpsPerSecond() pulumi.IntPtrOutput 
 			return nil
 		}
 		return v.TargetWriteOpsPerSecond
+	}).(pulumi.IntPtrOutput)
+}
+
+// Target scaling by disk usage. Only applicable in the App Engine flexible environment.
+type DiskUtilizationResponse struct {
+	// Target bytes read per second.
+	TargetReadBytesPerSecond int `pulumi:"targetReadBytesPerSecond"`
+	// Target ops read per seconds.
+	TargetReadOpsPerSecond int `pulumi:"targetReadOpsPerSecond"`
+	// Target bytes written per second.
+	TargetWriteBytesPerSecond int `pulumi:"targetWriteBytesPerSecond"`
+	// Target ops written per second.
+	TargetWriteOpsPerSecond int `pulumi:"targetWriteOpsPerSecond"`
+}
+
+// DiskUtilizationResponseInput is an input type that accepts DiskUtilizationResponseArgs and DiskUtilizationResponseOutput values.
+// You can construct a concrete instance of `DiskUtilizationResponseInput` via:
+//
+//          DiskUtilizationResponseArgs{...}
+type DiskUtilizationResponseInput interface {
+	pulumi.Input
+
+	ToDiskUtilizationResponseOutput() DiskUtilizationResponseOutput
+	ToDiskUtilizationResponseOutputWithContext(context.Context) DiskUtilizationResponseOutput
+}
+
+// Target scaling by disk usage. Only applicable in the App Engine flexible environment.
+type DiskUtilizationResponseArgs struct {
+	// Target bytes read per second.
+	TargetReadBytesPerSecond pulumi.IntInput `pulumi:"targetReadBytesPerSecond"`
+	// Target ops read per seconds.
+	TargetReadOpsPerSecond pulumi.IntInput `pulumi:"targetReadOpsPerSecond"`
+	// Target bytes written per second.
+	TargetWriteBytesPerSecond pulumi.IntInput `pulumi:"targetWriteBytesPerSecond"`
+	// Target ops written per second.
+	TargetWriteOpsPerSecond pulumi.IntInput `pulumi:"targetWriteOpsPerSecond"`
+}
+
+func (DiskUtilizationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskUtilizationResponse)(nil)).Elem()
+}
+
+func (i DiskUtilizationResponseArgs) ToDiskUtilizationResponseOutput() DiskUtilizationResponseOutput {
+	return i.ToDiskUtilizationResponseOutputWithContext(context.Background())
+}
+
+func (i DiskUtilizationResponseArgs) ToDiskUtilizationResponseOutputWithContext(ctx context.Context) DiskUtilizationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskUtilizationResponseOutput)
+}
+
+func (i DiskUtilizationResponseArgs) ToDiskUtilizationResponsePtrOutput() DiskUtilizationResponsePtrOutput {
+	return i.ToDiskUtilizationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DiskUtilizationResponseArgs) ToDiskUtilizationResponsePtrOutputWithContext(ctx context.Context) DiskUtilizationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskUtilizationResponseOutput).ToDiskUtilizationResponsePtrOutputWithContext(ctx)
+}
+
+// DiskUtilizationResponsePtrInput is an input type that accepts DiskUtilizationResponseArgs, DiskUtilizationResponsePtr and DiskUtilizationResponsePtrOutput values.
+// You can construct a concrete instance of `DiskUtilizationResponsePtrInput` via:
+//
+//          DiskUtilizationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DiskUtilizationResponsePtrInput interface {
+	pulumi.Input
+
+	ToDiskUtilizationResponsePtrOutput() DiskUtilizationResponsePtrOutput
+	ToDiskUtilizationResponsePtrOutputWithContext(context.Context) DiskUtilizationResponsePtrOutput
+}
+
+type diskUtilizationResponsePtrType DiskUtilizationResponseArgs
+
+func DiskUtilizationResponsePtr(v *DiskUtilizationResponseArgs) DiskUtilizationResponsePtrInput {
+	return (*diskUtilizationResponsePtrType)(v)
+}
+
+func (*diskUtilizationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskUtilizationResponse)(nil)).Elem()
+}
+
+func (i *diskUtilizationResponsePtrType) ToDiskUtilizationResponsePtrOutput() DiskUtilizationResponsePtrOutput {
+	return i.ToDiskUtilizationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *diskUtilizationResponsePtrType) ToDiskUtilizationResponsePtrOutputWithContext(ctx context.Context) DiskUtilizationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskUtilizationResponsePtrOutput)
+}
+
+// Target scaling by disk usage. Only applicable in the App Engine flexible environment.
+type DiskUtilizationResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskUtilizationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskUtilizationResponse)(nil)).Elem()
+}
+
+func (o DiskUtilizationResponseOutput) ToDiskUtilizationResponseOutput() DiskUtilizationResponseOutput {
+	return o
+}
+
+func (o DiskUtilizationResponseOutput) ToDiskUtilizationResponseOutputWithContext(ctx context.Context) DiskUtilizationResponseOutput {
+	return o
+}
+
+func (o DiskUtilizationResponseOutput) ToDiskUtilizationResponsePtrOutput() DiskUtilizationResponsePtrOutput {
+	return o.ToDiskUtilizationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DiskUtilizationResponseOutput) ToDiskUtilizationResponsePtrOutputWithContext(ctx context.Context) DiskUtilizationResponsePtrOutput {
+	return o.ApplyT(func(v DiskUtilizationResponse) *DiskUtilizationResponse {
+		return &v
+	}).(DiskUtilizationResponsePtrOutput)
+}
+
+// Target bytes read per second.
+func (o DiskUtilizationResponseOutput) TargetReadBytesPerSecond() pulumi.IntOutput {
+	return o.ApplyT(func(v DiskUtilizationResponse) int { return v.TargetReadBytesPerSecond }).(pulumi.IntOutput)
+}
+
+// Target ops read per seconds.
+func (o DiskUtilizationResponseOutput) TargetReadOpsPerSecond() pulumi.IntOutput {
+	return o.ApplyT(func(v DiskUtilizationResponse) int { return v.TargetReadOpsPerSecond }).(pulumi.IntOutput)
+}
+
+// Target bytes written per second.
+func (o DiskUtilizationResponseOutput) TargetWriteBytesPerSecond() pulumi.IntOutput {
+	return o.ApplyT(func(v DiskUtilizationResponse) int { return v.TargetWriteBytesPerSecond }).(pulumi.IntOutput)
+}
+
+// Target ops written per second.
+func (o DiskUtilizationResponseOutput) TargetWriteOpsPerSecond() pulumi.IntOutput {
+	return o.ApplyT(func(v DiskUtilizationResponse) int { return v.TargetWriteOpsPerSecond }).(pulumi.IntOutput)
+}
+
+type DiskUtilizationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiskUtilizationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskUtilizationResponse)(nil)).Elem()
+}
+
+func (o DiskUtilizationResponsePtrOutput) ToDiskUtilizationResponsePtrOutput() DiskUtilizationResponsePtrOutput {
+	return o
+}
+
+func (o DiskUtilizationResponsePtrOutput) ToDiskUtilizationResponsePtrOutputWithContext(ctx context.Context) DiskUtilizationResponsePtrOutput {
+	return o
+}
+
+func (o DiskUtilizationResponsePtrOutput) Elem() DiskUtilizationResponseOutput {
+	return o.ApplyT(func(v *DiskUtilizationResponse) DiskUtilizationResponse { return *v }).(DiskUtilizationResponseOutput)
+}
+
+// Target bytes read per second.
+func (o DiskUtilizationResponsePtrOutput) TargetReadBytesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DiskUtilizationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetReadBytesPerSecond
+	}).(pulumi.IntPtrOutput)
+}
+
+// Target ops read per seconds.
+func (o DiskUtilizationResponsePtrOutput) TargetReadOpsPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DiskUtilizationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetReadOpsPerSecond
+	}).(pulumi.IntPtrOutput)
+}
+
+// Target bytes written per second.
+func (o DiskUtilizationResponsePtrOutput) TargetWriteBytesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DiskUtilizationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetWriteBytesPerSecond
+	}).(pulumi.IntPtrOutput)
+}
+
+// Target ops written per second.
+func (o DiskUtilizationResponsePtrOutput) TargetWriteOpsPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DiskUtilizationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetWriteOpsPerSecond
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -2035,6 +3790,197 @@ func (o EndpointsApiServicePtrOutput) RolloutStrategy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
+type EndpointsApiServiceResponse struct {
+	// Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".By default, the rollout strategy for Endpoints is RolloutStrategy.FIXED. This means that Endpoints starts up with a particular configuration ID. When a new configuration is rolled out, Endpoints must be given the new configuration ID. The config_id field is used to give the configuration ID and is required in this case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED. When using this, Endpoints fetches the latest configuration and does not need the configuration ID. In this case, config_id must be omitted.
+	ConfigId string `pulumi:"configId"`
+	// Enable or disable trace sampling. By default, this is set to false for enabled.
+	DisableTraceSampling bool `pulumi:"disableTraceSampling"`
+	// Endpoints service name which is the name of the "service" resource in the Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
+	Name string `pulumi:"name"`
+	// Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
+	RolloutStrategy string `pulumi:"rolloutStrategy"`
+}
+
+// EndpointsApiServiceResponseInput is an input type that accepts EndpointsApiServiceResponseArgs and EndpointsApiServiceResponseOutput values.
+// You can construct a concrete instance of `EndpointsApiServiceResponseInput` via:
+//
+//          EndpointsApiServiceResponseArgs{...}
+type EndpointsApiServiceResponseInput interface {
+	pulumi.Input
+
+	ToEndpointsApiServiceResponseOutput() EndpointsApiServiceResponseOutput
+	ToEndpointsApiServiceResponseOutputWithContext(context.Context) EndpointsApiServiceResponseOutput
+}
+
+// Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
+type EndpointsApiServiceResponseArgs struct {
+	// Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".By default, the rollout strategy for Endpoints is RolloutStrategy.FIXED. This means that Endpoints starts up with a particular configuration ID. When a new configuration is rolled out, Endpoints must be given the new configuration ID. The config_id field is used to give the configuration ID and is required in this case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED. When using this, Endpoints fetches the latest configuration and does not need the configuration ID. In this case, config_id must be omitted.
+	ConfigId pulumi.StringInput `pulumi:"configId"`
+	// Enable or disable trace sampling. By default, this is set to false for enabled.
+	DisableTraceSampling pulumi.BoolInput `pulumi:"disableTraceSampling"`
+	// Endpoints service name which is the name of the "service" resource in the Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
+	Name pulumi.StringInput `pulumi:"name"`
+	// Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
+	RolloutStrategy pulumi.StringInput `pulumi:"rolloutStrategy"`
+}
+
+func (EndpointsApiServiceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointsApiServiceResponse)(nil)).Elem()
+}
+
+func (i EndpointsApiServiceResponseArgs) ToEndpointsApiServiceResponseOutput() EndpointsApiServiceResponseOutput {
+	return i.ToEndpointsApiServiceResponseOutputWithContext(context.Background())
+}
+
+func (i EndpointsApiServiceResponseArgs) ToEndpointsApiServiceResponseOutputWithContext(ctx context.Context) EndpointsApiServiceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointsApiServiceResponseOutput)
+}
+
+func (i EndpointsApiServiceResponseArgs) ToEndpointsApiServiceResponsePtrOutput() EndpointsApiServiceResponsePtrOutput {
+	return i.ToEndpointsApiServiceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EndpointsApiServiceResponseArgs) ToEndpointsApiServiceResponsePtrOutputWithContext(ctx context.Context) EndpointsApiServiceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointsApiServiceResponseOutput).ToEndpointsApiServiceResponsePtrOutputWithContext(ctx)
+}
+
+// EndpointsApiServiceResponsePtrInput is an input type that accepts EndpointsApiServiceResponseArgs, EndpointsApiServiceResponsePtr and EndpointsApiServiceResponsePtrOutput values.
+// You can construct a concrete instance of `EndpointsApiServiceResponsePtrInput` via:
+//
+//          EndpointsApiServiceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type EndpointsApiServiceResponsePtrInput interface {
+	pulumi.Input
+
+	ToEndpointsApiServiceResponsePtrOutput() EndpointsApiServiceResponsePtrOutput
+	ToEndpointsApiServiceResponsePtrOutputWithContext(context.Context) EndpointsApiServiceResponsePtrOutput
+}
+
+type endpointsApiServiceResponsePtrType EndpointsApiServiceResponseArgs
+
+func EndpointsApiServiceResponsePtr(v *EndpointsApiServiceResponseArgs) EndpointsApiServiceResponsePtrInput {
+	return (*endpointsApiServiceResponsePtrType)(v)
+}
+
+func (*endpointsApiServiceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointsApiServiceResponse)(nil)).Elem()
+}
+
+func (i *endpointsApiServiceResponsePtrType) ToEndpointsApiServiceResponsePtrOutput() EndpointsApiServiceResponsePtrOutput {
+	return i.ToEndpointsApiServiceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *endpointsApiServiceResponsePtrType) ToEndpointsApiServiceResponsePtrOutputWithContext(ctx context.Context) EndpointsApiServiceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointsApiServiceResponsePtrOutput)
+}
+
+// Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
+type EndpointsApiServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointsApiServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointsApiServiceResponse)(nil)).Elem()
+}
+
+func (o EndpointsApiServiceResponseOutput) ToEndpointsApiServiceResponseOutput() EndpointsApiServiceResponseOutput {
+	return o
+}
+
+func (o EndpointsApiServiceResponseOutput) ToEndpointsApiServiceResponseOutputWithContext(ctx context.Context) EndpointsApiServiceResponseOutput {
+	return o
+}
+
+func (o EndpointsApiServiceResponseOutput) ToEndpointsApiServiceResponsePtrOutput() EndpointsApiServiceResponsePtrOutput {
+	return o.ToEndpointsApiServiceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EndpointsApiServiceResponseOutput) ToEndpointsApiServiceResponsePtrOutputWithContext(ctx context.Context) EndpointsApiServiceResponsePtrOutput {
+	return o.ApplyT(func(v EndpointsApiServiceResponse) *EndpointsApiServiceResponse {
+		return &v
+	}).(EndpointsApiServiceResponsePtrOutput)
+}
+
+// Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".By default, the rollout strategy for Endpoints is RolloutStrategy.FIXED. This means that Endpoints starts up with a particular configuration ID. When a new configuration is rolled out, Endpoints must be given the new configuration ID. The config_id field is used to give the configuration ID and is required in this case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED. When using this, Endpoints fetches the latest configuration and does not need the configuration ID. In this case, config_id must be omitted.
+func (o EndpointsApiServiceResponseOutput) ConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointsApiServiceResponse) string { return v.ConfigId }).(pulumi.StringOutput)
+}
+
+// Enable or disable trace sampling. By default, this is set to false for enabled.
+func (o EndpointsApiServiceResponseOutput) DisableTraceSampling() pulumi.BoolOutput {
+	return o.ApplyT(func(v EndpointsApiServiceResponse) bool { return v.DisableTraceSampling }).(pulumi.BoolOutput)
+}
+
+// Endpoints service name which is the name of the "service" resource in the Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
+func (o EndpointsApiServiceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointsApiServiceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
+func (o EndpointsApiServiceResponseOutput) RolloutStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointsApiServiceResponse) string { return v.RolloutStrategy }).(pulumi.StringOutput)
+}
+
+type EndpointsApiServiceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointsApiServiceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointsApiServiceResponse)(nil)).Elem()
+}
+
+func (o EndpointsApiServiceResponsePtrOutput) ToEndpointsApiServiceResponsePtrOutput() EndpointsApiServiceResponsePtrOutput {
+	return o
+}
+
+func (o EndpointsApiServiceResponsePtrOutput) ToEndpointsApiServiceResponsePtrOutputWithContext(ctx context.Context) EndpointsApiServiceResponsePtrOutput {
+	return o
+}
+
+func (o EndpointsApiServiceResponsePtrOutput) Elem() EndpointsApiServiceResponseOutput {
+	return o.ApplyT(func(v *EndpointsApiServiceResponse) EndpointsApiServiceResponse { return *v }).(EndpointsApiServiceResponseOutput)
+}
+
+// Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".By default, the rollout strategy for Endpoints is RolloutStrategy.FIXED. This means that Endpoints starts up with a particular configuration ID. When a new configuration is rolled out, Endpoints must be given the new configuration ID. The config_id field is used to give the configuration ID and is required in this case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED. When using this, Endpoints fetches the latest configuration and does not need the configuration ID. In this case, config_id must be omitted.
+func (o EndpointsApiServiceResponsePtrOutput) ConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointsApiServiceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable or disable trace sampling. By default, this is set to false for enabled.
+func (o EndpointsApiServiceResponsePtrOutput) DisableTraceSampling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EndpointsApiServiceResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.DisableTraceSampling
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Endpoints service name which is the name of the "service" resource in the Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
+func (o EndpointsApiServiceResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointsApiServiceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
+func (o EndpointsApiServiceResponsePtrOutput) RolloutStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointsApiServiceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RolloutStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
 // The entrypoint for the application.
 type Entrypoint struct {
 	// The format should be a shell command that can be fed to bash -c.
@@ -2169,6 +4115,140 @@ func (o EntrypointPtrOutput) Shell() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The entrypoint for the application.
+type EntrypointResponse struct {
+	// The format should be a shell command that can be fed to bash -c.
+	Shell string `pulumi:"shell"`
+}
+
+// EntrypointResponseInput is an input type that accepts EntrypointResponseArgs and EntrypointResponseOutput values.
+// You can construct a concrete instance of `EntrypointResponseInput` via:
+//
+//          EntrypointResponseArgs{...}
+type EntrypointResponseInput interface {
+	pulumi.Input
+
+	ToEntrypointResponseOutput() EntrypointResponseOutput
+	ToEntrypointResponseOutputWithContext(context.Context) EntrypointResponseOutput
+}
+
+// The entrypoint for the application.
+type EntrypointResponseArgs struct {
+	// The format should be a shell command that can be fed to bash -c.
+	Shell pulumi.StringInput `pulumi:"shell"`
+}
+
+func (EntrypointResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntrypointResponse)(nil)).Elem()
+}
+
+func (i EntrypointResponseArgs) ToEntrypointResponseOutput() EntrypointResponseOutput {
+	return i.ToEntrypointResponseOutputWithContext(context.Background())
+}
+
+func (i EntrypointResponseArgs) ToEntrypointResponseOutputWithContext(ctx context.Context) EntrypointResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntrypointResponseOutput)
+}
+
+func (i EntrypointResponseArgs) ToEntrypointResponsePtrOutput() EntrypointResponsePtrOutput {
+	return i.ToEntrypointResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EntrypointResponseArgs) ToEntrypointResponsePtrOutputWithContext(ctx context.Context) EntrypointResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntrypointResponseOutput).ToEntrypointResponsePtrOutputWithContext(ctx)
+}
+
+// EntrypointResponsePtrInput is an input type that accepts EntrypointResponseArgs, EntrypointResponsePtr and EntrypointResponsePtrOutput values.
+// You can construct a concrete instance of `EntrypointResponsePtrInput` via:
+//
+//          EntrypointResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type EntrypointResponsePtrInput interface {
+	pulumi.Input
+
+	ToEntrypointResponsePtrOutput() EntrypointResponsePtrOutput
+	ToEntrypointResponsePtrOutputWithContext(context.Context) EntrypointResponsePtrOutput
+}
+
+type entrypointResponsePtrType EntrypointResponseArgs
+
+func EntrypointResponsePtr(v *EntrypointResponseArgs) EntrypointResponsePtrInput {
+	return (*entrypointResponsePtrType)(v)
+}
+
+func (*entrypointResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntrypointResponse)(nil)).Elem()
+}
+
+func (i *entrypointResponsePtrType) ToEntrypointResponsePtrOutput() EntrypointResponsePtrOutput {
+	return i.ToEntrypointResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *entrypointResponsePtrType) ToEntrypointResponsePtrOutputWithContext(ctx context.Context) EntrypointResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntrypointResponsePtrOutput)
+}
+
+// The entrypoint for the application.
+type EntrypointResponseOutput struct{ *pulumi.OutputState }
+
+func (EntrypointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntrypointResponse)(nil)).Elem()
+}
+
+func (o EntrypointResponseOutput) ToEntrypointResponseOutput() EntrypointResponseOutput {
+	return o
+}
+
+func (o EntrypointResponseOutput) ToEntrypointResponseOutputWithContext(ctx context.Context) EntrypointResponseOutput {
+	return o
+}
+
+func (o EntrypointResponseOutput) ToEntrypointResponsePtrOutput() EntrypointResponsePtrOutput {
+	return o.ToEntrypointResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EntrypointResponseOutput) ToEntrypointResponsePtrOutputWithContext(ctx context.Context) EntrypointResponsePtrOutput {
+	return o.ApplyT(func(v EntrypointResponse) *EntrypointResponse {
+		return &v
+	}).(EntrypointResponsePtrOutput)
+}
+
+// The format should be a shell command that can be fed to bash -c.
+func (o EntrypointResponseOutput) Shell() pulumi.StringOutput {
+	return o.ApplyT(func(v EntrypointResponse) string { return v.Shell }).(pulumi.StringOutput)
+}
+
+type EntrypointResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EntrypointResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntrypointResponse)(nil)).Elem()
+}
+
+func (o EntrypointResponsePtrOutput) ToEntrypointResponsePtrOutput() EntrypointResponsePtrOutput {
+	return o
+}
+
+func (o EntrypointResponsePtrOutput) ToEntrypointResponsePtrOutputWithContext(ctx context.Context) EntrypointResponsePtrOutput {
+	return o
+}
+
+func (o EntrypointResponsePtrOutput) Elem() EntrypointResponseOutput {
+	return o.ApplyT(func(v *EntrypointResponse) EntrypointResponse { return *v }).(EntrypointResponseOutput)
+}
+
+// The format should be a shell command that can be fed to bash -c.
+func (o EntrypointResponsePtrOutput) Shell() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntrypointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Shell
+	}).(pulumi.StringPtrOutput)
+}
+
 // Custom static error page to be served when an error occurs.
 type ErrorHandler struct {
 	// Error condition this handler applies to.
@@ -2285,6 +4365,124 @@ func (o ErrorHandlerArrayOutput) Index(i pulumi.IntInput) ErrorHandlerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorHandler {
 		return vs[0].([]ErrorHandler)[vs[1].(int)]
 	}).(ErrorHandlerOutput)
+}
+
+// Custom static error page to be served when an error occurs.
+type ErrorHandlerResponse struct {
+	// Error condition this handler applies to.
+	ErrorCode string `pulumi:"errorCode"`
+	// MIME type of file. Defaults to text/html.
+	MimeType string `pulumi:"mimeType"`
+	// Static file content to be served for this error.
+	StaticFile string `pulumi:"staticFile"`
+}
+
+// ErrorHandlerResponseInput is an input type that accepts ErrorHandlerResponseArgs and ErrorHandlerResponseOutput values.
+// You can construct a concrete instance of `ErrorHandlerResponseInput` via:
+//
+//          ErrorHandlerResponseArgs{...}
+type ErrorHandlerResponseInput interface {
+	pulumi.Input
+
+	ToErrorHandlerResponseOutput() ErrorHandlerResponseOutput
+	ToErrorHandlerResponseOutputWithContext(context.Context) ErrorHandlerResponseOutput
+}
+
+// Custom static error page to be served when an error occurs.
+type ErrorHandlerResponseArgs struct {
+	// Error condition this handler applies to.
+	ErrorCode pulumi.StringInput `pulumi:"errorCode"`
+	// MIME type of file. Defaults to text/html.
+	MimeType pulumi.StringInput `pulumi:"mimeType"`
+	// Static file content to be served for this error.
+	StaticFile pulumi.StringInput `pulumi:"staticFile"`
+}
+
+func (ErrorHandlerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorHandlerResponse)(nil)).Elem()
+}
+
+func (i ErrorHandlerResponseArgs) ToErrorHandlerResponseOutput() ErrorHandlerResponseOutput {
+	return i.ToErrorHandlerResponseOutputWithContext(context.Background())
+}
+
+func (i ErrorHandlerResponseArgs) ToErrorHandlerResponseOutputWithContext(ctx context.Context) ErrorHandlerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErrorHandlerResponseOutput)
+}
+
+// ErrorHandlerResponseArrayInput is an input type that accepts ErrorHandlerResponseArray and ErrorHandlerResponseArrayOutput values.
+// You can construct a concrete instance of `ErrorHandlerResponseArrayInput` via:
+//
+//          ErrorHandlerResponseArray{ ErrorHandlerResponseArgs{...} }
+type ErrorHandlerResponseArrayInput interface {
+	pulumi.Input
+
+	ToErrorHandlerResponseArrayOutput() ErrorHandlerResponseArrayOutput
+	ToErrorHandlerResponseArrayOutputWithContext(context.Context) ErrorHandlerResponseArrayOutput
+}
+
+type ErrorHandlerResponseArray []ErrorHandlerResponseInput
+
+func (ErrorHandlerResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorHandlerResponse)(nil)).Elem()
+}
+
+func (i ErrorHandlerResponseArray) ToErrorHandlerResponseArrayOutput() ErrorHandlerResponseArrayOutput {
+	return i.ToErrorHandlerResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ErrorHandlerResponseArray) ToErrorHandlerResponseArrayOutputWithContext(ctx context.Context) ErrorHandlerResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ErrorHandlerResponseArrayOutput)
+}
+
+// Custom static error page to be served when an error occurs.
+type ErrorHandlerResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorHandlerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorHandlerResponse)(nil)).Elem()
+}
+
+func (o ErrorHandlerResponseOutput) ToErrorHandlerResponseOutput() ErrorHandlerResponseOutput {
+	return o
+}
+
+func (o ErrorHandlerResponseOutput) ToErrorHandlerResponseOutputWithContext(ctx context.Context) ErrorHandlerResponseOutput {
+	return o
+}
+
+// Error condition this handler applies to.
+func (o ErrorHandlerResponseOutput) ErrorCode() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorHandlerResponse) string { return v.ErrorCode }).(pulumi.StringOutput)
+}
+
+// MIME type of file. Defaults to text/html.
+func (o ErrorHandlerResponseOutput) MimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorHandlerResponse) string { return v.MimeType }).(pulumi.StringOutput)
+}
+
+// Static file content to be served for this error.
+func (o ErrorHandlerResponseOutput) StaticFile() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorHandlerResponse) string { return v.StaticFile }).(pulumi.StringOutput)
+}
+
+type ErrorHandlerResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorHandlerResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorHandlerResponse)(nil)).Elem()
+}
+
+func (o ErrorHandlerResponseArrayOutput) ToErrorHandlerResponseArrayOutput() ErrorHandlerResponseArrayOutput {
+	return o
+}
+
+func (o ErrorHandlerResponseArrayOutput) ToErrorHandlerResponseArrayOutputWithContext(ctx context.Context) ErrorHandlerResponseArrayOutput {
+	return o
+}
+
+func (o ErrorHandlerResponseArrayOutput) Index(i pulumi.IntInput) ErrorHandlerResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorHandlerResponse {
+		return vs[0].([]ErrorHandlerResponse)[vs[1].(int)]
+	}).(ErrorHandlerResponseOutput)
 }
 
 // The feature specific settings to be used in the application. These define behaviors that are user configurable.
@@ -2437,6 +4635,159 @@ func (o FeatureSettingsPtrOutput) UseContainerOptimizedOs() pulumi.BoolPtrOutput
 			return nil
 		}
 		return v.UseContainerOptimizedOs
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The feature specific settings to be used in the application. These define behaviors that are user configurable.
+type FeatureSettingsResponse struct {
+	// Boolean value indicating if split health checks should be used instead of the legacy health checks. At an app.yaml level, this means defaulting to 'readiness_check' and 'liveness_check' values instead of 'health_check' ones. Once the legacy 'health_check' behavior is deprecated, and this value is always true, this setting can be removed.
+	SplitHealthChecks bool `pulumi:"splitHealthChecks"`
+	// If true, use Container-Optimized OS (https://cloud.google.com/container-optimized-os/) base image for VMs, rather than a base Debian image.
+	UseContainerOptimizedOs bool `pulumi:"useContainerOptimizedOs"`
+}
+
+// FeatureSettingsResponseInput is an input type that accepts FeatureSettingsResponseArgs and FeatureSettingsResponseOutput values.
+// You can construct a concrete instance of `FeatureSettingsResponseInput` via:
+//
+//          FeatureSettingsResponseArgs{...}
+type FeatureSettingsResponseInput interface {
+	pulumi.Input
+
+	ToFeatureSettingsResponseOutput() FeatureSettingsResponseOutput
+	ToFeatureSettingsResponseOutputWithContext(context.Context) FeatureSettingsResponseOutput
+}
+
+// The feature specific settings to be used in the application. These define behaviors that are user configurable.
+type FeatureSettingsResponseArgs struct {
+	// Boolean value indicating if split health checks should be used instead of the legacy health checks. At an app.yaml level, this means defaulting to 'readiness_check' and 'liveness_check' values instead of 'health_check' ones. Once the legacy 'health_check' behavior is deprecated, and this value is always true, this setting can be removed.
+	SplitHealthChecks pulumi.BoolInput `pulumi:"splitHealthChecks"`
+	// If true, use Container-Optimized OS (https://cloud.google.com/container-optimized-os/) base image for VMs, rather than a base Debian image.
+	UseContainerOptimizedOs pulumi.BoolInput `pulumi:"useContainerOptimizedOs"`
+}
+
+func (FeatureSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSettingsResponse)(nil)).Elem()
+}
+
+func (i FeatureSettingsResponseArgs) ToFeatureSettingsResponseOutput() FeatureSettingsResponseOutput {
+	return i.ToFeatureSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i FeatureSettingsResponseArgs) ToFeatureSettingsResponseOutputWithContext(ctx context.Context) FeatureSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSettingsResponseOutput)
+}
+
+func (i FeatureSettingsResponseArgs) ToFeatureSettingsResponsePtrOutput() FeatureSettingsResponsePtrOutput {
+	return i.ToFeatureSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i FeatureSettingsResponseArgs) ToFeatureSettingsResponsePtrOutputWithContext(ctx context.Context) FeatureSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSettingsResponseOutput).ToFeatureSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// FeatureSettingsResponsePtrInput is an input type that accepts FeatureSettingsResponseArgs, FeatureSettingsResponsePtr and FeatureSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `FeatureSettingsResponsePtrInput` via:
+//
+//          FeatureSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type FeatureSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToFeatureSettingsResponsePtrOutput() FeatureSettingsResponsePtrOutput
+	ToFeatureSettingsResponsePtrOutputWithContext(context.Context) FeatureSettingsResponsePtrOutput
+}
+
+type featureSettingsResponsePtrType FeatureSettingsResponseArgs
+
+func FeatureSettingsResponsePtr(v *FeatureSettingsResponseArgs) FeatureSettingsResponsePtrInput {
+	return (*featureSettingsResponsePtrType)(v)
+}
+
+func (*featureSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSettingsResponse)(nil)).Elem()
+}
+
+func (i *featureSettingsResponsePtrType) ToFeatureSettingsResponsePtrOutput() FeatureSettingsResponsePtrOutput {
+	return i.ToFeatureSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *featureSettingsResponsePtrType) ToFeatureSettingsResponsePtrOutputWithContext(ctx context.Context) FeatureSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSettingsResponsePtrOutput)
+}
+
+// The feature specific settings to be used in the application. These define behaviors that are user configurable.
+type FeatureSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (FeatureSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSettingsResponse)(nil)).Elem()
+}
+
+func (o FeatureSettingsResponseOutput) ToFeatureSettingsResponseOutput() FeatureSettingsResponseOutput {
+	return o
+}
+
+func (o FeatureSettingsResponseOutput) ToFeatureSettingsResponseOutputWithContext(ctx context.Context) FeatureSettingsResponseOutput {
+	return o
+}
+
+func (o FeatureSettingsResponseOutput) ToFeatureSettingsResponsePtrOutput() FeatureSettingsResponsePtrOutput {
+	return o.ToFeatureSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o FeatureSettingsResponseOutput) ToFeatureSettingsResponsePtrOutputWithContext(ctx context.Context) FeatureSettingsResponsePtrOutput {
+	return o.ApplyT(func(v FeatureSettingsResponse) *FeatureSettingsResponse {
+		return &v
+	}).(FeatureSettingsResponsePtrOutput)
+}
+
+// Boolean value indicating if split health checks should be used instead of the legacy health checks. At an app.yaml level, this means defaulting to 'readiness_check' and 'liveness_check' values instead of 'health_check' ones. Once the legacy 'health_check' behavior is deprecated, and this value is always true, this setting can be removed.
+func (o FeatureSettingsResponseOutput) SplitHealthChecks() pulumi.BoolOutput {
+	return o.ApplyT(func(v FeatureSettingsResponse) bool { return v.SplitHealthChecks }).(pulumi.BoolOutput)
+}
+
+// If true, use Container-Optimized OS (https://cloud.google.com/container-optimized-os/) base image for VMs, rather than a base Debian image.
+func (o FeatureSettingsResponseOutput) UseContainerOptimizedOs() pulumi.BoolOutput {
+	return o.ApplyT(func(v FeatureSettingsResponse) bool { return v.UseContainerOptimizedOs }).(pulumi.BoolOutput)
+}
+
+type FeatureSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSettingsResponse)(nil)).Elem()
+}
+
+func (o FeatureSettingsResponsePtrOutput) ToFeatureSettingsResponsePtrOutput() FeatureSettingsResponsePtrOutput {
+	return o
+}
+
+func (o FeatureSettingsResponsePtrOutput) ToFeatureSettingsResponsePtrOutputWithContext(ctx context.Context) FeatureSettingsResponsePtrOutput {
+	return o
+}
+
+func (o FeatureSettingsResponsePtrOutput) Elem() FeatureSettingsResponseOutput {
+	return o.ApplyT(func(v *FeatureSettingsResponse) FeatureSettingsResponse { return *v }).(FeatureSettingsResponseOutput)
+}
+
+// Boolean value indicating if split health checks should be used instead of the legacy health checks. At an app.yaml level, this means defaulting to 'readiness_check' and 'liveness_check' values instead of 'health_check' ones. Once the legacy 'health_check' behavior is deprecated, and this value is always true, this setting can be removed.
+func (o FeatureSettingsResponsePtrOutput) SplitHealthChecks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.SplitHealthChecks
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, use Container-Optimized OS (https://cloud.google.com/container-optimized-os/) base image for VMs, rather than a base Debian image.
+func (o FeatureSettingsResponsePtrOutput) UseContainerOptimizedOs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UseContainerOptimizedOs
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -2688,6 +5039,254 @@ func (o HealthCheckPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances. Only applicable for instances in App Engine flexible environment.
+type HealthCheckResponse struct {
+	// Interval between health checks.
+	CheckInterval string `pulumi:"checkInterval"`
+	// Whether to explicitly disable health checks for this instance.
+	DisableHealthCheck bool `pulumi:"disableHealthCheck"`
+	// Number of consecutive successful health checks required before receiving traffic.
+	HealthyThreshold int `pulumi:"healthyThreshold"`
+	// Host header to send when performing an HTTP health check. Example: "myapp.appspot.com"
+	Host string `pulumi:"host"`
+	// Number of consecutive failed health checks required before an instance is restarted.
+	RestartThreshold int `pulumi:"restartThreshold"`
+	// Time before the health check is considered failed.
+	Timeout string `pulumi:"timeout"`
+	// Number of consecutive failed health checks required before removing traffic.
+	UnhealthyThreshold int `pulumi:"unhealthyThreshold"`
+}
+
+// HealthCheckResponseInput is an input type that accepts HealthCheckResponseArgs and HealthCheckResponseOutput values.
+// You can construct a concrete instance of `HealthCheckResponseInput` via:
+//
+//          HealthCheckResponseArgs{...}
+type HealthCheckResponseInput interface {
+	pulumi.Input
+
+	ToHealthCheckResponseOutput() HealthCheckResponseOutput
+	ToHealthCheckResponseOutputWithContext(context.Context) HealthCheckResponseOutput
+}
+
+// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances. Only applicable for instances in App Engine flexible environment.
+type HealthCheckResponseArgs struct {
+	// Interval between health checks.
+	CheckInterval pulumi.StringInput `pulumi:"checkInterval"`
+	// Whether to explicitly disable health checks for this instance.
+	DisableHealthCheck pulumi.BoolInput `pulumi:"disableHealthCheck"`
+	// Number of consecutive successful health checks required before receiving traffic.
+	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
+	// Host header to send when performing an HTTP health check. Example: "myapp.appspot.com"
+	Host pulumi.StringInput `pulumi:"host"`
+	// Number of consecutive failed health checks required before an instance is restarted.
+	RestartThreshold pulumi.IntInput `pulumi:"restartThreshold"`
+	// Time before the health check is considered failed.
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+	// Number of consecutive failed health checks required before removing traffic.
+	UnhealthyThreshold pulumi.IntInput `pulumi:"unhealthyThreshold"`
+}
+
+func (HealthCheckResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthCheckResponse)(nil)).Elem()
+}
+
+func (i HealthCheckResponseArgs) ToHealthCheckResponseOutput() HealthCheckResponseOutput {
+	return i.ToHealthCheckResponseOutputWithContext(context.Background())
+}
+
+func (i HealthCheckResponseArgs) ToHealthCheckResponseOutputWithContext(ctx context.Context) HealthCheckResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckResponseOutput)
+}
+
+func (i HealthCheckResponseArgs) ToHealthCheckResponsePtrOutput() HealthCheckResponsePtrOutput {
+	return i.ToHealthCheckResponsePtrOutputWithContext(context.Background())
+}
+
+func (i HealthCheckResponseArgs) ToHealthCheckResponsePtrOutputWithContext(ctx context.Context) HealthCheckResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckResponseOutput).ToHealthCheckResponsePtrOutputWithContext(ctx)
+}
+
+// HealthCheckResponsePtrInput is an input type that accepts HealthCheckResponseArgs, HealthCheckResponsePtr and HealthCheckResponsePtrOutput values.
+// You can construct a concrete instance of `HealthCheckResponsePtrInput` via:
+//
+//          HealthCheckResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type HealthCheckResponsePtrInput interface {
+	pulumi.Input
+
+	ToHealthCheckResponsePtrOutput() HealthCheckResponsePtrOutput
+	ToHealthCheckResponsePtrOutputWithContext(context.Context) HealthCheckResponsePtrOutput
+}
+
+type healthCheckResponsePtrType HealthCheckResponseArgs
+
+func HealthCheckResponsePtr(v *HealthCheckResponseArgs) HealthCheckResponsePtrInput {
+	return (*healthCheckResponsePtrType)(v)
+}
+
+func (*healthCheckResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HealthCheckResponse)(nil)).Elem()
+}
+
+func (i *healthCheckResponsePtrType) ToHealthCheckResponsePtrOutput() HealthCheckResponsePtrOutput {
+	return i.ToHealthCheckResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *healthCheckResponsePtrType) ToHealthCheckResponsePtrOutputWithContext(ctx context.Context) HealthCheckResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthCheckResponsePtrOutput)
+}
+
+// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances. Only applicable for instances in App Engine flexible environment.
+type HealthCheckResponseOutput struct{ *pulumi.OutputState }
+
+func (HealthCheckResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthCheckResponse)(nil)).Elem()
+}
+
+func (o HealthCheckResponseOutput) ToHealthCheckResponseOutput() HealthCheckResponseOutput {
+	return o
+}
+
+func (o HealthCheckResponseOutput) ToHealthCheckResponseOutputWithContext(ctx context.Context) HealthCheckResponseOutput {
+	return o
+}
+
+func (o HealthCheckResponseOutput) ToHealthCheckResponsePtrOutput() HealthCheckResponsePtrOutput {
+	return o.ToHealthCheckResponsePtrOutputWithContext(context.Background())
+}
+
+func (o HealthCheckResponseOutput) ToHealthCheckResponsePtrOutputWithContext(ctx context.Context) HealthCheckResponsePtrOutput {
+	return o.ApplyT(func(v HealthCheckResponse) *HealthCheckResponse {
+		return &v
+	}).(HealthCheckResponsePtrOutput)
+}
+
+// Interval between health checks.
+func (o HealthCheckResponseOutput) CheckInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthCheckResponse) string { return v.CheckInterval }).(pulumi.StringOutput)
+}
+
+// Whether to explicitly disable health checks for this instance.
+func (o HealthCheckResponseOutput) DisableHealthCheck() pulumi.BoolOutput {
+	return o.ApplyT(func(v HealthCheckResponse) bool { return v.DisableHealthCheck }).(pulumi.BoolOutput)
+}
+
+// Number of consecutive successful health checks required before receiving traffic.
+func (o HealthCheckResponseOutput) HealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v HealthCheckResponse) int { return v.HealthyThreshold }).(pulumi.IntOutput)
+}
+
+// Host header to send when performing an HTTP health check. Example: "myapp.appspot.com"
+func (o HealthCheckResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthCheckResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Number of consecutive failed health checks required before an instance is restarted.
+func (o HealthCheckResponseOutput) RestartThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v HealthCheckResponse) int { return v.RestartThreshold }).(pulumi.IntOutput)
+}
+
+// Time before the health check is considered failed.
+func (o HealthCheckResponseOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthCheckResponse) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+// Number of consecutive failed health checks required before removing traffic.
+func (o HealthCheckResponseOutput) UnhealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v HealthCheckResponse) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
+}
+
+type HealthCheckResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HealthCheckResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HealthCheckResponse)(nil)).Elem()
+}
+
+func (o HealthCheckResponsePtrOutput) ToHealthCheckResponsePtrOutput() HealthCheckResponsePtrOutput {
+	return o
+}
+
+func (o HealthCheckResponsePtrOutput) ToHealthCheckResponsePtrOutputWithContext(ctx context.Context) HealthCheckResponsePtrOutput {
+	return o
+}
+
+func (o HealthCheckResponsePtrOutput) Elem() HealthCheckResponseOutput {
+	return o.ApplyT(func(v *HealthCheckResponse) HealthCheckResponse { return *v }).(HealthCheckResponseOutput)
+}
+
+// Interval between health checks.
+func (o HealthCheckResponsePtrOutput) CheckInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HealthCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CheckInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to explicitly disable health checks for this instance.
+func (o HealthCheckResponsePtrOutput) DisableHealthCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HealthCheckResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.DisableHealthCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Number of consecutive successful health checks required before receiving traffic.
+func (o HealthCheckResponsePtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HealthCheckResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.HealthyThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Host header to send when performing an HTTP health check. Example: "myapp.appspot.com"
+func (o HealthCheckResponsePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HealthCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of consecutive failed health checks required before an instance is restarted.
+func (o HealthCheckResponsePtrOutput) RestartThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HealthCheckResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RestartThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time before the health check is considered failed.
+func (o HealthCheckResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HealthCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of consecutive failed health checks required before removing traffic.
+func (o HealthCheckResponsePtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HealthCheckResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.UnhealthyThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
 // Identity-Aware Proxy
 type IdentityAwareProxy struct {
 	// Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.
@@ -2879,6 +5478,197 @@ func (o IdentityAwareProxyPtrOutput) Oauth2ClientSecretSha256() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Identity-Aware Proxy
+type IdentityAwareProxyResponse struct {
+	// Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.
+	Enabled bool `pulumi:"enabled"`
+	// OAuth2 client ID to use for the authentication flow.
+	Oauth2ClientId string `pulumi:"oauth2ClientId"`
+	// OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly
+	Oauth2ClientSecret string `pulumi:"oauth2ClientSecret"`
+	// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+	Oauth2ClientSecretSha256 string `pulumi:"oauth2ClientSecretSha256"`
+}
+
+// IdentityAwareProxyResponseInput is an input type that accepts IdentityAwareProxyResponseArgs and IdentityAwareProxyResponseOutput values.
+// You can construct a concrete instance of `IdentityAwareProxyResponseInput` via:
+//
+//          IdentityAwareProxyResponseArgs{...}
+type IdentityAwareProxyResponseInput interface {
+	pulumi.Input
+
+	ToIdentityAwareProxyResponseOutput() IdentityAwareProxyResponseOutput
+	ToIdentityAwareProxyResponseOutputWithContext(context.Context) IdentityAwareProxyResponseOutput
+}
+
+// Identity-Aware Proxy
+type IdentityAwareProxyResponseArgs struct {
+	// Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// OAuth2 client ID to use for the authentication flow.
+	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
+	// OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly
+	Oauth2ClientSecret pulumi.StringInput `pulumi:"oauth2ClientSecret"`
+	// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+	Oauth2ClientSecretSha256 pulumi.StringInput `pulumi:"oauth2ClientSecretSha256"`
+}
+
+func (IdentityAwareProxyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityAwareProxyResponse)(nil)).Elem()
+}
+
+func (i IdentityAwareProxyResponseArgs) ToIdentityAwareProxyResponseOutput() IdentityAwareProxyResponseOutput {
+	return i.ToIdentityAwareProxyResponseOutputWithContext(context.Background())
+}
+
+func (i IdentityAwareProxyResponseArgs) ToIdentityAwareProxyResponseOutputWithContext(ctx context.Context) IdentityAwareProxyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityAwareProxyResponseOutput)
+}
+
+func (i IdentityAwareProxyResponseArgs) ToIdentityAwareProxyResponsePtrOutput() IdentityAwareProxyResponsePtrOutput {
+	return i.ToIdentityAwareProxyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i IdentityAwareProxyResponseArgs) ToIdentityAwareProxyResponsePtrOutputWithContext(ctx context.Context) IdentityAwareProxyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityAwareProxyResponseOutput).ToIdentityAwareProxyResponsePtrOutputWithContext(ctx)
+}
+
+// IdentityAwareProxyResponsePtrInput is an input type that accepts IdentityAwareProxyResponseArgs, IdentityAwareProxyResponsePtr and IdentityAwareProxyResponsePtrOutput values.
+// You can construct a concrete instance of `IdentityAwareProxyResponsePtrInput` via:
+//
+//          IdentityAwareProxyResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type IdentityAwareProxyResponsePtrInput interface {
+	pulumi.Input
+
+	ToIdentityAwareProxyResponsePtrOutput() IdentityAwareProxyResponsePtrOutput
+	ToIdentityAwareProxyResponsePtrOutputWithContext(context.Context) IdentityAwareProxyResponsePtrOutput
+}
+
+type identityAwareProxyResponsePtrType IdentityAwareProxyResponseArgs
+
+func IdentityAwareProxyResponsePtr(v *IdentityAwareProxyResponseArgs) IdentityAwareProxyResponsePtrInput {
+	return (*identityAwareProxyResponsePtrType)(v)
+}
+
+func (*identityAwareProxyResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityAwareProxyResponse)(nil)).Elem()
+}
+
+func (i *identityAwareProxyResponsePtrType) ToIdentityAwareProxyResponsePtrOutput() IdentityAwareProxyResponsePtrOutput {
+	return i.ToIdentityAwareProxyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *identityAwareProxyResponsePtrType) ToIdentityAwareProxyResponsePtrOutputWithContext(ctx context.Context) IdentityAwareProxyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityAwareProxyResponsePtrOutput)
+}
+
+// Identity-Aware Proxy
+type IdentityAwareProxyResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityAwareProxyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityAwareProxyResponse)(nil)).Elem()
+}
+
+func (o IdentityAwareProxyResponseOutput) ToIdentityAwareProxyResponseOutput() IdentityAwareProxyResponseOutput {
+	return o
+}
+
+func (o IdentityAwareProxyResponseOutput) ToIdentityAwareProxyResponseOutputWithContext(ctx context.Context) IdentityAwareProxyResponseOutput {
+	return o
+}
+
+func (o IdentityAwareProxyResponseOutput) ToIdentityAwareProxyResponsePtrOutput() IdentityAwareProxyResponsePtrOutput {
+	return o.ToIdentityAwareProxyResponsePtrOutputWithContext(context.Background())
+}
+
+func (o IdentityAwareProxyResponseOutput) ToIdentityAwareProxyResponsePtrOutputWithContext(ctx context.Context) IdentityAwareProxyResponsePtrOutput {
+	return o.ApplyT(func(v IdentityAwareProxyResponse) *IdentityAwareProxyResponse {
+		return &v
+	}).(IdentityAwareProxyResponsePtrOutput)
+}
+
+// Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.
+func (o IdentityAwareProxyResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v IdentityAwareProxyResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// OAuth2 client ID to use for the authentication flow.
+func (o IdentityAwareProxyResponseOutput) Oauth2ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityAwareProxyResponse) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
+}
+
+// OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly
+func (o IdentityAwareProxyResponseOutput) Oauth2ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityAwareProxyResponse) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
+}
+
+// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+func (o IdentityAwareProxyResponseOutput) Oauth2ClientSecretSha256() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityAwareProxyResponse) string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringOutput)
+}
+
+type IdentityAwareProxyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityAwareProxyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityAwareProxyResponse)(nil)).Elem()
+}
+
+func (o IdentityAwareProxyResponsePtrOutput) ToIdentityAwareProxyResponsePtrOutput() IdentityAwareProxyResponsePtrOutput {
+	return o
+}
+
+func (o IdentityAwareProxyResponsePtrOutput) ToIdentityAwareProxyResponsePtrOutputWithContext(ctx context.Context) IdentityAwareProxyResponsePtrOutput {
+	return o
+}
+
+func (o IdentityAwareProxyResponsePtrOutput) Elem() IdentityAwareProxyResponseOutput {
+	return o.ApplyT(func(v *IdentityAwareProxyResponse) IdentityAwareProxyResponse { return *v }).(IdentityAwareProxyResponseOutput)
+}
+
+// Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.
+func (o IdentityAwareProxyResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IdentityAwareProxyResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// OAuth2 client ID to use for the authentication flow.
+func (o IdentityAwareProxyResponsePtrOutput) Oauth2ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityAwareProxyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Oauth2ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly
+func (o IdentityAwareProxyResponsePtrOutput) Oauth2ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityAwareProxyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Oauth2ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+func (o IdentityAwareProxyResponsePtrOutput) Oauth2ClientSecretSha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityAwareProxyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Oauth2ClientSecretSha256
+	}).(pulumi.StringPtrOutput)
+}
+
 // Third-party Python runtime library that is required by the application.
 type Library struct {
 	// Name of the library. Example: "django".
@@ -2986,6 +5776,115 @@ func (o LibraryArrayOutput) Index(i pulumi.IntInput) LibraryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Library {
 		return vs[0].([]Library)[vs[1].(int)]
 	}).(LibraryOutput)
+}
+
+// Third-party Python runtime library that is required by the application.
+type LibraryResponse struct {
+	// Name of the library. Example: "django".
+	Name string `pulumi:"name"`
+	// Version of the library to select, or "latest".
+	Version string `pulumi:"version"`
+}
+
+// LibraryResponseInput is an input type that accepts LibraryResponseArgs and LibraryResponseOutput values.
+// You can construct a concrete instance of `LibraryResponseInput` via:
+//
+//          LibraryResponseArgs{...}
+type LibraryResponseInput interface {
+	pulumi.Input
+
+	ToLibraryResponseOutput() LibraryResponseOutput
+	ToLibraryResponseOutputWithContext(context.Context) LibraryResponseOutput
+}
+
+// Third-party Python runtime library that is required by the application.
+type LibraryResponseArgs struct {
+	// Name of the library. Example: "django".
+	Name pulumi.StringInput `pulumi:"name"`
+	// Version of the library to select, or "latest".
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (LibraryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LibraryResponse)(nil)).Elem()
+}
+
+func (i LibraryResponseArgs) ToLibraryResponseOutput() LibraryResponseOutput {
+	return i.ToLibraryResponseOutputWithContext(context.Background())
+}
+
+func (i LibraryResponseArgs) ToLibraryResponseOutputWithContext(ctx context.Context) LibraryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LibraryResponseOutput)
+}
+
+// LibraryResponseArrayInput is an input type that accepts LibraryResponseArray and LibraryResponseArrayOutput values.
+// You can construct a concrete instance of `LibraryResponseArrayInput` via:
+//
+//          LibraryResponseArray{ LibraryResponseArgs{...} }
+type LibraryResponseArrayInput interface {
+	pulumi.Input
+
+	ToLibraryResponseArrayOutput() LibraryResponseArrayOutput
+	ToLibraryResponseArrayOutputWithContext(context.Context) LibraryResponseArrayOutput
+}
+
+type LibraryResponseArray []LibraryResponseInput
+
+func (LibraryResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LibraryResponse)(nil)).Elem()
+}
+
+func (i LibraryResponseArray) ToLibraryResponseArrayOutput() LibraryResponseArrayOutput {
+	return i.ToLibraryResponseArrayOutputWithContext(context.Background())
+}
+
+func (i LibraryResponseArray) ToLibraryResponseArrayOutputWithContext(ctx context.Context) LibraryResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LibraryResponseArrayOutput)
+}
+
+// Third-party Python runtime library that is required by the application.
+type LibraryResponseOutput struct{ *pulumi.OutputState }
+
+func (LibraryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LibraryResponse)(nil)).Elem()
+}
+
+func (o LibraryResponseOutput) ToLibraryResponseOutput() LibraryResponseOutput {
+	return o
+}
+
+func (o LibraryResponseOutput) ToLibraryResponseOutputWithContext(ctx context.Context) LibraryResponseOutput {
+	return o
+}
+
+// Name of the library. Example: "django".
+func (o LibraryResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LibraryResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Version of the library to select, or "latest".
+func (o LibraryResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LibraryResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type LibraryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LibraryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LibraryResponse)(nil)).Elem()
+}
+
+func (o LibraryResponseArrayOutput) ToLibraryResponseArrayOutput() LibraryResponseArrayOutput {
+	return o
+}
+
+func (o LibraryResponseArrayOutput) ToLibraryResponseArrayOutputWithContext(ctx context.Context) LibraryResponseArrayOutput {
+	return o
+}
+
+func (o LibraryResponseArrayOutput) Index(i pulumi.IntInput) LibraryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LibraryResponse {
+		return vs[0].([]LibraryResponse)[vs[1].(int)]
+	}).(LibraryResponseOutput)
 }
 
 // Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
@@ -3236,6 +6135,254 @@ func (o LivenessCheckPtrOutput) Timeout() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+type LivenessCheckResponse struct {
+	// Interval between health checks.
+	CheckInterval string `pulumi:"checkInterval"`
+	// Number of consecutive failed checks required before considering the VM unhealthy.
+	FailureThreshold int `pulumi:"failureThreshold"`
+	// Host header to send when performing a HTTP Liveness check. Example: "myapp.appspot.com"
+	Host string `pulumi:"host"`
+	// The initial delay before starting to execute the checks.
+	InitialDelay string `pulumi:"initialDelay"`
+	// The request path.
+	Path string `pulumi:"path"`
+	// Number of consecutive successful checks required before considering the VM healthy.
+	SuccessThreshold int `pulumi:"successThreshold"`
+	// Time before the check is considered failed.
+	Timeout string `pulumi:"timeout"`
+}
+
+// LivenessCheckResponseInput is an input type that accepts LivenessCheckResponseArgs and LivenessCheckResponseOutput values.
+// You can construct a concrete instance of `LivenessCheckResponseInput` via:
+//
+//          LivenessCheckResponseArgs{...}
+type LivenessCheckResponseInput interface {
+	pulumi.Input
+
+	ToLivenessCheckResponseOutput() LivenessCheckResponseOutput
+	ToLivenessCheckResponseOutputWithContext(context.Context) LivenessCheckResponseOutput
+}
+
+// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+type LivenessCheckResponseArgs struct {
+	// Interval between health checks.
+	CheckInterval pulumi.StringInput `pulumi:"checkInterval"`
+	// Number of consecutive failed checks required before considering the VM unhealthy.
+	FailureThreshold pulumi.IntInput `pulumi:"failureThreshold"`
+	// Host header to send when performing a HTTP Liveness check. Example: "myapp.appspot.com"
+	Host pulumi.StringInput `pulumi:"host"`
+	// The initial delay before starting to execute the checks.
+	InitialDelay pulumi.StringInput `pulumi:"initialDelay"`
+	// The request path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Number of consecutive successful checks required before considering the VM healthy.
+	SuccessThreshold pulumi.IntInput `pulumi:"successThreshold"`
+	// Time before the check is considered failed.
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+}
+
+func (LivenessCheckResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LivenessCheckResponse)(nil)).Elem()
+}
+
+func (i LivenessCheckResponseArgs) ToLivenessCheckResponseOutput() LivenessCheckResponseOutput {
+	return i.ToLivenessCheckResponseOutputWithContext(context.Background())
+}
+
+func (i LivenessCheckResponseArgs) ToLivenessCheckResponseOutputWithContext(ctx context.Context) LivenessCheckResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LivenessCheckResponseOutput)
+}
+
+func (i LivenessCheckResponseArgs) ToLivenessCheckResponsePtrOutput() LivenessCheckResponsePtrOutput {
+	return i.ToLivenessCheckResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LivenessCheckResponseArgs) ToLivenessCheckResponsePtrOutputWithContext(ctx context.Context) LivenessCheckResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LivenessCheckResponseOutput).ToLivenessCheckResponsePtrOutputWithContext(ctx)
+}
+
+// LivenessCheckResponsePtrInput is an input type that accepts LivenessCheckResponseArgs, LivenessCheckResponsePtr and LivenessCheckResponsePtrOutput values.
+// You can construct a concrete instance of `LivenessCheckResponsePtrInput` via:
+//
+//          LivenessCheckResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type LivenessCheckResponsePtrInput interface {
+	pulumi.Input
+
+	ToLivenessCheckResponsePtrOutput() LivenessCheckResponsePtrOutput
+	ToLivenessCheckResponsePtrOutputWithContext(context.Context) LivenessCheckResponsePtrOutput
+}
+
+type livenessCheckResponsePtrType LivenessCheckResponseArgs
+
+func LivenessCheckResponsePtr(v *LivenessCheckResponseArgs) LivenessCheckResponsePtrInput {
+	return (*livenessCheckResponsePtrType)(v)
+}
+
+func (*livenessCheckResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LivenessCheckResponse)(nil)).Elem()
+}
+
+func (i *livenessCheckResponsePtrType) ToLivenessCheckResponsePtrOutput() LivenessCheckResponsePtrOutput {
+	return i.ToLivenessCheckResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *livenessCheckResponsePtrType) ToLivenessCheckResponsePtrOutputWithContext(ctx context.Context) LivenessCheckResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LivenessCheckResponsePtrOutput)
+}
+
+// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
+type LivenessCheckResponseOutput struct{ *pulumi.OutputState }
+
+func (LivenessCheckResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LivenessCheckResponse)(nil)).Elem()
+}
+
+func (o LivenessCheckResponseOutput) ToLivenessCheckResponseOutput() LivenessCheckResponseOutput {
+	return o
+}
+
+func (o LivenessCheckResponseOutput) ToLivenessCheckResponseOutputWithContext(ctx context.Context) LivenessCheckResponseOutput {
+	return o
+}
+
+func (o LivenessCheckResponseOutput) ToLivenessCheckResponsePtrOutput() LivenessCheckResponsePtrOutput {
+	return o.ToLivenessCheckResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LivenessCheckResponseOutput) ToLivenessCheckResponsePtrOutputWithContext(ctx context.Context) LivenessCheckResponsePtrOutput {
+	return o.ApplyT(func(v LivenessCheckResponse) *LivenessCheckResponse {
+		return &v
+	}).(LivenessCheckResponsePtrOutput)
+}
+
+// Interval between health checks.
+func (o LivenessCheckResponseOutput) CheckInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v LivenessCheckResponse) string { return v.CheckInterval }).(pulumi.StringOutput)
+}
+
+// Number of consecutive failed checks required before considering the VM unhealthy.
+func (o LivenessCheckResponseOutput) FailureThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v LivenessCheckResponse) int { return v.FailureThreshold }).(pulumi.IntOutput)
+}
+
+// Host header to send when performing a HTTP Liveness check. Example: "myapp.appspot.com"
+func (o LivenessCheckResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v LivenessCheckResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The initial delay before starting to execute the checks.
+func (o LivenessCheckResponseOutput) InitialDelay() pulumi.StringOutput {
+	return o.ApplyT(func(v LivenessCheckResponse) string { return v.InitialDelay }).(pulumi.StringOutput)
+}
+
+// The request path.
+func (o LivenessCheckResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v LivenessCheckResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Number of consecutive successful checks required before considering the VM healthy.
+func (o LivenessCheckResponseOutput) SuccessThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v LivenessCheckResponse) int { return v.SuccessThreshold }).(pulumi.IntOutput)
+}
+
+// Time before the check is considered failed.
+func (o LivenessCheckResponseOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v LivenessCheckResponse) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+type LivenessCheckResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LivenessCheckResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LivenessCheckResponse)(nil)).Elem()
+}
+
+func (o LivenessCheckResponsePtrOutput) ToLivenessCheckResponsePtrOutput() LivenessCheckResponsePtrOutput {
+	return o
+}
+
+func (o LivenessCheckResponsePtrOutput) ToLivenessCheckResponsePtrOutputWithContext(ctx context.Context) LivenessCheckResponsePtrOutput {
+	return o
+}
+
+func (o LivenessCheckResponsePtrOutput) Elem() LivenessCheckResponseOutput {
+	return o.ApplyT(func(v *LivenessCheckResponse) LivenessCheckResponse { return *v }).(LivenessCheckResponseOutput)
+}
+
+// Interval between health checks.
+func (o LivenessCheckResponsePtrOutput) CheckInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LivenessCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CheckInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of consecutive failed checks required before considering the VM unhealthy.
+func (o LivenessCheckResponsePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LivenessCheckResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Host header to send when performing a HTTP Liveness check. Example: "myapp.appspot.com"
+func (o LivenessCheckResponsePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LivenessCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial delay before starting to execute the checks.
+func (o LivenessCheckResponsePtrOutput) InitialDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LivenessCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InitialDelay
+	}).(pulumi.StringPtrOutput)
+}
+
+// The request path.
+func (o LivenessCheckResponsePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LivenessCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of consecutive successful checks required before considering the VM healthy.
+func (o LivenessCheckResponsePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LivenessCheckResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time before the check is considered failed.
+func (o LivenessCheckResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LivenessCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
 // A certificate managed by App Engine.
 type ManagedCertificate struct {
 	// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
@@ -3389,6 +6536,159 @@ func (o ManagedCertificatePtrOutput) Status() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A certificate managed by App Engine.
+type ManagedCertificateResponse struct {
+	// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+	LastRenewalTime string `pulumi:"lastRenewalTime"`
+	// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+	Status string `pulumi:"status"`
+}
+
+// ManagedCertificateResponseInput is an input type that accepts ManagedCertificateResponseArgs and ManagedCertificateResponseOutput values.
+// You can construct a concrete instance of `ManagedCertificateResponseInput` via:
+//
+//          ManagedCertificateResponseArgs{...}
+type ManagedCertificateResponseInput interface {
+	pulumi.Input
+
+	ToManagedCertificateResponseOutput() ManagedCertificateResponseOutput
+	ToManagedCertificateResponseOutputWithContext(context.Context) ManagedCertificateResponseOutput
+}
+
+// A certificate managed by App Engine.
+type ManagedCertificateResponseArgs struct {
+	// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+	LastRenewalTime pulumi.StringInput `pulumi:"lastRenewalTime"`
+	// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (ManagedCertificateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedCertificateResponse)(nil)).Elem()
+}
+
+func (i ManagedCertificateResponseArgs) ToManagedCertificateResponseOutput() ManagedCertificateResponseOutput {
+	return i.ToManagedCertificateResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedCertificateResponseArgs) ToManagedCertificateResponseOutputWithContext(ctx context.Context) ManagedCertificateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedCertificateResponseOutput)
+}
+
+func (i ManagedCertificateResponseArgs) ToManagedCertificateResponsePtrOutput() ManagedCertificateResponsePtrOutput {
+	return i.ToManagedCertificateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedCertificateResponseArgs) ToManagedCertificateResponsePtrOutputWithContext(ctx context.Context) ManagedCertificateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedCertificateResponseOutput).ToManagedCertificateResponsePtrOutputWithContext(ctx)
+}
+
+// ManagedCertificateResponsePtrInput is an input type that accepts ManagedCertificateResponseArgs, ManagedCertificateResponsePtr and ManagedCertificateResponsePtrOutput values.
+// You can construct a concrete instance of `ManagedCertificateResponsePtrInput` via:
+//
+//          ManagedCertificateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedCertificateResponsePtrInput interface {
+	pulumi.Input
+
+	ToManagedCertificateResponsePtrOutput() ManagedCertificateResponsePtrOutput
+	ToManagedCertificateResponsePtrOutputWithContext(context.Context) ManagedCertificateResponsePtrOutput
+}
+
+type managedCertificateResponsePtrType ManagedCertificateResponseArgs
+
+func ManagedCertificateResponsePtr(v *ManagedCertificateResponseArgs) ManagedCertificateResponsePtrInput {
+	return (*managedCertificateResponsePtrType)(v)
+}
+
+func (*managedCertificateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedCertificateResponse)(nil)).Elem()
+}
+
+func (i *managedCertificateResponsePtrType) ToManagedCertificateResponsePtrOutput() ManagedCertificateResponsePtrOutput {
+	return i.ToManagedCertificateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *managedCertificateResponsePtrType) ToManagedCertificateResponsePtrOutputWithContext(ctx context.Context) ManagedCertificateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedCertificateResponsePtrOutput)
+}
+
+// A certificate managed by App Engine.
+type ManagedCertificateResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedCertificateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedCertificateResponse)(nil)).Elem()
+}
+
+func (o ManagedCertificateResponseOutput) ToManagedCertificateResponseOutput() ManagedCertificateResponseOutput {
+	return o
+}
+
+func (o ManagedCertificateResponseOutput) ToManagedCertificateResponseOutputWithContext(ctx context.Context) ManagedCertificateResponseOutput {
+	return o
+}
+
+func (o ManagedCertificateResponseOutput) ToManagedCertificateResponsePtrOutput() ManagedCertificateResponsePtrOutput {
+	return o.ToManagedCertificateResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedCertificateResponseOutput) ToManagedCertificateResponsePtrOutputWithContext(ctx context.Context) ManagedCertificateResponsePtrOutput {
+	return o.ApplyT(func(v ManagedCertificateResponse) *ManagedCertificateResponse {
+		return &v
+	}).(ManagedCertificateResponsePtrOutput)
+}
+
+// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+func (o ManagedCertificateResponseOutput) LastRenewalTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedCertificateResponse) string { return v.LastRenewalTime }).(pulumi.StringOutput)
+}
+
+// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+func (o ManagedCertificateResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedCertificateResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type ManagedCertificateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedCertificateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedCertificateResponse)(nil)).Elem()
+}
+
+func (o ManagedCertificateResponsePtrOutput) ToManagedCertificateResponsePtrOutput() ManagedCertificateResponsePtrOutput {
+	return o
+}
+
+func (o ManagedCertificateResponsePtrOutput) ToManagedCertificateResponsePtrOutputWithContext(ctx context.Context) ManagedCertificateResponsePtrOutput {
+	return o
+}
+
+func (o ManagedCertificateResponsePtrOutput) Elem() ManagedCertificateResponseOutput {
+	return o.ApplyT(func(v *ManagedCertificateResponse) ManagedCertificateResponse { return *v }).(ManagedCertificateResponseOutput)
+}
+
+// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly
+func (o ManagedCertificateResponsePtrOutput) LastRenewalTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedCertificateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LastRenewalTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
+func (o ManagedCertificateResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedCertificateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 // A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 type ManualScaling struct {
 	// Number of instances to assign to the service at the start. This number can later be altered by using the Modules API (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances() function.
@@ -3520,6 +6820,140 @@ func (o ManualScalingPtrOutput) Instances() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.Instances
+	}).(pulumi.IntPtrOutput)
+}
+
+// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+type ManualScalingResponse struct {
+	// Number of instances to assign to the service at the start. This number can later be altered by using the Modules API (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances() function.
+	Instances int `pulumi:"instances"`
+}
+
+// ManualScalingResponseInput is an input type that accepts ManualScalingResponseArgs and ManualScalingResponseOutput values.
+// You can construct a concrete instance of `ManualScalingResponseInput` via:
+//
+//          ManualScalingResponseArgs{...}
+type ManualScalingResponseInput interface {
+	pulumi.Input
+
+	ToManualScalingResponseOutput() ManualScalingResponseOutput
+	ToManualScalingResponseOutputWithContext(context.Context) ManualScalingResponseOutput
+}
+
+// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+type ManualScalingResponseArgs struct {
+	// Number of instances to assign to the service at the start. This number can later be altered by using the Modules API (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances() function.
+	Instances pulumi.IntInput `pulumi:"instances"`
+}
+
+func (ManualScalingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManualScalingResponse)(nil)).Elem()
+}
+
+func (i ManualScalingResponseArgs) ToManualScalingResponseOutput() ManualScalingResponseOutput {
+	return i.ToManualScalingResponseOutputWithContext(context.Background())
+}
+
+func (i ManualScalingResponseArgs) ToManualScalingResponseOutputWithContext(ctx context.Context) ManualScalingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManualScalingResponseOutput)
+}
+
+func (i ManualScalingResponseArgs) ToManualScalingResponsePtrOutput() ManualScalingResponsePtrOutput {
+	return i.ToManualScalingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ManualScalingResponseArgs) ToManualScalingResponsePtrOutputWithContext(ctx context.Context) ManualScalingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManualScalingResponseOutput).ToManualScalingResponsePtrOutputWithContext(ctx)
+}
+
+// ManualScalingResponsePtrInput is an input type that accepts ManualScalingResponseArgs, ManualScalingResponsePtr and ManualScalingResponsePtrOutput values.
+// You can construct a concrete instance of `ManualScalingResponsePtrInput` via:
+//
+//          ManualScalingResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ManualScalingResponsePtrInput interface {
+	pulumi.Input
+
+	ToManualScalingResponsePtrOutput() ManualScalingResponsePtrOutput
+	ToManualScalingResponsePtrOutputWithContext(context.Context) ManualScalingResponsePtrOutput
+}
+
+type manualScalingResponsePtrType ManualScalingResponseArgs
+
+func ManualScalingResponsePtr(v *ManualScalingResponseArgs) ManualScalingResponsePtrInput {
+	return (*manualScalingResponsePtrType)(v)
+}
+
+func (*manualScalingResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManualScalingResponse)(nil)).Elem()
+}
+
+func (i *manualScalingResponsePtrType) ToManualScalingResponsePtrOutput() ManualScalingResponsePtrOutput {
+	return i.ToManualScalingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *manualScalingResponsePtrType) ToManualScalingResponsePtrOutputWithContext(ctx context.Context) ManualScalingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManualScalingResponsePtrOutput)
+}
+
+// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
+type ManualScalingResponseOutput struct{ *pulumi.OutputState }
+
+func (ManualScalingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManualScalingResponse)(nil)).Elem()
+}
+
+func (o ManualScalingResponseOutput) ToManualScalingResponseOutput() ManualScalingResponseOutput {
+	return o
+}
+
+func (o ManualScalingResponseOutput) ToManualScalingResponseOutputWithContext(ctx context.Context) ManualScalingResponseOutput {
+	return o
+}
+
+func (o ManualScalingResponseOutput) ToManualScalingResponsePtrOutput() ManualScalingResponsePtrOutput {
+	return o.ToManualScalingResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ManualScalingResponseOutput) ToManualScalingResponsePtrOutputWithContext(ctx context.Context) ManualScalingResponsePtrOutput {
+	return o.ApplyT(func(v ManualScalingResponse) *ManualScalingResponse {
+		return &v
+	}).(ManualScalingResponsePtrOutput)
+}
+
+// Number of instances to assign to the service at the start. This number can later be altered by using the Modules API (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances() function.
+func (o ManualScalingResponseOutput) Instances() pulumi.IntOutput {
+	return o.ApplyT(func(v ManualScalingResponse) int { return v.Instances }).(pulumi.IntOutput)
+}
+
+type ManualScalingResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManualScalingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManualScalingResponse)(nil)).Elem()
+}
+
+func (o ManualScalingResponsePtrOutput) ToManualScalingResponsePtrOutput() ManualScalingResponsePtrOutput {
+	return o
+}
+
+func (o ManualScalingResponsePtrOutput) ToManualScalingResponsePtrOutputWithContext(ctx context.Context) ManualScalingResponsePtrOutput {
+	return o
+}
+
+func (o ManualScalingResponsePtrOutput) Elem() ManualScalingResponseOutput {
+	return o.ApplyT(func(v *ManualScalingResponse) ManualScalingResponse { return *v }).(ManualScalingResponseOutput)
+}
+
+// Number of instances to assign to the service at the start. This number can later be altered by using the Modules API (https://cloud.google.com/appengine/docs/python/modules/functions) set_num_instances() function.
+func (o ManualScalingResponsePtrOutput) Instances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManualScalingResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Instances
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -3733,6 +7167,216 @@ func (o NetworkPtrOutput) SubnetworkName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Extra network settings. Only applicable in the App Engine flexible environment.
+type NetworkResponse struct {
+	// List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable in the App Engine flexible environment.
+	ForwardedPorts []string `pulumi:"forwardedPorts"`
+	// Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment.
+	InstanceTag string `pulumi:"instanceTag"`
+	// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.Defaults to default.
+	Name string `pulumi:"name"`
+	// Enable session affinity. Only applicable in the App Engine flexible environment.
+	SessionAffinity bool `pulumi:"sessionAffinity"`
+	// Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.If a subnetwork name is specified, a network name will also be required unless it is for the default network. If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range. If the network that the instance is being created in is an auto Subnet Mode Network, then only network name should be specified (not the subnetwork_name) and the IP address is created from the IPCidrRange of the subnetwork that exists in that zone for that network. If the network that the instance is being created in is a custom Subnet Mode Network, then the subnetwork_name must be specified and the IP address is created from the IPCidrRange of the subnetwork.If specified, the subnetwork must exist in the same region as the App Engine flexible environment application.
+	SubnetworkName string `pulumi:"subnetworkName"`
+}
+
+// NetworkResponseInput is an input type that accepts NetworkResponseArgs and NetworkResponseOutput values.
+// You can construct a concrete instance of `NetworkResponseInput` via:
+//
+//          NetworkResponseArgs{...}
+type NetworkResponseInput interface {
+	pulumi.Input
+
+	ToNetworkResponseOutput() NetworkResponseOutput
+	ToNetworkResponseOutputWithContext(context.Context) NetworkResponseOutput
+}
+
+// Extra network settings. Only applicable in the App Engine flexible environment.
+type NetworkResponseArgs struct {
+	// List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable in the App Engine flexible environment.
+	ForwardedPorts pulumi.StringArrayInput `pulumi:"forwardedPorts"`
+	// Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment.
+	InstanceTag pulumi.StringInput `pulumi:"instanceTag"`
+	// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.Defaults to default.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Enable session affinity. Only applicable in the App Engine flexible environment.
+	SessionAffinity pulumi.BoolInput `pulumi:"sessionAffinity"`
+	// Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.If a subnetwork name is specified, a network name will also be required unless it is for the default network. If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range. If the network that the instance is being created in is an auto Subnet Mode Network, then only network name should be specified (not the subnetwork_name) and the IP address is created from the IPCidrRange of the subnetwork that exists in that zone for that network. If the network that the instance is being created in is a custom Subnet Mode Network, then the subnetwork_name must be specified and the IP address is created from the IPCidrRange of the subnetwork.If specified, the subnetwork must exist in the same region as the App Engine flexible environment application.
+	SubnetworkName pulumi.StringInput `pulumi:"subnetworkName"`
+}
+
+func (NetworkResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkResponse)(nil)).Elem()
+}
+
+func (i NetworkResponseArgs) ToNetworkResponseOutput() NetworkResponseOutput {
+	return i.ToNetworkResponseOutputWithContext(context.Background())
+}
+
+func (i NetworkResponseArgs) ToNetworkResponseOutputWithContext(ctx context.Context) NetworkResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkResponseOutput)
+}
+
+func (i NetworkResponseArgs) ToNetworkResponsePtrOutput() NetworkResponsePtrOutput {
+	return i.ToNetworkResponsePtrOutputWithContext(context.Background())
+}
+
+func (i NetworkResponseArgs) ToNetworkResponsePtrOutputWithContext(ctx context.Context) NetworkResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkResponseOutput).ToNetworkResponsePtrOutputWithContext(ctx)
+}
+
+// NetworkResponsePtrInput is an input type that accepts NetworkResponseArgs, NetworkResponsePtr and NetworkResponsePtrOutput values.
+// You can construct a concrete instance of `NetworkResponsePtrInput` via:
+//
+//          NetworkResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type NetworkResponsePtrInput interface {
+	pulumi.Input
+
+	ToNetworkResponsePtrOutput() NetworkResponsePtrOutput
+	ToNetworkResponsePtrOutputWithContext(context.Context) NetworkResponsePtrOutput
+}
+
+type networkResponsePtrType NetworkResponseArgs
+
+func NetworkResponsePtr(v *NetworkResponseArgs) NetworkResponsePtrInput {
+	return (*networkResponsePtrType)(v)
+}
+
+func (*networkResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkResponse)(nil)).Elem()
+}
+
+func (i *networkResponsePtrType) ToNetworkResponsePtrOutput() NetworkResponsePtrOutput {
+	return i.ToNetworkResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *networkResponsePtrType) ToNetworkResponsePtrOutputWithContext(ctx context.Context) NetworkResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkResponsePtrOutput)
+}
+
+// Extra network settings. Only applicable in the App Engine flexible environment.
+type NetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkResponse)(nil)).Elem()
+}
+
+func (o NetworkResponseOutput) ToNetworkResponseOutput() NetworkResponseOutput {
+	return o
+}
+
+func (o NetworkResponseOutput) ToNetworkResponseOutputWithContext(ctx context.Context) NetworkResponseOutput {
+	return o
+}
+
+func (o NetworkResponseOutput) ToNetworkResponsePtrOutput() NetworkResponsePtrOutput {
+	return o.ToNetworkResponsePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkResponseOutput) ToNetworkResponsePtrOutputWithContext(ctx context.Context) NetworkResponsePtrOutput {
+	return o.ApplyT(func(v NetworkResponse) *NetworkResponse {
+		return &v
+	}).(NetworkResponsePtrOutput)
+}
+
+// List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable in the App Engine flexible environment.
+func (o NetworkResponseOutput) ForwardedPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkResponse) []string { return v.ForwardedPorts }).(pulumi.StringArrayOutput)
+}
+
+// Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment.
+func (o NetworkResponseOutput) InstanceTag() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkResponse) string { return v.InstanceTag }).(pulumi.StringOutput)
+}
+
+// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.Defaults to default.
+func (o NetworkResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Enable session affinity. Only applicable in the App Engine flexible environment.
+func (o NetworkResponseOutput) SessionAffinity() pulumi.BoolOutput {
+	return o.ApplyT(func(v NetworkResponse) bool { return v.SessionAffinity }).(pulumi.BoolOutput)
+}
+
+// Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.If a subnetwork name is specified, a network name will also be required unless it is for the default network. If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range. If the network that the instance is being created in is an auto Subnet Mode Network, then only network name should be specified (not the subnetwork_name) and the IP address is created from the IPCidrRange of the subnetwork that exists in that zone for that network. If the network that the instance is being created in is a custom Subnet Mode Network, then the subnetwork_name must be specified and the IP address is created from the IPCidrRange of the subnetwork.If specified, the subnetwork must exist in the same region as the App Engine flexible environment application.
+func (o NetworkResponseOutput) SubnetworkName() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkResponse) string { return v.SubnetworkName }).(pulumi.StringOutput)
+}
+
+type NetworkResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkResponse)(nil)).Elem()
+}
+
+func (o NetworkResponsePtrOutput) ToNetworkResponsePtrOutput() NetworkResponsePtrOutput {
+	return o
+}
+
+func (o NetworkResponsePtrOutput) ToNetworkResponsePtrOutputWithContext(ctx context.Context) NetworkResponsePtrOutput {
+	return o
+}
+
+func (o NetworkResponsePtrOutput) Elem() NetworkResponseOutput {
+	return o.ApplyT(func(v *NetworkResponse) NetworkResponse { return *v }).(NetworkResponseOutput)
+}
+
+// List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable in the App Engine flexible environment.
+func (o NetworkResponsePtrOutput) ForwardedPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardedPorts
+	}).(pulumi.StringArrayOutput)
+}
+
+// Tag to apply to the instance during creation. Only applicable in the App Engine flexible environment.
+func (o NetworkResponsePtrOutput) InstanceTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceTag
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.Defaults to default.
+func (o NetworkResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable session affinity. Only applicable in the App Engine flexible environment.
+func (o NetworkResponsePtrOutput) SessionAffinity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.SessionAffinity
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.If a subnetwork name is specified, a network name will also be required unless it is for the default network. If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range. If the network that the instance is being created in is an auto Subnet Mode Network, then only network name should be specified (not the subnetwork_name) and the IP address is created from the IPCidrRange of the subnetwork that exists in that zone for that network. If the network that the instance is being created in is a custom Subnet Mode Network, then the subnetwork_name must be specified and the IP address is created from the IPCidrRange of the subnetwork.If specified, the subnetwork must exist in the same region as the App Engine flexible environment application.
+func (o NetworkResponsePtrOutput) SubnetworkName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetworkName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Target scaling by network usage. Only applicable in the App Engine flexible environment.
 type NetworkUtilization struct {
 	// Target bytes received per second.
@@ -3921,6 +7565,197 @@ func (o NetworkUtilizationPtrOutput) TargetSentPacketsPerSecond() pulumi.IntPtrO
 			return nil
 		}
 		return v.TargetSentPacketsPerSecond
+	}).(pulumi.IntPtrOutput)
+}
+
+// Target scaling by network usage. Only applicable in the App Engine flexible environment.
+type NetworkUtilizationResponse struct {
+	// Target bytes received per second.
+	TargetReceivedBytesPerSecond int `pulumi:"targetReceivedBytesPerSecond"`
+	// Target packets received per second.
+	TargetReceivedPacketsPerSecond int `pulumi:"targetReceivedPacketsPerSecond"`
+	// Target bytes sent per second.
+	TargetSentBytesPerSecond int `pulumi:"targetSentBytesPerSecond"`
+	// Target packets sent per second.
+	TargetSentPacketsPerSecond int `pulumi:"targetSentPacketsPerSecond"`
+}
+
+// NetworkUtilizationResponseInput is an input type that accepts NetworkUtilizationResponseArgs and NetworkUtilizationResponseOutput values.
+// You can construct a concrete instance of `NetworkUtilizationResponseInput` via:
+//
+//          NetworkUtilizationResponseArgs{...}
+type NetworkUtilizationResponseInput interface {
+	pulumi.Input
+
+	ToNetworkUtilizationResponseOutput() NetworkUtilizationResponseOutput
+	ToNetworkUtilizationResponseOutputWithContext(context.Context) NetworkUtilizationResponseOutput
+}
+
+// Target scaling by network usage. Only applicable in the App Engine flexible environment.
+type NetworkUtilizationResponseArgs struct {
+	// Target bytes received per second.
+	TargetReceivedBytesPerSecond pulumi.IntInput `pulumi:"targetReceivedBytesPerSecond"`
+	// Target packets received per second.
+	TargetReceivedPacketsPerSecond pulumi.IntInput `pulumi:"targetReceivedPacketsPerSecond"`
+	// Target bytes sent per second.
+	TargetSentBytesPerSecond pulumi.IntInput `pulumi:"targetSentBytesPerSecond"`
+	// Target packets sent per second.
+	TargetSentPacketsPerSecond pulumi.IntInput `pulumi:"targetSentPacketsPerSecond"`
+}
+
+func (NetworkUtilizationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkUtilizationResponse)(nil)).Elem()
+}
+
+func (i NetworkUtilizationResponseArgs) ToNetworkUtilizationResponseOutput() NetworkUtilizationResponseOutput {
+	return i.ToNetworkUtilizationResponseOutputWithContext(context.Background())
+}
+
+func (i NetworkUtilizationResponseArgs) ToNetworkUtilizationResponseOutputWithContext(ctx context.Context) NetworkUtilizationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkUtilizationResponseOutput)
+}
+
+func (i NetworkUtilizationResponseArgs) ToNetworkUtilizationResponsePtrOutput() NetworkUtilizationResponsePtrOutput {
+	return i.ToNetworkUtilizationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i NetworkUtilizationResponseArgs) ToNetworkUtilizationResponsePtrOutputWithContext(ctx context.Context) NetworkUtilizationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkUtilizationResponseOutput).ToNetworkUtilizationResponsePtrOutputWithContext(ctx)
+}
+
+// NetworkUtilizationResponsePtrInput is an input type that accepts NetworkUtilizationResponseArgs, NetworkUtilizationResponsePtr and NetworkUtilizationResponsePtrOutput values.
+// You can construct a concrete instance of `NetworkUtilizationResponsePtrInput` via:
+//
+//          NetworkUtilizationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type NetworkUtilizationResponsePtrInput interface {
+	pulumi.Input
+
+	ToNetworkUtilizationResponsePtrOutput() NetworkUtilizationResponsePtrOutput
+	ToNetworkUtilizationResponsePtrOutputWithContext(context.Context) NetworkUtilizationResponsePtrOutput
+}
+
+type networkUtilizationResponsePtrType NetworkUtilizationResponseArgs
+
+func NetworkUtilizationResponsePtr(v *NetworkUtilizationResponseArgs) NetworkUtilizationResponsePtrInput {
+	return (*networkUtilizationResponsePtrType)(v)
+}
+
+func (*networkUtilizationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkUtilizationResponse)(nil)).Elem()
+}
+
+func (i *networkUtilizationResponsePtrType) ToNetworkUtilizationResponsePtrOutput() NetworkUtilizationResponsePtrOutput {
+	return i.ToNetworkUtilizationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *networkUtilizationResponsePtrType) ToNetworkUtilizationResponsePtrOutputWithContext(ctx context.Context) NetworkUtilizationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkUtilizationResponsePtrOutput)
+}
+
+// Target scaling by network usage. Only applicable in the App Engine flexible environment.
+type NetworkUtilizationResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkUtilizationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkUtilizationResponse)(nil)).Elem()
+}
+
+func (o NetworkUtilizationResponseOutput) ToNetworkUtilizationResponseOutput() NetworkUtilizationResponseOutput {
+	return o
+}
+
+func (o NetworkUtilizationResponseOutput) ToNetworkUtilizationResponseOutputWithContext(ctx context.Context) NetworkUtilizationResponseOutput {
+	return o
+}
+
+func (o NetworkUtilizationResponseOutput) ToNetworkUtilizationResponsePtrOutput() NetworkUtilizationResponsePtrOutput {
+	return o.ToNetworkUtilizationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkUtilizationResponseOutput) ToNetworkUtilizationResponsePtrOutputWithContext(ctx context.Context) NetworkUtilizationResponsePtrOutput {
+	return o.ApplyT(func(v NetworkUtilizationResponse) *NetworkUtilizationResponse {
+		return &v
+	}).(NetworkUtilizationResponsePtrOutput)
+}
+
+// Target bytes received per second.
+func (o NetworkUtilizationResponseOutput) TargetReceivedBytesPerSecond() pulumi.IntOutput {
+	return o.ApplyT(func(v NetworkUtilizationResponse) int { return v.TargetReceivedBytesPerSecond }).(pulumi.IntOutput)
+}
+
+// Target packets received per second.
+func (o NetworkUtilizationResponseOutput) TargetReceivedPacketsPerSecond() pulumi.IntOutput {
+	return o.ApplyT(func(v NetworkUtilizationResponse) int { return v.TargetReceivedPacketsPerSecond }).(pulumi.IntOutput)
+}
+
+// Target bytes sent per second.
+func (o NetworkUtilizationResponseOutput) TargetSentBytesPerSecond() pulumi.IntOutput {
+	return o.ApplyT(func(v NetworkUtilizationResponse) int { return v.TargetSentBytesPerSecond }).(pulumi.IntOutput)
+}
+
+// Target packets sent per second.
+func (o NetworkUtilizationResponseOutput) TargetSentPacketsPerSecond() pulumi.IntOutput {
+	return o.ApplyT(func(v NetworkUtilizationResponse) int { return v.TargetSentPacketsPerSecond }).(pulumi.IntOutput)
+}
+
+type NetworkUtilizationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkUtilizationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkUtilizationResponse)(nil)).Elem()
+}
+
+func (o NetworkUtilizationResponsePtrOutput) ToNetworkUtilizationResponsePtrOutput() NetworkUtilizationResponsePtrOutput {
+	return o
+}
+
+func (o NetworkUtilizationResponsePtrOutput) ToNetworkUtilizationResponsePtrOutputWithContext(ctx context.Context) NetworkUtilizationResponsePtrOutput {
+	return o
+}
+
+func (o NetworkUtilizationResponsePtrOutput) Elem() NetworkUtilizationResponseOutput {
+	return o.ApplyT(func(v *NetworkUtilizationResponse) NetworkUtilizationResponse { return *v }).(NetworkUtilizationResponseOutput)
+}
+
+// Target bytes received per second.
+func (o NetworkUtilizationResponsePtrOutput) TargetReceivedBytesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkUtilizationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetReceivedBytesPerSecond
+	}).(pulumi.IntPtrOutput)
+}
+
+// Target packets received per second.
+func (o NetworkUtilizationResponsePtrOutput) TargetReceivedPacketsPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkUtilizationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetReceivedPacketsPerSecond
+	}).(pulumi.IntPtrOutput)
+}
+
+// Target bytes sent per second.
+func (o NetworkUtilizationResponsePtrOutput) TargetSentBytesPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkUtilizationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetSentBytesPerSecond
+	}).(pulumi.IntPtrOutput)
+}
+
+// Target packets sent per second.
+func (o NetworkUtilizationResponsePtrOutput) TargetSentPacketsPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkUtilizationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetSentPacketsPerSecond
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -4172,6 +8007,254 @@ func (o ReadinessCheckPtrOutput) Timeout() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Readiness checking configuration for VM instances. Unhealthy instances are removed from traffic rotation.
+type ReadinessCheckResponse struct {
+	// A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic.
+	AppStartTimeout string `pulumi:"appStartTimeout"`
+	// Interval between health checks.
+	CheckInterval string `pulumi:"checkInterval"`
+	// Number of consecutive failed checks required before removing traffic.
+	FailureThreshold int `pulumi:"failureThreshold"`
+	// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
+	Host string `pulumi:"host"`
+	// The request path.
+	Path string `pulumi:"path"`
+	// Number of consecutive successful checks required before receiving traffic.
+	SuccessThreshold int `pulumi:"successThreshold"`
+	// Time before the check is considered failed.
+	Timeout string `pulumi:"timeout"`
+}
+
+// ReadinessCheckResponseInput is an input type that accepts ReadinessCheckResponseArgs and ReadinessCheckResponseOutput values.
+// You can construct a concrete instance of `ReadinessCheckResponseInput` via:
+//
+//          ReadinessCheckResponseArgs{...}
+type ReadinessCheckResponseInput interface {
+	pulumi.Input
+
+	ToReadinessCheckResponseOutput() ReadinessCheckResponseOutput
+	ToReadinessCheckResponseOutputWithContext(context.Context) ReadinessCheckResponseOutput
+}
+
+// Readiness checking configuration for VM instances. Unhealthy instances are removed from traffic rotation.
+type ReadinessCheckResponseArgs struct {
+	// A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic.
+	AppStartTimeout pulumi.StringInput `pulumi:"appStartTimeout"`
+	// Interval between health checks.
+	CheckInterval pulumi.StringInput `pulumi:"checkInterval"`
+	// Number of consecutive failed checks required before removing traffic.
+	FailureThreshold pulumi.IntInput `pulumi:"failureThreshold"`
+	// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
+	Host pulumi.StringInput `pulumi:"host"`
+	// The request path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Number of consecutive successful checks required before receiving traffic.
+	SuccessThreshold pulumi.IntInput `pulumi:"successThreshold"`
+	// Time before the check is considered failed.
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+}
+
+func (ReadinessCheckResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReadinessCheckResponse)(nil)).Elem()
+}
+
+func (i ReadinessCheckResponseArgs) ToReadinessCheckResponseOutput() ReadinessCheckResponseOutput {
+	return i.ToReadinessCheckResponseOutputWithContext(context.Background())
+}
+
+func (i ReadinessCheckResponseArgs) ToReadinessCheckResponseOutputWithContext(ctx context.Context) ReadinessCheckResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReadinessCheckResponseOutput)
+}
+
+func (i ReadinessCheckResponseArgs) ToReadinessCheckResponsePtrOutput() ReadinessCheckResponsePtrOutput {
+	return i.ToReadinessCheckResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ReadinessCheckResponseArgs) ToReadinessCheckResponsePtrOutputWithContext(ctx context.Context) ReadinessCheckResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReadinessCheckResponseOutput).ToReadinessCheckResponsePtrOutputWithContext(ctx)
+}
+
+// ReadinessCheckResponsePtrInput is an input type that accepts ReadinessCheckResponseArgs, ReadinessCheckResponsePtr and ReadinessCheckResponsePtrOutput values.
+// You can construct a concrete instance of `ReadinessCheckResponsePtrInput` via:
+//
+//          ReadinessCheckResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ReadinessCheckResponsePtrInput interface {
+	pulumi.Input
+
+	ToReadinessCheckResponsePtrOutput() ReadinessCheckResponsePtrOutput
+	ToReadinessCheckResponsePtrOutputWithContext(context.Context) ReadinessCheckResponsePtrOutput
+}
+
+type readinessCheckResponsePtrType ReadinessCheckResponseArgs
+
+func ReadinessCheckResponsePtr(v *ReadinessCheckResponseArgs) ReadinessCheckResponsePtrInput {
+	return (*readinessCheckResponsePtrType)(v)
+}
+
+func (*readinessCheckResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReadinessCheckResponse)(nil)).Elem()
+}
+
+func (i *readinessCheckResponsePtrType) ToReadinessCheckResponsePtrOutput() ReadinessCheckResponsePtrOutput {
+	return i.ToReadinessCheckResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *readinessCheckResponsePtrType) ToReadinessCheckResponsePtrOutputWithContext(ctx context.Context) ReadinessCheckResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReadinessCheckResponsePtrOutput)
+}
+
+// Readiness checking configuration for VM instances. Unhealthy instances are removed from traffic rotation.
+type ReadinessCheckResponseOutput struct{ *pulumi.OutputState }
+
+func (ReadinessCheckResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReadinessCheckResponse)(nil)).Elem()
+}
+
+func (o ReadinessCheckResponseOutput) ToReadinessCheckResponseOutput() ReadinessCheckResponseOutput {
+	return o
+}
+
+func (o ReadinessCheckResponseOutput) ToReadinessCheckResponseOutputWithContext(ctx context.Context) ReadinessCheckResponseOutput {
+	return o
+}
+
+func (o ReadinessCheckResponseOutput) ToReadinessCheckResponsePtrOutput() ReadinessCheckResponsePtrOutput {
+	return o.ToReadinessCheckResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ReadinessCheckResponseOutput) ToReadinessCheckResponsePtrOutputWithContext(ctx context.Context) ReadinessCheckResponsePtrOutput {
+	return o.ApplyT(func(v ReadinessCheckResponse) *ReadinessCheckResponse {
+		return &v
+	}).(ReadinessCheckResponsePtrOutput)
+}
+
+// A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic.
+func (o ReadinessCheckResponseOutput) AppStartTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v ReadinessCheckResponse) string { return v.AppStartTimeout }).(pulumi.StringOutput)
+}
+
+// Interval between health checks.
+func (o ReadinessCheckResponseOutput) CheckInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v ReadinessCheckResponse) string { return v.CheckInterval }).(pulumi.StringOutput)
+}
+
+// Number of consecutive failed checks required before removing traffic.
+func (o ReadinessCheckResponseOutput) FailureThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v ReadinessCheckResponse) int { return v.FailureThreshold }).(pulumi.IntOutput)
+}
+
+// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
+func (o ReadinessCheckResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v ReadinessCheckResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The request path.
+func (o ReadinessCheckResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v ReadinessCheckResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Number of consecutive successful checks required before receiving traffic.
+func (o ReadinessCheckResponseOutput) SuccessThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v ReadinessCheckResponse) int { return v.SuccessThreshold }).(pulumi.IntOutput)
+}
+
+// Time before the check is considered failed.
+func (o ReadinessCheckResponseOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v ReadinessCheckResponse) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+type ReadinessCheckResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ReadinessCheckResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReadinessCheckResponse)(nil)).Elem()
+}
+
+func (o ReadinessCheckResponsePtrOutput) ToReadinessCheckResponsePtrOutput() ReadinessCheckResponsePtrOutput {
+	return o
+}
+
+func (o ReadinessCheckResponsePtrOutput) ToReadinessCheckResponsePtrOutputWithContext(ctx context.Context) ReadinessCheckResponsePtrOutput {
+	return o
+}
+
+func (o ReadinessCheckResponsePtrOutput) Elem() ReadinessCheckResponseOutput {
+	return o.ApplyT(func(v *ReadinessCheckResponse) ReadinessCheckResponse { return *v }).(ReadinessCheckResponseOutput)
+}
+
+// A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic.
+func (o ReadinessCheckResponsePtrOutput) AppStartTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReadinessCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppStartTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interval between health checks.
+func (o ReadinessCheckResponsePtrOutput) CheckInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReadinessCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CheckInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of consecutive failed checks required before removing traffic.
+func (o ReadinessCheckResponsePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReadinessCheckResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
+func (o ReadinessCheckResponsePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReadinessCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// The request path.
+func (o ReadinessCheckResponsePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReadinessCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of consecutive successful checks required before receiving traffic.
+func (o ReadinessCheckResponsePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReadinessCheckResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SuccessThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time before the check is considered failed.
+func (o ReadinessCheckResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReadinessCheckResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
 // Target scaling by request utilization. Only applicable in the App Engine flexible environment.
 type RequestUtilization struct {
 	// Target number of concurrent requests.
@@ -4325,6 +8408,159 @@ func (o RequestUtilizationPtrOutput) TargetRequestCountPerSecond() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
+// Target scaling by request utilization. Only applicable in the App Engine flexible environment.
+type RequestUtilizationResponse struct {
+	// Target number of concurrent requests.
+	TargetConcurrentRequests int `pulumi:"targetConcurrentRequests"`
+	// Target requests per second.
+	TargetRequestCountPerSecond int `pulumi:"targetRequestCountPerSecond"`
+}
+
+// RequestUtilizationResponseInput is an input type that accepts RequestUtilizationResponseArgs and RequestUtilizationResponseOutput values.
+// You can construct a concrete instance of `RequestUtilizationResponseInput` via:
+//
+//          RequestUtilizationResponseArgs{...}
+type RequestUtilizationResponseInput interface {
+	pulumi.Input
+
+	ToRequestUtilizationResponseOutput() RequestUtilizationResponseOutput
+	ToRequestUtilizationResponseOutputWithContext(context.Context) RequestUtilizationResponseOutput
+}
+
+// Target scaling by request utilization. Only applicable in the App Engine flexible environment.
+type RequestUtilizationResponseArgs struct {
+	// Target number of concurrent requests.
+	TargetConcurrentRequests pulumi.IntInput `pulumi:"targetConcurrentRequests"`
+	// Target requests per second.
+	TargetRequestCountPerSecond pulumi.IntInput `pulumi:"targetRequestCountPerSecond"`
+}
+
+func (RequestUtilizationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestUtilizationResponse)(nil)).Elem()
+}
+
+func (i RequestUtilizationResponseArgs) ToRequestUtilizationResponseOutput() RequestUtilizationResponseOutput {
+	return i.ToRequestUtilizationResponseOutputWithContext(context.Background())
+}
+
+func (i RequestUtilizationResponseArgs) ToRequestUtilizationResponseOutputWithContext(ctx context.Context) RequestUtilizationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RequestUtilizationResponseOutput)
+}
+
+func (i RequestUtilizationResponseArgs) ToRequestUtilizationResponsePtrOutput() RequestUtilizationResponsePtrOutput {
+	return i.ToRequestUtilizationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i RequestUtilizationResponseArgs) ToRequestUtilizationResponsePtrOutputWithContext(ctx context.Context) RequestUtilizationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RequestUtilizationResponseOutput).ToRequestUtilizationResponsePtrOutputWithContext(ctx)
+}
+
+// RequestUtilizationResponsePtrInput is an input type that accepts RequestUtilizationResponseArgs, RequestUtilizationResponsePtr and RequestUtilizationResponsePtrOutput values.
+// You can construct a concrete instance of `RequestUtilizationResponsePtrInput` via:
+//
+//          RequestUtilizationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type RequestUtilizationResponsePtrInput interface {
+	pulumi.Input
+
+	ToRequestUtilizationResponsePtrOutput() RequestUtilizationResponsePtrOutput
+	ToRequestUtilizationResponsePtrOutputWithContext(context.Context) RequestUtilizationResponsePtrOutput
+}
+
+type requestUtilizationResponsePtrType RequestUtilizationResponseArgs
+
+func RequestUtilizationResponsePtr(v *RequestUtilizationResponseArgs) RequestUtilizationResponsePtrInput {
+	return (*requestUtilizationResponsePtrType)(v)
+}
+
+func (*requestUtilizationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RequestUtilizationResponse)(nil)).Elem()
+}
+
+func (i *requestUtilizationResponsePtrType) ToRequestUtilizationResponsePtrOutput() RequestUtilizationResponsePtrOutput {
+	return i.ToRequestUtilizationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *requestUtilizationResponsePtrType) ToRequestUtilizationResponsePtrOutputWithContext(ctx context.Context) RequestUtilizationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RequestUtilizationResponsePtrOutput)
+}
+
+// Target scaling by request utilization. Only applicable in the App Engine flexible environment.
+type RequestUtilizationResponseOutput struct{ *pulumi.OutputState }
+
+func (RequestUtilizationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestUtilizationResponse)(nil)).Elem()
+}
+
+func (o RequestUtilizationResponseOutput) ToRequestUtilizationResponseOutput() RequestUtilizationResponseOutput {
+	return o
+}
+
+func (o RequestUtilizationResponseOutput) ToRequestUtilizationResponseOutputWithContext(ctx context.Context) RequestUtilizationResponseOutput {
+	return o
+}
+
+func (o RequestUtilizationResponseOutput) ToRequestUtilizationResponsePtrOutput() RequestUtilizationResponsePtrOutput {
+	return o.ToRequestUtilizationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o RequestUtilizationResponseOutput) ToRequestUtilizationResponsePtrOutputWithContext(ctx context.Context) RequestUtilizationResponsePtrOutput {
+	return o.ApplyT(func(v RequestUtilizationResponse) *RequestUtilizationResponse {
+		return &v
+	}).(RequestUtilizationResponsePtrOutput)
+}
+
+// Target number of concurrent requests.
+func (o RequestUtilizationResponseOutput) TargetConcurrentRequests() pulumi.IntOutput {
+	return o.ApplyT(func(v RequestUtilizationResponse) int { return v.TargetConcurrentRequests }).(pulumi.IntOutput)
+}
+
+// Target requests per second.
+func (o RequestUtilizationResponseOutput) TargetRequestCountPerSecond() pulumi.IntOutput {
+	return o.ApplyT(func(v RequestUtilizationResponse) int { return v.TargetRequestCountPerSecond }).(pulumi.IntOutput)
+}
+
+type RequestUtilizationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RequestUtilizationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RequestUtilizationResponse)(nil)).Elem()
+}
+
+func (o RequestUtilizationResponsePtrOutput) ToRequestUtilizationResponsePtrOutput() RequestUtilizationResponsePtrOutput {
+	return o
+}
+
+func (o RequestUtilizationResponsePtrOutput) ToRequestUtilizationResponsePtrOutputWithContext(ctx context.Context) RequestUtilizationResponsePtrOutput {
+	return o
+}
+
+func (o RequestUtilizationResponsePtrOutput) Elem() RequestUtilizationResponseOutput {
+	return o.ApplyT(func(v *RequestUtilizationResponse) RequestUtilizationResponse { return *v }).(RequestUtilizationResponseOutput)
+}
+
+// Target number of concurrent requests.
+func (o RequestUtilizationResponsePtrOutput) TargetConcurrentRequests() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RequestUtilizationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetConcurrentRequests
+	}).(pulumi.IntPtrOutput)
+}
+
+// Target requests per second.
+func (o RequestUtilizationResponsePtrOutput) TargetRequestCountPerSecond() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RequestUtilizationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetRequestCountPerSecond
+	}).(pulumi.IntPtrOutput)
+}
+
 // A DNS resource record.
 type ResourceRecord struct {
 	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
@@ -4441,6 +8677,124 @@ func (o ResourceRecordArrayOutput) Index(i pulumi.IntInput) ResourceRecordOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceRecord {
 		return vs[0].([]ResourceRecord)[vs[1].(int)]
 	}).(ResourceRecordOutput)
+}
+
+// A DNS resource record.
+type ResourceRecordResponse struct {
+	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
+	Name string `pulumi:"name"`
+	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+	Rrdata string `pulumi:"rrdata"`
+	// Resource record type. Example: AAAA.
+	Type string `pulumi:"type"`
+}
+
+// ResourceRecordResponseInput is an input type that accepts ResourceRecordResponseArgs and ResourceRecordResponseOutput values.
+// You can construct a concrete instance of `ResourceRecordResponseInput` via:
+//
+//          ResourceRecordResponseArgs{...}
+type ResourceRecordResponseInput interface {
+	pulumi.Input
+
+	ToResourceRecordResponseOutput() ResourceRecordResponseOutput
+	ToResourceRecordResponseOutputWithContext(context.Context) ResourceRecordResponseOutput
+}
+
+// A DNS resource record.
+type ResourceRecordResponseArgs struct {
+	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+	Rrdata pulumi.StringInput `pulumi:"rrdata"`
+	// Resource record type. Example: AAAA.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ResourceRecordResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRecordResponse)(nil)).Elem()
+}
+
+func (i ResourceRecordResponseArgs) ToResourceRecordResponseOutput() ResourceRecordResponseOutput {
+	return i.ToResourceRecordResponseOutputWithContext(context.Background())
+}
+
+func (i ResourceRecordResponseArgs) ToResourceRecordResponseOutputWithContext(ctx context.Context) ResourceRecordResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordResponseOutput)
+}
+
+// ResourceRecordResponseArrayInput is an input type that accepts ResourceRecordResponseArray and ResourceRecordResponseArrayOutput values.
+// You can construct a concrete instance of `ResourceRecordResponseArrayInput` via:
+//
+//          ResourceRecordResponseArray{ ResourceRecordResponseArgs{...} }
+type ResourceRecordResponseArrayInput interface {
+	pulumi.Input
+
+	ToResourceRecordResponseArrayOutput() ResourceRecordResponseArrayOutput
+	ToResourceRecordResponseArrayOutputWithContext(context.Context) ResourceRecordResponseArrayOutput
+}
+
+type ResourceRecordResponseArray []ResourceRecordResponseInput
+
+func (ResourceRecordResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceRecordResponse)(nil)).Elem()
+}
+
+func (i ResourceRecordResponseArray) ToResourceRecordResponseArrayOutput() ResourceRecordResponseArrayOutput {
+	return i.ToResourceRecordResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ResourceRecordResponseArray) ToResourceRecordResponseArrayOutputWithContext(ctx context.Context) ResourceRecordResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordResponseArrayOutput)
+}
+
+// A DNS resource record.
+type ResourceRecordResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceRecordResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRecordResponse)(nil)).Elem()
+}
+
+func (o ResourceRecordResponseOutput) ToResourceRecordResponseOutput() ResourceRecordResponseOutput {
+	return o
+}
+
+func (o ResourceRecordResponseOutput) ToResourceRecordResponseOutputWithContext(ctx context.Context) ResourceRecordResponseOutput {
+	return o
+}
+
+// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
+func (o ResourceRecordResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRecordResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+func (o ResourceRecordResponseOutput) Rrdata() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRecordResponse) string { return v.Rrdata }).(pulumi.StringOutput)
+}
+
+// Resource record type. Example: AAAA.
+func (o ResourceRecordResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRecordResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ResourceRecordResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceRecordResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceRecordResponse)(nil)).Elem()
+}
+
+func (o ResourceRecordResponseArrayOutput) ToResourceRecordResponseArrayOutput() ResourceRecordResponseArrayOutput {
+	return o
+}
+
+func (o ResourceRecordResponseArrayOutput) ToResourceRecordResponseArrayOutputWithContext(ctx context.Context) ResourceRecordResponseArrayOutput {
+	return o
+}
+
+func (o ResourceRecordResponseArrayOutput) Index(i pulumi.IntInput) ResourceRecordResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceRecordResponse {
+		return vs[0].([]ResourceRecordResponse)[vs[1].(int)]
+	}).(ResourceRecordResponseOutput)
 }
 
 // Machine resources for a version.
@@ -4653,6 +9007,216 @@ func (o ResourcesPtrOutput) Volumes() VolumeArrayOutput {
 	}).(VolumeArrayOutput)
 }
 
+// Machine resources for a version.
+type ResourcesResponse struct {
+	// Number of CPU cores needed.
+	Cpu float64 `pulumi:"cpu"`
+	// Disk size (GB) needed.
+	DiskGb float64 `pulumi:"diskGb"`
+	// The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud Composer to encrypt the vm disk
+	KmsKeyReference string `pulumi:"kmsKeyReference"`
+	// Memory (GB) needed.
+	MemoryGb float64 `pulumi:"memoryGb"`
+	// User specified volumes.
+	Volumes []VolumeResponse `pulumi:"volumes"`
+}
+
+// ResourcesResponseInput is an input type that accepts ResourcesResponseArgs and ResourcesResponseOutput values.
+// You can construct a concrete instance of `ResourcesResponseInput` via:
+//
+//          ResourcesResponseArgs{...}
+type ResourcesResponseInput interface {
+	pulumi.Input
+
+	ToResourcesResponseOutput() ResourcesResponseOutput
+	ToResourcesResponseOutputWithContext(context.Context) ResourcesResponseOutput
+}
+
+// Machine resources for a version.
+type ResourcesResponseArgs struct {
+	// Number of CPU cores needed.
+	Cpu pulumi.Float64Input `pulumi:"cpu"`
+	// Disk size (GB) needed.
+	DiskGb pulumi.Float64Input `pulumi:"diskGb"`
+	// The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud Composer to encrypt the vm disk
+	KmsKeyReference pulumi.StringInput `pulumi:"kmsKeyReference"`
+	// Memory (GB) needed.
+	MemoryGb pulumi.Float64Input `pulumi:"memoryGb"`
+	// User specified volumes.
+	Volumes VolumeResponseArrayInput `pulumi:"volumes"`
+}
+
+func (ResourcesResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcesResponse)(nil)).Elem()
+}
+
+func (i ResourcesResponseArgs) ToResourcesResponseOutput() ResourcesResponseOutput {
+	return i.ToResourcesResponseOutputWithContext(context.Background())
+}
+
+func (i ResourcesResponseArgs) ToResourcesResponseOutputWithContext(ctx context.Context) ResourcesResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcesResponseOutput)
+}
+
+func (i ResourcesResponseArgs) ToResourcesResponsePtrOutput() ResourcesResponsePtrOutput {
+	return i.ToResourcesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ResourcesResponseArgs) ToResourcesResponsePtrOutputWithContext(ctx context.Context) ResourcesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcesResponseOutput).ToResourcesResponsePtrOutputWithContext(ctx)
+}
+
+// ResourcesResponsePtrInput is an input type that accepts ResourcesResponseArgs, ResourcesResponsePtr and ResourcesResponsePtrOutput values.
+// You can construct a concrete instance of `ResourcesResponsePtrInput` via:
+//
+//          ResourcesResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ResourcesResponsePtrInput interface {
+	pulumi.Input
+
+	ToResourcesResponsePtrOutput() ResourcesResponsePtrOutput
+	ToResourcesResponsePtrOutputWithContext(context.Context) ResourcesResponsePtrOutput
+}
+
+type resourcesResponsePtrType ResourcesResponseArgs
+
+func ResourcesResponsePtr(v *ResourcesResponseArgs) ResourcesResponsePtrInput {
+	return (*resourcesResponsePtrType)(v)
+}
+
+func (*resourcesResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcesResponse)(nil)).Elem()
+}
+
+func (i *resourcesResponsePtrType) ToResourcesResponsePtrOutput() ResourcesResponsePtrOutput {
+	return i.ToResourcesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *resourcesResponsePtrType) ToResourcesResponsePtrOutputWithContext(ctx context.Context) ResourcesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcesResponsePtrOutput)
+}
+
+// Machine resources for a version.
+type ResourcesResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourcesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcesResponse)(nil)).Elem()
+}
+
+func (o ResourcesResponseOutput) ToResourcesResponseOutput() ResourcesResponseOutput {
+	return o
+}
+
+func (o ResourcesResponseOutput) ToResourcesResponseOutputWithContext(ctx context.Context) ResourcesResponseOutput {
+	return o
+}
+
+func (o ResourcesResponseOutput) ToResourcesResponsePtrOutput() ResourcesResponsePtrOutput {
+	return o.ToResourcesResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ResourcesResponseOutput) ToResourcesResponsePtrOutputWithContext(ctx context.Context) ResourcesResponsePtrOutput {
+	return o.ApplyT(func(v ResourcesResponse) *ResourcesResponse {
+		return &v
+	}).(ResourcesResponsePtrOutput)
+}
+
+// Number of CPU cores needed.
+func (o ResourcesResponseOutput) Cpu() pulumi.Float64Output {
+	return o.ApplyT(func(v ResourcesResponse) float64 { return v.Cpu }).(pulumi.Float64Output)
+}
+
+// Disk size (GB) needed.
+func (o ResourcesResponseOutput) DiskGb() pulumi.Float64Output {
+	return o.ApplyT(func(v ResourcesResponse) float64 { return v.DiskGb }).(pulumi.Float64Output)
+}
+
+// The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud Composer to encrypt the vm disk
+func (o ResourcesResponseOutput) KmsKeyReference() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourcesResponse) string { return v.KmsKeyReference }).(pulumi.StringOutput)
+}
+
+// Memory (GB) needed.
+func (o ResourcesResponseOutput) MemoryGb() pulumi.Float64Output {
+	return o.ApplyT(func(v ResourcesResponse) float64 { return v.MemoryGb }).(pulumi.Float64Output)
+}
+
+// User specified volumes.
+func (o ResourcesResponseOutput) Volumes() VolumeResponseArrayOutput {
+	return o.ApplyT(func(v ResourcesResponse) []VolumeResponse { return v.Volumes }).(VolumeResponseArrayOutput)
+}
+
+type ResourcesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcesResponse)(nil)).Elem()
+}
+
+func (o ResourcesResponsePtrOutput) ToResourcesResponsePtrOutput() ResourcesResponsePtrOutput {
+	return o
+}
+
+func (o ResourcesResponsePtrOutput) ToResourcesResponsePtrOutputWithContext(ctx context.Context) ResourcesResponsePtrOutput {
+	return o
+}
+
+func (o ResourcesResponsePtrOutput) Elem() ResourcesResponseOutput {
+	return o.ApplyT(func(v *ResourcesResponse) ResourcesResponse { return *v }).(ResourcesResponseOutput)
+}
+
+// Number of CPU cores needed.
+func (o ResourcesResponsePtrOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ResourcesResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Disk size (GB) needed.
+func (o ResourcesResponsePtrOutput) DiskGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ResourcesResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskGb
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud Composer to encrypt the vm disk
+func (o ResourcesResponsePtrOutput) KmsKeyReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyReference
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory (GB) needed.
+func (o ResourcesResponsePtrOutput) MemoryGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ResourcesResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.MemoryGb
+	}).(pulumi.Float64PtrOutput)
+}
+
+// User specified volumes.
+func (o ResourcesResponsePtrOutput) Volumes() VolumeResponseArrayOutput {
+	return o.ApplyT(func(v *ResourcesResponse) []VolumeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(VolumeResponseArrayOutput)
+}
+
 // Executes a script to handle the request that matches the URL pattern.
 type ScriptHandler struct {
 	// Path to the script from the application root directory.
@@ -4785,6 +9349,61 @@ func (o ScriptHandlerPtrOutput) ScriptPath() pulumi.StringPtrOutput {
 		}
 		return v.ScriptPath
 	}).(pulumi.StringPtrOutput)
+}
+
+// Executes a script to handle the request that matches the URL pattern.
+type ScriptHandlerResponse struct {
+	// Path to the script from the application root directory.
+	ScriptPath string `pulumi:"scriptPath"`
+}
+
+// ScriptHandlerResponseInput is an input type that accepts ScriptHandlerResponseArgs and ScriptHandlerResponseOutput values.
+// You can construct a concrete instance of `ScriptHandlerResponseInput` via:
+//
+//          ScriptHandlerResponseArgs{...}
+type ScriptHandlerResponseInput interface {
+	pulumi.Input
+
+	ToScriptHandlerResponseOutput() ScriptHandlerResponseOutput
+	ToScriptHandlerResponseOutputWithContext(context.Context) ScriptHandlerResponseOutput
+}
+
+// Executes a script to handle the request that matches the URL pattern.
+type ScriptHandlerResponseArgs struct {
+	// Path to the script from the application root directory.
+	ScriptPath pulumi.StringInput `pulumi:"scriptPath"`
+}
+
+func (ScriptHandlerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScriptHandlerResponse)(nil)).Elem()
+}
+
+func (i ScriptHandlerResponseArgs) ToScriptHandlerResponseOutput() ScriptHandlerResponseOutput {
+	return i.ToScriptHandlerResponseOutputWithContext(context.Background())
+}
+
+func (i ScriptHandlerResponseArgs) ToScriptHandlerResponseOutputWithContext(ctx context.Context) ScriptHandlerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScriptHandlerResponseOutput)
+}
+
+// Executes a script to handle the request that matches the URL pattern.
+type ScriptHandlerResponseOutput struct{ *pulumi.OutputState }
+
+func (ScriptHandlerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScriptHandlerResponse)(nil)).Elem()
+}
+
+func (o ScriptHandlerResponseOutput) ToScriptHandlerResponseOutput() ScriptHandlerResponseOutput {
+	return o
+}
+
+func (o ScriptHandlerResponseOutput) ToScriptHandlerResponseOutputWithContext(ctx context.Context) ScriptHandlerResponseOutput {
+	return o
+}
+
+// Path to the script from the application root directory.
+func (o ScriptHandlerResponseOutput) ScriptPath() pulumi.StringOutput {
+	return o.ApplyT(func(v ScriptHandlerResponse) string { return v.ScriptPath }).(pulumi.StringOutput)
 }
 
 // SSL configuration for a DomainMapping resource.
@@ -4956,6 +9575,178 @@ func (o SslSettingsPtrOutput) SslManagementType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SslManagementType
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSL configuration for a DomainMapping resource.
+type SslSettingsResponse struct {
+	// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
+	CertificateId string `pulumi:"certificateId"`
+	// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
+	PendingManagedCertificateId string `pulumi:"pendingManagedCertificateId"`
+	// SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
+	SslManagementType string `pulumi:"sslManagementType"`
+}
+
+// SslSettingsResponseInput is an input type that accepts SslSettingsResponseArgs and SslSettingsResponseOutput values.
+// You can construct a concrete instance of `SslSettingsResponseInput` via:
+//
+//          SslSettingsResponseArgs{...}
+type SslSettingsResponseInput interface {
+	pulumi.Input
+
+	ToSslSettingsResponseOutput() SslSettingsResponseOutput
+	ToSslSettingsResponseOutputWithContext(context.Context) SslSettingsResponseOutput
+}
+
+// SSL configuration for a DomainMapping resource.
+type SslSettingsResponseArgs struct {
+	// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
+	CertificateId pulumi.StringInput `pulumi:"certificateId"`
+	// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
+	PendingManagedCertificateId pulumi.StringInput `pulumi:"pendingManagedCertificateId"`
+	// SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
+	SslManagementType pulumi.StringInput `pulumi:"sslManagementType"`
+}
+
+func (SslSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslSettingsResponse)(nil)).Elem()
+}
+
+func (i SslSettingsResponseArgs) ToSslSettingsResponseOutput() SslSettingsResponseOutput {
+	return i.ToSslSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i SslSettingsResponseArgs) ToSslSettingsResponseOutputWithContext(ctx context.Context) SslSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslSettingsResponseOutput)
+}
+
+func (i SslSettingsResponseArgs) ToSslSettingsResponsePtrOutput() SslSettingsResponsePtrOutput {
+	return i.ToSslSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SslSettingsResponseArgs) ToSslSettingsResponsePtrOutputWithContext(ctx context.Context) SslSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslSettingsResponseOutput).ToSslSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// SslSettingsResponsePtrInput is an input type that accepts SslSettingsResponseArgs, SslSettingsResponsePtr and SslSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `SslSettingsResponsePtrInput` via:
+//
+//          SslSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SslSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToSslSettingsResponsePtrOutput() SslSettingsResponsePtrOutput
+	ToSslSettingsResponsePtrOutputWithContext(context.Context) SslSettingsResponsePtrOutput
+}
+
+type sslSettingsResponsePtrType SslSettingsResponseArgs
+
+func SslSettingsResponsePtr(v *SslSettingsResponseArgs) SslSettingsResponsePtrInput {
+	return (*sslSettingsResponsePtrType)(v)
+}
+
+func (*sslSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslSettingsResponse)(nil)).Elem()
+}
+
+func (i *sslSettingsResponsePtrType) ToSslSettingsResponsePtrOutput() SslSettingsResponsePtrOutput {
+	return i.ToSslSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *sslSettingsResponsePtrType) ToSslSettingsResponsePtrOutputWithContext(ctx context.Context) SslSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslSettingsResponsePtrOutput)
+}
+
+// SSL configuration for a DomainMapping resource.
+type SslSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (SslSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslSettingsResponse)(nil)).Elem()
+}
+
+func (o SslSettingsResponseOutput) ToSslSettingsResponseOutput() SslSettingsResponseOutput {
+	return o
+}
+
+func (o SslSettingsResponseOutput) ToSslSettingsResponseOutputWithContext(ctx context.Context) SslSettingsResponseOutput {
+	return o
+}
+
+func (o SslSettingsResponseOutput) ToSslSettingsResponsePtrOutput() SslSettingsResponsePtrOutput {
+	return o.ToSslSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SslSettingsResponseOutput) ToSslSettingsResponsePtrOutputWithContext(ctx context.Context) SslSettingsResponsePtrOutput {
+	return o.ApplyT(func(v SslSettingsResponse) *SslSettingsResponse {
+		return &v
+	}).(SslSettingsResponsePtrOutput)
+}
+
+// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
+func (o SslSettingsResponseOutput) CertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v SslSettingsResponse) string { return v.CertificateId }).(pulumi.StringOutput)
+}
+
+// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
+func (o SslSettingsResponseOutput) PendingManagedCertificateId() pulumi.StringOutput {
+	return o.ApplyT(func(v SslSettingsResponse) string { return v.PendingManagedCertificateId }).(pulumi.StringOutput)
+}
+
+// SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
+func (o SslSettingsResponseOutput) SslManagementType() pulumi.StringOutput {
+	return o.ApplyT(func(v SslSettingsResponse) string { return v.SslManagementType }).(pulumi.StringOutput)
+}
+
+type SslSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SslSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslSettingsResponse)(nil)).Elem()
+}
+
+func (o SslSettingsResponsePtrOutput) ToSslSettingsResponsePtrOutput() SslSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SslSettingsResponsePtrOutput) ToSslSettingsResponsePtrOutputWithContext(ctx context.Context) SslSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SslSettingsResponsePtrOutput) Elem() SslSettingsResponseOutput {
+	return o.ApplyT(func(v *SslSettingsResponse) SslSettingsResponse { return *v }).(SslSettingsResponseOutput)
+}
+
+// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
+func (o SslSettingsResponsePtrOutput) CertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until the new managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the provisioning process completes, the certificate_id field will reflect the new managed certificate and this field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly
+func (o SslSettingsResponsePtrOutput) PendingManagedCertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PendingManagedCertificateId
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
+func (o SslSettingsResponsePtrOutput) SslManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SslManagementType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5147,6 +9938,197 @@ func (o StandardSchedulerSettingsPtrOutput) TargetThroughputUtilization() pulumi
 			return nil
 		}
 		return v.TargetThroughputUtilization
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Scheduler settings for standard environment.
+type StandardSchedulerSettingsResponse struct {
+	// Maximum number of instances to run for this version. Set to zero to disable max_instances configuration.
+	MaxInstances int `pulumi:"maxInstances"`
+	// Minimum number of instances to run for this version. Set to zero to disable min_instances configuration.
+	MinInstances int `pulumi:"minInstances"`
+	// Target CPU utilization ratio to maintain when scaling.
+	TargetCpuUtilization float64 `pulumi:"targetCpuUtilization"`
+	// Target throughput utilization ratio to maintain when scaling
+	TargetThroughputUtilization float64 `pulumi:"targetThroughputUtilization"`
+}
+
+// StandardSchedulerSettingsResponseInput is an input type that accepts StandardSchedulerSettingsResponseArgs and StandardSchedulerSettingsResponseOutput values.
+// You can construct a concrete instance of `StandardSchedulerSettingsResponseInput` via:
+//
+//          StandardSchedulerSettingsResponseArgs{...}
+type StandardSchedulerSettingsResponseInput interface {
+	pulumi.Input
+
+	ToStandardSchedulerSettingsResponseOutput() StandardSchedulerSettingsResponseOutput
+	ToStandardSchedulerSettingsResponseOutputWithContext(context.Context) StandardSchedulerSettingsResponseOutput
+}
+
+// Scheduler settings for standard environment.
+type StandardSchedulerSettingsResponseArgs struct {
+	// Maximum number of instances to run for this version. Set to zero to disable max_instances configuration.
+	MaxInstances pulumi.IntInput `pulumi:"maxInstances"`
+	// Minimum number of instances to run for this version. Set to zero to disable min_instances configuration.
+	MinInstances pulumi.IntInput `pulumi:"minInstances"`
+	// Target CPU utilization ratio to maintain when scaling.
+	TargetCpuUtilization pulumi.Float64Input `pulumi:"targetCpuUtilization"`
+	// Target throughput utilization ratio to maintain when scaling
+	TargetThroughputUtilization pulumi.Float64Input `pulumi:"targetThroughputUtilization"`
+}
+
+func (StandardSchedulerSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardSchedulerSettingsResponse)(nil)).Elem()
+}
+
+func (i StandardSchedulerSettingsResponseArgs) ToStandardSchedulerSettingsResponseOutput() StandardSchedulerSettingsResponseOutput {
+	return i.ToStandardSchedulerSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i StandardSchedulerSettingsResponseArgs) ToStandardSchedulerSettingsResponseOutputWithContext(ctx context.Context) StandardSchedulerSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardSchedulerSettingsResponseOutput)
+}
+
+func (i StandardSchedulerSettingsResponseArgs) ToStandardSchedulerSettingsResponsePtrOutput() StandardSchedulerSettingsResponsePtrOutput {
+	return i.ToStandardSchedulerSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i StandardSchedulerSettingsResponseArgs) ToStandardSchedulerSettingsResponsePtrOutputWithContext(ctx context.Context) StandardSchedulerSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardSchedulerSettingsResponseOutput).ToStandardSchedulerSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// StandardSchedulerSettingsResponsePtrInput is an input type that accepts StandardSchedulerSettingsResponseArgs, StandardSchedulerSettingsResponsePtr and StandardSchedulerSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `StandardSchedulerSettingsResponsePtrInput` via:
+//
+//          StandardSchedulerSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type StandardSchedulerSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToStandardSchedulerSettingsResponsePtrOutput() StandardSchedulerSettingsResponsePtrOutput
+	ToStandardSchedulerSettingsResponsePtrOutputWithContext(context.Context) StandardSchedulerSettingsResponsePtrOutput
+}
+
+type standardSchedulerSettingsResponsePtrType StandardSchedulerSettingsResponseArgs
+
+func StandardSchedulerSettingsResponsePtr(v *StandardSchedulerSettingsResponseArgs) StandardSchedulerSettingsResponsePtrInput {
+	return (*standardSchedulerSettingsResponsePtrType)(v)
+}
+
+func (*standardSchedulerSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardSchedulerSettingsResponse)(nil)).Elem()
+}
+
+func (i *standardSchedulerSettingsResponsePtrType) ToStandardSchedulerSettingsResponsePtrOutput() StandardSchedulerSettingsResponsePtrOutput {
+	return i.ToStandardSchedulerSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *standardSchedulerSettingsResponsePtrType) ToStandardSchedulerSettingsResponsePtrOutputWithContext(ctx context.Context) StandardSchedulerSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardSchedulerSettingsResponsePtrOutput)
+}
+
+// Scheduler settings for standard environment.
+type StandardSchedulerSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (StandardSchedulerSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardSchedulerSettingsResponse)(nil)).Elem()
+}
+
+func (o StandardSchedulerSettingsResponseOutput) ToStandardSchedulerSettingsResponseOutput() StandardSchedulerSettingsResponseOutput {
+	return o
+}
+
+func (o StandardSchedulerSettingsResponseOutput) ToStandardSchedulerSettingsResponseOutputWithContext(ctx context.Context) StandardSchedulerSettingsResponseOutput {
+	return o
+}
+
+func (o StandardSchedulerSettingsResponseOutput) ToStandardSchedulerSettingsResponsePtrOutput() StandardSchedulerSettingsResponsePtrOutput {
+	return o.ToStandardSchedulerSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o StandardSchedulerSettingsResponseOutput) ToStandardSchedulerSettingsResponsePtrOutputWithContext(ctx context.Context) StandardSchedulerSettingsResponsePtrOutput {
+	return o.ApplyT(func(v StandardSchedulerSettingsResponse) *StandardSchedulerSettingsResponse {
+		return &v
+	}).(StandardSchedulerSettingsResponsePtrOutput)
+}
+
+// Maximum number of instances to run for this version. Set to zero to disable max_instances configuration.
+func (o StandardSchedulerSettingsResponseOutput) MaxInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v StandardSchedulerSettingsResponse) int { return v.MaxInstances }).(pulumi.IntOutput)
+}
+
+// Minimum number of instances to run for this version. Set to zero to disable min_instances configuration.
+func (o StandardSchedulerSettingsResponseOutput) MinInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v StandardSchedulerSettingsResponse) int { return v.MinInstances }).(pulumi.IntOutput)
+}
+
+// Target CPU utilization ratio to maintain when scaling.
+func (o StandardSchedulerSettingsResponseOutput) TargetCpuUtilization() pulumi.Float64Output {
+	return o.ApplyT(func(v StandardSchedulerSettingsResponse) float64 { return v.TargetCpuUtilization }).(pulumi.Float64Output)
+}
+
+// Target throughput utilization ratio to maintain when scaling
+func (o StandardSchedulerSettingsResponseOutput) TargetThroughputUtilization() pulumi.Float64Output {
+	return o.ApplyT(func(v StandardSchedulerSettingsResponse) float64 { return v.TargetThroughputUtilization }).(pulumi.Float64Output)
+}
+
+type StandardSchedulerSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StandardSchedulerSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StandardSchedulerSettingsResponse)(nil)).Elem()
+}
+
+func (o StandardSchedulerSettingsResponsePtrOutput) ToStandardSchedulerSettingsResponsePtrOutput() StandardSchedulerSettingsResponsePtrOutput {
+	return o
+}
+
+func (o StandardSchedulerSettingsResponsePtrOutput) ToStandardSchedulerSettingsResponsePtrOutputWithContext(ctx context.Context) StandardSchedulerSettingsResponsePtrOutput {
+	return o
+}
+
+func (o StandardSchedulerSettingsResponsePtrOutput) Elem() StandardSchedulerSettingsResponseOutput {
+	return o.ApplyT(func(v *StandardSchedulerSettingsResponse) StandardSchedulerSettingsResponse { return *v }).(StandardSchedulerSettingsResponseOutput)
+}
+
+// Maximum number of instances to run for this version. Set to zero to disable max_instances configuration.
+func (o StandardSchedulerSettingsResponsePtrOutput) MaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StandardSchedulerSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of instances to run for this version. Set to zero to disable min_instances configuration.
+func (o StandardSchedulerSettingsResponsePtrOutput) MinInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StandardSchedulerSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Target CPU utilization ratio to maintain when scaling.
+func (o StandardSchedulerSettingsResponsePtrOutput) TargetCpuUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *StandardSchedulerSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetCpuUtilization
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Target throughput utilization ratio to maintain when scaling
+func (o StandardSchedulerSettingsResponsePtrOutput) TargetThroughputUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *StandardSchedulerSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetThroughputUtilization
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -5398,6 +10380,115 @@ func (o StaticFilesHandlerPtrOutput) UploadPathRegex() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+type StaticFilesHandlerResponse struct {
+	// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+	ApplicationReadable bool `pulumi:"applicationReadable"`
+	// Time a static file served by this handler should be cached by web proxies and browsers.
+	Expiration string `pulumi:"expiration"`
+	// HTTP headers to use for all responses from these URLs.
+	HttpHeaders map[string]string `pulumi:"httpHeaders"`
+	// MIME type used to serve all files served by this handler.Defaults to file-specific MIME types, which are derived from each file's filename extension.
+	MimeType string `pulumi:"mimeType"`
+	// Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
+	Path string `pulumi:"path"`
+	// Whether this handler should match the request if the file referenced by the handler does not exist.
+	RequireMatchingFile bool `pulumi:"requireMatchingFile"`
+	// Regular expression that matches the file paths for all files that should be referenced by this handler.
+	UploadPathRegex string `pulumi:"uploadPathRegex"`
+}
+
+// StaticFilesHandlerResponseInput is an input type that accepts StaticFilesHandlerResponseArgs and StaticFilesHandlerResponseOutput values.
+// You can construct a concrete instance of `StaticFilesHandlerResponseInput` via:
+//
+//          StaticFilesHandlerResponseArgs{...}
+type StaticFilesHandlerResponseInput interface {
+	pulumi.Input
+
+	ToStaticFilesHandlerResponseOutput() StaticFilesHandlerResponseOutput
+	ToStaticFilesHandlerResponseOutputWithContext(context.Context) StaticFilesHandlerResponseOutput
+}
+
+// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+type StaticFilesHandlerResponseArgs struct {
+	// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+	ApplicationReadable pulumi.BoolInput `pulumi:"applicationReadable"`
+	// Time a static file served by this handler should be cached by web proxies and browsers.
+	Expiration pulumi.StringInput `pulumi:"expiration"`
+	// HTTP headers to use for all responses from these URLs.
+	HttpHeaders pulumi.StringMapInput `pulumi:"httpHeaders"`
+	// MIME type used to serve all files served by this handler.Defaults to file-specific MIME types, which are derived from each file's filename extension.
+	MimeType pulumi.StringInput `pulumi:"mimeType"`
+	// Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Whether this handler should match the request if the file referenced by the handler does not exist.
+	RequireMatchingFile pulumi.BoolInput `pulumi:"requireMatchingFile"`
+	// Regular expression that matches the file paths for all files that should be referenced by this handler.
+	UploadPathRegex pulumi.StringInput `pulumi:"uploadPathRegex"`
+}
+
+func (StaticFilesHandlerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticFilesHandlerResponse)(nil)).Elem()
+}
+
+func (i StaticFilesHandlerResponseArgs) ToStaticFilesHandlerResponseOutput() StaticFilesHandlerResponseOutput {
+	return i.ToStaticFilesHandlerResponseOutputWithContext(context.Background())
+}
+
+func (i StaticFilesHandlerResponseArgs) ToStaticFilesHandlerResponseOutputWithContext(ctx context.Context) StaticFilesHandlerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticFilesHandlerResponseOutput)
+}
+
+// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+type StaticFilesHandlerResponseOutput struct{ *pulumi.OutputState }
+
+func (StaticFilesHandlerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticFilesHandlerResponse)(nil)).Elem()
+}
+
+func (o StaticFilesHandlerResponseOutput) ToStaticFilesHandlerResponseOutput() StaticFilesHandlerResponseOutput {
+	return o
+}
+
+func (o StaticFilesHandlerResponseOutput) ToStaticFilesHandlerResponseOutputWithContext(ctx context.Context) StaticFilesHandlerResponseOutput {
+	return o
+}
+
+// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
+func (o StaticFilesHandlerResponseOutput) ApplicationReadable() pulumi.BoolOutput {
+	return o.ApplyT(func(v StaticFilesHandlerResponse) bool { return v.ApplicationReadable }).(pulumi.BoolOutput)
+}
+
+// Time a static file served by this handler should be cached by web proxies and browsers.
+func (o StaticFilesHandlerResponseOutput) Expiration() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticFilesHandlerResponse) string { return v.Expiration }).(pulumi.StringOutput)
+}
+
+// HTTP headers to use for all responses from these URLs.
+func (o StaticFilesHandlerResponseOutput) HttpHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v StaticFilesHandlerResponse) map[string]string { return v.HttpHeaders }).(pulumi.StringMapOutput)
+}
+
+// MIME type used to serve all files served by this handler.Defaults to file-specific MIME types, which are derived from each file's filename extension.
+func (o StaticFilesHandlerResponseOutput) MimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticFilesHandlerResponse) string { return v.MimeType }).(pulumi.StringOutput)
+}
+
+// Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
+func (o StaticFilesHandlerResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticFilesHandlerResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Whether this handler should match the request if the file referenced by the handler does not exist.
+func (o StaticFilesHandlerResponseOutput) RequireMatchingFile() pulumi.BoolOutput {
+	return o.ApplyT(func(v StaticFilesHandlerResponse) bool { return v.RequireMatchingFile }).(pulumi.BoolOutput)
+}
+
+// Regular expression that matches the file paths for all files that should be referenced by this handler.
+func (o StaticFilesHandlerResponseOutput) UploadPathRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticFilesHandlerResponse) string { return v.UploadPathRegex }).(pulumi.StringOutput)
+}
+
 // Rules to match an HTTP request and dispatch that request to a service.
 type UrlDispatchRule struct {
 	// Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".Defaults to matching all domains: "*".
@@ -5514,6 +10605,124 @@ func (o UrlDispatchRuleArrayOutput) Index(i pulumi.IntInput) UrlDispatchRuleOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UrlDispatchRule {
 		return vs[0].([]UrlDispatchRule)[vs[1].(int)]
 	}).(UrlDispatchRuleOutput)
+}
+
+// Rules to match an HTTP request and dispatch that request to a service.
+type UrlDispatchRuleResponse struct {
+	// Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".Defaults to matching all domains: "*".
+	Domain string `pulumi:"domain"`
+	// Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.The sum of the lengths of the domain and path may not exceed 100 characters.
+	Path string `pulumi:"path"`
+	// Resource ID of a service in this application that should serve the matched request. The service must already exist. Example: default.
+	Service string `pulumi:"service"`
+}
+
+// UrlDispatchRuleResponseInput is an input type that accepts UrlDispatchRuleResponseArgs and UrlDispatchRuleResponseOutput values.
+// You can construct a concrete instance of `UrlDispatchRuleResponseInput` via:
+//
+//          UrlDispatchRuleResponseArgs{...}
+type UrlDispatchRuleResponseInput interface {
+	pulumi.Input
+
+	ToUrlDispatchRuleResponseOutput() UrlDispatchRuleResponseOutput
+	ToUrlDispatchRuleResponseOutputWithContext(context.Context) UrlDispatchRuleResponseOutput
+}
+
+// Rules to match an HTTP request and dispatch that request to a service.
+type UrlDispatchRuleResponseArgs struct {
+	// Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".Defaults to matching all domains: "*".
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.The sum of the lengths of the domain and path may not exceed 100 characters.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Resource ID of a service in this application that should serve the matched request. The service must already exist. Example: default.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (UrlDispatchRuleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UrlDispatchRuleResponse)(nil)).Elem()
+}
+
+func (i UrlDispatchRuleResponseArgs) ToUrlDispatchRuleResponseOutput() UrlDispatchRuleResponseOutput {
+	return i.ToUrlDispatchRuleResponseOutputWithContext(context.Background())
+}
+
+func (i UrlDispatchRuleResponseArgs) ToUrlDispatchRuleResponseOutputWithContext(ctx context.Context) UrlDispatchRuleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UrlDispatchRuleResponseOutput)
+}
+
+// UrlDispatchRuleResponseArrayInput is an input type that accepts UrlDispatchRuleResponseArray and UrlDispatchRuleResponseArrayOutput values.
+// You can construct a concrete instance of `UrlDispatchRuleResponseArrayInput` via:
+//
+//          UrlDispatchRuleResponseArray{ UrlDispatchRuleResponseArgs{...} }
+type UrlDispatchRuleResponseArrayInput interface {
+	pulumi.Input
+
+	ToUrlDispatchRuleResponseArrayOutput() UrlDispatchRuleResponseArrayOutput
+	ToUrlDispatchRuleResponseArrayOutputWithContext(context.Context) UrlDispatchRuleResponseArrayOutput
+}
+
+type UrlDispatchRuleResponseArray []UrlDispatchRuleResponseInput
+
+func (UrlDispatchRuleResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UrlDispatchRuleResponse)(nil)).Elem()
+}
+
+func (i UrlDispatchRuleResponseArray) ToUrlDispatchRuleResponseArrayOutput() UrlDispatchRuleResponseArrayOutput {
+	return i.ToUrlDispatchRuleResponseArrayOutputWithContext(context.Background())
+}
+
+func (i UrlDispatchRuleResponseArray) ToUrlDispatchRuleResponseArrayOutputWithContext(ctx context.Context) UrlDispatchRuleResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UrlDispatchRuleResponseArrayOutput)
+}
+
+// Rules to match an HTTP request and dispatch that request to a service.
+type UrlDispatchRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (UrlDispatchRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UrlDispatchRuleResponse)(nil)).Elem()
+}
+
+func (o UrlDispatchRuleResponseOutput) ToUrlDispatchRuleResponseOutput() UrlDispatchRuleResponseOutput {
+	return o
+}
+
+func (o UrlDispatchRuleResponseOutput) ToUrlDispatchRuleResponseOutputWithContext(ctx context.Context) UrlDispatchRuleResponseOutput {
+	return o
+}
+
+// Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".Defaults to matching all domains: "*".
+func (o UrlDispatchRuleResponseOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v UrlDispatchRuleResponse) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.The sum of the lengths of the domain and path may not exceed 100 characters.
+func (o UrlDispatchRuleResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v UrlDispatchRuleResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Resource ID of a service in this application that should serve the matched request. The service must already exist. Example: default.
+func (o UrlDispatchRuleResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v UrlDispatchRuleResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type UrlDispatchRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (UrlDispatchRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UrlDispatchRuleResponse)(nil)).Elem()
+}
+
+func (o UrlDispatchRuleResponseArrayOutput) ToUrlDispatchRuleResponseArrayOutput() UrlDispatchRuleResponseArrayOutput {
+	return o
+}
+
+func (o UrlDispatchRuleResponseArrayOutput) ToUrlDispatchRuleResponseArrayOutputWithContext(ctx context.Context) UrlDispatchRuleResponseArrayOutput {
+	return o
+}
+
+func (o UrlDispatchRuleResponseArrayOutput) Index(i pulumi.IntInput) UrlDispatchRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UrlDispatchRuleResponse {
+		return vs[0].([]UrlDispatchRuleResponse)[vs[1].(int)]
+	}).(UrlDispatchRuleResponseOutput)
 }
 
 // URL pattern and description of how the URL should be handled. App Engine can handle URLs by executing application code or by serving static files uploaded with the version, such as images, CSS, or JavaScript.
@@ -5679,6 +10888,169 @@ func (o UrlMapArrayOutput) Index(i pulumi.IntInput) UrlMapOutput {
 	}).(UrlMapOutput)
 }
 
+// URL pattern and description of how the URL should be handled. App Engine can handle URLs by executing application code or by serving static files uploaded with the version, such as images, CSS, or JavaScript.
+type UrlMapResponse struct {
+	// Uses API Endpoints to handle requests.
+	ApiEndpoint ApiEndpointHandlerResponse `pulumi:"apiEndpoint"`
+	// Action to take when users access resources that require authentication. Defaults to redirect.
+	AuthFailAction string `pulumi:"authFailAction"`
+	// Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
+	Login string `pulumi:"login"`
+	// 30x code to use when performing redirects for the secure field. Defaults to 302.
+	RedirectHttpResponseCode string `pulumi:"redirectHttpResponseCode"`
+	// Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto".
+	Script ScriptHandlerResponse `pulumi:"script"`
+	// Security (HTTPS) enforcement for this URL.
+	SecurityLevel string `pulumi:"securityLevel"`
+	// Returns the contents of a file, such as an image, as the response.
+	StaticFiles StaticFilesHandlerResponse `pulumi:"staticFiles"`
+	// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+	UrlRegex string `pulumi:"urlRegex"`
+}
+
+// UrlMapResponseInput is an input type that accepts UrlMapResponseArgs and UrlMapResponseOutput values.
+// You can construct a concrete instance of `UrlMapResponseInput` via:
+//
+//          UrlMapResponseArgs{...}
+type UrlMapResponseInput interface {
+	pulumi.Input
+
+	ToUrlMapResponseOutput() UrlMapResponseOutput
+	ToUrlMapResponseOutputWithContext(context.Context) UrlMapResponseOutput
+}
+
+// URL pattern and description of how the URL should be handled. App Engine can handle URLs by executing application code or by serving static files uploaded with the version, such as images, CSS, or JavaScript.
+type UrlMapResponseArgs struct {
+	// Uses API Endpoints to handle requests.
+	ApiEndpoint ApiEndpointHandlerResponseInput `pulumi:"apiEndpoint"`
+	// Action to take when users access resources that require authentication. Defaults to redirect.
+	AuthFailAction pulumi.StringInput `pulumi:"authFailAction"`
+	// Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
+	Login pulumi.StringInput `pulumi:"login"`
+	// 30x code to use when performing redirects for the secure field. Defaults to 302.
+	RedirectHttpResponseCode pulumi.StringInput `pulumi:"redirectHttpResponseCode"`
+	// Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto".
+	Script ScriptHandlerResponseInput `pulumi:"script"`
+	// Security (HTTPS) enforcement for this URL.
+	SecurityLevel pulumi.StringInput `pulumi:"securityLevel"`
+	// Returns the contents of a file, such as an image, as the response.
+	StaticFiles StaticFilesHandlerResponseInput `pulumi:"staticFiles"`
+	// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+	UrlRegex pulumi.StringInput `pulumi:"urlRegex"`
+}
+
+func (UrlMapResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UrlMapResponse)(nil)).Elem()
+}
+
+func (i UrlMapResponseArgs) ToUrlMapResponseOutput() UrlMapResponseOutput {
+	return i.ToUrlMapResponseOutputWithContext(context.Background())
+}
+
+func (i UrlMapResponseArgs) ToUrlMapResponseOutputWithContext(ctx context.Context) UrlMapResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UrlMapResponseOutput)
+}
+
+// UrlMapResponseArrayInput is an input type that accepts UrlMapResponseArray and UrlMapResponseArrayOutput values.
+// You can construct a concrete instance of `UrlMapResponseArrayInput` via:
+//
+//          UrlMapResponseArray{ UrlMapResponseArgs{...} }
+type UrlMapResponseArrayInput interface {
+	pulumi.Input
+
+	ToUrlMapResponseArrayOutput() UrlMapResponseArrayOutput
+	ToUrlMapResponseArrayOutputWithContext(context.Context) UrlMapResponseArrayOutput
+}
+
+type UrlMapResponseArray []UrlMapResponseInput
+
+func (UrlMapResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UrlMapResponse)(nil)).Elem()
+}
+
+func (i UrlMapResponseArray) ToUrlMapResponseArrayOutput() UrlMapResponseArrayOutput {
+	return i.ToUrlMapResponseArrayOutputWithContext(context.Background())
+}
+
+func (i UrlMapResponseArray) ToUrlMapResponseArrayOutputWithContext(ctx context.Context) UrlMapResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UrlMapResponseArrayOutput)
+}
+
+// URL pattern and description of how the URL should be handled. App Engine can handle URLs by executing application code or by serving static files uploaded with the version, such as images, CSS, or JavaScript.
+type UrlMapResponseOutput struct{ *pulumi.OutputState }
+
+func (UrlMapResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UrlMapResponse)(nil)).Elem()
+}
+
+func (o UrlMapResponseOutput) ToUrlMapResponseOutput() UrlMapResponseOutput {
+	return o
+}
+
+func (o UrlMapResponseOutput) ToUrlMapResponseOutputWithContext(ctx context.Context) UrlMapResponseOutput {
+	return o
+}
+
+// Uses API Endpoints to handle requests.
+func (o UrlMapResponseOutput) ApiEndpoint() ApiEndpointHandlerResponseOutput {
+	return o.ApplyT(func(v UrlMapResponse) ApiEndpointHandlerResponse { return v.ApiEndpoint }).(ApiEndpointHandlerResponseOutput)
+}
+
+// Action to take when users access resources that require authentication. Defaults to redirect.
+func (o UrlMapResponseOutput) AuthFailAction() pulumi.StringOutput {
+	return o.ApplyT(func(v UrlMapResponse) string { return v.AuthFailAction }).(pulumi.StringOutput)
+}
+
+// Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
+func (o UrlMapResponseOutput) Login() pulumi.StringOutput {
+	return o.ApplyT(func(v UrlMapResponse) string { return v.Login }).(pulumi.StringOutput)
+}
+
+// 30x code to use when performing redirects for the secure field. Defaults to 302.
+func (o UrlMapResponseOutput) RedirectHttpResponseCode() pulumi.StringOutput {
+	return o.ApplyT(func(v UrlMapResponse) string { return v.RedirectHttpResponseCode }).(pulumi.StringOutput)
+}
+
+// Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto".
+func (o UrlMapResponseOutput) Script() ScriptHandlerResponseOutput {
+	return o.ApplyT(func(v UrlMapResponse) ScriptHandlerResponse { return v.Script }).(ScriptHandlerResponseOutput)
+}
+
+// Security (HTTPS) enforcement for this URL.
+func (o UrlMapResponseOutput) SecurityLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v UrlMapResponse) string { return v.SecurityLevel }).(pulumi.StringOutput)
+}
+
+// Returns the contents of a file, such as an image, as the response.
+func (o UrlMapResponseOutput) StaticFiles() StaticFilesHandlerResponseOutput {
+	return o.ApplyT(func(v UrlMapResponse) StaticFilesHandlerResponse { return v.StaticFiles }).(StaticFilesHandlerResponseOutput)
+}
+
+// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
+func (o UrlMapResponseOutput) UrlRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v UrlMapResponse) string { return v.UrlRegex }).(pulumi.StringOutput)
+}
+
+type UrlMapResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (UrlMapResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UrlMapResponse)(nil)).Elem()
+}
+
+func (o UrlMapResponseArrayOutput) ToUrlMapResponseArrayOutput() UrlMapResponseArrayOutput {
+	return o
+}
+
+func (o UrlMapResponseArrayOutput) ToUrlMapResponseArrayOutputWithContext(ctx context.Context) UrlMapResponseArrayOutput {
+	return o
+}
+
+func (o UrlMapResponseArrayOutput) Index(i pulumi.IntInput) UrlMapResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UrlMapResponse {
+		return vs[0].([]UrlMapResponse)[vs[1].(int)]
+	}).(UrlMapResponseOutput)
+}
+
 // Volumes mounted within the app container. Only applicable in the App Engine flexible environment.
 type Volume struct {
 	// Unique name for the volume.
@@ -5795,6 +11167,124 @@ func (o VolumeArrayOutput) Index(i pulumi.IntInput) VolumeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Volume {
 		return vs[0].([]Volume)[vs[1].(int)]
 	}).(VolumeOutput)
+}
+
+// Volumes mounted within the app container. Only applicable in the App Engine flexible environment.
+type VolumeResponse struct {
+	// Unique name for the volume.
+	Name string `pulumi:"name"`
+	// Volume size in gigabytes.
+	SizeGb float64 `pulumi:"sizeGb"`
+	// Underlying volume type, e.g. 'tmpfs'.
+	VolumeType string `pulumi:"volumeType"`
+}
+
+// VolumeResponseInput is an input type that accepts VolumeResponseArgs and VolumeResponseOutput values.
+// You can construct a concrete instance of `VolumeResponseInput` via:
+//
+//          VolumeResponseArgs{...}
+type VolumeResponseInput interface {
+	pulumi.Input
+
+	ToVolumeResponseOutput() VolumeResponseOutput
+	ToVolumeResponseOutputWithContext(context.Context) VolumeResponseOutput
+}
+
+// Volumes mounted within the app container. Only applicable in the App Engine flexible environment.
+type VolumeResponseArgs struct {
+	// Unique name for the volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Volume size in gigabytes.
+	SizeGb pulumi.Float64Input `pulumi:"sizeGb"`
+	// Underlying volume type, e.g. 'tmpfs'.
+	VolumeType pulumi.StringInput `pulumi:"volumeType"`
+}
+
+func (VolumeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeResponse)(nil)).Elem()
+}
+
+func (i VolumeResponseArgs) ToVolumeResponseOutput() VolumeResponseOutput {
+	return i.ToVolumeResponseOutputWithContext(context.Background())
+}
+
+func (i VolumeResponseArgs) ToVolumeResponseOutputWithContext(ctx context.Context) VolumeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeResponseOutput)
+}
+
+// VolumeResponseArrayInput is an input type that accepts VolumeResponseArray and VolumeResponseArrayOutput values.
+// You can construct a concrete instance of `VolumeResponseArrayInput` via:
+//
+//          VolumeResponseArray{ VolumeResponseArgs{...} }
+type VolumeResponseArrayInput interface {
+	pulumi.Input
+
+	ToVolumeResponseArrayOutput() VolumeResponseArrayOutput
+	ToVolumeResponseArrayOutputWithContext(context.Context) VolumeResponseArrayOutput
+}
+
+type VolumeResponseArray []VolumeResponseInput
+
+func (VolumeResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeResponse)(nil)).Elem()
+}
+
+func (i VolumeResponseArray) ToVolumeResponseArrayOutput() VolumeResponseArrayOutput {
+	return i.ToVolumeResponseArrayOutputWithContext(context.Background())
+}
+
+func (i VolumeResponseArray) ToVolumeResponseArrayOutputWithContext(ctx context.Context) VolumeResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeResponseArrayOutput)
+}
+
+// Volumes mounted within the app container. Only applicable in the App Engine flexible environment.
+type VolumeResponseOutput struct{ *pulumi.OutputState }
+
+func (VolumeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeResponse)(nil)).Elem()
+}
+
+func (o VolumeResponseOutput) ToVolumeResponseOutput() VolumeResponseOutput {
+	return o
+}
+
+func (o VolumeResponseOutput) ToVolumeResponseOutputWithContext(ctx context.Context) VolumeResponseOutput {
+	return o
+}
+
+// Unique name for the volume.
+func (o VolumeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Volume size in gigabytes.
+func (o VolumeResponseOutput) SizeGb() pulumi.Float64Output {
+	return o.ApplyT(func(v VolumeResponse) float64 { return v.SizeGb }).(pulumi.Float64Output)
+}
+
+// Underlying volume type, e.g. 'tmpfs'.
+func (o VolumeResponseOutput) VolumeType() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeResponse) string { return v.VolumeType }).(pulumi.StringOutput)
+}
+
+type VolumeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeResponse)(nil)).Elem()
+}
+
+func (o VolumeResponseArrayOutput) ToVolumeResponseArrayOutput() VolumeResponseArrayOutput {
+	return o
+}
+
+func (o VolumeResponseArrayOutput) ToVolumeResponseArrayOutputWithContext(ctx context.Context) VolumeResponseArrayOutput {
+	return o
+}
+
+func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeResponse {
+		return vs[0].([]VolumeResponse)[vs[1].(int)]
+	}).(VolumeResponseOutput)
 }
 
 // VPC access connector specification.
@@ -5928,6 +11418,140 @@ func (o VpcAccessConnectorPtrOutput) Name() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// VPC access connector specification.
+type VpcAccessConnectorResponse struct {
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	Name string `pulumi:"name"`
+}
+
+// VpcAccessConnectorResponseInput is an input type that accepts VpcAccessConnectorResponseArgs and VpcAccessConnectorResponseOutput values.
+// You can construct a concrete instance of `VpcAccessConnectorResponseInput` via:
+//
+//          VpcAccessConnectorResponseArgs{...}
+type VpcAccessConnectorResponseInput interface {
+	pulumi.Input
+
+	ToVpcAccessConnectorResponseOutput() VpcAccessConnectorResponseOutput
+	ToVpcAccessConnectorResponseOutputWithContext(context.Context) VpcAccessConnectorResponseOutput
+}
+
+// VPC access connector specification.
+type VpcAccessConnectorResponseArgs struct {
+	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (VpcAccessConnectorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAccessConnectorResponse)(nil)).Elem()
+}
+
+func (i VpcAccessConnectorResponseArgs) ToVpcAccessConnectorResponseOutput() VpcAccessConnectorResponseOutput {
+	return i.ToVpcAccessConnectorResponseOutputWithContext(context.Background())
+}
+
+func (i VpcAccessConnectorResponseArgs) ToVpcAccessConnectorResponseOutputWithContext(ctx context.Context) VpcAccessConnectorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessConnectorResponseOutput)
+}
+
+func (i VpcAccessConnectorResponseArgs) ToVpcAccessConnectorResponsePtrOutput() VpcAccessConnectorResponsePtrOutput {
+	return i.ToVpcAccessConnectorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i VpcAccessConnectorResponseArgs) ToVpcAccessConnectorResponsePtrOutputWithContext(ctx context.Context) VpcAccessConnectorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessConnectorResponseOutput).ToVpcAccessConnectorResponsePtrOutputWithContext(ctx)
+}
+
+// VpcAccessConnectorResponsePtrInput is an input type that accepts VpcAccessConnectorResponseArgs, VpcAccessConnectorResponsePtr and VpcAccessConnectorResponsePtrOutput values.
+// You can construct a concrete instance of `VpcAccessConnectorResponsePtrInput` via:
+//
+//          VpcAccessConnectorResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type VpcAccessConnectorResponsePtrInput interface {
+	pulumi.Input
+
+	ToVpcAccessConnectorResponsePtrOutput() VpcAccessConnectorResponsePtrOutput
+	ToVpcAccessConnectorResponsePtrOutputWithContext(context.Context) VpcAccessConnectorResponsePtrOutput
+}
+
+type vpcAccessConnectorResponsePtrType VpcAccessConnectorResponseArgs
+
+func VpcAccessConnectorResponsePtr(v *VpcAccessConnectorResponseArgs) VpcAccessConnectorResponsePtrInput {
+	return (*vpcAccessConnectorResponsePtrType)(v)
+}
+
+func (*vpcAccessConnectorResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcAccessConnectorResponse)(nil)).Elem()
+}
+
+func (i *vpcAccessConnectorResponsePtrType) ToVpcAccessConnectorResponsePtrOutput() VpcAccessConnectorResponsePtrOutput {
+	return i.ToVpcAccessConnectorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *vpcAccessConnectorResponsePtrType) ToVpcAccessConnectorResponsePtrOutputWithContext(ctx context.Context) VpcAccessConnectorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcAccessConnectorResponsePtrOutput)
+}
+
+// VPC access connector specification.
+type VpcAccessConnectorResponseOutput struct{ *pulumi.OutputState }
+
+func (VpcAccessConnectorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcAccessConnectorResponse)(nil)).Elem()
+}
+
+func (o VpcAccessConnectorResponseOutput) ToVpcAccessConnectorResponseOutput() VpcAccessConnectorResponseOutput {
+	return o
+}
+
+func (o VpcAccessConnectorResponseOutput) ToVpcAccessConnectorResponseOutputWithContext(ctx context.Context) VpcAccessConnectorResponseOutput {
+	return o
+}
+
+func (o VpcAccessConnectorResponseOutput) ToVpcAccessConnectorResponsePtrOutput() VpcAccessConnectorResponsePtrOutput {
+	return o.ToVpcAccessConnectorResponsePtrOutputWithContext(context.Background())
+}
+
+func (o VpcAccessConnectorResponseOutput) ToVpcAccessConnectorResponsePtrOutputWithContext(ctx context.Context) VpcAccessConnectorResponsePtrOutput {
+	return o.ApplyT(func(v VpcAccessConnectorResponse) *VpcAccessConnectorResponse {
+		return &v
+	}).(VpcAccessConnectorResponsePtrOutput)
+}
+
+// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+func (o VpcAccessConnectorResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcAccessConnectorResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type VpcAccessConnectorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VpcAccessConnectorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcAccessConnectorResponse)(nil)).Elem()
+}
+
+func (o VpcAccessConnectorResponsePtrOutput) ToVpcAccessConnectorResponsePtrOutput() VpcAccessConnectorResponsePtrOutput {
+	return o
+}
+
+func (o VpcAccessConnectorResponsePtrOutput) ToVpcAccessConnectorResponsePtrOutputWithContext(ctx context.Context) VpcAccessConnectorResponsePtrOutput {
+	return o
+}
+
+func (o VpcAccessConnectorResponsePtrOutput) Elem() VpcAccessConnectorResponseOutput {
+	return o.ApplyT(func(v *VpcAccessConnectorResponse) VpcAccessConnectorResponse { return *v }).(VpcAccessConnectorResponseOutput)
+}
+
+// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+func (o VpcAccessConnectorResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcAccessConnectorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6084,75 +11708,295 @@ func (o ZipInfoPtrOutput) SourceUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The zip file information for a zip deployment.
+type ZipInfoResponse struct {
+	// An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or equal to the actual number of files. Used for optimizing performance; if not provided, deployment may be slow.
+	FilesCount int `pulumi:"filesCount"`
+	// URL of the zip file to deploy from. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
+	SourceUrl string `pulumi:"sourceUrl"`
+}
+
+// ZipInfoResponseInput is an input type that accepts ZipInfoResponseArgs and ZipInfoResponseOutput values.
+// You can construct a concrete instance of `ZipInfoResponseInput` via:
+//
+//          ZipInfoResponseArgs{...}
+type ZipInfoResponseInput interface {
+	pulumi.Input
+
+	ToZipInfoResponseOutput() ZipInfoResponseOutput
+	ToZipInfoResponseOutputWithContext(context.Context) ZipInfoResponseOutput
+}
+
+// The zip file information for a zip deployment.
+type ZipInfoResponseArgs struct {
+	// An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or equal to the actual number of files. Used for optimizing performance; if not provided, deployment may be slow.
+	FilesCount pulumi.IntInput `pulumi:"filesCount"`
+	// URL of the zip file to deploy from. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
+	SourceUrl pulumi.StringInput `pulumi:"sourceUrl"`
+}
+
+func (ZipInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZipInfoResponse)(nil)).Elem()
+}
+
+func (i ZipInfoResponseArgs) ToZipInfoResponseOutput() ZipInfoResponseOutput {
+	return i.ToZipInfoResponseOutputWithContext(context.Background())
+}
+
+func (i ZipInfoResponseArgs) ToZipInfoResponseOutputWithContext(ctx context.Context) ZipInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZipInfoResponseOutput)
+}
+
+func (i ZipInfoResponseArgs) ToZipInfoResponsePtrOutput() ZipInfoResponsePtrOutput {
+	return i.ToZipInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ZipInfoResponseArgs) ToZipInfoResponsePtrOutputWithContext(ctx context.Context) ZipInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZipInfoResponseOutput).ToZipInfoResponsePtrOutputWithContext(ctx)
+}
+
+// ZipInfoResponsePtrInput is an input type that accepts ZipInfoResponseArgs, ZipInfoResponsePtr and ZipInfoResponsePtrOutput values.
+// You can construct a concrete instance of `ZipInfoResponsePtrInput` via:
+//
+//          ZipInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ZipInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToZipInfoResponsePtrOutput() ZipInfoResponsePtrOutput
+	ToZipInfoResponsePtrOutputWithContext(context.Context) ZipInfoResponsePtrOutput
+}
+
+type zipInfoResponsePtrType ZipInfoResponseArgs
+
+func ZipInfoResponsePtr(v *ZipInfoResponseArgs) ZipInfoResponsePtrInput {
+	return (*zipInfoResponsePtrType)(v)
+}
+
+func (*zipInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZipInfoResponse)(nil)).Elem()
+}
+
+func (i *zipInfoResponsePtrType) ToZipInfoResponsePtrOutput() ZipInfoResponsePtrOutput {
+	return i.ToZipInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *zipInfoResponsePtrType) ToZipInfoResponsePtrOutputWithContext(ctx context.Context) ZipInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZipInfoResponsePtrOutput)
+}
+
+// The zip file information for a zip deployment.
+type ZipInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ZipInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZipInfoResponse)(nil)).Elem()
+}
+
+func (o ZipInfoResponseOutput) ToZipInfoResponseOutput() ZipInfoResponseOutput {
+	return o
+}
+
+func (o ZipInfoResponseOutput) ToZipInfoResponseOutputWithContext(ctx context.Context) ZipInfoResponseOutput {
+	return o
+}
+
+func (o ZipInfoResponseOutput) ToZipInfoResponsePtrOutput() ZipInfoResponsePtrOutput {
+	return o.ToZipInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ZipInfoResponseOutput) ToZipInfoResponsePtrOutputWithContext(ctx context.Context) ZipInfoResponsePtrOutput {
+	return o.ApplyT(func(v ZipInfoResponse) *ZipInfoResponse {
+		return &v
+	}).(ZipInfoResponsePtrOutput)
+}
+
+// An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or equal to the actual number of files. Used for optimizing performance; if not provided, deployment may be slow.
+func (o ZipInfoResponseOutput) FilesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ZipInfoResponse) int { return v.FilesCount }).(pulumi.IntOutput)
+}
+
+// URL of the zip file to deploy from. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
+func (o ZipInfoResponseOutput) SourceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ZipInfoResponse) string { return v.SourceUrl }).(pulumi.StringOutput)
+}
+
+type ZipInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ZipInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZipInfoResponse)(nil)).Elem()
+}
+
+func (o ZipInfoResponsePtrOutput) ToZipInfoResponsePtrOutput() ZipInfoResponsePtrOutput {
+	return o
+}
+
+func (o ZipInfoResponsePtrOutput) ToZipInfoResponsePtrOutputWithContext(ctx context.Context) ZipInfoResponsePtrOutput {
+	return o
+}
+
+func (o ZipInfoResponsePtrOutput) Elem() ZipInfoResponseOutput {
+	return o.ApplyT(func(v *ZipInfoResponse) ZipInfoResponse { return *v }).(ZipInfoResponseOutput)
+}
+
+// An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or equal to the actual number of files. Used for optimizing performance; if not provided, deployment may be slow.
+func (o ZipInfoResponsePtrOutput) FilesCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ZipInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.FilesCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// URL of the zip file to deploy from. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
+func (o ZipInfoResponsePtrOutput) SourceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZipInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceUrl
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiConfigHandlerOutput{})
 	pulumi.RegisterOutputType(ApiConfigHandlerPtrOutput{})
+	pulumi.RegisterOutputType(ApiConfigHandlerResponseOutput{})
+	pulumi.RegisterOutputType(ApiConfigHandlerResponsePtrOutput{})
 	pulumi.RegisterOutputType(ApiEndpointHandlerOutput{})
 	pulumi.RegisterOutputType(ApiEndpointHandlerPtrOutput{})
+	pulumi.RegisterOutputType(ApiEndpointHandlerResponseOutput{})
 	pulumi.RegisterOutputType(AutomaticScalingOutput{})
 	pulumi.RegisterOutputType(AutomaticScalingPtrOutput{})
+	pulumi.RegisterOutputType(AutomaticScalingResponseOutput{})
+	pulumi.RegisterOutputType(AutomaticScalingResponsePtrOutput{})
 	pulumi.RegisterOutputType(BasicScalingOutput{})
 	pulumi.RegisterOutputType(BasicScalingPtrOutput{})
+	pulumi.RegisterOutputType(BasicScalingResponseOutput{})
+	pulumi.RegisterOutputType(BasicScalingResponsePtrOutput{})
 	pulumi.RegisterOutputType(CertificateRawDataOutput{})
 	pulumi.RegisterOutputType(CertificateRawDataPtrOutput{})
+	pulumi.RegisterOutputType(CertificateRawDataResponseOutput{})
+	pulumi.RegisterOutputType(CertificateRawDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(CloudBuildOptionsOutput{})
 	pulumi.RegisterOutputType(CloudBuildOptionsPtrOutput{})
+	pulumi.RegisterOutputType(CloudBuildOptionsResponseOutput{})
+	pulumi.RegisterOutputType(CloudBuildOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ContainerInfoOutput{})
 	pulumi.RegisterOutputType(ContainerInfoPtrOutput{})
+	pulumi.RegisterOutputType(ContainerInfoResponseOutput{})
+	pulumi.RegisterOutputType(ContainerInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(CpuUtilizationOutput{})
 	pulumi.RegisterOutputType(CpuUtilizationPtrOutput{})
+	pulumi.RegisterOutputType(CpuUtilizationResponseOutput{})
+	pulumi.RegisterOutputType(CpuUtilizationResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentOutput{})
 	pulumi.RegisterOutputType(DeploymentPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentResponsePtrOutput{})
 	pulumi.RegisterOutputType(DiskUtilizationOutput{})
 	pulumi.RegisterOutputType(DiskUtilizationPtrOutput{})
+	pulumi.RegisterOutputType(DiskUtilizationResponseOutput{})
+	pulumi.RegisterOutputType(DiskUtilizationResponsePtrOutput{})
 	pulumi.RegisterOutputType(EndpointsApiServiceOutput{})
 	pulumi.RegisterOutputType(EndpointsApiServicePtrOutput{})
+	pulumi.RegisterOutputType(EndpointsApiServiceResponseOutput{})
+	pulumi.RegisterOutputType(EndpointsApiServiceResponsePtrOutput{})
 	pulumi.RegisterOutputType(EntrypointOutput{})
 	pulumi.RegisterOutputType(EntrypointPtrOutput{})
+	pulumi.RegisterOutputType(EntrypointResponseOutput{})
+	pulumi.RegisterOutputType(EntrypointResponsePtrOutput{})
 	pulumi.RegisterOutputType(ErrorHandlerOutput{})
 	pulumi.RegisterOutputType(ErrorHandlerArrayOutput{})
+	pulumi.RegisterOutputType(ErrorHandlerResponseOutput{})
+	pulumi.RegisterOutputType(ErrorHandlerResponseArrayOutput{})
 	pulumi.RegisterOutputType(FeatureSettingsOutput{})
 	pulumi.RegisterOutputType(FeatureSettingsPtrOutput{})
+	pulumi.RegisterOutputType(FeatureSettingsResponseOutput{})
+	pulumi.RegisterOutputType(FeatureSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckOutput{})
 	pulumi.RegisterOutputType(HealthCheckPtrOutput{})
+	pulumi.RegisterOutputType(HealthCheckResponseOutput{})
+	pulumi.RegisterOutputType(HealthCheckResponsePtrOutput{})
 	pulumi.RegisterOutputType(IdentityAwareProxyOutput{})
 	pulumi.RegisterOutputType(IdentityAwareProxyPtrOutput{})
+	pulumi.RegisterOutputType(IdentityAwareProxyResponseOutput{})
+	pulumi.RegisterOutputType(IdentityAwareProxyResponsePtrOutput{})
 	pulumi.RegisterOutputType(LibraryOutput{})
 	pulumi.RegisterOutputType(LibraryArrayOutput{})
+	pulumi.RegisterOutputType(LibraryResponseOutput{})
+	pulumi.RegisterOutputType(LibraryResponseArrayOutput{})
 	pulumi.RegisterOutputType(LivenessCheckOutput{})
 	pulumi.RegisterOutputType(LivenessCheckPtrOutput{})
+	pulumi.RegisterOutputType(LivenessCheckResponseOutput{})
+	pulumi.RegisterOutputType(LivenessCheckResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedCertificateOutput{})
 	pulumi.RegisterOutputType(ManagedCertificatePtrOutput{})
+	pulumi.RegisterOutputType(ManagedCertificateResponseOutput{})
+	pulumi.RegisterOutputType(ManagedCertificateResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManualScalingOutput{})
 	pulumi.RegisterOutputType(ManualScalingPtrOutput{})
+	pulumi.RegisterOutputType(ManualScalingResponseOutput{})
+	pulumi.RegisterOutputType(ManualScalingResponsePtrOutput{})
 	pulumi.RegisterOutputType(NetworkOutput{})
 	pulumi.RegisterOutputType(NetworkPtrOutput{})
+	pulumi.RegisterOutputType(NetworkResponseOutput{})
+	pulumi.RegisterOutputType(NetworkResponsePtrOutput{})
 	pulumi.RegisterOutputType(NetworkUtilizationOutput{})
 	pulumi.RegisterOutputType(NetworkUtilizationPtrOutput{})
+	pulumi.RegisterOutputType(NetworkUtilizationResponseOutput{})
+	pulumi.RegisterOutputType(NetworkUtilizationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ReadinessCheckOutput{})
 	pulumi.RegisterOutputType(ReadinessCheckPtrOutput{})
+	pulumi.RegisterOutputType(ReadinessCheckResponseOutput{})
+	pulumi.RegisterOutputType(ReadinessCheckResponsePtrOutput{})
 	pulumi.RegisterOutputType(RequestUtilizationOutput{})
 	pulumi.RegisterOutputType(RequestUtilizationPtrOutput{})
+	pulumi.RegisterOutputType(RequestUtilizationResponseOutput{})
+	pulumi.RegisterOutputType(RequestUtilizationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceRecordOutput{})
 	pulumi.RegisterOutputType(ResourceRecordArrayOutput{})
+	pulumi.RegisterOutputType(ResourceRecordResponseOutput{})
+	pulumi.RegisterOutputType(ResourceRecordResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourcesOutput{})
 	pulumi.RegisterOutputType(ResourcesPtrOutput{})
+	pulumi.RegisterOutputType(ResourcesResponseOutput{})
+	pulumi.RegisterOutputType(ResourcesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScriptHandlerOutput{})
 	pulumi.RegisterOutputType(ScriptHandlerPtrOutput{})
+	pulumi.RegisterOutputType(ScriptHandlerResponseOutput{})
 	pulumi.RegisterOutputType(SslSettingsOutput{})
 	pulumi.RegisterOutputType(SslSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SslSettingsResponseOutput{})
+	pulumi.RegisterOutputType(SslSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(StandardSchedulerSettingsOutput{})
 	pulumi.RegisterOutputType(StandardSchedulerSettingsPtrOutput{})
+	pulumi.RegisterOutputType(StandardSchedulerSettingsResponseOutput{})
+	pulumi.RegisterOutputType(StandardSchedulerSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(StaticFilesHandlerOutput{})
 	pulumi.RegisterOutputType(StaticFilesHandlerPtrOutput{})
+	pulumi.RegisterOutputType(StaticFilesHandlerResponseOutput{})
 	pulumi.RegisterOutputType(UrlDispatchRuleOutput{})
 	pulumi.RegisterOutputType(UrlDispatchRuleArrayOutput{})
+	pulumi.RegisterOutputType(UrlDispatchRuleResponseOutput{})
+	pulumi.RegisterOutputType(UrlDispatchRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(UrlMapOutput{})
 	pulumi.RegisterOutputType(UrlMapArrayOutput{})
+	pulumi.RegisterOutputType(UrlMapResponseOutput{})
+	pulumi.RegisterOutputType(UrlMapResponseArrayOutput{})
 	pulumi.RegisterOutputType(VolumeOutput{})
 	pulumi.RegisterOutputType(VolumeArrayOutput{})
+	pulumi.RegisterOutputType(VolumeResponseOutput{})
+	pulumi.RegisterOutputType(VolumeResponseArrayOutput{})
 	pulumi.RegisterOutputType(VpcAccessConnectorOutput{})
 	pulumi.RegisterOutputType(VpcAccessConnectorPtrOutput{})
+	pulumi.RegisterOutputType(VpcAccessConnectorResponseOutput{})
+	pulumi.RegisterOutputType(VpcAccessConnectorResponsePtrOutput{})
 	pulumi.RegisterOutputType(ZipInfoOutput{})
 	pulumi.RegisterOutputType(ZipInfoPtrOutput{})
+	pulumi.RegisterOutputType(ZipInfoResponseOutput{})
+	pulumi.RegisterOutputType(ZipInfoResponsePtrOutput{})
 }

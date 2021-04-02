@@ -14,6 +14,13 @@ import (
 // Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
 type StoredInfoType struct {
 	pulumi.CustomResourceState
+
+	// Current version of the stored info type.
+	CurrentVersion GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput `pulumi:"currentVersion"`
+	// Resource name.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Pending versions of the stored info type. Empty if no versions are pending.
+	PendingVersions GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput `pulumi:"pendingVersions"`
 }
 
 // NewStoredInfoType registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +58,21 @@ func GetStoredInfoType(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StoredInfoType resources.
 type storedInfoTypeState struct {
+	// Current version of the stored info type.
+	CurrentVersion *GooglePrivacyDlpV2StoredInfoTypeVersionResponse `pulumi:"currentVersion"`
+	// Resource name.
+	Name *string `pulumi:"name"`
+	// Pending versions of the stored info type. Empty if no versions are pending.
+	PendingVersions []GooglePrivacyDlpV2StoredInfoTypeVersionResponse `pulumi:"pendingVersions"`
 }
 
 type StoredInfoTypeState struct {
+	// Current version of the stored info type.
+	CurrentVersion GooglePrivacyDlpV2StoredInfoTypeVersionResponsePtrInput
+	// Resource name.
+	Name pulumi.StringPtrInput
+	// Pending versions of the stored info type. Empty if no versions are pending.
+	PendingVersions GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayInput
 }
 
 func (StoredInfoTypeState) ElementType() reflect.Type {
@@ -62,10 +81,8 @@ func (StoredInfoTypeState) ElementType() reflect.Type {
 
 type storedInfoTypeArgs struct {
 	// Required. Configuration of the storedInfoType to create.
-	Config *GooglePrivacyDlpV2StoredInfoTypeConfig `pulumi:"config"`
-	// Deprecated. This field has no effect.
-	LocationId *string `pulumi:"locationId"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Config     *GooglePrivacyDlpV2StoredInfoTypeConfig `pulumi:"config"`
+	ProjectsId string                                  `pulumi:"projectsId"`
 	// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	StoredInfoTypeId  *string `pulumi:"storedInfoTypeId"`
 	StoredInfoTypesId string  `pulumi:"storedInfoTypesId"`
@@ -74,9 +91,7 @@ type storedInfoTypeArgs struct {
 // The set of arguments for constructing a StoredInfoType resource.
 type StoredInfoTypeArgs struct {
 	// Required. Configuration of the storedInfoType to create.
-	Config GooglePrivacyDlpV2StoredInfoTypeConfigPtrInput
-	// Deprecated. This field has no effect.
-	LocationId pulumi.StringPtrInput
+	Config     GooglePrivacyDlpV2StoredInfoTypeConfigPtrInput
 	ProjectsId pulumi.StringInput
 	// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	StoredInfoTypeId  pulumi.StringPtrInput

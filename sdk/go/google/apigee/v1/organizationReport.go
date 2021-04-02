@@ -14,6 +14,51 @@ import (
 // Creates a Custom Report for an Organization. A Custom Report provides Apigee Customers to create custom dashboards in addition to the standard dashboards which are provided. The Custom Report in its simplest form contains specifications about metrics, dimensions and filters. It is important to note that the custom report by itself does not provide an executable entity. The Edge UI converts the custom report definition into an analytics query and displays the result in a chart.
 type OrganizationReport struct {
 	pulumi.CustomResourceState
+
+	// This field contains the chart type for the report
+	ChartType pulumi.StringOutput `pulumi:"chartType"`
+	// Legacy field: not used. This field contains a list of comments associated with custom report
+	Comments pulumi.StringArrayOutput `pulumi:"comments"`
+	// Unix time when the app was created json key: createdAt
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// This contains the list of dimensions for the report
+	Dimensions pulumi.StringArrayOutput `pulumi:"dimensions"`
+	// This is the display name for the report
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Environment name
+	Environment pulumi.StringOutput `pulumi:"environment"`
+	// This field contains the filter expression
+	Filter pulumi.StringOutput `pulumi:"filter"`
+	// Legacy field: not used. Contains the from time for the report
+	FromTime pulumi.StringOutput `pulumi:"fromTime"`
+	// Modified time of this entity as milliseconds since epoch. json key: lastModifiedAt
+	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
+	// Last viewed time of this entity as milliseconds since epoch
+	LastViewedAt pulumi.StringOutput `pulumi:"lastViewedAt"`
+	// Legacy field: not used This field contains the limit for the result retrieved
+	Limit pulumi.StringOutput `pulumi:"limit"`
+	// Required. This contains the list of metrics
+	Metrics GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput `pulumi:"metrics"`
+	// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Legacy field: not used. This field contains the offset for the data
+	Offset pulumi.StringOutput `pulumi:"offset"`
+	// Organization name
+	Organization pulumi.StringOutput `pulumi:"organization"`
+	// This field contains report properties such as ui metadata etc.
+	Properties GoogleCloudApigeeV1ReportPropertyResponseArrayOutput `pulumi:"properties"`
+	// Legacy field: not used much. Contains the list of sort by columns
+	SortByCols pulumi.StringArrayOutput `pulumi:"sortByCols"`
+	// Legacy field: not used much. Contains the sort order for the sort columns
+	SortOrder pulumi.StringOutput `pulumi:"sortOrder"`
+	// Legacy field: not used. This field contains a list of tags associated with custom report
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// This field contains the time unit of aggregation for the report
+	TimeUnit pulumi.StringOutput `pulumi:"timeUnit"`
+	// Legacy field: not used. Contains the end time for the report
+	ToTime pulumi.StringOutput `pulumi:"toTime"`
+	// Legacy field: not used. This field contains the top k parameter value for restricting the result
+	Topk pulumi.StringOutput `pulumi:"topk"`
 }
 
 // NewOrganizationReport registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +96,97 @@ func GetOrganizationReport(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationReport resources.
 type organizationReportState struct {
+	// This field contains the chart type for the report
+	ChartType *string `pulumi:"chartType"`
+	// Legacy field: not used. This field contains a list of comments associated with custom report
+	Comments []string `pulumi:"comments"`
+	// Unix time when the app was created json key: createdAt
+	CreatedAt *string `pulumi:"createdAt"`
+	// This contains the list of dimensions for the report
+	Dimensions []string `pulumi:"dimensions"`
+	// This is the display name for the report
+	DisplayName *string `pulumi:"displayName"`
+	// Environment name
+	Environment *string `pulumi:"environment"`
+	// This field contains the filter expression
+	Filter *string `pulumi:"filter"`
+	// Legacy field: not used. Contains the from time for the report
+	FromTime *string `pulumi:"fromTime"`
+	// Modified time of this entity as milliseconds since epoch. json key: lastModifiedAt
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// Last viewed time of this entity as milliseconds since epoch
+	LastViewedAt *string `pulumi:"lastViewedAt"`
+	// Legacy field: not used This field contains the limit for the result retrieved
+	Limit *string `pulumi:"limit"`
+	// Required. This contains the list of metrics
+	Metrics []GoogleCloudApigeeV1CustomReportMetricResponse `pulumi:"metrics"`
+	// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+	Name *string `pulumi:"name"`
+	// Legacy field: not used. This field contains the offset for the data
+	Offset *string `pulumi:"offset"`
+	// Organization name
+	Organization *string `pulumi:"organization"`
+	// This field contains report properties such as ui metadata etc.
+	Properties []GoogleCloudApigeeV1ReportPropertyResponse `pulumi:"properties"`
+	// Legacy field: not used much. Contains the list of sort by columns
+	SortByCols []string `pulumi:"sortByCols"`
+	// Legacy field: not used much. Contains the sort order for the sort columns
+	SortOrder *string `pulumi:"sortOrder"`
+	// Legacy field: not used. This field contains a list of tags associated with custom report
+	Tags []string `pulumi:"tags"`
+	// This field contains the time unit of aggregation for the report
+	TimeUnit *string `pulumi:"timeUnit"`
+	// Legacy field: not used. Contains the end time for the report
+	ToTime *string `pulumi:"toTime"`
+	// Legacy field: not used. This field contains the top k parameter value for restricting the result
+	Topk *string `pulumi:"topk"`
 }
 
 type OrganizationReportState struct {
+	// This field contains the chart type for the report
+	ChartType pulumi.StringPtrInput
+	// Legacy field: not used. This field contains a list of comments associated with custom report
+	Comments pulumi.StringArrayInput
+	// Unix time when the app was created json key: createdAt
+	CreatedAt pulumi.StringPtrInput
+	// This contains the list of dimensions for the report
+	Dimensions pulumi.StringArrayInput
+	// This is the display name for the report
+	DisplayName pulumi.StringPtrInput
+	// Environment name
+	Environment pulumi.StringPtrInput
+	// This field contains the filter expression
+	Filter pulumi.StringPtrInput
+	// Legacy field: not used. Contains the from time for the report
+	FromTime pulumi.StringPtrInput
+	// Modified time of this entity as milliseconds since epoch. json key: lastModifiedAt
+	LastModifiedAt pulumi.StringPtrInput
+	// Last viewed time of this entity as milliseconds since epoch
+	LastViewedAt pulumi.StringPtrInput
+	// Legacy field: not used This field contains the limit for the result retrieved
+	Limit pulumi.StringPtrInput
+	// Required. This contains the list of metrics
+	Metrics GoogleCloudApigeeV1CustomReportMetricResponseArrayInput
+	// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+	Name pulumi.StringPtrInput
+	// Legacy field: not used. This field contains the offset for the data
+	Offset pulumi.StringPtrInput
+	// Organization name
+	Organization pulumi.StringPtrInput
+	// This field contains report properties such as ui metadata etc.
+	Properties GoogleCloudApigeeV1ReportPropertyResponseArrayInput
+	// Legacy field: not used much. Contains the list of sort by columns
+	SortByCols pulumi.StringArrayInput
+	// Legacy field: not used much. Contains the sort order for the sort columns
+	SortOrder pulumi.StringPtrInput
+	// Legacy field: not used. This field contains a list of tags associated with custom report
+	Tags pulumi.StringArrayInput
+	// This field contains the time unit of aggregation for the report
+	TimeUnit pulumi.StringPtrInput
+	// Legacy field: not used. Contains the end time for the report
+	ToTime pulumi.StringPtrInput
+	// Legacy field: not used. This field contains the top k parameter value for restricting the result
+	Topk pulumi.StringPtrInput
 }
 
 func (OrganizationReportState) ElementType() reflect.Type {
@@ -65,22 +198,14 @@ type organizationReportArgs struct {
 	ChartType *string `pulumi:"chartType"`
 	// Legacy field: not used. This field contains a list of comments associated with custom report
 	Comments []string `pulumi:"comments"`
-	// Output only. Unix time when the app was created json key: createdAt
-	CreatedAt *string `pulumi:"createdAt"`
 	// This contains the list of dimensions for the report
 	Dimensions []string `pulumi:"dimensions"`
 	// This is the display name for the report
 	DisplayName *string `pulumi:"displayName"`
-	// Output only. Environment name
-	Environment *string `pulumi:"environment"`
 	// This field contains the filter expression
 	Filter *string `pulumi:"filter"`
 	// Legacy field: not used. Contains the from time for the report
 	FromTime *string `pulumi:"fromTime"`
-	// Output only. Modified time of this entity as milliseconds since epoch. json key: lastModifiedAt
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// Output only. Last viewed time of this entity as milliseconds since epoch
-	LastViewedAt *string `pulumi:"lastViewedAt"`
 	// Legacy field: not used This field contains the limit for the result retrieved
 	Limit *string `pulumi:"limit"`
 	// Required. This contains the list of metrics
@@ -88,9 +213,7 @@ type organizationReportArgs struct {
 	// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
 	Name *string `pulumi:"name"`
 	// Legacy field: not used. This field contains the offset for the data
-	Offset *string `pulumi:"offset"`
-	// Output only. Organization name
-	Organization    *string `pulumi:"organization"`
+	Offset          *string `pulumi:"offset"`
 	OrganizationsId string  `pulumi:"organizationsId"`
 	// This field contains report properties such as ui metadata etc.
 	Properties []GoogleCloudApigeeV1ReportProperty `pulumi:"properties"`
@@ -115,22 +238,14 @@ type OrganizationReportArgs struct {
 	ChartType pulumi.StringPtrInput
 	// Legacy field: not used. This field contains a list of comments associated with custom report
 	Comments pulumi.StringArrayInput
-	// Output only. Unix time when the app was created json key: createdAt
-	CreatedAt pulumi.StringPtrInput
 	// This contains the list of dimensions for the report
 	Dimensions pulumi.StringArrayInput
 	// This is the display name for the report
 	DisplayName pulumi.StringPtrInput
-	// Output only. Environment name
-	Environment pulumi.StringPtrInput
 	// This field contains the filter expression
 	Filter pulumi.StringPtrInput
 	// Legacy field: not used. Contains the from time for the report
 	FromTime pulumi.StringPtrInput
-	// Output only. Modified time of this entity as milliseconds since epoch. json key: lastModifiedAt
-	LastModifiedAt pulumi.StringPtrInput
-	// Output only. Last viewed time of this entity as milliseconds since epoch
-	LastViewedAt pulumi.StringPtrInput
 	// Legacy field: not used This field contains the limit for the result retrieved
 	Limit pulumi.StringPtrInput
 	// Required. This contains the list of metrics
@@ -138,9 +253,7 @@ type OrganizationReportArgs struct {
 	// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
 	Name pulumi.StringPtrInput
 	// Legacy field: not used. This field contains the offset for the data
-	Offset pulumi.StringPtrInput
-	// Output only. Organization name
-	Organization    pulumi.StringPtrInput
+	Offset          pulumi.StringPtrInput
 	OrganizationsId pulumi.StringInput
 	// This field contains report properties such as ui metadata etc.
 	Properties GoogleCloudApigeeV1ReportPropertyArrayInput

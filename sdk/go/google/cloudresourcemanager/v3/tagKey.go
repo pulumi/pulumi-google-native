@@ -14,6 +14,23 @@ import (
 // Creates a new TagKey. If another request with the same parameters is sent while the original request is in process, the second request will receive an error. A maximum of 300 TagKeys can exist under a parent at any given time.
 type TagKey struct {
 	pulumi.CustomResourceState
+
+	// Creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. User-assigned description of the TagKey. Must not exceed 256 characters. Read-write.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagKeyRequest for details.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Immutable. Namespaced name of the TagKey.
+	NamespacedName pulumi.StringOutput `pulumi:"namespacedName"`
+	// Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+	Parent pulumi.StringOutput `pulumi:"parent"`
+	// Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	ShortName pulumi.StringOutput `pulumi:"shortName"`
+	// Update time.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewTagKey registers a new resource with the given unique name, arguments, and options.
@@ -48,17 +65,7 @@ func GetTagKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TagKey resources.
 type tagKeyState struct {
-}
-
-type TagKeyState struct {
-}
-
-func (TagKeyState) ElementType() reflect.Type {
-	return reflect.TypeOf((*tagKeyState)(nil)).Elem()
-}
-
-type tagKeyArgs struct {
-	// Output only. Creation time.
+	// Creation time.
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. User-assigned description of the TagKey. Must not exceed 256 characters. Read-write.
 	Description *string `pulumi:"description"`
@@ -66,20 +73,18 @@ type tagKeyArgs struct {
 	Etag *string `pulumi:"etag"`
 	// Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
 	Name *string `pulumi:"name"`
-	// Output only. Immutable. Namespaced name of the TagKey.
+	// Immutable. Namespaced name of the TagKey.
 	NamespacedName *string `pulumi:"namespacedName"`
 	// Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
 	Parent *string `pulumi:"parent"`
 	// Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName *string `pulumi:"shortName"`
-	TagKeysId string  `pulumi:"tagKeysId"`
-	// Output only. Update time.
+	// Update time.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
-// The set of arguments for constructing a TagKey resource.
-type TagKeyArgs struct {
-	// Output only. Creation time.
+type TagKeyState struct {
+	// Creation time.
 	CreateTime pulumi.StringPtrInput
 	// Optional. User-assigned description of the TagKey. Must not exceed 256 characters. Read-write.
 	Description pulumi.StringPtrInput
@@ -87,15 +92,47 @@ type TagKeyArgs struct {
 	Etag pulumi.StringPtrInput
 	// Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
 	Name pulumi.StringPtrInput
-	// Output only. Immutable. Namespaced name of the TagKey.
+	// Immutable. Namespaced name of the TagKey.
 	NamespacedName pulumi.StringPtrInput
 	// Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
 	Parent pulumi.StringPtrInput
 	// Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName pulumi.StringPtrInput
-	TagKeysId pulumi.StringInput
-	// Output only. Update time.
+	// Update time.
 	UpdateTime pulumi.StringPtrInput
+}
+
+func (TagKeyState) ElementType() reflect.Type {
+	return reflect.TypeOf((*tagKeyState)(nil)).Elem()
+}
+
+type tagKeyArgs struct {
+	// Optional. User-assigned description of the TagKey. Must not exceed 256 characters. Read-write.
+	Description *string `pulumi:"description"`
+	// Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagKeyRequest for details.
+	Etag *string `pulumi:"etag"`
+	// Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
+	Name *string `pulumi:"name"`
+	// Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+	Parent *string `pulumi:"parent"`
+	// Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	ShortName *string `pulumi:"shortName"`
+	TagKeysId string  `pulumi:"tagKeysId"`
+}
+
+// The set of arguments for constructing a TagKey resource.
+type TagKeyArgs struct {
+	// Optional. User-assigned description of the TagKey. Must not exceed 256 characters. Read-write.
+	Description pulumi.StringPtrInput
+	// Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagKeyRequest for details.
+	Etag pulumi.StringPtrInput
+	// Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
+	Name pulumi.StringPtrInput
+	// Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+	Parent pulumi.StringPtrInput
+	// Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	ShortName pulumi.StringPtrInput
+	TagKeysId pulumi.StringInput
 }
 
 func (TagKeyArgs) ElementType() reflect.Type {

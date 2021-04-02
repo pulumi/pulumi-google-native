@@ -14,6 +14,15 @@ import (
 // Constructs a new OAuth brand for the project if one does not exist. The created brand is "internal only", meaning that OAuth clients created under it only accept requests from users who belong to the same G Suite organization as the project. The brand is created in an un-reviewed status. NOTE: The "internal only" status can be manually changed in the Google Cloud console. Requires that a brand does not already exist for the project, and that the specified support email is owned by the caller.
 type Brand struct {
 	pulumi.CustomResourceState
+
+	// Application name displayed on OAuth consent screen.
+	ApplicationTitle pulumi.StringOutput `pulumi:"applicationTitle"`
+	// Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Whether the brand is only intended for usage inside the G Suite organization only.
+	OrgInternalOnly pulumi.BoolOutput `pulumi:"orgInternalOnly"`
+	// Support email displayed on the OAuth consent screen.
+	SupportEmail pulumi.StringOutput `pulumi:"supportEmail"`
 }
 
 // NewBrand registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +60,25 @@ func GetBrand(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Brand resources.
 type brandState struct {
+	// Application name displayed on OAuth consent screen.
+	ApplicationTitle *string `pulumi:"applicationTitle"`
+	// Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
+	Name *string `pulumi:"name"`
+	// Whether the brand is only intended for usage inside the G Suite organization only.
+	OrgInternalOnly *bool `pulumi:"orgInternalOnly"`
+	// Support email displayed on the OAuth consent screen.
+	SupportEmail *string `pulumi:"supportEmail"`
 }
 
 type BrandState struct {
+	// Application name displayed on OAuth consent screen.
+	ApplicationTitle pulumi.StringPtrInput
+	// Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
+	Name pulumi.StringPtrInput
+	// Whether the brand is only intended for usage inside the G Suite organization only.
+	OrgInternalOnly pulumi.BoolPtrInput
+	// Support email displayed on the OAuth consent screen.
+	SupportEmail pulumi.StringPtrInput
 }
 
 func (BrandState) ElementType() reflect.Type {
@@ -64,11 +89,7 @@ type brandArgs struct {
 	// Application name displayed on OAuth consent screen.
 	ApplicationTitle *string `pulumi:"applicationTitle"`
 	BrandsId         string  `pulumi:"brandsId"`
-	// Output only. Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
-	Name *string `pulumi:"name"`
-	// Output only. Whether the brand is only intended for usage inside the G Suite organization only.
-	OrgInternalOnly *bool  `pulumi:"orgInternalOnly"`
-	ProjectsId      string `pulumi:"projectsId"`
+	ProjectsId       string  `pulumi:"projectsId"`
 	// Support email displayed on the OAuth consent screen.
 	SupportEmail *string `pulumi:"supportEmail"`
 }
@@ -78,11 +99,7 @@ type BrandArgs struct {
 	// Application name displayed on OAuth consent screen.
 	ApplicationTitle pulumi.StringPtrInput
 	BrandsId         pulumi.StringInput
-	// Output only. Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
-	Name pulumi.StringPtrInput
-	// Output only. Whether the brand is only intended for usage inside the G Suite organization only.
-	OrgInternalOnly pulumi.BoolPtrInput
-	ProjectsId      pulumi.StringInput
+	ProjectsId       pulumi.StringInput
 	// Support email displayed on the OAuth consent screen.
 	SupportEmail pulumi.StringPtrInput
 }

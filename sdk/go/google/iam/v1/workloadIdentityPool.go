@@ -14,6 +14,17 @@ import (
 // Creates a new WorkloadIdentityPool. You cannot reuse the name of a deleted pool until 30 days after deletion.
 type WorkloadIdentityPool struct {
 	pulumi.CustomResourceState
+
+	// A description of the pool. Cannot exceed 256 characters.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+	Disabled pulumi.BoolOutput `pulumi:"disabled"`
+	// A display name for the pool. Cannot exceed 32 characters.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// The resource name of the pool.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The state of the pool.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewWorkloadIdentityPool registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +65,29 @@ func GetWorkloadIdentityPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkloadIdentityPool resources.
 type workloadIdentityPoolState struct {
+	// A description of the pool. Cannot exceed 256 characters.
+	Description *string `pulumi:"description"`
+	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+	Disabled *bool `pulumi:"disabled"`
+	// A display name for the pool. Cannot exceed 32 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// The resource name of the pool.
+	Name *string `pulumi:"name"`
+	// The state of the pool.
+	State *string `pulumi:"state"`
 }
 
 type WorkloadIdentityPoolState struct {
+	// A description of the pool. Cannot exceed 256 characters.
+	Description pulumi.StringPtrInput
+	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+	Disabled pulumi.BoolPtrInput
+	// A display name for the pool. Cannot exceed 32 characters.
+	DisplayName pulumi.StringPtrInput
+	// The resource name of the pool.
+	Name pulumi.StringPtrInput
+	// The state of the pool.
+	State pulumi.StringPtrInput
 }
 
 func (WorkloadIdentityPoolState) ElementType() reflect.Type {
@@ -69,13 +100,9 @@ type workloadIdentityPoolArgs struct {
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
 	Disabled *bool `pulumi:"disabled"`
 	// A display name for the pool. Cannot exceed 32 characters.
-	DisplayName *string `pulumi:"displayName"`
-	LocationsId string  `pulumi:"locationsId"`
-	// Output only. The resource name of the pool.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	// Output only. The state of the pool.
-	State                   *string `pulumi:"state"`
+	DisplayName             *string `pulumi:"displayName"`
+	LocationsId             string  `pulumi:"locationsId"`
+	ProjectsId              string  `pulumi:"projectsId"`
 	WorkloadIdentityPoolsId string  `pulumi:"workloadIdentityPoolsId"`
 }
 
@@ -86,13 +113,9 @@ type WorkloadIdentityPoolArgs struct {
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
 	Disabled pulumi.BoolPtrInput
 	// A display name for the pool. Cannot exceed 32 characters.
-	DisplayName pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
-	// Output only. The resource name of the pool.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	// Output only. The state of the pool.
-	State                   pulumi.StringPtrInput
+	DisplayName             pulumi.StringPtrInput
+	LocationsId             pulumi.StringInput
+	ProjectsId              pulumi.StringInput
 	WorkloadIdentityPoolsId pulumi.StringInput
 }
 

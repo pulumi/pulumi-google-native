@@ -14,6 +14,23 @@ import (
 // Creates a new execution using the latest revision of the given workflow.
 type WorkflowExecution struct {
 	pulumi.CustomResourceState
+
+	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
+	Argument pulumi.StringOutput `pulumi:"argument"`
+	// Marks the end of execution, successful or not.
+	EndTime pulumi.StringOutput `pulumi:"endTime"`
+	// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
+	Error ErrorResponseOutput `pulumi:"error"`
+	// The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
+	Result pulumi.StringOutput `pulumi:"result"`
+	// Marks the beginning of execution.
+	StartTime pulumi.StringOutput `pulumi:"startTime"`
+	// Current state of the execution.
+	State pulumi.StringOutput `pulumi:"state"`
+	// Revision of the workflow this execution is using.
+	WorkflowRevisionId pulumi.StringOutput `pulumi:"workflowRevisionId"`
 }
 
 // NewWorkflowExecution registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +74,41 @@ func GetWorkflowExecution(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkflowExecution resources.
 type workflowExecutionState struct {
+	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
+	Argument *string `pulumi:"argument"`
+	// Marks the end of execution, successful or not.
+	EndTime *string `pulumi:"endTime"`
+	// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
+	Error *ErrorResponse `pulumi:"error"`
+	// The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+	Name *string `pulumi:"name"`
+	// Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
+	Result *string `pulumi:"result"`
+	// Marks the beginning of execution.
+	StartTime *string `pulumi:"startTime"`
+	// Current state of the execution.
+	State *string `pulumi:"state"`
+	// Revision of the workflow this execution is using.
+	WorkflowRevisionId *string `pulumi:"workflowRevisionId"`
 }
 
 type WorkflowExecutionState struct {
+	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
+	Argument pulumi.StringPtrInput
+	// Marks the end of execution, successful or not.
+	EndTime pulumi.StringPtrInput
+	// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
+	Error ErrorResponsePtrInput
+	// The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+	Name pulumi.StringPtrInput
+	// Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
+	Result pulumi.StringPtrInput
+	// Marks the beginning of execution.
+	StartTime pulumi.StringPtrInput
+	// Current state of the execution.
+	State pulumi.StringPtrInput
+	// Revision of the workflow this execution is using.
+	WorkflowRevisionId pulumi.StringPtrInput
 }
 
 func (WorkflowExecutionState) ElementType() reflect.Type {
@@ -68,49 +117,21 @@ func (WorkflowExecutionState) ElementType() reflect.Type {
 
 type workflowExecutionArgs struct {
 	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
-	Argument *string `pulumi:"argument"`
-	// Output only. Marks the end of execution, successful or not.
-	EndTime *string `pulumi:"endTime"`
-	// Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
-	Error        *Error `pulumi:"error"`
-	ExecutionsId string `pulumi:"executionsId"`
-	LocationsId  string `pulumi:"locationsId"`
-	// Output only. The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	// Output only. Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
-	Result *string `pulumi:"result"`
-	// Output only. Marks the beginning of execution.
-	StartTime *string `pulumi:"startTime"`
-	// Output only. Current state of the execution.
-	State *string `pulumi:"state"`
-	// Output only. Revision of the workflow this execution is using.
-	WorkflowRevisionId *string `pulumi:"workflowRevisionId"`
-	WorkflowsId        string  `pulumi:"workflowsId"`
+	Argument     *string `pulumi:"argument"`
+	ExecutionsId string  `pulumi:"executionsId"`
+	LocationsId  string  `pulumi:"locationsId"`
+	ProjectsId   string  `pulumi:"projectsId"`
+	WorkflowsId  string  `pulumi:"workflowsId"`
 }
 
 // The set of arguments for constructing a WorkflowExecution resource.
 type WorkflowExecutionArgs struct {
 	// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
-	Argument pulumi.StringPtrInput
-	// Output only. Marks the end of execution, successful or not.
-	EndTime pulumi.StringPtrInput
-	// Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
-	Error        ErrorPtrInput
+	Argument     pulumi.StringPtrInput
 	ExecutionsId pulumi.StringInput
 	LocationsId  pulumi.StringInput
-	// Output only. The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	// Output only. Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
-	Result pulumi.StringPtrInput
-	// Output only. Marks the beginning of execution.
-	StartTime pulumi.StringPtrInput
-	// Output only. Current state of the execution.
-	State pulumi.StringPtrInput
-	// Output only. Revision of the workflow this execution is using.
-	WorkflowRevisionId pulumi.StringPtrInput
-	WorkflowsId        pulumi.StringInput
+	ProjectsId   pulumi.StringInput
+	WorkflowsId  pulumi.StringInput
 }
 
 func (WorkflowExecutionArgs) ElementType() reflect.Type {

@@ -14,6 +14,21 @@ import (
 // Creates a new game server cluster in a given project and location.
 type RealmGameServerCluster struct {
 	pulumi.CustomResourceState
+
+	// The game server cluster connection information. This information is used to manage game server clusters.
+	ConnectionInfo GameServerClusterConnectionInfoResponseOutput `pulumi:"connectionInfo"`
+	// The creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Human readable description of the cluster.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// ETag of the resource.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The labels associated with this game server cluster. Each label is a key-value pair.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The last-modified time.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewRealmGameServerCluster registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +72,37 @@ func GetRealmGameServerCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RealmGameServerCluster resources.
 type realmGameServerClusterState struct {
+	// The game server cluster connection information. This information is used to manage game server clusters.
+	ConnectionInfo *GameServerClusterConnectionInfoResponse `pulumi:"connectionInfo"`
+	// The creation time.
+	CreateTime *string `pulumi:"createTime"`
+	// Human readable description of the cluster.
+	Description *string `pulumi:"description"`
+	// ETag of the resource.
+	Etag *string `pulumi:"etag"`
+	// The labels associated with this game server cluster. Each label is a key-value pair.
+	Labels map[string]string `pulumi:"labels"`
+	// Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+	Name *string `pulumi:"name"`
+	// The last-modified time.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type RealmGameServerClusterState struct {
+	// The game server cluster connection information. This information is used to manage game server clusters.
+	ConnectionInfo GameServerClusterConnectionInfoResponsePtrInput
+	// The creation time.
+	CreateTime pulumi.StringPtrInput
+	// Human readable description of the cluster.
+	Description pulumi.StringPtrInput
+	// ETag of the resource.
+	Etag pulumi.StringPtrInput
+	// The labels associated with this game server cluster. Each label is a key-value pair.
+	Labels pulumi.StringMapInput
+	// Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+	Name pulumi.StringPtrInput
+	// The last-modified time.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (RealmGameServerClusterState) ElementType() reflect.Type {
@@ -69,8 +112,6 @@ func (RealmGameServerClusterState) ElementType() reflect.Type {
 type realmGameServerClusterArgs struct {
 	// The game server cluster connection information. This information is used to manage game server clusters.
 	ConnectionInfo *GameServerClusterConnectionInfo `pulumi:"connectionInfo"`
-	// Output only. The creation time.
-	CreateTime *string `pulumi:"createTime"`
 	// Human readable description of the cluster.
 	Description *string `pulumi:"description"`
 	// ETag of the resource.
@@ -83,16 +124,12 @@ type realmGameServerClusterArgs struct {
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
 	RealmsId   string  `pulumi:"realmsId"`
-	// Output only. The last-modified time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a RealmGameServerCluster resource.
 type RealmGameServerClusterArgs struct {
 	// The game server cluster connection information. This information is used to manage game server clusters.
 	ConnectionInfo GameServerClusterConnectionInfoPtrInput
-	// Output only. The creation time.
-	CreateTime pulumi.StringPtrInput
 	// Human readable description of the cluster.
 	Description pulumi.StringPtrInput
 	// ETag of the resource.
@@ -105,8 +142,6 @@ type RealmGameServerClusterArgs struct {
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
 	RealmsId   pulumi.StringInput
-	// Output only. The last-modified time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (RealmGameServerClusterArgs) ElementType() reflect.Type {

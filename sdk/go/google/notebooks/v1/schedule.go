@@ -14,6 +14,26 @@ import (
 // Creates a new Scheduled Notebook in a given project and location.
 type Schedule struct {
 	pulumi.CustomResourceState
+
+	// Time the schedule was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+	CronSchedule pulumi.StringOutput `pulumi:"cronSchedule"`
+	// A brief description of this environment.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Notebook Execution Template corresponding to this schedule.
+	ExecutionTemplate ExecutionTemplateResponseOutput `pulumi:"executionTemplate"`
+	// The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The most recent execution names triggered from this schedule and their corresponding states.
+	RecentExecutions ExecutionResponseArrayOutput `pulumi:"recentExecutions"`
+	State            pulumi.StringOutput          `pulumi:"state"`
+	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
+	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
+	// Time the schedule was last updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewSchedule registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +74,47 @@ func GetSchedule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Schedule resources.
 type scheduleState struct {
+	// Time the schedule was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+	CronSchedule *string `pulumi:"cronSchedule"`
+	// A brief description of this environment.
+	Description *string `pulumi:"description"`
+	// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
+	DisplayName *string `pulumi:"displayName"`
+	// Notebook Execution Template corresponding to this schedule.
+	ExecutionTemplate *ExecutionTemplateResponse `pulumi:"executionTemplate"`
+	// The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+	Name *string `pulumi:"name"`
+	// The most recent execution names triggered from this schedule and their corresponding states.
+	RecentExecutions []ExecutionResponse `pulumi:"recentExecutions"`
+	State            *string             `pulumi:"state"`
+	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
+	TimeZone *string `pulumi:"timeZone"`
+	// Time the schedule was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ScheduleState struct {
+	// Time the schedule was created.
+	CreateTime pulumi.StringPtrInput
+	// Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+	CronSchedule pulumi.StringPtrInput
+	// A brief description of this environment.
+	Description pulumi.StringPtrInput
+	// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
+	DisplayName pulumi.StringPtrInput
+	// Notebook Execution Template corresponding to this schedule.
+	ExecutionTemplate ExecutionTemplateResponsePtrInput
+	// The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+	Name pulumi.StringPtrInput
+	// The most recent execution names triggered from this schedule and their corresponding states.
+	RecentExecutions ExecutionResponseArrayInput
+	State            pulumi.StringPtrInput
+	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
+	TimeZone pulumi.StringPtrInput
+	// Time the schedule was last updated.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (ScheduleState) ElementType() reflect.Type {
@@ -64,54 +122,34 @@ func (ScheduleState) ElementType() reflect.Type {
 }
 
 type scheduleArgs struct {
-	// Output only. Time the schedule was created.
-	CreateTime *string `pulumi:"createTime"`
 	// Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
 	CronSchedule *string `pulumi:"cronSchedule"`
 	// A brief description of this environment.
 	Description *string `pulumi:"description"`
-	// Output only. Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
-	DisplayName *string `pulumi:"displayName"`
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate *ExecutionTemplate `pulumi:"executionTemplate"`
 	LocationsId       string             `pulumi:"locationsId"`
-	// Output only. The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	// Output only. The most recent execution names triggered from this schedule and their corresponding states.
-	RecentExecutions []ExecutionType `pulumi:"recentExecutions"`
-	SchedulesId      string          `pulumi:"schedulesId"`
-	State            *string         `pulumi:"state"`
+	ProjectsId        string             `pulumi:"projectsId"`
+	SchedulesId       string             `pulumi:"schedulesId"`
+	State             *string            `pulumi:"state"`
 	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
 	TimeZone *string `pulumi:"timeZone"`
-	// Output only. Time the schedule was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Schedule resource.
 type ScheduleArgs struct {
-	// Output only. Time the schedule was created.
-	CreateTime pulumi.StringPtrInput
 	// Cron-tab formatted schedule by which the job will execute Format: minute, hour, day of month, month, day of week e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
 	CronSchedule pulumi.StringPtrInput
 	// A brief description of this environment.
 	Description pulumi.StringPtrInput
-	// Output only. Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
-	DisplayName pulumi.StringPtrInput
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate ExecutionTemplatePtrInput
 	LocationsId       pulumi.StringInput
-	// Output only. The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	// Output only. The most recent execution names triggered from this schedule and their corresponding states.
-	RecentExecutions ExecutionTypeArrayInput
-	SchedulesId      pulumi.StringInput
-	State            pulumi.StringPtrInput
+	ProjectsId        pulumi.StringInput
+	SchedulesId       pulumi.StringInput
+	State             pulumi.StringPtrInput
 	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
 	TimeZone pulumi.StringPtrInput
-	// Output only. Time the schedule was last updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (ScheduleArgs) ElementType() reflect.Type {

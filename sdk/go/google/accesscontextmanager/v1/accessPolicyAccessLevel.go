@@ -14,6 +14,17 @@ import (
 // Create an Access Level. The longrunning operation from this RPC will have a successful status once the Access Level has propagated to long-lasting storage. Access Levels containing errors will result in an error response for the first error encountered.
 type AccessPolicyAccessLevel struct {
 	pulumi.CustomResourceState
+
+	// A `BasicLevel` composed of `Conditions`.
+	Basic BasicLevelResponseOutput `pulumi:"basic"`
+	// A `CustomLevel` written in the Common Expression Language.
+	Custom CustomLevelResponseOutput `pulumi:"custom"`
+	// Description of the `AccessLevel` and its use. Does not affect behavior.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Required. Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length of the `short_name` component is 50 characters.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Human readable title. Must be unique within the Policy.
+	Title pulumi.StringOutput `pulumi:"title"`
 }
 
 // NewAccessPolicyAccessLevel registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +62,29 @@ func GetAccessPolicyAccessLevel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPolicyAccessLevel resources.
 type accessPolicyAccessLevelState struct {
+	// A `BasicLevel` composed of `Conditions`.
+	Basic *BasicLevelResponse `pulumi:"basic"`
+	// A `CustomLevel` written in the Common Expression Language.
+	Custom *CustomLevelResponse `pulumi:"custom"`
+	// Description of the `AccessLevel` and its use. Does not affect behavior.
+	Description *string `pulumi:"description"`
+	// Required. Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length of the `short_name` component is 50 characters.
+	Name *string `pulumi:"name"`
+	// Human readable title. Must be unique within the Policy.
+	Title *string `pulumi:"title"`
 }
 
 type AccessPolicyAccessLevelState struct {
+	// A `BasicLevel` composed of `Conditions`.
+	Basic BasicLevelResponsePtrInput
+	// A `CustomLevel` written in the Common Expression Language.
+	Custom CustomLevelResponsePtrInput
+	// Description of the `AccessLevel` and its use. Does not affect behavior.
+	Description pulumi.StringPtrInput
+	// Required. Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length of the `short_name` component is 50 characters.
+	Name pulumi.StringPtrInput
+	// Human readable title. Must be unique within the Policy.
+	Title pulumi.StringPtrInput
 }
 
 func (AccessPolicyAccessLevelState) ElementType() reflect.Type {

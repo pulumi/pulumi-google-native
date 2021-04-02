@@ -14,6 +14,13 @@ import (
 // Creates a service, and returns the new service.
 type NamespaceService struct {
 	pulumi.CustomResourceState
+
+	// Optional. Annotations for the service. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 2000 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Annotations that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for system annotations managed by Service Directory. If the user tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory.
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	// Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints.
+	Endpoints EndpointResponseArrayOutput `pulumi:"endpoints"`
+	// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewNamespaceService registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +64,21 @@ func GetNamespaceService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NamespaceService resources.
 type namespaceServiceState struct {
+	// Optional. Annotations for the service. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 2000 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Annotations that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for system annotations managed by Service Directory. If the user tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory.
+	Annotations map[string]string `pulumi:"annotations"`
+	// Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints.
+	Endpoints []EndpointResponse `pulumi:"endpoints"`
+	// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
+	Name *string `pulumi:"name"`
 }
 
 type NamespaceServiceState struct {
+	// Optional. Annotations for the service. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 2000 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Annotations that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for system annotations managed by Service Directory. If the user tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory.
+	Annotations pulumi.StringMapInput
+	// Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints.
+	Endpoints EndpointResponseArrayInput
+	// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
+	Name pulumi.StringPtrInput
 }
 
 func (NamespaceServiceState) ElementType() reflect.Type {
@@ -69,9 +88,7 @@ func (NamespaceServiceState) ElementType() reflect.Type {
 type namespaceServiceArgs struct {
 	// Optional. Annotations for the service. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 2000 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Annotations that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for system annotations managed by Service Directory. If the user tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Output only. Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints.
-	Endpoints   []Endpoint `pulumi:"endpoints"`
-	LocationsId string     `pulumi:"locationsId"`
+	LocationsId string            `pulumi:"locationsId"`
 	// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
 	Name         *string `pulumi:"name"`
 	NamespacesId string  `pulumi:"namespacesId"`
@@ -83,8 +100,6 @@ type namespaceServiceArgs struct {
 type NamespaceServiceArgs struct {
 	// Optional. Annotations for the service. This data can be consumed by service clients. Restrictions: * The entire annotations dictionary may contain up to 2000 characters, spread accoss all key-value pairs. Annotations that go beyond this limit are rejected * Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Annotations that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for system annotations managed by Service Directory. If the user tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the `metadata` field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory.
 	Annotations pulumi.StringMapInput
-	// Output only. Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints.
-	Endpoints   EndpointArrayInput
 	LocationsId pulumi.StringInput
 	// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
 	Name         pulumi.StringPtrInput

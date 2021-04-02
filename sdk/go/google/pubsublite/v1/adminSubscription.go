@@ -14,6 +14,13 @@ import (
 // Creates a new subscription.
 type AdminSubscription struct {
 	pulumi.CustomResourceState
+
+	// The settings for this subscription's message delivery.
+	DeliveryConfig DeliveryConfigResponseOutput `pulumi:"deliveryConfig"`
+	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+	Topic pulumi.StringOutput `pulumi:"topic"`
 }
 
 // NewAdminSubscription registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +61,21 @@ func GetAdminSubscription(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AdminSubscription resources.
 type adminSubscriptionState struct {
+	// The settings for this subscription's message delivery.
+	DeliveryConfig *DeliveryConfigResponse `pulumi:"deliveryConfig"`
+	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
+	Name *string `pulumi:"name"`
+	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+	Topic *string `pulumi:"topic"`
 }
 
 type AdminSubscriptionState struct {
+	// The settings for this subscription's message delivery.
+	DeliveryConfig DeliveryConfigResponsePtrInput
+	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
+	Name pulumi.StringPtrInput
+	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+	Topic pulumi.StringPtrInput
 }
 
 func (AdminSubscriptionState) ElementType() reflect.Type {

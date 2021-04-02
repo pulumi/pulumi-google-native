@@ -14,6 +14,15 @@ import (
 // Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the attestor already exists.
 type Attestor struct {
 	pulumi.CustomResourceState
+
+	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Time when the attestor was last updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// This specifies how an attestation will be read, and how it will be used during policy enforcement.
+	UserOwnedGrafeasNote UserOwnedGrafeasNoteResponseOutput `pulumi:"userOwnedGrafeasNote"`
 }
 
 // NewAttestor registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +60,25 @@ func GetAttestor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Attestor resources.
 type attestorState struct {
+	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+	Description *string `pulumi:"description"`
+	// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+	Name *string `pulumi:"name"`
+	// Time when the attestor was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
+	// This specifies how an attestation will be read, and how it will be used during policy enforcement.
+	UserOwnedGrafeasNote *UserOwnedGrafeasNoteResponse `pulumi:"userOwnedGrafeasNote"`
 }
 
 type AttestorState struct {
+	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+	Description pulumi.StringPtrInput
+	// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+	Name pulumi.StringPtrInput
+	// Time when the attestor was last updated.
+	UpdateTime pulumi.StringPtrInput
+	// This specifies how an attestation will be read, and how it will be used during policy enforcement.
+	UserOwnedGrafeasNote UserOwnedGrafeasNoteResponsePtrInput
 }
 
 func (AttestorState) ElementType() reflect.Type {
@@ -67,8 +92,6 @@ type attestorArgs struct {
 	// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
-	// Output only. Time when the attestor was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 	// This specifies how an attestation will be read, and how it will be used during policy enforcement.
 	UserOwnedGrafeasNote *UserOwnedGrafeasNote `pulumi:"userOwnedGrafeasNote"`
 }
@@ -81,8 +104,6 @@ type AttestorArgs struct {
 	// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
-	// Output only. Time when the attestor was last updated.
-	UpdateTime pulumi.StringPtrInput
 	// This specifies how an attestation will be read, and how it will be used during policy enforcement.
 	UserOwnedGrafeasNote UserOwnedGrafeasNotePtrInput
 }

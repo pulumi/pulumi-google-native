@@ -14,6 +14,25 @@ import (
 // Create an OS Config guest policy.
 type GuestPolicy struct {
 	pulumi.CustomResourceState
+
+	// Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+	Assignment AssignmentResponseOutput `pulumi:"assignment"`
+	// Time this guest policy was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Description of the guest policy. Length of the description is limited to 1024 characters.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
+	PackageRepositories PackageRepositoryResponseArrayOutput `pulumi:"packageRepositories"`
+	// The software packages to be managed by this policy.
+	Packages PackageResponseArrayOutput `pulumi:"packages"`
+	// A list of Recipes to install on the VM instance.
+	Recipes SoftwareRecipeResponseArrayOutput `pulumi:"recipes"`
+	// Last time this guest policy was updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewGuestPolicy registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +70,45 @@ func GetGuestPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GuestPolicy resources.
 type guestPolicyState struct {
+	// Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+	Assignment *AssignmentResponse `pulumi:"assignment"`
+	// Time this guest policy was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Description of the guest policy. Length of the description is limited to 1024 characters.
+	Description *string `pulumi:"description"`
+	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
+	Etag *string `pulumi:"etag"`
+	// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+	Name *string `pulumi:"name"`
+	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
+	PackageRepositories []PackageRepositoryResponse `pulumi:"packageRepositories"`
+	// The software packages to be managed by this policy.
+	Packages []PackageResponse `pulumi:"packages"`
+	// A list of Recipes to install on the VM instance.
+	Recipes []SoftwareRecipeResponse `pulumi:"recipes"`
+	// Last time this guest policy was updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type GuestPolicyState struct {
+	// Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+	Assignment AssignmentResponsePtrInput
+	// Time this guest policy was created.
+	CreateTime pulumi.StringPtrInput
+	// Description of the guest policy. Length of the description is limited to 1024 characters.
+	Description pulumi.StringPtrInput
+	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
+	Etag pulumi.StringPtrInput
+	// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+	Name pulumi.StringPtrInput
+	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
+	PackageRepositories PackageRepositoryResponseArrayInput
+	// The software packages to be managed by this policy.
+	Packages PackageResponseArrayInput
+	// A list of Recipes to install on the VM instance.
+	Recipes SoftwareRecipeResponseArrayInput
+	// Last time this guest policy was updated.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (GuestPolicyState) ElementType() reflect.Type {
@@ -63,8 +118,6 @@ func (GuestPolicyState) ElementType() reflect.Type {
 type guestPolicyArgs struct {
 	// Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
 	Assignment *Assignment `pulumi:"assignment"`
-	// Output only. Time this guest policy was created.
-	CreateTime *string `pulumi:"createTime"`
 	// Description of the guest policy. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
 	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
@@ -79,16 +132,12 @@ type guestPolicyArgs struct {
 	ProjectsId string    `pulumi:"projectsId"`
 	// A list of Recipes to install on the VM instance.
 	Recipes []SoftwareRecipe `pulumi:"recipes"`
-	// Output only. Last time this guest policy was updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a GuestPolicy resource.
 type GuestPolicyArgs struct {
 	// Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
 	Assignment AssignmentPtrInput
-	// Output only. Time this guest policy was created.
-	CreateTime pulumi.StringPtrInput
 	// Description of the guest policy. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
 	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
@@ -103,8 +152,6 @@ type GuestPolicyArgs struct {
 	ProjectsId pulumi.StringInput
 	// A list of Recipes to install on the VM instance.
 	Recipes SoftwareRecipeArrayInput
-	// Output only. Last time this guest policy was updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (GuestPolicyArgs) ElementType() reflect.Type {

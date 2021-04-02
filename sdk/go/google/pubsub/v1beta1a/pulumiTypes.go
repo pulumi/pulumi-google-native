@@ -144,7 +144,143 @@ func (o PushConfigPtrOutput) PushEndpoint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Configuration for a push delivery endpoint.
+type PushConfigResponse struct {
+	// A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
+	PushEndpoint string `pulumi:"pushEndpoint"`
+}
+
+// PushConfigResponseInput is an input type that accepts PushConfigResponseArgs and PushConfigResponseOutput values.
+// You can construct a concrete instance of `PushConfigResponseInput` via:
+//
+//          PushConfigResponseArgs{...}
+type PushConfigResponseInput interface {
+	pulumi.Input
+
+	ToPushConfigResponseOutput() PushConfigResponseOutput
+	ToPushConfigResponseOutputWithContext(context.Context) PushConfigResponseOutput
+}
+
+// Configuration for a push delivery endpoint.
+type PushConfigResponseArgs struct {
+	// A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
+	PushEndpoint pulumi.StringInput `pulumi:"pushEndpoint"`
+}
+
+func (PushConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PushConfigResponse)(nil)).Elem()
+}
+
+func (i PushConfigResponseArgs) ToPushConfigResponseOutput() PushConfigResponseOutput {
+	return i.ToPushConfigResponseOutputWithContext(context.Background())
+}
+
+func (i PushConfigResponseArgs) ToPushConfigResponseOutputWithContext(ctx context.Context) PushConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PushConfigResponseOutput)
+}
+
+func (i PushConfigResponseArgs) ToPushConfigResponsePtrOutput() PushConfigResponsePtrOutput {
+	return i.ToPushConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PushConfigResponseArgs) ToPushConfigResponsePtrOutputWithContext(ctx context.Context) PushConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PushConfigResponseOutput).ToPushConfigResponsePtrOutputWithContext(ctx)
+}
+
+// PushConfigResponsePtrInput is an input type that accepts PushConfigResponseArgs, PushConfigResponsePtr and PushConfigResponsePtrOutput values.
+// You can construct a concrete instance of `PushConfigResponsePtrInput` via:
+//
+//          PushConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PushConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToPushConfigResponsePtrOutput() PushConfigResponsePtrOutput
+	ToPushConfigResponsePtrOutputWithContext(context.Context) PushConfigResponsePtrOutput
+}
+
+type pushConfigResponsePtrType PushConfigResponseArgs
+
+func PushConfigResponsePtr(v *PushConfigResponseArgs) PushConfigResponsePtrInput {
+	return (*pushConfigResponsePtrType)(v)
+}
+
+func (*pushConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PushConfigResponse)(nil)).Elem()
+}
+
+func (i *pushConfigResponsePtrType) ToPushConfigResponsePtrOutput() PushConfigResponsePtrOutput {
+	return i.ToPushConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *pushConfigResponsePtrType) ToPushConfigResponsePtrOutputWithContext(ctx context.Context) PushConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PushConfigResponsePtrOutput)
+}
+
+// Configuration for a push delivery endpoint.
+type PushConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PushConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PushConfigResponse)(nil)).Elem()
+}
+
+func (o PushConfigResponseOutput) ToPushConfigResponseOutput() PushConfigResponseOutput {
+	return o
+}
+
+func (o PushConfigResponseOutput) ToPushConfigResponseOutputWithContext(ctx context.Context) PushConfigResponseOutput {
+	return o
+}
+
+func (o PushConfigResponseOutput) ToPushConfigResponsePtrOutput() PushConfigResponsePtrOutput {
+	return o.ToPushConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PushConfigResponseOutput) ToPushConfigResponsePtrOutputWithContext(ctx context.Context) PushConfigResponsePtrOutput {
+	return o.ApplyT(func(v PushConfigResponse) *PushConfigResponse {
+		return &v
+	}).(PushConfigResponsePtrOutput)
+}
+
+// A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
+func (o PushConfigResponseOutput) PushEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v PushConfigResponse) string { return v.PushEndpoint }).(pulumi.StringOutput)
+}
+
+type PushConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PushConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PushConfigResponse)(nil)).Elem()
+}
+
+func (o PushConfigResponsePtrOutput) ToPushConfigResponsePtrOutput() PushConfigResponsePtrOutput {
+	return o
+}
+
+func (o PushConfigResponsePtrOutput) ToPushConfigResponsePtrOutputWithContext(ctx context.Context) PushConfigResponsePtrOutput {
+	return o
+}
+
+func (o PushConfigResponsePtrOutput) Elem() PushConfigResponseOutput {
+	return o.ApplyT(func(v *PushConfigResponse) PushConfigResponse { return *v }).(PushConfigResponseOutput)
+}
+
+// A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
+func (o PushConfigResponsePtrOutput) PushEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PushConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PushEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PushConfigOutput{})
 	pulumi.RegisterOutputType(PushConfigPtrOutput{})
+	pulumi.RegisterOutputType(PushConfigResponseOutput{})
+	pulumi.RegisterOutputType(PushConfigResponsePtrOutput{})
 }

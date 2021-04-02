@@ -14,6 +14,11 @@ import (
 // Creates a new health dataset. Results are returned through the Operation interface which returns either an `Operation.response` which contains a Dataset or `Operation.error`. The metadata field type is OperationMetadata.
 type Dataset struct {
 	pulumi.CustomResourceState
+
+	// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
+	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 }
 
 // NewDataset registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +59,17 @@ func GetDataset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Dataset resources.
 type datasetState struct {
+	// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
+	Name *string `pulumi:"name"`
+	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
+	TimeZone *string `pulumi:"timeZone"`
 }
 
 type DatasetState struct {
+	// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
+	Name pulumi.StringPtrInput
+	// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources, such as HL7 messages, where no explicit timezone is specified.
+	TimeZone pulumi.StringPtrInput
 }
 
 func (DatasetState) ElementType() reflect.Type {

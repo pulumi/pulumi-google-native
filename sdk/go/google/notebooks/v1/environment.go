@@ -14,6 +14,21 @@ import (
 // Creates a new Environment.
 type Environment struct {
 	pulumi.CustomResourceState
+
+	// Use a container image to start the notebook instance.
+	ContainerImage ContainerImageResponseOutput `pulumi:"containerImage"`
+	// The time at which this environment was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// A brief description of this environment.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Display name of this environment for the UI.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
+	PostStartupScript pulumi.StringOutput `pulumi:"postStartupScript"`
+	// Use a Compute Engine VM image to start the notebook instance.
+	VmImage VmImageResponseOutput `pulumi:"vmImage"`
 }
 
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +69,37 @@ func GetEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Environment resources.
 type environmentState struct {
+	// Use a container image to start the notebook instance.
+	ContainerImage *ContainerImageResponse `pulumi:"containerImage"`
+	// The time at which this environment was created.
+	CreateTime *string `pulumi:"createTime"`
+	// A brief description of this environment.
+	Description *string `pulumi:"description"`
+	// Display name of this environment for the UI.
+	DisplayName *string `pulumi:"displayName"`
+	// Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
+	Name *string `pulumi:"name"`
+	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
+	PostStartupScript *string `pulumi:"postStartupScript"`
+	// Use a Compute Engine VM image to start the notebook instance.
+	VmImage *VmImageResponse `pulumi:"vmImage"`
 }
 
 type EnvironmentState struct {
+	// Use a container image to start the notebook instance.
+	ContainerImage ContainerImageResponsePtrInput
+	// The time at which this environment was created.
+	CreateTime pulumi.StringPtrInput
+	// A brief description of this environment.
+	Description pulumi.StringPtrInput
+	// Display name of this environment for the UI.
+	DisplayName pulumi.StringPtrInput
+	// Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
+	Name pulumi.StringPtrInput
+	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
+	PostStartupScript pulumi.StringPtrInput
+	// Use a Compute Engine VM image to start the notebook instance.
+	VmImage VmImageResponsePtrInput
 }
 
 func (EnvironmentState) ElementType() reflect.Type {
@@ -66,16 +109,12 @@ func (EnvironmentState) ElementType() reflect.Type {
 type environmentArgs struct {
 	// Use a container image to start the notebook instance.
 	ContainerImage *ContainerImage `pulumi:"containerImage"`
-	// Output only. The time at which this environment was created.
-	CreateTime *string `pulumi:"createTime"`
 	// A brief description of this environment.
 	Description *string `pulumi:"description"`
 	// Display name of this environment for the UI.
 	DisplayName    *string `pulumi:"displayName"`
 	EnvironmentsId string  `pulumi:"environmentsId"`
 	LocationsId    string  `pulumi:"locationsId"`
-	// Output only. Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
-	Name *string `pulumi:"name"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
 	PostStartupScript *string `pulumi:"postStartupScript"`
 	ProjectsId        string  `pulumi:"projectsId"`
@@ -87,16 +126,12 @@ type environmentArgs struct {
 type EnvironmentArgs struct {
 	// Use a container image to start the notebook instance.
 	ContainerImage ContainerImagePtrInput
-	// Output only. The time at which this environment was created.
-	CreateTime pulumi.StringPtrInput
 	// A brief description of this environment.
 	Description pulumi.StringPtrInput
 	// Display name of this environment for the UI.
 	DisplayName    pulumi.StringPtrInput
 	EnvironmentsId pulumi.StringInput
 	LocationsId    pulumi.StringInput
-	// Output only. Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
-	Name pulumi.StringPtrInput
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
 	PostStartupScript pulumi.StringPtrInput
 	ProjectsId        pulumi.StringInput

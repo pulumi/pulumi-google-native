@@ -14,6 +14,19 @@ import (
 // Creates a new Annotation record. It is valid to create Annotation objects for the same source more than once since a unique ID is assigned to each record by this service.
 type DatasetAnnotationStoreAnnotation struct {
 	pulumi.CustomResourceState
+
+	// Details of the source.
+	AnnotationSource AnnotationSourceResponseOutput `pulumi:"annotationSource"`
+	// Additional information for this annotation record, such as annotator and verifier information or study campaign.
+	CustomData pulumi.StringMapOutput `pulumi:"customData"`
+	// Annotations for images. For example, bounding polygons.
+	ImageAnnotation ImageAnnotationResponseOutput `pulumi:"imageAnnotation"`
+	// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Annotations for resource. For example, classification tags.
+	ResourceAnnotation ResourceAnnotationResponseOutput `pulumi:"resourceAnnotation"`
+	// Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
+	TextAnnotation SensitiveTextAnnotationResponseOutput `pulumi:"textAnnotation"`
 }
 
 // NewDatasetAnnotationStoreAnnotation registers a new resource with the given unique name, arguments, and options.
@@ -60,9 +73,33 @@ func GetDatasetAnnotationStoreAnnotation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatasetAnnotationStoreAnnotation resources.
 type datasetAnnotationStoreAnnotationState struct {
+	// Details of the source.
+	AnnotationSource *AnnotationSourceResponse `pulumi:"annotationSource"`
+	// Additional information for this annotation record, such as annotator and verifier information or study campaign.
+	CustomData map[string]string `pulumi:"customData"`
+	// Annotations for images. For example, bounding polygons.
+	ImageAnnotation *ImageAnnotationResponse `pulumi:"imageAnnotation"`
+	// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+	Name *string `pulumi:"name"`
+	// Annotations for resource. For example, classification tags.
+	ResourceAnnotation *ResourceAnnotationResponse `pulumi:"resourceAnnotation"`
+	// Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
+	TextAnnotation *SensitiveTextAnnotationResponse `pulumi:"textAnnotation"`
 }
 
 type DatasetAnnotationStoreAnnotationState struct {
+	// Details of the source.
+	AnnotationSource AnnotationSourceResponsePtrInput
+	// Additional information for this annotation record, such as annotator and verifier information or study campaign.
+	CustomData pulumi.StringMapInput
+	// Annotations for images. For example, bounding polygons.
+	ImageAnnotation ImageAnnotationResponsePtrInput
+	// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+	Name pulumi.StringPtrInput
+	// Annotations for resource. For example, classification tags.
+	ResourceAnnotation ResourceAnnotationResponsePtrInput
+	// Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
+	TextAnnotation SensitiveTextAnnotationResponsePtrInput
 }
 
 func (DatasetAnnotationStoreAnnotationState) ElementType() reflect.Type {

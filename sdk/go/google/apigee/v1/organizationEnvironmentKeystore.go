@@ -14,6 +14,11 @@ import (
 // Creates a keystore or truststore. - Keystore: Contains certificates and their associated keys. - Truststore: Contains trusted certificates used to validate a server's certificate. These certificates are typically self-signed certificates or certificates that are not signed by a trusted CA.
 type OrganizationEnvironmentKeystore struct {
 	pulumi.CustomResourceState
+
+	// Aliases in this keystore.
+	Aliases pulumi.StringArrayOutput `pulumi:"aliases"`
+	// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewOrganizationEnvironmentKeystore registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +59,17 @@ func GetOrganizationEnvironmentKeystore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationEnvironmentKeystore resources.
 type organizationEnvironmentKeystoreState struct {
+	// Aliases in this keystore.
+	Aliases []string `pulumi:"aliases"`
+	// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+	Name *string `pulumi:"name"`
 }
 
 type OrganizationEnvironmentKeystoreState struct {
+	// Aliases in this keystore.
+	Aliases pulumi.StringArrayInput
+	// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+	Name pulumi.StringPtrInput
 }
 
 func (OrganizationEnvironmentKeystoreState) ElementType() reflect.Type {
@@ -64,10 +77,8 @@ func (OrganizationEnvironmentKeystoreState) ElementType() reflect.Type {
 }
 
 type organizationEnvironmentKeystoreArgs struct {
-	// Output only. Aliases in this keystore.
-	Aliases        []string `pulumi:"aliases"`
-	EnvironmentsId string   `pulumi:"environmentsId"`
-	KeystoresId    string   `pulumi:"keystoresId"`
+	EnvironmentsId string `pulumi:"environmentsId"`
+	KeystoresId    string `pulumi:"keystoresId"`
 	// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
 	Name            *string `pulumi:"name"`
 	OrganizationsId string  `pulumi:"organizationsId"`
@@ -75,8 +86,6 @@ type organizationEnvironmentKeystoreArgs struct {
 
 // The set of arguments for constructing a OrganizationEnvironmentKeystore resource.
 type OrganizationEnvironmentKeystoreArgs struct {
-	// Output only. Aliases in this keystore.
-	Aliases        pulumi.StringArrayInput
 	EnvironmentsId pulumi.StringInput
 	KeystoresId    pulumi.StringInput
 	// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.

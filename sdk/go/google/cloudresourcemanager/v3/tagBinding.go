@@ -58,8 +58,6 @@ func (TagBindingState) ElementType() reflect.Type {
 }
 
 type tagBindingArgs struct {
-	// Output only. The name of the TagBinding. This is a String of the form: `tagBindings/{full-resource-name}/{tag-value-name}` (e.g. `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagValues/456`).
-	Name *string `pulumi:"name"`
 	// The full resource name of the resource the TagValue is bound to. E.g. `//cloudresourcemanager.googleapis.com/projects/123`
 	Parent        *string `pulumi:"parent"`
 	TagBindingsId string  `pulumi:"tagBindingsId"`
@@ -69,8 +67,6 @@ type tagBindingArgs struct {
 
 // The set of arguments for constructing a TagBinding resource.
 type TagBindingArgs struct {
-	// Output only. The name of the TagBinding. This is a String of the form: `tagBindings/{full-resource-name}/{tag-value-name}` (e.g. `tagBindings/%2F%2Fcloudresourcemanager.googleapis.com%2Fprojects%2F123/tagValues/456`).
-	Name pulumi.StringPtrInput
 	// The full resource name of the resource the TagValue is bound to. E.g. `//cloudresourcemanager.googleapis.com/projects/123`
 	Parent        pulumi.StringPtrInput
 	TagBindingsId pulumi.StringInput

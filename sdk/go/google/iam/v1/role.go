@@ -14,6 +14,21 @@ import (
 // Creates a new custom Role.
 type Role struct {
 	pulumi.CustomResourceState
+
+	// The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
+	Deleted pulumi.BoolOutput `pulumi:"deleted"`
+	// Optional. A human-readable description for the role.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Used to perform a consistent read-modify-write.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The names of the permissions this role grants when bound in an IAM policy.
+	IncludedPermissions pulumi.StringArrayOutput `pulumi:"includedPermissions"`
+	// The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
+	Stage pulumi.StringOutput `pulumi:"stage"`
+	// Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
+	Title pulumi.StringOutput `pulumi:"title"`
 }
 
 // NewRole registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +66,37 @@ func GetRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Role resources.
 type roleState struct {
+	// The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
+	Deleted *bool `pulumi:"deleted"`
+	// Optional. A human-readable description for the role.
+	Description *string `pulumi:"description"`
+	// Used to perform a consistent read-modify-write.
+	Etag *string `pulumi:"etag"`
+	// The names of the permissions this role grants when bound in an IAM policy.
+	IncludedPermissions []string `pulumi:"includedPermissions"`
+	// The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
+	Name *string `pulumi:"name"`
+	// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
+	Stage *string `pulumi:"stage"`
+	// Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
+	Title *string `pulumi:"title"`
 }
 
 type RoleState struct {
+	// The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
+	Deleted pulumi.BoolPtrInput
+	// Optional. A human-readable description for the role.
+	Description pulumi.StringPtrInput
+	// Used to perform a consistent read-modify-write.
+	Etag pulumi.StringPtrInput
+	// The names of the permissions this role grants when bound in an IAM policy.
+	IncludedPermissions pulumi.StringArrayInput
+	// The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
+	Name pulumi.StringPtrInput
+	// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
+	Stage pulumi.StringPtrInput
+	// Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
+	Title pulumi.StringPtrInput
 }
 
 func (RoleState) ElementType() reflect.Type {

@@ -14,6 +14,17 @@ import (
 // Creates a new domain mapping.
 type NamespaceDomainmapping struct {
 	pulumi.CustomResourceState
+
+	// The API version for this call such as "domains.cloudrun.com/v1alpha1".
+	ApiVersion pulumi.StringOutput `pulumi:"apiVersion"`
+	// The kind of resource, in this case "DomainMapping".
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// Metadata associated with this BuildTemplate.
+	Metadata ObjectMetaResponseOutput `pulumi:"metadata"`
+	// The spec for this DomainMapping.
+	Spec DomainMappingSpecResponseOutput `pulumi:"spec"`
+	// The current status of the DomainMapping.
+	Status DomainMappingStatusResponseOutput `pulumi:"status"`
 }
 
 // NewNamespaceDomainmapping registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +62,29 @@ func GetNamespaceDomainmapping(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NamespaceDomainmapping resources.
 type namespaceDomainmappingState struct {
+	// The API version for this call such as "domains.cloudrun.com/v1alpha1".
+	ApiVersion *string `pulumi:"apiVersion"`
+	// The kind of resource, in this case "DomainMapping".
+	Kind *string `pulumi:"kind"`
+	// Metadata associated with this BuildTemplate.
+	Metadata *ObjectMetaResponse `pulumi:"metadata"`
+	// The spec for this DomainMapping.
+	Spec *DomainMappingSpecResponse `pulumi:"spec"`
+	// The current status of the DomainMapping.
+	Status *DomainMappingStatusResponse `pulumi:"status"`
 }
 
 type NamespaceDomainmappingState struct {
+	// The API version for this call such as "domains.cloudrun.com/v1alpha1".
+	ApiVersion pulumi.StringPtrInput
+	// The kind of resource, in this case "DomainMapping".
+	Kind pulumi.StringPtrInput
+	// Metadata associated with this BuildTemplate.
+	Metadata ObjectMetaResponsePtrInput
+	// The spec for this DomainMapping.
+	Spec DomainMappingSpecResponsePtrInput
+	// The current status of the DomainMapping.
+	Status DomainMappingStatusResponsePtrInput
 }
 
 func (NamespaceDomainmappingState) ElementType() reflect.Type {

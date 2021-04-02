@@ -14,6 +14,29 @@ import (
 // Create an OS Config patch deployment.
 type PatchDeployment struct {
 	pulumi.CustomResourceState
+
+	// Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. Duration of the patch. After the duration ends, the patch times out.
+	Duration pulumi.StringOutput `pulumi:"duration"`
+	// Required. VM instances to patch.
+	InstanceFilter PatchInstanceFilterResponseOutput `pulumi:"instanceFilter"`
+	// The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+	LastExecuteTime pulumi.StringOutput `pulumi:"lastExecuteTime"`
+	// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. Schedule a one-time execution.
+	OneTimeSchedule OneTimeScheduleResponseOutput `pulumi:"oneTimeSchedule"`
+	// Optional. Patch configuration that is applied.
+	PatchConfig PatchConfigResponseOutput `pulumi:"patchConfig"`
+	// Required. Schedule recurring executions.
+	RecurringSchedule RecurringScheduleResponseOutput `pulumi:"recurringSchedule"`
+	// Optional. Rollout strategy of the patch job.
+	Rollout PatchRolloutResponseOutput `pulumi:"rollout"`
+	// Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewPatchDeployment registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +74,53 @@ func GetPatchDeployment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PatchDeployment resources.
 type patchDeploymentState struct {
+	// Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+	CreateTime *string `pulumi:"createTime"`
+	// Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
+	Description *string `pulumi:"description"`
+	// Optional. Duration of the patch. After the duration ends, the patch times out.
+	Duration *string `pulumi:"duration"`
+	// Required. VM instances to patch.
+	InstanceFilter *PatchInstanceFilterResponse `pulumi:"instanceFilter"`
+	// The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+	LastExecuteTime *string `pulumi:"lastExecuteTime"`
+	// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
+	Name *string `pulumi:"name"`
+	// Required. Schedule a one-time execution.
+	OneTimeSchedule *OneTimeScheduleResponse `pulumi:"oneTimeSchedule"`
+	// Optional. Patch configuration that is applied.
+	PatchConfig *PatchConfigResponse `pulumi:"patchConfig"`
+	// Required. Schedule recurring executions.
+	RecurringSchedule *RecurringScheduleResponse `pulumi:"recurringSchedule"`
+	// Optional. Rollout strategy of the patch job.
+	Rollout *PatchRolloutResponse `pulumi:"rollout"`
+	// Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type PatchDeploymentState struct {
+	// Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+	CreateTime pulumi.StringPtrInput
+	// Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
+	Description pulumi.StringPtrInput
+	// Optional. Duration of the patch. After the duration ends, the patch times out.
+	Duration pulumi.StringPtrInput
+	// Required. VM instances to patch.
+	InstanceFilter PatchInstanceFilterResponsePtrInput
+	// The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+	LastExecuteTime pulumi.StringPtrInput
+	// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
+	Name pulumi.StringPtrInput
+	// Required. Schedule a one-time execution.
+	OneTimeSchedule OneTimeScheduleResponsePtrInput
+	// Optional. Patch configuration that is applied.
+	PatchConfig PatchConfigResponsePtrInput
+	// Required. Schedule recurring executions.
+	RecurringSchedule RecurringScheduleResponsePtrInput
+	// Optional. Rollout strategy of the patch job.
+	Rollout PatchRolloutResponsePtrInput
+	// Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (PatchDeploymentState) ElementType() reflect.Type {
@@ -61,16 +128,12 @@ func (PatchDeploymentState) ElementType() reflect.Type {
 }
 
 type patchDeploymentArgs struct {
-	// Output only. Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-	CreateTime *string `pulumi:"createTime"`
 	// Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
 	// Optional. Duration of the patch. After the duration ends, the patch times out.
 	Duration *string `pulumi:"duration"`
 	// Required. VM instances to patch.
 	InstanceFilter *PatchInstanceFilter `pulumi:"instanceFilter"`
-	// Output only. The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-	LastExecuteTime *string `pulumi:"lastExecuteTime"`
 	// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
 	Name *string `pulumi:"name"`
 	// Required. Schedule a one-time execution.
@@ -83,22 +146,16 @@ type patchDeploymentArgs struct {
 	RecurringSchedule *RecurringSchedule `pulumi:"recurringSchedule"`
 	// Optional. Rollout strategy of the patch job.
 	Rollout *PatchRollout `pulumi:"rollout"`
-	// Output only. Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a PatchDeployment resource.
 type PatchDeploymentArgs struct {
-	// Output only. Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-	CreateTime pulumi.StringPtrInput
 	// Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
 	// Optional. Duration of the patch. After the duration ends, the patch times out.
 	Duration pulumi.StringPtrInput
 	// Required. VM instances to patch.
 	InstanceFilter PatchInstanceFilterPtrInput
-	// Output only. The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-	LastExecuteTime pulumi.StringPtrInput
 	// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
 	Name pulumi.StringPtrInput
 	// Required. Schedule a one-time execution.
@@ -111,8 +168,6 @@ type PatchDeploymentArgs struct {
 	RecurringSchedule RecurringSchedulePtrInput
 	// Optional. Rollout strategy of the patch job.
 	Rollout PatchRolloutPtrInput
-	// Output only. Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (PatchDeploymentArgs) ElementType() reflect.Type {

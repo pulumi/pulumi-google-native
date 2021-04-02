@@ -14,6 +14,31 @@ import (
 // Creates an Experiment in the specified Environment.
 type AgentEnvironmentExperiment struct {
 	pulumi.CustomResourceState
+
+	// Creation time of this experiment.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The definition of the experiment.
+	Definition GoogleCloudDialogflowCxV3beta1ExperimentDefinitionResponseOutput `pulumi:"definition"`
+	// The human-readable description of the experiment.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// End time of this experiment.
+	EndTime pulumi.StringOutput `pulumi:"endTime"`
+	// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+	ExperimentLength pulumi.StringOutput `pulumi:"experimentLength"`
+	// Last update time of this experiment.
+	LastUpdateTime pulumi.StringOutput `pulumi:"lastUpdateTime"`
+	// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Inference result of the experiment.
+	Result GoogleCloudDialogflowCxV3beta1ExperimentResultResponseOutput `pulumi:"result"`
+	// Start time of this experiment.
+	StartTime pulumi.StringOutput `pulumi:"startTime"`
+	// The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+	State pulumi.StringOutput `pulumi:"state"`
+	// The history of updates to the experiment variants.
+	VariantsHistory GoogleCloudDialogflowCxV3beta1VariantsHistoryResponseArrayOutput `pulumi:"variantsHistory"`
 }
 
 // NewAgentEnvironmentExperiment registers a new resource with the given unique name, arguments, and options.
@@ -60,9 +85,57 @@ func GetAgentEnvironmentExperiment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AgentEnvironmentExperiment resources.
 type agentEnvironmentExperimentState struct {
+	// Creation time of this experiment.
+	CreateTime *string `pulumi:"createTime"`
+	// The definition of the experiment.
+	Definition *GoogleCloudDialogflowCxV3beta1ExperimentDefinitionResponse `pulumi:"definition"`
+	// The human-readable description of the experiment.
+	Description *string `pulumi:"description"`
+	// Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// End time of this experiment.
+	EndTime *string `pulumi:"endTime"`
+	// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+	ExperimentLength *string `pulumi:"experimentLength"`
+	// Last update time of this experiment.
+	LastUpdateTime *string `pulumi:"lastUpdateTime"`
+	// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
+	Name *string `pulumi:"name"`
+	// Inference result of the experiment.
+	Result *GoogleCloudDialogflowCxV3beta1ExperimentResultResponse `pulumi:"result"`
+	// Start time of this experiment.
+	StartTime *string `pulumi:"startTime"`
+	// The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+	State *string `pulumi:"state"`
+	// The history of updates to the experiment variants.
+	VariantsHistory []GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse `pulumi:"variantsHistory"`
 }
 
 type AgentEnvironmentExperimentState struct {
+	// Creation time of this experiment.
+	CreateTime pulumi.StringPtrInput
+	// The definition of the experiment.
+	Definition GoogleCloudDialogflowCxV3beta1ExperimentDefinitionResponsePtrInput
+	// The human-readable description of the experiment.
+	Description pulumi.StringPtrInput
+	// Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+	DisplayName pulumi.StringPtrInput
+	// End time of this experiment.
+	EndTime pulumi.StringPtrInput
+	// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+	ExperimentLength pulumi.StringPtrInput
+	// Last update time of this experiment.
+	LastUpdateTime pulumi.StringPtrInput
+	// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
+	Name pulumi.StringPtrInput
+	// Inference result of the experiment.
+	Result GoogleCloudDialogflowCxV3beta1ExperimentResultResponsePtrInput
+	// Start time of this experiment.
+	StartTime pulumi.StringPtrInput
+	// The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+	State pulumi.StringPtrInput
+	// The history of updates to the experiment variants.
+	VariantsHistory GoogleCloudDialogflowCxV3beta1VariantsHistoryResponseArrayInput
 }
 
 func (AgentEnvironmentExperimentState) ElementType() reflect.Type {

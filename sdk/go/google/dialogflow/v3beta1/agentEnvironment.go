@@ -14,6 +14,17 @@ import (
 // Creates an Environment in the specified Agent.
 type AgentEnvironment struct {
 	pulumi.CustomResourceState
+
+	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// The name of the environment. Format: `projects//locations//agents//environments/`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Update time of this environment.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+	VersionConfigs GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponseArrayOutput `pulumi:"versionConfigs"`
 }
 
 // NewAgentEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +68,29 @@ func GetAgentEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AgentEnvironment resources.
 type agentEnvironmentState struct {
+	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+	Description *string `pulumi:"description"`
+	// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// The name of the environment. Format: `projects//locations//agents//environments/`.
+	Name *string `pulumi:"name"`
+	// Update time of this environment.
+	UpdateTime *string `pulumi:"updateTime"`
+	// Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+	VersionConfigs []GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse `pulumi:"versionConfigs"`
 }
 
 type AgentEnvironmentState struct {
+	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+	Description pulumi.StringPtrInput
+	// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+	DisplayName pulumi.StringPtrInput
+	// The name of the environment. Format: `projects//locations//agents//environments/`.
+	Name pulumi.StringPtrInput
+	// Update time of this environment.
+	UpdateTime pulumi.StringPtrInput
+	// Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+	VersionConfigs GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponseArrayInput
 }
 
 func (AgentEnvironmentState) ElementType() reflect.Type {
@@ -77,8 +108,6 @@ type agentEnvironmentArgs struct {
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
-	// Output only. Update time of this environment.
-	UpdateTime *string `pulumi:"updateTime"`
 	// Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs []GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig `pulumi:"versionConfigs"`
 }
@@ -95,8 +124,6 @@ type AgentEnvironmentArgs struct {
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
-	// Output only. Update time of this environment.
-	UpdateTime pulumi.StringPtrInput
 	// Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayInput
 }

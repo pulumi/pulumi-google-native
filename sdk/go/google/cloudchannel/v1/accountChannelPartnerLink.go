@@ -14,6 +14,23 @@ import (
 // Initiates a channel partner link between a distributor and a reseller, or between resellers in an n-tier reseller channel. Invited partners need to follow the invite_link_uri provided in the response to accept. After accepting the invitation, a link is set up between the two parties. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * ALREADY_EXISTS: The ChannelPartnerLink sent in the request already exists. * NOT_FOUND: No Cloud Identity customer exists for provided domain. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The new ChannelPartnerLink resource.
 type AccountChannelPartnerLink struct {
 	pulumi.CustomResourceState
+
+	// Cloud Identity info of the channel partner (IR).
+	ChannelPartnerCloudIdentityInfo GoogleCloudChannelV1CloudIdentityInfoResponseOutput `pulumi:"channelPartnerCloudIdentityInfo"`
+	// Timestamp of when the channel partner link is created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// URI of the web page where partner accepts the link invitation.
+	InviteLinkUri pulumi.StringOutput `pulumi:"inviteLinkUri"`
+	// Required. State of the channel partner link.
+	LinkState pulumi.StringOutput `pulumi:"linkState"`
+	// Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
+	PublicId pulumi.StringOutput `pulumi:"publicId"`
+	// Required. Cloud Identity ID of the linked reseller.
+	ResellerCloudIdentityId pulumi.StringOutput `pulumi:"resellerCloudIdentityId"`
+	// Timestamp of when the channel partner link is updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewAccountChannelPartnerLink registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +68,41 @@ func GetAccountChannelPartnerLink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountChannelPartnerLink resources.
 type accountChannelPartnerLinkState struct {
+	// Cloud Identity info of the channel partner (IR).
+	ChannelPartnerCloudIdentityInfo *GoogleCloudChannelV1CloudIdentityInfoResponse `pulumi:"channelPartnerCloudIdentityInfo"`
+	// Timestamp of when the channel partner link is created.
+	CreateTime *string `pulumi:"createTime"`
+	// URI of the web page where partner accepts the link invitation.
+	InviteLinkUri *string `pulumi:"inviteLinkUri"`
+	// Required. State of the channel partner link.
+	LinkState *string `pulumi:"linkState"`
+	// Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
+	Name *string `pulumi:"name"`
+	// Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
+	PublicId *string `pulumi:"publicId"`
+	// Required. Cloud Identity ID of the linked reseller.
+	ResellerCloudIdentityId *string `pulumi:"resellerCloudIdentityId"`
+	// Timestamp of when the channel partner link is updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type AccountChannelPartnerLinkState struct {
+	// Cloud Identity info of the channel partner (IR).
+	ChannelPartnerCloudIdentityInfo GoogleCloudChannelV1CloudIdentityInfoResponsePtrInput
+	// Timestamp of when the channel partner link is created.
+	CreateTime pulumi.StringPtrInput
+	// URI of the web page where partner accepts the link invitation.
+	InviteLinkUri pulumi.StringPtrInput
+	// Required. State of the channel partner link.
+	LinkState pulumi.StringPtrInput
+	// Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
+	Name pulumi.StringPtrInput
+	// Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
+	PublicId pulumi.StringPtrInput
+	// Required. Cloud Identity ID of the linked reseller.
+	ResellerCloudIdentityId pulumi.StringPtrInput
+	// Timestamp of when the channel partner link is updated.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (AccountChannelPartnerLinkState) ElementType() reflect.Type {
@@ -61,46 +110,22 @@ func (AccountChannelPartnerLinkState) ElementType() reflect.Type {
 }
 
 type accountChannelPartnerLinkArgs struct {
-	AccountsId string `pulumi:"accountsId"`
-	// Output only. Cloud Identity info of the channel partner (IR).
-	ChannelPartnerCloudIdentityInfo *GoogleCloudChannelV1CloudIdentityInfo `pulumi:"channelPartnerCloudIdentityInfo"`
-	ChannelPartnerLinksId           string                                 `pulumi:"channelPartnerLinksId"`
-	// Output only. Timestamp of when the channel partner link is created.
-	CreateTime *string `pulumi:"createTime"`
-	// Output only. URI of the web page where partner accepts the link invitation.
-	InviteLinkUri *string `pulumi:"inviteLinkUri"`
+	AccountsId            string `pulumi:"accountsId"`
+	ChannelPartnerLinksId string `pulumi:"channelPartnerLinksId"`
 	// Required. State of the channel partner link.
 	LinkState *string `pulumi:"linkState"`
-	// Output only. Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
-	Name *string `pulumi:"name"`
-	// Output only. Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
-	PublicId *string `pulumi:"publicId"`
 	// Required. Cloud Identity ID of the linked reseller.
 	ResellerCloudIdentityId *string `pulumi:"resellerCloudIdentityId"`
-	// Output only. Timestamp of when the channel partner link is updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a AccountChannelPartnerLink resource.
 type AccountChannelPartnerLinkArgs struct {
-	AccountsId pulumi.StringInput
-	// Output only. Cloud Identity info of the channel partner (IR).
-	ChannelPartnerCloudIdentityInfo GoogleCloudChannelV1CloudIdentityInfoPtrInput
-	ChannelPartnerLinksId           pulumi.StringInput
-	// Output only. Timestamp of when the channel partner link is created.
-	CreateTime pulumi.StringPtrInput
-	// Output only. URI of the web page where partner accepts the link invitation.
-	InviteLinkUri pulumi.StringPtrInput
+	AccountsId            pulumi.StringInput
+	ChannelPartnerLinksId pulumi.StringInput
 	// Required. State of the channel partner link.
 	LinkState pulumi.StringPtrInput
-	// Output only. Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
-	Name pulumi.StringPtrInput
-	// Output only. Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
-	PublicId pulumi.StringPtrInput
 	// Required. Cloud Identity ID of the linked reseller.
 	ResellerCloudIdentityId pulumi.StringPtrInput
-	// Output only. Timestamp of when the channel partner link is updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (AccountChannelPartnerLinkArgs) ElementType() reflect.Type {

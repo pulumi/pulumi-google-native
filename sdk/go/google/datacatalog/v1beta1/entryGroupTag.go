@@ -79,8 +79,6 @@ type entryGroupTagArgs struct {
 	TagsId     string  `pulumi:"tagsId"`
 	// Required. The resource name of the tag template that this tag uses. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} This field cannot be modified after creation.
 	Template *string `pulumi:"template"`
-	// Output only. The display name of the tag template.
-	TemplateDisplayName *string `pulumi:"templateDisplayName"`
 }
 
 // The set of arguments for constructing a EntryGroupTag resource.
@@ -97,8 +95,6 @@ type EntryGroupTagArgs struct {
 	TagsId     pulumi.StringInput
 	// Required. The resource name of the tag template that this tag uses. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} This field cannot be modified after creation.
 	Template pulumi.StringPtrInput
-	// Output only. The display name of the tag template.
-	TemplateDisplayName pulumi.StringPtrInput
 }
 
 func (EntryGroupTagArgs) ElementType() reflect.Type {

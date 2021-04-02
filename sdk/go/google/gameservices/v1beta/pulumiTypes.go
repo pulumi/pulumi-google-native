@@ -125,6 +125,121 @@ func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
 	}).(AuditConfigOutput)
 }
 
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponse struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs []AuditLogConfigResponse `pulumi:"auditLogConfigs"`
+	ExemptedMembers []string                 `pulumi:"exemptedMembers"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service string `pulumi:"service"`
+}
+
+// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
+// You can construct a concrete instance of `AuditConfigResponseInput` via:
+//
+//          AuditConfigResponseArgs{...}
+type AuditConfigResponseInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseOutput() AuditConfigResponseOutput
+	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseArgs struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
+	ExemptedMembers pulumi.StringArrayInput          `pulumi:"exemptedMembers"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (AuditConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return i.ToAuditConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
+}
+
+// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
+//
+//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
+type AuditConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
+	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
+}
+
+type AuditConfigResponseArray []AuditConfigResponseInput
+
+func (AuditConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return o
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return o
+}
+
+// The configuration for logging of each type of permission.
+func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
+	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
+}
+
+func (o AuditConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
+// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+func (o AuditConfigResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditConfigResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type AuditConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditConfigResponse {
+		return vs[0].([]AuditConfigResponse)[vs[1].(int)]
+	}).(AuditConfigResponseOutput)
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -238,6 +353,121 @@ func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfig {
 		return vs[0].([]AuditLogConfig)[vs[1].(int)]
 	}).(AuditLogConfigOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponse struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers       []string `pulumi:"exemptedMembers"`
+	IgnoreChildExemptions bool     `pulumi:"ignoreChildExemptions"`
+	// The log type that this config enables.
+	LogType string `pulumi:"logType"`
+}
+
+// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
+//
+//          AuditLogConfigResponseArgs{...}
+type AuditLogConfigResponseInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
+	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseArgs struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers       pulumi.StringArrayInput `pulumi:"exemptedMembers"`
+	IgnoreChildExemptions pulumi.BoolInput        `pulumi:"ignoreChildExemptions"`
+	// The log type that this config enables.
+	LogType pulumi.StringInput `pulumi:"logType"`
+}
+
+func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
+}
+
+// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
+//
+//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
+type AuditLogConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
+	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
+}
+
+type AuditLogConfigResponseArray []AuditLogConfigResponseInput
+
+func (AuditLogConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return o
+}
+
+// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
+func (o AuditLogConfigResponseOutput) IgnoreChildExemptions() pulumi.BoolOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) bool { return v.IgnoreChildExemptions }).(pulumi.BoolOutput)
+}
+
+// The log type that this config enables.
+func (o AuditLogConfigResponseOutput) LogType() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) string { return v.LogType }).(pulumi.StringOutput)
+}
+
+type AuditLogConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfigResponse {
+		return vs[0].([]AuditLogConfigResponse)[vs[1].(int)]
+	}).(AuditLogConfigResponseOutput)
 }
 
 // Authorization-related information used by Cloud Audit Logging.
@@ -374,6 +604,61 @@ func (o AuthorizationLoggingOptionsPtrOutput) PermissionType() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Authorization-related information used by Cloud Audit Logging.
+type AuthorizationLoggingOptionsResponse struct {
+	// The type of the permission that was checked.
+	PermissionType string `pulumi:"permissionType"`
+}
+
+// AuthorizationLoggingOptionsResponseInput is an input type that accepts AuthorizationLoggingOptionsResponseArgs and AuthorizationLoggingOptionsResponseOutput values.
+// You can construct a concrete instance of `AuthorizationLoggingOptionsResponseInput` via:
+//
+//          AuthorizationLoggingOptionsResponseArgs{...}
+type AuthorizationLoggingOptionsResponseInput interface {
+	pulumi.Input
+
+	ToAuthorizationLoggingOptionsResponseOutput() AuthorizationLoggingOptionsResponseOutput
+	ToAuthorizationLoggingOptionsResponseOutputWithContext(context.Context) AuthorizationLoggingOptionsResponseOutput
+}
+
+// Authorization-related information used by Cloud Audit Logging.
+type AuthorizationLoggingOptionsResponseArgs struct {
+	// The type of the permission that was checked.
+	PermissionType pulumi.StringInput `pulumi:"permissionType"`
+}
+
+func (AuthorizationLoggingOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationLoggingOptionsResponse)(nil)).Elem()
+}
+
+func (i AuthorizationLoggingOptionsResponseArgs) ToAuthorizationLoggingOptionsResponseOutput() AuthorizationLoggingOptionsResponseOutput {
+	return i.ToAuthorizationLoggingOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i AuthorizationLoggingOptionsResponseArgs) ToAuthorizationLoggingOptionsResponseOutputWithContext(ctx context.Context) AuthorizationLoggingOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationLoggingOptionsResponseOutput)
+}
+
+// Authorization-related information used by Cloud Audit Logging.
+type AuthorizationLoggingOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationLoggingOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationLoggingOptionsResponse)(nil)).Elem()
+}
+
+func (o AuthorizationLoggingOptionsResponseOutput) ToAuthorizationLoggingOptionsResponseOutput() AuthorizationLoggingOptionsResponseOutput {
+	return o
+}
+
+func (o AuthorizationLoggingOptionsResponseOutput) ToAuthorizationLoggingOptionsResponseOutputWithContext(ctx context.Context) AuthorizationLoggingOptionsResponseOutput {
+	return o
+}
+
+// The type of the permission that was checked.
+func (o AuthorizationLoggingOptionsResponseOutput) PermissionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthorizationLoggingOptionsResponse) string { return v.PermissionType }).(pulumi.StringOutput)
+}
+
 // Associates `members` with a `role`.
 type Binding struct {
 	BindingId *string `pulumi:"bindingId"`
@@ -496,6 +781,130 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Binding {
 		return vs[0].([]Binding)[vs[1].(int)]
 	}).(BindingOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponse struct {
+	BindingId string `pulumi:"bindingId"`
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
+// You can construct a concrete instance of `BindingResponseInput` via:
+//
+//          BindingResponseArgs{...}
+type BindingResponseInput interface {
+	pulumi.Input
+
+	ToBindingResponseOutput() BindingResponseOutput
+	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
+}
+
+// Associates `members` with a `role`.
+type BindingResponseArgs struct {
+	BindingId pulumi.StringInput `pulumi:"bindingId"`
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
+	return i.ToBindingResponseOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
+}
+
+// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
+// You can construct a concrete instance of `BindingResponseArrayInput` via:
+//
+//          BindingResponseArray{ BindingResponseArgs{...} }
+type BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToBindingResponseArrayOutput() BindingResponseArrayOutput
+	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
+}
+
+type BindingResponseArray []BindingResponseInput
+
+func (BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return i.ToBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) BindingId() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.BindingId }).(pulumi.StringOutput)
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
+		return vs[0].([]BindingResponse)[vs[1].(int)]
+	}).(BindingResponseOutput)
 }
 
 // Write a Cloud Audit log
@@ -651,6 +1060,72 @@ func (o CloudAuditOptionsPtrOutput) LogName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Write a Cloud Audit log
+type CloudAuditOptionsResponse struct {
+	// Information used by the Cloud Audit Logging pipeline.
+	AuthorizationLoggingOptions AuthorizationLoggingOptionsResponse `pulumi:"authorizationLoggingOptions"`
+	// The log_name to populate in the Cloud Audit Record.
+	LogName string `pulumi:"logName"`
+}
+
+// CloudAuditOptionsResponseInput is an input type that accepts CloudAuditOptionsResponseArgs and CloudAuditOptionsResponseOutput values.
+// You can construct a concrete instance of `CloudAuditOptionsResponseInput` via:
+//
+//          CloudAuditOptionsResponseArgs{...}
+type CloudAuditOptionsResponseInput interface {
+	pulumi.Input
+
+	ToCloudAuditOptionsResponseOutput() CloudAuditOptionsResponseOutput
+	ToCloudAuditOptionsResponseOutputWithContext(context.Context) CloudAuditOptionsResponseOutput
+}
+
+// Write a Cloud Audit log
+type CloudAuditOptionsResponseArgs struct {
+	// Information used by the Cloud Audit Logging pipeline.
+	AuthorizationLoggingOptions AuthorizationLoggingOptionsResponseInput `pulumi:"authorizationLoggingOptions"`
+	// The log_name to populate in the Cloud Audit Record.
+	LogName pulumi.StringInput `pulumi:"logName"`
+}
+
+func (CloudAuditOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudAuditOptionsResponse)(nil)).Elem()
+}
+
+func (i CloudAuditOptionsResponseArgs) ToCloudAuditOptionsResponseOutput() CloudAuditOptionsResponseOutput {
+	return i.ToCloudAuditOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i CloudAuditOptionsResponseArgs) ToCloudAuditOptionsResponseOutputWithContext(ctx context.Context) CloudAuditOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudAuditOptionsResponseOutput)
+}
+
+// Write a Cloud Audit log
+type CloudAuditOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudAuditOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudAuditOptionsResponse)(nil)).Elem()
+}
+
+func (o CloudAuditOptionsResponseOutput) ToCloudAuditOptionsResponseOutput() CloudAuditOptionsResponseOutput {
+	return o
+}
+
+func (o CloudAuditOptionsResponseOutput) ToCloudAuditOptionsResponseOutputWithContext(ctx context.Context) CloudAuditOptionsResponseOutput {
+	return o
+}
+
+// Information used by the Cloud Audit Logging pipeline.
+func (o CloudAuditOptionsResponseOutput) AuthorizationLoggingOptions() AuthorizationLoggingOptionsResponseOutput {
+	return o.ApplyT(func(v CloudAuditOptionsResponse) AuthorizationLoggingOptionsResponse {
+		return v.AuthorizationLoggingOptions
+	}).(AuthorizationLoggingOptionsResponseOutput)
+}
+
+// The log_name to populate in the Cloud Audit Record.
+func (o CloudAuditOptionsResponseOutput) LogName() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudAuditOptionsResponse) string { return v.LogName }).(pulumi.StringOutput)
+}
+
 // A condition to be met.
 type Condition struct {
 	// Trusted attributes supplied by the IAM system.
@@ -785,6 +1260,142 @@ func (o ConditionArrayOutput) Index(i pulumi.IntInput) ConditionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Condition {
 		return vs[0].([]Condition)[vs[1].(int)]
 	}).(ConditionOutput)
+}
+
+// A condition to be met.
+type ConditionResponse struct {
+	// Trusted attributes supplied by the IAM system.
+	Iam string `pulumi:"iam"`
+	// An operator to apply the subject with.
+	Op string `pulumi:"op"`
+	// Trusted attributes discharged by the service.
+	Svc string `pulumi:"svc"`
+	// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
+	Sys string `pulumi:"sys"`
+	// The objects of the condition.
+	Values []string `pulumi:"values"`
+}
+
+// ConditionResponseInput is an input type that accepts ConditionResponseArgs and ConditionResponseOutput values.
+// You can construct a concrete instance of `ConditionResponseInput` via:
+//
+//          ConditionResponseArgs{...}
+type ConditionResponseInput interface {
+	pulumi.Input
+
+	ToConditionResponseOutput() ConditionResponseOutput
+	ToConditionResponseOutputWithContext(context.Context) ConditionResponseOutput
+}
+
+// A condition to be met.
+type ConditionResponseArgs struct {
+	// Trusted attributes supplied by the IAM system.
+	Iam pulumi.StringInput `pulumi:"iam"`
+	// An operator to apply the subject with.
+	Op pulumi.StringInput `pulumi:"op"`
+	// Trusted attributes discharged by the service.
+	Svc pulumi.StringInput `pulumi:"svc"`
+	// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
+	Sys pulumi.StringInput `pulumi:"sys"`
+	// The objects of the condition.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ConditionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionResponse)(nil)).Elem()
+}
+
+func (i ConditionResponseArgs) ToConditionResponseOutput() ConditionResponseOutput {
+	return i.ToConditionResponseOutputWithContext(context.Background())
+}
+
+func (i ConditionResponseArgs) ToConditionResponseOutputWithContext(ctx context.Context) ConditionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionResponseOutput)
+}
+
+// ConditionResponseArrayInput is an input type that accepts ConditionResponseArray and ConditionResponseArrayOutput values.
+// You can construct a concrete instance of `ConditionResponseArrayInput` via:
+//
+//          ConditionResponseArray{ ConditionResponseArgs{...} }
+type ConditionResponseArrayInput interface {
+	pulumi.Input
+
+	ToConditionResponseArrayOutput() ConditionResponseArrayOutput
+	ToConditionResponseArrayOutputWithContext(context.Context) ConditionResponseArrayOutput
+}
+
+type ConditionResponseArray []ConditionResponseInput
+
+func (ConditionResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionResponse)(nil)).Elem()
+}
+
+func (i ConditionResponseArray) ToConditionResponseArrayOutput() ConditionResponseArrayOutput {
+	return i.ToConditionResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ConditionResponseArray) ToConditionResponseArrayOutputWithContext(ctx context.Context) ConditionResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionResponseArrayOutput)
+}
+
+// A condition to be met.
+type ConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (ConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionResponse)(nil)).Elem()
+}
+
+func (o ConditionResponseOutput) ToConditionResponseOutput() ConditionResponseOutput {
+	return o
+}
+
+func (o ConditionResponseOutput) ToConditionResponseOutputWithContext(ctx context.Context) ConditionResponseOutput {
+	return o
+}
+
+// Trusted attributes supplied by the IAM system.
+func (o ConditionResponseOutput) Iam() pulumi.StringOutput {
+	return o.ApplyT(func(v ConditionResponse) string { return v.Iam }).(pulumi.StringOutput)
+}
+
+// An operator to apply the subject with.
+func (o ConditionResponseOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v ConditionResponse) string { return v.Op }).(pulumi.StringOutput)
+}
+
+// Trusted attributes discharged by the service.
+func (o ConditionResponseOutput) Svc() pulumi.StringOutput {
+	return o.ApplyT(func(v ConditionResponse) string { return v.Svc }).(pulumi.StringOutput)
+}
+
+// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
+func (o ConditionResponseOutput) Sys() pulumi.StringOutput {
+	return o.ApplyT(func(v ConditionResponse) string { return v.Sys }).(pulumi.StringOutput)
+}
+
+// The objects of the condition.
+func (o ConditionResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ConditionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConditionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionResponse)(nil)).Elem()
+}
+
+func (o ConditionResponseArrayOutput) ToConditionResponseArrayOutput() ConditionResponseArrayOutput {
+	return o
+}
+
+func (o ConditionResponseArrayOutput) ToConditionResponseArrayOutputWithContext(ctx context.Context) ConditionResponseArrayOutput {
+	return o
+}
+
+func (o ConditionResponseArrayOutput) Index(i pulumi.IntInput) ConditionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionResponse {
+		return vs[0].([]ConditionResponse)[vs[1].(int)]
+	}).(ConditionResponseOutput)
 }
 
 // Increment a streamz counter with the specified metric and field names. Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not contain an initial slash. The actual exported metric names will have "/iam/policy" prepended. Field names correspond to IAM request parameters and field values are their respective values. Supported field names: - "authority", which is "[token]" if IAMContext.token is present, otherwise the value of IAMContext.authority_selector if present, and otherwise a representation of IAMContext.principal; or - "iam_principal", a representation of IAMContext.principal even if a token or authority selector is present; or - "" (empty string), resulting in a counter with no fields. Examples: counter { metric: "/debug_access_count" field: "iam_principal" } ==> increment counter /iam/policy/debug_access_count {iam_principal=[value of IAMContext.principal]}
@@ -959,6 +1570,79 @@ func (o CounterOptionsPtrOutput) Metric() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Increment a streamz counter with the specified metric and field names. Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not contain an initial slash. The actual exported metric names will have "/iam/policy" prepended. Field names correspond to IAM request parameters and field values are their respective values. Supported field names: - "authority", which is "[token]" if IAMContext.token is present, otherwise the value of IAMContext.authority_selector if present, and otherwise a representation of IAMContext.principal; or - "iam_principal", a representation of IAMContext.principal even if a token or authority selector is present; or - "" (empty string), resulting in a counter with no fields. Examples: counter { metric: "/debug_access_count" field: "iam_principal" } ==> increment counter /iam/policy/debug_access_count {iam_principal=[value of IAMContext.principal]}
+type CounterOptionsResponse struct {
+	// Custom fields.
+	CustomFields []CustomFieldResponse `pulumi:"customFields"`
+	// The field value to attribute.
+	Field string `pulumi:"field"`
+	// The metric to update.
+	Metric string `pulumi:"metric"`
+}
+
+// CounterOptionsResponseInput is an input type that accepts CounterOptionsResponseArgs and CounterOptionsResponseOutput values.
+// You can construct a concrete instance of `CounterOptionsResponseInput` via:
+//
+//          CounterOptionsResponseArgs{...}
+type CounterOptionsResponseInput interface {
+	pulumi.Input
+
+	ToCounterOptionsResponseOutput() CounterOptionsResponseOutput
+	ToCounterOptionsResponseOutputWithContext(context.Context) CounterOptionsResponseOutput
+}
+
+// Increment a streamz counter with the specified metric and field names. Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not contain an initial slash. The actual exported metric names will have "/iam/policy" prepended. Field names correspond to IAM request parameters and field values are their respective values. Supported field names: - "authority", which is "[token]" if IAMContext.token is present, otherwise the value of IAMContext.authority_selector if present, and otherwise a representation of IAMContext.principal; or - "iam_principal", a representation of IAMContext.principal even if a token or authority selector is present; or - "" (empty string), resulting in a counter with no fields. Examples: counter { metric: "/debug_access_count" field: "iam_principal" } ==> increment counter /iam/policy/debug_access_count {iam_principal=[value of IAMContext.principal]}
+type CounterOptionsResponseArgs struct {
+	// Custom fields.
+	CustomFields CustomFieldResponseArrayInput `pulumi:"customFields"`
+	// The field value to attribute.
+	Field pulumi.StringInput `pulumi:"field"`
+	// The metric to update.
+	Metric pulumi.StringInput `pulumi:"metric"`
+}
+
+func (CounterOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CounterOptionsResponse)(nil)).Elem()
+}
+
+func (i CounterOptionsResponseArgs) ToCounterOptionsResponseOutput() CounterOptionsResponseOutput {
+	return i.ToCounterOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i CounterOptionsResponseArgs) ToCounterOptionsResponseOutputWithContext(ctx context.Context) CounterOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CounterOptionsResponseOutput)
+}
+
+// Increment a streamz counter with the specified metric and field names. Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not contain an initial slash. The actual exported metric names will have "/iam/policy" prepended. Field names correspond to IAM request parameters and field values are their respective values. Supported field names: - "authority", which is "[token]" if IAMContext.token is present, otherwise the value of IAMContext.authority_selector if present, and otherwise a representation of IAMContext.principal; or - "iam_principal", a representation of IAMContext.principal even if a token or authority selector is present; or - "" (empty string), resulting in a counter with no fields. Examples: counter { metric: "/debug_access_count" field: "iam_principal" } ==> increment counter /iam/policy/debug_access_count {iam_principal=[value of IAMContext.principal]}
+type CounterOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (CounterOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CounterOptionsResponse)(nil)).Elem()
+}
+
+func (o CounterOptionsResponseOutput) ToCounterOptionsResponseOutput() CounterOptionsResponseOutput {
+	return o
+}
+
+func (o CounterOptionsResponseOutput) ToCounterOptionsResponseOutputWithContext(ctx context.Context) CounterOptionsResponseOutput {
+	return o
+}
+
+// Custom fields.
+func (o CounterOptionsResponseOutput) CustomFields() CustomFieldResponseArrayOutput {
+	return o.ApplyT(func(v CounterOptionsResponse) []CustomFieldResponse { return v.CustomFields }).(CustomFieldResponseArrayOutput)
+}
+
+// The field value to attribute.
+func (o CounterOptionsResponseOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v CounterOptionsResponse) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// The metric to update.
+func (o CounterOptionsResponseOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v CounterOptionsResponse) string { return v.Metric }).(pulumi.StringOutput)
+}
+
 // Custom fields. These can be used to create a counter with arbitrary field/value pairs. See: go/rpcsp-custom-fields.
 type CustomField struct {
 	// Name is the field name.
@@ -1066,6 +1750,115 @@ func (o CustomFieldArrayOutput) Index(i pulumi.IntInput) CustomFieldOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomField {
 		return vs[0].([]CustomField)[vs[1].(int)]
 	}).(CustomFieldOutput)
+}
+
+// Custom fields. These can be used to create a counter with arbitrary field/value pairs. See: go/rpcsp-custom-fields.
+type CustomFieldResponse struct {
+	// Name is the field name.
+	Name string `pulumi:"name"`
+	// Value is the field value. It is important that in contrast to the CounterOptions.field, the value here is a constant that is not derived from the IAMContext.
+	Value string `pulumi:"value"`
+}
+
+// CustomFieldResponseInput is an input type that accepts CustomFieldResponseArgs and CustomFieldResponseOutput values.
+// You can construct a concrete instance of `CustomFieldResponseInput` via:
+//
+//          CustomFieldResponseArgs{...}
+type CustomFieldResponseInput interface {
+	pulumi.Input
+
+	ToCustomFieldResponseOutput() CustomFieldResponseOutput
+	ToCustomFieldResponseOutputWithContext(context.Context) CustomFieldResponseOutput
+}
+
+// Custom fields. These can be used to create a counter with arbitrary field/value pairs. See: go/rpcsp-custom-fields.
+type CustomFieldResponseArgs struct {
+	// Name is the field name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value is the field value. It is important that in contrast to the CounterOptions.field, the value here is a constant that is not derived from the IAMContext.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (CustomFieldResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomFieldResponse)(nil)).Elem()
+}
+
+func (i CustomFieldResponseArgs) ToCustomFieldResponseOutput() CustomFieldResponseOutput {
+	return i.ToCustomFieldResponseOutputWithContext(context.Background())
+}
+
+func (i CustomFieldResponseArgs) ToCustomFieldResponseOutputWithContext(ctx context.Context) CustomFieldResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomFieldResponseOutput)
+}
+
+// CustomFieldResponseArrayInput is an input type that accepts CustomFieldResponseArray and CustomFieldResponseArrayOutput values.
+// You can construct a concrete instance of `CustomFieldResponseArrayInput` via:
+//
+//          CustomFieldResponseArray{ CustomFieldResponseArgs{...} }
+type CustomFieldResponseArrayInput interface {
+	pulumi.Input
+
+	ToCustomFieldResponseArrayOutput() CustomFieldResponseArrayOutput
+	ToCustomFieldResponseArrayOutputWithContext(context.Context) CustomFieldResponseArrayOutput
+}
+
+type CustomFieldResponseArray []CustomFieldResponseInput
+
+func (CustomFieldResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomFieldResponse)(nil)).Elem()
+}
+
+func (i CustomFieldResponseArray) ToCustomFieldResponseArrayOutput() CustomFieldResponseArrayOutput {
+	return i.ToCustomFieldResponseArrayOutputWithContext(context.Background())
+}
+
+func (i CustomFieldResponseArray) ToCustomFieldResponseArrayOutputWithContext(ctx context.Context) CustomFieldResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomFieldResponseArrayOutput)
+}
+
+// Custom fields. These can be used to create a counter with arbitrary field/value pairs. See: go/rpcsp-custom-fields.
+type CustomFieldResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomFieldResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomFieldResponse)(nil)).Elem()
+}
+
+func (o CustomFieldResponseOutput) ToCustomFieldResponseOutput() CustomFieldResponseOutput {
+	return o
+}
+
+func (o CustomFieldResponseOutput) ToCustomFieldResponseOutputWithContext(ctx context.Context) CustomFieldResponseOutput {
+	return o
+}
+
+// Name is the field name.
+func (o CustomFieldResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomFieldResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Value is the field value. It is important that in contrast to the CounterOptions.field, the value here is a constant that is not derived from the IAMContext.
+func (o CustomFieldResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomFieldResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type CustomFieldResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomFieldResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomFieldResponse)(nil)).Elem()
+}
+
+func (o CustomFieldResponseArrayOutput) ToCustomFieldResponseArrayOutput() CustomFieldResponseArrayOutput {
+	return o
+}
+
+func (o CustomFieldResponseArrayOutput) ToCustomFieldResponseArrayOutputWithContext(ctx context.Context) CustomFieldResponseArrayOutput {
+	return o
+}
+
+func (o CustomFieldResponseArrayOutput) Index(i pulumi.IntInput) CustomFieldResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomFieldResponse {
+		return vs[0].([]CustomFieldResponse)[vs[1].(int)]
+	}).(CustomFieldResponseOutput)
 }
 
 // Write a Data Access (Gin) log
@@ -1195,6 +1988,58 @@ func (o DataAccessOptionsPtrOutput) LogMode() pulumi.StringPtrOutput {
 		}
 		return v.LogMode
 	}).(pulumi.StringPtrOutput)
+}
+
+// Write a Data Access (Gin) log
+type DataAccessOptionsResponse struct {
+	LogMode string `pulumi:"logMode"`
+}
+
+// DataAccessOptionsResponseInput is an input type that accepts DataAccessOptionsResponseArgs and DataAccessOptionsResponseOutput values.
+// You can construct a concrete instance of `DataAccessOptionsResponseInput` via:
+//
+//          DataAccessOptionsResponseArgs{...}
+type DataAccessOptionsResponseInput interface {
+	pulumi.Input
+
+	ToDataAccessOptionsResponseOutput() DataAccessOptionsResponseOutput
+	ToDataAccessOptionsResponseOutputWithContext(context.Context) DataAccessOptionsResponseOutput
+}
+
+// Write a Data Access (Gin) log
+type DataAccessOptionsResponseArgs struct {
+	LogMode pulumi.StringInput `pulumi:"logMode"`
+}
+
+func (DataAccessOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAccessOptionsResponse)(nil)).Elem()
+}
+
+func (i DataAccessOptionsResponseArgs) ToDataAccessOptionsResponseOutput() DataAccessOptionsResponseOutput {
+	return i.ToDataAccessOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i DataAccessOptionsResponseArgs) ToDataAccessOptionsResponseOutputWithContext(ctx context.Context) DataAccessOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAccessOptionsResponseOutput)
+}
+
+// Write a Data Access (Gin) log
+type DataAccessOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (DataAccessOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAccessOptionsResponse)(nil)).Elem()
+}
+
+func (o DataAccessOptionsResponseOutput) ToDataAccessOptionsResponseOutput() DataAccessOptionsResponseOutput {
+	return o
+}
+
+func (o DataAccessOptionsResponseOutput) ToDataAccessOptionsResponseOutputWithContext(ctx context.Context) DataAccessOptionsResponseOutput {
+	return o
+}
+
+func (o DataAccessOptionsResponseOutput) LogMode() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAccessOptionsResponse) string { return v.LogMode }).(pulumi.StringOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -1388,6 +2233,88 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
+// You can construct a concrete instance of `ExprResponseInput` via:
+//
+//          ExprResponseArgs{...}
+type ExprResponseInput interface {
+	pulumi.Input
+
+	ToExprResponseOutput() ExprResponseOutput
+	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
+	return i.ToExprResponseOutputWithContext(context.Background())
+}
+
+func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseOutput struct{ *pulumi.OutputState }
+
+func (ExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
+	return o
+}
+
+func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
 // Fleet configs for Agones.
 type FleetConfig struct {
 	// Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/`.
@@ -1495,6 +2422,115 @@ func (o FleetConfigArrayOutput) Index(i pulumi.IntInput) FleetConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FleetConfig {
 		return vs[0].([]FleetConfig)[vs[1].(int)]
 	}).(FleetConfigOutput)
+}
+
+// Fleet configs for Agones.
+type FleetConfigResponse struct {
+	// Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/`.
+	FleetSpec string `pulumi:"fleetSpec"`
+	// The name of the FleetConfig.
+	Name string `pulumi:"name"`
+}
+
+// FleetConfigResponseInput is an input type that accepts FleetConfigResponseArgs and FleetConfigResponseOutput values.
+// You can construct a concrete instance of `FleetConfigResponseInput` via:
+//
+//          FleetConfigResponseArgs{...}
+type FleetConfigResponseInput interface {
+	pulumi.Input
+
+	ToFleetConfigResponseOutput() FleetConfigResponseOutput
+	ToFleetConfigResponseOutputWithContext(context.Context) FleetConfigResponseOutput
+}
+
+// Fleet configs for Agones.
+type FleetConfigResponseArgs struct {
+	// Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/`.
+	FleetSpec pulumi.StringInput `pulumi:"fleetSpec"`
+	// The name of the FleetConfig.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (FleetConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetConfigResponse)(nil)).Elem()
+}
+
+func (i FleetConfigResponseArgs) ToFleetConfigResponseOutput() FleetConfigResponseOutput {
+	return i.ToFleetConfigResponseOutputWithContext(context.Background())
+}
+
+func (i FleetConfigResponseArgs) ToFleetConfigResponseOutputWithContext(ctx context.Context) FleetConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetConfigResponseOutput)
+}
+
+// FleetConfigResponseArrayInput is an input type that accepts FleetConfigResponseArray and FleetConfigResponseArrayOutput values.
+// You can construct a concrete instance of `FleetConfigResponseArrayInput` via:
+//
+//          FleetConfigResponseArray{ FleetConfigResponseArgs{...} }
+type FleetConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToFleetConfigResponseArrayOutput() FleetConfigResponseArrayOutput
+	ToFleetConfigResponseArrayOutputWithContext(context.Context) FleetConfigResponseArrayOutput
+}
+
+type FleetConfigResponseArray []FleetConfigResponseInput
+
+func (FleetConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetConfigResponse)(nil)).Elem()
+}
+
+func (i FleetConfigResponseArray) ToFleetConfigResponseArrayOutput() FleetConfigResponseArrayOutput {
+	return i.ToFleetConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i FleetConfigResponseArray) ToFleetConfigResponseArrayOutputWithContext(ctx context.Context) FleetConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetConfigResponseArrayOutput)
+}
+
+// Fleet configs for Agones.
+type FleetConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (FleetConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetConfigResponse)(nil)).Elem()
+}
+
+func (o FleetConfigResponseOutput) ToFleetConfigResponseOutput() FleetConfigResponseOutput {
+	return o
+}
+
+func (o FleetConfigResponseOutput) ToFleetConfigResponseOutputWithContext(ctx context.Context) FleetConfigResponseOutput {
+	return o
+}
+
+// Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/`.
+func (o FleetConfigResponseOutput) FleetSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetConfigResponse) string { return v.FleetSpec }).(pulumi.StringOutput)
+}
+
+// The name of the FleetConfig.
+func (o FleetConfigResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FleetConfigResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type FleetConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FleetConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetConfigResponse)(nil)).Elem()
+}
+
+func (o FleetConfigResponseArrayOutput) ToFleetConfigResponseArrayOutput() FleetConfigResponseArrayOutput {
+	return o
+}
+
+func (o FleetConfigResponseArrayOutput) ToFleetConfigResponseArrayOutputWithContext(ctx context.Context) FleetConfigResponseArrayOutput {
+	return o
+}
+
+func (o FleetConfigResponseArrayOutput) Index(i pulumi.IntInput) FleetConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FleetConfigResponse {
+		return vs[0].([]FleetConfigResponse)[vs[1].(int)]
+	}).(FleetConfigResponseOutput)
 }
 
 // The game server cluster connection information.
@@ -1669,6 +2705,182 @@ func (o GameServerClusterConnectionInfoPtrOutput) Namespace() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The game server cluster connection information.
+type GameServerClusterConnectionInfoResponse struct {
+	// Reference to the GKE cluster where the game servers are installed.
+	GkeClusterReference GkeClusterReferenceResponse `pulumi:"gkeClusterReference"`
+	// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
+	GkeHubClusterReference GkeHubClusterReferenceResponse `pulumi:"gkeHubClusterReference"`
+	// Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
+	Namespace string `pulumi:"namespace"`
+}
+
+// GameServerClusterConnectionInfoResponseInput is an input type that accepts GameServerClusterConnectionInfoResponseArgs and GameServerClusterConnectionInfoResponseOutput values.
+// You can construct a concrete instance of `GameServerClusterConnectionInfoResponseInput` via:
+//
+//          GameServerClusterConnectionInfoResponseArgs{...}
+type GameServerClusterConnectionInfoResponseInput interface {
+	pulumi.Input
+
+	ToGameServerClusterConnectionInfoResponseOutput() GameServerClusterConnectionInfoResponseOutput
+	ToGameServerClusterConnectionInfoResponseOutputWithContext(context.Context) GameServerClusterConnectionInfoResponseOutput
+}
+
+// The game server cluster connection information.
+type GameServerClusterConnectionInfoResponseArgs struct {
+	// Reference to the GKE cluster where the game servers are installed.
+	GkeClusterReference GkeClusterReferenceResponseInput `pulumi:"gkeClusterReference"`
+	// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
+	GkeHubClusterReference GkeHubClusterReferenceResponseInput `pulumi:"gkeHubClusterReference"`
+	// Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+}
+
+func (GameServerClusterConnectionInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GameServerClusterConnectionInfoResponse)(nil)).Elem()
+}
+
+func (i GameServerClusterConnectionInfoResponseArgs) ToGameServerClusterConnectionInfoResponseOutput() GameServerClusterConnectionInfoResponseOutput {
+	return i.ToGameServerClusterConnectionInfoResponseOutputWithContext(context.Background())
+}
+
+func (i GameServerClusterConnectionInfoResponseArgs) ToGameServerClusterConnectionInfoResponseOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterConnectionInfoResponseOutput)
+}
+
+func (i GameServerClusterConnectionInfoResponseArgs) ToGameServerClusterConnectionInfoResponsePtrOutput() GameServerClusterConnectionInfoResponsePtrOutput {
+	return i.ToGameServerClusterConnectionInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GameServerClusterConnectionInfoResponseArgs) ToGameServerClusterConnectionInfoResponsePtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterConnectionInfoResponseOutput).ToGameServerClusterConnectionInfoResponsePtrOutputWithContext(ctx)
+}
+
+// GameServerClusterConnectionInfoResponsePtrInput is an input type that accepts GameServerClusterConnectionInfoResponseArgs, GameServerClusterConnectionInfoResponsePtr and GameServerClusterConnectionInfoResponsePtrOutput values.
+// You can construct a concrete instance of `GameServerClusterConnectionInfoResponsePtrInput` via:
+//
+//          GameServerClusterConnectionInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GameServerClusterConnectionInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToGameServerClusterConnectionInfoResponsePtrOutput() GameServerClusterConnectionInfoResponsePtrOutput
+	ToGameServerClusterConnectionInfoResponsePtrOutputWithContext(context.Context) GameServerClusterConnectionInfoResponsePtrOutput
+}
+
+type gameServerClusterConnectionInfoResponsePtrType GameServerClusterConnectionInfoResponseArgs
+
+func GameServerClusterConnectionInfoResponsePtr(v *GameServerClusterConnectionInfoResponseArgs) GameServerClusterConnectionInfoResponsePtrInput {
+	return (*gameServerClusterConnectionInfoResponsePtrType)(v)
+}
+
+func (*gameServerClusterConnectionInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GameServerClusterConnectionInfoResponse)(nil)).Elem()
+}
+
+func (i *gameServerClusterConnectionInfoResponsePtrType) ToGameServerClusterConnectionInfoResponsePtrOutput() GameServerClusterConnectionInfoResponsePtrOutput {
+	return i.ToGameServerClusterConnectionInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gameServerClusterConnectionInfoResponsePtrType) ToGameServerClusterConnectionInfoResponsePtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterConnectionInfoResponsePtrOutput)
+}
+
+// The game server cluster connection information.
+type GameServerClusterConnectionInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GameServerClusterConnectionInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GameServerClusterConnectionInfoResponse)(nil)).Elem()
+}
+
+func (o GameServerClusterConnectionInfoResponseOutput) ToGameServerClusterConnectionInfoResponseOutput() GameServerClusterConnectionInfoResponseOutput {
+	return o
+}
+
+func (o GameServerClusterConnectionInfoResponseOutput) ToGameServerClusterConnectionInfoResponseOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoResponseOutput {
+	return o
+}
+
+func (o GameServerClusterConnectionInfoResponseOutput) ToGameServerClusterConnectionInfoResponsePtrOutput() GameServerClusterConnectionInfoResponsePtrOutput {
+	return o.ToGameServerClusterConnectionInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GameServerClusterConnectionInfoResponseOutput) ToGameServerClusterConnectionInfoResponsePtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoResponsePtrOutput {
+	return o.ApplyT(func(v GameServerClusterConnectionInfoResponse) *GameServerClusterConnectionInfoResponse {
+		return &v
+	}).(GameServerClusterConnectionInfoResponsePtrOutput)
+}
+
+// Reference to the GKE cluster where the game servers are installed.
+func (o GameServerClusterConnectionInfoResponseOutput) GkeClusterReference() GkeClusterReferenceResponseOutput {
+	return o.ApplyT(func(v GameServerClusterConnectionInfoResponse) GkeClusterReferenceResponse {
+		return v.GkeClusterReference
+	}).(GkeClusterReferenceResponseOutput)
+}
+
+// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
+func (o GameServerClusterConnectionInfoResponseOutput) GkeHubClusterReference() GkeHubClusterReferenceResponseOutput {
+	return o.ApplyT(func(v GameServerClusterConnectionInfoResponse) GkeHubClusterReferenceResponse {
+		return v.GkeHubClusterReference
+	}).(GkeHubClusterReferenceResponseOutput)
+}
+
+// Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
+func (o GameServerClusterConnectionInfoResponseOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GameServerClusterConnectionInfoResponse) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+type GameServerClusterConnectionInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GameServerClusterConnectionInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GameServerClusterConnectionInfoResponse)(nil)).Elem()
+}
+
+func (o GameServerClusterConnectionInfoResponsePtrOutput) ToGameServerClusterConnectionInfoResponsePtrOutput() GameServerClusterConnectionInfoResponsePtrOutput {
+	return o
+}
+
+func (o GameServerClusterConnectionInfoResponsePtrOutput) ToGameServerClusterConnectionInfoResponsePtrOutputWithContext(ctx context.Context) GameServerClusterConnectionInfoResponsePtrOutput {
+	return o
+}
+
+func (o GameServerClusterConnectionInfoResponsePtrOutput) Elem() GameServerClusterConnectionInfoResponseOutput {
+	return o.ApplyT(func(v *GameServerClusterConnectionInfoResponse) GameServerClusterConnectionInfoResponse { return *v }).(GameServerClusterConnectionInfoResponseOutput)
+}
+
+// Reference to the GKE cluster where the game servers are installed.
+func (o GameServerClusterConnectionInfoResponsePtrOutput) GkeClusterReference() GkeClusterReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *GameServerClusterConnectionInfoResponse) *GkeClusterReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GkeClusterReference
+	}).(GkeClusterReferenceResponsePtrOutput)
+}
+
+// Reference to a Kubernetes cluster registered through GKE Hub. See https://cloud.google.com/anthos/multicluster-management/ for more information about registering Kubernetes clusters.
+func (o GameServerClusterConnectionInfoResponsePtrOutput) GkeHubClusterReference() GkeHubClusterReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *GameServerClusterConnectionInfoResponse) *GkeHubClusterReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GkeHubClusterReference
+	}).(GkeHubClusterReferenceResponsePtrOutput)
+}
+
+// Namespace designated on the game server cluster where the Agones game server instances will be created. Existence of the namespace will be validated during creation.
+func (o GameServerClusterConnectionInfoResponsePtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GameServerClusterConnectionInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
 // A reference to a GKE cluster.
 type GkeClusterReference struct {
 	// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
@@ -1800,6 +3012,140 @@ func (o GkeClusterReferencePtrOutput) Cluster() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// A reference to a GKE cluster.
+type GkeClusterReferenceResponse struct {
+	// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
+	Cluster string `pulumi:"cluster"`
+}
+
+// GkeClusterReferenceResponseInput is an input type that accepts GkeClusterReferenceResponseArgs and GkeClusterReferenceResponseOutput values.
+// You can construct a concrete instance of `GkeClusterReferenceResponseInput` via:
+//
+//          GkeClusterReferenceResponseArgs{...}
+type GkeClusterReferenceResponseInput interface {
+	pulumi.Input
+
+	ToGkeClusterReferenceResponseOutput() GkeClusterReferenceResponseOutput
+	ToGkeClusterReferenceResponseOutputWithContext(context.Context) GkeClusterReferenceResponseOutput
+}
+
+// A reference to a GKE cluster.
+type GkeClusterReferenceResponseArgs struct {
+	// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+}
+
+func (GkeClusterReferenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeClusterReferenceResponse)(nil)).Elem()
+}
+
+func (i GkeClusterReferenceResponseArgs) ToGkeClusterReferenceResponseOutput() GkeClusterReferenceResponseOutput {
+	return i.ToGkeClusterReferenceResponseOutputWithContext(context.Background())
+}
+
+func (i GkeClusterReferenceResponseArgs) ToGkeClusterReferenceResponseOutputWithContext(ctx context.Context) GkeClusterReferenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterReferenceResponseOutput)
+}
+
+func (i GkeClusterReferenceResponseArgs) ToGkeClusterReferenceResponsePtrOutput() GkeClusterReferenceResponsePtrOutput {
+	return i.ToGkeClusterReferenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GkeClusterReferenceResponseArgs) ToGkeClusterReferenceResponsePtrOutputWithContext(ctx context.Context) GkeClusterReferenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterReferenceResponseOutput).ToGkeClusterReferenceResponsePtrOutputWithContext(ctx)
+}
+
+// GkeClusterReferenceResponsePtrInput is an input type that accepts GkeClusterReferenceResponseArgs, GkeClusterReferenceResponsePtr and GkeClusterReferenceResponsePtrOutput values.
+// You can construct a concrete instance of `GkeClusterReferenceResponsePtrInput` via:
+//
+//          GkeClusterReferenceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GkeClusterReferenceResponsePtrInput interface {
+	pulumi.Input
+
+	ToGkeClusterReferenceResponsePtrOutput() GkeClusterReferenceResponsePtrOutput
+	ToGkeClusterReferenceResponsePtrOutputWithContext(context.Context) GkeClusterReferenceResponsePtrOutput
+}
+
+type gkeClusterReferenceResponsePtrType GkeClusterReferenceResponseArgs
+
+func GkeClusterReferenceResponsePtr(v *GkeClusterReferenceResponseArgs) GkeClusterReferenceResponsePtrInput {
+	return (*gkeClusterReferenceResponsePtrType)(v)
+}
+
+func (*gkeClusterReferenceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeClusterReferenceResponse)(nil)).Elem()
+}
+
+func (i *gkeClusterReferenceResponsePtrType) ToGkeClusterReferenceResponsePtrOutput() GkeClusterReferenceResponsePtrOutput {
+	return i.ToGkeClusterReferenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gkeClusterReferenceResponsePtrType) ToGkeClusterReferenceResponsePtrOutputWithContext(ctx context.Context) GkeClusterReferenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterReferenceResponsePtrOutput)
+}
+
+// A reference to a GKE cluster.
+type GkeClusterReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (GkeClusterReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeClusterReferenceResponse)(nil)).Elem()
+}
+
+func (o GkeClusterReferenceResponseOutput) ToGkeClusterReferenceResponseOutput() GkeClusterReferenceResponseOutput {
+	return o
+}
+
+func (o GkeClusterReferenceResponseOutput) ToGkeClusterReferenceResponseOutputWithContext(ctx context.Context) GkeClusterReferenceResponseOutput {
+	return o
+}
+
+func (o GkeClusterReferenceResponseOutput) ToGkeClusterReferenceResponsePtrOutput() GkeClusterReferenceResponsePtrOutput {
+	return o.ToGkeClusterReferenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GkeClusterReferenceResponseOutput) ToGkeClusterReferenceResponsePtrOutputWithContext(ctx context.Context) GkeClusterReferenceResponsePtrOutput {
+	return o.ApplyT(func(v GkeClusterReferenceResponse) *GkeClusterReferenceResponse {
+		return &v
+	}).(GkeClusterReferenceResponsePtrOutput)
+}
+
+// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
+func (o GkeClusterReferenceResponseOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeClusterReferenceResponse) string { return v.Cluster }).(pulumi.StringOutput)
+}
+
+type GkeClusterReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GkeClusterReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeClusterReferenceResponse)(nil)).Elem()
+}
+
+func (o GkeClusterReferenceResponsePtrOutput) ToGkeClusterReferenceResponsePtrOutput() GkeClusterReferenceResponsePtrOutput {
+	return o
+}
+
+func (o GkeClusterReferenceResponsePtrOutput) ToGkeClusterReferenceResponsePtrOutputWithContext(ctx context.Context) GkeClusterReferenceResponsePtrOutput {
+	return o
+}
+
+func (o GkeClusterReferenceResponsePtrOutput) Elem() GkeClusterReferenceResponseOutput {
+	return o.ApplyT(func(v *GkeClusterReferenceResponse) GkeClusterReferenceResponse { return *v }).(GkeClusterReferenceResponseOutput)
+}
+
+// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
+func (o GkeClusterReferenceResponsePtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeClusterReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cluster
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1937,6 +3283,140 @@ func (o GkeHubClusterReferencePtrOutput) Membership() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
+type GkeHubClusterReferenceResponse struct {
+	// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
+	Membership string `pulumi:"membership"`
+}
+
+// GkeHubClusterReferenceResponseInput is an input type that accepts GkeHubClusterReferenceResponseArgs and GkeHubClusterReferenceResponseOutput values.
+// You can construct a concrete instance of `GkeHubClusterReferenceResponseInput` via:
+//
+//          GkeHubClusterReferenceResponseArgs{...}
+type GkeHubClusterReferenceResponseInput interface {
+	pulumi.Input
+
+	ToGkeHubClusterReferenceResponseOutput() GkeHubClusterReferenceResponseOutput
+	ToGkeHubClusterReferenceResponseOutputWithContext(context.Context) GkeHubClusterReferenceResponseOutput
+}
+
+// GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
+type GkeHubClusterReferenceResponseArgs struct {
+	// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
+	Membership pulumi.StringInput `pulumi:"membership"`
+}
+
+func (GkeHubClusterReferenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeHubClusterReferenceResponse)(nil)).Elem()
+}
+
+func (i GkeHubClusterReferenceResponseArgs) ToGkeHubClusterReferenceResponseOutput() GkeHubClusterReferenceResponseOutput {
+	return i.ToGkeHubClusterReferenceResponseOutputWithContext(context.Background())
+}
+
+func (i GkeHubClusterReferenceResponseArgs) ToGkeHubClusterReferenceResponseOutputWithContext(ctx context.Context) GkeHubClusterReferenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeHubClusterReferenceResponseOutput)
+}
+
+func (i GkeHubClusterReferenceResponseArgs) ToGkeHubClusterReferenceResponsePtrOutput() GkeHubClusterReferenceResponsePtrOutput {
+	return i.ToGkeHubClusterReferenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GkeHubClusterReferenceResponseArgs) ToGkeHubClusterReferenceResponsePtrOutputWithContext(ctx context.Context) GkeHubClusterReferenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeHubClusterReferenceResponseOutput).ToGkeHubClusterReferenceResponsePtrOutputWithContext(ctx)
+}
+
+// GkeHubClusterReferenceResponsePtrInput is an input type that accepts GkeHubClusterReferenceResponseArgs, GkeHubClusterReferenceResponsePtr and GkeHubClusterReferenceResponsePtrOutput values.
+// You can construct a concrete instance of `GkeHubClusterReferenceResponsePtrInput` via:
+//
+//          GkeHubClusterReferenceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GkeHubClusterReferenceResponsePtrInput interface {
+	pulumi.Input
+
+	ToGkeHubClusterReferenceResponsePtrOutput() GkeHubClusterReferenceResponsePtrOutput
+	ToGkeHubClusterReferenceResponsePtrOutputWithContext(context.Context) GkeHubClusterReferenceResponsePtrOutput
+}
+
+type gkeHubClusterReferenceResponsePtrType GkeHubClusterReferenceResponseArgs
+
+func GkeHubClusterReferenceResponsePtr(v *GkeHubClusterReferenceResponseArgs) GkeHubClusterReferenceResponsePtrInput {
+	return (*gkeHubClusterReferenceResponsePtrType)(v)
+}
+
+func (*gkeHubClusterReferenceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeHubClusterReferenceResponse)(nil)).Elem()
+}
+
+func (i *gkeHubClusterReferenceResponsePtrType) ToGkeHubClusterReferenceResponsePtrOutput() GkeHubClusterReferenceResponsePtrOutput {
+	return i.ToGkeHubClusterReferenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gkeHubClusterReferenceResponsePtrType) ToGkeHubClusterReferenceResponsePtrOutputWithContext(ctx context.Context) GkeHubClusterReferenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeHubClusterReferenceResponsePtrOutput)
+}
+
+// GkeHubClusterReference represents a reference to a Kubernetes cluster registered through GKE Hub.
+type GkeHubClusterReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (GkeHubClusterReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeHubClusterReferenceResponse)(nil)).Elem()
+}
+
+func (o GkeHubClusterReferenceResponseOutput) ToGkeHubClusterReferenceResponseOutput() GkeHubClusterReferenceResponseOutput {
+	return o
+}
+
+func (o GkeHubClusterReferenceResponseOutput) ToGkeHubClusterReferenceResponseOutputWithContext(ctx context.Context) GkeHubClusterReferenceResponseOutput {
+	return o
+}
+
+func (o GkeHubClusterReferenceResponseOutput) ToGkeHubClusterReferenceResponsePtrOutput() GkeHubClusterReferenceResponsePtrOutput {
+	return o.ToGkeHubClusterReferenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GkeHubClusterReferenceResponseOutput) ToGkeHubClusterReferenceResponsePtrOutputWithContext(ctx context.Context) GkeHubClusterReferenceResponsePtrOutput {
+	return o.ApplyT(func(v GkeHubClusterReferenceResponse) *GkeHubClusterReferenceResponse {
+		return &v
+	}).(GkeHubClusterReferenceResponsePtrOutput)
+}
+
+// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
+func (o GkeHubClusterReferenceResponseOutput) Membership() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeHubClusterReferenceResponse) string { return v.Membership }).(pulumi.StringOutput)
+}
+
+type GkeHubClusterReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GkeHubClusterReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeHubClusterReferenceResponse)(nil)).Elem()
+}
+
+func (o GkeHubClusterReferenceResponsePtrOutput) ToGkeHubClusterReferenceResponsePtrOutput() GkeHubClusterReferenceResponsePtrOutput {
+	return o
+}
+
+func (o GkeHubClusterReferenceResponsePtrOutput) ToGkeHubClusterReferenceResponsePtrOutputWithContext(ctx context.Context) GkeHubClusterReferenceResponsePtrOutput {
+	return o
+}
+
+func (o GkeHubClusterReferenceResponsePtrOutput) Elem() GkeHubClusterReferenceResponseOutput {
+	return o.ApplyT(func(v *GkeHubClusterReferenceResponse) GkeHubClusterReferenceResponse { return *v }).(GkeHubClusterReferenceResponseOutput)
+}
+
+// The full or partial name of a GKE Hub membership, using one of the following forms: * `https://gkehub.googleapis.com/v1beta1/projects/{project_id}/locations/global/memberships/{membership_id}` * `projects/{project_id}/locations/global/memberships/{membership_id}` * `{membership_id}` If project is not specified, the project of the GameServerCluster resource is used to generate the full name of the GKE Hub membership.
+func (o GkeHubClusterReferenceResponsePtrOutput) Membership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeHubClusterReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Membership
+	}).(pulumi.StringPtrOutput)
+}
+
 // The label selector, used to group labels on the resources.
 type LabelSelector struct {
 	// Resource labels for this selector.
@@ -2035,6 +3515,106 @@ func (o LabelSelectorArrayOutput) Index(i pulumi.IntInput) LabelSelectorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LabelSelector {
 		return vs[0].([]LabelSelector)[vs[1].(int)]
 	}).(LabelSelectorOutput)
+}
+
+// The label selector, used to group labels on the resources.
+type LabelSelectorResponse struct {
+	// Resource labels for this selector.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// LabelSelectorResponseInput is an input type that accepts LabelSelectorResponseArgs and LabelSelectorResponseOutput values.
+// You can construct a concrete instance of `LabelSelectorResponseInput` via:
+//
+//          LabelSelectorResponseArgs{...}
+type LabelSelectorResponseInput interface {
+	pulumi.Input
+
+	ToLabelSelectorResponseOutput() LabelSelectorResponseOutput
+	ToLabelSelectorResponseOutputWithContext(context.Context) LabelSelectorResponseOutput
+}
+
+// The label selector, used to group labels on the resources.
+type LabelSelectorResponseArgs struct {
+	// Resource labels for this selector.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (LabelSelectorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelSelectorResponse)(nil)).Elem()
+}
+
+func (i LabelSelectorResponseArgs) ToLabelSelectorResponseOutput() LabelSelectorResponseOutput {
+	return i.ToLabelSelectorResponseOutputWithContext(context.Background())
+}
+
+func (i LabelSelectorResponseArgs) ToLabelSelectorResponseOutputWithContext(ctx context.Context) LabelSelectorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelSelectorResponseOutput)
+}
+
+// LabelSelectorResponseArrayInput is an input type that accepts LabelSelectorResponseArray and LabelSelectorResponseArrayOutput values.
+// You can construct a concrete instance of `LabelSelectorResponseArrayInput` via:
+//
+//          LabelSelectorResponseArray{ LabelSelectorResponseArgs{...} }
+type LabelSelectorResponseArrayInput interface {
+	pulumi.Input
+
+	ToLabelSelectorResponseArrayOutput() LabelSelectorResponseArrayOutput
+	ToLabelSelectorResponseArrayOutputWithContext(context.Context) LabelSelectorResponseArrayOutput
+}
+
+type LabelSelectorResponseArray []LabelSelectorResponseInput
+
+func (LabelSelectorResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LabelSelectorResponse)(nil)).Elem()
+}
+
+func (i LabelSelectorResponseArray) ToLabelSelectorResponseArrayOutput() LabelSelectorResponseArrayOutput {
+	return i.ToLabelSelectorResponseArrayOutputWithContext(context.Background())
+}
+
+func (i LabelSelectorResponseArray) ToLabelSelectorResponseArrayOutputWithContext(ctx context.Context) LabelSelectorResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelSelectorResponseArrayOutput)
+}
+
+// The label selector, used to group labels on the resources.
+type LabelSelectorResponseOutput struct{ *pulumi.OutputState }
+
+func (LabelSelectorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelSelectorResponse)(nil)).Elem()
+}
+
+func (o LabelSelectorResponseOutput) ToLabelSelectorResponseOutput() LabelSelectorResponseOutput {
+	return o
+}
+
+func (o LabelSelectorResponseOutput) ToLabelSelectorResponseOutputWithContext(ctx context.Context) LabelSelectorResponseOutput {
+	return o
+}
+
+// Resource labels for this selector.
+func (o LabelSelectorResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LabelSelectorResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+type LabelSelectorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LabelSelectorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LabelSelectorResponse)(nil)).Elem()
+}
+
+func (o LabelSelectorResponseArrayOutput) ToLabelSelectorResponseArrayOutput() LabelSelectorResponseArrayOutput {
+	return o
+}
+
+func (o LabelSelectorResponseArrayOutput) ToLabelSelectorResponseArrayOutputWithContext(ctx context.Context) LabelSelectorResponseArrayOutput {
+	return o
+}
+
+func (o LabelSelectorResponseArrayOutput) Index(i pulumi.IntInput) LabelSelectorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LabelSelectorResponse {
+		return vs[0].([]LabelSelectorResponse)[vs[1].(int)]
+	}).(LabelSelectorResponseOutput)
 }
 
 // Specifies what kind of log the caller must write
@@ -2153,6 +3733,124 @@ func (o LogConfigArrayOutput) Index(i pulumi.IntInput) LogConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogConfig {
 		return vs[0].([]LogConfig)[vs[1].(int)]
 	}).(LogConfigOutput)
+}
+
+// Specifies what kind of log the caller must write
+type LogConfigResponse struct {
+	// Cloud audit options.
+	CloudAudit CloudAuditOptionsResponse `pulumi:"cloudAudit"`
+	// Counter options.
+	Counter CounterOptionsResponse `pulumi:"counter"`
+	// Data access options.
+	DataAccess DataAccessOptionsResponse `pulumi:"dataAccess"`
+}
+
+// LogConfigResponseInput is an input type that accepts LogConfigResponseArgs and LogConfigResponseOutput values.
+// You can construct a concrete instance of `LogConfigResponseInput` via:
+//
+//          LogConfigResponseArgs{...}
+type LogConfigResponseInput interface {
+	pulumi.Input
+
+	ToLogConfigResponseOutput() LogConfigResponseOutput
+	ToLogConfigResponseOutputWithContext(context.Context) LogConfigResponseOutput
+}
+
+// Specifies what kind of log the caller must write
+type LogConfigResponseArgs struct {
+	// Cloud audit options.
+	CloudAudit CloudAuditOptionsResponseInput `pulumi:"cloudAudit"`
+	// Counter options.
+	Counter CounterOptionsResponseInput `pulumi:"counter"`
+	// Data access options.
+	DataAccess DataAccessOptionsResponseInput `pulumi:"dataAccess"`
+}
+
+func (LogConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogConfigResponse)(nil)).Elem()
+}
+
+func (i LogConfigResponseArgs) ToLogConfigResponseOutput() LogConfigResponseOutput {
+	return i.ToLogConfigResponseOutputWithContext(context.Background())
+}
+
+func (i LogConfigResponseArgs) ToLogConfigResponseOutputWithContext(ctx context.Context) LogConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogConfigResponseOutput)
+}
+
+// LogConfigResponseArrayInput is an input type that accepts LogConfigResponseArray and LogConfigResponseArrayOutput values.
+// You can construct a concrete instance of `LogConfigResponseArrayInput` via:
+//
+//          LogConfigResponseArray{ LogConfigResponseArgs{...} }
+type LogConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToLogConfigResponseArrayOutput() LogConfigResponseArrayOutput
+	ToLogConfigResponseArrayOutputWithContext(context.Context) LogConfigResponseArrayOutput
+}
+
+type LogConfigResponseArray []LogConfigResponseInput
+
+func (LogConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogConfigResponse)(nil)).Elem()
+}
+
+func (i LogConfigResponseArray) ToLogConfigResponseArrayOutput() LogConfigResponseArrayOutput {
+	return i.ToLogConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i LogConfigResponseArray) ToLogConfigResponseArrayOutputWithContext(ctx context.Context) LogConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogConfigResponseArrayOutput)
+}
+
+// Specifies what kind of log the caller must write
+type LogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (LogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogConfigResponse)(nil)).Elem()
+}
+
+func (o LogConfigResponseOutput) ToLogConfigResponseOutput() LogConfigResponseOutput {
+	return o
+}
+
+func (o LogConfigResponseOutput) ToLogConfigResponseOutputWithContext(ctx context.Context) LogConfigResponseOutput {
+	return o
+}
+
+// Cloud audit options.
+func (o LogConfigResponseOutput) CloudAudit() CloudAuditOptionsResponseOutput {
+	return o.ApplyT(func(v LogConfigResponse) CloudAuditOptionsResponse { return v.CloudAudit }).(CloudAuditOptionsResponseOutput)
+}
+
+// Counter options.
+func (o LogConfigResponseOutput) Counter() CounterOptionsResponseOutput {
+	return o.ApplyT(func(v LogConfigResponse) CounterOptionsResponse { return v.Counter }).(CounterOptionsResponseOutput)
+}
+
+// Data access options.
+func (o LogConfigResponseOutput) DataAccess() DataAccessOptionsResponseOutput {
+	return o.ApplyT(func(v LogConfigResponse) DataAccessOptionsResponse { return v.DataAccess }).(DataAccessOptionsResponseOutput)
+}
+
+type LogConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LogConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogConfigResponse)(nil)).Elem()
+}
+
+func (o LogConfigResponseArrayOutput) ToLogConfigResponseArrayOutput() LogConfigResponseArrayOutput {
+	return o
+}
+
+func (o LogConfigResponseArrayOutput) ToLogConfigResponseArrayOutputWithContext(ctx context.Context) LogConfigResponseArrayOutput {
+	return o
+}
+
+func (o LogConfigResponseArrayOutput) Index(i pulumi.IntInput) LogConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogConfigResponse {
+		return vs[0].([]LogConfigResponse)[vs[1].(int)]
+	}).(LogConfigResponseOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
@@ -2534,6 +4232,160 @@ func (o RuleArrayOutput) Index(i pulumi.IntInput) RuleOutput {
 	}).(RuleOutput)
 }
 
+// A rule to be applied in a Policy.
+type RuleResponse struct {
+	// Required
+	Action string `pulumi:"action"`
+	// Additional restrictions that must be met. All conditions must pass for the rule to match.
+	Conditions []ConditionResponse `pulumi:"conditions"`
+	// Human-readable description of the rule.
+	Description string `pulumi:"description"`
+	// If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
+	In []string `pulumi:"in"`
+	// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+	LogConfig []LogConfigResponse `pulumi:"logConfig"`
+	// If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries. The format for in and not_in entries can be found at in the Local IAM documentation (see go/local-iam#features).
+	NotIn []string `pulumi:"notIn"`
+	// A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
+	Permissions []string `pulumi:"permissions"`
+}
+
+// RuleResponseInput is an input type that accepts RuleResponseArgs and RuleResponseOutput values.
+// You can construct a concrete instance of `RuleResponseInput` via:
+//
+//          RuleResponseArgs{...}
+type RuleResponseInput interface {
+	pulumi.Input
+
+	ToRuleResponseOutput() RuleResponseOutput
+	ToRuleResponseOutputWithContext(context.Context) RuleResponseOutput
+}
+
+// A rule to be applied in a Policy.
+type RuleResponseArgs struct {
+	// Required
+	Action pulumi.StringInput `pulumi:"action"`
+	// Additional restrictions that must be met. All conditions must pass for the rule to match.
+	Conditions ConditionResponseArrayInput `pulumi:"conditions"`
+	// Human-readable description of the rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
+	In pulumi.StringArrayInput `pulumi:"in"`
+	// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+	LogConfig LogConfigResponseArrayInput `pulumi:"logConfig"`
+	// If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries. The format for in and not_in entries can be found at in the Local IAM documentation (see go/local-iam#features).
+	NotIn pulumi.StringArrayInput `pulumi:"notIn"`
+	// A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
+	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
+}
+
+func (RuleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleResponse)(nil)).Elem()
+}
+
+func (i RuleResponseArgs) ToRuleResponseOutput() RuleResponseOutput {
+	return i.ToRuleResponseOutputWithContext(context.Background())
+}
+
+func (i RuleResponseArgs) ToRuleResponseOutputWithContext(ctx context.Context) RuleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleResponseOutput)
+}
+
+// RuleResponseArrayInput is an input type that accepts RuleResponseArray and RuleResponseArrayOutput values.
+// You can construct a concrete instance of `RuleResponseArrayInput` via:
+//
+//          RuleResponseArray{ RuleResponseArgs{...} }
+type RuleResponseArrayInput interface {
+	pulumi.Input
+
+	ToRuleResponseArrayOutput() RuleResponseArrayOutput
+	ToRuleResponseArrayOutputWithContext(context.Context) RuleResponseArrayOutput
+}
+
+type RuleResponseArray []RuleResponseInput
+
+func (RuleResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleResponse)(nil)).Elem()
+}
+
+func (i RuleResponseArray) ToRuleResponseArrayOutput() RuleResponseArrayOutput {
+	return i.ToRuleResponseArrayOutputWithContext(context.Background())
+}
+
+func (i RuleResponseArray) ToRuleResponseArrayOutputWithContext(ctx context.Context) RuleResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleResponseArrayOutput)
+}
+
+// A rule to be applied in a Policy.
+type RuleResponseOutput struct{ *pulumi.OutputState }
+
+func (RuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleResponse)(nil)).Elem()
+}
+
+func (o RuleResponseOutput) ToRuleResponseOutput() RuleResponseOutput {
+	return o
+}
+
+func (o RuleResponseOutput) ToRuleResponseOutputWithContext(ctx context.Context) RuleResponseOutput {
+	return o
+}
+
+// Required
+func (o RuleResponseOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleResponse) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Additional restrictions that must be met. All conditions must pass for the rule to match.
+func (o RuleResponseOutput) Conditions() ConditionResponseArrayOutput {
+	return o.ApplyT(func(v RuleResponse) []ConditionResponse { return v.Conditions }).(ConditionResponseArrayOutput)
+}
+
+// Human-readable description of the rule.
+func (o RuleResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
+func (o RuleResponseOutput) In() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleResponse) []string { return v.In }).(pulumi.StringArrayOutput)
+}
+
+// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG action.
+func (o RuleResponseOutput) LogConfig() LogConfigResponseArrayOutput {
+	return o.ApplyT(func(v RuleResponse) []LogConfigResponse { return v.LogConfig }).(LogConfigResponseArrayOutput)
+}
+
+// If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries. The format for in and not_in entries can be found at in the Local IAM documentation (see go/local-iam#features).
+func (o RuleResponseOutput) NotIn() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleResponse) []string { return v.NotIn }).(pulumi.StringArrayOutput)
+}
+
+// A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
+func (o RuleResponseOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleResponse) []string { return v.Permissions }).(pulumi.StringArrayOutput)
+}
+
+type RuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleResponse)(nil)).Elem()
+}
+
+func (o RuleResponseArrayOutput) ToRuleResponseArrayOutput() RuleResponseArrayOutput {
+	return o
+}
+
+func (o RuleResponseArrayOutput) ToRuleResponseArrayOutputWithContext(ctx context.Context) RuleResponseArrayOutput {
+	return o
+}
+
+func (o RuleResponseArrayOutput) Index(i pulumi.IntInput) RuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleResponse {
+		return vs[0].([]RuleResponse)[vs[1].(int)]
+	}).(RuleResponseOutput)
+}
+
 // Autoscaling config for an Agones fleet.
 type ScalingConfig struct {
 	// Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
@@ -2659,6 +4511,133 @@ func (o ScalingConfigArrayOutput) Index(i pulumi.IntInput) ScalingConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingConfig {
 		return vs[0].([]ScalingConfig)[vs[1].(int)]
 	}).(ScalingConfigOutput)
+}
+
+// Autoscaling config for an Agones fleet.
+type ScalingConfigResponse struct {
+	// Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+	FleetAutoscalerSpec string `pulumi:"fleetAutoscalerSpec"`
+	// Required. The name of the Scaling Config
+	Name string `pulumi:"name"`
+	// The schedules to which this Scaling Config applies.
+	Schedules []ScheduleResponse `pulumi:"schedules"`
+	// Labels used to identify the game server clusters to which this Agones scaling config applies. A game server cluster is subject to this Agones scaling config if its labels match any of the selector entries.
+	Selectors []LabelSelectorResponse `pulumi:"selectors"`
+}
+
+// ScalingConfigResponseInput is an input type that accepts ScalingConfigResponseArgs and ScalingConfigResponseOutput values.
+// You can construct a concrete instance of `ScalingConfigResponseInput` via:
+//
+//          ScalingConfigResponseArgs{...}
+type ScalingConfigResponseInput interface {
+	pulumi.Input
+
+	ToScalingConfigResponseOutput() ScalingConfigResponseOutput
+	ToScalingConfigResponseOutputWithContext(context.Context) ScalingConfigResponseOutput
+}
+
+// Autoscaling config for an Agones fleet.
+type ScalingConfigResponseArgs struct {
+	// Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+	FleetAutoscalerSpec pulumi.StringInput `pulumi:"fleetAutoscalerSpec"`
+	// Required. The name of the Scaling Config
+	Name pulumi.StringInput `pulumi:"name"`
+	// The schedules to which this Scaling Config applies.
+	Schedules ScheduleResponseArrayInput `pulumi:"schedules"`
+	// Labels used to identify the game server clusters to which this Agones scaling config applies. A game server cluster is subject to this Agones scaling config if its labels match any of the selector entries.
+	Selectors LabelSelectorResponseArrayInput `pulumi:"selectors"`
+}
+
+func (ScalingConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigResponse)(nil)).Elem()
+}
+
+func (i ScalingConfigResponseArgs) ToScalingConfigResponseOutput() ScalingConfigResponseOutput {
+	return i.ToScalingConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigResponseArgs) ToScalingConfigResponseOutputWithContext(ctx context.Context) ScalingConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigResponseOutput)
+}
+
+// ScalingConfigResponseArrayInput is an input type that accepts ScalingConfigResponseArray and ScalingConfigResponseArrayOutput values.
+// You can construct a concrete instance of `ScalingConfigResponseArrayInput` via:
+//
+//          ScalingConfigResponseArray{ ScalingConfigResponseArgs{...} }
+type ScalingConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToScalingConfigResponseArrayOutput() ScalingConfigResponseArrayOutput
+	ToScalingConfigResponseArrayOutputWithContext(context.Context) ScalingConfigResponseArrayOutput
+}
+
+type ScalingConfigResponseArray []ScalingConfigResponseInput
+
+func (ScalingConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingConfigResponse)(nil)).Elem()
+}
+
+func (i ScalingConfigResponseArray) ToScalingConfigResponseArrayOutput() ScalingConfigResponseArrayOutput {
+	return i.ToScalingConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigResponseArray) ToScalingConfigResponseArrayOutputWithContext(ctx context.Context) ScalingConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigResponseArrayOutput)
+}
+
+// Autoscaling config for an Agones fleet.
+type ScalingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigResponse)(nil)).Elem()
+}
+
+func (o ScalingConfigResponseOutput) ToScalingConfigResponseOutput() ScalingConfigResponseOutput {
+	return o
+}
+
+func (o ScalingConfigResponseOutput) ToScalingConfigResponseOutputWithContext(ctx context.Context) ScalingConfigResponseOutput {
+	return o
+}
+
+// Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+func (o ScalingConfigResponseOutput) FleetAutoscalerSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v ScalingConfigResponse) string { return v.FleetAutoscalerSpec }).(pulumi.StringOutput)
+}
+
+// Required. The name of the Scaling Config
+func (o ScalingConfigResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ScalingConfigResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The schedules to which this Scaling Config applies.
+func (o ScalingConfigResponseOutput) Schedules() ScheduleResponseArrayOutput {
+	return o.ApplyT(func(v ScalingConfigResponse) []ScheduleResponse { return v.Schedules }).(ScheduleResponseArrayOutput)
+}
+
+// Labels used to identify the game server clusters to which this Agones scaling config applies. A game server cluster is subject to this Agones scaling config if its labels match any of the selector entries.
+func (o ScalingConfigResponseOutput) Selectors() LabelSelectorResponseArrayOutput {
+	return o.ApplyT(func(v ScalingConfigResponse) []LabelSelectorResponse { return v.Selectors }).(LabelSelectorResponseArrayOutput)
+}
+
+type ScalingConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingConfigResponse)(nil)).Elem()
+}
+
+func (o ScalingConfigResponseArrayOutput) ToScalingConfigResponseArrayOutput() ScalingConfigResponseArrayOutput {
+	return o
+}
+
+func (o ScalingConfigResponseArrayOutput) ToScalingConfigResponseArrayOutputWithContext(ctx context.Context) ScalingConfigResponseArrayOutput {
+	return o
+}
+
+func (o ScalingConfigResponseArrayOutput) Index(i pulumi.IntInput) ScalingConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingConfigResponse {
+		return vs[0].([]ScalingConfigResponse)[vs[1].(int)]
+	}).(ScalingConfigResponseOutput)
 }
 
 // The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration
@@ -2788,45 +4767,205 @@ func (o ScheduleArrayOutput) Index(i pulumi.IntInput) ScheduleOutput {
 	}).(ScheduleOutput)
 }
 
+// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration
+type ScheduleResponse struct {
+	// The duration for the cron job event. The duration of the event is effective after the cron job's start time.
+	CronJobDuration string `pulumi:"cronJobDuration"`
+	// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as defined by the realm.
+	CronSpec string `pulumi:"cronSpec"`
+	// The end time of the event.
+	EndTime string `pulumi:"endTime"`
+	// The start time of the event.
+	StartTime string `pulumi:"startTime"`
+}
+
+// ScheduleResponseInput is an input type that accepts ScheduleResponseArgs and ScheduleResponseOutput values.
+// You can construct a concrete instance of `ScheduleResponseInput` via:
+//
+//          ScheduleResponseArgs{...}
+type ScheduleResponseInput interface {
+	pulumi.Input
+
+	ToScheduleResponseOutput() ScheduleResponseOutput
+	ToScheduleResponseOutputWithContext(context.Context) ScheduleResponseOutput
+}
+
+// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration
+type ScheduleResponseArgs struct {
+	// The duration for the cron job event. The duration of the event is effective after the cron job's start time.
+	CronJobDuration pulumi.StringInput `pulumi:"cronJobDuration"`
+	// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as defined by the realm.
+	CronSpec pulumi.StringInput `pulumi:"cronSpec"`
+	// The end time of the event.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// The start time of the event.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (ScheduleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleResponse)(nil)).Elem()
+}
+
+func (i ScheduleResponseArgs) ToScheduleResponseOutput() ScheduleResponseOutput {
+	return i.ToScheduleResponseOutputWithContext(context.Background())
+}
+
+func (i ScheduleResponseArgs) ToScheduleResponseOutputWithContext(ctx context.Context) ScheduleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleResponseOutput)
+}
+
+// ScheduleResponseArrayInput is an input type that accepts ScheduleResponseArray and ScheduleResponseArrayOutput values.
+// You can construct a concrete instance of `ScheduleResponseArrayInput` via:
+//
+//          ScheduleResponseArray{ ScheduleResponseArgs{...} }
+type ScheduleResponseArrayInput interface {
+	pulumi.Input
+
+	ToScheduleResponseArrayOutput() ScheduleResponseArrayOutput
+	ToScheduleResponseArrayOutputWithContext(context.Context) ScheduleResponseArrayOutput
+}
+
+type ScheduleResponseArray []ScheduleResponseInput
+
+func (ScheduleResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduleResponse)(nil)).Elem()
+}
+
+func (i ScheduleResponseArray) ToScheduleResponseArrayOutput() ScheduleResponseArrayOutput {
+	return i.ToScheduleResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ScheduleResponseArray) ToScheduleResponseArrayOutputWithContext(ctx context.Context) ScheduleResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleResponseArrayOutput)
+}
+
+// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration
+type ScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (ScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleResponse)(nil)).Elem()
+}
+
+func (o ScheduleResponseOutput) ToScheduleResponseOutput() ScheduleResponseOutput {
+	return o
+}
+
+func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.Context) ScheduleResponseOutput {
+	return o
+}
+
+// The duration for the cron job event. The duration of the event is effective after the cron job's start time.
+func (o ScheduleResponseOutput) CronJobDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleResponse) string { return v.CronJobDuration }).(pulumi.StringOutput)
+}
+
+// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as defined by the realm.
+func (o ScheduleResponseOutput) CronSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleResponse) string { return v.CronSpec }).(pulumi.StringOutput)
+}
+
+// The end time of the event.
+func (o ScheduleResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The start time of the event.
+func (o ScheduleResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type ScheduleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ScheduleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduleResponse)(nil)).Elem()
+}
+
+func (o ScheduleResponseArrayOutput) ToScheduleResponseArrayOutput() ScheduleResponseArrayOutput {
+	return o
+}
+
+func (o ScheduleResponseArrayOutput) ToScheduleResponseArrayOutputWithContext(ctx context.Context) ScheduleResponseArrayOutput {
+	return o
+}
+
+func (o ScheduleResponseArrayOutput) Index(i pulumi.IntInput) ScheduleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScheduleResponse {
+		return vs[0].([]ScheduleResponse)[vs[1].(int)]
+	}).(ScheduleResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuthorizationLoggingOptionsOutput{})
 	pulumi.RegisterOutputType(AuthorizationLoggingOptionsPtrOutput{})
+	pulumi.RegisterOutputType(AuthorizationLoggingOptionsResponseOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingResponseOutput{})
+	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(CloudAuditOptionsOutput{})
 	pulumi.RegisterOutputType(CloudAuditOptionsPtrOutput{})
+	pulumi.RegisterOutputType(CloudAuditOptionsResponseOutput{})
 	pulumi.RegisterOutputType(ConditionOutput{})
 	pulumi.RegisterOutputType(ConditionArrayOutput{})
+	pulumi.RegisterOutputType(ConditionResponseOutput{})
+	pulumi.RegisterOutputType(ConditionResponseArrayOutput{})
 	pulumi.RegisterOutputType(CounterOptionsOutput{})
 	pulumi.RegisterOutputType(CounterOptionsPtrOutput{})
+	pulumi.RegisterOutputType(CounterOptionsResponseOutput{})
 	pulumi.RegisterOutputType(CustomFieldOutput{})
 	pulumi.RegisterOutputType(CustomFieldArrayOutput{})
+	pulumi.RegisterOutputType(CustomFieldResponseOutput{})
+	pulumi.RegisterOutputType(CustomFieldResponseArrayOutput{})
 	pulumi.RegisterOutputType(DataAccessOptionsOutput{})
 	pulumi.RegisterOutputType(DataAccessOptionsPtrOutput{})
+	pulumi.RegisterOutputType(DataAccessOptionsResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(FleetConfigOutput{})
 	pulumi.RegisterOutputType(FleetConfigArrayOutput{})
+	pulumi.RegisterOutputType(FleetConfigResponseOutput{})
+	pulumi.RegisterOutputType(FleetConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(GameServerClusterConnectionInfoOutput{})
 	pulumi.RegisterOutputType(GameServerClusterConnectionInfoPtrOutput{})
+	pulumi.RegisterOutputType(GameServerClusterConnectionInfoResponseOutput{})
+	pulumi.RegisterOutputType(GameServerClusterConnectionInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(GkeClusterReferenceOutput{})
 	pulumi.RegisterOutputType(GkeClusterReferencePtrOutput{})
+	pulumi.RegisterOutputType(GkeClusterReferenceResponseOutput{})
+	pulumi.RegisterOutputType(GkeClusterReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(GkeHubClusterReferenceOutput{})
 	pulumi.RegisterOutputType(GkeHubClusterReferencePtrOutput{})
+	pulumi.RegisterOutputType(GkeHubClusterReferenceResponseOutput{})
+	pulumi.RegisterOutputType(GkeHubClusterReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(LabelSelectorOutput{})
 	pulumi.RegisterOutputType(LabelSelectorArrayOutput{})
+	pulumi.RegisterOutputType(LabelSelectorResponseOutput{})
+	pulumi.RegisterOutputType(LabelSelectorResponseArrayOutput{})
 	pulumi.RegisterOutputType(LogConfigOutput{})
 	pulumi.RegisterOutputType(LogConfigArrayOutput{})
+	pulumi.RegisterOutputType(LogConfigResponseOutput{})
+	pulumi.RegisterOutputType(LogConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(PolicyOutput{})
 	pulumi.RegisterOutputType(PolicyPtrOutput{})
 	pulumi.RegisterOutputType(RuleOutput{})
 	pulumi.RegisterOutputType(RuleArrayOutput{})
+	pulumi.RegisterOutputType(RuleResponseOutput{})
+	pulumi.RegisterOutputType(RuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigOutput{})
 	pulumi.RegisterOutputType(ScalingConfigArrayOutput{})
+	pulumi.RegisterOutputType(ScalingConfigResponseOutput{})
+	pulumi.RegisterOutputType(ScalingConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(ScheduleOutput{})
 	pulumi.RegisterOutputType(ScheduleArrayOutput{})
+	pulumi.RegisterOutputType(ScheduleResponseOutput{})
+	pulumi.RegisterOutputType(ScheduleResponseArrayOutput{})
 }

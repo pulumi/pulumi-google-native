@@ -14,6 +14,15 @@ import (
 // Creates a new session. A session can be used to perform transactions that read and/or modify data in a Cloud Spanner database. Sessions are meant to be reused for many consecutive transactions. Sessions can only execute one transaction at a time. To execute multiple concurrent read-write/write-only transactions, create multiple sessions. Note that standalone reads and queries use a transaction internally, and count toward the one transaction limit. Active sessions use additional server resources, so it is a good idea to delete idle and unneeded sessions. Aside from explicit deletes, Cloud Spanner may delete sessions for which no operations are sent for more than an hour. If a session is deleted, requests to it return `NOT_FOUND`. Idle sessions can be kept alive by sending a trivial SQL query periodically, e.g., `"SELECT 1"`.
 type InstanceDatabaseSession struct {
 	pulumi.CustomResourceState
+
+	// The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.
+	ApproximateLastUseTime pulumi.StringOutput `pulumi:"approximateLastUseTime"`
+	// The timestamp when the session is created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The name of the session. This is always system-assigned.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewInstanceDatabaseSession registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +66,25 @@ func GetInstanceDatabaseSession(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceDatabaseSession resources.
 type instanceDatabaseSessionState struct {
+	// The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.
+	ApproximateLastUseTime *string `pulumi:"approximateLastUseTime"`
+	// The timestamp when the session is created.
+	CreateTime *string `pulumi:"createTime"`
+	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
+	Labels map[string]string `pulumi:"labels"`
+	// The name of the session. This is always system-assigned.
+	Name *string `pulumi:"name"`
 }
 
 type InstanceDatabaseSessionState struct {
+	// The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.
+	ApproximateLastUseTime pulumi.StringPtrInput
+	// The timestamp when the session is created.
+	CreateTime pulumi.StringPtrInput
+	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
+	Labels pulumi.StringMapInput
+	// The name of the session. This is always system-assigned.
+	Name pulumi.StringPtrInput
 }
 
 func (InstanceDatabaseSessionState) ElementType() reflect.Type {

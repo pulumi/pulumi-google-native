@@ -14,6 +14,23 @@ import (
 // Creates a notification subscription for a given bucket.
 type Notification struct {
 	pulumi.CustomResourceState
+
+	// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
+	Custom_attributes pulumi.StringMapOutput `pulumi:"custom_attributes"`
+	// HTTP 1.1 Entity tag for this subscription notification.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
+	Event_types pulumi.StringArrayOutput `pulumi:"event_types"`
+	// The kind of item this is. For notifications, this is always storage#notification.
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// If present, only apply this notification configuration to object names that begin with this prefix.
+	Object_name_prefix pulumi.StringOutput `pulumi:"object_name_prefix"`
+	// The desired content of the Payload.
+	Payload_format pulumi.StringOutput `pulumi:"payload_format"`
+	// The canonical URL of this notification.
+	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
+	Topic pulumi.StringOutput `pulumi:"topic"`
 }
 
 // NewNotification registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +68,41 @@ func GetNotification(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Notification resources.
 type notificationState struct {
+	// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
+	Custom_attributes map[string]string `pulumi:"custom_attributes"`
+	// HTTP 1.1 Entity tag for this subscription notification.
+	Etag *string `pulumi:"etag"`
+	// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
+	Event_types []string `pulumi:"event_types"`
+	// The kind of item this is. For notifications, this is always storage#notification.
+	Kind *string `pulumi:"kind"`
+	// If present, only apply this notification configuration to object names that begin with this prefix.
+	Object_name_prefix *string `pulumi:"object_name_prefix"`
+	// The desired content of the Payload.
+	Payload_format *string `pulumi:"payload_format"`
+	// The canonical URL of this notification.
+	SelfLink *string `pulumi:"selfLink"`
+	// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
+	Topic *string `pulumi:"topic"`
 }
 
 type NotificationState struct {
+	// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
+	Custom_attributes pulumi.StringMapInput
+	// HTTP 1.1 Entity tag for this subscription notification.
+	Etag pulumi.StringPtrInput
+	// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
+	Event_types pulumi.StringArrayInput
+	// The kind of item this is. For notifications, this is always storage#notification.
+	Kind pulumi.StringPtrInput
+	// If present, only apply this notification configuration to object names that begin with this prefix.
+	Object_name_prefix pulumi.StringPtrInput
+	// The desired content of the Payload.
+	Payload_format pulumi.StringPtrInput
+	// The canonical URL of this notification.
+	SelfLink pulumi.StringPtrInput
+	// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
+	Topic pulumi.StringPtrInput
 }
 
 func (NotificationState) ElementType() reflect.Type {

@@ -14,6 +14,15 @@ import (
 // Creates and returns a new ProductSet resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing, or is longer than 4096 characters.
 type ProductSet struct {
 	pulumi.CustomResourceState
+
+	// The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
+	IndexError StatusResponseOutput `pulumi:"indexError"`
+	// The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
+	IndexTime pulumi.StringOutput `pulumi:"indexTime"`
+	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewProductSet registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +63,25 @@ func GetProductSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProductSet resources.
 type productSetState struct {
+	// The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
+	DisplayName *string `pulumi:"displayName"`
+	// If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
+	IndexError *StatusResponse `pulumi:"indexError"`
+	// The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
+	IndexTime *string `pulumi:"indexTime"`
+	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
+	Name *string `pulumi:"name"`
 }
 
 type ProductSetState struct {
+	// The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
+	DisplayName pulumi.StringPtrInput
+	// If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
+	IndexError StatusResponsePtrInput
+	// The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
+	IndexTime pulumi.StringPtrInput
+	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
+	Name pulumi.StringPtrInput
 }
 
 func (ProductSetState) ElementType() reflect.Type {
@@ -66,10 +91,6 @@ func (ProductSetState) ElementType() reflect.Type {
 type productSetArgs struct {
 	// The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
 	DisplayName *string `pulumi:"displayName"`
-	// Output only. If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
-	IndexError *Status `pulumi:"indexError"`
-	// Output only. The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
-	IndexTime   *string `pulumi:"indexTime"`
 	LocationsId string  `pulumi:"locationsId"`
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
 	Name          *string `pulumi:"name"`
@@ -81,10 +102,6 @@ type productSetArgs struct {
 type ProductSetArgs struct {
 	// The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
 	DisplayName pulumi.StringPtrInput
-	// Output only. If there was an error with indexing the product set, the field is populated. This field is ignored when creating a ProductSet.
-	IndexError StatusPtrInput
-	// Output only. The time at which this ProductSet was last indexed. Query results will reflect all updates before this time. If this ProductSet has never been indexed, this timestamp is the default value "1970-01-01T00:00:00Z". This field is ignored when creating a ProductSet.
-	IndexTime   pulumi.StringPtrInput
 	LocationsId pulumi.StringInput
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
 	Name          pulumi.StringPtrInput

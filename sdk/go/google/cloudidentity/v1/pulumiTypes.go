@@ -14,8 +14,6 @@ import (
 type DynamicGroupMetadata struct {
 	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
 	Queries []DynamicGroupQuery `pulumi:"queries"`
-	// Output only. Status of the dynamic group.
-	Status *DynamicGroupStatus `pulumi:"status"`
 }
 
 // DynamicGroupMetadataInput is an input type that accepts DynamicGroupMetadataArgs and DynamicGroupMetadataOutput values.
@@ -33,8 +31,6 @@ type DynamicGroupMetadataInput interface {
 type DynamicGroupMetadataArgs struct {
 	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
 	Queries DynamicGroupQueryArrayInput `pulumi:"queries"`
-	// Output only. Status of the dynamic group.
-	Status DynamicGroupStatusPtrInput `pulumi:"status"`
 }
 
 func (DynamicGroupMetadataArgs) ElementType() reflect.Type {
@@ -120,11 +116,6 @@ func (o DynamicGroupMetadataOutput) Queries() DynamicGroupQueryArrayOutput {
 	return o.ApplyT(func(v DynamicGroupMetadata) []DynamicGroupQuery { return v.Queries }).(DynamicGroupQueryArrayOutput)
 }
 
-// Output only. Status of the dynamic group.
-func (o DynamicGroupMetadataOutput) Status() DynamicGroupStatusPtrOutput {
-	return o.ApplyT(func(v DynamicGroupMetadata) *DynamicGroupStatus { return v.Status }).(DynamicGroupStatusPtrOutput)
-}
-
 type DynamicGroupMetadataPtrOutput struct{ *pulumi.OutputState }
 
 func (DynamicGroupMetadataPtrOutput) ElementType() reflect.Type {
@@ -153,14 +144,157 @@ func (o DynamicGroupMetadataPtrOutput) Queries() DynamicGroupQueryArrayOutput {
 	}).(DynamicGroupQueryArrayOutput)
 }
 
-// Output only. Status of the dynamic group.
-func (o DynamicGroupMetadataPtrOutput) Status() DynamicGroupStatusPtrOutput {
-	return o.ApplyT(func(v *DynamicGroupMetadata) *DynamicGroupStatus {
+// Dynamic group metadata like queries and status.
+type DynamicGroupMetadataResponse struct {
+	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+	Queries []DynamicGroupQueryResponse `pulumi:"queries"`
+	// Status of the dynamic group.
+	Status DynamicGroupStatusResponse `pulumi:"status"`
+}
+
+// DynamicGroupMetadataResponseInput is an input type that accepts DynamicGroupMetadataResponseArgs and DynamicGroupMetadataResponseOutput values.
+// You can construct a concrete instance of `DynamicGroupMetadataResponseInput` via:
+//
+//          DynamicGroupMetadataResponseArgs{...}
+type DynamicGroupMetadataResponseInput interface {
+	pulumi.Input
+
+	ToDynamicGroupMetadataResponseOutput() DynamicGroupMetadataResponseOutput
+	ToDynamicGroupMetadataResponseOutputWithContext(context.Context) DynamicGroupMetadataResponseOutput
+}
+
+// Dynamic group metadata like queries and status.
+type DynamicGroupMetadataResponseArgs struct {
+	// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+	Queries DynamicGroupQueryResponseArrayInput `pulumi:"queries"`
+	// Status of the dynamic group.
+	Status DynamicGroupStatusResponseInput `pulumi:"status"`
+}
+
+func (DynamicGroupMetadataResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicGroupMetadataResponse)(nil)).Elem()
+}
+
+func (i DynamicGroupMetadataResponseArgs) ToDynamicGroupMetadataResponseOutput() DynamicGroupMetadataResponseOutput {
+	return i.ToDynamicGroupMetadataResponseOutputWithContext(context.Background())
+}
+
+func (i DynamicGroupMetadataResponseArgs) ToDynamicGroupMetadataResponseOutputWithContext(ctx context.Context) DynamicGroupMetadataResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupMetadataResponseOutput)
+}
+
+func (i DynamicGroupMetadataResponseArgs) ToDynamicGroupMetadataResponsePtrOutput() DynamicGroupMetadataResponsePtrOutput {
+	return i.ToDynamicGroupMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DynamicGroupMetadataResponseArgs) ToDynamicGroupMetadataResponsePtrOutputWithContext(ctx context.Context) DynamicGroupMetadataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupMetadataResponseOutput).ToDynamicGroupMetadataResponsePtrOutputWithContext(ctx)
+}
+
+// DynamicGroupMetadataResponsePtrInput is an input type that accepts DynamicGroupMetadataResponseArgs, DynamicGroupMetadataResponsePtr and DynamicGroupMetadataResponsePtrOutput values.
+// You can construct a concrete instance of `DynamicGroupMetadataResponsePtrInput` via:
+//
+//          DynamicGroupMetadataResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DynamicGroupMetadataResponsePtrInput interface {
+	pulumi.Input
+
+	ToDynamicGroupMetadataResponsePtrOutput() DynamicGroupMetadataResponsePtrOutput
+	ToDynamicGroupMetadataResponsePtrOutputWithContext(context.Context) DynamicGroupMetadataResponsePtrOutput
+}
+
+type dynamicGroupMetadataResponsePtrType DynamicGroupMetadataResponseArgs
+
+func DynamicGroupMetadataResponsePtr(v *DynamicGroupMetadataResponseArgs) DynamicGroupMetadataResponsePtrInput {
+	return (*dynamicGroupMetadataResponsePtrType)(v)
+}
+
+func (*dynamicGroupMetadataResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamicGroupMetadataResponse)(nil)).Elem()
+}
+
+func (i *dynamicGroupMetadataResponsePtrType) ToDynamicGroupMetadataResponsePtrOutput() DynamicGroupMetadataResponsePtrOutput {
+	return i.ToDynamicGroupMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *dynamicGroupMetadataResponsePtrType) ToDynamicGroupMetadataResponsePtrOutputWithContext(ctx context.Context) DynamicGroupMetadataResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupMetadataResponsePtrOutput)
+}
+
+// Dynamic group metadata like queries and status.
+type DynamicGroupMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (DynamicGroupMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicGroupMetadataResponse)(nil)).Elem()
+}
+
+func (o DynamicGroupMetadataResponseOutput) ToDynamicGroupMetadataResponseOutput() DynamicGroupMetadataResponseOutput {
+	return o
+}
+
+func (o DynamicGroupMetadataResponseOutput) ToDynamicGroupMetadataResponseOutputWithContext(ctx context.Context) DynamicGroupMetadataResponseOutput {
+	return o
+}
+
+func (o DynamicGroupMetadataResponseOutput) ToDynamicGroupMetadataResponsePtrOutput() DynamicGroupMetadataResponsePtrOutput {
+	return o.ToDynamicGroupMetadataResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DynamicGroupMetadataResponseOutput) ToDynamicGroupMetadataResponsePtrOutputWithContext(ctx context.Context) DynamicGroupMetadataResponsePtrOutput {
+	return o.ApplyT(func(v DynamicGroupMetadataResponse) *DynamicGroupMetadataResponse {
+		return &v
+	}).(DynamicGroupMetadataResponsePtrOutput)
+}
+
+// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+func (o DynamicGroupMetadataResponseOutput) Queries() DynamicGroupQueryResponseArrayOutput {
+	return o.ApplyT(func(v DynamicGroupMetadataResponse) []DynamicGroupQueryResponse { return v.Queries }).(DynamicGroupQueryResponseArrayOutput)
+}
+
+// Status of the dynamic group.
+func (o DynamicGroupMetadataResponseOutput) Status() DynamicGroupStatusResponseOutput {
+	return o.ApplyT(func(v DynamicGroupMetadataResponse) DynamicGroupStatusResponse { return v.Status }).(DynamicGroupStatusResponseOutput)
+}
+
+type DynamicGroupMetadataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DynamicGroupMetadataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamicGroupMetadataResponse)(nil)).Elem()
+}
+
+func (o DynamicGroupMetadataResponsePtrOutput) ToDynamicGroupMetadataResponsePtrOutput() DynamicGroupMetadataResponsePtrOutput {
+	return o
+}
+
+func (o DynamicGroupMetadataResponsePtrOutput) ToDynamicGroupMetadataResponsePtrOutputWithContext(ctx context.Context) DynamicGroupMetadataResponsePtrOutput {
+	return o
+}
+
+func (o DynamicGroupMetadataResponsePtrOutput) Elem() DynamicGroupMetadataResponseOutput {
+	return o.ApplyT(func(v *DynamicGroupMetadataResponse) DynamicGroupMetadataResponse { return *v }).(DynamicGroupMetadataResponseOutput)
+}
+
+// Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
+func (o DynamicGroupMetadataResponsePtrOutput) Queries() DynamicGroupQueryResponseArrayOutput {
+	return o.ApplyT(func(v *DynamicGroupMetadataResponse) []DynamicGroupQueryResponse {
 		if v == nil {
 			return nil
 		}
-		return v.Status
-	}).(DynamicGroupStatusPtrOutput)
+		return v.Queries
+	}).(DynamicGroupQueryResponseArrayOutput)
+}
+
+// Status of the dynamic group.
+func (o DynamicGroupMetadataResponsePtrOutput) Status() DynamicGroupStatusResponsePtrOutput {
+	return o.ApplyT(func(v *DynamicGroupMetadataResponse) *DynamicGroupStatusResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(DynamicGroupStatusResponsePtrOutput)
 }
 
 // Defines a query on a resource.
@@ -272,156 +406,265 @@ func (o DynamicGroupQueryArrayOutput) Index(i pulumi.IntInput) DynamicGroupQuery
 	}).(DynamicGroupQueryOutput)
 }
 
-// The current status of a dynamic group along with timestamp.
-type DynamicGroupStatus struct {
-	// Status of the dynamic group.
-	Status *string `pulumi:"status"`
-	// The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
-	StatusTime *string `pulumi:"statusTime"`
+// Defines a query on a resource.
+type DynamicGroupQueryResponse struct {
+	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+	Query string `pulumi:"query"`
+	// Resource type for the Dynamic Group Query
+	ResourceType string `pulumi:"resourceType"`
 }
 
-// DynamicGroupStatusInput is an input type that accepts DynamicGroupStatusArgs and DynamicGroupStatusOutput values.
-// You can construct a concrete instance of `DynamicGroupStatusInput` via:
+// DynamicGroupQueryResponseInput is an input type that accepts DynamicGroupQueryResponseArgs and DynamicGroupQueryResponseOutput values.
+// You can construct a concrete instance of `DynamicGroupQueryResponseInput` via:
 //
-//          DynamicGroupStatusArgs{...}
-type DynamicGroupStatusInput interface {
+//          DynamicGroupQueryResponseArgs{...}
+type DynamicGroupQueryResponseInput interface {
 	pulumi.Input
 
-	ToDynamicGroupStatusOutput() DynamicGroupStatusOutput
-	ToDynamicGroupStatusOutputWithContext(context.Context) DynamicGroupStatusOutput
+	ToDynamicGroupQueryResponseOutput() DynamicGroupQueryResponseOutput
+	ToDynamicGroupQueryResponseOutputWithContext(context.Context) DynamicGroupQueryResponseOutput
+}
+
+// Defines a query on a resource.
+type DynamicGroupQueryResponseArgs struct {
+	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+	Query pulumi.StringInput `pulumi:"query"`
+	// Resource type for the Dynamic Group Query
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+}
+
+func (DynamicGroupQueryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicGroupQueryResponse)(nil)).Elem()
+}
+
+func (i DynamicGroupQueryResponseArgs) ToDynamicGroupQueryResponseOutput() DynamicGroupQueryResponseOutput {
+	return i.ToDynamicGroupQueryResponseOutputWithContext(context.Background())
+}
+
+func (i DynamicGroupQueryResponseArgs) ToDynamicGroupQueryResponseOutputWithContext(ctx context.Context) DynamicGroupQueryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupQueryResponseOutput)
+}
+
+// DynamicGroupQueryResponseArrayInput is an input type that accepts DynamicGroupQueryResponseArray and DynamicGroupQueryResponseArrayOutput values.
+// You can construct a concrete instance of `DynamicGroupQueryResponseArrayInput` via:
+//
+//          DynamicGroupQueryResponseArray{ DynamicGroupQueryResponseArgs{...} }
+type DynamicGroupQueryResponseArrayInput interface {
+	pulumi.Input
+
+	ToDynamicGroupQueryResponseArrayOutput() DynamicGroupQueryResponseArrayOutput
+	ToDynamicGroupQueryResponseArrayOutputWithContext(context.Context) DynamicGroupQueryResponseArrayOutput
+}
+
+type DynamicGroupQueryResponseArray []DynamicGroupQueryResponseInput
+
+func (DynamicGroupQueryResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DynamicGroupQueryResponse)(nil)).Elem()
+}
+
+func (i DynamicGroupQueryResponseArray) ToDynamicGroupQueryResponseArrayOutput() DynamicGroupQueryResponseArrayOutput {
+	return i.ToDynamicGroupQueryResponseArrayOutputWithContext(context.Background())
+}
+
+func (i DynamicGroupQueryResponseArray) ToDynamicGroupQueryResponseArrayOutputWithContext(ctx context.Context) DynamicGroupQueryResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupQueryResponseArrayOutput)
+}
+
+// Defines a query on a resource.
+type DynamicGroupQueryResponseOutput struct{ *pulumi.OutputState }
+
+func (DynamicGroupQueryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicGroupQueryResponse)(nil)).Elem()
+}
+
+func (o DynamicGroupQueryResponseOutput) ToDynamicGroupQueryResponseOutput() DynamicGroupQueryResponseOutput {
+	return o
+}
+
+func (o DynamicGroupQueryResponseOutput) ToDynamicGroupQueryResponseOutputWithContext(ctx context.Context) DynamicGroupQueryResponseOutput {
+	return o
+}
+
+// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+func (o DynamicGroupQueryResponseOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicGroupQueryResponse) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// Resource type for the Dynamic Group Query
+func (o DynamicGroupQueryResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicGroupQueryResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+type DynamicGroupQueryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DynamicGroupQueryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DynamicGroupQueryResponse)(nil)).Elem()
+}
+
+func (o DynamicGroupQueryResponseArrayOutput) ToDynamicGroupQueryResponseArrayOutput() DynamicGroupQueryResponseArrayOutput {
+	return o
+}
+
+func (o DynamicGroupQueryResponseArrayOutput) ToDynamicGroupQueryResponseArrayOutputWithContext(ctx context.Context) DynamicGroupQueryResponseArrayOutput {
+	return o
+}
+
+func (o DynamicGroupQueryResponseArrayOutput) Index(i pulumi.IntInput) DynamicGroupQueryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DynamicGroupQueryResponse {
+		return vs[0].([]DynamicGroupQueryResponse)[vs[1].(int)]
+	}).(DynamicGroupQueryResponseOutput)
 }
 
 // The current status of a dynamic group along with timestamp.
-type DynamicGroupStatusArgs struct {
+type DynamicGroupStatusResponse struct {
 	// Status of the dynamic group.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Status string `pulumi:"status"`
 	// The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
-	StatusTime pulumi.StringPtrInput `pulumi:"statusTime"`
+	StatusTime string `pulumi:"statusTime"`
 }
 
-func (DynamicGroupStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DynamicGroupStatus)(nil)).Elem()
-}
-
-func (i DynamicGroupStatusArgs) ToDynamicGroupStatusOutput() DynamicGroupStatusOutput {
-	return i.ToDynamicGroupStatusOutputWithContext(context.Background())
-}
-
-func (i DynamicGroupStatusArgs) ToDynamicGroupStatusOutputWithContext(ctx context.Context) DynamicGroupStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupStatusOutput)
-}
-
-func (i DynamicGroupStatusArgs) ToDynamicGroupStatusPtrOutput() DynamicGroupStatusPtrOutput {
-	return i.ToDynamicGroupStatusPtrOutputWithContext(context.Background())
-}
-
-func (i DynamicGroupStatusArgs) ToDynamicGroupStatusPtrOutputWithContext(ctx context.Context) DynamicGroupStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupStatusOutput).ToDynamicGroupStatusPtrOutputWithContext(ctx)
-}
-
-// DynamicGroupStatusPtrInput is an input type that accepts DynamicGroupStatusArgs, DynamicGroupStatusPtr and DynamicGroupStatusPtrOutput values.
-// You can construct a concrete instance of `DynamicGroupStatusPtrInput` via:
+// DynamicGroupStatusResponseInput is an input type that accepts DynamicGroupStatusResponseArgs and DynamicGroupStatusResponseOutput values.
+// You can construct a concrete instance of `DynamicGroupStatusResponseInput` via:
 //
-//          DynamicGroupStatusArgs{...}
+//          DynamicGroupStatusResponseArgs{...}
+type DynamicGroupStatusResponseInput interface {
+	pulumi.Input
+
+	ToDynamicGroupStatusResponseOutput() DynamicGroupStatusResponseOutput
+	ToDynamicGroupStatusResponseOutputWithContext(context.Context) DynamicGroupStatusResponseOutput
+}
+
+// The current status of a dynamic group along with timestamp.
+type DynamicGroupStatusResponseArgs struct {
+	// Status of the dynamic group.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
+	StatusTime pulumi.StringInput `pulumi:"statusTime"`
+}
+
+func (DynamicGroupStatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicGroupStatusResponse)(nil)).Elem()
+}
+
+func (i DynamicGroupStatusResponseArgs) ToDynamicGroupStatusResponseOutput() DynamicGroupStatusResponseOutput {
+	return i.ToDynamicGroupStatusResponseOutputWithContext(context.Background())
+}
+
+func (i DynamicGroupStatusResponseArgs) ToDynamicGroupStatusResponseOutputWithContext(ctx context.Context) DynamicGroupStatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupStatusResponseOutput)
+}
+
+func (i DynamicGroupStatusResponseArgs) ToDynamicGroupStatusResponsePtrOutput() DynamicGroupStatusResponsePtrOutput {
+	return i.ToDynamicGroupStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DynamicGroupStatusResponseArgs) ToDynamicGroupStatusResponsePtrOutputWithContext(ctx context.Context) DynamicGroupStatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupStatusResponseOutput).ToDynamicGroupStatusResponsePtrOutputWithContext(ctx)
+}
+
+// DynamicGroupStatusResponsePtrInput is an input type that accepts DynamicGroupStatusResponseArgs, DynamicGroupStatusResponsePtr and DynamicGroupStatusResponsePtrOutput values.
+// You can construct a concrete instance of `DynamicGroupStatusResponsePtrInput` via:
+//
+//          DynamicGroupStatusResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type DynamicGroupStatusPtrInput interface {
+type DynamicGroupStatusResponsePtrInput interface {
 	pulumi.Input
 
-	ToDynamicGroupStatusPtrOutput() DynamicGroupStatusPtrOutput
-	ToDynamicGroupStatusPtrOutputWithContext(context.Context) DynamicGroupStatusPtrOutput
+	ToDynamicGroupStatusResponsePtrOutput() DynamicGroupStatusResponsePtrOutput
+	ToDynamicGroupStatusResponsePtrOutputWithContext(context.Context) DynamicGroupStatusResponsePtrOutput
 }
 
-type dynamicGroupStatusPtrType DynamicGroupStatusArgs
+type dynamicGroupStatusResponsePtrType DynamicGroupStatusResponseArgs
 
-func DynamicGroupStatusPtr(v *DynamicGroupStatusArgs) DynamicGroupStatusPtrInput {
-	return (*dynamicGroupStatusPtrType)(v)
+func DynamicGroupStatusResponsePtr(v *DynamicGroupStatusResponseArgs) DynamicGroupStatusResponsePtrInput {
+	return (*dynamicGroupStatusResponsePtrType)(v)
 }
 
-func (*dynamicGroupStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DynamicGroupStatus)(nil)).Elem()
+func (*dynamicGroupStatusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamicGroupStatusResponse)(nil)).Elem()
 }
 
-func (i *dynamicGroupStatusPtrType) ToDynamicGroupStatusPtrOutput() DynamicGroupStatusPtrOutput {
-	return i.ToDynamicGroupStatusPtrOutputWithContext(context.Background())
+func (i *dynamicGroupStatusResponsePtrType) ToDynamicGroupStatusResponsePtrOutput() DynamicGroupStatusResponsePtrOutput {
+	return i.ToDynamicGroupStatusResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *dynamicGroupStatusPtrType) ToDynamicGroupStatusPtrOutputWithContext(ctx context.Context) DynamicGroupStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupStatusPtrOutput)
+func (i *dynamicGroupStatusResponsePtrType) ToDynamicGroupStatusResponsePtrOutputWithContext(ctx context.Context) DynamicGroupStatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicGroupStatusResponsePtrOutput)
 }
 
 // The current status of a dynamic group along with timestamp.
-type DynamicGroupStatusOutput struct{ *pulumi.OutputState }
+type DynamicGroupStatusResponseOutput struct{ *pulumi.OutputState }
 
-func (DynamicGroupStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DynamicGroupStatus)(nil)).Elem()
+func (DynamicGroupStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicGroupStatusResponse)(nil)).Elem()
 }
 
-func (o DynamicGroupStatusOutput) ToDynamicGroupStatusOutput() DynamicGroupStatusOutput {
+func (o DynamicGroupStatusResponseOutput) ToDynamicGroupStatusResponseOutput() DynamicGroupStatusResponseOutput {
 	return o
 }
 
-func (o DynamicGroupStatusOutput) ToDynamicGroupStatusOutputWithContext(ctx context.Context) DynamicGroupStatusOutput {
+func (o DynamicGroupStatusResponseOutput) ToDynamicGroupStatusResponseOutputWithContext(ctx context.Context) DynamicGroupStatusResponseOutput {
 	return o
 }
 
-func (o DynamicGroupStatusOutput) ToDynamicGroupStatusPtrOutput() DynamicGroupStatusPtrOutput {
-	return o.ToDynamicGroupStatusPtrOutputWithContext(context.Background())
+func (o DynamicGroupStatusResponseOutput) ToDynamicGroupStatusResponsePtrOutput() DynamicGroupStatusResponsePtrOutput {
+	return o.ToDynamicGroupStatusResponsePtrOutputWithContext(context.Background())
 }
 
-func (o DynamicGroupStatusOutput) ToDynamicGroupStatusPtrOutputWithContext(ctx context.Context) DynamicGroupStatusPtrOutput {
-	return o.ApplyT(func(v DynamicGroupStatus) *DynamicGroupStatus {
+func (o DynamicGroupStatusResponseOutput) ToDynamicGroupStatusResponsePtrOutputWithContext(ctx context.Context) DynamicGroupStatusResponsePtrOutput {
+	return o.ApplyT(func(v DynamicGroupStatusResponse) *DynamicGroupStatusResponse {
 		return &v
-	}).(DynamicGroupStatusPtrOutput)
+	}).(DynamicGroupStatusResponsePtrOutput)
 }
 
 // Status of the dynamic group.
-func (o DynamicGroupStatusOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DynamicGroupStatus) *string { return v.Status }).(pulumi.StringPtrOutput)
+func (o DynamicGroupStatusResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicGroupStatusResponse) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
-func (o DynamicGroupStatusOutput) StatusTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DynamicGroupStatus) *string { return v.StatusTime }).(pulumi.StringPtrOutput)
+func (o DynamicGroupStatusResponseOutput) StatusTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicGroupStatusResponse) string { return v.StatusTime }).(pulumi.StringOutput)
 }
 
-type DynamicGroupStatusPtrOutput struct{ *pulumi.OutputState }
+type DynamicGroupStatusResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (DynamicGroupStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DynamicGroupStatus)(nil)).Elem()
+func (DynamicGroupStatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamicGroupStatusResponse)(nil)).Elem()
 }
 
-func (o DynamicGroupStatusPtrOutput) ToDynamicGroupStatusPtrOutput() DynamicGroupStatusPtrOutput {
+func (o DynamicGroupStatusResponsePtrOutput) ToDynamicGroupStatusResponsePtrOutput() DynamicGroupStatusResponsePtrOutput {
 	return o
 }
 
-func (o DynamicGroupStatusPtrOutput) ToDynamicGroupStatusPtrOutputWithContext(ctx context.Context) DynamicGroupStatusPtrOutput {
+func (o DynamicGroupStatusResponsePtrOutput) ToDynamicGroupStatusResponsePtrOutputWithContext(ctx context.Context) DynamicGroupStatusResponsePtrOutput {
 	return o
 }
 
-func (o DynamicGroupStatusPtrOutput) Elem() DynamicGroupStatusOutput {
-	return o.ApplyT(func(v *DynamicGroupStatus) DynamicGroupStatus { return *v }).(DynamicGroupStatusOutput)
+func (o DynamicGroupStatusResponsePtrOutput) Elem() DynamicGroupStatusResponseOutput {
+	return o.ApplyT(func(v *DynamicGroupStatusResponse) DynamicGroupStatusResponse { return *v }).(DynamicGroupStatusResponseOutput)
 }
 
 // Status of the dynamic group.
-func (o DynamicGroupStatusPtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DynamicGroupStatus) *string {
+func (o DynamicGroupStatusResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DynamicGroupStatusResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Status
+		return &v.Status
 	}).(pulumi.StringPtrOutput)
 }
 
 // The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
-func (o DynamicGroupStatusPtrOutput) StatusTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DynamicGroupStatus) *string {
+func (o DynamicGroupStatusResponsePtrOutput) StatusTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DynamicGroupStatusResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.StatusTime
+		return &v.StatusTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -578,6 +821,140 @@ func (o EntityKeyPtrOutput) Namespace() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
+type EntityKeyResponse struct {
+	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}.
+	Namespace string `pulumi:"namespace"`
+}
+
+// EntityKeyResponseInput is an input type that accepts EntityKeyResponseArgs and EntityKeyResponseOutput values.
+// You can construct a concrete instance of `EntityKeyResponseInput` via:
+//
+//          EntityKeyResponseArgs{...}
+type EntityKeyResponseInput interface {
+	pulumi.Input
+
+	ToEntityKeyResponseOutput() EntityKeyResponseOutput
+	ToEntityKeyResponseOutputWithContext(context.Context) EntityKeyResponseOutput
+}
+
+// A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
+type EntityKeyResponseArgs struct {
+	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+}
+
+func (EntityKeyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityKeyResponse)(nil)).Elem()
+}
+
+func (i EntityKeyResponseArgs) ToEntityKeyResponseOutput() EntityKeyResponseOutput {
+	return i.ToEntityKeyResponseOutputWithContext(context.Background())
+}
+
+func (i EntityKeyResponseArgs) ToEntityKeyResponseOutputWithContext(ctx context.Context) EntityKeyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityKeyResponseOutput)
+}
+
+func (i EntityKeyResponseArgs) ToEntityKeyResponsePtrOutput() EntityKeyResponsePtrOutput {
+	return i.ToEntityKeyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EntityKeyResponseArgs) ToEntityKeyResponsePtrOutputWithContext(ctx context.Context) EntityKeyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityKeyResponseOutput).ToEntityKeyResponsePtrOutputWithContext(ctx)
+}
+
+// EntityKeyResponsePtrInput is an input type that accepts EntityKeyResponseArgs, EntityKeyResponsePtr and EntityKeyResponsePtrOutput values.
+// You can construct a concrete instance of `EntityKeyResponsePtrInput` via:
+//
+//          EntityKeyResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type EntityKeyResponsePtrInput interface {
+	pulumi.Input
+
+	ToEntityKeyResponsePtrOutput() EntityKeyResponsePtrOutput
+	ToEntityKeyResponsePtrOutputWithContext(context.Context) EntityKeyResponsePtrOutput
+}
+
+type entityKeyResponsePtrType EntityKeyResponseArgs
+
+func EntityKeyResponsePtr(v *EntityKeyResponseArgs) EntityKeyResponsePtrInput {
+	return (*entityKeyResponsePtrType)(v)
+}
+
+func (*entityKeyResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityKeyResponse)(nil)).Elem()
+}
+
+func (i *entityKeyResponsePtrType) ToEntityKeyResponsePtrOutput() EntityKeyResponsePtrOutput {
+	return i.ToEntityKeyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *entityKeyResponsePtrType) ToEntityKeyResponsePtrOutputWithContext(ctx context.Context) EntityKeyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityKeyResponsePtrOutput)
+}
+
+// A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
+type EntityKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (EntityKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityKeyResponse)(nil)).Elem()
+}
+
+func (o EntityKeyResponseOutput) ToEntityKeyResponseOutput() EntityKeyResponseOutput {
+	return o
+}
+
+func (o EntityKeyResponseOutput) ToEntityKeyResponseOutputWithContext(ctx context.Context) EntityKeyResponseOutput {
+	return o
+}
+
+func (o EntityKeyResponseOutput) ToEntityKeyResponsePtrOutput() EntityKeyResponsePtrOutput {
+	return o.ToEntityKeyResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EntityKeyResponseOutput) ToEntityKeyResponsePtrOutputWithContext(ctx context.Context) EntityKeyResponsePtrOutput {
+	return o.ApplyT(func(v EntityKeyResponse) *EntityKeyResponse {
+		return &v
+	}).(EntityKeyResponsePtrOutput)
+}
+
+// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}.
+func (o EntityKeyResponseOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityKeyResponse) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+type EntityKeyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EntityKeyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityKeyResponse)(nil)).Elem()
+}
+
+func (o EntityKeyResponsePtrOutput) ToEntityKeyResponsePtrOutput() EntityKeyResponsePtrOutput {
+	return o
+}
+
+func (o EntityKeyResponsePtrOutput) ToEntityKeyResponsePtrOutputWithContext(ctx context.Context) EntityKeyResponsePtrOutput {
+	return o
+}
+
+func (o EntityKeyResponsePtrOutput) Elem() EntityKeyResponseOutput {
+	return o.ApplyT(func(v *EntityKeyResponse) EntityKeyResponse { return *v }).(EntityKeyResponseOutput)
+}
+
+// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}.
+func (o EntityKeyResponsePtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
 // The `MembershipRole` expiry details.
 type ExpiryDetail struct {
 	// The time at which the `MembershipRole` will expire.
@@ -712,196 +1089,251 @@ func (o ExpiryDetailPtrOutput) ExpireTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource representing the Android specific attributes of a Device.
-type GoogleAppsCloudidentityDevicesV1AndroidAttributes struct {
-	// Whether applications from unknown sources can be installed on device.
-	EnabledUnknownSources *bool `pulumi:"enabledUnknownSources"`
-	// Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
-	OwnerProfileAccount *bool `pulumi:"ownerProfileAccount"`
-	// Ownership privileges on device.
-	OwnershipPrivilege *string `pulumi:"ownershipPrivilege"`
-	// Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
-	SupportsWorkProfile *bool `pulumi:"supportsWorkProfile"`
+// The `MembershipRole` expiry details.
+type ExpiryDetailResponse struct {
+	// The time at which the `MembershipRole` will expire.
+	ExpireTime string `pulumi:"expireTime"`
 }
 
-// GoogleAppsCloudidentityDevicesV1AndroidAttributesInput is an input type that accepts GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs and GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput values.
-// You can construct a concrete instance of `GoogleAppsCloudidentityDevicesV1AndroidAttributesInput` via:
+// ExpiryDetailResponseInput is an input type that accepts ExpiryDetailResponseArgs and ExpiryDetailResponseOutput values.
+// You can construct a concrete instance of `ExpiryDetailResponseInput` via:
 //
-//          GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs{...}
-type GoogleAppsCloudidentityDevicesV1AndroidAttributesInput interface {
+//          ExpiryDetailResponseArgs{...}
+type ExpiryDetailResponseInput interface {
 	pulumi.Input
 
-	ToGoogleAppsCloudidentityDevicesV1AndroidAttributesOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput
-	ToGoogleAppsCloudidentityDevicesV1AndroidAttributesOutputWithContext(context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput
+	ToExpiryDetailResponseOutput() ExpiryDetailResponseOutput
+	ToExpiryDetailResponseOutputWithContext(context.Context) ExpiryDetailResponseOutput
+}
+
+// The `MembershipRole` expiry details.
+type ExpiryDetailResponseArgs struct {
+	// The time at which the `MembershipRole` will expire.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+}
+
+func (ExpiryDetailResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpiryDetailResponse)(nil)).Elem()
+}
+
+func (i ExpiryDetailResponseArgs) ToExpiryDetailResponseOutput() ExpiryDetailResponseOutput {
+	return i.ToExpiryDetailResponseOutputWithContext(context.Background())
+}
+
+func (i ExpiryDetailResponseArgs) ToExpiryDetailResponseOutputWithContext(ctx context.Context) ExpiryDetailResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpiryDetailResponseOutput)
+}
+
+// The `MembershipRole` expiry details.
+type ExpiryDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (ExpiryDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpiryDetailResponse)(nil)).Elem()
+}
+
+func (o ExpiryDetailResponseOutput) ToExpiryDetailResponseOutput() ExpiryDetailResponseOutput {
+	return o
+}
+
+func (o ExpiryDetailResponseOutput) ToExpiryDetailResponseOutputWithContext(ctx context.Context) ExpiryDetailResponseOutput {
+	return o
+}
+
+// The time at which the `MembershipRole` will expire.
+func (o ExpiryDetailResponseOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ExpiryDetailResponse) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 // Resource representing the Android specific attributes of a Device.
-type GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs struct {
+type GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse struct {
 	// Whether applications from unknown sources can be installed on device.
-	EnabledUnknownSources pulumi.BoolPtrInput `pulumi:"enabledUnknownSources"`
+	EnabledUnknownSources bool `pulumi:"enabledUnknownSources"`
 	// Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
-	OwnerProfileAccount pulumi.BoolPtrInput `pulumi:"ownerProfileAccount"`
+	OwnerProfileAccount bool `pulumi:"ownerProfileAccount"`
 	// Ownership privileges on device.
-	OwnershipPrivilege pulumi.StringPtrInput `pulumi:"ownershipPrivilege"`
+	OwnershipPrivilege string `pulumi:"ownershipPrivilege"`
 	// Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
-	SupportsWorkProfile pulumi.BoolPtrInput `pulumi:"supportsWorkProfile"`
+	SupportsWorkProfile bool `pulumi:"supportsWorkProfile"`
 }
 
-func (GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleAppsCloudidentityDevicesV1AndroidAttributes)(nil)).Elem()
-}
-
-func (i GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput {
-	return i.ToGoogleAppsCloudidentityDevicesV1AndroidAttributesOutputWithContext(context.Background())
-}
-
-func (i GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput)
-}
-
-func (i GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput {
-	return i.ToGoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput).ToGoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutputWithContext(ctx)
-}
-
-// GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrInput is an input type that accepts GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs, GoogleAppsCloudidentityDevicesV1AndroidAttributesPtr and GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput values.
-// You can construct a concrete instance of `GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrInput` via:
+// GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseInput is an input type that accepts GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseArgs and GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput values.
+// You can construct a concrete instance of `GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseInput` via:
 //
-//          GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs{...}
+//          GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseArgs{...}
+type GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseInput interface {
+	pulumi.Input
+
+	ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput
+	ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutputWithContext(context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput
+}
+
+// Resource representing the Android specific attributes of a Device.
+type GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseArgs struct {
+	// Whether applications from unknown sources can be installed on device.
+	EnabledUnknownSources pulumi.BoolInput `pulumi:"enabledUnknownSources"`
+	// Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
+	OwnerProfileAccount pulumi.BoolInput `pulumi:"ownerProfileAccount"`
+	// Ownership privileges on device.
+	OwnershipPrivilege pulumi.StringInput `pulumi:"ownershipPrivilege"`
+	// Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
+	SupportsWorkProfile pulumi.BoolInput `pulumi:"supportsWorkProfile"`
+}
+
+func (GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse)(nil)).Elem()
+}
+
+func (i GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseArgs) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput {
+	return i.ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseArgs) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput)
+}
+
+func (i GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseArgs) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput {
+	return i.ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseArgs) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput).ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrInput is an input type that accepts GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseArgs, GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtr and GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrInput` via:
+//
+//          GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrInput interface {
+type GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrInput interface {
 	pulumi.Input
 
-	ToGoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput
-	ToGoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutputWithContext(context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput
+	ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput
+	ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutputWithContext(context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput
 }
 
-type googleAppsCloudidentityDevicesV1AndroidAttributesPtrType GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs
+type googleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrType GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseArgs
 
-func GoogleAppsCloudidentityDevicesV1AndroidAttributesPtr(v *GoogleAppsCloudidentityDevicesV1AndroidAttributesArgs) GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrInput {
-	return (*googleAppsCloudidentityDevicesV1AndroidAttributesPtrType)(v)
+func GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtr(v *GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseArgs) GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrInput {
+	return (*googleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrType)(v)
 }
 
-func (*googleAppsCloudidentityDevicesV1AndroidAttributesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleAppsCloudidentityDevicesV1AndroidAttributes)(nil)).Elem()
+func (*googleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse)(nil)).Elem()
 }
 
-func (i *googleAppsCloudidentityDevicesV1AndroidAttributesPtrType) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput {
-	return i.ToGoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutputWithContext(context.Background())
+func (i *googleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrType) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput {
+	return i.ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *googleAppsCloudidentityDevicesV1AndroidAttributesPtrType) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput)
+func (i *googleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrType) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput)
 }
 
 // Resource representing the Android specific attributes of a Device.
-type GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput struct{ *pulumi.OutputState }
+type GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput struct{ *pulumi.OutputState }
 
-func (GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleAppsCloudidentityDevicesV1AndroidAttributes)(nil)).Elem()
+func (GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse)(nil)).Elem()
 }
 
-func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput {
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput {
 	return o
 }
 
-func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput {
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput {
 	return o
 }
 
-func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput {
-	return o.ToGoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutputWithContext(context.Background())
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput {
+	return o.ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutputWithContext(context.Background())
 }
 
-func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput {
-	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributes) *GoogleAppsCloudidentityDevicesV1AndroidAttributes {
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) *GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse {
 		return &v
-	}).(GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput)
+	}).(GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput)
 }
 
 // Whether applications from unknown sources can be installed on device.
-func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput) EnabledUnknownSources() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributes) *bool { return v.EnabledUnknownSources }).(pulumi.BoolPtrOutput)
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) EnabledUnknownSources() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) bool { return v.EnabledUnknownSources }).(pulumi.BoolOutput)
 }
 
 // Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
-func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput) OwnerProfileAccount() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributes) *bool { return v.OwnerProfileAccount }).(pulumi.BoolPtrOutput)
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) OwnerProfileAccount() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) bool { return v.OwnerProfileAccount }).(pulumi.BoolOutput)
 }
 
 // Ownership privileges on device.
-func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput) OwnershipPrivilege() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributes) *string { return v.OwnershipPrivilege }).(pulumi.StringPtrOutput)
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) OwnershipPrivilege() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) string { return v.OwnershipPrivilege }).(pulumi.StringOutput)
 }
 
 // Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
-func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput) SupportsWorkProfile() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributes) *bool { return v.SupportsWorkProfile }).(pulumi.BoolPtrOutput)
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput) SupportsWorkProfile() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) bool { return v.SupportsWorkProfile }).(pulumi.BoolOutput)
 }
 
-type GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput struct{ *pulumi.OutputState }
+type GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleAppsCloudidentityDevicesV1AndroidAttributes)(nil)).Elem()
+func (GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse)(nil)).Elem()
 }
 
-func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput {
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput() GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput {
 	return o
 }
 
-func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput {
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput) ToGoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutputWithContext(ctx context.Context) GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput {
 	return o
 }
 
-func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput) Elem() GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput {
-	return o.ApplyT(func(v *GoogleAppsCloudidentityDevicesV1AndroidAttributes) GoogleAppsCloudidentityDevicesV1AndroidAttributes {
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput) Elem() GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput {
+	return o.ApplyT(func(v *GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse {
 		return *v
-	}).(GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput)
+	}).(GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput)
 }
 
 // Whether applications from unknown sources can be installed on device.
-func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput) EnabledUnknownSources() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleAppsCloudidentityDevicesV1AndroidAttributes) *bool {
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput) EnabledUnknownSources() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.EnabledUnknownSources
+		return &v.EnabledUnknownSources
 	}).(pulumi.BoolPtrOutput)
 }
 
 // Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+ devices can have secondary or restricted user profiles.
-func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput) OwnerProfileAccount() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleAppsCloudidentityDevicesV1AndroidAttributes) *bool {
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput) OwnerProfileAccount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.OwnerProfileAccount
+		return &v.OwnerProfileAccount
 	}).(pulumi.BoolPtrOutput)
 }
 
 // Ownership privileges on device.
-func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput) OwnershipPrivilege() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleAppsCloudidentityDevicesV1AndroidAttributes) *string {
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput) OwnershipPrivilege() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.OwnershipPrivilege
+		return &v.OwnershipPrivilege
 	}).(pulumi.StringPtrOutput)
 }
 
 // Whether device supports Android work profiles. If false, this service will not block access to corp data even if an administrator turns on the "Enforce Work Profile" policy.
-func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput) SupportsWorkProfile() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleAppsCloudidentityDevicesV1AndroidAttributes) *bool {
+func (o GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput) SupportsWorkProfile() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.SupportsWorkProfile
+		return &v.SupportsWorkProfile
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -1014,19 +1446,137 @@ func (o MembershipRoleArrayOutput) Index(i pulumi.IntInput) MembershipRoleOutput
 	}).(MembershipRoleOutput)
 }
 
+// A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
+type MembershipRoleResponse struct {
+	// The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
+	ExpiryDetail ExpiryDetailResponse `pulumi:"expiryDetail"`
+	// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
+	Name string `pulumi:"name"`
+}
+
+// MembershipRoleResponseInput is an input type that accepts MembershipRoleResponseArgs and MembershipRoleResponseOutput values.
+// You can construct a concrete instance of `MembershipRoleResponseInput` via:
+//
+//          MembershipRoleResponseArgs{...}
+type MembershipRoleResponseInput interface {
+	pulumi.Input
+
+	ToMembershipRoleResponseOutput() MembershipRoleResponseOutput
+	ToMembershipRoleResponseOutputWithContext(context.Context) MembershipRoleResponseOutput
+}
+
+// A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
+type MembershipRoleResponseArgs struct {
+	// The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
+	ExpiryDetail ExpiryDetailResponseInput `pulumi:"expiryDetail"`
+	// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (MembershipRoleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipRoleResponse)(nil)).Elem()
+}
+
+func (i MembershipRoleResponseArgs) ToMembershipRoleResponseOutput() MembershipRoleResponseOutput {
+	return i.ToMembershipRoleResponseOutputWithContext(context.Background())
+}
+
+func (i MembershipRoleResponseArgs) ToMembershipRoleResponseOutputWithContext(ctx context.Context) MembershipRoleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipRoleResponseOutput)
+}
+
+// MembershipRoleResponseArrayInput is an input type that accepts MembershipRoleResponseArray and MembershipRoleResponseArrayOutput values.
+// You can construct a concrete instance of `MembershipRoleResponseArrayInput` via:
+//
+//          MembershipRoleResponseArray{ MembershipRoleResponseArgs{...} }
+type MembershipRoleResponseArrayInput interface {
+	pulumi.Input
+
+	ToMembershipRoleResponseArrayOutput() MembershipRoleResponseArrayOutput
+	ToMembershipRoleResponseArrayOutputWithContext(context.Context) MembershipRoleResponseArrayOutput
+}
+
+type MembershipRoleResponseArray []MembershipRoleResponseInput
+
+func (MembershipRoleResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MembershipRoleResponse)(nil)).Elem()
+}
+
+func (i MembershipRoleResponseArray) ToMembershipRoleResponseArrayOutput() MembershipRoleResponseArrayOutput {
+	return i.ToMembershipRoleResponseArrayOutputWithContext(context.Background())
+}
+
+func (i MembershipRoleResponseArray) ToMembershipRoleResponseArrayOutputWithContext(ctx context.Context) MembershipRoleResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipRoleResponseArrayOutput)
+}
+
+// A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
+type MembershipRoleResponseOutput struct{ *pulumi.OutputState }
+
+func (MembershipRoleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipRoleResponse)(nil)).Elem()
+}
+
+func (o MembershipRoleResponseOutput) ToMembershipRoleResponseOutput() MembershipRoleResponseOutput {
+	return o
+}
+
+func (o MembershipRoleResponseOutput) ToMembershipRoleResponseOutputWithContext(ctx context.Context) MembershipRoleResponseOutput {
+	return o
+}
+
+// The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
+func (o MembershipRoleResponseOutput) ExpiryDetail() ExpiryDetailResponseOutput {
+	return o.ApplyT(func(v MembershipRoleResponse) ExpiryDetailResponse { return v.ExpiryDetail }).(ExpiryDetailResponseOutput)
+}
+
+// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
+func (o MembershipRoleResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MembershipRoleResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type MembershipRoleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MembershipRoleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MembershipRoleResponse)(nil)).Elem()
+}
+
+func (o MembershipRoleResponseArrayOutput) ToMembershipRoleResponseArrayOutput() MembershipRoleResponseArrayOutput {
+	return o
+}
+
+func (o MembershipRoleResponseArrayOutput) ToMembershipRoleResponseArrayOutputWithContext(ctx context.Context) MembershipRoleResponseArrayOutput {
+	return o
+}
+
+func (o MembershipRoleResponseArrayOutput) Index(i pulumi.IntInput) MembershipRoleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MembershipRoleResponse {
+		return vs[0].([]MembershipRoleResponse)[vs[1].(int)]
+	}).(MembershipRoleResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DynamicGroupMetadataOutput{})
 	pulumi.RegisterOutputType(DynamicGroupMetadataPtrOutput{})
+	pulumi.RegisterOutputType(DynamicGroupMetadataResponseOutput{})
+	pulumi.RegisterOutputType(DynamicGroupMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(DynamicGroupQueryOutput{})
 	pulumi.RegisterOutputType(DynamicGroupQueryArrayOutput{})
-	pulumi.RegisterOutputType(DynamicGroupStatusOutput{})
-	pulumi.RegisterOutputType(DynamicGroupStatusPtrOutput{})
+	pulumi.RegisterOutputType(DynamicGroupQueryResponseOutput{})
+	pulumi.RegisterOutputType(DynamicGroupQueryResponseArrayOutput{})
+	pulumi.RegisterOutputType(DynamicGroupStatusResponseOutput{})
+	pulumi.RegisterOutputType(DynamicGroupStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(EntityKeyOutput{})
 	pulumi.RegisterOutputType(EntityKeyPtrOutput{})
+	pulumi.RegisterOutputType(EntityKeyResponseOutput{})
+	pulumi.RegisterOutputType(EntityKeyResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExpiryDetailOutput{})
 	pulumi.RegisterOutputType(ExpiryDetailPtrOutput{})
-	pulumi.RegisterOutputType(GoogleAppsCloudidentityDevicesV1AndroidAttributesOutput{})
-	pulumi.RegisterOutputType(GoogleAppsCloudidentityDevicesV1AndroidAttributesPtrOutput{})
+	pulumi.RegisterOutputType(ExpiryDetailResponseOutput{})
+	pulumi.RegisterOutputType(GoogleAppsCloudidentityDevicesV1AndroidAttributesResponseOutput{})
+	pulumi.RegisterOutputType(GoogleAppsCloudidentityDevicesV1AndroidAttributesResponsePtrOutput{})
 	pulumi.RegisterOutputType(MembershipRoleOutput{})
 	pulumi.RegisterOutputType(MembershipRoleArrayOutput{})
+	pulumi.RegisterOutputType(MembershipRoleResponseOutput{})
+	pulumi.RegisterOutputType(MembershipRoleResponseArrayOutput{})
 }

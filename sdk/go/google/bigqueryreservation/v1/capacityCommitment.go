@@ -14,6 +14,23 @@ import (
 // Creates a new capacity commitment resource.
 type CapacityCommitment struct {
 	pulumi.CustomResourceState
+
+	// The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+	CommitmentEndTime pulumi.StringOutput `pulumi:"commitmentEndTime"`
+	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+	CommitmentStartTime pulumi.StringOutput `pulumi:"commitmentStartTime"`
+	// For FAILED commitment plan, provides the reason of failure.
+	FailureStatus StatusResponseOutput `pulumi:"failureStatus"`
+	// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Capacity commitment commitment plan.
+	Plan pulumi.StringOutput `pulumi:"plan"`
+	// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+	RenewalPlan pulumi.StringOutput `pulumi:"renewalPlan"`
+	// Number of slots in this commitment.
+	SlotCount pulumi.StringOutput `pulumi:"slotCount"`
+	// State of the commitment.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewCapacityCommitment registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +71,41 @@ func GetCapacityCommitment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CapacityCommitment resources.
 type capacityCommitmentState struct {
+	// The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+	CommitmentEndTime *string `pulumi:"commitmentEndTime"`
+	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+	CommitmentStartTime *string `pulumi:"commitmentStartTime"`
+	// For FAILED commitment plan, provides the reason of failure.
+	FailureStatus *StatusResponse `pulumi:"failureStatus"`
+	// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
+	Name *string `pulumi:"name"`
+	// Capacity commitment commitment plan.
+	Plan *string `pulumi:"plan"`
+	// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+	RenewalPlan *string `pulumi:"renewalPlan"`
+	// Number of slots in this commitment.
+	SlotCount *string `pulumi:"slotCount"`
+	// State of the commitment.
+	State *string `pulumi:"state"`
 }
 
 type CapacityCommitmentState struct {
+	// The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+	CommitmentEndTime pulumi.StringPtrInput
+	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+	CommitmentStartTime pulumi.StringPtrInput
+	// For FAILED commitment plan, provides the reason of failure.
+	FailureStatus StatusResponsePtrInput
+	// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
+	Name pulumi.StringPtrInput
+	// Capacity commitment commitment plan.
+	Plan pulumi.StringPtrInput
+	// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+	RenewalPlan pulumi.StringPtrInput
+	// Number of slots in this commitment.
+	SlotCount pulumi.StringPtrInput
+	// State of the commitment.
+	State pulumi.StringPtrInput
 }
 
 func (CapacityCommitmentState) ElementType() reflect.Type {
@@ -65,15 +114,7 @@ func (CapacityCommitmentState) ElementType() reflect.Type {
 
 type capacityCommitmentArgs struct {
 	CapacityCommitmentsId string `pulumi:"capacityCommitmentsId"`
-	// Output only. The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
-	CommitmentEndTime *string `pulumi:"commitmentEndTime"`
-	// Output only. The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
-	CommitmentStartTime *string `pulumi:"commitmentStartTime"`
-	// Output only. For FAILED commitment plan, provides the reason of failure.
-	FailureStatus *Status `pulumi:"failureStatus"`
-	LocationsId   string  `pulumi:"locationsId"`
-	// Output only. The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
-	Name *string `pulumi:"name"`
+	LocationsId           string `pulumi:"locationsId"`
 	// Capacity commitment commitment plan.
 	Plan       *string `pulumi:"plan"`
 	ProjectsId string  `pulumi:"projectsId"`
@@ -81,22 +122,12 @@ type capacityCommitmentArgs struct {
 	RenewalPlan *string `pulumi:"renewalPlan"`
 	// Number of slots in this commitment.
 	SlotCount *string `pulumi:"slotCount"`
-	// Output only. State of the commitment.
-	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a CapacityCommitment resource.
 type CapacityCommitmentArgs struct {
 	CapacityCommitmentsId pulumi.StringInput
-	// Output only. The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
-	CommitmentEndTime pulumi.StringPtrInput
-	// Output only. The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
-	CommitmentStartTime pulumi.StringPtrInput
-	// Output only. For FAILED commitment plan, provides the reason of failure.
-	FailureStatus StatusPtrInput
-	LocationsId   pulumi.StringInput
-	// Output only. The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123`
-	Name pulumi.StringPtrInput
+	LocationsId           pulumi.StringInput
 	// Capacity commitment commitment plan.
 	Plan       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
@@ -104,8 +135,6 @@ type CapacityCommitmentArgs struct {
 	RenewalPlan pulumi.StringPtrInput
 	// Number of slots in this commitment.
 	SlotCount pulumi.StringPtrInput
-	// Output only. State of the commitment.
-	State pulumi.StringPtrInput
 }
 
 func (CapacityCommitmentArgs) ElementType() reflect.Type {

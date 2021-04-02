@@ -14,6 +14,21 @@ import (
 // Creates a Project resource. Initially, the Project resource is owned by its creator exclusively. The creator can later grant permission to others to read or update the Project. Several APIs are activated automatically for the Project, including Google Cloud Storage. The parent is identified by a specified ResourceId, which must include both an ID and a type, such as project, folder, or organization. This method does not associate the new project with a billing account. You can set or update the billing account associated with a project using the [`projects.updateBillingInfo`] (/billing/reference/rest/v1/projects/updateBillingInfo) method.
 type Project struct {
 	pulumi.CustomResourceState
+
+	// Creation time. Read-only.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z{0,62}. Label values must be between 0 and 63 characters long and must conform to the regular expression [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"environment" : "dev"` Read-write.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The Project lifecycle state. Read-only.
+	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
+	// The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
+	Parent ResourceIdResponseOutput `pulumi:"parent"`
+	// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The number uniquely identifying the project. Example: `415104041262` Read-only.
+	ProjectNumber pulumi.StringOutput `pulumi:"projectNumber"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -48,9 +63,37 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
+	// Creation time. Read-only.
+	CreateTime *string `pulumi:"createTime"`
+	// The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z{0,62}. Label values must be between 0 and 63 characters long and must conform to the regular expression [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"environment" : "dev"` Read-write.
+	Labels map[string]string `pulumi:"labels"`
+	// The Project lifecycle state. Read-only.
+	LifecycleState *string `pulumi:"lifecycleState"`
+	// The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write.
+	Name *string `pulumi:"name"`
+	// An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
+	Parent *ResourceIdResponse `pulumi:"parent"`
+	// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
+	ProjectId *string `pulumi:"projectId"`
+	// The number uniquely identifying the project. Example: `415104041262` Read-only.
+	ProjectNumber *string `pulumi:"projectNumber"`
 }
 
 type ProjectState struct {
+	// Creation time. Read-only.
+	CreateTime pulumi.StringPtrInput
+	// The labels associated with this Project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z{0,62}. Label values must be between 0 and 63 characters long and must conform to the regular expression [a-z0-9_-]{0,63}. A label value can be empty. No more than 256 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"environment" : "dev"` Read-write.
+	Labels pulumi.StringMapInput
+	// The Project lifecycle state. Read-only.
+	LifecycleState pulumi.StringPtrInput
+	// The optional user-assigned display name of the Project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` Read-write.
+	Name pulumi.StringPtrInput
+	// An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
+	Parent ResourceIdResponsePtrInput
+	// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
+	ProjectId pulumi.StringPtrInput
+	// The number uniquely identifying the project. Example: `415104041262` Read-only.
+	ProjectNumber pulumi.StringPtrInput
 }
 
 func (ProjectState) ElementType() reflect.Type {

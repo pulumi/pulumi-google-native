@@ -220,6 +220,97 @@ func (o AptRepositoryPtrOutput) Uri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`.
+type AptRepositoryResponse struct {
+	// Type of archive files in this repository. The default behavior is DEB.
+	ArchiveType string `pulumi:"archiveType"`
+	// Required. List of components for this repository. Must contain at least one item.
+	Components []string `pulumi:"components"`
+	// Required. Distribution of this repository.
+	Distribution string `pulumi:"distribution"`
+	// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
+	GpgKey string `pulumi:"gpgKey"`
+	// Required. URI for this repository.
+	Uri string `pulumi:"uri"`
+}
+
+// AptRepositoryResponseInput is an input type that accepts AptRepositoryResponseArgs and AptRepositoryResponseOutput values.
+// You can construct a concrete instance of `AptRepositoryResponseInput` via:
+//
+//          AptRepositoryResponseArgs{...}
+type AptRepositoryResponseInput interface {
+	pulumi.Input
+
+	ToAptRepositoryResponseOutput() AptRepositoryResponseOutput
+	ToAptRepositoryResponseOutputWithContext(context.Context) AptRepositoryResponseOutput
+}
+
+// Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`.
+type AptRepositoryResponseArgs struct {
+	// Type of archive files in this repository. The default behavior is DEB.
+	ArchiveType pulumi.StringInput `pulumi:"archiveType"`
+	// Required. List of components for this repository. Must contain at least one item.
+	Components pulumi.StringArrayInput `pulumi:"components"`
+	// Required. Distribution of this repository.
+	Distribution pulumi.StringInput `pulumi:"distribution"`
+	// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
+	GpgKey pulumi.StringInput `pulumi:"gpgKey"`
+	// Required. URI for this repository.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (AptRepositoryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AptRepositoryResponse)(nil)).Elem()
+}
+
+func (i AptRepositoryResponseArgs) ToAptRepositoryResponseOutput() AptRepositoryResponseOutput {
+	return i.ToAptRepositoryResponseOutputWithContext(context.Background())
+}
+
+func (i AptRepositoryResponseArgs) ToAptRepositoryResponseOutputWithContext(ctx context.Context) AptRepositoryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AptRepositoryResponseOutput)
+}
+
+// Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`.
+type AptRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (AptRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AptRepositoryResponse)(nil)).Elem()
+}
+
+func (o AptRepositoryResponseOutput) ToAptRepositoryResponseOutput() AptRepositoryResponseOutput {
+	return o
+}
+
+func (o AptRepositoryResponseOutput) ToAptRepositoryResponseOutputWithContext(ctx context.Context) AptRepositoryResponseOutput {
+	return o
+}
+
+// Type of archive files in this repository. The default behavior is DEB.
+func (o AptRepositoryResponseOutput) ArchiveType() pulumi.StringOutput {
+	return o.ApplyT(func(v AptRepositoryResponse) string { return v.ArchiveType }).(pulumi.StringOutput)
+}
+
+// Required. List of components for this repository. Must contain at least one item.
+func (o AptRepositoryResponseOutput) Components() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AptRepositoryResponse) []string { return v.Components }).(pulumi.StringArrayOutput)
+}
+
+// Required. Distribution of this repository.
+func (o AptRepositoryResponseOutput) Distribution() pulumi.StringOutput {
+	return o.ApplyT(func(v AptRepositoryResponse) string { return v.Distribution }).(pulumi.StringOutput)
+}
+
+// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
+func (o AptRepositoryResponseOutput) GpgKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AptRepositoryResponse) string { return v.GpgKey }).(pulumi.StringOutput)
+}
+
+// Required. URI for this repository.
+func (o AptRepositoryResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v AptRepositoryResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
 // Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed.
 type AptSettings struct {
 	// List of packages to exclude from update. These packages will be excluded
@@ -389,6 +480,178 @@ func (o AptSettingsPtrOutput) Type() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed.
+type AptSettingsResponse struct {
+	// List of packages to exclude from update. These packages will be excluded
+	Excludes []string `pulumi:"excludes"`
+	// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields.
+	ExclusivePackages []string `pulumi:"exclusivePackages"`
+	// By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
+	Type string `pulumi:"type"`
+}
+
+// AptSettingsResponseInput is an input type that accepts AptSettingsResponseArgs and AptSettingsResponseOutput values.
+// You can construct a concrete instance of `AptSettingsResponseInput` via:
+//
+//          AptSettingsResponseArgs{...}
+type AptSettingsResponseInput interface {
+	pulumi.Input
+
+	ToAptSettingsResponseOutput() AptSettingsResponseOutput
+	ToAptSettingsResponseOutputWithContext(context.Context) AptSettingsResponseOutput
+}
+
+// Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed.
+type AptSettingsResponseArgs struct {
+	// List of packages to exclude from update. These packages will be excluded
+	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
+	// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields.
+	ExclusivePackages pulumi.StringArrayInput `pulumi:"exclusivePackages"`
+	// By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AptSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AptSettingsResponse)(nil)).Elem()
+}
+
+func (i AptSettingsResponseArgs) ToAptSettingsResponseOutput() AptSettingsResponseOutput {
+	return i.ToAptSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i AptSettingsResponseArgs) ToAptSettingsResponseOutputWithContext(ctx context.Context) AptSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AptSettingsResponseOutput)
+}
+
+func (i AptSettingsResponseArgs) ToAptSettingsResponsePtrOutput() AptSettingsResponsePtrOutput {
+	return i.ToAptSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AptSettingsResponseArgs) ToAptSettingsResponsePtrOutputWithContext(ctx context.Context) AptSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AptSettingsResponseOutput).ToAptSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// AptSettingsResponsePtrInput is an input type that accepts AptSettingsResponseArgs, AptSettingsResponsePtr and AptSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `AptSettingsResponsePtrInput` via:
+//
+//          AptSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AptSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToAptSettingsResponsePtrOutput() AptSettingsResponsePtrOutput
+	ToAptSettingsResponsePtrOutputWithContext(context.Context) AptSettingsResponsePtrOutput
+}
+
+type aptSettingsResponsePtrType AptSettingsResponseArgs
+
+func AptSettingsResponsePtr(v *AptSettingsResponseArgs) AptSettingsResponsePtrInput {
+	return (*aptSettingsResponsePtrType)(v)
+}
+
+func (*aptSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AptSettingsResponse)(nil)).Elem()
+}
+
+func (i *aptSettingsResponsePtrType) ToAptSettingsResponsePtrOutput() AptSettingsResponsePtrOutput {
+	return i.ToAptSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *aptSettingsResponsePtrType) ToAptSettingsResponsePtrOutputWithContext(ctx context.Context) AptSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AptSettingsResponsePtrOutput)
+}
+
+// Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed.
+type AptSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AptSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AptSettingsResponse)(nil)).Elem()
+}
+
+func (o AptSettingsResponseOutput) ToAptSettingsResponseOutput() AptSettingsResponseOutput {
+	return o
+}
+
+func (o AptSettingsResponseOutput) ToAptSettingsResponseOutputWithContext(ctx context.Context) AptSettingsResponseOutput {
+	return o
+}
+
+func (o AptSettingsResponseOutput) ToAptSettingsResponsePtrOutput() AptSettingsResponsePtrOutput {
+	return o.ToAptSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AptSettingsResponseOutput) ToAptSettingsResponsePtrOutputWithContext(ctx context.Context) AptSettingsResponsePtrOutput {
+	return o.ApplyT(func(v AptSettingsResponse) *AptSettingsResponse {
+		return &v
+	}).(AptSettingsResponsePtrOutput)
+}
+
+// List of packages to exclude from update. These packages will be excluded
+func (o AptSettingsResponseOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AptSettingsResponse) []string { return v.Excludes }).(pulumi.StringArrayOutput)
+}
+
+// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields.
+func (o AptSettingsResponseOutput) ExclusivePackages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AptSettingsResponse) []string { return v.ExclusivePackages }).(pulumi.StringArrayOutput)
+}
+
+// By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
+func (o AptSettingsResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AptSettingsResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AptSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AptSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AptSettingsResponse)(nil)).Elem()
+}
+
+func (o AptSettingsResponsePtrOutput) ToAptSettingsResponsePtrOutput() AptSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AptSettingsResponsePtrOutput) ToAptSettingsResponsePtrOutputWithContext(ctx context.Context) AptSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AptSettingsResponsePtrOutput) Elem() AptSettingsResponseOutput {
+	return o.ApplyT(func(v *AptSettingsResponse) AptSettingsResponse { return *v }).(AptSettingsResponseOutput)
+}
+
+// List of packages to exclude from update. These packages will be excluded
+func (o AptSettingsResponsePtrOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AptSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Excludes
+	}).(pulumi.StringArrayOutput)
+}
+
+// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields.
+func (o AptSettingsResponsePtrOutput) ExclusivePackages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AptSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExclusivePackages
+	}).(pulumi.StringArrayOutput)
+}
+
+// By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
+func (o AptSettingsResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AptSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -702,6 +965,106 @@ func (o AssignmentGroupLabelArrayOutput) Index(i pulumi.IntInput) AssignmentGrou
 	}).(AssignmentGroupLabelOutput)
 }
 
+// Represents a group of VM intances that can be identified as having all these labels, for example "env=prod and app=web".
+type AssignmentGroupLabelResponse struct {
+	// Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// AssignmentGroupLabelResponseInput is an input type that accepts AssignmentGroupLabelResponseArgs and AssignmentGroupLabelResponseOutput values.
+// You can construct a concrete instance of `AssignmentGroupLabelResponseInput` via:
+//
+//          AssignmentGroupLabelResponseArgs{...}
+type AssignmentGroupLabelResponseInput interface {
+	pulumi.Input
+
+	ToAssignmentGroupLabelResponseOutput() AssignmentGroupLabelResponseOutput
+	ToAssignmentGroupLabelResponseOutputWithContext(context.Context) AssignmentGroupLabelResponseOutput
+}
+
+// Represents a group of VM intances that can be identified as having all these labels, for example "env=prod and app=web".
+type AssignmentGroupLabelResponseArgs struct {
+	// Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (AssignmentGroupLabelResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentGroupLabelResponse)(nil)).Elem()
+}
+
+func (i AssignmentGroupLabelResponseArgs) ToAssignmentGroupLabelResponseOutput() AssignmentGroupLabelResponseOutput {
+	return i.ToAssignmentGroupLabelResponseOutputWithContext(context.Background())
+}
+
+func (i AssignmentGroupLabelResponseArgs) ToAssignmentGroupLabelResponseOutputWithContext(ctx context.Context) AssignmentGroupLabelResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentGroupLabelResponseOutput)
+}
+
+// AssignmentGroupLabelResponseArrayInput is an input type that accepts AssignmentGroupLabelResponseArray and AssignmentGroupLabelResponseArrayOutput values.
+// You can construct a concrete instance of `AssignmentGroupLabelResponseArrayInput` via:
+//
+//          AssignmentGroupLabelResponseArray{ AssignmentGroupLabelResponseArgs{...} }
+type AssignmentGroupLabelResponseArrayInput interface {
+	pulumi.Input
+
+	ToAssignmentGroupLabelResponseArrayOutput() AssignmentGroupLabelResponseArrayOutput
+	ToAssignmentGroupLabelResponseArrayOutputWithContext(context.Context) AssignmentGroupLabelResponseArrayOutput
+}
+
+type AssignmentGroupLabelResponseArray []AssignmentGroupLabelResponseInput
+
+func (AssignmentGroupLabelResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssignmentGroupLabelResponse)(nil)).Elem()
+}
+
+func (i AssignmentGroupLabelResponseArray) ToAssignmentGroupLabelResponseArrayOutput() AssignmentGroupLabelResponseArrayOutput {
+	return i.ToAssignmentGroupLabelResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AssignmentGroupLabelResponseArray) ToAssignmentGroupLabelResponseArrayOutputWithContext(ctx context.Context) AssignmentGroupLabelResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentGroupLabelResponseArrayOutput)
+}
+
+// Represents a group of VM intances that can be identified as having all these labels, for example "env=prod and app=web".
+type AssignmentGroupLabelResponseOutput struct{ *pulumi.OutputState }
+
+func (AssignmentGroupLabelResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentGroupLabelResponse)(nil)).Elem()
+}
+
+func (o AssignmentGroupLabelResponseOutput) ToAssignmentGroupLabelResponseOutput() AssignmentGroupLabelResponseOutput {
+	return o
+}
+
+func (o AssignmentGroupLabelResponseOutput) ToAssignmentGroupLabelResponseOutputWithContext(ctx context.Context) AssignmentGroupLabelResponseOutput {
+	return o
+}
+
+// Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
+func (o AssignmentGroupLabelResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AssignmentGroupLabelResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+type AssignmentGroupLabelResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AssignmentGroupLabelResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssignmentGroupLabelResponse)(nil)).Elem()
+}
+
+func (o AssignmentGroupLabelResponseArrayOutput) ToAssignmentGroupLabelResponseArrayOutput() AssignmentGroupLabelResponseArrayOutput {
+	return o
+}
+
+func (o AssignmentGroupLabelResponseArrayOutput) ToAssignmentGroupLabelResponseArrayOutputWithContext(ctx context.Context) AssignmentGroupLabelResponseArrayOutput {
+	return o
+}
+
+func (o AssignmentGroupLabelResponseArrayOutput) Index(i pulumi.IntInput) AssignmentGroupLabelResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssignmentGroupLabelResponse {
+		return vs[0].([]AssignmentGroupLabelResponse)[vs[1].(int)]
+	}).(AssignmentGroupLabelResponseOutput)
+}
+
 // Defines the criteria for selecting VM Instances by OS type.
 type AssignmentOsType struct {
 	// Targets VM instances with OS Inventory enabled and having the following OS architecture.
@@ -818,6 +1181,334 @@ func (o AssignmentOsTypeArrayOutput) Index(i pulumi.IntInput) AssignmentOsTypeOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssignmentOsType {
 		return vs[0].([]AssignmentOsType)[vs[1].(int)]
 	}).(AssignmentOsTypeOutput)
+}
+
+// Defines the criteria for selecting VM Instances by OS type.
+type AssignmentOsTypeResponse struct {
+	// Targets VM instances with OS Inventory enabled and having the following OS architecture.
+	OsArchitecture string `pulumi:"osArchitecture"`
+	// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
+	OsShortName string `pulumi:"osShortName"`
+	// Targets VM instances with OS Inventory enabled and having the following following OS version.
+	OsVersion string `pulumi:"osVersion"`
+}
+
+// AssignmentOsTypeResponseInput is an input type that accepts AssignmentOsTypeResponseArgs and AssignmentOsTypeResponseOutput values.
+// You can construct a concrete instance of `AssignmentOsTypeResponseInput` via:
+//
+//          AssignmentOsTypeResponseArgs{...}
+type AssignmentOsTypeResponseInput interface {
+	pulumi.Input
+
+	ToAssignmentOsTypeResponseOutput() AssignmentOsTypeResponseOutput
+	ToAssignmentOsTypeResponseOutputWithContext(context.Context) AssignmentOsTypeResponseOutput
+}
+
+// Defines the criteria for selecting VM Instances by OS type.
+type AssignmentOsTypeResponseArgs struct {
+	// Targets VM instances with OS Inventory enabled and having the following OS architecture.
+	OsArchitecture pulumi.StringInput `pulumi:"osArchitecture"`
+	// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
+	OsShortName pulumi.StringInput `pulumi:"osShortName"`
+	// Targets VM instances with OS Inventory enabled and having the following following OS version.
+	OsVersion pulumi.StringInput `pulumi:"osVersion"`
+}
+
+func (AssignmentOsTypeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentOsTypeResponse)(nil)).Elem()
+}
+
+func (i AssignmentOsTypeResponseArgs) ToAssignmentOsTypeResponseOutput() AssignmentOsTypeResponseOutput {
+	return i.ToAssignmentOsTypeResponseOutputWithContext(context.Background())
+}
+
+func (i AssignmentOsTypeResponseArgs) ToAssignmentOsTypeResponseOutputWithContext(ctx context.Context) AssignmentOsTypeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentOsTypeResponseOutput)
+}
+
+// AssignmentOsTypeResponseArrayInput is an input type that accepts AssignmentOsTypeResponseArray and AssignmentOsTypeResponseArrayOutput values.
+// You can construct a concrete instance of `AssignmentOsTypeResponseArrayInput` via:
+//
+//          AssignmentOsTypeResponseArray{ AssignmentOsTypeResponseArgs{...} }
+type AssignmentOsTypeResponseArrayInput interface {
+	pulumi.Input
+
+	ToAssignmentOsTypeResponseArrayOutput() AssignmentOsTypeResponseArrayOutput
+	ToAssignmentOsTypeResponseArrayOutputWithContext(context.Context) AssignmentOsTypeResponseArrayOutput
+}
+
+type AssignmentOsTypeResponseArray []AssignmentOsTypeResponseInput
+
+func (AssignmentOsTypeResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssignmentOsTypeResponse)(nil)).Elem()
+}
+
+func (i AssignmentOsTypeResponseArray) ToAssignmentOsTypeResponseArrayOutput() AssignmentOsTypeResponseArrayOutput {
+	return i.ToAssignmentOsTypeResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AssignmentOsTypeResponseArray) ToAssignmentOsTypeResponseArrayOutputWithContext(ctx context.Context) AssignmentOsTypeResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentOsTypeResponseArrayOutput)
+}
+
+// Defines the criteria for selecting VM Instances by OS type.
+type AssignmentOsTypeResponseOutput struct{ *pulumi.OutputState }
+
+func (AssignmentOsTypeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentOsTypeResponse)(nil)).Elem()
+}
+
+func (o AssignmentOsTypeResponseOutput) ToAssignmentOsTypeResponseOutput() AssignmentOsTypeResponseOutput {
+	return o
+}
+
+func (o AssignmentOsTypeResponseOutput) ToAssignmentOsTypeResponseOutputWithContext(ctx context.Context) AssignmentOsTypeResponseOutput {
+	return o
+}
+
+// Targets VM instances with OS Inventory enabled and having the following OS architecture.
+func (o AssignmentOsTypeResponseOutput) OsArchitecture() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignmentOsTypeResponse) string { return v.OsArchitecture }).(pulumi.StringOutput)
+}
+
+// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
+func (o AssignmentOsTypeResponseOutput) OsShortName() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignmentOsTypeResponse) string { return v.OsShortName }).(pulumi.StringOutput)
+}
+
+// Targets VM instances with OS Inventory enabled and having the following following OS version.
+func (o AssignmentOsTypeResponseOutput) OsVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v AssignmentOsTypeResponse) string { return v.OsVersion }).(pulumi.StringOutput)
+}
+
+type AssignmentOsTypeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AssignmentOsTypeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssignmentOsTypeResponse)(nil)).Elem()
+}
+
+func (o AssignmentOsTypeResponseArrayOutput) ToAssignmentOsTypeResponseArrayOutput() AssignmentOsTypeResponseArrayOutput {
+	return o
+}
+
+func (o AssignmentOsTypeResponseArrayOutput) ToAssignmentOsTypeResponseArrayOutputWithContext(ctx context.Context) AssignmentOsTypeResponseArrayOutput {
+	return o
+}
+
+func (o AssignmentOsTypeResponseArrayOutput) Index(i pulumi.IntInput) AssignmentOsTypeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssignmentOsTypeResponse {
+		return vs[0].([]AssignmentOsTypeResponse)[vs[1].(int)]
+	}).(AssignmentOsTypeResponseOutput)
+}
+
+// An assignment represents the group or groups of VM instances that the policy applies to. If an assignment is empty, it applies to all VM instances. Otherwise, the targeted VM instances must meet all the criteria specified. So if both labels and zones are specified, the policy applies to VM instances with those labels and in those zones.
+type AssignmentResponse struct {
+	// Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups, for example "env=prod or env=staging".
+	GroupLabels []AssignmentGroupLabelResponse `pulumi:"groupLabels"`
+	// Targets VM instances whose name starts with one of these prefixes. Like labels, this is another way to group VM instances when targeting configs, for example prefix="prod-". Only supported for project-level policies.
+	InstanceNamePrefixes []string `pulumi:"instanceNamePrefixes"`
+	// Targets any of the instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`. Instance targeting is uncommon and is supported to facilitate the management of changes by the instance or to target specific VM instances for development and testing. Only supported for project-level policies and must reference instances within this project.
+	Instances []string `pulumi:"instances"`
+	// Targets VM instances matching at least one of the following OS types. VM instances must match all supplied criteria for a given OsType to be included.
+	OsTypes []AssignmentOsTypeResponse `pulumi:"osTypes"`
+	// Targets instances in any of these zones. Leave empty to target instances in any zone. Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
+	Zones []string `pulumi:"zones"`
+}
+
+// AssignmentResponseInput is an input type that accepts AssignmentResponseArgs and AssignmentResponseOutput values.
+// You can construct a concrete instance of `AssignmentResponseInput` via:
+//
+//          AssignmentResponseArgs{...}
+type AssignmentResponseInput interface {
+	pulumi.Input
+
+	ToAssignmentResponseOutput() AssignmentResponseOutput
+	ToAssignmentResponseOutputWithContext(context.Context) AssignmentResponseOutput
+}
+
+// An assignment represents the group or groups of VM instances that the policy applies to. If an assignment is empty, it applies to all VM instances. Otherwise, the targeted VM instances must meet all the criteria specified. So if both labels and zones are specified, the policy applies to VM instances with those labels and in those zones.
+type AssignmentResponseArgs struct {
+	// Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups, for example "env=prod or env=staging".
+	GroupLabels AssignmentGroupLabelResponseArrayInput `pulumi:"groupLabels"`
+	// Targets VM instances whose name starts with one of these prefixes. Like labels, this is another way to group VM instances when targeting configs, for example prefix="prod-". Only supported for project-level policies.
+	InstanceNamePrefixes pulumi.StringArrayInput `pulumi:"instanceNamePrefixes"`
+	// Targets any of the instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`. Instance targeting is uncommon and is supported to facilitate the management of changes by the instance or to target specific VM instances for development and testing. Only supported for project-level policies and must reference instances within this project.
+	Instances pulumi.StringArrayInput `pulumi:"instances"`
+	// Targets VM instances matching at least one of the following OS types. VM instances must match all supplied criteria for a given OsType to be included.
+	OsTypes AssignmentOsTypeResponseArrayInput `pulumi:"osTypes"`
+	// Targets instances in any of these zones. Leave empty to target instances in any zone. Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
+	Zones pulumi.StringArrayInput `pulumi:"zones"`
+}
+
+func (AssignmentResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentResponse)(nil)).Elem()
+}
+
+func (i AssignmentResponseArgs) ToAssignmentResponseOutput() AssignmentResponseOutput {
+	return i.ToAssignmentResponseOutputWithContext(context.Background())
+}
+
+func (i AssignmentResponseArgs) ToAssignmentResponseOutputWithContext(ctx context.Context) AssignmentResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentResponseOutput)
+}
+
+func (i AssignmentResponseArgs) ToAssignmentResponsePtrOutput() AssignmentResponsePtrOutput {
+	return i.ToAssignmentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AssignmentResponseArgs) ToAssignmentResponsePtrOutputWithContext(ctx context.Context) AssignmentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentResponseOutput).ToAssignmentResponsePtrOutputWithContext(ctx)
+}
+
+// AssignmentResponsePtrInput is an input type that accepts AssignmentResponseArgs, AssignmentResponsePtr and AssignmentResponsePtrOutput values.
+// You can construct a concrete instance of `AssignmentResponsePtrInput` via:
+//
+//          AssignmentResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AssignmentResponsePtrInput interface {
+	pulumi.Input
+
+	ToAssignmentResponsePtrOutput() AssignmentResponsePtrOutput
+	ToAssignmentResponsePtrOutputWithContext(context.Context) AssignmentResponsePtrOutput
+}
+
+type assignmentResponsePtrType AssignmentResponseArgs
+
+func AssignmentResponsePtr(v *AssignmentResponseArgs) AssignmentResponsePtrInput {
+	return (*assignmentResponsePtrType)(v)
+}
+
+func (*assignmentResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssignmentResponse)(nil)).Elem()
+}
+
+func (i *assignmentResponsePtrType) ToAssignmentResponsePtrOutput() AssignmentResponsePtrOutput {
+	return i.ToAssignmentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *assignmentResponsePtrType) ToAssignmentResponsePtrOutputWithContext(ctx context.Context) AssignmentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssignmentResponsePtrOutput)
+}
+
+// An assignment represents the group or groups of VM instances that the policy applies to. If an assignment is empty, it applies to all VM instances. Otherwise, the targeted VM instances must meet all the criteria specified. So if both labels and zones are specified, the policy applies to VM instances with those labels and in those zones.
+type AssignmentResponseOutput struct{ *pulumi.OutputState }
+
+func (AssignmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentResponse)(nil)).Elem()
+}
+
+func (o AssignmentResponseOutput) ToAssignmentResponseOutput() AssignmentResponseOutput {
+	return o
+}
+
+func (o AssignmentResponseOutput) ToAssignmentResponseOutputWithContext(ctx context.Context) AssignmentResponseOutput {
+	return o
+}
+
+func (o AssignmentResponseOutput) ToAssignmentResponsePtrOutput() AssignmentResponsePtrOutput {
+	return o.ToAssignmentResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AssignmentResponseOutput) ToAssignmentResponsePtrOutputWithContext(ctx context.Context) AssignmentResponsePtrOutput {
+	return o.ApplyT(func(v AssignmentResponse) *AssignmentResponse {
+		return &v
+	}).(AssignmentResponsePtrOutput)
+}
+
+// Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups, for example "env=prod or env=staging".
+func (o AssignmentResponseOutput) GroupLabels() AssignmentGroupLabelResponseArrayOutput {
+	return o.ApplyT(func(v AssignmentResponse) []AssignmentGroupLabelResponse { return v.GroupLabels }).(AssignmentGroupLabelResponseArrayOutput)
+}
+
+// Targets VM instances whose name starts with one of these prefixes. Like labels, this is another way to group VM instances when targeting configs, for example prefix="prod-". Only supported for project-level policies.
+func (o AssignmentResponseOutput) InstanceNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AssignmentResponse) []string { return v.InstanceNamePrefixes }).(pulumi.StringArrayOutput)
+}
+
+// Targets any of the instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`. Instance targeting is uncommon and is supported to facilitate the management of changes by the instance or to target specific VM instances for development and testing. Only supported for project-level policies and must reference instances within this project.
+func (o AssignmentResponseOutput) Instances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AssignmentResponse) []string { return v.Instances }).(pulumi.StringArrayOutput)
+}
+
+// Targets VM instances matching at least one of the following OS types. VM instances must match all supplied criteria for a given OsType to be included.
+func (o AssignmentResponseOutput) OsTypes() AssignmentOsTypeResponseArrayOutput {
+	return o.ApplyT(func(v AssignmentResponse) []AssignmentOsTypeResponse { return v.OsTypes }).(AssignmentOsTypeResponseArrayOutput)
+}
+
+// Targets instances in any of these zones. Leave empty to target instances in any zone. Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
+func (o AssignmentResponseOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AssignmentResponse) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+type AssignmentResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AssignmentResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssignmentResponse)(nil)).Elem()
+}
+
+func (o AssignmentResponsePtrOutput) ToAssignmentResponsePtrOutput() AssignmentResponsePtrOutput {
+	return o
+}
+
+func (o AssignmentResponsePtrOutput) ToAssignmentResponsePtrOutputWithContext(ctx context.Context) AssignmentResponsePtrOutput {
+	return o
+}
+
+func (o AssignmentResponsePtrOutput) Elem() AssignmentResponseOutput {
+	return o.ApplyT(func(v *AssignmentResponse) AssignmentResponse { return *v }).(AssignmentResponseOutput)
+}
+
+// Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups, for example "env=prod or env=staging".
+func (o AssignmentResponsePtrOutput) GroupLabels() AssignmentGroupLabelResponseArrayOutput {
+	return o.ApplyT(func(v *AssignmentResponse) []AssignmentGroupLabelResponse {
+		if v == nil {
+			return nil
+		}
+		return v.GroupLabels
+	}).(AssignmentGroupLabelResponseArrayOutput)
+}
+
+// Targets VM instances whose name starts with one of these prefixes. Like labels, this is another way to group VM instances when targeting configs, for example prefix="prod-". Only supported for project-level policies.
+func (o AssignmentResponsePtrOutput) InstanceNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AssignmentResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceNamePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Targets any of the instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`. Instance targeting is uncommon and is supported to facilitate the management of changes by the instance or to target specific VM instances for development and testing. Only supported for project-level policies and must reference instances within this project.
+func (o AssignmentResponsePtrOutput) Instances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AssignmentResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Instances
+	}).(pulumi.StringArrayOutput)
+}
+
+// Targets VM instances matching at least one of the following OS types. VM instances must match all supplied criteria for a given OsType to be included.
+func (o AssignmentResponsePtrOutput) OsTypes() AssignmentOsTypeResponseArrayOutput {
+	return o.ApplyT(func(v *AssignmentResponse) []AssignmentOsTypeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.OsTypes
+	}).(AssignmentOsTypeResponseArrayOutput)
+}
+
+// Targets instances in any of these zones. Leave empty to target instances in any zone. Zonal targeting is uncommon and is supported to facilitate the management of changes by zone.
+func (o AssignmentResponsePtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AssignmentResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
 }
 
 // A step that runs an executable for a PatchJob.
@@ -1164,6 +1855,350 @@ func (o ExecStepConfigPtrOutput) LocalPath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Common configurations for an ExecStep.
+type ExecStepConfigResponse struct {
+	// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+	AllowedSuccessCodes []int `pulumi:"allowedSuccessCodes"`
+	// A Google Cloud Storage object containing the executable.
+	GcsObject GcsObjectResponse `pulumi:"gcsObject"`
+	// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+	Interpreter string `pulumi:"interpreter"`
+	// An absolute path to the executable on the VM.
+	LocalPath string `pulumi:"localPath"`
+}
+
+// ExecStepConfigResponseInput is an input type that accepts ExecStepConfigResponseArgs and ExecStepConfigResponseOutput values.
+// You can construct a concrete instance of `ExecStepConfigResponseInput` via:
+//
+//          ExecStepConfigResponseArgs{...}
+type ExecStepConfigResponseInput interface {
+	pulumi.Input
+
+	ToExecStepConfigResponseOutput() ExecStepConfigResponseOutput
+	ToExecStepConfigResponseOutputWithContext(context.Context) ExecStepConfigResponseOutput
+}
+
+// Common configurations for an ExecStep.
+type ExecStepConfigResponseArgs struct {
+	// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+	AllowedSuccessCodes pulumi.IntArrayInput `pulumi:"allowedSuccessCodes"`
+	// A Google Cloud Storage object containing the executable.
+	GcsObject GcsObjectResponseInput `pulumi:"gcsObject"`
+	// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+	Interpreter pulumi.StringInput `pulumi:"interpreter"`
+	// An absolute path to the executable on the VM.
+	LocalPath pulumi.StringInput `pulumi:"localPath"`
+}
+
+func (ExecStepConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecStepConfigResponse)(nil)).Elem()
+}
+
+func (i ExecStepConfigResponseArgs) ToExecStepConfigResponseOutput() ExecStepConfigResponseOutput {
+	return i.ToExecStepConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ExecStepConfigResponseArgs) ToExecStepConfigResponseOutputWithContext(ctx context.Context) ExecStepConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecStepConfigResponseOutput)
+}
+
+func (i ExecStepConfigResponseArgs) ToExecStepConfigResponsePtrOutput() ExecStepConfigResponsePtrOutput {
+	return i.ToExecStepConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ExecStepConfigResponseArgs) ToExecStepConfigResponsePtrOutputWithContext(ctx context.Context) ExecStepConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecStepConfigResponseOutput).ToExecStepConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ExecStepConfigResponsePtrInput is an input type that accepts ExecStepConfigResponseArgs, ExecStepConfigResponsePtr and ExecStepConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ExecStepConfigResponsePtrInput` via:
+//
+//          ExecStepConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ExecStepConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToExecStepConfigResponsePtrOutput() ExecStepConfigResponsePtrOutput
+	ToExecStepConfigResponsePtrOutputWithContext(context.Context) ExecStepConfigResponsePtrOutput
+}
+
+type execStepConfigResponsePtrType ExecStepConfigResponseArgs
+
+func ExecStepConfigResponsePtr(v *ExecStepConfigResponseArgs) ExecStepConfigResponsePtrInput {
+	return (*execStepConfigResponsePtrType)(v)
+}
+
+func (*execStepConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExecStepConfigResponse)(nil)).Elem()
+}
+
+func (i *execStepConfigResponsePtrType) ToExecStepConfigResponsePtrOutput() ExecStepConfigResponsePtrOutput {
+	return i.ToExecStepConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *execStepConfigResponsePtrType) ToExecStepConfigResponsePtrOutputWithContext(ctx context.Context) ExecStepConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecStepConfigResponsePtrOutput)
+}
+
+// Common configurations for an ExecStep.
+type ExecStepConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ExecStepConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecStepConfigResponse)(nil)).Elem()
+}
+
+func (o ExecStepConfigResponseOutput) ToExecStepConfigResponseOutput() ExecStepConfigResponseOutput {
+	return o
+}
+
+func (o ExecStepConfigResponseOutput) ToExecStepConfigResponseOutputWithContext(ctx context.Context) ExecStepConfigResponseOutput {
+	return o
+}
+
+func (o ExecStepConfigResponseOutput) ToExecStepConfigResponsePtrOutput() ExecStepConfigResponsePtrOutput {
+	return o.ToExecStepConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ExecStepConfigResponseOutput) ToExecStepConfigResponsePtrOutputWithContext(ctx context.Context) ExecStepConfigResponsePtrOutput {
+	return o.ApplyT(func(v ExecStepConfigResponse) *ExecStepConfigResponse {
+		return &v
+	}).(ExecStepConfigResponsePtrOutput)
+}
+
+// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+func (o ExecStepConfigResponseOutput) AllowedSuccessCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v ExecStepConfigResponse) []int { return v.AllowedSuccessCodes }).(pulumi.IntArrayOutput)
+}
+
+// A Google Cloud Storage object containing the executable.
+func (o ExecStepConfigResponseOutput) GcsObject() GcsObjectResponseOutput {
+	return o.ApplyT(func(v ExecStepConfigResponse) GcsObjectResponse { return v.GcsObject }).(GcsObjectResponseOutput)
+}
+
+// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+func (o ExecStepConfigResponseOutput) Interpreter() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecStepConfigResponse) string { return v.Interpreter }).(pulumi.StringOutput)
+}
+
+// An absolute path to the executable on the VM.
+func (o ExecStepConfigResponseOutput) LocalPath() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecStepConfigResponse) string { return v.LocalPath }).(pulumi.StringOutput)
+}
+
+type ExecStepConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExecStepConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExecStepConfigResponse)(nil)).Elem()
+}
+
+func (o ExecStepConfigResponsePtrOutput) ToExecStepConfigResponsePtrOutput() ExecStepConfigResponsePtrOutput {
+	return o
+}
+
+func (o ExecStepConfigResponsePtrOutput) ToExecStepConfigResponsePtrOutputWithContext(ctx context.Context) ExecStepConfigResponsePtrOutput {
+	return o
+}
+
+func (o ExecStepConfigResponsePtrOutput) Elem() ExecStepConfigResponseOutput {
+	return o.ApplyT(func(v *ExecStepConfigResponse) ExecStepConfigResponse { return *v }).(ExecStepConfigResponseOutput)
+}
+
+// Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
+func (o ExecStepConfigResponsePtrOutput) AllowedSuccessCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *ExecStepConfigResponse) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedSuccessCodes
+	}).(pulumi.IntArrayOutput)
+}
+
+// A Google Cloud Storage object containing the executable.
+func (o ExecStepConfigResponsePtrOutput) GcsObject() GcsObjectResponsePtrOutput {
+	return o.ApplyT(func(v *ExecStepConfigResponse) *GcsObjectResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GcsObject
+	}).(GcsObjectResponsePtrOutput)
+}
+
+// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
+func (o ExecStepConfigResponsePtrOutput) Interpreter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecStepConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Interpreter
+	}).(pulumi.StringPtrOutput)
+}
+
+// An absolute path to the executable on the VM.
+func (o ExecStepConfigResponsePtrOutput) LocalPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecStepConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LocalPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// A step that runs an executable for a PatchJob.
+type ExecStepResponse struct {
+	// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+	LinuxExecStepConfig ExecStepConfigResponse `pulumi:"linuxExecStepConfig"`
+	// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+	WindowsExecStepConfig ExecStepConfigResponse `pulumi:"windowsExecStepConfig"`
+}
+
+// ExecStepResponseInput is an input type that accepts ExecStepResponseArgs and ExecStepResponseOutput values.
+// You can construct a concrete instance of `ExecStepResponseInput` via:
+//
+//          ExecStepResponseArgs{...}
+type ExecStepResponseInput interface {
+	pulumi.Input
+
+	ToExecStepResponseOutput() ExecStepResponseOutput
+	ToExecStepResponseOutputWithContext(context.Context) ExecStepResponseOutput
+}
+
+// A step that runs an executable for a PatchJob.
+type ExecStepResponseArgs struct {
+	// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+	LinuxExecStepConfig ExecStepConfigResponseInput `pulumi:"linuxExecStepConfig"`
+	// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+	WindowsExecStepConfig ExecStepConfigResponseInput `pulumi:"windowsExecStepConfig"`
+}
+
+func (ExecStepResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecStepResponse)(nil)).Elem()
+}
+
+func (i ExecStepResponseArgs) ToExecStepResponseOutput() ExecStepResponseOutput {
+	return i.ToExecStepResponseOutputWithContext(context.Background())
+}
+
+func (i ExecStepResponseArgs) ToExecStepResponseOutputWithContext(ctx context.Context) ExecStepResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecStepResponseOutput)
+}
+
+func (i ExecStepResponseArgs) ToExecStepResponsePtrOutput() ExecStepResponsePtrOutput {
+	return i.ToExecStepResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ExecStepResponseArgs) ToExecStepResponsePtrOutputWithContext(ctx context.Context) ExecStepResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecStepResponseOutput).ToExecStepResponsePtrOutputWithContext(ctx)
+}
+
+// ExecStepResponsePtrInput is an input type that accepts ExecStepResponseArgs, ExecStepResponsePtr and ExecStepResponsePtrOutput values.
+// You can construct a concrete instance of `ExecStepResponsePtrInput` via:
+//
+//          ExecStepResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ExecStepResponsePtrInput interface {
+	pulumi.Input
+
+	ToExecStepResponsePtrOutput() ExecStepResponsePtrOutput
+	ToExecStepResponsePtrOutputWithContext(context.Context) ExecStepResponsePtrOutput
+}
+
+type execStepResponsePtrType ExecStepResponseArgs
+
+func ExecStepResponsePtr(v *ExecStepResponseArgs) ExecStepResponsePtrInput {
+	return (*execStepResponsePtrType)(v)
+}
+
+func (*execStepResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExecStepResponse)(nil)).Elem()
+}
+
+func (i *execStepResponsePtrType) ToExecStepResponsePtrOutput() ExecStepResponsePtrOutput {
+	return i.ToExecStepResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *execStepResponsePtrType) ToExecStepResponsePtrOutputWithContext(ctx context.Context) ExecStepResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecStepResponsePtrOutput)
+}
+
+// A step that runs an executable for a PatchJob.
+type ExecStepResponseOutput struct{ *pulumi.OutputState }
+
+func (ExecStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecStepResponse)(nil)).Elem()
+}
+
+func (o ExecStepResponseOutput) ToExecStepResponseOutput() ExecStepResponseOutput {
+	return o
+}
+
+func (o ExecStepResponseOutput) ToExecStepResponseOutputWithContext(ctx context.Context) ExecStepResponseOutput {
+	return o
+}
+
+func (o ExecStepResponseOutput) ToExecStepResponsePtrOutput() ExecStepResponsePtrOutput {
+	return o.ToExecStepResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ExecStepResponseOutput) ToExecStepResponsePtrOutputWithContext(ctx context.Context) ExecStepResponsePtrOutput {
+	return o.ApplyT(func(v ExecStepResponse) *ExecStepResponse {
+		return &v
+	}).(ExecStepResponsePtrOutput)
+}
+
+// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+func (o ExecStepResponseOutput) LinuxExecStepConfig() ExecStepConfigResponseOutput {
+	return o.ApplyT(func(v ExecStepResponse) ExecStepConfigResponse { return v.LinuxExecStepConfig }).(ExecStepConfigResponseOutput)
+}
+
+// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+func (o ExecStepResponseOutput) WindowsExecStepConfig() ExecStepConfigResponseOutput {
+	return o.ApplyT(func(v ExecStepResponse) ExecStepConfigResponse { return v.WindowsExecStepConfig }).(ExecStepConfigResponseOutput)
+}
+
+type ExecStepResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExecStepResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExecStepResponse)(nil)).Elem()
+}
+
+func (o ExecStepResponsePtrOutput) ToExecStepResponsePtrOutput() ExecStepResponsePtrOutput {
+	return o
+}
+
+func (o ExecStepResponsePtrOutput) ToExecStepResponsePtrOutputWithContext(ctx context.Context) ExecStepResponsePtrOutput {
+	return o
+}
+
+func (o ExecStepResponsePtrOutput) Elem() ExecStepResponseOutput {
+	return o.ApplyT(func(v *ExecStepResponse) ExecStepResponse { return *v }).(ExecStepResponseOutput)
+}
+
+// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+func (o ExecStepResponsePtrOutput) LinuxExecStepConfig() ExecStepConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ExecStepResponse) *ExecStepConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LinuxExecStepConfig
+	}).(ExecStepConfigResponsePtrOutput)
+}
+
+// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+func (o ExecStepResponsePtrOutput) WindowsExecStepConfig() ExecStepConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ExecStepResponse) *ExecStepConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.WindowsExecStepConfig
+	}).(ExecStepConfigResponsePtrOutput)
+}
+
 // Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value.
 type FixedOrPercent struct {
 	// Specifies a fixed value.
@@ -1314,6 +2349,159 @@ func (o FixedOrPercentPtrOutput) Percent() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.Percent
+	}).(pulumi.IntPtrOutput)
+}
+
+// Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value.
+type FixedOrPercentResponse struct {
+	// Specifies a fixed value.
+	Fixed int `pulumi:"fixed"`
+	// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+	Percent int `pulumi:"percent"`
+}
+
+// FixedOrPercentResponseInput is an input type that accepts FixedOrPercentResponseArgs and FixedOrPercentResponseOutput values.
+// You can construct a concrete instance of `FixedOrPercentResponseInput` via:
+//
+//          FixedOrPercentResponseArgs{...}
+type FixedOrPercentResponseInput interface {
+	pulumi.Input
+
+	ToFixedOrPercentResponseOutput() FixedOrPercentResponseOutput
+	ToFixedOrPercentResponseOutputWithContext(context.Context) FixedOrPercentResponseOutput
+}
+
+// Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value.
+type FixedOrPercentResponseArgs struct {
+	// Specifies a fixed value.
+	Fixed pulumi.IntInput `pulumi:"fixed"`
+	// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+	Percent pulumi.IntInput `pulumi:"percent"`
+}
+
+func (FixedOrPercentResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FixedOrPercentResponse)(nil)).Elem()
+}
+
+func (i FixedOrPercentResponseArgs) ToFixedOrPercentResponseOutput() FixedOrPercentResponseOutput {
+	return i.ToFixedOrPercentResponseOutputWithContext(context.Background())
+}
+
+func (i FixedOrPercentResponseArgs) ToFixedOrPercentResponseOutputWithContext(ctx context.Context) FixedOrPercentResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FixedOrPercentResponseOutput)
+}
+
+func (i FixedOrPercentResponseArgs) ToFixedOrPercentResponsePtrOutput() FixedOrPercentResponsePtrOutput {
+	return i.ToFixedOrPercentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i FixedOrPercentResponseArgs) ToFixedOrPercentResponsePtrOutputWithContext(ctx context.Context) FixedOrPercentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FixedOrPercentResponseOutput).ToFixedOrPercentResponsePtrOutputWithContext(ctx)
+}
+
+// FixedOrPercentResponsePtrInput is an input type that accepts FixedOrPercentResponseArgs, FixedOrPercentResponsePtr and FixedOrPercentResponsePtrOutput values.
+// You can construct a concrete instance of `FixedOrPercentResponsePtrInput` via:
+//
+//          FixedOrPercentResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type FixedOrPercentResponsePtrInput interface {
+	pulumi.Input
+
+	ToFixedOrPercentResponsePtrOutput() FixedOrPercentResponsePtrOutput
+	ToFixedOrPercentResponsePtrOutputWithContext(context.Context) FixedOrPercentResponsePtrOutput
+}
+
+type fixedOrPercentResponsePtrType FixedOrPercentResponseArgs
+
+func FixedOrPercentResponsePtr(v *FixedOrPercentResponseArgs) FixedOrPercentResponsePtrInput {
+	return (*fixedOrPercentResponsePtrType)(v)
+}
+
+func (*fixedOrPercentResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FixedOrPercentResponse)(nil)).Elem()
+}
+
+func (i *fixedOrPercentResponsePtrType) ToFixedOrPercentResponsePtrOutput() FixedOrPercentResponsePtrOutput {
+	return i.ToFixedOrPercentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *fixedOrPercentResponsePtrType) ToFixedOrPercentResponsePtrOutputWithContext(ctx context.Context) FixedOrPercentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FixedOrPercentResponsePtrOutput)
+}
+
+// Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value.
+type FixedOrPercentResponseOutput struct{ *pulumi.OutputState }
+
+func (FixedOrPercentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FixedOrPercentResponse)(nil)).Elem()
+}
+
+func (o FixedOrPercentResponseOutput) ToFixedOrPercentResponseOutput() FixedOrPercentResponseOutput {
+	return o
+}
+
+func (o FixedOrPercentResponseOutput) ToFixedOrPercentResponseOutputWithContext(ctx context.Context) FixedOrPercentResponseOutput {
+	return o
+}
+
+func (o FixedOrPercentResponseOutput) ToFixedOrPercentResponsePtrOutput() FixedOrPercentResponsePtrOutput {
+	return o.ToFixedOrPercentResponsePtrOutputWithContext(context.Background())
+}
+
+func (o FixedOrPercentResponseOutput) ToFixedOrPercentResponsePtrOutputWithContext(ctx context.Context) FixedOrPercentResponsePtrOutput {
+	return o.ApplyT(func(v FixedOrPercentResponse) *FixedOrPercentResponse {
+		return &v
+	}).(FixedOrPercentResponsePtrOutput)
+}
+
+// Specifies a fixed value.
+func (o FixedOrPercentResponseOutput) Fixed() pulumi.IntOutput {
+	return o.ApplyT(func(v FixedOrPercentResponse) int { return v.Fixed }).(pulumi.IntOutput)
+}
+
+// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+func (o FixedOrPercentResponseOutput) Percent() pulumi.IntOutput {
+	return o.ApplyT(func(v FixedOrPercentResponse) int { return v.Percent }).(pulumi.IntOutput)
+}
+
+type FixedOrPercentResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FixedOrPercentResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FixedOrPercentResponse)(nil)).Elem()
+}
+
+func (o FixedOrPercentResponsePtrOutput) ToFixedOrPercentResponsePtrOutput() FixedOrPercentResponsePtrOutput {
+	return o
+}
+
+func (o FixedOrPercentResponsePtrOutput) ToFixedOrPercentResponsePtrOutputWithContext(ctx context.Context) FixedOrPercentResponsePtrOutput {
+	return o
+}
+
+func (o FixedOrPercentResponsePtrOutput) Elem() FixedOrPercentResponseOutput {
+	return o.ApplyT(func(v *FixedOrPercentResponse) FixedOrPercentResponse { return *v }).(FixedOrPercentResponseOutput)
+}
+
+// Specifies a fixed value.
+func (o FixedOrPercentResponsePtrOutput) Fixed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FixedOrPercentResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Fixed
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+func (o FixedOrPercentResponsePtrOutput) Percent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FixedOrPercentResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Percent
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -1489,6 +2677,178 @@ func (o GcsObjectPtrOutput) Object() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Google Cloud Storage object representation.
+type GcsObjectResponse struct {
+	// Required. Bucket of the Google Cloud Storage object.
+	Bucket string `pulumi:"bucket"`
+	// Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+	GenerationNumber string `pulumi:"generationNumber"`
+	// Required. Name of the Google Cloud Storage object.
+	Object string `pulumi:"object"`
+}
+
+// GcsObjectResponseInput is an input type that accepts GcsObjectResponseArgs and GcsObjectResponseOutput values.
+// You can construct a concrete instance of `GcsObjectResponseInput` via:
+//
+//          GcsObjectResponseArgs{...}
+type GcsObjectResponseInput interface {
+	pulumi.Input
+
+	ToGcsObjectResponseOutput() GcsObjectResponseOutput
+	ToGcsObjectResponseOutputWithContext(context.Context) GcsObjectResponseOutput
+}
+
+// Google Cloud Storage object representation.
+type GcsObjectResponseArgs struct {
+	// Required. Bucket of the Google Cloud Storage object.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+	GenerationNumber pulumi.StringInput `pulumi:"generationNumber"`
+	// Required. Name of the Google Cloud Storage object.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (GcsObjectResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcsObjectResponse)(nil)).Elem()
+}
+
+func (i GcsObjectResponseArgs) ToGcsObjectResponseOutput() GcsObjectResponseOutput {
+	return i.ToGcsObjectResponseOutputWithContext(context.Background())
+}
+
+func (i GcsObjectResponseArgs) ToGcsObjectResponseOutputWithContext(ctx context.Context) GcsObjectResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcsObjectResponseOutput)
+}
+
+func (i GcsObjectResponseArgs) ToGcsObjectResponsePtrOutput() GcsObjectResponsePtrOutput {
+	return i.ToGcsObjectResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GcsObjectResponseArgs) ToGcsObjectResponsePtrOutputWithContext(ctx context.Context) GcsObjectResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcsObjectResponseOutput).ToGcsObjectResponsePtrOutputWithContext(ctx)
+}
+
+// GcsObjectResponsePtrInput is an input type that accepts GcsObjectResponseArgs, GcsObjectResponsePtr and GcsObjectResponsePtrOutput values.
+// You can construct a concrete instance of `GcsObjectResponsePtrInput` via:
+//
+//          GcsObjectResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GcsObjectResponsePtrInput interface {
+	pulumi.Input
+
+	ToGcsObjectResponsePtrOutput() GcsObjectResponsePtrOutput
+	ToGcsObjectResponsePtrOutputWithContext(context.Context) GcsObjectResponsePtrOutput
+}
+
+type gcsObjectResponsePtrType GcsObjectResponseArgs
+
+func GcsObjectResponsePtr(v *GcsObjectResponseArgs) GcsObjectResponsePtrInput {
+	return (*gcsObjectResponsePtrType)(v)
+}
+
+func (*gcsObjectResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcsObjectResponse)(nil)).Elem()
+}
+
+func (i *gcsObjectResponsePtrType) ToGcsObjectResponsePtrOutput() GcsObjectResponsePtrOutput {
+	return i.ToGcsObjectResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gcsObjectResponsePtrType) ToGcsObjectResponsePtrOutputWithContext(ctx context.Context) GcsObjectResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcsObjectResponsePtrOutput)
+}
+
+// Google Cloud Storage object representation.
+type GcsObjectResponseOutput struct{ *pulumi.OutputState }
+
+func (GcsObjectResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcsObjectResponse)(nil)).Elem()
+}
+
+func (o GcsObjectResponseOutput) ToGcsObjectResponseOutput() GcsObjectResponseOutput {
+	return o
+}
+
+func (o GcsObjectResponseOutput) ToGcsObjectResponseOutputWithContext(ctx context.Context) GcsObjectResponseOutput {
+	return o
+}
+
+func (o GcsObjectResponseOutput) ToGcsObjectResponsePtrOutput() GcsObjectResponsePtrOutput {
+	return o.ToGcsObjectResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GcsObjectResponseOutput) ToGcsObjectResponsePtrOutputWithContext(ctx context.Context) GcsObjectResponsePtrOutput {
+	return o.ApplyT(func(v GcsObjectResponse) *GcsObjectResponse {
+		return &v
+	}).(GcsObjectResponsePtrOutput)
+}
+
+// Required. Bucket of the Google Cloud Storage object.
+func (o GcsObjectResponseOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GcsObjectResponse) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+func (o GcsObjectResponseOutput) GenerationNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GcsObjectResponse) string { return v.GenerationNumber }).(pulumi.StringOutput)
+}
+
+// Required. Name of the Google Cloud Storage object.
+func (o GcsObjectResponseOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v GcsObjectResponse) string { return v.Object }).(pulumi.StringOutput)
+}
+
+type GcsObjectResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GcsObjectResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcsObjectResponse)(nil)).Elem()
+}
+
+func (o GcsObjectResponsePtrOutput) ToGcsObjectResponsePtrOutput() GcsObjectResponsePtrOutput {
+	return o
+}
+
+func (o GcsObjectResponsePtrOutput) ToGcsObjectResponsePtrOutputWithContext(ctx context.Context) GcsObjectResponsePtrOutput {
+	return o
+}
+
+func (o GcsObjectResponsePtrOutput) Elem() GcsObjectResponseOutput {
+	return o.ApplyT(func(v *GcsObjectResponse) GcsObjectResponse { return *v }).(GcsObjectResponseOutput)
+}
+
+// Required. Bucket of the Google Cloud Storage object.
+func (o GcsObjectResponsePtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcsObjectResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+func (o GcsObjectResponsePtrOutput) GenerationNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcsObjectResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GenerationNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Name of the Google Cloud Storage object.
+func (o GcsObjectResponsePtrOutput) Object() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcsObjectResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Object
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents a Goo package repository. These is added to a repo file that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
 type GooRepository struct {
 	// Required. The name of the repository.
@@ -1642,6 +3002,70 @@ func (o GooRepositoryPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a Goo package repository. These is added to a repo file that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
+type GooRepositoryResponse struct {
+	// Required. The name of the repository.
+	Name string `pulumi:"name"`
+	// Required. The url of the repository.
+	Url string `pulumi:"url"`
+}
+
+// GooRepositoryResponseInput is an input type that accepts GooRepositoryResponseArgs and GooRepositoryResponseOutput values.
+// You can construct a concrete instance of `GooRepositoryResponseInput` via:
+//
+//          GooRepositoryResponseArgs{...}
+type GooRepositoryResponseInput interface {
+	pulumi.Input
+
+	ToGooRepositoryResponseOutput() GooRepositoryResponseOutput
+	ToGooRepositoryResponseOutputWithContext(context.Context) GooRepositoryResponseOutput
+}
+
+// Represents a Goo package repository. These is added to a repo file that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
+type GooRepositoryResponseArgs struct {
+	// Required. The name of the repository.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Required. The url of the repository.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GooRepositoryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooRepositoryResponse)(nil)).Elem()
+}
+
+func (i GooRepositoryResponseArgs) ToGooRepositoryResponseOutput() GooRepositoryResponseOutput {
+	return i.ToGooRepositoryResponseOutputWithContext(context.Background())
+}
+
+func (i GooRepositoryResponseArgs) ToGooRepositoryResponseOutputWithContext(ctx context.Context) GooRepositoryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooRepositoryResponseOutput)
+}
+
+// Represents a Goo package repository. These is added to a repo file that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
+type GooRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (GooRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooRepositoryResponse)(nil)).Elem()
+}
+
+func (o GooRepositoryResponseOutput) ToGooRepositoryResponseOutput() GooRepositoryResponseOutput {
+	return o
+}
+
+func (o GooRepositoryResponseOutput) ToGooRepositoryResponseOutputWithContext(ctx context.Context) GooRepositoryResponseOutput {
+	return o
+}
+
+// Required. The name of the repository.
+func (o GooRepositoryResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GooRepositoryResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Required. The url of the repository.
+func (o GooRepositoryResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GooRepositoryResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
 // Googet patching is performed by running `googet update`.
 type GooSettings struct {
 }
@@ -1755,6 +3179,121 @@ func (o GooSettingsPtrOutput) ToGooSettingsPtrOutputWithContext(ctx context.Cont
 
 func (o GooSettingsPtrOutput) Elem() GooSettingsOutput {
 	return o.ApplyT(func(v *GooSettings) GooSettings { return *v }).(GooSettingsOutput)
+}
+
+// Googet patching is performed by running `googet update`.
+type GooSettingsResponse struct {
+}
+
+// GooSettingsResponseInput is an input type that accepts GooSettingsResponseArgs and GooSettingsResponseOutput values.
+// You can construct a concrete instance of `GooSettingsResponseInput` via:
+//
+//          GooSettingsResponseArgs{...}
+type GooSettingsResponseInput interface {
+	pulumi.Input
+
+	ToGooSettingsResponseOutput() GooSettingsResponseOutput
+	ToGooSettingsResponseOutputWithContext(context.Context) GooSettingsResponseOutput
+}
+
+// Googet patching is performed by running `googet update`.
+type GooSettingsResponseArgs struct {
+}
+
+func (GooSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooSettingsResponse)(nil)).Elem()
+}
+
+func (i GooSettingsResponseArgs) ToGooSettingsResponseOutput() GooSettingsResponseOutput {
+	return i.ToGooSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i GooSettingsResponseArgs) ToGooSettingsResponseOutputWithContext(ctx context.Context) GooSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooSettingsResponseOutput)
+}
+
+func (i GooSettingsResponseArgs) ToGooSettingsResponsePtrOutput() GooSettingsResponsePtrOutput {
+	return i.ToGooSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GooSettingsResponseArgs) ToGooSettingsResponsePtrOutputWithContext(ctx context.Context) GooSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooSettingsResponseOutput).ToGooSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// GooSettingsResponsePtrInput is an input type that accepts GooSettingsResponseArgs, GooSettingsResponsePtr and GooSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `GooSettingsResponsePtrInput` via:
+//
+//          GooSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GooSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToGooSettingsResponsePtrOutput() GooSettingsResponsePtrOutput
+	ToGooSettingsResponsePtrOutputWithContext(context.Context) GooSettingsResponsePtrOutput
+}
+
+type gooSettingsResponsePtrType GooSettingsResponseArgs
+
+func GooSettingsResponsePtr(v *GooSettingsResponseArgs) GooSettingsResponsePtrInput {
+	return (*gooSettingsResponsePtrType)(v)
+}
+
+func (*gooSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooSettingsResponse)(nil)).Elem()
+}
+
+func (i *gooSettingsResponsePtrType) ToGooSettingsResponsePtrOutput() GooSettingsResponsePtrOutput {
+	return i.ToGooSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gooSettingsResponsePtrType) ToGooSettingsResponsePtrOutputWithContext(ctx context.Context) GooSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooSettingsResponsePtrOutput)
+}
+
+// Googet patching is performed by running `googet update`.
+type GooSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (GooSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooSettingsResponse)(nil)).Elem()
+}
+
+func (o GooSettingsResponseOutput) ToGooSettingsResponseOutput() GooSettingsResponseOutput {
+	return o
+}
+
+func (o GooSettingsResponseOutput) ToGooSettingsResponseOutputWithContext(ctx context.Context) GooSettingsResponseOutput {
+	return o
+}
+
+func (o GooSettingsResponseOutput) ToGooSettingsResponsePtrOutput() GooSettingsResponsePtrOutput {
+	return o.ToGooSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GooSettingsResponseOutput) ToGooSettingsResponsePtrOutputWithContext(ctx context.Context) GooSettingsResponsePtrOutput {
+	return o.ApplyT(func(v GooSettingsResponse) *GooSettingsResponse {
+		return &v
+	}).(GooSettingsResponsePtrOutput)
+}
+
+type GooSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GooSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooSettingsResponse)(nil)).Elem()
+}
+
+func (o GooSettingsResponsePtrOutput) ToGooSettingsResponsePtrOutput() GooSettingsResponsePtrOutput {
+	return o
+}
+
+func (o GooSettingsResponsePtrOutput) ToGooSettingsResponsePtrOutputWithContext(ctx context.Context) GooSettingsResponsePtrOutput {
+	return o
+}
+
+func (o GooSettingsResponsePtrOutput) Elem() GooSettingsResponseOutput {
+	return o.ApplyT(func(v *GooSettingsResponse) GooSettingsResponse { return *v }).(GooSettingsResponseOutput)
 }
 
 // Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
@@ -1910,6 +3449,159 @@ func (o MonthlySchedulePtrOutput) WeekDayOfMonth() WeekDayOfMonthPtrOutput {
 	}).(WeekDayOfMonthPtrOutput)
 }
 
+// Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
+type MonthlyScheduleResponse struct {
+	// Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+	MonthDay int `pulumi:"monthDay"`
+	// Required. Week day in a month.
+	WeekDayOfMonth WeekDayOfMonthResponse `pulumi:"weekDayOfMonth"`
+}
+
+// MonthlyScheduleResponseInput is an input type that accepts MonthlyScheduleResponseArgs and MonthlyScheduleResponseOutput values.
+// You can construct a concrete instance of `MonthlyScheduleResponseInput` via:
+//
+//          MonthlyScheduleResponseArgs{...}
+type MonthlyScheduleResponseInput interface {
+	pulumi.Input
+
+	ToMonthlyScheduleResponseOutput() MonthlyScheduleResponseOutput
+	ToMonthlyScheduleResponseOutputWithContext(context.Context) MonthlyScheduleResponseOutput
+}
+
+// Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
+type MonthlyScheduleResponseArgs struct {
+	// Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+	MonthDay pulumi.IntInput `pulumi:"monthDay"`
+	// Required. Week day in a month.
+	WeekDayOfMonth WeekDayOfMonthResponseInput `pulumi:"weekDayOfMonth"`
+}
+
+func (MonthlyScheduleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonthlyScheduleResponse)(nil)).Elem()
+}
+
+func (i MonthlyScheduleResponseArgs) ToMonthlyScheduleResponseOutput() MonthlyScheduleResponseOutput {
+	return i.ToMonthlyScheduleResponseOutputWithContext(context.Background())
+}
+
+func (i MonthlyScheduleResponseArgs) ToMonthlyScheduleResponseOutputWithContext(ctx context.Context) MonthlyScheduleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonthlyScheduleResponseOutput)
+}
+
+func (i MonthlyScheduleResponseArgs) ToMonthlyScheduleResponsePtrOutput() MonthlyScheduleResponsePtrOutput {
+	return i.ToMonthlyScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MonthlyScheduleResponseArgs) ToMonthlyScheduleResponsePtrOutputWithContext(ctx context.Context) MonthlyScheduleResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonthlyScheduleResponseOutput).ToMonthlyScheduleResponsePtrOutputWithContext(ctx)
+}
+
+// MonthlyScheduleResponsePtrInput is an input type that accepts MonthlyScheduleResponseArgs, MonthlyScheduleResponsePtr and MonthlyScheduleResponsePtrOutput values.
+// You can construct a concrete instance of `MonthlyScheduleResponsePtrInput` via:
+//
+//          MonthlyScheduleResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MonthlyScheduleResponsePtrInput interface {
+	pulumi.Input
+
+	ToMonthlyScheduleResponsePtrOutput() MonthlyScheduleResponsePtrOutput
+	ToMonthlyScheduleResponsePtrOutputWithContext(context.Context) MonthlyScheduleResponsePtrOutput
+}
+
+type monthlyScheduleResponsePtrType MonthlyScheduleResponseArgs
+
+func MonthlyScheduleResponsePtr(v *MonthlyScheduleResponseArgs) MonthlyScheduleResponsePtrInput {
+	return (*monthlyScheduleResponsePtrType)(v)
+}
+
+func (*monthlyScheduleResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonthlyScheduleResponse)(nil)).Elem()
+}
+
+func (i *monthlyScheduleResponsePtrType) ToMonthlyScheduleResponsePtrOutput() MonthlyScheduleResponsePtrOutput {
+	return i.ToMonthlyScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *monthlyScheduleResponsePtrType) ToMonthlyScheduleResponsePtrOutputWithContext(ctx context.Context) MonthlyScheduleResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonthlyScheduleResponsePtrOutput)
+}
+
+// Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
+type MonthlyScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (MonthlyScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonthlyScheduleResponse)(nil)).Elem()
+}
+
+func (o MonthlyScheduleResponseOutput) ToMonthlyScheduleResponseOutput() MonthlyScheduleResponseOutput {
+	return o
+}
+
+func (o MonthlyScheduleResponseOutput) ToMonthlyScheduleResponseOutputWithContext(ctx context.Context) MonthlyScheduleResponseOutput {
+	return o
+}
+
+func (o MonthlyScheduleResponseOutput) ToMonthlyScheduleResponsePtrOutput() MonthlyScheduleResponsePtrOutput {
+	return o.ToMonthlyScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MonthlyScheduleResponseOutput) ToMonthlyScheduleResponsePtrOutputWithContext(ctx context.Context) MonthlyScheduleResponsePtrOutput {
+	return o.ApplyT(func(v MonthlyScheduleResponse) *MonthlyScheduleResponse {
+		return &v
+	}).(MonthlyScheduleResponsePtrOutput)
+}
+
+// Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+func (o MonthlyScheduleResponseOutput) MonthDay() pulumi.IntOutput {
+	return o.ApplyT(func(v MonthlyScheduleResponse) int { return v.MonthDay }).(pulumi.IntOutput)
+}
+
+// Required. Week day in a month.
+func (o MonthlyScheduleResponseOutput) WeekDayOfMonth() WeekDayOfMonthResponseOutput {
+	return o.ApplyT(func(v MonthlyScheduleResponse) WeekDayOfMonthResponse { return v.WeekDayOfMonth }).(WeekDayOfMonthResponseOutput)
+}
+
+type MonthlyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MonthlyScheduleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonthlyScheduleResponse)(nil)).Elem()
+}
+
+func (o MonthlyScheduleResponsePtrOutput) ToMonthlyScheduleResponsePtrOutput() MonthlyScheduleResponsePtrOutput {
+	return o
+}
+
+func (o MonthlyScheduleResponsePtrOutput) ToMonthlyScheduleResponsePtrOutputWithContext(ctx context.Context) MonthlyScheduleResponsePtrOutput {
+	return o
+}
+
+func (o MonthlyScheduleResponsePtrOutput) Elem() MonthlyScheduleResponseOutput {
+	return o.ApplyT(func(v *MonthlyScheduleResponse) MonthlyScheduleResponse { return *v }).(MonthlyScheduleResponseOutput)
+}
+
+// Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+func (o MonthlyScheduleResponsePtrOutput) MonthDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MonthlyScheduleResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MonthDay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Required. Week day in a month.
+func (o MonthlyScheduleResponsePtrOutput) WeekDayOfMonth() WeekDayOfMonthResponsePtrOutput {
+	return o.ApplyT(func(v *MonthlyScheduleResponse) *WeekDayOfMonthResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.WeekDayOfMonth
+	}).(WeekDayOfMonthResponsePtrOutput)
+}
+
 // Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 type OneTimeSchedule struct {
 	// Required. The desired patch job execution time.
@@ -2041,6 +3733,140 @@ func (o OneTimeSchedulePtrOutput) ExecuteTime() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ExecuteTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+type OneTimeScheduleResponse struct {
+	// Required. The desired patch job execution time.
+	ExecuteTime string `pulumi:"executeTime"`
+}
+
+// OneTimeScheduleResponseInput is an input type that accepts OneTimeScheduleResponseArgs and OneTimeScheduleResponseOutput values.
+// You can construct a concrete instance of `OneTimeScheduleResponseInput` via:
+//
+//          OneTimeScheduleResponseArgs{...}
+type OneTimeScheduleResponseInput interface {
+	pulumi.Input
+
+	ToOneTimeScheduleResponseOutput() OneTimeScheduleResponseOutput
+	ToOneTimeScheduleResponseOutputWithContext(context.Context) OneTimeScheduleResponseOutput
+}
+
+// Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+type OneTimeScheduleResponseArgs struct {
+	// Required. The desired patch job execution time.
+	ExecuteTime pulumi.StringInput `pulumi:"executeTime"`
+}
+
+func (OneTimeScheduleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OneTimeScheduleResponse)(nil)).Elem()
+}
+
+func (i OneTimeScheduleResponseArgs) ToOneTimeScheduleResponseOutput() OneTimeScheduleResponseOutput {
+	return i.ToOneTimeScheduleResponseOutputWithContext(context.Background())
+}
+
+func (i OneTimeScheduleResponseArgs) ToOneTimeScheduleResponseOutputWithContext(ctx context.Context) OneTimeScheduleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OneTimeScheduleResponseOutput)
+}
+
+func (i OneTimeScheduleResponseArgs) ToOneTimeScheduleResponsePtrOutput() OneTimeScheduleResponsePtrOutput {
+	return i.ToOneTimeScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (i OneTimeScheduleResponseArgs) ToOneTimeScheduleResponsePtrOutputWithContext(ctx context.Context) OneTimeScheduleResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OneTimeScheduleResponseOutput).ToOneTimeScheduleResponsePtrOutputWithContext(ctx)
+}
+
+// OneTimeScheduleResponsePtrInput is an input type that accepts OneTimeScheduleResponseArgs, OneTimeScheduleResponsePtr and OneTimeScheduleResponsePtrOutput values.
+// You can construct a concrete instance of `OneTimeScheduleResponsePtrInput` via:
+//
+//          OneTimeScheduleResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type OneTimeScheduleResponsePtrInput interface {
+	pulumi.Input
+
+	ToOneTimeScheduleResponsePtrOutput() OneTimeScheduleResponsePtrOutput
+	ToOneTimeScheduleResponsePtrOutputWithContext(context.Context) OneTimeScheduleResponsePtrOutput
+}
+
+type oneTimeScheduleResponsePtrType OneTimeScheduleResponseArgs
+
+func OneTimeScheduleResponsePtr(v *OneTimeScheduleResponseArgs) OneTimeScheduleResponsePtrInput {
+	return (*oneTimeScheduleResponsePtrType)(v)
+}
+
+func (*oneTimeScheduleResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OneTimeScheduleResponse)(nil)).Elem()
+}
+
+func (i *oneTimeScheduleResponsePtrType) ToOneTimeScheduleResponsePtrOutput() OneTimeScheduleResponsePtrOutput {
+	return i.ToOneTimeScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *oneTimeScheduleResponsePtrType) ToOneTimeScheduleResponsePtrOutputWithContext(ctx context.Context) OneTimeScheduleResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OneTimeScheduleResponsePtrOutput)
+}
+
+// Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+type OneTimeScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (OneTimeScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OneTimeScheduleResponse)(nil)).Elem()
+}
+
+func (o OneTimeScheduleResponseOutput) ToOneTimeScheduleResponseOutput() OneTimeScheduleResponseOutput {
+	return o
+}
+
+func (o OneTimeScheduleResponseOutput) ToOneTimeScheduleResponseOutputWithContext(ctx context.Context) OneTimeScheduleResponseOutput {
+	return o
+}
+
+func (o OneTimeScheduleResponseOutput) ToOneTimeScheduleResponsePtrOutput() OneTimeScheduleResponsePtrOutput {
+	return o.ToOneTimeScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (o OneTimeScheduleResponseOutput) ToOneTimeScheduleResponsePtrOutputWithContext(ctx context.Context) OneTimeScheduleResponsePtrOutput {
+	return o.ApplyT(func(v OneTimeScheduleResponse) *OneTimeScheduleResponse {
+		return &v
+	}).(OneTimeScheduleResponsePtrOutput)
+}
+
+// Required. The desired patch job execution time.
+func (o OneTimeScheduleResponseOutput) ExecuteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v OneTimeScheduleResponse) string { return v.ExecuteTime }).(pulumi.StringOutput)
+}
+
+type OneTimeScheduleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OneTimeScheduleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OneTimeScheduleResponse)(nil)).Elem()
+}
+
+func (o OneTimeScheduleResponsePtrOutput) ToOneTimeScheduleResponsePtrOutput() OneTimeScheduleResponsePtrOutput {
+	return o
+}
+
+func (o OneTimeScheduleResponsePtrOutput) ToOneTimeScheduleResponsePtrOutputWithContext(ctx context.Context) OneTimeScheduleResponsePtrOutput {
+	return o
+}
+
+func (o OneTimeScheduleResponsePtrOutput) Elem() OneTimeScheduleResponseOutput {
+	return o.ApplyT(func(v *OneTimeScheduleResponse) OneTimeScheduleResponse { return *v }).(OneTimeScheduleResponseOutput)
+}
+
+// Required. The desired patch job execution time.
+func (o OneTimeScheduleResponsePtrOutput) ExecuteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OneTimeScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExecuteTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2287,6 +4113,251 @@ func (o PackageRepositoryArrayOutput) Index(i pulumi.IntInput) PackageRepository
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PackageRepository {
 		return vs[0].([]PackageRepository)[vs[1].(int)]
 	}).(PackageRepositoryOutput)
+}
+
+// A package repository.
+type PackageRepositoryResponse struct {
+	// An Apt Repository.
+	Apt AptRepositoryResponse `pulumi:"apt"`
+	// A Goo Repository.
+	Goo GooRepositoryResponse `pulumi:"goo"`
+	// A Yum Repository.
+	Yum YumRepositoryResponse `pulumi:"yum"`
+	// A Zypper Repository.
+	Zypper ZypperRepositoryResponse `pulumi:"zypper"`
+}
+
+// PackageRepositoryResponseInput is an input type that accepts PackageRepositoryResponseArgs and PackageRepositoryResponseOutput values.
+// You can construct a concrete instance of `PackageRepositoryResponseInput` via:
+//
+//          PackageRepositoryResponseArgs{...}
+type PackageRepositoryResponseInput interface {
+	pulumi.Input
+
+	ToPackageRepositoryResponseOutput() PackageRepositoryResponseOutput
+	ToPackageRepositoryResponseOutputWithContext(context.Context) PackageRepositoryResponseOutput
+}
+
+// A package repository.
+type PackageRepositoryResponseArgs struct {
+	// An Apt Repository.
+	Apt AptRepositoryResponseInput `pulumi:"apt"`
+	// A Goo Repository.
+	Goo GooRepositoryResponseInput `pulumi:"goo"`
+	// A Yum Repository.
+	Yum YumRepositoryResponseInput `pulumi:"yum"`
+	// A Zypper Repository.
+	Zypper ZypperRepositoryResponseInput `pulumi:"zypper"`
+}
+
+func (PackageRepositoryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageRepositoryResponse)(nil)).Elem()
+}
+
+func (i PackageRepositoryResponseArgs) ToPackageRepositoryResponseOutput() PackageRepositoryResponseOutput {
+	return i.ToPackageRepositoryResponseOutputWithContext(context.Background())
+}
+
+func (i PackageRepositoryResponseArgs) ToPackageRepositoryResponseOutputWithContext(ctx context.Context) PackageRepositoryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageRepositoryResponseOutput)
+}
+
+// PackageRepositoryResponseArrayInput is an input type that accepts PackageRepositoryResponseArray and PackageRepositoryResponseArrayOutput values.
+// You can construct a concrete instance of `PackageRepositoryResponseArrayInput` via:
+//
+//          PackageRepositoryResponseArray{ PackageRepositoryResponseArgs{...} }
+type PackageRepositoryResponseArrayInput interface {
+	pulumi.Input
+
+	ToPackageRepositoryResponseArrayOutput() PackageRepositoryResponseArrayOutput
+	ToPackageRepositoryResponseArrayOutputWithContext(context.Context) PackageRepositoryResponseArrayOutput
+}
+
+type PackageRepositoryResponseArray []PackageRepositoryResponseInput
+
+func (PackageRepositoryResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PackageRepositoryResponse)(nil)).Elem()
+}
+
+func (i PackageRepositoryResponseArray) ToPackageRepositoryResponseArrayOutput() PackageRepositoryResponseArrayOutput {
+	return i.ToPackageRepositoryResponseArrayOutputWithContext(context.Background())
+}
+
+func (i PackageRepositoryResponseArray) ToPackageRepositoryResponseArrayOutputWithContext(ctx context.Context) PackageRepositoryResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageRepositoryResponseArrayOutput)
+}
+
+// A package repository.
+type PackageRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (PackageRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageRepositoryResponse)(nil)).Elem()
+}
+
+func (o PackageRepositoryResponseOutput) ToPackageRepositoryResponseOutput() PackageRepositoryResponseOutput {
+	return o
+}
+
+func (o PackageRepositoryResponseOutput) ToPackageRepositoryResponseOutputWithContext(ctx context.Context) PackageRepositoryResponseOutput {
+	return o
+}
+
+// An Apt Repository.
+func (o PackageRepositoryResponseOutput) Apt() AptRepositoryResponseOutput {
+	return o.ApplyT(func(v PackageRepositoryResponse) AptRepositoryResponse { return v.Apt }).(AptRepositoryResponseOutput)
+}
+
+// A Goo Repository.
+func (o PackageRepositoryResponseOutput) Goo() GooRepositoryResponseOutput {
+	return o.ApplyT(func(v PackageRepositoryResponse) GooRepositoryResponse { return v.Goo }).(GooRepositoryResponseOutput)
+}
+
+// A Yum Repository.
+func (o PackageRepositoryResponseOutput) Yum() YumRepositoryResponseOutput {
+	return o.ApplyT(func(v PackageRepositoryResponse) YumRepositoryResponse { return v.Yum }).(YumRepositoryResponseOutput)
+}
+
+// A Zypper Repository.
+func (o PackageRepositoryResponseOutput) Zypper() ZypperRepositoryResponseOutput {
+	return o.ApplyT(func(v PackageRepositoryResponse) ZypperRepositoryResponse { return v.Zypper }).(ZypperRepositoryResponseOutput)
+}
+
+type PackageRepositoryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PackageRepositoryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PackageRepositoryResponse)(nil)).Elem()
+}
+
+func (o PackageRepositoryResponseArrayOutput) ToPackageRepositoryResponseArrayOutput() PackageRepositoryResponseArrayOutput {
+	return o
+}
+
+func (o PackageRepositoryResponseArrayOutput) ToPackageRepositoryResponseArrayOutputWithContext(ctx context.Context) PackageRepositoryResponseArrayOutput {
+	return o
+}
+
+func (o PackageRepositoryResponseArrayOutput) Index(i pulumi.IntInput) PackageRepositoryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PackageRepositoryResponse {
+		return vs[0].([]PackageRepositoryResponse)[vs[1].(int)]
+	}).(PackageRepositoryResponseOutput)
+}
+
+// Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3`
+type PackageResponse struct {
+	// The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
+	DesiredState string `pulumi:"desiredState"`
+	// Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
+	Manager string `pulumi:"manager"`
+	// Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+	Name string `pulumi:"name"`
+}
+
+// PackageResponseInput is an input type that accepts PackageResponseArgs and PackageResponseOutput values.
+// You can construct a concrete instance of `PackageResponseInput` via:
+//
+//          PackageResponseArgs{...}
+type PackageResponseInput interface {
+	pulumi.Input
+
+	ToPackageResponseOutput() PackageResponseOutput
+	ToPackageResponseOutputWithContext(context.Context) PackageResponseOutput
+}
+
+// Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3`
+type PackageResponseArgs struct {
+	// The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
+	DesiredState pulumi.StringInput `pulumi:"desiredState"`
+	// Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
+	Manager pulumi.StringInput `pulumi:"manager"`
+	// Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (PackageResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageResponse)(nil)).Elem()
+}
+
+func (i PackageResponseArgs) ToPackageResponseOutput() PackageResponseOutput {
+	return i.ToPackageResponseOutputWithContext(context.Background())
+}
+
+func (i PackageResponseArgs) ToPackageResponseOutputWithContext(ctx context.Context) PackageResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageResponseOutput)
+}
+
+// PackageResponseArrayInput is an input type that accepts PackageResponseArray and PackageResponseArrayOutput values.
+// You can construct a concrete instance of `PackageResponseArrayInput` via:
+//
+//          PackageResponseArray{ PackageResponseArgs{...} }
+type PackageResponseArrayInput interface {
+	pulumi.Input
+
+	ToPackageResponseArrayOutput() PackageResponseArrayOutput
+	ToPackageResponseArrayOutputWithContext(context.Context) PackageResponseArrayOutput
+}
+
+type PackageResponseArray []PackageResponseInput
+
+func (PackageResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PackageResponse)(nil)).Elem()
+}
+
+func (i PackageResponseArray) ToPackageResponseArrayOutput() PackageResponseArrayOutput {
+	return i.ToPackageResponseArrayOutputWithContext(context.Background())
+}
+
+func (i PackageResponseArray) ToPackageResponseArrayOutputWithContext(ctx context.Context) PackageResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PackageResponseArrayOutput)
+}
+
+// Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3`
+type PackageResponseOutput struct{ *pulumi.OutputState }
+
+func (PackageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageResponse)(nil)).Elem()
+}
+
+func (o PackageResponseOutput) ToPackageResponseOutput() PackageResponseOutput {
+	return o
+}
+
+func (o PackageResponseOutput) ToPackageResponseOutputWithContext(ctx context.Context) PackageResponseOutput {
+	return o
+}
+
+// The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
+func (o PackageResponseOutput) DesiredState() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageResponse) string { return v.DesiredState }).(pulumi.StringOutput)
+}
+
+// Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
+func (o PackageResponseOutput) Manager() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageResponse) string { return v.Manager }).(pulumi.StringOutput)
+}
+
+// Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+func (o PackageResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type PackageResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PackageResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PackageResponse)(nil)).Elem()
+}
+
+func (o PackageResponseArrayOutput) ToPackageResponseArrayOutput() PackageResponseArrayOutput {
+	return o
+}
+
+func (o PackageResponseArrayOutput) ToPackageResponseArrayOutputWithContext(ctx context.Context) PackageResponseArrayOutput {
+	return o
+}
+
+func (o PackageResponseArrayOutput) Index(i pulumi.IntInput) PackageResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PackageResponse {
+		return vs[0].([]PackageResponse)[vs[1].(int)]
+	}).(PackageResponseOutput)
 }
 
 // Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
@@ -2554,6 +4625,273 @@ func (o PatchConfigPtrOutput) Zypper() ZypperSettingsPtrOutput {
 		}
 		return v.Zypper
 	}).(ZypperSettingsPtrOutput)
+}
+
+// Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
+type PatchConfigResponse struct {
+	// Apt update settings. Use this setting to override the default `apt` patch rules.
+	Apt AptSettingsResponse `pulumi:"apt"`
+	// Goo update settings. Use this setting to override the default `goo` patch rules.
+	Goo GooSettingsResponse `pulumi:"goo"`
+	// The `ExecStep` to run after the patch update.
+	PostStep ExecStepResponse `pulumi:"postStep"`
+	// The `ExecStep` to run before the patch update.
+	PreStep ExecStepResponse `pulumi:"preStep"`
+	// Post-patch reboot settings.
+	RebootConfig string `pulumi:"rebootConfig"`
+	// Windows update settings. Use this override the default windows patch rules.
+	WindowsUpdate WindowsUpdateSettingsResponse `pulumi:"windowsUpdate"`
+	// Yum update settings. Use this setting to override the default `yum` patch rules.
+	Yum YumSettingsResponse `pulumi:"yum"`
+	// Zypper update settings. Use this setting to override the default `zypper` patch rules.
+	Zypper ZypperSettingsResponse `pulumi:"zypper"`
+}
+
+// PatchConfigResponseInput is an input type that accepts PatchConfigResponseArgs and PatchConfigResponseOutput values.
+// You can construct a concrete instance of `PatchConfigResponseInput` via:
+//
+//          PatchConfigResponseArgs{...}
+type PatchConfigResponseInput interface {
+	pulumi.Input
+
+	ToPatchConfigResponseOutput() PatchConfigResponseOutput
+	ToPatchConfigResponseOutputWithContext(context.Context) PatchConfigResponseOutput
+}
+
+// Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
+type PatchConfigResponseArgs struct {
+	// Apt update settings. Use this setting to override the default `apt` patch rules.
+	Apt AptSettingsResponseInput `pulumi:"apt"`
+	// Goo update settings. Use this setting to override the default `goo` patch rules.
+	Goo GooSettingsResponseInput `pulumi:"goo"`
+	// The `ExecStep` to run after the patch update.
+	PostStep ExecStepResponseInput `pulumi:"postStep"`
+	// The `ExecStep` to run before the patch update.
+	PreStep ExecStepResponseInput `pulumi:"preStep"`
+	// Post-patch reboot settings.
+	RebootConfig pulumi.StringInput `pulumi:"rebootConfig"`
+	// Windows update settings. Use this override the default windows patch rules.
+	WindowsUpdate WindowsUpdateSettingsResponseInput `pulumi:"windowsUpdate"`
+	// Yum update settings. Use this setting to override the default `yum` patch rules.
+	Yum YumSettingsResponseInput `pulumi:"yum"`
+	// Zypper update settings. Use this setting to override the default `zypper` patch rules.
+	Zypper ZypperSettingsResponseInput `pulumi:"zypper"`
+}
+
+func (PatchConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchConfigResponse)(nil)).Elem()
+}
+
+func (i PatchConfigResponseArgs) ToPatchConfigResponseOutput() PatchConfigResponseOutput {
+	return i.ToPatchConfigResponseOutputWithContext(context.Background())
+}
+
+func (i PatchConfigResponseArgs) ToPatchConfigResponseOutputWithContext(ctx context.Context) PatchConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchConfigResponseOutput)
+}
+
+func (i PatchConfigResponseArgs) ToPatchConfigResponsePtrOutput() PatchConfigResponsePtrOutput {
+	return i.ToPatchConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PatchConfigResponseArgs) ToPatchConfigResponsePtrOutputWithContext(ctx context.Context) PatchConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchConfigResponseOutput).ToPatchConfigResponsePtrOutputWithContext(ctx)
+}
+
+// PatchConfigResponsePtrInput is an input type that accepts PatchConfigResponseArgs, PatchConfigResponsePtr and PatchConfigResponsePtrOutput values.
+// You can construct a concrete instance of `PatchConfigResponsePtrInput` via:
+//
+//          PatchConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PatchConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToPatchConfigResponsePtrOutput() PatchConfigResponsePtrOutput
+	ToPatchConfigResponsePtrOutputWithContext(context.Context) PatchConfigResponsePtrOutput
+}
+
+type patchConfigResponsePtrType PatchConfigResponseArgs
+
+func PatchConfigResponsePtr(v *PatchConfigResponseArgs) PatchConfigResponsePtrInput {
+	return (*patchConfigResponsePtrType)(v)
+}
+
+func (*patchConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PatchConfigResponse)(nil)).Elem()
+}
+
+func (i *patchConfigResponsePtrType) ToPatchConfigResponsePtrOutput() PatchConfigResponsePtrOutput {
+	return i.ToPatchConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *patchConfigResponsePtrType) ToPatchConfigResponsePtrOutputWithContext(ctx context.Context) PatchConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchConfigResponsePtrOutput)
+}
+
+// Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
+type PatchConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PatchConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchConfigResponse)(nil)).Elem()
+}
+
+func (o PatchConfigResponseOutput) ToPatchConfigResponseOutput() PatchConfigResponseOutput {
+	return o
+}
+
+func (o PatchConfigResponseOutput) ToPatchConfigResponseOutputWithContext(ctx context.Context) PatchConfigResponseOutput {
+	return o
+}
+
+func (o PatchConfigResponseOutput) ToPatchConfigResponsePtrOutput() PatchConfigResponsePtrOutput {
+	return o.ToPatchConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PatchConfigResponseOutput) ToPatchConfigResponsePtrOutputWithContext(ctx context.Context) PatchConfigResponsePtrOutput {
+	return o.ApplyT(func(v PatchConfigResponse) *PatchConfigResponse {
+		return &v
+	}).(PatchConfigResponsePtrOutput)
+}
+
+// Apt update settings. Use this setting to override the default `apt` patch rules.
+func (o PatchConfigResponseOutput) Apt() AptSettingsResponseOutput {
+	return o.ApplyT(func(v PatchConfigResponse) AptSettingsResponse { return v.Apt }).(AptSettingsResponseOutput)
+}
+
+// Goo update settings. Use this setting to override the default `goo` patch rules.
+func (o PatchConfigResponseOutput) Goo() GooSettingsResponseOutput {
+	return o.ApplyT(func(v PatchConfigResponse) GooSettingsResponse { return v.Goo }).(GooSettingsResponseOutput)
+}
+
+// The `ExecStep` to run after the patch update.
+func (o PatchConfigResponseOutput) PostStep() ExecStepResponseOutput {
+	return o.ApplyT(func(v PatchConfigResponse) ExecStepResponse { return v.PostStep }).(ExecStepResponseOutput)
+}
+
+// The `ExecStep` to run before the patch update.
+func (o PatchConfigResponseOutput) PreStep() ExecStepResponseOutput {
+	return o.ApplyT(func(v PatchConfigResponse) ExecStepResponse { return v.PreStep }).(ExecStepResponseOutput)
+}
+
+// Post-patch reboot settings.
+func (o PatchConfigResponseOutput) RebootConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v PatchConfigResponse) string { return v.RebootConfig }).(pulumi.StringOutput)
+}
+
+// Windows update settings. Use this override the default windows patch rules.
+func (o PatchConfigResponseOutput) WindowsUpdate() WindowsUpdateSettingsResponseOutput {
+	return o.ApplyT(func(v PatchConfigResponse) WindowsUpdateSettingsResponse { return v.WindowsUpdate }).(WindowsUpdateSettingsResponseOutput)
+}
+
+// Yum update settings. Use this setting to override the default `yum` patch rules.
+func (o PatchConfigResponseOutput) Yum() YumSettingsResponseOutput {
+	return o.ApplyT(func(v PatchConfigResponse) YumSettingsResponse { return v.Yum }).(YumSettingsResponseOutput)
+}
+
+// Zypper update settings. Use this setting to override the default `zypper` patch rules.
+func (o PatchConfigResponseOutput) Zypper() ZypperSettingsResponseOutput {
+	return o.ApplyT(func(v PatchConfigResponse) ZypperSettingsResponse { return v.Zypper }).(ZypperSettingsResponseOutput)
+}
+
+type PatchConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PatchConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PatchConfigResponse)(nil)).Elem()
+}
+
+func (o PatchConfigResponsePtrOutput) ToPatchConfigResponsePtrOutput() PatchConfigResponsePtrOutput {
+	return o
+}
+
+func (o PatchConfigResponsePtrOutput) ToPatchConfigResponsePtrOutputWithContext(ctx context.Context) PatchConfigResponsePtrOutput {
+	return o
+}
+
+func (o PatchConfigResponsePtrOutput) Elem() PatchConfigResponseOutput {
+	return o.ApplyT(func(v *PatchConfigResponse) PatchConfigResponse { return *v }).(PatchConfigResponseOutput)
+}
+
+// Apt update settings. Use this setting to override the default `apt` patch rules.
+func (o PatchConfigResponsePtrOutput) Apt() AptSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *PatchConfigResponse) *AptSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Apt
+	}).(AptSettingsResponsePtrOutput)
+}
+
+// Goo update settings. Use this setting to override the default `goo` patch rules.
+func (o PatchConfigResponsePtrOutput) Goo() GooSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *PatchConfigResponse) *GooSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Goo
+	}).(GooSettingsResponsePtrOutput)
+}
+
+// The `ExecStep` to run after the patch update.
+func (o PatchConfigResponsePtrOutput) PostStep() ExecStepResponsePtrOutput {
+	return o.ApplyT(func(v *PatchConfigResponse) *ExecStepResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.PostStep
+	}).(ExecStepResponsePtrOutput)
+}
+
+// The `ExecStep` to run before the patch update.
+func (o PatchConfigResponsePtrOutput) PreStep() ExecStepResponsePtrOutput {
+	return o.ApplyT(func(v *PatchConfigResponse) *ExecStepResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.PreStep
+	}).(ExecStepResponsePtrOutput)
+}
+
+// Post-patch reboot settings.
+func (o PatchConfigResponsePtrOutput) RebootConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PatchConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RebootConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+// Windows update settings. Use this override the default windows patch rules.
+func (o PatchConfigResponsePtrOutput) WindowsUpdate() WindowsUpdateSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *PatchConfigResponse) *WindowsUpdateSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.WindowsUpdate
+	}).(WindowsUpdateSettingsResponsePtrOutput)
+}
+
+// Yum update settings. Use this setting to override the default `yum` patch rules.
+func (o PatchConfigResponsePtrOutput) Yum() YumSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *PatchConfigResponse) *YumSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Yum
+	}).(YumSettingsResponsePtrOutput)
+}
+
+// Zypper update settings. Use this setting to override the default `zypper` patch rules.
+func (o PatchConfigResponsePtrOutput) Zypper() ZypperSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *PatchConfigResponse) *ZypperSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Zypper
+	}).(ZypperSettingsResponsePtrOutput)
 }
 
 // A filter to target VM instances for patching. The targeted VMs must meet all criteria specified. So if both labels and zones are specified, the patch job targets only VMs with those labels and in those zones.
@@ -2866,6 +5204,316 @@ func (o PatchInstanceFilterGroupLabelArrayOutput) Index(i pulumi.IntInput) Patch
 	}).(PatchInstanceFilterGroupLabelOutput)
 }
 
+// Represents a group of VMs that can be identified as having all these labels, for example "env=prod and app=web".
+type PatchInstanceFilterGroupLabelResponse struct {
+	// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// PatchInstanceFilterGroupLabelResponseInput is an input type that accepts PatchInstanceFilterGroupLabelResponseArgs and PatchInstanceFilterGroupLabelResponseOutput values.
+// You can construct a concrete instance of `PatchInstanceFilterGroupLabelResponseInput` via:
+//
+//          PatchInstanceFilterGroupLabelResponseArgs{...}
+type PatchInstanceFilterGroupLabelResponseInput interface {
+	pulumi.Input
+
+	ToPatchInstanceFilterGroupLabelResponseOutput() PatchInstanceFilterGroupLabelResponseOutput
+	ToPatchInstanceFilterGroupLabelResponseOutputWithContext(context.Context) PatchInstanceFilterGroupLabelResponseOutput
+}
+
+// Represents a group of VMs that can be identified as having all these labels, for example "env=prod and app=web".
+type PatchInstanceFilterGroupLabelResponseArgs struct {
+	// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (PatchInstanceFilterGroupLabelResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchInstanceFilterGroupLabelResponse)(nil)).Elem()
+}
+
+func (i PatchInstanceFilterGroupLabelResponseArgs) ToPatchInstanceFilterGroupLabelResponseOutput() PatchInstanceFilterGroupLabelResponseOutput {
+	return i.ToPatchInstanceFilterGroupLabelResponseOutputWithContext(context.Background())
+}
+
+func (i PatchInstanceFilterGroupLabelResponseArgs) ToPatchInstanceFilterGroupLabelResponseOutputWithContext(ctx context.Context) PatchInstanceFilterGroupLabelResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterGroupLabelResponseOutput)
+}
+
+// PatchInstanceFilterGroupLabelResponseArrayInput is an input type that accepts PatchInstanceFilterGroupLabelResponseArray and PatchInstanceFilterGroupLabelResponseArrayOutput values.
+// You can construct a concrete instance of `PatchInstanceFilterGroupLabelResponseArrayInput` via:
+//
+//          PatchInstanceFilterGroupLabelResponseArray{ PatchInstanceFilterGroupLabelResponseArgs{...} }
+type PatchInstanceFilterGroupLabelResponseArrayInput interface {
+	pulumi.Input
+
+	ToPatchInstanceFilterGroupLabelResponseArrayOutput() PatchInstanceFilterGroupLabelResponseArrayOutput
+	ToPatchInstanceFilterGroupLabelResponseArrayOutputWithContext(context.Context) PatchInstanceFilterGroupLabelResponseArrayOutput
+}
+
+type PatchInstanceFilterGroupLabelResponseArray []PatchInstanceFilterGroupLabelResponseInput
+
+func (PatchInstanceFilterGroupLabelResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PatchInstanceFilterGroupLabelResponse)(nil)).Elem()
+}
+
+func (i PatchInstanceFilterGroupLabelResponseArray) ToPatchInstanceFilterGroupLabelResponseArrayOutput() PatchInstanceFilterGroupLabelResponseArrayOutput {
+	return i.ToPatchInstanceFilterGroupLabelResponseArrayOutputWithContext(context.Background())
+}
+
+func (i PatchInstanceFilterGroupLabelResponseArray) ToPatchInstanceFilterGroupLabelResponseArrayOutputWithContext(ctx context.Context) PatchInstanceFilterGroupLabelResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterGroupLabelResponseArrayOutput)
+}
+
+// Represents a group of VMs that can be identified as having all these labels, for example "env=prod and app=web".
+type PatchInstanceFilterGroupLabelResponseOutput struct{ *pulumi.OutputState }
+
+func (PatchInstanceFilterGroupLabelResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchInstanceFilterGroupLabelResponse)(nil)).Elem()
+}
+
+func (o PatchInstanceFilterGroupLabelResponseOutput) ToPatchInstanceFilterGroupLabelResponseOutput() PatchInstanceFilterGroupLabelResponseOutput {
+	return o
+}
+
+func (o PatchInstanceFilterGroupLabelResponseOutput) ToPatchInstanceFilterGroupLabelResponseOutputWithContext(ctx context.Context) PatchInstanceFilterGroupLabelResponseOutput {
+	return o
+}
+
+// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
+func (o PatchInstanceFilterGroupLabelResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PatchInstanceFilterGroupLabelResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+type PatchInstanceFilterGroupLabelResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PatchInstanceFilterGroupLabelResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PatchInstanceFilterGroupLabelResponse)(nil)).Elem()
+}
+
+func (o PatchInstanceFilterGroupLabelResponseArrayOutput) ToPatchInstanceFilterGroupLabelResponseArrayOutput() PatchInstanceFilterGroupLabelResponseArrayOutput {
+	return o
+}
+
+func (o PatchInstanceFilterGroupLabelResponseArrayOutput) ToPatchInstanceFilterGroupLabelResponseArrayOutputWithContext(ctx context.Context) PatchInstanceFilterGroupLabelResponseArrayOutput {
+	return o
+}
+
+func (o PatchInstanceFilterGroupLabelResponseArrayOutput) Index(i pulumi.IntInput) PatchInstanceFilterGroupLabelResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PatchInstanceFilterGroupLabelResponse {
+		return vs[0].([]PatchInstanceFilterGroupLabelResponse)[vs[1].(int)]
+	}).(PatchInstanceFilterGroupLabelResponseOutput)
+}
+
+// A filter to target VM instances for patching. The targeted VMs must meet all criteria specified. So if both labels and zones are specified, the patch job targets only VMs with those labels and in those zones.
+type PatchInstanceFilterResponse struct {
+	// Target all VM instances in the project. If true, no other criteria is permitted.
+	All bool `pulumi:"all"`
+	// Targets VM instances matching at least one of these label sets. This allows targeting of disparate groups, for example "env=prod or env=staging".
+	GroupLabels []PatchInstanceFilterGroupLabelResponse `pulumi:"groupLabels"`
+	// Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group VMs when targeting configs, for example prefix="prod-".
+	InstanceNamePrefixes []string `pulumi:"instanceNamePrefixes"`
+	// Targets any of the VM instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`
+	Instances []string `pulumi:"instances"`
+	// Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
+	Zones []string `pulumi:"zones"`
+}
+
+// PatchInstanceFilterResponseInput is an input type that accepts PatchInstanceFilterResponseArgs and PatchInstanceFilterResponseOutput values.
+// You can construct a concrete instance of `PatchInstanceFilterResponseInput` via:
+//
+//          PatchInstanceFilterResponseArgs{...}
+type PatchInstanceFilterResponseInput interface {
+	pulumi.Input
+
+	ToPatchInstanceFilterResponseOutput() PatchInstanceFilterResponseOutput
+	ToPatchInstanceFilterResponseOutputWithContext(context.Context) PatchInstanceFilterResponseOutput
+}
+
+// A filter to target VM instances for patching. The targeted VMs must meet all criteria specified. So if both labels and zones are specified, the patch job targets only VMs with those labels and in those zones.
+type PatchInstanceFilterResponseArgs struct {
+	// Target all VM instances in the project. If true, no other criteria is permitted.
+	All pulumi.BoolInput `pulumi:"all"`
+	// Targets VM instances matching at least one of these label sets. This allows targeting of disparate groups, for example "env=prod or env=staging".
+	GroupLabels PatchInstanceFilterGroupLabelResponseArrayInput `pulumi:"groupLabels"`
+	// Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group VMs when targeting configs, for example prefix="prod-".
+	InstanceNamePrefixes pulumi.StringArrayInput `pulumi:"instanceNamePrefixes"`
+	// Targets any of the VM instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`
+	Instances pulumi.StringArrayInput `pulumi:"instances"`
+	// Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
+	Zones pulumi.StringArrayInput `pulumi:"zones"`
+}
+
+func (PatchInstanceFilterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchInstanceFilterResponse)(nil)).Elem()
+}
+
+func (i PatchInstanceFilterResponseArgs) ToPatchInstanceFilterResponseOutput() PatchInstanceFilterResponseOutput {
+	return i.ToPatchInstanceFilterResponseOutputWithContext(context.Background())
+}
+
+func (i PatchInstanceFilterResponseArgs) ToPatchInstanceFilterResponseOutputWithContext(ctx context.Context) PatchInstanceFilterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterResponseOutput)
+}
+
+func (i PatchInstanceFilterResponseArgs) ToPatchInstanceFilterResponsePtrOutput() PatchInstanceFilterResponsePtrOutput {
+	return i.ToPatchInstanceFilterResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PatchInstanceFilterResponseArgs) ToPatchInstanceFilterResponsePtrOutputWithContext(ctx context.Context) PatchInstanceFilterResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterResponseOutput).ToPatchInstanceFilterResponsePtrOutputWithContext(ctx)
+}
+
+// PatchInstanceFilterResponsePtrInput is an input type that accepts PatchInstanceFilterResponseArgs, PatchInstanceFilterResponsePtr and PatchInstanceFilterResponsePtrOutput values.
+// You can construct a concrete instance of `PatchInstanceFilterResponsePtrInput` via:
+//
+//          PatchInstanceFilterResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PatchInstanceFilterResponsePtrInput interface {
+	pulumi.Input
+
+	ToPatchInstanceFilterResponsePtrOutput() PatchInstanceFilterResponsePtrOutput
+	ToPatchInstanceFilterResponsePtrOutputWithContext(context.Context) PatchInstanceFilterResponsePtrOutput
+}
+
+type patchInstanceFilterResponsePtrType PatchInstanceFilterResponseArgs
+
+func PatchInstanceFilterResponsePtr(v *PatchInstanceFilterResponseArgs) PatchInstanceFilterResponsePtrInput {
+	return (*patchInstanceFilterResponsePtrType)(v)
+}
+
+func (*patchInstanceFilterResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PatchInstanceFilterResponse)(nil)).Elem()
+}
+
+func (i *patchInstanceFilterResponsePtrType) ToPatchInstanceFilterResponsePtrOutput() PatchInstanceFilterResponsePtrOutput {
+	return i.ToPatchInstanceFilterResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *patchInstanceFilterResponsePtrType) ToPatchInstanceFilterResponsePtrOutputWithContext(ctx context.Context) PatchInstanceFilterResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchInstanceFilterResponsePtrOutput)
+}
+
+// A filter to target VM instances for patching. The targeted VMs must meet all criteria specified. So if both labels and zones are specified, the patch job targets only VMs with those labels and in those zones.
+type PatchInstanceFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (PatchInstanceFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchInstanceFilterResponse)(nil)).Elem()
+}
+
+func (o PatchInstanceFilterResponseOutput) ToPatchInstanceFilterResponseOutput() PatchInstanceFilterResponseOutput {
+	return o
+}
+
+func (o PatchInstanceFilterResponseOutput) ToPatchInstanceFilterResponseOutputWithContext(ctx context.Context) PatchInstanceFilterResponseOutput {
+	return o
+}
+
+func (o PatchInstanceFilterResponseOutput) ToPatchInstanceFilterResponsePtrOutput() PatchInstanceFilterResponsePtrOutput {
+	return o.ToPatchInstanceFilterResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PatchInstanceFilterResponseOutput) ToPatchInstanceFilterResponsePtrOutputWithContext(ctx context.Context) PatchInstanceFilterResponsePtrOutput {
+	return o.ApplyT(func(v PatchInstanceFilterResponse) *PatchInstanceFilterResponse {
+		return &v
+	}).(PatchInstanceFilterResponsePtrOutput)
+}
+
+// Target all VM instances in the project. If true, no other criteria is permitted.
+func (o PatchInstanceFilterResponseOutput) All() pulumi.BoolOutput {
+	return o.ApplyT(func(v PatchInstanceFilterResponse) bool { return v.All }).(pulumi.BoolOutput)
+}
+
+// Targets VM instances matching at least one of these label sets. This allows targeting of disparate groups, for example "env=prod or env=staging".
+func (o PatchInstanceFilterResponseOutput) GroupLabels() PatchInstanceFilterGroupLabelResponseArrayOutput {
+	return o.ApplyT(func(v PatchInstanceFilterResponse) []PatchInstanceFilterGroupLabelResponse { return v.GroupLabels }).(PatchInstanceFilterGroupLabelResponseArrayOutput)
+}
+
+// Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group VMs when targeting configs, for example prefix="prod-".
+func (o PatchInstanceFilterResponseOutput) InstanceNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PatchInstanceFilterResponse) []string { return v.InstanceNamePrefixes }).(pulumi.StringArrayOutput)
+}
+
+// Targets any of the VM instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`
+func (o PatchInstanceFilterResponseOutput) Instances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PatchInstanceFilterResponse) []string { return v.Instances }).(pulumi.StringArrayOutput)
+}
+
+// Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
+func (o PatchInstanceFilterResponseOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PatchInstanceFilterResponse) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+type PatchInstanceFilterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PatchInstanceFilterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PatchInstanceFilterResponse)(nil)).Elem()
+}
+
+func (o PatchInstanceFilterResponsePtrOutput) ToPatchInstanceFilterResponsePtrOutput() PatchInstanceFilterResponsePtrOutput {
+	return o
+}
+
+func (o PatchInstanceFilterResponsePtrOutput) ToPatchInstanceFilterResponsePtrOutputWithContext(ctx context.Context) PatchInstanceFilterResponsePtrOutput {
+	return o
+}
+
+func (o PatchInstanceFilterResponsePtrOutput) Elem() PatchInstanceFilterResponseOutput {
+	return o.ApplyT(func(v *PatchInstanceFilterResponse) PatchInstanceFilterResponse { return *v }).(PatchInstanceFilterResponseOutput)
+}
+
+// Target all VM instances in the project. If true, no other criteria is permitted.
+func (o PatchInstanceFilterResponsePtrOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PatchInstanceFilterResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.All
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Targets VM instances matching at least one of these label sets. This allows targeting of disparate groups, for example "env=prod or env=staging".
+func (o PatchInstanceFilterResponsePtrOutput) GroupLabels() PatchInstanceFilterGroupLabelResponseArrayOutput {
+	return o.ApplyT(func(v *PatchInstanceFilterResponse) []PatchInstanceFilterGroupLabelResponse {
+		if v == nil {
+			return nil
+		}
+		return v.GroupLabels
+	}).(PatchInstanceFilterGroupLabelResponseArrayOutput)
+}
+
+// Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group VMs when targeting configs, for example prefix="prod-".
+func (o PatchInstanceFilterResponsePtrOutput) InstanceNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PatchInstanceFilterResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceNamePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Targets any of the VM instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`
+func (o PatchInstanceFilterResponsePtrOutput) Instances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PatchInstanceFilterResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Instances
+	}).(pulumi.StringArrayOutput)
+}
+
+// Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
+func (o PatchInstanceFilterResponsePtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PatchInstanceFilterResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
+}
+
 // Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs.
 type PatchRollout struct {
 	// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
@@ -3019,18 +5667,167 @@ func (o PatchRolloutPtrOutput) Mode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs.
+type PatchRolloutResponse struct {
+	// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
+	DisruptionBudget FixedOrPercentResponse `pulumi:"disruptionBudget"`
+	// Mode of the patch rollout.
+	Mode string `pulumi:"mode"`
+}
+
+// PatchRolloutResponseInput is an input type that accepts PatchRolloutResponseArgs and PatchRolloutResponseOutput values.
+// You can construct a concrete instance of `PatchRolloutResponseInput` via:
+//
+//          PatchRolloutResponseArgs{...}
+type PatchRolloutResponseInput interface {
+	pulumi.Input
+
+	ToPatchRolloutResponseOutput() PatchRolloutResponseOutput
+	ToPatchRolloutResponseOutputWithContext(context.Context) PatchRolloutResponseOutput
+}
+
+// Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs.
+type PatchRolloutResponseArgs struct {
+	// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
+	DisruptionBudget FixedOrPercentResponseInput `pulumi:"disruptionBudget"`
+	// Mode of the patch rollout.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (PatchRolloutResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchRolloutResponse)(nil)).Elem()
+}
+
+func (i PatchRolloutResponseArgs) ToPatchRolloutResponseOutput() PatchRolloutResponseOutput {
+	return i.ToPatchRolloutResponseOutputWithContext(context.Background())
+}
+
+func (i PatchRolloutResponseArgs) ToPatchRolloutResponseOutputWithContext(ctx context.Context) PatchRolloutResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchRolloutResponseOutput)
+}
+
+func (i PatchRolloutResponseArgs) ToPatchRolloutResponsePtrOutput() PatchRolloutResponsePtrOutput {
+	return i.ToPatchRolloutResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PatchRolloutResponseArgs) ToPatchRolloutResponsePtrOutputWithContext(ctx context.Context) PatchRolloutResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchRolloutResponseOutput).ToPatchRolloutResponsePtrOutputWithContext(ctx)
+}
+
+// PatchRolloutResponsePtrInput is an input type that accepts PatchRolloutResponseArgs, PatchRolloutResponsePtr and PatchRolloutResponsePtrOutput values.
+// You can construct a concrete instance of `PatchRolloutResponsePtrInput` via:
+//
+//          PatchRolloutResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PatchRolloutResponsePtrInput interface {
+	pulumi.Input
+
+	ToPatchRolloutResponsePtrOutput() PatchRolloutResponsePtrOutput
+	ToPatchRolloutResponsePtrOutputWithContext(context.Context) PatchRolloutResponsePtrOutput
+}
+
+type patchRolloutResponsePtrType PatchRolloutResponseArgs
+
+func PatchRolloutResponsePtr(v *PatchRolloutResponseArgs) PatchRolloutResponsePtrInput {
+	return (*patchRolloutResponsePtrType)(v)
+}
+
+func (*patchRolloutResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PatchRolloutResponse)(nil)).Elem()
+}
+
+func (i *patchRolloutResponsePtrType) ToPatchRolloutResponsePtrOutput() PatchRolloutResponsePtrOutput {
+	return i.ToPatchRolloutResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *patchRolloutResponsePtrType) ToPatchRolloutResponsePtrOutputWithContext(ctx context.Context) PatchRolloutResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchRolloutResponsePtrOutput)
+}
+
+// Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs.
+type PatchRolloutResponseOutput struct{ *pulumi.OutputState }
+
+func (PatchRolloutResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchRolloutResponse)(nil)).Elem()
+}
+
+func (o PatchRolloutResponseOutput) ToPatchRolloutResponseOutput() PatchRolloutResponseOutput {
+	return o
+}
+
+func (o PatchRolloutResponseOutput) ToPatchRolloutResponseOutputWithContext(ctx context.Context) PatchRolloutResponseOutput {
+	return o
+}
+
+func (o PatchRolloutResponseOutput) ToPatchRolloutResponsePtrOutput() PatchRolloutResponsePtrOutput {
+	return o.ToPatchRolloutResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PatchRolloutResponseOutput) ToPatchRolloutResponsePtrOutputWithContext(ctx context.Context) PatchRolloutResponsePtrOutput {
+	return o.ApplyT(func(v PatchRolloutResponse) *PatchRolloutResponse {
+		return &v
+	}).(PatchRolloutResponsePtrOutput)
+}
+
+// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
+func (o PatchRolloutResponseOutput) DisruptionBudget() FixedOrPercentResponseOutput {
+	return o.ApplyT(func(v PatchRolloutResponse) FixedOrPercentResponse { return v.DisruptionBudget }).(FixedOrPercentResponseOutput)
+}
+
+// Mode of the patch rollout.
+func (o PatchRolloutResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v PatchRolloutResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type PatchRolloutResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PatchRolloutResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PatchRolloutResponse)(nil)).Elem()
+}
+
+func (o PatchRolloutResponsePtrOutput) ToPatchRolloutResponsePtrOutput() PatchRolloutResponsePtrOutput {
+	return o
+}
+
+func (o PatchRolloutResponsePtrOutput) ToPatchRolloutResponsePtrOutputWithContext(ctx context.Context) PatchRolloutResponsePtrOutput {
+	return o
+}
+
+func (o PatchRolloutResponsePtrOutput) Elem() PatchRolloutResponseOutput {
+	return o.ApplyT(func(v *PatchRolloutResponse) PatchRolloutResponse { return *v }).(PatchRolloutResponseOutput)
+}
+
+// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
+func (o PatchRolloutResponsePtrOutput) DisruptionBudget() FixedOrPercentResponsePtrOutput {
+	return o.ApplyT(func(v *PatchRolloutResponse) *FixedOrPercentResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.DisruptionBudget
+	}).(FixedOrPercentResponsePtrOutput)
+}
+
+// Mode of the patch rollout.
+func (o PatchRolloutResponsePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PatchRolloutResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
 // Sets the time for recurring patch deployments.
 type RecurringSchedule struct {
 	// Optional. The end time at which a recurring patch deployment schedule is no longer active.
 	EndTime *string `pulumi:"endTime"`
 	// Required. The frequency unit of this recurring schedule.
 	Frequency *string `pulumi:"frequency"`
-	// Output only. The time the last patch job ran successfully.
-	LastExecuteTime *string `pulumi:"lastExecuteTime"`
 	// Required. Schedule with monthly executions.
 	Monthly *MonthlySchedule `pulumi:"monthly"`
-	// Output only. The time the next patch job is scheduled to run.
-	NextExecuteTime *string `pulumi:"nextExecuteTime"`
 	// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
 	StartTime *string `pulumi:"startTime"`
 	// Required. Time of the day to run a recurring deployment.
@@ -3058,12 +5855,8 @@ type RecurringScheduleArgs struct {
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// Required. The frequency unit of this recurring schedule.
 	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
-	// Output only. The time the last patch job ran successfully.
-	LastExecuteTime pulumi.StringPtrInput `pulumi:"lastExecuteTime"`
 	// Required. Schedule with monthly executions.
 	Monthly MonthlySchedulePtrInput `pulumi:"monthly"`
-	// Output only. The time the next patch job is scheduled to run.
-	NextExecuteTime pulumi.StringPtrInput `pulumi:"nextExecuteTime"`
 	// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 	// Required. Time of the day to run a recurring deployment.
@@ -3162,19 +5955,9 @@ func (o RecurringScheduleOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RecurringSchedule) *string { return v.Frequency }).(pulumi.StringPtrOutput)
 }
 
-// Output only. The time the last patch job ran successfully.
-func (o RecurringScheduleOutput) LastExecuteTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecurringSchedule) *string { return v.LastExecuteTime }).(pulumi.StringPtrOutput)
-}
-
 // Required. Schedule with monthly executions.
 func (o RecurringScheduleOutput) Monthly() MonthlySchedulePtrOutput {
 	return o.ApplyT(func(v RecurringSchedule) *MonthlySchedule { return v.Monthly }).(MonthlySchedulePtrOutput)
-}
-
-// Output only. The time the next patch job is scheduled to run.
-func (o RecurringScheduleOutput) NextExecuteTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecurringSchedule) *string { return v.NextExecuteTime }).(pulumi.StringPtrOutput)
 }
 
 // Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
@@ -3235,16 +6018,6 @@ func (o RecurringSchedulePtrOutput) Frequency() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The time the last patch job ran successfully.
-func (o RecurringSchedulePtrOutput) LastExecuteTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurringSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastExecuteTime
-	}).(pulumi.StringPtrOutput)
-}
-
 // Required. Schedule with monthly executions.
 func (o RecurringSchedulePtrOutput) Monthly() MonthlySchedulePtrOutput {
 	return o.ApplyT(func(v *RecurringSchedule) *MonthlySchedule {
@@ -3253,16 +6026,6 @@ func (o RecurringSchedulePtrOutput) Monthly() MonthlySchedulePtrOutput {
 		}
 		return v.Monthly
 	}).(MonthlySchedulePtrOutput)
-}
-
-// Output only. The time the next patch job is scheduled to run.
-func (o RecurringSchedulePtrOutput) NextExecuteTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurringSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NextExecuteTime
-	}).(pulumi.StringPtrOutput)
 }
 
 // Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
@@ -3303,6 +6066,292 @@ func (o RecurringSchedulePtrOutput) Weekly() WeeklySchedulePtrOutput {
 		}
 		return v.Weekly
 	}).(WeeklySchedulePtrOutput)
+}
+
+// Sets the time for recurring patch deployments.
+type RecurringScheduleResponse struct {
+	// Optional. The end time at which a recurring patch deployment schedule is no longer active.
+	EndTime string `pulumi:"endTime"`
+	// Required. The frequency unit of this recurring schedule.
+	Frequency string `pulumi:"frequency"`
+	// The time the last patch job ran successfully.
+	LastExecuteTime string `pulumi:"lastExecuteTime"`
+	// Required. Schedule with monthly executions.
+	Monthly MonthlyScheduleResponse `pulumi:"monthly"`
+	// The time the next patch job is scheduled to run.
+	NextExecuteTime string `pulumi:"nextExecuteTime"`
+	// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
+	StartTime string `pulumi:"startTime"`
+	// Required. Time of the day to run a recurring deployment.
+	TimeOfDay TimeOfDayResponse `pulumi:"timeOfDay"`
+	// Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+	TimeZone TimeZoneResponse `pulumi:"timeZone"`
+	// Required. Schedule with weekly executions.
+	Weekly WeeklyScheduleResponse `pulumi:"weekly"`
+}
+
+// RecurringScheduleResponseInput is an input type that accepts RecurringScheduleResponseArgs and RecurringScheduleResponseOutput values.
+// You can construct a concrete instance of `RecurringScheduleResponseInput` via:
+//
+//          RecurringScheduleResponseArgs{...}
+type RecurringScheduleResponseInput interface {
+	pulumi.Input
+
+	ToRecurringScheduleResponseOutput() RecurringScheduleResponseOutput
+	ToRecurringScheduleResponseOutputWithContext(context.Context) RecurringScheduleResponseOutput
+}
+
+// Sets the time for recurring patch deployments.
+type RecurringScheduleResponseArgs struct {
+	// Optional. The end time at which a recurring patch deployment schedule is no longer active.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Required. The frequency unit of this recurring schedule.
+	Frequency pulumi.StringInput `pulumi:"frequency"`
+	// The time the last patch job ran successfully.
+	LastExecuteTime pulumi.StringInput `pulumi:"lastExecuteTime"`
+	// Required. Schedule with monthly executions.
+	Monthly MonthlyScheduleResponseInput `pulumi:"monthly"`
+	// The time the next patch job is scheduled to run.
+	NextExecuteTime pulumi.StringInput `pulumi:"nextExecuteTime"`
+	// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// Required. Time of the day to run a recurring deployment.
+	TimeOfDay TimeOfDayResponseInput `pulumi:"timeOfDay"`
+	// Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+	TimeZone TimeZoneResponseInput `pulumi:"timeZone"`
+	// Required. Schedule with weekly executions.
+	Weekly WeeklyScheduleResponseInput `pulumi:"weekly"`
+}
+
+func (RecurringScheduleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecurringScheduleResponse)(nil)).Elem()
+}
+
+func (i RecurringScheduleResponseArgs) ToRecurringScheduleResponseOutput() RecurringScheduleResponseOutput {
+	return i.ToRecurringScheduleResponseOutputWithContext(context.Background())
+}
+
+func (i RecurringScheduleResponseArgs) ToRecurringScheduleResponseOutputWithContext(ctx context.Context) RecurringScheduleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecurringScheduleResponseOutput)
+}
+
+func (i RecurringScheduleResponseArgs) ToRecurringScheduleResponsePtrOutput() RecurringScheduleResponsePtrOutput {
+	return i.ToRecurringScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (i RecurringScheduleResponseArgs) ToRecurringScheduleResponsePtrOutputWithContext(ctx context.Context) RecurringScheduleResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecurringScheduleResponseOutput).ToRecurringScheduleResponsePtrOutputWithContext(ctx)
+}
+
+// RecurringScheduleResponsePtrInput is an input type that accepts RecurringScheduleResponseArgs, RecurringScheduleResponsePtr and RecurringScheduleResponsePtrOutput values.
+// You can construct a concrete instance of `RecurringScheduleResponsePtrInput` via:
+//
+//          RecurringScheduleResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type RecurringScheduleResponsePtrInput interface {
+	pulumi.Input
+
+	ToRecurringScheduleResponsePtrOutput() RecurringScheduleResponsePtrOutput
+	ToRecurringScheduleResponsePtrOutputWithContext(context.Context) RecurringScheduleResponsePtrOutput
+}
+
+type recurringScheduleResponsePtrType RecurringScheduleResponseArgs
+
+func RecurringScheduleResponsePtr(v *RecurringScheduleResponseArgs) RecurringScheduleResponsePtrInput {
+	return (*recurringScheduleResponsePtrType)(v)
+}
+
+func (*recurringScheduleResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecurringScheduleResponse)(nil)).Elem()
+}
+
+func (i *recurringScheduleResponsePtrType) ToRecurringScheduleResponsePtrOutput() RecurringScheduleResponsePtrOutput {
+	return i.ToRecurringScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *recurringScheduleResponsePtrType) ToRecurringScheduleResponsePtrOutputWithContext(ctx context.Context) RecurringScheduleResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecurringScheduleResponsePtrOutput)
+}
+
+// Sets the time for recurring patch deployments.
+type RecurringScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (RecurringScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecurringScheduleResponse)(nil)).Elem()
+}
+
+func (o RecurringScheduleResponseOutput) ToRecurringScheduleResponseOutput() RecurringScheduleResponseOutput {
+	return o
+}
+
+func (o RecurringScheduleResponseOutput) ToRecurringScheduleResponseOutputWithContext(ctx context.Context) RecurringScheduleResponseOutput {
+	return o
+}
+
+func (o RecurringScheduleResponseOutput) ToRecurringScheduleResponsePtrOutput() RecurringScheduleResponsePtrOutput {
+	return o.ToRecurringScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (o RecurringScheduleResponseOutput) ToRecurringScheduleResponsePtrOutputWithContext(ctx context.Context) RecurringScheduleResponsePtrOutput {
+	return o.ApplyT(func(v RecurringScheduleResponse) *RecurringScheduleResponse {
+		return &v
+	}).(RecurringScheduleResponsePtrOutput)
+}
+
+// Optional. The end time at which a recurring patch deployment schedule is no longer active.
+func (o RecurringScheduleResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v RecurringScheduleResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Required. The frequency unit of this recurring schedule.
+func (o RecurringScheduleResponseOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v RecurringScheduleResponse) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+// The time the last patch job ran successfully.
+func (o RecurringScheduleResponseOutput) LastExecuteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v RecurringScheduleResponse) string { return v.LastExecuteTime }).(pulumi.StringOutput)
+}
+
+// Required. Schedule with monthly executions.
+func (o RecurringScheduleResponseOutput) Monthly() MonthlyScheduleResponseOutput {
+	return o.ApplyT(func(v RecurringScheduleResponse) MonthlyScheduleResponse { return v.Monthly }).(MonthlyScheduleResponseOutput)
+}
+
+// The time the next patch job is scheduled to run.
+func (o RecurringScheduleResponseOutput) NextExecuteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v RecurringScheduleResponse) string { return v.NextExecuteTime }).(pulumi.StringOutput)
+}
+
+// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
+func (o RecurringScheduleResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v RecurringScheduleResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Required. Time of the day to run a recurring deployment.
+func (o RecurringScheduleResponseOutput) TimeOfDay() TimeOfDayResponseOutput {
+	return o.ApplyT(func(v RecurringScheduleResponse) TimeOfDayResponse { return v.TimeOfDay }).(TimeOfDayResponseOutput)
+}
+
+// Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+func (o RecurringScheduleResponseOutput) TimeZone() TimeZoneResponseOutput {
+	return o.ApplyT(func(v RecurringScheduleResponse) TimeZoneResponse { return v.TimeZone }).(TimeZoneResponseOutput)
+}
+
+// Required. Schedule with weekly executions.
+func (o RecurringScheduleResponseOutput) Weekly() WeeklyScheduleResponseOutput {
+	return o.ApplyT(func(v RecurringScheduleResponse) WeeklyScheduleResponse { return v.Weekly }).(WeeklyScheduleResponseOutput)
+}
+
+type RecurringScheduleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RecurringScheduleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecurringScheduleResponse)(nil)).Elem()
+}
+
+func (o RecurringScheduleResponsePtrOutput) ToRecurringScheduleResponsePtrOutput() RecurringScheduleResponsePtrOutput {
+	return o
+}
+
+func (o RecurringScheduleResponsePtrOutput) ToRecurringScheduleResponsePtrOutputWithContext(ctx context.Context) RecurringScheduleResponsePtrOutput {
+	return o
+}
+
+func (o RecurringScheduleResponsePtrOutput) Elem() RecurringScheduleResponseOutput {
+	return o.ApplyT(func(v *RecurringScheduleResponse) RecurringScheduleResponse { return *v }).(RecurringScheduleResponseOutput)
+}
+
+// Optional. The end time at which a recurring patch deployment schedule is no longer active.
+func (o RecurringScheduleResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecurringScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The frequency unit of this recurring schedule.
+func (o RecurringScheduleResponsePtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecurringScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time the last patch job ran successfully.
+func (o RecurringScheduleResponsePtrOutput) LastExecuteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecurringScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LastExecuteTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Schedule with monthly executions.
+func (o RecurringScheduleResponsePtrOutput) Monthly() MonthlyScheduleResponsePtrOutput {
+	return o.ApplyT(func(v *RecurringScheduleResponse) *MonthlyScheduleResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Monthly
+	}).(MonthlyScheduleResponsePtrOutput)
+}
+
+// The time the next patch job is scheduled to run.
+func (o RecurringScheduleResponsePtrOutput) NextExecuteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecurringScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NextExecuteTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
+func (o RecurringScheduleResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecurringScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Time of the day to run a recurring deployment.
+func (o RecurringScheduleResponsePtrOutput) TimeOfDay() TimeOfDayResponsePtrOutput {
+	return o.ApplyT(func(v *RecurringScheduleResponse) *TimeOfDayResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeOfDay
+	}).(TimeOfDayResponsePtrOutput)
+}
+
+// Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+func (o RecurringScheduleResponsePtrOutput) TimeZone() TimeZoneResponsePtrOutput {
+	return o.ApplyT(func(v *RecurringScheduleResponse) *TimeZoneResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeZone
+	}).(TimeZoneResponsePtrOutput)
+}
+
+// Required. Schedule with weekly executions.
+func (o RecurringScheduleResponsePtrOutput) Weekly() WeeklyScheduleResponsePtrOutput {
+	return o.ApplyT(func(v *RecurringScheduleResponse) *WeeklyScheduleResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Weekly
+	}).(WeeklyScheduleResponsePtrOutput)
 }
 
 // A software recipe is a set of instructions for installing and configuring a piece of software. It consists of a set of artifacts that are downloaded, and a set of steps that install, configure, and/or update the software. Recipes support installing and updating software from artifacts in the following formats: Zip archive, Tar archive, Windows MSI, Debian package, and RPM package. Additionally, recipes support executing a script (either defined in a file or directly in this api) in bash, sh, cmd, and powershell. Updating a software recipe If a recipe is assigned to an instance and there is a recipe with the same name but a lower version already installed and the assigned state of the recipe is `UPDATED`, then the recipe is updated to the new version. Script Working Directories Each script or execution step is run in its own temporary directory which is deleted after completing the step.
@@ -3749,6 +6798,79 @@ func (o SoftwareRecipeArtifactGcsPtrOutput) Object() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies an artifact available as a Google Cloud Storage object.
+type SoftwareRecipeArtifactGcsResponse struct {
+	// Bucket of the Google Cloud Storage object. Given an example URL: `https://storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `my-bucket`.
+	Bucket string `pulumi:"bucket"`
+	// Must be provided if allow_insecure is false. Generation number of the Google Cloud Storage object. `https://storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `1234567`.
+	Generation string `pulumi:"generation"`
+	// Name of the Google Cloud Storage object. As specified [here] (https://cloud.google.com/storage/docs/naming#objectnames) Given an example URL: `https://storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `foo/bar`.
+	Object string `pulumi:"object"`
+}
+
+// SoftwareRecipeArtifactGcsResponseInput is an input type that accepts SoftwareRecipeArtifactGcsResponseArgs and SoftwareRecipeArtifactGcsResponseOutput values.
+// You can construct a concrete instance of `SoftwareRecipeArtifactGcsResponseInput` via:
+//
+//          SoftwareRecipeArtifactGcsResponseArgs{...}
+type SoftwareRecipeArtifactGcsResponseInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeArtifactGcsResponseOutput() SoftwareRecipeArtifactGcsResponseOutput
+	ToSoftwareRecipeArtifactGcsResponseOutputWithContext(context.Context) SoftwareRecipeArtifactGcsResponseOutput
+}
+
+// Specifies an artifact available as a Google Cloud Storage object.
+type SoftwareRecipeArtifactGcsResponseArgs struct {
+	// Bucket of the Google Cloud Storage object. Given an example URL: `https://storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `my-bucket`.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Must be provided if allow_insecure is false. Generation number of the Google Cloud Storage object. `https://storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `1234567`.
+	Generation pulumi.StringInput `pulumi:"generation"`
+	// Name of the Google Cloud Storage object. As specified [here] (https://cloud.google.com/storage/docs/naming#objectnames) Given an example URL: `https://storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `foo/bar`.
+	Object pulumi.StringInput `pulumi:"object"`
+}
+
+func (SoftwareRecipeArtifactGcsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeArtifactGcsResponse)(nil)).Elem()
+}
+
+func (i SoftwareRecipeArtifactGcsResponseArgs) ToSoftwareRecipeArtifactGcsResponseOutput() SoftwareRecipeArtifactGcsResponseOutput {
+	return i.ToSoftwareRecipeArtifactGcsResponseOutputWithContext(context.Background())
+}
+
+func (i SoftwareRecipeArtifactGcsResponseArgs) ToSoftwareRecipeArtifactGcsResponseOutputWithContext(ctx context.Context) SoftwareRecipeArtifactGcsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeArtifactGcsResponseOutput)
+}
+
+// Specifies an artifact available as a Google Cloud Storage object.
+type SoftwareRecipeArtifactGcsResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeArtifactGcsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeArtifactGcsResponse)(nil)).Elem()
+}
+
+func (o SoftwareRecipeArtifactGcsResponseOutput) ToSoftwareRecipeArtifactGcsResponseOutput() SoftwareRecipeArtifactGcsResponseOutput {
+	return o
+}
+
+func (o SoftwareRecipeArtifactGcsResponseOutput) ToSoftwareRecipeArtifactGcsResponseOutputWithContext(ctx context.Context) SoftwareRecipeArtifactGcsResponseOutput {
+	return o
+}
+
+// Bucket of the Google Cloud Storage object. Given an example URL: `https://storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `my-bucket`.
+func (o SoftwareRecipeArtifactGcsResponseOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeArtifactGcsResponse) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Must be provided if allow_insecure is false. Generation number of the Google Cloud Storage object. `https://storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `1234567`.
+func (o SoftwareRecipeArtifactGcsResponseOutput) Generation() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeArtifactGcsResponse) string { return v.Generation }).(pulumi.StringOutput)
+}
+
+// Name of the Google Cloud Storage object. As specified [here] (https://cloud.google.com/storage/docs/naming#objectnames) Given an example URL: `https://storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `foo/bar`.
+func (o SoftwareRecipeArtifactGcsResponseOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeArtifactGcsResponse) string { return v.Object }).(pulumi.StringOutput)
+}
+
 // Specifies an artifact available via some URI.
 type SoftwareRecipeArtifactRemote struct {
 	// Must be provided if `allow_insecure` is `false`. SHA256 checksum in hex format, to compare to the checksum of the artifact. If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any of the steps.
@@ -3900,6 +7022,333 @@ func (o SoftwareRecipeArtifactRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 		}
 		return v.Uri
 	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies an artifact available via some URI.
+type SoftwareRecipeArtifactRemoteResponse struct {
+	// Must be provided if `allow_insecure` is `false`. SHA256 checksum in hex format, to compare to the checksum of the artifact. If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any of the steps.
+	Checksum string `pulumi:"checksum"`
+	// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+	Uri string `pulumi:"uri"`
+}
+
+// SoftwareRecipeArtifactRemoteResponseInput is an input type that accepts SoftwareRecipeArtifactRemoteResponseArgs and SoftwareRecipeArtifactRemoteResponseOutput values.
+// You can construct a concrete instance of `SoftwareRecipeArtifactRemoteResponseInput` via:
+//
+//          SoftwareRecipeArtifactRemoteResponseArgs{...}
+type SoftwareRecipeArtifactRemoteResponseInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeArtifactRemoteResponseOutput() SoftwareRecipeArtifactRemoteResponseOutput
+	ToSoftwareRecipeArtifactRemoteResponseOutputWithContext(context.Context) SoftwareRecipeArtifactRemoteResponseOutput
+}
+
+// Specifies an artifact available via some URI.
+type SoftwareRecipeArtifactRemoteResponseArgs struct {
+	// Must be provided if `allow_insecure` is `false`. SHA256 checksum in hex format, to compare to the checksum of the artifact. If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any of the steps.
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (SoftwareRecipeArtifactRemoteResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeArtifactRemoteResponse)(nil)).Elem()
+}
+
+func (i SoftwareRecipeArtifactRemoteResponseArgs) ToSoftwareRecipeArtifactRemoteResponseOutput() SoftwareRecipeArtifactRemoteResponseOutput {
+	return i.ToSoftwareRecipeArtifactRemoteResponseOutputWithContext(context.Background())
+}
+
+func (i SoftwareRecipeArtifactRemoteResponseArgs) ToSoftwareRecipeArtifactRemoteResponseOutputWithContext(ctx context.Context) SoftwareRecipeArtifactRemoteResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeArtifactRemoteResponseOutput)
+}
+
+// Specifies an artifact available via some URI.
+type SoftwareRecipeArtifactRemoteResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeArtifactRemoteResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeArtifactRemoteResponse)(nil)).Elem()
+}
+
+func (o SoftwareRecipeArtifactRemoteResponseOutput) ToSoftwareRecipeArtifactRemoteResponseOutput() SoftwareRecipeArtifactRemoteResponseOutput {
+	return o
+}
+
+func (o SoftwareRecipeArtifactRemoteResponseOutput) ToSoftwareRecipeArtifactRemoteResponseOutputWithContext(ctx context.Context) SoftwareRecipeArtifactRemoteResponseOutput {
+	return o
+}
+
+// Must be provided if `allow_insecure` is `false`. SHA256 checksum in hex format, to compare to the checksum of the artifact. If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any of the steps.
+func (o SoftwareRecipeArtifactRemoteResponseOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeArtifactRemoteResponse) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+func (o SoftwareRecipeArtifactRemoteResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeArtifactRemoteResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Specifies a resource to be used in the recipe.
+type SoftwareRecipeArtifactResponse struct {
+	// Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
+	AllowInsecure bool `pulumi:"allowInsecure"`
+	// A Google Cloud Storage artifact.
+	Gcs SoftwareRecipeArtifactGcsResponse `pulumi:"gcs"`
+	// A generic remote artifact.
+	Remote SoftwareRecipeArtifactRemoteResponse `pulumi:"remote"`
+}
+
+// SoftwareRecipeArtifactResponseInput is an input type that accepts SoftwareRecipeArtifactResponseArgs and SoftwareRecipeArtifactResponseOutput values.
+// You can construct a concrete instance of `SoftwareRecipeArtifactResponseInput` via:
+//
+//          SoftwareRecipeArtifactResponseArgs{...}
+type SoftwareRecipeArtifactResponseInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeArtifactResponseOutput() SoftwareRecipeArtifactResponseOutput
+	ToSoftwareRecipeArtifactResponseOutputWithContext(context.Context) SoftwareRecipeArtifactResponseOutput
+}
+
+// Specifies a resource to be used in the recipe.
+type SoftwareRecipeArtifactResponseArgs struct {
+	// Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
+	AllowInsecure pulumi.BoolInput `pulumi:"allowInsecure"`
+	// A Google Cloud Storage artifact.
+	Gcs SoftwareRecipeArtifactGcsResponseInput `pulumi:"gcs"`
+	// A generic remote artifact.
+	Remote SoftwareRecipeArtifactRemoteResponseInput `pulumi:"remote"`
+}
+
+func (SoftwareRecipeArtifactResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeArtifactResponse)(nil)).Elem()
+}
+
+func (i SoftwareRecipeArtifactResponseArgs) ToSoftwareRecipeArtifactResponseOutput() SoftwareRecipeArtifactResponseOutput {
+	return i.ToSoftwareRecipeArtifactResponseOutputWithContext(context.Background())
+}
+
+func (i SoftwareRecipeArtifactResponseArgs) ToSoftwareRecipeArtifactResponseOutputWithContext(ctx context.Context) SoftwareRecipeArtifactResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeArtifactResponseOutput)
+}
+
+// SoftwareRecipeArtifactResponseArrayInput is an input type that accepts SoftwareRecipeArtifactResponseArray and SoftwareRecipeArtifactResponseArrayOutput values.
+// You can construct a concrete instance of `SoftwareRecipeArtifactResponseArrayInput` via:
+//
+//          SoftwareRecipeArtifactResponseArray{ SoftwareRecipeArtifactResponseArgs{...} }
+type SoftwareRecipeArtifactResponseArrayInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeArtifactResponseArrayOutput() SoftwareRecipeArtifactResponseArrayOutput
+	ToSoftwareRecipeArtifactResponseArrayOutputWithContext(context.Context) SoftwareRecipeArtifactResponseArrayOutput
+}
+
+type SoftwareRecipeArtifactResponseArray []SoftwareRecipeArtifactResponseInput
+
+func (SoftwareRecipeArtifactResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SoftwareRecipeArtifactResponse)(nil)).Elem()
+}
+
+func (i SoftwareRecipeArtifactResponseArray) ToSoftwareRecipeArtifactResponseArrayOutput() SoftwareRecipeArtifactResponseArrayOutput {
+	return i.ToSoftwareRecipeArtifactResponseArrayOutputWithContext(context.Background())
+}
+
+func (i SoftwareRecipeArtifactResponseArray) ToSoftwareRecipeArtifactResponseArrayOutputWithContext(ctx context.Context) SoftwareRecipeArtifactResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeArtifactResponseArrayOutput)
+}
+
+// Specifies a resource to be used in the recipe.
+type SoftwareRecipeArtifactResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeArtifactResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeArtifactResponse)(nil)).Elem()
+}
+
+func (o SoftwareRecipeArtifactResponseOutput) ToSoftwareRecipeArtifactResponseOutput() SoftwareRecipeArtifactResponseOutput {
+	return o
+}
+
+func (o SoftwareRecipeArtifactResponseOutput) ToSoftwareRecipeArtifactResponseOutputWithContext(ctx context.Context) SoftwareRecipeArtifactResponseOutput {
+	return o
+}
+
+// Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
+func (o SoftwareRecipeArtifactResponseOutput) AllowInsecure() pulumi.BoolOutput {
+	return o.ApplyT(func(v SoftwareRecipeArtifactResponse) bool { return v.AllowInsecure }).(pulumi.BoolOutput)
+}
+
+// A Google Cloud Storage artifact.
+func (o SoftwareRecipeArtifactResponseOutput) Gcs() SoftwareRecipeArtifactGcsResponseOutput {
+	return o.ApplyT(func(v SoftwareRecipeArtifactResponse) SoftwareRecipeArtifactGcsResponse { return v.Gcs }).(SoftwareRecipeArtifactGcsResponseOutput)
+}
+
+// A generic remote artifact.
+func (o SoftwareRecipeArtifactResponseOutput) Remote() SoftwareRecipeArtifactRemoteResponseOutput {
+	return o.ApplyT(func(v SoftwareRecipeArtifactResponse) SoftwareRecipeArtifactRemoteResponse { return v.Remote }).(SoftwareRecipeArtifactRemoteResponseOutput)
+}
+
+type SoftwareRecipeArtifactResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeArtifactResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SoftwareRecipeArtifactResponse)(nil)).Elem()
+}
+
+func (o SoftwareRecipeArtifactResponseArrayOutput) ToSoftwareRecipeArtifactResponseArrayOutput() SoftwareRecipeArtifactResponseArrayOutput {
+	return o
+}
+
+func (o SoftwareRecipeArtifactResponseArrayOutput) ToSoftwareRecipeArtifactResponseArrayOutputWithContext(ctx context.Context) SoftwareRecipeArtifactResponseArrayOutput {
+	return o
+}
+
+func (o SoftwareRecipeArtifactResponseArrayOutput) Index(i pulumi.IntInput) SoftwareRecipeArtifactResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SoftwareRecipeArtifactResponse {
+		return vs[0].([]SoftwareRecipeArtifactResponse)[vs[1].(int)]
+	}).(SoftwareRecipeArtifactResponseOutput)
+}
+
+// A software recipe is a set of instructions for installing and configuring a piece of software. It consists of a set of artifacts that are downloaded, and a set of steps that install, configure, and/or update the software. Recipes support installing and updating software from artifacts in the following formats: Zip archive, Tar archive, Windows MSI, Debian package, and RPM package. Additionally, recipes support executing a script (either defined in a file or directly in this api) in bash, sh, cmd, and powershell. Updating a software recipe If a recipe is assigned to an instance and there is a recipe with the same name but a lower version already installed and the assigned state of the recipe is `UPDATED`, then the recipe is updated to the new version. Script Working Directories Each script or execution step is run in its own temporary directory which is deleted after completing the step.
+type SoftwareRecipeResponse struct {
+	// Resources available to be used in the steps in the recipe.
+	Artifacts []SoftwareRecipeArtifactResponse `pulumi:"artifacts"`
+	// Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+	DesiredState string `pulumi:"desiredState"`
+	// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
+	InstallSteps []SoftwareRecipeStepResponse `pulumi:"installSteps"`
+	// Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+	Name string `pulumi:"name"`
+	// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
+	UpdateSteps []SoftwareRecipeStepResponse `pulumi:"updateSteps"`
+	// The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
+	Version string `pulumi:"version"`
+}
+
+// SoftwareRecipeResponseInput is an input type that accepts SoftwareRecipeResponseArgs and SoftwareRecipeResponseOutput values.
+// You can construct a concrete instance of `SoftwareRecipeResponseInput` via:
+//
+//          SoftwareRecipeResponseArgs{...}
+type SoftwareRecipeResponseInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeResponseOutput() SoftwareRecipeResponseOutput
+	ToSoftwareRecipeResponseOutputWithContext(context.Context) SoftwareRecipeResponseOutput
+}
+
+// A software recipe is a set of instructions for installing and configuring a piece of software. It consists of a set of artifacts that are downloaded, and a set of steps that install, configure, and/or update the software. Recipes support installing and updating software from artifacts in the following formats: Zip archive, Tar archive, Windows MSI, Debian package, and RPM package. Additionally, recipes support executing a script (either defined in a file or directly in this api) in bash, sh, cmd, and powershell. Updating a software recipe If a recipe is assigned to an instance and there is a recipe with the same name but a lower version already installed and the assigned state of the recipe is `UPDATED`, then the recipe is updated to the new version. Script Working Directories Each script or execution step is run in its own temporary directory which is deleted after completing the step.
+type SoftwareRecipeResponseArgs struct {
+	// Resources available to be used in the steps in the recipe.
+	Artifacts SoftwareRecipeArtifactResponseArrayInput `pulumi:"artifacts"`
+	// Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+	DesiredState pulumi.StringInput `pulumi:"desiredState"`
+	// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
+	InstallSteps SoftwareRecipeStepResponseArrayInput `pulumi:"installSteps"`
+	// Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
+	UpdateSteps SoftwareRecipeStepResponseArrayInput `pulumi:"updateSteps"`
+	// The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (SoftwareRecipeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeResponse)(nil)).Elem()
+}
+
+func (i SoftwareRecipeResponseArgs) ToSoftwareRecipeResponseOutput() SoftwareRecipeResponseOutput {
+	return i.ToSoftwareRecipeResponseOutputWithContext(context.Background())
+}
+
+func (i SoftwareRecipeResponseArgs) ToSoftwareRecipeResponseOutputWithContext(ctx context.Context) SoftwareRecipeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeResponseOutput)
+}
+
+// SoftwareRecipeResponseArrayInput is an input type that accepts SoftwareRecipeResponseArray and SoftwareRecipeResponseArrayOutput values.
+// You can construct a concrete instance of `SoftwareRecipeResponseArrayInput` via:
+//
+//          SoftwareRecipeResponseArray{ SoftwareRecipeResponseArgs{...} }
+type SoftwareRecipeResponseArrayInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeResponseArrayOutput() SoftwareRecipeResponseArrayOutput
+	ToSoftwareRecipeResponseArrayOutputWithContext(context.Context) SoftwareRecipeResponseArrayOutput
+}
+
+type SoftwareRecipeResponseArray []SoftwareRecipeResponseInput
+
+func (SoftwareRecipeResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SoftwareRecipeResponse)(nil)).Elem()
+}
+
+func (i SoftwareRecipeResponseArray) ToSoftwareRecipeResponseArrayOutput() SoftwareRecipeResponseArrayOutput {
+	return i.ToSoftwareRecipeResponseArrayOutputWithContext(context.Background())
+}
+
+func (i SoftwareRecipeResponseArray) ToSoftwareRecipeResponseArrayOutputWithContext(ctx context.Context) SoftwareRecipeResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeResponseArrayOutput)
+}
+
+// A software recipe is a set of instructions for installing and configuring a piece of software. It consists of a set of artifacts that are downloaded, and a set of steps that install, configure, and/or update the software. Recipes support installing and updating software from artifacts in the following formats: Zip archive, Tar archive, Windows MSI, Debian package, and RPM package. Additionally, recipes support executing a script (either defined in a file or directly in this api) in bash, sh, cmd, and powershell. Updating a software recipe If a recipe is assigned to an instance and there is a recipe with the same name but a lower version already installed and the assigned state of the recipe is `UPDATED`, then the recipe is updated to the new version. Script Working Directories Each script or execution step is run in its own temporary directory which is deleted after completing the step.
+type SoftwareRecipeResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeResponse)(nil)).Elem()
+}
+
+func (o SoftwareRecipeResponseOutput) ToSoftwareRecipeResponseOutput() SoftwareRecipeResponseOutput {
+	return o
+}
+
+func (o SoftwareRecipeResponseOutput) ToSoftwareRecipeResponseOutputWithContext(ctx context.Context) SoftwareRecipeResponseOutput {
+	return o
+}
+
+// Resources available to be used in the steps in the recipe.
+func (o SoftwareRecipeResponseOutput) Artifacts() SoftwareRecipeArtifactResponseArrayOutput {
+	return o.ApplyT(func(v SoftwareRecipeResponse) []SoftwareRecipeArtifactResponse { return v.Artifacts }).(SoftwareRecipeArtifactResponseArrayOutput)
+}
+
+// Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+func (o SoftwareRecipeResponseOutput) DesiredState() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeResponse) string { return v.DesiredState }).(pulumi.StringOutput)
+}
+
+// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
+func (o SoftwareRecipeResponseOutput) InstallSteps() SoftwareRecipeStepResponseArrayOutput {
+	return o.ApplyT(func(v SoftwareRecipeResponse) []SoftwareRecipeStepResponse { return v.InstallSteps }).(SoftwareRecipeStepResponseArrayOutput)
+}
+
+// Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+func (o SoftwareRecipeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
+func (o SoftwareRecipeResponseOutput) UpdateSteps() SoftwareRecipeStepResponseArrayOutput {
+	return o.ApplyT(func(v SoftwareRecipeResponse) []SoftwareRecipeStepResponse { return v.UpdateSteps }).(SoftwareRecipeStepResponseArrayOutput)
+}
+
+// The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
+func (o SoftwareRecipeResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type SoftwareRecipeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SoftwareRecipeResponse)(nil)).Elem()
+}
+
+func (o SoftwareRecipeResponseArrayOutput) ToSoftwareRecipeResponseArrayOutput() SoftwareRecipeResponseArrayOutput {
+	return o
+}
+
+func (o SoftwareRecipeResponseArrayOutput) ToSoftwareRecipeResponseArrayOutputWithContext(ctx context.Context) SoftwareRecipeResponseArrayOutput {
+	return o
+}
+
+func (o SoftwareRecipeResponseArrayOutput) Index(i pulumi.IntInput) SoftwareRecipeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SoftwareRecipeResponse {
+		return vs[0].([]SoftwareRecipeResponse)[vs[1].(int)]
+	}).(SoftwareRecipeResponseOutput)
 }
 
 // An action that can be taken as part of installing or updating a recipe.
@@ -4247,6 +7696,88 @@ func (o SoftwareRecipeStepCopyFilePtrOutput) Permissions() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Copies the artifact to the specified path on the instance.
+type SoftwareRecipeStepCopyFileResponse struct {
+	// Required. The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+	// Required. The absolute path on the instance to put the file.
+	Destination string `pulumi:"destination"`
+	// Whether to allow this step to overwrite existing files. If this is false and the file already exists the file is not overwritten and the step is considered a success. Defaults to false.
+	Overwrite bool `pulumi:"overwrite"`
+	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+	Permissions string `pulumi:"permissions"`
+}
+
+// SoftwareRecipeStepCopyFileResponseInput is an input type that accepts SoftwareRecipeStepCopyFileResponseArgs and SoftwareRecipeStepCopyFileResponseOutput values.
+// You can construct a concrete instance of `SoftwareRecipeStepCopyFileResponseInput` via:
+//
+//          SoftwareRecipeStepCopyFileResponseArgs{...}
+type SoftwareRecipeStepCopyFileResponseInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeStepCopyFileResponseOutput() SoftwareRecipeStepCopyFileResponseOutput
+	ToSoftwareRecipeStepCopyFileResponseOutputWithContext(context.Context) SoftwareRecipeStepCopyFileResponseOutput
+}
+
+// Copies the artifact to the specified path on the instance.
+type SoftwareRecipeStepCopyFileResponseArgs struct {
+	// Required. The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+	// Required. The absolute path on the instance to put the file.
+	Destination pulumi.StringInput `pulumi:"destination"`
+	// Whether to allow this step to overwrite existing files. If this is false and the file already exists the file is not overwritten and the step is considered a success. Defaults to false.
+	Overwrite pulumi.BoolInput `pulumi:"overwrite"`
+	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+	Permissions pulumi.StringInput `pulumi:"permissions"`
+}
+
+func (SoftwareRecipeStepCopyFileResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepCopyFileResponse)(nil)).Elem()
+}
+
+func (i SoftwareRecipeStepCopyFileResponseArgs) ToSoftwareRecipeStepCopyFileResponseOutput() SoftwareRecipeStepCopyFileResponseOutput {
+	return i.ToSoftwareRecipeStepCopyFileResponseOutputWithContext(context.Background())
+}
+
+func (i SoftwareRecipeStepCopyFileResponseArgs) ToSoftwareRecipeStepCopyFileResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepCopyFileResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepCopyFileResponseOutput)
+}
+
+// Copies the artifact to the specified path on the instance.
+type SoftwareRecipeStepCopyFileResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeStepCopyFileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepCopyFileResponse)(nil)).Elem()
+}
+
+func (o SoftwareRecipeStepCopyFileResponseOutput) ToSoftwareRecipeStepCopyFileResponseOutput() SoftwareRecipeStepCopyFileResponseOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepCopyFileResponseOutput) ToSoftwareRecipeStepCopyFileResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepCopyFileResponseOutput {
+	return o
+}
+
+// Required. The id of the relevant artifact in the recipe.
+func (o SoftwareRecipeStepCopyFileResponseOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepCopyFileResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+// Required. The absolute path on the instance to put the file.
+func (o SoftwareRecipeStepCopyFileResponseOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepCopyFileResponse) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+// Whether to allow this step to overwrite existing files. If this is false and the file already exists the file is not overwritten and the step is considered a success. Defaults to false.
+func (o SoftwareRecipeStepCopyFileResponseOutput) Overwrite() pulumi.BoolOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepCopyFileResponse) bool { return v.Overwrite }).(pulumi.BoolOutput)
+}
+
+// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+func (o SoftwareRecipeStepCopyFileResponseOutput) Permissions() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepCopyFileResponse) string { return v.Permissions }).(pulumi.StringOutput)
+}
+
 // Executes an artifact or local file.
 type SoftwareRecipeStepExecFile struct {
 	// Defaults to [0]. A list of possible return values that the program can return to indicate a success.
@@ -4438,6 +7969,88 @@ func (o SoftwareRecipeStepExecFilePtrOutput) LocalPath() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Executes an artifact or local file.
+type SoftwareRecipeStepExecFileResponse struct {
+	// Defaults to [0]. A list of possible return values that the program can return to indicate a success.
+	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
+	// Arguments to be passed to the provided executable.
+	Args []string `pulumi:"args"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+	// The absolute path of the file on the local filesystem.
+	LocalPath string `pulumi:"localPath"`
+}
+
+// SoftwareRecipeStepExecFileResponseInput is an input type that accepts SoftwareRecipeStepExecFileResponseArgs and SoftwareRecipeStepExecFileResponseOutput values.
+// You can construct a concrete instance of `SoftwareRecipeStepExecFileResponseInput` via:
+//
+//          SoftwareRecipeStepExecFileResponseArgs{...}
+type SoftwareRecipeStepExecFileResponseInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeStepExecFileResponseOutput() SoftwareRecipeStepExecFileResponseOutput
+	ToSoftwareRecipeStepExecFileResponseOutputWithContext(context.Context) SoftwareRecipeStepExecFileResponseOutput
+}
+
+// Executes an artifact or local file.
+type SoftwareRecipeStepExecFileResponseArgs struct {
+	// Defaults to [0]. A list of possible return values that the program can return to indicate a success.
+	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
+	// Arguments to be passed to the provided executable.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+	// The absolute path of the file on the local filesystem.
+	LocalPath pulumi.StringInput `pulumi:"localPath"`
+}
+
+func (SoftwareRecipeStepExecFileResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepExecFileResponse)(nil)).Elem()
+}
+
+func (i SoftwareRecipeStepExecFileResponseArgs) ToSoftwareRecipeStepExecFileResponseOutput() SoftwareRecipeStepExecFileResponseOutput {
+	return i.ToSoftwareRecipeStepExecFileResponseOutputWithContext(context.Background())
+}
+
+func (i SoftwareRecipeStepExecFileResponseArgs) ToSoftwareRecipeStepExecFileResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepExecFileResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepExecFileResponseOutput)
+}
+
+// Executes an artifact or local file.
+type SoftwareRecipeStepExecFileResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeStepExecFileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepExecFileResponse)(nil)).Elem()
+}
+
+func (o SoftwareRecipeStepExecFileResponseOutput) ToSoftwareRecipeStepExecFileResponseOutput() SoftwareRecipeStepExecFileResponseOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepExecFileResponseOutput) ToSoftwareRecipeStepExecFileResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepExecFileResponseOutput {
+	return o
+}
+
+// Defaults to [0]. A list of possible return values that the program can return to indicate a success.
+func (o SoftwareRecipeStepExecFileResponseOutput) AllowedExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepExecFileResponse) []int { return v.AllowedExitCodes }).(pulumi.IntArrayOutput)
+}
+
+// Arguments to be passed to the provided executable.
+func (o SoftwareRecipeStepExecFileResponseOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepExecFileResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// The id of the relevant artifact in the recipe.
+func (o SoftwareRecipeStepExecFileResponseOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepExecFileResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+// The absolute path of the file on the local filesystem.
+func (o SoftwareRecipeStepExecFileResponseOutput) LocalPath() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepExecFileResponse) string { return v.LocalPath }).(pulumi.StringOutput)
+}
+
 // Extracts an archive of the type specified in the specified directory.
 type SoftwareRecipeStepExtractArchive struct {
 	// Required. The id of the relevant artifact in the recipe.
@@ -4610,6 +8223,79 @@ func (o SoftwareRecipeStepExtractArchivePtrOutput) Type() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Extracts an archive of the type specified in the specified directory.
+type SoftwareRecipeStepExtractArchiveResponse struct {
+	// Required. The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+	// Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
+	Destination string `pulumi:"destination"`
+	// Required. The type of the archive to extract.
+	Type string `pulumi:"type"`
+}
+
+// SoftwareRecipeStepExtractArchiveResponseInput is an input type that accepts SoftwareRecipeStepExtractArchiveResponseArgs and SoftwareRecipeStepExtractArchiveResponseOutput values.
+// You can construct a concrete instance of `SoftwareRecipeStepExtractArchiveResponseInput` via:
+//
+//          SoftwareRecipeStepExtractArchiveResponseArgs{...}
+type SoftwareRecipeStepExtractArchiveResponseInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeStepExtractArchiveResponseOutput() SoftwareRecipeStepExtractArchiveResponseOutput
+	ToSoftwareRecipeStepExtractArchiveResponseOutputWithContext(context.Context) SoftwareRecipeStepExtractArchiveResponseOutput
+}
+
+// Extracts an archive of the type specified in the specified directory.
+type SoftwareRecipeStepExtractArchiveResponseArgs struct {
+	// Required. The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+	// Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
+	Destination pulumi.StringInput `pulumi:"destination"`
+	// Required. The type of the archive to extract.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SoftwareRecipeStepExtractArchiveResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepExtractArchiveResponse)(nil)).Elem()
+}
+
+func (i SoftwareRecipeStepExtractArchiveResponseArgs) ToSoftwareRecipeStepExtractArchiveResponseOutput() SoftwareRecipeStepExtractArchiveResponseOutput {
+	return i.ToSoftwareRecipeStepExtractArchiveResponseOutputWithContext(context.Background())
+}
+
+func (i SoftwareRecipeStepExtractArchiveResponseArgs) ToSoftwareRecipeStepExtractArchiveResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepExtractArchiveResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepExtractArchiveResponseOutput)
+}
+
+// Extracts an archive of the type specified in the specified directory.
+type SoftwareRecipeStepExtractArchiveResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeStepExtractArchiveResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepExtractArchiveResponse)(nil)).Elem()
+}
+
+func (o SoftwareRecipeStepExtractArchiveResponseOutput) ToSoftwareRecipeStepExtractArchiveResponseOutput() SoftwareRecipeStepExtractArchiveResponseOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepExtractArchiveResponseOutput) ToSoftwareRecipeStepExtractArchiveResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepExtractArchiveResponseOutput {
+	return o
+}
+
+// Required. The id of the relevant artifact in the recipe.
+func (o SoftwareRecipeStepExtractArchiveResponseOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepExtractArchiveResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+// Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
+func (o SoftwareRecipeStepExtractArchiveResponseOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepExtractArchiveResponse) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+// Required. The type of the archive to extract.
+func (o SoftwareRecipeStepExtractArchiveResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepExtractArchiveResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Installs a deb via dpkg.
 type SoftwareRecipeStepInstallDpkg struct {
 	// Required. The id of the relevant artifact in the recipe.
@@ -4742,6 +8428,61 @@ func (o SoftwareRecipeStepInstallDpkgPtrOutput) ArtifactId() pulumi.StringPtrOut
 		}
 		return v.ArtifactId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Installs a deb via dpkg.
+type SoftwareRecipeStepInstallDpkgResponse struct {
+	// Required. The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+}
+
+// SoftwareRecipeStepInstallDpkgResponseInput is an input type that accepts SoftwareRecipeStepInstallDpkgResponseArgs and SoftwareRecipeStepInstallDpkgResponseOutput values.
+// You can construct a concrete instance of `SoftwareRecipeStepInstallDpkgResponseInput` via:
+//
+//          SoftwareRecipeStepInstallDpkgResponseArgs{...}
+type SoftwareRecipeStepInstallDpkgResponseInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeStepInstallDpkgResponseOutput() SoftwareRecipeStepInstallDpkgResponseOutput
+	ToSoftwareRecipeStepInstallDpkgResponseOutputWithContext(context.Context) SoftwareRecipeStepInstallDpkgResponseOutput
+}
+
+// Installs a deb via dpkg.
+type SoftwareRecipeStepInstallDpkgResponseArgs struct {
+	// Required. The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+}
+
+func (SoftwareRecipeStepInstallDpkgResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepInstallDpkgResponse)(nil)).Elem()
+}
+
+func (i SoftwareRecipeStepInstallDpkgResponseArgs) ToSoftwareRecipeStepInstallDpkgResponseOutput() SoftwareRecipeStepInstallDpkgResponseOutput {
+	return i.ToSoftwareRecipeStepInstallDpkgResponseOutputWithContext(context.Background())
+}
+
+func (i SoftwareRecipeStepInstallDpkgResponseArgs) ToSoftwareRecipeStepInstallDpkgResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepInstallDpkgResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepInstallDpkgResponseOutput)
+}
+
+// Installs a deb via dpkg.
+type SoftwareRecipeStepInstallDpkgResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeStepInstallDpkgResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepInstallDpkgResponse)(nil)).Elem()
+}
+
+func (o SoftwareRecipeStepInstallDpkgResponseOutput) ToSoftwareRecipeStepInstallDpkgResponseOutput() SoftwareRecipeStepInstallDpkgResponseOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepInstallDpkgResponseOutput) ToSoftwareRecipeStepInstallDpkgResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepInstallDpkgResponseOutput {
+	return o
+}
+
+// Required. The id of the relevant artifact in the recipe.
+func (o SoftwareRecipeStepInstallDpkgResponseOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepInstallDpkgResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
 }
 
 // Installs an MSI file.
@@ -4916,6 +8657,79 @@ func (o SoftwareRecipeStepInstallMsiPtrOutput) Flags() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// Installs an MSI file.
+type SoftwareRecipeStepInstallMsiResponse struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
+	// Required. The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+	// The flags to use when installing the MSI defaults to ["/i"] (i.e. the install flag).
+	Flags []string `pulumi:"flags"`
+}
+
+// SoftwareRecipeStepInstallMsiResponseInput is an input type that accepts SoftwareRecipeStepInstallMsiResponseArgs and SoftwareRecipeStepInstallMsiResponseOutput values.
+// You can construct a concrete instance of `SoftwareRecipeStepInstallMsiResponseInput` via:
+//
+//          SoftwareRecipeStepInstallMsiResponseArgs{...}
+type SoftwareRecipeStepInstallMsiResponseInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeStepInstallMsiResponseOutput() SoftwareRecipeStepInstallMsiResponseOutput
+	ToSoftwareRecipeStepInstallMsiResponseOutputWithContext(context.Context) SoftwareRecipeStepInstallMsiResponseOutput
+}
+
+// Installs an MSI file.
+type SoftwareRecipeStepInstallMsiResponseArgs struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
+	// Required. The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+	// The flags to use when installing the MSI defaults to ["/i"] (i.e. the install flag).
+	Flags pulumi.StringArrayInput `pulumi:"flags"`
+}
+
+func (SoftwareRecipeStepInstallMsiResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepInstallMsiResponse)(nil)).Elem()
+}
+
+func (i SoftwareRecipeStepInstallMsiResponseArgs) ToSoftwareRecipeStepInstallMsiResponseOutput() SoftwareRecipeStepInstallMsiResponseOutput {
+	return i.ToSoftwareRecipeStepInstallMsiResponseOutputWithContext(context.Background())
+}
+
+func (i SoftwareRecipeStepInstallMsiResponseArgs) ToSoftwareRecipeStepInstallMsiResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepInstallMsiResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepInstallMsiResponseOutput)
+}
+
+// Installs an MSI file.
+type SoftwareRecipeStepInstallMsiResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeStepInstallMsiResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepInstallMsiResponse)(nil)).Elem()
+}
+
+func (o SoftwareRecipeStepInstallMsiResponseOutput) ToSoftwareRecipeStepInstallMsiResponseOutput() SoftwareRecipeStepInstallMsiResponseOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepInstallMsiResponseOutput) ToSoftwareRecipeStepInstallMsiResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepInstallMsiResponseOutput {
+	return o
+}
+
+// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+func (o SoftwareRecipeStepInstallMsiResponseOutput) AllowedExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepInstallMsiResponse) []int { return v.AllowedExitCodes }).(pulumi.IntArrayOutput)
+}
+
+// Required. The id of the relevant artifact in the recipe.
+func (o SoftwareRecipeStepInstallMsiResponseOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepInstallMsiResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+// The flags to use when installing the MSI defaults to ["/i"] (i.e. the install flag).
+func (o SoftwareRecipeStepInstallMsiResponseOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepInstallMsiResponse) []string { return v.Flags }).(pulumi.StringArrayOutput)
+}
+
 // Installs an rpm file via the rpm utility.
 type SoftwareRecipeStepInstallRpm struct {
 	// Required. The id of the relevant artifact in the recipe.
@@ -5048,6 +8862,217 @@ func (o SoftwareRecipeStepInstallRpmPtrOutput) ArtifactId() pulumi.StringPtrOutp
 		}
 		return v.ArtifactId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Installs an rpm file via the rpm utility.
+type SoftwareRecipeStepInstallRpmResponse struct {
+	// Required. The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+}
+
+// SoftwareRecipeStepInstallRpmResponseInput is an input type that accepts SoftwareRecipeStepInstallRpmResponseArgs and SoftwareRecipeStepInstallRpmResponseOutput values.
+// You can construct a concrete instance of `SoftwareRecipeStepInstallRpmResponseInput` via:
+//
+//          SoftwareRecipeStepInstallRpmResponseArgs{...}
+type SoftwareRecipeStepInstallRpmResponseInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeStepInstallRpmResponseOutput() SoftwareRecipeStepInstallRpmResponseOutput
+	ToSoftwareRecipeStepInstallRpmResponseOutputWithContext(context.Context) SoftwareRecipeStepInstallRpmResponseOutput
+}
+
+// Installs an rpm file via the rpm utility.
+type SoftwareRecipeStepInstallRpmResponseArgs struct {
+	// Required. The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+}
+
+func (SoftwareRecipeStepInstallRpmResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepInstallRpmResponse)(nil)).Elem()
+}
+
+func (i SoftwareRecipeStepInstallRpmResponseArgs) ToSoftwareRecipeStepInstallRpmResponseOutput() SoftwareRecipeStepInstallRpmResponseOutput {
+	return i.ToSoftwareRecipeStepInstallRpmResponseOutputWithContext(context.Background())
+}
+
+func (i SoftwareRecipeStepInstallRpmResponseArgs) ToSoftwareRecipeStepInstallRpmResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepInstallRpmResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepInstallRpmResponseOutput)
+}
+
+// Installs an rpm file via the rpm utility.
+type SoftwareRecipeStepInstallRpmResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeStepInstallRpmResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepInstallRpmResponse)(nil)).Elem()
+}
+
+func (o SoftwareRecipeStepInstallRpmResponseOutput) ToSoftwareRecipeStepInstallRpmResponseOutput() SoftwareRecipeStepInstallRpmResponseOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepInstallRpmResponseOutput) ToSoftwareRecipeStepInstallRpmResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepInstallRpmResponseOutput {
+	return o
+}
+
+// Required. The id of the relevant artifact in the recipe.
+func (o SoftwareRecipeStepInstallRpmResponseOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepInstallRpmResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+// An action that can be taken as part of installing or updating a recipe.
+type SoftwareRecipeStepResponse struct {
+	// Extracts an archive into the specified directory.
+	ArchiveExtraction SoftwareRecipeStepExtractArchiveResponse `pulumi:"archiveExtraction"`
+	// Installs a deb file via dpkg.
+	DpkgInstallation SoftwareRecipeStepInstallDpkgResponse `pulumi:"dpkgInstallation"`
+	// Copies a file onto the instance.
+	FileCopy SoftwareRecipeStepCopyFileResponse `pulumi:"fileCopy"`
+	// Executes an artifact or local file.
+	FileExec SoftwareRecipeStepExecFileResponse `pulumi:"fileExec"`
+	// Installs an MSI file.
+	MsiInstallation SoftwareRecipeStepInstallMsiResponse `pulumi:"msiInstallation"`
+	// Installs an rpm file via the rpm utility.
+	RpmInstallation SoftwareRecipeStepInstallRpmResponse `pulumi:"rpmInstallation"`
+	// Runs commands in a shell.
+	ScriptRun SoftwareRecipeStepRunScriptResponse `pulumi:"scriptRun"`
+}
+
+// SoftwareRecipeStepResponseInput is an input type that accepts SoftwareRecipeStepResponseArgs and SoftwareRecipeStepResponseOutput values.
+// You can construct a concrete instance of `SoftwareRecipeStepResponseInput` via:
+//
+//          SoftwareRecipeStepResponseArgs{...}
+type SoftwareRecipeStepResponseInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeStepResponseOutput() SoftwareRecipeStepResponseOutput
+	ToSoftwareRecipeStepResponseOutputWithContext(context.Context) SoftwareRecipeStepResponseOutput
+}
+
+// An action that can be taken as part of installing or updating a recipe.
+type SoftwareRecipeStepResponseArgs struct {
+	// Extracts an archive into the specified directory.
+	ArchiveExtraction SoftwareRecipeStepExtractArchiveResponseInput `pulumi:"archiveExtraction"`
+	// Installs a deb file via dpkg.
+	DpkgInstallation SoftwareRecipeStepInstallDpkgResponseInput `pulumi:"dpkgInstallation"`
+	// Copies a file onto the instance.
+	FileCopy SoftwareRecipeStepCopyFileResponseInput `pulumi:"fileCopy"`
+	// Executes an artifact or local file.
+	FileExec SoftwareRecipeStepExecFileResponseInput `pulumi:"fileExec"`
+	// Installs an MSI file.
+	MsiInstallation SoftwareRecipeStepInstallMsiResponseInput `pulumi:"msiInstallation"`
+	// Installs an rpm file via the rpm utility.
+	RpmInstallation SoftwareRecipeStepInstallRpmResponseInput `pulumi:"rpmInstallation"`
+	// Runs commands in a shell.
+	ScriptRun SoftwareRecipeStepRunScriptResponseInput `pulumi:"scriptRun"`
+}
+
+func (SoftwareRecipeStepResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepResponse)(nil)).Elem()
+}
+
+func (i SoftwareRecipeStepResponseArgs) ToSoftwareRecipeStepResponseOutput() SoftwareRecipeStepResponseOutput {
+	return i.ToSoftwareRecipeStepResponseOutputWithContext(context.Background())
+}
+
+func (i SoftwareRecipeStepResponseArgs) ToSoftwareRecipeStepResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepResponseOutput)
+}
+
+// SoftwareRecipeStepResponseArrayInput is an input type that accepts SoftwareRecipeStepResponseArray and SoftwareRecipeStepResponseArrayOutput values.
+// You can construct a concrete instance of `SoftwareRecipeStepResponseArrayInput` via:
+//
+//          SoftwareRecipeStepResponseArray{ SoftwareRecipeStepResponseArgs{...} }
+type SoftwareRecipeStepResponseArrayInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeStepResponseArrayOutput() SoftwareRecipeStepResponseArrayOutput
+	ToSoftwareRecipeStepResponseArrayOutputWithContext(context.Context) SoftwareRecipeStepResponseArrayOutput
+}
+
+type SoftwareRecipeStepResponseArray []SoftwareRecipeStepResponseInput
+
+func (SoftwareRecipeStepResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SoftwareRecipeStepResponse)(nil)).Elem()
+}
+
+func (i SoftwareRecipeStepResponseArray) ToSoftwareRecipeStepResponseArrayOutput() SoftwareRecipeStepResponseArrayOutput {
+	return i.ToSoftwareRecipeStepResponseArrayOutputWithContext(context.Background())
+}
+
+func (i SoftwareRecipeStepResponseArray) ToSoftwareRecipeStepResponseArrayOutputWithContext(ctx context.Context) SoftwareRecipeStepResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepResponseArrayOutput)
+}
+
+// An action that can be taken as part of installing or updating a recipe.
+type SoftwareRecipeStepResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepResponse)(nil)).Elem()
+}
+
+func (o SoftwareRecipeStepResponseOutput) ToSoftwareRecipeStepResponseOutput() SoftwareRecipeStepResponseOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepResponseOutput) ToSoftwareRecipeStepResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepResponseOutput {
+	return o
+}
+
+// Extracts an archive into the specified directory.
+func (o SoftwareRecipeStepResponseOutput) ArchiveExtraction() SoftwareRecipeStepExtractArchiveResponseOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepResponse) SoftwareRecipeStepExtractArchiveResponse {
+		return v.ArchiveExtraction
+	}).(SoftwareRecipeStepExtractArchiveResponseOutput)
+}
+
+// Installs a deb file via dpkg.
+func (o SoftwareRecipeStepResponseOutput) DpkgInstallation() SoftwareRecipeStepInstallDpkgResponseOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepResponse) SoftwareRecipeStepInstallDpkgResponse { return v.DpkgInstallation }).(SoftwareRecipeStepInstallDpkgResponseOutput)
+}
+
+// Copies a file onto the instance.
+func (o SoftwareRecipeStepResponseOutput) FileCopy() SoftwareRecipeStepCopyFileResponseOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepResponse) SoftwareRecipeStepCopyFileResponse { return v.FileCopy }).(SoftwareRecipeStepCopyFileResponseOutput)
+}
+
+// Executes an artifact or local file.
+func (o SoftwareRecipeStepResponseOutput) FileExec() SoftwareRecipeStepExecFileResponseOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepResponse) SoftwareRecipeStepExecFileResponse { return v.FileExec }).(SoftwareRecipeStepExecFileResponseOutput)
+}
+
+// Installs an MSI file.
+func (o SoftwareRecipeStepResponseOutput) MsiInstallation() SoftwareRecipeStepInstallMsiResponseOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepResponse) SoftwareRecipeStepInstallMsiResponse { return v.MsiInstallation }).(SoftwareRecipeStepInstallMsiResponseOutput)
+}
+
+// Installs an rpm file via the rpm utility.
+func (o SoftwareRecipeStepResponseOutput) RpmInstallation() SoftwareRecipeStepInstallRpmResponseOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepResponse) SoftwareRecipeStepInstallRpmResponse { return v.RpmInstallation }).(SoftwareRecipeStepInstallRpmResponseOutput)
+}
+
+// Runs commands in a shell.
+func (o SoftwareRecipeStepResponseOutput) ScriptRun() SoftwareRecipeStepRunScriptResponseOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepResponse) SoftwareRecipeStepRunScriptResponse { return v.ScriptRun }).(SoftwareRecipeStepRunScriptResponseOutput)
+}
+
+type SoftwareRecipeStepResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeStepResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SoftwareRecipeStepResponse)(nil)).Elem()
+}
+
+func (o SoftwareRecipeStepResponseArrayOutput) ToSoftwareRecipeStepResponseArrayOutput() SoftwareRecipeStepResponseArrayOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepResponseArrayOutput) ToSoftwareRecipeStepResponseArrayOutputWithContext(ctx context.Context) SoftwareRecipeStepResponseArrayOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepResponseArrayOutput) Index(i pulumi.IntInput) SoftwareRecipeStepResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SoftwareRecipeStepResponse {
+		return vs[0].([]SoftwareRecipeStepResponse)[vs[1].(int)]
+	}).(SoftwareRecipeStepResponseOutput)
 }
 
 // Runs a script through an interpreter.
@@ -5220,6 +9245,79 @@ func (o SoftwareRecipeStepRunScriptPtrOutput) Script() pulumi.StringPtrOutput {
 		}
 		return v.Script
 	}).(pulumi.StringPtrOutput)
+}
+
+// Runs a script through an interpreter.
+type SoftwareRecipeStepRunScriptResponse struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
+	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](<https://en.wikipedia.org/wiki/Shebang_\(Unix\)>).
+	Interpreter string `pulumi:"interpreter"`
+	// Required. The shell script to be executed.
+	Script string `pulumi:"script"`
+}
+
+// SoftwareRecipeStepRunScriptResponseInput is an input type that accepts SoftwareRecipeStepRunScriptResponseArgs and SoftwareRecipeStepRunScriptResponseOutput values.
+// You can construct a concrete instance of `SoftwareRecipeStepRunScriptResponseInput` via:
+//
+//          SoftwareRecipeStepRunScriptResponseArgs{...}
+type SoftwareRecipeStepRunScriptResponseInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeStepRunScriptResponseOutput() SoftwareRecipeStepRunScriptResponseOutput
+	ToSoftwareRecipeStepRunScriptResponseOutputWithContext(context.Context) SoftwareRecipeStepRunScriptResponseOutput
+}
+
+// Runs a script through an interpreter.
+type SoftwareRecipeStepRunScriptResponseArgs struct {
+	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
+	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](<https://en.wikipedia.org/wiki/Shebang_\(Unix\)>).
+	Interpreter pulumi.StringInput `pulumi:"interpreter"`
+	// Required. The shell script to be executed.
+	Script pulumi.StringInput `pulumi:"script"`
+}
+
+func (SoftwareRecipeStepRunScriptResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepRunScriptResponse)(nil)).Elem()
+}
+
+func (i SoftwareRecipeStepRunScriptResponseArgs) ToSoftwareRecipeStepRunScriptResponseOutput() SoftwareRecipeStepRunScriptResponseOutput {
+	return i.ToSoftwareRecipeStepRunScriptResponseOutputWithContext(context.Background())
+}
+
+func (i SoftwareRecipeStepRunScriptResponseArgs) ToSoftwareRecipeStepRunScriptResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepRunScriptResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareRecipeStepRunScriptResponseOutput)
+}
+
+// Runs a script through an interpreter.
+type SoftwareRecipeStepRunScriptResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeStepRunScriptResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepRunScriptResponse)(nil)).Elem()
+}
+
+func (o SoftwareRecipeStepRunScriptResponseOutput) ToSoftwareRecipeStepRunScriptResponseOutput() SoftwareRecipeStepRunScriptResponseOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepRunScriptResponseOutput) ToSoftwareRecipeStepRunScriptResponseOutputWithContext(ctx context.Context) SoftwareRecipeStepRunScriptResponseOutput {
+	return o
+}
+
+// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+func (o SoftwareRecipeStepRunScriptResponseOutput) AllowedExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepRunScriptResponse) []int { return v.AllowedExitCodes }).(pulumi.IntArrayOutput)
+}
+
+// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](<https://en.wikipedia.org/wiki/Shebang_\(Unix\)>).
+func (o SoftwareRecipeStepRunScriptResponseOutput) Interpreter() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepRunScriptResponse) string { return v.Interpreter }).(pulumi.StringOutput)
+}
+
+// Required. The shell script to be executed.
+func (o SoftwareRecipeStepRunScriptResponseOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepRunScriptResponse) string { return v.Script }).(pulumi.StringOutput)
 }
 
 // Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
@@ -5413,6 +9511,197 @@ func (o TimeOfDayPtrOutput) Seconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDayResponse struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds int `pulumi:"seconds"`
+}
+
+// TimeOfDayResponseInput is an input type that accepts TimeOfDayResponseArgs and TimeOfDayResponseOutput values.
+// You can construct a concrete instance of `TimeOfDayResponseInput` via:
+//
+//          TimeOfDayResponseArgs{...}
+type TimeOfDayResponseInput interface {
+	pulumi.Input
+
+	ToTimeOfDayResponseOutput() TimeOfDayResponseOutput
+	ToTimeOfDayResponseOutputWithContext(context.Context) TimeOfDayResponseOutput
+}
+
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDayResponseArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (TimeOfDayResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeOfDayResponse)(nil)).Elem()
+}
+
+func (i TimeOfDayResponseArgs) ToTimeOfDayResponseOutput() TimeOfDayResponseOutput {
+	return i.ToTimeOfDayResponseOutputWithContext(context.Background())
+}
+
+func (i TimeOfDayResponseArgs) ToTimeOfDayResponseOutputWithContext(ctx context.Context) TimeOfDayResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayResponseOutput)
+}
+
+func (i TimeOfDayResponseArgs) ToTimeOfDayResponsePtrOutput() TimeOfDayResponsePtrOutput {
+	return i.ToTimeOfDayResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TimeOfDayResponseArgs) ToTimeOfDayResponsePtrOutputWithContext(ctx context.Context) TimeOfDayResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayResponseOutput).ToTimeOfDayResponsePtrOutputWithContext(ctx)
+}
+
+// TimeOfDayResponsePtrInput is an input type that accepts TimeOfDayResponseArgs, TimeOfDayResponsePtr and TimeOfDayResponsePtrOutput values.
+// You can construct a concrete instance of `TimeOfDayResponsePtrInput` via:
+//
+//          TimeOfDayResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TimeOfDayResponsePtrInput interface {
+	pulumi.Input
+
+	ToTimeOfDayResponsePtrOutput() TimeOfDayResponsePtrOutput
+	ToTimeOfDayResponsePtrOutputWithContext(context.Context) TimeOfDayResponsePtrOutput
+}
+
+type timeOfDayResponsePtrType TimeOfDayResponseArgs
+
+func TimeOfDayResponsePtr(v *TimeOfDayResponseArgs) TimeOfDayResponsePtrInput {
+	return (*timeOfDayResponsePtrType)(v)
+}
+
+func (*timeOfDayResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeOfDayResponse)(nil)).Elem()
+}
+
+func (i *timeOfDayResponsePtrType) ToTimeOfDayResponsePtrOutput() TimeOfDayResponsePtrOutput {
+	return i.ToTimeOfDayResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *timeOfDayResponsePtrType) ToTimeOfDayResponsePtrOutputWithContext(ctx context.Context) TimeOfDayResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayResponsePtrOutput)
+}
+
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDayResponseOutput struct{ *pulumi.OutputState }
+
+func (TimeOfDayResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeOfDayResponse)(nil)).Elem()
+}
+
+func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutput() TimeOfDayResponseOutput {
+	return o
+}
+
+func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutputWithContext(ctx context.Context) TimeOfDayResponseOutput {
+	return o
+}
+
+func (o TimeOfDayResponseOutput) ToTimeOfDayResponsePtrOutput() TimeOfDayResponsePtrOutput {
+	return o.ToTimeOfDayResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TimeOfDayResponseOutput) ToTimeOfDayResponsePtrOutputWithContext(ctx context.Context) TimeOfDayResponsePtrOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) *TimeOfDayResponse {
+		return &v
+	}).(TimeOfDayResponsePtrOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o TimeOfDayResponseOutput) Hours() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Hours }).(pulumi.IntOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o TimeOfDayResponseOutput) Minutes() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Minutes }).(pulumi.IntOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o TimeOfDayResponseOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o TimeOfDayResponseOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type TimeOfDayResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TimeOfDayResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeOfDayResponse)(nil)).Elem()
+}
+
+func (o TimeOfDayResponsePtrOutput) ToTimeOfDayResponsePtrOutput() TimeOfDayResponsePtrOutput {
+	return o
+}
+
+func (o TimeOfDayResponsePtrOutput) ToTimeOfDayResponsePtrOutputWithContext(ctx context.Context) TimeOfDayResponsePtrOutput {
+	return o
+}
+
+func (o TimeOfDayResponsePtrOutput) Elem() TimeOfDayResponseOutput {
+	return o.ApplyT(func(v *TimeOfDayResponse) TimeOfDayResponse { return *v }).(TimeOfDayResponseOutput)
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o TimeOfDayResponsePtrOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeOfDayResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Hours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o TimeOfDayResponsePtrOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeOfDayResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Minutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o TimeOfDayResponsePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeOfDayResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o TimeOfDayResponsePtrOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeOfDayResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Seconds
+	}).(pulumi.IntPtrOutput)
+}
+
 // Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
 type TimeZone struct {
 	// IANA Time Zone Database time zone, e.g. "America/New_York".
@@ -5563,6 +9852,140 @@ func (o TimeZonePtrOutput) Version() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
+type TimeZoneResponse struct {
+	// Optional. IANA Time Zone Database version number, e.g. "2019a".
+	Version string `pulumi:"version"`
+}
+
+// TimeZoneResponseInput is an input type that accepts TimeZoneResponseArgs and TimeZoneResponseOutput values.
+// You can construct a concrete instance of `TimeZoneResponseInput` via:
+//
+//          TimeZoneResponseArgs{...}
+type TimeZoneResponseInput interface {
+	pulumi.Input
+
+	ToTimeZoneResponseOutput() TimeZoneResponseOutput
+	ToTimeZoneResponseOutputWithContext(context.Context) TimeZoneResponseOutput
+}
+
+// Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
+type TimeZoneResponseArgs struct {
+	// Optional. IANA Time Zone Database version number, e.g. "2019a".
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (TimeZoneResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeZoneResponse)(nil)).Elem()
+}
+
+func (i TimeZoneResponseArgs) ToTimeZoneResponseOutput() TimeZoneResponseOutput {
+	return i.ToTimeZoneResponseOutputWithContext(context.Background())
+}
+
+func (i TimeZoneResponseArgs) ToTimeZoneResponseOutputWithContext(ctx context.Context) TimeZoneResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeZoneResponseOutput)
+}
+
+func (i TimeZoneResponseArgs) ToTimeZoneResponsePtrOutput() TimeZoneResponsePtrOutput {
+	return i.ToTimeZoneResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TimeZoneResponseArgs) ToTimeZoneResponsePtrOutputWithContext(ctx context.Context) TimeZoneResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeZoneResponseOutput).ToTimeZoneResponsePtrOutputWithContext(ctx)
+}
+
+// TimeZoneResponsePtrInput is an input type that accepts TimeZoneResponseArgs, TimeZoneResponsePtr and TimeZoneResponsePtrOutput values.
+// You can construct a concrete instance of `TimeZoneResponsePtrInput` via:
+//
+//          TimeZoneResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TimeZoneResponsePtrInput interface {
+	pulumi.Input
+
+	ToTimeZoneResponsePtrOutput() TimeZoneResponsePtrOutput
+	ToTimeZoneResponsePtrOutputWithContext(context.Context) TimeZoneResponsePtrOutput
+}
+
+type timeZoneResponsePtrType TimeZoneResponseArgs
+
+func TimeZoneResponsePtr(v *TimeZoneResponseArgs) TimeZoneResponsePtrInput {
+	return (*timeZoneResponsePtrType)(v)
+}
+
+func (*timeZoneResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeZoneResponse)(nil)).Elem()
+}
+
+func (i *timeZoneResponsePtrType) ToTimeZoneResponsePtrOutput() TimeZoneResponsePtrOutput {
+	return i.ToTimeZoneResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *timeZoneResponsePtrType) ToTimeZoneResponsePtrOutputWithContext(ctx context.Context) TimeZoneResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeZoneResponsePtrOutput)
+}
+
+// Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
+type TimeZoneResponseOutput struct{ *pulumi.OutputState }
+
+func (TimeZoneResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeZoneResponse)(nil)).Elem()
+}
+
+func (o TimeZoneResponseOutput) ToTimeZoneResponseOutput() TimeZoneResponseOutput {
+	return o
+}
+
+func (o TimeZoneResponseOutput) ToTimeZoneResponseOutputWithContext(ctx context.Context) TimeZoneResponseOutput {
+	return o
+}
+
+func (o TimeZoneResponseOutput) ToTimeZoneResponsePtrOutput() TimeZoneResponsePtrOutput {
+	return o.ToTimeZoneResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TimeZoneResponseOutput) ToTimeZoneResponsePtrOutputWithContext(ctx context.Context) TimeZoneResponsePtrOutput {
+	return o.ApplyT(func(v TimeZoneResponse) *TimeZoneResponse {
+		return &v
+	}).(TimeZoneResponsePtrOutput)
+}
+
+// Optional. IANA Time Zone Database version number, e.g. "2019a".
+func (o TimeZoneResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeZoneResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type TimeZoneResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TimeZoneResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeZoneResponse)(nil)).Elem()
+}
+
+func (o TimeZoneResponsePtrOutput) ToTimeZoneResponsePtrOutput() TimeZoneResponsePtrOutput {
+	return o
+}
+
+func (o TimeZoneResponsePtrOutput) ToTimeZoneResponsePtrOutputWithContext(ctx context.Context) TimeZoneResponsePtrOutput {
+	return o
+}
+
+func (o TimeZoneResponsePtrOutput) Elem() TimeZoneResponseOutput {
+	return o.ApplyT(func(v *TimeZoneResponse) TimeZoneResponse { return *v }).(TimeZoneResponseOutput)
+}
+
+// Optional. IANA Time Zone Database version number, e.g. "2019a".
+func (o TimeZoneResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TimeZoneResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5719,6 +10142,159 @@ func (o WeekDayOfMonthPtrOutput) WeekOrdinal() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Represents one week day in a month. An example is "the 4th Sunday".
+type WeekDayOfMonthResponse struct {
+	// Required. A day of the week.
+	DayOfWeek string `pulumi:"dayOfWeek"`
+	// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+	WeekOrdinal int `pulumi:"weekOrdinal"`
+}
+
+// WeekDayOfMonthResponseInput is an input type that accepts WeekDayOfMonthResponseArgs and WeekDayOfMonthResponseOutput values.
+// You can construct a concrete instance of `WeekDayOfMonthResponseInput` via:
+//
+//          WeekDayOfMonthResponseArgs{...}
+type WeekDayOfMonthResponseInput interface {
+	pulumi.Input
+
+	ToWeekDayOfMonthResponseOutput() WeekDayOfMonthResponseOutput
+	ToWeekDayOfMonthResponseOutputWithContext(context.Context) WeekDayOfMonthResponseOutput
+}
+
+// Represents one week day in a month. An example is "the 4th Sunday".
+type WeekDayOfMonthResponseArgs struct {
+	// Required. A day of the week.
+	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+	WeekOrdinal pulumi.IntInput `pulumi:"weekOrdinal"`
+}
+
+func (WeekDayOfMonthResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeekDayOfMonthResponse)(nil)).Elem()
+}
+
+func (i WeekDayOfMonthResponseArgs) ToWeekDayOfMonthResponseOutput() WeekDayOfMonthResponseOutput {
+	return i.ToWeekDayOfMonthResponseOutputWithContext(context.Background())
+}
+
+func (i WeekDayOfMonthResponseArgs) ToWeekDayOfMonthResponseOutputWithContext(ctx context.Context) WeekDayOfMonthResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeekDayOfMonthResponseOutput)
+}
+
+func (i WeekDayOfMonthResponseArgs) ToWeekDayOfMonthResponsePtrOutput() WeekDayOfMonthResponsePtrOutput {
+	return i.ToWeekDayOfMonthResponsePtrOutputWithContext(context.Background())
+}
+
+func (i WeekDayOfMonthResponseArgs) ToWeekDayOfMonthResponsePtrOutputWithContext(ctx context.Context) WeekDayOfMonthResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeekDayOfMonthResponseOutput).ToWeekDayOfMonthResponsePtrOutputWithContext(ctx)
+}
+
+// WeekDayOfMonthResponsePtrInput is an input type that accepts WeekDayOfMonthResponseArgs, WeekDayOfMonthResponsePtr and WeekDayOfMonthResponsePtrOutput values.
+// You can construct a concrete instance of `WeekDayOfMonthResponsePtrInput` via:
+//
+//          WeekDayOfMonthResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type WeekDayOfMonthResponsePtrInput interface {
+	pulumi.Input
+
+	ToWeekDayOfMonthResponsePtrOutput() WeekDayOfMonthResponsePtrOutput
+	ToWeekDayOfMonthResponsePtrOutputWithContext(context.Context) WeekDayOfMonthResponsePtrOutput
+}
+
+type weekDayOfMonthResponsePtrType WeekDayOfMonthResponseArgs
+
+func WeekDayOfMonthResponsePtr(v *WeekDayOfMonthResponseArgs) WeekDayOfMonthResponsePtrInput {
+	return (*weekDayOfMonthResponsePtrType)(v)
+}
+
+func (*weekDayOfMonthResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WeekDayOfMonthResponse)(nil)).Elem()
+}
+
+func (i *weekDayOfMonthResponsePtrType) ToWeekDayOfMonthResponsePtrOutput() WeekDayOfMonthResponsePtrOutput {
+	return i.ToWeekDayOfMonthResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *weekDayOfMonthResponsePtrType) ToWeekDayOfMonthResponsePtrOutputWithContext(ctx context.Context) WeekDayOfMonthResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeekDayOfMonthResponsePtrOutput)
+}
+
+// Represents one week day in a month. An example is "the 4th Sunday".
+type WeekDayOfMonthResponseOutput struct{ *pulumi.OutputState }
+
+func (WeekDayOfMonthResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeekDayOfMonthResponse)(nil)).Elem()
+}
+
+func (o WeekDayOfMonthResponseOutput) ToWeekDayOfMonthResponseOutput() WeekDayOfMonthResponseOutput {
+	return o
+}
+
+func (o WeekDayOfMonthResponseOutput) ToWeekDayOfMonthResponseOutputWithContext(ctx context.Context) WeekDayOfMonthResponseOutput {
+	return o
+}
+
+func (o WeekDayOfMonthResponseOutput) ToWeekDayOfMonthResponsePtrOutput() WeekDayOfMonthResponsePtrOutput {
+	return o.ToWeekDayOfMonthResponsePtrOutputWithContext(context.Background())
+}
+
+func (o WeekDayOfMonthResponseOutput) ToWeekDayOfMonthResponsePtrOutputWithContext(ctx context.Context) WeekDayOfMonthResponsePtrOutput {
+	return o.ApplyT(func(v WeekDayOfMonthResponse) *WeekDayOfMonthResponse {
+		return &v
+	}).(WeekDayOfMonthResponsePtrOutput)
+}
+
+// Required. A day of the week.
+func (o WeekDayOfMonthResponseOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v WeekDayOfMonthResponse) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+func (o WeekDayOfMonthResponseOutput) WeekOrdinal() pulumi.IntOutput {
+	return o.ApplyT(func(v WeekDayOfMonthResponse) int { return v.WeekOrdinal }).(pulumi.IntOutput)
+}
+
+type WeekDayOfMonthResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WeekDayOfMonthResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WeekDayOfMonthResponse)(nil)).Elem()
+}
+
+func (o WeekDayOfMonthResponsePtrOutput) ToWeekDayOfMonthResponsePtrOutput() WeekDayOfMonthResponsePtrOutput {
+	return o
+}
+
+func (o WeekDayOfMonthResponsePtrOutput) ToWeekDayOfMonthResponsePtrOutputWithContext(ctx context.Context) WeekDayOfMonthResponsePtrOutput {
+	return o
+}
+
+func (o WeekDayOfMonthResponsePtrOutput) Elem() WeekDayOfMonthResponseOutput {
+	return o.ApplyT(func(v *WeekDayOfMonthResponse) WeekDayOfMonthResponse { return *v }).(WeekDayOfMonthResponseOutput)
+}
+
+// Required. A day of the week.
+func (o WeekDayOfMonthResponsePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WeekDayOfMonthResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+func (o WeekDayOfMonthResponsePtrOutput) WeekOrdinal() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WeekDayOfMonthResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.WeekOrdinal
+	}).(pulumi.IntPtrOutput)
+}
+
 // Represents a weekly schedule.
 type WeeklySchedule struct {
 	// Required. Day of the week.
@@ -5850,6 +10426,140 @@ func (o WeeklySchedulePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a weekly schedule.
+type WeeklyScheduleResponse struct {
+	// Required. Day of the week.
+	DayOfWeek string `pulumi:"dayOfWeek"`
+}
+
+// WeeklyScheduleResponseInput is an input type that accepts WeeklyScheduleResponseArgs and WeeklyScheduleResponseOutput values.
+// You can construct a concrete instance of `WeeklyScheduleResponseInput` via:
+//
+//          WeeklyScheduleResponseArgs{...}
+type WeeklyScheduleResponseInput interface {
+	pulumi.Input
+
+	ToWeeklyScheduleResponseOutput() WeeklyScheduleResponseOutput
+	ToWeeklyScheduleResponseOutputWithContext(context.Context) WeeklyScheduleResponseOutput
+}
+
+// Represents a weekly schedule.
+type WeeklyScheduleResponseArgs struct {
+	// Required. Day of the week.
+	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+}
+
+func (WeeklyScheduleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyScheduleResponse)(nil)).Elem()
+}
+
+func (i WeeklyScheduleResponseArgs) ToWeeklyScheduleResponseOutput() WeeklyScheduleResponseOutput {
+	return i.ToWeeklyScheduleResponseOutputWithContext(context.Background())
+}
+
+func (i WeeklyScheduleResponseArgs) ToWeeklyScheduleResponseOutputWithContext(ctx context.Context) WeeklyScheduleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeeklyScheduleResponseOutput)
+}
+
+func (i WeeklyScheduleResponseArgs) ToWeeklyScheduleResponsePtrOutput() WeeklyScheduleResponsePtrOutput {
+	return i.ToWeeklyScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (i WeeklyScheduleResponseArgs) ToWeeklyScheduleResponsePtrOutputWithContext(ctx context.Context) WeeklyScheduleResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeeklyScheduleResponseOutput).ToWeeklyScheduleResponsePtrOutputWithContext(ctx)
+}
+
+// WeeklyScheduleResponsePtrInput is an input type that accepts WeeklyScheduleResponseArgs, WeeklyScheduleResponsePtr and WeeklyScheduleResponsePtrOutput values.
+// You can construct a concrete instance of `WeeklyScheduleResponsePtrInput` via:
+//
+//          WeeklyScheduleResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type WeeklyScheduleResponsePtrInput interface {
+	pulumi.Input
+
+	ToWeeklyScheduleResponsePtrOutput() WeeklyScheduleResponsePtrOutput
+	ToWeeklyScheduleResponsePtrOutputWithContext(context.Context) WeeklyScheduleResponsePtrOutput
+}
+
+type weeklyScheduleResponsePtrType WeeklyScheduleResponseArgs
+
+func WeeklyScheduleResponsePtr(v *WeeklyScheduleResponseArgs) WeeklyScheduleResponsePtrInput {
+	return (*weeklyScheduleResponsePtrType)(v)
+}
+
+func (*weeklyScheduleResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WeeklyScheduleResponse)(nil)).Elem()
+}
+
+func (i *weeklyScheduleResponsePtrType) ToWeeklyScheduleResponsePtrOutput() WeeklyScheduleResponsePtrOutput {
+	return i.ToWeeklyScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *weeklyScheduleResponsePtrType) ToWeeklyScheduleResponsePtrOutputWithContext(ctx context.Context) WeeklyScheduleResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeeklyScheduleResponsePtrOutput)
+}
+
+// Represents a weekly schedule.
+type WeeklyScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (WeeklyScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyScheduleResponse)(nil)).Elem()
+}
+
+func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponseOutput() WeeklyScheduleResponseOutput {
+	return o
+}
+
+func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponseOutputWithContext(ctx context.Context) WeeklyScheduleResponseOutput {
+	return o
+}
+
+func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponsePtrOutput() WeeklyScheduleResponsePtrOutput {
+	return o.ToWeeklyScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponsePtrOutputWithContext(ctx context.Context) WeeklyScheduleResponsePtrOutput {
+	return o.ApplyT(func(v WeeklyScheduleResponse) *WeeklyScheduleResponse {
+		return &v
+	}).(WeeklyScheduleResponsePtrOutput)
+}
+
+// Required. Day of the week.
+func (o WeeklyScheduleResponseOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyScheduleResponse) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+type WeeklyScheduleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WeeklyScheduleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WeeklyScheduleResponse)(nil)).Elem()
+}
+
+func (o WeeklyScheduleResponsePtrOutput) ToWeeklyScheduleResponsePtrOutput() WeeklyScheduleResponsePtrOutput {
+	return o
+}
+
+func (o WeeklyScheduleResponsePtrOutput) ToWeeklyScheduleResponsePtrOutputWithContext(ctx context.Context) WeeklyScheduleResponsePtrOutput {
+	return o
+}
+
+func (o WeeklyScheduleResponsePtrOutput) Elem() WeeklyScheduleResponseOutput {
+	return o.ApplyT(func(v *WeeklyScheduleResponse) WeeklyScheduleResponse { return *v }).(WeeklyScheduleResponseOutput)
+}
+
+// Required. Day of the week.
+func (o WeeklyScheduleResponsePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WeeklyScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DayOfWeek
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6018,6 +10728,178 @@ func (o WindowsUpdateSettingsPtrOutput) Excludes() pulumi.StringArrayOutput {
 // An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
 func (o WindowsUpdateSettingsPtrOutput) ExclusivePatches() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WindowsUpdateSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExclusivePatches
+	}).(pulumi.StringArrayOutput)
+}
+
+// Windows patching is performed using the Windows Update Agent.
+type WindowsUpdateSettingsResponse struct {
+	// Only apply updates of these windows update classifications. If empty, all updates are applied.
+	Classifications []string `pulumi:"classifications"`
+	// List of KBs to exclude from update.
+	Excludes []string `pulumi:"excludes"`
+	// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
+	ExclusivePatches []string `pulumi:"exclusivePatches"`
+}
+
+// WindowsUpdateSettingsResponseInput is an input type that accepts WindowsUpdateSettingsResponseArgs and WindowsUpdateSettingsResponseOutput values.
+// You can construct a concrete instance of `WindowsUpdateSettingsResponseInput` via:
+//
+//          WindowsUpdateSettingsResponseArgs{...}
+type WindowsUpdateSettingsResponseInput interface {
+	pulumi.Input
+
+	ToWindowsUpdateSettingsResponseOutput() WindowsUpdateSettingsResponseOutput
+	ToWindowsUpdateSettingsResponseOutputWithContext(context.Context) WindowsUpdateSettingsResponseOutput
+}
+
+// Windows patching is performed using the Windows Update Agent.
+type WindowsUpdateSettingsResponseArgs struct {
+	// Only apply updates of these windows update classifications. If empty, all updates are applied.
+	Classifications pulumi.StringArrayInput `pulumi:"classifications"`
+	// List of KBs to exclude from update.
+	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
+	// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
+	ExclusivePatches pulumi.StringArrayInput `pulumi:"exclusivePatches"`
+}
+
+func (WindowsUpdateSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsUpdateSettingsResponse)(nil)).Elem()
+}
+
+func (i WindowsUpdateSettingsResponseArgs) ToWindowsUpdateSettingsResponseOutput() WindowsUpdateSettingsResponseOutput {
+	return i.ToWindowsUpdateSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i WindowsUpdateSettingsResponseArgs) ToWindowsUpdateSettingsResponseOutputWithContext(ctx context.Context) WindowsUpdateSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsUpdateSettingsResponseOutput)
+}
+
+func (i WindowsUpdateSettingsResponseArgs) ToWindowsUpdateSettingsResponsePtrOutput() WindowsUpdateSettingsResponsePtrOutput {
+	return i.ToWindowsUpdateSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i WindowsUpdateSettingsResponseArgs) ToWindowsUpdateSettingsResponsePtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsUpdateSettingsResponseOutput).ToWindowsUpdateSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// WindowsUpdateSettingsResponsePtrInput is an input type that accepts WindowsUpdateSettingsResponseArgs, WindowsUpdateSettingsResponsePtr and WindowsUpdateSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `WindowsUpdateSettingsResponsePtrInput` via:
+//
+//          WindowsUpdateSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type WindowsUpdateSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToWindowsUpdateSettingsResponsePtrOutput() WindowsUpdateSettingsResponsePtrOutput
+	ToWindowsUpdateSettingsResponsePtrOutputWithContext(context.Context) WindowsUpdateSettingsResponsePtrOutput
+}
+
+type windowsUpdateSettingsResponsePtrType WindowsUpdateSettingsResponseArgs
+
+func WindowsUpdateSettingsResponsePtr(v *WindowsUpdateSettingsResponseArgs) WindowsUpdateSettingsResponsePtrInput {
+	return (*windowsUpdateSettingsResponsePtrType)(v)
+}
+
+func (*windowsUpdateSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsUpdateSettingsResponse)(nil)).Elem()
+}
+
+func (i *windowsUpdateSettingsResponsePtrType) ToWindowsUpdateSettingsResponsePtrOutput() WindowsUpdateSettingsResponsePtrOutput {
+	return i.ToWindowsUpdateSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *windowsUpdateSettingsResponsePtrType) ToWindowsUpdateSettingsResponsePtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsUpdateSettingsResponsePtrOutput)
+}
+
+// Windows patching is performed using the Windows Update Agent.
+type WindowsUpdateSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (WindowsUpdateSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsUpdateSettingsResponse)(nil)).Elem()
+}
+
+func (o WindowsUpdateSettingsResponseOutput) ToWindowsUpdateSettingsResponseOutput() WindowsUpdateSettingsResponseOutput {
+	return o
+}
+
+func (o WindowsUpdateSettingsResponseOutput) ToWindowsUpdateSettingsResponseOutputWithContext(ctx context.Context) WindowsUpdateSettingsResponseOutput {
+	return o
+}
+
+func (o WindowsUpdateSettingsResponseOutput) ToWindowsUpdateSettingsResponsePtrOutput() WindowsUpdateSettingsResponsePtrOutput {
+	return o.ToWindowsUpdateSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o WindowsUpdateSettingsResponseOutput) ToWindowsUpdateSettingsResponsePtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsResponsePtrOutput {
+	return o.ApplyT(func(v WindowsUpdateSettingsResponse) *WindowsUpdateSettingsResponse {
+		return &v
+	}).(WindowsUpdateSettingsResponsePtrOutput)
+}
+
+// Only apply updates of these windows update classifications. If empty, all updates are applied.
+func (o WindowsUpdateSettingsResponseOutput) Classifications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WindowsUpdateSettingsResponse) []string { return v.Classifications }).(pulumi.StringArrayOutput)
+}
+
+// List of KBs to exclude from update.
+func (o WindowsUpdateSettingsResponseOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WindowsUpdateSettingsResponse) []string { return v.Excludes }).(pulumi.StringArrayOutput)
+}
+
+// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
+func (o WindowsUpdateSettingsResponseOutput) ExclusivePatches() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WindowsUpdateSettingsResponse) []string { return v.ExclusivePatches }).(pulumi.StringArrayOutput)
+}
+
+type WindowsUpdateSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WindowsUpdateSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsUpdateSettingsResponse)(nil)).Elem()
+}
+
+func (o WindowsUpdateSettingsResponsePtrOutput) ToWindowsUpdateSettingsResponsePtrOutput() WindowsUpdateSettingsResponsePtrOutput {
+	return o
+}
+
+func (o WindowsUpdateSettingsResponsePtrOutput) ToWindowsUpdateSettingsResponsePtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsResponsePtrOutput {
+	return o
+}
+
+func (o WindowsUpdateSettingsResponsePtrOutput) Elem() WindowsUpdateSettingsResponseOutput {
+	return o.ApplyT(func(v *WindowsUpdateSettingsResponse) WindowsUpdateSettingsResponse { return *v }).(WindowsUpdateSettingsResponseOutput)
+}
+
+// Only apply updates of these windows update classifications. If empty, all updates are applied.
+func (o WindowsUpdateSettingsResponsePtrOutput) Classifications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WindowsUpdateSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Classifications
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of KBs to exclude from update.
+func (o WindowsUpdateSettingsResponsePtrOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WindowsUpdateSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Excludes
+	}).(pulumi.StringArrayOutput)
+}
+
+// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
+func (o WindowsUpdateSettingsResponsePtrOutput) ExclusivePatches() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WindowsUpdateSettingsResponse) []string {
 		if v == nil {
 			return nil
 		}
@@ -6216,6 +11098,79 @@ func (o YumRepositoryPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
+type YumRepositoryResponse struct {
+	// Required. The location of the repository directory.
+	BaseUrl string `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName string `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys []string `pulumi:"gpgKeys"`
+}
+
+// YumRepositoryResponseInput is an input type that accepts YumRepositoryResponseArgs and YumRepositoryResponseOutput values.
+// You can construct a concrete instance of `YumRepositoryResponseInput` via:
+//
+//          YumRepositoryResponseArgs{...}
+type YumRepositoryResponseInput interface {
+	pulumi.Input
+
+	ToYumRepositoryResponseOutput() YumRepositoryResponseOutput
+	ToYumRepositoryResponseOutputWithContext(context.Context) YumRepositoryResponseOutput
+}
+
+// Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
+type YumRepositoryResponseArgs struct {
+	// Required. The location of the repository directory.
+	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
+}
+
+func (YumRepositoryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*YumRepositoryResponse)(nil)).Elem()
+}
+
+func (i YumRepositoryResponseArgs) ToYumRepositoryResponseOutput() YumRepositoryResponseOutput {
+	return i.ToYumRepositoryResponseOutputWithContext(context.Background())
+}
+
+func (i YumRepositoryResponseArgs) ToYumRepositoryResponseOutputWithContext(ctx context.Context) YumRepositoryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(YumRepositoryResponseOutput)
+}
+
+// Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
+type YumRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (YumRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*YumRepositoryResponse)(nil)).Elem()
+}
+
+func (o YumRepositoryResponseOutput) ToYumRepositoryResponseOutput() YumRepositoryResponseOutput {
+	return o
+}
+
+func (o YumRepositoryResponseOutput) ToYumRepositoryResponseOutputWithContext(ctx context.Context) YumRepositoryResponseOutput {
+	return o
+}
+
+// Required. The location of the repository directory.
+func (o YumRepositoryResponseOutput) BaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v YumRepositoryResponse) string { return v.BaseUrl }).(pulumi.StringOutput)
+}
+
+// The display name of the repository.
+func (o YumRepositoryResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v YumRepositoryResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// URIs of GPG keys.
+func (o YumRepositoryResponseOutput) GpgKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v YumRepositoryResponse) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
+}
+
 // Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms.
 type YumSettings struct {
 	// List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag.
@@ -6404,6 +11359,197 @@ func (o YumSettingsPtrOutput) Security() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.Security
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms.
+type YumSettingsResponse struct {
+	// List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag.
+	Excludes []string `pulumi:"excludes"`
+	// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field must not be specified with any other patch configuration fields.
+	ExclusivePackages []string `pulumi:"exclusivePackages"`
+	// Will cause patch to run `yum update-minimal` instead.
+	Minimal bool `pulumi:"minimal"`
+	// Adds the `--security` flag to `yum update`. Not supported on all platforms.
+	Security bool `pulumi:"security"`
+}
+
+// YumSettingsResponseInput is an input type that accepts YumSettingsResponseArgs and YumSettingsResponseOutput values.
+// You can construct a concrete instance of `YumSettingsResponseInput` via:
+//
+//          YumSettingsResponseArgs{...}
+type YumSettingsResponseInput interface {
+	pulumi.Input
+
+	ToYumSettingsResponseOutput() YumSettingsResponseOutput
+	ToYumSettingsResponseOutputWithContext(context.Context) YumSettingsResponseOutput
+}
+
+// Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms.
+type YumSettingsResponseArgs struct {
+	// List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag.
+	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
+	// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field must not be specified with any other patch configuration fields.
+	ExclusivePackages pulumi.StringArrayInput `pulumi:"exclusivePackages"`
+	// Will cause patch to run `yum update-minimal` instead.
+	Minimal pulumi.BoolInput `pulumi:"minimal"`
+	// Adds the `--security` flag to `yum update`. Not supported on all platforms.
+	Security pulumi.BoolInput `pulumi:"security"`
+}
+
+func (YumSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*YumSettingsResponse)(nil)).Elem()
+}
+
+func (i YumSettingsResponseArgs) ToYumSettingsResponseOutput() YumSettingsResponseOutput {
+	return i.ToYumSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i YumSettingsResponseArgs) ToYumSettingsResponseOutputWithContext(ctx context.Context) YumSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(YumSettingsResponseOutput)
+}
+
+func (i YumSettingsResponseArgs) ToYumSettingsResponsePtrOutput() YumSettingsResponsePtrOutput {
+	return i.ToYumSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i YumSettingsResponseArgs) ToYumSettingsResponsePtrOutputWithContext(ctx context.Context) YumSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(YumSettingsResponseOutput).ToYumSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// YumSettingsResponsePtrInput is an input type that accepts YumSettingsResponseArgs, YumSettingsResponsePtr and YumSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `YumSettingsResponsePtrInput` via:
+//
+//          YumSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type YumSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToYumSettingsResponsePtrOutput() YumSettingsResponsePtrOutput
+	ToYumSettingsResponsePtrOutputWithContext(context.Context) YumSettingsResponsePtrOutput
+}
+
+type yumSettingsResponsePtrType YumSettingsResponseArgs
+
+func YumSettingsResponsePtr(v *YumSettingsResponseArgs) YumSettingsResponsePtrInput {
+	return (*yumSettingsResponsePtrType)(v)
+}
+
+func (*yumSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**YumSettingsResponse)(nil)).Elem()
+}
+
+func (i *yumSettingsResponsePtrType) ToYumSettingsResponsePtrOutput() YumSettingsResponsePtrOutput {
+	return i.ToYumSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *yumSettingsResponsePtrType) ToYumSettingsResponsePtrOutputWithContext(ctx context.Context) YumSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(YumSettingsResponsePtrOutput)
+}
+
+// Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms.
+type YumSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (YumSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*YumSettingsResponse)(nil)).Elem()
+}
+
+func (o YumSettingsResponseOutput) ToYumSettingsResponseOutput() YumSettingsResponseOutput {
+	return o
+}
+
+func (o YumSettingsResponseOutput) ToYumSettingsResponseOutputWithContext(ctx context.Context) YumSettingsResponseOutput {
+	return o
+}
+
+func (o YumSettingsResponseOutput) ToYumSettingsResponsePtrOutput() YumSettingsResponsePtrOutput {
+	return o.ToYumSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o YumSettingsResponseOutput) ToYumSettingsResponsePtrOutputWithContext(ctx context.Context) YumSettingsResponsePtrOutput {
+	return o.ApplyT(func(v YumSettingsResponse) *YumSettingsResponse {
+		return &v
+	}).(YumSettingsResponsePtrOutput)
+}
+
+// List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag.
+func (o YumSettingsResponseOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v YumSettingsResponse) []string { return v.Excludes }).(pulumi.StringArrayOutput)
+}
+
+// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field must not be specified with any other patch configuration fields.
+func (o YumSettingsResponseOutput) ExclusivePackages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v YumSettingsResponse) []string { return v.ExclusivePackages }).(pulumi.StringArrayOutput)
+}
+
+// Will cause patch to run `yum update-minimal` instead.
+func (o YumSettingsResponseOutput) Minimal() pulumi.BoolOutput {
+	return o.ApplyT(func(v YumSettingsResponse) bool { return v.Minimal }).(pulumi.BoolOutput)
+}
+
+// Adds the `--security` flag to `yum update`. Not supported on all platforms.
+func (o YumSettingsResponseOutput) Security() pulumi.BoolOutput {
+	return o.ApplyT(func(v YumSettingsResponse) bool { return v.Security }).(pulumi.BoolOutput)
+}
+
+type YumSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (YumSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**YumSettingsResponse)(nil)).Elem()
+}
+
+func (o YumSettingsResponsePtrOutput) ToYumSettingsResponsePtrOutput() YumSettingsResponsePtrOutput {
+	return o
+}
+
+func (o YumSettingsResponsePtrOutput) ToYumSettingsResponsePtrOutputWithContext(ctx context.Context) YumSettingsResponsePtrOutput {
+	return o
+}
+
+func (o YumSettingsResponsePtrOutput) Elem() YumSettingsResponseOutput {
+	return o.ApplyT(func(v *YumSettingsResponse) YumSettingsResponse { return *v }).(YumSettingsResponseOutput)
+}
+
+// List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag.
+func (o YumSettingsResponsePtrOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *YumSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Excludes
+	}).(pulumi.StringArrayOutput)
+}
+
+// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field must not be specified with any other patch configuration fields.
+func (o YumSettingsResponsePtrOutput) ExclusivePackages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *YumSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExclusivePackages
+	}).(pulumi.StringArrayOutput)
+}
+
+// Will cause patch to run `yum update-minimal` instead.
+func (o YumSettingsResponsePtrOutput) Minimal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *YumSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Minimal
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Adds the `--security` flag to `yum update`. Not supported on all platforms.
+func (o YumSettingsResponsePtrOutput) Security() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *YumSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Security
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -6596,6 +11742,79 @@ func (o ZypperRepositoryPtrOutput) Id() pulumi.StringPtrOutput {
 		}
 		return v.Id
 	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
+type ZypperRepositoryResponse struct {
+	// Required. The location of the repository directory.
+	BaseUrl string `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName string `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys []string `pulumi:"gpgKeys"`
+}
+
+// ZypperRepositoryResponseInput is an input type that accepts ZypperRepositoryResponseArgs and ZypperRepositoryResponseOutput values.
+// You can construct a concrete instance of `ZypperRepositoryResponseInput` via:
+//
+//          ZypperRepositoryResponseArgs{...}
+type ZypperRepositoryResponseInput interface {
+	pulumi.Input
+
+	ToZypperRepositoryResponseOutput() ZypperRepositoryResponseOutput
+	ToZypperRepositoryResponseOutputWithContext(context.Context) ZypperRepositoryResponseOutput
+}
+
+// Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
+type ZypperRepositoryResponseArgs struct {
+	// Required. The location of the repository directory.
+	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
+	// The display name of the repository.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// URIs of GPG keys.
+	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
+}
+
+func (ZypperRepositoryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZypperRepositoryResponse)(nil)).Elem()
+}
+
+func (i ZypperRepositoryResponseArgs) ToZypperRepositoryResponseOutput() ZypperRepositoryResponseOutput {
+	return i.ToZypperRepositoryResponseOutputWithContext(context.Background())
+}
+
+func (i ZypperRepositoryResponseArgs) ToZypperRepositoryResponseOutputWithContext(ctx context.Context) ZypperRepositoryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZypperRepositoryResponseOutput)
+}
+
+// Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
+type ZypperRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (ZypperRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZypperRepositoryResponse)(nil)).Elem()
+}
+
+func (o ZypperRepositoryResponseOutput) ToZypperRepositoryResponseOutput() ZypperRepositoryResponseOutput {
+	return o
+}
+
+func (o ZypperRepositoryResponseOutput) ToZypperRepositoryResponseOutputWithContext(ctx context.Context) ZypperRepositoryResponseOutput {
+	return o
+}
+
+// Required. The location of the repository directory.
+func (o ZypperRepositoryResponseOutput) BaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ZypperRepositoryResponse) string { return v.BaseUrl }).(pulumi.StringOutput)
+}
+
+// The display name of the repository.
+func (o ZypperRepositoryResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v ZypperRepositoryResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// URIs of GPG keys.
+func (o ZypperRepositoryResponseOutput) GpgKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZypperRepositoryResponse) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
 }
 
 // Zypper patching is performed by running `zypper patch`. See also https://en.opensuse.org/SDB:Zypper_manual.
@@ -6827,87 +12046,385 @@ func (o ZypperSettingsPtrOutput) WithUpdate() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Zypper patching is performed by running `zypper patch`. See also https://en.opensuse.org/SDB:Zypper_manual.
+type ZypperSettingsResponse struct {
+	// Install only patches with these categories. Common categories include security, recommended, and feature.
+	Categories []string `pulumi:"categories"`
+	// List of patches to exclude from update.
+	Excludes []string `pulumi:"excludes"`
+	// An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command. This field must not be used with any other patch configuration fields.
+	ExclusivePatches []string `pulumi:"exclusivePatches"`
+	// Install only patches with these severities. Common severities include critical, important, moderate, and low.
+	Severities []string `pulumi:"severities"`
+	// Adds the `--with-optional` flag to `zypper patch`.
+	WithOptional bool `pulumi:"withOptional"`
+	// Adds the `--with-update` flag, to `zypper patch`.
+	WithUpdate bool `pulumi:"withUpdate"`
+}
+
+// ZypperSettingsResponseInput is an input type that accepts ZypperSettingsResponseArgs and ZypperSettingsResponseOutput values.
+// You can construct a concrete instance of `ZypperSettingsResponseInput` via:
+//
+//          ZypperSettingsResponseArgs{...}
+type ZypperSettingsResponseInput interface {
+	pulumi.Input
+
+	ToZypperSettingsResponseOutput() ZypperSettingsResponseOutput
+	ToZypperSettingsResponseOutputWithContext(context.Context) ZypperSettingsResponseOutput
+}
+
+// Zypper patching is performed by running `zypper patch`. See also https://en.opensuse.org/SDB:Zypper_manual.
+type ZypperSettingsResponseArgs struct {
+	// Install only patches with these categories. Common categories include security, recommended, and feature.
+	Categories pulumi.StringArrayInput `pulumi:"categories"`
+	// List of patches to exclude from update.
+	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
+	// An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command. This field must not be used with any other patch configuration fields.
+	ExclusivePatches pulumi.StringArrayInput `pulumi:"exclusivePatches"`
+	// Install only patches with these severities. Common severities include critical, important, moderate, and low.
+	Severities pulumi.StringArrayInput `pulumi:"severities"`
+	// Adds the `--with-optional` flag to `zypper patch`.
+	WithOptional pulumi.BoolInput `pulumi:"withOptional"`
+	// Adds the `--with-update` flag, to `zypper patch`.
+	WithUpdate pulumi.BoolInput `pulumi:"withUpdate"`
+}
+
+func (ZypperSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZypperSettingsResponse)(nil)).Elem()
+}
+
+func (i ZypperSettingsResponseArgs) ToZypperSettingsResponseOutput() ZypperSettingsResponseOutput {
+	return i.ToZypperSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i ZypperSettingsResponseArgs) ToZypperSettingsResponseOutputWithContext(ctx context.Context) ZypperSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZypperSettingsResponseOutput)
+}
+
+func (i ZypperSettingsResponseArgs) ToZypperSettingsResponsePtrOutput() ZypperSettingsResponsePtrOutput {
+	return i.ToZypperSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ZypperSettingsResponseArgs) ToZypperSettingsResponsePtrOutputWithContext(ctx context.Context) ZypperSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZypperSettingsResponseOutput).ToZypperSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// ZypperSettingsResponsePtrInput is an input type that accepts ZypperSettingsResponseArgs, ZypperSettingsResponsePtr and ZypperSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `ZypperSettingsResponsePtrInput` via:
+//
+//          ZypperSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ZypperSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToZypperSettingsResponsePtrOutput() ZypperSettingsResponsePtrOutput
+	ToZypperSettingsResponsePtrOutputWithContext(context.Context) ZypperSettingsResponsePtrOutput
+}
+
+type zypperSettingsResponsePtrType ZypperSettingsResponseArgs
+
+func ZypperSettingsResponsePtr(v *ZypperSettingsResponseArgs) ZypperSettingsResponsePtrInput {
+	return (*zypperSettingsResponsePtrType)(v)
+}
+
+func (*zypperSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZypperSettingsResponse)(nil)).Elem()
+}
+
+func (i *zypperSettingsResponsePtrType) ToZypperSettingsResponsePtrOutput() ZypperSettingsResponsePtrOutput {
+	return i.ToZypperSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *zypperSettingsResponsePtrType) ToZypperSettingsResponsePtrOutputWithContext(ctx context.Context) ZypperSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZypperSettingsResponsePtrOutput)
+}
+
+// Zypper patching is performed by running `zypper patch`. See also https://en.opensuse.org/SDB:Zypper_manual.
+type ZypperSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ZypperSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZypperSettingsResponse)(nil)).Elem()
+}
+
+func (o ZypperSettingsResponseOutput) ToZypperSettingsResponseOutput() ZypperSettingsResponseOutput {
+	return o
+}
+
+func (o ZypperSettingsResponseOutput) ToZypperSettingsResponseOutputWithContext(ctx context.Context) ZypperSettingsResponseOutput {
+	return o
+}
+
+func (o ZypperSettingsResponseOutput) ToZypperSettingsResponsePtrOutput() ZypperSettingsResponsePtrOutput {
+	return o.ToZypperSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ZypperSettingsResponseOutput) ToZypperSettingsResponsePtrOutputWithContext(ctx context.Context) ZypperSettingsResponsePtrOutput {
+	return o.ApplyT(func(v ZypperSettingsResponse) *ZypperSettingsResponse {
+		return &v
+	}).(ZypperSettingsResponsePtrOutput)
+}
+
+// Install only patches with these categories. Common categories include security, recommended, and feature.
+func (o ZypperSettingsResponseOutput) Categories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZypperSettingsResponse) []string { return v.Categories }).(pulumi.StringArrayOutput)
+}
+
+// List of patches to exclude from update.
+func (o ZypperSettingsResponseOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZypperSettingsResponse) []string { return v.Excludes }).(pulumi.StringArrayOutput)
+}
+
+// An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command. This field must not be used with any other patch configuration fields.
+func (o ZypperSettingsResponseOutput) ExclusivePatches() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZypperSettingsResponse) []string { return v.ExclusivePatches }).(pulumi.StringArrayOutput)
+}
+
+// Install only patches with these severities. Common severities include critical, important, moderate, and low.
+func (o ZypperSettingsResponseOutput) Severities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZypperSettingsResponse) []string { return v.Severities }).(pulumi.StringArrayOutput)
+}
+
+// Adds the `--with-optional` flag to `zypper patch`.
+func (o ZypperSettingsResponseOutput) WithOptional() pulumi.BoolOutput {
+	return o.ApplyT(func(v ZypperSettingsResponse) bool { return v.WithOptional }).(pulumi.BoolOutput)
+}
+
+// Adds the `--with-update` flag, to `zypper patch`.
+func (o ZypperSettingsResponseOutput) WithUpdate() pulumi.BoolOutput {
+	return o.ApplyT(func(v ZypperSettingsResponse) bool { return v.WithUpdate }).(pulumi.BoolOutput)
+}
+
+type ZypperSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ZypperSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZypperSettingsResponse)(nil)).Elem()
+}
+
+func (o ZypperSettingsResponsePtrOutput) ToZypperSettingsResponsePtrOutput() ZypperSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ZypperSettingsResponsePtrOutput) ToZypperSettingsResponsePtrOutputWithContext(ctx context.Context) ZypperSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ZypperSettingsResponsePtrOutput) Elem() ZypperSettingsResponseOutput {
+	return o.ApplyT(func(v *ZypperSettingsResponse) ZypperSettingsResponse { return *v }).(ZypperSettingsResponseOutput)
+}
+
+// Install only patches with these categories. Common categories include security, recommended, and feature.
+func (o ZypperSettingsResponsePtrOutput) Categories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZypperSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Categories
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of patches to exclude from update.
+func (o ZypperSettingsResponsePtrOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZypperSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Excludes
+	}).(pulumi.StringArrayOutput)
+}
+
+// An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command. This field must not be used with any other patch configuration fields.
+func (o ZypperSettingsResponsePtrOutput) ExclusivePatches() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZypperSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExclusivePatches
+	}).(pulumi.StringArrayOutput)
+}
+
+// Install only patches with these severities. Common severities include critical, important, moderate, and low.
+func (o ZypperSettingsResponsePtrOutput) Severities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZypperSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Severities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Adds the `--with-optional` flag to `zypper patch`.
+func (o ZypperSettingsResponsePtrOutput) WithOptional() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZypperSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.WithOptional
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Adds the `--with-update` flag, to `zypper patch`.
+func (o ZypperSettingsResponsePtrOutput) WithUpdate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZypperSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.WithUpdate
+	}).(pulumi.BoolPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AptRepositoryOutput{})
 	pulumi.RegisterOutputType(AptRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(AptRepositoryResponseOutput{})
 	pulumi.RegisterOutputType(AptSettingsOutput{})
 	pulumi.RegisterOutputType(AptSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AptSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AptSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(AssignmentOutput{})
 	pulumi.RegisterOutputType(AssignmentPtrOutput{})
 	pulumi.RegisterOutputType(AssignmentGroupLabelOutput{})
 	pulumi.RegisterOutputType(AssignmentGroupLabelArrayOutput{})
+	pulumi.RegisterOutputType(AssignmentGroupLabelResponseOutput{})
+	pulumi.RegisterOutputType(AssignmentGroupLabelResponseArrayOutput{})
 	pulumi.RegisterOutputType(AssignmentOsTypeOutput{})
 	pulumi.RegisterOutputType(AssignmentOsTypeArrayOutput{})
+	pulumi.RegisterOutputType(AssignmentOsTypeResponseOutput{})
+	pulumi.RegisterOutputType(AssignmentOsTypeResponseArrayOutput{})
+	pulumi.RegisterOutputType(AssignmentResponseOutput{})
+	pulumi.RegisterOutputType(AssignmentResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExecStepOutput{})
 	pulumi.RegisterOutputType(ExecStepPtrOutput{})
 	pulumi.RegisterOutputType(ExecStepConfigOutput{})
 	pulumi.RegisterOutputType(ExecStepConfigPtrOutput{})
+	pulumi.RegisterOutputType(ExecStepConfigResponseOutput{})
+	pulumi.RegisterOutputType(ExecStepConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(ExecStepResponseOutput{})
+	pulumi.RegisterOutputType(ExecStepResponsePtrOutput{})
 	pulumi.RegisterOutputType(FixedOrPercentOutput{})
 	pulumi.RegisterOutputType(FixedOrPercentPtrOutput{})
+	pulumi.RegisterOutputType(FixedOrPercentResponseOutput{})
+	pulumi.RegisterOutputType(FixedOrPercentResponsePtrOutput{})
 	pulumi.RegisterOutputType(GcsObjectOutput{})
 	pulumi.RegisterOutputType(GcsObjectPtrOutput{})
+	pulumi.RegisterOutputType(GcsObjectResponseOutput{})
+	pulumi.RegisterOutputType(GcsObjectResponsePtrOutput{})
 	pulumi.RegisterOutputType(GooRepositoryOutput{})
 	pulumi.RegisterOutputType(GooRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(GooRepositoryResponseOutput{})
 	pulumi.RegisterOutputType(GooSettingsOutput{})
 	pulumi.RegisterOutputType(GooSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GooSettingsResponseOutput{})
+	pulumi.RegisterOutputType(GooSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(MonthlyScheduleOutput{})
 	pulumi.RegisterOutputType(MonthlySchedulePtrOutput{})
+	pulumi.RegisterOutputType(MonthlyScheduleResponseOutput{})
+	pulumi.RegisterOutputType(MonthlyScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(OneTimeScheduleOutput{})
 	pulumi.RegisterOutputType(OneTimeSchedulePtrOutput{})
+	pulumi.RegisterOutputType(OneTimeScheduleResponseOutput{})
+	pulumi.RegisterOutputType(OneTimeScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(PackageOutput{})
 	pulumi.RegisterOutputType(PackageArrayOutput{})
 	pulumi.RegisterOutputType(PackageRepositoryOutput{})
 	pulumi.RegisterOutputType(PackageRepositoryArrayOutput{})
+	pulumi.RegisterOutputType(PackageRepositoryResponseOutput{})
+	pulumi.RegisterOutputType(PackageRepositoryResponseArrayOutput{})
+	pulumi.RegisterOutputType(PackageResponseOutput{})
+	pulumi.RegisterOutputType(PackageResponseArrayOutput{})
 	pulumi.RegisterOutputType(PatchConfigOutput{})
 	pulumi.RegisterOutputType(PatchConfigPtrOutput{})
+	pulumi.RegisterOutputType(PatchConfigResponseOutput{})
+	pulumi.RegisterOutputType(PatchConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(PatchInstanceFilterOutput{})
 	pulumi.RegisterOutputType(PatchInstanceFilterPtrOutput{})
 	pulumi.RegisterOutputType(PatchInstanceFilterGroupLabelOutput{})
 	pulumi.RegisterOutputType(PatchInstanceFilterGroupLabelArrayOutput{})
+	pulumi.RegisterOutputType(PatchInstanceFilterGroupLabelResponseOutput{})
+	pulumi.RegisterOutputType(PatchInstanceFilterGroupLabelResponseArrayOutput{})
+	pulumi.RegisterOutputType(PatchInstanceFilterResponseOutput{})
+	pulumi.RegisterOutputType(PatchInstanceFilterResponsePtrOutput{})
 	pulumi.RegisterOutputType(PatchRolloutOutput{})
 	pulumi.RegisterOutputType(PatchRolloutPtrOutput{})
+	pulumi.RegisterOutputType(PatchRolloutResponseOutput{})
+	pulumi.RegisterOutputType(PatchRolloutResponsePtrOutput{})
 	pulumi.RegisterOutputType(RecurringScheduleOutput{})
 	pulumi.RegisterOutputType(RecurringSchedulePtrOutput{})
+	pulumi.RegisterOutputType(RecurringScheduleResponseOutput{})
+	pulumi.RegisterOutputType(RecurringScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeArrayOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeArtifactOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeArtifactArrayOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeArtifactGcsOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeArtifactGcsPtrOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeArtifactGcsResponseOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeArtifactRemoteOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeArtifactRemotePtrOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeArtifactRemoteResponseOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeArtifactResponseOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeArtifactResponseArrayOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeResponseOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeResponseArrayOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepArrayOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepCopyFileOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepCopyFilePtrOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeStepCopyFileResponseOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepExecFileOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepExecFilePtrOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeStepExecFileResponseOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepExtractArchiveOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepExtractArchivePtrOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeStepExtractArchiveResponseOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepInstallDpkgOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepInstallDpkgPtrOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeStepInstallDpkgResponseOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepInstallMsiOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepInstallMsiPtrOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeStepInstallMsiResponseOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepInstallRpmOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepInstallRpmPtrOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeStepInstallRpmResponseOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeStepResponseOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeStepResponseArrayOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepRunScriptOutput{})
 	pulumi.RegisterOutputType(SoftwareRecipeStepRunScriptPtrOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeStepRunScriptResponseOutput{})
 	pulumi.RegisterOutputType(TimeOfDayOutput{})
 	pulumi.RegisterOutputType(TimeOfDayPtrOutput{})
+	pulumi.RegisterOutputType(TimeOfDayResponseOutput{})
+	pulumi.RegisterOutputType(TimeOfDayResponsePtrOutput{})
 	pulumi.RegisterOutputType(TimeZoneOutput{})
 	pulumi.RegisterOutputType(TimeZonePtrOutput{})
+	pulumi.RegisterOutputType(TimeZoneResponseOutput{})
+	pulumi.RegisterOutputType(TimeZoneResponsePtrOutput{})
 	pulumi.RegisterOutputType(WeekDayOfMonthOutput{})
 	pulumi.RegisterOutputType(WeekDayOfMonthPtrOutput{})
+	pulumi.RegisterOutputType(WeekDayOfMonthResponseOutput{})
+	pulumi.RegisterOutputType(WeekDayOfMonthResponsePtrOutput{})
 	pulumi.RegisterOutputType(WeeklyScheduleOutput{})
 	pulumi.RegisterOutputType(WeeklySchedulePtrOutput{})
+	pulumi.RegisterOutputType(WeeklyScheduleResponseOutput{})
+	pulumi.RegisterOutputType(WeeklyScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(WindowsUpdateSettingsOutput{})
 	pulumi.RegisterOutputType(WindowsUpdateSettingsPtrOutput{})
+	pulumi.RegisterOutputType(WindowsUpdateSettingsResponseOutput{})
+	pulumi.RegisterOutputType(WindowsUpdateSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(YumRepositoryOutput{})
 	pulumi.RegisterOutputType(YumRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(YumRepositoryResponseOutput{})
 	pulumi.RegisterOutputType(YumSettingsOutput{})
 	pulumi.RegisterOutputType(YumSettingsPtrOutput{})
+	pulumi.RegisterOutputType(YumSettingsResponseOutput{})
+	pulumi.RegisterOutputType(YumSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ZypperRepositoryOutput{})
 	pulumi.RegisterOutputType(ZypperRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(ZypperRepositoryResponseOutput{})
 	pulumi.RegisterOutputType(ZypperSettingsOutput{})
 	pulumi.RegisterOutputType(ZypperSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ZypperSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ZypperSettingsResponsePtrOutput{})
 }

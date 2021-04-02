@@ -163,6 +163,159 @@ func (o CapacityPtrOutput) SubscribeMibPerSec() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The throughput capacity configuration for each partition.
+type CapacityResponse struct {
+	// Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+	PublishMibPerSec int `pulumi:"publishMibPerSec"`
+	// Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 32.
+	SubscribeMibPerSec int `pulumi:"subscribeMibPerSec"`
+}
+
+// CapacityResponseInput is an input type that accepts CapacityResponseArgs and CapacityResponseOutput values.
+// You can construct a concrete instance of `CapacityResponseInput` via:
+//
+//          CapacityResponseArgs{...}
+type CapacityResponseInput interface {
+	pulumi.Input
+
+	ToCapacityResponseOutput() CapacityResponseOutput
+	ToCapacityResponseOutputWithContext(context.Context) CapacityResponseOutput
+}
+
+// The throughput capacity configuration for each partition.
+type CapacityResponseArgs struct {
+	// Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+	PublishMibPerSec pulumi.IntInput `pulumi:"publishMibPerSec"`
+	// Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 32.
+	SubscribeMibPerSec pulumi.IntInput `pulumi:"subscribeMibPerSec"`
+}
+
+func (CapacityResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityResponse)(nil)).Elem()
+}
+
+func (i CapacityResponseArgs) ToCapacityResponseOutput() CapacityResponseOutput {
+	return i.ToCapacityResponseOutputWithContext(context.Background())
+}
+
+func (i CapacityResponseArgs) ToCapacityResponseOutputWithContext(ctx context.Context) CapacityResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityResponseOutput)
+}
+
+func (i CapacityResponseArgs) ToCapacityResponsePtrOutput() CapacityResponsePtrOutput {
+	return i.ToCapacityResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CapacityResponseArgs) ToCapacityResponsePtrOutputWithContext(ctx context.Context) CapacityResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityResponseOutput).ToCapacityResponsePtrOutputWithContext(ctx)
+}
+
+// CapacityResponsePtrInput is an input type that accepts CapacityResponseArgs, CapacityResponsePtr and CapacityResponsePtrOutput values.
+// You can construct a concrete instance of `CapacityResponsePtrInput` via:
+//
+//          CapacityResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CapacityResponsePtrInput interface {
+	pulumi.Input
+
+	ToCapacityResponsePtrOutput() CapacityResponsePtrOutput
+	ToCapacityResponsePtrOutputWithContext(context.Context) CapacityResponsePtrOutput
+}
+
+type capacityResponsePtrType CapacityResponseArgs
+
+func CapacityResponsePtr(v *CapacityResponseArgs) CapacityResponsePtrInput {
+	return (*capacityResponsePtrType)(v)
+}
+
+func (*capacityResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CapacityResponse)(nil)).Elem()
+}
+
+func (i *capacityResponsePtrType) ToCapacityResponsePtrOutput() CapacityResponsePtrOutput {
+	return i.ToCapacityResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *capacityResponsePtrType) ToCapacityResponsePtrOutputWithContext(ctx context.Context) CapacityResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CapacityResponsePtrOutput)
+}
+
+// The throughput capacity configuration for each partition.
+type CapacityResponseOutput struct{ *pulumi.OutputState }
+
+func (CapacityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityResponse)(nil)).Elem()
+}
+
+func (o CapacityResponseOutput) ToCapacityResponseOutput() CapacityResponseOutput {
+	return o
+}
+
+func (o CapacityResponseOutput) ToCapacityResponseOutputWithContext(ctx context.Context) CapacityResponseOutput {
+	return o
+}
+
+func (o CapacityResponseOutput) ToCapacityResponsePtrOutput() CapacityResponsePtrOutput {
+	return o.ToCapacityResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CapacityResponseOutput) ToCapacityResponsePtrOutputWithContext(ctx context.Context) CapacityResponsePtrOutput {
+	return o.ApplyT(func(v CapacityResponse) *CapacityResponse {
+		return &v
+	}).(CapacityResponsePtrOutput)
+}
+
+// Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+func (o CapacityResponseOutput) PublishMibPerSec() pulumi.IntOutput {
+	return o.ApplyT(func(v CapacityResponse) int { return v.PublishMibPerSec }).(pulumi.IntOutput)
+}
+
+// Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 32.
+func (o CapacityResponseOutput) SubscribeMibPerSec() pulumi.IntOutput {
+	return o.ApplyT(func(v CapacityResponse) int { return v.SubscribeMibPerSec }).(pulumi.IntOutput)
+}
+
+type CapacityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CapacityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CapacityResponse)(nil)).Elem()
+}
+
+func (o CapacityResponsePtrOutput) ToCapacityResponsePtrOutput() CapacityResponsePtrOutput {
+	return o
+}
+
+func (o CapacityResponsePtrOutput) ToCapacityResponsePtrOutputWithContext(ctx context.Context) CapacityResponsePtrOutput {
+	return o
+}
+
+func (o CapacityResponsePtrOutput) Elem() CapacityResponseOutput {
+	return o.ApplyT(func(v *CapacityResponse) CapacityResponse { return *v }).(CapacityResponseOutput)
+}
+
+// Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+func (o CapacityResponsePtrOutput) PublishMibPerSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CapacityResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.PublishMibPerSec
+	}).(pulumi.IntPtrOutput)
+}
+
+// Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 32.
+func (o CapacityResponsePtrOutput) SubscribeMibPerSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CapacityResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SubscribeMibPerSec
+	}).(pulumi.IntPtrOutput)
+}
+
 // The settings for a subscription's message delivery.
 type DeliveryConfig struct {
 	// The DeliveryRequirement for this subscription.
@@ -294,6 +447,140 @@ func (o DeliveryConfigPtrOutput) DeliveryRequirement() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.DeliveryRequirement
+	}).(pulumi.StringPtrOutput)
+}
+
+// The settings for a subscription's message delivery.
+type DeliveryConfigResponse struct {
+	// The DeliveryRequirement for this subscription.
+	DeliveryRequirement string `pulumi:"deliveryRequirement"`
+}
+
+// DeliveryConfigResponseInput is an input type that accepts DeliveryConfigResponseArgs and DeliveryConfigResponseOutput values.
+// You can construct a concrete instance of `DeliveryConfigResponseInput` via:
+//
+//          DeliveryConfigResponseArgs{...}
+type DeliveryConfigResponseInput interface {
+	pulumi.Input
+
+	ToDeliveryConfigResponseOutput() DeliveryConfigResponseOutput
+	ToDeliveryConfigResponseOutputWithContext(context.Context) DeliveryConfigResponseOutput
+}
+
+// The settings for a subscription's message delivery.
+type DeliveryConfigResponseArgs struct {
+	// The DeliveryRequirement for this subscription.
+	DeliveryRequirement pulumi.StringInput `pulumi:"deliveryRequirement"`
+}
+
+func (DeliveryConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryConfigResponse)(nil)).Elem()
+}
+
+func (i DeliveryConfigResponseArgs) ToDeliveryConfigResponseOutput() DeliveryConfigResponseOutput {
+	return i.ToDeliveryConfigResponseOutputWithContext(context.Background())
+}
+
+func (i DeliveryConfigResponseArgs) ToDeliveryConfigResponseOutputWithContext(ctx context.Context) DeliveryConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryConfigResponseOutput)
+}
+
+func (i DeliveryConfigResponseArgs) ToDeliveryConfigResponsePtrOutput() DeliveryConfigResponsePtrOutput {
+	return i.ToDeliveryConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryConfigResponseArgs) ToDeliveryConfigResponsePtrOutputWithContext(ctx context.Context) DeliveryConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryConfigResponseOutput).ToDeliveryConfigResponsePtrOutputWithContext(ctx)
+}
+
+// DeliveryConfigResponsePtrInput is an input type that accepts DeliveryConfigResponseArgs, DeliveryConfigResponsePtr and DeliveryConfigResponsePtrOutput values.
+// You can construct a concrete instance of `DeliveryConfigResponsePtrInput` via:
+//
+//          DeliveryConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DeliveryConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToDeliveryConfigResponsePtrOutput() DeliveryConfigResponsePtrOutput
+	ToDeliveryConfigResponsePtrOutputWithContext(context.Context) DeliveryConfigResponsePtrOutput
+}
+
+type deliveryConfigResponsePtrType DeliveryConfigResponseArgs
+
+func DeliveryConfigResponsePtr(v *DeliveryConfigResponseArgs) DeliveryConfigResponsePtrInput {
+	return (*deliveryConfigResponsePtrType)(v)
+}
+
+func (*deliveryConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryConfigResponse)(nil)).Elem()
+}
+
+func (i *deliveryConfigResponsePtrType) ToDeliveryConfigResponsePtrOutput() DeliveryConfigResponsePtrOutput {
+	return i.ToDeliveryConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryConfigResponsePtrType) ToDeliveryConfigResponsePtrOutputWithContext(ctx context.Context) DeliveryConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryConfigResponsePtrOutput)
+}
+
+// The settings for a subscription's message delivery.
+type DeliveryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DeliveryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryConfigResponse)(nil)).Elem()
+}
+
+func (o DeliveryConfigResponseOutput) ToDeliveryConfigResponseOutput() DeliveryConfigResponseOutput {
+	return o
+}
+
+func (o DeliveryConfigResponseOutput) ToDeliveryConfigResponseOutputWithContext(ctx context.Context) DeliveryConfigResponseOutput {
+	return o
+}
+
+func (o DeliveryConfigResponseOutput) ToDeliveryConfigResponsePtrOutput() DeliveryConfigResponsePtrOutput {
+	return o.ToDeliveryConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryConfigResponseOutput) ToDeliveryConfigResponsePtrOutputWithContext(ctx context.Context) DeliveryConfigResponsePtrOutput {
+	return o.ApplyT(func(v DeliveryConfigResponse) *DeliveryConfigResponse {
+		return &v
+	}).(DeliveryConfigResponsePtrOutput)
+}
+
+// The DeliveryRequirement for this subscription.
+func (o DeliveryConfigResponseOutput) DeliveryRequirement() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryConfigResponse) string { return v.DeliveryRequirement }).(pulumi.StringOutput)
+}
+
+type DeliveryConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryConfigResponse)(nil)).Elem()
+}
+
+func (o DeliveryConfigResponsePtrOutput) ToDeliveryConfigResponsePtrOutput() DeliveryConfigResponsePtrOutput {
+	return o
+}
+
+func (o DeliveryConfigResponsePtrOutput) ToDeliveryConfigResponsePtrOutputWithContext(ctx context.Context) DeliveryConfigResponsePtrOutput {
+	return o
+}
+
+func (o DeliveryConfigResponsePtrOutput) Elem() DeliveryConfigResponseOutput {
+	return o.ApplyT(func(v *DeliveryConfigResponse) DeliveryConfigResponse { return *v }).(DeliveryConfigResponseOutput)
+}
+
+// The DeliveryRequirement for this subscription.
+func (o DeliveryConfigResponsePtrOutput) DeliveryRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeliveryRequirement
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -469,6 +756,178 @@ func (o PartitionConfigPtrOutput) Scale() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The settings for a topic's partitions.
+type PartitionConfigResponse struct {
+	// The capacity configuration.
+	Capacity CapacityResponse `pulumi:"capacity"`
+	// The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
+	Count string `pulumi:"count"`
+	// DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+	Scale int `pulumi:"scale"`
+}
+
+// PartitionConfigResponseInput is an input type that accepts PartitionConfigResponseArgs and PartitionConfigResponseOutput values.
+// You can construct a concrete instance of `PartitionConfigResponseInput` via:
+//
+//          PartitionConfigResponseArgs{...}
+type PartitionConfigResponseInput interface {
+	pulumi.Input
+
+	ToPartitionConfigResponseOutput() PartitionConfigResponseOutput
+	ToPartitionConfigResponseOutputWithContext(context.Context) PartitionConfigResponseOutput
+}
+
+// The settings for a topic's partitions.
+type PartitionConfigResponseArgs struct {
+	// The capacity configuration.
+	Capacity CapacityResponseInput `pulumi:"capacity"`
+	// The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
+	Count pulumi.StringInput `pulumi:"count"`
+	// DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+	Scale pulumi.IntInput `pulumi:"scale"`
+}
+
+func (PartitionConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PartitionConfigResponse)(nil)).Elem()
+}
+
+func (i PartitionConfigResponseArgs) ToPartitionConfigResponseOutput() PartitionConfigResponseOutput {
+	return i.ToPartitionConfigResponseOutputWithContext(context.Background())
+}
+
+func (i PartitionConfigResponseArgs) ToPartitionConfigResponseOutputWithContext(ctx context.Context) PartitionConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PartitionConfigResponseOutput)
+}
+
+func (i PartitionConfigResponseArgs) ToPartitionConfigResponsePtrOutput() PartitionConfigResponsePtrOutput {
+	return i.ToPartitionConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PartitionConfigResponseArgs) ToPartitionConfigResponsePtrOutputWithContext(ctx context.Context) PartitionConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PartitionConfigResponseOutput).ToPartitionConfigResponsePtrOutputWithContext(ctx)
+}
+
+// PartitionConfigResponsePtrInput is an input type that accepts PartitionConfigResponseArgs, PartitionConfigResponsePtr and PartitionConfigResponsePtrOutput values.
+// You can construct a concrete instance of `PartitionConfigResponsePtrInput` via:
+//
+//          PartitionConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PartitionConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToPartitionConfigResponsePtrOutput() PartitionConfigResponsePtrOutput
+	ToPartitionConfigResponsePtrOutputWithContext(context.Context) PartitionConfigResponsePtrOutput
+}
+
+type partitionConfigResponsePtrType PartitionConfigResponseArgs
+
+func PartitionConfigResponsePtr(v *PartitionConfigResponseArgs) PartitionConfigResponsePtrInput {
+	return (*partitionConfigResponsePtrType)(v)
+}
+
+func (*partitionConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PartitionConfigResponse)(nil)).Elem()
+}
+
+func (i *partitionConfigResponsePtrType) ToPartitionConfigResponsePtrOutput() PartitionConfigResponsePtrOutput {
+	return i.ToPartitionConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *partitionConfigResponsePtrType) ToPartitionConfigResponsePtrOutputWithContext(ctx context.Context) PartitionConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PartitionConfigResponsePtrOutput)
+}
+
+// The settings for a topic's partitions.
+type PartitionConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PartitionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PartitionConfigResponse)(nil)).Elem()
+}
+
+func (o PartitionConfigResponseOutput) ToPartitionConfigResponseOutput() PartitionConfigResponseOutput {
+	return o
+}
+
+func (o PartitionConfigResponseOutput) ToPartitionConfigResponseOutputWithContext(ctx context.Context) PartitionConfigResponseOutput {
+	return o
+}
+
+func (o PartitionConfigResponseOutput) ToPartitionConfigResponsePtrOutput() PartitionConfigResponsePtrOutput {
+	return o.ToPartitionConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PartitionConfigResponseOutput) ToPartitionConfigResponsePtrOutputWithContext(ctx context.Context) PartitionConfigResponsePtrOutput {
+	return o.ApplyT(func(v PartitionConfigResponse) *PartitionConfigResponse {
+		return &v
+	}).(PartitionConfigResponsePtrOutput)
+}
+
+// The capacity configuration.
+func (o PartitionConfigResponseOutput) Capacity() CapacityResponseOutput {
+	return o.ApplyT(func(v PartitionConfigResponse) CapacityResponse { return v.Capacity }).(CapacityResponseOutput)
+}
+
+// The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
+func (o PartitionConfigResponseOutput) Count() pulumi.StringOutput {
+	return o.ApplyT(func(v PartitionConfigResponse) string { return v.Count }).(pulumi.StringOutput)
+}
+
+// DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+func (o PartitionConfigResponseOutput) Scale() pulumi.IntOutput {
+	return o.ApplyT(func(v PartitionConfigResponse) int { return v.Scale }).(pulumi.IntOutput)
+}
+
+type PartitionConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PartitionConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PartitionConfigResponse)(nil)).Elem()
+}
+
+func (o PartitionConfigResponsePtrOutput) ToPartitionConfigResponsePtrOutput() PartitionConfigResponsePtrOutput {
+	return o
+}
+
+func (o PartitionConfigResponsePtrOutput) ToPartitionConfigResponsePtrOutputWithContext(ctx context.Context) PartitionConfigResponsePtrOutput {
+	return o
+}
+
+func (o PartitionConfigResponsePtrOutput) Elem() PartitionConfigResponseOutput {
+	return o.ApplyT(func(v *PartitionConfigResponse) PartitionConfigResponse { return *v }).(PartitionConfigResponseOutput)
+}
+
+// The capacity configuration.
+func (o PartitionConfigResponsePtrOutput) Capacity() CapacityResponsePtrOutput {
+	return o.ApplyT(func(v *PartitionConfigResponse) *CapacityResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Capacity
+	}).(CapacityResponsePtrOutput)
+}
+
+// The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
+func (o PartitionConfigResponsePtrOutput) Count() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PartitionConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Count
+	}).(pulumi.StringPtrOutput)
+}
+
+// DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+func (o PartitionConfigResponsePtrOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PartitionConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Scale
+	}).(pulumi.IntPtrOutput)
+}
+
 // The settings for a topic's message retention.
 type RetentionConfig struct {
 	// The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`.
@@ -622,13 +1081,174 @@ func (o RetentionConfigPtrOutput) Period() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The settings for a topic's message retention.
+type RetentionConfigResponse struct {
+	// The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`.
+	PerPartitionBytes string `pulumi:"perPartitionBytes"`
+	// How long a published message is retained. If unset, messages will be retained as long as the bytes retained for each partition is below `per_partition_bytes`.
+	Period string `pulumi:"period"`
+}
+
+// RetentionConfigResponseInput is an input type that accepts RetentionConfigResponseArgs and RetentionConfigResponseOutput values.
+// You can construct a concrete instance of `RetentionConfigResponseInput` via:
+//
+//          RetentionConfigResponseArgs{...}
+type RetentionConfigResponseInput interface {
+	pulumi.Input
+
+	ToRetentionConfigResponseOutput() RetentionConfigResponseOutput
+	ToRetentionConfigResponseOutputWithContext(context.Context) RetentionConfigResponseOutput
+}
+
+// The settings for a topic's message retention.
+type RetentionConfigResponseArgs struct {
+	// The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`.
+	PerPartitionBytes pulumi.StringInput `pulumi:"perPartitionBytes"`
+	// How long a published message is retained. If unset, messages will be retained as long as the bytes retained for each partition is below `per_partition_bytes`.
+	Period pulumi.StringInput `pulumi:"period"`
+}
+
+func (RetentionConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RetentionConfigResponse)(nil)).Elem()
+}
+
+func (i RetentionConfigResponseArgs) ToRetentionConfigResponseOutput() RetentionConfigResponseOutput {
+	return i.ToRetentionConfigResponseOutputWithContext(context.Background())
+}
+
+func (i RetentionConfigResponseArgs) ToRetentionConfigResponseOutputWithContext(ctx context.Context) RetentionConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RetentionConfigResponseOutput)
+}
+
+func (i RetentionConfigResponseArgs) ToRetentionConfigResponsePtrOutput() RetentionConfigResponsePtrOutput {
+	return i.ToRetentionConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i RetentionConfigResponseArgs) ToRetentionConfigResponsePtrOutputWithContext(ctx context.Context) RetentionConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RetentionConfigResponseOutput).ToRetentionConfigResponsePtrOutputWithContext(ctx)
+}
+
+// RetentionConfigResponsePtrInput is an input type that accepts RetentionConfigResponseArgs, RetentionConfigResponsePtr and RetentionConfigResponsePtrOutput values.
+// You can construct a concrete instance of `RetentionConfigResponsePtrInput` via:
+//
+//          RetentionConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type RetentionConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToRetentionConfigResponsePtrOutput() RetentionConfigResponsePtrOutput
+	ToRetentionConfigResponsePtrOutputWithContext(context.Context) RetentionConfigResponsePtrOutput
+}
+
+type retentionConfigResponsePtrType RetentionConfigResponseArgs
+
+func RetentionConfigResponsePtr(v *RetentionConfigResponseArgs) RetentionConfigResponsePtrInput {
+	return (*retentionConfigResponsePtrType)(v)
+}
+
+func (*retentionConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RetentionConfigResponse)(nil)).Elem()
+}
+
+func (i *retentionConfigResponsePtrType) ToRetentionConfigResponsePtrOutput() RetentionConfigResponsePtrOutput {
+	return i.ToRetentionConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *retentionConfigResponsePtrType) ToRetentionConfigResponsePtrOutputWithContext(ctx context.Context) RetentionConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RetentionConfigResponsePtrOutput)
+}
+
+// The settings for a topic's message retention.
+type RetentionConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (RetentionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RetentionConfigResponse)(nil)).Elem()
+}
+
+func (o RetentionConfigResponseOutput) ToRetentionConfigResponseOutput() RetentionConfigResponseOutput {
+	return o
+}
+
+func (o RetentionConfigResponseOutput) ToRetentionConfigResponseOutputWithContext(ctx context.Context) RetentionConfigResponseOutput {
+	return o
+}
+
+func (o RetentionConfigResponseOutput) ToRetentionConfigResponsePtrOutput() RetentionConfigResponsePtrOutput {
+	return o.ToRetentionConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o RetentionConfigResponseOutput) ToRetentionConfigResponsePtrOutputWithContext(ctx context.Context) RetentionConfigResponsePtrOutput {
+	return o.ApplyT(func(v RetentionConfigResponse) *RetentionConfigResponse {
+		return &v
+	}).(RetentionConfigResponsePtrOutput)
+}
+
+// The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`.
+func (o RetentionConfigResponseOutput) PerPartitionBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v RetentionConfigResponse) string { return v.PerPartitionBytes }).(pulumi.StringOutput)
+}
+
+// How long a published message is retained. If unset, messages will be retained as long as the bytes retained for each partition is below `per_partition_bytes`.
+func (o RetentionConfigResponseOutput) Period() pulumi.StringOutput {
+	return o.ApplyT(func(v RetentionConfigResponse) string { return v.Period }).(pulumi.StringOutput)
+}
+
+type RetentionConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RetentionConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RetentionConfigResponse)(nil)).Elem()
+}
+
+func (o RetentionConfigResponsePtrOutput) ToRetentionConfigResponsePtrOutput() RetentionConfigResponsePtrOutput {
+	return o
+}
+
+func (o RetentionConfigResponsePtrOutput) ToRetentionConfigResponsePtrOutputWithContext(ctx context.Context) RetentionConfigResponsePtrOutput {
+	return o
+}
+
+func (o RetentionConfigResponsePtrOutput) Elem() RetentionConfigResponseOutput {
+	return o.ApplyT(func(v *RetentionConfigResponse) RetentionConfigResponse { return *v }).(RetentionConfigResponseOutput)
+}
+
+// The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`.
+func (o RetentionConfigResponsePtrOutput) PerPartitionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RetentionConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PerPartitionBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// How long a published message is retained. If unset, messages will be retained as long as the bytes retained for each partition is below `per_partition_bytes`.
+func (o RetentionConfigResponsePtrOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RetentionConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Period
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CapacityOutput{})
 	pulumi.RegisterOutputType(CapacityPtrOutput{})
+	pulumi.RegisterOutputType(CapacityResponseOutput{})
+	pulumi.RegisterOutputType(CapacityResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeliveryConfigOutput{})
 	pulumi.RegisterOutputType(DeliveryConfigPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryConfigResponseOutput{})
+	pulumi.RegisterOutputType(DeliveryConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(PartitionConfigOutput{})
 	pulumi.RegisterOutputType(PartitionConfigPtrOutput{})
+	pulumi.RegisterOutputType(PartitionConfigResponseOutput{})
+	pulumi.RegisterOutputType(PartitionConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(RetentionConfigOutput{})
 	pulumi.RegisterOutputType(RetentionConfigPtrOutput{})
+	pulumi.RegisterOutputType(RetentionConfigResponseOutput{})
+	pulumi.RegisterOutputType(RetentionConfigResponsePtrOutput{})
 }

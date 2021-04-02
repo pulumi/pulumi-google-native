@@ -14,6 +14,26 @@ import (
 // Creates a TargetInstance resource in the specified project and zone using the data included in the request.
 type TargetInstance struct {
 	pulumi.CustomResourceState
+
+	// [Output Only] Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs:
+	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
+	// - projects/project/zones/zone/instances/instance
+	// - zones/zone/instances/instance
+	Instance pulumi.StringOutput `pulumi:"instance"`
+	// [Output Only] The type of the resource. Always compute#targetInstance for target instances.
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+	NatPolicy pulumi.StringOutput `pulumi:"natPolicy"`
+	// [Output Only] Server-defined URL for the resource.
+	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// [Output Only] URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewTargetInstance registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +74,47 @@ func GetTargetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TargetInstance resources.
 type targetInstanceState struct {
+	// [Output Only] Creation timestamp in RFC3339 text format.
+	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description *string `pulumi:"description"`
+	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs:
+	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
+	// - projects/project/zones/zone/instances/instance
+	// - zones/zone/instances/instance
+	Instance *string `pulumi:"instance"`
+	// [Output Only] The type of the resource. Always compute#targetInstance for target instances.
+	Kind *string `pulumi:"kind"`
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	Name *string `pulumi:"name"`
+	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+	NatPolicy *string `pulumi:"natPolicy"`
+	// [Output Only] Server-defined URL for the resource.
+	SelfLink *string `pulumi:"selfLink"`
+	// [Output Only] URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	Zone *string `pulumi:"zone"`
 }
 
 type TargetInstanceState struct {
+	// [Output Only] Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringPtrInput
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description pulumi.StringPtrInput
+	// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs:
+	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
+	// - projects/project/zones/zone/instances/instance
+	// - zones/zone/instances/instance
+	Instance pulumi.StringPtrInput
+	// [Output Only] The type of the resource. Always compute#targetInstance for target instances.
+	Kind pulumi.StringPtrInput
+	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	Name pulumi.StringPtrInput
+	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+	NatPolicy pulumi.StringPtrInput
+	// [Output Only] Server-defined URL for the resource.
+	SelfLink pulumi.StringPtrInput
+	// [Output Only] URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+	Zone pulumi.StringPtrInput
 }
 
 func (TargetInstanceState) ElementType() reflect.Type {

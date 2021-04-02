@@ -14,6 +14,19 @@ import (
 // Creates a domain mapping on the specified site.
 type SiteDomain struct {
 	pulumi.CustomResourceState
+
+	// Required. The domain name of the association.
+	DomainName pulumi.StringOutput `pulumi:"domainName"`
+	// If set, the domain should redirect with the provided parameters.
+	DomainRedirect DomainRedirectResponseOutput `pulumi:"domainRedirect"`
+	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
+	Provisioning DomainProvisioningResponseOutput `pulumi:"provisioning"`
+	// Required. The site name of the association.
+	Site pulumi.StringOutput `pulumi:"site"`
+	// Additional status of the domain association.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The time at which the domain was last updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewSiteDomain registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +64,33 @@ func GetSiteDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SiteDomain resources.
 type siteDomainState struct {
+	// Required. The domain name of the association.
+	DomainName *string `pulumi:"domainName"`
+	// If set, the domain should redirect with the provided parameters.
+	DomainRedirect *DomainRedirectResponse `pulumi:"domainRedirect"`
+	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
+	Provisioning *DomainProvisioningResponse `pulumi:"provisioning"`
+	// Required. The site name of the association.
+	Site *string `pulumi:"site"`
+	// Additional status of the domain association.
+	Status *string `pulumi:"status"`
+	// The time at which the domain was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type SiteDomainState struct {
+	// Required. The domain name of the association.
+	DomainName pulumi.StringPtrInput
+	// If set, the domain should redirect with the provided parameters.
+	DomainRedirect DomainRedirectResponsePtrInput
+	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
+	Provisioning DomainProvisioningResponsePtrInput
+	// Required. The site name of the association.
+	Site pulumi.StringPtrInput
+	// Additional status of the domain association.
+	Status pulumi.StringPtrInput
+	// The time at which the domain was last updated.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (SiteDomainState) ElementType() reflect.Type {
@@ -66,14 +103,14 @@ type siteDomainArgs struct {
 	// If set, the domain should redirect with the provided parameters.
 	DomainRedirect *DomainRedirect `pulumi:"domainRedirect"`
 	DomainsId      string          `pulumi:"domainsId"`
-	// Output only. Information about the provisioning of certificates and the health of the DNS resolution for the domain.
+	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
 	Provisioning *DomainProvisioning `pulumi:"provisioning"`
 	// Required. The site name of the association.
 	Site    *string `pulumi:"site"`
 	SitesId string  `pulumi:"sitesId"`
-	// Output only. Additional status of the domain association.
+	// Additional status of the domain association.
 	Status *string `pulumi:"status"`
-	// Output only. The time at which the domain was last updated.
+	// The time at which the domain was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
@@ -84,14 +121,14 @@ type SiteDomainArgs struct {
 	// If set, the domain should redirect with the provided parameters.
 	DomainRedirect DomainRedirectPtrInput
 	DomainsId      pulumi.StringInput
-	// Output only. Information about the provisioning of certificates and the health of the DNS resolution for the domain.
+	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
 	Provisioning DomainProvisioningPtrInput
 	// Required. The site name of the association.
 	Site    pulumi.StringPtrInput
 	SitesId pulumi.StringInput
-	// Output only. Additional status of the domain association.
+	// Additional status of the domain association.
 	Status pulumi.StringPtrInput
-	// Output only. The time at which the domain was last updated.
+	// The time at which the domain was last updated.
 	UpdateTime pulumi.StringPtrInput
 }
 

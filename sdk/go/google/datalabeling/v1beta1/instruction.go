@@ -14,6 +14,25 @@ import (
 // Creates an instruction for how data should be labeled.
 type Instruction struct {
 	pulumi.CustomResourceState
+
+	// The names of any related resources that are blocking changes to the instruction.
+	BlockingResources pulumi.StringArrayOutput `pulumi:"blockingResources"`
+	// Creation time of instruction.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+	CsvInstruction GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput `pulumi:"csvInstruction"`
+	// Required. The data type of this instruction.
+	DataType pulumi.StringOutput `pulumi:"dataType"`
+	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Required. The display name of the instruction. Maximum of 64 characters.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
+	PdfInstruction GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput `pulumi:"pdfInstruction"`
+	// Last update time of instruction.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewInstruction registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +70,45 @@ func GetInstruction(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instruction resources.
 type instructionState struct {
+	// The names of any related resources that are blocking changes to the instruction.
+	BlockingResources []string `pulumi:"blockingResources"`
+	// Creation time of instruction.
+	CreateTime *string `pulumi:"createTime"`
+	// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+	CsvInstruction *GoogleCloudDatalabelingV1beta1CsvInstructionResponse `pulumi:"csvInstruction"`
+	// Required. The data type of this instruction.
+	DataType *string `pulumi:"dataType"`
+	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
+	Description *string `pulumi:"description"`
+	// Required. The display name of the instruction. Maximum of 64 characters.
+	DisplayName *string `pulumi:"displayName"`
+	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+	Name *string `pulumi:"name"`
+	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
+	PdfInstruction *GoogleCloudDatalabelingV1beta1PdfInstructionResponse `pulumi:"pdfInstruction"`
+	// Last update time of instruction.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type InstructionState struct {
+	// The names of any related resources that are blocking changes to the instruction.
+	BlockingResources pulumi.StringArrayInput
+	// Creation time of instruction.
+	CreateTime pulumi.StringPtrInput
+	// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+	CsvInstruction GoogleCloudDatalabelingV1beta1CsvInstructionResponsePtrInput
+	// Required. The data type of this instruction.
+	DataType pulumi.StringPtrInput
+	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
+	Description pulumi.StringPtrInput
+	// Required. The display name of the instruction. Maximum of 64 characters.
+	DisplayName pulumi.StringPtrInput
+	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+	Name pulumi.StringPtrInput
+	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
+	PdfInstruction GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrInput
+	// Last update time of instruction.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (InstructionState) ElementType() reflect.Type {

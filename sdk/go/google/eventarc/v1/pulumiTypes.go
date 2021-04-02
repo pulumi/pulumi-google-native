@@ -119,6 +119,115 @@ func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
 	}).(AuditConfigOutput)
 }
 
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponse struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs []AuditLogConfigResponse `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service string `pulumi:"service"`
+}
+
+// AuditConfigResponseInput is an input type that accepts AuditConfigResponseArgs and AuditConfigResponseOutput values.
+// You can construct a concrete instance of `AuditConfigResponseInput` via:
+//
+//          AuditConfigResponseArgs{...}
+type AuditConfigResponseInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseOutput() AuditConfigResponseOutput
+	ToAuditConfigResponseOutputWithContext(context.Context) AuditConfigResponseOutput
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseArgs struct {
+	// The configuration for logging of each type of permission.
+	AuditLogConfigs AuditLogConfigResponseArrayInput `pulumi:"auditLogConfigs"`
+	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (AuditConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return i.ToAuditConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArgs) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseOutput)
+}
+
+// AuditConfigResponseArrayInput is an input type that accepts AuditConfigResponseArray and AuditConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditConfigResponseArrayInput` via:
+//
+//          AuditConfigResponseArray{ AuditConfigResponseArgs{...} }
+type AuditConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput
+	ToAuditConfigResponseArrayOutputWithContext(context.Context) AuditConfigResponseArrayOutput
+}
+
+type AuditConfigResponseArray []AuditConfigResponseInput
+
+func (AuditConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return i.ToAuditConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditConfigResponseArray) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigResponseArrayOutput)
+}
+
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+type AuditConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
+	return o
+}
+
+func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
+	return o
+}
+
+// The configuration for logging of each type of permission.
+func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
+	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
+}
+
+// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+func (o AuditConfigResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditConfigResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type AuditConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditConfigResponse {
+		return vs[0].([]AuditConfigResponse)[vs[1].(int)]
+	}).(AuditConfigResponseOutput)
+}
+
 // Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
 type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
@@ -226,6 +335,115 @@ func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfig {
 		return vs[0].([]AuditLogConfig)[vs[1].(int)]
 	}).(AuditLogConfigOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponse struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers []string `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType string `pulumi:"logType"`
+}
+
+// AuditLogConfigResponseInput is an input type that accepts AuditLogConfigResponseArgs and AuditLogConfigResponseOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseInput` via:
+//
+//          AuditLogConfigResponseArgs{...}
+type AuditLogConfigResponseInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput
+	ToAuditLogConfigResponseOutputWithContext(context.Context) AuditLogConfigResponseOutput
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseArgs struct {
+	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
+	// The log type that this config enables.
+	LogType pulumi.StringInput `pulumi:"logType"`
+}
+
+func (AuditLogConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return i.ToAuditLogConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArgs) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseOutput)
+}
+
+// AuditLogConfigResponseArrayInput is an input type that accepts AuditLogConfigResponseArray and AuditLogConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AuditLogConfigResponseArrayInput` via:
+//
+//          AuditLogConfigResponseArray{ AuditLogConfigResponseArgs{...} }
+type AuditLogConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput
+	ToAuditLogConfigResponseArrayOutputWithContext(context.Context) AuditLogConfigResponseArrayOutput
+}
+
+type AuditLogConfigResponseArray []AuditLogConfigResponseInput
+
+func (AuditLogConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return i.ToAuditLogConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AuditLogConfigResponseArray) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigResponseArrayOutput)
+}
+
+// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+type AuditLogConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
+	return o
+}
+
+// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
+func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+}
+
+// The log type that this config enables.
+func (o AuditLogConfigResponseOutput) LogType() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditLogConfigResponse) string { return v.LogType }).(pulumi.StringOutput)
+}
+
+type AuditLogConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
+	return o
+}
+
+func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfigResponse {
+		return vs[0].([]AuditLogConfigResponse)[vs[1].(int)]
+	}).(AuditLogConfigResponseOutput)
 }
 
 // Associates `members` with a `role`.
@@ -344,6 +562,124 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Binding {
 		return vs[0].([]Binding)[vs[1].(int)]
 	}).(BindingOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponse struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role string `pulumi:"role"`
+}
+
+// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
+// You can construct a concrete instance of `BindingResponseInput` via:
+//
+//          BindingResponseArgs{...}
+type BindingResponseInput interface {
+	pulumi.Input
+
+	ToBindingResponseOutput() BindingResponseOutput
+	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
+}
+
+// Associates `members` with a `role`.
+type BindingResponseArgs struct {
+	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
+	return i.ToBindingResponseOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
+}
+
+// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
+// You can construct a concrete instance of `BindingResponseArrayInput` via:
+//
+//          BindingResponseArray{ BindingResponseArgs{...} }
+type BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToBindingResponseArrayOutput() BindingResponseArrayOutput
+	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
+}
+
+type BindingResponseArray []BindingResponseInput
+
+func (BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return i.ToBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
+}
+
+// Associates `members` with a `role`.
+type BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+func (o BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
+		return vs[0].([]BindingResponse)[vs[1].(int)]
+	}).(BindingResponseOutput)
 }
 
 // Represents a Cloud Run destination.
@@ -518,6 +854,178 @@ func (o CloudRunPtrOutput) Service() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a Cloud Run destination.
+type CloudRunResponse struct {
+	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	Path string `pulumi:"path"`
+	// Required. The region the Cloud Run service is deployed in.
+	Region string `pulumi:"region"`
+	// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+	Service string `pulumi:"service"`
+}
+
+// CloudRunResponseInput is an input type that accepts CloudRunResponseArgs and CloudRunResponseOutput values.
+// You can construct a concrete instance of `CloudRunResponseInput` via:
+//
+//          CloudRunResponseArgs{...}
+type CloudRunResponseInput interface {
+	pulumi.Input
+
+	ToCloudRunResponseOutput() CloudRunResponseOutput
+	ToCloudRunResponseOutputWithContext(context.Context) CloudRunResponseOutput
+}
+
+// Represents a Cloud Run destination.
+type CloudRunResponseArgs struct {
+	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	Path pulumi.StringInput `pulumi:"path"`
+	// Required. The region the Cloud Run service is deployed in.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (CloudRunResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunResponse)(nil)).Elem()
+}
+
+func (i CloudRunResponseArgs) ToCloudRunResponseOutput() CloudRunResponseOutput {
+	return i.ToCloudRunResponseOutputWithContext(context.Background())
+}
+
+func (i CloudRunResponseArgs) ToCloudRunResponseOutputWithContext(ctx context.Context) CloudRunResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunResponseOutput)
+}
+
+func (i CloudRunResponseArgs) ToCloudRunResponsePtrOutput() CloudRunResponsePtrOutput {
+	return i.ToCloudRunResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CloudRunResponseArgs) ToCloudRunResponsePtrOutputWithContext(ctx context.Context) CloudRunResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunResponseOutput).ToCloudRunResponsePtrOutputWithContext(ctx)
+}
+
+// CloudRunResponsePtrInput is an input type that accepts CloudRunResponseArgs, CloudRunResponsePtr and CloudRunResponsePtrOutput values.
+// You can construct a concrete instance of `CloudRunResponsePtrInput` via:
+//
+//          CloudRunResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CloudRunResponsePtrInput interface {
+	pulumi.Input
+
+	ToCloudRunResponsePtrOutput() CloudRunResponsePtrOutput
+	ToCloudRunResponsePtrOutputWithContext(context.Context) CloudRunResponsePtrOutput
+}
+
+type cloudRunResponsePtrType CloudRunResponseArgs
+
+func CloudRunResponsePtr(v *CloudRunResponseArgs) CloudRunResponsePtrInput {
+	return (*cloudRunResponsePtrType)(v)
+}
+
+func (*cloudRunResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRunResponse)(nil)).Elem()
+}
+
+func (i *cloudRunResponsePtrType) ToCloudRunResponsePtrOutput() CloudRunResponsePtrOutput {
+	return i.ToCloudRunResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudRunResponsePtrType) ToCloudRunResponsePtrOutputWithContext(ctx context.Context) CloudRunResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunResponsePtrOutput)
+}
+
+// Represents a Cloud Run destination.
+type CloudRunResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudRunResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunResponse)(nil)).Elem()
+}
+
+func (o CloudRunResponseOutput) ToCloudRunResponseOutput() CloudRunResponseOutput {
+	return o
+}
+
+func (o CloudRunResponseOutput) ToCloudRunResponseOutputWithContext(ctx context.Context) CloudRunResponseOutput {
+	return o
+}
+
+func (o CloudRunResponseOutput) ToCloudRunResponsePtrOutput() CloudRunResponsePtrOutput {
+	return o.ToCloudRunResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CloudRunResponseOutput) ToCloudRunResponsePtrOutputWithContext(ctx context.Context) CloudRunResponsePtrOutput {
+	return o.ApplyT(func(v CloudRunResponse) *CloudRunResponse {
+		return &v
+	}).(CloudRunResponsePtrOutput)
+}
+
+// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+func (o CloudRunResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Required. The region the Cloud Run service is deployed in.
+func (o CloudRunResponseOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunResponse) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+func (o CloudRunResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type CloudRunResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudRunResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRunResponse)(nil)).Elem()
+}
+
+func (o CloudRunResponsePtrOutput) ToCloudRunResponsePtrOutput() CloudRunResponsePtrOutput {
+	return o
+}
+
+func (o CloudRunResponsePtrOutput) ToCloudRunResponsePtrOutputWithContext(ctx context.Context) CloudRunResponsePtrOutput {
+	return o
+}
+
+func (o CloudRunResponsePtrOutput) Elem() CloudRunResponseOutput {
+	return o.ApplyT(func(v *CloudRunResponse) CloudRunResponse { return *v }).(CloudRunResponseOutput)
+}
+
+// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+func (o CloudRunResponsePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudRunResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The region the Cloud Run service is deployed in.
+func (o CloudRunResponsePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudRunResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+func (o CloudRunResponsePtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudRunResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents a target of an invocation over HTTP.
 type Destination struct {
 	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
@@ -652,6 +1160,140 @@ func (o DestinationPtrOutput) CloudRun() CloudRunPtrOutput {
 	}).(CloudRunPtrOutput)
 }
 
+// Represents a target of an invocation over HTTP.
+type DestinationResponse struct {
+	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+	CloudRun CloudRunResponse `pulumi:"cloudRun"`
+}
+
+// DestinationResponseInput is an input type that accepts DestinationResponseArgs and DestinationResponseOutput values.
+// You can construct a concrete instance of `DestinationResponseInput` via:
+//
+//          DestinationResponseArgs{...}
+type DestinationResponseInput interface {
+	pulumi.Input
+
+	ToDestinationResponseOutput() DestinationResponseOutput
+	ToDestinationResponseOutputWithContext(context.Context) DestinationResponseOutput
+}
+
+// Represents a target of an invocation over HTTP.
+type DestinationResponseArgs struct {
+	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+	CloudRun CloudRunResponseInput `pulumi:"cloudRun"`
+}
+
+func (DestinationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationResponse)(nil)).Elem()
+}
+
+func (i DestinationResponseArgs) ToDestinationResponseOutput() DestinationResponseOutput {
+	return i.ToDestinationResponseOutputWithContext(context.Background())
+}
+
+func (i DestinationResponseArgs) ToDestinationResponseOutputWithContext(ctx context.Context) DestinationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationResponseOutput)
+}
+
+func (i DestinationResponseArgs) ToDestinationResponsePtrOutput() DestinationResponsePtrOutput {
+	return i.ToDestinationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DestinationResponseArgs) ToDestinationResponsePtrOutputWithContext(ctx context.Context) DestinationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationResponseOutput).ToDestinationResponsePtrOutputWithContext(ctx)
+}
+
+// DestinationResponsePtrInput is an input type that accepts DestinationResponseArgs, DestinationResponsePtr and DestinationResponsePtrOutput values.
+// You can construct a concrete instance of `DestinationResponsePtrInput` via:
+//
+//          DestinationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DestinationResponsePtrInput interface {
+	pulumi.Input
+
+	ToDestinationResponsePtrOutput() DestinationResponsePtrOutput
+	ToDestinationResponsePtrOutputWithContext(context.Context) DestinationResponsePtrOutput
+}
+
+type destinationResponsePtrType DestinationResponseArgs
+
+func DestinationResponsePtr(v *DestinationResponseArgs) DestinationResponsePtrInput {
+	return (*destinationResponsePtrType)(v)
+}
+
+func (*destinationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DestinationResponse)(nil)).Elem()
+}
+
+func (i *destinationResponsePtrType) ToDestinationResponsePtrOutput() DestinationResponsePtrOutput {
+	return i.ToDestinationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *destinationResponsePtrType) ToDestinationResponsePtrOutputWithContext(ctx context.Context) DestinationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationResponsePtrOutput)
+}
+
+// Represents a target of an invocation over HTTP.
+type DestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (DestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationResponse)(nil)).Elem()
+}
+
+func (o DestinationResponseOutput) ToDestinationResponseOutput() DestinationResponseOutput {
+	return o
+}
+
+func (o DestinationResponseOutput) ToDestinationResponseOutputWithContext(ctx context.Context) DestinationResponseOutput {
+	return o
+}
+
+func (o DestinationResponseOutput) ToDestinationResponsePtrOutput() DestinationResponsePtrOutput {
+	return o.ToDestinationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DestinationResponseOutput) ToDestinationResponsePtrOutputWithContext(ctx context.Context) DestinationResponsePtrOutput {
+	return o.ApplyT(func(v DestinationResponse) *DestinationResponse {
+		return &v
+	}).(DestinationResponsePtrOutput)
+}
+
+// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+func (o DestinationResponseOutput) CloudRun() CloudRunResponseOutput {
+	return o.ApplyT(func(v DestinationResponse) CloudRunResponse { return v.CloudRun }).(CloudRunResponseOutput)
+}
+
+type DestinationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DestinationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DestinationResponse)(nil)).Elem()
+}
+
+func (o DestinationResponsePtrOutput) ToDestinationResponsePtrOutput() DestinationResponsePtrOutput {
+	return o
+}
+
+func (o DestinationResponsePtrOutput) ToDestinationResponsePtrOutputWithContext(ctx context.Context) DestinationResponsePtrOutput {
+	return o
+}
+
+func (o DestinationResponsePtrOutput) Elem() DestinationResponseOutput {
+	return o.ApplyT(func(v *DestinationResponse) DestinationResponse { return *v }).(DestinationResponseOutput)
+}
+
+// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+func (o DestinationResponsePtrOutput) CloudRun() CloudRunResponsePtrOutput {
+	return o.ApplyT(func(v *DestinationResponse) *CloudRunResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.CloudRun
+	}).(CloudRunResponsePtrOutput)
+}
+
 // Filters events based on exact matches on the CloudEvents attributes.
 type EventFilter struct {
 	// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
@@ -759,6 +1401,115 @@ func (o EventFilterArrayOutput) Index(i pulumi.IntInput) EventFilterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventFilter {
 		return vs[0].([]EventFilter)[vs[1].(int)]
 	}).(EventFilterOutput)
+}
+
+// Filters events based on exact matches on the CloudEvents attributes.
+type EventFilterResponse struct {
+	// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+	Attribute string `pulumi:"attribute"`
+	// Required. The value for the attribute.
+	Value string `pulumi:"value"`
+}
+
+// EventFilterResponseInput is an input type that accepts EventFilterResponseArgs and EventFilterResponseOutput values.
+// You can construct a concrete instance of `EventFilterResponseInput` via:
+//
+//          EventFilterResponseArgs{...}
+type EventFilterResponseInput interface {
+	pulumi.Input
+
+	ToEventFilterResponseOutput() EventFilterResponseOutput
+	ToEventFilterResponseOutputWithContext(context.Context) EventFilterResponseOutput
+}
+
+// Filters events based on exact matches on the CloudEvents attributes.
+type EventFilterResponseArgs struct {
+	// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+	Attribute pulumi.StringInput `pulumi:"attribute"`
+	// Required. The value for the attribute.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (EventFilterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventFilterResponse)(nil)).Elem()
+}
+
+func (i EventFilterResponseArgs) ToEventFilterResponseOutput() EventFilterResponseOutput {
+	return i.ToEventFilterResponseOutputWithContext(context.Background())
+}
+
+func (i EventFilterResponseArgs) ToEventFilterResponseOutputWithContext(ctx context.Context) EventFilterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventFilterResponseOutput)
+}
+
+// EventFilterResponseArrayInput is an input type that accepts EventFilterResponseArray and EventFilterResponseArrayOutput values.
+// You can construct a concrete instance of `EventFilterResponseArrayInput` via:
+//
+//          EventFilterResponseArray{ EventFilterResponseArgs{...} }
+type EventFilterResponseArrayInput interface {
+	pulumi.Input
+
+	ToEventFilterResponseArrayOutput() EventFilterResponseArrayOutput
+	ToEventFilterResponseArrayOutputWithContext(context.Context) EventFilterResponseArrayOutput
+}
+
+type EventFilterResponseArray []EventFilterResponseInput
+
+func (EventFilterResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventFilterResponse)(nil)).Elem()
+}
+
+func (i EventFilterResponseArray) ToEventFilterResponseArrayOutput() EventFilterResponseArrayOutput {
+	return i.ToEventFilterResponseArrayOutputWithContext(context.Background())
+}
+
+func (i EventFilterResponseArray) ToEventFilterResponseArrayOutputWithContext(ctx context.Context) EventFilterResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventFilterResponseArrayOutput)
+}
+
+// Filters events based on exact matches on the CloudEvents attributes.
+type EventFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (EventFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventFilterResponse)(nil)).Elem()
+}
+
+func (o EventFilterResponseOutput) ToEventFilterResponseOutput() EventFilterResponseOutput {
+	return o
+}
+
+func (o EventFilterResponseOutput) ToEventFilterResponseOutputWithContext(ctx context.Context) EventFilterResponseOutput {
+	return o
+}
+
+// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+func (o EventFilterResponseOutput) Attribute() pulumi.StringOutput {
+	return o.ApplyT(func(v EventFilterResponse) string { return v.Attribute }).(pulumi.StringOutput)
+}
+
+// Required. The value for the attribute.
+func (o EventFilterResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v EventFilterResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type EventFilterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EventFilterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventFilterResponse)(nil)).Elem()
+}
+
+func (o EventFilterResponseArrayOutput) ToEventFilterResponseArrayOutput() EventFilterResponseArrayOutput {
+	return o
+}
+
+func (o EventFilterResponseArrayOutput) ToEventFilterResponseArrayOutputWithContext(ctx context.Context) EventFilterResponseArrayOutput {
+	return o
+}
+
+func (o EventFilterResponseArrayOutput) Index(i pulumi.IntInput) EventFilterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventFilterResponse {
+		return vs[0].([]EventFilterResponse)[vs[1].(int)]
+	}).(EventFilterResponseOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -950,6 +1701,88 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 		}
 		return v.Title
 	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
+// You can construct a concrete instance of `ExprResponseInput` via:
+//
+//          ExprResponseArgs{...}
+type ExprResponseInput interface {
+	pulumi.Input
+
+	ToExprResponseOutput() ExprResponseOutput
+	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
+	return i.ToExprResponseOutputWithContext(context.Background())
+}
+
+func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseOutput struct{ *pulumi.OutputState }
+
+func (ExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
+	return o
+}
+
+func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
@@ -1145,8 +1978,6 @@ func (o PolicyPtrOutput) Version() pulumi.IntPtrOutput {
 
 // Represents a Pub/Sub transport.
 type Pubsub struct {
-	// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
-	Subscription *string `pulumi:"subscription"`
 	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
 	Topic *string `pulumi:"topic"`
 }
@@ -1164,8 +1995,6 @@ type PubsubInput interface {
 
 // Represents a Pub/Sub transport.
 type PubsubArgs struct {
-	// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
-	Subscription pulumi.StringPtrInput `pulumi:"subscription"`
 	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
 	Topic pulumi.StringPtrInput `pulumi:"topic"`
 }
@@ -1248,11 +2077,6 @@ func (o PubsubOutput) ToPubsubPtrOutputWithContext(ctx context.Context) PubsubPt
 	}).(PubsubPtrOutput)
 }
 
-// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
-func (o PubsubOutput) Subscription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Pubsub) *string { return v.Subscription }).(pulumi.StringPtrOutput)
-}
-
 // Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
 func (o PubsubOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Pubsub) *string { return v.Topic }).(pulumi.StringPtrOutput)
@@ -1276,16 +2100,6 @@ func (o PubsubPtrOutput) Elem() PubsubOutput {
 	return o.ApplyT(func(v *Pubsub) Pubsub { return *v }).(PubsubOutput)
 }
 
-// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
-func (o PubsubPtrOutput) Subscription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Pubsub) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Subscription
-	}).(pulumi.StringPtrOutput)
-}
-
 // Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
 func (o PubsubPtrOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pubsub) *string {
@@ -1293,6 +2107,159 @@ func (o PubsubPtrOutput) Topic() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a Pub/Sub transport.
+type PubsubResponse struct {
+	// The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+	Subscription string `pulumi:"subscription"`
+	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+	Topic string `pulumi:"topic"`
+}
+
+// PubsubResponseInput is an input type that accepts PubsubResponseArgs and PubsubResponseOutput values.
+// You can construct a concrete instance of `PubsubResponseInput` via:
+//
+//          PubsubResponseArgs{...}
+type PubsubResponseInput interface {
+	pulumi.Input
+
+	ToPubsubResponseOutput() PubsubResponseOutput
+	ToPubsubResponseOutputWithContext(context.Context) PubsubResponseOutput
+}
+
+// Represents a Pub/Sub transport.
+type PubsubResponseArgs struct {
+	// The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+	Subscription pulumi.StringInput `pulumi:"subscription"`
+	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+	Topic pulumi.StringInput `pulumi:"topic"`
+}
+
+func (PubsubResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubsubResponse)(nil)).Elem()
+}
+
+func (i PubsubResponseArgs) ToPubsubResponseOutput() PubsubResponseOutput {
+	return i.ToPubsubResponseOutputWithContext(context.Background())
+}
+
+func (i PubsubResponseArgs) ToPubsubResponseOutputWithContext(ctx context.Context) PubsubResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubsubResponseOutput)
+}
+
+func (i PubsubResponseArgs) ToPubsubResponsePtrOutput() PubsubResponsePtrOutput {
+	return i.ToPubsubResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PubsubResponseArgs) ToPubsubResponsePtrOutputWithContext(ctx context.Context) PubsubResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubsubResponseOutput).ToPubsubResponsePtrOutputWithContext(ctx)
+}
+
+// PubsubResponsePtrInput is an input type that accepts PubsubResponseArgs, PubsubResponsePtr and PubsubResponsePtrOutput values.
+// You can construct a concrete instance of `PubsubResponsePtrInput` via:
+//
+//          PubsubResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PubsubResponsePtrInput interface {
+	pulumi.Input
+
+	ToPubsubResponsePtrOutput() PubsubResponsePtrOutput
+	ToPubsubResponsePtrOutputWithContext(context.Context) PubsubResponsePtrOutput
+}
+
+type pubsubResponsePtrType PubsubResponseArgs
+
+func PubsubResponsePtr(v *PubsubResponseArgs) PubsubResponsePtrInput {
+	return (*pubsubResponsePtrType)(v)
+}
+
+func (*pubsubResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PubsubResponse)(nil)).Elem()
+}
+
+func (i *pubsubResponsePtrType) ToPubsubResponsePtrOutput() PubsubResponsePtrOutput {
+	return i.ToPubsubResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *pubsubResponsePtrType) ToPubsubResponsePtrOutputWithContext(ctx context.Context) PubsubResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubsubResponsePtrOutput)
+}
+
+// Represents a Pub/Sub transport.
+type PubsubResponseOutput struct{ *pulumi.OutputState }
+
+func (PubsubResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubsubResponse)(nil)).Elem()
+}
+
+func (o PubsubResponseOutput) ToPubsubResponseOutput() PubsubResponseOutput {
+	return o
+}
+
+func (o PubsubResponseOutput) ToPubsubResponseOutputWithContext(ctx context.Context) PubsubResponseOutput {
+	return o
+}
+
+func (o PubsubResponseOutput) ToPubsubResponsePtrOutput() PubsubResponsePtrOutput {
+	return o.ToPubsubResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PubsubResponseOutput) ToPubsubResponsePtrOutputWithContext(ctx context.Context) PubsubResponsePtrOutput {
+	return o.ApplyT(func(v PubsubResponse) *PubsubResponse {
+		return &v
+	}).(PubsubResponsePtrOutput)
+}
+
+// The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+func (o PubsubResponseOutput) Subscription() pulumi.StringOutput {
+	return o.ApplyT(func(v PubsubResponse) string { return v.Subscription }).(pulumi.StringOutput)
+}
+
+// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+func (o PubsubResponseOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v PubsubResponse) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type PubsubResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PubsubResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PubsubResponse)(nil)).Elem()
+}
+
+func (o PubsubResponsePtrOutput) ToPubsubResponsePtrOutput() PubsubResponsePtrOutput {
+	return o
+}
+
+func (o PubsubResponsePtrOutput) ToPubsubResponsePtrOutputWithContext(ctx context.Context) PubsubResponsePtrOutput {
+	return o
+}
+
+func (o PubsubResponsePtrOutput) Elem() PubsubResponseOutput {
+	return o.ApplyT(func(v *PubsubResponse) PubsubResponse { return *v }).(PubsubResponseOutput)
+}
+
+// The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+func (o PubsubResponsePtrOutput) Subscription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PubsubResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subscription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You may set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+func (o PubsubResponsePtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PubsubResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Topic
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1430,25 +2397,176 @@ func (o TransportPtrOutput) Pubsub() PubsubPtrOutput {
 	}).(PubsubPtrOutput)
 }
 
+// Represents the transport intermediaries created for the trigger in order to deliver events.
+type TransportResponse struct {
+	// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+	Pubsub PubsubResponse `pulumi:"pubsub"`
+}
+
+// TransportResponseInput is an input type that accepts TransportResponseArgs and TransportResponseOutput values.
+// You can construct a concrete instance of `TransportResponseInput` via:
+//
+//          TransportResponseArgs{...}
+type TransportResponseInput interface {
+	pulumi.Input
+
+	ToTransportResponseOutput() TransportResponseOutput
+	ToTransportResponseOutputWithContext(context.Context) TransportResponseOutput
+}
+
+// Represents the transport intermediaries created for the trigger in order to deliver events.
+type TransportResponseArgs struct {
+	// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+	Pubsub PubsubResponseInput `pulumi:"pubsub"`
+}
+
+func (TransportResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransportResponse)(nil)).Elem()
+}
+
+func (i TransportResponseArgs) ToTransportResponseOutput() TransportResponseOutput {
+	return i.ToTransportResponseOutputWithContext(context.Background())
+}
+
+func (i TransportResponseArgs) ToTransportResponseOutputWithContext(ctx context.Context) TransportResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransportResponseOutput)
+}
+
+func (i TransportResponseArgs) ToTransportResponsePtrOutput() TransportResponsePtrOutput {
+	return i.ToTransportResponsePtrOutputWithContext(context.Background())
+}
+
+func (i TransportResponseArgs) ToTransportResponsePtrOutputWithContext(ctx context.Context) TransportResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransportResponseOutput).ToTransportResponsePtrOutputWithContext(ctx)
+}
+
+// TransportResponsePtrInput is an input type that accepts TransportResponseArgs, TransportResponsePtr and TransportResponsePtrOutput values.
+// You can construct a concrete instance of `TransportResponsePtrInput` via:
+//
+//          TransportResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type TransportResponsePtrInput interface {
+	pulumi.Input
+
+	ToTransportResponsePtrOutput() TransportResponsePtrOutput
+	ToTransportResponsePtrOutputWithContext(context.Context) TransportResponsePtrOutput
+}
+
+type transportResponsePtrType TransportResponseArgs
+
+func TransportResponsePtr(v *TransportResponseArgs) TransportResponsePtrInput {
+	return (*transportResponsePtrType)(v)
+}
+
+func (*transportResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransportResponse)(nil)).Elem()
+}
+
+func (i *transportResponsePtrType) ToTransportResponsePtrOutput() TransportResponsePtrOutput {
+	return i.ToTransportResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *transportResponsePtrType) ToTransportResponsePtrOutputWithContext(ctx context.Context) TransportResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransportResponsePtrOutput)
+}
+
+// Represents the transport intermediaries created for the trigger in order to deliver events.
+type TransportResponseOutput struct{ *pulumi.OutputState }
+
+func (TransportResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransportResponse)(nil)).Elem()
+}
+
+func (o TransportResponseOutput) ToTransportResponseOutput() TransportResponseOutput {
+	return o
+}
+
+func (o TransportResponseOutput) ToTransportResponseOutputWithContext(ctx context.Context) TransportResponseOutput {
+	return o
+}
+
+func (o TransportResponseOutput) ToTransportResponsePtrOutput() TransportResponsePtrOutput {
+	return o.ToTransportResponsePtrOutputWithContext(context.Background())
+}
+
+func (o TransportResponseOutput) ToTransportResponsePtrOutputWithContext(ctx context.Context) TransportResponsePtrOutput {
+	return o.ApplyT(func(v TransportResponse) *TransportResponse {
+		return &v
+	}).(TransportResponsePtrOutput)
+}
+
+// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+func (o TransportResponseOutput) Pubsub() PubsubResponseOutput {
+	return o.ApplyT(func(v TransportResponse) PubsubResponse { return v.Pubsub }).(PubsubResponseOutput)
+}
+
+type TransportResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TransportResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransportResponse)(nil)).Elem()
+}
+
+func (o TransportResponsePtrOutput) ToTransportResponsePtrOutput() TransportResponsePtrOutput {
+	return o
+}
+
+func (o TransportResponsePtrOutput) ToTransportResponsePtrOutputWithContext(ctx context.Context) TransportResponsePtrOutput {
+	return o
+}
+
+func (o TransportResponsePtrOutput) Elem() TransportResponseOutput {
+	return o.ApplyT(func(v *TransportResponse) TransportResponse { return *v }).(TransportResponseOutput)
+}
+
+// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+func (o TransportResponsePtrOutput) Pubsub() PubsubResponsePtrOutput {
+	return o.ApplyT(func(v *TransportResponse) *PubsubResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Pubsub
+	}).(PubsubResponsePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingResponseOutput{})
+	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(CloudRunOutput{})
 	pulumi.RegisterOutputType(CloudRunPtrOutput{})
+	pulumi.RegisterOutputType(CloudRunResponseOutput{})
+	pulumi.RegisterOutputType(CloudRunResponsePtrOutput{})
 	pulumi.RegisterOutputType(DestinationOutput{})
 	pulumi.RegisterOutputType(DestinationPtrOutput{})
+	pulumi.RegisterOutputType(DestinationResponseOutput{})
+	pulumi.RegisterOutputType(DestinationResponsePtrOutput{})
 	pulumi.RegisterOutputType(EventFilterOutput{})
 	pulumi.RegisterOutputType(EventFilterArrayOutput{})
+	pulumi.RegisterOutputType(EventFilterResponseOutput{})
+	pulumi.RegisterOutputType(EventFilterResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(PolicyOutput{})
 	pulumi.RegisterOutputType(PolicyPtrOutput{})
 	pulumi.RegisterOutputType(PubsubOutput{})
 	pulumi.RegisterOutputType(PubsubPtrOutput{})
+	pulumi.RegisterOutputType(PubsubResponseOutput{})
+	pulumi.RegisterOutputType(PubsubResponsePtrOutput{})
 	pulumi.RegisterOutputType(TransportOutput{})
 	pulumi.RegisterOutputType(TransportPtrOutput{})
+	pulumi.RegisterOutputType(TransportResponseOutput{})
+	pulumi.RegisterOutputType(TransportResponsePtrOutput{})
 }

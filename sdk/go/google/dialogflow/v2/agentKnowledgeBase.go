@@ -14,6 +14,13 @@ import (
 // Creates a knowledge base.
 type AgentKnowledgeBase struct {
 	pulumi.CustomResourceState
+
+	// Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
+	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
+	// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewAgentKnowledgeBase registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +58,21 @@ func GetAgentKnowledgeBase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AgentKnowledgeBase resources.
 type agentKnowledgeBaseState struct {
+	// Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+	DisplayName *string `pulumi:"displayName"`
+	// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
+	LanguageCode *string `pulumi:"languageCode"`
+	// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
+	Name *string `pulumi:"name"`
 }
 
 type AgentKnowledgeBaseState struct {
+	// Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+	DisplayName pulumi.StringPtrInput
+	// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
+	LanguageCode pulumi.StringPtrInput
+	// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
+	Name pulumi.StringPtrInput
 }
 
 func (AgentKnowledgeBaseState) ElementType() reflect.Type {

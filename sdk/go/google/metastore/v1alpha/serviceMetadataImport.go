@@ -14,6 +14,19 @@ import (
 // Creates a new MetadataImport in a given project and location.
 type ServiceMetadataImport struct {
 	pulumi.CustomResourceState
+
+	// The time when the metadata import was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Immutable. A database dump from a pre-existing metastore's database.
+	DatabaseDump DatabaseDumpResponseOutput `pulumi:"databaseDump"`
+	// The description of the metadata import.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The current state of the metadata import.
+	State pulumi.StringOutput `pulumi:"state"`
+	// The time when the metadata import was last updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewServiceMetadataImport registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +70,33 @@ func GetServiceMetadataImport(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceMetadataImport resources.
 type serviceMetadataImportState struct {
+	// The time when the metadata import was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Immutable. A database dump from a pre-existing metastore's database.
+	DatabaseDump *DatabaseDumpResponse `pulumi:"databaseDump"`
+	// The description of the metadata import.
+	Description *string `pulumi:"description"`
+	// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
+	Name *string `pulumi:"name"`
+	// The current state of the metadata import.
+	State *string `pulumi:"state"`
+	// The time when the metadata import was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ServiceMetadataImportState struct {
+	// The time when the metadata import was created.
+	CreateTime pulumi.StringPtrInput
+	// Immutable. A database dump from a pre-existing metastore's database.
+	DatabaseDump DatabaseDumpResponsePtrInput
+	// The description of the metadata import.
+	Description pulumi.StringPtrInput
+	// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
+	Name pulumi.StringPtrInput
+	// The current state of the metadata import.
+	State pulumi.StringPtrInput
+	// The time when the metadata import was last updated.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (ServiceMetadataImportState) ElementType() reflect.Type {
@@ -67,8 +104,6 @@ func (ServiceMetadataImportState) ElementType() reflect.Type {
 }
 
 type serviceMetadataImportArgs struct {
-	// Output only. The time when the metadata import was created.
-	CreateTime *string `pulumi:"createTime"`
 	// Immutable. A database dump from a pre-existing metastore's database.
 	DatabaseDump *DatabaseDump `pulumi:"databaseDump"`
 	// The description of the metadata import.
@@ -79,16 +114,10 @@ type serviceMetadataImportArgs struct {
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
 	ServicesId string  `pulumi:"servicesId"`
-	// Output only. The current state of the metadata import.
-	State *string `pulumi:"state"`
-	// Output only. The time when the metadata import was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a ServiceMetadataImport resource.
 type ServiceMetadataImportArgs struct {
-	// Output only. The time when the metadata import was created.
-	CreateTime pulumi.StringPtrInput
 	// Immutable. A database dump from a pre-existing metastore's database.
 	DatabaseDump DatabaseDumpPtrInput
 	// The description of the metadata import.
@@ -99,10 +128,6 @@ type ServiceMetadataImportArgs struct {
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
 	ServicesId pulumi.StringInput
-	// Output only. The current state of the metadata import.
-	State pulumi.StringPtrInput
-	// Output only. The time when the metadata import was last updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (ServiceMetadataImportArgs) ElementType() reflect.Type {

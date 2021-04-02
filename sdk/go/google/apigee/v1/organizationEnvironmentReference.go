@@ -14,6 +14,15 @@ import (
 // Creates a Reference in the specified environment.
 type OrganizationEnvironmentReference struct {
 	pulumi.CustomResourceState
+
+	// Optional. A human-readable description of this reference.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+	Refers pulumi.StringOutput `pulumi:"refers"`
+	// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
+	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 }
 
 // NewOrganizationEnvironmentReference registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +63,25 @@ func GetOrganizationEnvironmentReference(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationEnvironmentReference resources.
 type organizationEnvironmentReferenceState struct {
+	// Optional. A human-readable description of this reference.
+	Description *string `pulumi:"description"`
+	// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+	Name *string `pulumi:"name"`
+	// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+	Refers *string `pulumi:"refers"`
+	// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
+	ResourceType *string `pulumi:"resourceType"`
 }
 
 type OrganizationEnvironmentReferenceState struct {
+	// Optional. A human-readable description of this reference.
+	Description pulumi.StringPtrInput
+	// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+	Name pulumi.StringPtrInput
+	// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+	Refers pulumi.StringPtrInput
+	// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
+	ResourceType pulumi.StringPtrInput
 }
 
 func (OrganizationEnvironmentReferenceState) ElementType() reflect.Type {

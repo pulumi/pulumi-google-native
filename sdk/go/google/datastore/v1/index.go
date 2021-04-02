@@ -14,6 +14,19 @@ import (
 // Creates the specified index. A newly created index's initial state is `CREATING`. On completion of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists, the call will return an `ALREADY_EXISTS` status. During index creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with delete, then re-creating the index with create. Indexes with a single property cannot be created.
 type Index struct {
 	pulumi.CustomResourceState
+
+	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+	Ancestor pulumi.StringOutput `pulumi:"ancestor"`
+	// The resource ID of the index.
+	IndexId pulumi.StringOutput `pulumi:"indexId"`
+	// Required. The entity kind to which this index applies.
+	Kind pulumi.StringOutput `pulumi:"kind"`
+	// Project ID.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// Required. An ordered sequence of property names and their index attributes.
+	Properties GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput `pulumi:"properties"`
+	// The state of the index.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewIndex registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +64,33 @@ func GetIndex(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Index resources.
 type indexState struct {
+	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+	Ancestor *string `pulumi:"ancestor"`
+	// The resource ID of the index.
+	IndexId *string `pulumi:"indexId"`
+	// Required. The entity kind to which this index applies.
+	Kind *string `pulumi:"kind"`
+	// Project ID.
+	ProjectId *string `pulumi:"projectId"`
+	// Required. An ordered sequence of property names and their index attributes.
+	Properties []GoogleDatastoreAdminV1IndexedPropertyResponse `pulumi:"properties"`
+	// The state of the index.
+	State *string `pulumi:"state"`
 }
 
 type IndexState struct {
+	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+	Ancestor pulumi.StringPtrInput
+	// The resource ID of the index.
+	IndexId pulumi.StringPtrInput
+	// Required. The entity kind to which this index applies.
+	Kind pulumi.StringPtrInput
+	// Project ID.
+	ProjectId pulumi.StringPtrInput
+	// Required. An ordered sequence of property names and their index attributes.
+	Properties GoogleDatastoreAdminV1IndexedPropertyResponseArrayInput
+	// The state of the index.
+	State pulumi.StringPtrInput
 }
 
 func (IndexState) ElementType() reflect.Type {
@@ -63,32 +100,24 @@ func (IndexState) ElementType() reflect.Type {
 type indexArgs struct {
 	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
 	Ancestor *string `pulumi:"ancestor"`
-	// Output only. The resource ID of the index.
-	IndexId string `pulumi:"indexId"`
+	IndexId  string  `pulumi:"indexId"`
 	// Required. The entity kind to which this index applies.
-	Kind *string `pulumi:"kind"`
-	// Output only. Project ID.
-	ProjectId string `pulumi:"projectId"`
+	Kind      *string `pulumi:"kind"`
+	ProjectId string  `pulumi:"projectId"`
 	// Required. An ordered sequence of property names and their index attributes.
 	Properties []GoogleDatastoreAdminV1IndexedProperty `pulumi:"properties"`
-	// Output only. The state of the index.
-	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a Index resource.
 type IndexArgs struct {
 	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
 	Ancestor pulumi.StringPtrInput
-	// Output only. The resource ID of the index.
-	IndexId pulumi.StringInput
+	IndexId  pulumi.StringInput
 	// Required. The entity kind to which this index applies.
-	Kind pulumi.StringPtrInput
-	// Output only. Project ID.
+	Kind      pulumi.StringPtrInput
 	ProjectId pulumi.StringInput
 	// Required. An ordered sequence of property names and their index attributes.
 	Properties GoogleDatastoreAdminV1IndexedPropertyArrayInput
-	// Output only. The state of the index.
-	State pulumi.StringPtrInput
 }
 
 func (IndexArgs) ElementType() reflect.Type {

@@ -14,6 +14,13 @@ import (
 // Create a custom class.
 type CustomClass struct {
 	pulumi.CustomResourceState
+
+	// If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
+	CustomClassId pulumi.StringOutput `pulumi:"customClassId"`
+	// A collection of class items.
+	Items ClassItemResponseArrayOutput `pulumi:"items"`
+	// The resource name of the custom class.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewCustomClass registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +61,21 @@ func GetCustomClass(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomClass resources.
 type customClassState struct {
+	// If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
+	CustomClassId *string `pulumi:"customClassId"`
+	// A collection of class items.
+	Items []ClassItemResponse `pulumi:"items"`
+	// The resource name of the custom class.
+	Name *string `pulumi:"name"`
 }
 
 type CustomClassState struct {
+	// If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
+	CustomClassId pulumi.StringPtrInput
+	// A collection of class items.
+	Items ClassItemResponseArrayInput
+	// The resource name of the custom class.
+	Name pulumi.StringPtrInput
 }
 
 func (CustomClassState) ElementType() reflect.Type {

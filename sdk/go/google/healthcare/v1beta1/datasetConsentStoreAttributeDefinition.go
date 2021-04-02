@@ -14,6 +14,19 @@ import (
 // Creates a new Attribute definition in the parent consent store.
 type DatasetConsentStoreAttributeDefinition struct {
 	pulumi.CustomResourceState
+
+	// Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+	AllowedValues pulumi.StringArrayOutput `pulumi:"allowedValues"`
+	// Required. The category of the attribute. The value of this field cannot be changed after creation.
+	Category pulumi.StringOutput `pulumi:"category"`
+	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
+	ConsentDefaultValues pulumi.StringArrayOutput `pulumi:"consentDefaultValues"`
+	// Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
+	DataMappingDefaultValue pulumi.StringOutput `pulumi:"dataMappingDefaultValue"`
+	// Optional. A description of the attribute.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewDatasetConsentStoreAttributeDefinition registers a new resource with the given unique name, arguments, and options.
@@ -60,9 +73,33 @@ func GetDatasetConsentStoreAttributeDefinition(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatasetConsentStoreAttributeDefinition resources.
 type datasetConsentStoreAttributeDefinitionState struct {
+	// Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+	AllowedValues []string `pulumi:"allowedValues"`
+	// Required. The category of the attribute. The value of this field cannot be changed after creation.
+	Category *string `pulumi:"category"`
+	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
+	ConsentDefaultValues []string `pulumi:"consentDefaultValues"`
+	// Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
+	DataMappingDefaultValue *string `pulumi:"dataMappingDefaultValue"`
+	// Optional. A description of the attribute.
+	Description *string `pulumi:"description"`
+	// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+	Name *string `pulumi:"name"`
 }
 
 type DatasetConsentStoreAttributeDefinitionState struct {
+	// Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+	AllowedValues pulumi.StringArrayInput
+	// Required. The category of the attribute. The value of this field cannot be changed after creation.
+	Category pulumi.StringPtrInput
+	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
+	ConsentDefaultValues pulumi.StringArrayInput
+	// Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
+	DataMappingDefaultValue pulumi.StringPtrInput
+	// Optional. A description of the attribute.
+	Description pulumi.StringPtrInput
+	// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
+	Name pulumi.StringPtrInput
 }
 
 func (DatasetConsentStoreAttributeDefinitionState) ElementType() reflect.Type {

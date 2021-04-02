@@ -75,8 +75,6 @@ type tagTemplateFieldArgs struct {
 	// Whether this is a required field. Defaults to false.
 	IsRequired  *bool  `pulumi:"isRequired"`
 	LocationsId string `pulumi:"locationsId"`
-	// Output only. The resource name of the tag template field in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template}/fields/{field} Note that this TagTemplateField may not actually be stored in the location in this name.
-	Name *string `pulumi:"name"`
 	// The order of this field with respect to other fields in this tag template. A higher value indicates a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
 	Order          *int   `pulumi:"order"`
 	ProjectsId     string `pulumi:"projectsId"`
@@ -95,8 +93,6 @@ type TagTemplateFieldArgs struct {
 	// Whether this is a required field. Defaults to false.
 	IsRequired  pulumi.BoolPtrInput
 	LocationsId pulumi.StringInput
-	// Output only. The resource name of the tag template field in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template}/fields/{field} Note that this TagTemplateField may not actually be stored in the location in this name.
-	Name pulumi.StringPtrInput
 	// The order of this field with respect to other fields in this tag template. A higher value indicates a more important field. The value can be negative. Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
 	Order          pulumi.IntPtrInput
 	ProjectsId     pulumi.StringInput

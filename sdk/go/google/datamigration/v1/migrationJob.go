@@ -14,6 +14,45 @@ import (
 // Creates a new migration job in a given project and location.
 type MigrationJob struct {
 	pulumi.CustomResourceState
+
+	// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Required. The resource name (URI) of the destination connection profile.
+	Destination pulumi.StringOutput `pulumi:"destination"`
+	// The database engine type and provider of the destination.
+	DestinationDatabase DatabaseTypeResponseOutput `pulumi:"destinationDatabase"`
+	// The migration job display name.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+	DumpPath pulumi.StringOutput `pulumi:"dumpPath"`
+	// The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	Duration pulumi.StringOutput `pulumi:"duration"`
+	// If the migration job is completed, the time when it was completed.
+	EndTime pulumi.StringOutput `pulumi:"endTime"`
+	// The error details in case of state FAILED.
+	Error StatusResponseOutput `pulumi:"error"`
+	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The current migration job phase.
+	Phase pulumi.StringOutput `pulumi:"phase"`
+	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
+	ReverseSshConnectivity ReverseSshConnectivityResponseOutput `pulumi:"reverseSshConnectivity"`
+	// Required. The resource name (URI) of the source connection profile.
+	Source pulumi.StringOutput `pulumi:"source"`
+	// The database engine type and provider of the source.
+	SourceDatabase DatabaseTypeResponseOutput `pulumi:"sourceDatabase"`
+	// The current migration job state.
+	State pulumi.StringOutput `pulumi:"state"`
+	// static ip connectivity data (default, no additional details needed).
+	StaticIpConnectivity StaticIpConnectivityResponseOutput `pulumi:"staticIpConnectivity"`
+	// Required. The migration job type.
+	Type pulumi.StringOutput `pulumi:"type"`
+	// The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// The details of the VPC network that the source database is located in.
+	VpcPeeringConnectivity VpcPeeringConnectivityResponseOutput `pulumi:"vpcPeeringConnectivity"`
 }
 
 // NewMigrationJob registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +93,85 @@ func GetMigrationJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MigrationJob resources.
 type migrationJobState struct {
+	// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	CreateTime *string `pulumi:"createTime"`
+	// Required. The resource name (URI) of the destination connection profile.
+	Destination *string `pulumi:"destination"`
+	// The database engine type and provider of the destination.
+	DestinationDatabase *DatabaseTypeResponse `pulumi:"destinationDatabase"`
+	// The migration job display name.
+	DisplayName *string `pulumi:"displayName"`
+	// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+	DumpPath *string `pulumi:"dumpPath"`
+	// The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	Duration *string `pulumi:"duration"`
+	// If the migration job is completed, the time when it was completed.
+	EndTime *string `pulumi:"endTime"`
+	// The error details in case of state FAILED.
+	Error *StatusResponse `pulumi:"error"`
+	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+	Labels map[string]string `pulumi:"labels"`
+	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+	Name *string `pulumi:"name"`
+	// The current migration job phase.
+	Phase *string `pulumi:"phase"`
+	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
+	ReverseSshConnectivity *ReverseSshConnectivityResponse `pulumi:"reverseSshConnectivity"`
+	// Required. The resource name (URI) of the source connection profile.
+	Source *string `pulumi:"source"`
+	// The database engine type and provider of the source.
+	SourceDatabase *DatabaseTypeResponse `pulumi:"sourceDatabase"`
+	// The current migration job state.
+	State *string `pulumi:"state"`
+	// static ip connectivity data (default, no additional details needed).
+	StaticIpConnectivity *StaticIpConnectivityResponse `pulumi:"staticIpConnectivity"`
+	// Required. The migration job type.
+	Type *string `pulumi:"type"`
+	// The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	UpdateTime *string `pulumi:"updateTime"`
+	// The details of the VPC network that the source database is located in.
+	VpcPeeringConnectivity *VpcPeeringConnectivityResponse `pulumi:"vpcPeeringConnectivity"`
 }
 
 type MigrationJobState struct {
+	// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringPtrInput
+	// Required. The resource name (URI) of the destination connection profile.
+	Destination pulumi.StringPtrInput
+	// The database engine type and provider of the destination.
+	DestinationDatabase DatabaseTypeResponsePtrInput
+	// The migration job display name.
+	DisplayName pulumi.StringPtrInput
+	// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+	DumpPath pulumi.StringPtrInput
+	// The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	Duration pulumi.StringPtrInput
+	// If the migration job is completed, the time when it was completed.
+	EndTime pulumi.StringPtrInput
+	// The error details in case of state FAILED.
+	Error StatusResponsePtrInput
+	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+	Labels pulumi.StringMapInput
+	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
+	Name pulumi.StringPtrInput
+	// The current migration job phase.
+	Phase pulumi.StringPtrInput
+	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
+	ReverseSshConnectivity ReverseSshConnectivityResponsePtrInput
+	// Required. The resource name (URI) of the source connection profile.
+	Source pulumi.StringPtrInput
+	// The database engine type and provider of the source.
+	SourceDatabase DatabaseTypeResponsePtrInput
+	// The current migration job state.
+	State pulumi.StringPtrInput
+	// static ip connectivity data (default, no additional details needed).
+	StaticIpConnectivity StaticIpConnectivityResponsePtrInput
+	// Required. The migration job type.
+	Type pulumi.StringPtrInput
+	// The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	UpdateTime pulumi.StringPtrInput
+	// The details of the VPC network that the source database is located in.
+	VpcPeeringConnectivity VpcPeeringConnectivityResponsePtrInput
 }
 
 func (MigrationJobState) ElementType() reflect.Type {
@@ -64,8 +179,6 @@ func (MigrationJobState) ElementType() reflect.Type {
 }
 
 type migrationJobArgs struct {
-	// Output only. The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	CreateTime *string `pulumi:"createTime"`
 	// Required. The resource name (URI) of the destination connection profile.
 	Destination *string `pulumi:"destination"`
 	// The database engine type and provider of the destination.
@@ -74,20 +187,12 @@ type migrationJobArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
 	DumpPath *string `pulumi:"dumpPath"`
-	// Output only. The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-	Duration *string `pulumi:"duration"`
-	// Output only. If the migration job is completed, the time when it was completed.
-	EndTime *string `pulumi:"endTime"`
-	// Output only. The error details in case of state FAILED.
-	Error *Status `pulumi:"error"`
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels          map[string]string `pulumi:"labels"`
 	LocationsId     string            `pulumi:"locationsId"`
 	MigrationJobsId string            `pulumi:"migrationJobsId"`
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
-	Name *string `pulumi:"name"`
-	// Output only. The current migration job phase.
-	Phase      *string `pulumi:"phase"`
+	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity *ReverseSshConnectivity `pulumi:"reverseSshConnectivity"`
@@ -101,16 +206,12 @@ type migrationJobArgs struct {
 	StaticIpConnectivity *StaticIpConnectivity `pulumi:"staticIpConnectivity"`
 	// Required. The migration job type.
 	Type *string `pulumi:"type"`
-	// Output only. The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	UpdateTime *string `pulumi:"updateTime"`
 	// The details of the VPC network that the source database is located in.
 	VpcPeeringConnectivity *VpcPeeringConnectivity `pulumi:"vpcPeeringConnectivity"`
 }
 
 // The set of arguments for constructing a MigrationJob resource.
 type MigrationJobArgs struct {
-	// Output only. The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	CreateTime pulumi.StringPtrInput
 	// Required. The resource name (URI) of the destination connection profile.
 	Destination pulumi.StringPtrInput
 	// The database engine type and provider of the destination.
@@ -119,20 +220,12 @@ type MigrationJobArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
 	DumpPath pulumi.StringPtrInput
-	// Output only. The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-	Duration pulumi.StringPtrInput
-	// Output only. If the migration job is completed, the time when it was completed.
-	EndTime pulumi.StringPtrInput
-	// Output only. The error details in case of state FAILED.
-	Error StatusPtrInput
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels          pulumi.StringMapInput
 	LocationsId     pulumi.StringInput
 	MigrationJobsId pulumi.StringInput
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
-	Name pulumi.StringPtrInput
-	// Output only. The current migration job phase.
-	Phase      pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity ReverseSshConnectivityPtrInput
@@ -146,8 +239,6 @@ type MigrationJobArgs struct {
 	StaticIpConnectivity StaticIpConnectivityPtrInput
 	// Required. The migration job type.
 	Type pulumi.StringPtrInput
-	// Output only. The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	UpdateTime pulumi.StringPtrInput
 	// The details of the VPC network that the source database is located in.
 	VpcPeeringConnectivity VpcPeeringConnectivityPtrInput
 }

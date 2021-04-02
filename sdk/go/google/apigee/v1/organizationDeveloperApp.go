@@ -14,6 +14,33 @@ import (
 // Creates an app associated with a developer. This API associates the developer app with the specified API product and auto-generates an API key for the app to use in calls to API proxies inside that API product. The `name` is the unique ID of the app that you can use in API calls. The `DisplayName` (set as an attribute) appears in the UI. If you don't set the `DisplayName` attribute, the `name` appears in the UI.
 type OrganizationDeveloperApp struct {
 	pulumi.CustomResourceState
+
+	// List of API products associated with the developer app.
+	ApiProducts pulumi.StringArrayOutput `pulumi:"apiProducts"`
+	// Developer app family.
+	AppFamily pulumi.StringOutput `pulumi:"appFamily"`
+	// ID of the developer app.
+	AppId pulumi.StringOutput `pulumi:"appId"`
+	// List of attributes for the developer app.
+	Attributes GoogleCloudApigeeV1AttributeResponseArrayOutput `pulumi:"attributes"`
+	// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
+	CallbackUrl pulumi.StringOutput `pulumi:"callbackUrl"`
+	// Time the developer app was created in milliseconds since epoch.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
+	Credentials GoogleCloudApigeeV1CredentialResponseArrayOutput `pulumi:"credentials"`
+	// ID of the developer.
+	DeveloperId pulumi.StringOutput `pulumi:"developerId"`
+	// Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+	KeyExpiresIn pulumi.StringOutput `pulumi:"keyExpiresIn"`
+	// Time the developer app was modified in milliseconds since epoch.
+	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
+	// Name of the developer app.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
+	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
+	// Status of the credential. Valid values include `approved` or `revoked`.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewOrganizationDeveloperApp registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +81,61 @@ func GetOrganizationDeveloperApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationDeveloperApp resources.
 type organizationDeveloperAppState struct {
+	// List of API products associated with the developer app.
+	ApiProducts []string `pulumi:"apiProducts"`
+	// Developer app family.
+	AppFamily *string `pulumi:"appFamily"`
+	// ID of the developer app.
+	AppId *string `pulumi:"appId"`
+	// List of attributes for the developer app.
+	Attributes []GoogleCloudApigeeV1AttributeResponse `pulumi:"attributes"`
+	// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
+	CallbackUrl *string `pulumi:"callbackUrl"`
+	// Time the developer app was created in milliseconds since epoch.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
+	Credentials []GoogleCloudApigeeV1CredentialResponse `pulumi:"credentials"`
+	// ID of the developer.
+	DeveloperId *string `pulumi:"developerId"`
+	// Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+	KeyExpiresIn *string `pulumi:"keyExpiresIn"`
+	// Time the developer app was modified in milliseconds since epoch.
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// Name of the developer app.
+	Name *string `pulumi:"name"`
+	// Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
+	Scopes []string `pulumi:"scopes"`
+	// Status of the credential. Valid values include `approved` or `revoked`.
+	Status *string `pulumi:"status"`
 }
 
 type OrganizationDeveloperAppState struct {
+	// List of API products associated with the developer app.
+	ApiProducts pulumi.StringArrayInput
+	// Developer app family.
+	AppFamily pulumi.StringPtrInput
+	// ID of the developer app.
+	AppId pulumi.StringPtrInput
+	// List of attributes for the developer app.
+	Attributes GoogleCloudApigeeV1AttributeResponseArrayInput
+	// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
+	CallbackUrl pulumi.StringPtrInput
+	// Time the developer app was created in milliseconds since epoch.
+	CreatedAt pulumi.StringPtrInput
+	// Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
+	Credentials GoogleCloudApigeeV1CredentialResponseArrayInput
+	// ID of the developer.
+	DeveloperId pulumi.StringPtrInput
+	// Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+	KeyExpiresIn pulumi.StringPtrInput
+	// Time the developer app was modified in milliseconds since epoch.
+	LastModifiedAt pulumi.StringPtrInput
+	// Name of the developer app.
+	Name pulumi.StringPtrInput
+	// Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
+	Scopes pulumi.StringArrayInput
+	// Status of the credential. Valid values include `approved` or `revoked`.
+	Status pulumi.StringPtrInput
 }
 
 func (OrganizationDeveloperAppState) ElementType() reflect.Type {
@@ -75,17 +154,11 @@ type organizationDeveloperAppArgs struct {
 	Attributes []GoogleCloudApigeeV1Attribute `pulumi:"attributes"`
 	// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
 	CallbackUrl *string `pulumi:"callbackUrl"`
-	// Output only. Time the developer app was created in milliseconds since epoch.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Output only. Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
-	Credentials []GoogleCloudApigeeV1Credential `pulumi:"credentials"`
 	// ID of the developer.
 	DeveloperId  *string `pulumi:"developerId"`
 	DevelopersId string  `pulumi:"developersId"`
 	// Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
 	KeyExpiresIn *string `pulumi:"keyExpiresIn"`
-	// Output only. Time the developer app was modified in milliseconds since epoch.
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
 	// Name of the developer app.
 	Name            *string `pulumi:"name"`
 	OrganizationsId string  `pulumi:"organizationsId"`
@@ -108,17 +181,11 @@ type OrganizationDeveloperAppArgs struct {
 	Attributes GoogleCloudApigeeV1AttributeArrayInput
 	// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
 	CallbackUrl pulumi.StringPtrInput
-	// Output only. Time the developer app was created in milliseconds since epoch.
-	CreatedAt pulumi.StringPtrInput
-	// Output only. Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
-	Credentials GoogleCloudApigeeV1CredentialArrayInput
 	// ID of the developer.
 	DeveloperId  pulumi.StringPtrInput
 	DevelopersId pulumi.StringInput
 	// Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
 	KeyExpiresIn pulumi.StringPtrInput
-	// Output only. Time the developer app was modified in milliseconds since epoch.
-	LastModifiedAt pulumi.StringPtrInput
 	// Name of the developer app.
 	Name            pulumi.StringPtrInput
 	OrganizationsId pulumi.StringInput

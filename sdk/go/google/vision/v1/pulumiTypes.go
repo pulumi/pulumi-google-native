@@ -119,6 +119,115 @@ func (o BoundingPolyArrayOutput) Index(i pulumi.IntInput) BoundingPolyOutput {
 	}).(BoundingPolyOutput)
 }
 
+// A bounding polygon for the detected image annotation.
+type BoundingPolyResponse struct {
+	// The bounding polygon normalized vertices.
+	NormalizedVertices []NormalizedVertexResponse `pulumi:"normalizedVertices"`
+	// The bounding polygon vertices.
+	Vertices []VertexResponse `pulumi:"vertices"`
+}
+
+// BoundingPolyResponseInput is an input type that accepts BoundingPolyResponseArgs and BoundingPolyResponseOutput values.
+// You can construct a concrete instance of `BoundingPolyResponseInput` via:
+//
+//          BoundingPolyResponseArgs{...}
+type BoundingPolyResponseInput interface {
+	pulumi.Input
+
+	ToBoundingPolyResponseOutput() BoundingPolyResponseOutput
+	ToBoundingPolyResponseOutputWithContext(context.Context) BoundingPolyResponseOutput
+}
+
+// A bounding polygon for the detected image annotation.
+type BoundingPolyResponseArgs struct {
+	// The bounding polygon normalized vertices.
+	NormalizedVertices NormalizedVertexResponseArrayInput `pulumi:"normalizedVertices"`
+	// The bounding polygon vertices.
+	Vertices VertexResponseArrayInput `pulumi:"vertices"`
+}
+
+func (BoundingPolyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BoundingPolyResponse)(nil)).Elem()
+}
+
+func (i BoundingPolyResponseArgs) ToBoundingPolyResponseOutput() BoundingPolyResponseOutput {
+	return i.ToBoundingPolyResponseOutputWithContext(context.Background())
+}
+
+func (i BoundingPolyResponseArgs) ToBoundingPolyResponseOutputWithContext(ctx context.Context) BoundingPolyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BoundingPolyResponseOutput)
+}
+
+// BoundingPolyResponseArrayInput is an input type that accepts BoundingPolyResponseArray and BoundingPolyResponseArrayOutput values.
+// You can construct a concrete instance of `BoundingPolyResponseArrayInput` via:
+//
+//          BoundingPolyResponseArray{ BoundingPolyResponseArgs{...} }
+type BoundingPolyResponseArrayInput interface {
+	pulumi.Input
+
+	ToBoundingPolyResponseArrayOutput() BoundingPolyResponseArrayOutput
+	ToBoundingPolyResponseArrayOutputWithContext(context.Context) BoundingPolyResponseArrayOutput
+}
+
+type BoundingPolyResponseArray []BoundingPolyResponseInput
+
+func (BoundingPolyResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BoundingPolyResponse)(nil)).Elem()
+}
+
+func (i BoundingPolyResponseArray) ToBoundingPolyResponseArrayOutput() BoundingPolyResponseArrayOutput {
+	return i.ToBoundingPolyResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BoundingPolyResponseArray) ToBoundingPolyResponseArrayOutputWithContext(ctx context.Context) BoundingPolyResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BoundingPolyResponseArrayOutput)
+}
+
+// A bounding polygon for the detected image annotation.
+type BoundingPolyResponseOutput struct{ *pulumi.OutputState }
+
+func (BoundingPolyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BoundingPolyResponse)(nil)).Elem()
+}
+
+func (o BoundingPolyResponseOutput) ToBoundingPolyResponseOutput() BoundingPolyResponseOutput {
+	return o
+}
+
+func (o BoundingPolyResponseOutput) ToBoundingPolyResponseOutputWithContext(ctx context.Context) BoundingPolyResponseOutput {
+	return o
+}
+
+// The bounding polygon normalized vertices.
+func (o BoundingPolyResponseOutput) NormalizedVertices() NormalizedVertexResponseArrayOutput {
+	return o.ApplyT(func(v BoundingPolyResponse) []NormalizedVertexResponse { return v.NormalizedVertices }).(NormalizedVertexResponseArrayOutput)
+}
+
+// The bounding polygon vertices.
+func (o BoundingPolyResponseOutput) Vertices() VertexResponseArrayOutput {
+	return o.ApplyT(func(v BoundingPolyResponse) []VertexResponse { return v.Vertices }).(VertexResponseArrayOutput)
+}
+
+type BoundingPolyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BoundingPolyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BoundingPolyResponse)(nil)).Elem()
+}
+
+func (o BoundingPolyResponseArrayOutput) ToBoundingPolyResponseArrayOutput() BoundingPolyResponseArrayOutput {
+	return o
+}
+
+func (o BoundingPolyResponseArrayOutput) ToBoundingPolyResponseArrayOutputWithContext(ctx context.Context) BoundingPolyResponseArrayOutput {
+	return o
+}
+
+func (o BoundingPolyResponseArrayOutput) Index(i pulumi.IntInput) BoundingPolyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BoundingPolyResponse {
+		return vs[0].([]BoundingPolyResponse)[vs[1].(int)]
+	}).(BoundingPolyResponseOutput)
+}
+
 // A product label represented as a key-value pair.
 type KeyValue struct {
 	// The key of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
@@ -226,6 +335,115 @@ func (o KeyValueArrayOutput) Index(i pulumi.IntInput) KeyValueOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyValue {
 		return vs[0].([]KeyValue)[vs[1].(int)]
 	}).(KeyValueOutput)
+}
+
+// A product label represented as a key-value pair.
+type KeyValueResponse struct {
+	// The key of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
+	Key string `pulumi:"key"`
+	// The value of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
+	Value string `pulumi:"value"`
+}
+
+// KeyValueResponseInput is an input type that accepts KeyValueResponseArgs and KeyValueResponseOutput values.
+// You can construct a concrete instance of `KeyValueResponseInput` via:
+//
+//          KeyValueResponseArgs{...}
+type KeyValueResponseInput interface {
+	pulumi.Input
+
+	ToKeyValueResponseOutput() KeyValueResponseOutput
+	ToKeyValueResponseOutputWithContext(context.Context) KeyValueResponseOutput
+}
+
+// A product label represented as a key-value pair.
+type KeyValueResponseArgs struct {
+	// The key of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (KeyValueResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyValueResponse)(nil)).Elem()
+}
+
+func (i KeyValueResponseArgs) ToKeyValueResponseOutput() KeyValueResponseOutput {
+	return i.ToKeyValueResponseOutputWithContext(context.Background())
+}
+
+func (i KeyValueResponseArgs) ToKeyValueResponseOutputWithContext(ctx context.Context) KeyValueResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyValueResponseOutput)
+}
+
+// KeyValueResponseArrayInput is an input type that accepts KeyValueResponseArray and KeyValueResponseArrayOutput values.
+// You can construct a concrete instance of `KeyValueResponseArrayInput` via:
+//
+//          KeyValueResponseArray{ KeyValueResponseArgs{...} }
+type KeyValueResponseArrayInput interface {
+	pulumi.Input
+
+	ToKeyValueResponseArrayOutput() KeyValueResponseArrayOutput
+	ToKeyValueResponseArrayOutputWithContext(context.Context) KeyValueResponseArrayOutput
+}
+
+type KeyValueResponseArray []KeyValueResponseInput
+
+func (KeyValueResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeyValueResponse)(nil)).Elem()
+}
+
+func (i KeyValueResponseArray) ToKeyValueResponseArrayOutput() KeyValueResponseArrayOutput {
+	return i.ToKeyValueResponseArrayOutputWithContext(context.Background())
+}
+
+func (i KeyValueResponseArray) ToKeyValueResponseArrayOutputWithContext(ctx context.Context) KeyValueResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyValueResponseArrayOutput)
+}
+
+// A product label represented as a key-value pair.
+type KeyValueResponseOutput struct{ *pulumi.OutputState }
+
+func (KeyValueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyValueResponse)(nil)).Elem()
+}
+
+func (o KeyValueResponseOutput) ToKeyValueResponseOutput() KeyValueResponseOutput {
+	return o
+}
+
+func (o KeyValueResponseOutput) ToKeyValueResponseOutputWithContext(ctx context.Context) KeyValueResponseOutput {
+	return o
+}
+
+// The key of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
+func (o KeyValueResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyValueResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
+func (o KeyValueResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyValueResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type KeyValueResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (KeyValueResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeyValueResponse)(nil)).Elem()
+}
+
+func (o KeyValueResponseArrayOutput) ToKeyValueResponseArrayOutput() KeyValueResponseArrayOutput {
+	return o
+}
+
+func (o KeyValueResponseArrayOutput) ToKeyValueResponseArrayOutputWithContext(ctx context.Context) KeyValueResponseArrayOutput {
+	return o
+}
+
+func (o KeyValueResponseArrayOutput) Index(i pulumi.IntInput) KeyValueResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyValueResponse {
+		return vs[0].([]KeyValueResponse)[vs[1].(int)]
+	}).(KeyValueResponseOutput)
 }
 
 // A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to the original image and range from 0 to 1.
@@ -337,161 +555,270 @@ func (o NormalizedVertexArrayOutput) Index(i pulumi.IntInput) NormalizedVertexOu
 	}).(NormalizedVertexOutput)
 }
 
+// A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to the original image and range from 0 to 1.
+type NormalizedVertexResponse struct {
+	// X coordinate.
+	X float64 `pulumi:"x"`
+	// Y coordinate.
+	Y float64 `pulumi:"y"`
+}
+
+// NormalizedVertexResponseInput is an input type that accepts NormalizedVertexResponseArgs and NormalizedVertexResponseOutput values.
+// You can construct a concrete instance of `NormalizedVertexResponseInput` via:
+//
+//          NormalizedVertexResponseArgs{...}
+type NormalizedVertexResponseInput interface {
+	pulumi.Input
+
+	ToNormalizedVertexResponseOutput() NormalizedVertexResponseOutput
+	ToNormalizedVertexResponseOutputWithContext(context.Context) NormalizedVertexResponseOutput
+}
+
+// A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to the original image and range from 0 to 1.
+type NormalizedVertexResponseArgs struct {
+	// X coordinate.
+	X pulumi.Float64Input `pulumi:"x"`
+	// Y coordinate.
+	Y pulumi.Float64Input `pulumi:"y"`
+}
+
+func (NormalizedVertexResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NormalizedVertexResponse)(nil)).Elem()
+}
+
+func (i NormalizedVertexResponseArgs) ToNormalizedVertexResponseOutput() NormalizedVertexResponseOutput {
+	return i.ToNormalizedVertexResponseOutputWithContext(context.Background())
+}
+
+func (i NormalizedVertexResponseArgs) ToNormalizedVertexResponseOutputWithContext(ctx context.Context) NormalizedVertexResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NormalizedVertexResponseOutput)
+}
+
+// NormalizedVertexResponseArrayInput is an input type that accepts NormalizedVertexResponseArray and NormalizedVertexResponseArrayOutput values.
+// You can construct a concrete instance of `NormalizedVertexResponseArrayInput` via:
+//
+//          NormalizedVertexResponseArray{ NormalizedVertexResponseArgs{...} }
+type NormalizedVertexResponseArrayInput interface {
+	pulumi.Input
+
+	ToNormalizedVertexResponseArrayOutput() NormalizedVertexResponseArrayOutput
+	ToNormalizedVertexResponseArrayOutputWithContext(context.Context) NormalizedVertexResponseArrayOutput
+}
+
+type NormalizedVertexResponseArray []NormalizedVertexResponseInput
+
+func (NormalizedVertexResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NormalizedVertexResponse)(nil)).Elem()
+}
+
+func (i NormalizedVertexResponseArray) ToNormalizedVertexResponseArrayOutput() NormalizedVertexResponseArrayOutput {
+	return i.ToNormalizedVertexResponseArrayOutputWithContext(context.Background())
+}
+
+func (i NormalizedVertexResponseArray) ToNormalizedVertexResponseArrayOutputWithContext(ctx context.Context) NormalizedVertexResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NormalizedVertexResponseArrayOutput)
+}
+
+// A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to the original image and range from 0 to 1.
+type NormalizedVertexResponseOutput struct{ *pulumi.OutputState }
+
+func (NormalizedVertexResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NormalizedVertexResponse)(nil)).Elem()
+}
+
+func (o NormalizedVertexResponseOutput) ToNormalizedVertexResponseOutput() NormalizedVertexResponseOutput {
+	return o
+}
+
+func (o NormalizedVertexResponseOutput) ToNormalizedVertexResponseOutputWithContext(ctx context.Context) NormalizedVertexResponseOutput {
+	return o
+}
+
+// X coordinate.
+func (o NormalizedVertexResponseOutput) X() pulumi.Float64Output {
+	return o.ApplyT(func(v NormalizedVertexResponse) float64 { return v.X }).(pulumi.Float64Output)
+}
+
+// Y coordinate.
+func (o NormalizedVertexResponseOutput) Y() pulumi.Float64Output {
+	return o.ApplyT(func(v NormalizedVertexResponse) float64 { return v.Y }).(pulumi.Float64Output)
+}
+
+type NormalizedVertexResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NormalizedVertexResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NormalizedVertexResponse)(nil)).Elem()
+}
+
+func (o NormalizedVertexResponseArrayOutput) ToNormalizedVertexResponseArrayOutput() NormalizedVertexResponseArrayOutput {
+	return o
+}
+
+func (o NormalizedVertexResponseArrayOutput) ToNormalizedVertexResponseArrayOutputWithContext(ctx context.Context) NormalizedVertexResponseArrayOutput {
+	return o
+}
+
+func (o NormalizedVertexResponseArrayOutput) Index(i pulumi.IntInput) NormalizedVertexResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NormalizedVertexResponse {
+		return vs[0].([]NormalizedVertexResponse)[vs[1].(int)]
+	}).(NormalizedVertexResponseOutput)
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type Status struct {
+type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
-	Code *int `pulumi:"code"`
+	Code int `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
 	Details []map[string]string `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message *string `pulumi:"message"`
+	Message string `pulumi:"message"`
 }
 
-// StatusInput is an input type that accepts StatusArgs and StatusOutput values.
-// You can construct a concrete instance of `StatusInput` via:
+// StatusResponseInput is an input type that accepts StatusResponseArgs and StatusResponseOutput values.
+// You can construct a concrete instance of `StatusResponseInput` via:
 //
-//          StatusArgs{...}
-type StatusInput interface {
+//          StatusResponseArgs{...}
+type StatusResponseInput interface {
 	pulumi.Input
 
-	ToStatusOutput() StatusOutput
-	ToStatusOutputWithContext(context.Context) StatusOutput
+	ToStatusResponseOutput() StatusResponseOutput
+	ToStatusResponseOutputWithContext(context.Context) StatusResponseOutput
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusArgs struct {
+type StatusResponseArgs struct {
 	// The status code, which should be an enum value of google.rpc.Code.
-	Code pulumi.IntPtrInput `pulumi:"code"`
+	Code pulumi.IntInput `pulumi:"code"`
 	// A list of messages that carry the error details. There is a common set of message types for APIs to use.
 	Details pulumi.StringMapArrayInput `pulumi:"details"`
 	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-	Message pulumi.StringPtrInput `pulumi:"message"`
+	Message pulumi.StringInput `pulumi:"message"`
 }
 
-func (StatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Status)(nil)).Elem()
+func (StatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
 }
 
-func (i StatusArgs) ToStatusOutput() StatusOutput {
-	return i.ToStatusOutputWithContext(context.Background())
+func (i StatusResponseArgs) ToStatusResponseOutput() StatusResponseOutput {
+	return i.ToStatusResponseOutputWithContext(context.Background())
 }
 
-func (i StatusArgs) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusOutput)
+func (i StatusResponseArgs) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput)
 }
 
-func (i StatusArgs) ToStatusPtrOutput() StatusPtrOutput {
-	return i.ToStatusPtrOutputWithContext(context.Background())
+func (i StatusResponseArgs) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
 }
 
-func (i StatusArgs) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusOutput).ToStatusPtrOutputWithContext(ctx)
+func (i StatusResponseArgs) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponseOutput).ToStatusResponsePtrOutputWithContext(ctx)
 }
 
-// StatusPtrInput is an input type that accepts StatusArgs, StatusPtr and StatusPtrOutput values.
-// You can construct a concrete instance of `StatusPtrInput` via:
+// StatusResponsePtrInput is an input type that accepts StatusResponseArgs, StatusResponsePtr and StatusResponsePtrOutput values.
+// You can construct a concrete instance of `StatusResponsePtrInput` via:
 //
-//          StatusArgs{...}
+//          StatusResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type StatusPtrInput interface {
+type StatusResponsePtrInput interface {
 	pulumi.Input
 
-	ToStatusPtrOutput() StatusPtrOutput
-	ToStatusPtrOutputWithContext(context.Context) StatusPtrOutput
+	ToStatusResponsePtrOutput() StatusResponsePtrOutput
+	ToStatusResponsePtrOutputWithContext(context.Context) StatusResponsePtrOutput
 }
 
-type statusPtrType StatusArgs
+type statusResponsePtrType StatusResponseArgs
 
-func StatusPtr(v *StatusArgs) StatusPtrInput {
-	return (*statusPtrType)(v)
+func StatusResponsePtr(v *StatusResponseArgs) StatusResponsePtrInput {
+	return (*statusResponsePtrType)(v)
 }
 
-func (*statusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Status)(nil)).Elem()
+func (*statusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
 }
 
-func (i *statusPtrType) ToStatusPtrOutput() StatusPtrOutput {
-	return i.ToStatusPtrOutputWithContext(context.Background())
+func (i *statusResponsePtrType) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return i.ToStatusResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *statusPtrType) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StatusPtrOutput)
+func (i *statusResponsePtrType) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusResponsePtrOutput)
 }
 
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
-type StatusOutput struct{ *pulumi.OutputState }
+type StatusResponseOutput struct{ *pulumi.OutputState }
 
-func (StatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Status)(nil)).Elem()
+func (StatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusResponse)(nil)).Elem()
 }
 
-func (o StatusOutput) ToStatusOutput() StatusOutput {
+func (o StatusResponseOutput) ToStatusResponseOutput() StatusResponseOutput {
 	return o
 }
 
-func (o StatusOutput) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
+func (o StatusResponseOutput) ToStatusResponseOutputWithContext(ctx context.Context) StatusResponseOutput {
 	return o
 }
 
-func (o StatusOutput) ToStatusPtrOutput() StatusPtrOutput {
-	return o.ToStatusPtrOutputWithContext(context.Background())
+func (o StatusResponseOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
+	return o.ToStatusResponsePtrOutputWithContext(context.Background())
 }
 
-func (o StatusOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return o.ApplyT(func(v Status) *Status {
+func (o StatusResponseOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
+	return o.ApplyT(func(v StatusResponse) *StatusResponse {
 		return &v
-	}).(StatusPtrOutput)
+	}).(StatusResponsePtrOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
-func (o StatusOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Status) *int { return v.Code }).(pulumi.IntPtrOutput)
+func (o StatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v StatusResponse) int { return v.Code }).(pulumi.IntOutput)
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v Status) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v StatusResponse) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Status) *string { return v.Message }).(pulumi.StringPtrOutput)
+func (o StatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
-type StatusPtrOutput struct{ *pulumi.OutputState }
+type StatusResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (StatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Status)(nil)).Elem()
+func (StatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusResponse)(nil)).Elem()
 }
 
-func (o StatusPtrOutput) ToStatusPtrOutput() StatusPtrOutput {
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutput() StatusResponsePtrOutput {
 	return o
 }
 
-func (o StatusPtrOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
+func (o StatusResponsePtrOutput) ToStatusResponsePtrOutputWithContext(ctx context.Context) StatusResponsePtrOutput {
 	return o
 }
 
-func (o StatusPtrOutput) Elem() StatusOutput {
-	return o.ApplyT(func(v *Status) Status { return *v }).(StatusOutput)
+func (o StatusResponsePtrOutput) Elem() StatusResponseOutput {
+	return o.ApplyT(func(v *StatusResponse) StatusResponse { return *v }).(StatusResponseOutput)
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
-func (o StatusPtrOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Status) *int {
+func (o StatusResponsePtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *int {
 		if v == nil {
 			return nil
 		}
-		return v.Code
+		return &v.Code
 	}).(pulumi.IntPtrOutput)
 }
 
 // A list of messages that carry the error details. There is a common set of message types for APIs to use.
-func (o StatusPtrOutput) Details() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *Status) []map[string]string {
+func (o StatusResponsePtrOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *StatusResponse) []map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -500,12 +827,12 @@ func (o StatusPtrOutput) Details() pulumi.StringMapArrayOutput {
 }
 
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-func (o StatusPtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Status) *string {
+func (o StatusResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Message
+		return &v.Message
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -618,15 +945,132 @@ func (o VertexArrayOutput) Index(i pulumi.IntInput) VertexOutput {
 	}).(VertexOutput)
 }
 
+// A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the original image.
+type VertexResponse struct {
+	// X coordinate.
+	X int `pulumi:"x"`
+	// Y coordinate.
+	Y int `pulumi:"y"`
+}
+
+// VertexResponseInput is an input type that accepts VertexResponseArgs and VertexResponseOutput values.
+// You can construct a concrete instance of `VertexResponseInput` via:
+//
+//          VertexResponseArgs{...}
+type VertexResponseInput interface {
+	pulumi.Input
+
+	ToVertexResponseOutput() VertexResponseOutput
+	ToVertexResponseOutputWithContext(context.Context) VertexResponseOutput
+}
+
+// A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the original image.
+type VertexResponseArgs struct {
+	// X coordinate.
+	X pulumi.IntInput `pulumi:"x"`
+	// Y coordinate.
+	Y pulumi.IntInput `pulumi:"y"`
+}
+
+func (VertexResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VertexResponse)(nil)).Elem()
+}
+
+func (i VertexResponseArgs) ToVertexResponseOutput() VertexResponseOutput {
+	return i.ToVertexResponseOutputWithContext(context.Background())
+}
+
+func (i VertexResponseArgs) ToVertexResponseOutputWithContext(ctx context.Context) VertexResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VertexResponseOutput)
+}
+
+// VertexResponseArrayInput is an input type that accepts VertexResponseArray and VertexResponseArrayOutput values.
+// You can construct a concrete instance of `VertexResponseArrayInput` via:
+//
+//          VertexResponseArray{ VertexResponseArgs{...} }
+type VertexResponseArrayInput interface {
+	pulumi.Input
+
+	ToVertexResponseArrayOutput() VertexResponseArrayOutput
+	ToVertexResponseArrayOutputWithContext(context.Context) VertexResponseArrayOutput
+}
+
+type VertexResponseArray []VertexResponseInput
+
+func (VertexResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VertexResponse)(nil)).Elem()
+}
+
+func (i VertexResponseArray) ToVertexResponseArrayOutput() VertexResponseArrayOutput {
+	return i.ToVertexResponseArrayOutputWithContext(context.Background())
+}
+
+func (i VertexResponseArray) ToVertexResponseArrayOutputWithContext(ctx context.Context) VertexResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VertexResponseArrayOutput)
+}
+
+// A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the original image.
+type VertexResponseOutput struct{ *pulumi.OutputState }
+
+func (VertexResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VertexResponse)(nil)).Elem()
+}
+
+func (o VertexResponseOutput) ToVertexResponseOutput() VertexResponseOutput {
+	return o
+}
+
+func (o VertexResponseOutput) ToVertexResponseOutputWithContext(ctx context.Context) VertexResponseOutput {
+	return o
+}
+
+// X coordinate.
+func (o VertexResponseOutput) X() pulumi.IntOutput {
+	return o.ApplyT(func(v VertexResponse) int { return v.X }).(pulumi.IntOutput)
+}
+
+// Y coordinate.
+func (o VertexResponseOutput) Y() pulumi.IntOutput {
+	return o.ApplyT(func(v VertexResponse) int { return v.Y }).(pulumi.IntOutput)
+}
+
+type VertexResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VertexResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VertexResponse)(nil)).Elem()
+}
+
+func (o VertexResponseArrayOutput) ToVertexResponseArrayOutput() VertexResponseArrayOutput {
+	return o
+}
+
+func (o VertexResponseArrayOutput) ToVertexResponseArrayOutputWithContext(ctx context.Context) VertexResponseArrayOutput {
+	return o
+}
+
+func (o VertexResponseArrayOutput) Index(i pulumi.IntInput) VertexResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VertexResponse {
+		return vs[0].([]VertexResponse)[vs[1].(int)]
+	}).(VertexResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BoundingPolyOutput{})
 	pulumi.RegisterOutputType(BoundingPolyArrayOutput{})
+	pulumi.RegisterOutputType(BoundingPolyResponseOutput{})
+	pulumi.RegisterOutputType(BoundingPolyResponseArrayOutput{})
 	pulumi.RegisterOutputType(KeyValueOutput{})
 	pulumi.RegisterOutputType(KeyValueArrayOutput{})
+	pulumi.RegisterOutputType(KeyValueResponseOutput{})
+	pulumi.RegisterOutputType(KeyValueResponseArrayOutput{})
 	pulumi.RegisterOutputType(NormalizedVertexOutput{})
 	pulumi.RegisterOutputType(NormalizedVertexArrayOutput{})
-	pulumi.RegisterOutputType(StatusOutput{})
-	pulumi.RegisterOutputType(StatusPtrOutput{})
+	pulumi.RegisterOutputType(NormalizedVertexResponseOutput{})
+	pulumi.RegisterOutputType(NormalizedVertexResponseArrayOutput{})
+	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(VertexOutput{})
 	pulumi.RegisterOutputType(VertexArrayOutput{})
+	pulumi.RegisterOutputType(VertexResponseOutput{})
+	pulumi.RegisterOutputType(VertexResponseArrayOutput{})
 }

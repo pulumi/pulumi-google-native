@@ -14,6 +14,17 @@ import (
 // Creates a notification config.
 type OrganizationNotificationConfig struct {
 	pulumi.CustomResourceState
+
+	// The description of the notification config (max of 1024 characters).
+	Description pulumi.StringOutput `pulumi:"description"`
+	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+	PubsubTopic pulumi.StringOutput `pulumi:"pubsubTopic"`
+	// The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
+	// The config for triggering streaming-based notifications.
+	StreamingConfig StreamingConfigResponseOutput `pulumi:"streamingConfig"`
 }
 
 // NewOrganizationNotificationConfig registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +62,29 @@ func GetOrganizationNotificationConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationNotificationConfig resources.
 type organizationNotificationConfigState struct {
+	// The description of the notification config (max of 1024 characters).
+	Description *string `pulumi:"description"`
+	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+	Name *string `pulumi:"name"`
+	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+	PubsubTopic *string `pulumi:"pubsubTopic"`
+	// The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// The config for triggering streaming-based notifications.
+	StreamingConfig *StreamingConfigResponse `pulumi:"streamingConfig"`
 }
 
 type OrganizationNotificationConfigState struct {
+	// The description of the notification config (max of 1024 characters).
+	Description pulumi.StringPtrInput
+	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+	Name pulumi.StringPtrInput
+	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+	PubsubTopic pulumi.StringPtrInput
+	// The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+	ServiceAccount pulumi.StringPtrInput
+	// The config for triggering streaming-based notifications.
+	StreamingConfig StreamingConfigResponsePtrInput
 }
 
 func (OrganizationNotificationConfigState) ElementType() reflect.Type {
@@ -69,8 +100,6 @@ type organizationNotificationConfigArgs struct {
 	OrganizationsId       string  `pulumi:"organizationsId"`
 	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
 	PubsubTopic *string `pulumi:"pubsubTopic"`
-	// Output only. The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
-	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The config for triggering streaming-based notifications.
 	StreamingConfig *StreamingConfig `pulumi:"streamingConfig"`
 }
@@ -85,8 +114,6 @@ type OrganizationNotificationConfigArgs struct {
 	OrganizationsId       pulumi.StringInput
 	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
 	PubsubTopic pulumi.StringPtrInput
-	// Output only. The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
-	ServiceAccount pulumi.StringPtrInput
 	// The config for triggering streaming-based notifications.
 	StreamingConfig StreamingConfigPtrInput
 }

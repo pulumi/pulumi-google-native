@@ -14,6 +14,27 @@ import (
 // Creates a new job to inspect storage or calculate risk metrics. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated.
 type DlpJob struct {
 	pulumi.CustomResourceState
+
+	// Time when the job was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Time when the job finished.
+	EndTime pulumi.StringOutput `pulumi:"endTime"`
+	// A stream of errors encountered running the job.
+	Errors GooglePrivacyDlpV2ErrorResponseArrayOutput `pulumi:"errors"`
+	// Results from inspecting a data source.
+	InspectDetails GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput `pulumi:"inspectDetails"`
+	// If created by a job trigger, the resource name of the trigger that instantiated the job.
+	JobTriggerName pulumi.StringOutput `pulumi:"jobTriggerName"`
+	// The server-assigned name.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Results from analyzing risk of a data source.
+	RiskDetails GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput `pulumi:"riskDetails"`
+	// Time when the job started.
+	StartTime pulumi.StringOutput `pulumi:"startTime"`
+	// State of a job.
+	State pulumi.StringOutput `pulumi:"state"`
+	// The type of job.
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewDlpJob registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +75,49 @@ func GetDlpJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DlpJob resources.
 type dlpJobState struct {
+	// Time when the job was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Time when the job finished.
+	EndTime *string `pulumi:"endTime"`
+	// A stream of errors encountered running the job.
+	Errors []GooglePrivacyDlpV2ErrorResponse `pulumi:"errors"`
+	// Results from inspecting a data source.
+	InspectDetails *GooglePrivacyDlpV2InspectDataSourceDetailsResponse `pulumi:"inspectDetails"`
+	// If created by a job trigger, the resource name of the trigger that instantiated the job.
+	JobTriggerName *string `pulumi:"jobTriggerName"`
+	// The server-assigned name.
+	Name *string `pulumi:"name"`
+	// Results from analyzing risk of a data source.
+	RiskDetails *GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse `pulumi:"riskDetails"`
+	// Time when the job started.
+	StartTime *string `pulumi:"startTime"`
+	// State of a job.
+	State *string `pulumi:"state"`
+	// The type of job.
+	Type *string `pulumi:"type"`
 }
 
 type DlpJobState struct {
+	// Time when the job was created.
+	CreateTime pulumi.StringPtrInput
+	// Time when the job finished.
+	EndTime pulumi.StringPtrInput
+	// A stream of errors encountered running the job.
+	Errors GooglePrivacyDlpV2ErrorResponseArrayInput
+	// Results from inspecting a data source.
+	InspectDetails GooglePrivacyDlpV2InspectDataSourceDetailsResponsePtrInput
+	// If created by a job trigger, the resource name of the trigger that instantiated the job.
+	JobTriggerName pulumi.StringPtrInput
+	// The server-assigned name.
+	Name pulumi.StringPtrInput
+	// Results from analyzing risk of a data source.
+	RiskDetails GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrInput
+	// Time when the job started.
+	StartTime pulumi.StringPtrInput
+	// State of a job.
+	State pulumi.StringPtrInput
+	// The type of job.
+	Type pulumi.StringPtrInput
 }
 
 func (DlpJobState) ElementType() reflect.Type {
@@ -68,9 +129,7 @@ type dlpJobArgs struct {
 	// An inspection job scans a storage repository for InfoTypes.
 	InspectJob *GooglePrivacyDlpV2InspectJobConfig `pulumi:"inspectJob"`
 	// The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-	JobId *string `pulumi:"jobId"`
-	// Deprecated. This field has no effect.
-	LocationId  *string `pulumi:"locationId"`
+	JobId       *string `pulumi:"jobId"`
 	LocationsId string  `pulumi:"locationsId"`
 	ProjectsId  string  `pulumi:"projectsId"`
 	// A risk analysis job calculates re-identification risk metrics for a BigQuery table.
@@ -83,9 +142,7 @@ type DlpJobArgs struct {
 	// An inspection job scans a storage repository for InfoTypes.
 	InspectJob GooglePrivacyDlpV2InspectJobConfigPtrInput
 	// The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-	JobId pulumi.StringPtrInput
-	// Deprecated. This field has no effect.
-	LocationId  pulumi.StringPtrInput
+	JobId       pulumi.StringPtrInput
 	LocationsId pulumi.StringInput
 	ProjectsId  pulumi.StringInput
 	// A risk analysis job calculates re-identification risk metrics for a BigQuery table.

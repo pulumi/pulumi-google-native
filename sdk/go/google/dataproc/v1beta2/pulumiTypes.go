@@ -119,6 +119,115 @@ func (o AcceleratorConfigArrayOutput) Index(i pulumi.IntInput) AcceleratorConfig
 	}).(AcceleratorConfigOutput)
 }
 
+// Specifies the type and number of accelerator cards attached to the instances of an instance group (see GPUs on Compute Engine (https://cloud.google.com/compute/docs/gpus/)).
+type AcceleratorConfigResponse struct {
+	// The number of the accelerator cards of this type exposed to this instance.
+	AcceleratorCount int `pulumi:"acceleratorCount"`
+	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See Compute Engine AcceleratorTypes (https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes)Examples * https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * nvidia-tesla-k80Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, nvidia-tesla-k80.
+	AcceleratorTypeUri string `pulumi:"acceleratorTypeUri"`
+}
+
+// AcceleratorConfigResponseInput is an input type that accepts AcceleratorConfigResponseArgs and AcceleratorConfigResponseOutput values.
+// You can construct a concrete instance of `AcceleratorConfigResponseInput` via:
+//
+//          AcceleratorConfigResponseArgs{...}
+type AcceleratorConfigResponseInput interface {
+	pulumi.Input
+
+	ToAcceleratorConfigResponseOutput() AcceleratorConfigResponseOutput
+	ToAcceleratorConfigResponseOutputWithContext(context.Context) AcceleratorConfigResponseOutput
+}
+
+// Specifies the type and number of accelerator cards attached to the instances of an instance group (see GPUs on Compute Engine (https://cloud.google.com/compute/docs/gpus/)).
+type AcceleratorConfigResponseArgs struct {
+	// The number of the accelerator cards of this type exposed to this instance.
+	AcceleratorCount pulumi.IntInput `pulumi:"acceleratorCount"`
+	// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See Compute Engine AcceleratorTypes (https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes)Examples * https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * nvidia-tesla-k80Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, nvidia-tesla-k80.
+	AcceleratorTypeUri pulumi.StringInput `pulumi:"acceleratorTypeUri"`
+}
+
+func (AcceleratorConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorConfigResponse)(nil)).Elem()
+}
+
+func (i AcceleratorConfigResponseArgs) ToAcceleratorConfigResponseOutput() AcceleratorConfigResponseOutput {
+	return i.ToAcceleratorConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AcceleratorConfigResponseArgs) ToAcceleratorConfigResponseOutputWithContext(ctx context.Context) AcceleratorConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorConfigResponseOutput)
+}
+
+// AcceleratorConfigResponseArrayInput is an input type that accepts AcceleratorConfigResponseArray and AcceleratorConfigResponseArrayOutput values.
+// You can construct a concrete instance of `AcceleratorConfigResponseArrayInput` via:
+//
+//          AcceleratorConfigResponseArray{ AcceleratorConfigResponseArgs{...} }
+type AcceleratorConfigResponseArrayInput interface {
+	pulumi.Input
+
+	ToAcceleratorConfigResponseArrayOutput() AcceleratorConfigResponseArrayOutput
+	ToAcceleratorConfigResponseArrayOutputWithContext(context.Context) AcceleratorConfigResponseArrayOutput
+}
+
+type AcceleratorConfigResponseArray []AcceleratorConfigResponseInput
+
+func (AcceleratorConfigResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AcceleratorConfigResponse)(nil)).Elem()
+}
+
+func (i AcceleratorConfigResponseArray) ToAcceleratorConfigResponseArrayOutput() AcceleratorConfigResponseArrayOutput {
+	return i.ToAcceleratorConfigResponseArrayOutputWithContext(context.Background())
+}
+
+func (i AcceleratorConfigResponseArray) ToAcceleratorConfigResponseArrayOutputWithContext(ctx context.Context) AcceleratorConfigResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorConfigResponseArrayOutput)
+}
+
+// Specifies the type and number of accelerator cards attached to the instances of an instance group (see GPUs on Compute Engine (https://cloud.google.com/compute/docs/gpus/)).
+type AcceleratorConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorConfigResponse)(nil)).Elem()
+}
+
+func (o AcceleratorConfigResponseOutput) ToAcceleratorConfigResponseOutput() AcceleratorConfigResponseOutput {
+	return o
+}
+
+func (o AcceleratorConfigResponseOutput) ToAcceleratorConfigResponseOutputWithContext(ctx context.Context) AcceleratorConfigResponseOutput {
+	return o
+}
+
+// The number of the accelerator cards of this type exposed to this instance.
+func (o AcceleratorConfigResponseOutput) AcceleratorCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AcceleratorConfigResponse) int { return v.AcceleratorCount }).(pulumi.IntOutput)
+}
+
+// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See Compute Engine AcceleratorTypes (https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes)Examples * https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * nvidia-tesla-k80Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, nvidia-tesla-k80.
+func (o AcceleratorConfigResponseOutput) AcceleratorTypeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorConfigResponse) string { return v.AcceleratorTypeUri }).(pulumi.StringOutput)
+}
+
+type AcceleratorConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AcceleratorConfigResponse)(nil)).Elem()
+}
+
+func (o AcceleratorConfigResponseArrayOutput) ToAcceleratorConfigResponseArrayOutput() AcceleratorConfigResponseArrayOutput {
+	return o
+}
+
+func (o AcceleratorConfigResponseArrayOutput) ToAcceleratorConfigResponseArrayOutputWithContext(ctx context.Context) AcceleratorConfigResponseArrayOutput {
+	return o
+}
+
+func (o AcceleratorConfigResponseArrayOutput) Index(i pulumi.IntInput) AcceleratorConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AcceleratorConfigResponse {
+		return vs[0].([]AcceleratorConfigResponse)[vs[1].(int)]
+	}).(AcceleratorConfigResponseOutput)
+}
+
 // Autoscaling Policy config associated with the cluster.
 type AutoscalingConfig struct {
 	// Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id] projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Dataproc region.
@@ -250,6 +359,140 @@ func (o AutoscalingConfigPtrOutput) PolicyUri() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.PolicyUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Autoscaling Policy config associated with the cluster.
+type AutoscalingConfigResponse struct {
+	// Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id] projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Dataproc region.
+	PolicyUri string `pulumi:"policyUri"`
+}
+
+// AutoscalingConfigResponseInput is an input type that accepts AutoscalingConfigResponseArgs and AutoscalingConfigResponseOutput values.
+// You can construct a concrete instance of `AutoscalingConfigResponseInput` via:
+//
+//          AutoscalingConfigResponseArgs{...}
+type AutoscalingConfigResponseInput interface {
+	pulumi.Input
+
+	ToAutoscalingConfigResponseOutput() AutoscalingConfigResponseOutput
+	ToAutoscalingConfigResponseOutputWithContext(context.Context) AutoscalingConfigResponseOutput
+}
+
+// Autoscaling Policy config associated with the cluster.
+type AutoscalingConfigResponseArgs struct {
+	// Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id] projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Dataproc region.
+	PolicyUri pulumi.StringInput `pulumi:"policyUri"`
+}
+
+func (AutoscalingConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (i AutoscalingConfigResponseArgs) ToAutoscalingConfigResponseOutput() AutoscalingConfigResponseOutput {
+	return i.ToAutoscalingConfigResponseOutputWithContext(context.Background())
+}
+
+func (i AutoscalingConfigResponseArgs) ToAutoscalingConfigResponseOutputWithContext(ctx context.Context) AutoscalingConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingConfigResponseOutput)
+}
+
+func (i AutoscalingConfigResponseArgs) ToAutoscalingConfigResponsePtrOutput() AutoscalingConfigResponsePtrOutput {
+	return i.ToAutoscalingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AutoscalingConfigResponseArgs) ToAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) AutoscalingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingConfigResponseOutput).ToAutoscalingConfigResponsePtrOutputWithContext(ctx)
+}
+
+// AutoscalingConfigResponsePtrInput is an input type that accepts AutoscalingConfigResponseArgs, AutoscalingConfigResponsePtr and AutoscalingConfigResponsePtrOutput values.
+// You can construct a concrete instance of `AutoscalingConfigResponsePtrInput` via:
+//
+//          AutoscalingConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AutoscalingConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToAutoscalingConfigResponsePtrOutput() AutoscalingConfigResponsePtrOutput
+	ToAutoscalingConfigResponsePtrOutputWithContext(context.Context) AutoscalingConfigResponsePtrOutput
+}
+
+type autoscalingConfigResponsePtrType AutoscalingConfigResponseArgs
+
+func AutoscalingConfigResponsePtr(v *AutoscalingConfigResponseArgs) AutoscalingConfigResponsePtrInput {
+	return (*autoscalingConfigResponsePtrType)(v)
+}
+
+func (*autoscalingConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (i *autoscalingConfigResponsePtrType) ToAutoscalingConfigResponsePtrOutput() AutoscalingConfigResponsePtrOutput {
+	return i.ToAutoscalingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *autoscalingConfigResponsePtrType) ToAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) AutoscalingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingConfigResponsePtrOutput)
+}
+
+// Autoscaling Policy config associated with the cluster.
+type AutoscalingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (o AutoscalingConfigResponseOutput) ToAutoscalingConfigResponseOutput() AutoscalingConfigResponseOutput {
+	return o
+}
+
+func (o AutoscalingConfigResponseOutput) ToAutoscalingConfigResponseOutputWithContext(ctx context.Context) AutoscalingConfigResponseOutput {
+	return o
+}
+
+func (o AutoscalingConfigResponseOutput) ToAutoscalingConfigResponsePtrOutput() AutoscalingConfigResponsePtrOutput {
+	return o.ToAutoscalingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AutoscalingConfigResponseOutput) ToAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) AutoscalingConfigResponsePtrOutput {
+	return o.ApplyT(func(v AutoscalingConfigResponse) *AutoscalingConfigResponse {
+		return &v
+	}).(AutoscalingConfigResponsePtrOutput)
+}
+
+// Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id] projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Dataproc region.
+func (o AutoscalingConfigResponseOutput) PolicyUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalingConfigResponse) string { return v.PolicyUri }).(pulumi.StringOutput)
+}
+
+type AutoscalingConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AutoscalingConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (o AutoscalingConfigResponsePtrOutput) ToAutoscalingConfigResponsePtrOutput() AutoscalingConfigResponsePtrOutput {
+	return o
+}
+
+func (o AutoscalingConfigResponsePtrOutput) ToAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) AutoscalingConfigResponsePtrOutput {
+	return o
+}
+
+func (o AutoscalingConfigResponsePtrOutput) Elem() AutoscalingConfigResponseOutput {
+	return o.ApplyT(func(v *AutoscalingConfigResponse) AutoscalingConfigResponse { return *v }).(AutoscalingConfigResponseOutput)
+}
+
+// Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id] projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Dataproc region.
+func (o AutoscalingConfigResponsePtrOutput) PolicyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PolicyUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -404,6 +647,159 @@ func (o BasicAutoscalingAlgorithmPtrOutput) YarnConfig() BasicYarnAutoscalingCon
 		}
 		return v.YarnConfig
 	}).(BasicYarnAutoscalingConfigPtrOutput)
+}
+
+// Basic algorithm for autoscaling.
+type BasicAutoscalingAlgorithmResponse struct {
+	// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
+	CooldownPeriod string `pulumi:"cooldownPeriod"`
+	// Required. YARN autoscaling configuration.
+	YarnConfig BasicYarnAutoscalingConfigResponse `pulumi:"yarnConfig"`
+}
+
+// BasicAutoscalingAlgorithmResponseInput is an input type that accepts BasicAutoscalingAlgorithmResponseArgs and BasicAutoscalingAlgorithmResponseOutput values.
+// You can construct a concrete instance of `BasicAutoscalingAlgorithmResponseInput` via:
+//
+//          BasicAutoscalingAlgorithmResponseArgs{...}
+type BasicAutoscalingAlgorithmResponseInput interface {
+	pulumi.Input
+
+	ToBasicAutoscalingAlgorithmResponseOutput() BasicAutoscalingAlgorithmResponseOutput
+	ToBasicAutoscalingAlgorithmResponseOutputWithContext(context.Context) BasicAutoscalingAlgorithmResponseOutput
+}
+
+// Basic algorithm for autoscaling.
+type BasicAutoscalingAlgorithmResponseArgs struct {
+	// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
+	CooldownPeriod pulumi.StringInput `pulumi:"cooldownPeriod"`
+	// Required. YARN autoscaling configuration.
+	YarnConfig BasicYarnAutoscalingConfigResponseInput `pulumi:"yarnConfig"`
+}
+
+func (BasicAutoscalingAlgorithmResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicAutoscalingAlgorithmResponse)(nil)).Elem()
+}
+
+func (i BasicAutoscalingAlgorithmResponseArgs) ToBasicAutoscalingAlgorithmResponseOutput() BasicAutoscalingAlgorithmResponseOutput {
+	return i.ToBasicAutoscalingAlgorithmResponseOutputWithContext(context.Background())
+}
+
+func (i BasicAutoscalingAlgorithmResponseArgs) ToBasicAutoscalingAlgorithmResponseOutputWithContext(ctx context.Context) BasicAutoscalingAlgorithmResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicAutoscalingAlgorithmResponseOutput)
+}
+
+func (i BasicAutoscalingAlgorithmResponseArgs) ToBasicAutoscalingAlgorithmResponsePtrOutput() BasicAutoscalingAlgorithmResponsePtrOutput {
+	return i.ToBasicAutoscalingAlgorithmResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BasicAutoscalingAlgorithmResponseArgs) ToBasicAutoscalingAlgorithmResponsePtrOutputWithContext(ctx context.Context) BasicAutoscalingAlgorithmResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicAutoscalingAlgorithmResponseOutput).ToBasicAutoscalingAlgorithmResponsePtrOutputWithContext(ctx)
+}
+
+// BasicAutoscalingAlgorithmResponsePtrInput is an input type that accepts BasicAutoscalingAlgorithmResponseArgs, BasicAutoscalingAlgorithmResponsePtr and BasicAutoscalingAlgorithmResponsePtrOutput values.
+// You can construct a concrete instance of `BasicAutoscalingAlgorithmResponsePtrInput` via:
+//
+//          BasicAutoscalingAlgorithmResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BasicAutoscalingAlgorithmResponsePtrInput interface {
+	pulumi.Input
+
+	ToBasicAutoscalingAlgorithmResponsePtrOutput() BasicAutoscalingAlgorithmResponsePtrOutput
+	ToBasicAutoscalingAlgorithmResponsePtrOutputWithContext(context.Context) BasicAutoscalingAlgorithmResponsePtrOutput
+}
+
+type basicAutoscalingAlgorithmResponsePtrType BasicAutoscalingAlgorithmResponseArgs
+
+func BasicAutoscalingAlgorithmResponsePtr(v *BasicAutoscalingAlgorithmResponseArgs) BasicAutoscalingAlgorithmResponsePtrInput {
+	return (*basicAutoscalingAlgorithmResponsePtrType)(v)
+}
+
+func (*basicAutoscalingAlgorithmResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasicAutoscalingAlgorithmResponse)(nil)).Elem()
+}
+
+func (i *basicAutoscalingAlgorithmResponsePtrType) ToBasicAutoscalingAlgorithmResponsePtrOutput() BasicAutoscalingAlgorithmResponsePtrOutput {
+	return i.ToBasicAutoscalingAlgorithmResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *basicAutoscalingAlgorithmResponsePtrType) ToBasicAutoscalingAlgorithmResponsePtrOutputWithContext(ctx context.Context) BasicAutoscalingAlgorithmResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicAutoscalingAlgorithmResponsePtrOutput)
+}
+
+// Basic algorithm for autoscaling.
+type BasicAutoscalingAlgorithmResponseOutput struct{ *pulumi.OutputState }
+
+func (BasicAutoscalingAlgorithmResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicAutoscalingAlgorithmResponse)(nil)).Elem()
+}
+
+func (o BasicAutoscalingAlgorithmResponseOutput) ToBasicAutoscalingAlgorithmResponseOutput() BasicAutoscalingAlgorithmResponseOutput {
+	return o
+}
+
+func (o BasicAutoscalingAlgorithmResponseOutput) ToBasicAutoscalingAlgorithmResponseOutputWithContext(ctx context.Context) BasicAutoscalingAlgorithmResponseOutput {
+	return o
+}
+
+func (o BasicAutoscalingAlgorithmResponseOutput) ToBasicAutoscalingAlgorithmResponsePtrOutput() BasicAutoscalingAlgorithmResponsePtrOutput {
+	return o.ToBasicAutoscalingAlgorithmResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BasicAutoscalingAlgorithmResponseOutput) ToBasicAutoscalingAlgorithmResponsePtrOutputWithContext(ctx context.Context) BasicAutoscalingAlgorithmResponsePtrOutput {
+	return o.ApplyT(func(v BasicAutoscalingAlgorithmResponse) *BasicAutoscalingAlgorithmResponse {
+		return &v
+	}).(BasicAutoscalingAlgorithmResponsePtrOutput)
+}
+
+// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
+func (o BasicAutoscalingAlgorithmResponseOutput) CooldownPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v BasicAutoscalingAlgorithmResponse) string { return v.CooldownPeriod }).(pulumi.StringOutput)
+}
+
+// Required. YARN autoscaling configuration.
+func (o BasicAutoscalingAlgorithmResponseOutput) YarnConfig() BasicYarnAutoscalingConfigResponseOutput {
+	return o.ApplyT(func(v BasicAutoscalingAlgorithmResponse) BasicYarnAutoscalingConfigResponse { return v.YarnConfig }).(BasicYarnAutoscalingConfigResponseOutput)
+}
+
+type BasicAutoscalingAlgorithmResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BasicAutoscalingAlgorithmResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasicAutoscalingAlgorithmResponse)(nil)).Elem()
+}
+
+func (o BasicAutoscalingAlgorithmResponsePtrOutput) ToBasicAutoscalingAlgorithmResponsePtrOutput() BasicAutoscalingAlgorithmResponsePtrOutput {
+	return o
+}
+
+func (o BasicAutoscalingAlgorithmResponsePtrOutput) ToBasicAutoscalingAlgorithmResponsePtrOutputWithContext(ctx context.Context) BasicAutoscalingAlgorithmResponsePtrOutput {
+	return o
+}
+
+func (o BasicAutoscalingAlgorithmResponsePtrOutput) Elem() BasicAutoscalingAlgorithmResponseOutput {
+	return o.ApplyT(func(v *BasicAutoscalingAlgorithmResponse) BasicAutoscalingAlgorithmResponse { return *v }).(BasicAutoscalingAlgorithmResponseOutput)
+}
+
+// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
+func (o BasicAutoscalingAlgorithmResponsePtrOutput) CooldownPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BasicAutoscalingAlgorithmResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CooldownPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. YARN autoscaling configuration.
+func (o BasicAutoscalingAlgorithmResponsePtrOutput) YarnConfig() BasicYarnAutoscalingConfigResponsePtrOutput {
+	return o.ApplyT(func(v *BasicAutoscalingAlgorithmResponse) *BasicYarnAutoscalingConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.YarnConfig
+	}).(BasicYarnAutoscalingConfigResponsePtrOutput)
 }
 
 // Basic autoscaling configurations for YARN.
@@ -616,6 +1012,216 @@ func (o BasicYarnAutoscalingConfigPtrOutput) ScaleUpMinWorkerFraction() pulumi.F
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Basic autoscaling configurations for YARN.
+type BasicYarnAutoscalingConfigResponse struct {
+	// Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+	GracefulDecommissionTimeout string `pulumi:"gracefulDecommissionTimeout"`
+	// Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0, 1.0.
+	ScaleDownFactor float64 `pulumi:"scaleDownFactor"`
+	// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+	ScaleDownMinWorkerFraction float64 `pulumi:"scaleDownMinWorkerFraction"`
+	// Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0, 1.0.
+	ScaleUpFactor float64 `pulumi:"scaleUpFactor"`
+	// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+	ScaleUpMinWorkerFraction float64 `pulumi:"scaleUpMinWorkerFraction"`
+}
+
+// BasicYarnAutoscalingConfigResponseInput is an input type that accepts BasicYarnAutoscalingConfigResponseArgs and BasicYarnAutoscalingConfigResponseOutput values.
+// You can construct a concrete instance of `BasicYarnAutoscalingConfigResponseInput` via:
+//
+//          BasicYarnAutoscalingConfigResponseArgs{...}
+type BasicYarnAutoscalingConfigResponseInput interface {
+	pulumi.Input
+
+	ToBasicYarnAutoscalingConfigResponseOutput() BasicYarnAutoscalingConfigResponseOutput
+	ToBasicYarnAutoscalingConfigResponseOutputWithContext(context.Context) BasicYarnAutoscalingConfigResponseOutput
+}
+
+// Basic autoscaling configurations for YARN.
+type BasicYarnAutoscalingConfigResponseArgs struct {
+	// Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+	GracefulDecommissionTimeout pulumi.StringInput `pulumi:"gracefulDecommissionTimeout"`
+	// Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0, 1.0.
+	ScaleDownFactor pulumi.Float64Input `pulumi:"scaleDownFactor"`
+	// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+	ScaleDownMinWorkerFraction pulumi.Float64Input `pulumi:"scaleDownMinWorkerFraction"`
+	// Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0, 1.0.
+	ScaleUpFactor pulumi.Float64Input `pulumi:"scaleUpFactor"`
+	// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+	ScaleUpMinWorkerFraction pulumi.Float64Input `pulumi:"scaleUpMinWorkerFraction"`
+}
+
+func (BasicYarnAutoscalingConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicYarnAutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (i BasicYarnAutoscalingConfigResponseArgs) ToBasicYarnAutoscalingConfigResponseOutput() BasicYarnAutoscalingConfigResponseOutput {
+	return i.ToBasicYarnAutoscalingConfigResponseOutputWithContext(context.Background())
+}
+
+func (i BasicYarnAutoscalingConfigResponseArgs) ToBasicYarnAutoscalingConfigResponseOutputWithContext(ctx context.Context) BasicYarnAutoscalingConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicYarnAutoscalingConfigResponseOutput)
+}
+
+func (i BasicYarnAutoscalingConfigResponseArgs) ToBasicYarnAutoscalingConfigResponsePtrOutput() BasicYarnAutoscalingConfigResponsePtrOutput {
+	return i.ToBasicYarnAutoscalingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BasicYarnAutoscalingConfigResponseArgs) ToBasicYarnAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) BasicYarnAutoscalingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicYarnAutoscalingConfigResponseOutput).ToBasicYarnAutoscalingConfigResponsePtrOutputWithContext(ctx)
+}
+
+// BasicYarnAutoscalingConfigResponsePtrInput is an input type that accepts BasicYarnAutoscalingConfigResponseArgs, BasicYarnAutoscalingConfigResponsePtr and BasicYarnAutoscalingConfigResponsePtrOutput values.
+// You can construct a concrete instance of `BasicYarnAutoscalingConfigResponsePtrInput` via:
+//
+//          BasicYarnAutoscalingConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BasicYarnAutoscalingConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToBasicYarnAutoscalingConfigResponsePtrOutput() BasicYarnAutoscalingConfigResponsePtrOutput
+	ToBasicYarnAutoscalingConfigResponsePtrOutputWithContext(context.Context) BasicYarnAutoscalingConfigResponsePtrOutput
+}
+
+type basicYarnAutoscalingConfigResponsePtrType BasicYarnAutoscalingConfigResponseArgs
+
+func BasicYarnAutoscalingConfigResponsePtr(v *BasicYarnAutoscalingConfigResponseArgs) BasicYarnAutoscalingConfigResponsePtrInput {
+	return (*basicYarnAutoscalingConfigResponsePtrType)(v)
+}
+
+func (*basicYarnAutoscalingConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasicYarnAutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (i *basicYarnAutoscalingConfigResponsePtrType) ToBasicYarnAutoscalingConfigResponsePtrOutput() BasicYarnAutoscalingConfigResponsePtrOutput {
+	return i.ToBasicYarnAutoscalingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *basicYarnAutoscalingConfigResponsePtrType) ToBasicYarnAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) BasicYarnAutoscalingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BasicYarnAutoscalingConfigResponsePtrOutput)
+}
+
+// Basic autoscaling configurations for YARN.
+type BasicYarnAutoscalingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (BasicYarnAutoscalingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicYarnAutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (o BasicYarnAutoscalingConfigResponseOutput) ToBasicYarnAutoscalingConfigResponseOutput() BasicYarnAutoscalingConfigResponseOutput {
+	return o
+}
+
+func (o BasicYarnAutoscalingConfigResponseOutput) ToBasicYarnAutoscalingConfigResponseOutputWithContext(ctx context.Context) BasicYarnAutoscalingConfigResponseOutput {
+	return o
+}
+
+func (o BasicYarnAutoscalingConfigResponseOutput) ToBasicYarnAutoscalingConfigResponsePtrOutput() BasicYarnAutoscalingConfigResponsePtrOutput {
+	return o.ToBasicYarnAutoscalingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BasicYarnAutoscalingConfigResponseOutput) ToBasicYarnAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) BasicYarnAutoscalingConfigResponsePtrOutput {
+	return o.ApplyT(func(v BasicYarnAutoscalingConfigResponse) *BasicYarnAutoscalingConfigResponse {
+		return &v
+	}).(BasicYarnAutoscalingConfigResponsePtrOutput)
+}
+
+// Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+func (o BasicYarnAutoscalingConfigResponseOutput) GracefulDecommissionTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v BasicYarnAutoscalingConfigResponse) string { return v.GracefulDecommissionTimeout }).(pulumi.StringOutput)
+}
+
+// Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0, 1.0.
+func (o BasicYarnAutoscalingConfigResponseOutput) ScaleDownFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v BasicYarnAutoscalingConfigResponse) float64 { return v.ScaleDownFactor }).(pulumi.Float64Output)
+}
+
+// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+func (o BasicYarnAutoscalingConfigResponseOutput) ScaleDownMinWorkerFraction() pulumi.Float64Output {
+	return o.ApplyT(func(v BasicYarnAutoscalingConfigResponse) float64 { return v.ScaleDownMinWorkerFraction }).(pulumi.Float64Output)
+}
+
+// Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0, 1.0.
+func (o BasicYarnAutoscalingConfigResponseOutput) ScaleUpFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v BasicYarnAutoscalingConfigResponse) float64 { return v.ScaleUpFactor }).(pulumi.Float64Output)
+}
+
+// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+func (o BasicYarnAutoscalingConfigResponseOutput) ScaleUpMinWorkerFraction() pulumi.Float64Output {
+	return o.ApplyT(func(v BasicYarnAutoscalingConfigResponse) float64 { return v.ScaleUpMinWorkerFraction }).(pulumi.Float64Output)
+}
+
+type BasicYarnAutoscalingConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BasicYarnAutoscalingConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BasicYarnAutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (o BasicYarnAutoscalingConfigResponsePtrOutput) ToBasicYarnAutoscalingConfigResponsePtrOutput() BasicYarnAutoscalingConfigResponsePtrOutput {
+	return o
+}
+
+func (o BasicYarnAutoscalingConfigResponsePtrOutput) ToBasicYarnAutoscalingConfigResponsePtrOutputWithContext(ctx context.Context) BasicYarnAutoscalingConfigResponsePtrOutput {
+	return o
+}
+
+func (o BasicYarnAutoscalingConfigResponsePtrOutput) Elem() BasicYarnAutoscalingConfigResponseOutput {
+	return o.ApplyT(func(v *BasicYarnAutoscalingConfigResponse) BasicYarnAutoscalingConfigResponse { return *v }).(BasicYarnAutoscalingConfigResponseOutput)
+}
+
+// Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+func (o BasicYarnAutoscalingConfigResponsePtrOutput) GracefulDecommissionTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BasicYarnAutoscalingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GracefulDecommissionTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0, 1.0.
+func (o BasicYarnAutoscalingConfigResponsePtrOutput) ScaleDownFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *BasicYarnAutoscalingConfigResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleDownFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+func (o BasicYarnAutoscalingConfigResponsePtrOutput) ScaleDownMinWorkerFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *BasicYarnAutoscalingConfigResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleDownMinWorkerFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0, 1.0.
+func (o BasicYarnAutoscalingConfigResponsePtrOutput) ScaleUpFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *BasicYarnAutoscalingConfigResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleUpFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+func (o BasicYarnAutoscalingConfigResponsePtrOutput) ScaleUpMinWorkerFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *BasicYarnAutoscalingConfigResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleUpMinWorkerFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
 // Associates members with a role.
 type Binding struct {
 	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
@@ -732,6 +1338,124 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Binding {
 		return vs[0].([]Binding)[vs[1].(int)]
 	}).(BindingOutput)
+}
+
+// Associates members with a role.
+type BindingResponse struct {
+	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponse `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	Members []string `pulumi:"members"`
+	// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+	Role string `pulumi:"role"`
+}
+
+// BindingResponseInput is an input type that accepts BindingResponseArgs and BindingResponseOutput values.
+// You can construct a concrete instance of `BindingResponseInput` via:
+//
+//          BindingResponseArgs{...}
+type BindingResponseInput interface {
+	pulumi.Input
+
+	ToBindingResponseOutput() BindingResponseOutput
+	ToBindingResponseOutputWithContext(context.Context) BindingResponseOutput
+}
+
+// Associates members with a role.
+type BindingResponseArgs struct {
+	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+	Condition ExprResponseInput `pulumi:"condition"`
+	// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (BindingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutput() BindingResponseOutput {
+	return i.ToBindingResponseOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArgs) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseOutput)
+}
+
+// BindingResponseArrayInput is an input type that accepts BindingResponseArray and BindingResponseArrayOutput values.
+// You can construct a concrete instance of `BindingResponseArrayInput` via:
+//
+//          BindingResponseArray{ BindingResponseArgs{...} }
+type BindingResponseArrayInput interface {
+	pulumi.Input
+
+	ToBindingResponseArrayOutput() BindingResponseArrayOutput
+	ToBindingResponseArrayOutputWithContext(context.Context) BindingResponseArrayOutput
+}
+
+type BindingResponseArray []BindingResponseInput
+
+func (BindingResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return i.ToBindingResponseArrayOutputWithContext(context.Background())
+}
+
+func (i BindingResponseArray) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingResponseArrayOutput)
+}
+
+// Associates members with a role.
+type BindingResponseOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
+	return o
+}
+
+func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
+	return o
+}
+
+// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
+func (o BindingResponseOutput) Condition() ExprResponseOutput {
+	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
+}
+
+// Specifies the identities requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Role that is assigned to members. For example, roles/viewer, roles/editor, or roles/owner.
+func (o BindingResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type BindingResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BindingResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
+	return o
+}
+
+func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
+		return vs[0].([]BindingResponse)[vs[1].(int)]
+	}).(BindingResponseOutput)
 }
 
 // The cluster config.
@@ -1134,142 +1858,542 @@ func (o ClusterConfigPtrOutput) WorkerConfig() InstanceGroupConfigPtrOutput {
 	}).(InstanceGroupConfigPtrOutput)
 }
 
+// The cluster config.
+type ClusterConfigResponse struct {
+	// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+	AutoscalingConfig AutoscalingConfigResponse `pulumi:"autoscalingConfig"`
+	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+	ConfigBucket string `pulumi:"configBucket"`
+	// Optional. Encryption settings for the cluster.
+	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
+	// Optional. Port/endpoint configuration for this cluster
+	EndpointConfig EndpointConfigResponse `pulumi:"endpointConfig"`
+	// Optional. The shared Compute Engine config settings for all instances in a cluster.
+	GceClusterConfig GceClusterConfigResponse `pulumi:"gceClusterConfig"`
+	// Optional. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+	GkeClusterConfig GkeClusterConfigResponse `pulumi:"gkeClusterConfig"`
+	// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1beta2/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi
+	InitializationActions []NodeInitializationActionResponse `pulumi:"initializationActions"`
+	// Optional. The config setting for auto delete cluster schedule.
+	LifecycleConfig LifecycleConfigResponse `pulumi:"lifecycleConfig"`
+	// Optional. The Compute Engine config settings for the master instance in a cluster.
+	MasterConfig InstanceGroupConfigResponse `pulumi:"masterConfig"`
+	// Optional. Metastore configuration.
+	MetastoreConfig MetastoreConfigResponse `pulumi:"metastoreConfig"`
+	// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+	SecondaryWorkerConfig InstanceGroupConfigResponse `pulumi:"secondaryWorkerConfig"`
+	// Optional. Security related configuration.
+	SecurityConfig SecurityConfigResponse `pulumi:"securityConfig"`
+	// Optional. The config settings for software inside the cluster.
+	SoftwareConfig SoftwareConfigResponse `pulumi:"softwareConfig"`
+	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+	TempBucket string `pulumi:"tempBucket"`
+	// Optional. The Compute Engine config settings for worker instances in a cluster.
+	WorkerConfig InstanceGroupConfigResponse `pulumi:"workerConfig"`
+}
+
+// ClusterConfigResponseInput is an input type that accepts ClusterConfigResponseArgs and ClusterConfigResponseOutput values.
+// You can construct a concrete instance of `ClusterConfigResponseInput` via:
+//
+//          ClusterConfigResponseArgs{...}
+type ClusterConfigResponseInput interface {
+	pulumi.Input
+
+	ToClusterConfigResponseOutput() ClusterConfigResponseOutput
+	ToClusterConfigResponseOutputWithContext(context.Context) ClusterConfigResponseOutput
+}
+
+// The cluster config.
+type ClusterConfigResponseArgs struct {
+	// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+	AutoscalingConfig AutoscalingConfigResponseInput `pulumi:"autoscalingConfig"`
+	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+	ConfigBucket pulumi.StringInput `pulumi:"configBucket"`
+	// Optional. Encryption settings for the cluster.
+	EncryptionConfig EncryptionConfigResponseInput `pulumi:"encryptionConfig"`
+	// Optional. Port/endpoint configuration for this cluster
+	EndpointConfig EndpointConfigResponseInput `pulumi:"endpointConfig"`
+	// Optional. The shared Compute Engine config settings for all instances in a cluster.
+	GceClusterConfig GceClusterConfigResponseInput `pulumi:"gceClusterConfig"`
+	// Optional. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+	GkeClusterConfig GkeClusterConfigResponseInput `pulumi:"gkeClusterConfig"`
+	// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1beta2/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi
+	InitializationActions NodeInitializationActionResponseArrayInput `pulumi:"initializationActions"`
+	// Optional. The config setting for auto delete cluster schedule.
+	LifecycleConfig LifecycleConfigResponseInput `pulumi:"lifecycleConfig"`
+	// Optional. The Compute Engine config settings for the master instance in a cluster.
+	MasterConfig InstanceGroupConfigResponseInput `pulumi:"masterConfig"`
+	// Optional. Metastore configuration.
+	MetastoreConfig MetastoreConfigResponseInput `pulumi:"metastoreConfig"`
+	// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+	SecondaryWorkerConfig InstanceGroupConfigResponseInput `pulumi:"secondaryWorkerConfig"`
+	// Optional. Security related configuration.
+	SecurityConfig SecurityConfigResponseInput `pulumi:"securityConfig"`
+	// Optional. The config settings for software inside the cluster.
+	SoftwareConfig SoftwareConfigResponseInput `pulumi:"softwareConfig"`
+	// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+	TempBucket pulumi.StringInput `pulumi:"tempBucket"`
+	// Optional. The Compute Engine config settings for worker instances in a cluster.
+	WorkerConfig InstanceGroupConfigResponseInput `pulumi:"workerConfig"`
+}
+
+func (ClusterConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterConfigResponse)(nil)).Elem()
+}
+
+func (i ClusterConfigResponseArgs) ToClusterConfigResponseOutput() ClusterConfigResponseOutput {
+	return i.ToClusterConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ClusterConfigResponseArgs) ToClusterConfigResponseOutputWithContext(ctx context.Context) ClusterConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigResponseOutput)
+}
+
+func (i ClusterConfigResponseArgs) ToClusterConfigResponsePtrOutput() ClusterConfigResponsePtrOutput {
+	return i.ToClusterConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterConfigResponseArgs) ToClusterConfigResponsePtrOutputWithContext(ctx context.Context) ClusterConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigResponseOutput).ToClusterConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ClusterConfigResponsePtrInput is an input type that accepts ClusterConfigResponseArgs, ClusterConfigResponsePtr and ClusterConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ClusterConfigResponsePtrInput` via:
+//
+//          ClusterConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToClusterConfigResponsePtrOutput() ClusterConfigResponsePtrOutput
+	ToClusterConfigResponsePtrOutputWithContext(context.Context) ClusterConfigResponsePtrOutput
+}
+
+type clusterConfigResponsePtrType ClusterConfigResponseArgs
+
+func ClusterConfigResponsePtr(v *ClusterConfigResponseArgs) ClusterConfigResponsePtrInput {
+	return (*clusterConfigResponsePtrType)(v)
+}
+
+func (*clusterConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterConfigResponse)(nil)).Elem()
+}
+
+func (i *clusterConfigResponsePtrType) ToClusterConfigResponsePtrOutput() ClusterConfigResponsePtrOutput {
+	return i.ToClusterConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterConfigResponsePtrType) ToClusterConfigResponsePtrOutputWithContext(ctx context.Context) ClusterConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterConfigResponsePtrOutput)
+}
+
+// The cluster config.
+type ClusterConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ClusterConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterConfigResponse)(nil)).Elem()
+}
+
+func (o ClusterConfigResponseOutput) ToClusterConfigResponseOutput() ClusterConfigResponseOutput {
+	return o
+}
+
+func (o ClusterConfigResponseOutput) ToClusterConfigResponseOutputWithContext(ctx context.Context) ClusterConfigResponseOutput {
+	return o
+}
+
+func (o ClusterConfigResponseOutput) ToClusterConfigResponsePtrOutput() ClusterConfigResponsePtrOutput {
+	return o.ToClusterConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterConfigResponseOutput) ToClusterConfigResponsePtrOutputWithContext(ctx context.Context) ClusterConfigResponsePtrOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) *ClusterConfigResponse {
+		return &v
+	}).(ClusterConfigResponsePtrOutput)
+}
+
+// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+func (o ClusterConfigResponseOutput) AutoscalingConfig() AutoscalingConfigResponseOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) AutoscalingConfigResponse { return v.AutoscalingConfig }).(AutoscalingConfigResponseOutput)
+}
+
+// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+func (o ClusterConfigResponseOutput) ConfigBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) string { return v.ConfigBucket }).(pulumi.StringOutput)
+}
+
+// Optional. Encryption settings for the cluster.
+func (o ClusterConfigResponseOutput) EncryptionConfig() EncryptionConfigResponseOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) EncryptionConfigResponse { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
+}
+
+// Optional. Port/endpoint configuration for this cluster
+func (o ClusterConfigResponseOutput) EndpointConfig() EndpointConfigResponseOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) EndpointConfigResponse { return v.EndpointConfig }).(EndpointConfigResponseOutput)
+}
+
+// Optional. The shared Compute Engine config settings for all instances in a cluster.
+func (o ClusterConfigResponseOutput) GceClusterConfig() GceClusterConfigResponseOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) GceClusterConfigResponse { return v.GceClusterConfig }).(GceClusterConfigResponseOutput)
+}
+
+// Optional. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+func (o ClusterConfigResponseOutput) GkeClusterConfig() GkeClusterConfigResponseOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) GkeClusterConfigResponse { return v.GkeClusterConfig }).(GkeClusterConfigResponseOutput)
+}
+
+// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1beta2/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi
+func (o ClusterConfigResponseOutput) InitializationActions() NodeInitializationActionResponseArrayOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) []NodeInitializationActionResponse { return v.InitializationActions }).(NodeInitializationActionResponseArrayOutput)
+}
+
+// Optional. The config setting for auto delete cluster schedule.
+func (o ClusterConfigResponseOutput) LifecycleConfig() LifecycleConfigResponseOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) LifecycleConfigResponse { return v.LifecycleConfig }).(LifecycleConfigResponseOutput)
+}
+
+// Optional. The Compute Engine config settings for the master instance in a cluster.
+func (o ClusterConfigResponseOutput) MasterConfig() InstanceGroupConfigResponseOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) InstanceGroupConfigResponse { return v.MasterConfig }).(InstanceGroupConfigResponseOutput)
+}
+
+// Optional. Metastore configuration.
+func (o ClusterConfigResponseOutput) MetastoreConfig() MetastoreConfigResponseOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) MetastoreConfigResponse { return v.MetastoreConfig }).(MetastoreConfigResponseOutput)
+}
+
+// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+func (o ClusterConfigResponseOutput) SecondaryWorkerConfig() InstanceGroupConfigResponseOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) InstanceGroupConfigResponse { return v.SecondaryWorkerConfig }).(InstanceGroupConfigResponseOutput)
+}
+
+// Optional. Security related configuration.
+func (o ClusterConfigResponseOutput) SecurityConfig() SecurityConfigResponseOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) SecurityConfigResponse { return v.SecurityConfig }).(SecurityConfigResponseOutput)
+}
+
+// Optional. The config settings for software inside the cluster.
+func (o ClusterConfigResponseOutput) SoftwareConfig() SoftwareConfigResponseOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) SoftwareConfigResponse { return v.SoftwareConfig }).(SoftwareConfigResponseOutput)
+}
+
+// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+func (o ClusterConfigResponseOutput) TempBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) string { return v.TempBucket }).(pulumi.StringOutput)
+}
+
+// Optional. The Compute Engine config settings for worker instances in a cluster.
+func (o ClusterConfigResponseOutput) WorkerConfig() InstanceGroupConfigResponseOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) InstanceGroupConfigResponse { return v.WorkerConfig }).(InstanceGroupConfigResponseOutput)
+}
+
+type ClusterConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterConfigResponse)(nil)).Elem()
+}
+
+func (o ClusterConfigResponsePtrOutput) ToClusterConfigResponsePtrOutput() ClusterConfigResponsePtrOutput {
+	return o
+}
+
+func (o ClusterConfigResponsePtrOutput) ToClusterConfigResponsePtrOutputWithContext(ctx context.Context) ClusterConfigResponsePtrOutput {
+	return o
+}
+
+func (o ClusterConfigResponsePtrOutput) Elem() ClusterConfigResponseOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) ClusterConfigResponse { return *v }).(ClusterConfigResponseOutput)
+}
+
+// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+func (o ClusterConfigResponsePtrOutput) AutoscalingConfig() AutoscalingConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) *AutoscalingConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AutoscalingConfig
+	}).(AutoscalingConfigResponsePtrOutput)
+}
+
+// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+func (o ClusterConfigResponsePtrOutput) ConfigBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Encryption settings for the cluster.
+func (o ClusterConfigResponsePtrOutput) EncryptionConfig() EncryptionConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) *EncryptionConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.EncryptionConfig
+	}).(EncryptionConfigResponsePtrOutput)
+}
+
+// Optional. Port/endpoint configuration for this cluster
+func (o ClusterConfigResponsePtrOutput) EndpointConfig() EndpointConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) *EndpointConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointConfig
+	}).(EndpointConfigResponsePtrOutput)
+}
+
+// Optional. The shared Compute Engine config settings for all instances in a cluster.
+func (o ClusterConfigResponsePtrOutput) GceClusterConfig() GceClusterConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) *GceClusterConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GceClusterConfig
+	}).(GceClusterConfigResponsePtrOutput)
+}
+
+// Optional. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+func (o ClusterConfigResponsePtrOutput) GkeClusterConfig() GkeClusterConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) *GkeClusterConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GkeClusterConfig
+	}).(GkeClusterConfigResponsePtrOutput)
+}
+
+// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1beta2/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi
+func (o ClusterConfigResponsePtrOutput) InitializationActions() NodeInitializationActionResponseArrayOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) []NodeInitializationActionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.InitializationActions
+	}).(NodeInitializationActionResponseArrayOutput)
+}
+
+// Optional. The config setting for auto delete cluster schedule.
+func (o ClusterConfigResponsePtrOutput) LifecycleConfig() LifecycleConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) *LifecycleConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LifecycleConfig
+	}).(LifecycleConfigResponsePtrOutput)
+}
+
+// Optional. The Compute Engine config settings for the master instance in a cluster.
+func (o ClusterConfigResponsePtrOutput) MasterConfig() InstanceGroupConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) *InstanceGroupConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MasterConfig
+	}).(InstanceGroupConfigResponsePtrOutput)
+}
+
+// Optional. Metastore configuration.
+func (o ClusterConfigResponsePtrOutput) MetastoreConfig() MetastoreConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) *MetastoreConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MetastoreConfig
+	}).(MetastoreConfigResponsePtrOutput)
+}
+
+// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+func (o ClusterConfigResponsePtrOutput) SecondaryWorkerConfig() InstanceGroupConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) *InstanceGroupConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.SecondaryWorkerConfig
+	}).(InstanceGroupConfigResponsePtrOutput)
+}
+
+// Optional. Security related configuration.
+func (o ClusterConfigResponsePtrOutput) SecurityConfig() SecurityConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) *SecurityConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.SecurityConfig
+	}).(SecurityConfigResponsePtrOutput)
+}
+
+// Optional. The config settings for software inside the cluster.
+func (o ClusterConfigResponsePtrOutput) SoftwareConfig() SoftwareConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) *SoftwareConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.SoftwareConfig
+	}).(SoftwareConfigResponsePtrOutput)
+}
+
+// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.
+func (o ClusterConfigResponsePtrOutput) TempBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TempBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Compute Engine config settings for worker instances in a cluster.
+func (o ClusterConfigResponsePtrOutput) WorkerConfig() InstanceGroupConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterConfigResponse) *InstanceGroupConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkerConfig
+	}).(InstanceGroupConfigResponsePtrOutput)
+}
+
 // Contains cluster daemon metrics, such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
-type ClusterMetrics struct {
+type ClusterMetricsResponse struct {
 	// The HDFS metrics.
 	HdfsMetrics map[string]string `pulumi:"hdfsMetrics"`
 	// The YARN metrics.
 	YarnMetrics map[string]string `pulumi:"yarnMetrics"`
 }
 
-// ClusterMetricsInput is an input type that accepts ClusterMetricsArgs and ClusterMetricsOutput values.
-// You can construct a concrete instance of `ClusterMetricsInput` via:
+// ClusterMetricsResponseInput is an input type that accepts ClusterMetricsResponseArgs and ClusterMetricsResponseOutput values.
+// You can construct a concrete instance of `ClusterMetricsResponseInput` via:
 //
-//          ClusterMetricsArgs{...}
-type ClusterMetricsInput interface {
+//          ClusterMetricsResponseArgs{...}
+type ClusterMetricsResponseInput interface {
 	pulumi.Input
 
-	ToClusterMetricsOutput() ClusterMetricsOutput
-	ToClusterMetricsOutputWithContext(context.Context) ClusterMetricsOutput
+	ToClusterMetricsResponseOutput() ClusterMetricsResponseOutput
+	ToClusterMetricsResponseOutputWithContext(context.Context) ClusterMetricsResponseOutput
 }
 
 // Contains cluster daemon metrics, such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
-type ClusterMetricsArgs struct {
+type ClusterMetricsResponseArgs struct {
 	// The HDFS metrics.
 	HdfsMetrics pulumi.StringMapInput `pulumi:"hdfsMetrics"`
 	// The YARN metrics.
 	YarnMetrics pulumi.StringMapInput `pulumi:"yarnMetrics"`
 }
 
-func (ClusterMetricsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterMetrics)(nil)).Elem()
+func (ClusterMetricsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMetricsResponse)(nil)).Elem()
 }
 
-func (i ClusterMetricsArgs) ToClusterMetricsOutput() ClusterMetricsOutput {
-	return i.ToClusterMetricsOutputWithContext(context.Background())
+func (i ClusterMetricsResponseArgs) ToClusterMetricsResponseOutput() ClusterMetricsResponseOutput {
+	return i.ToClusterMetricsResponseOutputWithContext(context.Background())
 }
 
-func (i ClusterMetricsArgs) ToClusterMetricsOutputWithContext(ctx context.Context) ClusterMetricsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterMetricsOutput)
+func (i ClusterMetricsResponseArgs) ToClusterMetricsResponseOutputWithContext(ctx context.Context) ClusterMetricsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMetricsResponseOutput)
 }
 
-func (i ClusterMetricsArgs) ToClusterMetricsPtrOutput() ClusterMetricsPtrOutput {
-	return i.ToClusterMetricsPtrOutputWithContext(context.Background())
+func (i ClusterMetricsResponseArgs) ToClusterMetricsResponsePtrOutput() ClusterMetricsResponsePtrOutput {
+	return i.ToClusterMetricsResponsePtrOutputWithContext(context.Background())
 }
 
-func (i ClusterMetricsArgs) ToClusterMetricsPtrOutputWithContext(ctx context.Context) ClusterMetricsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterMetricsOutput).ToClusterMetricsPtrOutputWithContext(ctx)
+func (i ClusterMetricsResponseArgs) ToClusterMetricsResponsePtrOutputWithContext(ctx context.Context) ClusterMetricsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMetricsResponseOutput).ToClusterMetricsResponsePtrOutputWithContext(ctx)
 }
 
-// ClusterMetricsPtrInput is an input type that accepts ClusterMetricsArgs, ClusterMetricsPtr and ClusterMetricsPtrOutput values.
-// You can construct a concrete instance of `ClusterMetricsPtrInput` via:
+// ClusterMetricsResponsePtrInput is an input type that accepts ClusterMetricsResponseArgs, ClusterMetricsResponsePtr and ClusterMetricsResponsePtrOutput values.
+// You can construct a concrete instance of `ClusterMetricsResponsePtrInput` via:
 //
-//          ClusterMetricsArgs{...}
+//          ClusterMetricsResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type ClusterMetricsPtrInput interface {
+type ClusterMetricsResponsePtrInput interface {
 	pulumi.Input
 
-	ToClusterMetricsPtrOutput() ClusterMetricsPtrOutput
-	ToClusterMetricsPtrOutputWithContext(context.Context) ClusterMetricsPtrOutput
+	ToClusterMetricsResponsePtrOutput() ClusterMetricsResponsePtrOutput
+	ToClusterMetricsResponsePtrOutputWithContext(context.Context) ClusterMetricsResponsePtrOutput
 }
 
-type clusterMetricsPtrType ClusterMetricsArgs
+type clusterMetricsResponsePtrType ClusterMetricsResponseArgs
 
-func ClusterMetricsPtr(v *ClusterMetricsArgs) ClusterMetricsPtrInput {
-	return (*clusterMetricsPtrType)(v)
+func ClusterMetricsResponsePtr(v *ClusterMetricsResponseArgs) ClusterMetricsResponsePtrInput {
+	return (*clusterMetricsResponsePtrType)(v)
 }
 
-func (*clusterMetricsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterMetrics)(nil)).Elem()
+func (*clusterMetricsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMetricsResponse)(nil)).Elem()
 }
 
-func (i *clusterMetricsPtrType) ToClusterMetricsPtrOutput() ClusterMetricsPtrOutput {
-	return i.ToClusterMetricsPtrOutputWithContext(context.Background())
+func (i *clusterMetricsResponsePtrType) ToClusterMetricsResponsePtrOutput() ClusterMetricsResponsePtrOutput {
+	return i.ToClusterMetricsResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *clusterMetricsPtrType) ToClusterMetricsPtrOutputWithContext(ctx context.Context) ClusterMetricsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterMetricsPtrOutput)
+func (i *clusterMetricsResponsePtrType) ToClusterMetricsResponsePtrOutputWithContext(ctx context.Context) ClusterMetricsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMetricsResponsePtrOutput)
 }
 
 // Contains cluster daemon metrics, such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
-type ClusterMetricsOutput struct{ *pulumi.OutputState }
+type ClusterMetricsResponseOutput struct{ *pulumi.OutputState }
 
-func (ClusterMetricsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterMetrics)(nil)).Elem()
+func (ClusterMetricsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMetricsResponse)(nil)).Elem()
 }
 
-func (o ClusterMetricsOutput) ToClusterMetricsOutput() ClusterMetricsOutput {
+func (o ClusterMetricsResponseOutput) ToClusterMetricsResponseOutput() ClusterMetricsResponseOutput {
 	return o
 }
 
-func (o ClusterMetricsOutput) ToClusterMetricsOutputWithContext(ctx context.Context) ClusterMetricsOutput {
+func (o ClusterMetricsResponseOutput) ToClusterMetricsResponseOutputWithContext(ctx context.Context) ClusterMetricsResponseOutput {
 	return o
 }
 
-func (o ClusterMetricsOutput) ToClusterMetricsPtrOutput() ClusterMetricsPtrOutput {
-	return o.ToClusterMetricsPtrOutputWithContext(context.Background())
+func (o ClusterMetricsResponseOutput) ToClusterMetricsResponsePtrOutput() ClusterMetricsResponsePtrOutput {
+	return o.ToClusterMetricsResponsePtrOutputWithContext(context.Background())
 }
 
-func (o ClusterMetricsOutput) ToClusterMetricsPtrOutputWithContext(ctx context.Context) ClusterMetricsPtrOutput {
-	return o.ApplyT(func(v ClusterMetrics) *ClusterMetrics {
+func (o ClusterMetricsResponseOutput) ToClusterMetricsResponsePtrOutputWithContext(ctx context.Context) ClusterMetricsResponsePtrOutput {
+	return o.ApplyT(func(v ClusterMetricsResponse) *ClusterMetricsResponse {
 		return &v
-	}).(ClusterMetricsPtrOutput)
+	}).(ClusterMetricsResponsePtrOutput)
 }
 
 // The HDFS metrics.
-func (o ClusterMetricsOutput) HdfsMetrics() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ClusterMetrics) map[string]string { return v.HdfsMetrics }).(pulumi.StringMapOutput)
+func (o ClusterMetricsResponseOutput) HdfsMetrics() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ClusterMetricsResponse) map[string]string { return v.HdfsMetrics }).(pulumi.StringMapOutput)
 }
 
 // The YARN metrics.
-func (o ClusterMetricsOutput) YarnMetrics() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ClusterMetrics) map[string]string { return v.YarnMetrics }).(pulumi.StringMapOutput)
+func (o ClusterMetricsResponseOutput) YarnMetrics() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ClusterMetricsResponse) map[string]string { return v.YarnMetrics }).(pulumi.StringMapOutput)
 }
 
-type ClusterMetricsPtrOutput struct{ *pulumi.OutputState }
+type ClusterMetricsResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (ClusterMetricsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterMetrics)(nil)).Elem()
+func (ClusterMetricsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterMetricsResponse)(nil)).Elem()
 }
 
-func (o ClusterMetricsPtrOutput) ToClusterMetricsPtrOutput() ClusterMetricsPtrOutput {
+func (o ClusterMetricsResponsePtrOutput) ToClusterMetricsResponsePtrOutput() ClusterMetricsResponsePtrOutput {
 	return o
 }
 
-func (o ClusterMetricsPtrOutput) ToClusterMetricsPtrOutputWithContext(ctx context.Context) ClusterMetricsPtrOutput {
+func (o ClusterMetricsResponsePtrOutput) ToClusterMetricsResponsePtrOutputWithContext(ctx context.Context) ClusterMetricsResponsePtrOutput {
 	return o
 }
 
-func (o ClusterMetricsPtrOutput) Elem() ClusterMetricsOutput {
-	return o.ApplyT(func(v *ClusterMetrics) ClusterMetrics { return *v }).(ClusterMetricsOutput)
+func (o ClusterMetricsResponsePtrOutput) Elem() ClusterMetricsResponseOutput {
+	return o.ApplyT(func(v *ClusterMetricsResponse) ClusterMetricsResponse { return *v }).(ClusterMetricsResponseOutput)
 }
 
 // The HDFS metrics.
-func (o ClusterMetricsPtrOutput) HdfsMetrics() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ClusterMetrics) map[string]string {
+func (o ClusterMetricsResponsePtrOutput) HdfsMetrics() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterMetricsResponse) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -1278,8 +2402,8 @@ func (o ClusterMetricsPtrOutput) HdfsMetrics() pulumi.StringMapOutput {
 }
 
 // The YARN metrics.
-func (o ClusterMetricsPtrOutput) YarnMetrics() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ClusterMetrics) map[string]string {
+func (o ClusterMetricsResponsePtrOutput) YarnMetrics() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterMetricsResponse) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -1440,240 +2564,393 @@ func (o ClusterSelectorPtrOutput) Zone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The status of a cluster and its instances.
-type ClusterStatus struct {
-	// Output only. Optional details of cluster's state.
-	Detail *string `pulumi:"detail"`
-	// Output only. The cluster's state.
-	State *string `pulumi:"state"`
-	// Output only. Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-	StateStartTime *string `pulumi:"stateStartTime"`
-	// Output only. Additional state information that includes status reported by the agent.
-	Substate *string `pulumi:"substate"`
+// A selector that chooses target cluster for jobs based on metadata.
+type ClusterSelectorResponse struct {
+	// Required. The cluster labels. Cluster must have all labels to match.
+	ClusterLabels map[string]string `pulumi:"clusterLabels"`
+	// Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
+	Zone string `pulumi:"zone"`
 }
 
-// ClusterStatusInput is an input type that accepts ClusterStatusArgs and ClusterStatusOutput values.
-// You can construct a concrete instance of `ClusterStatusInput` via:
+// ClusterSelectorResponseInput is an input type that accepts ClusterSelectorResponseArgs and ClusterSelectorResponseOutput values.
+// You can construct a concrete instance of `ClusterSelectorResponseInput` via:
 //
-//          ClusterStatusArgs{...}
-type ClusterStatusInput interface {
+//          ClusterSelectorResponseArgs{...}
+type ClusterSelectorResponseInput interface {
 	pulumi.Input
 
-	ToClusterStatusOutput() ClusterStatusOutput
-	ToClusterStatusOutputWithContext(context.Context) ClusterStatusOutput
+	ToClusterSelectorResponseOutput() ClusterSelectorResponseOutput
+	ToClusterSelectorResponseOutputWithContext(context.Context) ClusterSelectorResponseOutput
 }
 
-// The status of a cluster and its instances.
-type ClusterStatusArgs struct {
-	// Output only. Optional details of cluster's state.
-	Detail pulumi.StringPtrInput `pulumi:"detail"`
-	// Output only. The cluster's state.
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// Output only. Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-	StateStartTime pulumi.StringPtrInput `pulumi:"stateStartTime"`
-	// Output only. Additional state information that includes status reported by the agent.
-	Substate pulumi.StringPtrInput `pulumi:"substate"`
+// A selector that chooses target cluster for jobs based on metadata.
+type ClusterSelectorResponseArgs struct {
+	// Required. The cluster labels. Cluster must have all labels to match.
+	ClusterLabels pulumi.StringMapInput `pulumi:"clusterLabels"`
+	// Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
+	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
-func (ClusterStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterStatus)(nil)).Elem()
+func (ClusterSelectorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSelectorResponse)(nil)).Elem()
 }
 
-func (i ClusterStatusArgs) ToClusterStatusOutput() ClusterStatusOutput {
-	return i.ToClusterStatusOutputWithContext(context.Background())
+func (i ClusterSelectorResponseArgs) ToClusterSelectorResponseOutput() ClusterSelectorResponseOutput {
+	return i.ToClusterSelectorResponseOutputWithContext(context.Background())
 }
 
-func (i ClusterStatusArgs) ToClusterStatusOutputWithContext(ctx context.Context) ClusterStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterStatusOutput)
+func (i ClusterSelectorResponseArgs) ToClusterSelectorResponseOutputWithContext(ctx context.Context) ClusterSelectorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSelectorResponseOutput)
 }
 
-func (i ClusterStatusArgs) ToClusterStatusPtrOutput() ClusterStatusPtrOutput {
-	return i.ToClusterStatusPtrOutputWithContext(context.Background())
+func (i ClusterSelectorResponseArgs) ToClusterSelectorResponsePtrOutput() ClusterSelectorResponsePtrOutput {
+	return i.ToClusterSelectorResponsePtrOutputWithContext(context.Background())
 }
 
-func (i ClusterStatusArgs) ToClusterStatusPtrOutputWithContext(ctx context.Context) ClusterStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterStatusOutput).ToClusterStatusPtrOutputWithContext(ctx)
+func (i ClusterSelectorResponseArgs) ToClusterSelectorResponsePtrOutputWithContext(ctx context.Context) ClusterSelectorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSelectorResponseOutput).ToClusterSelectorResponsePtrOutputWithContext(ctx)
 }
 
-// ClusterStatusPtrInput is an input type that accepts ClusterStatusArgs, ClusterStatusPtr and ClusterStatusPtrOutput values.
-// You can construct a concrete instance of `ClusterStatusPtrInput` via:
+// ClusterSelectorResponsePtrInput is an input type that accepts ClusterSelectorResponseArgs, ClusterSelectorResponsePtr and ClusterSelectorResponsePtrOutput values.
+// You can construct a concrete instance of `ClusterSelectorResponsePtrInput` via:
 //
-//          ClusterStatusArgs{...}
+//          ClusterSelectorResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type ClusterStatusPtrInput interface {
+type ClusterSelectorResponsePtrInput interface {
 	pulumi.Input
 
-	ToClusterStatusPtrOutput() ClusterStatusPtrOutput
-	ToClusterStatusPtrOutputWithContext(context.Context) ClusterStatusPtrOutput
+	ToClusterSelectorResponsePtrOutput() ClusterSelectorResponsePtrOutput
+	ToClusterSelectorResponsePtrOutputWithContext(context.Context) ClusterSelectorResponsePtrOutput
 }
 
-type clusterStatusPtrType ClusterStatusArgs
+type clusterSelectorResponsePtrType ClusterSelectorResponseArgs
 
-func ClusterStatusPtr(v *ClusterStatusArgs) ClusterStatusPtrInput {
-	return (*clusterStatusPtrType)(v)
+func ClusterSelectorResponsePtr(v *ClusterSelectorResponseArgs) ClusterSelectorResponsePtrInput {
+	return (*clusterSelectorResponsePtrType)(v)
 }
 
-func (*clusterStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterStatus)(nil)).Elem()
+func (*clusterSelectorResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSelectorResponse)(nil)).Elem()
 }
 
-func (i *clusterStatusPtrType) ToClusterStatusPtrOutput() ClusterStatusPtrOutput {
-	return i.ToClusterStatusPtrOutputWithContext(context.Background())
+func (i *clusterSelectorResponsePtrType) ToClusterSelectorResponsePtrOutput() ClusterSelectorResponsePtrOutput {
+	return i.ToClusterSelectorResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *clusterStatusPtrType) ToClusterStatusPtrOutputWithContext(ctx context.Context) ClusterStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterStatusPtrOutput)
+func (i *clusterSelectorResponsePtrType) ToClusterSelectorResponsePtrOutputWithContext(ctx context.Context) ClusterSelectorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSelectorResponsePtrOutput)
 }
 
-// ClusterStatusArrayInput is an input type that accepts ClusterStatusArray and ClusterStatusArrayOutput values.
-// You can construct a concrete instance of `ClusterStatusArrayInput` via:
-//
-//          ClusterStatusArray{ ClusterStatusArgs{...} }
-type ClusterStatusArrayInput interface {
-	pulumi.Input
+// A selector that chooses target cluster for jobs based on metadata.
+type ClusterSelectorResponseOutput struct{ *pulumi.OutputState }
 
-	ToClusterStatusArrayOutput() ClusterStatusArrayOutput
-	ToClusterStatusArrayOutputWithContext(context.Context) ClusterStatusArrayOutput
+func (ClusterSelectorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSelectorResponse)(nil)).Elem()
 }
 
-type ClusterStatusArray []ClusterStatusInput
-
-func (ClusterStatusArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterStatus)(nil)).Elem()
+func (o ClusterSelectorResponseOutput) ToClusterSelectorResponseOutput() ClusterSelectorResponseOutput {
+	return o
 }
 
-func (i ClusterStatusArray) ToClusterStatusArrayOutput() ClusterStatusArrayOutput {
-	return i.ToClusterStatusArrayOutputWithContext(context.Background())
+func (o ClusterSelectorResponseOutput) ToClusterSelectorResponseOutputWithContext(ctx context.Context) ClusterSelectorResponseOutput {
+	return o
 }
 
-func (i ClusterStatusArray) ToClusterStatusArrayOutputWithContext(ctx context.Context) ClusterStatusArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterStatusArrayOutput)
+func (o ClusterSelectorResponseOutput) ToClusterSelectorResponsePtrOutput() ClusterSelectorResponsePtrOutput {
+	return o.ToClusterSelectorResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterSelectorResponseOutput) ToClusterSelectorResponsePtrOutputWithContext(ctx context.Context) ClusterSelectorResponsePtrOutput {
+	return o.ApplyT(func(v ClusterSelectorResponse) *ClusterSelectorResponse {
+		return &v
+	}).(ClusterSelectorResponsePtrOutput)
+}
+
+// Required. The cluster labels. Cluster must have all labels to match.
+func (o ClusterSelectorResponseOutput) ClusterLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ClusterSelectorResponse) map[string]string { return v.ClusterLabels }).(pulumi.StringMapOutput)
+}
+
+// Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
+func (o ClusterSelectorResponseOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterSelectorResponse) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type ClusterSelectorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterSelectorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSelectorResponse)(nil)).Elem()
+}
+
+func (o ClusterSelectorResponsePtrOutput) ToClusterSelectorResponsePtrOutput() ClusterSelectorResponsePtrOutput {
+	return o
+}
+
+func (o ClusterSelectorResponsePtrOutput) ToClusterSelectorResponsePtrOutputWithContext(ctx context.Context) ClusterSelectorResponsePtrOutput {
+	return o
+}
+
+func (o ClusterSelectorResponsePtrOutput) Elem() ClusterSelectorResponseOutput {
+	return o.ApplyT(func(v *ClusterSelectorResponse) ClusterSelectorResponse { return *v }).(ClusterSelectorResponseOutput)
+}
+
+// Required. The cluster labels. Cluster must have all labels to match.
+func (o ClusterSelectorResponsePtrOutput) ClusterLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterSelectorResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterLabels
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
+func (o ClusterSelectorResponsePtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterSelectorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Zone
+	}).(pulumi.StringPtrOutput)
 }
 
 // The status of a cluster and its instances.
-type ClusterStatusOutput struct{ *pulumi.OutputState }
-
-func (ClusterStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterStatus)(nil)).Elem()
+type ClusterStatusResponse struct {
+	// Optional details of cluster's state.
+	Detail string `pulumi:"detail"`
+	// The cluster's state.
+	State string `pulumi:"state"`
+	// Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	StateStartTime string `pulumi:"stateStartTime"`
+	// Additional state information that includes status reported by the agent.
+	Substate string `pulumi:"substate"`
 }
 
-func (o ClusterStatusOutput) ToClusterStatusOutput() ClusterStatusOutput {
+// ClusterStatusResponseInput is an input type that accepts ClusterStatusResponseArgs and ClusterStatusResponseOutput values.
+// You can construct a concrete instance of `ClusterStatusResponseInput` via:
+//
+//          ClusterStatusResponseArgs{...}
+type ClusterStatusResponseInput interface {
+	pulumi.Input
+
+	ToClusterStatusResponseOutput() ClusterStatusResponseOutput
+	ToClusterStatusResponseOutputWithContext(context.Context) ClusterStatusResponseOutput
+}
+
+// The status of a cluster and its instances.
+type ClusterStatusResponseArgs struct {
+	// Optional details of cluster's state.
+	Detail pulumi.StringInput `pulumi:"detail"`
+	// The cluster's state.
+	State pulumi.StringInput `pulumi:"state"`
+	// Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	StateStartTime pulumi.StringInput `pulumi:"stateStartTime"`
+	// Additional state information that includes status reported by the agent.
+	Substate pulumi.StringInput `pulumi:"substate"`
+}
+
+func (ClusterStatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStatusResponse)(nil)).Elem()
+}
+
+func (i ClusterStatusResponseArgs) ToClusterStatusResponseOutput() ClusterStatusResponseOutput {
+	return i.ToClusterStatusResponseOutputWithContext(context.Background())
+}
+
+func (i ClusterStatusResponseArgs) ToClusterStatusResponseOutputWithContext(ctx context.Context) ClusterStatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStatusResponseOutput)
+}
+
+func (i ClusterStatusResponseArgs) ToClusterStatusResponsePtrOutput() ClusterStatusResponsePtrOutput {
+	return i.ToClusterStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterStatusResponseArgs) ToClusterStatusResponsePtrOutputWithContext(ctx context.Context) ClusterStatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStatusResponseOutput).ToClusterStatusResponsePtrOutputWithContext(ctx)
+}
+
+// ClusterStatusResponsePtrInput is an input type that accepts ClusterStatusResponseArgs, ClusterStatusResponsePtr and ClusterStatusResponsePtrOutput values.
+// You can construct a concrete instance of `ClusterStatusResponsePtrInput` via:
+//
+//          ClusterStatusResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterStatusResponsePtrInput interface {
+	pulumi.Input
+
+	ToClusterStatusResponsePtrOutput() ClusterStatusResponsePtrOutput
+	ToClusterStatusResponsePtrOutputWithContext(context.Context) ClusterStatusResponsePtrOutput
+}
+
+type clusterStatusResponsePtrType ClusterStatusResponseArgs
+
+func ClusterStatusResponsePtr(v *ClusterStatusResponseArgs) ClusterStatusResponsePtrInput {
+	return (*clusterStatusResponsePtrType)(v)
+}
+
+func (*clusterStatusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterStatusResponse)(nil)).Elem()
+}
+
+func (i *clusterStatusResponsePtrType) ToClusterStatusResponsePtrOutput() ClusterStatusResponsePtrOutput {
+	return i.ToClusterStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterStatusResponsePtrType) ToClusterStatusResponsePtrOutputWithContext(ctx context.Context) ClusterStatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStatusResponsePtrOutput)
+}
+
+// ClusterStatusResponseArrayInput is an input type that accepts ClusterStatusResponseArray and ClusterStatusResponseArrayOutput values.
+// You can construct a concrete instance of `ClusterStatusResponseArrayInput` via:
+//
+//          ClusterStatusResponseArray{ ClusterStatusResponseArgs{...} }
+type ClusterStatusResponseArrayInput interface {
+	pulumi.Input
+
+	ToClusterStatusResponseArrayOutput() ClusterStatusResponseArrayOutput
+	ToClusterStatusResponseArrayOutputWithContext(context.Context) ClusterStatusResponseArrayOutput
+}
+
+type ClusterStatusResponseArray []ClusterStatusResponseInput
+
+func (ClusterStatusResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterStatusResponse)(nil)).Elem()
+}
+
+func (i ClusterStatusResponseArray) ToClusterStatusResponseArrayOutput() ClusterStatusResponseArrayOutput {
+	return i.ToClusterStatusResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterStatusResponseArray) ToClusterStatusResponseArrayOutputWithContext(ctx context.Context) ClusterStatusResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStatusResponseArrayOutput)
+}
+
+// The status of a cluster and its instances.
+type ClusterStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (ClusterStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStatusResponse)(nil)).Elem()
+}
+
+func (o ClusterStatusResponseOutput) ToClusterStatusResponseOutput() ClusterStatusResponseOutput {
 	return o
 }
 
-func (o ClusterStatusOutput) ToClusterStatusOutputWithContext(ctx context.Context) ClusterStatusOutput {
+func (o ClusterStatusResponseOutput) ToClusterStatusResponseOutputWithContext(ctx context.Context) ClusterStatusResponseOutput {
 	return o
 }
 
-func (o ClusterStatusOutput) ToClusterStatusPtrOutput() ClusterStatusPtrOutput {
-	return o.ToClusterStatusPtrOutputWithContext(context.Background())
+func (o ClusterStatusResponseOutput) ToClusterStatusResponsePtrOutput() ClusterStatusResponsePtrOutput {
+	return o.ToClusterStatusResponsePtrOutputWithContext(context.Background())
 }
 
-func (o ClusterStatusOutput) ToClusterStatusPtrOutputWithContext(ctx context.Context) ClusterStatusPtrOutput {
-	return o.ApplyT(func(v ClusterStatus) *ClusterStatus {
+func (o ClusterStatusResponseOutput) ToClusterStatusResponsePtrOutputWithContext(ctx context.Context) ClusterStatusResponsePtrOutput {
+	return o.ApplyT(func(v ClusterStatusResponse) *ClusterStatusResponse {
 		return &v
-	}).(ClusterStatusPtrOutput)
+	}).(ClusterStatusResponsePtrOutput)
 }
 
-// Output only. Optional details of cluster's state.
-func (o ClusterStatusOutput) Detail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterStatus) *string { return v.Detail }).(pulumi.StringPtrOutput)
+// Optional details of cluster's state.
+func (o ClusterStatusResponseOutput) Detail() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterStatusResponse) string { return v.Detail }).(pulumi.StringOutput)
 }
 
-// Output only. The cluster's state.
-func (o ClusterStatusOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterStatus) *string { return v.State }).(pulumi.StringPtrOutput)
+// The cluster's state.
+func (o ClusterStatusResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterStatusResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Output only. Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-func (o ClusterStatusOutput) StateStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterStatus) *string { return v.StateStartTime }).(pulumi.StringPtrOutput)
+// Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+func (o ClusterStatusResponseOutput) StateStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterStatusResponse) string { return v.StateStartTime }).(pulumi.StringOutput)
 }
 
-// Output only. Additional state information that includes status reported by the agent.
-func (o ClusterStatusOutput) Substate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterStatus) *string { return v.Substate }).(pulumi.StringPtrOutput)
+// Additional state information that includes status reported by the agent.
+func (o ClusterStatusResponseOutput) Substate() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterStatusResponse) string { return v.Substate }).(pulumi.StringOutput)
 }
 
-type ClusterStatusPtrOutput struct{ *pulumi.OutputState }
+type ClusterStatusResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (ClusterStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterStatus)(nil)).Elem()
+func (ClusterStatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterStatusResponse)(nil)).Elem()
 }
 
-func (o ClusterStatusPtrOutput) ToClusterStatusPtrOutput() ClusterStatusPtrOutput {
+func (o ClusterStatusResponsePtrOutput) ToClusterStatusResponsePtrOutput() ClusterStatusResponsePtrOutput {
 	return o
 }
 
-func (o ClusterStatusPtrOutput) ToClusterStatusPtrOutputWithContext(ctx context.Context) ClusterStatusPtrOutput {
+func (o ClusterStatusResponsePtrOutput) ToClusterStatusResponsePtrOutputWithContext(ctx context.Context) ClusterStatusResponsePtrOutput {
 	return o
 }
 
-func (o ClusterStatusPtrOutput) Elem() ClusterStatusOutput {
-	return o.ApplyT(func(v *ClusterStatus) ClusterStatus { return *v }).(ClusterStatusOutput)
+func (o ClusterStatusResponsePtrOutput) Elem() ClusterStatusResponseOutput {
+	return o.ApplyT(func(v *ClusterStatusResponse) ClusterStatusResponse { return *v }).(ClusterStatusResponseOutput)
 }
 
-// Output only. Optional details of cluster's state.
-func (o ClusterStatusPtrOutput) Detail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterStatus) *string {
+// Optional details of cluster's state.
+func (o ClusterStatusResponsePtrOutput) Detail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterStatusResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Detail
+		return &v.Detail
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The cluster's state.
-func (o ClusterStatusPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterStatus) *string {
+// The cluster's state.
+func (o ClusterStatusResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterStatusResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.State
+		return &v.State
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-func (o ClusterStatusPtrOutput) StateStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterStatus) *string {
+// Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+func (o ClusterStatusResponsePtrOutput) StateStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterStatusResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.StateStartTime
+		return &v.StateStartTime
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. Additional state information that includes status reported by the agent.
-func (o ClusterStatusPtrOutput) Substate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterStatus) *string {
+// Additional state information that includes status reported by the agent.
+func (o ClusterStatusResponsePtrOutput) Substate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterStatusResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Substate
+		return &v.Substate
 	}).(pulumi.StringPtrOutput)
 }
 
-type ClusterStatusArrayOutput struct{ *pulumi.OutputState }
+type ClusterStatusResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (ClusterStatusArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterStatus)(nil)).Elem()
+func (ClusterStatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterStatusResponse)(nil)).Elem()
 }
 
-func (o ClusterStatusArrayOutput) ToClusterStatusArrayOutput() ClusterStatusArrayOutput {
+func (o ClusterStatusResponseArrayOutput) ToClusterStatusResponseArrayOutput() ClusterStatusResponseArrayOutput {
 	return o
 }
 
-func (o ClusterStatusArrayOutput) ToClusterStatusArrayOutputWithContext(ctx context.Context) ClusterStatusArrayOutput {
+func (o ClusterStatusResponseArrayOutput) ToClusterStatusResponseArrayOutputWithContext(ctx context.Context) ClusterStatusResponseArrayOutput {
 	return o
 }
 
-func (o ClusterStatusArrayOutput) Index(i pulumi.IntInput) ClusterStatusOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterStatus {
-		return vs[0].([]ClusterStatus)[vs[1].(int)]
-	}).(ClusterStatusOutput)
+func (o ClusterStatusResponseArrayOutput) Index(i pulumi.IntInput) ClusterStatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterStatusResponse {
+		return vs[0].([]ClusterStatusResponse)[vs[1].(int)]
+	}).(ClusterStatusResponseOutput)
 }
 
 // Specifies the config of disk options for a group of VM instances.
@@ -1848,6 +3125,178 @@ func (o DiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Specifies the config of disk options for a group of VM instances.
+type DiskConfigResponse struct {
+	// Optional. Size in GB of the boot disk (default is 500GB).
+	BootDiskSizeGb int `pulumi:"bootDiskSizeGb"`
+	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
+	BootDiskType string `pulumi:"bootDiskType"`
+	// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	NumLocalSsds int `pulumi:"numLocalSsds"`
+}
+
+// DiskConfigResponseInput is an input type that accepts DiskConfigResponseArgs and DiskConfigResponseOutput values.
+// You can construct a concrete instance of `DiskConfigResponseInput` via:
+//
+//          DiskConfigResponseArgs{...}
+type DiskConfigResponseInput interface {
+	pulumi.Input
+
+	ToDiskConfigResponseOutput() DiskConfigResponseOutput
+	ToDiskConfigResponseOutputWithContext(context.Context) DiskConfigResponseOutput
+}
+
+// Specifies the config of disk options for a group of VM instances.
+type DiskConfigResponseArgs struct {
+	// Optional. Size in GB of the boot disk (default is 500GB).
+	BootDiskSizeGb pulumi.IntInput `pulumi:"bootDiskSizeGb"`
+	// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
+	BootDiskType pulumi.StringInput `pulumi:"bootDiskType"`
+	// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+	NumLocalSsds pulumi.IntInput `pulumi:"numLocalSsds"`
+}
+
+func (DiskConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskConfigResponse)(nil)).Elem()
+}
+
+func (i DiskConfigResponseArgs) ToDiskConfigResponseOutput() DiskConfigResponseOutput {
+	return i.ToDiskConfigResponseOutputWithContext(context.Background())
+}
+
+func (i DiskConfigResponseArgs) ToDiskConfigResponseOutputWithContext(ctx context.Context) DiskConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskConfigResponseOutput)
+}
+
+func (i DiskConfigResponseArgs) ToDiskConfigResponsePtrOutput() DiskConfigResponsePtrOutput {
+	return i.ToDiskConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DiskConfigResponseArgs) ToDiskConfigResponsePtrOutputWithContext(ctx context.Context) DiskConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskConfigResponseOutput).ToDiskConfigResponsePtrOutputWithContext(ctx)
+}
+
+// DiskConfigResponsePtrInput is an input type that accepts DiskConfigResponseArgs, DiskConfigResponsePtr and DiskConfigResponsePtrOutput values.
+// You can construct a concrete instance of `DiskConfigResponsePtrInput` via:
+//
+//          DiskConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DiskConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToDiskConfigResponsePtrOutput() DiskConfigResponsePtrOutput
+	ToDiskConfigResponsePtrOutputWithContext(context.Context) DiskConfigResponsePtrOutput
+}
+
+type diskConfigResponsePtrType DiskConfigResponseArgs
+
+func DiskConfigResponsePtr(v *DiskConfigResponseArgs) DiskConfigResponsePtrInput {
+	return (*diskConfigResponsePtrType)(v)
+}
+
+func (*diskConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskConfigResponse)(nil)).Elem()
+}
+
+func (i *diskConfigResponsePtrType) ToDiskConfigResponsePtrOutput() DiskConfigResponsePtrOutput {
+	return i.ToDiskConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *diskConfigResponsePtrType) ToDiskConfigResponsePtrOutputWithContext(ctx context.Context) DiskConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskConfigResponsePtrOutput)
+}
+
+// Specifies the config of disk options for a group of VM instances.
+type DiskConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskConfigResponse)(nil)).Elem()
+}
+
+func (o DiskConfigResponseOutput) ToDiskConfigResponseOutput() DiskConfigResponseOutput {
+	return o
+}
+
+func (o DiskConfigResponseOutput) ToDiskConfigResponseOutputWithContext(ctx context.Context) DiskConfigResponseOutput {
+	return o
+}
+
+func (o DiskConfigResponseOutput) ToDiskConfigResponsePtrOutput() DiskConfigResponsePtrOutput {
+	return o.ToDiskConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DiskConfigResponseOutput) ToDiskConfigResponsePtrOutputWithContext(ctx context.Context) DiskConfigResponsePtrOutput {
+	return o.ApplyT(func(v DiskConfigResponse) *DiskConfigResponse {
+		return &v
+	}).(DiskConfigResponsePtrOutput)
+}
+
+// Optional. Size in GB of the boot disk (default is 500GB).
+func (o DiskConfigResponseOutput) BootDiskSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v DiskConfigResponse) int { return v.BootDiskSizeGb }).(pulumi.IntOutput)
+}
+
+// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
+func (o DiskConfigResponseOutput) BootDiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskConfigResponse) string { return v.BootDiskType }).(pulumi.StringOutput)
+}
+
+// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+func (o DiskConfigResponseOutput) NumLocalSsds() pulumi.IntOutput {
+	return o.ApplyT(func(v DiskConfigResponse) int { return v.NumLocalSsds }).(pulumi.IntOutput)
+}
+
+type DiskConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiskConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskConfigResponse)(nil)).Elem()
+}
+
+func (o DiskConfigResponsePtrOutput) ToDiskConfigResponsePtrOutput() DiskConfigResponsePtrOutput {
+	return o
+}
+
+func (o DiskConfigResponsePtrOutput) ToDiskConfigResponsePtrOutputWithContext(ctx context.Context) DiskConfigResponsePtrOutput {
+	return o
+}
+
+func (o DiskConfigResponsePtrOutput) Elem() DiskConfigResponseOutput {
+	return o.ApplyT(func(v *DiskConfigResponse) DiskConfigResponse { return *v }).(DiskConfigResponseOutput)
+}
+
+// Optional. Size in GB of the boot disk (default is 500GB).
+func (o DiskConfigResponsePtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DiskConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types).
+func (o DiskConfigResponsePtrOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+func (o DiskConfigResponsePtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DiskConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
+}
+
 // Encryption settings for the cluster.
 type EncryptionConfig struct {
 	// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
@@ -1982,12 +3431,144 @@ func (o EncryptionConfigPtrOutput) GcePdKmsKeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Encryption settings for the cluster.
+type EncryptionConfigResponse struct {
+	// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+	GcePdKmsKeyName string `pulumi:"gcePdKmsKeyName"`
+}
+
+// EncryptionConfigResponseInput is an input type that accepts EncryptionConfigResponseArgs and EncryptionConfigResponseOutput values.
+// You can construct a concrete instance of `EncryptionConfigResponseInput` via:
+//
+//          EncryptionConfigResponseArgs{...}
+type EncryptionConfigResponseInput interface {
+	pulumi.Input
+
+	ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput
+	ToEncryptionConfigResponseOutputWithContext(context.Context) EncryptionConfigResponseOutput
+}
+
+// Encryption settings for the cluster.
+type EncryptionConfigResponseArgs struct {
+	// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+	GcePdKmsKeyName pulumi.StringInput `pulumi:"gcePdKmsKeyName"`
+}
+
+func (EncryptionConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfigResponse)(nil)).Elem()
+}
+
+func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput {
+	return i.ToEncryptionConfigResponseOutputWithContext(context.Background())
+}
+
+func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponseOutputWithContext(ctx context.Context) EncryptionConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponseOutput)
+}
+
+func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
+	return i.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponseOutput).ToEncryptionConfigResponsePtrOutputWithContext(ctx)
+}
+
+// EncryptionConfigResponsePtrInput is an input type that accepts EncryptionConfigResponseArgs, EncryptionConfigResponsePtr and EncryptionConfigResponsePtrOutput values.
+// You can construct a concrete instance of `EncryptionConfigResponsePtrInput` via:
+//
+//          EncryptionConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type EncryptionConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput
+	ToEncryptionConfigResponsePtrOutputWithContext(context.Context) EncryptionConfigResponsePtrOutput
+}
+
+type encryptionConfigResponsePtrType EncryptionConfigResponseArgs
+
+func EncryptionConfigResponsePtr(v *EncryptionConfigResponseArgs) EncryptionConfigResponsePtrInput {
+	return (*encryptionConfigResponsePtrType)(v)
+}
+
+func (*encryptionConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfigResponse)(nil)).Elem()
+}
+
+func (i *encryptionConfigResponsePtrType) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
+	return i.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionConfigResponsePtrType) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponsePtrOutput)
+}
+
+// Encryption settings for the cluster.
+type EncryptionConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfigResponse)(nil)).Elem()
+}
+
+func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput {
+	return o
+}
+
+func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutputWithContext(ctx context.Context) EncryptionConfigResponseOutput {
+	return o
+}
+
+func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
+	return o.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
+	return o.ApplyT(func(v EncryptionConfigResponse) *EncryptionConfigResponse {
+		return &v
+	}).(EncryptionConfigResponsePtrOutput)
+}
+
+// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+func (o EncryptionConfigResponseOutput) GcePdKmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionConfigResponse) string { return v.GcePdKmsKeyName }).(pulumi.StringOutput)
+}
+
+type EncryptionConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfigResponse)(nil)).Elem()
+}
+
+func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionConfigResponsePtrOutput) Elem() EncryptionConfigResponseOutput {
+	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse { return *v }).(EncryptionConfigResponseOutput)
+}
+
+// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+func (o EncryptionConfigResponsePtrOutput) GcePdKmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GcePdKmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Endpoint config for this cluster
 type EndpointConfig struct {
 	// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
 	EnableHttpPortAccess *bool `pulumi:"enableHttpPortAccess"`
-	// Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
-	HttpPorts map[string]string `pulumi:"httpPorts"`
 }
 
 // EndpointConfigInput is an input type that accepts EndpointConfigArgs and EndpointConfigOutput values.
@@ -2005,8 +3586,6 @@ type EndpointConfigInput interface {
 type EndpointConfigArgs struct {
 	// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
 	EnableHttpPortAccess pulumi.BoolPtrInput `pulumi:"enableHttpPortAccess"`
-	// Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
-	HttpPorts pulumi.StringMapInput `pulumi:"httpPorts"`
 }
 
 func (EndpointConfigArgs) ElementType() reflect.Type {
@@ -2092,11 +3671,6 @@ func (o EndpointConfigOutput) EnableHttpPortAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EndpointConfig) *bool { return v.EnableHttpPortAccess }).(pulumi.BoolPtrOutput)
 }
 
-// Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
-func (o EndpointConfigOutput) HttpPorts() pulumi.StringMapOutput {
-	return o.ApplyT(func(v EndpointConfig) map[string]string { return v.HttpPorts }).(pulumi.StringMapOutput)
-}
-
 type EndpointConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (EndpointConfigPtrOutput) ElementType() reflect.Type {
@@ -2125,9 +3699,152 @@ func (o EndpointConfigPtrOutput) EnableHttpPortAccess() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
-func (o EndpointConfigPtrOutput) HttpPorts() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *EndpointConfig) map[string]string {
+// Endpoint config for this cluster
+type EndpointConfigResponse struct {
+	// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+	EnableHttpPortAccess bool `pulumi:"enableHttpPortAccess"`
+	// The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+	HttpPorts map[string]string `pulumi:"httpPorts"`
+}
+
+// EndpointConfigResponseInput is an input type that accepts EndpointConfigResponseArgs and EndpointConfigResponseOutput values.
+// You can construct a concrete instance of `EndpointConfigResponseInput` via:
+//
+//          EndpointConfigResponseArgs{...}
+type EndpointConfigResponseInput interface {
+	pulumi.Input
+
+	ToEndpointConfigResponseOutput() EndpointConfigResponseOutput
+	ToEndpointConfigResponseOutputWithContext(context.Context) EndpointConfigResponseOutput
+}
+
+// Endpoint config for this cluster
+type EndpointConfigResponseArgs struct {
+	// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+	EnableHttpPortAccess pulumi.BoolInput `pulumi:"enableHttpPortAccess"`
+	// The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+	HttpPorts pulumi.StringMapInput `pulumi:"httpPorts"`
+}
+
+func (EndpointConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointConfigResponse)(nil)).Elem()
+}
+
+func (i EndpointConfigResponseArgs) ToEndpointConfigResponseOutput() EndpointConfigResponseOutput {
+	return i.ToEndpointConfigResponseOutputWithContext(context.Background())
+}
+
+func (i EndpointConfigResponseArgs) ToEndpointConfigResponseOutputWithContext(ctx context.Context) EndpointConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointConfigResponseOutput)
+}
+
+func (i EndpointConfigResponseArgs) ToEndpointConfigResponsePtrOutput() EndpointConfigResponsePtrOutput {
+	return i.ToEndpointConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EndpointConfigResponseArgs) ToEndpointConfigResponsePtrOutputWithContext(ctx context.Context) EndpointConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointConfigResponseOutput).ToEndpointConfigResponsePtrOutputWithContext(ctx)
+}
+
+// EndpointConfigResponsePtrInput is an input type that accepts EndpointConfigResponseArgs, EndpointConfigResponsePtr and EndpointConfigResponsePtrOutput values.
+// You can construct a concrete instance of `EndpointConfigResponsePtrInput` via:
+//
+//          EndpointConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type EndpointConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToEndpointConfigResponsePtrOutput() EndpointConfigResponsePtrOutput
+	ToEndpointConfigResponsePtrOutputWithContext(context.Context) EndpointConfigResponsePtrOutput
+}
+
+type endpointConfigResponsePtrType EndpointConfigResponseArgs
+
+func EndpointConfigResponsePtr(v *EndpointConfigResponseArgs) EndpointConfigResponsePtrInput {
+	return (*endpointConfigResponsePtrType)(v)
+}
+
+func (*endpointConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointConfigResponse)(nil)).Elem()
+}
+
+func (i *endpointConfigResponsePtrType) ToEndpointConfigResponsePtrOutput() EndpointConfigResponsePtrOutput {
+	return i.ToEndpointConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *endpointConfigResponsePtrType) ToEndpointConfigResponsePtrOutputWithContext(ctx context.Context) EndpointConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointConfigResponsePtrOutput)
+}
+
+// Endpoint config for this cluster
+type EndpointConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointConfigResponse)(nil)).Elem()
+}
+
+func (o EndpointConfigResponseOutput) ToEndpointConfigResponseOutput() EndpointConfigResponseOutput {
+	return o
+}
+
+func (o EndpointConfigResponseOutput) ToEndpointConfigResponseOutputWithContext(ctx context.Context) EndpointConfigResponseOutput {
+	return o
+}
+
+func (o EndpointConfigResponseOutput) ToEndpointConfigResponsePtrOutput() EndpointConfigResponsePtrOutput {
+	return o.ToEndpointConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EndpointConfigResponseOutput) ToEndpointConfigResponsePtrOutputWithContext(ctx context.Context) EndpointConfigResponsePtrOutput {
+	return o.ApplyT(func(v EndpointConfigResponse) *EndpointConfigResponse {
+		return &v
+	}).(EndpointConfigResponsePtrOutput)
+}
+
+// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+func (o EndpointConfigResponseOutput) EnableHttpPortAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v EndpointConfigResponse) bool { return v.EnableHttpPortAccess }).(pulumi.BoolOutput)
+}
+
+// The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+func (o EndpointConfigResponseOutput) HttpPorts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EndpointConfigResponse) map[string]string { return v.HttpPorts }).(pulumi.StringMapOutput)
+}
+
+type EndpointConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointConfigResponse)(nil)).Elem()
+}
+
+func (o EndpointConfigResponsePtrOutput) ToEndpointConfigResponsePtrOutput() EndpointConfigResponsePtrOutput {
+	return o
+}
+
+func (o EndpointConfigResponsePtrOutput) ToEndpointConfigResponsePtrOutputWithContext(ctx context.Context) EndpointConfigResponsePtrOutput {
+	return o
+}
+
+func (o EndpointConfigResponsePtrOutput) Elem() EndpointConfigResponseOutput {
+	return o.ApplyT(func(v *EndpointConfigResponse) EndpointConfigResponse { return *v }).(EndpointConfigResponseOutput)
+}
+
+// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+func (o EndpointConfigResponsePtrOutput) EnableHttpPortAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EndpointConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableHttpPortAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+func (o EndpointConfigResponsePtrOutput) HttpPorts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EndpointConfigResponse) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -2324,6 +4041,88 @@ func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
 		}
 		return v.Title
 	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponse struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// ExprResponseInput is an input type that accepts ExprResponseArgs and ExprResponseOutput values.
+// You can construct a concrete instance of `ExprResponseInput` via:
+//
+//          ExprResponseArgs{...}
+type ExprResponseInput interface {
+	pulumi.Input
+
+	ToExprResponseOutput() ExprResponseOutput
+	ToExprResponseOutputWithContext(context.Context) ExprResponseOutput
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ExprResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (i ExprResponseArgs) ToExprResponseOutput() ExprResponseOutput {
+	return i.ToExprResponseOutputWithContext(context.Background())
+}
+
+func (i ExprResponseArgs) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExprResponseOutput)
+}
+
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+type ExprResponseOutput struct{ *pulumi.OutputState }
+
+func (ExprResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
+}
+
+func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
+	return o
+}
+
+func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
+	return o
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o ExprResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ExprResponseOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o ExprResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o ExprResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
 // Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
@@ -2669,6 +4468,349 @@ func (o GceClusterConfigPtrOutput) ZoneUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
+type GceClusterConfigResponse struct {
+	// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
+	InternalIpOnly bool `pulumi:"internalIpOnly"`
+	// The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+	Metadata map[string]string `pulumi:"metadata"`
+	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default projects/[project_id]/regions/global/default default
+	NetworkUri string `pulumi:"networkUri"`
+	// Optional. Node Group Affinity for sole-tenant clusters.
+	NodeGroupAffinity NodeGroupAffinityResponse `pulumi:"nodeGroupAffinity"`
+	// Optional. The type of IPv6 access for a cluster.
+	PrivateIpv6GoogleAccess string `pulumi:"privateIpv6GoogleAccess"`
+	// Optional. Reservation Affinity for consuming Zonal reservation.
+	ReservationAffinity ReservationAffinityResponse `pulumi:"reservationAffinity"`
+	// Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc) (also see VM Data Plane identity (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity)) used by Dataproc cluster VM instances to access Google Cloud Platform services.If not specified, the Compute Engine default service account (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+	ServiceAccount string `pulumi:"serviceAccount"`
+	// Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: https://www.googleapis.com/auth/cloud.useraccounts.readonly https://www.googleapis.com/auth/devstorage.read_write https://www.googleapis.com/auth/logging.writeIf no scopes are specified, the following defaults are also provided: https://www.googleapis.com/auth/bigquery https://www.googleapis.com/auth/bigtable.admin.table https://www.googleapis.com/auth/bigtable.data https://www.googleapis.com/auth/devstorage.full_control
+	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
+	// Optional. Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
+	ShieldedInstanceConfig ShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
+	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0 projects/[project_id]/regions/us-east1/subnetworks/sub0 sub0
+	SubnetworkUri string `pulumi:"subnetworkUri"`
+	// The Compute Engine tags to add to all instances (see Tagging instances (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+	Tags []string `pulumi:"tags"`
+	// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone] us-central1-f
+	ZoneUri string `pulumi:"zoneUri"`
+}
+
+// GceClusterConfigResponseInput is an input type that accepts GceClusterConfigResponseArgs and GceClusterConfigResponseOutput values.
+// You can construct a concrete instance of `GceClusterConfigResponseInput` via:
+//
+//          GceClusterConfigResponseArgs{...}
+type GceClusterConfigResponseInput interface {
+	pulumi.Input
+
+	ToGceClusterConfigResponseOutput() GceClusterConfigResponseOutput
+	ToGceClusterConfigResponseOutputWithContext(context.Context) GceClusterConfigResponseOutput
+}
+
+// Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
+type GceClusterConfigResponseArgs struct {
+	// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
+	InternalIpOnly pulumi.BoolInput `pulumi:"internalIpOnly"`
+	// The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default projects/[project_id]/regions/global/default default
+	NetworkUri pulumi.StringInput `pulumi:"networkUri"`
+	// Optional. Node Group Affinity for sole-tenant clusters.
+	NodeGroupAffinity NodeGroupAffinityResponseInput `pulumi:"nodeGroupAffinity"`
+	// Optional. The type of IPv6 access for a cluster.
+	PrivateIpv6GoogleAccess pulumi.StringInput `pulumi:"privateIpv6GoogleAccess"`
+	// Optional. Reservation Affinity for consuming Zonal reservation.
+	ReservationAffinity ReservationAffinityResponseInput `pulumi:"reservationAffinity"`
+	// Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc) (also see VM Data Plane identity (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity)) used by Dataproc cluster VM instances to access Google Cloud Platform services.If not specified, the Compute Engine default service account (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+	// Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: https://www.googleapis.com/auth/cloud.useraccounts.readonly https://www.googleapis.com/auth/devstorage.read_write https://www.googleapis.com/auth/logging.writeIf no scopes are specified, the following defaults are also provided: https://www.googleapis.com/auth/bigquery https://www.googleapis.com/auth/bigtable.admin.table https://www.googleapis.com/auth/bigtable.data https://www.googleapis.com/auth/devstorage.full_control
+	ServiceAccountScopes pulumi.StringArrayInput `pulumi:"serviceAccountScopes"`
+	// Optional. Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
+	ShieldedInstanceConfig ShieldedInstanceConfigResponseInput `pulumi:"shieldedInstanceConfig"`
+	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0 projects/[project_id]/regions/us-east1/subnetworks/sub0 sub0
+	SubnetworkUri pulumi.StringInput `pulumi:"subnetworkUri"`
+	// The Compute Engine tags to add to all instances (see Tagging instances (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone] us-central1-f
+	ZoneUri pulumi.StringInput `pulumi:"zoneUri"`
+}
+
+func (GceClusterConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GceClusterConfigResponse)(nil)).Elem()
+}
+
+func (i GceClusterConfigResponseArgs) ToGceClusterConfigResponseOutput() GceClusterConfigResponseOutput {
+	return i.ToGceClusterConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GceClusterConfigResponseArgs) ToGceClusterConfigResponseOutputWithContext(ctx context.Context) GceClusterConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GceClusterConfigResponseOutput)
+}
+
+func (i GceClusterConfigResponseArgs) ToGceClusterConfigResponsePtrOutput() GceClusterConfigResponsePtrOutput {
+	return i.ToGceClusterConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GceClusterConfigResponseArgs) ToGceClusterConfigResponsePtrOutputWithContext(ctx context.Context) GceClusterConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GceClusterConfigResponseOutput).ToGceClusterConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GceClusterConfigResponsePtrInput is an input type that accepts GceClusterConfigResponseArgs, GceClusterConfigResponsePtr and GceClusterConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GceClusterConfigResponsePtrInput` via:
+//
+//          GceClusterConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GceClusterConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGceClusterConfigResponsePtrOutput() GceClusterConfigResponsePtrOutput
+	ToGceClusterConfigResponsePtrOutputWithContext(context.Context) GceClusterConfigResponsePtrOutput
+}
+
+type gceClusterConfigResponsePtrType GceClusterConfigResponseArgs
+
+func GceClusterConfigResponsePtr(v *GceClusterConfigResponseArgs) GceClusterConfigResponsePtrInput {
+	return (*gceClusterConfigResponsePtrType)(v)
+}
+
+func (*gceClusterConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GceClusterConfigResponse)(nil)).Elem()
+}
+
+func (i *gceClusterConfigResponsePtrType) ToGceClusterConfigResponsePtrOutput() GceClusterConfigResponsePtrOutput {
+	return i.ToGceClusterConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gceClusterConfigResponsePtrType) ToGceClusterConfigResponsePtrOutputWithContext(ctx context.Context) GceClusterConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GceClusterConfigResponsePtrOutput)
+}
+
+// Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
+type GceClusterConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GceClusterConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GceClusterConfigResponse)(nil)).Elem()
+}
+
+func (o GceClusterConfigResponseOutput) ToGceClusterConfigResponseOutput() GceClusterConfigResponseOutput {
+	return o
+}
+
+func (o GceClusterConfigResponseOutput) ToGceClusterConfigResponseOutputWithContext(ctx context.Context) GceClusterConfigResponseOutput {
+	return o
+}
+
+func (o GceClusterConfigResponseOutput) ToGceClusterConfigResponsePtrOutput() GceClusterConfigResponsePtrOutput {
+	return o.ToGceClusterConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GceClusterConfigResponseOutput) ToGceClusterConfigResponsePtrOutputWithContext(ctx context.Context) GceClusterConfigResponsePtrOutput {
+	return o.ApplyT(func(v GceClusterConfigResponse) *GceClusterConfigResponse {
+		return &v
+	}).(GceClusterConfigResponsePtrOutput)
+}
+
+// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
+func (o GceClusterConfigResponseOutput) InternalIpOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GceClusterConfigResponse) bool { return v.InternalIpOnly }).(pulumi.BoolOutput)
+}
+
+// The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+func (o GceClusterConfigResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GceClusterConfigResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default projects/[project_id]/regions/global/default default
+func (o GceClusterConfigResponseOutput) NetworkUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GceClusterConfigResponse) string { return v.NetworkUri }).(pulumi.StringOutput)
+}
+
+// Optional. Node Group Affinity for sole-tenant clusters.
+func (o GceClusterConfigResponseOutput) NodeGroupAffinity() NodeGroupAffinityResponseOutput {
+	return o.ApplyT(func(v GceClusterConfigResponse) NodeGroupAffinityResponse { return v.NodeGroupAffinity }).(NodeGroupAffinityResponseOutput)
+}
+
+// Optional. The type of IPv6 access for a cluster.
+func (o GceClusterConfigResponseOutput) PrivateIpv6GoogleAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v GceClusterConfigResponse) string { return v.PrivateIpv6GoogleAccess }).(pulumi.StringOutput)
+}
+
+// Optional. Reservation Affinity for consuming Zonal reservation.
+func (o GceClusterConfigResponseOutput) ReservationAffinity() ReservationAffinityResponseOutput {
+	return o.ApplyT(func(v GceClusterConfigResponse) ReservationAffinityResponse { return v.ReservationAffinity }).(ReservationAffinityResponseOutput)
+}
+
+// Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc) (also see VM Data Plane identity (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity)) used by Dataproc cluster VM instances to access Google Cloud Platform services.If not specified, the Compute Engine default service account (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+func (o GceClusterConfigResponseOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GceClusterConfigResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: https://www.googleapis.com/auth/cloud.useraccounts.readonly https://www.googleapis.com/auth/devstorage.read_write https://www.googleapis.com/auth/logging.writeIf no scopes are specified, the following defaults are also provided: https://www.googleapis.com/auth/bigquery https://www.googleapis.com/auth/bigtable.admin.table https://www.googleapis.com/auth/bigtable.data https://www.googleapis.com/auth/devstorage.full_control
+func (o GceClusterConfigResponseOutput) ServiceAccountScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GceClusterConfigResponse) []string { return v.ServiceAccountScopes }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
+func (o GceClusterConfigResponseOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponseOutput {
+	return o.ApplyT(func(v GceClusterConfigResponse) ShieldedInstanceConfigResponse { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigResponseOutput)
+}
+
+// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0 projects/[project_id]/regions/us-east1/subnetworks/sub0 sub0
+func (o GceClusterConfigResponseOutput) SubnetworkUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GceClusterConfigResponse) string { return v.SubnetworkUri }).(pulumi.StringOutput)
+}
+
+// The Compute Engine tags to add to all instances (see Tagging instances (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+func (o GceClusterConfigResponseOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GceClusterConfigResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone] us-central1-f
+func (o GceClusterConfigResponseOutput) ZoneUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GceClusterConfigResponse) string { return v.ZoneUri }).(pulumi.StringOutput)
+}
+
+type GceClusterConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GceClusterConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GceClusterConfigResponse)(nil)).Elem()
+}
+
+func (o GceClusterConfigResponsePtrOutput) ToGceClusterConfigResponsePtrOutput() GceClusterConfigResponsePtrOutput {
+	return o
+}
+
+func (o GceClusterConfigResponsePtrOutput) ToGceClusterConfigResponsePtrOutputWithContext(ctx context.Context) GceClusterConfigResponsePtrOutput {
+	return o
+}
+
+func (o GceClusterConfigResponsePtrOutput) Elem() GceClusterConfigResponseOutput {
+	return o.ApplyT(func(v *GceClusterConfigResponse) GceClusterConfigResponse { return *v }).(GceClusterConfigResponseOutput)
+}
+
+// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
+func (o GceClusterConfigResponsePtrOutput) InternalIpOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GceClusterConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.InternalIpOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+func (o GceClusterConfigResponsePtrOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GceClusterConfigResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default projects/[project_id]/regions/global/default default
+func (o GceClusterConfigResponsePtrOutput) NetworkUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GceClusterConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Node Group Affinity for sole-tenant clusters.
+func (o GceClusterConfigResponsePtrOutput) NodeGroupAffinity() NodeGroupAffinityResponsePtrOutput {
+	return o.ApplyT(func(v *GceClusterConfigResponse) *NodeGroupAffinityResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.NodeGroupAffinity
+	}).(NodeGroupAffinityResponsePtrOutput)
+}
+
+// Optional. The type of IPv6 access for a cluster.
+func (o GceClusterConfigResponsePtrOutput) PrivateIpv6GoogleAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GceClusterConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateIpv6GoogleAccess
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Reservation Affinity for consuming Zonal reservation.
+func (o GceClusterConfigResponsePtrOutput) ReservationAffinity() ReservationAffinityResponsePtrOutput {
+	return o.ApplyT(func(v *GceClusterConfigResponse) *ReservationAffinityResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ReservationAffinity
+	}).(ReservationAffinityResponsePtrOutput)
+}
+
+// Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc) (also see VM Data Plane identity (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity)) used by Dataproc cluster VM instances to access Google Cloud Platform services.If not specified, the Compute Engine default service account (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+func (o GceClusterConfigResponsePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GceClusterConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: https://www.googleapis.com/auth/cloud.useraccounts.readonly https://www.googleapis.com/auth/devstorage.read_write https://www.googleapis.com/auth/logging.writeIf no scopes are specified, the following defaults are also provided: https://www.googleapis.com/auth/bigquery https://www.googleapis.com/auth/bigtable.admin.table https://www.googleapis.com/auth/bigtable.data https://www.googleapis.com/auth/devstorage.full_control
+func (o GceClusterConfigResponsePtrOutput) ServiceAccountScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GceClusterConfigResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountScopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
+func (o GceClusterConfigResponsePtrOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponsePtrOutput {
+	return o.ApplyT(func(v *GceClusterConfigResponse) *ShieldedInstanceConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ShieldedInstanceConfig
+	}).(ShieldedInstanceConfigResponsePtrOutput)
+}
+
+// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0 projects/[project_id]/regions/us-east1/subnetworks/sub0 sub0
+func (o GceClusterConfigResponsePtrOutput) SubnetworkUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GceClusterConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetworkUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Compute Engine tags to add to all instances (see Tagging instances (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+func (o GceClusterConfigResponsePtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GceClusterConfigResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone] us-central1-f
+func (o GceClusterConfigResponsePtrOutput) ZoneUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GceClusterConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ZoneUri
+	}).(pulumi.StringPtrOutput)
+}
+
 // The GKE config for this cluster.
 type GkeClusterConfig struct {
 	// Optional. A target for the deployment.
@@ -2801,6 +4943,142 @@ func (o GkeClusterConfigPtrOutput) NamespacedGkeDeploymentTarget() NamespacedGke
 		}
 		return v.NamespacedGkeDeploymentTarget
 	}).(NamespacedGkeDeploymentTargetPtrOutput)
+}
+
+// The GKE config for this cluster.
+type GkeClusterConfigResponse struct {
+	// Optional. A target for the deployment.
+	NamespacedGkeDeploymentTarget NamespacedGkeDeploymentTargetResponse `pulumi:"namespacedGkeDeploymentTarget"`
+}
+
+// GkeClusterConfigResponseInput is an input type that accepts GkeClusterConfigResponseArgs and GkeClusterConfigResponseOutput values.
+// You can construct a concrete instance of `GkeClusterConfigResponseInput` via:
+//
+//          GkeClusterConfigResponseArgs{...}
+type GkeClusterConfigResponseInput interface {
+	pulumi.Input
+
+	ToGkeClusterConfigResponseOutput() GkeClusterConfigResponseOutput
+	ToGkeClusterConfigResponseOutputWithContext(context.Context) GkeClusterConfigResponseOutput
+}
+
+// The GKE config for this cluster.
+type GkeClusterConfigResponseArgs struct {
+	// Optional. A target for the deployment.
+	NamespacedGkeDeploymentTarget NamespacedGkeDeploymentTargetResponseInput `pulumi:"namespacedGkeDeploymentTarget"`
+}
+
+func (GkeClusterConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeClusterConfigResponse)(nil)).Elem()
+}
+
+func (i GkeClusterConfigResponseArgs) ToGkeClusterConfigResponseOutput() GkeClusterConfigResponseOutput {
+	return i.ToGkeClusterConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GkeClusterConfigResponseArgs) ToGkeClusterConfigResponseOutputWithContext(ctx context.Context) GkeClusterConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterConfigResponseOutput)
+}
+
+func (i GkeClusterConfigResponseArgs) ToGkeClusterConfigResponsePtrOutput() GkeClusterConfigResponsePtrOutput {
+	return i.ToGkeClusterConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GkeClusterConfigResponseArgs) ToGkeClusterConfigResponsePtrOutputWithContext(ctx context.Context) GkeClusterConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterConfigResponseOutput).ToGkeClusterConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GkeClusterConfigResponsePtrInput is an input type that accepts GkeClusterConfigResponseArgs, GkeClusterConfigResponsePtr and GkeClusterConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GkeClusterConfigResponsePtrInput` via:
+//
+//          GkeClusterConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GkeClusterConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGkeClusterConfigResponsePtrOutput() GkeClusterConfigResponsePtrOutput
+	ToGkeClusterConfigResponsePtrOutputWithContext(context.Context) GkeClusterConfigResponsePtrOutput
+}
+
+type gkeClusterConfigResponsePtrType GkeClusterConfigResponseArgs
+
+func GkeClusterConfigResponsePtr(v *GkeClusterConfigResponseArgs) GkeClusterConfigResponsePtrInput {
+	return (*gkeClusterConfigResponsePtrType)(v)
+}
+
+func (*gkeClusterConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeClusterConfigResponse)(nil)).Elem()
+}
+
+func (i *gkeClusterConfigResponsePtrType) ToGkeClusterConfigResponsePtrOutput() GkeClusterConfigResponsePtrOutput {
+	return i.ToGkeClusterConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *gkeClusterConfigResponsePtrType) ToGkeClusterConfigResponsePtrOutputWithContext(ctx context.Context) GkeClusterConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeClusterConfigResponsePtrOutput)
+}
+
+// The GKE config for this cluster.
+type GkeClusterConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GkeClusterConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeClusterConfigResponse)(nil)).Elem()
+}
+
+func (o GkeClusterConfigResponseOutput) ToGkeClusterConfigResponseOutput() GkeClusterConfigResponseOutput {
+	return o
+}
+
+func (o GkeClusterConfigResponseOutput) ToGkeClusterConfigResponseOutputWithContext(ctx context.Context) GkeClusterConfigResponseOutput {
+	return o
+}
+
+func (o GkeClusterConfigResponseOutput) ToGkeClusterConfigResponsePtrOutput() GkeClusterConfigResponsePtrOutput {
+	return o.ToGkeClusterConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GkeClusterConfigResponseOutput) ToGkeClusterConfigResponsePtrOutputWithContext(ctx context.Context) GkeClusterConfigResponsePtrOutput {
+	return o.ApplyT(func(v GkeClusterConfigResponse) *GkeClusterConfigResponse {
+		return &v
+	}).(GkeClusterConfigResponsePtrOutput)
+}
+
+// Optional. A target for the deployment.
+func (o GkeClusterConfigResponseOutput) NamespacedGkeDeploymentTarget() NamespacedGkeDeploymentTargetResponseOutput {
+	return o.ApplyT(func(v GkeClusterConfigResponse) NamespacedGkeDeploymentTargetResponse {
+		return v.NamespacedGkeDeploymentTarget
+	}).(NamespacedGkeDeploymentTargetResponseOutput)
+}
+
+type GkeClusterConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GkeClusterConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeClusterConfigResponse)(nil)).Elem()
+}
+
+func (o GkeClusterConfigResponsePtrOutput) ToGkeClusterConfigResponsePtrOutput() GkeClusterConfigResponsePtrOutput {
+	return o
+}
+
+func (o GkeClusterConfigResponsePtrOutput) ToGkeClusterConfigResponsePtrOutputWithContext(ctx context.Context) GkeClusterConfigResponsePtrOutput {
+	return o
+}
+
+func (o GkeClusterConfigResponsePtrOutput) Elem() GkeClusterConfigResponseOutput {
+	return o.ApplyT(func(v *GkeClusterConfigResponse) GkeClusterConfigResponse { return *v }).(GkeClusterConfigResponseOutput)
+}
+
+// Optional. A target for the deployment.
+func (o GkeClusterConfigResponsePtrOutput) NamespacedGkeDeploymentTarget() NamespacedGkeDeploymentTargetResponsePtrOutput {
+	return o.ApplyT(func(v *GkeClusterConfigResponse) *NamespacedGkeDeploymentTargetResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.NamespacedGkeDeploymentTarget
+	}).(NamespacedGkeDeploymentTargetResponsePtrOutput)
 }
 
 // A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
@@ -3070,6 +5348,124 @@ func (o HadoopJobPtrOutput) Properties() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
+type HadoopJobResponse struct {
+	// Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+	FileUris []string `pulumi:"fileUris"`
+	// Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
+	// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in jar_file_uris.
+	MainClass string `pulumi:"mainClass"`
+	// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
+	MainJarFileUri string `pulumi:"mainJarFileUri"`
+	// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// HadoopJobResponseInput is an input type that accepts HadoopJobResponseArgs and HadoopJobResponseOutput values.
+// You can construct a concrete instance of `HadoopJobResponseInput` via:
+//
+//          HadoopJobResponseArgs{...}
+type HadoopJobResponseInput interface {
+	pulumi.Input
+
+	ToHadoopJobResponseOutput() HadoopJobResponseOutput
+	ToHadoopJobResponseOutputWithContext(context.Context) HadoopJobResponseOutput
+}
+
+// A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
+type HadoopJobResponseArgs struct {
+	// Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponseInput `pulumi:"loggingConfig"`
+	// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in jar_file_uris.
+	MainClass pulumi.StringInput `pulumi:"mainClass"`
+	// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
+	MainJarFileUri pulumi.StringInput `pulumi:"mainJarFileUri"`
+	// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (HadoopJobResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HadoopJobResponse)(nil)).Elem()
+}
+
+func (i HadoopJobResponseArgs) ToHadoopJobResponseOutput() HadoopJobResponseOutput {
+	return i.ToHadoopJobResponseOutputWithContext(context.Background())
+}
+
+func (i HadoopJobResponseArgs) ToHadoopJobResponseOutputWithContext(ctx context.Context) HadoopJobResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopJobResponseOutput)
+}
+
+// A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
+type HadoopJobResponseOutput struct{ *pulumi.OutputState }
+
+func (HadoopJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HadoopJobResponse)(nil)).Elem()
+}
+
+func (o HadoopJobResponseOutput) ToHadoopJobResponseOutput() HadoopJobResponseOutput {
+	return o
+}
+
+func (o HadoopJobResponseOutput) ToHadoopJobResponseOutputWithContext(ctx context.Context) HadoopJobResponseOutput {
+	return o
+}
+
+// Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
+func (o HadoopJobResponseOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HadoopJobResponse) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o HadoopJobResponseOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HadoopJobResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+func (o HadoopJobResponseOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HadoopJobResponse) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
+func (o HadoopJobResponseOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HadoopJobResponse) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o HadoopJobResponseOutput) LoggingConfig() LoggingConfigResponseOutput {
+	return o.ApplyT(func(v HadoopJobResponse) LoggingConfigResponse { return v.LoggingConfig }).(LoggingConfigResponseOutput)
+}
+
+// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in jar_file_uris.
+func (o HadoopJobResponseOutput) MainClass() pulumi.StringOutput {
+	return o.ApplyT(func(v HadoopJobResponse) string { return v.MainClass }).(pulumi.StringOutput)
+}
+
+// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
+func (o HadoopJobResponseOutput) MainJarFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v HadoopJobResponse) string { return v.MainJarFileUri }).(pulumi.StringOutput)
+}
+
+// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+func (o HadoopJobResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HadoopJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
 // A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on YARN.
 type HiveJob struct {
 	// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
@@ -3299,6 +5695,106 @@ func (o HiveJobPtrOutput) ScriptVariables() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on YARN.
+type HiveJobResponse struct {
+	// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+	ContinueOnFailure bool `pulumi:"continueOnFailure"`
+	// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+	Properties map[string]string `pulumi:"properties"`
+	// The HCFS URI of the script that contains Hive queries.
+	QueryFileUri string `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList QueryListResponse `pulumi:"queryList"`
+	// Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name="value";).
+	ScriptVariables map[string]string `pulumi:"scriptVariables"`
+}
+
+// HiveJobResponseInput is an input type that accepts HiveJobResponseArgs and HiveJobResponseOutput values.
+// You can construct a concrete instance of `HiveJobResponseInput` via:
+//
+//          HiveJobResponseArgs{...}
+type HiveJobResponseInput interface {
+	pulumi.Input
+
+	ToHiveJobResponseOutput() HiveJobResponseOutput
+	ToHiveJobResponseOutputWithContext(context.Context) HiveJobResponseOutput
+}
+
+// A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on YARN.
+type HiveJobResponseArgs struct {
+	// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+	ContinueOnFailure pulumi.BoolInput `pulumi:"continueOnFailure"`
+	// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// The HCFS URI of the script that contains Hive queries.
+	QueryFileUri pulumi.StringInput `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList QueryListResponseInput `pulumi:"queryList"`
+	// Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name="value";).
+	ScriptVariables pulumi.StringMapInput `pulumi:"scriptVariables"`
+}
+
+func (HiveJobResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveJobResponse)(nil)).Elem()
+}
+
+func (i HiveJobResponseArgs) ToHiveJobResponseOutput() HiveJobResponseOutput {
+	return i.ToHiveJobResponseOutputWithContext(context.Background())
+}
+
+func (i HiveJobResponseArgs) ToHiveJobResponseOutputWithContext(ctx context.Context) HiveJobResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveJobResponseOutput)
+}
+
+// A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on YARN.
+type HiveJobResponseOutput struct{ *pulumi.OutputState }
+
+func (HiveJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveJobResponse)(nil)).Elem()
+}
+
+func (o HiveJobResponseOutput) ToHiveJobResponseOutput() HiveJobResponseOutput {
+	return o
+}
+
+func (o HiveJobResponseOutput) ToHiveJobResponseOutputWithContext(ctx context.Context) HiveJobResponseOutput {
+	return o
+}
+
+// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+func (o HiveJobResponseOutput) ContinueOnFailure() pulumi.BoolOutput {
+	return o.ApplyT(func(v HiveJobResponse) bool { return v.ContinueOnFailure }).(pulumi.BoolOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+func (o HiveJobResponseOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HiveJobResponse) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+func (o HiveJobResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HiveJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains Hive queries.
+func (o HiveJobResponseOutput) QueryFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveJobResponse) string { return v.QueryFileUri }).(pulumi.StringOutput)
+}
+
+// A list of queries.
+func (o HiveJobResponseOutput) QueryList() QueryListResponseOutput {
+	return o.ApplyT(func(v HiveJobResponse) QueryListResponse { return v.QueryList }).(QueryListResponseOutput)
+}
+
+// Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name="value";).
+func (o HiveJobResponseOutput) ScriptVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HiveJobResponse) map[string]string { return v.ScriptVariables }).(pulumi.StringMapOutput)
+}
+
 // Configuration for the size bounds of an instance group, including its proportional size to other groups.
 type InstanceGroupAutoscalingPolicyConfig struct {
 	// Optional. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Required. Secondary workers - Bounds: [min_instances, ). Default: 0.
@@ -3471,6 +5967,180 @@ func (o InstanceGroupAutoscalingPolicyConfigPtrOutput) Weight() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+// Configuration for the size bounds of an instance group, including its proportional size to other groups.
+type InstanceGroupAutoscalingPolicyConfigResponse struct {
+	// Optional. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Required. Secondary workers - Bounds: [min_instances, ). Default: 0.
+	MaxInstances int `pulumi:"maxInstances"`
+	// Optional. Minimum number of instances for this group.Primary workers - Bounds: 2, max_instances. Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0.
+	MinInstances int `pulumi:"minInstances"`
+	// Optional. Weight for the instance group, which is used to determine the fraction of total workers in the cluster from this instance group. For example, if primary workers have weight 2, and secondary workers have weight 1, the cluster will have approximately 2 primary workers for each secondary worker.The cluster may not reach the specified balance if constrained by min/max bounds or other autoscaling settings. For example, if max_instances for secondary workers is 0, then only primary workers will be added. The cluster can also be out of balance when created.If weight is not set on any instance group, the cluster will default to equal weight for all groups: the cluster will attempt to maintain an equal number of workers in each group within the configured size bounds for each group. If weight is set for one group only, the cluster will default to zero weight on the unset group. For example if weight is set only on primary workers, the cluster will use primary workers only and no secondary workers.
+	Weight int `pulumi:"weight"`
+}
+
+// InstanceGroupAutoscalingPolicyConfigResponseInput is an input type that accepts InstanceGroupAutoscalingPolicyConfigResponseArgs and InstanceGroupAutoscalingPolicyConfigResponseOutput values.
+// You can construct a concrete instance of `InstanceGroupAutoscalingPolicyConfigResponseInput` via:
+//
+//          InstanceGroupAutoscalingPolicyConfigResponseArgs{...}
+type InstanceGroupAutoscalingPolicyConfigResponseInput interface {
+	pulumi.Input
+
+	ToInstanceGroupAutoscalingPolicyConfigResponseOutput() InstanceGroupAutoscalingPolicyConfigResponseOutput
+	ToInstanceGroupAutoscalingPolicyConfigResponseOutputWithContext(context.Context) InstanceGroupAutoscalingPolicyConfigResponseOutput
+}
+
+// Configuration for the size bounds of an instance group, including its proportional size to other groups.
+type InstanceGroupAutoscalingPolicyConfigResponseArgs struct {
+	// Optional. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Required. Secondary workers - Bounds: [min_instances, ). Default: 0.
+	MaxInstances pulumi.IntInput `pulumi:"maxInstances"`
+	// Optional. Minimum number of instances for this group.Primary workers - Bounds: 2, max_instances. Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0.
+	MinInstances pulumi.IntInput `pulumi:"minInstances"`
+	// Optional. Weight for the instance group, which is used to determine the fraction of total workers in the cluster from this instance group. For example, if primary workers have weight 2, and secondary workers have weight 1, the cluster will have approximately 2 primary workers for each secondary worker.The cluster may not reach the specified balance if constrained by min/max bounds or other autoscaling settings. For example, if max_instances for secondary workers is 0, then only primary workers will be added. The cluster can also be out of balance when created.If weight is not set on any instance group, the cluster will default to equal weight for all groups: the cluster will attempt to maintain an equal number of workers in each group within the configured size bounds for each group. If weight is set for one group only, the cluster will default to zero weight on the unset group. For example if weight is set only on primary workers, the cluster will use primary workers only and no secondary workers.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (InstanceGroupAutoscalingPolicyConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupAutoscalingPolicyConfigResponse)(nil)).Elem()
+}
+
+func (i InstanceGroupAutoscalingPolicyConfigResponseArgs) ToInstanceGroupAutoscalingPolicyConfigResponseOutput() InstanceGroupAutoscalingPolicyConfigResponseOutput {
+	return i.ToInstanceGroupAutoscalingPolicyConfigResponseOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupAutoscalingPolicyConfigResponseArgs) ToInstanceGroupAutoscalingPolicyConfigResponseOutputWithContext(ctx context.Context) InstanceGroupAutoscalingPolicyConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupAutoscalingPolicyConfigResponseOutput)
+}
+
+func (i InstanceGroupAutoscalingPolicyConfigResponseArgs) ToInstanceGroupAutoscalingPolicyConfigResponsePtrOutput() InstanceGroupAutoscalingPolicyConfigResponsePtrOutput {
+	return i.ToInstanceGroupAutoscalingPolicyConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupAutoscalingPolicyConfigResponseArgs) ToInstanceGroupAutoscalingPolicyConfigResponsePtrOutputWithContext(ctx context.Context) InstanceGroupAutoscalingPolicyConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupAutoscalingPolicyConfigResponseOutput).ToInstanceGroupAutoscalingPolicyConfigResponsePtrOutputWithContext(ctx)
+}
+
+// InstanceGroupAutoscalingPolicyConfigResponsePtrInput is an input type that accepts InstanceGroupAutoscalingPolicyConfigResponseArgs, InstanceGroupAutoscalingPolicyConfigResponsePtr and InstanceGroupAutoscalingPolicyConfigResponsePtrOutput values.
+// You can construct a concrete instance of `InstanceGroupAutoscalingPolicyConfigResponsePtrInput` via:
+//
+//          InstanceGroupAutoscalingPolicyConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceGroupAutoscalingPolicyConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToInstanceGroupAutoscalingPolicyConfigResponsePtrOutput() InstanceGroupAutoscalingPolicyConfigResponsePtrOutput
+	ToInstanceGroupAutoscalingPolicyConfigResponsePtrOutputWithContext(context.Context) InstanceGroupAutoscalingPolicyConfigResponsePtrOutput
+}
+
+type instanceGroupAutoscalingPolicyConfigResponsePtrType InstanceGroupAutoscalingPolicyConfigResponseArgs
+
+func InstanceGroupAutoscalingPolicyConfigResponsePtr(v *InstanceGroupAutoscalingPolicyConfigResponseArgs) InstanceGroupAutoscalingPolicyConfigResponsePtrInput {
+	return (*instanceGroupAutoscalingPolicyConfigResponsePtrType)(v)
+}
+
+func (*instanceGroupAutoscalingPolicyConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroupAutoscalingPolicyConfigResponse)(nil)).Elem()
+}
+
+func (i *instanceGroupAutoscalingPolicyConfigResponsePtrType) ToInstanceGroupAutoscalingPolicyConfigResponsePtrOutput() InstanceGroupAutoscalingPolicyConfigResponsePtrOutput {
+	return i.ToInstanceGroupAutoscalingPolicyConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceGroupAutoscalingPolicyConfigResponsePtrType) ToInstanceGroupAutoscalingPolicyConfigResponsePtrOutputWithContext(ctx context.Context) InstanceGroupAutoscalingPolicyConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupAutoscalingPolicyConfigResponsePtrOutput)
+}
+
+// Configuration for the size bounds of an instance group, including its proportional size to other groups.
+type InstanceGroupAutoscalingPolicyConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupAutoscalingPolicyConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupAutoscalingPolicyConfigResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupAutoscalingPolicyConfigResponseOutput) ToInstanceGroupAutoscalingPolicyConfigResponseOutput() InstanceGroupAutoscalingPolicyConfigResponseOutput {
+	return o
+}
+
+func (o InstanceGroupAutoscalingPolicyConfigResponseOutput) ToInstanceGroupAutoscalingPolicyConfigResponseOutputWithContext(ctx context.Context) InstanceGroupAutoscalingPolicyConfigResponseOutput {
+	return o
+}
+
+func (o InstanceGroupAutoscalingPolicyConfigResponseOutput) ToInstanceGroupAutoscalingPolicyConfigResponsePtrOutput() InstanceGroupAutoscalingPolicyConfigResponsePtrOutput {
+	return o.ToInstanceGroupAutoscalingPolicyConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupAutoscalingPolicyConfigResponseOutput) ToInstanceGroupAutoscalingPolicyConfigResponsePtrOutputWithContext(ctx context.Context) InstanceGroupAutoscalingPolicyConfigResponsePtrOutput {
+	return o.ApplyT(func(v InstanceGroupAutoscalingPolicyConfigResponse) *InstanceGroupAutoscalingPolicyConfigResponse {
+		return &v
+	}).(InstanceGroupAutoscalingPolicyConfigResponsePtrOutput)
+}
+
+// Optional. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Required. Secondary workers - Bounds: [min_instances, ). Default: 0.
+func (o InstanceGroupAutoscalingPolicyConfigResponseOutput) MaxInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupAutoscalingPolicyConfigResponse) int { return v.MaxInstances }).(pulumi.IntOutput)
+}
+
+// Optional. Minimum number of instances for this group.Primary workers - Bounds: 2, max_instances. Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0.
+func (o InstanceGroupAutoscalingPolicyConfigResponseOutput) MinInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupAutoscalingPolicyConfigResponse) int { return v.MinInstances }).(pulumi.IntOutput)
+}
+
+// Optional. Weight for the instance group, which is used to determine the fraction of total workers in the cluster from this instance group. For example, if primary workers have weight 2, and secondary workers have weight 1, the cluster will have approximately 2 primary workers for each secondary worker.The cluster may not reach the specified balance if constrained by min/max bounds or other autoscaling settings. For example, if max_instances for secondary workers is 0, then only primary workers will be added. The cluster can also be out of balance when created.If weight is not set on any instance group, the cluster will default to equal weight for all groups: the cluster will attempt to maintain an equal number of workers in each group within the configured size bounds for each group. If weight is set for one group only, the cluster will default to zero weight on the unset group. For example if weight is set only on primary workers, the cluster will use primary workers only and no secondary workers.
+func (o InstanceGroupAutoscalingPolicyConfigResponseOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupAutoscalingPolicyConfigResponse) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type InstanceGroupAutoscalingPolicyConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupAutoscalingPolicyConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroupAutoscalingPolicyConfigResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupAutoscalingPolicyConfigResponsePtrOutput) ToInstanceGroupAutoscalingPolicyConfigResponsePtrOutput() InstanceGroupAutoscalingPolicyConfigResponsePtrOutput {
+	return o
+}
+
+func (o InstanceGroupAutoscalingPolicyConfigResponsePtrOutput) ToInstanceGroupAutoscalingPolicyConfigResponsePtrOutputWithContext(ctx context.Context) InstanceGroupAutoscalingPolicyConfigResponsePtrOutput {
+	return o
+}
+
+func (o InstanceGroupAutoscalingPolicyConfigResponsePtrOutput) Elem() InstanceGroupAutoscalingPolicyConfigResponseOutput {
+	return o.ApplyT(func(v *InstanceGroupAutoscalingPolicyConfigResponse) InstanceGroupAutoscalingPolicyConfigResponse {
+		return *v
+	}).(InstanceGroupAutoscalingPolicyConfigResponseOutput)
+}
+
+// Optional. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Required. Secondary workers - Bounds: [min_instances, ). Default: 0.
+func (o InstanceGroupAutoscalingPolicyConfigResponsePtrOutput) MaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupAutoscalingPolicyConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Minimum number of instances for this group.Primary workers - Bounds: 2, max_instances. Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0.
+func (o InstanceGroupAutoscalingPolicyConfigResponsePtrOutput) MinInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupAutoscalingPolicyConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Weight for the instance group, which is used to determine the fraction of total workers in the cluster from this instance group. For example, if primary workers have weight 2, and secondary workers have weight 1, the cluster will have approximately 2 primary workers for each secondary worker.The cluster may not reach the specified balance if constrained by min/max bounds or other autoscaling settings. For example, if max_instances for secondary workers is 0, then only primary workers will be added. The cluster can also be out of balance when created.If weight is not set on any instance group, the cluster will default to equal weight for all groups: the cluster will attempt to maintain an equal number of workers in each group within the configured size bounds for each group. If weight is set for one group only, the cluster will default to zero weight on the unset group. For example if weight is set only on primary workers, the cluster will use primary workers only and no secondary workers.
+func (o InstanceGroupAutoscalingPolicyConfigResponsePtrOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupAutoscalingPolicyConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Weight
+	}).(pulumi.IntPtrOutput)
+}
+
 // The config settings for Compute Engine resources in an instance group, such as a master or worker group.
 type InstanceGroupConfig struct {
 	// Optional. The Compute Engine accelerator configuration for these instances.
@@ -3479,16 +6149,8 @@ type InstanceGroupConfig struct {
 	DiskConfig *DiskConfig `pulumi:"diskConfig"`
 	// Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most recent image from the family: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default.
 	ImageUri *string `pulumi:"imageUri"`
-	// Output only. The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group.
-	InstanceNames []string `pulumi:"instanceNames"`
-	// Output only. List of references to Compute Engine instances.
-	InstanceReferences []InstanceReference `pulumi:"instanceReferences"`
-	// Output only. Specifies that this instance group contains preemptible instances.
-	IsPreemptible *bool `pulumi:"isPreemptible"`
 	// Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
 	MachineTypeUri *string `pulumi:"machineTypeUri"`
-	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-	ManagedGroupConfig *ManagedGroupConfig `pulumi:"managedGroupConfig"`
 	// Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
@@ -3516,16 +6178,8 @@ type InstanceGroupConfigArgs struct {
 	DiskConfig DiskConfigPtrInput `pulumi:"diskConfig"`
 	// Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most recent image from the family: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default.
 	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
-	// Output only. The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group.
-	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
-	// Output only. List of references to Compute Engine instances.
-	InstanceReferences InstanceReferenceArrayInput `pulumi:"instanceReferences"`
-	// Output only. Specifies that this instance group contains preemptible instances.
-	IsPreemptible pulumi.BoolPtrInput `pulumi:"isPreemptible"`
 	// Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
 	MachineTypeUri pulumi.StringPtrInput `pulumi:"machineTypeUri"`
-	// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-	ManagedGroupConfig ManagedGroupConfigPtrInput `pulumi:"managedGroupConfig"`
 	// Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
@@ -3627,29 +6281,9 @@ func (o InstanceGroupConfigOutput) ImageUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroupConfig) *string { return v.ImageUri }).(pulumi.StringPtrOutput)
 }
 
-// Output only. The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group.
-func (o InstanceGroupConfigOutput) InstanceNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v InstanceGroupConfig) []string { return v.InstanceNames }).(pulumi.StringArrayOutput)
-}
-
-// Output only. List of references to Compute Engine instances.
-func (o InstanceGroupConfigOutput) InstanceReferences() InstanceReferenceArrayOutput {
-	return o.ApplyT(func(v InstanceGroupConfig) []InstanceReference { return v.InstanceReferences }).(InstanceReferenceArrayOutput)
-}
-
-// Output only. Specifies that this instance group contains preemptible instances.
-func (o InstanceGroupConfigOutput) IsPreemptible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InstanceGroupConfig) *bool { return v.IsPreemptible }).(pulumi.BoolPtrOutput)
-}
-
 // Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
 func (o InstanceGroupConfigOutput) MachineTypeUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroupConfig) *string { return v.MachineTypeUri }).(pulumi.StringPtrOutput)
-}
-
-// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-func (o InstanceGroupConfigOutput) ManagedGroupConfig() ManagedGroupConfigPtrOutput {
-	return o.ApplyT(func(v InstanceGroupConfig) *ManagedGroupConfig { return v.ManagedGroupConfig }).(ManagedGroupConfigPtrOutput)
 }
 
 // Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
@@ -3715,36 +6349,6 @@ func (o InstanceGroupConfigPtrOutput) ImageUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group.
-func (o InstanceGroupConfigPtrOutput) InstanceNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *InstanceGroupConfig) []string {
-		if v == nil {
-			return nil
-		}
-		return v.InstanceNames
-	}).(pulumi.StringArrayOutput)
-}
-
-// Output only. List of references to Compute Engine instances.
-func (o InstanceGroupConfigPtrOutput) InstanceReferences() InstanceReferenceArrayOutput {
-	return o.ApplyT(func(v *InstanceGroupConfig) []InstanceReference {
-		if v == nil {
-			return nil
-		}
-		return v.InstanceReferences
-	}).(InstanceReferenceArrayOutput)
-}
-
-// Output only. Specifies that this instance group contains preemptible instances.
-func (o InstanceGroupConfigPtrOutput) IsPreemptible() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IsPreemptible
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
 func (o InstanceGroupConfigPtrOutput) MachineTypeUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupConfig) *string {
@@ -3753,16 +6357,6 @@ func (o InstanceGroupConfigPtrOutput) MachineTypeUri() pulumi.StringPtrOutput {
 		}
 		return v.MachineTypeUri
 	}).(pulumi.StringPtrOutput)
-}
-
-// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-func (o InstanceGroupConfigPtrOutput) ManagedGroupConfig() ManagedGroupConfigPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupConfig) *ManagedGroupConfig {
-		if v == nil {
-			return nil
-		}
-		return v.ManagedGroupConfig
-	}).(ManagedGroupConfigPtrOutput)
 }
 
 // Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
@@ -3795,122 +6389,446 @@ func (o InstanceGroupConfigPtrOutput) Preemptibility() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A reference to a Compute Engine instance.
-type InstanceReference struct {
-	// The unique identifier of the Compute Engine instance.
-	InstanceId *string `pulumi:"instanceId"`
-	// The user-friendly name of the Compute Engine instance.
-	InstanceName *string `pulumi:"instanceName"`
-	// The public key used for sharing data with this instance.
-	PublicKey *string `pulumi:"publicKey"`
+// The config settings for Compute Engine resources in an instance group, such as a master or worker group.
+type InstanceGroupConfigResponse struct {
+	// Optional. The Compute Engine accelerator configuration for these instances.
+	Accelerators []AcceleratorConfigResponse `pulumi:"accelerators"`
+	// Optional. Disk option config settings.
+	DiskConfig DiskConfigResponse `pulumi:"diskConfig"`
+	// Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most recent image from the family: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default.
+	ImageUri string `pulumi:"imageUri"`
+	// The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group.
+	InstanceNames []string `pulumi:"instanceNames"`
+	// List of references to Compute Engine instances.
+	InstanceReferences []InstanceReferenceResponse `pulumi:"instanceReferences"`
+	// Specifies that this instance group contains preemptible instances.
+	IsPreemptible bool `pulumi:"isPreemptible"`
+	// Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
+	MachineTypeUri string `pulumi:"machineTypeUri"`
+	// The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+	ManagedGroupConfig ManagedGroupConfigResponse `pulumi:"managedGroupConfig"`
+	// Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+	MinCpuPlatform string `pulumi:"minCpuPlatform"`
+	// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
+	NumInstances int `pulumi:"numInstances"`
+	// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
+	Preemptibility string `pulumi:"preemptibility"`
 }
 
-// InstanceReferenceInput is an input type that accepts InstanceReferenceArgs and InstanceReferenceOutput values.
-// You can construct a concrete instance of `InstanceReferenceInput` via:
+// InstanceGroupConfigResponseInput is an input type that accepts InstanceGroupConfigResponseArgs and InstanceGroupConfigResponseOutput values.
+// You can construct a concrete instance of `InstanceGroupConfigResponseInput` via:
 //
-//          InstanceReferenceArgs{...}
-type InstanceReferenceInput interface {
+//          InstanceGroupConfigResponseArgs{...}
+type InstanceGroupConfigResponseInput interface {
 	pulumi.Input
 
-	ToInstanceReferenceOutput() InstanceReferenceOutput
-	ToInstanceReferenceOutputWithContext(context.Context) InstanceReferenceOutput
+	ToInstanceGroupConfigResponseOutput() InstanceGroupConfigResponseOutput
+	ToInstanceGroupConfigResponseOutputWithContext(context.Context) InstanceGroupConfigResponseOutput
 }
 
-// A reference to a Compute Engine instance.
-type InstanceReferenceArgs struct {
-	// The unique identifier of the Compute Engine instance.
-	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	// The user-friendly name of the Compute Engine instance.
-	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
-	// The public key used for sharing data with this instance.
-	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
+// The config settings for Compute Engine resources in an instance group, such as a master or worker group.
+type InstanceGroupConfigResponseArgs struct {
+	// Optional. The Compute Engine accelerator configuration for these instances.
+	Accelerators AcceleratorConfigResponseArrayInput `pulumi:"accelerators"`
+	// Optional. Disk option config settings.
+	DiskConfig DiskConfigResponseInput `pulumi:"diskConfig"`
+	// Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most recent image from the family: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default.
+	ImageUri pulumi.StringInput `pulumi:"imageUri"`
+	// The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group.
+	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
+	// List of references to Compute Engine instances.
+	InstanceReferences InstanceReferenceResponseArrayInput `pulumi:"instanceReferences"`
+	// Specifies that this instance group contains preemptible instances.
+	IsPreemptible pulumi.BoolInput `pulumi:"isPreemptible"`
+	// Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
+	MachineTypeUri pulumi.StringInput `pulumi:"machineTypeUri"`
+	// The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+	ManagedGroupConfig ManagedGroupConfigResponseInput `pulumi:"managedGroupConfig"`
+	// Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+	MinCpuPlatform pulumi.StringInput `pulumi:"minCpuPlatform"`
+	// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
+	NumInstances pulumi.IntInput `pulumi:"numInstances"`
+	// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
+	Preemptibility pulumi.StringInput `pulumi:"preemptibility"`
 }
 
-func (InstanceReferenceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceReference)(nil)).Elem()
+func (InstanceGroupConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupConfigResponse)(nil)).Elem()
 }
 
-func (i InstanceReferenceArgs) ToInstanceReferenceOutput() InstanceReferenceOutput {
-	return i.ToInstanceReferenceOutputWithContext(context.Background())
+func (i InstanceGroupConfigResponseArgs) ToInstanceGroupConfigResponseOutput() InstanceGroupConfigResponseOutput {
+	return i.ToInstanceGroupConfigResponseOutputWithContext(context.Background())
 }
 
-func (i InstanceReferenceArgs) ToInstanceReferenceOutputWithContext(ctx context.Context) InstanceReferenceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceReferenceOutput)
+func (i InstanceGroupConfigResponseArgs) ToInstanceGroupConfigResponseOutputWithContext(ctx context.Context) InstanceGroupConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupConfigResponseOutput)
 }
 
-// InstanceReferenceArrayInput is an input type that accepts InstanceReferenceArray and InstanceReferenceArrayOutput values.
-// You can construct a concrete instance of `InstanceReferenceArrayInput` via:
+func (i InstanceGroupConfigResponseArgs) ToInstanceGroupConfigResponsePtrOutput() InstanceGroupConfigResponsePtrOutput {
+	return i.ToInstanceGroupConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupConfigResponseArgs) ToInstanceGroupConfigResponsePtrOutputWithContext(ctx context.Context) InstanceGroupConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupConfigResponseOutput).ToInstanceGroupConfigResponsePtrOutputWithContext(ctx)
+}
+
+// InstanceGroupConfigResponsePtrInput is an input type that accepts InstanceGroupConfigResponseArgs, InstanceGroupConfigResponsePtr and InstanceGroupConfigResponsePtrOutput values.
+// You can construct a concrete instance of `InstanceGroupConfigResponsePtrInput` via:
 //
-//          InstanceReferenceArray{ InstanceReferenceArgs{...} }
-type InstanceReferenceArrayInput interface {
+//          InstanceGroupConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceGroupConfigResponsePtrInput interface {
 	pulumi.Input
 
-	ToInstanceReferenceArrayOutput() InstanceReferenceArrayOutput
-	ToInstanceReferenceArrayOutputWithContext(context.Context) InstanceReferenceArrayOutput
+	ToInstanceGroupConfigResponsePtrOutput() InstanceGroupConfigResponsePtrOutput
+	ToInstanceGroupConfigResponsePtrOutputWithContext(context.Context) InstanceGroupConfigResponsePtrOutput
 }
 
-type InstanceReferenceArray []InstanceReferenceInput
+type instanceGroupConfigResponsePtrType InstanceGroupConfigResponseArgs
 
-func (InstanceReferenceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceReference)(nil)).Elem()
+func InstanceGroupConfigResponsePtr(v *InstanceGroupConfigResponseArgs) InstanceGroupConfigResponsePtrInput {
+	return (*instanceGroupConfigResponsePtrType)(v)
 }
 
-func (i InstanceReferenceArray) ToInstanceReferenceArrayOutput() InstanceReferenceArrayOutput {
-	return i.ToInstanceReferenceArrayOutputWithContext(context.Background())
+func (*instanceGroupConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroupConfigResponse)(nil)).Elem()
 }
 
-func (i InstanceReferenceArray) ToInstanceReferenceArrayOutputWithContext(ctx context.Context) InstanceReferenceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceReferenceArrayOutput)
+func (i *instanceGroupConfigResponsePtrType) ToInstanceGroupConfigResponsePtrOutput() InstanceGroupConfigResponsePtrOutput {
+	return i.ToInstanceGroupConfigResponsePtrOutputWithContext(context.Background())
 }
 
-// A reference to a Compute Engine instance.
-type InstanceReferenceOutput struct{ *pulumi.OutputState }
-
-func (InstanceReferenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceReference)(nil)).Elem()
+func (i *instanceGroupConfigResponsePtrType) ToInstanceGroupConfigResponsePtrOutputWithContext(ctx context.Context) InstanceGroupConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupConfigResponsePtrOutput)
 }
 
-func (o InstanceReferenceOutput) ToInstanceReferenceOutput() InstanceReferenceOutput {
+// The config settings for Compute Engine resources in an instance group, such as a master or worker group.
+type InstanceGroupConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupConfigResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupConfigResponseOutput) ToInstanceGroupConfigResponseOutput() InstanceGroupConfigResponseOutput {
 	return o
 }
 
-func (o InstanceReferenceOutput) ToInstanceReferenceOutputWithContext(ctx context.Context) InstanceReferenceOutput {
+func (o InstanceGroupConfigResponseOutput) ToInstanceGroupConfigResponseOutputWithContext(ctx context.Context) InstanceGroupConfigResponseOutput {
+	return o
+}
+
+func (o InstanceGroupConfigResponseOutput) ToInstanceGroupConfigResponsePtrOutput() InstanceGroupConfigResponsePtrOutput {
+	return o.ToInstanceGroupConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupConfigResponseOutput) ToInstanceGroupConfigResponsePtrOutputWithContext(ctx context.Context) InstanceGroupConfigResponsePtrOutput {
+	return o.ApplyT(func(v InstanceGroupConfigResponse) *InstanceGroupConfigResponse {
+		return &v
+	}).(InstanceGroupConfigResponsePtrOutput)
+}
+
+// Optional. The Compute Engine accelerator configuration for these instances.
+func (o InstanceGroupConfigResponseOutput) Accelerators() AcceleratorConfigResponseArrayOutput {
+	return o.ApplyT(func(v InstanceGroupConfigResponse) []AcceleratorConfigResponse { return v.Accelerators }).(AcceleratorConfigResponseArrayOutput)
+}
+
+// Optional. Disk option config settings.
+func (o InstanceGroupConfigResponseOutput) DiskConfig() DiskConfigResponseOutput {
+	return o.ApplyT(func(v InstanceGroupConfigResponse) DiskConfigResponse { return v.DiskConfig }).(DiskConfigResponseOutput)
+}
+
+// Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most recent image from the family: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default.
+func (o InstanceGroupConfigResponseOutput) ImageUri() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGroupConfigResponse) string { return v.ImageUri }).(pulumi.StringOutput)
+}
+
+// The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group.
+func (o InstanceGroupConfigResponseOutput) InstanceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceGroupConfigResponse) []string { return v.InstanceNames }).(pulumi.StringArrayOutput)
+}
+
+// List of references to Compute Engine instances.
+func (o InstanceGroupConfigResponseOutput) InstanceReferences() InstanceReferenceResponseArrayOutput {
+	return o.ApplyT(func(v InstanceGroupConfigResponse) []InstanceReferenceResponse { return v.InstanceReferences }).(InstanceReferenceResponseArrayOutput)
+}
+
+// Specifies that this instance group contains preemptible instances.
+func (o InstanceGroupConfigResponseOutput) IsPreemptible() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceGroupConfigResponse) bool { return v.IsPreemptible }).(pulumi.BoolOutput)
+}
+
+// Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
+func (o InstanceGroupConfigResponseOutput) MachineTypeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGroupConfigResponse) string { return v.MachineTypeUri }).(pulumi.StringOutput)
+}
+
+// The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+func (o InstanceGroupConfigResponseOutput) ManagedGroupConfig() ManagedGroupConfigResponseOutput {
+	return o.ApplyT(func(v InstanceGroupConfigResponse) ManagedGroupConfigResponse { return v.ManagedGroupConfig }).(ManagedGroupConfigResponseOutput)
+}
+
+// Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+func (o InstanceGroupConfigResponseOutput) MinCpuPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGroupConfigResponse) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
+}
+
+// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
+func (o InstanceGroupConfigResponseOutput) NumInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupConfigResponse) int { return v.NumInstances }).(pulumi.IntOutput)
+}
+
+// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
+func (o InstanceGroupConfigResponseOutput) Preemptibility() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGroupConfigResponse) string { return v.Preemptibility }).(pulumi.StringOutput)
+}
+
+type InstanceGroupConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceGroupConfigResponse)(nil)).Elem()
+}
+
+func (o InstanceGroupConfigResponsePtrOutput) ToInstanceGroupConfigResponsePtrOutput() InstanceGroupConfigResponsePtrOutput {
+	return o
+}
+
+func (o InstanceGroupConfigResponsePtrOutput) ToInstanceGroupConfigResponsePtrOutputWithContext(ctx context.Context) InstanceGroupConfigResponsePtrOutput {
+	return o
+}
+
+func (o InstanceGroupConfigResponsePtrOutput) Elem() InstanceGroupConfigResponseOutput {
+	return o.ApplyT(func(v *InstanceGroupConfigResponse) InstanceGroupConfigResponse { return *v }).(InstanceGroupConfigResponseOutput)
+}
+
+// Optional. The Compute Engine accelerator configuration for these instances.
+func (o InstanceGroupConfigResponsePtrOutput) Accelerators() AcceleratorConfigResponseArrayOutput {
+	return o.ApplyT(func(v *InstanceGroupConfigResponse) []AcceleratorConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Accelerators
+	}).(AcceleratorConfigResponseArrayOutput)
+}
+
+// Optional. Disk option config settings.
+func (o InstanceGroupConfigResponsePtrOutput) DiskConfig() DiskConfigResponsePtrOutput {
+	return o.ApplyT(func(v *InstanceGroupConfigResponse) *DiskConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.DiskConfig
+	}).(DiskConfigResponsePtrOutput)
+}
+
+// Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most recent image from the family: https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default.
+func (o InstanceGroupConfigResponsePtrOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImageUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group.
+func (o InstanceGroupConfigResponsePtrOutput) InstanceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceGroupConfigResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of references to Compute Engine instances.
+func (o InstanceGroupConfigResponsePtrOutput) InstanceReferences() InstanceReferenceResponseArrayOutput {
+	return o.ApplyT(func(v *InstanceGroupConfigResponse) []InstanceReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceReferences
+	}).(InstanceReferenceResponseArrayOutput)
+}
+
+// Specifies that this instance group contains preemptible instances.
+func (o InstanceGroupConfigResponsePtrOutput) IsPreemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IsPreemptible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2.
+func (o InstanceGroupConfigResponsePtrOutput) MachineTypeUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MachineTypeUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+func (o InstanceGroupConfigResponsePtrOutput) ManagedGroupConfig() ManagedGroupConfigResponsePtrOutput {
+	return o.ApplyT(func(v *InstanceGroupConfigResponse) *ManagedGroupConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ManagedGroupConfig
+	}).(ManagedGroupConfigResponsePtrOutput)
+}
+
+// Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+func (o InstanceGroupConfigResponsePtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MinCpuPlatform
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1.
+func (o InstanceGroupConfigResponsePtrOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.NumInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
+func (o InstanceGroupConfigResponsePtrOutput) Preemptibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Preemptibility
+	}).(pulumi.StringPtrOutput)
+}
+
+// A reference to a Compute Engine instance.
+type InstanceReferenceResponse struct {
+	// The unique identifier of the Compute Engine instance.
+	InstanceId string `pulumi:"instanceId"`
+	// The user-friendly name of the Compute Engine instance.
+	InstanceName string `pulumi:"instanceName"`
+	// The public key used for sharing data with this instance.
+	PublicKey string `pulumi:"publicKey"`
+}
+
+// InstanceReferenceResponseInput is an input type that accepts InstanceReferenceResponseArgs and InstanceReferenceResponseOutput values.
+// You can construct a concrete instance of `InstanceReferenceResponseInput` via:
+//
+//          InstanceReferenceResponseArgs{...}
+type InstanceReferenceResponseInput interface {
+	pulumi.Input
+
+	ToInstanceReferenceResponseOutput() InstanceReferenceResponseOutput
+	ToInstanceReferenceResponseOutputWithContext(context.Context) InstanceReferenceResponseOutput
+}
+
+// A reference to a Compute Engine instance.
+type InstanceReferenceResponseArgs struct {
+	// The unique identifier of the Compute Engine instance.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The user-friendly name of the Compute Engine instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The public key used for sharing data with this instance.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+}
+
+func (InstanceReferenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReferenceResponse)(nil)).Elem()
+}
+
+func (i InstanceReferenceResponseArgs) ToInstanceReferenceResponseOutput() InstanceReferenceResponseOutput {
+	return i.ToInstanceReferenceResponseOutputWithContext(context.Background())
+}
+
+func (i InstanceReferenceResponseArgs) ToInstanceReferenceResponseOutputWithContext(ctx context.Context) InstanceReferenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReferenceResponseOutput)
+}
+
+// InstanceReferenceResponseArrayInput is an input type that accepts InstanceReferenceResponseArray and InstanceReferenceResponseArrayOutput values.
+// You can construct a concrete instance of `InstanceReferenceResponseArrayInput` via:
+//
+//          InstanceReferenceResponseArray{ InstanceReferenceResponseArgs{...} }
+type InstanceReferenceResponseArrayInput interface {
+	pulumi.Input
+
+	ToInstanceReferenceResponseArrayOutput() InstanceReferenceResponseArrayOutput
+	ToInstanceReferenceResponseArrayOutputWithContext(context.Context) InstanceReferenceResponseArrayOutput
+}
+
+type InstanceReferenceResponseArray []InstanceReferenceResponseInput
+
+func (InstanceReferenceResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceReferenceResponse)(nil)).Elem()
+}
+
+func (i InstanceReferenceResponseArray) ToInstanceReferenceResponseArrayOutput() InstanceReferenceResponseArrayOutput {
+	return i.ToInstanceReferenceResponseArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceReferenceResponseArray) ToInstanceReferenceResponseArrayOutputWithContext(ctx context.Context) InstanceReferenceResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceReferenceResponseArrayOutput)
+}
+
+// A reference to a Compute Engine instance.
+type InstanceReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceReferenceResponse)(nil)).Elem()
+}
+
+func (o InstanceReferenceResponseOutput) ToInstanceReferenceResponseOutput() InstanceReferenceResponseOutput {
+	return o
+}
+
+func (o InstanceReferenceResponseOutput) ToInstanceReferenceResponseOutputWithContext(ctx context.Context) InstanceReferenceResponseOutput {
 	return o
 }
 
 // The unique identifier of the Compute Engine instance.
-func (o InstanceReferenceOutput) InstanceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceReference) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+func (o InstanceReferenceResponseOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceReferenceResponse) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // The user-friendly name of the Compute Engine instance.
-func (o InstanceReferenceOutput) InstanceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceReference) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
+func (o InstanceReferenceResponseOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceReferenceResponse) string { return v.InstanceName }).(pulumi.StringOutput)
 }
 
 // The public key used for sharing data with this instance.
-func (o InstanceReferenceOutput) PublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceReference) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+func (o InstanceReferenceResponseOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceReferenceResponse) string { return v.PublicKey }).(pulumi.StringOutput)
 }
 
-type InstanceReferenceArrayOutput struct{ *pulumi.OutputState }
+type InstanceReferenceResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (InstanceReferenceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceReference)(nil)).Elem()
+func (InstanceReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceReferenceResponse)(nil)).Elem()
 }
 
-func (o InstanceReferenceArrayOutput) ToInstanceReferenceArrayOutput() InstanceReferenceArrayOutput {
+func (o InstanceReferenceResponseArrayOutput) ToInstanceReferenceResponseArrayOutput() InstanceReferenceResponseArrayOutput {
 	return o
 }
 
-func (o InstanceReferenceArrayOutput) ToInstanceReferenceArrayOutputWithContext(ctx context.Context) InstanceReferenceArrayOutput {
+func (o InstanceReferenceResponseArrayOutput) ToInstanceReferenceResponseArrayOutputWithContext(ctx context.Context) InstanceReferenceResponseArrayOutput {
 	return o
 }
 
-func (o InstanceReferenceArrayOutput) Index(i pulumi.IntInput) InstanceReferenceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceReference {
-		return vs[0].([]InstanceReference)[vs[1].(int)]
-	}).(InstanceReferenceOutput)
+func (o InstanceReferenceResponseArrayOutput) Index(i pulumi.IntInput) InstanceReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceReferenceResponse {
+		return vs[0].([]InstanceReferenceResponse)[vs[1].(int)]
+	}).(InstanceReferenceResponseOutput)
 }
 
 // Job scheduling options.
@@ -4064,6 +6982,70 @@ func (o JobSchedulingPtrOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
 		}
 		return v.MaxFailuresTotal
 	}).(pulumi.IntPtrOutput)
+}
+
+// Job scheduling options.
+type JobSchedulingResponse struct {
+	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver terminating with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
+	MaxFailuresPerHour int `pulumi:"maxFailuresPerHour"`
+	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.
+	MaxFailuresTotal int `pulumi:"maxFailuresTotal"`
+}
+
+// JobSchedulingResponseInput is an input type that accepts JobSchedulingResponseArgs and JobSchedulingResponseOutput values.
+// You can construct a concrete instance of `JobSchedulingResponseInput` via:
+//
+//          JobSchedulingResponseArgs{...}
+type JobSchedulingResponseInput interface {
+	pulumi.Input
+
+	ToJobSchedulingResponseOutput() JobSchedulingResponseOutput
+	ToJobSchedulingResponseOutputWithContext(context.Context) JobSchedulingResponseOutput
+}
+
+// Job scheduling options.
+type JobSchedulingResponseArgs struct {
+	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver terminating with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
+	MaxFailuresPerHour pulumi.IntInput `pulumi:"maxFailuresPerHour"`
+	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.
+	MaxFailuresTotal pulumi.IntInput `pulumi:"maxFailuresTotal"`
+}
+
+func (JobSchedulingResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobSchedulingResponse)(nil)).Elem()
+}
+
+func (i JobSchedulingResponseArgs) ToJobSchedulingResponseOutput() JobSchedulingResponseOutput {
+	return i.ToJobSchedulingResponseOutputWithContext(context.Background())
+}
+
+func (i JobSchedulingResponseArgs) ToJobSchedulingResponseOutputWithContext(ctx context.Context) JobSchedulingResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobSchedulingResponseOutput)
+}
+
+// Job scheduling options.
+type JobSchedulingResponseOutput struct{ *pulumi.OutputState }
+
+func (JobSchedulingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobSchedulingResponse)(nil)).Elem()
+}
+
+func (o JobSchedulingResponseOutput) ToJobSchedulingResponseOutput() JobSchedulingResponseOutput {
+	return o
+}
+
+func (o JobSchedulingResponseOutput) ToJobSchedulingResponseOutputWithContext(ctx context.Context) JobSchedulingResponseOutput {
+	return o
+}
+
+// Optional. Maximum number of times per hour a driver may be restarted as a result of driver terminating with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
+func (o JobSchedulingResponseOutput) MaxFailuresPerHour() pulumi.IntOutput {
+	return o.ApplyT(func(v JobSchedulingResponse) int { return v.MaxFailuresPerHour }).(pulumi.IntOutput)
+}
+
+// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.
+func (o JobSchedulingResponseOutput) MaxFailuresTotal() pulumi.IntOutput {
+	return o.ApplyT(func(v JobSchedulingResponse) int { return v.MaxFailuresTotal }).(pulumi.IntOutput)
 }
 
 // Specifies Kerberos related configuration.
@@ -4466,6 +7448,406 @@ func (o KerberosConfigPtrOutput) TruststoreUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies Kerberos related configuration.
+type KerberosConfigResponse struct {
+	// Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+	CrossRealmTrustAdminServer string `pulumi:"crossRealmTrustAdminServer"`
+	// Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+	CrossRealmTrustKdc string `pulumi:"crossRealmTrustKdc"`
+	// Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+	CrossRealmTrustRealm string `pulumi:"crossRealmTrustRealm"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
+	CrossRealmTrustSharedPasswordUri string `pulumi:"crossRealmTrustSharedPasswordUri"`
+	// Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
+	EnableKerberos bool `pulumi:"enableKerberos"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
+	KdcDbKeyUri string `pulumi:"kdcDbKeyUri"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
+	KeyPasswordUri string `pulumi:"keyPasswordUri"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
+	KeystorePasswordUri string `pulumi:"keystorePasswordUri"`
+	// Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+	KeystoreUri string `pulumi:"keystoreUri"`
+	// Optional. The uri of the KMS key used to encrypt various sensitive files.
+	KmsKeyUri string `pulumi:"kmsKeyUri"`
+	// Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
+	Realm string `pulumi:"realm"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the root principal password.
+	RootPrincipalPasswordUri string `pulumi:"rootPrincipalPasswordUri"`
+	// Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
+	TgtLifetimeHours int `pulumi:"tgtLifetimeHours"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
+	TruststorePasswordUri string `pulumi:"truststorePasswordUri"`
+	// Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+	TruststoreUri string `pulumi:"truststoreUri"`
+}
+
+// KerberosConfigResponseInput is an input type that accepts KerberosConfigResponseArgs and KerberosConfigResponseOutput values.
+// You can construct a concrete instance of `KerberosConfigResponseInput` via:
+//
+//          KerberosConfigResponseArgs{...}
+type KerberosConfigResponseInput interface {
+	pulumi.Input
+
+	ToKerberosConfigResponseOutput() KerberosConfigResponseOutput
+	ToKerberosConfigResponseOutputWithContext(context.Context) KerberosConfigResponseOutput
+}
+
+// Specifies Kerberos related configuration.
+type KerberosConfigResponseArgs struct {
+	// Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+	CrossRealmTrustAdminServer pulumi.StringInput `pulumi:"crossRealmTrustAdminServer"`
+	// Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+	CrossRealmTrustKdc pulumi.StringInput `pulumi:"crossRealmTrustKdc"`
+	// Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+	CrossRealmTrustRealm pulumi.StringInput `pulumi:"crossRealmTrustRealm"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
+	CrossRealmTrustSharedPasswordUri pulumi.StringInput `pulumi:"crossRealmTrustSharedPasswordUri"`
+	// Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
+	EnableKerberos pulumi.BoolInput `pulumi:"enableKerberos"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
+	KdcDbKeyUri pulumi.StringInput `pulumi:"kdcDbKeyUri"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
+	KeyPasswordUri pulumi.StringInput `pulumi:"keyPasswordUri"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
+	KeystorePasswordUri pulumi.StringInput `pulumi:"keystorePasswordUri"`
+	// Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+	KeystoreUri pulumi.StringInput `pulumi:"keystoreUri"`
+	// Optional. The uri of the KMS key used to encrypt various sensitive files.
+	KmsKeyUri pulumi.StringInput `pulumi:"kmsKeyUri"`
+	// Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
+	Realm pulumi.StringInput `pulumi:"realm"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the root principal password.
+	RootPrincipalPasswordUri pulumi.StringInput `pulumi:"rootPrincipalPasswordUri"`
+	// Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
+	TgtLifetimeHours pulumi.IntInput `pulumi:"tgtLifetimeHours"`
+	// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
+	TruststorePasswordUri pulumi.StringInput `pulumi:"truststorePasswordUri"`
+	// Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+	TruststoreUri pulumi.StringInput `pulumi:"truststoreUri"`
+}
+
+func (KerberosConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KerberosConfigResponse)(nil)).Elem()
+}
+
+func (i KerberosConfigResponseArgs) ToKerberosConfigResponseOutput() KerberosConfigResponseOutput {
+	return i.ToKerberosConfigResponseOutputWithContext(context.Background())
+}
+
+func (i KerberosConfigResponseArgs) ToKerberosConfigResponseOutputWithContext(ctx context.Context) KerberosConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KerberosConfigResponseOutput)
+}
+
+func (i KerberosConfigResponseArgs) ToKerberosConfigResponsePtrOutput() KerberosConfigResponsePtrOutput {
+	return i.ToKerberosConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i KerberosConfigResponseArgs) ToKerberosConfigResponsePtrOutputWithContext(ctx context.Context) KerberosConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KerberosConfigResponseOutput).ToKerberosConfigResponsePtrOutputWithContext(ctx)
+}
+
+// KerberosConfigResponsePtrInput is an input type that accepts KerberosConfigResponseArgs, KerberosConfigResponsePtr and KerberosConfigResponsePtrOutput values.
+// You can construct a concrete instance of `KerberosConfigResponsePtrInput` via:
+//
+//          KerberosConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type KerberosConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToKerberosConfigResponsePtrOutput() KerberosConfigResponsePtrOutput
+	ToKerberosConfigResponsePtrOutputWithContext(context.Context) KerberosConfigResponsePtrOutput
+}
+
+type kerberosConfigResponsePtrType KerberosConfigResponseArgs
+
+func KerberosConfigResponsePtr(v *KerberosConfigResponseArgs) KerberosConfigResponsePtrInput {
+	return (*kerberosConfigResponsePtrType)(v)
+}
+
+func (*kerberosConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KerberosConfigResponse)(nil)).Elem()
+}
+
+func (i *kerberosConfigResponsePtrType) ToKerberosConfigResponsePtrOutput() KerberosConfigResponsePtrOutput {
+	return i.ToKerberosConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *kerberosConfigResponsePtrType) ToKerberosConfigResponsePtrOutputWithContext(ctx context.Context) KerberosConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KerberosConfigResponsePtrOutput)
+}
+
+// Specifies Kerberos related configuration.
+type KerberosConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (KerberosConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KerberosConfigResponse)(nil)).Elem()
+}
+
+func (o KerberosConfigResponseOutput) ToKerberosConfigResponseOutput() KerberosConfigResponseOutput {
+	return o
+}
+
+func (o KerberosConfigResponseOutput) ToKerberosConfigResponseOutputWithContext(ctx context.Context) KerberosConfigResponseOutput {
+	return o
+}
+
+func (o KerberosConfigResponseOutput) ToKerberosConfigResponsePtrOutput() KerberosConfigResponsePtrOutput {
+	return o.ToKerberosConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o KerberosConfigResponseOutput) ToKerberosConfigResponsePtrOutputWithContext(ctx context.Context) KerberosConfigResponsePtrOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) *KerberosConfigResponse {
+		return &v
+	}).(KerberosConfigResponsePtrOutput)
+}
+
+// Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+func (o KerberosConfigResponseOutput) CrossRealmTrustAdminServer() pulumi.StringOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) string { return v.CrossRealmTrustAdminServer }).(pulumi.StringOutput)
+}
+
+// Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+func (o KerberosConfigResponseOutput) CrossRealmTrustKdc() pulumi.StringOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) string { return v.CrossRealmTrustKdc }).(pulumi.StringOutput)
+}
+
+// Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+func (o KerberosConfigResponseOutput) CrossRealmTrustRealm() pulumi.StringOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) string { return v.CrossRealmTrustRealm }).(pulumi.StringOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
+func (o KerberosConfigResponseOutput) CrossRealmTrustSharedPasswordUri() pulumi.StringOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) string { return v.CrossRealmTrustSharedPasswordUri }).(pulumi.StringOutput)
+}
+
+// Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
+func (o KerberosConfigResponseOutput) EnableKerberos() pulumi.BoolOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) bool { return v.EnableKerberos }).(pulumi.BoolOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
+func (o KerberosConfigResponseOutput) KdcDbKeyUri() pulumi.StringOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) string { return v.KdcDbKeyUri }).(pulumi.StringOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
+func (o KerberosConfigResponseOutput) KeyPasswordUri() pulumi.StringOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) string { return v.KeyPasswordUri }).(pulumi.StringOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
+func (o KerberosConfigResponseOutput) KeystorePasswordUri() pulumi.StringOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) string { return v.KeystorePasswordUri }).(pulumi.StringOutput)
+}
+
+// Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+func (o KerberosConfigResponseOutput) KeystoreUri() pulumi.StringOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) string { return v.KeystoreUri }).(pulumi.StringOutput)
+}
+
+// Optional. The uri of the KMS key used to encrypt various sensitive files.
+func (o KerberosConfigResponseOutput) KmsKeyUri() pulumi.StringOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) string { return v.KmsKeyUri }).(pulumi.StringOutput)
+}
+
+// Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
+func (o KerberosConfigResponseOutput) Realm() pulumi.StringOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) string { return v.Realm }).(pulumi.StringOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the root principal password.
+func (o KerberosConfigResponseOutput) RootPrincipalPasswordUri() pulumi.StringOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) string { return v.RootPrincipalPasswordUri }).(pulumi.StringOutput)
+}
+
+// Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
+func (o KerberosConfigResponseOutput) TgtLifetimeHours() pulumi.IntOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) int { return v.TgtLifetimeHours }).(pulumi.IntOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
+func (o KerberosConfigResponseOutput) TruststorePasswordUri() pulumi.StringOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) string { return v.TruststorePasswordUri }).(pulumi.StringOutput)
+}
+
+// Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+func (o KerberosConfigResponseOutput) TruststoreUri() pulumi.StringOutput {
+	return o.ApplyT(func(v KerberosConfigResponse) string { return v.TruststoreUri }).(pulumi.StringOutput)
+}
+
+type KerberosConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KerberosConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KerberosConfigResponse)(nil)).Elem()
+}
+
+func (o KerberosConfigResponsePtrOutput) ToKerberosConfigResponsePtrOutput() KerberosConfigResponsePtrOutput {
+	return o
+}
+
+func (o KerberosConfigResponsePtrOutput) ToKerberosConfigResponsePtrOutputWithContext(ctx context.Context) KerberosConfigResponsePtrOutput {
+	return o
+}
+
+func (o KerberosConfigResponsePtrOutput) Elem() KerberosConfigResponseOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) KerberosConfigResponse { return *v }).(KerberosConfigResponseOutput)
+}
+
+// Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+func (o KerberosConfigResponsePtrOutput) CrossRealmTrustAdminServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CrossRealmTrustAdminServer
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+func (o KerberosConfigResponsePtrOutput) CrossRealmTrustKdc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CrossRealmTrustKdc
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+func (o KerberosConfigResponsePtrOutput) CrossRealmTrustRealm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CrossRealmTrustRealm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
+func (o KerberosConfigResponsePtrOutput) CrossRealmTrustSharedPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CrossRealmTrustSharedPasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
+func (o KerberosConfigResponsePtrOutput) EnableKerberos() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableKerberos
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
+func (o KerberosConfigResponsePtrOutput) KdcDbKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KdcDbKeyUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
+func (o KerberosConfigResponsePtrOutput) KeyPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyPasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
+func (o KerberosConfigResponsePtrOutput) KeystorePasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeystorePasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+func (o KerberosConfigResponsePtrOutput) KeystoreUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeystoreUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The uri of the KMS key used to encrypt various sensitive files.
+func (o KerberosConfigResponsePtrOutput) KmsKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
+func (o KerberosConfigResponsePtrOutput) Realm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Realm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the root principal password.
+func (o KerberosConfigResponsePtrOutput) RootPrincipalPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RootPrincipalPasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
+func (o KerberosConfigResponsePtrOutput) TgtLifetimeHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TgtLifetimeHours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
+func (o KerberosConfigResponsePtrOutput) TruststorePasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TruststorePasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+func (o KerberosConfigResponsePtrOutput) TruststoreUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KerberosConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TruststoreUri
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies the cluster auto-delete schedule configuration.
 type LifecycleConfig struct {
 	// Optional. The time when cluster will be auto-deleted. (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
@@ -4474,8 +7856,6 @@ type LifecycleConfig struct {
 	AutoDeleteTtl *string `pulumi:"autoDeleteTtl"`
 	// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	IdleDeleteTtl *string `pulumi:"idleDeleteTtl"`
-	// Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-	IdleStartTime *string `pulumi:"idleStartTime"`
 }
 
 // LifecycleConfigInput is an input type that accepts LifecycleConfigArgs and LifecycleConfigOutput values.
@@ -4497,8 +7877,6 @@ type LifecycleConfigArgs struct {
 	AutoDeleteTtl pulumi.StringPtrInput `pulumi:"autoDeleteTtl"`
 	// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	IdleDeleteTtl pulumi.StringPtrInput `pulumi:"idleDeleteTtl"`
-	// Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-	IdleStartTime pulumi.StringPtrInput `pulumi:"idleStartTime"`
 }
 
 func (LifecycleConfigArgs) ElementType() reflect.Type {
@@ -4594,11 +7972,6 @@ func (o LifecycleConfigOutput) IdleDeleteTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LifecycleConfig) *string { return v.IdleDeleteTtl }).(pulumi.StringPtrOutput)
 }
 
-// Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-func (o LifecycleConfigOutput) IdleStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LifecycleConfig) *string { return v.IdleStartTime }).(pulumi.StringPtrOutput)
-}
-
 type LifecycleConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (LifecycleConfigPtrOutput) ElementType() reflect.Type {
@@ -4647,13 +8020,194 @@ func (o LifecycleConfigPtrOutput) IdleDeleteTtl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-func (o LifecycleConfigPtrOutput) IdleStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LifecycleConfig) *string {
+// Specifies the cluster auto-delete schedule configuration.
+type LifecycleConfigResponse struct {
+	// Optional. The time when cluster will be auto-deleted. (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	AutoDeleteTime string `pulumi:"autoDeleteTime"`
+	// Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	AutoDeleteTtl string `pulumi:"autoDeleteTtl"`
+	// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	IdleDeleteTtl string `pulumi:"idleDeleteTtl"`
+	// The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	IdleStartTime string `pulumi:"idleStartTime"`
+}
+
+// LifecycleConfigResponseInput is an input type that accepts LifecycleConfigResponseArgs and LifecycleConfigResponseOutput values.
+// You can construct a concrete instance of `LifecycleConfigResponseInput` via:
+//
+//          LifecycleConfigResponseArgs{...}
+type LifecycleConfigResponseInput interface {
+	pulumi.Input
+
+	ToLifecycleConfigResponseOutput() LifecycleConfigResponseOutput
+	ToLifecycleConfigResponseOutputWithContext(context.Context) LifecycleConfigResponseOutput
+}
+
+// Specifies the cluster auto-delete schedule configuration.
+type LifecycleConfigResponseArgs struct {
+	// Optional. The time when cluster will be auto-deleted. (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	AutoDeleteTime pulumi.StringInput `pulumi:"autoDeleteTime"`
+	// Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	AutoDeleteTtl pulumi.StringInput `pulumi:"autoDeleteTtl"`
+	// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	IdleDeleteTtl pulumi.StringInput `pulumi:"idleDeleteTtl"`
+	// The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	IdleStartTime pulumi.StringInput `pulumi:"idleStartTime"`
+}
+
+func (LifecycleConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecycleConfigResponse)(nil)).Elem()
+}
+
+func (i LifecycleConfigResponseArgs) ToLifecycleConfigResponseOutput() LifecycleConfigResponseOutput {
+	return i.ToLifecycleConfigResponseOutputWithContext(context.Background())
+}
+
+func (i LifecycleConfigResponseArgs) ToLifecycleConfigResponseOutputWithContext(ctx context.Context) LifecycleConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecycleConfigResponseOutput)
+}
+
+func (i LifecycleConfigResponseArgs) ToLifecycleConfigResponsePtrOutput() LifecycleConfigResponsePtrOutput {
+	return i.ToLifecycleConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LifecycleConfigResponseArgs) ToLifecycleConfigResponsePtrOutputWithContext(ctx context.Context) LifecycleConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecycleConfigResponseOutput).ToLifecycleConfigResponsePtrOutputWithContext(ctx)
+}
+
+// LifecycleConfigResponsePtrInput is an input type that accepts LifecycleConfigResponseArgs, LifecycleConfigResponsePtr and LifecycleConfigResponsePtrOutput values.
+// You can construct a concrete instance of `LifecycleConfigResponsePtrInput` via:
+//
+//          LifecycleConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type LifecycleConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToLifecycleConfigResponsePtrOutput() LifecycleConfigResponsePtrOutput
+	ToLifecycleConfigResponsePtrOutputWithContext(context.Context) LifecycleConfigResponsePtrOutput
+}
+
+type lifecycleConfigResponsePtrType LifecycleConfigResponseArgs
+
+func LifecycleConfigResponsePtr(v *LifecycleConfigResponseArgs) LifecycleConfigResponsePtrInput {
+	return (*lifecycleConfigResponsePtrType)(v)
+}
+
+func (*lifecycleConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LifecycleConfigResponse)(nil)).Elem()
+}
+
+func (i *lifecycleConfigResponsePtrType) ToLifecycleConfigResponsePtrOutput() LifecycleConfigResponsePtrOutput {
+	return i.ToLifecycleConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *lifecycleConfigResponsePtrType) ToLifecycleConfigResponsePtrOutputWithContext(ctx context.Context) LifecycleConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LifecycleConfigResponsePtrOutput)
+}
+
+// Specifies the cluster auto-delete schedule configuration.
+type LifecycleConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (LifecycleConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecycleConfigResponse)(nil)).Elem()
+}
+
+func (o LifecycleConfigResponseOutput) ToLifecycleConfigResponseOutput() LifecycleConfigResponseOutput {
+	return o
+}
+
+func (o LifecycleConfigResponseOutput) ToLifecycleConfigResponseOutputWithContext(ctx context.Context) LifecycleConfigResponseOutput {
+	return o
+}
+
+func (o LifecycleConfigResponseOutput) ToLifecycleConfigResponsePtrOutput() LifecycleConfigResponsePtrOutput {
+	return o.ToLifecycleConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LifecycleConfigResponseOutput) ToLifecycleConfigResponsePtrOutputWithContext(ctx context.Context) LifecycleConfigResponsePtrOutput {
+	return o.ApplyT(func(v LifecycleConfigResponse) *LifecycleConfigResponse {
+		return &v
+	}).(LifecycleConfigResponsePtrOutput)
+}
+
+// Optional. The time when cluster will be auto-deleted. (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+func (o LifecycleConfigResponseOutput) AutoDeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LifecycleConfigResponse) string { return v.AutoDeleteTime }).(pulumi.StringOutput)
+}
+
+// Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+func (o LifecycleConfigResponseOutput) AutoDeleteTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v LifecycleConfigResponse) string { return v.AutoDeleteTtl }).(pulumi.StringOutput)
+}
+
+// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+func (o LifecycleConfigResponseOutput) IdleDeleteTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v LifecycleConfigResponse) string { return v.IdleDeleteTtl }).(pulumi.StringOutput)
+}
+
+// The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+func (o LifecycleConfigResponseOutput) IdleStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LifecycleConfigResponse) string { return v.IdleStartTime }).(pulumi.StringOutput)
+}
+
+type LifecycleConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LifecycleConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LifecycleConfigResponse)(nil)).Elem()
+}
+
+func (o LifecycleConfigResponsePtrOutput) ToLifecycleConfigResponsePtrOutput() LifecycleConfigResponsePtrOutput {
+	return o
+}
+
+func (o LifecycleConfigResponsePtrOutput) ToLifecycleConfigResponsePtrOutputWithContext(ctx context.Context) LifecycleConfigResponsePtrOutput {
+	return o
+}
+
+func (o LifecycleConfigResponsePtrOutput) Elem() LifecycleConfigResponseOutput {
+	return o.ApplyT(func(v *LifecycleConfigResponse) LifecycleConfigResponse { return *v }).(LifecycleConfigResponseOutput)
+}
+
+// Optional. The time when cluster will be auto-deleted. (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+func (o LifecycleConfigResponsePtrOutput) AutoDeleteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LifecycleConfigResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.IdleStartTime
+		return &v.AutoDeleteTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+func (o LifecycleConfigResponsePtrOutput) AutoDeleteTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LifecycleConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AutoDeleteTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+func (o LifecycleConfigResponsePtrOutput) IdleDeleteTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LifecycleConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdleDeleteTtl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+func (o LifecycleConfigResponsePtrOutput) IdleStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LifecycleConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdleStartTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4789,6 +8343,61 @@ func (o LoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 		}
 		return v.DriverLogLevels
 	}).(pulumi.StringMapOutput)
+}
+
+// The runtime logging config of the job.
+type LoggingConfigResponse struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
+}
+
+// LoggingConfigResponseInput is an input type that accepts LoggingConfigResponseArgs and LoggingConfigResponseOutput values.
+// You can construct a concrete instance of `LoggingConfigResponseInput` via:
+//
+//          LoggingConfigResponseArgs{...}
+type LoggingConfigResponseInput interface {
+	pulumi.Input
+
+	ToLoggingConfigResponseOutput() LoggingConfigResponseOutput
+	ToLoggingConfigResponseOutputWithContext(context.Context) LoggingConfigResponseOutput
+}
+
+// The runtime logging config of the job.
+type LoggingConfigResponseArgs struct {
+	// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
+}
+
+func (LoggingConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfigResponse)(nil)).Elem()
+}
+
+func (i LoggingConfigResponseArgs) ToLoggingConfigResponseOutput() LoggingConfigResponseOutput {
+	return i.ToLoggingConfigResponseOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigResponseArgs) ToLoggingConfigResponseOutputWithContext(ctx context.Context) LoggingConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigResponseOutput)
+}
+
+// The runtime logging config of the job.
+type LoggingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfigResponse)(nil)).Elem()
+}
+
+func (o LoggingConfigResponseOutput) ToLoggingConfigResponseOutput() LoggingConfigResponseOutput {
+	return o
+}
+
+func (o LoggingConfigResponseOutput) ToLoggingConfigResponseOutputWithContext(ctx context.Context) LoggingConfigResponseOutput {
+	return o
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+func (o LoggingConfigResponseOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
 
 // Cluster that is managed by the workflow.
@@ -4963,156 +8572,328 @@ func (o ManagedClusterPtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Specifies the resources used to actively manage an instance group.
-type ManagedGroupConfig struct {
-	// Output only. The name of the Instance Group Manager for this group.
-	InstanceGroupManagerName *string `pulumi:"instanceGroupManagerName"`
-	// Output only. The name of the Instance Template used for the Managed Instance Group.
-	InstanceTemplateName *string `pulumi:"instanceTemplateName"`
+// Cluster that is managed by the workflow.
+type ManagedClusterResponse struct {
+	// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+	ClusterName string `pulumi:"clusterName"`
+	// Required. The cluster configuration.
+	Config ClusterConfigResponse `pulumi:"config"`
+	// Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
+	Labels map[string]string `pulumi:"labels"`
 }
 
-// ManagedGroupConfigInput is an input type that accepts ManagedGroupConfigArgs and ManagedGroupConfigOutput values.
-// You can construct a concrete instance of `ManagedGroupConfigInput` via:
+// ManagedClusterResponseInput is an input type that accepts ManagedClusterResponseArgs and ManagedClusterResponseOutput values.
+// You can construct a concrete instance of `ManagedClusterResponseInput` via:
 //
-//          ManagedGroupConfigArgs{...}
-type ManagedGroupConfigInput interface {
+//          ManagedClusterResponseArgs{...}
+type ManagedClusterResponseInput interface {
 	pulumi.Input
 
-	ToManagedGroupConfigOutput() ManagedGroupConfigOutput
-	ToManagedGroupConfigOutputWithContext(context.Context) ManagedGroupConfigOutput
+	ToManagedClusterResponseOutput() ManagedClusterResponseOutput
+	ToManagedClusterResponseOutputWithContext(context.Context) ManagedClusterResponseOutput
 }
 
-// Specifies the resources used to actively manage an instance group.
-type ManagedGroupConfigArgs struct {
-	// Output only. The name of the Instance Group Manager for this group.
-	InstanceGroupManagerName pulumi.StringPtrInput `pulumi:"instanceGroupManagerName"`
-	// Output only. The name of the Instance Template used for the Managed Instance Group.
-	InstanceTemplateName pulumi.StringPtrInput `pulumi:"instanceTemplateName"`
+// Cluster that is managed by the workflow.
+type ManagedClusterResponseArgs struct {
+	// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// Required. The cluster configuration.
+	Config ClusterConfigResponseInput `pulumi:"config"`
+	// Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 }
 
-func (ManagedGroupConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedGroupConfig)(nil)).Elem()
+func (ManagedClusterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedClusterResponse)(nil)).Elem()
 }
 
-func (i ManagedGroupConfigArgs) ToManagedGroupConfigOutput() ManagedGroupConfigOutput {
-	return i.ToManagedGroupConfigOutputWithContext(context.Background())
+func (i ManagedClusterResponseArgs) ToManagedClusterResponseOutput() ManagedClusterResponseOutput {
+	return i.ToManagedClusterResponseOutputWithContext(context.Background())
 }
 
-func (i ManagedGroupConfigArgs) ToManagedGroupConfigOutputWithContext(ctx context.Context) ManagedGroupConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedGroupConfigOutput)
+func (i ManagedClusterResponseArgs) ToManagedClusterResponseOutputWithContext(ctx context.Context) ManagedClusterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterResponseOutput)
 }
 
-func (i ManagedGroupConfigArgs) ToManagedGroupConfigPtrOutput() ManagedGroupConfigPtrOutput {
-	return i.ToManagedGroupConfigPtrOutputWithContext(context.Background())
+func (i ManagedClusterResponseArgs) ToManagedClusterResponsePtrOutput() ManagedClusterResponsePtrOutput {
+	return i.ToManagedClusterResponsePtrOutputWithContext(context.Background())
 }
 
-func (i ManagedGroupConfigArgs) ToManagedGroupConfigPtrOutputWithContext(ctx context.Context) ManagedGroupConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedGroupConfigOutput).ToManagedGroupConfigPtrOutputWithContext(ctx)
+func (i ManagedClusterResponseArgs) ToManagedClusterResponsePtrOutputWithContext(ctx context.Context) ManagedClusterResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterResponseOutput).ToManagedClusterResponsePtrOutputWithContext(ctx)
 }
 
-// ManagedGroupConfigPtrInput is an input type that accepts ManagedGroupConfigArgs, ManagedGroupConfigPtr and ManagedGroupConfigPtrOutput values.
-// You can construct a concrete instance of `ManagedGroupConfigPtrInput` via:
+// ManagedClusterResponsePtrInput is an input type that accepts ManagedClusterResponseArgs, ManagedClusterResponsePtr and ManagedClusterResponsePtrOutput values.
+// You can construct a concrete instance of `ManagedClusterResponsePtrInput` via:
 //
-//          ManagedGroupConfigArgs{...}
+//          ManagedClusterResponseArgs{...}
 //
 //  or:
 //
 //          nil
-type ManagedGroupConfigPtrInput interface {
+type ManagedClusterResponsePtrInput interface {
 	pulumi.Input
 
-	ToManagedGroupConfigPtrOutput() ManagedGroupConfigPtrOutput
-	ToManagedGroupConfigPtrOutputWithContext(context.Context) ManagedGroupConfigPtrOutput
+	ToManagedClusterResponsePtrOutput() ManagedClusterResponsePtrOutput
+	ToManagedClusterResponsePtrOutputWithContext(context.Context) ManagedClusterResponsePtrOutput
 }
 
-type managedGroupConfigPtrType ManagedGroupConfigArgs
+type managedClusterResponsePtrType ManagedClusterResponseArgs
 
-func ManagedGroupConfigPtr(v *ManagedGroupConfigArgs) ManagedGroupConfigPtrInput {
-	return (*managedGroupConfigPtrType)(v)
+func ManagedClusterResponsePtr(v *ManagedClusterResponseArgs) ManagedClusterResponsePtrInput {
+	return (*managedClusterResponsePtrType)(v)
 }
 
-func (*managedGroupConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedGroupConfig)(nil)).Elem()
+func (*managedClusterResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedClusterResponse)(nil)).Elem()
 }
 
-func (i *managedGroupConfigPtrType) ToManagedGroupConfigPtrOutput() ManagedGroupConfigPtrOutput {
-	return i.ToManagedGroupConfigPtrOutputWithContext(context.Background())
+func (i *managedClusterResponsePtrType) ToManagedClusterResponsePtrOutput() ManagedClusterResponsePtrOutput {
+	return i.ToManagedClusterResponsePtrOutputWithContext(context.Background())
 }
 
-func (i *managedGroupConfigPtrType) ToManagedGroupConfigPtrOutputWithContext(ctx context.Context) ManagedGroupConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedGroupConfigPtrOutput)
+func (i *managedClusterResponsePtrType) ToManagedClusterResponsePtrOutputWithContext(ctx context.Context) ManagedClusterResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterResponsePtrOutput)
 }
 
-// Specifies the resources used to actively manage an instance group.
-type ManagedGroupConfigOutput struct{ *pulumi.OutputState }
+// Cluster that is managed by the workflow.
+type ManagedClusterResponseOutput struct{ *pulumi.OutputState }
 
-func (ManagedGroupConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedGroupConfig)(nil)).Elem()
+func (ManagedClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedClusterResponse)(nil)).Elem()
 }
 
-func (o ManagedGroupConfigOutput) ToManagedGroupConfigOutput() ManagedGroupConfigOutput {
+func (o ManagedClusterResponseOutput) ToManagedClusterResponseOutput() ManagedClusterResponseOutput {
 	return o
 }
 
-func (o ManagedGroupConfigOutput) ToManagedGroupConfigOutputWithContext(ctx context.Context) ManagedGroupConfigOutput {
+func (o ManagedClusterResponseOutput) ToManagedClusterResponseOutputWithContext(ctx context.Context) ManagedClusterResponseOutput {
 	return o
 }
 
-func (o ManagedGroupConfigOutput) ToManagedGroupConfigPtrOutput() ManagedGroupConfigPtrOutput {
-	return o.ToManagedGroupConfigPtrOutputWithContext(context.Background())
+func (o ManagedClusterResponseOutput) ToManagedClusterResponsePtrOutput() ManagedClusterResponsePtrOutput {
+	return o.ToManagedClusterResponsePtrOutputWithContext(context.Background())
 }
 
-func (o ManagedGroupConfigOutput) ToManagedGroupConfigPtrOutputWithContext(ctx context.Context) ManagedGroupConfigPtrOutput {
-	return o.ApplyT(func(v ManagedGroupConfig) *ManagedGroupConfig {
+func (o ManagedClusterResponseOutput) ToManagedClusterResponsePtrOutputWithContext(ctx context.Context) ManagedClusterResponsePtrOutput {
+	return o.ApplyT(func(v ManagedClusterResponse) *ManagedClusterResponse {
 		return &v
-	}).(ManagedGroupConfigPtrOutput)
+	}).(ManagedClusterResponsePtrOutput)
 }
 
-// Output only. The name of the Instance Group Manager for this group.
-func (o ManagedGroupConfigOutput) InstanceGroupManagerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedGroupConfig) *string { return v.InstanceGroupManagerName }).(pulumi.StringPtrOutput)
+// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+func (o ManagedClusterResponseOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedClusterResponse) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
-// Output only. The name of the Instance Template used for the Managed Instance Group.
-func (o ManagedGroupConfigOutput) InstanceTemplateName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedGroupConfig) *string { return v.InstanceTemplateName }).(pulumi.StringPtrOutput)
+// Required. The cluster configuration.
+func (o ManagedClusterResponseOutput) Config() ClusterConfigResponseOutput {
+	return o.ApplyT(func(v ManagedClusterResponse) ClusterConfigResponse { return v.Config }).(ClusterConfigResponseOutput)
 }
 
-type ManagedGroupConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedGroupConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedGroupConfig)(nil)).Elem()
+// Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
+func (o ManagedClusterResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ManagedClusterResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-func (o ManagedGroupConfigPtrOutput) ToManagedGroupConfigPtrOutput() ManagedGroupConfigPtrOutput {
+type ManagedClusterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedClusterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedClusterResponse)(nil)).Elem()
+}
+
+func (o ManagedClusterResponsePtrOutput) ToManagedClusterResponsePtrOutput() ManagedClusterResponsePtrOutput {
 	return o
 }
 
-func (o ManagedGroupConfigPtrOutput) ToManagedGroupConfigPtrOutputWithContext(ctx context.Context) ManagedGroupConfigPtrOutput {
+func (o ManagedClusterResponsePtrOutput) ToManagedClusterResponsePtrOutputWithContext(ctx context.Context) ManagedClusterResponsePtrOutput {
 	return o
 }
 
-func (o ManagedGroupConfigPtrOutput) Elem() ManagedGroupConfigOutput {
-	return o.ApplyT(func(v *ManagedGroupConfig) ManagedGroupConfig { return *v }).(ManagedGroupConfigOutput)
+func (o ManagedClusterResponsePtrOutput) Elem() ManagedClusterResponseOutput {
+	return o.ApplyT(func(v *ManagedClusterResponse) ManagedClusterResponse { return *v }).(ManagedClusterResponseOutput)
 }
 
-// Output only. The name of the Instance Group Manager for this group.
-func (o ManagedGroupConfigPtrOutput) InstanceGroupManagerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedGroupConfig) *string {
+// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+func (o ManagedClusterResponsePtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedClusterResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.InstanceGroupManagerName
+		return &v.ClusterName
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The name of the Instance Template used for the Managed Instance Group.
-func (o ManagedGroupConfigPtrOutput) InstanceTemplateName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedGroupConfig) *string {
+// Required. The cluster configuration.
+func (o ManagedClusterResponsePtrOutput) Config() ClusterConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedClusterResponse) *ClusterConfigResponse {
 		if v == nil {
 			return nil
 		}
-		return v.InstanceTemplateName
+		return &v.Config
+	}).(ClusterConfigResponsePtrOutput)
+}
+
+// Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
+func (o ManagedClusterResponsePtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ManagedClusterResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Specifies the resources used to actively manage an instance group.
+type ManagedGroupConfigResponse struct {
+	// The name of the Instance Group Manager for this group.
+	InstanceGroupManagerName string `pulumi:"instanceGroupManagerName"`
+	// The name of the Instance Template used for the Managed Instance Group.
+	InstanceTemplateName string `pulumi:"instanceTemplateName"`
+}
+
+// ManagedGroupConfigResponseInput is an input type that accepts ManagedGroupConfigResponseArgs and ManagedGroupConfigResponseOutput values.
+// You can construct a concrete instance of `ManagedGroupConfigResponseInput` via:
+//
+//          ManagedGroupConfigResponseArgs{...}
+type ManagedGroupConfigResponseInput interface {
+	pulumi.Input
+
+	ToManagedGroupConfigResponseOutput() ManagedGroupConfigResponseOutput
+	ToManagedGroupConfigResponseOutputWithContext(context.Context) ManagedGroupConfigResponseOutput
+}
+
+// Specifies the resources used to actively manage an instance group.
+type ManagedGroupConfigResponseArgs struct {
+	// The name of the Instance Group Manager for this group.
+	InstanceGroupManagerName pulumi.StringInput `pulumi:"instanceGroupManagerName"`
+	// The name of the Instance Template used for the Managed Instance Group.
+	InstanceTemplateName pulumi.StringInput `pulumi:"instanceTemplateName"`
+}
+
+func (ManagedGroupConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedGroupConfigResponse)(nil)).Elem()
+}
+
+func (i ManagedGroupConfigResponseArgs) ToManagedGroupConfigResponseOutput() ManagedGroupConfigResponseOutput {
+	return i.ToManagedGroupConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedGroupConfigResponseArgs) ToManagedGroupConfigResponseOutputWithContext(ctx context.Context) ManagedGroupConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedGroupConfigResponseOutput)
+}
+
+func (i ManagedGroupConfigResponseArgs) ToManagedGroupConfigResponsePtrOutput() ManagedGroupConfigResponsePtrOutput {
+	return i.ToManagedGroupConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedGroupConfigResponseArgs) ToManagedGroupConfigResponsePtrOutputWithContext(ctx context.Context) ManagedGroupConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedGroupConfigResponseOutput).ToManagedGroupConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ManagedGroupConfigResponsePtrInput is an input type that accepts ManagedGroupConfigResponseArgs, ManagedGroupConfigResponsePtr and ManagedGroupConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ManagedGroupConfigResponsePtrInput` via:
+//
+//          ManagedGroupConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedGroupConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToManagedGroupConfigResponsePtrOutput() ManagedGroupConfigResponsePtrOutput
+	ToManagedGroupConfigResponsePtrOutputWithContext(context.Context) ManagedGroupConfigResponsePtrOutput
+}
+
+type managedGroupConfigResponsePtrType ManagedGroupConfigResponseArgs
+
+func ManagedGroupConfigResponsePtr(v *ManagedGroupConfigResponseArgs) ManagedGroupConfigResponsePtrInput {
+	return (*managedGroupConfigResponsePtrType)(v)
+}
+
+func (*managedGroupConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedGroupConfigResponse)(nil)).Elem()
+}
+
+func (i *managedGroupConfigResponsePtrType) ToManagedGroupConfigResponsePtrOutput() ManagedGroupConfigResponsePtrOutput {
+	return i.ToManagedGroupConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *managedGroupConfigResponsePtrType) ToManagedGroupConfigResponsePtrOutputWithContext(ctx context.Context) ManagedGroupConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedGroupConfigResponsePtrOutput)
+}
+
+// Specifies the resources used to actively manage an instance group.
+type ManagedGroupConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedGroupConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedGroupConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedGroupConfigResponseOutput) ToManagedGroupConfigResponseOutput() ManagedGroupConfigResponseOutput {
+	return o
+}
+
+func (o ManagedGroupConfigResponseOutput) ToManagedGroupConfigResponseOutputWithContext(ctx context.Context) ManagedGroupConfigResponseOutput {
+	return o
+}
+
+func (o ManagedGroupConfigResponseOutput) ToManagedGroupConfigResponsePtrOutput() ManagedGroupConfigResponsePtrOutput {
+	return o.ToManagedGroupConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedGroupConfigResponseOutput) ToManagedGroupConfigResponsePtrOutputWithContext(ctx context.Context) ManagedGroupConfigResponsePtrOutput {
+	return o.ApplyT(func(v ManagedGroupConfigResponse) *ManagedGroupConfigResponse {
+		return &v
+	}).(ManagedGroupConfigResponsePtrOutput)
+}
+
+// The name of the Instance Group Manager for this group.
+func (o ManagedGroupConfigResponseOutput) InstanceGroupManagerName() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedGroupConfigResponse) string { return v.InstanceGroupManagerName }).(pulumi.StringOutput)
+}
+
+// The name of the Instance Template used for the Managed Instance Group.
+func (o ManagedGroupConfigResponseOutput) InstanceTemplateName() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedGroupConfigResponse) string { return v.InstanceTemplateName }).(pulumi.StringOutput)
+}
+
+type ManagedGroupConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedGroupConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedGroupConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedGroupConfigResponsePtrOutput) ToManagedGroupConfigResponsePtrOutput() ManagedGroupConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedGroupConfigResponsePtrOutput) ToManagedGroupConfigResponsePtrOutputWithContext(ctx context.Context) ManagedGroupConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManagedGroupConfigResponsePtrOutput) Elem() ManagedGroupConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedGroupConfigResponse) ManagedGroupConfigResponse { return *v }).(ManagedGroupConfigResponseOutput)
+}
+
+// The name of the Instance Group Manager for this group.
+func (o ManagedGroupConfigResponsePtrOutput) InstanceGroupManagerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedGroupConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceGroupManagerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Instance Template used for the Managed Instance Group.
+func (o ManagedGroupConfigResponsePtrOutput) InstanceTemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedGroupConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceTemplateName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5247,6 +9028,140 @@ func (o MetastoreConfigPtrOutput) DataprocMetastoreService() pulumi.StringPtrOut
 			return nil
 		}
 		return v.DataprocMetastoreService
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a Metastore configuration.
+type MetastoreConfigResponse struct {
+	// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+	DataprocMetastoreService string `pulumi:"dataprocMetastoreService"`
+}
+
+// MetastoreConfigResponseInput is an input type that accepts MetastoreConfigResponseArgs and MetastoreConfigResponseOutput values.
+// You can construct a concrete instance of `MetastoreConfigResponseInput` via:
+//
+//          MetastoreConfigResponseArgs{...}
+type MetastoreConfigResponseInput interface {
+	pulumi.Input
+
+	ToMetastoreConfigResponseOutput() MetastoreConfigResponseOutput
+	ToMetastoreConfigResponseOutputWithContext(context.Context) MetastoreConfigResponseOutput
+}
+
+// Specifies a Metastore configuration.
+type MetastoreConfigResponseArgs struct {
+	// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+	DataprocMetastoreService pulumi.StringInput `pulumi:"dataprocMetastoreService"`
+}
+
+func (MetastoreConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreConfigResponse)(nil)).Elem()
+}
+
+func (i MetastoreConfigResponseArgs) ToMetastoreConfigResponseOutput() MetastoreConfigResponseOutput {
+	return i.ToMetastoreConfigResponseOutputWithContext(context.Background())
+}
+
+func (i MetastoreConfigResponseArgs) ToMetastoreConfigResponseOutputWithContext(ctx context.Context) MetastoreConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreConfigResponseOutput)
+}
+
+func (i MetastoreConfigResponseArgs) ToMetastoreConfigResponsePtrOutput() MetastoreConfigResponsePtrOutput {
+	return i.ToMetastoreConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreConfigResponseArgs) ToMetastoreConfigResponsePtrOutputWithContext(ctx context.Context) MetastoreConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreConfigResponseOutput).ToMetastoreConfigResponsePtrOutputWithContext(ctx)
+}
+
+// MetastoreConfigResponsePtrInput is an input type that accepts MetastoreConfigResponseArgs, MetastoreConfigResponsePtr and MetastoreConfigResponsePtrOutput values.
+// You can construct a concrete instance of `MetastoreConfigResponsePtrInput` via:
+//
+//          MetastoreConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MetastoreConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToMetastoreConfigResponsePtrOutput() MetastoreConfigResponsePtrOutput
+	ToMetastoreConfigResponsePtrOutputWithContext(context.Context) MetastoreConfigResponsePtrOutput
+}
+
+type metastoreConfigResponsePtrType MetastoreConfigResponseArgs
+
+func MetastoreConfigResponsePtr(v *MetastoreConfigResponseArgs) MetastoreConfigResponsePtrInput {
+	return (*metastoreConfigResponsePtrType)(v)
+}
+
+func (*metastoreConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreConfigResponse)(nil)).Elem()
+}
+
+func (i *metastoreConfigResponsePtrType) ToMetastoreConfigResponsePtrOutput() MetastoreConfigResponsePtrOutput {
+	return i.ToMetastoreConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreConfigResponsePtrType) ToMetastoreConfigResponsePtrOutputWithContext(ctx context.Context) MetastoreConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreConfigResponsePtrOutput)
+}
+
+// Specifies a Metastore configuration.
+type MetastoreConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (MetastoreConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreConfigResponse)(nil)).Elem()
+}
+
+func (o MetastoreConfigResponseOutput) ToMetastoreConfigResponseOutput() MetastoreConfigResponseOutput {
+	return o
+}
+
+func (o MetastoreConfigResponseOutput) ToMetastoreConfigResponseOutputWithContext(ctx context.Context) MetastoreConfigResponseOutput {
+	return o
+}
+
+func (o MetastoreConfigResponseOutput) ToMetastoreConfigResponsePtrOutput() MetastoreConfigResponsePtrOutput {
+	return o.ToMetastoreConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreConfigResponseOutput) ToMetastoreConfigResponsePtrOutputWithContext(ctx context.Context) MetastoreConfigResponsePtrOutput {
+	return o.ApplyT(func(v MetastoreConfigResponse) *MetastoreConfigResponse {
+		return &v
+	}).(MetastoreConfigResponsePtrOutput)
+}
+
+// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+func (o MetastoreConfigResponseOutput) DataprocMetastoreService() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreConfigResponse) string { return v.DataprocMetastoreService }).(pulumi.StringOutput)
+}
+
+type MetastoreConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreConfigResponse)(nil)).Elem()
+}
+
+func (o MetastoreConfigResponsePtrOutput) ToMetastoreConfigResponsePtrOutput() MetastoreConfigResponsePtrOutput {
+	return o
+}
+
+func (o MetastoreConfigResponsePtrOutput) ToMetastoreConfigResponsePtrOutputWithContext(ctx context.Context) MetastoreConfigResponsePtrOutput {
+	return o
+}
+
+func (o MetastoreConfigResponsePtrOutput) Elem() MetastoreConfigResponseOutput {
+	return o.ApplyT(func(v *MetastoreConfigResponse) MetastoreConfigResponse { return *v }).(MetastoreConfigResponseOutput)
+}
+
+// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+func (o MetastoreConfigResponsePtrOutput) DataprocMetastoreService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DataprocMetastoreService
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5403,6 +9318,159 @@ func (o NamespacedGkeDeploymentTargetPtrOutput) TargetGkeCluster() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// A full, namespace-isolated deployment target for an existing GKE cluster.
+type NamespacedGkeDeploymentTargetResponse struct {
+	// Optional. A namespace within the GKE cluster to deploy into.
+	ClusterNamespace string `pulumi:"clusterNamespace"`
+	// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+	TargetGkeCluster string `pulumi:"targetGkeCluster"`
+}
+
+// NamespacedGkeDeploymentTargetResponseInput is an input type that accepts NamespacedGkeDeploymentTargetResponseArgs and NamespacedGkeDeploymentTargetResponseOutput values.
+// You can construct a concrete instance of `NamespacedGkeDeploymentTargetResponseInput` via:
+//
+//          NamespacedGkeDeploymentTargetResponseArgs{...}
+type NamespacedGkeDeploymentTargetResponseInput interface {
+	pulumi.Input
+
+	ToNamespacedGkeDeploymentTargetResponseOutput() NamespacedGkeDeploymentTargetResponseOutput
+	ToNamespacedGkeDeploymentTargetResponseOutputWithContext(context.Context) NamespacedGkeDeploymentTargetResponseOutput
+}
+
+// A full, namespace-isolated deployment target for an existing GKE cluster.
+type NamespacedGkeDeploymentTargetResponseArgs struct {
+	// Optional. A namespace within the GKE cluster to deploy into.
+	ClusterNamespace pulumi.StringInput `pulumi:"clusterNamespace"`
+	// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+	TargetGkeCluster pulumi.StringInput `pulumi:"targetGkeCluster"`
+}
+
+func (NamespacedGkeDeploymentTargetResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespacedGkeDeploymentTargetResponse)(nil)).Elem()
+}
+
+func (i NamespacedGkeDeploymentTargetResponseArgs) ToNamespacedGkeDeploymentTargetResponseOutput() NamespacedGkeDeploymentTargetResponseOutput {
+	return i.ToNamespacedGkeDeploymentTargetResponseOutputWithContext(context.Background())
+}
+
+func (i NamespacedGkeDeploymentTargetResponseArgs) ToNamespacedGkeDeploymentTargetResponseOutputWithContext(ctx context.Context) NamespacedGkeDeploymentTargetResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespacedGkeDeploymentTargetResponseOutput)
+}
+
+func (i NamespacedGkeDeploymentTargetResponseArgs) ToNamespacedGkeDeploymentTargetResponsePtrOutput() NamespacedGkeDeploymentTargetResponsePtrOutput {
+	return i.ToNamespacedGkeDeploymentTargetResponsePtrOutputWithContext(context.Background())
+}
+
+func (i NamespacedGkeDeploymentTargetResponseArgs) ToNamespacedGkeDeploymentTargetResponsePtrOutputWithContext(ctx context.Context) NamespacedGkeDeploymentTargetResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespacedGkeDeploymentTargetResponseOutput).ToNamespacedGkeDeploymentTargetResponsePtrOutputWithContext(ctx)
+}
+
+// NamespacedGkeDeploymentTargetResponsePtrInput is an input type that accepts NamespacedGkeDeploymentTargetResponseArgs, NamespacedGkeDeploymentTargetResponsePtr and NamespacedGkeDeploymentTargetResponsePtrOutput values.
+// You can construct a concrete instance of `NamespacedGkeDeploymentTargetResponsePtrInput` via:
+//
+//          NamespacedGkeDeploymentTargetResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type NamespacedGkeDeploymentTargetResponsePtrInput interface {
+	pulumi.Input
+
+	ToNamespacedGkeDeploymentTargetResponsePtrOutput() NamespacedGkeDeploymentTargetResponsePtrOutput
+	ToNamespacedGkeDeploymentTargetResponsePtrOutputWithContext(context.Context) NamespacedGkeDeploymentTargetResponsePtrOutput
+}
+
+type namespacedGkeDeploymentTargetResponsePtrType NamespacedGkeDeploymentTargetResponseArgs
+
+func NamespacedGkeDeploymentTargetResponsePtr(v *NamespacedGkeDeploymentTargetResponseArgs) NamespacedGkeDeploymentTargetResponsePtrInput {
+	return (*namespacedGkeDeploymentTargetResponsePtrType)(v)
+}
+
+func (*namespacedGkeDeploymentTargetResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespacedGkeDeploymentTargetResponse)(nil)).Elem()
+}
+
+func (i *namespacedGkeDeploymentTargetResponsePtrType) ToNamespacedGkeDeploymentTargetResponsePtrOutput() NamespacedGkeDeploymentTargetResponsePtrOutput {
+	return i.ToNamespacedGkeDeploymentTargetResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *namespacedGkeDeploymentTargetResponsePtrType) ToNamespacedGkeDeploymentTargetResponsePtrOutputWithContext(ctx context.Context) NamespacedGkeDeploymentTargetResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespacedGkeDeploymentTargetResponsePtrOutput)
+}
+
+// A full, namespace-isolated deployment target for an existing GKE cluster.
+type NamespacedGkeDeploymentTargetResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespacedGkeDeploymentTargetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespacedGkeDeploymentTargetResponse)(nil)).Elem()
+}
+
+func (o NamespacedGkeDeploymentTargetResponseOutput) ToNamespacedGkeDeploymentTargetResponseOutput() NamespacedGkeDeploymentTargetResponseOutput {
+	return o
+}
+
+func (o NamespacedGkeDeploymentTargetResponseOutput) ToNamespacedGkeDeploymentTargetResponseOutputWithContext(ctx context.Context) NamespacedGkeDeploymentTargetResponseOutput {
+	return o
+}
+
+func (o NamespacedGkeDeploymentTargetResponseOutput) ToNamespacedGkeDeploymentTargetResponsePtrOutput() NamespacedGkeDeploymentTargetResponsePtrOutput {
+	return o.ToNamespacedGkeDeploymentTargetResponsePtrOutputWithContext(context.Background())
+}
+
+func (o NamespacedGkeDeploymentTargetResponseOutput) ToNamespacedGkeDeploymentTargetResponsePtrOutputWithContext(ctx context.Context) NamespacedGkeDeploymentTargetResponsePtrOutput {
+	return o.ApplyT(func(v NamespacedGkeDeploymentTargetResponse) *NamespacedGkeDeploymentTargetResponse {
+		return &v
+	}).(NamespacedGkeDeploymentTargetResponsePtrOutput)
+}
+
+// Optional. A namespace within the GKE cluster to deploy into.
+func (o NamespacedGkeDeploymentTargetResponseOutput) ClusterNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespacedGkeDeploymentTargetResponse) string { return v.ClusterNamespace }).(pulumi.StringOutput)
+}
+
+// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+func (o NamespacedGkeDeploymentTargetResponseOutput) TargetGkeCluster() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespacedGkeDeploymentTargetResponse) string { return v.TargetGkeCluster }).(pulumi.StringOutput)
+}
+
+type NamespacedGkeDeploymentTargetResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NamespacedGkeDeploymentTargetResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespacedGkeDeploymentTargetResponse)(nil)).Elem()
+}
+
+func (o NamespacedGkeDeploymentTargetResponsePtrOutput) ToNamespacedGkeDeploymentTargetResponsePtrOutput() NamespacedGkeDeploymentTargetResponsePtrOutput {
+	return o
+}
+
+func (o NamespacedGkeDeploymentTargetResponsePtrOutput) ToNamespacedGkeDeploymentTargetResponsePtrOutputWithContext(ctx context.Context) NamespacedGkeDeploymentTargetResponsePtrOutput {
+	return o
+}
+
+func (o NamespacedGkeDeploymentTargetResponsePtrOutput) Elem() NamespacedGkeDeploymentTargetResponseOutput {
+	return o.ApplyT(func(v *NamespacedGkeDeploymentTargetResponse) NamespacedGkeDeploymentTargetResponse { return *v }).(NamespacedGkeDeploymentTargetResponseOutput)
+}
+
+// Optional. A namespace within the GKE cluster to deploy into.
+func (o NamespacedGkeDeploymentTargetResponsePtrOutput) ClusterNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespacedGkeDeploymentTargetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+func (o NamespacedGkeDeploymentTargetResponsePtrOutput) TargetGkeCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamespacedGkeDeploymentTargetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetGkeCluster
+	}).(pulumi.StringPtrOutput)
+}
+
 // Node Group Affinity for clusters using sole-tenant node groups.
 type NodeGroupAffinity struct {
 	// Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
@@ -5537,6 +9605,140 @@ func (o NodeGroupAffinityPtrOutput) NodeGroupUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Node Group Affinity for clusters using sole-tenant node groups.
+type NodeGroupAffinityResponse struct {
+	// Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+	NodeGroupUri string `pulumi:"nodeGroupUri"`
+}
+
+// NodeGroupAffinityResponseInput is an input type that accepts NodeGroupAffinityResponseArgs and NodeGroupAffinityResponseOutput values.
+// You can construct a concrete instance of `NodeGroupAffinityResponseInput` via:
+//
+//          NodeGroupAffinityResponseArgs{...}
+type NodeGroupAffinityResponseInput interface {
+	pulumi.Input
+
+	ToNodeGroupAffinityResponseOutput() NodeGroupAffinityResponseOutput
+	ToNodeGroupAffinityResponseOutputWithContext(context.Context) NodeGroupAffinityResponseOutput
+}
+
+// Node Group Affinity for clusters using sole-tenant node groups.
+type NodeGroupAffinityResponseArgs struct {
+	// Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+	NodeGroupUri pulumi.StringInput `pulumi:"nodeGroupUri"`
+}
+
+func (NodeGroupAffinityResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupAffinityResponse)(nil)).Elem()
+}
+
+func (i NodeGroupAffinityResponseArgs) ToNodeGroupAffinityResponseOutput() NodeGroupAffinityResponseOutput {
+	return i.ToNodeGroupAffinityResponseOutputWithContext(context.Background())
+}
+
+func (i NodeGroupAffinityResponseArgs) ToNodeGroupAffinityResponseOutputWithContext(ctx context.Context) NodeGroupAffinityResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupAffinityResponseOutput)
+}
+
+func (i NodeGroupAffinityResponseArgs) ToNodeGroupAffinityResponsePtrOutput() NodeGroupAffinityResponsePtrOutput {
+	return i.ToNodeGroupAffinityResponsePtrOutputWithContext(context.Background())
+}
+
+func (i NodeGroupAffinityResponseArgs) ToNodeGroupAffinityResponsePtrOutputWithContext(ctx context.Context) NodeGroupAffinityResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupAffinityResponseOutput).ToNodeGroupAffinityResponsePtrOutputWithContext(ctx)
+}
+
+// NodeGroupAffinityResponsePtrInput is an input type that accepts NodeGroupAffinityResponseArgs, NodeGroupAffinityResponsePtr and NodeGroupAffinityResponsePtrOutput values.
+// You can construct a concrete instance of `NodeGroupAffinityResponsePtrInput` via:
+//
+//          NodeGroupAffinityResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type NodeGroupAffinityResponsePtrInput interface {
+	pulumi.Input
+
+	ToNodeGroupAffinityResponsePtrOutput() NodeGroupAffinityResponsePtrOutput
+	ToNodeGroupAffinityResponsePtrOutputWithContext(context.Context) NodeGroupAffinityResponsePtrOutput
+}
+
+type nodeGroupAffinityResponsePtrType NodeGroupAffinityResponseArgs
+
+func NodeGroupAffinityResponsePtr(v *NodeGroupAffinityResponseArgs) NodeGroupAffinityResponsePtrInput {
+	return (*nodeGroupAffinityResponsePtrType)(v)
+}
+
+func (*nodeGroupAffinityResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeGroupAffinityResponse)(nil)).Elem()
+}
+
+func (i *nodeGroupAffinityResponsePtrType) ToNodeGroupAffinityResponsePtrOutput() NodeGroupAffinityResponsePtrOutput {
+	return i.ToNodeGroupAffinityResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *nodeGroupAffinityResponsePtrType) ToNodeGroupAffinityResponsePtrOutputWithContext(ctx context.Context) NodeGroupAffinityResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupAffinityResponsePtrOutput)
+}
+
+// Node Group Affinity for clusters using sole-tenant node groups.
+type NodeGroupAffinityResponseOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupAffinityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupAffinityResponse)(nil)).Elem()
+}
+
+func (o NodeGroupAffinityResponseOutput) ToNodeGroupAffinityResponseOutput() NodeGroupAffinityResponseOutput {
+	return o
+}
+
+func (o NodeGroupAffinityResponseOutput) ToNodeGroupAffinityResponseOutputWithContext(ctx context.Context) NodeGroupAffinityResponseOutput {
+	return o
+}
+
+func (o NodeGroupAffinityResponseOutput) ToNodeGroupAffinityResponsePtrOutput() NodeGroupAffinityResponsePtrOutput {
+	return o.ToNodeGroupAffinityResponsePtrOutputWithContext(context.Background())
+}
+
+func (o NodeGroupAffinityResponseOutput) ToNodeGroupAffinityResponsePtrOutputWithContext(ctx context.Context) NodeGroupAffinityResponsePtrOutput {
+	return o.ApplyT(func(v NodeGroupAffinityResponse) *NodeGroupAffinityResponse {
+		return &v
+	}).(NodeGroupAffinityResponsePtrOutput)
+}
+
+// Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+func (o NodeGroupAffinityResponseOutput) NodeGroupUri() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeGroupAffinityResponse) string { return v.NodeGroupUri }).(pulumi.StringOutput)
+}
+
+type NodeGroupAffinityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupAffinityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeGroupAffinityResponse)(nil)).Elem()
+}
+
+func (o NodeGroupAffinityResponsePtrOutput) ToNodeGroupAffinityResponsePtrOutput() NodeGroupAffinityResponsePtrOutput {
+	return o
+}
+
+func (o NodeGroupAffinityResponsePtrOutput) ToNodeGroupAffinityResponsePtrOutputWithContext(ctx context.Context) NodeGroupAffinityResponsePtrOutput {
+	return o
+}
+
+func (o NodeGroupAffinityResponsePtrOutput) Elem() NodeGroupAffinityResponseOutput {
+	return o.ApplyT(func(v *NodeGroupAffinityResponse) NodeGroupAffinityResponse { return *v }).(NodeGroupAffinityResponseOutput)
+}
+
+// Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+func (o NodeGroupAffinityResponsePtrOutput) NodeGroupUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeGroupAffinityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NodeGroupUri
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies an executable to run on a fully configured node and a timeout period for executable completion.
 type NodeInitializationAction struct {
 	// Required. Cloud Storage URI of executable file.
@@ -5644,6 +9846,115 @@ func (o NodeInitializationActionArrayOutput) Index(i pulumi.IntInput) NodeInitia
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeInitializationAction {
 		return vs[0].([]NodeInitializationAction)[vs[1].(int)]
 	}).(NodeInitializationActionOutput)
+}
+
+// Specifies an executable to run on a fully configured node and a timeout period for executable completion.
+type NodeInitializationActionResponse struct {
+	// Required. Cloud Storage URI of executable file.
+	ExecutableFile string `pulumi:"executableFile"`
+	// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
+	ExecutionTimeout string `pulumi:"executionTimeout"`
+}
+
+// NodeInitializationActionResponseInput is an input type that accepts NodeInitializationActionResponseArgs and NodeInitializationActionResponseOutput values.
+// You can construct a concrete instance of `NodeInitializationActionResponseInput` via:
+//
+//          NodeInitializationActionResponseArgs{...}
+type NodeInitializationActionResponseInput interface {
+	pulumi.Input
+
+	ToNodeInitializationActionResponseOutput() NodeInitializationActionResponseOutput
+	ToNodeInitializationActionResponseOutputWithContext(context.Context) NodeInitializationActionResponseOutput
+}
+
+// Specifies an executable to run on a fully configured node and a timeout period for executable completion.
+type NodeInitializationActionResponseArgs struct {
+	// Required. Cloud Storage URI of executable file.
+	ExecutableFile pulumi.StringInput `pulumi:"executableFile"`
+	// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
+	ExecutionTimeout pulumi.StringInput `pulumi:"executionTimeout"`
+}
+
+func (NodeInitializationActionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeInitializationActionResponse)(nil)).Elem()
+}
+
+func (i NodeInitializationActionResponseArgs) ToNodeInitializationActionResponseOutput() NodeInitializationActionResponseOutput {
+	return i.ToNodeInitializationActionResponseOutputWithContext(context.Background())
+}
+
+func (i NodeInitializationActionResponseArgs) ToNodeInitializationActionResponseOutputWithContext(ctx context.Context) NodeInitializationActionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeInitializationActionResponseOutput)
+}
+
+// NodeInitializationActionResponseArrayInput is an input type that accepts NodeInitializationActionResponseArray and NodeInitializationActionResponseArrayOutput values.
+// You can construct a concrete instance of `NodeInitializationActionResponseArrayInput` via:
+//
+//          NodeInitializationActionResponseArray{ NodeInitializationActionResponseArgs{...} }
+type NodeInitializationActionResponseArrayInput interface {
+	pulumi.Input
+
+	ToNodeInitializationActionResponseArrayOutput() NodeInitializationActionResponseArrayOutput
+	ToNodeInitializationActionResponseArrayOutputWithContext(context.Context) NodeInitializationActionResponseArrayOutput
+}
+
+type NodeInitializationActionResponseArray []NodeInitializationActionResponseInput
+
+func (NodeInitializationActionResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeInitializationActionResponse)(nil)).Elem()
+}
+
+func (i NodeInitializationActionResponseArray) ToNodeInitializationActionResponseArrayOutput() NodeInitializationActionResponseArrayOutput {
+	return i.ToNodeInitializationActionResponseArrayOutputWithContext(context.Background())
+}
+
+func (i NodeInitializationActionResponseArray) ToNodeInitializationActionResponseArrayOutputWithContext(ctx context.Context) NodeInitializationActionResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeInitializationActionResponseArrayOutput)
+}
+
+// Specifies an executable to run on a fully configured node and a timeout period for executable completion.
+type NodeInitializationActionResponseOutput struct{ *pulumi.OutputState }
+
+func (NodeInitializationActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeInitializationActionResponse)(nil)).Elem()
+}
+
+func (o NodeInitializationActionResponseOutput) ToNodeInitializationActionResponseOutput() NodeInitializationActionResponseOutput {
+	return o
+}
+
+func (o NodeInitializationActionResponseOutput) ToNodeInitializationActionResponseOutputWithContext(ctx context.Context) NodeInitializationActionResponseOutput {
+	return o
+}
+
+// Required. Cloud Storage URI of executable file.
+func (o NodeInitializationActionResponseOutput) ExecutableFile() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeInitializationActionResponse) string { return v.ExecutableFile }).(pulumi.StringOutput)
+}
+
+// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
+func (o NodeInitializationActionResponseOutput) ExecutionTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeInitializationActionResponse) string { return v.ExecutionTimeout }).(pulumi.StringOutput)
+}
+
+type NodeInitializationActionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeInitializationActionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeInitializationActionResponse)(nil)).Elem()
+}
+
+func (o NodeInitializationActionResponseArrayOutput) ToNodeInitializationActionResponseArrayOutput() NodeInitializationActionResponseArrayOutput {
+	return o
+}
+
+func (o NodeInitializationActionResponseArrayOutput) ToNodeInitializationActionResponseArrayOutputWithContext(ctx context.Context) NodeInitializationActionResponseArrayOutput {
+	return o
+}
+
+func (o NodeInitializationActionResponseArrayOutput) Index(i pulumi.IntInput) NodeInitializationActionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeInitializationActionResponse {
+		return vs[0].([]NodeInitializationActionResponse)[vs[1].(int)]
+	}).(NodeInitializationActionResponseOutput)
 }
 
 // A job executed by the workflow.
@@ -5845,6 +10156,205 @@ func (o OrderedJobArrayOutput) Index(i pulumi.IntInput) OrderedJobOutput {
 	}).(OrderedJobOutput)
 }
 
+// A job executed by the workflow.
+type OrderedJobResponse struct {
+	// Optional. Job is a Hadoop job.
+	HadoopJob HadoopJobResponse `pulumi:"hadoopJob"`
+	// Optional. Job is a Hive job.
+	HiveJob HiveJobResponse `pulumi:"hiveJob"`
+	// Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
+	Labels map[string]string `pulumi:"labels"`
+	// Optional. Job is a Pig job.
+	PigJob PigJobResponse `pulumi:"pigJob"`
+	// Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+	PrerequisiteStepIds []string `pulumi:"prerequisiteStepIds"`
+	// Optional. Job is a Presto job.
+	PrestoJob PrestoJobResponse `pulumi:"prestoJob"`
+	// Optional. Job is a PySpark job.
+	PysparkJob PySparkJobResponse `pulumi:"pysparkJob"`
+	// Optional. Job scheduling configuration.
+	Scheduling JobSchedulingResponse `pulumi:"scheduling"`
+	// Optional. Job is a Spark job.
+	SparkJob SparkJobResponse `pulumi:"sparkJob"`
+	// Optional. Job is a SparkR job.
+	SparkRJob SparkRJobResponse `pulumi:"sparkRJob"`
+	// Optional. Job is a SparkSql job.
+	SparkSqlJob SparkSqlJobResponse `pulumi:"sparkSqlJob"`
+	// Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	StepId string `pulumi:"stepId"`
+}
+
+// OrderedJobResponseInput is an input type that accepts OrderedJobResponseArgs and OrderedJobResponseOutput values.
+// You can construct a concrete instance of `OrderedJobResponseInput` via:
+//
+//          OrderedJobResponseArgs{...}
+type OrderedJobResponseInput interface {
+	pulumi.Input
+
+	ToOrderedJobResponseOutput() OrderedJobResponseOutput
+	ToOrderedJobResponseOutputWithContext(context.Context) OrderedJobResponseOutput
+}
+
+// A job executed by the workflow.
+type OrderedJobResponseArgs struct {
+	// Optional. Job is a Hadoop job.
+	HadoopJob HadoopJobResponseInput `pulumi:"hadoopJob"`
+	// Optional. Job is a Hive job.
+	HiveJob HiveJobResponseInput `pulumi:"hiveJob"`
+	// Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Optional. Job is a Pig job.
+	PigJob PigJobResponseInput `pulumi:"pigJob"`
+	// Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+	PrerequisiteStepIds pulumi.StringArrayInput `pulumi:"prerequisiteStepIds"`
+	// Optional. Job is a Presto job.
+	PrestoJob PrestoJobResponseInput `pulumi:"prestoJob"`
+	// Optional. Job is a PySpark job.
+	PysparkJob PySparkJobResponseInput `pulumi:"pysparkJob"`
+	// Optional. Job scheduling configuration.
+	Scheduling JobSchedulingResponseInput `pulumi:"scheduling"`
+	// Optional. Job is a Spark job.
+	SparkJob SparkJobResponseInput `pulumi:"sparkJob"`
+	// Optional. Job is a SparkR job.
+	SparkRJob SparkRJobResponseInput `pulumi:"sparkRJob"`
+	// Optional. Job is a SparkSql job.
+	SparkSqlJob SparkSqlJobResponseInput `pulumi:"sparkSqlJob"`
+	// Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	StepId pulumi.StringInput `pulumi:"stepId"`
+}
+
+func (OrderedJobResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrderedJobResponse)(nil)).Elem()
+}
+
+func (i OrderedJobResponseArgs) ToOrderedJobResponseOutput() OrderedJobResponseOutput {
+	return i.ToOrderedJobResponseOutputWithContext(context.Background())
+}
+
+func (i OrderedJobResponseArgs) ToOrderedJobResponseOutputWithContext(ctx context.Context) OrderedJobResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrderedJobResponseOutput)
+}
+
+// OrderedJobResponseArrayInput is an input type that accepts OrderedJobResponseArray and OrderedJobResponseArrayOutput values.
+// You can construct a concrete instance of `OrderedJobResponseArrayInput` via:
+//
+//          OrderedJobResponseArray{ OrderedJobResponseArgs{...} }
+type OrderedJobResponseArrayInput interface {
+	pulumi.Input
+
+	ToOrderedJobResponseArrayOutput() OrderedJobResponseArrayOutput
+	ToOrderedJobResponseArrayOutputWithContext(context.Context) OrderedJobResponseArrayOutput
+}
+
+type OrderedJobResponseArray []OrderedJobResponseInput
+
+func (OrderedJobResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrderedJobResponse)(nil)).Elem()
+}
+
+func (i OrderedJobResponseArray) ToOrderedJobResponseArrayOutput() OrderedJobResponseArrayOutput {
+	return i.ToOrderedJobResponseArrayOutputWithContext(context.Background())
+}
+
+func (i OrderedJobResponseArray) ToOrderedJobResponseArrayOutputWithContext(ctx context.Context) OrderedJobResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrderedJobResponseArrayOutput)
+}
+
+// A job executed by the workflow.
+type OrderedJobResponseOutput struct{ *pulumi.OutputState }
+
+func (OrderedJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrderedJobResponse)(nil)).Elem()
+}
+
+func (o OrderedJobResponseOutput) ToOrderedJobResponseOutput() OrderedJobResponseOutput {
+	return o
+}
+
+func (o OrderedJobResponseOutput) ToOrderedJobResponseOutputWithContext(ctx context.Context) OrderedJobResponseOutput {
+	return o
+}
+
+// Optional. Job is a Hadoop job.
+func (o OrderedJobResponseOutput) HadoopJob() HadoopJobResponseOutput {
+	return o.ApplyT(func(v OrderedJobResponse) HadoopJobResponse { return v.HadoopJob }).(HadoopJobResponseOutput)
+}
+
+// Optional. Job is a Hive job.
+func (o OrderedJobResponseOutput) HiveJob() HiveJobResponseOutput {
+	return o.ApplyT(func(v OrderedJobResponse) HiveJobResponse { return v.HiveJob }).(HiveJobResponseOutput)
+}
+
+// Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
+func (o OrderedJobResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OrderedJobResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Job is a Pig job.
+func (o OrderedJobResponseOutput) PigJob() PigJobResponseOutput {
+	return o.ApplyT(func(v OrderedJobResponse) PigJobResponse { return v.PigJob }).(PigJobResponseOutput)
+}
+
+// Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+func (o OrderedJobResponseOutput) PrerequisiteStepIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OrderedJobResponse) []string { return v.PrerequisiteStepIds }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Job is a Presto job.
+func (o OrderedJobResponseOutput) PrestoJob() PrestoJobResponseOutput {
+	return o.ApplyT(func(v OrderedJobResponse) PrestoJobResponse { return v.PrestoJob }).(PrestoJobResponseOutput)
+}
+
+// Optional. Job is a PySpark job.
+func (o OrderedJobResponseOutput) PysparkJob() PySparkJobResponseOutput {
+	return o.ApplyT(func(v OrderedJobResponse) PySparkJobResponse { return v.PysparkJob }).(PySparkJobResponseOutput)
+}
+
+// Optional. Job scheduling configuration.
+func (o OrderedJobResponseOutput) Scheduling() JobSchedulingResponseOutput {
+	return o.ApplyT(func(v OrderedJobResponse) JobSchedulingResponse { return v.Scheduling }).(JobSchedulingResponseOutput)
+}
+
+// Optional. Job is a Spark job.
+func (o OrderedJobResponseOutput) SparkJob() SparkJobResponseOutput {
+	return o.ApplyT(func(v OrderedJobResponse) SparkJobResponse { return v.SparkJob }).(SparkJobResponseOutput)
+}
+
+// Optional. Job is a SparkR job.
+func (o OrderedJobResponseOutput) SparkRJob() SparkRJobResponseOutput {
+	return o.ApplyT(func(v OrderedJobResponse) SparkRJobResponse { return v.SparkRJob }).(SparkRJobResponseOutput)
+}
+
+// Optional. Job is a SparkSql job.
+func (o OrderedJobResponseOutput) SparkSqlJob() SparkSqlJobResponseOutput {
+	return o.ApplyT(func(v OrderedJobResponse) SparkSqlJobResponse { return v.SparkSqlJob }).(SparkSqlJobResponseOutput)
+}
+
+// Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+func (o OrderedJobResponseOutput) StepId() pulumi.StringOutput {
+	return o.ApplyT(func(v OrderedJobResponse) string { return v.StepId }).(pulumi.StringOutput)
+}
+
+type OrderedJobResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OrderedJobResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrderedJobResponse)(nil)).Elem()
+}
+
+func (o OrderedJobResponseArrayOutput) ToOrderedJobResponseArrayOutput() OrderedJobResponseArrayOutput {
+	return o
+}
+
+func (o OrderedJobResponseArrayOutput) ToOrderedJobResponseArrayOutputWithContext(ctx context.Context) OrderedJobResponseArrayOutput {
+	return o
+}
+
+func (o OrderedJobResponseArrayOutput) Index(i pulumi.IntInput) OrderedJobResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrderedJobResponse {
+		return vs[0].([]OrderedJobResponse)[vs[1].(int)]
+	}).(OrderedJobResponseOutput)
+}
+
 // Configuration for parameter validation.
 type ParameterValidation struct {
 	// Validation based on regular expressions.
@@ -5996,6 +10506,70 @@ func (o ParameterValidationPtrOutput) Values() ValueValidationPtrOutput {
 		}
 		return v.Values
 	}).(ValueValidationPtrOutput)
+}
+
+// Configuration for parameter validation.
+type ParameterValidationResponse struct {
+	// Validation based on regular expressions.
+	Regex RegexValidationResponse `pulumi:"regex"`
+	// Validation based on a list of allowed values.
+	Values ValueValidationResponse `pulumi:"values"`
+}
+
+// ParameterValidationResponseInput is an input type that accepts ParameterValidationResponseArgs and ParameterValidationResponseOutput values.
+// You can construct a concrete instance of `ParameterValidationResponseInput` via:
+//
+//          ParameterValidationResponseArgs{...}
+type ParameterValidationResponseInput interface {
+	pulumi.Input
+
+	ToParameterValidationResponseOutput() ParameterValidationResponseOutput
+	ToParameterValidationResponseOutputWithContext(context.Context) ParameterValidationResponseOutput
+}
+
+// Configuration for parameter validation.
+type ParameterValidationResponseArgs struct {
+	// Validation based on regular expressions.
+	Regex RegexValidationResponseInput `pulumi:"regex"`
+	// Validation based on a list of allowed values.
+	Values ValueValidationResponseInput `pulumi:"values"`
+}
+
+func (ParameterValidationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterValidationResponse)(nil)).Elem()
+}
+
+func (i ParameterValidationResponseArgs) ToParameterValidationResponseOutput() ParameterValidationResponseOutput {
+	return i.ToParameterValidationResponseOutputWithContext(context.Background())
+}
+
+func (i ParameterValidationResponseArgs) ToParameterValidationResponseOutputWithContext(ctx context.Context) ParameterValidationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ParameterValidationResponseOutput)
+}
+
+// Configuration for parameter validation.
+type ParameterValidationResponseOutput struct{ *pulumi.OutputState }
+
+func (ParameterValidationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterValidationResponse)(nil)).Elem()
+}
+
+func (o ParameterValidationResponseOutput) ToParameterValidationResponseOutput() ParameterValidationResponseOutput {
+	return o
+}
+
+func (o ParameterValidationResponseOutput) ToParameterValidationResponseOutputWithContext(ctx context.Context) ParameterValidationResponseOutput {
+	return o
+}
+
+// Validation based on regular expressions.
+func (o ParameterValidationResponseOutput) Regex() RegexValidationResponseOutput {
+	return o.ApplyT(func(v ParameterValidationResponse) RegexValidationResponse { return v.Regex }).(RegexValidationResponseOutput)
+}
+
+// Validation based on a list of allowed values.
+func (o ParameterValidationResponseOutput) Values() ValueValidationResponseOutput {
+	return o.ApplyT(func(v ParameterValidationResponse) ValueValidationResponse { return v.Values }).(ValueValidationResponseOutput)
 }
 
 // A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.
@@ -6244,6 +10818,115 @@ func (o PigJobPtrOutput) ScriptVariables() pulumi.StringMapOutput {
 		}
 		return v.ScriptVariables
 	}).(pulumi.StringMapOutput)
+}
+
+// A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.
+type PigJobResponse struct {
+	// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+	ContinueOnFailure bool `pulumi:"continueOnFailure"`
+	// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
+	// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+	Properties map[string]string `pulumi:"properties"`
+	// The HCFS URI of the script that contains the Pig queries.
+	QueryFileUri string `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList QueryListResponse `pulumi:"queryList"`
+	// Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).
+	ScriptVariables map[string]string `pulumi:"scriptVariables"`
+}
+
+// PigJobResponseInput is an input type that accepts PigJobResponseArgs and PigJobResponseOutput values.
+// You can construct a concrete instance of `PigJobResponseInput` via:
+//
+//          PigJobResponseArgs{...}
+type PigJobResponseInput interface {
+	pulumi.Input
+
+	ToPigJobResponseOutput() PigJobResponseOutput
+	ToPigJobResponseOutputWithContext(context.Context) PigJobResponseOutput
+}
+
+// A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.
+type PigJobResponseArgs struct {
+	// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+	ContinueOnFailure pulumi.BoolInput `pulumi:"continueOnFailure"`
+	// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponseInput `pulumi:"loggingConfig"`
+	// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// The HCFS URI of the script that contains the Pig queries.
+	QueryFileUri pulumi.StringInput `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList QueryListResponseInput `pulumi:"queryList"`
+	// Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).
+	ScriptVariables pulumi.StringMapInput `pulumi:"scriptVariables"`
+}
+
+func (PigJobResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PigJobResponse)(nil)).Elem()
+}
+
+func (i PigJobResponseArgs) ToPigJobResponseOutput() PigJobResponseOutput {
+	return i.ToPigJobResponseOutputWithContext(context.Background())
+}
+
+func (i PigJobResponseArgs) ToPigJobResponseOutputWithContext(ctx context.Context) PigJobResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PigJobResponseOutput)
+}
+
+// A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.
+type PigJobResponseOutput struct{ *pulumi.OutputState }
+
+func (PigJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PigJobResponse)(nil)).Elem()
+}
+
+func (o PigJobResponseOutput) ToPigJobResponseOutput() PigJobResponseOutput {
+	return o
+}
+
+func (o PigJobResponseOutput) ToPigJobResponseOutputWithContext(ctx context.Context) PigJobResponseOutput {
+	return o
+}
+
+// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+func (o PigJobResponseOutput) ContinueOnFailure() pulumi.BoolOutput {
+	return o.ApplyT(func(v PigJobResponse) bool { return v.ContinueOnFailure }).(pulumi.BoolOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+func (o PigJobResponseOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PigJobResponse) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o PigJobResponseOutput) LoggingConfig() LoggingConfigResponseOutput {
+	return o.ApplyT(func(v PigJobResponse) LoggingConfigResponse { return v.LoggingConfig }).(LoggingConfigResponseOutput)
+}
+
+// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+func (o PigJobResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PigJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains the Pig queries.
+func (o PigJobResponseOutput) QueryFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v PigJobResponse) string { return v.QueryFileUri }).(pulumi.StringOutput)
+}
+
+// A list of queries.
+func (o PigJobResponseOutput) QueryList() QueryListResponseOutput {
+	return o.ApplyT(func(v PigJobResponse) QueryListResponse { return v.QueryList }).(QueryListResponseOutput)
+}
+
+// Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).
+func (o PigJobResponseOutput) ScriptVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PigJobResponse) map[string]string { return v.ScriptVariables }).(pulumi.StringMapOutput)
 }
 
 // An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources.A Policy is a collection of bindings. A binding binds one or more members to a single role. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A role is a named list of permissions; each role can be an IAM predefined role or a user-created custom role.For some types of Google Cloud resources, a binding can also specify a condition, which is a logical expression that allows access to a resource only if the expression evaluates to true. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).JSON example: { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } YAML example: bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the IAM documentation (https://cloud.google.com/iam/docs/).
@@ -6666,6 +11349,115 @@ func (o PrestoJobPtrOutput) QueryList() QueryListPtrOutput {
 	}).(QueryListPtrOutput)
 }
 
+// A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT: The Dataproc Presto Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/presto) must be enabled when the cluster is created to submit a Presto job to the cluster.
+type PrestoJobResponse struct {
+	// Optional. Presto client tags to attach to this query
+	ClientTags []string `pulumi:"clientTags"`
+	// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+	ContinueOnFailure bool `pulumi:"continueOnFailure"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
+	// Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+	OutputFormat string `pulumi:"outputFormat"`
+	// Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+	Properties map[string]string `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri string `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList QueryListResponse `pulumi:"queryList"`
+}
+
+// PrestoJobResponseInput is an input type that accepts PrestoJobResponseArgs and PrestoJobResponseOutput values.
+// You can construct a concrete instance of `PrestoJobResponseInput` via:
+//
+//          PrestoJobResponseArgs{...}
+type PrestoJobResponseInput interface {
+	pulumi.Input
+
+	ToPrestoJobResponseOutput() PrestoJobResponseOutput
+	ToPrestoJobResponseOutputWithContext(context.Context) PrestoJobResponseOutput
+}
+
+// A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT: The Dataproc Presto Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/presto) must be enabled when the cluster is created to submit a Presto job to the cluster.
+type PrestoJobResponseArgs struct {
+	// Optional. Presto client tags to attach to this query
+	ClientTags pulumi.StringArrayInput `pulumi:"clientTags"`
+	// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+	ContinueOnFailure pulumi.BoolInput `pulumi:"continueOnFailure"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponseInput `pulumi:"loggingConfig"`
+	// Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+	OutputFormat pulumi.StringInput `pulumi:"outputFormat"`
+	// Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri pulumi.StringInput `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList QueryListResponseInput `pulumi:"queryList"`
+}
+
+func (PrestoJobResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrestoJobResponse)(nil)).Elem()
+}
+
+func (i PrestoJobResponseArgs) ToPrestoJobResponseOutput() PrestoJobResponseOutput {
+	return i.ToPrestoJobResponseOutputWithContext(context.Background())
+}
+
+func (i PrestoJobResponseArgs) ToPrestoJobResponseOutputWithContext(ctx context.Context) PrestoJobResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrestoJobResponseOutput)
+}
+
+// A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT: The Dataproc Presto Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/presto) must be enabled when the cluster is created to submit a Presto job to the cluster.
+type PrestoJobResponseOutput struct{ *pulumi.OutputState }
+
+func (PrestoJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrestoJobResponse)(nil)).Elem()
+}
+
+func (o PrestoJobResponseOutput) ToPrestoJobResponseOutput() PrestoJobResponseOutput {
+	return o
+}
+
+func (o PrestoJobResponseOutput) ToPrestoJobResponseOutputWithContext(ctx context.Context) PrestoJobResponseOutput {
+	return o
+}
+
+// Optional. Presto client tags to attach to this query
+func (o PrestoJobResponseOutput) ClientTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrestoJobResponse) []string { return v.ClientTags }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+func (o PrestoJobResponseOutput) ContinueOnFailure() pulumi.BoolOutput {
+	return o.ApplyT(func(v PrestoJobResponse) bool { return v.ContinueOnFailure }).(pulumi.BoolOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o PrestoJobResponseOutput) LoggingConfig() LoggingConfigResponseOutput {
+	return o.ApplyT(func(v PrestoJobResponse) LoggingConfigResponse { return v.LoggingConfig }).(LoggingConfigResponseOutput)
+}
+
+// Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+func (o PrestoJobResponseOutput) OutputFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v PrestoJobResponse) string { return v.OutputFormat }).(pulumi.StringOutput)
+}
+
+// Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+func (o PrestoJobResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrestoJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o PrestoJobResponseOutput) QueryFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v PrestoJobResponse) string { return v.QueryFileUri }).(pulumi.StringOutput)
+}
+
+// A list of queries.
+func (o PrestoJobResponseOutput) QueryList() QueryListResponseOutput {
+	return o.ApplyT(func(v PrestoJobResponse) QueryListResponse { return v.QueryList }).(QueryListResponseOutput)
+}
+
 // A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html) applications on YARN.
 type PySparkJob struct {
 	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -6933,6 +11725,124 @@ func (o PySparkJobPtrOutput) PythonFileUris() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html) applications on YARN.
+type PySparkJobResponse struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris []string `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
+	// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+	MainPythonFileUri string `pulumi:"mainPythonFileUri"`
+	// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+	Properties map[string]string `pulumi:"properties"`
+	// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+	PythonFileUris []string `pulumi:"pythonFileUris"`
+}
+
+// PySparkJobResponseInput is an input type that accepts PySparkJobResponseArgs and PySparkJobResponseOutput values.
+// You can construct a concrete instance of `PySparkJobResponseInput` via:
+//
+//          PySparkJobResponseArgs{...}
+type PySparkJobResponseInput interface {
+	pulumi.Input
+
+	ToPySparkJobResponseOutput() PySparkJobResponseOutput
+	ToPySparkJobResponseOutputWithContext(context.Context) PySparkJobResponseOutput
+}
+
+// A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html) applications on YARN.
+type PySparkJobResponseArgs struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponseInput `pulumi:"loggingConfig"`
+	// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+	MainPythonFileUri pulumi.StringInput `pulumi:"mainPythonFileUri"`
+	// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+	PythonFileUris pulumi.StringArrayInput `pulumi:"pythonFileUris"`
+}
+
+func (PySparkJobResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PySparkJobResponse)(nil)).Elem()
+}
+
+func (i PySparkJobResponseArgs) ToPySparkJobResponseOutput() PySparkJobResponseOutput {
+	return i.ToPySparkJobResponseOutputWithContext(context.Background())
+}
+
+func (i PySparkJobResponseArgs) ToPySparkJobResponseOutputWithContext(ctx context.Context) PySparkJobResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PySparkJobResponseOutput)
+}
+
+// A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html) applications on YARN.
+type PySparkJobResponseOutput struct{ *pulumi.OutputState }
+
+func (PySparkJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PySparkJobResponse)(nil)).Elem()
+}
+
+func (o PySparkJobResponseOutput) ToPySparkJobResponseOutput() PySparkJobResponseOutput {
+	return o
+}
+
+func (o PySparkJobResponseOutput) ToPySparkJobResponseOutputWithContext(ctx context.Context) PySparkJobResponseOutput {
+	return o
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o PySparkJobResponseOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PySparkJobResponse) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o PySparkJobResponseOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PySparkJobResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o PySparkJobResponseOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PySparkJobResponse) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+func (o PySparkJobResponseOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PySparkJobResponse) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o PySparkJobResponseOutput) LoggingConfig() LoggingConfigResponseOutput {
+	return o.ApplyT(func(v PySparkJobResponse) LoggingConfigResponse { return v.LoggingConfig }).(LoggingConfigResponseOutput)
+}
+
+// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+func (o PySparkJobResponseOutput) MainPythonFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v PySparkJobResponse) string { return v.MainPythonFileUri }).(pulumi.StringOutput)
+}
+
+// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+func (o PySparkJobResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PySparkJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+func (o PySparkJobResponseOutput) PythonFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PySparkJobResponse) []string { return v.PythonFileUris }).(pulumi.StringArrayOutput)
+}
+
 // A list of queries to run on a cluster.
 type QueryList struct {
 	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
@@ -7067,6 +11977,61 @@ func (o QueryListPtrOutput) Queries() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of queries to run on a cluster.
+type QueryListResponse struct {
+	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
+	Queries []string `pulumi:"queries"`
+}
+
+// QueryListResponseInput is an input type that accepts QueryListResponseArgs and QueryListResponseOutput values.
+// You can construct a concrete instance of `QueryListResponseInput` via:
+//
+//          QueryListResponseArgs{...}
+type QueryListResponseInput interface {
+	pulumi.Input
+
+	ToQueryListResponseOutput() QueryListResponseOutput
+	ToQueryListResponseOutputWithContext(context.Context) QueryListResponseOutput
+}
+
+// A list of queries to run on a cluster.
+type QueryListResponseArgs struct {
+	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
+	Queries pulumi.StringArrayInput `pulumi:"queries"`
+}
+
+func (QueryListResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryListResponse)(nil)).Elem()
+}
+
+func (i QueryListResponseArgs) ToQueryListResponseOutput() QueryListResponseOutput {
+	return i.ToQueryListResponseOutputWithContext(context.Background())
+}
+
+func (i QueryListResponseArgs) ToQueryListResponseOutputWithContext(ctx context.Context) QueryListResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryListResponseOutput)
+}
+
+// A list of queries to run on a cluster.
+type QueryListResponseOutput struct{ *pulumi.OutputState }
+
+func (QueryListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryListResponse)(nil)).Elem()
+}
+
+func (o QueryListResponseOutput) ToQueryListResponseOutput() QueryListResponseOutput {
+	return o
+}
+
+func (o QueryListResponseOutput) ToQueryListResponseOutputWithContext(ctx context.Context) QueryListResponseOutput {
+	return o
+}
+
+// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
+func (o QueryListResponseOutput) Queries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v QueryListResponse) []string { return v.Queries }).(pulumi.StringArrayOutput)
+}
+
 // Validation based on regular expressions.
 type RegexValidation struct {
 	// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
@@ -7199,6 +12164,61 @@ func (o RegexValidationPtrOutput) Regexes() pulumi.StringArrayOutput {
 		}
 		return v.Regexes
 	}).(pulumi.StringArrayOutput)
+}
+
+// Validation based on regular expressions.
+type RegexValidationResponse struct {
+	// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+	Regexes []string `pulumi:"regexes"`
+}
+
+// RegexValidationResponseInput is an input type that accepts RegexValidationResponseArgs and RegexValidationResponseOutput values.
+// You can construct a concrete instance of `RegexValidationResponseInput` via:
+//
+//          RegexValidationResponseArgs{...}
+type RegexValidationResponseInput interface {
+	pulumi.Input
+
+	ToRegexValidationResponseOutput() RegexValidationResponseOutput
+	ToRegexValidationResponseOutputWithContext(context.Context) RegexValidationResponseOutput
+}
+
+// Validation based on regular expressions.
+type RegexValidationResponseArgs struct {
+	// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+	Regexes pulumi.StringArrayInput `pulumi:"regexes"`
+}
+
+func (RegexValidationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegexValidationResponse)(nil)).Elem()
+}
+
+func (i RegexValidationResponseArgs) ToRegexValidationResponseOutput() RegexValidationResponseOutput {
+	return i.ToRegexValidationResponseOutputWithContext(context.Background())
+}
+
+func (i RegexValidationResponseArgs) ToRegexValidationResponseOutputWithContext(ctx context.Context) RegexValidationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegexValidationResponseOutput)
+}
+
+// Validation based on regular expressions.
+type RegexValidationResponseOutput struct{ *pulumi.OutputState }
+
+func (RegexValidationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegexValidationResponse)(nil)).Elem()
+}
+
+func (o RegexValidationResponseOutput) ToRegexValidationResponseOutput() RegexValidationResponseOutput {
+	return o
+}
+
+func (o RegexValidationResponseOutput) ToRegexValidationResponseOutputWithContext(ctx context.Context) RegexValidationResponseOutput {
+	return o
+}
+
+// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+func (o RegexValidationResponseOutput) Regexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegexValidationResponse) []string { return v.Regexes }).(pulumi.StringArrayOutput)
 }
 
 // Reservation Affinity for consuming Zonal reservation.
@@ -7373,6 +12393,178 @@ func (o ReservationAffinityPtrOutput) Values() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Reservation Affinity for consuming Zonal reservation.
+type ReservationAffinityResponse struct {
+	// Optional. Type of reservation to consume
+	ConsumeReservationType string `pulumi:"consumeReservationType"`
+	// Optional. Corresponds to the label key of reservation resource.
+	Key string `pulumi:"key"`
+	// Optional. Corresponds to the label values of reservation resource.
+	Values []string `pulumi:"values"`
+}
+
+// ReservationAffinityResponseInput is an input type that accepts ReservationAffinityResponseArgs and ReservationAffinityResponseOutput values.
+// You can construct a concrete instance of `ReservationAffinityResponseInput` via:
+//
+//          ReservationAffinityResponseArgs{...}
+type ReservationAffinityResponseInput interface {
+	pulumi.Input
+
+	ToReservationAffinityResponseOutput() ReservationAffinityResponseOutput
+	ToReservationAffinityResponseOutputWithContext(context.Context) ReservationAffinityResponseOutput
+}
+
+// Reservation Affinity for consuming Zonal reservation.
+type ReservationAffinityResponseArgs struct {
+	// Optional. Type of reservation to consume
+	ConsumeReservationType pulumi.StringInput `pulumi:"consumeReservationType"`
+	// Optional. Corresponds to the label key of reservation resource.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Optional. Corresponds to the label values of reservation resource.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ReservationAffinityResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationAffinityResponse)(nil)).Elem()
+}
+
+func (i ReservationAffinityResponseArgs) ToReservationAffinityResponseOutput() ReservationAffinityResponseOutput {
+	return i.ToReservationAffinityResponseOutputWithContext(context.Background())
+}
+
+func (i ReservationAffinityResponseArgs) ToReservationAffinityResponseOutputWithContext(ctx context.Context) ReservationAffinityResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationAffinityResponseOutput)
+}
+
+func (i ReservationAffinityResponseArgs) ToReservationAffinityResponsePtrOutput() ReservationAffinityResponsePtrOutput {
+	return i.ToReservationAffinityResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ReservationAffinityResponseArgs) ToReservationAffinityResponsePtrOutputWithContext(ctx context.Context) ReservationAffinityResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationAffinityResponseOutput).ToReservationAffinityResponsePtrOutputWithContext(ctx)
+}
+
+// ReservationAffinityResponsePtrInput is an input type that accepts ReservationAffinityResponseArgs, ReservationAffinityResponsePtr and ReservationAffinityResponsePtrOutput values.
+// You can construct a concrete instance of `ReservationAffinityResponsePtrInput` via:
+//
+//          ReservationAffinityResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ReservationAffinityResponsePtrInput interface {
+	pulumi.Input
+
+	ToReservationAffinityResponsePtrOutput() ReservationAffinityResponsePtrOutput
+	ToReservationAffinityResponsePtrOutputWithContext(context.Context) ReservationAffinityResponsePtrOutput
+}
+
+type reservationAffinityResponsePtrType ReservationAffinityResponseArgs
+
+func ReservationAffinityResponsePtr(v *ReservationAffinityResponseArgs) ReservationAffinityResponsePtrInput {
+	return (*reservationAffinityResponsePtrType)(v)
+}
+
+func (*reservationAffinityResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReservationAffinityResponse)(nil)).Elem()
+}
+
+func (i *reservationAffinityResponsePtrType) ToReservationAffinityResponsePtrOutput() ReservationAffinityResponsePtrOutput {
+	return i.ToReservationAffinityResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *reservationAffinityResponsePtrType) ToReservationAffinityResponsePtrOutputWithContext(ctx context.Context) ReservationAffinityResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationAffinityResponsePtrOutput)
+}
+
+// Reservation Affinity for consuming Zonal reservation.
+type ReservationAffinityResponseOutput struct{ *pulumi.OutputState }
+
+func (ReservationAffinityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationAffinityResponse)(nil)).Elem()
+}
+
+func (o ReservationAffinityResponseOutput) ToReservationAffinityResponseOutput() ReservationAffinityResponseOutput {
+	return o
+}
+
+func (o ReservationAffinityResponseOutput) ToReservationAffinityResponseOutputWithContext(ctx context.Context) ReservationAffinityResponseOutput {
+	return o
+}
+
+func (o ReservationAffinityResponseOutput) ToReservationAffinityResponsePtrOutput() ReservationAffinityResponsePtrOutput {
+	return o.ToReservationAffinityResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ReservationAffinityResponseOutput) ToReservationAffinityResponsePtrOutputWithContext(ctx context.Context) ReservationAffinityResponsePtrOutput {
+	return o.ApplyT(func(v ReservationAffinityResponse) *ReservationAffinityResponse {
+		return &v
+	}).(ReservationAffinityResponsePtrOutput)
+}
+
+// Optional. Type of reservation to consume
+func (o ReservationAffinityResponseOutput) ConsumeReservationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ReservationAffinityResponse) string { return v.ConsumeReservationType }).(pulumi.StringOutput)
+}
+
+// Optional. Corresponds to the label key of reservation resource.
+func (o ReservationAffinityResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ReservationAffinityResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Optional. Corresponds to the label values of reservation resource.
+func (o ReservationAffinityResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReservationAffinityResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ReservationAffinityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ReservationAffinityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReservationAffinityResponse)(nil)).Elem()
+}
+
+func (o ReservationAffinityResponsePtrOutput) ToReservationAffinityResponsePtrOutput() ReservationAffinityResponsePtrOutput {
+	return o
+}
+
+func (o ReservationAffinityResponsePtrOutput) ToReservationAffinityResponsePtrOutputWithContext(ctx context.Context) ReservationAffinityResponsePtrOutput {
+	return o
+}
+
+func (o ReservationAffinityResponsePtrOutput) Elem() ReservationAffinityResponseOutput {
+	return o.ApplyT(func(v *ReservationAffinityResponse) ReservationAffinityResponse { return *v }).(ReservationAffinityResponseOutput)
+}
+
+// Optional. Type of reservation to consume
+func (o ReservationAffinityResponsePtrOutput) ConsumeReservationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReservationAffinityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConsumeReservationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Corresponds to the label key of reservation resource.
+func (o ReservationAffinityResponsePtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReservationAffinityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Corresponds to the label values of reservation resource.
+func (o ReservationAffinityResponsePtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ReservationAffinityResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
 // Security related configuration, including encryption, Kerberos, etc.
 type SecurityConfig struct {
 	// Optional. Kerberos related configuration.
@@ -7505,6 +12697,140 @@ func (o SecurityConfigPtrOutput) KerberosConfig() KerberosConfigPtrOutput {
 		}
 		return v.KerberosConfig
 	}).(KerberosConfigPtrOutput)
+}
+
+// Security related configuration, including encryption, Kerberos, etc.
+type SecurityConfigResponse struct {
+	// Optional. Kerberos related configuration.
+	KerberosConfig KerberosConfigResponse `pulumi:"kerberosConfig"`
+}
+
+// SecurityConfigResponseInput is an input type that accepts SecurityConfigResponseArgs and SecurityConfigResponseOutput values.
+// You can construct a concrete instance of `SecurityConfigResponseInput` via:
+//
+//          SecurityConfigResponseArgs{...}
+type SecurityConfigResponseInput interface {
+	pulumi.Input
+
+	ToSecurityConfigResponseOutput() SecurityConfigResponseOutput
+	ToSecurityConfigResponseOutputWithContext(context.Context) SecurityConfigResponseOutput
+}
+
+// Security related configuration, including encryption, Kerberos, etc.
+type SecurityConfigResponseArgs struct {
+	// Optional. Kerberos related configuration.
+	KerberosConfig KerberosConfigResponseInput `pulumi:"kerberosConfig"`
+}
+
+func (SecurityConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigResponse)(nil)).Elem()
+}
+
+func (i SecurityConfigResponseArgs) ToSecurityConfigResponseOutput() SecurityConfigResponseOutput {
+	return i.ToSecurityConfigResponseOutputWithContext(context.Background())
+}
+
+func (i SecurityConfigResponseArgs) ToSecurityConfigResponseOutputWithContext(ctx context.Context) SecurityConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigResponseOutput)
+}
+
+func (i SecurityConfigResponseArgs) ToSecurityConfigResponsePtrOutput() SecurityConfigResponsePtrOutput {
+	return i.ToSecurityConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SecurityConfigResponseArgs) ToSecurityConfigResponsePtrOutputWithContext(ctx context.Context) SecurityConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigResponseOutput).ToSecurityConfigResponsePtrOutputWithContext(ctx)
+}
+
+// SecurityConfigResponsePtrInput is an input type that accepts SecurityConfigResponseArgs, SecurityConfigResponsePtr and SecurityConfigResponsePtrOutput values.
+// You can construct a concrete instance of `SecurityConfigResponsePtrInput` via:
+//
+//          SecurityConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SecurityConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToSecurityConfigResponsePtrOutput() SecurityConfigResponsePtrOutput
+	ToSecurityConfigResponsePtrOutputWithContext(context.Context) SecurityConfigResponsePtrOutput
+}
+
+type securityConfigResponsePtrType SecurityConfigResponseArgs
+
+func SecurityConfigResponsePtr(v *SecurityConfigResponseArgs) SecurityConfigResponsePtrInput {
+	return (*securityConfigResponsePtrType)(v)
+}
+
+func (*securityConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityConfigResponse)(nil)).Elem()
+}
+
+func (i *securityConfigResponsePtrType) ToSecurityConfigResponsePtrOutput() SecurityConfigResponsePtrOutput {
+	return i.ToSecurityConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *securityConfigResponsePtrType) ToSecurityConfigResponsePtrOutputWithContext(ctx context.Context) SecurityConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityConfigResponsePtrOutput)
+}
+
+// Security related configuration, including encryption, Kerberos, etc.
+type SecurityConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityConfigResponseOutput) ToSecurityConfigResponseOutput() SecurityConfigResponseOutput {
+	return o
+}
+
+func (o SecurityConfigResponseOutput) ToSecurityConfigResponseOutputWithContext(ctx context.Context) SecurityConfigResponseOutput {
+	return o
+}
+
+func (o SecurityConfigResponseOutput) ToSecurityConfigResponsePtrOutput() SecurityConfigResponsePtrOutput {
+	return o.ToSecurityConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityConfigResponseOutput) ToSecurityConfigResponsePtrOutputWithContext(ctx context.Context) SecurityConfigResponsePtrOutput {
+	return o.ApplyT(func(v SecurityConfigResponse) *SecurityConfigResponse {
+		return &v
+	}).(SecurityConfigResponsePtrOutput)
+}
+
+// Optional. Kerberos related configuration.
+func (o SecurityConfigResponseOutput) KerberosConfig() KerberosConfigResponseOutput {
+	return o.ApplyT(func(v SecurityConfigResponse) KerberosConfigResponse { return v.KerberosConfig }).(KerberosConfigResponseOutput)
+}
+
+type SecurityConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityConfigResponsePtrOutput) ToSecurityConfigResponsePtrOutput() SecurityConfigResponsePtrOutput {
+	return o
+}
+
+func (o SecurityConfigResponsePtrOutput) ToSecurityConfigResponsePtrOutputWithContext(ctx context.Context) SecurityConfigResponsePtrOutput {
+	return o
+}
+
+func (o SecurityConfigResponsePtrOutput) Elem() SecurityConfigResponseOutput {
+	return o.ApplyT(func(v *SecurityConfigResponse) SecurityConfigResponse { return *v }).(SecurityConfigResponseOutput)
+}
+
+// Optional. Kerberos related configuration.
+func (o SecurityConfigResponsePtrOutput) KerberosConfig() KerberosConfigResponsePtrOutput {
+	return o.ApplyT(func(v *SecurityConfigResponse) *KerberosConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.KerberosConfig
+	}).(KerberosConfigResponsePtrOutput)
 }
 
 // Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
@@ -7679,6 +13005,178 @@ func (o ShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
+type ShieldedInstanceConfigResponse struct {
+	// Optional. Defines whether instances have integrity monitoring enabled.
+	EnableIntegrityMonitoring bool `pulumi:"enableIntegrityMonitoring"`
+	// Optional. Defines whether instances have Secure Boot enabled.
+	EnableSecureBoot bool `pulumi:"enableSecureBoot"`
+	// Optional. Defines whether instances have the vTPM enabled.
+	EnableVtpm bool `pulumi:"enableVtpm"`
+}
+
+// ShieldedInstanceConfigResponseInput is an input type that accepts ShieldedInstanceConfigResponseArgs and ShieldedInstanceConfigResponseOutput values.
+// You can construct a concrete instance of `ShieldedInstanceConfigResponseInput` via:
+//
+//          ShieldedInstanceConfigResponseArgs{...}
+type ShieldedInstanceConfigResponseInput interface {
+	pulumi.Input
+
+	ToShieldedInstanceConfigResponseOutput() ShieldedInstanceConfigResponseOutput
+	ToShieldedInstanceConfigResponseOutputWithContext(context.Context) ShieldedInstanceConfigResponseOutput
+}
+
+// Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
+type ShieldedInstanceConfigResponseArgs struct {
+	// Optional. Defines whether instances have integrity monitoring enabled.
+	EnableIntegrityMonitoring pulumi.BoolInput `pulumi:"enableIntegrityMonitoring"`
+	// Optional. Defines whether instances have Secure Boot enabled.
+	EnableSecureBoot pulumi.BoolInput `pulumi:"enableSecureBoot"`
+	// Optional. Defines whether instances have the vTPM enabled.
+	EnableVtpm pulumi.BoolInput `pulumi:"enableVtpm"`
+}
+
+func (ShieldedInstanceConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShieldedInstanceConfigResponse)(nil)).Elem()
+}
+
+func (i ShieldedInstanceConfigResponseArgs) ToShieldedInstanceConfigResponseOutput() ShieldedInstanceConfigResponseOutput {
+	return i.ToShieldedInstanceConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ShieldedInstanceConfigResponseArgs) ToShieldedInstanceConfigResponseOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShieldedInstanceConfigResponseOutput)
+}
+
+func (i ShieldedInstanceConfigResponseArgs) ToShieldedInstanceConfigResponsePtrOutput() ShieldedInstanceConfigResponsePtrOutput {
+	return i.ToShieldedInstanceConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ShieldedInstanceConfigResponseArgs) ToShieldedInstanceConfigResponsePtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShieldedInstanceConfigResponseOutput).ToShieldedInstanceConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ShieldedInstanceConfigResponsePtrInput is an input type that accepts ShieldedInstanceConfigResponseArgs, ShieldedInstanceConfigResponsePtr and ShieldedInstanceConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ShieldedInstanceConfigResponsePtrInput` via:
+//
+//          ShieldedInstanceConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ShieldedInstanceConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToShieldedInstanceConfigResponsePtrOutput() ShieldedInstanceConfigResponsePtrOutput
+	ToShieldedInstanceConfigResponsePtrOutputWithContext(context.Context) ShieldedInstanceConfigResponsePtrOutput
+}
+
+type shieldedInstanceConfigResponsePtrType ShieldedInstanceConfigResponseArgs
+
+func ShieldedInstanceConfigResponsePtr(v *ShieldedInstanceConfigResponseArgs) ShieldedInstanceConfigResponsePtrInput {
+	return (*shieldedInstanceConfigResponsePtrType)(v)
+}
+
+func (*shieldedInstanceConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShieldedInstanceConfigResponse)(nil)).Elem()
+}
+
+func (i *shieldedInstanceConfigResponsePtrType) ToShieldedInstanceConfigResponsePtrOutput() ShieldedInstanceConfigResponsePtrOutput {
+	return i.ToShieldedInstanceConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *shieldedInstanceConfigResponsePtrType) ToShieldedInstanceConfigResponsePtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShieldedInstanceConfigResponsePtrOutput)
+}
+
+// Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
+type ShieldedInstanceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ShieldedInstanceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShieldedInstanceConfigResponse)(nil)).Elem()
+}
+
+func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponseOutput() ShieldedInstanceConfigResponseOutput {
+	return o
+}
+
+func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponseOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponseOutput {
+	return o
+}
+
+func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponsePtrOutput() ShieldedInstanceConfigResponsePtrOutput {
+	return o.ToShieldedInstanceConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponsePtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponsePtrOutput {
+	return o.ApplyT(func(v ShieldedInstanceConfigResponse) *ShieldedInstanceConfigResponse {
+		return &v
+	}).(ShieldedInstanceConfigResponsePtrOutput)
+}
+
+// Optional. Defines whether instances have integrity monitoring enabled.
+func (o ShieldedInstanceConfigResponseOutput) EnableIntegrityMonitoring() pulumi.BoolOutput {
+	return o.ApplyT(func(v ShieldedInstanceConfigResponse) bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolOutput)
+}
+
+// Optional. Defines whether instances have Secure Boot enabled.
+func (o ShieldedInstanceConfigResponseOutput) EnableSecureBoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v ShieldedInstanceConfigResponse) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
+}
+
+// Optional. Defines whether instances have the vTPM enabled.
+func (o ShieldedInstanceConfigResponseOutput) EnableVtpm() pulumi.BoolOutput {
+	return o.ApplyT(func(v ShieldedInstanceConfigResponse) bool { return v.EnableVtpm }).(pulumi.BoolOutput)
+}
+
+type ShieldedInstanceConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ShieldedInstanceConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShieldedInstanceConfigResponse)(nil)).Elem()
+}
+
+func (o ShieldedInstanceConfigResponsePtrOutput) ToShieldedInstanceConfigResponsePtrOutput() ShieldedInstanceConfigResponsePtrOutput {
+	return o
+}
+
+func (o ShieldedInstanceConfigResponsePtrOutput) ToShieldedInstanceConfigResponsePtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponsePtrOutput {
+	return o
+}
+
+func (o ShieldedInstanceConfigResponsePtrOutput) Elem() ShieldedInstanceConfigResponseOutput {
+	return o.ApplyT(func(v *ShieldedInstanceConfigResponse) ShieldedInstanceConfigResponse { return *v }).(ShieldedInstanceConfigResponseOutput)
+}
+
+// Optional. Defines whether instances have integrity monitoring enabled.
+func (o ShieldedInstanceConfigResponsePtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ShieldedInstanceConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Defines whether instances have Secure Boot enabled.
+func (o ShieldedInstanceConfigResponsePtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ShieldedInstanceConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Defines whether instances have the vTPM enabled.
+func (o ShieldedInstanceConfigResponsePtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ShieldedInstanceConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableVtpm
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Specifies the selection and config of software inside the cluster.
 type SoftwareConfig struct {
 	// Optional. The version of software inside the cluster. It must be one of the supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the "preview" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
@@ -7844,6 +13342,178 @@ func (o SoftwareConfigPtrOutput) OptionalComponents() pulumi.StringArrayOutput {
 // Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
 func (o SoftwareConfigPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SoftwareConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// Specifies the selection and config of software inside the cluster.
+type SoftwareConfigResponse struct {
+	// Optional. The version of software inside the cluster. It must be one of the supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the "preview" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+	ImageVersion string `pulumi:"imageVersion"`
+	// The set of optional components to activate on the cluster.
+	OptionalComponents []string `pulumi:"optionalComponents"`
+	// Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// SoftwareConfigResponseInput is an input type that accepts SoftwareConfigResponseArgs and SoftwareConfigResponseOutput values.
+// You can construct a concrete instance of `SoftwareConfigResponseInput` via:
+//
+//          SoftwareConfigResponseArgs{...}
+type SoftwareConfigResponseInput interface {
+	pulumi.Input
+
+	ToSoftwareConfigResponseOutput() SoftwareConfigResponseOutput
+	ToSoftwareConfigResponseOutputWithContext(context.Context) SoftwareConfigResponseOutput
+}
+
+// Specifies the selection and config of software inside the cluster.
+type SoftwareConfigResponseArgs struct {
+	// Optional. The version of software inside the cluster. It must be one of the supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the "preview" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+	ImageVersion pulumi.StringInput `pulumi:"imageVersion"`
+	// The set of optional components to activate on the cluster.
+	OptionalComponents pulumi.StringArrayInput `pulumi:"optionalComponents"`
+	// Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (SoftwareConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareConfigResponse)(nil)).Elem()
+}
+
+func (i SoftwareConfigResponseArgs) ToSoftwareConfigResponseOutput() SoftwareConfigResponseOutput {
+	return i.ToSoftwareConfigResponseOutputWithContext(context.Background())
+}
+
+func (i SoftwareConfigResponseArgs) ToSoftwareConfigResponseOutputWithContext(ctx context.Context) SoftwareConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareConfigResponseOutput)
+}
+
+func (i SoftwareConfigResponseArgs) ToSoftwareConfigResponsePtrOutput() SoftwareConfigResponsePtrOutput {
+	return i.ToSoftwareConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SoftwareConfigResponseArgs) ToSoftwareConfigResponsePtrOutputWithContext(ctx context.Context) SoftwareConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareConfigResponseOutput).ToSoftwareConfigResponsePtrOutputWithContext(ctx)
+}
+
+// SoftwareConfigResponsePtrInput is an input type that accepts SoftwareConfigResponseArgs, SoftwareConfigResponsePtr and SoftwareConfigResponsePtrOutput values.
+// You can construct a concrete instance of `SoftwareConfigResponsePtrInput` via:
+//
+//          SoftwareConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SoftwareConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToSoftwareConfigResponsePtrOutput() SoftwareConfigResponsePtrOutput
+	ToSoftwareConfigResponsePtrOutputWithContext(context.Context) SoftwareConfigResponsePtrOutput
+}
+
+type softwareConfigResponsePtrType SoftwareConfigResponseArgs
+
+func SoftwareConfigResponsePtr(v *SoftwareConfigResponseArgs) SoftwareConfigResponsePtrInput {
+	return (*softwareConfigResponsePtrType)(v)
+}
+
+func (*softwareConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SoftwareConfigResponse)(nil)).Elem()
+}
+
+func (i *softwareConfigResponsePtrType) ToSoftwareConfigResponsePtrOutput() SoftwareConfigResponsePtrOutput {
+	return i.ToSoftwareConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *softwareConfigResponsePtrType) ToSoftwareConfigResponsePtrOutputWithContext(ctx context.Context) SoftwareConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SoftwareConfigResponsePtrOutput)
+}
+
+// Specifies the selection and config of software inside the cluster.
+type SoftwareConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareConfigResponse)(nil)).Elem()
+}
+
+func (o SoftwareConfigResponseOutput) ToSoftwareConfigResponseOutput() SoftwareConfigResponseOutput {
+	return o
+}
+
+func (o SoftwareConfigResponseOutput) ToSoftwareConfigResponseOutputWithContext(ctx context.Context) SoftwareConfigResponseOutput {
+	return o
+}
+
+func (o SoftwareConfigResponseOutput) ToSoftwareConfigResponsePtrOutput() SoftwareConfigResponsePtrOutput {
+	return o.ToSoftwareConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareConfigResponseOutput) ToSoftwareConfigResponsePtrOutputWithContext(ctx context.Context) SoftwareConfigResponsePtrOutput {
+	return o.ApplyT(func(v SoftwareConfigResponse) *SoftwareConfigResponse {
+		return &v
+	}).(SoftwareConfigResponsePtrOutput)
+}
+
+// Optional. The version of software inside the cluster. It must be one of the supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the "preview" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+func (o SoftwareConfigResponseOutput) ImageVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareConfigResponse) string { return v.ImageVersion }).(pulumi.StringOutput)
+}
+
+// The set of optional components to activate on the cluster.
+func (o SoftwareConfigResponseOutput) OptionalComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SoftwareConfigResponse) []string { return v.OptionalComponents }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o SoftwareConfigResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SoftwareConfigResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+type SoftwareConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SoftwareConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SoftwareConfigResponse)(nil)).Elem()
+}
+
+func (o SoftwareConfigResponsePtrOutput) ToSoftwareConfigResponsePtrOutput() SoftwareConfigResponsePtrOutput {
+	return o
+}
+
+func (o SoftwareConfigResponsePtrOutput) ToSoftwareConfigResponsePtrOutputWithContext(ctx context.Context) SoftwareConfigResponsePtrOutput {
+	return o
+}
+
+func (o SoftwareConfigResponsePtrOutput) Elem() SoftwareConfigResponseOutput {
+	return o.ApplyT(func(v *SoftwareConfigResponse) SoftwareConfigResponse { return *v }).(SoftwareConfigResponseOutput)
+}
+
+// Optional. The version of software inside the cluster. It must be one of the supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the "preview" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+func (o SoftwareConfigResponsePtrOutput) ImageVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SoftwareConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImageVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of optional components to activate on the cluster.
+func (o SoftwareConfigResponsePtrOutput) OptionalComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SoftwareConfigResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OptionalComponents
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o SoftwareConfigResponsePtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SoftwareConfigResponse) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -8118,6 +13788,124 @@ func (o SparkJobPtrOutput) Properties() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN. The specification of the main method to call to drive the job. Specify either the jar file that contains the main class or the main class name. To pass both a main jar and a main class in that jar, add the jar to CommonJob.jar_file_uris, and then specify the main class name in main_class.
+type SparkJobResponse struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris []string `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
+	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris.
+	MainClass string `pulumi:"mainClass"`
+	// The HCFS URI of the jar file that contains the main class.
+	MainJarFileUri string `pulumi:"mainJarFileUri"`
+	// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// SparkJobResponseInput is an input type that accepts SparkJobResponseArgs and SparkJobResponseOutput values.
+// You can construct a concrete instance of `SparkJobResponseInput` via:
+//
+//          SparkJobResponseArgs{...}
+type SparkJobResponseInput interface {
+	pulumi.Input
+
+	ToSparkJobResponseOutput() SparkJobResponseOutput
+	ToSparkJobResponseOutputWithContext(context.Context) SparkJobResponseOutput
+}
+
+// A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN. The specification of the main method to call to drive the job. Specify either the jar file that contains the main class or the main class name. To pass both a main jar and a main class in that jar, add the jar to CommonJob.jar_file_uris, and then specify the main class name in main_class.
+type SparkJobResponseArgs struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponseInput `pulumi:"loggingConfig"`
+	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris.
+	MainClass pulumi.StringInput `pulumi:"mainClass"`
+	// The HCFS URI of the jar file that contains the main class.
+	MainJarFileUri pulumi.StringInput `pulumi:"mainJarFileUri"`
+	// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (SparkJobResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkJobResponse)(nil)).Elem()
+}
+
+func (i SparkJobResponseArgs) ToSparkJobResponseOutput() SparkJobResponseOutput {
+	return i.ToSparkJobResponseOutputWithContext(context.Background())
+}
+
+func (i SparkJobResponseArgs) ToSparkJobResponseOutputWithContext(ctx context.Context) SparkJobResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkJobResponseOutput)
+}
+
+// A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN. The specification of the main method to call to drive the job. Specify either the jar file that contains the main class or the main class name. To pass both a main jar and a main class in that jar, add the jar to CommonJob.jar_file_uris, and then specify the main class name in main_class.
+type SparkJobResponseOutput struct{ *pulumi.OutputState }
+
+func (SparkJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkJobResponse)(nil)).Elem()
+}
+
+func (o SparkJobResponseOutput) ToSparkJobResponseOutput() SparkJobResponseOutput {
+	return o
+}
+
+func (o SparkJobResponseOutput) ToSparkJobResponseOutputWithContext(ctx context.Context) SparkJobResponseOutput {
+	return o
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o SparkJobResponseOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkJobResponse) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o SparkJobResponseOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkJobResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o SparkJobResponseOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkJobResponse) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
+func (o SparkJobResponseOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkJobResponse) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o SparkJobResponseOutput) LoggingConfig() LoggingConfigResponseOutput {
+	return o.ApplyT(func(v SparkJobResponse) LoggingConfigResponse { return v.LoggingConfig }).(LoggingConfigResponseOutput)
+}
+
+// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris.
+func (o SparkJobResponseOutput) MainClass() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkJobResponse) string { return v.MainClass }).(pulumi.StringOutput)
+}
+
+// The HCFS URI of the jar file that contains the main class.
+func (o SparkJobResponseOutput) MainJarFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkJobResponse) string { return v.MainJarFileUri }).(pulumi.StringOutput)
+}
+
+// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+func (o SparkJobResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
 // A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
 type SparkRJob struct {
 	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -8345,6 +14133,106 @@ func (o SparkRJobPtrOutput) Properties() pulumi.StringMapOutput {
 		}
 		return v.Properties
 	}).(pulumi.StringMapOutput)
+}
+
+// A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
+type SparkRJobResponse struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args []string `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris []string `pulumi:"fileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
+	// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+	MainRFileUri string `pulumi:"mainRFileUri"`
+	// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// SparkRJobResponseInput is an input type that accepts SparkRJobResponseArgs and SparkRJobResponseOutput values.
+// You can construct a concrete instance of `SparkRJobResponseInput` via:
+//
+//          SparkRJobResponseArgs{...}
+type SparkRJobResponseInput interface {
+	pulumi.Input
+
+	ToSparkRJobResponseOutput() SparkRJobResponseOutput
+	ToSparkRJobResponseOutputWithContext(context.Context) SparkRJobResponseOutput
+}
+
+// A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
+type SparkRJobResponseArgs struct {
+	// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponseInput `pulumi:"loggingConfig"`
+	// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+	MainRFileUri pulumi.StringInput `pulumi:"mainRFileUri"`
+	// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (SparkRJobResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkRJobResponse)(nil)).Elem()
+}
+
+func (i SparkRJobResponseArgs) ToSparkRJobResponseOutput() SparkRJobResponseOutput {
+	return i.ToSparkRJobResponseOutputWithContext(context.Background())
+}
+
+func (i SparkRJobResponseArgs) ToSparkRJobResponseOutputWithContext(ctx context.Context) SparkRJobResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkRJobResponseOutput)
+}
+
+// A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
+type SparkRJobResponseOutput struct{ *pulumi.OutputState }
+
+func (SparkRJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkRJobResponse)(nil)).Elem()
+}
+
+func (o SparkRJobResponseOutput) ToSparkRJobResponseOutput() SparkRJobResponseOutput {
+	return o
+}
+
+func (o SparkRJobResponseOutput) ToSparkRJobResponseOutputWithContext(ctx context.Context) SparkRJobResponseOutput {
+	return o
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o SparkRJobResponseOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkRJobResponse) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o SparkRJobResponseOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkRJobResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o SparkRJobResponseOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkRJobResponse) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o SparkRJobResponseOutput) LoggingConfig() LoggingConfigResponseOutput {
+	return o.ApplyT(func(v SparkRJobResponse) LoggingConfigResponse { return v.LoggingConfig }).(LoggingConfigResponseOutput)
+}
+
+// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+func (o SparkRJobResponseOutput) MainRFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkRJobResponse) string { return v.MainRFileUri }).(pulumi.StringOutput)
+}
+
+// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+func (o SparkRJobResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkRJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
 // A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
@@ -8576,6 +14464,106 @@ func (o SparkSqlJobPtrOutput) ScriptVariables() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
+type SparkSqlJobResponse struct {
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
+	// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+	Properties map[string]string `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri string `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList QueryListResponse `pulumi:"queryList"`
+	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+	ScriptVariables map[string]string `pulumi:"scriptVariables"`
+}
+
+// SparkSqlJobResponseInput is an input type that accepts SparkSqlJobResponseArgs and SparkSqlJobResponseOutput values.
+// You can construct a concrete instance of `SparkSqlJobResponseInput` via:
+//
+//          SparkSqlJobResponseArgs{...}
+type SparkSqlJobResponseInput interface {
+	pulumi.Input
+
+	ToSparkSqlJobResponseOutput() SparkSqlJobResponseOutput
+	ToSparkSqlJobResponseOutputWithContext(context.Context) SparkSqlJobResponseOutput
+}
+
+// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
+type SparkSqlJobResponseArgs struct {
+	// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponseInput `pulumi:"loggingConfig"`
+	// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri pulumi.StringInput `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList QueryListResponseInput `pulumi:"queryList"`
+	// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+	ScriptVariables pulumi.StringMapInput `pulumi:"scriptVariables"`
+}
+
+func (SparkSqlJobResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkSqlJobResponse)(nil)).Elem()
+}
+
+func (i SparkSqlJobResponseArgs) ToSparkSqlJobResponseOutput() SparkSqlJobResponseOutput {
+	return i.ToSparkSqlJobResponseOutputWithContext(context.Background())
+}
+
+func (i SparkSqlJobResponseArgs) ToSparkSqlJobResponseOutputWithContext(ctx context.Context) SparkSqlJobResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkSqlJobResponseOutput)
+}
+
+// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
+type SparkSqlJobResponseOutput struct{ *pulumi.OutputState }
+
+func (SparkSqlJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkSqlJobResponse)(nil)).Elem()
+}
+
+func (o SparkSqlJobResponseOutput) ToSparkSqlJobResponseOutput() SparkSqlJobResponseOutput {
+	return o
+}
+
+func (o SparkSqlJobResponseOutput) ToSparkSqlJobResponseOutputWithContext(ctx context.Context) SparkSqlJobResponseOutput {
+	return o
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o SparkSqlJobResponseOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkSqlJobResponse) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o SparkSqlJobResponseOutput) LoggingConfig() LoggingConfigResponseOutput {
+	return o.ApplyT(func(v SparkSqlJobResponse) LoggingConfigResponse { return v.LoggingConfig }).(LoggingConfigResponseOutput)
+}
+
+// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+func (o SparkSqlJobResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkSqlJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o SparkSqlJobResponseOutput) QueryFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkSqlJobResponse) string { return v.QueryFileUri }).(pulumi.StringOutput)
+}
+
+// A list of queries.
+func (o SparkSqlJobResponseOutput) QueryList() QueryListResponseOutput {
+	return o.ApplyT(func(v SparkSqlJobResponse) QueryListResponse { return v.QueryList }).(QueryListResponseOutput)
+}
+
+// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+func (o SparkSqlJobResponseOutput) ScriptVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkSqlJobResponse) map[string]string { return v.ScriptVariables }).(pulumi.StringMapOutput)
+}
+
 // A configurable parameter that replaces one or more fields in the template. Parameterizable fields: - Labels - File uris - Job properties - Job arguments - Script variables - Main class (in HadoopJob and SparkJob) - Zone (in ClusterSelector)
 type TemplateParameter struct {
 	// Optional. Brief description of the parameter. Must not exceed 1024 characters.
@@ -8701,6 +14689,133 @@ func (o TemplateParameterArrayOutput) Index(i pulumi.IntInput) TemplateParameter
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TemplateParameter {
 		return vs[0].([]TemplateParameter)[vs[1].(int)]
 	}).(TemplateParameterOutput)
+}
+
+// A configurable parameter that replaces one or more fields in the template. Parameterizable fields: - Labels - File uris - Job properties - Job arguments - Script variables - Main class (in HadoopJob and SparkJob) - Zone (in ClusterSelector)
+type TemplateParameterResponse struct {
+	// Optional. Brief description of the parameter. Must not exceed 1024 characters.
+	Description string `pulumi:"description"`
+	// Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
+	Fields []string `pulumi:"fields"`
+	// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+	Name string `pulumi:"name"`
+	// Optional. Validation rules to be applied to this parameter's value.
+	Validation ParameterValidationResponse `pulumi:"validation"`
+}
+
+// TemplateParameterResponseInput is an input type that accepts TemplateParameterResponseArgs and TemplateParameterResponseOutput values.
+// You can construct a concrete instance of `TemplateParameterResponseInput` via:
+//
+//          TemplateParameterResponseArgs{...}
+type TemplateParameterResponseInput interface {
+	pulumi.Input
+
+	ToTemplateParameterResponseOutput() TemplateParameterResponseOutput
+	ToTemplateParameterResponseOutputWithContext(context.Context) TemplateParameterResponseOutput
+}
+
+// A configurable parameter that replaces one or more fields in the template. Parameterizable fields: - Labels - File uris - Job properties - Job arguments - Script variables - Main class (in HadoopJob and SparkJob) - Zone (in ClusterSelector)
+type TemplateParameterResponseArgs struct {
+	// Optional. Brief description of the parameter. Must not exceed 1024 characters.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
+	Fields pulumi.StringArrayInput `pulumi:"fields"`
+	// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Optional. Validation rules to be applied to this parameter's value.
+	Validation ParameterValidationResponseInput `pulumi:"validation"`
+}
+
+func (TemplateParameterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateParameterResponse)(nil)).Elem()
+}
+
+func (i TemplateParameterResponseArgs) ToTemplateParameterResponseOutput() TemplateParameterResponseOutput {
+	return i.ToTemplateParameterResponseOutputWithContext(context.Background())
+}
+
+func (i TemplateParameterResponseArgs) ToTemplateParameterResponseOutputWithContext(ctx context.Context) TemplateParameterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateParameterResponseOutput)
+}
+
+// TemplateParameterResponseArrayInput is an input type that accepts TemplateParameterResponseArray and TemplateParameterResponseArrayOutput values.
+// You can construct a concrete instance of `TemplateParameterResponseArrayInput` via:
+//
+//          TemplateParameterResponseArray{ TemplateParameterResponseArgs{...} }
+type TemplateParameterResponseArrayInput interface {
+	pulumi.Input
+
+	ToTemplateParameterResponseArrayOutput() TemplateParameterResponseArrayOutput
+	ToTemplateParameterResponseArrayOutputWithContext(context.Context) TemplateParameterResponseArrayOutput
+}
+
+type TemplateParameterResponseArray []TemplateParameterResponseInput
+
+func (TemplateParameterResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateParameterResponse)(nil)).Elem()
+}
+
+func (i TemplateParameterResponseArray) ToTemplateParameterResponseArrayOutput() TemplateParameterResponseArrayOutput {
+	return i.ToTemplateParameterResponseArrayOutputWithContext(context.Background())
+}
+
+func (i TemplateParameterResponseArray) ToTemplateParameterResponseArrayOutputWithContext(ctx context.Context) TemplateParameterResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateParameterResponseArrayOutput)
+}
+
+// A configurable parameter that replaces one or more fields in the template. Parameterizable fields: - Labels - File uris - Job properties - Job arguments - Script variables - Main class (in HadoopJob and SparkJob) - Zone (in ClusterSelector)
+type TemplateParameterResponseOutput struct{ *pulumi.OutputState }
+
+func (TemplateParameterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateParameterResponse)(nil)).Elem()
+}
+
+func (o TemplateParameterResponseOutput) ToTemplateParameterResponseOutput() TemplateParameterResponseOutput {
+	return o
+}
+
+func (o TemplateParameterResponseOutput) ToTemplateParameterResponseOutputWithContext(ctx context.Context) TemplateParameterResponseOutput {
+	return o
+}
+
+// Optional. Brief description of the parameter. Must not exceed 1024 characters.
+func (o TemplateParameterResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v TemplateParameterResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
+func (o TemplateParameterResponseOutput) Fields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TemplateParameterResponse) []string { return v.Fields }).(pulumi.StringArrayOutput)
+}
+
+// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+func (o TemplateParameterResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TemplateParameterResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Validation rules to be applied to this parameter's value.
+func (o TemplateParameterResponseOutput) Validation() ParameterValidationResponseOutput {
+	return o.ApplyT(func(v TemplateParameterResponse) ParameterValidationResponse { return v.Validation }).(ParameterValidationResponseOutput)
+}
+
+type TemplateParameterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TemplateParameterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateParameterResponse)(nil)).Elem()
+}
+
+func (o TemplateParameterResponseArrayOutput) ToTemplateParameterResponseArrayOutput() TemplateParameterResponseArrayOutput {
+	return o
+}
+
+func (o TemplateParameterResponseArrayOutput) ToTemplateParameterResponseArrayOutputWithContext(ctx context.Context) TemplateParameterResponseArrayOutput {
+	return o
+}
+
+func (o TemplateParameterResponseArrayOutput) Index(i pulumi.IntInput) TemplateParameterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TemplateParameterResponse {
+		return vs[0].([]TemplateParameterResponse)[vs[1].(int)]
+	}).(TemplateParameterResponseOutput)
 }
 
 // Validation based on a list of allowed values.
@@ -8835,6 +14950,61 @@ func (o ValueValidationPtrOutput) Values() pulumi.StringArrayOutput {
 		}
 		return v.Values
 	}).(pulumi.StringArrayOutput)
+}
+
+// Validation based on a list of allowed values.
+type ValueValidationResponse struct {
+	// Required. List of allowed values for the parameter.
+	Values []string `pulumi:"values"`
+}
+
+// ValueValidationResponseInput is an input type that accepts ValueValidationResponseArgs and ValueValidationResponseOutput values.
+// You can construct a concrete instance of `ValueValidationResponseInput` via:
+//
+//          ValueValidationResponseArgs{...}
+type ValueValidationResponseInput interface {
+	pulumi.Input
+
+	ToValueValidationResponseOutput() ValueValidationResponseOutput
+	ToValueValidationResponseOutputWithContext(context.Context) ValueValidationResponseOutput
+}
+
+// Validation based on a list of allowed values.
+type ValueValidationResponseArgs struct {
+	// Required. List of allowed values for the parameter.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ValueValidationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueValidationResponse)(nil)).Elem()
+}
+
+func (i ValueValidationResponseArgs) ToValueValidationResponseOutput() ValueValidationResponseOutput {
+	return i.ToValueValidationResponseOutputWithContext(context.Background())
+}
+
+func (i ValueValidationResponseArgs) ToValueValidationResponseOutputWithContext(ctx context.Context) ValueValidationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValueValidationResponseOutput)
+}
+
+// Validation based on a list of allowed values.
+type ValueValidationResponseOutput struct{ *pulumi.OutputState }
+
+func (ValueValidationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueValidationResponse)(nil)).Elem()
+}
+
+func (o ValueValidationResponseOutput) ToValueValidationResponseOutput() ValueValidationResponseOutput {
+	return o
+}
+
+func (o ValueValidationResponseOutput) ToValueValidationResponseOutputWithContext(ctx context.Context) ValueValidationResponseOutput {
+	return o
+}
+
+// Required. List of allowed values for the parameter.
+func (o ValueValidationResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ValueValidationResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // Specifies workflow execution target.Either managed_cluster or cluster_selector is required.
@@ -8990,102 +15160,326 @@ func (o WorkflowTemplatePlacementPtrOutput) ManagedCluster() ManagedClusterPtrOu
 	}).(ManagedClusterPtrOutput)
 }
 
+// Specifies workflow execution target.Either managed_cluster or cluster_selector is required.
+type WorkflowTemplatePlacementResponse struct {
+	// Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.
+	ClusterSelector ClusterSelectorResponse `pulumi:"clusterSelector"`
+	// Optional. A cluster that is managed by the workflow.
+	ManagedCluster ManagedClusterResponse `pulumi:"managedCluster"`
+}
+
+// WorkflowTemplatePlacementResponseInput is an input type that accepts WorkflowTemplatePlacementResponseArgs and WorkflowTemplatePlacementResponseOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementResponseInput` via:
+//
+//          WorkflowTemplatePlacementResponseArgs{...}
+type WorkflowTemplatePlacementResponseInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementResponseOutput() WorkflowTemplatePlacementResponseOutput
+	ToWorkflowTemplatePlacementResponseOutputWithContext(context.Context) WorkflowTemplatePlacementResponseOutput
+}
+
+// Specifies workflow execution target.Either managed_cluster or cluster_selector is required.
+type WorkflowTemplatePlacementResponseArgs struct {
+	// Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.
+	ClusterSelector ClusterSelectorResponseInput `pulumi:"clusterSelector"`
+	// Optional. A cluster that is managed by the workflow.
+	ManagedCluster ManagedClusterResponseInput `pulumi:"managedCluster"`
+}
+
+func (WorkflowTemplatePlacementResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementResponse)(nil)).Elem()
+}
+
+func (i WorkflowTemplatePlacementResponseArgs) ToWorkflowTemplatePlacementResponseOutput() WorkflowTemplatePlacementResponseOutput {
+	return i.ToWorkflowTemplatePlacementResponseOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementResponseArgs) ToWorkflowTemplatePlacementResponseOutputWithContext(ctx context.Context) WorkflowTemplatePlacementResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementResponseOutput)
+}
+
+func (i WorkflowTemplatePlacementResponseArgs) ToWorkflowTemplatePlacementResponsePtrOutput() WorkflowTemplatePlacementResponsePtrOutput {
+	return i.ToWorkflowTemplatePlacementResponsePtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTemplatePlacementResponseArgs) ToWorkflowTemplatePlacementResponsePtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementResponseOutput).ToWorkflowTemplatePlacementResponsePtrOutputWithContext(ctx)
+}
+
+// WorkflowTemplatePlacementResponsePtrInput is an input type that accepts WorkflowTemplatePlacementResponseArgs, WorkflowTemplatePlacementResponsePtr and WorkflowTemplatePlacementResponsePtrOutput values.
+// You can construct a concrete instance of `WorkflowTemplatePlacementResponsePtrInput` via:
+//
+//          WorkflowTemplatePlacementResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkflowTemplatePlacementResponsePtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTemplatePlacementResponsePtrOutput() WorkflowTemplatePlacementResponsePtrOutput
+	ToWorkflowTemplatePlacementResponsePtrOutputWithContext(context.Context) WorkflowTemplatePlacementResponsePtrOutput
+}
+
+type workflowTemplatePlacementResponsePtrType WorkflowTemplatePlacementResponseArgs
+
+func WorkflowTemplatePlacementResponsePtr(v *WorkflowTemplatePlacementResponseArgs) WorkflowTemplatePlacementResponsePtrInput {
+	return (*workflowTemplatePlacementResponsePtrType)(v)
+}
+
+func (*workflowTemplatePlacementResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementResponse)(nil)).Elem()
+}
+
+func (i *workflowTemplatePlacementResponsePtrType) ToWorkflowTemplatePlacementResponsePtrOutput() WorkflowTemplatePlacementResponsePtrOutput {
+	return i.ToWorkflowTemplatePlacementResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTemplatePlacementResponsePtrType) ToWorkflowTemplatePlacementResponsePtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplatePlacementResponsePtrOutput)
+}
+
+// Specifies workflow execution target.Either managed_cluster or cluster_selector is required.
+type WorkflowTemplatePlacementResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTemplatePlacementResponse)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementResponseOutput) ToWorkflowTemplatePlacementResponseOutput() WorkflowTemplatePlacementResponseOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementResponseOutput) ToWorkflowTemplatePlacementResponseOutputWithContext(ctx context.Context) WorkflowTemplatePlacementResponseOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementResponseOutput) ToWorkflowTemplatePlacementResponsePtrOutput() WorkflowTemplatePlacementResponsePtrOutput {
+	return o.ToWorkflowTemplatePlacementResponsePtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTemplatePlacementResponseOutput) ToWorkflowTemplatePlacementResponsePtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementResponsePtrOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementResponse) *WorkflowTemplatePlacementResponse {
+		return &v
+	}).(WorkflowTemplatePlacementResponsePtrOutput)
+}
+
+// Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.
+func (o WorkflowTemplatePlacementResponseOutput) ClusterSelector() ClusterSelectorResponseOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementResponse) ClusterSelectorResponse { return v.ClusterSelector }).(ClusterSelectorResponseOutput)
+}
+
+// Optional. A cluster that is managed by the workflow.
+func (o WorkflowTemplatePlacementResponseOutput) ManagedCluster() ManagedClusterResponseOutput {
+	return o.ApplyT(func(v WorkflowTemplatePlacementResponse) ManagedClusterResponse { return v.ManagedCluster }).(ManagedClusterResponseOutput)
+}
+
+type WorkflowTemplatePlacementResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTemplatePlacementResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTemplatePlacementResponse)(nil)).Elem()
+}
+
+func (o WorkflowTemplatePlacementResponsePtrOutput) ToWorkflowTemplatePlacementResponsePtrOutput() WorkflowTemplatePlacementResponsePtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementResponsePtrOutput) ToWorkflowTemplatePlacementResponsePtrOutputWithContext(ctx context.Context) WorkflowTemplatePlacementResponsePtrOutput {
+	return o
+}
+
+func (o WorkflowTemplatePlacementResponsePtrOutput) Elem() WorkflowTemplatePlacementResponseOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementResponse) WorkflowTemplatePlacementResponse { return *v }).(WorkflowTemplatePlacementResponseOutput)
+}
+
+// Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.
+func (o WorkflowTemplatePlacementResponsePtrOutput) ClusterSelector() ClusterSelectorResponsePtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementResponse) *ClusterSelectorResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterSelector
+	}).(ClusterSelectorResponsePtrOutput)
+}
+
+// Optional. A cluster that is managed by the workflow.
+func (o WorkflowTemplatePlacementResponsePtrOutput) ManagedCluster() ManagedClusterResponsePtrOutput {
+	return o.ApplyT(func(v *WorkflowTemplatePlacementResponse) *ManagedClusterResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ManagedCluster
+	}).(ManagedClusterResponsePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AcceleratorConfigOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigArrayOutput{})
+	pulumi.RegisterOutputType(AcceleratorConfigResponseOutput{})
+	pulumi.RegisterOutputType(AcceleratorConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(AutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(AutoscalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(AutoscalingConfigResponseOutput{})
+	pulumi.RegisterOutputType(AutoscalingConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(BasicAutoscalingAlgorithmOutput{})
 	pulumi.RegisterOutputType(BasicAutoscalingAlgorithmPtrOutput{})
+	pulumi.RegisterOutputType(BasicAutoscalingAlgorithmResponseOutput{})
+	pulumi.RegisterOutputType(BasicAutoscalingAlgorithmResponsePtrOutput{})
 	pulumi.RegisterOutputType(BasicYarnAutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(BasicYarnAutoscalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(BasicYarnAutoscalingConfigResponseOutput{})
+	pulumi.RegisterOutputType(BasicYarnAutoscalingConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingResponseOutput{})
+	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(ClusterConfigOutput{})
 	pulumi.RegisterOutputType(ClusterConfigPtrOutput{})
-	pulumi.RegisterOutputType(ClusterMetricsOutput{})
-	pulumi.RegisterOutputType(ClusterMetricsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterConfigResponseOutput{})
+	pulumi.RegisterOutputType(ClusterConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClusterMetricsResponseOutput{})
+	pulumi.RegisterOutputType(ClusterMetricsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ClusterSelectorOutput{})
 	pulumi.RegisterOutputType(ClusterSelectorPtrOutput{})
-	pulumi.RegisterOutputType(ClusterStatusOutput{})
-	pulumi.RegisterOutputType(ClusterStatusPtrOutput{})
-	pulumi.RegisterOutputType(ClusterStatusArrayOutput{})
+	pulumi.RegisterOutputType(ClusterSelectorResponseOutput{})
+	pulumi.RegisterOutputType(ClusterSelectorResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClusterStatusResponseOutput{})
+	pulumi.RegisterOutputType(ClusterStatusResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClusterStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(DiskConfigOutput{})
 	pulumi.RegisterOutputType(DiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(DiskConfigResponseOutput{})
+	pulumi.RegisterOutputType(DiskConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(EndpointConfigOutput{})
 	pulumi.RegisterOutputType(EndpointConfigPtrOutput{})
+	pulumi.RegisterOutputType(EndpointConfigResponseOutput{})
+	pulumi.RegisterOutputType(EndpointConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
+	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(GceClusterConfigOutput{})
 	pulumi.RegisterOutputType(GceClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(GceClusterConfigResponseOutput{})
+	pulumi.RegisterOutputType(GceClusterConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GkeClusterConfigOutput{})
 	pulumi.RegisterOutputType(GkeClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(GkeClusterConfigResponseOutput{})
+	pulumi.RegisterOutputType(GkeClusterConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(HadoopJobOutput{})
 	pulumi.RegisterOutputType(HadoopJobPtrOutput{})
+	pulumi.RegisterOutputType(HadoopJobResponseOutput{})
 	pulumi.RegisterOutputType(HiveJobOutput{})
 	pulumi.RegisterOutputType(HiveJobPtrOutput{})
+	pulumi.RegisterOutputType(HiveJobResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupAutoscalingPolicyConfigOutput{})
 	pulumi.RegisterOutputType(InstanceGroupAutoscalingPolicyConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceGroupAutoscalingPolicyConfigResponseOutput{})
+	pulumi.RegisterOutputType(InstanceGroupAutoscalingPolicyConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(InstanceGroupConfigOutput{})
 	pulumi.RegisterOutputType(InstanceGroupConfigPtrOutput{})
-	pulumi.RegisterOutputType(InstanceReferenceOutput{})
-	pulumi.RegisterOutputType(InstanceReferenceArrayOutput{})
+	pulumi.RegisterOutputType(InstanceGroupConfigResponseOutput{})
+	pulumi.RegisterOutputType(InstanceGroupConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(InstanceReferenceResponseOutput{})
+	pulumi.RegisterOutputType(InstanceReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobSchedulingOutput{})
 	pulumi.RegisterOutputType(JobSchedulingPtrOutput{})
+	pulumi.RegisterOutputType(JobSchedulingResponseOutput{})
 	pulumi.RegisterOutputType(KerberosConfigOutput{})
 	pulumi.RegisterOutputType(KerberosConfigPtrOutput{})
+	pulumi.RegisterOutputType(KerberosConfigResponseOutput{})
+	pulumi.RegisterOutputType(KerberosConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(LifecycleConfigOutput{})
 	pulumi.RegisterOutputType(LifecycleConfigPtrOutput{})
+	pulumi.RegisterOutputType(LifecycleConfigResponseOutput{})
+	pulumi.RegisterOutputType(LifecycleConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(LoggingConfigOutput{})
 	pulumi.RegisterOutputType(LoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(LoggingConfigResponseOutput{})
 	pulumi.RegisterOutputType(ManagedClusterOutput{})
 	pulumi.RegisterOutputType(ManagedClusterPtrOutput{})
-	pulumi.RegisterOutputType(ManagedGroupConfigOutput{})
-	pulumi.RegisterOutputType(ManagedGroupConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedClusterResponseOutput{})
+	pulumi.RegisterOutputType(ManagedClusterResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedGroupConfigResponseOutput{})
+	pulumi.RegisterOutputType(ManagedGroupConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(MetastoreConfigOutput{})
 	pulumi.RegisterOutputType(MetastoreConfigPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreConfigResponseOutput{})
+	pulumi.RegisterOutputType(MetastoreConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(NamespacedGkeDeploymentTargetOutput{})
 	pulumi.RegisterOutputType(NamespacedGkeDeploymentTargetPtrOutput{})
+	pulumi.RegisterOutputType(NamespacedGkeDeploymentTargetResponseOutput{})
+	pulumi.RegisterOutputType(NamespacedGkeDeploymentTargetResponsePtrOutput{})
 	pulumi.RegisterOutputType(NodeGroupAffinityOutput{})
 	pulumi.RegisterOutputType(NodeGroupAffinityPtrOutput{})
+	pulumi.RegisterOutputType(NodeGroupAffinityResponseOutput{})
+	pulumi.RegisterOutputType(NodeGroupAffinityResponsePtrOutput{})
 	pulumi.RegisterOutputType(NodeInitializationActionOutput{})
 	pulumi.RegisterOutputType(NodeInitializationActionArrayOutput{})
+	pulumi.RegisterOutputType(NodeInitializationActionResponseOutput{})
+	pulumi.RegisterOutputType(NodeInitializationActionResponseArrayOutput{})
 	pulumi.RegisterOutputType(OrderedJobOutput{})
 	pulumi.RegisterOutputType(OrderedJobArrayOutput{})
+	pulumi.RegisterOutputType(OrderedJobResponseOutput{})
+	pulumi.RegisterOutputType(OrderedJobResponseArrayOutput{})
 	pulumi.RegisterOutputType(ParameterValidationOutput{})
 	pulumi.RegisterOutputType(ParameterValidationPtrOutput{})
+	pulumi.RegisterOutputType(ParameterValidationResponseOutput{})
 	pulumi.RegisterOutputType(PigJobOutput{})
 	pulumi.RegisterOutputType(PigJobPtrOutput{})
+	pulumi.RegisterOutputType(PigJobResponseOutput{})
 	pulumi.RegisterOutputType(PolicyOutput{})
 	pulumi.RegisterOutputType(PolicyPtrOutput{})
 	pulumi.RegisterOutputType(PrestoJobOutput{})
 	pulumi.RegisterOutputType(PrestoJobPtrOutput{})
+	pulumi.RegisterOutputType(PrestoJobResponseOutput{})
 	pulumi.RegisterOutputType(PySparkJobOutput{})
 	pulumi.RegisterOutputType(PySparkJobPtrOutput{})
+	pulumi.RegisterOutputType(PySparkJobResponseOutput{})
 	pulumi.RegisterOutputType(QueryListOutput{})
 	pulumi.RegisterOutputType(QueryListPtrOutput{})
+	pulumi.RegisterOutputType(QueryListResponseOutput{})
 	pulumi.RegisterOutputType(RegexValidationOutput{})
 	pulumi.RegisterOutputType(RegexValidationPtrOutput{})
+	pulumi.RegisterOutputType(RegexValidationResponseOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(ReservationAffinityResponseOutput{})
+	pulumi.RegisterOutputType(ReservationAffinityResponsePtrOutput{})
 	pulumi.RegisterOutputType(SecurityConfigOutput{})
 	pulumi.RegisterOutputType(SecurityConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(ShieldedInstanceConfigResponseOutput{})
+	pulumi.RegisterOutputType(ShieldedInstanceConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigPtrOutput{})
+	pulumi.RegisterOutputType(SoftwareConfigResponseOutput{})
+	pulumi.RegisterOutputType(SoftwareConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(SparkJobOutput{})
 	pulumi.RegisterOutputType(SparkJobPtrOutput{})
+	pulumi.RegisterOutputType(SparkJobResponseOutput{})
 	pulumi.RegisterOutputType(SparkRJobOutput{})
 	pulumi.RegisterOutputType(SparkRJobPtrOutput{})
+	pulumi.RegisterOutputType(SparkRJobResponseOutput{})
 	pulumi.RegisterOutputType(SparkSqlJobOutput{})
 	pulumi.RegisterOutputType(SparkSqlJobPtrOutput{})
+	pulumi.RegisterOutputType(SparkSqlJobResponseOutput{})
 	pulumi.RegisterOutputType(TemplateParameterOutput{})
 	pulumi.RegisterOutputType(TemplateParameterArrayOutput{})
+	pulumi.RegisterOutputType(TemplateParameterResponseOutput{})
+	pulumi.RegisterOutputType(TemplateParameterResponseArrayOutput{})
 	pulumi.RegisterOutputType(ValueValidationOutput{})
 	pulumi.RegisterOutputType(ValueValidationPtrOutput{})
+	pulumi.RegisterOutputType(ValueValidationResponseOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementResponseOutput{})
+	pulumi.RegisterOutputType(WorkflowTemplatePlacementResponsePtrOutput{})
 }

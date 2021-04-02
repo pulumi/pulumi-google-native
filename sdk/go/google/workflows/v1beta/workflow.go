@@ -14,6 +14,27 @@ import (
 // Creates a new workflow. If a workflow with the specified name already exists in the specified project and location, the long running operation will return ALREADY_EXISTS error.
 type Workflow struct {
 	pulumi.CustomResourceState
+
+	// The timestamp of when the workflow was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The timestamp that the latest revision of the workflow was created.
+	RevisionCreateTime pulumi.StringOutput `pulumi:"revisionCreateTime"`
+	// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
+	RevisionId pulumi.StringOutput `pulumi:"revisionId"`
+	// Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
+	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
+	// Workflow code to be executed. The size limit is 128KB.
+	SourceContents pulumi.StringOutput `pulumi:"sourceContents"`
+	// State of the workflow deployment.
+	State pulumi.StringOutput `pulumi:"state"`
+	// The last update timestamp of the workflow.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewWorkflow registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +75,49 @@ func GetWorkflow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Workflow resources.
 type workflowState struct {
+	// The timestamp of when the workflow was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+	Description *string `pulumi:"description"`
+	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+	Labels map[string]string `pulumi:"labels"`
+	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+	Name *string `pulumi:"name"`
+	// The timestamp that the latest revision of the workflow was created.
+	RevisionCreateTime *string `pulumi:"revisionCreateTime"`
+	// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
+	RevisionId *string `pulumi:"revisionId"`
+	// Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Workflow code to be executed. The size limit is 128KB.
+	SourceContents *string `pulumi:"sourceContents"`
+	// State of the workflow deployment.
+	State *string `pulumi:"state"`
+	// The last update timestamp of the workflow.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type WorkflowState struct {
+	// The timestamp of when the workflow was created.
+	CreateTime pulumi.StringPtrInput
+	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+	Description pulumi.StringPtrInput
+	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+	Labels pulumi.StringMapInput
+	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+	Name pulumi.StringPtrInput
+	// The timestamp that the latest revision of the workflow was created.
+	RevisionCreateTime pulumi.StringPtrInput
+	// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
+	RevisionId pulumi.StringPtrInput
+	// Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
+	ServiceAccount pulumi.StringPtrInput
+	// Workflow code to be executed. The size limit is 128KB.
+	SourceContents pulumi.StringPtrInput
+	// State of the workflow deployment.
+	State pulumi.StringPtrInput
+	// The last update timestamp of the workflow.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (WorkflowState) ElementType() reflect.Type {
@@ -64,8 +125,6 @@ func (WorkflowState) ElementType() reflect.Type {
 }
 
 type workflowArgs struct {
-	// Output only. The timestamp of when the workflow was created.
-	CreateTime *string `pulumi:"createTime"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description *string `pulumi:"description"`
 	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
@@ -74,25 +133,15 @@ type workflowArgs struct {
 	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
-	// Output only. The timestamp that the latest revision of the workflow was created.
-	RevisionCreateTime *string `pulumi:"revisionCreateTime"`
-	// Output only. The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
-	RevisionId *string `pulumi:"revisionId"`
 	// Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents *string `pulumi:"sourceContents"`
-	// Output only. State of the workflow deployment.
-	State *string `pulumi:"state"`
-	// Output only. The last update timestamp of the workflow.
-	UpdateTime  *string `pulumi:"updateTime"`
-	WorkflowsId string  `pulumi:"workflowsId"`
+	WorkflowsId    string  `pulumi:"workflowsId"`
 }
 
 // The set of arguments for constructing a Workflow resource.
 type WorkflowArgs struct {
-	// Output only. The timestamp of when the workflow was created.
-	CreateTime pulumi.StringPtrInput
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringPtrInput
 	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
@@ -101,19 +150,11 @@ type WorkflowArgs struct {
 	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
-	// Output only. The timestamp that the latest revision of the workflow was created.
-	RevisionCreateTime pulumi.StringPtrInput
-	// Output only. The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
-	RevisionId pulumi.StringPtrInput
 	// Name of the service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} Using `-` as a wildcard for the `{project}` will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount pulumi.StringPtrInput
 	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents pulumi.StringPtrInput
-	// Output only. State of the workflow deployment.
-	State pulumi.StringPtrInput
-	// Output only. The last update timestamp of the workflow.
-	UpdateTime  pulumi.StringPtrInput
-	WorkflowsId pulumi.StringInput
+	WorkflowsId    pulumi.StringInput
 }
 
 func (WorkflowArgs) ElementType() reflect.Type {

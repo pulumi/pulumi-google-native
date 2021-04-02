@@ -182,6 +182,178 @@ func (o ApplicationInfoPtrOutput) Uris() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Application related details of a job posting.
+type ApplicationInfoResponse struct {
+	// Optional but at least one of uris, emails or instruction must be specified. Use this field to specify email address(es) to which resumes or applications can be sent. The maximum number of allowed characters for each entry is 255.
+	Emails []string `pulumi:"emails"`
+	// Optional but at least one of uris, emails or instruction must be specified. Use this field to provide instructions, such as "Mail your application to ...", that a candidate can follow to apply for the job. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 3,000.
+	Instruction string `pulumi:"instruction"`
+	// Optional but at least one of uris, emails or instruction must be specified. Use this URI field to direct an applicant to a website, for example to link to an online application form. The maximum number of allowed characters for each entry is 2,000.
+	Uris []string `pulumi:"uris"`
+}
+
+// ApplicationInfoResponseInput is an input type that accepts ApplicationInfoResponseArgs and ApplicationInfoResponseOutput values.
+// You can construct a concrete instance of `ApplicationInfoResponseInput` via:
+//
+//          ApplicationInfoResponseArgs{...}
+type ApplicationInfoResponseInput interface {
+	pulumi.Input
+
+	ToApplicationInfoResponseOutput() ApplicationInfoResponseOutput
+	ToApplicationInfoResponseOutputWithContext(context.Context) ApplicationInfoResponseOutput
+}
+
+// Application related details of a job posting.
+type ApplicationInfoResponseArgs struct {
+	// Optional but at least one of uris, emails or instruction must be specified. Use this field to specify email address(es) to which resumes or applications can be sent. The maximum number of allowed characters for each entry is 255.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Optional but at least one of uris, emails or instruction must be specified. Use this field to provide instructions, such as "Mail your application to ...", that a candidate can follow to apply for the job. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 3,000.
+	Instruction pulumi.StringInput `pulumi:"instruction"`
+	// Optional but at least one of uris, emails or instruction must be specified. Use this URI field to direct an applicant to a website, for example to link to an online application form. The maximum number of allowed characters for each entry is 2,000.
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+}
+
+func (ApplicationInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationInfoResponse)(nil)).Elem()
+}
+
+func (i ApplicationInfoResponseArgs) ToApplicationInfoResponseOutput() ApplicationInfoResponseOutput {
+	return i.ToApplicationInfoResponseOutputWithContext(context.Background())
+}
+
+func (i ApplicationInfoResponseArgs) ToApplicationInfoResponseOutputWithContext(ctx context.Context) ApplicationInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInfoResponseOutput)
+}
+
+func (i ApplicationInfoResponseArgs) ToApplicationInfoResponsePtrOutput() ApplicationInfoResponsePtrOutput {
+	return i.ToApplicationInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationInfoResponseArgs) ToApplicationInfoResponsePtrOutputWithContext(ctx context.Context) ApplicationInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInfoResponseOutput).ToApplicationInfoResponsePtrOutputWithContext(ctx)
+}
+
+// ApplicationInfoResponsePtrInput is an input type that accepts ApplicationInfoResponseArgs, ApplicationInfoResponsePtr and ApplicationInfoResponsePtrOutput values.
+// You can construct a concrete instance of `ApplicationInfoResponsePtrInput` via:
+//
+//          ApplicationInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ApplicationInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToApplicationInfoResponsePtrOutput() ApplicationInfoResponsePtrOutput
+	ToApplicationInfoResponsePtrOutputWithContext(context.Context) ApplicationInfoResponsePtrOutput
+}
+
+type applicationInfoResponsePtrType ApplicationInfoResponseArgs
+
+func ApplicationInfoResponsePtr(v *ApplicationInfoResponseArgs) ApplicationInfoResponsePtrInput {
+	return (*applicationInfoResponsePtrType)(v)
+}
+
+func (*applicationInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationInfoResponse)(nil)).Elem()
+}
+
+func (i *applicationInfoResponsePtrType) ToApplicationInfoResponsePtrOutput() ApplicationInfoResponsePtrOutput {
+	return i.ToApplicationInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *applicationInfoResponsePtrType) ToApplicationInfoResponsePtrOutputWithContext(ctx context.Context) ApplicationInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInfoResponsePtrOutput)
+}
+
+// Application related details of a job posting.
+type ApplicationInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ApplicationInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationInfoResponse)(nil)).Elem()
+}
+
+func (o ApplicationInfoResponseOutput) ToApplicationInfoResponseOutput() ApplicationInfoResponseOutput {
+	return o
+}
+
+func (o ApplicationInfoResponseOutput) ToApplicationInfoResponseOutputWithContext(ctx context.Context) ApplicationInfoResponseOutput {
+	return o
+}
+
+func (o ApplicationInfoResponseOutput) ToApplicationInfoResponsePtrOutput() ApplicationInfoResponsePtrOutput {
+	return o.ToApplicationInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationInfoResponseOutput) ToApplicationInfoResponsePtrOutputWithContext(ctx context.Context) ApplicationInfoResponsePtrOutput {
+	return o.ApplyT(func(v ApplicationInfoResponse) *ApplicationInfoResponse {
+		return &v
+	}).(ApplicationInfoResponsePtrOutput)
+}
+
+// Optional but at least one of uris, emails or instruction must be specified. Use this field to specify email address(es) to which resumes or applications can be sent. The maximum number of allowed characters for each entry is 255.
+func (o ApplicationInfoResponseOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationInfoResponse) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// Optional but at least one of uris, emails or instruction must be specified. Use this field to provide instructions, such as "Mail your application to ...", that a candidate can follow to apply for the job. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 3,000.
+func (o ApplicationInfoResponseOutput) Instruction() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationInfoResponse) string { return v.Instruction }).(pulumi.StringOutput)
+}
+
+// Optional but at least one of uris, emails or instruction must be specified. Use this URI field to direct an applicant to a website, for example to link to an online application form. The maximum number of allowed characters for each entry is 2,000.
+func (o ApplicationInfoResponseOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationInfoResponse) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+type ApplicationInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationInfoResponse)(nil)).Elem()
+}
+
+func (o ApplicationInfoResponsePtrOutput) ToApplicationInfoResponsePtrOutput() ApplicationInfoResponsePtrOutput {
+	return o
+}
+
+func (o ApplicationInfoResponsePtrOutput) ToApplicationInfoResponsePtrOutputWithContext(ctx context.Context) ApplicationInfoResponsePtrOutput {
+	return o
+}
+
+func (o ApplicationInfoResponsePtrOutput) Elem() ApplicationInfoResponseOutput {
+	return o.ApplyT(func(v *ApplicationInfoResponse) ApplicationInfoResponse { return *v }).(ApplicationInfoResponseOutput)
+}
+
+// Optional but at least one of uris, emails or instruction must be specified. Use this field to specify email address(es) to which resumes or applications can be sent. The maximum number of allowed characters for each entry is 255.
+func (o ApplicationInfoResponsePtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationInfoResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional but at least one of uris, emails or instruction must be specified. Use this field to provide instructions, such as "Mail your application to ...", that a candidate can follow to apply for the job. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 3,000.
+func (o ApplicationInfoResponsePtrOutput) Instruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Instruction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional but at least one of uris, emails or instruction must be specified. Use this URI field to direct an applicant to a website, for example to link to an online application form. The maximum number of allowed characters for each entry is 2,000.
+func (o ApplicationInfoResponsePtrOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationInfoResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Uris
+	}).(pulumi.StringArrayOutput)
+}
+
 // An event issued when an end user interacts with the application that implements Cloud Talent Solution. Providing this information improves the quality of search and recommendation for the API clients, enabling the service to perform optimally. The number of events sent must be consistent with other calls, such as job searches, issued to the service by the client.
 type ClientEventType struct {
 	// Required. The timestamp of the event.
@@ -415,7 +587,7 @@ func (o ClientEventTypePtrOutput) RequestId() pulumi.StringPtrOutput {
 type CompanyType struct {
 	// Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
 	CareerSiteUri *string `pulumi:"careerSiteUri"`
-	// Output only. Derived details about the company.
+	// Derived details about the company.
 	DerivedInfo *CompanyDerivedInfo `pulumi:"derivedInfo"`
 	// Required. The display name of the company, for example, "Google LLC".
 	DisplayName *string `pulumi:"displayName"`
@@ -435,7 +607,7 @@ type CompanyType struct {
 	Name *string `pulumi:"name"`
 	// Optional. The employer's company size.
 	Size *string `pulumi:"size"`
-	// Output only. Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
+	// Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
 	Suspended *bool `pulumi:"suspended"`
 	// Optional. The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.
 	WebsiteUri *string `pulumi:"websiteUri"`
@@ -456,7 +628,7 @@ type CompanyTypeInput interface {
 type CompanyTypeArgs struct {
 	// Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
 	CareerSiteUri pulumi.StringPtrInput `pulumi:"careerSiteUri"`
-	// Output only. Derived details about the company.
+	// Derived details about the company.
 	DerivedInfo CompanyDerivedInfoPtrInput `pulumi:"derivedInfo"`
 	// Required. The display name of the company, for example, "Google LLC".
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
@@ -476,7 +648,7 @@ type CompanyTypeArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Optional. The employer's company size.
 	Size pulumi.StringPtrInput `pulumi:"size"`
-	// Output only. Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
+	// Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
 	Suspended pulumi.BoolPtrInput `pulumi:"suspended"`
 	// Optional. The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.
 	WebsiteUri pulumi.StringPtrInput `pulumi:"websiteUri"`
@@ -565,7 +737,7 @@ func (o CompanyTypeOutput) CareerSiteUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CompanyType) *string { return v.CareerSiteUri }).(pulumi.StringPtrOutput)
 }
 
-// Output only. Derived details about the company.
+// Derived details about the company.
 func (o CompanyTypeOutput) DerivedInfo() CompanyDerivedInfoPtrOutput {
 	return o.ApplyT(func(v CompanyType) *CompanyDerivedInfo { return v.DerivedInfo }).(CompanyDerivedInfoPtrOutput)
 }
@@ -615,7 +787,7 @@ func (o CompanyTypeOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CompanyType) *string { return v.Size }).(pulumi.StringPtrOutput)
 }
 
-// Output only. Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
+// Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
 func (o CompanyTypeOutput) Suspended() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CompanyType) *bool { return v.Suspended }).(pulumi.BoolPtrOutput)
 }
@@ -653,7 +825,7 @@ func (o CompanyTypePtrOutput) CareerSiteUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. Derived details about the company.
+// Derived details about the company.
 func (o CompanyTypePtrOutput) DerivedInfo() CompanyDerivedInfoPtrOutput {
 	return o.ApplyT(func(v *CompanyType) *CompanyDerivedInfo {
 		if v == nil {
@@ -753,7 +925,7 @@ func (o CompanyTypePtrOutput) Size() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
+// Indicates whether a company is flagged to be suspended from public availability by the service when job content appears suspicious, abusive, or spammy.
 func (o CompanyTypePtrOutput) Suspended() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CompanyType) *bool {
 		if v == nil {
@@ -907,6 +1079,140 @@ func (o CompanyDerivedInfoPtrOutput) HeadquartersLocation() LocationPtrOutput {
 	}).(LocationPtrOutput)
 }
 
+// Derived details about the company.
+type CompanyDerivedInfoResponse struct {
+	// A structured headquarters location of the company, resolved from Company.hq_location if provided.
+	HeadquartersLocation LocationResponse `pulumi:"headquartersLocation"`
+}
+
+// CompanyDerivedInfoResponseInput is an input type that accepts CompanyDerivedInfoResponseArgs and CompanyDerivedInfoResponseOutput values.
+// You can construct a concrete instance of `CompanyDerivedInfoResponseInput` via:
+//
+//          CompanyDerivedInfoResponseArgs{...}
+type CompanyDerivedInfoResponseInput interface {
+	pulumi.Input
+
+	ToCompanyDerivedInfoResponseOutput() CompanyDerivedInfoResponseOutput
+	ToCompanyDerivedInfoResponseOutputWithContext(context.Context) CompanyDerivedInfoResponseOutput
+}
+
+// Derived details about the company.
+type CompanyDerivedInfoResponseArgs struct {
+	// A structured headquarters location of the company, resolved from Company.hq_location if provided.
+	HeadquartersLocation LocationResponseInput `pulumi:"headquartersLocation"`
+}
+
+func (CompanyDerivedInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanyDerivedInfoResponse)(nil)).Elem()
+}
+
+func (i CompanyDerivedInfoResponseArgs) ToCompanyDerivedInfoResponseOutput() CompanyDerivedInfoResponseOutput {
+	return i.ToCompanyDerivedInfoResponseOutputWithContext(context.Background())
+}
+
+func (i CompanyDerivedInfoResponseArgs) ToCompanyDerivedInfoResponseOutputWithContext(ctx context.Context) CompanyDerivedInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanyDerivedInfoResponseOutput)
+}
+
+func (i CompanyDerivedInfoResponseArgs) ToCompanyDerivedInfoResponsePtrOutput() CompanyDerivedInfoResponsePtrOutput {
+	return i.ToCompanyDerivedInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CompanyDerivedInfoResponseArgs) ToCompanyDerivedInfoResponsePtrOutputWithContext(ctx context.Context) CompanyDerivedInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanyDerivedInfoResponseOutput).ToCompanyDerivedInfoResponsePtrOutputWithContext(ctx)
+}
+
+// CompanyDerivedInfoResponsePtrInput is an input type that accepts CompanyDerivedInfoResponseArgs, CompanyDerivedInfoResponsePtr and CompanyDerivedInfoResponsePtrOutput values.
+// You can construct a concrete instance of `CompanyDerivedInfoResponsePtrInput` via:
+//
+//          CompanyDerivedInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CompanyDerivedInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToCompanyDerivedInfoResponsePtrOutput() CompanyDerivedInfoResponsePtrOutput
+	ToCompanyDerivedInfoResponsePtrOutputWithContext(context.Context) CompanyDerivedInfoResponsePtrOutput
+}
+
+type companyDerivedInfoResponsePtrType CompanyDerivedInfoResponseArgs
+
+func CompanyDerivedInfoResponsePtr(v *CompanyDerivedInfoResponseArgs) CompanyDerivedInfoResponsePtrInput {
+	return (*companyDerivedInfoResponsePtrType)(v)
+}
+
+func (*companyDerivedInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CompanyDerivedInfoResponse)(nil)).Elem()
+}
+
+func (i *companyDerivedInfoResponsePtrType) ToCompanyDerivedInfoResponsePtrOutput() CompanyDerivedInfoResponsePtrOutput {
+	return i.ToCompanyDerivedInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *companyDerivedInfoResponsePtrType) ToCompanyDerivedInfoResponsePtrOutputWithContext(ctx context.Context) CompanyDerivedInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompanyDerivedInfoResponsePtrOutput)
+}
+
+// Derived details about the company.
+type CompanyDerivedInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (CompanyDerivedInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanyDerivedInfoResponse)(nil)).Elem()
+}
+
+func (o CompanyDerivedInfoResponseOutput) ToCompanyDerivedInfoResponseOutput() CompanyDerivedInfoResponseOutput {
+	return o
+}
+
+func (o CompanyDerivedInfoResponseOutput) ToCompanyDerivedInfoResponseOutputWithContext(ctx context.Context) CompanyDerivedInfoResponseOutput {
+	return o
+}
+
+func (o CompanyDerivedInfoResponseOutput) ToCompanyDerivedInfoResponsePtrOutput() CompanyDerivedInfoResponsePtrOutput {
+	return o.ToCompanyDerivedInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CompanyDerivedInfoResponseOutput) ToCompanyDerivedInfoResponsePtrOutputWithContext(ctx context.Context) CompanyDerivedInfoResponsePtrOutput {
+	return o.ApplyT(func(v CompanyDerivedInfoResponse) *CompanyDerivedInfoResponse {
+		return &v
+	}).(CompanyDerivedInfoResponsePtrOutput)
+}
+
+// A structured headquarters location of the company, resolved from Company.hq_location if provided.
+func (o CompanyDerivedInfoResponseOutput) HeadquartersLocation() LocationResponseOutput {
+	return o.ApplyT(func(v CompanyDerivedInfoResponse) LocationResponse { return v.HeadquartersLocation }).(LocationResponseOutput)
+}
+
+type CompanyDerivedInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CompanyDerivedInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CompanyDerivedInfoResponse)(nil)).Elem()
+}
+
+func (o CompanyDerivedInfoResponsePtrOutput) ToCompanyDerivedInfoResponsePtrOutput() CompanyDerivedInfoResponsePtrOutput {
+	return o
+}
+
+func (o CompanyDerivedInfoResponsePtrOutput) ToCompanyDerivedInfoResponsePtrOutputWithContext(ctx context.Context) CompanyDerivedInfoResponsePtrOutput {
+	return o
+}
+
+func (o CompanyDerivedInfoResponsePtrOutput) Elem() CompanyDerivedInfoResponseOutput {
+	return o.ApplyT(func(v *CompanyDerivedInfoResponse) CompanyDerivedInfoResponse { return *v }).(CompanyDerivedInfoResponseOutput)
+}
+
+// A structured headquarters location of the company, resolved from Company.hq_location if provided.
+func (o CompanyDerivedInfoResponsePtrOutput) HeadquartersLocation() LocationResponsePtrOutput {
+	return o.ApplyT(func(v *CompanyDerivedInfoResponse) *LocationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.HeadquartersLocation
+	}).(LocationResponsePtrOutput)
+}
+
 // A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year.
 type CompensationEntry struct {
 	// Optional. Compensation amount.
@@ -1052,11 +1358,156 @@ func (o CompensationEntryArrayOutput) Index(i pulumi.IntInput) CompensationEntry
 	}).(CompensationEntryOutput)
 }
 
+// A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year.
+type CompensationEntryResponse struct {
+	// Optional. Compensation amount.
+	Amount MoneyResponse `pulumi:"amount"`
+	// Optional. Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus.
+	Description string `pulumi:"description"`
+	// Optional. Expected number of units paid each year. If not specified, when Job.employment_types is FULLTIME, a default value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1
+	ExpectedUnitsPerYear float64 `pulumi:"expectedUnitsPerYear"`
+	// Optional. Compensation range.
+	Range CompensationRangeResponse `pulumi:"range"`
+	// Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
+	Type string `pulumi:"type"`
+	// Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
+	Unit string `pulumi:"unit"`
+}
+
+// CompensationEntryResponseInput is an input type that accepts CompensationEntryResponseArgs and CompensationEntryResponseOutput values.
+// You can construct a concrete instance of `CompensationEntryResponseInput` via:
+//
+//          CompensationEntryResponseArgs{...}
+type CompensationEntryResponseInput interface {
+	pulumi.Input
+
+	ToCompensationEntryResponseOutput() CompensationEntryResponseOutput
+	ToCompensationEntryResponseOutputWithContext(context.Context) CompensationEntryResponseOutput
+}
+
+// A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year.
+type CompensationEntryResponseArgs struct {
+	// Optional. Compensation amount.
+	Amount MoneyResponseInput `pulumi:"amount"`
+	// Optional. Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Optional. Expected number of units paid each year. If not specified, when Job.employment_types is FULLTIME, a default value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1
+	ExpectedUnitsPerYear pulumi.Float64Input `pulumi:"expectedUnitsPerYear"`
+	// Optional. Compensation range.
+	Range CompensationRangeResponseInput `pulumi:"range"`
+	// Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
+	Unit pulumi.StringInput `pulumi:"unit"`
+}
+
+func (CompensationEntryResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompensationEntryResponse)(nil)).Elem()
+}
+
+func (i CompensationEntryResponseArgs) ToCompensationEntryResponseOutput() CompensationEntryResponseOutput {
+	return i.ToCompensationEntryResponseOutputWithContext(context.Background())
+}
+
+func (i CompensationEntryResponseArgs) ToCompensationEntryResponseOutputWithContext(ctx context.Context) CompensationEntryResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompensationEntryResponseOutput)
+}
+
+// CompensationEntryResponseArrayInput is an input type that accepts CompensationEntryResponseArray and CompensationEntryResponseArrayOutput values.
+// You can construct a concrete instance of `CompensationEntryResponseArrayInput` via:
+//
+//          CompensationEntryResponseArray{ CompensationEntryResponseArgs{...} }
+type CompensationEntryResponseArrayInput interface {
+	pulumi.Input
+
+	ToCompensationEntryResponseArrayOutput() CompensationEntryResponseArrayOutput
+	ToCompensationEntryResponseArrayOutputWithContext(context.Context) CompensationEntryResponseArrayOutput
+}
+
+type CompensationEntryResponseArray []CompensationEntryResponseInput
+
+func (CompensationEntryResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompensationEntryResponse)(nil)).Elem()
+}
+
+func (i CompensationEntryResponseArray) ToCompensationEntryResponseArrayOutput() CompensationEntryResponseArrayOutput {
+	return i.ToCompensationEntryResponseArrayOutputWithContext(context.Background())
+}
+
+func (i CompensationEntryResponseArray) ToCompensationEntryResponseArrayOutputWithContext(ctx context.Context) CompensationEntryResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompensationEntryResponseArrayOutput)
+}
+
+// A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year.
+type CompensationEntryResponseOutput struct{ *pulumi.OutputState }
+
+func (CompensationEntryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompensationEntryResponse)(nil)).Elem()
+}
+
+func (o CompensationEntryResponseOutput) ToCompensationEntryResponseOutput() CompensationEntryResponseOutput {
+	return o
+}
+
+func (o CompensationEntryResponseOutput) ToCompensationEntryResponseOutputWithContext(ctx context.Context) CompensationEntryResponseOutput {
+	return o
+}
+
+// Optional. Compensation amount.
+func (o CompensationEntryResponseOutput) Amount() MoneyResponseOutput {
+	return o.ApplyT(func(v CompensationEntryResponse) MoneyResponse { return v.Amount }).(MoneyResponseOutput)
+}
+
+// Optional. Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus.
+func (o CompensationEntryResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v CompensationEntryResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Expected number of units paid each year. If not specified, when Job.employment_types is FULLTIME, a default value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1
+func (o CompensationEntryResponseOutput) ExpectedUnitsPerYear() pulumi.Float64Output {
+	return o.ApplyT(func(v CompensationEntryResponse) float64 { return v.ExpectedUnitsPerYear }).(pulumi.Float64Output)
+}
+
+// Optional. Compensation range.
+func (o CompensationEntryResponseOutput) Range() CompensationRangeResponseOutput {
+	return o.ApplyT(func(v CompensationEntryResponse) CompensationRangeResponse { return v.Range }).(CompensationRangeResponseOutput)
+}
+
+// Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
+func (o CompensationEntryResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v CompensationEntryResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
+func (o CompensationEntryResponseOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v CompensationEntryResponse) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+type CompensationEntryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CompensationEntryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CompensationEntryResponse)(nil)).Elem()
+}
+
+func (o CompensationEntryResponseArrayOutput) ToCompensationEntryResponseArrayOutput() CompensationEntryResponseArrayOutput {
+	return o
+}
+
+func (o CompensationEntryResponseArrayOutput) ToCompensationEntryResponseArrayOutputWithContext(ctx context.Context) CompensationEntryResponseArrayOutput {
+	return o
+}
+
+func (o CompensationEntryResponseArrayOutput) Index(i pulumi.IntInput) CompensationEntryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CompensationEntryResponse {
+		return vs[0].([]CompensationEntryResponse)[vs[1].(int)]
+	}).(CompensationEntryResponseOutput)
+}
+
 // Job compensation details.
 type CompensationInfo struct {
-	// Output only. Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+	// Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
 	AnnualizedBaseCompensationRange *CompensationRange `pulumi:"annualizedBaseCompensationRange"`
-	// Output only. Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+	// Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
 	AnnualizedTotalCompensationRange *CompensationRange `pulumi:"annualizedTotalCompensationRange"`
 	// Optional. Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as ** base compensation entry ** for the job.
 	Entries []CompensationEntry `pulumi:"entries"`
@@ -1075,9 +1526,9 @@ type CompensationInfoInput interface {
 
 // Job compensation details.
 type CompensationInfoArgs struct {
-	// Output only. Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+	// Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
 	AnnualizedBaseCompensationRange CompensationRangePtrInput `pulumi:"annualizedBaseCompensationRange"`
-	// Output only. Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+	// Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
 	AnnualizedTotalCompensationRange CompensationRangePtrInput `pulumi:"annualizedTotalCompensationRange"`
 	// Optional. Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as ** base compensation entry ** for the job.
 	Entries CompensationEntryArrayInput `pulumi:"entries"`
@@ -1161,12 +1612,12 @@ func (o CompensationInfoOutput) ToCompensationInfoPtrOutputWithContext(ctx conte
 	}).(CompensationInfoPtrOutput)
 }
 
-// Output only. Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+// Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
 func (o CompensationInfoOutput) AnnualizedBaseCompensationRange() CompensationRangePtrOutput {
 	return o.ApplyT(func(v CompensationInfo) *CompensationRange { return v.AnnualizedBaseCompensationRange }).(CompensationRangePtrOutput)
 }
 
-// Output only. Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+// Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
 func (o CompensationInfoOutput) AnnualizedTotalCompensationRange() CompensationRangePtrOutput {
 	return o.ApplyT(func(v CompensationInfo) *CompensationRange { return v.AnnualizedTotalCompensationRange }).(CompensationRangePtrOutput)
 }
@@ -1194,7 +1645,7 @@ func (o CompensationInfoPtrOutput) Elem() CompensationInfoOutput {
 	return o.ApplyT(func(v *CompensationInfo) CompensationInfo { return *v }).(CompensationInfoOutput)
 }
 
-// Output only. Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+// Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
 func (o CompensationInfoPtrOutput) AnnualizedBaseCompensationRange() CompensationRangePtrOutput {
 	return o.ApplyT(func(v *CompensationInfo) *CompensationRange {
 		if v == nil {
@@ -1204,7 +1655,7 @@ func (o CompensationInfoPtrOutput) AnnualizedBaseCompensationRange() Compensatio
 	}).(CompensationRangePtrOutput)
 }
 
-// Output only. Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+// Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
 func (o CompensationInfoPtrOutput) AnnualizedTotalCompensationRange() CompensationRangePtrOutput {
 	return o.ApplyT(func(v *CompensationInfo) *CompensationRange {
 		if v == nil {
@@ -1222,6 +1673,178 @@ func (o CompensationInfoPtrOutput) Entries() CompensationEntryArrayOutput {
 		}
 		return v.Entries
 	}).(CompensationEntryArrayOutput)
+}
+
+// Job compensation details.
+type CompensationInfoResponse struct {
+	// Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+	AnnualizedBaseCompensationRange CompensationRangeResponse `pulumi:"annualizedBaseCompensationRange"`
+	// Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+	AnnualizedTotalCompensationRange CompensationRangeResponse `pulumi:"annualizedTotalCompensationRange"`
+	// Optional. Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as ** base compensation entry ** for the job.
+	Entries []CompensationEntryResponse `pulumi:"entries"`
+}
+
+// CompensationInfoResponseInput is an input type that accepts CompensationInfoResponseArgs and CompensationInfoResponseOutput values.
+// You can construct a concrete instance of `CompensationInfoResponseInput` via:
+//
+//          CompensationInfoResponseArgs{...}
+type CompensationInfoResponseInput interface {
+	pulumi.Input
+
+	ToCompensationInfoResponseOutput() CompensationInfoResponseOutput
+	ToCompensationInfoResponseOutputWithContext(context.Context) CompensationInfoResponseOutput
+}
+
+// Job compensation details.
+type CompensationInfoResponseArgs struct {
+	// Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+	AnnualizedBaseCompensationRange CompensationRangeResponseInput `pulumi:"annualizedBaseCompensationRange"`
+	// Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+	AnnualizedTotalCompensationRange CompensationRangeResponseInput `pulumi:"annualizedTotalCompensationRange"`
+	// Optional. Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as ** base compensation entry ** for the job.
+	Entries CompensationEntryResponseArrayInput `pulumi:"entries"`
+}
+
+func (CompensationInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompensationInfoResponse)(nil)).Elem()
+}
+
+func (i CompensationInfoResponseArgs) ToCompensationInfoResponseOutput() CompensationInfoResponseOutput {
+	return i.ToCompensationInfoResponseOutputWithContext(context.Background())
+}
+
+func (i CompensationInfoResponseArgs) ToCompensationInfoResponseOutputWithContext(ctx context.Context) CompensationInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompensationInfoResponseOutput)
+}
+
+func (i CompensationInfoResponseArgs) ToCompensationInfoResponsePtrOutput() CompensationInfoResponsePtrOutput {
+	return i.ToCompensationInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CompensationInfoResponseArgs) ToCompensationInfoResponsePtrOutputWithContext(ctx context.Context) CompensationInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompensationInfoResponseOutput).ToCompensationInfoResponsePtrOutputWithContext(ctx)
+}
+
+// CompensationInfoResponsePtrInput is an input type that accepts CompensationInfoResponseArgs, CompensationInfoResponsePtr and CompensationInfoResponsePtrOutput values.
+// You can construct a concrete instance of `CompensationInfoResponsePtrInput` via:
+//
+//          CompensationInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CompensationInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToCompensationInfoResponsePtrOutput() CompensationInfoResponsePtrOutput
+	ToCompensationInfoResponsePtrOutputWithContext(context.Context) CompensationInfoResponsePtrOutput
+}
+
+type compensationInfoResponsePtrType CompensationInfoResponseArgs
+
+func CompensationInfoResponsePtr(v *CompensationInfoResponseArgs) CompensationInfoResponsePtrInput {
+	return (*compensationInfoResponsePtrType)(v)
+}
+
+func (*compensationInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CompensationInfoResponse)(nil)).Elem()
+}
+
+func (i *compensationInfoResponsePtrType) ToCompensationInfoResponsePtrOutput() CompensationInfoResponsePtrOutput {
+	return i.ToCompensationInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *compensationInfoResponsePtrType) ToCompensationInfoResponsePtrOutputWithContext(ctx context.Context) CompensationInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompensationInfoResponsePtrOutput)
+}
+
+// Job compensation details.
+type CompensationInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (CompensationInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompensationInfoResponse)(nil)).Elem()
+}
+
+func (o CompensationInfoResponseOutput) ToCompensationInfoResponseOutput() CompensationInfoResponseOutput {
+	return o
+}
+
+func (o CompensationInfoResponseOutput) ToCompensationInfoResponseOutputWithContext(ctx context.Context) CompensationInfoResponseOutput {
+	return o
+}
+
+func (o CompensationInfoResponseOutput) ToCompensationInfoResponsePtrOutput() CompensationInfoResponsePtrOutput {
+	return o.ToCompensationInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CompensationInfoResponseOutput) ToCompensationInfoResponsePtrOutputWithContext(ctx context.Context) CompensationInfoResponsePtrOutput {
+	return o.ApplyT(func(v CompensationInfoResponse) *CompensationInfoResponse {
+		return &v
+	}).(CompensationInfoResponsePtrOutput)
+}
+
+// Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+func (o CompensationInfoResponseOutput) AnnualizedBaseCompensationRange() CompensationRangeResponseOutput {
+	return o.ApplyT(func(v CompensationInfoResponse) CompensationRangeResponse { return v.AnnualizedBaseCompensationRange }).(CompensationRangeResponseOutput)
+}
+
+// Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+func (o CompensationInfoResponseOutput) AnnualizedTotalCompensationRange() CompensationRangeResponseOutput {
+	return o.ApplyT(func(v CompensationInfoResponse) CompensationRangeResponse { return v.AnnualizedTotalCompensationRange }).(CompensationRangeResponseOutput)
+}
+
+// Optional. Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as ** base compensation entry ** for the job.
+func (o CompensationInfoResponseOutput) Entries() CompensationEntryResponseArrayOutput {
+	return o.ApplyT(func(v CompensationInfoResponse) []CompensationEntryResponse { return v.Entries }).(CompensationEntryResponseArrayOutput)
+}
+
+type CompensationInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CompensationInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CompensationInfoResponse)(nil)).Elem()
+}
+
+func (o CompensationInfoResponsePtrOutput) ToCompensationInfoResponsePtrOutput() CompensationInfoResponsePtrOutput {
+	return o
+}
+
+func (o CompensationInfoResponsePtrOutput) ToCompensationInfoResponsePtrOutputWithContext(ctx context.Context) CompensationInfoResponsePtrOutput {
+	return o
+}
+
+func (o CompensationInfoResponsePtrOutput) Elem() CompensationInfoResponseOutput {
+	return o.ApplyT(func(v *CompensationInfoResponse) CompensationInfoResponse { return *v }).(CompensationInfoResponseOutput)
+}
+
+// Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+func (o CompensationInfoResponsePtrOutput) AnnualizedBaseCompensationRange() CompensationRangeResponsePtrOutput {
+	return o.ApplyT(func(v *CompensationInfoResponse) *CompensationRangeResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AnnualizedBaseCompensationRange
+	}).(CompensationRangeResponsePtrOutput)
+}
+
+// Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
+func (o CompensationInfoResponsePtrOutput) AnnualizedTotalCompensationRange() CompensationRangeResponsePtrOutput {
+	return o.ApplyT(func(v *CompensationInfoResponse) *CompensationRangeResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AnnualizedTotalCompensationRange
+	}).(CompensationRangeResponsePtrOutput)
+}
+
+// Optional. Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as ** base compensation entry ** for the job.
+func (o CompensationInfoResponsePtrOutput) Entries() CompensationEntryResponseArrayOutput {
+	return o.ApplyT(func(v *CompensationInfoResponse) []CompensationEntryResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Entries
+	}).(CompensationEntryResponseArrayOutput)
 }
 
 // Compensation range.
@@ -1377,13 +2000,166 @@ func (o CompensationRangePtrOutput) MinCompensation() MoneyPtrOutput {
 	}).(MoneyPtrOutput)
 }
 
+// Compensation range.
+type CompensationRangeResponse struct {
+	// Optional. The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation.
+	MaxCompensation MoneyResponse `pulumi:"maxCompensation"`
+	// Optional. The minimum amount of compensation. If left empty, the value is set to zero and the currency code is set to match the currency code of max_compensation.
+	MinCompensation MoneyResponse `pulumi:"minCompensation"`
+}
+
+// CompensationRangeResponseInput is an input type that accepts CompensationRangeResponseArgs and CompensationRangeResponseOutput values.
+// You can construct a concrete instance of `CompensationRangeResponseInput` via:
+//
+//          CompensationRangeResponseArgs{...}
+type CompensationRangeResponseInput interface {
+	pulumi.Input
+
+	ToCompensationRangeResponseOutput() CompensationRangeResponseOutput
+	ToCompensationRangeResponseOutputWithContext(context.Context) CompensationRangeResponseOutput
+}
+
+// Compensation range.
+type CompensationRangeResponseArgs struct {
+	// Optional. The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation.
+	MaxCompensation MoneyResponseInput `pulumi:"maxCompensation"`
+	// Optional. The minimum amount of compensation. If left empty, the value is set to zero and the currency code is set to match the currency code of max_compensation.
+	MinCompensation MoneyResponseInput `pulumi:"minCompensation"`
+}
+
+func (CompensationRangeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompensationRangeResponse)(nil)).Elem()
+}
+
+func (i CompensationRangeResponseArgs) ToCompensationRangeResponseOutput() CompensationRangeResponseOutput {
+	return i.ToCompensationRangeResponseOutputWithContext(context.Background())
+}
+
+func (i CompensationRangeResponseArgs) ToCompensationRangeResponseOutputWithContext(ctx context.Context) CompensationRangeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompensationRangeResponseOutput)
+}
+
+func (i CompensationRangeResponseArgs) ToCompensationRangeResponsePtrOutput() CompensationRangeResponsePtrOutput {
+	return i.ToCompensationRangeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CompensationRangeResponseArgs) ToCompensationRangeResponsePtrOutputWithContext(ctx context.Context) CompensationRangeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompensationRangeResponseOutput).ToCompensationRangeResponsePtrOutputWithContext(ctx)
+}
+
+// CompensationRangeResponsePtrInput is an input type that accepts CompensationRangeResponseArgs, CompensationRangeResponsePtr and CompensationRangeResponsePtrOutput values.
+// You can construct a concrete instance of `CompensationRangeResponsePtrInput` via:
+//
+//          CompensationRangeResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CompensationRangeResponsePtrInput interface {
+	pulumi.Input
+
+	ToCompensationRangeResponsePtrOutput() CompensationRangeResponsePtrOutput
+	ToCompensationRangeResponsePtrOutputWithContext(context.Context) CompensationRangeResponsePtrOutput
+}
+
+type compensationRangeResponsePtrType CompensationRangeResponseArgs
+
+func CompensationRangeResponsePtr(v *CompensationRangeResponseArgs) CompensationRangeResponsePtrInput {
+	return (*compensationRangeResponsePtrType)(v)
+}
+
+func (*compensationRangeResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CompensationRangeResponse)(nil)).Elem()
+}
+
+func (i *compensationRangeResponsePtrType) ToCompensationRangeResponsePtrOutput() CompensationRangeResponsePtrOutput {
+	return i.ToCompensationRangeResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *compensationRangeResponsePtrType) ToCompensationRangeResponsePtrOutputWithContext(ctx context.Context) CompensationRangeResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CompensationRangeResponsePtrOutput)
+}
+
+// Compensation range.
+type CompensationRangeResponseOutput struct{ *pulumi.OutputState }
+
+func (CompensationRangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompensationRangeResponse)(nil)).Elem()
+}
+
+func (o CompensationRangeResponseOutput) ToCompensationRangeResponseOutput() CompensationRangeResponseOutput {
+	return o
+}
+
+func (o CompensationRangeResponseOutput) ToCompensationRangeResponseOutputWithContext(ctx context.Context) CompensationRangeResponseOutput {
+	return o
+}
+
+func (o CompensationRangeResponseOutput) ToCompensationRangeResponsePtrOutput() CompensationRangeResponsePtrOutput {
+	return o.ToCompensationRangeResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CompensationRangeResponseOutput) ToCompensationRangeResponsePtrOutputWithContext(ctx context.Context) CompensationRangeResponsePtrOutput {
+	return o.ApplyT(func(v CompensationRangeResponse) *CompensationRangeResponse {
+		return &v
+	}).(CompensationRangeResponsePtrOutput)
+}
+
+// Optional. The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation.
+func (o CompensationRangeResponseOutput) MaxCompensation() MoneyResponseOutput {
+	return o.ApplyT(func(v CompensationRangeResponse) MoneyResponse { return v.MaxCompensation }).(MoneyResponseOutput)
+}
+
+// Optional. The minimum amount of compensation. If left empty, the value is set to zero and the currency code is set to match the currency code of max_compensation.
+func (o CompensationRangeResponseOutput) MinCompensation() MoneyResponseOutput {
+	return o.ApplyT(func(v CompensationRangeResponse) MoneyResponse { return v.MinCompensation }).(MoneyResponseOutput)
+}
+
+type CompensationRangeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CompensationRangeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CompensationRangeResponse)(nil)).Elem()
+}
+
+func (o CompensationRangeResponsePtrOutput) ToCompensationRangeResponsePtrOutput() CompensationRangeResponsePtrOutput {
+	return o
+}
+
+func (o CompensationRangeResponsePtrOutput) ToCompensationRangeResponsePtrOutputWithContext(ctx context.Context) CompensationRangeResponsePtrOutput {
+	return o
+}
+
+func (o CompensationRangeResponsePtrOutput) Elem() CompensationRangeResponseOutput {
+	return o.ApplyT(func(v *CompensationRangeResponse) CompensationRangeResponse { return *v }).(CompensationRangeResponseOutput)
+}
+
+// Optional. The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation.
+func (o CompensationRangeResponsePtrOutput) MaxCompensation() MoneyResponsePtrOutput {
+	return o.ApplyT(func(v *CompensationRangeResponse) *MoneyResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxCompensation
+	}).(MoneyResponsePtrOutput)
+}
+
+// Optional. The minimum amount of compensation. If left empty, the value is set to zero and the currency code is set to match the currency code of max_compensation.
+func (o CompensationRangeResponsePtrOutput) MinCompensation() MoneyResponsePtrOutput {
+	return o.ApplyT(func(v *CompensationRangeResponse) *MoneyResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MinCompensation
+	}).(MoneyResponsePtrOutput)
+}
+
 // A Job resource represents a job posting (also referred to as a "job listing" or "job requisition"). A job belongs to a Company, which is the hiring entity responsible for the job.
 type JobType struct {
 	// Optional but strongly recommended for the best service experience. Location(s) where the employer is looking to hire for this job posting. Specifying the full street address(es) of the hiring location enables better API results, especially job searches by commute time. At most 50 locations are allowed for best search performance. If a job has more locations, it is suggested to split it into multiple jobs with unique requisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', etc.) as multiple jobs with the same company_name, language_code and requisition_id are not allowed. If the original requisition_id must be preserved, a custom field should be used for storage. It is also suggested to group the locations that close to each other in the same job for better search experience. The maximum number of allowed characters is 500.
 	Addresses []string `pulumi:"addresses"`
 	// Required. At least one field within ApplicationInfo must be specified. Job application information.
 	ApplicationInfo *ApplicationInfo `pulumi:"applicationInfo"`
-	// Output only. Display name of the company listing the job.
+	// Display name of the company listing the job.
 	CompanyDisplayName *string `pulumi:"companyDisplayName"`
 	// Required. The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
 	CompanyName *string `pulumi:"companyName"`
@@ -1395,7 +2171,7 @@ type JobType struct {
 	DegreeTypes []string `pulumi:"degreeTypes"`
 	// Optional. The department or functional area within the company with the open position. The maximum number of allowed characters is 255.
 	Department *string `pulumi:"department"`
-	// Output only. Derived details about the job posting.
+	// Derived details about the job posting.
 	DerivedInfo *JobDerivedInfo `pulumi:"derivedInfo"`
 	// Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
 	Description *string `pulumi:"description"`
@@ -1415,7 +2191,7 @@ type JobType struct {
 	LanguageCode *string `pulumi:"languageCode"`
 	// Required during job update. The resource name for the job. This is generated by the service when a job is created. The format is "projects/{project_id}/jobs/{job_id}", for example, "projects/api-test-project/jobs/1234". Use of this field in job queries and API calls is preferred over the use of requisition_id since this value is unique.
 	Name *string `pulumi:"name"`
-	// Output only. The timestamp when this job posting was created.
+	// The timestamp when this job posting was created.
 	PostingCreateTime *string `pulumi:"postingCreateTime"`
 	// Optional but strongly recommended for the best service experience. The expiration timestamp of the job. After this timestamp, the job is marked as expired, and it no longer appears in search results. The expired job can't be deleted or listed by the DeleteJob and ListJobs APIs, but it can be retrieved with the GetJob API or updated with the UpdateJob API. An expired job can be updated and opened again by using a future expiration timestamp. Updating an expired job fails if there is another existing open job with same company_name, language_code and requisition_id. The expired jobs are retained in our system for 90 days. However, the overall expired job count cannot exceed 3 times the maximum of open jobs count over the past week, otherwise jobs with earlier expire time are cleaned first. Expired jobs are no longer accessible after they are cleaned out. Invalid timestamps are ignored, and treated as expire time not provided. Timestamp before the instant request is made is considered valid, the job will be treated as expired immediately. If this value is not provided at the time of job creation or is invalid, the job posting expires after 30 days from the job's creation time. For example, if the job was created on 2017/01/01 13:00AM UTC with an unspecified expiration date, the job expires after 2017/01/31 13:00AM UTC. If this value is not provided on job update, it depends on the field masks set by UpdateJobRequest.update_mask. If the field masks include expiry_time, or the masks are empty meaning that every field is updated, the job posting expires after 30 days from the job's last update time. Otherwise the expiration date isn't updated.
 	PostingExpireTime *string `pulumi:"postingExpireTime"`
@@ -1423,7 +2199,7 @@ type JobType struct {
 	PostingPublishTime *string `pulumi:"postingPublishTime"`
 	// Optional. The job PostingRegion (for example, state, country) throughout which the job is available. If this field is set, a LocationFilter in a search query within the job region finds this job posting if an exact location match isn't specified. If this field is set to PostingRegion.NATION or PostingRegion.ADMINISTRATIVE_AREA, setting job Job.addresses to the same location level as this field is strongly recommended.
 	PostingRegion *string `pulumi:"postingRegion"`
-	// Output only. The timestamp when this job posting was last updated.
+	// The timestamp when this job posting was last updated.
 	PostingUpdateTime *string `pulumi:"postingUpdateTime"`
 	// Optional. Options for job processing.
 	ProcessingOptions *ProcessingOptions `pulumi:"processingOptions"`
@@ -1437,8 +2213,6 @@ type JobType struct {
 	Responsibilities *string `pulumi:"responsibilities"`
 	// Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
 	Title *string `pulumi:"title"`
-	// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
-	Visibility *string `pulumi:"visibility"`
 }
 
 // JobTypeInput is an input type that accepts JobTypeArgs and JobTypeOutput values.
@@ -1458,7 +2232,7 @@ type JobTypeArgs struct {
 	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
 	// Required. At least one field within ApplicationInfo must be specified. Job application information.
 	ApplicationInfo ApplicationInfoPtrInput `pulumi:"applicationInfo"`
-	// Output only. Display name of the company listing the job.
+	// Display name of the company listing the job.
 	CompanyDisplayName pulumi.StringPtrInput `pulumi:"companyDisplayName"`
 	// Required. The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
 	CompanyName pulumi.StringPtrInput `pulumi:"companyName"`
@@ -1470,7 +2244,7 @@ type JobTypeArgs struct {
 	DegreeTypes pulumi.StringArrayInput `pulumi:"degreeTypes"`
 	// Optional. The department or functional area within the company with the open position. The maximum number of allowed characters is 255.
 	Department pulumi.StringPtrInput `pulumi:"department"`
-	// Output only. Derived details about the job posting.
+	// Derived details about the job posting.
 	DerivedInfo JobDerivedInfoPtrInput `pulumi:"derivedInfo"`
 	// Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -1490,7 +2264,7 @@ type JobTypeArgs struct {
 	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
 	// Required during job update. The resource name for the job. This is generated by the service when a job is created. The format is "projects/{project_id}/jobs/{job_id}", for example, "projects/api-test-project/jobs/1234". Use of this field in job queries and API calls is preferred over the use of requisition_id since this value is unique.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Output only. The timestamp when this job posting was created.
+	// The timestamp when this job posting was created.
 	PostingCreateTime pulumi.StringPtrInput `pulumi:"postingCreateTime"`
 	// Optional but strongly recommended for the best service experience. The expiration timestamp of the job. After this timestamp, the job is marked as expired, and it no longer appears in search results. The expired job can't be deleted or listed by the DeleteJob and ListJobs APIs, but it can be retrieved with the GetJob API or updated with the UpdateJob API. An expired job can be updated and opened again by using a future expiration timestamp. Updating an expired job fails if there is another existing open job with same company_name, language_code and requisition_id. The expired jobs are retained in our system for 90 days. However, the overall expired job count cannot exceed 3 times the maximum of open jobs count over the past week, otherwise jobs with earlier expire time are cleaned first. Expired jobs are no longer accessible after they are cleaned out. Invalid timestamps are ignored, and treated as expire time not provided. Timestamp before the instant request is made is considered valid, the job will be treated as expired immediately. If this value is not provided at the time of job creation or is invalid, the job posting expires after 30 days from the job's creation time. For example, if the job was created on 2017/01/01 13:00AM UTC with an unspecified expiration date, the job expires after 2017/01/31 13:00AM UTC. If this value is not provided on job update, it depends on the field masks set by UpdateJobRequest.update_mask. If the field masks include expiry_time, or the masks are empty meaning that every field is updated, the job posting expires after 30 days from the job's last update time. Otherwise the expiration date isn't updated.
 	PostingExpireTime pulumi.StringPtrInput `pulumi:"postingExpireTime"`
@@ -1498,7 +2272,7 @@ type JobTypeArgs struct {
 	PostingPublishTime pulumi.StringPtrInput `pulumi:"postingPublishTime"`
 	// Optional. The job PostingRegion (for example, state, country) throughout which the job is available. If this field is set, a LocationFilter in a search query within the job region finds this job posting if an exact location match isn't specified. If this field is set to PostingRegion.NATION or PostingRegion.ADMINISTRATIVE_AREA, setting job Job.addresses to the same location level as this field is strongly recommended.
 	PostingRegion pulumi.StringPtrInput `pulumi:"postingRegion"`
-	// Output only. The timestamp when this job posting was last updated.
+	// The timestamp when this job posting was last updated.
 	PostingUpdateTime pulumi.StringPtrInput `pulumi:"postingUpdateTime"`
 	// Optional. Options for job processing.
 	ProcessingOptions ProcessingOptionsPtrInput `pulumi:"processingOptions"`
@@ -1512,8 +2286,6 @@ type JobTypeArgs struct {
 	Responsibilities pulumi.StringPtrInput `pulumi:"responsibilities"`
 	// Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
 	Title pulumi.StringPtrInput `pulumi:"title"`
-	// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
-	Visibility pulumi.StringPtrInput `pulumi:"visibility"`
 }
 
 func (JobTypeArgs) ElementType() reflect.Type {
@@ -1604,7 +2376,7 @@ func (o JobTypeOutput) ApplicationInfo() ApplicationInfoPtrOutput {
 	return o.ApplyT(func(v JobType) *ApplicationInfo { return v.ApplicationInfo }).(ApplicationInfoPtrOutput)
 }
 
-// Output only. Display name of the company listing the job.
+// Display name of the company listing the job.
 func (o JobTypeOutput) CompanyDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobType) *string { return v.CompanyDisplayName }).(pulumi.StringPtrOutput)
 }
@@ -1634,7 +2406,7 @@ func (o JobTypeOutput) Department() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobType) *string { return v.Department }).(pulumi.StringPtrOutput)
 }
 
-// Output only. Derived details about the job posting.
+// Derived details about the job posting.
 func (o JobTypeOutput) DerivedInfo() JobDerivedInfoPtrOutput {
 	return o.ApplyT(func(v JobType) *JobDerivedInfo { return v.DerivedInfo }).(JobDerivedInfoPtrOutput)
 }
@@ -1684,7 +2456,7 @@ func (o JobTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobType) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Output only. The timestamp when this job posting was created.
+// The timestamp when this job posting was created.
 func (o JobTypeOutput) PostingCreateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobType) *string { return v.PostingCreateTime }).(pulumi.StringPtrOutput)
 }
@@ -1704,7 +2476,7 @@ func (o JobTypeOutput) PostingRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobType) *string { return v.PostingRegion }).(pulumi.StringPtrOutput)
 }
 
-// Output only. The timestamp when this job posting was last updated.
+// The timestamp when this job posting was last updated.
 func (o JobTypeOutput) PostingUpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobType) *string { return v.PostingUpdateTime }).(pulumi.StringPtrOutput)
 }
@@ -1737,11 +2509,6 @@ func (o JobTypeOutput) Responsibilities() pulumi.StringPtrOutput {
 // Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
 func (o JobTypeOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobType) *string { return v.Title }).(pulumi.StringPtrOutput)
-}
-
-// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
-func (o JobTypeOutput) Visibility() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobType) *string { return v.Visibility }).(pulumi.StringPtrOutput)
 }
 
 type JobTypePtrOutput struct{ *pulumi.OutputState }
@@ -1782,7 +2549,7 @@ func (o JobTypePtrOutput) ApplicationInfo() ApplicationInfoPtrOutput {
 	}).(ApplicationInfoPtrOutput)
 }
 
-// Output only. Display name of the company listing the job.
+// Display name of the company listing the job.
 func (o JobTypePtrOutput) CompanyDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobType) *string {
 		if v == nil {
@@ -1842,7 +2609,7 @@ func (o JobTypePtrOutput) Department() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. Derived details about the job posting.
+// Derived details about the job posting.
 func (o JobTypePtrOutput) DerivedInfo() JobDerivedInfoPtrOutput {
 	return o.ApplyT(func(v *JobType) *JobDerivedInfo {
 		if v == nil {
@@ -1942,7 +2709,7 @@ func (o JobTypePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The timestamp when this job posting was created.
+// The timestamp when this job posting was created.
 func (o JobTypePtrOutput) PostingCreateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobType) *string {
 		if v == nil {
@@ -1982,7 +2749,7 @@ func (o JobTypePtrOutput) PostingRegion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Output only. The timestamp when this job posting was last updated.
+// The timestamp when this job posting was last updated.
 func (o JobTypePtrOutput) PostingUpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobType) *string {
 		if v == nil {
@@ -2049,16 +2816,6 @@ func (o JobTypePtrOutput) Title() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
-// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
-func (o JobTypePtrOutput) Visibility() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Visibility
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2213,6 +2970,159 @@ func (o JobDerivedInfoPtrOutput) Locations() LocationArrayOutput {
 		}
 		return v.Locations
 	}).(LocationArrayOutput)
+}
+
+// Output only. Derived details about the job posting.
+type JobDerivedInfoResponse struct {
+	// Job categories derived from Job.title and Job.description.
+	JobCategories []string `pulumi:"jobCategories"`
+	// Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order.
+	Locations []LocationResponse `pulumi:"locations"`
+}
+
+// JobDerivedInfoResponseInput is an input type that accepts JobDerivedInfoResponseArgs and JobDerivedInfoResponseOutput values.
+// You can construct a concrete instance of `JobDerivedInfoResponseInput` via:
+//
+//          JobDerivedInfoResponseArgs{...}
+type JobDerivedInfoResponseInput interface {
+	pulumi.Input
+
+	ToJobDerivedInfoResponseOutput() JobDerivedInfoResponseOutput
+	ToJobDerivedInfoResponseOutputWithContext(context.Context) JobDerivedInfoResponseOutput
+}
+
+// Output only. Derived details about the job posting.
+type JobDerivedInfoResponseArgs struct {
+	// Job categories derived from Job.title and Job.description.
+	JobCategories pulumi.StringArrayInput `pulumi:"jobCategories"`
+	// Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order.
+	Locations LocationResponseArrayInput `pulumi:"locations"`
+}
+
+func (JobDerivedInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDerivedInfoResponse)(nil)).Elem()
+}
+
+func (i JobDerivedInfoResponseArgs) ToJobDerivedInfoResponseOutput() JobDerivedInfoResponseOutput {
+	return i.ToJobDerivedInfoResponseOutputWithContext(context.Background())
+}
+
+func (i JobDerivedInfoResponseArgs) ToJobDerivedInfoResponseOutputWithContext(ctx context.Context) JobDerivedInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDerivedInfoResponseOutput)
+}
+
+func (i JobDerivedInfoResponseArgs) ToJobDerivedInfoResponsePtrOutput() JobDerivedInfoResponsePtrOutput {
+	return i.ToJobDerivedInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i JobDerivedInfoResponseArgs) ToJobDerivedInfoResponsePtrOutputWithContext(ctx context.Context) JobDerivedInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDerivedInfoResponseOutput).ToJobDerivedInfoResponsePtrOutputWithContext(ctx)
+}
+
+// JobDerivedInfoResponsePtrInput is an input type that accepts JobDerivedInfoResponseArgs, JobDerivedInfoResponsePtr and JobDerivedInfoResponsePtrOutput values.
+// You can construct a concrete instance of `JobDerivedInfoResponsePtrInput` via:
+//
+//          JobDerivedInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type JobDerivedInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToJobDerivedInfoResponsePtrOutput() JobDerivedInfoResponsePtrOutput
+	ToJobDerivedInfoResponsePtrOutputWithContext(context.Context) JobDerivedInfoResponsePtrOutput
+}
+
+type jobDerivedInfoResponsePtrType JobDerivedInfoResponseArgs
+
+func JobDerivedInfoResponsePtr(v *JobDerivedInfoResponseArgs) JobDerivedInfoResponsePtrInput {
+	return (*jobDerivedInfoResponsePtrType)(v)
+}
+
+func (*jobDerivedInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobDerivedInfoResponse)(nil)).Elem()
+}
+
+func (i *jobDerivedInfoResponsePtrType) ToJobDerivedInfoResponsePtrOutput() JobDerivedInfoResponsePtrOutput {
+	return i.ToJobDerivedInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *jobDerivedInfoResponsePtrType) ToJobDerivedInfoResponsePtrOutputWithContext(ctx context.Context) JobDerivedInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobDerivedInfoResponsePtrOutput)
+}
+
+// Output only. Derived details about the job posting.
+type JobDerivedInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (JobDerivedInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDerivedInfoResponse)(nil)).Elem()
+}
+
+func (o JobDerivedInfoResponseOutput) ToJobDerivedInfoResponseOutput() JobDerivedInfoResponseOutput {
+	return o
+}
+
+func (o JobDerivedInfoResponseOutput) ToJobDerivedInfoResponseOutputWithContext(ctx context.Context) JobDerivedInfoResponseOutput {
+	return o
+}
+
+func (o JobDerivedInfoResponseOutput) ToJobDerivedInfoResponsePtrOutput() JobDerivedInfoResponsePtrOutput {
+	return o.ToJobDerivedInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o JobDerivedInfoResponseOutput) ToJobDerivedInfoResponsePtrOutputWithContext(ctx context.Context) JobDerivedInfoResponsePtrOutput {
+	return o.ApplyT(func(v JobDerivedInfoResponse) *JobDerivedInfoResponse {
+		return &v
+	}).(JobDerivedInfoResponsePtrOutput)
+}
+
+// Job categories derived from Job.title and Job.description.
+func (o JobDerivedInfoResponseOutput) JobCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobDerivedInfoResponse) []string { return v.JobCategories }).(pulumi.StringArrayOutput)
+}
+
+// Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order.
+func (o JobDerivedInfoResponseOutput) Locations() LocationResponseArrayOutput {
+	return o.ApplyT(func(v JobDerivedInfoResponse) []LocationResponse { return v.Locations }).(LocationResponseArrayOutput)
+}
+
+type JobDerivedInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (JobDerivedInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobDerivedInfoResponse)(nil)).Elem()
+}
+
+func (o JobDerivedInfoResponsePtrOutput) ToJobDerivedInfoResponsePtrOutput() JobDerivedInfoResponsePtrOutput {
+	return o
+}
+
+func (o JobDerivedInfoResponsePtrOutput) ToJobDerivedInfoResponsePtrOutputWithContext(ctx context.Context) JobDerivedInfoResponsePtrOutput {
+	return o
+}
+
+func (o JobDerivedInfoResponsePtrOutput) Elem() JobDerivedInfoResponseOutput {
+	return o.ApplyT(func(v *JobDerivedInfoResponse) JobDerivedInfoResponse { return *v }).(JobDerivedInfoResponseOutput)
+}
+
+// Job categories derived from Job.title and Job.description.
+func (o JobDerivedInfoResponsePtrOutput) JobCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobDerivedInfoResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JobCategories
+	}).(pulumi.StringArrayOutput)
+}
+
+// Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order.
+func (o JobDerivedInfoResponsePtrOutput) Locations() LocationResponseArrayOutput {
+	return o.ApplyT(func(v *JobDerivedInfoResponse) []LocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(LocationResponseArrayOutput)
 }
 
 // An event issued when a job seeker interacts with the application that implements Cloud Talent Solution.
@@ -2521,6 +3431,159 @@ func (o LatLngPtrOutput) Longitude() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.
+type LatLngResponse struct {
+	// The latitude in degrees. It must be in the range [-90.0, +90.0].
+	Latitude float64 `pulumi:"latitude"`
+	// The longitude in degrees. It must be in the range [-180.0, +180.0].
+	Longitude float64 `pulumi:"longitude"`
+}
+
+// LatLngResponseInput is an input type that accepts LatLngResponseArgs and LatLngResponseOutput values.
+// You can construct a concrete instance of `LatLngResponseInput` via:
+//
+//          LatLngResponseArgs{...}
+type LatLngResponseInput interface {
+	pulumi.Input
+
+	ToLatLngResponseOutput() LatLngResponseOutput
+	ToLatLngResponseOutputWithContext(context.Context) LatLngResponseOutput
+}
+
+// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.
+type LatLngResponseArgs struct {
+	// The latitude in degrees. It must be in the range [-90.0, +90.0].
+	Latitude pulumi.Float64Input `pulumi:"latitude"`
+	// The longitude in degrees. It must be in the range [-180.0, +180.0].
+	Longitude pulumi.Float64Input `pulumi:"longitude"`
+}
+
+func (LatLngResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LatLngResponse)(nil)).Elem()
+}
+
+func (i LatLngResponseArgs) ToLatLngResponseOutput() LatLngResponseOutput {
+	return i.ToLatLngResponseOutputWithContext(context.Background())
+}
+
+func (i LatLngResponseArgs) ToLatLngResponseOutputWithContext(ctx context.Context) LatLngResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LatLngResponseOutput)
+}
+
+func (i LatLngResponseArgs) ToLatLngResponsePtrOutput() LatLngResponsePtrOutput {
+	return i.ToLatLngResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LatLngResponseArgs) ToLatLngResponsePtrOutputWithContext(ctx context.Context) LatLngResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LatLngResponseOutput).ToLatLngResponsePtrOutputWithContext(ctx)
+}
+
+// LatLngResponsePtrInput is an input type that accepts LatLngResponseArgs, LatLngResponsePtr and LatLngResponsePtrOutput values.
+// You can construct a concrete instance of `LatLngResponsePtrInput` via:
+//
+//          LatLngResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type LatLngResponsePtrInput interface {
+	pulumi.Input
+
+	ToLatLngResponsePtrOutput() LatLngResponsePtrOutput
+	ToLatLngResponsePtrOutputWithContext(context.Context) LatLngResponsePtrOutput
+}
+
+type latLngResponsePtrType LatLngResponseArgs
+
+func LatLngResponsePtr(v *LatLngResponseArgs) LatLngResponsePtrInput {
+	return (*latLngResponsePtrType)(v)
+}
+
+func (*latLngResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LatLngResponse)(nil)).Elem()
+}
+
+func (i *latLngResponsePtrType) ToLatLngResponsePtrOutput() LatLngResponsePtrOutput {
+	return i.ToLatLngResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *latLngResponsePtrType) ToLatLngResponsePtrOutputWithContext(ctx context.Context) LatLngResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LatLngResponsePtrOutput)
+}
+
+// An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.
+type LatLngResponseOutput struct{ *pulumi.OutputState }
+
+func (LatLngResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LatLngResponse)(nil)).Elem()
+}
+
+func (o LatLngResponseOutput) ToLatLngResponseOutput() LatLngResponseOutput {
+	return o
+}
+
+func (o LatLngResponseOutput) ToLatLngResponseOutputWithContext(ctx context.Context) LatLngResponseOutput {
+	return o
+}
+
+func (o LatLngResponseOutput) ToLatLngResponsePtrOutput() LatLngResponsePtrOutput {
+	return o.ToLatLngResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LatLngResponseOutput) ToLatLngResponsePtrOutputWithContext(ctx context.Context) LatLngResponsePtrOutput {
+	return o.ApplyT(func(v LatLngResponse) *LatLngResponse {
+		return &v
+	}).(LatLngResponsePtrOutput)
+}
+
+// The latitude in degrees. It must be in the range [-90.0, +90.0].
+func (o LatLngResponseOutput) Latitude() pulumi.Float64Output {
+	return o.ApplyT(func(v LatLngResponse) float64 { return v.Latitude }).(pulumi.Float64Output)
+}
+
+// The longitude in degrees. It must be in the range [-180.0, +180.0].
+func (o LatLngResponseOutput) Longitude() pulumi.Float64Output {
+	return o.ApplyT(func(v LatLngResponse) float64 { return v.Longitude }).(pulumi.Float64Output)
+}
+
+type LatLngResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LatLngResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LatLngResponse)(nil)).Elem()
+}
+
+func (o LatLngResponsePtrOutput) ToLatLngResponsePtrOutput() LatLngResponsePtrOutput {
+	return o
+}
+
+func (o LatLngResponsePtrOutput) ToLatLngResponsePtrOutputWithContext(ctx context.Context) LatLngResponsePtrOutput {
+	return o
+}
+
+func (o LatLngResponsePtrOutput) Elem() LatLngResponseOutput {
+	return o.ApplyT(func(v *LatLngResponse) LatLngResponse { return *v }).(LatLngResponseOutput)
+}
+
+// The latitude in degrees. It must be in the range [-90.0, +90.0].
+func (o LatLngResponsePtrOutput) Latitude() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LatLngResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Latitude
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The longitude in degrees. It must be in the range [-180.0, +180.0].
+func (o LatLngResponsePtrOutput) Longitude() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LatLngResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Longitude
+	}).(pulumi.Float64PtrOutput)
+}
+
 // Output only. A resource that represents a location with full geographic information.
 type Location struct {
 	// An object representing a latitude/longitude pair.
@@ -2757,6 +3820,242 @@ func (o LocationArrayOutput) Index(i pulumi.IntInput) LocationOutput {
 	}).(LocationOutput)
 }
 
+// Output only. A resource that represents a location with full geographic information.
+type LocationResponse struct {
+	// An object representing a latitude/longitude pair.
+	LatLng LatLngResponse `pulumi:"latLng"`
+	// The type of a location, which corresponds to the address lines field of PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a type of LocationType#NEIGHBORHOOD, and "Kansas City, KS, USA" has a type of LocationType#LOCALITY.
+	LocationType string `pulumi:"locationType"`
+	// Postal address of the location that includes human readable information, such as postal delivery and payments addresses. Given a postal address, a postal service can deliver items to a premises, P.O. Box, or other delivery location.
+	PostalAddress PostalAddressResponse `pulumi:"postalAddress"`
+	// Radius in miles of the job location. This value is derived from the location bounding box in which a circle with the specified radius centered from LatLng covers the area associated with the job location. For example, currently, "Mountain View, CA, USA" has a radius of 6.17 miles.
+	RadiusInMiles float64 `pulumi:"radiusInMiles"`
+}
+
+// LocationResponseInput is an input type that accepts LocationResponseArgs and LocationResponseOutput values.
+// You can construct a concrete instance of `LocationResponseInput` via:
+//
+//          LocationResponseArgs{...}
+type LocationResponseInput interface {
+	pulumi.Input
+
+	ToLocationResponseOutput() LocationResponseOutput
+	ToLocationResponseOutputWithContext(context.Context) LocationResponseOutput
+}
+
+// Output only. A resource that represents a location with full geographic information.
+type LocationResponseArgs struct {
+	// An object representing a latitude/longitude pair.
+	LatLng LatLngResponseInput `pulumi:"latLng"`
+	// The type of a location, which corresponds to the address lines field of PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a type of LocationType#NEIGHBORHOOD, and "Kansas City, KS, USA" has a type of LocationType#LOCALITY.
+	LocationType pulumi.StringInput `pulumi:"locationType"`
+	// Postal address of the location that includes human readable information, such as postal delivery and payments addresses. Given a postal address, a postal service can deliver items to a premises, P.O. Box, or other delivery location.
+	PostalAddress PostalAddressResponseInput `pulumi:"postalAddress"`
+	// Radius in miles of the job location. This value is derived from the location bounding box in which a circle with the specified radius centered from LatLng covers the area associated with the job location. For example, currently, "Mountain View, CA, USA" has a radius of 6.17 miles.
+	RadiusInMiles pulumi.Float64Input `pulumi:"radiusInMiles"`
+}
+
+func (LocationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationResponse)(nil)).Elem()
+}
+
+func (i LocationResponseArgs) ToLocationResponseOutput() LocationResponseOutput {
+	return i.ToLocationResponseOutputWithContext(context.Background())
+}
+
+func (i LocationResponseArgs) ToLocationResponseOutputWithContext(ctx context.Context) LocationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationResponseOutput)
+}
+
+func (i LocationResponseArgs) ToLocationResponsePtrOutput() LocationResponsePtrOutput {
+	return i.ToLocationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LocationResponseArgs) ToLocationResponsePtrOutputWithContext(ctx context.Context) LocationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationResponseOutput).ToLocationResponsePtrOutputWithContext(ctx)
+}
+
+// LocationResponsePtrInput is an input type that accepts LocationResponseArgs, LocationResponsePtr and LocationResponsePtrOutput values.
+// You can construct a concrete instance of `LocationResponsePtrInput` via:
+//
+//          LocationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type LocationResponsePtrInput interface {
+	pulumi.Input
+
+	ToLocationResponsePtrOutput() LocationResponsePtrOutput
+	ToLocationResponsePtrOutputWithContext(context.Context) LocationResponsePtrOutput
+}
+
+type locationResponsePtrType LocationResponseArgs
+
+func LocationResponsePtr(v *LocationResponseArgs) LocationResponsePtrInput {
+	return (*locationResponsePtrType)(v)
+}
+
+func (*locationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationResponse)(nil)).Elem()
+}
+
+func (i *locationResponsePtrType) ToLocationResponsePtrOutput() LocationResponsePtrOutput {
+	return i.ToLocationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *locationResponsePtrType) ToLocationResponsePtrOutputWithContext(ctx context.Context) LocationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationResponsePtrOutput)
+}
+
+// LocationResponseArrayInput is an input type that accepts LocationResponseArray and LocationResponseArrayOutput values.
+// You can construct a concrete instance of `LocationResponseArrayInput` via:
+//
+//          LocationResponseArray{ LocationResponseArgs{...} }
+type LocationResponseArrayInput interface {
+	pulumi.Input
+
+	ToLocationResponseArrayOutput() LocationResponseArrayOutput
+	ToLocationResponseArrayOutputWithContext(context.Context) LocationResponseArrayOutput
+}
+
+type LocationResponseArray []LocationResponseInput
+
+func (LocationResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocationResponse)(nil)).Elem()
+}
+
+func (i LocationResponseArray) ToLocationResponseArrayOutput() LocationResponseArrayOutput {
+	return i.ToLocationResponseArrayOutputWithContext(context.Background())
+}
+
+func (i LocationResponseArray) ToLocationResponseArrayOutputWithContext(ctx context.Context) LocationResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationResponseArrayOutput)
+}
+
+// Output only. A resource that represents a location with full geographic information.
+type LocationResponseOutput struct{ *pulumi.OutputState }
+
+func (LocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationResponse)(nil)).Elem()
+}
+
+func (o LocationResponseOutput) ToLocationResponseOutput() LocationResponseOutput {
+	return o
+}
+
+func (o LocationResponseOutput) ToLocationResponseOutputWithContext(ctx context.Context) LocationResponseOutput {
+	return o
+}
+
+func (o LocationResponseOutput) ToLocationResponsePtrOutput() LocationResponsePtrOutput {
+	return o.ToLocationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LocationResponseOutput) ToLocationResponsePtrOutputWithContext(ctx context.Context) LocationResponsePtrOutput {
+	return o.ApplyT(func(v LocationResponse) *LocationResponse {
+		return &v
+	}).(LocationResponsePtrOutput)
+}
+
+// An object representing a latitude/longitude pair.
+func (o LocationResponseOutput) LatLng() LatLngResponseOutput {
+	return o.ApplyT(func(v LocationResponse) LatLngResponse { return v.LatLng }).(LatLngResponseOutput)
+}
+
+// The type of a location, which corresponds to the address lines field of PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a type of LocationType#NEIGHBORHOOD, and "Kansas City, KS, USA" has a type of LocationType#LOCALITY.
+func (o LocationResponseOutput) LocationType() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationResponse) string { return v.LocationType }).(pulumi.StringOutput)
+}
+
+// Postal address of the location that includes human readable information, such as postal delivery and payments addresses. Given a postal address, a postal service can deliver items to a premises, P.O. Box, or other delivery location.
+func (o LocationResponseOutput) PostalAddress() PostalAddressResponseOutput {
+	return o.ApplyT(func(v LocationResponse) PostalAddressResponse { return v.PostalAddress }).(PostalAddressResponseOutput)
+}
+
+// Radius in miles of the job location. This value is derived from the location bounding box in which a circle with the specified radius centered from LatLng covers the area associated with the job location. For example, currently, "Mountain View, CA, USA" has a radius of 6.17 miles.
+func (o LocationResponseOutput) RadiusInMiles() pulumi.Float64Output {
+	return o.ApplyT(func(v LocationResponse) float64 { return v.RadiusInMiles }).(pulumi.Float64Output)
+}
+
+type LocationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LocationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationResponse)(nil)).Elem()
+}
+
+func (o LocationResponsePtrOutput) ToLocationResponsePtrOutput() LocationResponsePtrOutput {
+	return o
+}
+
+func (o LocationResponsePtrOutput) ToLocationResponsePtrOutputWithContext(ctx context.Context) LocationResponsePtrOutput {
+	return o
+}
+
+func (o LocationResponsePtrOutput) Elem() LocationResponseOutput {
+	return o.ApplyT(func(v *LocationResponse) LocationResponse { return *v }).(LocationResponseOutput)
+}
+
+// An object representing a latitude/longitude pair.
+func (o LocationResponsePtrOutput) LatLng() LatLngResponsePtrOutput {
+	return o.ApplyT(func(v *LocationResponse) *LatLngResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LatLng
+	}).(LatLngResponsePtrOutput)
+}
+
+// The type of a location, which corresponds to the address lines field of PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a type of LocationType#NEIGHBORHOOD, and "Kansas City, KS, USA" has a type of LocationType#LOCALITY.
+func (o LocationResponsePtrOutput) LocationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LocationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Postal address of the location that includes human readable information, such as postal delivery and payments addresses. Given a postal address, a postal service can deliver items to a premises, P.O. Box, or other delivery location.
+func (o LocationResponsePtrOutput) PostalAddress() PostalAddressResponsePtrOutput {
+	return o.ApplyT(func(v *LocationResponse) *PostalAddressResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.PostalAddress
+	}).(PostalAddressResponsePtrOutput)
+}
+
+// Radius in miles of the job location. This value is derived from the location bounding box in which a circle with the specified radius centered from LatLng covers the area associated with the job location. For example, currently, "Mountain View, CA, USA" has a radius of 6.17 miles.
+func (o LocationResponsePtrOutput) RadiusInMiles() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LocationResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.RadiusInMiles
+	}).(pulumi.Float64PtrOutput)
+}
+
+type LocationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LocationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocationResponse)(nil)).Elem()
+}
+
+func (o LocationResponseArrayOutput) ToLocationResponseArrayOutput() LocationResponseArrayOutput {
+	return o
+}
+
+func (o LocationResponseArrayOutput) ToLocationResponseArrayOutputWithContext(ctx context.Context) LocationResponseArrayOutput {
+	return o
+}
+
+func (o LocationResponseArrayOutput) Index(i pulumi.IntInput) LocationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocationResponse {
+		return vs[0].([]LocationResponse)[vs[1].(int)]
+	}).(LocationResponseOutput)
+}
+
 // Represents an amount of money with its currency type.
 type Money struct {
 	// The three-letter currency code defined in ISO 4217.
@@ -2926,6 +4225,178 @@ func (o MoneyPtrOutput) Units() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Units
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents an amount of money with its currency type.
+type MoneyResponse struct {
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode string `pulumi:"currencyCode"`
+	// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos int `pulumi:"nanos"`
+	// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units string `pulumi:"units"`
+}
+
+// MoneyResponseInput is an input type that accepts MoneyResponseArgs and MoneyResponseOutput values.
+// You can construct a concrete instance of `MoneyResponseInput` via:
+//
+//          MoneyResponseArgs{...}
+type MoneyResponseInput interface {
+	pulumi.Input
+
+	ToMoneyResponseOutput() MoneyResponseOutput
+	ToMoneyResponseOutputWithContext(context.Context) MoneyResponseOutput
+}
+
+// Represents an amount of money with its currency type.
+type MoneyResponseArgs struct {
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode pulumi.StringInput `pulumi:"currencyCode"`
+	// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units pulumi.StringInput `pulumi:"units"`
+}
+
+func (MoneyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoneyResponse)(nil)).Elem()
+}
+
+func (i MoneyResponseArgs) ToMoneyResponseOutput() MoneyResponseOutput {
+	return i.ToMoneyResponseOutputWithContext(context.Background())
+}
+
+func (i MoneyResponseArgs) ToMoneyResponseOutputWithContext(ctx context.Context) MoneyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoneyResponseOutput)
+}
+
+func (i MoneyResponseArgs) ToMoneyResponsePtrOutput() MoneyResponsePtrOutput {
+	return i.ToMoneyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MoneyResponseArgs) ToMoneyResponsePtrOutputWithContext(ctx context.Context) MoneyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoneyResponseOutput).ToMoneyResponsePtrOutputWithContext(ctx)
+}
+
+// MoneyResponsePtrInput is an input type that accepts MoneyResponseArgs, MoneyResponsePtr and MoneyResponsePtrOutput values.
+// You can construct a concrete instance of `MoneyResponsePtrInput` via:
+//
+//          MoneyResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MoneyResponsePtrInput interface {
+	pulumi.Input
+
+	ToMoneyResponsePtrOutput() MoneyResponsePtrOutput
+	ToMoneyResponsePtrOutputWithContext(context.Context) MoneyResponsePtrOutput
+}
+
+type moneyResponsePtrType MoneyResponseArgs
+
+func MoneyResponsePtr(v *MoneyResponseArgs) MoneyResponsePtrInput {
+	return (*moneyResponsePtrType)(v)
+}
+
+func (*moneyResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MoneyResponse)(nil)).Elem()
+}
+
+func (i *moneyResponsePtrType) ToMoneyResponsePtrOutput() MoneyResponsePtrOutput {
+	return i.ToMoneyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *moneyResponsePtrType) ToMoneyResponsePtrOutputWithContext(ctx context.Context) MoneyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoneyResponsePtrOutput)
+}
+
+// Represents an amount of money with its currency type.
+type MoneyResponseOutput struct{ *pulumi.OutputState }
+
+func (MoneyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MoneyResponse)(nil)).Elem()
+}
+
+func (o MoneyResponseOutput) ToMoneyResponseOutput() MoneyResponseOutput {
+	return o
+}
+
+func (o MoneyResponseOutput) ToMoneyResponseOutputWithContext(ctx context.Context) MoneyResponseOutput {
+	return o
+}
+
+func (o MoneyResponseOutput) ToMoneyResponsePtrOutput() MoneyResponsePtrOutput {
+	return o.ToMoneyResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MoneyResponseOutput) ToMoneyResponsePtrOutputWithContext(ctx context.Context) MoneyResponsePtrOutput {
+	return o.ApplyT(func(v MoneyResponse) *MoneyResponse {
+		return &v
+	}).(MoneyResponsePtrOutput)
+}
+
+// The three-letter currency code defined in ISO 4217.
+func (o MoneyResponseOutput) CurrencyCode() pulumi.StringOutput {
+	return o.ApplyT(func(v MoneyResponse) string { return v.CurrencyCode }).(pulumi.StringOutput)
+}
+
+// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+func (o MoneyResponseOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v MoneyResponse) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+func (o MoneyResponseOutput) Units() pulumi.StringOutput {
+	return o.ApplyT(func(v MoneyResponse) string { return v.Units }).(pulumi.StringOutput)
+}
+
+type MoneyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MoneyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MoneyResponse)(nil)).Elem()
+}
+
+func (o MoneyResponsePtrOutput) ToMoneyResponsePtrOutput() MoneyResponsePtrOutput {
+	return o
+}
+
+func (o MoneyResponsePtrOutput) ToMoneyResponsePtrOutputWithContext(ctx context.Context) MoneyResponsePtrOutput {
+	return o
+}
+
+func (o MoneyResponsePtrOutput) Elem() MoneyResponseOutput {
+	return o.ApplyT(func(v *MoneyResponse) MoneyResponse { return *v }).(MoneyResponseOutput)
+}
+
+// The three-letter currency code defined in ISO 4217.
+func (o MoneyResponsePtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MoneyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+func (o MoneyResponsePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MoneyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+func (o MoneyResponsePtrOutput) Units() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MoneyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Units
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3253,6 +4724,330 @@ func (o PostalAddressPtrOutput) Sublocality() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
+type PostalAddressResponse struct {
+	// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
+	AddressLines []string `pulumi:"addressLines"`
+	// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+	AdministrativeArea string `pulumi:"administrativeArea"`
+	// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+	LanguageCode string `pulumi:"languageCode"`
+	// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
+	Locality string `pulumi:"locality"`
+	// Optional. The name of the organization at the address.
+	Organization string `pulumi:"organization"`
+	// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+	PostalCode string `pulumi:"postalCode"`
+	// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
+	Recipients []string `pulumi:"recipients"`
+	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	RegionCode string `pulumi:"regionCode"`
+	// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
+	Revision int `pulumi:"revision"`
+	// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+	SortingCode string `pulumi:"sortingCode"`
+	// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+	Sublocality string `pulumi:"sublocality"`
+}
+
+// PostalAddressResponseInput is an input type that accepts PostalAddressResponseArgs and PostalAddressResponseOutput values.
+// You can construct a concrete instance of `PostalAddressResponseInput` via:
+//
+//          PostalAddressResponseArgs{...}
+type PostalAddressResponseInput interface {
+	pulumi.Input
+
+	ToPostalAddressResponseOutput() PostalAddressResponseOutput
+	ToPostalAddressResponseOutputWithContext(context.Context) PostalAddressResponseOutput
+}
+
+// Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
+type PostalAddressResponseArgs struct {
+	// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
+	AddressLines pulumi.StringArrayInput `pulumi:"addressLines"`
+	// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+	AdministrativeArea pulumi.StringInput `pulumi:"administrativeArea"`
+	// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
+	// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
+	Locality pulumi.StringInput `pulumi:"locality"`
+	// Optional. The name of the organization at the address.
+	Organization pulumi.StringInput `pulumi:"organization"`
+	// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+	PostalCode pulumi.StringInput `pulumi:"postalCode"`
+	// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
+	Recipients pulumi.StringArrayInput `pulumi:"recipients"`
+	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	RegionCode pulumi.StringInput `pulumi:"regionCode"`
+	// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
+	Revision pulumi.IntInput `pulumi:"revision"`
+	// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+	SortingCode pulumi.StringInput `pulumi:"sortingCode"`
+	// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+	Sublocality pulumi.StringInput `pulumi:"sublocality"`
+}
+
+func (PostalAddressResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostalAddressResponse)(nil)).Elem()
+}
+
+func (i PostalAddressResponseArgs) ToPostalAddressResponseOutput() PostalAddressResponseOutput {
+	return i.ToPostalAddressResponseOutputWithContext(context.Background())
+}
+
+func (i PostalAddressResponseArgs) ToPostalAddressResponseOutputWithContext(ctx context.Context) PostalAddressResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostalAddressResponseOutput)
+}
+
+func (i PostalAddressResponseArgs) ToPostalAddressResponsePtrOutput() PostalAddressResponsePtrOutput {
+	return i.ToPostalAddressResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PostalAddressResponseArgs) ToPostalAddressResponsePtrOutputWithContext(ctx context.Context) PostalAddressResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostalAddressResponseOutput).ToPostalAddressResponsePtrOutputWithContext(ctx)
+}
+
+// PostalAddressResponsePtrInput is an input type that accepts PostalAddressResponseArgs, PostalAddressResponsePtr and PostalAddressResponsePtrOutput values.
+// You can construct a concrete instance of `PostalAddressResponsePtrInput` via:
+//
+//          PostalAddressResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PostalAddressResponsePtrInput interface {
+	pulumi.Input
+
+	ToPostalAddressResponsePtrOutput() PostalAddressResponsePtrOutput
+	ToPostalAddressResponsePtrOutputWithContext(context.Context) PostalAddressResponsePtrOutput
+}
+
+type postalAddressResponsePtrType PostalAddressResponseArgs
+
+func PostalAddressResponsePtr(v *PostalAddressResponseArgs) PostalAddressResponsePtrInput {
+	return (*postalAddressResponsePtrType)(v)
+}
+
+func (*postalAddressResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostalAddressResponse)(nil)).Elem()
+}
+
+func (i *postalAddressResponsePtrType) ToPostalAddressResponsePtrOutput() PostalAddressResponsePtrOutput {
+	return i.ToPostalAddressResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *postalAddressResponsePtrType) ToPostalAddressResponsePtrOutputWithContext(ctx context.Context) PostalAddressResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostalAddressResponsePtrOutput)
+}
+
+// Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
+type PostalAddressResponseOutput struct{ *pulumi.OutputState }
+
+func (PostalAddressResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostalAddressResponse)(nil)).Elem()
+}
+
+func (o PostalAddressResponseOutput) ToPostalAddressResponseOutput() PostalAddressResponseOutput {
+	return o
+}
+
+func (o PostalAddressResponseOutput) ToPostalAddressResponseOutputWithContext(ctx context.Context) PostalAddressResponseOutput {
+	return o
+}
+
+func (o PostalAddressResponseOutput) ToPostalAddressResponsePtrOutput() PostalAddressResponsePtrOutput {
+	return o.ToPostalAddressResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PostalAddressResponseOutput) ToPostalAddressResponsePtrOutputWithContext(ctx context.Context) PostalAddressResponsePtrOutput {
+	return o.ApplyT(func(v PostalAddressResponse) *PostalAddressResponse {
+		return &v
+	}).(PostalAddressResponsePtrOutput)
+}
+
+// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
+func (o PostalAddressResponseOutput) AddressLines() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PostalAddressResponse) []string { return v.AddressLines }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+func (o PostalAddressResponseOutput) AdministrativeArea() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.AdministrativeArea }).(pulumi.StringOutput)
+}
+
+// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+func (o PostalAddressResponseOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
+func (o PostalAddressResponseOutput) Locality() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.Locality }).(pulumi.StringOutput)
+}
+
+// Optional. The name of the organization at the address.
+func (o PostalAddressResponseOutput) Organization() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.Organization }).(pulumi.StringOutput)
+}
+
+// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+func (o PostalAddressResponseOutput) PostalCode() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.PostalCode }).(pulumi.StringOutput)
+}
+
+// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
+func (o PostalAddressResponseOutput) Recipients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PostalAddressResponse) []string { return v.Recipients }).(pulumi.StringArrayOutput)
+}
+
+// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+func (o PostalAddressResponseOutput) RegionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.RegionCode }).(pulumi.StringOutput)
+}
+
+// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
+func (o PostalAddressResponseOutput) Revision() pulumi.IntOutput {
+	return o.ApplyT(func(v PostalAddressResponse) int { return v.Revision }).(pulumi.IntOutput)
+}
+
+// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+func (o PostalAddressResponseOutput) SortingCode() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.SortingCode }).(pulumi.StringOutput)
+}
+
+// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+func (o PostalAddressResponseOutput) Sublocality() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.Sublocality }).(pulumi.StringOutput)
+}
+
+type PostalAddressResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PostalAddressResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostalAddressResponse)(nil)).Elem()
+}
+
+func (o PostalAddressResponsePtrOutput) ToPostalAddressResponsePtrOutput() PostalAddressResponsePtrOutput {
+	return o
+}
+
+func (o PostalAddressResponsePtrOutput) ToPostalAddressResponsePtrOutputWithContext(ctx context.Context) PostalAddressResponsePtrOutput {
+	return o
+}
+
+func (o PostalAddressResponsePtrOutput) Elem() PostalAddressResponseOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) PostalAddressResponse { return *v }).(PostalAddressResponseOutput)
+}
+
+// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
+func (o PostalAddressResponsePtrOutput) AddressLines() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressLines
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+func (o PostalAddressResponsePtrOutput) AdministrativeArea() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AdministrativeArea
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+func (o PostalAddressResponsePtrOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
+func (o PostalAddressResponsePtrOutput) Locality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Locality
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the organization at the address.
+func (o PostalAddressResponsePtrOutput) Organization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Organization
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+func (o PostalAddressResponsePtrOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PostalCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
+func (o PostalAddressResponsePtrOutput) Recipients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Recipients
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+func (o PostalAddressResponsePtrOutput) RegionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegionCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
+func (o PostalAddressResponsePtrOutput) Revision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Revision
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+func (o PostalAddressResponsePtrOutput) SortingCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SortingCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+func (o PostalAddressResponsePtrOutput) Sublocality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Sublocality
+	}).(pulumi.StringPtrOutput)
+}
+
 // Input only. Options for job processing.
 type ProcessingOptions struct {
 	// Optional. If set to `true`, the service does not attempt to resolve a more precise address for the job.
@@ -3406,36 +5201,212 @@ func (o ProcessingOptionsPtrOutput) HtmlSanitization() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Input only. Options for job processing.
+type ProcessingOptionsResponse struct {
+	// Optional. If set to `true`, the service does not attempt to resolve a more precise address for the job.
+	DisableStreetAddressResolution bool `pulumi:"disableStreetAddressResolution"`
+	// Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
+	HtmlSanitization string `pulumi:"htmlSanitization"`
+}
+
+// ProcessingOptionsResponseInput is an input type that accepts ProcessingOptionsResponseArgs and ProcessingOptionsResponseOutput values.
+// You can construct a concrete instance of `ProcessingOptionsResponseInput` via:
+//
+//          ProcessingOptionsResponseArgs{...}
+type ProcessingOptionsResponseInput interface {
+	pulumi.Input
+
+	ToProcessingOptionsResponseOutput() ProcessingOptionsResponseOutput
+	ToProcessingOptionsResponseOutputWithContext(context.Context) ProcessingOptionsResponseOutput
+}
+
+// Input only. Options for job processing.
+type ProcessingOptionsResponseArgs struct {
+	// Optional. If set to `true`, the service does not attempt to resolve a more precise address for the job.
+	DisableStreetAddressResolution pulumi.BoolInput `pulumi:"disableStreetAddressResolution"`
+	// Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
+	HtmlSanitization pulumi.StringInput `pulumi:"htmlSanitization"`
+}
+
+func (ProcessingOptionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProcessingOptionsResponse)(nil)).Elem()
+}
+
+func (i ProcessingOptionsResponseArgs) ToProcessingOptionsResponseOutput() ProcessingOptionsResponseOutput {
+	return i.ToProcessingOptionsResponseOutputWithContext(context.Background())
+}
+
+func (i ProcessingOptionsResponseArgs) ToProcessingOptionsResponseOutputWithContext(ctx context.Context) ProcessingOptionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProcessingOptionsResponseOutput)
+}
+
+func (i ProcessingOptionsResponseArgs) ToProcessingOptionsResponsePtrOutput() ProcessingOptionsResponsePtrOutput {
+	return i.ToProcessingOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ProcessingOptionsResponseArgs) ToProcessingOptionsResponsePtrOutputWithContext(ctx context.Context) ProcessingOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProcessingOptionsResponseOutput).ToProcessingOptionsResponsePtrOutputWithContext(ctx)
+}
+
+// ProcessingOptionsResponsePtrInput is an input type that accepts ProcessingOptionsResponseArgs, ProcessingOptionsResponsePtr and ProcessingOptionsResponsePtrOutput values.
+// You can construct a concrete instance of `ProcessingOptionsResponsePtrInput` via:
+//
+//          ProcessingOptionsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ProcessingOptionsResponsePtrInput interface {
+	pulumi.Input
+
+	ToProcessingOptionsResponsePtrOutput() ProcessingOptionsResponsePtrOutput
+	ToProcessingOptionsResponsePtrOutputWithContext(context.Context) ProcessingOptionsResponsePtrOutput
+}
+
+type processingOptionsResponsePtrType ProcessingOptionsResponseArgs
+
+func ProcessingOptionsResponsePtr(v *ProcessingOptionsResponseArgs) ProcessingOptionsResponsePtrInput {
+	return (*processingOptionsResponsePtrType)(v)
+}
+
+func (*processingOptionsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProcessingOptionsResponse)(nil)).Elem()
+}
+
+func (i *processingOptionsResponsePtrType) ToProcessingOptionsResponsePtrOutput() ProcessingOptionsResponsePtrOutput {
+	return i.ToProcessingOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *processingOptionsResponsePtrType) ToProcessingOptionsResponsePtrOutputWithContext(ctx context.Context) ProcessingOptionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProcessingOptionsResponsePtrOutput)
+}
+
+// Input only. Options for job processing.
+type ProcessingOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (ProcessingOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProcessingOptionsResponse)(nil)).Elem()
+}
+
+func (o ProcessingOptionsResponseOutput) ToProcessingOptionsResponseOutput() ProcessingOptionsResponseOutput {
+	return o
+}
+
+func (o ProcessingOptionsResponseOutput) ToProcessingOptionsResponseOutputWithContext(ctx context.Context) ProcessingOptionsResponseOutput {
+	return o
+}
+
+func (o ProcessingOptionsResponseOutput) ToProcessingOptionsResponsePtrOutput() ProcessingOptionsResponsePtrOutput {
+	return o.ToProcessingOptionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ProcessingOptionsResponseOutput) ToProcessingOptionsResponsePtrOutputWithContext(ctx context.Context) ProcessingOptionsResponsePtrOutput {
+	return o.ApplyT(func(v ProcessingOptionsResponse) *ProcessingOptionsResponse {
+		return &v
+	}).(ProcessingOptionsResponsePtrOutput)
+}
+
+// Optional. If set to `true`, the service does not attempt to resolve a more precise address for the job.
+func (o ProcessingOptionsResponseOutput) DisableStreetAddressResolution() pulumi.BoolOutput {
+	return o.ApplyT(func(v ProcessingOptionsResponse) bool { return v.DisableStreetAddressResolution }).(pulumi.BoolOutput)
+}
+
+// Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
+func (o ProcessingOptionsResponseOutput) HtmlSanitization() pulumi.StringOutput {
+	return o.ApplyT(func(v ProcessingOptionsResponse) string { return v.HtmlSanitization }).(pulumi.StringOutput)
+}
+
+type ProcessingOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ProcessingOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProcessingOptionsResponse)(nil)).Elem()
+}
+
+func (o ProcessingOptionsResponsePtrOutput) ToProcessingOptionsResponsePtrOutput() ProcessingOptionsResponsePtrOutput {
+	return o
+}
+
+func (o ProcessingOptionsResponsePtrOutput) ToProcessingOptionsResponsePtrOutputWithContext(ctx context.Context) ProcessingOptionsResponsePtrOutput {
+	return o
+}
+
+func (o ProcessingOptionsResponsePtrOutput) Elem() ProcessingOptionsResponseOutput {
+	return o.ApplyT(func(v *ProcessingOptionsResponse) ProcessingOptionsResponse { return *v }).(ProcessingOptionsResponseOutput)
+}
+
+// Optional. If set to `true`, the service does not attempt to resolve a more precise address for the job.
+func (o ProcessingOptionsResponsePtrOutput) DisableStreetAddressResolution() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProcessingOptionsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.DisableStreetAddressResolution
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
+func (o ProcessingOptionsResponsePtrOutput) HtmlSanitization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProcessingOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HtmlSanitization
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApplicationInfoOutput{})
 	pulumi.RegisterOutputType(ApplicationInfoPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationInfoResponseOutput{})
+	pulumi.RegisterOutputType(ApplicationInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(ClientEventTypeOutput{})
 	pulumi.RegisterOutputType(ClientEventTypePtrOutput{})
 	pulumi.RegisterOutputType(CompanyTypeOutput{})
 	pulumi.RegisterOutputType(CompanyTypePtrOutput{})
 	pulumi.RegisterOutputType(CompanyDerivedInfoOutput{})
 	pulumi.RegisterOutputType(CompanyDerivedInfoPtrOutput{})
+	pulumi.RegisterOutputType(CompanyDerivedInfoResponseOutput{})
+	pulumi.RegisterOutputType(CompanyDerivedInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(CompensationEntryOutput{})
 	pulumi.RegisterOutputType(CompensationEntryArrayOutput{})
+	pulumi.RegisterOutputType(CompensationEntryResponseOutput{})
+	pulumi.RegisterOutputType(CompensationEntryResponseArrayOutput{})
 	pulumi.RegisterOutputType(CompensationInfoOutput{})
 	pulumi.RegisterOutputType(CompensationInfoPtrOutput{})
+	pulumi.RegisterOutputType(CompensationInfoResponseOutput{})
+	pulumi.RegisterOutputType(CompensationInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(CompensationRangeOutput{})
 	pulumi.RegisterOutputType(CompensationRangePtrOutput{})
+	pulumi.RegisterOutputType(CompensationRangeResponseOutput{})
+	pulumi.RegisterOutputType(CompensationRangeResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobTypeOutput{})
 	pulumi.RegisterOutputType(JobTypePtrOutput{})
 	pulumi.RegisterOutputType(JobDerivedInfoOutput{})
 	pulumi.RegisterOutputType(JobDerivedInfoPtrOutput{})
+	pulumi.RegisterOutputType(JobDerivedInfoResponseOutput{})
+	pulumi.RegisterOutputType(JobDerivedInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobEventOutput{})
 	pulumi.RegisterOutputType(JobEventPtrOutput{})
 	pulumi.RegisterOutputType(LatLngOutput{})
 	pulumi.RegisterOutputType(LatLngPtrOutput{})
+	pulumi.RegisterOutputType(LatLngResponseOutput{})
+	pulumi.RegisterOutputType(LatLngResponsePtrOutput{})
 	pulumi.RegisterOutputType(LocationOutput{})
 	pulumi.RegisterOutputType(LocationPtrOutput{})
 	pulumi.RegisterOutputType(LocationArrayOutput{})
+	pulumi.RegisterOutputType(LocationResponseOutput{})
+	pulumi.RegisterOutputType(LocationResponsePtrOutput{})
+	pulumi.RegisterOutputType(LocationResponseArrayOutput{})
 	pulumi.RegisterOutputType(MoneyOutput{})
 	pulumi.RegisterOutputType(MoneyPtrOutput{})
+	pulumi.RegisterOutputType(MoneyResponseOutput{})
+	pulumi.RegisterOutputType(MoneyResponsePtrOutput{})
 	pulumi.RegisterOutputType(PostalAddressOutput{})
 	pulumi.RegisterOutputType(PostalAddressPtrOutput{})
+	pulumi.RegisterOutputType(PostalAddressResponseOutput{})
+	pulumi.RegisterOutputType(PostalAddressResponsePtrOutput{})
 	pulumi.RegisterOutputType(ProcessingOptionsOutput{})
 	pulumi.RegisterOutputType(ProcessingOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ProcessingOptionsResponseOutput{})
+	pulumi.RegisterOutputType(ProcessingOptionsResponsePtrOutput{})
 }

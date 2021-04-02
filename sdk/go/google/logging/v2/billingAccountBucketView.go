@@ -69,36 +69,28 @@ func (BillingAccountBucketViewState) ElementType() reflect.Type {
 type billingAccountBucketViewArgs struct {
 	BillingAccountsId string `pulumi:"billingAccountsId"`
 	BucketsId         string `pulumi:"bucketsId"`
-	// Output only. The creation timestamp of the view.
-	CreateTime *string `pulumi:"createTime"`
 	// Describes this view.
 	Description *string `pulumi:"description"`
 	// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log id Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
 	Filter      *string `pulumi:"filter"`
 	LocationsId string  `pulumi:"locationsId"`
 	// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
-	Name *string `pulumi:"name"`
-	// Output only. The last update timestamp of the view.
-	UpdateTime *string `pulumi:"updateTime"`
-	ViewsId    string  `pulumi:"viewsId"`
+	Name    *string `pulumi:"name"`
+	ViewsId string  `pulumi:"viewsId"`
 }
 
 // The set of arguments for constructing a BillingAccountBucketView resource.
 type BillingAccountBucketViewArgs struct {
 	BillingAccountsId pulumi.StringInput
 	BucketsId         pulumi.StringInput
-	// Output only. The creation timestamp of the view.
-	CreateTime pulumi.StringPtrInput
 	// Describes this view.
 	Description pulumi.StringPtrInput
 	// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log id Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
 	Filter      pulumi.StringPtrInput
 	LocationsId pulumi.StringInput
 	// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
-	Name pulumi.StringPtrInput
-	// Output only. The last update timestamp of the view.
-	UpdateTime pulumi.StringPtrInput
-	ViewsId    pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	ViewsId pulumi.StringInput
 }
 
 func (BillingAccountBucketViewArgs) ElementType() reflect.Type {

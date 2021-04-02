@@ -182,6 +182,178 @@ func (o AuthenticationPtrOutput) IapCredential() IapCredentialPtrOutput {
 	}).(IapCredentialPtrOutput)
 }
 
+// Scan authentication configuration.
+type AuthenticationResponse struct {
+	// Authentication using a custom account.
+	CustomAccount CustomAccountResponse `pulumi:"customAccount"`
+	// Authentication using a Google account.
+	GoogleAccount GoogleAccountResponse `pulumi:"googleAccount"`
+	// Authentication using Identity-Aware-Proxy (IAP).
+	IapCredential IapCredentialResponse `pulumi:"iapCredential"`
+}
+
+// AuthenticationResponseInput is an input type that accepts AuthenticationResponseArgs and AuthenticationResponseOutput values.
+// You can construct a concrete instance of `AuthenticationResponseInput` via:
+//
+//          AuthenticationResponseArgs{...}
+type AuthenticationResponseInput interface {
+	pulumi.Input
+
+	ToAuthenticationResponseOutput() AuthenticationResponseOutput
+	ToAuthenticationResponseOutputWithContext(context.Context) AuthenticationResponseOutput
+}
+
+// Scan authentication configuration.
+type AuthenticationResponseArgs struct {
+	// Authentication using a custom account.
+	CustomAccount CustomAccountResponseInput `pulumi:"customAccount"`
+	// Authentication using a Google account.
+	GoogleAccount GoogleAccountResponseInput `pulumi:"googleAccount"`
+	// Authentication using Identity-Aware-Proxy (IAP).
+	IapCredential IapCredentialResponseInput `pulumi:"iapCredential"`
+}
+
+func (AuthenticationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticationResponse)(nil)).Elem()
+}
+
+func (i AuthenticationResponseArgs) ToAuthenticationResponseOutput() AuthenticationResponseOutput {
+	return i.ToAuthenticationResponseOutputWithContext(context.Background())
+}
+
+func (i AuthenticationResponseArgs) ToAuthenticationResponseOutputWithContext(ctx context.Context) AuthenticationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationResponseOutput)
+}
+
+func (i AuthenticationResponseArgs) ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput {
+	return i.ToAuthenticationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AuthenticationResponseArgs) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationResponseOutput).ToAuthenticationResponsePtrOutputWithContext(ctx)
+}
+
+// AuthenticationResponsePtrInput is an input type that accepts AuthenticationResponseArgs, AuthenticationResponsePtr and AuthenticationResponsePtrOutput values.
+// You can construct a concrete instance of `AuthenticationResponsePtrInput` via:
+//
+//          AuthenticationResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type AuthenticationResponsePtrInput interface {
+	pulumi.Input
+
+	ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput
+	ToAuthenticationResponsePtrOutputWithContext(context.Context) AuthenticationResponsePtrOutput
+}
+
+type authenticationResponsePtrType AuthenticationResponseArgs
+
+func AuthenticationResponsePtr(v *AuthenticationResponseArgs) AuthenticationResponsePtrInput {
+	return (*authenticationResponsePtrType)(v)
+}
+
+func (*authenticationResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthenticationResponse)(nil)).Elem()
+}
+
+func (i *authenticationResponsePtrType) ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput {
+	return i.ToAuthenticationResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *authenticationResponsePtrType) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationResponsePtrOutput)
+}
+
+// Scan authentication configuration.
+type AuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticationResponse)(nil)).Elem()
+}
+
+func (o AuthenticationResponseOutput) ToAuthenticationResponseOutput() AuthenticationResponseOutput {
+	return o
+}
+
+func (o AuthenticationResponseOutput) ToAuthenticationResponseOutputWithContext(ctx context.Context) AuthenticationResponseOutput {
+	return o
+}
+
+func (o AuthenticationResponseOutput) ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput {
+	return o.ToAuthenticationResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AuthenticationResponseOutput) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v AuthenticationResponse) *AuthenticationResponse {
+		return &v
+	}).(AuthenticationResponsePtrOutput)
+}
+
+// Authentication using a custom account.
+func (o AuthenticationResponseOutput) CustomAccount() CustomAccountResponseOutput {
+	return o.ApplyT(func(v AuthenticationResponse) CustomAccountResponse { return v.CustomAccount }).(CustomAccountResponseOutput)
+}
+
+// Authentication using a Google account.
+func (o AuthenticationResponseOutput) GoogleAccount() GoogleAccountResponseOutput {
+	return o.ApplyT(func(v AuthenticationResponse) GoogleAccountResponse { return v.GoogleAccount }).(GoogleAccountResponseOutput)
+}
+
+// Authentication using Identity-Aware-Proxy (IAP).
+func (o AuthenticationResponseOutput) IapCredential() IapCredentialResponseOutput {
+	return o.ApplyT(func(v AuthenticationResponse) IapCredentialResponse { return v.IapCredential }).(IapCredentialResponseOutput)
+}
+
+type AuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthenticationResponse)(nil)).Elem()
+}
+
+func (o AuthenticationResponsePtrOutput) ToAuthenticationResponsePtrOutput() AuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o AuthenticationResponsePtrOutput) ToAuthenticationResponsePtrOutputWithContext(ctx context.Context) AuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o AuthenticationResponsePtrOutput) Elem() AuthenticationResponseOutput {
+	return o.ApplyT(func(v *AuthenticationResponse) AuthenticationResponse { return *v }).(AuthenticationResponseOutput)
+}
+
+// Authentication using a custom account.
+func (o AuthenticationResponsePtrOutput) CustomAccount() CustomAccountResponsePtrOutput {
+	return o.ApplyT(func(v *AuthenticationResponse) *CustomAccountResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.CustomAccount
+	}).(CustomAccountResponsePtrOutput)
+}
+
+// Authentication using a Google account.
+func (o AuthenticationResponsePtrOutput) GoogleAccount() GoogleAccountResponsePtrOutput {
+	return o.ApplyT(func(v *AuthenticationResponse) *GoogleAccountResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GoogleAccount
+	}).(GoogleAccountResponsePtrOutput)
+}
+
+// Authentication using Identity-Aware-Proxy (IAP).
+func (o AuthenticationResponsePtrOutput) IapCredential() IapCredentialResponsePtrOutput {
+	return o.ApplyT(func(v *AuthenticationResponse) *IapCredentialResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.IapCredential
+	}).(IapCredentialResponsePtrOutput)
+}
+
 // Describes authentication configuration that uses a custom account.
 type CustomAccount struct {
 	// Required. The login form URL of the website.
@@ -354,6 +526,178 @@ func (o CustomAccountPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Describes authentication configuration that uses a custom account.
+type CustomAccountResponse struct {
+	// Required. The login form URL of the website.
+	LoginUrl string `pulumi:"loginUrl"`
+	// Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+	Password string `pulumi:"password"`
+	// Required. The user name of the custom account.
+	Username string `pulumi:"username"`
+}
+
+// CustomAccountResponseInput is an input type that accepts CustomAccountResponseArgs and CustomAccountResponseOutput values.
+// You can construct a concrete instance of `CustomAccountResponseInput` via:
+//
+//          CustomAccountResponseArgs{...}
+type CustomAccountResponseInput interface {
+	pulumi.Input
+
+	ToCustomAccountResponseOutput() CustomAccountResponseOutput
+	ToCustomAccountResponseOutputWithContext(context.Context) CustomAccountResponseOutput
+}
+
+// Describes authentication configuration that uses a custom account.
+type CustomAccountResponseArgs struct {
+	// Required. The login form URL of the website.
+	LoginUrl pulumi.StringInput `pulumi:"loginUrl"`
+	// Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+	Password pulumi.StringInput `pulumi:"password"`
+	// Required. The user name of the custom account.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (CustomAccountResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomAccountResponse)(nil)).Elem()
+}
+
+func (i CustomAccountResponseArgs) ToCustomAccountResponseOutput() CustomAccountResponseOutput {
+	return i.ToCustomAccountResponseOutputWithContext(context.Background())
+}
+
+func (i CustomAccountResponseArgs) ToCustomAccountResponseOutputWithContext(ctx context.Context) CustomAccountResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomAccountResponseOutput)
+}
+
+func (i CustomAccountResponseArgs) ToCustomAccountResponsePtrOutput() CustomAccountResponsePtrOutput {
+	return i.ToCustomAccountResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CustomAccountResponseArgs) ToCustomAccountResponsePtrOutputWithContext(ctx context.Context) CustomAccountResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomAccountResponseOutput).ToCustomAccountResponsePtrOutputWithContext(ctx)
+}
+
+// CustomAccountResponsePtrInput is an input type that accepts CustomAccountResponseArgs, CustomAccountResponsePtr and CustomAccountResponsePtrOutput values.
+// You can construct a concrete instance of `CustomAccountResponsePtrInput` via:
+//
+//          CustomAccountResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomAccountResponsePtrInput interface {
+	pulumi.Input
+
+	ToCustomAccountResponsePtrOutput() CustomAccountResponsePtrOutput
+	ToCustomAccountResponsePtrOutputWithContext(context.Context) CustomAccountResponsePtrOutput
+}
+
+type customAccountResponsePtrType CustomAccountResponseArgs
+
+func CustomAccountResponsePtr(v *CustomAccountResponseArgs) CustomAccountResponsePtrInput {
+	return (*customAccountResponsePtrType)(v)
+}
+
+func (*customAccountResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomAccountResponse)(nil)).Elem()
+}
+
+func (i *customAccountResponsePtrType) ToCustomAccountResponsePtrOutput() CustomAccountResponsePtrOutput {
+	return i.ToCustomAccountResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *customAccountResponsePtrType) ToCustomAccountResponsePtrOutputWithContext(ctx context.Context) CustomAccountResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomAccountResponsePtrOutput)
+}
+
+// Describes authentication configuration that uses a custom account.
+type CustomAccountResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomAccountResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomAccountResponse)(nil)).Elem()
+}
+
+func (o CustomAccountResponseOutput) ToCustomAccountResponseOutput() CustomAccountResponseOutput {
+	return o
+}
+
+func (o CustomAccountResponseOutput) ToCustomAccountResponseOutputWithContext(ctx context.Context) CustomAccountResponseOutput {
+	return o
+}
+
+func (o CustomAccountResponseOutput) ToCustomAccountResponsePtrOutput() CustomAccountResponsePtrOutput {
+	return o.ToCustomAccountResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CustomAccountResponseOutput) ToCustomAccountResponsePtrOutputWithContext(ctx context.Context) CustomAccountResponsePtrOutput {
+	return o.ApplyT(func(v CustomAccountResponse) *CustomAccountResponse {
+		return &v
+	}).(CustomAccountResponsePtrOutput)
+}
+
+// Required. The login form URL of the website.
+func (o CustomAccountResponseOutput) LoginUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomAccountResponse) string { return v.LoginUrl }).(pulumi.StringOutput)
+}
+
+// Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+func (o CustomAccountResponseOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomAccountResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Required. The user name of the custom account.
+func (o CustomAccountResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomAccountResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type CustomAccountResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomAccountResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomAccountResponse)(nil)).Elem()
+}
+
+func (o CustomAccountResponsePtrOutput) ToCustomAccountResponsePtrOutput() CustomAccountResponsePtrOutput {
+	return o
+}
+
+func (o CustomAccountResponsePtrOutput) ToCustomAccountResponsePtrOutputWithContext(ctx context.Context) CustomAccountResponsePtrOutput {
+	return o
+}
+
+func (o CustomAccountResponsePtrOutput) Elem() CustomAccountResponseOutput {
+	return o.ApplyT(func(v *CustomAccountResponse) CustomAccountResponse { return *v }).(CustomAccountResponseOutput)
+}
+
+// Required. The login form URL of the website.
+func (o CustomAccountResponsePtrOutput) LoginUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomAccountResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LoginUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+func (o CustomAccountResponsePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomAccountResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The user name of the custom account.
+func (o CustomAccountResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomAccountResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 // Describes authentication configuration that uses a Google account.
 type GoogleAccount struct {
 	// Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
@@ -507,6 +851,159 @@ func (o GoogleAccountPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Describes authentication configuration that uses a Google account.
+type GoogleAccountResponse struct {
+	// Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+	Password string `pulumi:"password"`
+	// Required. The user name of the Google account.
+	Username string `pulumi:"username"`
+}
+
+// GoogleAccountResponseInput is an input type that accepts GoogleAccountResponseArgs and GoogleAccountResponseOutput values.
+// You can construct a concrete instance of `GoogleAccountResponseInput` via:
+//
+//          GoogleAccountResponseArgs{...}
+type GoogleAccountResponseInput interface {
+	pulumi.Input
+
+	ToGoogleAccountResponseOutput() GoogleAccountResponseOutput
+	ToGoogleAccountResponseOutputWithContext(context.Context) GoogleAccountResponseOutput
+}
+
+// Describes authentication configuration that uses a Google account.
+type GoogleAccountResponseArgs struct {
+	// Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+	Password pulumi.StringInput `pulumi:"password"`
+	// Required. The user name of the Google account.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GoogleAccountResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleAccountResponse)(nil)).Elem()
+}
+
+func (i GoogleAccountResponseArgs) ToGoogleAccountResponseOutput() GoogleAccountResponseOutput {
+	return i.ToGoogleAccountResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleAccountResponseArgs) ToGoogleAccountResponseOutputWithContext(ctx context.Context) GoogleAccountResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleAccountResponseOutput)
+}
+
+func (i GoogleAccountResponseArgs) ToGoogleAccountResponsePtrOutput() GoogleAccountResponsePtrOutput {
+	return i.ToGoogleAccountResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleAccountResponseArgs) ToGoogleAccountResponsePtrOutputWithContext(ctx context.Context) GoogleAccountResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleAccountResponseOutput).ToGoogleAccountResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleAccountResponsePtrInput is an input type that accepts GoogleAccountResponseArgs, GoogleAccountResponsePtr and GoogleAccountResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleAccountResponsePtrInput` via:
+//
+//          GoogleAccountResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleAccountResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleAccountResponsePtrOutput() GoogleAccountResponsePtrOutput
+	ToGoogleAccountResponsePtrOutputWithContext(context.Context) GoogleAccountResponsePtrOutput
+}
+
+type googleAccountResponsePtrType GoogleAccountResponseArgs
+
+func GoogleAccountResponsePtr(v *GoogleAccountResponseArgs) GoogleAccountResponsePtrInput {
+	return (*googleAccountResponsePtrType)(v)
+}
+
+func (*googleAccountResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleAccountResponse)(nil)).Elem()
+}
+
+func (i *googleAccountResponsePtrType) ToGoogleAccountResponsePtrOutput() GoogleAccountResponsePtrOutput {
+	return i.ToGoogleAccountResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleAccountResponsePtrType) ToGoogleAccountResponsePtrOutputWithContext(ctx context.Context) GoogleAccountResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleAccountResponsePtrOutput)
+}
+
+// Describes authentication configuration that uses a Google account.
+type GoogleAccountResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleAccountResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleAccountResponse)(nil)).Elem()
+}
+
+func (o GoogleAccountResponseOutput) ToGoogleAccountResponseOutput() GoogleAccountResponseOutput {
+	return o
+}
+
+func (o GoogleAccountResponseOutput) ToGoogleAccountResponseOutputWithContext(ctx context.Context) GoogleAccountResponseOutput {
+	return o
+}
+
+func (o GoogleAccountResponseOutput) ToGoogleAccountResponsePtrOutput() GoogleAccountResponsePtrOutput {
+	return o.ToGoogleAccountResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleAccountResponseOutput) ToGoogleAccountResponsePtrOutputWithContext(ctx context.Context) GoogleAccountResponsePtrOutput {
+	return o.ApplyT(func(v GoogleAccountResponse) *GoogleAccountResponse {
+		return &v
+	}).(GoogleAccountResponsePtrOutput)
+}
+
+// Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+func (o GoogleAccountResponseOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAccountResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Required. The user name of the Google account.
+func (o GoogleAccountResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAccountResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GoogleAccountResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleAccountResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleAccountResponse)(nil)).Elem()
+}
+
+func (o GoogleAccountResponsePtrOutput) ToGoogleAccountResponsePtrOutput() GoogleAccountResponsePtrOutput {
+	return o
+}
+
+func (o GoogleAccountResponsePtrOutput) ToGoogleAccountResponsePtrOutputWithContext(ctx context.Context) GoogleAccountResponsePtrOutput {
+	return o
+}
+
+func (o GoogleAccountResponsePtrOutput) Elem() GoogleAccountResponseOutput {
+	return o.ApplyT(func(v *GoogleAccountResponse) GoogleAccountResponse { return *v }).(GoogleAccountResponseOutput)
+}
+
+// Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+func (o GoogleAccountResponsePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleAccountResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The user name of the Google account.
+func (o GoogleAccountResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleAccountResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 // Describes authentication configuration for Identity-Aware-Proxy (IAP).
 type IapCredential struct {
 	// Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
@@ -641,6 +1138,140 @@ func (o IapCredentialPtrOutput) IapTestServiceAccountInfo() IapTestServiceAccoun
 	}).(IapTestServiceAccountInfoPtrOutput)
 }
 
+// Describes authentication configuration for Identity-Aware-Proxy (IAP).
+type IapCredentialResponse struct {
+	// Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
+	IapTestServiceAccountInfo IapTestServiceAccountInfoResponse `pulumi:"iapTestServiceAccountInfo"`
+}
+
+// IapCredentialResponseInput is an input type that accepts IapCredentialResponseArgs and IapCredentialResponseOutput values.
+// You can construct a concrete instance of `IapCredentialResponseInput` via:
+//
+//          IapCredentialResponseArgs{...}
+type IapCredentialResponseInput interface {
+	pulumi.Input
+
+	ToIapCredentialResponseOutput() IapCredentialResponseOutput
+	ToIapCredentialResponseOutputWithContext(context.Context) IapCredentialResponseOutput
+}
+
+// Describes authentication configuration for Identity-Aware-Proxy (IAP).
+type IapCredentialResponseArgs struct {
+	// Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
+	IapTestServiceAccountInfo IapTestServiceAccountInfoResponseInput `pulumi:"iapTestServiceAccountInfo"`
+}
+
+func (IapCredentialResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IapCredentialResponse)(nil)).Elem()
+}
+
+func (i IapCredentialResponseArgs) ToIapCredentialResponseOutput() IapCredentialResponseOutput {
+	return i.ToIapCredentialResponseOutputWithContext(context.Background())
+}
+
+func (i IapCredentialResponseArgs) ToIapCredentialResponseOutputWithContext(ctx context.Context) IapCredentialResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IapCredentialResponseOutput)
+}
+
+func (i IapCredentialResponseArgs) ToIapCredentialResponsePtrOutput() IapCredentialResponsePtrOutput {
+	return i.ToIapCredentialResponsePtrOutputWithContext(context.Background())
+}
+
+func (i IapCredentialResponseArgs) ToIapCredentialResponsePtrOutputWithContext(ctx context.Context) IapCredentialResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IapCredentialResponseOutput).ToIapCredentialResponsePtrOutputWithContext(ctx)
+}
+
+// IapCredentialResponsePtrInput is an input type that accepts IapCredentialResponseArgs, IapCredentialResponsePtr and IapCredentialResponsePtrOutput values.
+// You can construct a concrete instance of `IapCredentialResponsePtrInput` via:
+//
+//          IapCredentialResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type IapCredentialResponsePtrInput interface {
+	pulumi.Input
+
+	ToIapCredentialResponsePtrOutput() IapCredentialResponsePtrOutput
+	ToIapCredentialResponsePtrOutputWithContext(context.Context) IapCredentialResponsePtrOutput
+}
+
+type iapCredentialResponsePtrType IapCredentialResponseArgs
+
+func IapCredentialResponsePtr(v *IapCredentialResponseArgs) IapCredentialResponsePtrInput {
+	return (*iapCredentialResponsePtrType)(v)
+}
+
+func (*iapCredentialResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IapCredentialResponse)(nil)).Elem()
+}
+
+func (i *iapCredentialResponsePtrType) ToIapCredentialResponsePtrOutput() IapCredentialResponsePtrOutput {
+	return i.ToIapCredentialResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *iapCredentialResponsePtrType) ToIapCredentialResponsePtrOutputWithContext(ctx context.Context) IapCredentialResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IapCredentialResponsePtrOutput)
+}
+
+// Describes authentication configuration for Identity-Aware-Proxy (IAP).
+type IapCredentialResponseOutput struct{ *pulumi.OutputState }
+
+func (IapCredentialResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IapCredentialResponse)(nil)).Elem()
+}
+
+func (o IapCredentialResponseOutput) ToIapCredentialResponseOutput() IapCredentialResponseOutput {
+	return o
+}
+
+func (o IapCredentialResponseOutput) ToIapCredentialResponseOutputWithContext(ctx context.Context) IapCredentialResponseOutput {
+	return o
+}
+
+func (o IapCredentialResponseOutput) ToIapCredentialResponsePtrOutput() IapCredentialResponsePtrOutput {
+	return o.ToIapCredentialResponsePtrOutputWithContext(context.Background())
+}
+
+func (o IapCredentialResponseOutput) ToIapCredentialResponsePtrOutputWithContext(ctx context.Context) IapCredentialResponsePtrOutput {
+	return o.ApplyT(func(v IapCredentialResponse) *IapCredentialResponse {
+		return &v
+	}).(IapCredentialResponsePtrOutput)
+}
+
+// Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
+func (o IapCredentialResponseOutput) IapTestServiceAccountInfo() IapTestServiceAccountInfoResponseOutput {
+	return o.ApplyT(func(v IapCredentialResponse) IapTestServiceAccountInfoResponse { return v.IapTestServiceAccountInfo }).(IapTestServiceAccountInfoResponseOutput)
+}
+
+type IapCredentialResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IapCredentialResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IapCredentialResponse)(nil)).Elem()
+}
+
+func (o IapCredentialResponsePtrOutput) ToIapCredentialResponsePtrOutput() IapCredentialResponsePtrOutput {
+	return o
+}
+
+func (o IapCredentialResponsePtrOutput) ToIapCredentialResponsePtrOutputWithContext(ctx context.Context) IapCredentialResponsePtrOutput {
+	return o
+}
+
+func (o IapCredentialResponsePtrOutput) Elem() IapCredentialResponseOutput {
+	return o.ApplyT(func(v *IapCredentialResponse) IapCredentialResponse { return *v }).(IapCredentialResponseOutput)
+}
+
+// Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
+func (o IapCredentialResponsePtrOutput) IapTestServiceAccountInfo() IapTestServiceAccountInfoResponsePtrOutput {
+	return o.ApplyT(func(v *IapCredentialResponse) *IapTestServiceAccountInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.IapTestServiceAccountInfo
+	}).(IapTestServiceAccountInfoResponsePtrOutput)
+}
+
 // Describes authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
 type IapTestServiceAccountInfo struct {
 	// Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
@@ -772,6 +1403,140 @@ func (o IapTestServiceAccountInfoPtrOutput) TargetAudienceClientId() pulumi.Stri
 			return nil
 		}
 		return v.TargetAudienceClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
+type IapTestServiceAccountInfoResponse struct {
+	// Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
+	TargetAudienceClientId string `pulumi:"targetAudienceClientId"`
+}
+
+// IapTestServiceAccountInfoResponseInput is an input type that accepts IapTestServiceAccountInfoResponseArgs and IapTestServiceAccountInfoResponseOutput values.
+// You can construct a concrete instance of `IapTestServiceAccountInfoResponseInput` via:
+//
+//          IapTestServiceAccountInfoResponseArgs{...}
+type IapTestServiceAccountInfoResponseInput interface {
+	pulumi.Input
+
+	ToIapTestServiceAccountInfoResponseOutput() IapTestServiceAccountInfoResponseOutput
+	ToIapTestServiceAccountInfoResponseOutputWithContext(context.Context) IapTestServiceAccountInfoResponseOutput
+}
+
+// Describes authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
+type IapTestServiceAccountInfoResponseArgs struct {
+	// Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
+	TargetAudienceClientId pulumi.StringInput `pulumi:"targetAudienceClientId"`
+}
+
+func (IapTestServiceAccountInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IapTestServiceAccountInfoResponse)(nil)).Elem()
+}
+
+func (i IapTestServiceAccountInfoResponseArgs) ToIapTestServiceAccountInfoResponseOutput() IapTestServiceAccountInfoResponseOutput {
+	return i.ToIapTestServiceAccountInfoResponseOutputWithContext(context.Background())
+}
+
+func (i IapTestServiceAccountInfoResponseArgs) ToIapTestServiceAccountInfoResponseOutputWithContext(ctx context.Context) IapTestServiceAccountInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IapTestServiceAccountInfoResponseOutput)
+}
+
+func (i IapTestServiceAccountInfoResponseArgs) ToIapTestServiceAccountInfoResponsePtrOutput() IapTestServiceAccountInfoResponsePtrOutput {
+	return i.ToIapTestServiceAccountInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i IapTestServiceAccountInfoResponseArgs) ToIapTestServiceAccountInfoResponsePtrOutputWithContext(ctx context.Context) IapTestServiceAccountInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IapTestServiceAccountInfoResponseOutput).ToIapTestServiceAccountInfoResponsePtrOutputWithContext(ctx)
+}
+
+// IapTestServiceAccountInfoResponsePtrInput is an input type that accepts IapTestServiceAccountInfoResponseArgs, IapTestServiceAccountInfoResponsePtr and IapTestServiceAccountInfoResponsePtrOutput values.
+// You can construct a concrete instance of `IapTestServiceAccountInfoResponsePtrInput` via:
+//
+//          IapTestServiceAccountInfoResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type IapTestServiceAccountInfoResponsePtrInput interface {
+	pulumi.Input
+
+	ToIapTestServiceAccountInfoResponsePtrOutput() IapTestServiceAccountInfoResponsePtrOutput
+	ToIapTestServiceAccountInfoResponsePtrOutputWithContext(context.Context) IapTestServiceAccountInfoResponsePtrOutput
+}
+
+type iapTestServiceAccountInfoResponsePtrType IapTestServiceAccountInfoResponseArgs
+
+func IapTestServiceAccountInfoResponsePtr(v *IapTestServiceAccountInfoResponseArgs) IapTestServiceAccountInfoResponsePtrInput {
+	return (*iapTestServiceAccountInfoResponsePtrType)(v)
+}
+
+func (*iapTestServiceAccountInfoResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IapTestServiceAccountInfoResponse)(nil)).Elem()
+}
+
+func (i *iapTestServiceAccountInfoResponsePtrType) ToIapTestServiceAccountInfoResponsePtrOutput() IapTestServiceAccountInfoResponsePtrOutput {
+	return i.ToIapTestServiceAccountInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *iapTestServiceAccountInfoResponsePtrType) ToIapTestServiceAccountInfoResponsePtrOutputWithContext(ctx context.Context) IapTestServiceAccountInfoResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IapTestServiceAccountInfoResponsePtrOutput)
+}
+
+// Describes authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
+type IapTestServiceAccountInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (IapTestServiceAccountInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IapTestServiceAccountInfoResponse)(nil)).Elem()
+}
+
+func (o IapTestServiceAccountInfoResponseOutput) ToIapTestServiceAccountInfoResponseOutput() IapTestServiceAccountInfoResponseOutput {
+	return o
+}
+
+func (o IapTestServiceAccountInfoResponseOutput) ToIapTestServiceAccountInfoResponseOutputWithContext(ctx context.Context) IapTestServiceAccountInfoResponseOutput {
+	return o
+}
+
+func (o IapTestServiceAccountInfoResponseOutput) ToIapTestServiceAccountInfoResponsePtrOutput() IapTestServiceAccountInfoResponsePtrOutput {
+	return o.ToIapTestServiceAccountInfoResponsePtrOutputWithContext(context.Background())
+}
+
+func (o IapTestServiceAccountInfoResponseOutput) ToIapTestServiceAccountInfoResponsePtrOutputWithContext(ctx context.Context) IapTestServiceAccountInfoResponsePtrOutput {
+	return o.ApplyT(func(v IapTestServiceAccountInfoResponse) *IapTestServiceAccountInfoResponse {
+		return &v
+	}).(IapTestServiceAccountInfoResponsePtrOutput)
+}
+
+// Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
+func (o IapTestServiceAccountInfoResponseOutput) TargetAudienceClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v IapTestServiceAccountInfoResponse) string { return v.TargetAudienceClientId }).(pulumi.StringOutput)
+}
+
+type IapTestServiceAccountInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IapTestServiceAccountInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IapTestServiceAccountInfoResponse)(nil)).Elem()
+}
+
+func (o IapTestServiceAccountInfoResponsePtrOutput) ToIapTestServiceAccountInfoResponsePtrOutput() IapTestServiceAccountInfoResponsePtrOutput {
+	return o
+}
+
+func (o IapTestServiceAccountInfoResponsePtrOutput) ToIapTestServiceAccountInfoResponsePtrOutputWithContext(ctx context.Context) IapTestServiceAccountInfoResponsePtrOutput {
+	return o
+}
+
+func (o IapTestServiceAccountInfoResponsePtrOutput) Elem() IapTestServiceAccountInfoResponseOutput {
+	return o.ApplyT(func(v *IapTestServiceAccountInfoResponse) IapTestServiceAccountInfoResponse { return *v }).(IapTestServiceAccountInfoResponseOutput)
+}
+
+// Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
+func (o IapTestServiceAccountInfoResponsePtrOutput) TargetAudienceClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IapTestServiceAccountInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetAudienceClientId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -928,17 +1693,182 @@ func (o SchedulePtrOutput) ScheduleTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Scan schedule configuration.
+type ScheduleResponse struct {
+	// Required. The duration of time between executions in days.
+	IntervalDurationDays int `pulumi:"intervalDurationDays"`
+	// A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
+	ScheduleTime string `pulumi:"scheduleTime"`
+}
+
+// ScheduleResponseInput is an input type that accepts ScheduleResponseArgs and ScheduleResponseOutput values.
+// You can construct a concrete instance of `ScheduleResponseInput` via:
+//
+//          ScheduleResponseArgs{...}
+type ScheduleResponseInput interface {
+	pulumi.Input
+
+	ToScheduleResponseOutput() ScheduleResponseOutput
+	ToScheduleResponseOutputWithContext(context.Context) ScheduleResponseOutput
+}
+
+// Scan schedule configuration.
+type ScheduleResponseArgs struct {
+	// Required. The duration of time between executions in days.
+	IntervalDurationDays pulumi.IntInput `pulumi:"intervalDurationDays"`
+	// A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
+	ScheduleTime pulumi.StringInput `pulumi:"scheduleTime"`
+}
+
+func (ScheduleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleResponse)(nil)).Elem()
+}
+
+func (i ScheduleResponseArgs) ToScheduleResponseOutput() ScheduleResponseOutput {
+	return i.ToScheduleResponseOutputWithContext(context.Background())
+}
+
+func (i ScheduleResponseArgs) ToScheduleResponseOutputWithContext(ctx context.Context) ScheduleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleResponseOutput)
+}
+
+func (i ScheduleResponseArgs) ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput {
+	return i.ToScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ScheduleResponseArgs) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleResponseOutput).ToScheduleResponsePtrOutputWithContext(ctx)
+}
+
+// ScheduleResponsePtrInput is an input type that accepts ScheduleResponseArgs, ScheduleResponsePtr and ScheduleResponsePtrOutput values.
+// You can construct a concrete instance of `ScheduleResponsePtrInput` via:
+//
+//          ScheduleResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ScheduleResponsePtrInput interface {
+	pulumi.Input
+
+	ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput
+	ToScheduleResponsePtrOutputWithContext(context.Context) ScheduleResponsePtrOutput
+}
+
+type scheduleResponsePtrType ScheduleResponseArgs
+
+func ScheduleResponsePtr(v *ScheduleResponseArgs) ScheduleResponsePtrInput {
+	return (*scheduleResponsePtrType)(v)
+}
+
+func (*scheduleResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleResponse)(nil)).Elem()
+}
+
+func (i *scheduleResponsePtrType) ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput {
+	return i.ToScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *scheduleResponsePtrType) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleResponsePtrOutput)
+}
+
+// Scan schedule configuration.
+type ScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (ScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleResponse)(nil)).Elem()
+}
+
+func (o ScheduleResponseOutput) ToScheduleResponseOutput() ScheduleResponseOutput {
+	return o
+}
+
+func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.Context) ScheduleResponseOutput {
+	return o
+}
+
+func (o ScheduleResponseOutput) ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput {
+	return o.ToScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleResponseOutput) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
+	return o.ApplyT(func(v ScheduleResponse) *ScheduleResponse {
+		return &v
+	}).(ScheduleResponsePtrOutput)
+}
+
+// Required. The duration of time between executions in days.
+func (o ScheduleResponseOutput) IntervalDurationDays() pulumi.IntOutput {
+	return o.ApplyT(func(v ScheduleResponse) int { return v.IntervalDurationDays }).(pulumi.IntOutput)
+}
+
+// A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
+func (o ScheduleResponseOutput) ScheduleTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleResponse) string { return v.ScheduleTime }).(pulumi.StringOutput)
+}
+
+type ScheduleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleResponse)(nil)).Elem()
+}
+
+func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutput() ScheduleResponsePtrOutput {
+	return o
+}
+
+func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
+	return o
+}
+
+func (o ScheduleResponsePtrOutput) Elem() ScheduleResponseOutput {
+	return o.ApplyT(func(v *ScheduleResponse) ScheduleResponse { return *v }).(ScheduleResponseOutput)
+}
+
+// Required. The duration of time between executions in days.
+func (o ScheduleResponsePtrOutput) IntervalDurationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScheduleResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.IntervalDurationDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
+func (o ScheduleResponsePtrOutput) ScheduleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ScheduleTime
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthenticationOutput{})
 	pulumi.RegisterOutputType(AuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(AuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(AuthenticationResponsePtrOutput{})
 	pulumi.RegisterOutputType(CustomAccountOutput{})
 	pulumi.RegisterOutputType(CustomAccountPtrOutput{})
+	pulumi.RegisterOutputType(CustomAccountResponseOutput{})
+	pulumi.RegisterOutputType(CustomAccountResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleAccountOutput{})
 	pulumi.RegisterOutputType(GoogleAccountPtrOutput{})
+	pulumi.RegisterOutputType(GoogleAccountResponseOutput{})
+	pulumi.RegisterOutputType(GoogleAccountResponsePtrOutput{})
 	pulumi.RegisterOutputType(IapCredentialOutput{})
 	pulumi.RegisterOutputType(IapCredentialPtrOutput{})
+	pulumi.RegisterOutputType(IapCredentialResponseOutput{})
+	pulumi.RegisterOutputType(IapCredentialResponsePtrOutput{})
 	pulumi.RegisterOutputType(IapTestServiceAccountInfoOutput{})
 	pulumi.RegisterOutputType(IapTestServiceAccountInfoPtrOutput{})
+	pulumi.RegisterOutputType(IapTestServiceAccountInfoResponseOutput{})
+	pulumi.RegisterOutputType(IapTestServiceAccountInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScheduleOutput{})
 	pulumi.RegisterOutputType(SchedulePtrOutput{})
+	pulumi.RegisterOutputType(ScheduleResponseOutput{})
+	pulumi.RegisterOutputType(ScheduleResponsePtrOutput{})
 }

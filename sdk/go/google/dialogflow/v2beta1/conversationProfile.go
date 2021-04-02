@@ -14,6 +14,31 @@ import (
 // Creates a conversation profile in the specified project. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.
 type ConversationProfile struct {
 	pulumi.CustomResourceState
+
+	// Configuration for an automated agent to use with this profile.
+	AutomatedAgentConfig GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponseOutput `pulumi:"automatedAgentConfig"`
+	// Create time of the conversation profile.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Required. Human readable name for this profile. Max length 1024 bytes.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Configuration for agent assistance to use with this profile.
+	HumanAgentAssistantConfig GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponseOutput `pulumi:"humanAgentAssistantConfig"`
+	// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
+	HumanAgentHandoffConfig GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponseOutput `pulumi:"humanAgentHandoffConfig"`
+	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages.
+	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
+	// Configuration for logging conversation lifecycle events.
+	LoggingConfig GoogleCloudDialogflowV2beta1LoggingConfigResponseOutput `pulumi:"loggingConfig"`
+	// The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Configuration for publishing new message events. Event will be sent in format of ConversationEvent
+	NewMessageEventNotificationConfig GoogleCloudDialogflowV2beta1NotificationConfigResponseOutput `pulumi:"newMessageEventNotificationConfig"`
+	// Configuration for publishing conversation lifecycle events.
+	NotificationConfig GoogleCloudDialogflowV2beta1NotificationConfigResponseOutput `pulumi:"notificationConfig"`
+	// Settings for speech transcription.
+	SttConfig GoogleCloudDialogflowV2beta1SpeechToTextConfigResponseOutput `pulumi:"sttConfig"`
+	// Update time of the conversation profile.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewConversationProfile registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +79,57 @@ func GetConversationProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConversationProfile resources.
 type conversationProfileState struct {
+	// Configuration for an automated agent to use with this profile.
+	AutomatedAgentConfig *GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse `pulumi:"automatedAgentConfig"`
+	// Create time of the conversation profile.
+	CreateTime *string `pulumi:"createTime"`
+	// Required. Human readable name for this profile. Max length 1024 bytes.
+	DisplayName *string `pulumi:"displayName"`
+	// Configuration for agent assistance to use with this profile.
+	HumanAgentAssistantConfig *GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse `pulumi:"humanAgentAssistantConfig"`
+	// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
+	HumanAgentHandoffConfig *GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponse `pulumi:"humanAgentHandoffConfig"`
+	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages.
+	LanguageCode *string `pulumi:"languageCode"`
+	// Configuration for logging conversation lifecycle events.
+	LoggingConfig *GoogleCloudDialogflowV2beta1LoggingConfigResponse `pulumi:"loggingConfig"`
+	// The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
+	Name *string `pulumi:"name"`
+	// Configuration for publishing new message events. Event will be sent in format of ConversationEvent
+	NewMessageEventNotificationConfig *GoogleCloudDialogflowV2beta1NotificationConfigResponse `pulumi:"newMessageEventNotificationConfig"`
+	// Configuration for publishing conversation lifecycle events.
+	NotificationConfig *GoogleCloudDialogflowV2beta1NotificationConfigResponse `pulumi:"notificationConfig"`
+	// Settings for speech transcription.
+	SttConfig *GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse `pulumi:"sttConfig"`
+	// Update time of the conversation profile.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ConversationProfileState struct {
+	// Configuration for an automated agent to use with this profile.
+	AutomatedAgentConfig GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponsePtrInput
+	// Create time of the conversation profile.
+	CreateTime pulumi.StringPtrInput
+	// Required. Human readable name for this profile. Max length 1024 bytes.
+	DisplayName pulumi.StringPtrInput
+	// Configuration for agent assistance to use with this profile.
+	HumanAgentAssistantConfig GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponsePtrInput
+	// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
+	HumanAgentHandoffConfig GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponsePtrInput
+	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages.
+	LanguageCode pulumi.StringPtrInput
+	// Configuration for logging conversation lifecycle events.
+	LoggingConfig GoogleCloudDialogflowV2beta1LoggingConfigResponsePtrInput
+	// The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
+	Name pulumi.StringPtrInput
+	// Configuration for publishing new message events. Event will be sent in format of ConversationEvent
+	NewMessageEventNotificationConfig GoogleCloudDialogflowV2beta1NotificationConfigResponsePtrInput
+	// Configuration for publishing conversation lifecycle events.
+	NotificationConfig GoogleCloudDialogflowV2beta1NotificationConfigResponsePtrInput
+	// Settings for speech transcription.
+	SttConfig GoogleCloudDialogflowV2beta1SpeechToTextConfigResponsePtrInput
+	// Update time of the conversation profile.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (ConversationProfileState) ElementType() reflect.Type {
@@ -67,8 +140,6 @@ type conversationProfileArgs struct {
 	// Configuration for an automated agent to use with this profile.
 	AutomatedAgentConfig   *GoogleCloudDialogflowV2beta1AutomatedAgentConfig `pulumi:"automatedAgentConfig"`
 	ConversationProfilesId string                                            `pulumi:"conversationProfilesId"`
-	// Output only. Create time of the conversation profile.
-	CreateTime *string `pulumi:"createTime"`
 	// Required. Human readable name for this profile. Max length 1024 bytes.
 	DisplayName *string `pulumi:"displayName"`
 	// Configuration for agent assistance to use with this profile.
@@ -89,8 +160,6 @@ type conversationProfileArgs struct {
 	ProjectsId         string                                          `pulumi:"projectsId"`
 	// Settings for speech transcription.
 	SttConfig *GoogleCloudDialogflowV2beta1SpeechToTextConfig `pulumi:"sttConfig"`
-	// Output only. Update time of the conversation profile.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a ConversationProfile resource.
@@ -98,8 +167,6 @@ type ConversationProfileArgs struct {
 	// Configuration for an automated agent to use with this profile.
 	AutomatedAgentConfig   GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrInput
 	ConversationProfilesId pulumi.StringInput
-	// Output only. Create time of the conversation profile.
-	CreateTime pulumi.StringPtrInput
 	// Required. Human readable name for this profile. Max length 1024 bytes.
 	DisplayName pulumi.StringPtrInput
 	// Configuration for agent assistance to use with this profile.
@@ -120,8 +187,6 @@ type ConversationProfileArgs struct {
 	ProjectsId         pulumi.StringInput
 	// Settings for speech transcription.
 	SttConfig GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrInput
-	// Output only. Update time of the conversation profile.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (ConversationProfileArgs) ElementType() reflect.Type {

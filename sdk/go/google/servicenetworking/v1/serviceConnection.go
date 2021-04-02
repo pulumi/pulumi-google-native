@@ -60,26 +60,18 @@ func (ServiceConnectionState) ElementType() reflect.Type {
 type serviceConnectionArgs struct {
 	// The name of service consumer's VPC network that's connected with service producer network, in the following format: `projects/{project}/global/networks/{network}`. `{project}` is a project number, such as in `12345` that includes the VPC service consumer's VPC network. `{network}` is the name of the service consumer's VPC network.
 	Network *string `pulumi:"network"`
-	// Output only. The name of the VPC Network Peering connection that was created by the service producer.
-	Peering *string `pulumi:"peering"`
 	// The name of one or more allocated IP address ranges for this service producer of type `PEERING`. Note that invoking CreateConnection method with a different range when connection is already established will not modify already provisioned service producer subnetworks. If CreateConnection method is invoked repeatedly to reconnect when peering connection had been disconnected on the consumer side, leaving this field empty will restore previously allocated IP ranges.
 	ReservedPeeringRanges []string `pulumi:"reservedPeeringRanges"`
-	// Output only. The name of the peering service that's associated with this connection, in the following format: `services/{service name}`.
-	Service    *string `pulumi:"service"`
-	ServicesId string  `pulumi:"servicesId"`
+	ServicesId            string   `pulumi:"servicesId"`
 }
 
 // The set of arguments for constructing a ServiceConnection resource.
 type ServiceConnectionArgs struct {
 	// The name of service consumer's VPC network that's connected with service producer network, in the following format: `projects/{project}/global/networks/{network}`. `{project}` is a project number, such as in `12345` that includes the VPC service consumer's VPC network. `{network}` is the name of the service consumer's VPC network.
 	Network pulumi.StringPtrInput
-	// Output only. The name of the VPC Network Peering connection that was created by the service producer.
-	Peering pulumi.StringPtrInput
 	// The name of one or more allocated IP address ranges for this service producer of type `PEERING`. Note that invoking CreateConnection method with a different range when connection is already established will not modify already provisioned service producer subnetworks. If CreateConnection method is invoked repeatedly to reconnect when peering connection had been disconnected on the consumer side, leaving this field empty will restore previously allocated IP ranges.
 	ReservedPeeringRanges pulumi.StringArrayInput
-	// Output only. The name of the peering service that's associated with this connection, in the following format: `services/{service name}`.
-	Service    pulumi.StringPtrInput
-	ServicesId pulumi.StringInput
+	ServicesId            pulumi.StringInput
 }
 
 func (ServiceConnectionArgs) ElementType() reflect.Type {

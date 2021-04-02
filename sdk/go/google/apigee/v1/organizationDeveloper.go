@@ -14,6 +14,35 @@ import (
 // Creates a developer. Once created, the developer can register an app and obtain an API key. At creation time, a developer is set as `active`. To change the developer status, use the SetDeveloperStatus API.
 type OrganizationDeveloper struct {
 	pulumi.CustomResourceState
+
+	// Access type.
+	AccessType pulumi.StringOutput `pulumi:"accessType"`
+	// Developer app family.
+	AppFamily pulumi.StringOutput `pulumi:"appFamily"`
+	// List of apps associated with the developer.
+	Apps pulumi.StringArrayOutput `pulumi:"apps"`
+	// Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
+	Attributes GoogleCloudApigeeV1AttributeResponseArrayOutput `pulumi:"attributes"`
+	// List of companies associated with the developer.
+	Companies pulumi.StringArrayOutput `pulumi:"companies"`
+	// Time at which the developer was created in milliseconds since epoch.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
+	DeveloperId pulumi.StringOutput `pulumi:"developerId"`
+	// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
+	Email pulumi.StringOutput `pulumi:"email"`
+	// Required. First name of the developer.
+	FirstName pulumi.StringOutput `pulumi:"firstName"`
+	// Time at which the developer was last modified in milliseconds since epoch.
+	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
+	// Required. Last name of the developer.
+	LastName pulumi.StringOutput `pulumi:"lastName"`
+	// Name of the Apigee organization in which the developer resides.
+	OrganizationName pulumi.StringOutput `pulumi:"organizationName"`
+	// Status of the developer. Valid values are `active` and `inactive`.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// Required. User name of the developer. Not used by Apigee hybrid.
+	UserName pulumi.StringOutput `pulumi:"userName"`
 }
 
 // NewOrganizationDeveloper registers a new resource with the given unique name, arguments, and options.
@@ -51,9 +80,65 @@ func GetOrganizationDeveloper(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationDeveloper resources.
 type organizationDeveloperState struct {
+	// Access type.
+	AccessType *string `pulumi:"accessType"`
+	// Developer app family.
+	AppFamily *string `pulumi:"appFamily"`
+	// List of apps associated with the developer.
+	Apps []string `pulumi:"apps"`
+	// Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
+	Attributes []GoogleCloudApigeeV1AttributeResponse `pulumi:"attributes"`
+	// List of companies associated with the developer.
+	Companies []string `pulumi:"companies"`
+	// Time at which the developer was created in milliseconds since epoch.
+	CreatedAt *string `pulumi:"createdAt"`
+	// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
+	DeveloperId *string `pulumi:"developerId"`
+	// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
+	Email *string `pulumi:"email"`
+	// Required. First name of the developer.
+	FirstName *string `pulumi:"firstName"`
+	// Time at which the developer was last modified in milliseconds since epoch.
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// Required. Last name of the developer.
+	LastName *string `pulumi:"lastName"`
+	// Name of the Apigee organization in which the developer resides.
+	OrganizationName *string `pulumi:"organizationName"`
+	// Status of the developer. Valid values are `active` and `inactive`.
+	Status *string `pulumi:"status"`
+	// Required. User name of the developer. Not used by Apigee hybrid.
+	UserName *string `pulumi:"userName"`
 }
 
 type OrganizationDeveloperState struct {
+	// Access type.
+	AccessType pulumi.StringPtrInput
+	// Developer app family.
+	AppFamily pulumi.StringPtrInput
+	// List of apps associated with the developer.
+	Apps pulumi.StringArrayInput
+	// Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
+	Attributes GoogleCloudApigeeV1AttributeResponseArrayInput
+	// List of companies associated with the developer.
+	Companies pulumi.StringArrayInput
+	// Time at which the developer was created in milliseconds since epoch.
+	CreatedAt pulumi.StringPtrInput
+	// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
+	DeveloperId pulumi.StringPtrInput
+	// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
+	Email pulumi.StringPtrInput
+	// Required. First name of the developer.
+	FirstName pulumi.StringPtrInput
+	// Time at which the developer was last modified in milliseconds since epoch.
+	LastModifiedAt pulumi.StringPtrInput
+	// Required. Last name of the developer.
+	LastName pulumi.StringPtrInput
+	// Name of the Apigee organization in which the developer resides.
+	OrganizationName pulumi.StringPtrInput
+	// Status of the developer. Valid values are `active` and `inactive`.
+	Status pulumi.StringPtrInput
+	// Required. User name of the developer. Not used by Apigee hybrid.
+	UserName pulumi.StringPtrInput
 }
 
 func (OrganizationDeveloperState) ElementType() reflect.Type {
@@ -71,8 +156,6 @@ type organizationDeveloperArgs struct {
 	Attributes []GoogleCloudApigeeV1Attribute `pulumi:"attributes"`
 	// List of companies associated with the developer.
 	Companies []string `pulumi:"companies"`
-	// Output only. Time at which the developer was created in milliseconds since epoch.
-	CreatedAt *string `pulumi:"createdAt"`
 	// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
 	DeveloperId  *string `pulumi:"developerId"`
 	DevelopersId string  `pulumi:"developersId"`
@@ -80,15 +163,9 @@ type organizationDeveloperArgs struct {
 	Email *string `pulumi:"email"`
 	// Required. First name of the developer.
 	FirstName *string `pulumi:"firstName"`
-	// Output only. Time at which the developer was last modified in milliseconds since epoch.
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
 	// Required. Last name of the developer.
-	LastName *string `pulumi:"lastName"`
-	// Output only. Name of the Apigee organization in which the developer resides.
-	OrganizationName *string `pulumi:"organizationName"`
-	OrganizationsId  string  `pulumi:"organizationsId"`
-	// Output only. Status of the developer. Valid values are `active` and `inactive`.
-	Status *string `pulumi:"status"`
+	LastName        *string `pulumi:"lastName"`
+	OrganizationsId string  `pulumi:"organizationsId"`
 	// Required. User name of the developer. Not used by Apigee hybrid.
 	UserName *string `pulumi:"userName"`
 }
@@ -105,8 +182,6 @@ type OrganizationDeveloperArgs struct {
 	Attributes GoogleCloudApigeeV1AttributeArrayInput
 	// List of companies associated with the developer.
 	Companies pulumi.StringArrayInput
-	// Output only. Time at which the developer was created in milliseconds since epoch.
-	CreatedAt pulumi.StringPtrInput
 	// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
 	DeveloperId  pulumi.StringPtrInput
 	DevelopersId pulumi.StringInput
@@ -114,15 +189,9 @@ type OrganizationDeveloperArgs struct {
 	Email pulumi.StringPtrInput
 	// Required. First name of the developer.
 	FirstName pulumi.StringPtrInput
-	// Output only. Time at which the developer was last modified in milliseconds since epoch.
-	LastModifiedAt pulumi.StringPtrInput
 	// Required. Last name of the developer.
-	LastName pulumi.StringPtrInput
-	// Output only. Name of the Apigee organization in which the developer resides.
-	OrganizationName pulumi.StringPtrInput
-	OrganizationsId  pulumi.StringInput
-	// Output only. Status of the developer. Valid values are `active` and `inactive`.
-	Status pulumi.StringPtrInput
+	LastName        pulumi.StringPtrInput
+	OrganizationsId pulumi.StringInput
 	// Required. User name of the developer. Not used by Apigee hybrid.
 	UserName pulumi.StringPtrInput
 }

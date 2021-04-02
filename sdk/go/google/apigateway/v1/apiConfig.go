@@ -14,6 +14,29 @@ import (
 // Creates a new ApiConfig in a given project and location.
 type ApiConfig struct {
 	pulumi.CustomResourceState
+
+	// Created time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. Display name.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.
+	GatewayServiceAccount pulumi.StringOutput `pulumi:"gatewayServiceAccount"`
+	// Optional. gRPC service definition files. If specified, openapi_documents must not be included.
+	GrpcServices ApigatewayApiConfigGrpcServiceDefinitionResponseArrayOutput `pulumi:"grpcServices"`
+	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+	ManagedServiceConfigs ApigatewayApiConfigFileResponseArrayOutput `pulumi:"managedServiceConfigs"`
+	// Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
+	OpenapiDocuments ApigatewayApiConfigOpenApiDocumentResponseArrayOutput `pulumi:"openapiDocuments"`
+	// The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).
+	ServiceConfigId pulumi.StringOutput `pulumi:"serviceConfigId"`
+	// State of the API Config.
+	State pulumi.StringOutput `pulumi:"state"`
+	// Updated time.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewApiConfig registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +80,53 @@ func GetApiConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApiConfig resources.
 type apiConfigState struct {
+	// Created time.
+	CreateTime *string `pulumi:"createTime"`
+	// Optional. Display name.
+	DisplayName *string `pulumi:"displayName"`
+	// Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.
+	GatewayServiceAccount *string `pulumi:"gatewayServiceAccount"`
+	// Optional. gRPC service definition files. If specified, openapi_documents must not be included.
+	GrpcServices []ApigatewayApiConfigGrpcServiceDefinitionResponse `pulumi:"grpcServices"`
+	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+	Labels map[string]string `pulumi:"labels"`
+	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+	ManagedServiceConfigs []ApigatewayApiConfigFileResponse `pulumi:"managedServiceConfigs"`
+	// Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}
+	Name *string `pulumi:"name"`
+	// Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
+	OpenapiDocuments []ApigatewayApiConfigOpenApiDocumentResponse `pulumi:"openapiDocuments"`
+	// The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).
+	ServiceConfigId *string `pulumi:"serviceConfigId"`
+	// State of the API Config.
+	State *string `pulumi:"state"`
+	// Updated time.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ApiConfigState struct {
+	// Created time.
+	CreateTime pulumi.StringPtrInput
+	// Optional. Display name.
+	DisplayName pulumi.StringPtrInput
+	// Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.
+	GatewayServiceAccount pulumi.StringPtrInput
+	// Optional. gRPC service definition files. If specified, openapi_documents must not be included.
+	GrpcServices ApigatewayApiConfigGrpcServiceDefinitionResponseArrayInput
+	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+	Labels pulumi.StringMapInput
+	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
+	ManagedServiceConfigs ApigatewayApiConfigFileResponseArrayInput
+	// Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}
+	Name pulumi.StringPtrInput
+	// Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
+	OpenapiDocuments ApigatewayApiConfigOpenApiDocumentResponseArrayInput
+	// The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).
+	ServiceConfigId pulumi.StringPtrInput
+	// State of the API Config.
+	State pulumi.StringPtrInput
+	// Updated time.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (ApiConfigState) ElementType() reflect.Type {
@@ -69,8 +136,6 @@ func (ApiConfigState) ElementType() reflect.Type {
 type apiConfigArgs struct {
 	ApisId    string `pulumi:"apisId"`
 	ConfigsId string `pulumi:"configsId"`
-	// Output only. Created time.
-	CreateTime *string `pulumi:"createTime"`
 	// Optional. Display name.
 	DisplayName *string `pulumi:"displayName"`
 	// Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.
@@ -82,25 +147,15 @@ type apiConfigArgs struct {
 	LocationsId string            `pulumi:"locationsId"`
 	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
 	ManagedServiceConfigs []ApigatewayApiConfigFile `pulumi:"managedServiceConfigs"`
-	// Output only. Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}
-	Name *string `pulumi:"name"`
 	// Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
 	OpenapiDocuments []ApigatewayApiConfigOpenApiDocument `pulumi:"openapiDocuments"`
 	ProjectsId       string                               `pulumi:"projectsId"`
-	// Output only. The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).
-	ServiceConfigId *string `pulumi:"serviceConfigId"`
-	// Output only. State of the API Config.
-	State *string `pulumi:"state"`
-	// Output only. Updated time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a ApiConfig resource.
 type ApiConfigArgs struct {
 	ApisId    pulumi.StringInput
 	ConfigsId pulumi.StringInput
-	// Output only. Created time.
-	CreateTime pulumi.StringPtrInput
 	// Optional. Display name.
 	DisplayName pulumi.StringPtrInput
 	// Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.
@@ -112,17 +167,9 @@ type ApiConfigArgs struct {
 	LocationsId pulumi.StringInput
 	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
 	ManagedServiceConfigs ApigatewayApiConfigFileArrayInput
-	// Output only. Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config}
-	Name pulumi.StringPtrInput
 	// Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
 	OpenapiDocuments ApigatewayApiConfigOpenApiDocumentArrayInput
 	ProjectsId       pulumi.StringInput
-	// Output only. The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).
-	ServiceConfigId pulumi.StringPtrInput
-	// Output only. State of the API Config.
-	State pulumi.StringPtrInput
-	// Output only. Updated time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (ApiConfigArgs) ElementType() reflect.Type {

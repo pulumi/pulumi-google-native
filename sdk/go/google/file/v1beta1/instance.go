@@ -14,6 +14,27 @@ import (
 // Creates an instance. When creating from a backup, the capacity of the new instance needs to be equal to or larger than the capacity of the backup (and also equal to or larger than the minimum capacity of the tier).
 type Instance struct {
 	pulumi.CustomResourceState
+
+	// The time when the instance was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The description of the instance (2048 characters or less).
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// File system shares on the instance. For this version, only a single file share is supported.
+	FileShares FileShareConfigResponseArrayOutput `pulumi:"fileShares"`
+	// Resource labels to represent user provided metadata.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The resource name of the instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// VPC networks to which the instance is connected. For this version, only a single network is supported.
+	Networks NetworkConfigResponseArrayOutput `pulumi:"networks"`
+	// The instance state.
+	State pulumi.StringOutput `pulumi:"state"`
+	// Additional information about the instance state, if available.
+	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
+	// The service tier of the instance.
+	Tier pulumi.StringOutput `pulumi:"tier"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +75,49 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// The time when the instance was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The description of the instance (2048 characters or less).
+	Description *string `pulumi:"description"`
+	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+	Etag *string `pulumi:"etag"`
+	// File system shares on the instance. For this version, only a single file share is supported.
+	FileShares []FileShareConfigResponse `pulumi:"fileShares"`
+	// Resource labels to represent user provided metadata.
+	Labels map[string]string `pulumi:"labels"`
+	// The resource name of the instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}.
+	Name *string `pulumi:"name"`
+	// VPC networks to which the instance is connected. For this version, only a single network is supported.
+	Networks []NetworkConfigResponse `pulumi:"networks"`
+	// The instance state.
+	State *string `pulumi:"state"`
+	// Additional information about the instance state, if available.
+	StatusMessage *string `pulumi:"statusMessage"`
+	// The service tier of the instance.
+	Tier *string `pulumi:"tier"`
 }
 
 type InstanceState struct {
+	// The time when the instance was created.
+	CreateTime pulumi.StringPtrInput
+	// The description of the instance (2048 characters or less).
+	Description pulumi.StringPtrInput
+	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+	Etag pulumi.StringPtrInput
+	// File system shares on the instance. For this version, only a single file share is supported.
+	FileShares FileShareConfigResponseArrayInput
+	// Resource labels to represent user provided metadata.
+	Labels pulumi.StringMapInput
+	// The resource name of the instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}.
+	Name pulumi.StringPtrInput
+	// VPC networks to which the instance is connected. For this version, only a single network is supported.
+	Networks NetworkConfigResponseArrayInput
+	// The instance state.
+	State pulumi.StringPtrInput
+	// Additional information about the instance state, if available.
+	StatusMessage pulumi.StringPtrInput
+	// The service tier of the instance.
+	Tier pulumi.StringPtrInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -64,8 +125,6 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// Output only. The time when the instance was created.
-	CreateTime *string `pulumi:"createTime"`
 	// The description of the instance (2048 characters or less).
 	Description *string `pulumi:"description"`
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
@@ -76,23 +135,15 @@ type instanceArgs struct {
 	// Resource labels to represent user provided metadata.
 	Labels      map[string]string `pulumi:"labels"`
 	LocationsId string            `pulumi:"locationsId"`
-	// Output only. The resource name of the instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}.
-	Name *string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks   []NetworkConfig `pulumi:"networks"`
 	ProjectsId string          `pulumi:"projectsId"`
-	// Output only. The instance state.
-	State *string `pulumi:"state"`
-	// Output only. Additional information about the instance state, if available.
-	StatusMessage *string `pulumi:"statusMessage"`
 	// The service tier of the instance.
 	Tier *string `pulumi:"tier"`
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// Output only. The time when the instance was created.
-	CreateTime pulumi.StringPtrInput
 	// The description of the instance (2048 characters or less).
 	Description pulumi.StringPtrInput
 	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
@@ -103,15 +154,9 @@ type InstanceArgs struct {
 	// Resource labels to represent user provided metadata.
 	Labels      pulumi.StringMapInput
 	LocationsId pulumi.StringInput
-	// Output only. The resource name of the instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}.
-	Name pulumi.StringPtrInput
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks   NetworkConfigArrayInput
 	ProjectsId pulumi.StringInput
-	// Output only. The instance state.
-	State pulumi.StringPtrInput
-	// Output only. Additional information about the instance state, if available.
-	StatusMessage pulumi.StringPtrInput
 	// The service tier of the instance.
 	Tier pulumi.StringPtrInput
 }

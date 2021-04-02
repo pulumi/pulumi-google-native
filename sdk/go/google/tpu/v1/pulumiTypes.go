@@ -11,112 +11,112 @@ import (
 )
 
 // A network endpoint over which a TPU worker can be reached.
-type NetworkEndpoint struct {
+type NetworkEndpointResponse struct {
 	// The IP address of this network endpoint.
-	IpAddress *string `pulumi:"ipAddress"`
+	IpAddress string `pulumi:"ipAddress"`
 	// The port of this network endpoint.
-	Port *int `pulumi:"port"`
+	Port int `pulumi:"port"`
 }
 
-// NetworkEndpointInput is an input type that accepts NetworkEndpointArgs and NetworkEndpointOutput values.
-// You can construct a concrete instance of `NetworkEndpointInput` via:
+// NetworkEndpointResponseInput is an input type that accepts NetworkEndpointResponseArgs and NetworkEndpointResponseOutput values.
+// You can construct a concrete instance of `NetworkEndpointResponseInput` via:
 //
-//          NetworkEndpointArgs{...}
-type NetworkEndpointInput interface {
+//          NetworkEndpointResponseArgs{...}
+type NetworkEndpointResponseInput interface {
 	pulumi.Input
 
-	ToNetworkEndpointOutput() NetworkEndpointOutput
-	ToNetworkEndpointOutputWithContext(context.Context) NetworkEndpointOutput
+	ToNetworkEndpointResponseOutput() NetworkEndpointResponseOutput
+	ToNetworkEndpointResponseOutputWithContext(context.Context) NetworkEndpointResponseOutput
 }
 
 // A network endpoint over which a TPU worker can be reached.
-type NetworkEndpointArgs struct {
+type NetworkEndpointResponseArgs struct {
 	// The IP address of this network endpoint.
-	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
 	// The port of this network endpoint.
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	Port pulumi.IntInput `pulumi:"port"`
 }
 
-func (NetworkEndpointArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkEndpoint)(nil)).Elem()
+func (NetworkEndpointResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointResponse)(nil)).Elem()
 }
 
-func (i NetworkEndpointArgs) ToNetworkEndpointOutput() NetworkEndpointOutput {
-	return i.ToNetworkEndpointOutputWithContext(context.Background())
+func (i NetworkEndpointResponseArgs) ToNetworkEndpointResponseOutput() NetworkEndpointResponseOutput {
+	return i.ToNetworkEndpointResponseOutputWithContext(context.Background())
 }
 
-func (i NetworkEndpointArgs) ToNetworkEndpointOutputWithContext(ctx context.Context) NetworkEndpointOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointOutput)
+func (i NetworkEndpointResponseArgs) ToNetworkEndpointResponseOutputWithContext(ctx context.Context) NetworkEndpointResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointResponseOutput)
 }
 
-// NetworkEndpointArrayInput is an input type that accepts NetworkEndpointArray and NetworkEndpointArrayOutput values.
-// You can construct a concrete instance of `NetworkEndpointArrayInput` via:
+// NetworkEndpointResponseArrayInput is an input type that accepts NetworkEndpointResponseArray and NetworkEndpointResponseArrayOutput values.
+// You can construct a concrete instance of `NetworkEndpointResponseArrayInput` via:
 //
-//          NetworkEndpointArray{ NetworkEndpointArgs{...} }
-type NetworkEndpointArrayInput interface {
+//          NetworkEndpointResponseArray{ NetworkEndpointResponseArgs{...} }
+type NetworkEndpointResponseArrayInput interface {
 	pulumi.Input
 
-	ToNetworkEndpointArrayOutput() NetworkEndpointArrayOutput
-	ToNetworkEndpointArrayOutputWithContext(context.Context) NetworkEndpointArrayOutput
+	ToNetworkEndpointResponseArrayOutput() NetworkEndpointResponseArrayOutput
+	ToNetworkEndpointResponseArrayOutputWithContext(context.Context) NetworkEndpointResponseArrayOutput
 }
 
-type NetworkEndpointArray []NetworkEndpointInput
+type NetworkEndpointResponseArray []NetworkEndpointResponseInput
 
-func (NetworkEndpointArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkEndpoint)(nil)).Elem()
+func (NetworkEndpointResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkEndpointResponse)(nil)).Elem()
 }
 
-func (i NetworkEndpointArray) ToNetworkEndpointArrayOutput() NetworkEndpointArrayOutput {
-	return i.ToNetworkEndpointArrayOutputWithContext(context.Background())
+func (i NetworkEndpointResponseArray) ToNetworkEndpointResponseArrayOutput() NetworkEndpointResponseArrayOutput {
+	return i.ToNetworkEndpointResponseArrayOutputWithContext(context.Background())
 }
 
-func (i NetworkEndpointArray) ToNetworkEndpointArrayOutputWithContext(ctx context.Context) NetworkEndpointArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointArrayOutput)
+func (i NetworkEndpointResponseArray) ToNetworkEndpointResponseArrayOutputWithContext(ctx context.Context) NetworkEndpointResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointResponseArrayOutput)
 }
 
 // A network endpoint over which a TPU worker can be reached.
-type NetworkEndpointOutput struct{ *pulumi.OutputState }
+type NetworkEndpointResponseOutput struct{ *pulumi.OutputState }
 
-func (NetworkEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkEndpoint)(nil)).Elem()
+func (NetworkEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointResponse)(nil)).Elem()
 }
 
-func (o NetworkEndpointOutput) ToNetworkEndpointOutput() NetworkEndpointOutput {
+func (o NetworkEndpointResponseOutput) ToNetworkEndpointResponseOutput() NetworkEndpointResponseOutput {
 	return o
 }
 
-func (o NetworkEndpointOutput) ToNetworkEndpointOutputWithContext(ctx context.Context) NetworkEndpointOutput {
+func (o NetworkEndpointResponseOutput) ToNetworkEndpointResponseOutputWithContext(ctx context.Context) NetworkEndpointResponseOutput {
 	return o
 }
 
 // The IP address of this network endpoint.
-func (o NetworkEndpointOutput) IpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkEndpoint) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+func (o NetworkEndpointResponseOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkEndpointResponse) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
 // The port of this network endpoint.
-func (o NetworkEndpointOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NetworkEndpoint) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o NetworkEndpointResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v NetworkEndpointResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
-type NetworkEndpointArrayOutput struct{ *pulumi.OutputState }
+type NetworkEndpointResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (NetworkEndpointArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkEndpoint)(nil)).Elem()
+func (NetworkEndpointResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkEndpointResponse)(nil)).Elem()
 }
 
-func (o NetworkEndpointArrayOutput) ToNetworkEndpointArrayOutput() NetworkEndpointArrayOutput {
+func (o NetworkEndpointResponseArrayOutput) ToNetworkEndpointResponseArrayOutput() NetworkEndpointResponseArrayOutput {
 	return o
 }
 
-func (o NetworkEndpointArrayOutput) ToNetworkEndpointArrayOutputWithContext(ctx context.Context) NetworkEndpointArrayOutput {
+func (o NetworkEndpointResponseArrayOutput) ToNetworkEndpointResponseArrayOutputWithContext(ctx context.Context) NetworkEndpointResponseArrayOutput {
 	return o
 }
 
-func (o NetworkEndpointArrayOutput) Index(i pulumi.IntInput) NetworkEndpointOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkEndpoint {
-		return vs[0].([]NetworkEndpoint)[vs[1].(int)]
-	}).(NetworkEndpointOutput)
+func (o NetworkEndpointResponseArrayOutput) Index(i pulumi.IntInput) NetworkEndpointResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkEndpointResponse {
+		return vs[0].([]NetworkEndpointResponse)[vs[1].(int)]
+	}).(NetworkEndpointResponseOutput)
 }
 
 // Sets the scheduling options for this node.
@@ -272,138 +272,293 @@ func (o SchedulingConfigPtrOutput) Reserved() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A Symptom instance.
-type Symptom struct {
-	// Timestamp when the Symptom is created.
-	CreateTime *string `pulumi:"createTime"`
-	// Detailed information of the current Symptom.
-	Details *string `pulumi:"details"`
-	// Type of the Symptom.
-	SymptomType *string `pulumi:"symptomType"`
-	// A string used to uniquely distinguish a worker within a TPU node.
-	WorkerId *string `pulumi:"workerId"`
+// Sets the scheduling options for this node.
+type SchedulingConfigResponse struct {
+	// Defines whether the node is preemptible.
+	Preemptible bool `pulumi:"preemptible"`
+	// Whether the node is created under a reservation.
+	Reserved bool `pulumi:"reserved"`
 }
 
-// SymptomInput is an input type that accepts SymptomArgs and SymptomOutput values.
-// You can construct a concrete instance of `SymptomInput` via:
+// SchedulingConfigResponseInput is an input type that accepts SchedulingConfigResponseArgs and SchedulingConfigResponseOutput values.
+// You can construct a concrete instance of `SchedulingConfigResponseInput` via:
 //
-//          SymptomArgs{...}
-type SymptomInput interface {
+//          SchedulingConfigResponseArgs{...}
+type SchedulingConfigResponseInput interface {
 	pulumi.Input
 
-	ToSymptomOutput() SymptomOutput
-	ToSymptomOutputWithContext(context.Context) SymptomOutput
+	ToSchedulingConfigResponseOutput() SchedulingConfigResponseOutput
+	ToSchedulingConfigResponseOutputWithContext(context.Context) SchedulingConfigResponseOutput
 }
 
-// A Symptom instance.
-type SymptomArgs struct {
-	// Timestamp when the Symptom is created.
-	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// Detailed information of the current Symptom.
-	Details pulumi.StringPtrInput `pulumi:"details"`
-	// Type of the Symptom.
-	SymptomType pulumi.StringPtrInput `pulumi:"symptomType"`
-	// A string used to uniquely distinguish a worker within a TPU node.
-	WorkerId pulumi.StringPtrInput `pulumi:"workerId"`
+// Sets the scheduling options for this node.
+type SchedulingConfigResponseArgs struct {
+	// Defines whether the node is preemptible.
+	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
+	// Whether the node is created under a reservation.
+	Reserved pulumi.BoolInput `pulumi:"reserved"`
 }
 
-func (SymptomArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Symptom)(nil)).Elem()
+func (SchedulingConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingConfigResponse)(nil)).Elem()
 }
 
-func (i SymptomArgs) ToSymptomOutput() SymptomOutput {
-	return i.ToSymptomOutputWithContext(context.Background())
+func (i SchedulingConfigResponseArgs) ToSchedulingConfigResponseOutput() SchedulingConfigResponseOutput {
+	return i.ToSchedulingConfigResponseOutputWithContext(context.Background())
 }
 
-func (i SymptomArgs) ToSymptomOutputWithContext(ctx context.Context) SymptomOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SymptomOutput)
+func (i SchedulingConfigResponseArgs) ToSchedulingConfigResponseOutputWithContext(ctx context.Context) SchedulingConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulingConfigResponseOutput)
 }
 
-// SymptomArrayInput is an input type that accepts SymptomArray and SymptomArrayOutput values.
-// You can construct a concrete instance of `SymptomArrayInput` via:
+func (i SchedulingConfigResponseArgs) ToSchedulingConfigResponsePtrOutput() SchedulingConfigResponsePtrOutput {
+	return i.ToSchedulingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SchedulingConfigResponseArgs) ToSchedulingConfigResponsePtrOutputWithContext(ctx context.Context) SchedulingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulingConfigResponseOutput).ToSchedulingConfigResponsePtrOutputWithContext(ctx)
+}
+
+// SchedulingConfigResponsePtrInput is an input type that accepts SchedulingConfigResponseArgs, SchedulingConfigResponsePtr and SchedulingConfigResponsePtrOutput values.
+// You can construct a concrete instance of `SchedulingConfigResponsePtrInput` via:
 //
-//          SymptomArray{ SymptomArgs{...} }
-type SymptomArrayInput interface {
+//          SchedulingConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SchedulingConfigResponsePtrInput interface {
 	pulumi.Input
 
-	ToSymptomArrayOutput() SymptomArrayOutput
-	ToSymptomArrayOutputWithContext(context.Context) SymptomArrayOutput
+	ToSchedulingConfigResponsePtrOutput() SchedulingConfigResponsePtrOutput
+	ToSchedulingConfigResponsePtrOutputWithContext(context.Context) SchedulingConfigResponsePtrOutput
 }
 
-type SymptomArray []SymptomInput
+type schedulingConfigResponsePtrType SchedulingConfigResponseArgs
 
-func (SymptomArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Symptom)(nil)).Elem()
+func SchedulingConfigResponsePtr(v *SchedulingConfigResponseArgs) SchedulingConfigResponsePtrInput {
+	return (*schedulingConfigResponsePtrType)(v)
 }
 
-func (i SymptomArray) ToSymptomArrayOutput() SymptomArrayOutput {
-	return i.ToSymptomArrayOutputWithContext(context.Background())
+func (*schedulingConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulingConfigResponse)(nil)).Elem()
 }
 
-func (i SymptomArray) ToSymptomArrayOutputWithContext(ctx context.Context) SymptomArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SymptomArrayOutput)
+func (i *schedulingConfigResponsePtrType) ToSchedulingConfigResponsePtrOutput() SchedulingConfigResponsePtrOutput {
+	return i.ToSchedulingConfigResponsePtrOutputWithContext(context.Background())
 }
 
-// A Symptom instance.
-type SymptomOutput struct{ *pulumi.OutputState }
-
-func (SymptomOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Symptom)(nil)).Elem()
+func (i *schedulingConfigResponsePtrType) ToSchedulingConfigResponsePtrOutputWithContext(ctx context.Context) SchedulingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchedulingConfigResponsePtrOutput)
 }
 
-func (o SymptomOutput) ToSymptomOutput() SymptomOutput {
+// Sets the scheduling options for this node.
+type SchedulingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SchedulingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingConfigResponse)(nil)).Elem()
+}
+
+func (o SchedulingConfigResponseOutput) ToSchedulingConfigResponseOutput() SchedulingConfigResponseOutput {
 	return o
 }
 
-func (o SymptomOutput) ToSymptomOutputWithContext(ctx context.Context) SymptomOutput {
+func (o SchedulingConfigResponseOutput) ToSchedulingConfigResponseOutputWithContext(ctx context.Context) SchedulingConfigResponseOutput {
+	return o
+}
+
+func (o SchedulingConfigResponseOutput) ToSchedulingConfigResponsePtrOutput() SchedulingConfigResponsePtrOutput {
+	return o.ToSchedulingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SchedulingConfigResponseOutput) ToSchedulingConfigResponsePtrOutputWithContext(ctx context.Context) SchedulingConfigResponsePtrOutput {
+	return o.ApplyT(func(v SchedulingConfigResponse) *SchedulingConfigResponse {
+		return &v
+	}).(SchedulingConfigResponsePtrOutput)
+}
+
+// Defines whether the node is preemptible.
+func (o SchedulingConfigResponseOutput) Preemptible() pulumi.BoolOutput {
+	return o.ApplyT(func(v SchedulingConfigResponse) bool { return v.Preemptible }).(pulumi.BoolOutput)
+}
+
+// Whether the node is created under a reservation.
+func (o SchedulingConfigResponseOutput) Reserved() pulumi.BoolOutput {
+	return o.ApplyT(func(v SchedulingConfigResponse) bool { return v.Reserved }).(pulumi.BoolOutput)
+}
+
+type SchedulingConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SchedulingConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulingConfigResponse)(nil)).Elem()
+}
+
+func (o SchedulingConfigResponsePtrOutput) ToSchedulingConfigResponsePtrOutput() SchedulingConfigResponsePtrOutput {
+	return o
+}
+
+func (o SchedulingConfigResponsePtrOutput) ToSchedulingConfigResponsePtrOutputWithContext(ctx context.Context) SchedulingConfigResponsePtrOutput {
+	return o
+}
+
+func (o SchedulingConfigResponsePtrOutput) Elem() SchedulingConfigResponseOutput {
+	return o.ApplyT(func(v *SchedulingConfigResponse) SchedulingConfigResponse { return *v }).(SchedulingConfigResponseOutput)
+}
+
+// Defines whether the node is preemptible.
+func (o SchedulingConfigResponsePtrOutput) Preemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SchedulingConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Preemptible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the node is created under a reservation.
+func (o SchedulingConfigResponsePtrOutput) Reserved() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SchedulingConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Reserved
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A Symptom instance.
+type SymptomResponse struct {
+	// Timestamp when the Symptom is created.
+	CreateTime string `pulumi:"createTime"`
+	// Detailed information of the current Symptom.
+	Details string `pulumi:"details"`
+	// Type of the Symptom.
+	SymptomType string `pulumi:"symptomType"`
+	// A string used to uniquely distinguish a worker within a TPU node.
+	WorkerId string `pulumi:"workerId"`
+}
+
+// SymptomResponseInput is an input type that accepts SymptomResponseArgs and SymptomResponseOutput values.
+// You can construct a concrete instance of `SymptomResponseInput` via:
+//
+//          SymptomResponseArgs{...}
+type SymptomResponseInput interface {
+	pulumi.Input
+
+	ToSymptomResponseOutput() SymptomResponseOutput
+	ToSymptomResponseOutputWithContext(context.Context) SymptomResponseOutput
+}
+
+// A Symptom instance.
+type SymptomResponseArgs struct {
+	// Timestamp when the Symptom is created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Detailed information of the current Symptom.
+	Details pulumi.StringInput `pulumi:"details"`
+	// Type of the Symptom.
+	SymptomType pulumi.StringInput `pulumi:"symptomType"`
+	// A string used to uniquely distinguish a worker within a TPU node.
+	WorkerId pulumi.StringInput `pulumi:"workerId"`
+}
+
+func (SymptomResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SymptomResponse)(nil)).Elem()
+}
+
+func (i SymptomResponseArgs) ToSymptomResponseOutput() SymptomResponseOutput {
+	return i.ToSymptomResponseOutputWithContext(context.Background())
+}
+
+func (i SymptomResponseArgs) ToSymptomResponseOutputWithContext(ctx context.Context) SymptomResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SymptomResponseOutput)
+}
+
+// SymptomResponseArrayInput is an input type that accepts SymptomResponseArray and SymptomResponseArrayOutput values.
+// You can construct a concrete instance of `SymptomResponseArrayInput` via:
+//
+//          SymptomResponseArray{ SymptomResponseArgs{...} }
+type SymptomResponseArrayInput interface {
+	pulumi.Input
+
+	ToSymptomResponseArrayOutput() SymptomResponseArrayOutput
+	ToSymptomResponseArrayOutputWithContext(context.Context) SymptomResponseArrayOutput
+}
+
+type SymptomResponseArray []SymptomResponseInput
+
+func (SymptomResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SymptomResponse)(nil)).Elem()
+}
+
+func (i SymptomResponseArray) ToSymptomResponseArrayOutput() SymptomResponseArrayOutput {
+	return i.ToSymptomResponseArrayOutputWithContext(context.Background())
+}
+
+func (i SymptomResponseArray) ToSymptomResponseArrayOutputWithContext(ctx context.Context) SymptomResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SymptomResponseArrayOutput)
+}
+
+// A Symptom instance.
+type SymptomResponseOutput struct{ *pulumi.OutputState }
+
+func (SymptomResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SymptomResponse)(nil)).Elem()
+}
+
+func (o SymptomResponseOutput) ToSymptomResponseOutput() SymptomResponseOutput {
+	return o
+}
+
+func (o SymptomResponseOutput) ToSymptomResponseOutputWithContext(ctx context.Context) SymptomResponseOutput {
 	return o
 }
 
 // Timestamp when the Symptom is created.
-func (o SymptomOutput) CreateTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Symptom) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+func (o SymptomResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SymptomResponse) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // Detailed information of the current Symptom.
-func (o SymptomOutput) Details() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Symptom) *string { return v.Details }).(pulumi.StringPtrOutput)
+func (o SymptomResponseOutput) Details() pulumi.StringOutput {
+	return o.ApplyT(func(v SymptomResponse) string { return v.Details }).(pulumi.StringOutput)
 }
 
 // Type of the Symptom.
-func (o SymptomOutput) SymptomType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Symptom) *string { return v.SymptomType }).(pulumi.StringPtrOutput)
+func (o SymptomResponseOutput) SymptomType() pulumi.StringOutput {
+	return o.ApplyT(func(v SymptomResponse) string { return v.SymptomType }).(pulumi.StringOutput)
 }
 
 // A string used to uniquely distinguish a worker within a TPU node.
-func (o SymptomOutput) WorkerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Symptom) *string { return v.WorkerId }).(pulumi.StringPtrOutput)
+func (o SymptomResponseOutput) WorkerId() pulumi.StringOutput {
+	return o.ApplyT(func(v SymptomResponse) string { return v.WorkerId }).(pulumi.StringOutput)
 }
 
-type SymptomArrayOutput struct{ *pulumi.OutputState }
+type SymptomResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (SymptomArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Symptom)(nil)).Elem()
+func (SymptomResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SymptomResponse)(nil)).Elem()
 }
 
-func (o SymptomArrayOutput) ToSymptomArrayOutput() SymptomArrayOutput {
+func (o SymptomResponseArrayOutput) ToSymptomResponseArrayOutput() SymptomResponseArrayOutput {
 	return o
 }
 
-func (o SymptomArrayOutput) ToSymptomArrayOutputWithContext(ctx context.Context) SymptomArrayOutput {
+func (o SymptomResponseArrayOutput) ToSymptomResponseArrayOutputWithContext(ctx context.Context) SymptomResponseArrayOutput {
 	return o
 }
 
-func (o SymptomArrayOutput) Index(i pulumi.IntInput) SymptomOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Symptom {
-		return vs[0].([]Symptom)[vs[1].(int)]
-	}).(SymptomOutput)
+func (o SymptomResponseArrayOutput) Index(i pulumi.IntInput) SymptomResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SymptomResponse {
+		return vs[0].([]SymptomResponse)[vs[1].(int)]
+	}).(SymptomResponseOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(NetworkEndpointOutput{})
-	pulumi.RegisterOutputType(NetworkEndpointArrayOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointResponseOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(SchedulingConfigOutput{})
 	pulumi.RegisterOutputType(SchedulingConfigPtrOutput{})
-	pulumi.RegisterOutputType(SymptomOutput{})
-	pulumi.RegisterOutputType(SymptomArrayOutput{})
+	pulumi.RegisterOutputType(SchedulingConfigResponseOutput{})
+	pulumi.RegisterOutputType(SchedulingConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(SymptomResponseOutput{})
+	pulumi.RegisterOutputType(SymptomResponseArrayOutput{})
 }

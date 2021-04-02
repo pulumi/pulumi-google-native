@@ -71,14 +71,10 @@ type reservationAssignmentArgs struct {
 	Assignee      *string `pulumi:"assignee"`
 	AssignmentsId string  `pulumi:"assignmentsId"`
 	// Which type of jobs will use the reservation.
-	JobType     *string `pulumi:"jobType"`
-	LocationsId string  `pulumi:"locationsId"`
-	// Output only. Name of the resource. E.g.: `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
-	Name           *string `pulumi:"name"`
+	JobType        *string `pulumi:"jobType"`
+	LocationsId    string  `pulumi:"locationsId"`
 	ProjectsId     string  `pulumi:"projectsId"`
 	ReservationsId string  `pulumi:"reservationsId"`
-	// Output only. State of the assignment.
-	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a ReservationAssignment resource.
@@ -87,14 +83,10 @@ type ReservationAssignmentArgs struct {
 	Assignee      pulumi.StringPtrInput
 	AssignmentsId pulumi.StringInput
 	// Which type of jobs will use the reservation.
-	JobType     pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
-	// Output only. Name of the resource. E.g.: `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
-	Name           pulumi.StringPtrInput
+	JobType        pulumi.StringPtrInput
+	LocationsId    pulumi.StringInput
 	ProjectsId     pulumi.StringInput
 	ReservationsId pulumi.StringInput
-	// Output only. State of the assignment.
-	State pulumi.StringPtrInput
 }
 
 func (ReservationAssignmentArgs) ElementType() reflect.Type {

@@ -14,6 +14,41 @@ import (
 // Creates a metastore service in a project and location.
 type Service struct {
 	pulumi.CustomResourceState
+
+	// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+	ArtifactGcsUri pulumi.StringOutput `pulumi:"artifactGcsUri"`
+	// The time when the metastore service was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The URI of the endpoint used to access the metastore service.
+	EndpointUri pulumi.StringOutput `pulumi:"endpointUri"`
+	// Configuration information specific to running Hive metastore software as the metastore service.
+	HiveMetastoreConfig HiveMetastoreConfigResponseOutput `pulumi:"hiveMetastoreConfig"`
+	// User-defined labels for the metastore service.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+	MaintenanceWindow MaintenanceWindowResponseOutput `pulumi:"maintenanceWindow"`
+	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	MetadataIntegration MetadataIntegrationResponseOutput `pulumi:"metadataIntegration"`
+	// The metadata management activities of the metastore service.
+	MetadataManagementActivity MetadataManagementActivityResponseOutput `pulumi:"metadataManagementActivity"`
+	// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+	Network pulumi.StringOutput `pulumi:"network"`
+	// The TCP port at which the metastore service is reached. Default: 9083.
+	Port pulumi.IntOutput `pulumi:"port"`
+	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+	ReleaseChannel pulumi.StringOutput `pulumi:"releaseChannel"`
+	// The current state of the metastore service.
+	State pulumi.StringOutput `pulumi:"state"`
+	// Additional information about the current state of the metastore service, if available.
+	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
+	// The tier of the service.
+	Tier pulumi.StringOutput `pulumi:"tier"`
+	// The globally unique resource identifier of the metastore service.
+	Uid pulumi.StringOutput `pulumi:"uid"`
+	// The time when the metastore service was last updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewService registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +89,77 @@ func GetService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Service resources.
 type serviceState struct {
+	// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+	ArtifactGcsUri *string `pulumi:"artifactGcsUri"`
+	// The time when the metastore service was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The URI of the endpoint used to access the metastore service.
+	EndpointUri *string `pulumi:"endpointUri"`
+	// Configuration information specific to running Hive metastore software as the metastore service.
+	HiveMetastoreConfig *HiveMetastoreConfigResponse `pulumi:"hiveMetastoreConfig"`
+	// User-defined labels for the metastore service.
+	Labels map[string]string `pulumi:"labels"`
+	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+	MaintenanceWindow *MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
+	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	MetadataIntegration *MetadataIntegrationResponse `pulumi:"metadataIntegration"`
+	// The metadata management activities of the metastore service.
+	MetadataManagementActivity *MetadataManagementActivityResponse `pulumi:"metadataManagementActivity"`
+	// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+	Name *string `pulumi:"name"`
+	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+	Network *string `pulumi:"network"`
+	// The TCP port at which the metastore service is reached. Default: 9083.
+	Port *int `pulumi:"port"`
+	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+	ReleaseChannel *string `pulumi:"releaseChannel"`
+	// The current state of the metastore service.
+	State *string `pulumi:"state"`
+	// Additional information about the current state of the metastore service, if available.
+	StateMessage *string `pulumi:"stateMessage"`
+	// The tier of the service.
+	Tier *string `pulumi:"tier"`
+	// The globally unique resource identifier of the metastore service.
+	Uid *string `pulumi:"uid"`
+	// The time when the metastore service was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ServiceState struct {
+	// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+	ArtifactGcsUri pulumi.StringPtrInput
+	// The time when the metastore service was created.
+	CreateTime pulumi.StringPtrInput
+	// The URI of the endpoint used to access the metastore service.
+	EndpointUri pulumi.StringPtrInput
+	// Configuration information specific to running Hive metastore software as the metastore service.
+	HiveMetastoreConfig HiveMetastoreConfigResponsePtrInput
+	// User-defined labels for the metastore service.
+	Labels pulumi.StringMapInput
+	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
+	MaintenanceWindow MaintenanceWindowResponsePtrInput
+	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	MetadataIntegration MetadataIntegrationResponsePtrInput
+	// The metadata management activities of the metastore service.
+	MetadataManagementActivity MetadataManagementActivityResponsePtrInput
+	// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+	Name pulumi.StringPtrInput
+	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+	Network pulumi.StringPtrInput
+	// The TCP port at which the metastore service is reached. Default: 9083.
+	Port pulumi.IntPtrInput
+	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+	ReleaseChannel pulumi.StringPtrInput
+	// The current state of the metastore service.
+	State pulumi.StringPtrInput
+	// Additional information about the current state of the metastore service, if available.
+	StateMessage pulumi.StringPtrInput
+	// The tier of the service.
+	Tier pulumi.StringPtrInput
+	// The globally unique resource identifier of the metastore service.
+	Uid pulumi.StringPtrInput
+	// The time when the metastore service was last updated.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (ServiceState) ElementType() reflect.Type {
@@ -64,12 +167,6 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
-	// Output only. A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
-	ArtifactGcsUri *string `pulumi:"artifactGcsUri"`
-	// Output only. The time when the metastore service was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Output only. The URI of the endpoint used to access the metastore service.
-	EndpointUri *string `pulumi:"endpointUri"`
 	// Configuration information specific to running Hive metastore software as the metastore service.
 	HiveMetastoreConfig *HiveMetastoreConfig `pulumi:"hiveMetastoreConfig"`
 	// User-defined labels for the metastore service.
@@ -79,8 +176,6 @@ type serviceArgs struct {
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
 	MetadataIntegration *MetadataIntegration `pulumi:"metadataIntegration"`
-	// Output only. The metadata management activities of the metastore service.
-	MetadataManagementActivity *MetadataManagementActivity `pulumi:"metadataManagementActivity"`
 	// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
 	Name *string `pulumi:"name"`
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
@@ -91,26 +186,12 @@ type serviceArgs struct {
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel *string `pulumi:"releaseChannel"`
 	ServicesId     string  `pulumi:"servicesId"`
-	// Output only. The current state of the metastore service.
-	State *string `pulumi:"state"`
-	// Output only. Additional information about the current state of the metastore service, if available.
-	StateMessage *string `pulumi:"stateMessage"`
 	// The tier of the service.
 	Tier *string `pulumi:"tier"`
-	// Output only. The globally unique resource identifier of the metastore service.
-	Uid *string `pulumi:"uid"`
-	// Output only. The time when the metastore service was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
-	// Output only. A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
-	ArtifactGcsUri pulumi.StringPtrInput
-	// Output only. The time when the metastore service was created.
-	CreateTime pulumi.StringPtrInput
-	// Output only. The URI of the endpoint used to access the metastore service.
-	EndpointUri pulumi.StringPtrInput
 	// Configuration information specific to running Hive metastore software as the metastore service.
 	HiveMetastoreConfig HiveMetastoreConfigPtrInput
 	// User-defined labels for the metastore service.
@@ -120,8 +201,6 @@ type ServiceArgs struct {
 	MaintenanceWindow MaintenanceWindowPtrInput
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
 	MetadataIntegration MetadataIntegrationPtrInput
-	// Output only. The metadata management activities of the metastore service.
-	MetadataManagementActivity MetadataManagementActivityPtrInput
 	// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
 	Name pulumi.StringPtrInput
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
@@ -132,16 +211,8 @@ type ServiceArgs struct {
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel pulumi.StringPtrInput
 	ServicesId     pulumi.StringInput
-	// Output only. The current state of the metastore service.
-	State pulumi.StringPtrInput
-	// Output only. Additional information about the current state of the metastore service, if available.
-	StateMessage pulumi.StringPtrInput
 	// The tier of the service.
 	Tier pulumi.StringPtrInput
-	// Output only. The globally unique resource identifier of the metastore service.
-	Uid pulumi.StringPtrInput
-	// Output only. The time when the metastore service was last updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (ServiceArgs) ElementType() reflect.Type {

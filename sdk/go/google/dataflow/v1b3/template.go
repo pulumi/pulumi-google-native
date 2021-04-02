@@ -14,6 +14,15 @@ import (
 // Creates a Cloud Dataflow job from a template.
 type Template struct {
 	pulumi.CustomResourceState
+
+	// The template metadata describing the template name, available parameters, etc.
+	Metadata TemplateMetadataResponseOutput `pulumi:"metadata"`
+	// Describes the runtime metadata with SDKInfo and available parameters.
+	RuntimeMetadata RuntimeMetadataResponseOutput `pulumi:"runtimeMetadata"`
+	// The status of the get template request. Any problems with the request will be indicated in the error_details.
+	Status StatusResponseOutput `pulumi:"status"`
+	// Template Type.
+	TemplateType pulumi.StringOutput `pulumi:"templateType"`
 }
 
 // NewTemplate registers a new resource with the given unique name, arguments, and options.
@@ -48,9 +57,25 @@ func GetTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Template resources.
 type templateState struct {
+	// The template metadata describing the template name, available parameters, etc.
+	Metadata *TemplateMetadataResponse `pulumi:"metadata"`
+	// Describes the runtime metadata with SDKInfo and available parameters.
+	RuntimeMetadata *RuntimeMetadataResponse `pulumi:"runtimeMetadata"`
+	// The status of the get template request. Any problems with the request will be indicated in the error_details.
+	Status *StatusResponse `pulumi:"status"`
+	// Template Type.
+	TemplateType *string `pulumi:"templateType"`
 }
 
 type TemplateState struct {
+	// The template metadata describing the template name, available parameters, etc.
+	Metadata TemplateMetadataResponsePtrInput
+	// Describes the runtime metadata with SDKInfo and available parameters.
+	RuntimeMetadata RuntimeMetadataResponsePtrInput
+	// The status of the get template request. Any problems with the request will be indicated in the error_details.
+	Status StatusResponsePtrInput
+	// Template Type.
+	TemplateType pulumi.StringPtrInput
 }
 
 func (TemplateState) ElementType() reflect.Type {

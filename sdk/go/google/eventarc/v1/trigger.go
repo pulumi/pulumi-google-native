@@ -14,6 +14,27 @@ import (
 // Create a new trigger in a particular project and location.
 type Trigger struct {
 	pulumi.CustomResourceState
+
+	// The creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Required. Destination specifies where the events should be sent to.
+	Destination DestinationResponseOutput `pulumi:"destination"`
+	// This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+	EventFilters EventFilterResponseArrayOutput `pulumi:"eventFilters"`
+	// Optional. User labels attached to the triggers that can be used to group resources.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
+	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
+	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+	Transport TransportResponseOutput `pulumi:"transport"`
+	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+	Uid pulumi.StringOutput `pulumi:"uid"`
+	// The last-modified time.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewTrigger registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +75,49 @@ func GetTrigger(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Trigger resources.
 type triggerState struct {
+	// The creation time.
+	CreateTime *string `pulumi:"createTime"`
+	// Required. Destination specifies where the events should be sent to.
+	Destination *DestinationResponse `pulumi:"destination"`
+	// This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
+	Etag *string `pulumi:"etag"`
+	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+	EventFilters []EventFilterResponse `pulumi:"eventFilters"`
+	// Optional. User labels attached to the triggers that can be used to group resources.
+	Labels map[string]string `pulumi:"labels"`
+	// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+	Name *string `pulumi:"name"`
+	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+	Transport *TransportResponse `pulumi:"transport"`
+	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+	Uid *string `pulumi:"uid"`
+	// The last-modified time.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type TriggerState struct {
+	// The creation time.
+	CreateTime pulumi.StringPtrInput
+	// Required. Destination specifies where the events should be sent to.
+	Destination DestinationResponsePtrInput
+	// This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
+	Etag pulumi.StringPtrInput
+	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+	EventFilters EventFilterResponseArrayInput
+	// Optional. User labels attached to the triggers that can be used to group resources.
+	Labels pulumi.StringMapInput
+	// Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+	Name pulumi.StringPtrInput
+	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
+	ServiceAccount pulumi.StringPtrInput
+	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+	Transport TransportResponsePtrInput
+	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+	Uid pulumi.StringPtrInput
+	// The last-modified time.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (TriggerState) ElementType() reflect.Type {
@@ -64,12 +125,8 @@ func (TriggerState) ElementType() reflect.Type {
 }
 
 type triggerArgs struct {
-	// Output only. The creation time.
-	CreateTime *string `pulumi:"createTime"`
 	// Required. Destination specifies where the events should be sent to.
 	Destination *Destination `pulumi:"destination"`
-	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
-	Etag *string `pulumi:"etag"`
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	EventFilters []EventFilter `pulumi:"eventFilters"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
@@ -83,20 +140,12 @@ type triggerArgs struct {
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transport  *Transport `pulumi:"transport"`
 	TriggersId string     `pulumi:"triggersId"`
-	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
-	Uid *string `pulumi:"uid"`
-	// Output only. The last-modified time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Trigger resource.
 type TriggerArgs struct {
-	// Output only. The creation time.
-	CreateTime pulumi.StringPtrInput
 	// Required. Destination specifies where the events should be sent to.
 	Destination DestinationPtrInput
-	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
-	Etag pulumi.StringPtrInput
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	EventFilters EventFilterArrayInput
 	// Optional. User labels attached to the triggers that can be used to group resources.
@@ -110,10 +159,6 @@ type TriggerArgs struct {
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transport  TransportPtrInput
 	TriggersId pulumi.StringInput
-	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
-	Uid pulumi.StringPtrInput
-	// Output only. The last-modified time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (TriggerArgs) ElementType() reflect.Type {

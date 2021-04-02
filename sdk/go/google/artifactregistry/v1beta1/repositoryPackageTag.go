@@ -14,6 +14,11 @@ import (
 // Creates a tag.
 type RepositoryPackageTag struct {
 	pulumi.CustomResourceState
+
+	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+	Version pulumi.StringOutput `pulumi:"version"`
 }
 
 // NewRepositoryPackageTag registers a new resource with the given unique name, arguments, and options.
@@ -60,9 +65,17 @@ func GetRepositoryPackageTag(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RepositoryPackageTag resources.
 type repositoryPackageTagState struct {
+	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+	Name *string `pulumi:"name"`
+	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+	Version *string `pulumi:"version"`
 }
 
 type RepositoryPackageTagState struct {
+	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+	Name pulumi.StringPtrInput
+	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+	Version pulumi.StringPtrInput
 }
 
 func (RepositoryPackageTagState) ElementType() reflect.Type {

@@ -14,6 +14,11 @@ import (
 // Create a new KeyRing in a given Project and Location.
 type KeyRing struct {
 	pulumi.CustomResourceState
+
+	// The time at which this KeyRing was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewKeyRing registers a new resource with the given unique name, arguments, and options.
@@ -54,9 +59,17 @@ func GetKeyRing(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KeyRing resources.
 type keyRingState struct {
+	// The time at which this KeyRing was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
+	Name *string `pulumi:"name"`
 }
 
 type KeyRingState struct {
+	// The time at which this KeyRing was created.
+	CreateTime pulumi.StringPtrInput
+	// The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
+	Name pulumi.StringPtrInput
 }
 
 func (KeyRingState) ElementType() reflect.Type {
@@ -64,24 +77,16 @@ func (KeyRingState) ElementType() reflect.Type {
 }
 
 type keyRingArgs struct {
-	// Output only. The time at which this KeyRing was created.
-	CreateTime  *string `pulumi:"createTime"`
-	KeyRingsId  string  `pulumi:"keyRingsId"`
-	LocationsId string  `pulumi:"locationsId"`
-	// Output only. The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	KeyRingsId  string `pulumi:"keyRingsId"`
+	LocationsId string `pulumi:"locationsId"`
+	ProjectsId  string `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a KeyRing resource.
 type KeyRingArgs struct {
-	// Output only. The time at which this KeyRing was created.
-	CreateTime  pulumi.StringPtrInput
 	KeyRingsId  pulumi.StringInput
 	LocationsId pulumi.StringInput
-	// Output only. The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	ProjectsId  pulumi.StringInput
 }
 
 func (KeyRingArgs) ElementType() reflect.Type {

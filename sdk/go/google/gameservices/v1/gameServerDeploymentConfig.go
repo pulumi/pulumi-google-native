@@ -14,6 +14,21 @@ import (
 // Creates a new game server config in a given project, location, and game server deployment. Game server configs are immutable, and are not applied until referenced in the game server deployment rollout resource.
 type GameServerDeploymentConfig struct {
 	pulumi.CustomResourceState
+
+	// The creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The description of the game server config.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
+	FleetConfigs FleetConfigResponseArrayOutput `pulumi:"fleetConfigs"`
+	// The labels associated with this game server config. Each label is a key-value pair.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The autoscaling settings.
+	ScalingConfigs ScalingConfigResponseArrayOutput `pulumi:"scalingConfigs"`
+	// The last-modified time.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewGameServerDeploymentConfig registers a new resource with the given unique name, arguments, and options.
@@ -57,9 +72,37 @@ func GetGameServerDeploymentConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GameServerDeploymentConfig resources.
 type gameServerDeploymentConfigState struct {
+	// The creation time.
+	CreateTime *string `pulumi:"createTime"`
+	// The description of the game server config.
+	Description *string `pulumi:"description"`
+	// FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
+	FleetConfigs []FleetConfigResponse `pulumi:"fleetConfigs"`
+	// The labels associated with this game server config. Each label is a key-value pair.
+	Labels map[string]string `pulumi:"labels"`
+	// The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+	Name *string `pulumi:"name"`
+	// The autoscaling settings.
+	ScalingConfigs []ScalingConfigResponse `pulumi:"scalingConfigs"`
+	// The last-modified time.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type GameServerDeploymentConfigState struct {
+	// The creation time.
+	CreateTime pulumi.StringPtrInput
+	// The description of the game server config.
+	Description pulumi.StringPtrInput
+	// FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
+	FleetConfigs FleetConfigResponseArrayInput
+	// The labels associated with this game server config. Each label is a key-value pair.
+	Labels pulumi.StringMapInput
+	// The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+	Name pulumi.StringPtrInput
+	// The autoscaling settings.
+	ScalingConfigs ScalingConfigResponseArrayInput
+	// The last-modified time.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (GameServerDeploymentConfigState) ElementType() reflect.Type {
@@ -68,8 +111,6 @@ func (GameServerDeploymentConfigState) ElementType() reflect.Type {
 
 type gameServerDeploymentConfigArgs struct {
 	ConfigsId string `pulumi:"configsId"`
-	// Output only. The creation time.
-	CreateTime *string `pulumi:"createTime"`
 	// The description of the game server config.
 	Description *string `pulumi:"description"`
 	// FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
@@ -83,15 +124,11 @@ type gameServerDeploymentConfigArgs struct {
 	ProjectsId string  `pulumi:"projectsId"`
 	// The autoscaling settings.
 	ScalingConfigs []ScalingConfig `pulumi:"scalingConfigs"`
-	// Output only. The last-modified time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a GameServerDeploymentConfig resource.
 type GameServerDeploymentConfigArgs struct {
 	ConfigsId pulumi.StringInput
-	// Output only. The creation time.
-	CreateTime pulumi.StringPtrInput
 	// The description of the game server config.
 	Description pulumi.StringPtrInput
 	// FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
@@ -105,8 +142,6 @@ type GameServerDeploymentConfigArgs struct {
 	ProjectsId pulumi.StringInput
 	// The autoscaling settings.
 	ScalingConfigs ScalingConfigArrayInput
-	// Output only. The last-modified time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (GameServerDeploymentConfigArgs) ElementType() reflect.Type {
