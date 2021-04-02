@@ -116,18 +116,50 @@ func (InstructionState) ElementType() reflect.Type {
 }
 
 type instructionArgs struct {
-	// Required. Instruction of how to perform the labeling task.
-	Instruction    *GoogleCloudDatalabelingV1beta1Instruction `pulumi:"instruction"`
-	InstructionsId string                                     `pulumi:"instructionsId"`
-	ProjectsId     string                                     `pulumi:"projectsId"`
+	// The names of any related resources that are blocking changes to the instruction.
+	BlockingResources []string `pulumi:"blockingResources"`
+	// Creation time of instruction.
+	CreateTime *string `pulumi:"createTime"`
+	// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+	CsvInstruction *GoogleCloudDatalabelingV1beta1CsvInstruction `pulumi:"csvInstruction"`
+	// Required. The data type of this instruction.
+	DataType *string `pulumi:"dataType"`
+	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
+	Description *string `pulumi:"description"`
+	// Required. The display name of the instruction. Maximum of 64 characters.
+	DisplayName    *string `pulumi:"displayName"`
+	InstructionsId string  `pulumi:"instructionsId"`
+	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+	Name *string `pulumi:"name"`
+	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
+	PdfInstruction *GoogleCloudDatalabelingV1beta1PdfInstruction `pulumi:"pdfInstruction"`
+	ProjectsId     string                                        `pulumi:"projectsId"`
+	// Last update time of instruction.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // The set of arguments for constructing a Instruction resource.
 type InstructionArgs struct {
-	// Required. Instruction of how to perform the labeling task.
-	Instruction    GoogleCloudDatalabelingV1beta1InstructionPtrInput
+	// The names of any related resources that are blocking changes to the instruction.
+	BlockingResources pulumi.StringArrayInput
+	// Creation time of instruction.
+	CreateTime pulumi.StringPtrInput
+	// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+	CsvInstruction GoogleCloudDatalabelingV1beta1CsvInstructionPtrInput
+	// Required. The data type of this instruction.
+	DataType pulumi.StringPtrInput
+	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
+	Description pulumi.StringPtrInput
+	// Required. The display name of the instruction. Maximum of 64 characters.
+	DisplayName    pulumi.StringPtrInput
 	InstructionsId pulumi.StringInput
+	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+	Name pulumi.StringPtrInput
+	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
+	PdfInstruction GoogleCloudDatalabelingV1beta1PdfInstructionPtrInput
 	ProjectsId     pulumi.StringInput
+	// Last update time of instruction.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (InstructionArgs) ElementType() reflect.Type {

@@ -92,26 +92,42 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// Specifies the instance to create. The name in the instance, if specified in the instance, is ignored.
-	Instance *GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance `pulumi:"instance"`
+	// The policy to define whether or not RBE features can be used or how they can be used.
+	FeaturePolicy *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy `pulumi:"featurePolicy"`
 	// ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
 	InstanceId  *string `pulumi:"instanceId"`
 	InstancesId string  `pulumi:"instancesId"`
+	// The location is a GCP region. Currently only `us-central1` is supported.
+	Location *string `pulumi:"location"`
+	// Whether stack driver logging is enabled for the instance.
+	LoggingEnabled *bool `pulumi:"loggingEnabled"`
+	// Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
+	Name *string `pulumi:"name"`
 	// Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
 	Parent     *string `pulumi:"parent"`
 	ProjectsId string  `pulumi:"projectsId"`
+	// State of the instance.
+	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// Specifies the instance to create. The name in the instance, if specified in the instance, is ignored.
-	Instance GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstancePtrInput
+	// The policy to define whether or not RBE features can be used or how they can be used.
+	FeaturePolicy GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrInput
 	// ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
 	InstanceId  pulumi.StringPtrInput
 	InstancesId pulumi.StringInput
+	// The location is a GCP region. Currently only `us-central1` is supported.
+	Location pulumi.StringPtrInput
+	// Whether stack driver logging is enabled for the instance.
+	LoggingEnabled pulumi.BoolPtrInput
+	// Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
+	Name pulumi.StringPtrInput
 	// Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
 	Parent     pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
+	// State of the instance.
+	State pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

@@ -137,22 +137,38 @@ func (AccountCustomerEntitlementState) ElementType() reflect.Type {
 }
 
 type accountCustomerEntitlementArgs struct {
-	AccountsId  string `pulumi:"accountsId"`
-	CustomersId string `pulumi:"customersId"`
-	// Required. The entitlement to create.
-	Entitlement    *GoogleCloudChannelV1Entitlement `pulumi:"entitlement"`
-	EntitlementsId string                           `pulumi:"entitlementsId"`
+	AccountsId string `pulumi:"accountsId"`
+	// Association information to other entitlements.
+	AssociationInfo *GoogleCloudChannelV1AssociationInfo `pulumi:"associationInfo"`
+	// Commitment settings for a commitment-based Offer. Required for commitment based offers.
+	CommitmentSettings *GoogleCloudChannelV1CommitmentSettings `pulumi:"commitmentSettings"`
+	CustomersId        string                                  `pulumi:"customersId"`
+	EntitlementsId     string                                  `pulumi:"entitlementsId"`
+	// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+	Offer *string `pulumi:"offer"`
+	// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+	Parameters []GoogleCloudChannelV1Parameter `pulumi:"parameters"`
+	// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
+	PurchaseOrderId *string `pulumi:"purchaseOrderId"`
 	// Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`).
 	RequestId *string `pulumi:"requestId"`
 }
 
 // The set of arguments for constructing a AccountCustomerEntitlement resource.
 type AccountCustomerEntitlementArgs struct {
-	AccountsId  pulumi.StringInput
-	CustomersId pulumi.StringInput
-	// Required. The entitlement to create.
-	Entitlement    GoogleCloudChannelV1EntitlementPtrInput
-	EntitlementsId pulumi.StringInput
+	AccountsId pulumi.StringInput
+	// Association information to other entitlements.
+	AssociationInfo GoogleCloudChannelV1AssociationInfoPtrInput
+	// Commitment settings for a commitment-based Offer. Required for commitment based offers.
+	CommitmentSettings GoogleCloudChannelV1CommitmentSettingsPtrInput
+	CustomersId        pulumi.StringInput
+	EntitlementsId     pulumi.StringInput
+	// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+	Offer pulumi.StringPtrInput
+	// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
+	Parameters GoogleCloudChannelV1ParameterArrayInput
+	// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
+	PurchaseOrderId pulumi.StringPtrInput
 	// Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`).
 	RequestId pulumi.StringPtrInput
 }

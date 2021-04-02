@@ -158,26 +158,82 @@ func (ClusterNodePoolState) ElementType() reflect.Type {
 }
 
 type clusterNodePoolArgs struct {
-	ClustersId  string `pulumi:"clustersId"`
-	LocationsId string `pulumi:"locationsId"`
-	// Required. The node pool to create.
-	NodePool    *NodePool `pulumi:"nodePool"`
-	NodePoolsId string    `pulumi:"nodePoolsId"`
+	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
+	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
+	ClustersId  string               `pulumi:"clustersId"`
+	// Which conditions caused the current node pool state.
+	Conditions []StatusCondition `pulumi:"conditions"`
+	// The node configuration of the pool.
+	Config *NodeConfig `pulumi:"config"`
+	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
+	InitialNodeCount *int `pulumi:"initialNodeCount"`
+	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
+	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
+	Locations   []string `pulumi:"locations"`
+	LocationsId string   `pulumi:"locationsId"`
+	// NodeManagement configuration for this NodePool.
+	Management *NodeManagement `pulumi:"management"`
+	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+	MaxPodsConstraint *MaxPodsConstraint `pulumi:"maxPodsConstraint"`
+	// The name of the node pool.
+	Name        *string `pulumi:"name"`
+	NodePoolsId string  `pulumi:"nodePoolsId"`
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
-	Parent     *string `pulumi:"parent"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Parent *string `pulumi:"parent"`
+	// [Output only] The pod CIDR block size per node in this node pool.
+	PodIpv4CidrSize *int   `pulumi:"podIpv4CidrSize"`
+	ProjectsId      string `pulumi:"projectsId"`
+	// [Output only] Server-defined URL for the resource.
+	SelfLink *string `pulumi:"selfLink"`
+	// [Output only] The status of the nodes in this pool instance.
+	Status *string `pulumi:"status"`
+	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+	StatusMessage *string `pulumi:"statusMessage"`
+	// Upgrade settings control disruption and speed of the upgrade.
+	UpgradeSettings *UpgradeSettings `pulumi:"upgradeSettings"`
+	// The version of the Kubernetes of this node.
+	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a ClusterNodePool resource.
 type ClusterNodePoolArgs struct {
+	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
+	Autoscaling NodePoolAutoscalingPtrInput
 	ClustersId  pulumi.StringInput
+	// Which conditions caused the current node pool state.
+	Conditions StatusConditionArrayInput
+	// The node configuration of the pool.
+	Config NodeConfigPtrInput
+	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
+	InitialNodeCount pulumi.IntPtrInput
+	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+	InstanceGroupUrls pulumi.StringArrayInput
+	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
+	Locations   pulumi.StringArrayInput
 	LocationsId pulumi.StringInput
-	// Required. The node pool to create.
-	NodePool    NodePoolPtrInput
+	// NodeManagement configuration for this NodePool.
+	Management NodeManagementPtrInput
+	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+	MaxPodsConstraint MaxPodsConstraintPtrInput
+	// The name of the node pool.
+	Name        pulumi.StringPtrInput
 	NodePoolsId pulumi.StringInput
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
-	Parent     pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Parent pulumi.StringPtrInput
+	// [Output only] The pod CIDR block size per node in this node pool.
+	PodIpv4CidrSize pulumi.IntPtrInput
+	ProjectsId      pulumi.StringInput
+	// [Output only] Server-defined URL for the resource.
+	SelfLink pulumi.StringPtrInput
+	// [Output only] The status of the nodes in this pool instance.
+	Status pulumi.StringPtrInput
+	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+	StatusMessage pulumi.StringPtrInput
+	// Upgrade settings control disruption and speed of the upgrade.
+	UpgradeSettings UpgradeSettingsPtrInput
+	// The version of the Kubernetes of this node.
+	Version pulumi.StringPtrInput
 }
 
 func (ClusterNodePoolArgs) ElementType() reflect.Type {

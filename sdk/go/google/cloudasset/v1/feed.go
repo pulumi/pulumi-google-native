@@ -101,24 +101,44 @@ func (FeedState) ElementType() reflect.Type {
 }
 
 type feedArgs struct {
-	// Required. The feed details. The field `name` must be empty and it will be generated in the format of: projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/organization_number/feeds/feed_id
-	Feed *FeedType `pulumi:"feed"`
+	// A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
+	AssetNames []string `pulumi:"assetNames"`
+	// A list of types of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `"compute.googleapis.com/Disk"` See [this topic](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for a list of all supported asset types.
+	AssetTypes []string `pulumi:"assetTypes"`
+	// A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition) for detailed instructions.
+	Condition *Expr `pulumi:"condition"`
+	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	ContentType *string `pulumi:"contentType"`
 	// Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
-	FeedId  *string `pulumi:"feedId"`
-	FeedsId string  `pulumi:"feedsId"`
-	V1Id    string  `pulumi:"v1Id"`
-	V1Id1   string  `pulumi:"v1Id1"`
+	FeedId *string `pulumi:"feedId"`
+	// Required. Feed output configuration defining where the asset updates are published to.
+	FeedOutputConfig *FeedOutputConfig `pulumi:"feedOutputConfig"`
+	FeedsId          string            `pulumi:"feedsId"`
+	// Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+	Name  *string `pulumi:"name"`
+	V1Id  string  `pulumi:"v1Id"`
+	V1Id1 string  `pulumi:"v1Id1"`
 }
 
 // The set of arguments for constructing a Feed resource.
 type FeedArgs struct {
-	// Required. The feed details. The field `name` must be empty and it will be generated in the format of: projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/organization_number/feeds/feed_id
-	Feed FeedTypePtrInput
+	// A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
+	AssetNames pulumi.StringArrayInput
+	// A list of types of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `"compute.googleapis.com/Disk"` See [this topic](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for a list of all supported asset types.
+	AssetTypes pulumi.StringArrayInput
+	// A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition) for detailed instructions.
+	Condition ExprPtrInput
+	// Asset content type. If not specified, no content but the asset name and type will be returned.
+	ContentType pulumi.StringPtrInput
 	// Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
-	FeedId  pulumi.StringPtrInput
-	FeedsId pulumi.StringInput
-	V1Id    pulumi.StringInput
-	V1Id1   pulumi.StringInput
+	FeedId pulumi.StringPtrInput
+	// Required. Feed output configuration defining where the asset updates are published to.
+	FeedOutputConfig FeedOutputConfigPtrInput
+	FeedsId          pulumi.StringInput
+	// Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+	Name  pulumi.StringPtrInput
+	V1Id  pulumi.StringInput
+	V1Id1 pulumi.StringInput
 }
 
 func (FeedArgs) ElementType() reflect.Type {

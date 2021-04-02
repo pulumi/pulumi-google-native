@@ -101,19 +101,27 @@ func (InspectTemplateState) ElementType() reflect.Type {
 }
 
 type inspectTemplateArgs struct {
-	// Required. The InspectTemplate to create.
-	InspectTemplate    *GooglePrivacyDlpV2InspectTemplate `pulumi:"inspectTemplate"`
-	InspectTemplatesId string                             `pulumi:"inspectTemplatesId"`
-	LocationsId        string                             `pulumi:"locationsId"`
-	ProjectsId         string                             `pulumi:"projectsId"`
+	// Short description (max 256 chars).
+	Description *string `pulumi:"description"`
+	// Display name (max 256 chars).
+	DisplayName *string `pulumi:"displayName"`
+	// The core content of the template. Configuration of the scanning process.
+	InspectConfig      *GooglePrivacyDlpV2InspectConfig `pulumi:"inspectConfig"`
+	InspectTemplatesId string                           `pulumi:"inspectTemplatesId"`
+	LocationsId        string                           `pulumi:"locationsId"`
+	ProjectsId         string                           `pulumi:"projectsId"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId *string `pulumi:"templateId"`
 }
 
 // The set of arguments for constructing a InspectTemplate resource.
 type InspectTemplateArgs struct {
-	// Required. The InspectTemplate to create.
-	InspectTemplate    GooglePrivacyDlpV2InspectTemplatePtrInput
+	// Short description (max 256 chars).
+	Description pulumi.StringPtrInput
+	// Display name (max 256 chars).
+	DisplayName pulumi.StringPtrInput
+	// The core content of the template. Configuration of the scanning process.
+	InspectConfig      GooglePrivacyDlpV2InspectConfigPtrInput
 	InspectTemplatesId pulumi.StringInput
 	LocationsId        pulumi.StringInput
 	ProjectsId         pulumi.StringInput

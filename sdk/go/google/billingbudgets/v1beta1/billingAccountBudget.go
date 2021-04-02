@@ -104,18 +104,38 @@ func (BillingAccountBudgetState) ElementType() reflect.Type {
 }
 
 type billingAccountBudgetArgs struct {
-	BillingAccountsId string `pulumi:"billingAccountsId"`
-	// Required. Budget to create.
-	Budget    *GoogleCloudBillingBudgetsV1beta1Budget `pulumi:"budget"`
-	BudgetsId string                                  `pulumi:"budgetsId"`
+	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
+	AllUpdatesRule *GoogleCloudBillingBudgetsV1beta1AllUpdatesRule `pulumi:"allUpdatesRule"`
+	// Required. Budgeted amount.
+	Amount            *GoogleCloudBillingBudgetsV1beta1BudgetAmount `pulumi:"amount"`
+	BillingAccountsId string                                        `pulumi:"billingAccountsId"`
+	// Optional. Filters that define which resources are used to compute the actual spend against the budget.
+	BudgetFilter *GoogleCloudBillingBudgetsV1beta1Filter `pulumi:"budgetFilter"`
+	BudgetsId    string                                  `pulumi:"budgetsId"`
+	// User data for display name in UI. Validation: <= 60 chars.
+	DisplayName *string `pulumi:"displayName"`
+	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+	Etag *string `pulumi:"etag"`
+	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+	ThresholdRules []GoogleCloudBillingBudgetsV1beta1ThresholdRule `pulumi:"thresholdRules"`
 }
 
 // The set of arguments for constructing a BillingAccountBudget resource.
 type BillingAccountBudgetArgs struct {
+	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
+	AllUpdatesRule GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrInput
+	// Required. Budgeted amount.
+	Amount            GoogleCloudBillingBudgetsV1beta1BudgetAmountPtrInput
 	BillingAccountsId pulumi.StringInput
-	// Required. Budget to create.
-	Budget    GoogleCloudBillingBudgetsV1beta1BudgetPtrInput
-	BudgetsId pulumi.StringInput
+	// Optional. Filters that define which resources are used to compute the actual spend against the budget.
+	BudgetFilter GoogleCloudBillingBudgetsV1beta1FilterPtrInput
+	BudgetsId    pulumi.StringInput
+	// User data for display name in UI. Validation: <= 60 chars.
+	DisplayName pulumi.StringPtrInput
+	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+	Etag pulumi.StringPtrInput
+	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+	ThresholdRules GoogleCloudBillingBudgetsV1beta1ThresholdRuleArrayInput
 }
 
 func (BillingAccountBudgetArgs) ElementType() reflect.Type {

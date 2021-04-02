@@ -227,16 +227,28 @@ func (DeviceState) ElementType() reflect.Type {
 }
 
 type deviceArgs struct {
-	// Required. The device to be created. The name field within this device is ignored in the create method. A new name is created by the method, and returned within the response. Only the fields `device_type`, `serial_number` and `asset_tag` (if present) are used to create the device. All other fields are ignored. The `device_type` and `serial_number` fields are required.
-	Device    *DeviceType `pulumi:"device"`
-	DevicesId string      `pulumi:"devicesId"`
+	// Asset tag of the device.
+	AssetTag  *string `pulumi:"assetTag"`
+	DevicesId string  `pulumi:"devicesId"`
+	// Most recent time when device synced with this service.
+	LastSyncTime *string `pulumi:"lastSyncTime"`
+	// Serial Number of device. Example: HT82V1A01076.
+	SerialNumber *string `pulumi:"serialNumber"`
+	// WiFi MAC addresses of device.
+	WifiMacAddresses []string `pulumi:"wifiMacAddresses"`
 }
 
 // The set of arguments for constructing a Device resource.
 type DeviceArgs struct {
-	// Required. The device to be created. The name field within this device is ignored in the create method. A new name is created by the method, and returned within the response. Only the fields `device_type`, `serial_number` and `asset_tag` (if present) are used to create the device. All other fields are ignored. The `device_type` and `serial_number` fields are required.
-	Device    DeviceTypePtrInput
+	// Asset tag of the device.
+	AssetTag  pulumi.StringPtrInput
 	DevicesId pulumi.StringInput
+	// Most recent time when device synced with this service.
+	LastSyncTime pulumi.StringPtrInput
+	// Serial Number of device. Example: HT82V1A01076.
+	SerialNumber pulumi.StringPtrInput
+	// WiFi MAC addresses of device.
+	WifiMacAddresses pulumi.StringArrayInput
 }
 
 func (DeviceArgs) ElementType() reflect.Type {

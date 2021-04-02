@@ -94,19 +94,19 @@ func (InstanceDatabaseSessionState) ElementType() reflect.Type {
 type instanceDatabaseSessionArgs struct {
 	DatabasesId string `pulumi:"databasesId"`
 	InstancesId string `pulumi:"instancesId"`
-	ProjectsId  string `pulumi:"projectsId"`
-	// Required. The session to create.
-	Session    *Session `pulumi:"session"`
-	SessionsId string   `pulumi:"sessionsId"`
+	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
+	Labels     map[string]string `pulumi:"labels"`
+	ProjectsId string            `pulumi:"projectsId"`
+	SessionsId string            `pulumi:"sessionsId"`
 }
 
 // The set of arguments for constructing a InstanceDatabaseSession resource.
 type InstanceDatabaseSessionArgs struct {
 	DatabasesId pulumi.StringInput
 	InstancesId pulumi.StringInput
-	ProjectsId  pulumi.StringInput
-	// Required. The session to create.
-	Session    SessionPtrInput
+	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
+	Labels     pulumi.StringMapInput
+	ProjectsId pulumi.StringInput
 	SessionsId pulumi.StringInput
 }
 

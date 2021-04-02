@@ -83,24 +83,32 @@ func (PhraseSetState) ElementType() reflect.Type {
 }
 
 type phraseSetArgs struct {
-	LocationsId string `pulumi:"locationsId"`
-	// Required. The phrase set to create.
-	PhraseSet *PhraseSetType `pulumi:"phraseSet"`
+	// Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
+	Boost       *float64 `pulumi:"boost"`
+	LocationsId string   `pulumi:"locationsId"`
+	// The resource name of the phrase set.
+	Name *string `pulumi:"name"`
 	// The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
 	PhraseSetId  *string `pulumi:"phraseSetId"`
 	PhraseSetsId string  `pulumi:"phraseSetsId"`
-	ProjectsId   string  `pulumi:"projectsId"`
+	// A list of word and phrases.
+	Phrases    []Phrase `pulumi:"phrases"`
+	ProjectsId string   `pulumi:"projectsId"`
 }
 
 // The set of arguments for constructing a PhraseSet resource.
 type PhraseSetArgs struct {
+	// Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
+	Boost       pulumi.Float64PtrInput
 	LocationsId pulumi.StringInput
-	// Required. The phrase set to create.
-	PhraseSet PhraseSetTypePtrInput
+	// The resource name of the phrase set.
+	Name pulumi.StringPtrInput
 	// The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
 	PhraseSetId  pulumi.StringPtrInput
 	PhraseSetsId pulumi.StringInput
-	ProjectsId   pulumi.StringInput
+	// A list of word and phrases.
+	Phrases    PhraseArrayInput
+	ProjectsId pulumi.StringInput
 }
 
 func (PhraseSetArgs) ElementType() reflect.Type {
