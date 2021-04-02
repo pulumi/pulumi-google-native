@@ -17,11 +17,16 @@ class OrganizationJobTrigger(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 job_trigger: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2JobTriggerArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
                  job_triggers_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
+                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2TriggerArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -30,8 +35,13 @@ class OrganizationJobTrigger(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2JobTriggerArgs']] job_trigger: Required. The JobTrigger to create.
+        :param pulumi.Input[str] description: User provided description (max 256 chars)
+        :param pulumi.Input[str] display_name: Display name (max 100 chars)
+        :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']] inspect_job: For inspect jobs, a snapshot of the configuration.
+        :param pulumi.Input[str] name: Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
+        :param pulumi.Input[str] status: Required. A status for this trigger.
         :param pulumi.Input[str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2TriggerArgs']]]] triggers: A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -50,26 +60,25 @@ class OrganizationJobTrigger(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['job_trigger'] = job_trigger
+            __props__['description'] = description
+            __props__['display_name'] = display_name
+            __props__['inspect_job'] = inspect_job
             if job_triggers_id is None and not opts.urn:
                 raise TypeError("Missing required property 'job_triggers_id'")
             __props__['job_triggers_id'] = job_triggers_id
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
+            __props__['name'] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__['organizations_id'] = organizations_id
+            __props__['status'] = status
             __props__['trigger_id'] = trigger_id
+            __props__['triggers'] = triggers
             __props__['create_time'] = None
-            __props__['description'] = None
-            __props__['display_name'] = None
             __props__['errors'] = None
-            __props__['inspect_job'] = None
             __props__['last_run_time'] = None
-            __props__['name'] = None
-            __props__['status'] = None
-            __props__['triggers'] = None
             __props__['update_time'] = None
         super(OrganizationJobTrigger, __self__).__init__(
             'google-cloud:dlp/v2:OrganizationJobTrigger',

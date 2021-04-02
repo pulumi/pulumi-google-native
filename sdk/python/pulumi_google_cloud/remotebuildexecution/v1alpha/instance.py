@@ -17,11 +17,15 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceArgs']]] = None,
+                 feature_policy: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 logging_enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -30,9 +34,13 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceArgs']] instance: Specifies the instance to create. The name in the instance, if specified in the instance, is ignored.
+        :param pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs']] feature_policy: The policy to define whether or not RBE features can be used or how they can be used.
         :param pulumi.Input[str] instance_id: ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
+        :param pulumi.Input[str] location: The location is a GCP region. Currently only `us-central1` is supported.
+        :param pulumi.Input[bool] logging_enabled: Whether stack driver logging is enabled for the instance.
+        :param pulumi.Input[str] name: Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
         :param pulumi.Input[str] parent: Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
+        :param pulumi.Input[str] state: State of the instance.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -51,20 +59,19 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['instance'] = instance
+            __props__['feature_policy'] = feature_policy
             __props__['instance_id'] = instance_id
             if instances_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instances_id'")
             __props__['instances_id'] = instances_id
+            __props__['location'] = location
+            __props__['logging_enabled'] = logging_enabled
+            __props__['name'] = name
             __props__['parent'] = parent
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['feature_policy'] = None
-            __props__['location'] = None
-            __props__['logging_enabled'] = None
-            __props__['name'] = None
-            __props__['state'] = None
+            __props__['state'] = state
         super(Instance, __self__).__init__(
             'google-cloud:remotebuildexecution/v1alpha:Instance',
             resource_name,

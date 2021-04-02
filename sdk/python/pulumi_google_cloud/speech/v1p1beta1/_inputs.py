@@ -10,9 +10,7 @@ from ... import _utilities, _tables
 
 __all__ = [
     'ClassItemArgs',
-    'CustomClassArgs',
     'PhraseArgs',
-    'PhraseSetArgs',
 ]
 
 @pulumi.input_type
@@ -37,62 +35,6 @@ class ClassItemArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
-
-
-@pulumi.input_type
-class CustomClassArgs:
-    def __init__(__self__, *,
-                 custom_class_id: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input['ClassItemArgs']]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
-        """
-        A set of words or phrases that represents a common concept likely to appear in your audio, for example a list of passenger ship names. CustomClass items can be substituted into placeholders that you set in PhraseSet phrases.
-        :param pulumi.Input[str] custom_class_id: If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
-        :param pulumi.Input[Sequence[pulumi.Input['ClassItemArgs']]] items: A collection of class items.
-        :param pulumi.Input[str] name: The resource name of the custom class.
-        """
-        if custom_class_id is not None:
-            pulumi.set(__self__, "custom_class_id", custom_class_id)
-        if items is not None:
-            pulumi.set(__self__, "items", items)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="customClassId")
-    def custom_class_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
-        """
-        return pulumi.get(self, "custom_class_id")
-
-    @custom_class_id.setter
-    def custom_class_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "custom_class_id", value)
-
-    @property
-    @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClassItemArgs']]]]:
-        """
-        A collection of class items.
-        """
-        return pulumi.get(self, "items")
-
-    @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClassItemArgs']]]]):
-        pulumi.set(self, "items", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The resource name of the custom class.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -133,61 +75,5 @@ class PhraseArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
-
-
-@pulumi.input_type
-class PhraseSetArgs:
-    def __init__(__self__, *,
-                 boost: Optional[pulumi.Input[float]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 phrases: Optional[pulumi.Input[Sequence[pulumi.Input['PhraseArgs']]]] = None):
-        """
-        Provides "hints" to the speech recognizer to favor specific words and phrases in the results.
-        :param pulumi.Input[float] boost: Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
-        :param pulumi.Input[str] name: The resource name of the phrase set.
-        :param pulumi.Input[Sequence[pulumi.Input['PhraseArgs']]] phrases: A list of word and phrases.
-        """
-        if boost is not None:
-            pulumi.set(__self__, "boost", boost)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if phrases is not None:
-            pulumi.set(__self__, "phrases", phrases)
-
-    @property
-    @pulumi.getter
-    def boost(self) -> Optional[pulumi.Input[float]]:
-        """
-        Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
-        """
-        return pulumi.get(self, "boost")
-
-    @boost.setter
-    def boost(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "boost", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The resource name of the phrase set.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def phrases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PhraseArgs']]]]:
-        """
-        A list of word and phrases.
-        """
-        return pulumi.get(self, "phrases")
-
-    @phrases.setter
-    def phrases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PhraseArgs']]]]):
-        pulumi.set(self, "phrases", value)
 
 

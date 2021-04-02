@@ -27,11 +27,9 @@ __all__ = [
     'Hl7V2NotificationConfigArgs',
     'ImageArgs',
     'ImageAnnotationArgs',
-    'MessageArgs',
     'NotificationConfigArgs',
     'ParserConfigArgs',
     'PatientIdArgs',
-    'PolicyArgs',
     'ResourceAnnotationArgs',
     'SchemaConfigArgs',
     'SchemaPackageArgs',
@@ -862,142 +860,6 @@ class ImageAnnotationArgs:
 
 
 @pulumi.input_type
-class MessageArgs:
-    def __init__(__self__, *,
-                 data: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 message_type: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 patient_ids: Optional[pulumi.Input[Sequence[pulumi.Input['PatientIdArgs']]]] = None,
-                 schematized_data: Optional[pulumi.Input['SchematizedDataArgs']] = None,
-                 send_facility: Optional[pulumi.Input[str]] = None,
-                 send_time: Optional[pulumi.Input[str]] = None):
-        """
-        A complete HL7v2 message. See [Introduction to HL7 Standards] (https://www.hl7.org/implement/standards/index.cfm?ref=common) for details on the standard.
-        :param pulumi.Input[str] data: Raw message bytes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-        :param pulumi.Input[str] message_type: The message type for this message. MSH-9.1.
-        :param pulumi.Input[str] name: Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
-        :param pulumi.Input[Sequence[pulumi.Input['PatientIdArgs']]] patient_ids: All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
-        :param pulumi.Input['SchematizedDataArgs'] schematized_data: The parsed version of the raw message data schematized according to this store's schemas and type definitions.
-        :param pulumi.Input[str] send_facility: The hospital that this message came from. MSH-4.
-        :param pulumi.Input[str] send_time: The datetime the sending application sent this message. MSH-7.
-        """
-        if data is not None:
-            pulumi.set(__self__, "data", data)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-        if message_type is not None:
-            pulumi.set(__self__, "message_type", message_type)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if patient_ids is not None:
-            pulumi.set(__self__, "patient_ids", patient_ids)
-        if schematized_data is not None:
-            pulumi.set(__self__, "schematized_data", schematized_data)
-        if send_facility is not None:
-            pulumi.set(__self__, "send_facility", send_facility)
-        if send_time is not None:
-            pulumi.set(__self__, "send_time", send_time)
-
-    @property
-    @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[str]]:
-        """
-        Raw message bytes.
-        """
-        return pulumi.get(self, "data")
-
-    @data.setter
-    def data(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "data", value)
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-        """
-        return pulumi.get(self, "labels")
-
-    @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter(name="messageType")
-    def message_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The message type for this message. MSH-9.1.
-        """
-        return pulumi.get(self, "message_type")
-
-    @message_type.setter
-    def message_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message_type", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="patientIds")
-    def patient_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PatientIdArgs']]]]:
-        """
-        All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
-        """
-        return pulumi.get(self, "patient_ids")
-
-    @patient_ids.setter
-    def patient_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PatientIdArgs']]]]):
-        pulumi.set(self, "patient_ids", value)
-
-    @property
-    @pulumi.getter(name="schematizedData")
-    def schematized_data(self) -> Optional[pulumi.Input['SchematizedDataArgs']]:
-        """
-        The parsed version of the raw message data schematized according to this store's schemas and type definitions.
-        """
-        return pulumi.get(self, "schematized_data")
-
-    @schematized_data.setter
-    def schematized_data(self, value: Optional[pulumi.Input['SchematizedDataArgs']]):
-        pulumi.set(self, "schematized_data", value)
-
-    @property
-    @pulumi.getter(name="sendFacility")
-    def send_facility(self) -> Optional[pulumi.Input[str]]:
-        """
-        The hospital that this message came from. MSH-4.
-        """
-        return pulumi.get(self, "send_facility")
-
-    @send_facility.setter
-    def send_facility(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "send_facility", value)
-
-    @property
-    @pulumi.getter(name="sendTime")
-    def send_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The datetime the sending application sent this message. MSH-7.
-        """
-        return pulumi.get(self, "send_time")
-
-    @send_time.setter
-    def send_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "send_time", value)
-
-
-@pulumi.input_type
 class NotificationConfigArgs:
     def __init__(__self__, *,
                  pubsub_topic: Optional[pulumi.Input[str]] = None):
@@ -1131,78 +993,6 @@ class PatientIdArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
-
-
-@pulumi.input_type
-class PolicyArgs:
-    def __init__(__self__, *,
-                 audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
-                 etag: Optional[pulumi.Input[str]] = None,
-                 version: Optional[pulumi.Input[int]] = None):
-        """
-        An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members` to a single `role`. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3 For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
-        :param pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]] audit_configs: Specifies cloud audit logging configuration for this policy.
-        :param pulumi.Input[Sequence[pulumi.Input['BindingArgs']]] bindings: Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-        :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-        :param pulumi.Input[int] version: Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        """
-        if audit_configs is not None:
-            pulumi.set(__self__, "audit_configs", audit_configs)
-        if bindings is not None:
-            pulumi.set(__self__, "bindings", bindings)
-        if etag is not None:
-            pulumi.set(__self__, "etag", etag)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter(name="auditConfigs")
-    def audit_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]]:
-        """
-        Specifies cloud audit logging configuration for this policy.
-        """
-        return pulumi.get(self, "audit_configs")
-
-    @audit_configs.setter
-    def audit_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]]):
-        pulumi.set(self, "audit_configs", value)
-
-    @property
-    @pulumi.getter
-    def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]]:
-        """
-        Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
-        """
-        return pulumi.get(self, "bindings")
-
-    @bindings.setter
-    def bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]]):
-        pulumi.set(self, "bindings", value)
-
-    @property
-    @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[str]]:
-        """
-        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-        """
-        return pulumi.get(self, "etag")
-
-    @etag.setter
-    def etag(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "etag", value)
-
-    @property
-    @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[int]]:
-        """
-        Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        """
-        return pulumi.get(self, "version")
-
-    @version.setter
-    def version(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type

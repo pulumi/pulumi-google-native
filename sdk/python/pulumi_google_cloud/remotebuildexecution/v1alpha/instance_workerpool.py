@@ -17,11 +17,16 @@ class InstanceWorkerpool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscale: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs']]] = None,
+                 channel: Optional[pulumi.Input[str]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 worker_pool: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPoolArgs']]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 worker_config: Optional[pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs']]] = None,
+                 worker_count: Optional[pulumi.Input[str]] = None,
                  workerpools_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -31,9 +36,14 @@ class InstanceWorkerpool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs']] autoscale: The autoscale policy to apply on a pool.
+        :param pulumi.Input[str] channel: Channel specifies the release channel of the pool.
+        :param pulumi.Input[str] name: WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
         :param pulumi.Input[str] parent: Resource name of the instance in which to create the new worker pool. Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
         :param pulumi.Input[str] pool_id: ID of the created worker pool. A valid pool ID must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
-        :param pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPoolArgs']] worker_pool: Specifies the worker pool to create. The name in the worker pool, if specified, is ignored.
+        :param pulumi.Input[str] state: State of the worker pool.
+        :param pulumi.Input[pulumi.InputType['GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs']] worker_config: Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
+        :param pulumi.Input[str] worker_count: The desired number of workers in the worker pool. Must be a value between 0 and 15000.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -52,24 +62,23 @@ class InstanceWorkerpool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['autoscale'] = autoscale
+            __props__['channel'] = channel
             if instances_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instances_id'")
             __props__['instances_id'] = instances_id
+            __props__['name'] = name
             __props__['parent'] = parent
             __props__['pool_id'] = pool_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['worker_pool'] = worker_pool
+            __props__['state'] = state
+            __props__['worker_config'] = worker_config
+            __props__['worker_count'] = worker_count
             if workerpools_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workerpools_id'")
             __props__['workerpools_id'] = workerpools_id
-            __props__['autoscale'] = None
-            __props__['channel'] = None
-            __props__['name'] = None
-            __props__['state'] = None
-            __props__['worker_config'] = None
-            __props__['worker_count'] = None
         super(InstanceWorkerpool, __self__).__init__(
             'google-cloud:remotebuildexecution/v1alpha:InstanceWorkerpool',
             resource_name,

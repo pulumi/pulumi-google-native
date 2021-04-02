@@ -17,10 +17,12 @@ class InstanceTable(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 column_families: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 granularity: Optional[pulumi.Input[str]] = None,
                  initial_splits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitArgs']]]]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 table: Optional[pulumi.Input[pulumi.InputType['TableArgs']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
                  tables_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -31,8 +33,10 @@ class InstanceTable(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] column_families: The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+        :param pulumi.Input[str] granularity: Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SplitArgs']]]] initial_splits: The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
-        :param pulumi.Input[pulumi.InputType['TableArgs']] table: Required. The Table to create.
+        :param pulumi.Input[str] name: The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
         :param pulumi.Input[str] table_id: Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
         """
         if __name__ is not None:
@@ -52,22 +56,21 @@ class InstanceTable(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['column_families'] = column_families
+            __props__['granularity'] = granularity
             __props__['initial_splits'] = initial_splits
             if instances_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instances_id'")
             __props__['instances_id'] = instances_id
+            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['table'] = table
             __props__['table_id'] = table_id
             if tables_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tables_id'")
             __props__['tables_id'] = tables_id
             __props__['cluster_states'] = None
-            __props__['column_families'] = None
-            __props__['granularity'] = None
-            __props__['name'] = None
             __props__['restore_info'] = None
         super(InstanceTable, __self__).__init__(
             'google-cloud:bigtableadmin/v2:InstanceTable',

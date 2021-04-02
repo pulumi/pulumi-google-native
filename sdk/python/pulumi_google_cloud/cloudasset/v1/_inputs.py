@@ -10,7 +10,6 @@ from ... import _utilities, _tables
 
 __all__ = [
     'ExprArgs',
-    'FeedArgs',
     'FeedOutputConfigArgs',
     'PubsubDestinationArgs',
 ]
@@ -85,110 +84,6 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
-
-
-@pulumi.input_type
-class FeedArgs:
-    def __init__(__self__, *,
-                 asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 condition: Optional[pulumi.Input['ExprArgs']] = None,
-                 content_type: Optional[pulumi.Input[str]] = None,
-                 feed_output_config: Optional[pulumi.Input['FeedOutputConfigArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None):
-        """
-        An asset feed used to export asset updates to a destinations. An asset feed filter controls what updates are exported. The asset feed must be created within a project, organization, or folder. Supported destinations are: Pub/Sub topics.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_names: A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_types: A list of types of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `"compute.googleapis.com/Disk"` See [this topic](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for a list of all supported asset types.
-        :param pulumi.Input['ExprArgs'] condition: A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition) for detailed instructions.
-        :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
-        :param pulumi.Input['FeedOutputConfigArgs'] feed_output_config: Required. Feed output configuration defining where the asset updates are published to.
-        :param pulumi.Input[str] name: Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
-        """
-        if asset_names is not None:
-            pulumi.set(__self__, "asset_names", asset_names)
-        if asset_types is not None:
-            pulumi.set(__self__, "asset_types", asset_types)
-        if condition is not None:
-            pulumi.set(__self__, "condition", condition)
-        if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
-        if feed_output_config is not None:
-            pulumi.set(__self__, "feed_output_config", feed_output_config)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter(name="assetNames")
-    def asset_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info.
-        """
-        return pulumi.get(self, "asset_names")
-
-    @asset_names.setter
-    def asset_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "asset_names", value)
-
-    @property
-    @pulumi.getter(name="assetTypes")
-    def asset_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of types of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `"compute.googleapis.com/Disk"` See [this topic](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for a list of all supported asset types.
-        """
-        return pulumi.get(self, "asset_types")
-
-    @asset_types.setter
-    def asset_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "asset_types", value)
-
-    @property
-    @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ExprArgs']]:
-        """
-        A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition) for detailed instructions.
-        """
-        return pulumi.get(self, "condition")
-
-    @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ExprArgs']]):
-        pulumi.set(self, "condition", value)
-
-    @property
-    @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Asset content type. If not specified, no content but the asset name and type will be returned.
-        """
-        return pulumi.get(self, "content_type")
-
-    @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "content_type", value)
-
-    @property
-    @pulumi.getter(name="feedOutputConfig")
-    def feed_output_config(self) -> Optional[pulumi.Input['FeedOutputConfigArgs']]:
-        """
-        Required. Feed output configuration defining where the asset updates are published to.
-        """
-        return pulumi.get(self, "feed_output_config")
-
-    @feed_output_config.setter
-    def feed_output_config(self, value: Optional[pulumi.Input['FeedOutputConfigArgs']]):
-        pulumi.set(self, "feed_output_config", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type

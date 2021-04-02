@@ -17,9 +17,17 @@ class Instruction(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instruction: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1InstructionArgs']]] = None,
+                 blocking_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 csv_instruction: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']]] = None,
+                 data_type: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  instructions_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 pdf_instruction: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -28,7 +36,15 @@ class Instruction(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1InstructionArgs']] instruction: Required. Instruction of how to perform the labeling task.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocking_resources: The names of any related resources that are blocking changes to the instruction.
+        :param pulumi.Input[str] create_time: Creation time of instruction.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']] csv_instruction: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+        :param pulumi.Input[str] data_type: Required. The data type of this instruction.
+        :param pulumi.Input[str] description: Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
+        :param pulumi.Input[str] display_name: Required. The display name of the instruction. Maximum of 64 characters.
+        :param pulumi.Input[str] name: Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']] pdf_instruction: Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
+        :param pulumi.Input[str] update_time: Last update time of instruction.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -47,22 +63,21 @@ class Instruction(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['instruction'] = instruction
+            __props__['blocking_resources'] = blocking_resources
+            __props__['create_time'] = create_time
+            __props__['csv_instruction'] = csv_instruction
+            __props__['data_type'] = data_type
+            __props__['description'] = description
+            __props__['display_name'] = display_name
             if instructions_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instructions_id'")
             __props__['instructions_id'] = instructions_id
+            __props__['name'] = name
+            __props__['pdf_instruction'] = pdf_instruction
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['blocking_resources'] = None
-            __props__['create_time'] = None
-            __props__['csv_instruction'] = None
-            __props__['data_type'] = None
-            __props__['description'] = None
-            __props__['display_name'] = None
-            __props__['name'] = None
-            __props__['pdf_instruction'] = None
-            __props__['update_time'] = None
+            __props__['update_time'] = update_time
         super(Instruction, __self__).__init__(
             'google-cloud:datalabeling/v1beta1:Instruction',
             resource_name,

@@ -17,10 +17,12 @@ class PhraseSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 boost: Optional[pulumi.Input[float]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 phrase_set: Optional[pulumi.Input[pulumi.InputType['PhraseSetArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  phrase_set_id: Optional[pulumi.Input[str]] = None,
                  phrase_sets_id: Optional[pulumi.Input[str]] = None,
+                 phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PhraseArgs']]]]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -30,8 +32,10 @@ class PhraseSet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PhraseSetArgs']] phrase_set: Required. The phrase set to create.
+        :param pulumi.Input[float] boost: Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
+        :param pulumi.Input[str] name: The resource name of the phrase set.
         :param pulumi.Input[str] phrase_set_id: The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PhraseArgs']]]] phrases: A list of word and phrases.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -50,20 +54,19 @@ class PhraseSet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['boost'] = boost
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['phrase_set'] = phrase_set
+            __props__['name'] = name
             __props__['phrase_set_id'] = phrase_set_id
             if phrase_sets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'phrase_sets_id'")
             __props__['phrase_sets_id'] = phrase_sets_id
+            __props__['phrases'] = phrases
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['boost'] = None
-            __props__['name'] = None
-            __props__['phrases'] = None
         super(PhraseSet, __self__).__init__(
             'google-cloud:speech/v1p1beta1:PhraseSet',
             resource_name,

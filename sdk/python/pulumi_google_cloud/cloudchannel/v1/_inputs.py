@@ -12,7 +12,6 @@ __all__ = [
     'GoogleCloudChannelV1AssociationInfoArgs',
     'GoogleCloudChannelV1CommitmentSettingsArgs',
     'GoogleCloudChannelV1ContactInfoArgs',
-    'GoogleCloudChannelV1EntitlementArgs',
     'GoogleCloudChannelV1ParameterArgs',
     'GoogleCloudChannelV1PeriodArgs',
     'GoogleCloudChannelV1RenewalSettingsArgs',
@@ -154,94 +153,6 @@ class GoogleCloudChannelV1ContactInfoArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
-
-
-@pulumi.input_type
-class GoogleCloudChannelV1EntitlementArgs:
-    def __init__(__self__, *,
-                 association_info: Optional[pulumi.Input['GoogleCloudChannelV1AssociationInfoArgs']] = None,
-                 commitment_settings: Optional[pulumi.Input['GoogleCloudChannelV1CommitmentSettingsArgs']] = None,
-                 offer: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudChannelV1ParameterArgs']]]] = None,
-                 purchase_order_id: Optional[pulumi.Input[str]] = None):
-        """
-        An entitlement is a representation of a customer's ability to use a service.
-        :param pulumi.Input['GoogleCloudChannelV1AssociationInfoArgs'] association_info: Association information to other entitlements.
-        :param pulumi.Input['GoogleCloudChannelV1CommitmentSettingsArgs'] commitment_settings: Commitment settings for a commitment-based Offer. Required for commitment based offers.
-        :param pulumi.Input[str] offer: Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudChannelV1ParameterArgs']]] parameters: Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
-        :param pulumi.Input[str] purchase_order_id: Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
-        """
-        if association_info is not None:
-            pulumi.set(__self__, "association_info", association_info)
-        if commitment_settings is not None:
-            pulumi.set(__self__, "commitment_settings", commitment_settings)
-        if offer is not None:
-            pulumi.set(__self__, "offer", offer)
-        if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
-        if purchase_order_id is not None:
-            pulumi.set(__self__, "purchase_order_id", purchase_order_id)
-
-    @property
-    @pulumi.getter(name="associationInfo")
-    def association_info(self) -> Optional[pulumi.Input['GoogleCloudChannelV1AssociationInfoArgs']]:
-        """
-        Association information to other entitlements.
-        """
-        return pulumi.get(self, "association_info")
-
-    @association_info.setter
-    def association_info(self, value: Optional[pulumi.Input['GoogleCloudChannelV1AssociationInfoArgs']]):
-        pulumi.set(self, "association_info", value)
-
-    @property
-    @pulumi.getter(name="commitmentSettings")
-    def commitment_settings(self) -> Optional[pulumi.Input['GoogleCloudChannelV1CommitmentSettingsArgs']]:
-        """
-        Commitment settings for a commitment-based Offer. Required for commitment based offers.
-        """
-        return pulumi.get(self, "commitment_settings")
-
-    @commitment_settings.setter
-    def commitment_settings(self, value: Optional[pulumi.Input['GoogleCloudChannelV1CommitmentSettingsArgs']]):
-        pulumi.set(self, "commitment_settings", value)
-
-    @property
-    @pulumi.getter
-    def offer(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
-        """
-        return pulumi.get(self, "offer")
-
-    @offer.setter
-    def offer(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "offer", value)
-
-    @property
-    @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudChannelV1ParameterArgs']]]]:
-        """
-        Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
-        """
-        return pulumi.get(self, "parameters")
-
-    @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudChannelV1ParameterArgs']]]]):
-        pulumi.set(self, "parameters", value)
-
-    @property
-    @pulumi.getter(name="purchaseOrderId")
-    def purchase_order_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
-        """
-        return pulumi.get(self, "purchase_order_id")
-
-    @purchase_order_id.setter
-    def purchase_order_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "purchase_order_id", value)
 
 
 @pulumi.input_type

@@ -8,7 +8,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
 from . import outputs
-from ._inputs import *
 
 __all__ = ['Device']
 
@@ -17,8 +16,11 @@ class Device(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 device: Optional[pulumi.Input[pulumi.InputType['DeviceArgs']]] = None,
+                 asset_tag: Optional[pulumi.Input[str]] = None,
                  devices_id: Optional[pulumi.Input[str]] = None,
+                 last_sync_time: Optional[pulumi.Input[str]] = None,
+                 serial_number: Optional[pulumi.Input[str]] = None,
+                 wifi_mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -27,7 +29,10 @@ class Device(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DeviceArgs']] device: Required. The device to be created. The name field within this device is ignored in the create method. A new name is created by the method, and returned within the response. Only the fields `device_type`, `serial_number` and `asset_tag` (if present) are used to create the device. All other fields are ignored. The `device_type` and `serial_number` fields are required.
+        :param pulumi.Input[str] asset_tag: Asset tag of the device.
+        :param pulumi.Input[str] last_sync_time: Most recent time when device synced with this service.
+        :param pulumi.Input[str] serial_number: Serial Number of device. Example: HT82V1A01076.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] wifi_mac_addresses: WiFi MAC addresses of device.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -46,12 +51,14 @@ class Device(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['device'] = device
+            __props__['asset_tag'] = asset_tag
             if devices_id is None and not opts.urn:
                 raise TypeError("Missing required property 'devices_id'")
             __props__['devices_id'] = devices_id
+            __props__['last_sync_time'] = last_sync_time
+            __props__['serial_number'] = serial_number
+            __props__['wifi_mac_addresses'] = wifi_mac_addresses
             __props__['android_specific_attributes'] = None
-            __props__['asset_tag'] = None
             __props__['baseband_version'] = None
             __props__['bootloader_version'] = None
             __props__['brand'] = None
@@ -64,7 +71,6 @@ class Device(pulumi.CustomResource):
             __props__['encryption_state'] = None
             __props__['imei'] = None
             __props__['kernel_version'] = None
-            __props__['last_sync_time'] = None
             __props__['management_state'] = None
             __props__['manufacturer'] = None
             __props__['meid'] = None
@@ -76,8 +82,6 @@ class Device(pulumi.CustomResource):
             __props__['owner_type'] = None
             __props__['release_version'] = None
             __props__['security_patch_time'] = None
-            __props__['serial_number'] = None
-            __props__['wifi_mac_addresses'] = None
         super(Device, __self__).__init__(
             'google-cloud:cloudidentity/v1beta1:Device',
             resource_name,

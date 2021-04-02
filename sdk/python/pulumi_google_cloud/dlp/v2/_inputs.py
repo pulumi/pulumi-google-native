@@ -33,7 +33,6 @@ __all__ = [
     'GooglePrivacyDlpV2DatastoreOptionsArgs',
     'GooglePrivacyDlpV2DateShiftConfigArgs',
     'GooglePrivacyDlpV2DeidentifyConfigArgs',
-    'GooglePrivacyDlpV2DeidentifyTemplateArgs',
     'GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs',
     'GooglePrivacyDlpV2DetectionRuleArgs',
     'GooglePrivacyDlpV2DictionaryArgs',
@@ -54,11 +53,9 @@ __all__ = [
     'GooglePrivacyDlpV2InfoTypeTransformationsArgs',
     'GooglePrivacyDlpV2InspectConfigArgs',
     'GooglePrivacyDlpV2InspectJobConfigArgs',
-    'GooglePrivacyDlpV2InspectTemplateArgs',
     'GooglePrivacyDlpV2InspectionRuleArgs',
     'GooglePrivacyDlpV2InspectionRuleSetArgs',
     'GooglePrivacyDlpV2JobNotificationEmailsArgs',
-    'GooglePrivacyDlpV2JobTriggerArgs',
     'GooglePrivacyDlpV2KAnonymityConfigArgs',
     'GooglePrivacyDlpV2KMapEstimationConfigArgs',
     'GooglePrivacyDlpV2KindExpressionArgs',
@@ -1513,62 +1510,6 @@ class GooglePrivacyDlpV2DeidentifyConfigArgs:
 
 
 @pulumi.input_type
-class GooglePrivacyDlpV2DeidentifyTemplateArgs:
-    def __init__(__self__, *,
-                 deidentify_config: Optional[pulumi.Input['GooglePrivacyDlpV2DeidentifyConfigArgs']] = None,
-                 description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None):
-        """
-        DeidentifyTemplates contains instructions on how to de-identify content. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
-        :param pulumi.Input['GooglePrivacyDlpV2DeidentifyConfigArgs'] deidentify_config: The core content of the template.
-        :param pulumi.Input[str] description: Short description (max 256 chars).
-        :param pulumi.Input[str] display_name: Display name (max 256 chars).
-        """
-        if deidentify_config is not None:
-            pulumi.set(__self__, "deidentify_config", deidentify_config)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
-
-    @property
-    @pulumi.getter(name="deidentifyConfig")
-    def deidentify_config(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2DeidentifyConfigArgs']]:
-        """
-        The core content of the template.
-        """
-        return pulumi.get(self, "deidentify_config")
-
-    @deidentify_config.setter
-    def deidentify_config(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2DeidentifyConfigArgs']]):
-        pulumi.set(self, "deidentify_config", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Short description (max 256 chars).
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Display name (max 256 chars).
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
-
-
-@pulumi.input_type
 class GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs:
     def __init__(__self__, *,
                  auxiliary_tables: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2StatisticalTableArgs']]]] = None,
@@ -2561,62 +2502,6 @@ class GooglePrivacyDlpV2InspectJobConfigArgs:
 
 
 @pulumi.input_type
-class GooglePrivacyDlpV2InspectTemplateArgs:
-    def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
-                 inspect_config: Optional[pulumi.Input['GooglePrivacyDlpV2InspectConfigArgs']] = None):
-        """
-        The inspectTemplate contains a configuration (set of types of sensitive data to be detected) to be used anywhere you otherwise would normally specify InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
-        :param pulumi.Input[str] description: Short description (max 256 chars).
-        :param pulumi.Input[str] display_name: Display name (max 256 chars).
-        :param pulumi.Input['GooglePrivacyDlpV2InspectConfigArgs'] inspect_config: The core content of the template. Configuration of the scanning process.
-        """
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
-        if inspect_config is not None:
-            pulumi.set(__self__, "inspect_config", inspect_config)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Short description (max 256 chars).
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Display name (max 256 chars).
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter(name="inspectConfig")
-    def inspect_config(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2InspectConfigArgs']]:
-        """
-        The core content of the template. Configuration of the scanning process.
-        """
-        return pulumi.get(self, "inspect_config")
-
-    @inspect_config.setter
-    def inspect_config(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2InspectConfigArgs']]):
-        pulumi.set(self, "inspect_config", value)
-
-
-@pulumi.input_type
 class GooglePrivacyDlpV2InspectionRuleArgs:
     def __init__(__self__, *,
                  exclusion_rule: Optional[pulumi.Input['GooglePrivacyDlpV2ExclusionRuleArgs']] = None,
@@ -2703,110 +2588,6 @@ class GooglePrivacyDlpV2JobNotificationEmailsArgs:
         Enable email notification to project owners and editors on jobs's completion/failure.
         """
         pass
-
-
-@pulumi.input_type
-class GooglePrivacyDlpV2JobTriggerArgs:
-    def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
-                 inspect_job: Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
-                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]]] = None):
-        """
-        Contains a configuration to make dlp api calls on a repeating basis. See https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
-        :param pulumi.Input[str] description: User provided description (max 256 chars)
-        :param pulumi.Input[str] display_name: Display name (max 100 chars)
-        :param pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs'] inspect_job: For inspect jobs, a snapshot of the configuration.
-        :param pulumi.Input[str] name: Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
-        :param pulumi.Input[str] status: Required. A status for this trigger.
-        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]] triggers: A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
-        """
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
-        if inspect_job is not None:
-            pulumi.set(__self__, "inspect_job", inspect_job)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if triggers is not None:
-            pulumi.set(__self__, "triggers", triggers)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        User provided description (max 256 chars)
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Display name (max 100 chars)
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter(name="inspectJob")
-    def inspect_job(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']]:
-        """
-        For inspect jobs, a snapshot of the configuration.
-        """
-        return pulumi.get(self, "inspect_job")
-
-    @inspect_job.setter
-    def inspect_job(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']]):
-        pulumi.set(self, "inspect_job", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. A status for this trigger.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter
-    def triggers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]]]:
-        """
-        A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
-        """
-        return pulumi.get(self, "triggers")
-
-    @triggers.setter
-    def triggers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]]]):
-        pulumi.set(self, "triggers", value)
 
 
 @pulumi.input_type

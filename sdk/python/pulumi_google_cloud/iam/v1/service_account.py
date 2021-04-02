@@ -7,7 +7,6 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from ... import _utilities, _tables
-from ._inputs import *
 
 __all__ = ['ServiceAccount']
 
@@ -17,8 +16,10 @@ class ServiceAccount(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 service_account: Optional[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]] = None,
                  service_accounts_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -29,7 +30,9 @@ class ServiceAccount(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Required. The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
-        :param pulumi.Input[pulumi.InputType['ServiceAccountArgs']] service_account: The ServiceAccount resource to create. Currently, only the following values are user assignable: `display_name` and `description`.
+        :param pulumi.Input[str] description: Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
+        :param pulumi.Input[str] display_name: Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
+        :param pulumi.Input[str] name: The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -49,18 +52,17 @@ class ServiceAccount(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['account_id'] = account_id
+            __props__['description'] = description
+            __props__['display_name'] = display_name
+            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
-            __props__['service_account'] = service_account
             if service_accounts_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_accounts_id'")
             __props__['service_accounts_id'] = service_accounts_id
-            __props__['description'] = None
             __props__['disabled'] = None
-            __props__['display_name'] = None
             __props__['email'] = None
-            __props__['name'] = None
             __props__['oauth2_client_id'] = None
             __props__['project_id'] = None
             __props__['unique_id'] = None

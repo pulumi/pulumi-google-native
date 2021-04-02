@@ -17,12 +17,23 @@ class QueueTask(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 app_engine_http_request: Optional[pulumi.Input[pulumi.InputType['AppEngineHttpRequestArgs']]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 dispatch_count: Optional[pulumi.Input[int]] = None,
+                 dispatch_deadline: Optional[pulumi.Input[str]] = None,
+                 first_attempt: Optional[pulumi.Input[pulumi.InputType['AttemptArgs']]] = None,
+                 http_request: Optional[pulumi.Input[pulumi.InputType['HttpRequestArgs']]] = None,
+                 last_attempt: Optional[pulumi.Input[pulumi.InputType['AttemptArgs']]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 pull_message: Optional[pulumi.Input[pulumi.InputType['PullMessageArgs']]] = None,
                  queues_id: Optional[pulumi.Input[str]] = None,
+                 response_count: Optional[pulumi.Input[int]] = None,
                  response_view: Optional[pulumi.Input[str]] = None,
-                 task: Optional[pulumi.Input[pulumi.InputType['TaskArgs']]] = None,
+                 schedule_time: Optional[pulumi.Input[str]] = None,
                  tasks_id: Optional[pulumi.Input[str]] = None,
+                 view: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -31,8 +42,19 @@ class QueueTask(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AppEngineHttpRequestArgs']] app_engine_http_request: HTTP request that is sent to the App Engine app handler. An App Engine task is a task that has AppEngineHttpRequest set.
+        :param pulumi.Input[str] create_time: The time that the task was created. `create_time` will be truncated to the nearest second.
+        :param pulumi.Input[int] dispatch_count: The number of attempts dispatched. This count includes attempts which have been dispatched but haven't received a response.
+        :param pulumi.Input[str] dispatch_deadline: The deadline for requests sent to the worker. If the worker does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. Cloud Tasks will retry the task according to the RetryConfig. Note that when the request is cancelled, Cloud Tasks will stop listening for the response, but whether the worker stops processing depends on the worker. For example, if the worker is stuck, it may not react to cancelled requests. The default and maximum values depend on the type of request: * For HTTP tasks, the default is 10 minutes. The deadline must be in the interval [15 seconds, 30 minutes]. * For App Engine tasks, 0 indicates that the request has the default deadline. The default deadline depends on the [scaling type](https://cloud.google.com/appengine/docs/standard/go/how-instances-are-managed#instance_scaling) of the service: 10 minutes for standard apps with automatic scaling, 24 hours for standard apps with manual and basic scaling, and 60 minutes for flex apps. If the request deadline is set, it must be in the interval [15 seconds, 24 hours 15 seconds]. Regardless of the task's `dispatch_deadline`, the app handler will not run for longer than than the service's timeout. We recommend setting the `dispatch_deadline` to at most a few seconds more than the app handler's timeout. For more information see [Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#timeouts). `dispatch_deadline` will be truncated to the nearest millisecond. The deadline is an approximate deadline.
+        :param pulumi.Input[pulumi.InputType['AttemptArgs']] first_attempt: The status of the task's first attempt. Only dispatch_time will be set. The other Attempt information is not retained by Cloud Tasks.
+        :param pulumi.Input[pulumi.InputType['HttpRequestArgs']] http_request: HTTP request that is sent to the task's target. An HTTP task is a task that has HttpRequest set.
+        :param pulumi.Input[pulumi.InputType['AttemptArgs']] last_attempt: The status of the task's last attempt.
+        :param pulumi.Input[str] name: Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
+        :param pulumi.Input[pulumi.InputType['PullMessageArgs']] pull_message: Pull Message contained in a task in a PULL queue type. This payload type cannot be explicitly set through Cloud Tasks API. Its purpose, currently is to provide backward compatibility with App Engine Task Queue [pull](https://cloud.google.com/appengine/docs/standard/java/taskqueue/pull/) queues to provide a way to inspect contents of pull tasks through the CloudTasks.GetTask.
+        :param pulumi.Input[int] response_count: The number of attempts which have received a response.
         :param pulumi.Input[str] response_view: The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
-        :param pulumi.Input[pulumi.InputType['TaskArgs']] task: Required. The task to add. Task names have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`. The user can optionally specify a task name. If a name is not specified then the system will generate a random unique task id, which will be set in the task returned in the response. If schedule_time is not set or is in the past then Cloud Tasks will set it to the current time. Task De-duplication: Explicitly specifying a task ID enables task de-duplication. If a task's ID is identical to that of an existing task or a task that was deleted or executed recently then the call will fail with ALREADY_EXISTS. If the task's queue was created using Cloud Tasks, then another task with the same name can't be created for ~1hour after the original task was deleted or executed. If the task's queue was created using queue.yaml or queue.xml, then another task with the same name can't be created for ~9days after the original task was deleted or executed. Because there is an extra lookup cost to identify duplicate task names, these CreateTask calls have significantly increased latency. Using hashed strings for the task id or for the prefix of the task id is recommended. Choosing task ids that are sequential or have sequential prefixes, for example using a timestamp, causes an increase in latency and error rates in all task commands. The infrastructure relies on an approximately uniform distribution of task ids to store and serve tasks efficiently.
+        :param pulumi.Input[str] schedule_time: The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
+        :param pulumi.Input[str] view: The view specifies which subset of the Task has been returned.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -51,32 +73,31 @@ class QueueTask(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['app_engine_http_request'] = app_engine_http_request
+            __props__['create_time'] = create_time
+            __props__['dispatch_count'] = dispatch_count
+            __props__['dispatch_deadline'] = dispatch_deadline
+            __props__['first_attempt'] = first_attempt
+            __props__['http_request'] = http_request
+            __props__['last_attempt'] = last_attempt
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
+            __props__['name'] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['pull_message'] = pull_message
             if queues_id is None and not opts.urn:
                 raise TypeError("Missing required property 'queues_id'")
             __props__['queues_id'] = queues_id
+            __props__['response_count'] = response_count
             __props__['response_view'] = response_view
-            __props__['task'] = task
+            __props__['schedule_time'] = schedule_time
             if tasks_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tasks_id'")
             __props__['tasks_id'] = tasks_id
-            __props__['app_engine_http_request'] = None
-            __props__['create_time'] = None
-            __props__['dispatch_count'] = None
-            __props__['dispatch_deadline'] = None
-            __props__['first_attempt'] = None
-            __props__['http_request'] = None
-            __props__['last_attempt'] = None
-            __props__['name'] = None
-            __props__['pull_message'] = None
-            __props__['response_count'] = None
-            __props__['schedule_time'] = None
-            __props__['view'] = None
+            __props__['view'] = view
         super(QueueTask, __self__).__init__(
             'google-cloud:cloudtasks/v2beta3:QueueTask',
             resource_name,

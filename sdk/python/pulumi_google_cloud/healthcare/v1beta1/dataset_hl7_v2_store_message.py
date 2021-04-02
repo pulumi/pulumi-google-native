@@ -17,12 +17,19 @@ class DatasetHl7V2StoreMessage(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 data: Optional[pulumi.Input[str]] = None,
                  datasets_id: Optional[pulumi.Input[str]] = None,
                  hl7_v2_stores_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 message: Optional[pulumi.Input[pulumi.InputType['MessageArgs']]] = None,
+                 message_type: Optional[pulumi.Input[str]] = None,
                  messages_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 patient_ids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PatientIdArgs']]]]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 schematized_data: Optional[pulumi.Input[pulumi.InputType['SchematizedDataArgs']]] = None,
+                 send_facility: Optional[pulumi.Input[str]] = None,
+                 send_time: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -31,7 +38,14 @@ class DatasetHl7V2StoreMessage(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['MessageArgs']] message: HL7v2 message.
+        :param pulumi.Input[str] data: Raw message bytes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+        :param pulumi.Input[str] message_type: The message type for this message. MSH-9.1.
+        :param pulumi.Input[str] name: Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PatientIdArgs']]]] patient_ids: All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
+        :param pulumi.Input[pulumi.InputType['SchematizedDataArgs']] schematized_data: The parsed version of the raw message data schematized according to this store's schemas and type definitions.
+        :param pulumi.Input[str] send_facility: The hospital that this message came from. MSH-4.
+        :param pulumi.Input[str] send_time: The datetime the sending application sent this message. MSH-7.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -50,32 +64,31 @@ class DatasetHl7V2StoreMessage(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['data'] = data
             if datasets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'datasets_id'")
             __props__['datasets_id'] = datasets_id
             if hl7_v2_stores_id is None and not opts.urn:
                 raise TypeError("Missing required property 'hl7_v2_stores_id'")
             __props__['hl7_v2_stores_id'] = hl7_v2_stores_id
+            __props__['labels'] = labels
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__['locations_id'] = locations_id
-            __props__['message'] = message
+            __props__['message_type'] = message_type
             if messages_id is None and not opts.urn:
                 raise TypeError("Missing required property 'messages_id'")
             __props__['messages_id'] = messages_id
+            __props__['name'] = name
+            __props__['patient_ids'] = patient_ids
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__['projects_id'] = projects_id
+            __props__['schematized_data'] = schematized_data
+            __props__['send_facility'] = send_facility
+            __props__['send_time'] = send_time
             __props__['create_time'] = None
-            __props__['data'] = None
-            __props__['labels'] = None
-            __props__['message_type'] = None
-            __props__['name'] = None
             __props__['parsed_data'] = None
-            __props__['patient_ids'] = None
-            __props__['schematized_data'] = None
-            __props__['send_facility'] = None
-            __props__['send_time'] = None
         super(DatasetHl7V2StoreMessage, __self__).__init__(
             'google-cloud:healthcare/v1beta1:DatasetHl7V2StoreMessage',
             resource_name,
