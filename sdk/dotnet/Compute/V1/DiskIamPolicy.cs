@@ -107,11 +107,23 @@ namespace Pulumi.GoogleCloud.Compute.V1
 
     public sealed class DiskIamPolicyArgs : Pulumi.ResourceArgs
     {
+        [Input("auditConfigs")]
+        private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
+
+        /// <summary>
+        /// Specifies cloud audit logging configuration for this policy.
+        /// </summary>
+        public InputList<Inputs.AuditConfigArgs> AuditConfigs
+        {
+            get => _auditConfigs ?? (_auditConfigs = new InputList<Inputs.AuditConfigArgs>());
+            set => _auditConfigs = value;
+        }
+
         [Input("bindings")]
         private InputList<Inputs.BindingArgs>? _bindings;
 
         /// <summary>
-        /// Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings.
+        /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
         /// </summary>
         public InputList<Inputs.BindingArgs> Bindings
         {
@@ -120,22 +132,51 @@ namespace Pulumi.GoogleCloud.Compute.V1
         }
 
         /// <summary>
-        /// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag.
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
+        /// 
+        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        /// <summary>
-        /// REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them.
-        /// </summary>
-        [Input("policy")]
-        public Input<Inputs.PolicyArgs>? Policy { get; set; }
+        [Input("iamOwned")]
+        public Input<bool>? IamOwned { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         [Input("resource", required: true)]
         public Input<string> Resource { get; set; } = null!;
+
+        [Input("rules")]
+        private InputList<Inputs.RuleArgs>? _rules;
+
+        /// <summary>
+        /// If more than one rule is specified, the rules are applied in the following manner: - All matching LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if one or more matching rule requires logging. - Otherwise, if no rule applies, permission is denied.
+        /// </summary>
+        public InputList<Inputs.RuleArgs> Rules
+        {
+            get => _rules ?? (_rules = new InputList<Inputs.RuleArgs>());
+            set => _rules = value;
+        }
+
+        /// <summary>
+        /// Specifies the format of the policy.
+        /// 
+        /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected.
+        /// 
+        /// Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations:
+        /// 
+        /// * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions
+        /// 
+        /// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
+        /// 
+        /// If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset.
+        /// 
+        /// To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
+        [Input("version")]
+        public Input<int>? Version { get; set; }
 
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;

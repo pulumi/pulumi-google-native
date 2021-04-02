@@ -97,10 +97,22 @@ namespace Pulumi.GoogleCloud.Dlp.V2
     public sealed class InspectTemplateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The InspectTemplate to create.
+        /// Short description (max 256 chars).
         /// </summary>
-        [Input("inspectTemplate")]
-        public Input<Inputs.GooglePrivacyDlpV2InspectTemplateArgs>? InspectTemplate { get; set; }
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Display name (max 256 chars).
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// The core content of the template. Configuration of the scanning process.
+        /// </summary>
+        [Input("inspectConfig")]
+        public Input<Inputs.GooglePrivacyDlpV2InspectConfigArgs>? InspectConfig { get; set; }
 
         [Input("inspectTemplatesId", required: true)]
         public Input<string> InspectTemplatesId { get; set; } = null!;

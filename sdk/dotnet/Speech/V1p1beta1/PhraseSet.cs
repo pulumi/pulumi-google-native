@@ -78,14 +78,20 @@ namespace Pulumi.GoogleCloud.Speech.V1p1beta1
 
     public sealed class PhraseSetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
+        /// </summary>
+        [Input("boost")]
+        public Input<double>? Boost { get; set; }
+
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The phrase set to create.
+        /// The resource name of the phrase set.
         /// </summary>
-        [Input("phraseSet")]
-        public Input<Inputs.PhraseSetArgs>? PhraseSet { get; set; }
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
@@ -95,6 +101,18 @@ namespace Pulumi.GoogleCloud.Speech.V1p1beta1
 
         [Input("phraseSetsId", required: true)]
         public Input<string> PhraseSetsId { get; set; } = null!;
+
+        [Input("phrases")]
+        private InputList<Inputs.PhraseArgs>? _phrases;
+
+        /// <summary>
+        /// A list of word and phrases.
+        /// </summary>
+        public InputList<Inputs.PhraseArgs> Phrases
+        {
+            get => _phrases ?? (_phrases = new InputList<Inputs.PhraseArgs>());
+            set => _phrases = value;
+        }
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;

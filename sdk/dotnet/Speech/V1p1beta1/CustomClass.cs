@@ -79,12 +79,6 @@ namespace Pulumi.GoogleCloud.Speech.V1p1beta1
     public sealed class CustomClassArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The custom class to create.
-        /// </summary>
-        [Input("customClass")]
-        public Input<Inputs.CustomClassArgs>? CustomClass { get; set; }
-
-        /// <summary>
         /// The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
         /// </summary>
         [Input("customClassId")]
@@ -93,8 +87,26 @@ namespace Pulumi.GoogleCloud.Speech.V1p1beta1
         [Input("customClassesId", required: true)]
         public Input<string> CustomClassesId { get; set; } = null!;
 
+        [Input("items")]
+        private InputList<Inputs.ClassItemArgs>? _items;
+
+        /// <summary>
+        /// A collection of class items.
+        /// </summary>
+        public InputList<Inputs.ClassItemArgs> Items
+        {
+            get => _items ?? (_items = new InputList<Inputs.ClassItemArgs>());
+            set => _items = value;
+        }
+
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
+
+        /// <summary>
+        /// The resource name of the custom class.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;

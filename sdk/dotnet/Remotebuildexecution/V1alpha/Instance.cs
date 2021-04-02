@@ -91,10 +91,10 @@ namespace Pulumi.GoogleCloud.Remotebuildexecution.V1alpha
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the instance to create. The name in the instance, if specified in the instance, is ignored.
+        /// The policy to define whether or not RBE features can be used or how they can be used.
         /// </summary>
-        [Input("instance")]
-        public Input<Inputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstanceArgs>? Instance { get; set; }
+        [Input("featurePolicy")]
+        public Input<Inputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs>? FeaturePolicy { get; set; }
 
         /// <summary>
         /// ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
@@ -106,6 +106,24 @@ namespace Pulumi.GoogleCloud.Remotebuildexecution.V1alpha
         public Input<string> InstancesId { get; set; } = null!;
 
         /// <summary>
+        /// The location is a GCP region. Currently only `us-central1` is supported.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Whether stack driver logging is enabled for the instance.
+        /// </summary>
+        [Input("loggingEnabled")]
+        public Input<bool>? LoggingEnabled { get; set; }
+
+        /// <summary>
+        /// Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
         /// Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
         /// </summary>
         [Input("parent")]
@@ -113,6 +131,12 @@ namespace Pulumi.GoogleCloud.Remotebuildexecution.V1alpha
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
+
+        /// <summary>
+        /// State of the instance.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         public InstanceArgs()
         {

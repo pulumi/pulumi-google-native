@@ -121,10 +121,22 @@ namespace Pulumi.GoogleCloud.Dlp.V2
     public sealed class JobTriggerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The JobTrigger to create.
+        /// User provided description (max 256 chars)
         /// </summary>
-        [Input("jobTrigger")]
-        public Input<Inputs.GooglePrivacyDlpV2JobTriggerArgs>? JobTrigger { get; set; }
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Display name (max 100 chars)
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// For inspect jobs, a snapshot of the configuration.
+        /// </summary>
+        [Input("inspectJob")]
+        public Input<Inputs.GooglePrivacyDlpV2InspectJobConfigArgs>? InspectJob { get; set; }
 
         [Input("jobTriggersId", required: true)]
         public Input<string> JobTriggersId { get; set; } = null!;
@@ -132,14 +144,38 @@ namespace Pulumi.GoogleCloud.Dlp.V2
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
+        /// <summary>
+        /// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
+
+        /// <summary>
+        /// Required. A status for this trigger.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         /// </summary>
         [Input("triggerId")]
         public Input<string>? TriggerId { get; set; }
+
+        [Input("triggers")]
+        private InputList<Inputs.GooglePrivacyDlpV2TriggerArgs>? _triggers;
+
+        /// <summary>
+        /// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
+        /// </summary>
+        public InputList<Inputs.GooglePrivacyDlpV2TriggerArgs> Triggers
+        {
+            get => _triggers ?? (_triggers = new InputList<Inputs.GooglePrivacyDlpV2TriggerArgs>());
+            set => _triggers = value;
+        }
 
         public JobTriggerArgs()
         {

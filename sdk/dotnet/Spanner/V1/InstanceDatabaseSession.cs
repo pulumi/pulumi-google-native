@@ -90,14 +90,20 @@ namespace Pulumi.GoogleCloud.Spanner.V1
         [Input("instancesId", required: true)]
         public Input<string> InstancesId { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("labels")]
+        private InputMap<string>? _labels;
 
         /// <summary>
-        /// Required. The session to create.
+        /// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
         /// </summary>
-        [Input("session")]
-        public Input<Inputs.SessionArgs>? Session { get; set; }
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         [Input("sessionsId", required: true)]
         public Input<string> SessionsId { get; set; } = null!;

@@ -114,14 +114,26 @@ namespace Pulumi.GoogleCloud.Iam.V1
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        /// <summary>
+        /// Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The ServiceAccount resource to create. Currently, only the following values are user assignable: `display_name` and `description`.
+        /// Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
         /// </summary>
-        [Input("serviceAccount")]
-        public Input<Inputs.ServiceAccountArgs>? ServiceAccount { get; set; }
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         [Input("serviceAccountsId", required: true)]
         public Input<string> ServiceAccountsId { get; set; } = null!;

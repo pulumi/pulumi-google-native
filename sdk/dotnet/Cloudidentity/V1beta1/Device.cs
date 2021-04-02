@@ -229,13 +229,37 @@ namespace Pulumi.GoogleCloud.Cloudidentity.V1beta1
     public sealed class DeviceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The device to be created. The name field within this device is ignored in the create method. A new name is created by the method, and returned within the response. Only the fields `device_type`, `serial_number` and `asset_tag` (if present) are used to create the device. All other fields are ignored. The `device_type` and `serial_number` fields are required.
+        /// Asset tag of the device.
         /// </summary>
-        [Input("device")]
-        public Input<Inputs.DeviceArgs>? Device { get; set; }
+        [Input("assetTag")]
+        public Input<string>? AssetTag { get; set; }
 
         [Input("devicesId", required: true)]
         public Input<string> DevicesId { get; set; } = null!;
+
+        /// <summary>
+        /// Most recent time when device synced with this service.
+        /// </summary>
+        [Input("lastSyncTime")]
+        public Input<string>? LastSyncTime { get; set; }
+
+        /// <summary>
+        /// Serial Number of device. Example: HT82V1A01076.
+        /// </summary>
+        [Input("serialNumber")]
+        public Input<string>? SerialNumber { get; set; }
+
+        [Input("wifiMacAddresses")]
+        private InputList<string>? _wifiMacAddresses;
+
+        /// <summary>
+        /// WiFi MAC addresses of device.
+        /// </summary>
+        public InputList<string> WifiMacAddresses
+        {
+            get => _wifiMacAddresses ?? (_wifiMacAddresses = new InputList<string>());
+            set => _wifiMacAddresses = value;
+        }
 
         public DeviceArgs()
         {
