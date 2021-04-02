@@ -283,7 +283,7 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 			inputProperties[name] = schema.PropertySpec{
 				TypeSpec: schema.TypeSpec{Type: "string"},
 			}
-			requiredProperties.Add(name)
+			requiredInputProperties.Add(name)
 		}
 		resourceMeta.IdParams = append(resourceMeta.IdParams, name)
 	}
