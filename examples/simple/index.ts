@@ -85,7 +85,7 @@ const cluster = new cloud.container.v1.Cluster("cluster", {
     locationsId: region,
     clustersId: clusterName,
     parent: `projects/${project}/locations/${region}`,
-    initialClusterVersion: "1.18.16-gke.500",
+    initialClusterVersion: "1.18.16-gke.2100",
     initialNodeCount: 1,
     masterAuth: {
         password: "hDiqST+U7{t+BkQA+OD*",

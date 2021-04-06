@@ -344,7 +344,7 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 				} else {
 					// TODO: do we need to handle masks?
 					if !strings.HasSuffix(name, "Mask") {
-						fmt.Printf("%s: %s.%s\n", resourceTok, updateMethod.Request.Ref, name)
+						fmt.Printf("unknown update property %s: %s.%s\n", resourceTok, updateMethod.Request.Ref, name)
 					}
 				}
 			}
