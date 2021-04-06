@@ -93,7 +93,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 			mod:          module,
 			visitedTypes: codegen.NewStringSet(),
 		}
-		csharpNamespaces[module] = fmt.Sprintf("%s.%s", strings.Title(document.Name), strings.Title(document.Version))
+		csharpNamespaces[module] = csharpNamespace(document)
 		pythonModuleNames[module] = module
 		golangImportAliases[filepath.Join(goBasePath, module)] = document.Name
 
@@ -132,6 +132,19 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	})
 
 	return &pkg, &metadata, nil
+}
+
+var titleReplacer = strings.NewReplacer(" ", "", "-", "")
+var versionReplacer = strings.NewReplacer("alpha", "Alpha", "beta", "Beta", "v", "V")
+func csharpNamespace(document *discovery.RestDescription) string {
+	moduleName := strings.Title(document.Name)
+	title := titleReplacer.Replace(document.Title)
+	idx := strings.Index(strings.ToLower(title), document.Name)
+	if idx >= 0 {
+		moduleName = title[idx:idx+len(document.Name)]
+	}
+	version := versionReplacer.Replace(document.Version)
+	return fmt.Sprintf("%s.%s", moduleName, version)
 }
 
 func readDiscoveryDocument(fileName string) (*discovery.RestDescription, error) {
