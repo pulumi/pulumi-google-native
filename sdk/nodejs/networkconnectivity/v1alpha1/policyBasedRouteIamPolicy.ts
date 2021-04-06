@@ -63,9 +63,6 @@ export class PolicyBasedRouteIamPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
             if ((!args || args.policyBasedRoutesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyBasedRoutesId'");
             }
@@ -75,7 +72,6 @@ export class PolicyBasedRouteIamPolicy extends pulumi.CustomResource {
             inputs["auditConfigs"] = args ? args.auditConfigs : undefined;
             inputs["bindings"] = args ? args.bindings : undefined;
             inputs["etag"] = args ? args.etag : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["policyBasedRoutesId"] = args ? args.policyBasedRoutesId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["updateMask"] = args ? args.updateMask : undefined;
@@ -109,7 +105,6 @@ export interface PolicyBasedRouteIamPolicyArgs {
      * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
      */
     readonly etag?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
     readonly policyBasedRoutesId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**

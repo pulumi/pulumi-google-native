@@ -14,7 +14,7 @@ namespace Pulumi.GoogleCloud.Dataflow.V1b3.Outputs
     public sealed class JobMetadataResponse
     {
         /// <summary>
-        /// Identification of a BigTable source used in the Dataflow job.
+        /// Identification of a Cloud BigTable source used in the Dataflow job.
         /// </summary>
         public readonly ImmutableArray<Outputs.BigTableIODetailsResponse> BigTableDetails;
         /// <summary>

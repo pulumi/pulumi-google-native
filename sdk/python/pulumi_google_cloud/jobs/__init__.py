@@ -6,6 +6,5 @@
 # Make subpackages available:
 from . import (
     v3,
-    v3p1beta1,
     v4,
 )

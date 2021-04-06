@@ -11,7 +11,7 @@ namespace Pulumi.GoogleCloud.Dataflow.V1b3.Inputs
 {
 
     /// <summary>
-    /// Metadata for a BigTable connector used by the job.
+    /// Metadata for a Cloud BigTable connector used by the job.
     /// </summary>
     public sealed class BigTableIODetailsArgs : Pulumi.ResourceArgs
     {

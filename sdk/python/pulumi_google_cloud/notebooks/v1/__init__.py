@@ -7,6 +7,7 @@ from .environment import *
 from .execution import *
 from .instance import *
 from .instance_iam_policy import *
+from .runtime import *
 from .schedule import *
 from ._inputs import *
 from . import outputs
@@ -31,6 +32,8 @@ def _register_module():
                 return Instance(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:notebooks/v1:InstanceIamPolicy":
                 return InstanceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-cloud:notebooks/v1:Runtime":
+                return Runtime(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-cloud:notebooks/v1:Schedule":
                 return Schedule(name, pulumi.ResourceOptions(urn=urn))
             else:

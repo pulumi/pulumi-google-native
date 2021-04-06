@@ -19,7 +19,7 @@ namespace Pulumi.GoogleCloud.Dataflow.V1b3.Inputs
         private InputList<Inputs.BigTableIODetailsArgs>? _bigTableDetails;
 
         /// <summary>
-        /// Identification of a BigTable source used in the Dataflow job.
+        /// Identification of a Cloud BigTable source used in the Dataflow job.
         /// </summary>
         public InputList<Inputs.BigTableIODetailsArgs> BigTableDetails
         {

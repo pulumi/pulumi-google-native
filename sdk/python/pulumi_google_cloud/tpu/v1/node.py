@@ -88,6 +88,7 @@ class Node(pulumi.CustomResource):
             __props__['scheduling_config'] = scheduling_config
             __props__['tensorflow_version'] = tensorflow_version
             __props__['use_service_networking'] = use_service_networking
+            __props__['api_version'] = None
             __props__['create_time'] = None
             __props__['health_description'] = None
             __props__['name'] = None
@@ -118,6 +119,7 @@ class Node(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["accelerator_type"] = None
+        __props__["api_version"] = None
         __props__["cidr_block"] = None
         __props__["create_time"] = None
         __props__["description"] = None
@@ -144,6 +146,14 @@ class Node(pulumi.CustomResource):
         Required. The type of hardware accelerators associated with this node.
         """
         return pulumi.get(self, "accelerator_type")
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> pulumi.Output[str]:
+        """
+        The API version that created this Node.
+        """
+        return pulumi.get(self, "api_version")
 
     @property
     @pulumi.getter(name="cidrBlock")

@@ -114,9 +114,6 @@ namespace Pulumi.GoogleCloud.Networkconnectivity.V1alpha1
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
-
         [Input("policyBasedRoutesId", required: true)]
         public Input<string> PolicyBasedRoutesId { get; set; } = null!;
 

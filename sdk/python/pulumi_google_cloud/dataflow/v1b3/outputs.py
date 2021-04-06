@@ -140,14 +140,14 @@ class BigQueryIODetailsResponse(dict):
 @pulumi.output_type
 class BigTableIODetailsResponse(dict):
     """
-    Metadata for a BigTable connector used by the job.
+    Metadata for a Cloud BigTable connector used by the job.
     """
     def __init__(__self__, *,
                  instance_id: str,
                  project_id: str,
                  table_id: str):
         """
-        Metadata for a BigTable connector used by the job.
+        Metadata for a Cloud BigTable connector used by the job.
         :param str instance_id: InstanceId accessed in the connection.
         :param str project_id: ProjectId accessed in the connection.
         :param str table_id: TableId accessed in the connection.
@@ -798,7 +798,7 @@ class ExecutionStageSummaryResponse(dict):
         :param Sequence['ComponentSourceResponseArgs'] component_source: Collections produced and consumed by component transforms of this stage.
         :param Sequence['ComponentTransformResponseArgs'] component_transform: Transforms that comprise this execution stage.
         :param Sequence['StageSourceResponseArgs'] input_source: Input sources for this stage.
-        :param str kind: Type of tranform this stage is executing.
+        :param str kind: Type of transform this stage is executing.
         :param str name: Dataflow service generated name for this stage.
         :param Sequence['StageSourceResponseArgs'] output_source: Output sources for this stage.
         :param Sequence[str] prerequisite_stage: Other stages that must complete before this stage can run.
@@ -839,7 +839,7 @@ class ExecutionStageSummaryResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        Type of tranform this stage is executing.
+        Type of transform this stage is executing.
         """
         return pulumi.get(self, "kind")
 
@@ -911,7 +911,7 @@ class JobMetadataResponse(dict):
                  spanner_details: Sequence['outputs.SpannerIODetailsResponse']):
         """
         Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
-        :param Sequence['BigTableIODetailsResponseArgs'] big_table_details: Identification of a BigTable source used in the Dataflow job.
+        :param Sequence['BigTableIODetailsResponseArgs'] big_table_details: Identification of a Cloud BigTable source used in the Dataflow job.
         :param Sequence['BigQueryIODetailsResponseArgs'] bigquery_details: Identification of a BigQuery source used in the Dataflow job.
         :param Sequence['DatastoreIODetailsResponseArgs'] datastore_details: Identification of a Datastore source used in the Dataflow job.
         :param Sequence['FileIODetailsResponseArgs'] file_details: Identification of a File source used in the Dataflow job.
@@ -931,7 +931,7 @@ class JobMetadataResponse(dict):
     @pulumi.getter(name="bigTableDetails")
     def big_table_details(self) -> Sequence['outputs.BigTableIODetailsResponse']:
         """
-        Identification of a BigTable source used in the Dataflow job.
+        Identification of a Cloud BigTable source used in the Dataflow job.
         """
         return pulumi.get(self, "big_table_details")
 
@@ -1153,13 +1153,13 @@ class PipelineDescriptionResponse(dict):
 @pulumi.output_type
 class PubSubIODetailsResponse(dict):
     """
-    Metadata for a PubSub connector used by the job.
+    Metadata for a Pub/Sub connector used by the job.
     """
     def __init__(__self__, *,
                  subscription: str,
                  topic: str):
         """
-        Metadata for a PubSub connector used by the job.
+        Metadata for a Pub/Sub connector used by the job.
         :param str subscription: Subscription used in the connection.
         :param str topic: Topic accessed in the connection.
         """

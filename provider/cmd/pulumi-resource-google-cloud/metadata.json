@@ -1691,8 +1691,7 @@
             "idParams": [
                 "projectId",
                 "jobId"
-            ],
-            "noDelete": true
+            ]
         },
         "google-cloud:bigquery/v2:Routine": {
             "baseUrl": "https://bigquery.googleapis.com/bigquery/v2/",
@@ -4219,12 +4218,8 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {
-                    "container": "policy"
-                },
-                "etag": {
-                    "container": "policy"
-                },
+                "bindings": {},
+                "etag": {},
                 "iamOwned": {
                     "container": "policy"
                 },
@@ -4368,9 +4363,7 @@
                     "container": "policy"
                 },
                 "bindings": {},
-                "etag": {
-                    "container": "policy"
-                },
+                "etag": {},
                 "iamOwned": {
                     "container": "policy"
                 },
@@ -4843,9 +4836,7 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {
-                    "container": "policy"
-                },
+                "bindings": {},
                 "etag": {
                     "container": "policy"
                 },
@@ -5020,12 +5011,8 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {
-                    "container": "policy"
-                },
-                "etag": {
-                    "container": "policy"
-                },
+                "bindings": {},
+                "etag": {},
                 "iamOwned": {
                     "container": "policy"
                 },
@@ -5079,8 +5066,12 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {},
-                "etag": {},
+                "bindings": {
+                    "container": "policy"
+                },
+                "etag": {
+                    "container": "policy"
+                },
                 "iamOwned": {
                     "container": "policy"
                 },
@@ -5231,9 +5222,7 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {
-                    "container": "policy"
-                },
+                "bindings": {},
                 "etag": {
                     "container": "policy"
                 },
@@ -5388,12 +5377,8 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {
-                    "container": "policy"
-                },
-                "etag": {
-                    "container": "policy"
-                },
+                "bindings": {},
+                "etag": {},
                 "iamOwned": {
                     "container": "policy"
                 },
@@ -5518,7 +5503,9 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {},
+                "bindings": {
+                    "container": "policy"
+                },
                 "etag": {
                     "container": "policy"
                 },
@@ -5982,8 +5969,12 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {},
-                "etag": {},
+                "bindings": {
+                    "container": "policy"
+                },
+                "etag": {
+                    "container": "policy"
+                },
                 "iamOwned": {
                     "container": "policy"
                 },
@@ -6613,8 +6604,12 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {},
-                "etag": {},
+                "bindings": {
+                    "container": "policy"
+                },
+                "etag": {
+                    "container": "policy"
+                },
                 "iamOwned": {
                     "container": "policy"
                 },
@@ -6770,7 +6765,9 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {},
+                "bindings": {
+                    "container": "policy"
+                },
                 "etag": {
                     "container": "policy"
                 },
@@ -6844,12 +6841,8 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {
-                    "container": "policy"
-                },
-                "etag": {
-                    "container": "policy"
-                },
+                "bindings": {},
+                "etag": {},
                 "iamOwned": {
                     "container": "policy"
                 },
@@ -6984,7 +6977,9 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {},
+                "bindings": {
+                    "container": "policy"
+                },
                 "etag": {
                     "container": "policy"
                 },
@@ -7432,12 +7427,8 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {
-                    "container": "policy"
-                },
-                "etag": {
-                    "container": "policy"
-                },
+                "bindings": {},
+                "etag": {},
                 "iamOwned": {
                     "container": "policy"
                 },
@@ -8323,7 +8314,9 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {},
+                "bindings": {
+                    "container": "policy"
+                },
                 "etag": {
                     "container": "policy"
                 },
@@ -8379,8 +8372,12 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {},
-                "etag": {},
+                "bindings": {
+                    "container": "policy"
+                },
+                "etag": {
+                    "container": "policy"
+                },
                 "iamOwned": {
                     "container": "policy"
                 },
@@ -8517,9 +8514,7 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {
-                    "container": "policy"
-                },
+                "bindings": {},
                 "etag": {
                     "container": "policy"
                 },
@@ -8580,12 +8575,8 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {
-                    "container": "policy"
-                },
-                "etag": {
-                    "container": "policy"
-                },
+                "bindings": {},
+                "etag": {},
                 "iamOwned": {
                     "container": "policy"
                 },
@@ -9095,8 +9086,12 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {},
-                "etag": {},
+                "bindings": {
+                    "container": "policy"
+                },
+                "etag": {
+                    "container": "policy"
+                },
                 "iamOwned": {
                     "container": "policy"
                 },
@@ -9503,9 +9498,7 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {
-                    "container": "policy"
-                },
+                "bindings": {},
                 "etag": {
                     "container": "policy"
                 },
@@ -9660,9 +9653,7 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {
-                    "container": "policy"
-                },
+                "bindings": {},
                 "etag": {
                     "container": "policy"
                 },
@@ -9734,8 +9725,12 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {},
-                "etag": {},
+                "bindings": {
+                    "container": "policy"
+                },
+                "etag": {
+                    "container": "policy"
+                },
                 "iamOwned": {
                     "container": "policy"
                 },
@@ -11000,9 +10995,7 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {
-                    "container": "policy"
-                },
+                "bindings": {},
                 "etag": {
                     "container": "policy"
                 },
@@ -11196,8 +11189,12 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {},
-                "etag": {},
+                "bindings": {
+                    "container": "policy"
+                },
+                "etag": {
+                    "container": "policy"
+                },
                 "iamOwned": {
                     "container": "policy"
                 },
@@ -11319,7 +11316,9 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {},
+                "bindings": {
+                    "container": "policy"
+                },
                 "etag": {
                     "container": "policy"
                 },
@@ -12191,12 +12190,8 @@
                 "auditConfigs": {
                     "container": "policy"
                 },
-                "bindings": {
-                    "container": "policy"
-                },
-                "etag": {
-                    "container": "policy"
-                },
+                "bindings": {},
+                "etag": {},
                 "iamOwned": {
                     "container": "policy"
                 },
@@ -19611,176 +19606,6 @@
                 "jobsId"
             ]
         },
-        "google-cloud:jobs/v3p1beta1:ClientEvent": {
-            "baseUrl": "https://jobs.googleapis.com/",
-            "createPath": "v3p1beta1/projects/{projectsId}/clientEvents",
-            "createParams": [
-                "projectsId"
-            ],
-            "createProperties": {
-                "clientEvent": {}
-            },
-            "idPath": "v3p1beta1/projects/{projectsId}/clientEvents",
-            "idParams": [
-                "projectsId"
-            ],
-            "noGet": true,
-            "noDelete": true
-        },
-        "google-cloud:jobs/v3p1beta1:Company": {
-            "baseUrl": "https://jobs.googleapis.com/",
-            "createPath": "v3p1beta1/projects/{projectsId}/companies",
-            "createParams": [
-                "projectsId"
-            ],
-            "createProperties": {
-                "careerSiteUri": {
-                    "container": "company"
-                },
-                "derivedInfo": {
-                    "container": "company"
-                },
-                "displayName": {
-                    "container": "company"
-                },
-                "eeoText": {
-                    "container": "company"
-                },
-                "externalId": {
-                    "container": "company"
-                },
-                "headquartersAddress": {
-                    "container": "company"
-                },
-                "hiringAgency": {
-                    "container": "company"
-                },
-                "imageUri": {
-                    "container": "company"
-                },
-                "keywordSearchableJobCustomAttributes": {
-                    "container": "company"
-                },
-                "name": {
-                    "container": "company"
-                },
-                "size": {
-                    "container": "company"
-                },
-                "suspended": {
-                    "container": "company"
-                },
-                "websiteUri": {
-                    "container": "company"
-                }
-            },
-            "idPath": "v3p1beta1/projects/{projectsId}/companies/{companiesId}",
-            "idParams": [
-                "projectsId",
-                "companiesId"
-            ]
-        },
-        "google-cloud:jobs/v3p1beta1:Job": {
-            "baseUrl": "https://jobs.googleapis.com/",
-            "createPath": "v3p1beta1/projects/{projectsId}/jobs",
-            "createParams": [
-                "projectsId"
-            ],
-            "createProperties": {
-                "addresses": {
-                    "container": "job"
-                },
-                "applicationInfo": {
-                    "container": "job"
-                },
-                "companyDisplayName": {
-                    "container": "job"
-                },
-                "companyName": {
-                    "container": "job"
-                },
-                "compensationInfo": {
-                    "container": "job"
-                },
-                "customAttributes": {
-                    "container": "job"
-                },
-                "degreeTypes": {
-                    "container": "job"
-                },
-                "department": {
-                    "container": "job"
-                },
-                "derivedInfo": {
-                    "container": "job"
-                },
-                "description": {
-                    "container": "job"
-                },
-                "employmentTypes": {
-                    "container": "job"
-                },
-                "incentives": {
-                    "container": "job"
-                },
-                "jobBenefits": {
-                    "container": "job"
-                },
-                "jobEndTime": {
-                    "container": "job"
-                },
-                "jobLevel": {
-                    "container": "job"
-                },
-                "jobStartTime": {
-                    "container": "job"
-                },
-                "languageCode": {
-                    "container": "job"
-                },
-                "name": {
-                    "container": "job"
-                },
-                "postingCreateTime": {
-                    "container": "job"
-                },
-                "postingExpireTime": {
-                    "container": "job"
-                },
-                "postingPublishTime": {
-                    "container": "job"
-                },
-                "postingRegion": {
-                    "container": "job"
-                },
-                "postingUpdateTime": {
-                    "container": "job"
-                },
-                "processingOptions": {
-                    "container": "job"
-                },
-                "promotionValue": {
-                    "container": "job"
-                },
-                "qualifications": {
-                    "container": "job"
-                },
-                "requisitionId": {
-                    "container": "job"
-                },
-                "responsibilities": {
-                    "container": "job"
-                },
-                "title": {
-                    "container": "job"
-                }
-            },
-            "idPath": "v3p1beta1/projects/{projectsId}/jobs/{jobsId}",
-            "idParams": [
-                "projectsId",
-                "jobsId"
-            ]
-        },
         "google-cloud:jobs/v4:Tenant": {
             "baseUrl": "https://jobs.googleapis.com/",
             "createPath": "v4/projects/{projectsId}/tenants",
@@ -21162,10 +20987,9 @@
         },
         "google-cloud:networkconnectivity/v1alpha1:PolicyBasedRouteIamPolicy": {
             "baseUrl": "https://networkconnectivity.googleapis.com/",
-            "createPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/policyBasedRoutes/{policyBasedRoutesId}:setIamPolicy",
+            "createPath": "v1alpha1/projects/{projectsId}/locations/global/policyBasedRoutes/{policyBasedRoutesId}:setIamPolicy",
             "createParams": [
                 "projectsId",
-                "locationsId",
                 "policyBasedRoutesId"
             ],
             "createProperties": {
@@ -21183,10 +21007,9 @@
                     "container": "policy"
                 }
             },
-            "idPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/policyBasedRoutes/{policyBasedRoutesId}:getIamPolicy",
+            "idPath": "v1alpha1/projects/{projectsId}/locations/global/policyBasedRoutes/{policyBasedRoutesId}:getIamPolicy",
             "idParams": [
                 "projectsId",
-                "locationsId",
                 "policyBasedRoutesId"
             ],
             "noDelete": true
@@ -21455,6 +21278,25 @@
                 "instancesId"
             ],
             "noDelete": true
+        },
+        "google-cloud:notebooks/v1:Runtime": {
+            "baseUrl": "https://notebooks.googleapis.com/",
+            "createPath": "v1/projects/{projectsId}/locations/{locationsId}/runtimes",
+            "createParams": [
+                "projectsId",
+                "locationsId"
+            ],
+            "createProperties": {
+                "accessConfig": {},
+                "softwareConfig": {},
+                "virtualMachine": {}
+            },
+            "idPath": "v1/projects/{projectsId}/locations/{locationsId}/runtimes/{runtimesId}",
+            "idParams": [
+                "projectsId",
+                "locationsId",
+                "runtimesId"
+            ]
         },
         "google-cloud:notebooks/v1:Schedule": {
             "baseUrl": "https://notebooks.googleapis.com/",
@@ -23794,55 +23636,6 @@
                 "instancesId"
             ],
             "noDelete": true
-        },
-        "google-cloud:speech/v1p1beta1:CustomClass": {
-            "baseUrl": "https://speech.googleapis.com/",
-            "createPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/customClasses",
-            "createParams": [
-                "projectsId",
-                "locationsId"
-            ],
-            "createProperties": {
-                "customClassId": {},
-                "items": {
-                    "container": "customClass"
-                },
-                "name": {
-                    "container": "customClass"
-                }
-            },
-            "idPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/customClasses/{customClassesId}",
-            "idParams": [
-                "projectsId",
-                "locationsId",
-                "customClassesId"
-            ]
-        },
-        "google-cloud:speech/v1p1beta1:PhraseSet": {
-            "baseUrl": "https://speech.googleapis.com/",
-            "createPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/phraseSets",
-            "createParams": [
-                "projectsId",
-                "locationsId"
-            ],
-            "createProperties": {
-                "boost": {
-                    "container": "phraseSet"
-                },
-                "name": {
-                    "container": "phraseSet"
-                },
-                "phraseSetId": {},
-                "phrases": {
-                    "container": "phraseSet"
-                }
-            },
-            "idPath": "v1p1beta1/projects/{projectsId}/locations/{locationsId}/phraseSets/{phraseSetsId}",
-            "idParams": [
-                "projectsId",
-                "locationsId",
-                "phraseSetsId"
-            ]
         },
         "google-cloud:sqladmin/v1beta4:BackupRun": {
             "baseUrl": "https://sqladmin.googleapis.com/",

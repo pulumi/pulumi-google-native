@@ -28,7 +28,7 @@ namespace Pulumi.GoogleCloud.Run.V1.Inputs
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
+        /// (Optional) Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
         /// </summary>
         [Input("valueFrom")]
         public Input<Inputs.EnvVarSourceArgs>? ValueFrom { get; set; }

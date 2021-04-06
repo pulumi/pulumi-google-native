@@ -14,13 +14,24 @@ __all__ = [
     'BindingResponse',
     'ContainerImageResponse',
     'DiskResponse',
+    'EncryptionConfigResponse',
     'ExecutionResponse',
     'ExecutionTemplateResponse',
     'ExprResponse',
     'GuestOsFeatureResponse',
+    'LocalDiskInitializeParamsResponse',
+    'LocalDiskResponse',
+    'RuntimeAcceleratorConfigResponse',
+    'RuntimeAccessConfigResponse',
+    'RuntimeGuestOsFeatureResponse',
+    'RuntimeMetricsResponse',
+    'RuntimeShieldedInstanceConfigResponse',
+    'RuntimeSoftwareConfigResponse',
     'SchedulerAcceleratorConfigResponse',
     'ShieldedInstanceConfigResponse',
     'UpgradeHistoryEntryResponse',
+    'VirtualMachineConfigResponse',
+    'VirtualMachineResponse',
     'VmImageResponse',
 ]
 
@@ -284,6 +295,31 @@ class DiskResponse(dict):
         Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: PERSISTENT SCRATCH
         """
         return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EncryptionConfigResponse(dict):
+    """
+    Represents a custom encryption key configuration that can be applied to a resource. This will encrypt all disks in Virtual Machine.
+    """
+    def __init__(__self__, *,
+                 kms_key: str):
+        """
+        Represents a custom encryption key configuration that can be applied to a resource. This will encrypt all disks in Virtual Machine.
+        :param str kms_key: The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a disks. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
+        """
+        pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> str:
+        """
+        The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a disks. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
+        """
+        return pulumi.get(self, "kms_key")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -588,6 +624,492 @@ class GuestOsFeatureResponse(dict):
 
 
 @pulumi.output_type
+class LocalDiskInitializeParamsResponse(dict):
+    """
+    [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+    """
+    def __init__(__self__, *,
+                 description: str,
+                 disk_name: str,
+                 disk_size_gb: str,
+                 disk_type: str,
+                 labels: Mapping[str, str]):
+        """
+        [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        :param str description: Optional. Provide this property when creating the disk.
+        :param str disk_name: Optional. Specifies the disk name. If not specified, the default is to use the name of the instance. If the disk with the instance name exists already in the given zone/region, a new name will be automatically generated.
+        :param str disk_size_gb: Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB.
+        :param str disk_type: Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+        :param Mapping[str, str] labels: Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disk_name", disk_name)
+        pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Optional. Provide this property when creating the disk.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> str:
+        """
+        Optional. Specifies the disk name. If not specified, the default is to use the name of the instance. If the disk with the instance name exists already in the given zone/region, a new name will be automatically generated.
+        """
+        return pulumi.get(self, "disk_name")
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> str:
+        """
+        Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        """
+        Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
+        """
+        return pulumi.get(self, "labels")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class LocalDiskResponse(dict):
+    """
+    An Local attached disk resource.
+    """
+    def __init__(__self__, *,
+                 auto_delete: bool,
+                 boot: bool,
+                 device_name: str,
+                 guest_os_features: Sequence['outputs.RuntimeGuestOsFeatureResponse'],
+                 index: int,
+                 initialize_params: 'outputs.LocalDiskInitializeParamsResponse',
+                 interface: str,
+                 kind: str,
+                 licenses: Sequence[str],
+                 mode: str,
+                 source: str,
+                 type: str):
+        """
+        An Local attached disk resource.
+        :param bool auto_delete: Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
+        :param bool boot: Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+        :param str device_name: Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+        :param Sequence['RuntimeGuestOsFeatureResponseArgs'] guest_os_features: Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        :param int index: [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+        :param 'LocalDiskInitializeParamsResponseArgs' initialize_params: Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        :param str interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+        :param str kind: Type of the resource. Always compute#attachedDisk for attached disks.
+        :param Sequence[str] licenses: [Output Only] Any valid publicly visible licenses.
+        :param str mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+        :param str source: Specifies a valid partial or full URL to an existing Persistent Disk resource.
+        :param str type: Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+        """
+        pulumi.set(__self__, "auto_delete", auto_delete)
+        pulumi.set(__self__, "boot", boot)
+        pulumi.set(__self__, "device_name", device_name)
+        pulumi.set(__self__, "guest_os_features", guest_os_features)
+        pulumi.set(__self__, "index", index)
+        pulumi.set(__self__, "initialize_params", initialize_params)
+        pulumi.set(__self__, "interface", interface)
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "licenses", licenses)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="autoDelete")
+    def auto_delete(self) -> bool:
+        """
+        Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
+        """
+        return pulumi.get(self, "auto_delete")
+
+    @property
+    @pulumi.getter
+    def boot(self) -> bool:
+        """
+        Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+        """
+        return pulumi.get(self, "boot")
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> str:
+        """
+        Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+        """
+        return pulumi.get(self, "device_name")
+
+    @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Sequence['outputs.RuntimeGuestOsFeatureResponse']:
+        """
+        Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @property
+    @pulumi.getter
+    def index(self) -> int:
+        """
+        [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+        """
+        return pulumi.get(self, "index")
+
+    @property
+    @pulumi.getter(name="initializeParams")
+    def initialize_params(self) -> 'outputs.LocalDiskInitializeParamsResponse':
+        """
+        Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        """
+        return pulumi.get(self, "initialize_params")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> str:
+        """
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+        """
+        return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        """
+        Type of the resource. Always compute#attachedDisk for attached disks.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def licenses(self) -> Sequence[str]:
+        """
+        [Output Only] Any valid publicly visible licenses.
+        """
+        return pulumi.get(self, "licenses")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def source(self) -> str:
+        """
+        Specifies a valid partial or full URL to an existing Persistent Disk resource.
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+        """
+        return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class RuntimeAcceleratorConfigResponse(dict):
+    """
+    Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
+    """
+    def __init__(__self__, *,
+                 core_count: str,
+                 type: str):
+        """
+        Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
+        :param str core_count: Count of cores of this accelerator.
+        :param str type: Accelerator model.
+        """
+        pulumi.set(__self__, "core_count", core_count)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="coreCount")
+    def core_count(self) -> str:
+        """
+        Count of cores of this accelerator.
+        """
+        return pulumi.get(self, "core_count")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Accelerator model.
+        """
+        return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class RuntimeAccessConfigResponse(dict):
+    """
+    Specifies the login configuration for Runtime
+    """
+    def __init__(__self__, *,
+                 access_type: str,
+                 proxy_uri: str,
+                 runtime_owner: str):
+        """
+        Specifies the login configuration for Runtime
+        :param str access_type: The type of access mode this instance.
+        :param str proxy_uri: The proxy endpoint that is used to access the runtime.
+        :param str runtime_owner: The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
+        """
+        pulumi.set(__self__, "access_type", access_type)
+        pulumi.set(__self__, "proxy_uri", proxy_uri)
+        pulumi.set(__self__, "runtime_owner", runtime_owner)
+
+    @property
+    @pulumi.getter(name="accessType")
+    def access_type(self) -> str:
+        """
+        The type of access mode this instance.
+        """
+        return pulumi.get(self, "access_type")
+
+    @property
+    @pulumi.getter(name="proxyUri")
+    def proxy_uri(self) -> str:
+        """
+        The proxy endpoint that is used to access the runtime.
+        """
+        return pulumi.get(self, "proxy_uri")
+
+    @property
+    @pulumi.getter(name="runtimeOwner")
+    def runtime_owner(self) -> str:
+        """
+        The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
+        """
+        return pulumi.get(self, "runtime_owner")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class RuntimeGuestOsFeatureResponse(dict):
+    """
+    A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features for boot disk.
+    """
+    def __init__(__self__, *,
+                 type: str):
+        """
+        A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features for boot disk.
+        :param str type: The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+        """
+        return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class RuntimeMetricsResponse(dict):
+    """
+    Contains runtime daemon metrics, such as OS and kernels and sessions stats.
+    """
+    def __init__(__self__, *,
+                 system_metrics: Mapping[str, str]):
+        """
+        Contains runtime daemon metrics, such as OS and kernels and sessions stats.
+        :param Mapping[str, str] system_metrics: The system metrics.
+        """
+        pulumi.set(__self__, "system_metrics", system_metrics)
+
+    @property
+    @pulumi.getter(name="systemMetrics")
+    def system_metrics(self) -> Mapping[str, str]:
+        """
+        The system metrics.
+        """
+        return pulumi.get(self, "system_metrics")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class RuntimeShieldedInstanceConfigResponse(dict):
+    """
+    A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+    """
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: bool,
+                 enable_secure_boot: bool,
+                 enable_vtpm: bool):
+        """
+        A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+        :param bool enable_integrity_monitoring: Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+        :param bool enable_secure_boot: Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+        :param bool enable_vtpm: Defines whether the instance has the vTPM enabled. Enabled by default.
+        """
+        pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+        pulumi.set(__self__, "enable_vtpm", enable_vtpm)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> bool:
+        """
+        Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+        """
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> bool:
+        """
+        Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+    @property
+    @pulumi.getter(name="enableVtpm")
+    def enable_vtpm(self) -> bool:
+        """
+        Defines whether the instance has the vTPM enabled. Enabled by default.
+        """
+        return pulumi.get(self, "enable_vtpm")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class RuntimeSoftwareConfigResponse(dict):
+    """
+    Specifies the selection and config of software inside the runtime. / The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true * idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
+    """
+    def __init__(__self__, *,
+                 custom_gpu_driver_path: str,
+                 enable_health_monitoring: bool,
+                 idle_shutdown: bool,
+                 idle_shutdown_timeout: int,
+                 install_gpu_driver: bool,
+                 notebook_upgrade_schedule: str,
+                 post_startup_script: str):
+        """
+        Specifies the selection and config of software inside the runtime. / The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true * idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
+        :param str custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
+        :param bool enable_health_monitoring: Verifies core internal services are running. Default: True
+        :param bool idle_shutdown: Runtime will automatically shutdown after idle_shutdown_time. Default: False
+        :param int idle_shutdown_timeout: Time in minutes to wait before shuting down runtime. Default: 90 minutes
+        :param bool install_gpu_driver: Install Nvidia Driver automatically.
+        :param str notebook_upgrade_schedule: Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
+        :param str post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+        """
+        pulumi.set(__self__, "custom_gpu_driver_path", custom_gpu_driver_path)
+        pulumi.set(__self__, "enable_health_monitoring", enable_health_monitoring)
+        pulumi.set(__self__, "idle_shutdown", idle_shutdown)
+        pulumi.set(__self__, "idle_shutdown_timeout", idle_shutdown_timeout)
+        pulumi.set(__self__, "install_gpu_driver", install_gpu_driver)
+        pulumi.set(__self__, "notebook_upgrade_schedule", notebook_upgrade_schedule)
+        pulumi.set(__self__, "post_startup_script", post_startup_script)
+
+    @property
+    @pulumi.getter(name="customGpuDriverPath")
+    def custom_gpu_driver_path(self) -> str:
+        """
+        Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
+        """
+        return pulumi.get(self, "custom_gpu_driver_path")
+
+    @property
+    @pulumi.getter(name="enableHealthMonitoring")
+    def enable_health_monitoring(self) -> bool:
+        """
+        Verifies core internal services are running. Default: True
+        """
+        return pulumi.get(self, "enable_health_monitoring")
+
+    @property
+    @pulumi.getter(name="idleShutdown")
+    def idle_shutdown(self) -> bool:
+        """
+        Runtime will automatically shutdown after idle_shutdown_time. Default: False
+        """
+        return pulumi.get(self, "idle_shutdown")
+
+    @property
+    @pulumi.getter(name="idleShutdownTimeout")
+    def idle_shutdown_timeout(self) -> int:
+        """
+        Time in minutes to wait before shuting down runtime. Default: 90 minutes
+        """
+        return pulumi.get(self, "idle_shutdown_timeout")
+
+    @property
+    @pulumi.getter(name="installGpuDriver")
+    def install_gpu_driver(self) -> bool:
+        """
+        Install Nvidia Driver automatically.
+        """
+        return pulumi.get(self, "install_gpu_driver")
+
+    @property
+    @pulumi.getter(name="notebookUpgradeSchedule")
+    def notebook_upgrade_schedule(self) -> str:
+        """
+        Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
+        """
+        return pulumi.get(self, "notebook_upgrade_schedule")
+
+    @property
+    @pulumi.getter(name="postStartupScript")
+    def post_startup_script(self) -> str:
+        """
+        Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+        """
+        return pulumi.get(self, "post_startup_script")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class SchedulerAcceleratorConfigResponse(dict):
     """
     Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
@@ -789,6 +1311,221 @@ class UpgradeHistoryEntryResponse(dict):
         The VM image before this instance upgrade.
         """
         return pulumi.get(self, "vm_image")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class VirtualMachineConfigResponse(dict):
+    """
+    The config settings for virtual machine.
+    """
+    def __init__(__self__, *,
+                 accelerator_config: 'outputs.RuntimeAcceleratorConfigResponse',
+                 container_images: Sequence['outputs.ContainerImageResponse'],
+                 data_disk: 'outputs.LocalDiskResponse',
+                 encryption_config: 'outputs.EncryptionConfigResponse',
+                 guest_attributes: Mapping[str, str],
+                 internal_ip_only: bool,
+                 labels: Mapping[str, str],
+                 machine_type: str,
+                 metadata: Mapping[str, str],
+                 network: str,
+                 shielded_instance_config: 'outputs.RuntimeShieldedInstanceConfigResponse',
+                 subnet: str,
+                 tags: Sequence[str],
+                 zone: str):
+        """
+        The config settings for virtual machine.
+        :param 'RuntimeAcceleratorConfigResponseArgs' accelerator_config: Optional. The Compute Engine accelerator configuration for this runtime.
+        :param Sequence['ContainerImageResponseArgs'] container_images: Optional. Use a list of container images to start the notebook instance.
+        :param 'LocalDiskResponseArgs' data_disk: Required. Data disk option configuration settings.
+        :param 'EncryptionConfigResponseArgs' encryption_config: Optional. Encryption settings for virtual machine data disk.
+        :param Mapping[str, str] guest_attributes: The Compute Engine guest attributes. (see [Project and instance guest attributes](https://cloud.google.com/compute/docs/storing-retrieving-metadata#guest_attributes)).
+        :param bool internal_ip_only: Optional. If true, runtime will only have internal IP addresses. By default, runtimes are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each vm. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all dependencies must be configured to be accessible without external IP addresses.
+        :param Mapping[str, str] labels: Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+        :param str machine_type: Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+        :param Mapping[str, str] metadata: Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+        :param str network: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
+        :param 'RuntimeShieldedInstanceConfigResponseArgs' shielded_instance_config: Optional. Shielded VM Instance configuration settings.
+        :param str subnet: Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
+        :param Sequence[str] tags: Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        :param str zone: The zone where the virtual machine is located. If using regional request, the notebooks service will pick a location in the corresponding runtime region. On a get request, zone will always be present. Example: * `us-central1-b`
+        """
+        pulumi.set(__self__, "accelerator_config", accelerator_config)
+        pulumi.set(__self__, "container_images", container_images)
+        pulumi.set(__self__, "data_disk", data_disk)
+        pulumi.set(__self__, "encryption_config", encryption_config)
+        pulumi.set(__self__, "guest_attributes", guest_attributes)
+        pulumi.set(__self__, "internal_ip_only", internal_ip_only)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        pulumi.set(__self__, "subnet", subnet)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="acceleratorConfig")
+    def accelerator_config(self) -> 'outputs.RuntimeAcceleratorConfigResponse':
+        """
+        Optional. The Compute Engine accelerator configuration for this runtime.
+        """
+        return pulumi.get(self, "accelerator_config")
+
+    @property
+    @pulumi.getter(name="containerImages")
+    def container_images(self) -> Sequence['outputs.ContainerImageResponse']:
+        """
+        Optional. Use a list of container images to start the notebook instance.
+        """
+        return pulumi.get(self, "container_images")
+
+    @property
+    @pulumi.getter(name="dataDisk")
+    def data_disk(self) -> 'outputs.LocalDiskResponse':
+        """
+        Required. Data disk option configuration settings.
+        """
+        return pulumi.get(self, "data_disk")
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> 'outputs.EncryptionConfigResponse':
+        """
+        Optional. Encryption settings for virtual machine data disk.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @property
+    @pulumi.getter(name="guestAttributes")
+    def guest_attributes(self) -> Mapping[str, str]:
+        """
+        The Compute Engine guest attributes. (see [Project and instance guest attributes](https://cloud.google.com/compute/docs/storing-retrieving-metadata#guest_attributes)).
+        """
+        return pulumi.get(self, "guest_attributes")
+
+    @property
+    @pulumi.getter(name="internalIpOnly")
+    def internal_ip_only(self) -> bool:
+        """
+        Optional. If true, runtime will only have internal IP addresses. By default, runtimes are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each vm. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all dependencies must be configured to be accessible without external IP addresses.
+        """
+        return pulumi.get(self, "internal_ip_only")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
+        """
+        Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+        """
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, str]:
+        """
+        Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> 'outputs.RuntimeShieldedInstanceConfigResponse':
+        """
+        Optional. Shielded VM Instance configuration settings.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter
+    def subnet(self) -> str:
+        """
+        Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
+        """
+        return pulumi.get(self, "subnet")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        The zone where the virtual machine is located. If using regional request, the notebooks service will pick a location in the corresponding runtime region. On a get request, zone will always be present. Example: * `us-central1-b`
+        """
+        return pulumi.get(self, "zone")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class VirtualMachineResponse(dict):
+    """
+    Runtime using Virtual Machine for computing.
+    """
+    def __init__(__self__, *,
+                 instance_id: str,
+                 instance_name: str,
+                 virtual_machine_config: 'outputs.VirtualMachineConfigResponse'):
+        """
+        Runtime using Virtual Machine for computing.
+        :param str instance_id: The unique identifier of the Managed Compute Engine instance.
+        :param str instance_name: The user-friendly name of the Managed Compute Engine instance.
+        :param 'VirtualMachineConfigResponseArgs' virtual_machine_config: Virtual Machine configuration settings.
+        """
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "virtual_machine_config", virtual_machine_config)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        """
+        The unique identifier of the Managed Compute Engine instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The user-friendly name of the Managed Compute Engine instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="virtualMachineConfig")
+    def virtual_machine_config(self) -> 'outputs.VirtualMachineConfigResponse':
+        """
+        Virtual Machine configuration settings.
+        """
+        return pulumi.get(self, "virtual_machine_config")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -72,7 +72,7 @@ export class Routine extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
     /**
-     * Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION". TODO(b/173344646) - Update return_type documentation to say it cannot be set for TABLE_VALUED_FUNCTION before preview launch.
+     * Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
      */
     public readonly returnTableType!: pulumi.Output<outputs.bigquery.v2.StandardSqlTableTypeResponse>;
     /**
@@ -177,7 +177,7 @@ export interface RoutineArgs {
     readonly language?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**
-     * Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION". TODO(b/173344646) - Update return_type documentation to say it cannot be set for TABLE_VALUED_FUNCTION before preview launch.
+     * Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
      */
     readonly returnTableType?: pulumi.Input<inputs.bigquery.v2.StandardSqlTableType>;
     /**

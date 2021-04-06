@@ -20,7 +20,6 @@ class PolicyBasedRouteIamPolicy(pulumi.CustomResource):
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuditConfigArgs']]]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
                  policy_based_routes_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  update_mask: Optional[pulumi.Input[str]] = None,
@@ -59,9 +58,6 @@ class PolicyBasedRouteIamPolicy(pulumi.CustomResource):
             __props__['audit_configs'] = audit_configs
             __props__['bindings'] = bindings
             __props__['etag'] = etag
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
             if policy_based_routes_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_based_routes_id'")
             __props__['policy_based_routes_id'] = policy_based_routes_id

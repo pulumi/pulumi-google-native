@@ -70,7 +70,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExecutionStageStateArgs']]]] stage_states: This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
         :param pulumi.Input[str] start_time: The timestamp when the job was started (transitioned to JOB_STATE_PENDING). Flexible resource scheduling jobs are started with some delay after job creation, so start_time is unset before start and is updated when the job is started by the Cloud Dataflow service. For other jobs, start_time always equals to create_time and is immutable and set by the Cloud Dataflow service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StepArgs']]]] steps: Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
-        :param pulumi.Input[str] steps_location: The GCS location where the steps are stored.
+        :param pulumi.Input[str] steps_location: The Cloud Storage location where the steps are stored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] temp_files: A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
         :param pulumi.Input[str] type: The type of Cloud Dataflow job.
@@ -326,7 +326,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="stepsLocation")
     def steps_location(self) -> pulumi.Output[str]:
         """
-        The GCS location where the steps are stored.
+        The Cloud Storage location where the steps are stored.
         """
         return pulumi.get(self, "steps_location")
 

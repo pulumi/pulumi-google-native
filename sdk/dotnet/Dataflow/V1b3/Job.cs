@@ -130,7 +130,7 @@ namespace Pulumi.GoogleCloud.Dataflow.V1b3
         public Output<ImmutableArray<Outputs.StepResponse>> Steps { get; private set; } = null!;
 
         /// <summary>
-        /// The GCS location where the steps are stored.
+        /// The Cloud Storage location where the steps are stored.
         /// </summary>
         [Output("stepsLocation")]
         public Output<string> StepsLocation { get; private set; } = null!;
@@ -340,7 +340,7 @@ namespace Pulumi.GoogleCloud.Dataflow.V1b3
         }
 
         /// <summary>
-        /// The GCS location where the steps are stored.
+        /// The Cloud Storage location where the steps are stored.
         /// </summary>
         [Input("stepsLocation")]
         public Input<string>? StepsLocation { get; set; }

@@ -97,7 +97,6 @@ import * as servicenetworking from "./servicenetworking";
 import * as serviceusage from "./serviceusage";
 import * as sourcerepo from "./sourcerepo";
 import * as spanner from "./spanner";
-import * as speech from "./speech";
 import * as sqladmin from "./sqladmin";
 import * as storage from "./storage";
 import * as storagetransfer from "./storagetransfer";
@@ -204,7 +203,6 @@ export {
     serviceusage,
     sourcerepo,
     spanner,
-    speech,
     sqladmin,
     storage,
     storagetransfer,

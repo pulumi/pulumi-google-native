@@ -4337,7 +4337,7 @@ export namespace bigquery {
              */
             scale: string;
             /**
-             * [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
+             * [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
              */
             type: string;
         }
@@ -27825,7 +27825,7 @@ export namespace dataflow {
         }
 
         /**
-         * Metadata for a BigTable connector used by the job.
+         * Metadata for a Cloud BigTable connector used by the job.
          */
         export interface BigTableIODetailsResponse {
             /**
@@ -28083,7 +28083,7 @@ export namespace dataflow {
              */
             inputSource: outputs.dataflow.v1b3.StageSourceResponse[];
             /**
-             * Type of tranform this stage is executing.
+             * Type of transform this stage is executing.
              */
             kind: string;
             /**
@@ -28115,7 +28115,7 @@ export namespace dataflow {
          */
         export interface JobMetadataResponse {
             /**
-             * Identification of a BigTable source used in the Dataflow job.
+             * Identification of a Cloud BigTable source used in the Dataflow job.
              */
             bigTableDetails: outputs.dataflow.v1b3.BigTableIODetailsResponse[];
             /**
@@ -28207,7 +28207,7 @@ export namespace dataflow {
         }
 
         /**
-         * Metadata for a PubSub connector used by the job.
+         * Metadata for a Pub/Sub connector used by the job.
          */
         export interface PubSubIODetailsResponse {
             /**
@@ -37594,7 +37594,7 @@ export namespace dlp {
              */
             context: outputs.dlp.v2.GooglePrivacyDlpV2FieldIdResponse;
             /**
-             * The key used by the encryption function.
+             * The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
              */
             cryptoKey: outputs.dlp.v2.GooglePrivacyDlpV2CryptoKeyResponse;
             /**
@@ -43727,230 +43727,6 @@ export namespace jobs {
         }
     }
 
-    export namespace v3p1beta1 {
-        /**
-         * Application related details of a job posting.
-         */
-        export interface ApplicationInfoResponse {
-            /**
-             * Optional but at least one of uris, emails or instruction must be specified. Use this field to specify email address(es) to which resumes or applications can be sent. The maximum number of allowed characters for each entry is 255.
-             */
-            emails: string[];
-            /**
-             * Optional but at least one of uris, emails or instruction must be specified. Use this field to provide instructions, such as "Mail your application to ...", that a candidate can follow to apply for the job. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 3,000.
-             */
-            instruction: string;
-            /**
-             * Optional but at least one of uris, emails or instruction must be specified. Use this URI field to direct an applicant to a website, for example to link to an online application form. The maximum number of allowed characters for each entry is 2,000.
-             */
-            uris: string[];
-        }
-
-        /**
-         * Derived details about the company.
-         */
-        export interface CompanyDerivedInfoResponse {
-            /**
-             * A structured headquarters location of the company, resolved from Company.hq_location if provided.
-             */
-            headquartersLocation: outputs.jobs.v3p1beta1.LocationResponse;
-        }
-
-        /**
-         * A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year.
-         */
-        export interface CompensationEntryResponse {
-            /**
-             * Optional. Compensation amount.
-             */
-            amount: outputs.jobs.v3p1beta1.MoneyResponse;
-            /**
-             * Optional. Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus.
-             */
-            description: string;
-            /**
-             * Optional. Expected number of units paid each year. If not specified, when Job.employment_types is FULLTIME, a default value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1
-             */
-            expectedUnitsPerYear: number;
-            /**
-             * Optional. Compensation range.
-             */
-            range: outputs.jobs.v3p1beta1.CompensationRangeResponse;
-            /**
-             * Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
-             */
-            type: string;
-            /**
-             * Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
-             */
-            unit: string;
-        }
-
-        /**
-         * Job compensation details.
-         */
-        export interface CompensationInfoResponse {
-            /**
-             * Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
-             */
-            annualizedBaseCompensationRange: outputs.jobs.v3p1beta1.CompensationRangeResponse;
-            /**
-             * Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
-             */
-            annualizedTotalCompensationRange: outputs.jobs.v3p1beta1.CompensationRangeResponse;
-            /**
-             * Optional. Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as ** base compensation entry ** for the job.
-             */
-            entries: outputs.jobs.v3p1beta1.CompensationEntryResponse[];
-        }
-
-        /**
-         * Compensation range.
-         */
-        export interface CompensationRangeResponse {
-            /**
-             * Optional. The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation.
-             */
-            maxCompensation: outputs.jobs.v3p1beta1.MoneyResponse;
-            /**
-             * Optional. The minimum amount of compensation. If left empty, the value is set to zero and the currency code is set to match the currency code of max_compensation.
-             */
-            minCompensation: outputs.jobs.v3p1beta1.MoneyResponse;
-        }
-
-        /**
-         * Output only. Derived details about the job posting.
-         */
-        export interface JobDerivedInfoResponse {
-            /**
-             * Job categories derived from Job.title and Job.description.
-             */
-            jobCategories: string[];
-            /**
-             * Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order.
-             */
-            locations: outputs.jobs.v3p1beta1.LocationResponse[];
-        }
-
-        /**
-         * An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard. Values must be within normalized ranges.
-         */
-        export interface LatLngResponse {
-            /**
-             * The latitude in degrees. It must be in the range [-90.0, +90.0].
-             */
-            latitude: number;
-            /**
-             * The longitude in degrees. It must be in the range [-180.0, +180.0].
-             */
-            longitude: number;
-        }
-
-        /**
-         * Output only. A resource that represents a location with full geographic information.
-         */
-        export interface LocationResponse {
-            /**
-             * An object representing a latitude/longitude pair.
-             */
-            latLng: outputs.jobs.v3p1beta1.LatLngResponse;
-            /**
-             * The type of a location, which corresponds to the address lines field of PostalAddress. For example, "Downtown, Atlanta, GA, USA" has a type of LocationType#NEIGHBORHOOD, and "Kansas City, KS, USA" has a type of LocationType#LOCALITY.
-             */
-            locationType: string;
-            /**
-             * Postal address of the location that includes human readable information, such as postal delivery and payments addresses. Given a postal address, a postal service can deliver items to a premises, P.O. Box, or other delivery location.
-             */
-            postalAddress: outputs.jobs.v3p1beta1.PostalAddressResponse;
-            /**
-             * Radius in miles of the job location. This value is derived from the location bounding box in which a circle with the specified radius centered from LatLng covers the area associated with the job location. For example, currently, "Mountain View, CA, USA" has a radius of 6.17 miles.
-             */
-            radiusInMiles: number;
-        }
-
-        /**
-         * Represents an amount of money with its currency type.
-         */
-        export interface MoneyResponse {
-            /**
-             * The three-letter currency code defined in ISO 4217.
-             */
-            currencyCode: string;
-            /**
-             * Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
-             */
-            nanos: number;
-            /**
-             * The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-             */
-            units: string;
-        }
-
-        /**
-         * Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
-         */
-        export interface PostalAddressResponse {
-            /**
-             * Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
-             */
-            addressLines: string[];
-            /**
-             * Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
-             */
-            administrativeArea: string;
-            /**
-             * Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
-             */
-            languageCode: string;
-            /**
-             * Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
-             */
-            locality: string;
-            /**
-             * Optional. The name of the organization at the address.
-             */
-            organization: string;
-            /**
-             * Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
-             */
-            postalCode: string;
-            /**
-             * Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
-             */
-            recipients: string[];
-            /**
-             * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-             */
-            regionCode: string;
-            /**
-             * The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
-             */
-            revision: number;
-            /**
-             * Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
-             */
-            sortingCode: string;
-            /**
-             * Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
-             */
-            sublocality: string;
-        }
-
-        /**
-         * Input only. Options for job processing.
-         */
-        export interface ProcessingOptionsResponse {
-            /**
-             * Optional. If set to `true`, the service does not attempt to resolve a more precise address for the job.
-             */
-            disableStreetAddressResolution: boolean;
-            /**
-             * Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
-             */
-            htmlSanitization: string;
-        }
-    }
-
     export namespace v4 {
         /**
          * Application related details of a job posting.
@@ -49078,6 +48854,16 @@ export namespace notebooks {
         }
 
         /**
+         * Represents a custom encryption key configuration that can be applied to a resource. This will encrypt all disks in Virtual Machine.
+         */
+        export interface EncryptionConfigResponse {
+            /**
+             * The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a disks. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
+             */
+            kmsKey: string;
+        }
+
+        /**
          * The definition of a single executed notebook.
          */
         export interface ExecutionResponse {
@@ -49190,6 +48976,190 @@ export namespace notebooks {
         }
 
         /**
+         * [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+         */
+        export interface LocalDiskInitializeParamsResponse {
+            /**
+             * Optional. Provide this property when creating the disk.
+             */
+            description: string;
+            /**
+             * Optional. Specifies the disk name. If not specified, the default is to use the name of the instance. If the disk with the instance name exists already in the given zone/region, a new name will be automatically generated.
+             */
+            diskName: string;
+            /**
+             * Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB.
+             */
+            diskSizeGb: string;
+            /**
+             * Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+             */
+            diskType: string;
+            /**
+             * Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
+             */
+            labels: {[key: string]: string};
+        }
+
+        /**
+         * An Local attached disk resource.
+         */
+        export interface LocalDiskResponse {
+            /**
+             * Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
+             */
+            autoDelete: boolean;
+            /**
+             * Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
+             */
+            boot: boolean;
+            /**
+             * Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
+             */
+            deviceName: string;
+            /**
+             * Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+             */
+            guestOsFeatures: outputs.notebooks.v1.RuntimeGuestOsFeatureResponse[];
+            /**
+             * [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+             */
+            index: number;
+            /**
+             * Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+             */
+            initializeParams: outputs.notebooks.v1.LocalDiskInitializeParamsResponse;
+            /**
+             * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+             */
+            interface: string;
+            /**
+             * Type of the resource. Always compute#attachedDisk for attached disks.
+             */
+            kind: string;
+            /**
+             * [Output Only] Any valid publicly visible licenses.
+             */
+            licenses: string[];
+            /**
+             * The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+             */
+            mode: string;
+            /**
+             * Specifies a valid partial or full URL to an existing Persistent Disk resource.
+             */
+            source: string;
+            /**
+             * Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+             */
+            type: string;
+        }
+
+        /**
+         * Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
+         */
+        export interface RuntimeAcceleratorConfigResponse {
+            /**
+             * Count of cores of this accelerator.
+             */
+            coreCount: string;
+            /**
+             * Accelerator model.
+             */
+            type: string;
+        }
+
+        /**
+         * Specifies the login configuration for Runtime
+         */
+        export interface RuntimeAccessConfigResponse {
+            /**
+             * The type of access mode this instance.
+             */
+            accessType: string;
+            /**
+             * The proxy endpoint that is used to access the runtime.
+             */
+            proxyUri: string;
+            /**
+             * The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
+             */
+            runtimeOwner: string;
+        }
+
+        /**
+         * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features for boot disk.
+         */
+        export interface RuntimeGuestOsFeatureResponse {
+            /**
+             * The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: FEATURE_TYPE_UNSPECIFIED MULTI_IP_SUBNET SECURE_BOOT UEFI_COMPATIBLE VIRTIO_SCSI_MULTIQUEUE WINDOWS
+             */
+            type: string;
+        }
+
+        /**
+         * Contains runtime daemon metrics, such as OS and kernels and sessions stats.
+         */
+        export interface RuntimeMetricsResponse {
+            /**
+             * The system metrics.
+             */
+            systemMetrics: {[key: string]: string};
+        }
+
+        /**
+         * A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
+         */
+        export interface RuntimeShieldedInstanceConfigResponse {
+            /**
+             * Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+             */
+            enableIntegrityMonitoring: boolean;
+            /**
+             * Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+             */
+            enableSecureBoot: boolean;
+            /**
+             * Defines whether the instance has the vTPM enabled. Enabled by default.
+             */
+            enableVtpm: boolean;
+        }
+
+        /**
+         * Specifies the selection and config of software inside the runtime. / The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true * idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
+         */
+        export interface RuntimeSoftwareConfigResponse {
+            /**
+             * Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
+             */
+            customGpuDriverPath: string;
+            /**
+             * Verifies core internal services are running. Default: True
+             */
+            enableHealthMonitoring: boolean;
+            /**
+             * Runtime will automatically shutdown after idle_shutdown_time. Default: False
+             */
+            idleShutdown: boolean;
+            /**
+             * Time in minutes to wait before shuting down runtime. Default: 90 minutes
+             */
+            idleShutdownTimeout: number;
+            /**
+             * Install Nvidia Driver automatically.
+             */
+            installGpuDriver: boolean;
+            /**
+             * Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
+             */
+            notebookUpgradeSchedule: string;
+            /**
+             * Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
+             */
+            postStartupScript: string;
+        }
+
+        /**
          * Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
          */
         export interface SchedulerAcceleratorConfigResponse {
@@ -49265,6 +49235,86 @@ export namespace notebooks {
              * The VM image before this instance upgrade.
              */
             vmImage: string;
+        }
+
+        /**
+         * The config settings for virtual machine.
+         */
+        export interface VirtualMachineConfigResponse {
+            /**
+             * Optional. The Compute Engine accelerator configuration for this runtime.
+             */
+            acceleratorConfig: outputs.notebooks.v1.RuntimeAcceleratorConfigResponse;
+            /**
+             * Optional. Use a list of container images to start the notebook instance.
+             */
+            containerImages: outputs.notebooks.v1.ContainerImageResponse[];
+            /**
+             * Required. Data disk option configuration settings.
+             */
+            dataDisk: outputs.notebooks.v1.LocalDiskResponse;
+            /**
+             * Optional. Encryption settings for virtual machine data disk.
+             */
+            encryptionConfig: outputs.notebooks.v1.EncryptionConfigResponse;
+            /**
+             * The Compute Engine guest attributes. (see [Project and instance guest attributes](https://cloud.google.com/compute/docs/storing-retrieving-metadata#guest_attributes)).
+             */
+            guestAttributes: {[key: string]: string};
+            /**
+             * Optional. If true, runtime will only have internal IP addresses. By default, runtimes are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each vm. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all dependencies must be configured to be accessible without external IP addresses.
+             */
+            internalIpOnly: boolean;
+            /**
+             * Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+             */
+            labels: {[key: string]: string};
+            /**
+             * Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+             */
+            machineType: string;
+            /**
+             * Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+             */
+            metadata: {[key: string]: string};
+            /**
+             * Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
+             */
+            network: string;
+            /**
+             * Optional. Shielded VM Instance configuration settings.
+             */
+            shieldedInstanceConfig: outputs.notebooks.v1.RuntimeShieldedInstanceConfigResponse;
+            /**
+             * Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
+             */
+            subnet: string;
+            /**
+             * Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+             */
+            tags: string[];
+            /**
+             * The zone where the virtual machine is located. If using regional request, the notebooks service will pick a location in the corresponding runtime region. On a get request, zone will always be present. Example: * `us-central1-b`
+             */
+            zone: string;
+        }
+
+        /**
+         * Runtime using Virtual Machine for computing.
+         */
+        export interface VirtualMachineResponse {
+            /**
+             * The unique identifier of the Managed Compute Engine instance.
+             */
+            instanceId: string;
+            /**
+             * The user-friendly name of the Managed Compute Engine instance.
+             */
+            instanceName: string;
+            /**
+             * Virtual Machine configuration settings.
+             */
+            virtualMachineConfig: outputs.notebooks.v1.VirtualMachineConfigResponse;
         }
 
         /**
@@ -52157,7 +52207,7 @@ export namespace run {
              */
             livenessProbe: outputs.run.v1.ProbeResponse;
             /**
-             * (Optional) Name of the container specified as a DNS_LABEL.
+             * (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
              */
             name: string;
             /**
@@ -52185,7 +52235,7 @@ export namespace run {
              */
             terminationMessagePolicy: string;
             /**
-             * (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
+             * (Optional) Cloud Run fully managed: supported Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
              */
             volumeMounts: outputs.run.v1.VolumeMountResponse[];
             /**
@@ -52269,7 +52319,7 @@ export namespace run {
              */
             value: string;
             /**
-             * (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
+             * (Optional) Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
              */
             valueFrom: outputs.run.v1.EnvVarSourceResponse;
         }
@@ -52283,7 +52333,7 @@ export namespace run {
              */
             configMapKeyRef: outputs.run.v1.ConfigMapKeySelectorResponse;
             /**
-             * (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a secret in the pod's namespace
+             * (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
              */
             secretKeyRef: outputs.run.v1.SecretKeySelectorResponse;
         }
@@ -52387,11 +52437,11 @@ export namespace run {
         }
 
         /**
-         * Cloud Run fully managed: not supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
+         * Cloud Run fully managed: supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
          */
         export interface KeyToPathResponse {
             /**
-             * Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to project.
+             * Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
              */
             key: string;
             /**
@@ -52399,7 +52449,7 @@ export namespace run {
              */
             mode: number;
             /**
-             * Cloud Run fully managed: not supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+             * Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
              */
             path: string;
         }
@@ -52467,7 +52517,7 @@ export namespace run {
              */
             ownerReferences: outputs.run.v1.OwnerReferenceResponse[];
             /**
-             * (Optional) An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+             * Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
              */
             resourceVersion: string;
             /**
@@ -52640,7 +52690,7 @@ export namespace run {
          */
         export interface SecretKeySelectorResponse {
             /**
-             * Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+             * Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
              */
             key: string;
             /**
@@ -52648,7 +52698,7 @@ export namespace run {
              */
             localObjectReference: outputs.run.v1.LocalObjectReferenceResponse;
             /**
-             * Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+             * Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
              */
             name: string;
             /**
@@ -52658,7 +52708,7 @@ export namespace run {
         }
 
         /**
-         * Cloud Run fully managed: not supported Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+         * Cloud Run fully managed: supported The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
          */
         export interface SecretVolumeSourceResponse {
             /**
@@ -52666,7 +52716,7 @@ export namespace run {
              */
             defaultMode: number;
             /**
-             * (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+             * (Optional) Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
              */
             items: outputs.run.v1.KeyToPathResponse[];
             /**
@@ -52674,7 +52724,7 @@ export namespace run {
              */
             optional: boolean;
             /**
-             * Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+             * Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
              */
             secretName: string;
         }
@@ -52786,15 +52836,15 @@ export namespace run {
          */
         export interface VolumeMountResponse {
             /**
-             * Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
+             * Cloud Run fully managed: supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
              */
             mountPath: string;
             /**
-             * Cloud Run fully managed: not supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+             * Cloud Run fully managed: supported Cloud Run for Anthos: supported This must match the Name of a Volume.
              */
             name: string;
             /**
-             * (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
+             * (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
              */
             readOnly: boolean;
             /**
@@ -52812,11 +52862,11 @@ export namespace run {
              */
             configMap: outputs.run.v1.ConfigMapVolumeSourceResponse;
             /**
-             * Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume's name.
+             * Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
              */
             name: string;
             /**
-             * Cloud Run fully managed: not supported Cloud Run for Anthos: supported
+             * Cloud Run fully managed: supported Cloud Run for Anthos: supported
              */
             secret: outputs.run.v1.SecretVolumeSourceResponse;
         }
@@ -56056,34 +56106,6 @@ export namespace spanner {
              * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
              */
             message: string;
-        }
-    }
-}
-
-export namespace speech {
-    export namespace v1p1beta1 {
-        /**
-         * An item of the class.
-         */
-        export interface ClassItemResponse {
-            /**
-             * The class item's value.
-             */
-            value: string;
-        }
-
-        /**
-         * A phrases containing words and phrase "hints" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List items can also include pre-built or custom classes containing groups of words that represent common concepts that occur in natural language. For example, rather than providing a phrase hint for every month of the year (e.g. "i was born in january", "i was born in febuary", ...), use the pre-built `$MONTH` class improves the likelihood of correctly transcribing audio that includes months (e.g. "i was born in $month"). To refer to pre-built classes, use the class' symbol prepended with `$` e.g. `$MONTH`. To refer to custom classes that were defined inline in the request, set the class's `custom_class_id` to a string unique to all class resources and inline classes. Then use the class' id wrapped in $`{...}` e.g. "${my-months}". To refer to custom classes resources, use the class' id wrapped in `${}` (e.g. `${my-months}`).
-         */
-        export interface PhraseResponse {
-            /**
-             * Hint Boost. Overrides the boost set at the phrase set level. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.
-             */
-            boost: number;
-            /**
-             * The phrase itself.
-             */
-            value: string;
         }
     }
 }

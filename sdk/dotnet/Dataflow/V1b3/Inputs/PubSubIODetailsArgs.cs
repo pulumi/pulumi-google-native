@@ -11,7 +11,7 @@ namespace Pulumi.GoogleCloud.Dataflow.V1b3.Inputs
 {
 
     /// <summary>
-    /// Metadata for a PubSub connector used by the job.
+    /// Metadata for a Pub/Sub connector used by the job.
     /// </summary>
     public sealed class PubSubIODetailsArgs : Pulumi.ResourceArgs
     {

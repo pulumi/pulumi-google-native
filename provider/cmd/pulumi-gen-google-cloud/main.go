@@ -13,6 +13,7 @@ import (
 	"net/http"
 	"os"
 	"path"
+	"regexp"
 	"strings"
 
 	"github.com/pkg/errors"
@@ -96,6 +97,8 @@ func emitDiscoveryFiles(outDir string) error {
 	// TODO: getting access denied from https://essentialcontacts.googleapis.com/$discovery/rest?version=v1beta1
 	// but the TF provider uses that API. it's not in the list either.
 
+	private := regexp.MustCompile("v[0-9]+p[0-9]+[a-z0-9]+")
+
 	for _, item := range list.Items {
 		// TODO: this is arbitrary - find a better way?
 		if !strings.HasPrefix(item.DocumentationLink, "https://cloud.google.com") &&
@@ -103,6 +106,11 @@ func emitDiscoveryFiles(outDir string) error {
 			!strings.HasPrefix(item.Title, "Firebase") &&
 			!strings.HasPrefix(item.Title, "Identity Toolkit") &&
 			!strings.HasPrefix(item.Title, "Compute"){
+			continue
+		}
+
+		if private.MatchString(item.Version) {
+			// Skip private previews
 			continue
 		}
 

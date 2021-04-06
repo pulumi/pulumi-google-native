@@ -18,11 +18,11 @@ namespace Pulumi.GoogleCloud.Run.V1.Outputs
         /// </summary>
         public readonly Outputs.ConfigMapVolumeSourceResponse ConfigMap;
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume's name.
+        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
+        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported
         /// </summary>
         public readonly Outputs.SecretVolumeSourceResponse Secret;
 

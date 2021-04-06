@@ -16,19 +16,19 @@ namespace Pulumi.GoogleCloud.Run.V1.Inputs
     public sealed class VolumeMountArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
+        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
         /// </summary>
         [Input("mountPath")]
         public Input<string>? MountPath { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported This must match the Name of a Volume.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
+        /// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }

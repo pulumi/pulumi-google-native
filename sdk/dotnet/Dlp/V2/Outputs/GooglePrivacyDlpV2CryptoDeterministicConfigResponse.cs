@@ -18,7 +18,7 @@ namespace Pulumi.GoogleCloud.Dlp.V2.Outputs
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2FieldIdResponse Context;
         /// <summary>
-        /// The key used by the encryption function.
+        /// The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2CryptoKeyResponse CryptoKey;
         /// <summary>

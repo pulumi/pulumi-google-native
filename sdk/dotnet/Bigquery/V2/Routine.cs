@@ -70,7 +70,7 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
         public Output<string> LastModifiedTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION". TODO(b/173344646) - Update return_type documentation to say it cannot be set for TABLE_VALUED_FUNCTION before preview launch.
+        /// Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
         /// </summary>
         [Output("returnTableType")]
         public Output<Outputs.StandardSqlTableTypeResponse> ReturnTableType { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.GoogleCloud.Bigquery.V2
         public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
-        /// Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION". TODO(b/173344646) - Update return_type documentation to say it cannot be set for TABLE_VALUED_FUNCTION before preview launch.
+        /// Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
         /// </summary>
         [Input("returnTableType")]
         public Input<Inputs.StandardSqlTableTypeArgs>? ReturnTableType { get; set; }

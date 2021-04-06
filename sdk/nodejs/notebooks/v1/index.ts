@@ -9,6 +9,7 @@ export * from "./environment";
 export * from "./execution";
 export * from "./instance";
 export * from "./instanceIamPolicy";
+export * from "./runtime";
 export * from "./schedule";
 
 // Import resources to register:
@@ -16,6 +17,7 @@ import { Environment } from "./environment";
 import { Execution } from "./execution";
 import { Instance } from "./instance";
 import { InstanceIamPolicy } from "./instanceIamPolicy";
+import { Runtime } from "./runtime";
 import { Schedule } from "./schedule";
 
 const _module = {
@@ -30,6 +32,8 @@ const _module = {
                 return new Instance(name, <any>undefined, { urn })
             case "google-cloud:notebooks/v1:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
+            case "google-cloud:notebooks/v1:Runtime":
+                return new Runtime(name, <any>undefined, { urn })
             case "google-cloud:notebooks/v1:Schedule":
                 return new Schedule(name, <any>undefined, { urn })
             default:

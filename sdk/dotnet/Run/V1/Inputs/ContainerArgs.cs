@@ -78,7 +78,7 @@ namespace Pulumi.GoogleCloud.Run.V1.Inputs
         public Input<Inputs.ProbeArgs>? LivenessProbe { get; set; }
 
         /// <summary>
-        /// (Optional) Name of the container specified as a DNS_LABEL.
+        /// (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -129,7 +129,7 @@ namespace Pulumi.GoogleCloud.Run.V1.Inputs
         private InputList<Inputs.VolumeMountArgs>? _volumeMounts;
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
+        /// (Optional) Cloud Run fully managed: supported Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
         /// </summary>
         public InputList<Inputs.VolumeMountArgs> VolumeMounts
         {

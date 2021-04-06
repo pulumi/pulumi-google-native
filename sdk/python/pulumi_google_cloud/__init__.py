@@ -96,7 +96,6 @@ from . import (
     serviceusage,
     sourcerepo,
     spanner,
-    speech,
     sqladmin,
     storage,
     storagetransfer,

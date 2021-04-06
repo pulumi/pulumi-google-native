@@ -123,7 +123,7 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         private InputList<Inputs.BindingArgs>? _bindings;
 
         /// <summary>
-        /// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        /// Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings.
         /// </summary>
         public InputList<Inputs.BindingArgs> Bindings
         {

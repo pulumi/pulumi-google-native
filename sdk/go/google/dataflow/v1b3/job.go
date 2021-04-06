@@ -53,7 +53,7 @@ type Job struct {
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
 	Steps StepResponseArrayOutput `pulumi:"steps"`
-	// The GCS location where the steps are stored.
+	// The Cloud Storage location where the steps are stored.
 	StepsLocation pulumi.StringOutput `pulumi:"stepsLocation"`
 	// A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 	TempFiles pulumi.StringArrayOutput `pulumi:"tempFiles"`
@@ -139,7 +139,7 @@ type jobState struct {
 	StartTime *string `pulumi:"startTime"`
 	// Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
 	Steps []StepResponse `pulumi:"steps"`
-	// The GCS location where the steps are stored.
+	// The Cloud Storage location where the steps are stored.
 	StepsLocation *string `pulumi:"stepsLocation"`
 	// A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 	TempFiles []string `pulumi:"tempFiles"`
@@ -188,7 +188,7 @@ type JobState struct {
 	StartTime pulumi.StringPtrInput
 	// Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
 	Steps StepResponseArrayInput
-	// The GCS location where the steps are stored.
+	// The Cloud Storage location where the steps are stored.
 	StepsLocation pulumi.StringPtrInput
 	// A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 	TempFiles pulumi.StringArrayInput
@@ -244,7 +244,7 @@ type jobArgs struct {
 	StartTime *string `pulumi:"startTime"`
 	// Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
 	Steps []Step `pulumi:"steps"`
-	// The GCS location where the steps are stored.
+	// The Cloud Storage location where the steps are stored.
 	StepsLocation *string `pulumi:"stepsLocation"`
 	// A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 	TempFiles []string `pulumi:"tempFiles"`
@@ -297,7 +297,7 @@ type JobArgs struct {
 	StartTime pulumi.StringPtrInput
 	// Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
 	Steps StepArrayInput
-	// The GCS location where the steps are stored.
+	// The Cloud Storage location where the steps are stored.
 	StepsLocation pulumi.StringPtrInput
 	// A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
 	TempFiles pulumi.StringArrayInput

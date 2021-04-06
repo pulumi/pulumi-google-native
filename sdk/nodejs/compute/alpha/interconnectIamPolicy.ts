@@ -120,7 +120,7 @@ export interface InterconnectIamPolicyArgs {
      */
     readonly auditConfigs?: pulumi.Input<pulumi.Input<inputs.compute.alpha.AuditConfig>[]>;
     /**
-     * Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+     * Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.
      */
     readonly bindings?: pulumi.Input<pulumi.Input<inputs.compute.alpha.Binding>[]>;
     /**

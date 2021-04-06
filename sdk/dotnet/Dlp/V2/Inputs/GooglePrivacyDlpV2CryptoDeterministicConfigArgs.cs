@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Dlp.V2.Inputs
         public Input<Inputs.GooglePrivacyDlpV2FieldIdArgs>? Context { get; set; }
 
         /// <summary>
-        /// The key used by the encryption function.
+        /// The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
         /// </summary>
         [Input("cryptoKey")]
         public Input<Inputs.GooglePrivacyDlpV2CryptoKeyArgs>? CryptoKey { get; set; }

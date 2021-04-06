@@ -40,6 +40,10 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly acceleratorType!: pulumi.Output<string>;
     /**
+     * The API version that created this Node.
+     */
+    public /*out*/ readonly apiVersion!: pulumi.Output<string>;
+    /**
      * The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
      */
     public readonly cidrBlock!: pulumi.Output<string>;
@@ -142,6 +146,7 @@ export class Node extends pulumi.CustomResource {
             inputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
             inputs["tensorflowVersion"] = args ? args.tensorflowVersion : undefined;
             inputs["useServiceNetworking"] = args ? args.useServiceNetworking : undefined;
+            inputs["apiVersion"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["healthDescription"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -151,6 +156,7 @@ export class Node extends pulumi.CustomResource {
             inputs["symptoms"] = undefined /*out*/;
         } else {
             inputs["acceleratorType"] = undefined /*out*/;
+            inputs["apiVersion"] = undefined /*out*/;
             inputs["cidrBlock"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;

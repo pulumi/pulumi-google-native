@@ -430,14 +430,14 @@ class ContainerResponse(dict):
         :param str image: Cloud Run fully managed: only supports containers from Google Container Registry Cloud Run for Anthos: supported URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
         :param str image_pull_policy: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
         :param 'ProbeResponseArgs' liveness_probe: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        :param str name: (Optional) Name of the container specified as a DNS_LABEL.
+        :param str name: (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
         :param Sequence['ContainerPortResponseArgs'] ports: (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         :param 'ProbeResponseArgs' readiness_probe: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param 'ResourceRequirementsResponseArgs' resources: (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         :param 'SecurityContextResponseArgs' security_context: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
         :param str termination_message_path: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
         :param str termination_message_policy: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
-        :param Sequence['VolumeMountResponseArgs'] volume_mounts: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
+        :param Sequence['VolumeMountResponseArgs'] volume_mounts: (Optional) Cloud Run fully managed: supported Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
         :param str working_dir: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         pulumi.set(__self__, "args", args)
@@ -514,7 +514,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        (Optional) Name of the container specified as a DNS_LABEL.
+        (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
         """
         return pulumi.get(self, "name")
 
@@ -570,7 +570,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Sequence['outputs.VolumeMountResponse']:
         """
-        (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
+        (Optional) Cloud Run fully managed: supported Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Cloud Run for Anthos: supported Pod volumes to mount into the container's filesystem.
         """
         return pulumi.get(self, "volume_mounts")
 
@@ -762,7 +762,7 @@ class EnvVarResponse(dict):
         EnvVar represents an environment variable present in a Container.
         :param str name: Name of the environment variable. Must be a C_IDENTIFIER.
         :param str value: (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
-        :param 'EnvVarSourceResponseArgs' value_from: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
+        :param 'EnvVarSourceResponseArgs' value_from: (Optional) Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -788,7 +788,7 @@ class EnvVarResponse(dict):
     @pulumi.getter(name="valueFrom")
     def value_from(self) -> 'outputs.EnvVarSourceResponse':
         """
-        (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
+        (Optional) Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
         """
         return pulumi.get(self, "value_from")
 
@@ -807,7 +807,7 @@ class EnvVarSourceResponse(dict):
         """
         Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source for the value of an EnvVar.
         :param 'ConfigMapKeySelectorResponseArgs' config_map_key_ref: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
-        :param 'SecretKeySelectorResponseArgs' secret_key_ref: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a secret in the pod's namespace
+        :param 'SecretKeySelectorResponseArgs' secret_key_ref: (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
         """
         pulumi.set(__self__, "config_map_key_ref", config_map_key_ref)
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
@@ -824,7 +824,7 @@ class EnvVarSourceResponse(dict):
     @pulumi.getter(name="secretKeyRef")
     def secret_key_ref(self) -> 'outputs.SecretKeySelectorResponse':
         """
-        (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a secret in the pod's namespace
+        (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
         """
         return pulumi.get(self, "secret_key_ref")
 
@@ -1092,17 +1092,17 @@ class HTTPHeaderResponse(dict):
 @pulumi.output_type
 class KeyToPathResponse(dict):
     """
-    Cloud Run fully managed: not supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
+    Cloud Run fully managed: supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
     """
     def __init__(__self__, *,
                  key: str,
                  mode: int,
                  path: str):
         """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
-        :param str key: Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to project.
+        Cloud Run fully managed: supported Cloud Run for Anthos: supported Maps a string key to a path within a volume.
+        :param str key: Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
         :param int mode: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on this file, must be a value between 0000 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
-        :param str path: Cloud Run fully managed: not supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        :param str path: Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "mode", mode)
@@ -1112,7 +1112,7 @@ class KeyToPathResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to project.
+        Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
         """
         return pulumi.get(self, "key")
 
@@ -1128,7 +1128,7 @@ class KeyToPathResponse(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
         """
         return pulumi.get(self, "path")
 
@@ -1196,7 +1196,7 @@ class ObjectMetaResponse(dict):
         :param str name: Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names +optional
         :param str namespace: Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
         :param Sequence['OwnerReferenceResponseArgs'] owner_references: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
-        :param str resource_version: (Optional) An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        :param str resource_version: Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
         :param str self_link: (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
         :param str uid: (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids
         """
@@ -1316,7 +1316,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="resourceVersion")
     def resource_version(self) -> str:
         """
-        (Optional) An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
         """
         return pulumi.get(self, "resource_version")
 
@@ -1765,9 +1765,9 @@ class SecretKeySelectorResponse(dict):
                  optional: bool):
         """
         Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretKeySelector selects a key of a Secret.
-        :param str key: Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+        :param str key: Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
         :param 'LocalObjectReferenceResponseArgs' local_object_reference: This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
-        :param str name: Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+        :param str name: Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
         :param bool optional: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its key must be defined
         """
         pulumi.set(__self__, "key", key)
@@ -1779,7 +1779,7 @@ class SecretKeySelectorResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
+        Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
         """
         return pulumi.get(self, "key")
 
@@ -1795,7 +1795,7 @@ class SecretKeySelectorResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
+        Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
         """
         return pulumi.get(self, "name")
 
@@ -1814,7 +1814,7 @@ class SecretKeySelectorResponse(dict):
 @pulumi.output_type
 class SecretVolumeSourceResponse(dict):
     """
-    Cloud Run fully managed: not supported Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+    Cloud Run fully managed: supported The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
     """
     def __init__(__self__, *,
                  default_mode: int,
@@ -1822,11 +1822,11 @@ class SecretVolumeSourceResponse(dict):
                  optional: bool,
                  secret_name: str):
         """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+        Cloud Run fully managed: supported The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
         :param int default_mode: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Mode bits to use on created files by default. Must be a value between 0000 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. NOTE: This is an integer representation of the mode bits. So, the integer value should look exactly as the chmod numeric notation, i.e. Unix chmod "777" (a=rwx) should have the integer value 777.
-        :param Sequence['KeyToPathResponseArgs'] items: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+        :param Sequence['KeyToPathResponseArgs'] items: (Optional) Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
         :param bool optional: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret or its keys must be defined.
-        :param str secret_name: Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+        :param str secret_name: Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
         """
         pulumi.set(__self__, "default_mode", default_mode)
         pulumi.set(__self__, "items", items)
@@ -1845,7 +1845,7 @@ class SecretVolumeSourceResponse(dict):
     @pulumi.getter
     def items(self) -> Sequence['outputs.KeyToPathResponse']:
         """
-        (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+        (Optional) Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
         """
         return pulumi.get(self, "items")
 
@@ -1861,7 +1861,7 @@ class SecretVolumeSourceResponse(dict):
     @pulumi.getter(name="secretName")
     def secret_name(self) -> str:
         """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
+        Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
         """
         return pulumi.get(self, "secret_name")
 
@@ -2149,9 +2149,9 @@ class VolumeMountResponse(dict):
                  sub_path: str):
         """
         Cloud Run fully managed: not supported Cloud Run for Anthos: supported VolumeMount describes a mounting of a Volume within a container.
-        :param str mount_path: Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
-        :param str name: Cloud Run fully managed: not supported Cloud Run for Anthos: supported This must match the Name of a Volume.
-        :param bool read_only: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
+        :param str mount_path: Cloud Run fully managed: supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
+        :param str name: Cloud Run fully managed: supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+        :param bool read_only: (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
         :param str sub_path: (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
         """
         pulumi.set(__self__, "mount_path", mount_path)
@@ -2163,7 +2163,7 @@ class VolumeMountResponse(dict):
     @pulumi.getter(name="mountPath")
     def mount_path(self) -> str:
         """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
+        Cloud Run fully managed: supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
         """
         return pulumi.get(self, "mount_path")
 
@@ -2171,7 +2171,7 @@ class VolumeMountResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+        Cloud Run fully managed: supported Cloud Run for Anthos: supported This must match the Name of a Volume.
         """
         return pulumi.get(self, "name")
 
@@ -2179,7 +2179,7 @@ class VolumeMountResponse(dict):
     @pulumi.getter(name="readOnly")
     def read_only(self) -> bool:
         """
-        (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
+        (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
         """
         return pulumi.get(self, "read_only")
 
@@ -2207,8 +2207,8 @@ class VolumeResponse(dict):
         """
         Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume in a container.
         :param 'ConfigMapVolumeSourceResponseArgs' config_map: Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-        :param str name: Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume's name.
-        :param 'SecretVolumeSourceResponseArgs' secret: Cloud Run fully managed: not supported Cloud Run for Anthos: supported
+        :param str name: Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
+        :param 'SecretVolumeSourceResponseArgs' secret: Cloud Run fully managed: supported Cloud Run for Anthos: supported
         """
         pulumi.set(__self__, "config_map", config_map)
         pulumi.set(__self__, "name", name)
@@ -2226,7 +2226,7 @@ class VolumeResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume's name.
+        Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
         """
         return pulumi.get(self, "name")
 
@@ -2234,7 +2234,7 @@ class VolumeResponse(dict):
     @pulumi.getter
     def secret(self) -> 'outputs.SecretVolumeSourceResponse':
         """
-        Cloud Run fully managed: not supported Cloud Run for Anthos: supported
+        Cloud Run fully managed: supported Cloud Run for Anthos: supported
         """
         return pulumi.get(self, "secret")
 

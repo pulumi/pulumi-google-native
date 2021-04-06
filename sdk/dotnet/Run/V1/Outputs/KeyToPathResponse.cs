@@ -14,7 +14,7 @@ namespace Pulumi.GoogleCloud.Run.V1.Outputs
     public sealed class KeyToPathResponse
     {
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to project.
+        /// Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
         /// </summary>
         public readonly string Key;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Run.V1.Outputs
         /// </summary>
         public readonly int Mode;
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
         /// </summary>
         public readonly string Path;
 

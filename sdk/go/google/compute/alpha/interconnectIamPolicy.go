@@ -139,7 +139,7 @@ func (InterconnectIamPolicyState) ElementType() reflect.Type {
 type interconnectIamPolicyArgs struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs []AuditConfig `pulumi:"auditConfigs"`
-	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+	// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.
 	Bindings []Binding `pulumi:"bindings"`
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
 	//
@@ -170,7 +170,7 @@ type interconnectIamPolicyArgs struct {
 type InterconnectIamPolicyArgs struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs AuditConfigArrayInput
-	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+	// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.
 	Bindings BindingArrayInput
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
 	//

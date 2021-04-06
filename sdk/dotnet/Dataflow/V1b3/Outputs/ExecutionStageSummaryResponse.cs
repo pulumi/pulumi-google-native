@@ -26,7 +26,7 @@ namespace Pulumi.GoogleCloud.Dataflow.V1b3.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.StageSourceResponse> InputSource;
         /// <summary>
-        /// Type of tranform this stage is executing.
+        /// Type of transform this stage is executing.
         /// </summary>
         public readonly string Kind;
         /// <summary>

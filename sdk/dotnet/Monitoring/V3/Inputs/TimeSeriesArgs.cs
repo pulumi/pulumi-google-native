@@ -46,7 +46,7 @@ namespace Pulumi.GoogleCloud.Monitoring.V3.Inputs
         }
 
         /// <summary>
-        /// The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data.
+        /// The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data. For more information, see Monitored resources for custom metrics (https://cloud.google.com/monitoring/custom-metrics/creating-metrics#custom-metric-resources).
         /// </summary>
         [Input("resource")]
         public Input<Inputs.MonitoredResourceArgs>? Resource { get; set; }

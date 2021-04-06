@@ -22,13 +22,13 @@ namespace Pulumi.GoogleCloud.Run.V1.Inputs
         public Input<Inputs.ConfigMapVolumeSourceArgs>? ConfigMap { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume's name.
+        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
+        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported
         /// </summary>
         [Input("secret")]
         public Input<Inputs.SecretVolumeSourceArgs>? Secret { get; set; }

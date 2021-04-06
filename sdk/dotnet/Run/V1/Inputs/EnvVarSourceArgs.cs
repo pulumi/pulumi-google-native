@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Run.V1.Inputs
         public Input<Inputs.ConfigMapKeySelectorArgs>? ConfigMapKeyRef { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a secret in the pod's namespace
+        /// (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
         /// </summary>
         [Input("secretKeyRef")]
         public Input<Inputs.SecretKeySelectorArgs>? SecretKeyRef { get; set; }

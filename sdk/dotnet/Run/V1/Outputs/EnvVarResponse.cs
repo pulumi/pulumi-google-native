@@ -22,7 +22,7 @@ namespace Pulumi.GoogleCloud.Run.V1.Outputs
         /// </summary>
         public readonly string Value;
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
+        /// (Optional) Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty.
         /// </summary>
         public readonly Outputs.EnvVarSourceResponse ValueFrom;
 

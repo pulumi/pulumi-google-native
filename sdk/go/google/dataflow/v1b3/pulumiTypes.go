@@ -481,7 +481,7 @@ func (o BigQueryIODetailsResponseArrayOutput) Index(i pulumi.IntInput) BigQueryI
 	}).(BigQueryIODetailsResponseOutput)
 }
 
-// Metadata for a BigTable connector used by the job.
+// Metadata for a Cloud BigTable connector used by the job.
 type BigTableIODetails struct {
 	// InstanceId accessed in the connection.
 	InstanceId *string `pulumi:"instanceId"`
@@ -502,7 +502,7 @@ type BigTableIODetailsInput interface {
 	ToBigTableIODetailsOutputWithContext(context.Context) BigTableIODetailsOutput
 }
 
-// Metadata for a BigTable connector used by the job.
+// Metadata for a Cloud BigTable connector used by the job.
 type BigTableIODetailsArgs struct {
 	// InstanceId accessed in the connection.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
@@ -549,7 +549,7 @@ func (i BigTableIODetailsArray) ToBigTableIODetailsArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BigTableIODetailsArrayOutput)
 }
 
-// Metadata for a BigTable connector used by the job.
+// Metadata for a Cloud BigTable connector used by the job.
 type BigTableIODetailsOutput struct{ *pulumi.OutputState }
 
 func (BigTableIODetailsOutput) ElementType() reflect.Type {
@@ -599,7 +599,7 @@ func (o BigTableIODetailsArrayOutput) Index(i pulumi.IntInput) BigTableIODetails
 	}).(BigTableIODetailsOutput)
 }
 
-// Metadata for a BigTable connector used by the job.
+// Metadata for a Cloud BigTable connector used by the job.
 type BigTableIODetailsResponse struct {
 	// InstanceId accessed in the connection.
 	InstanceId string `pulumi:"instanceId"`
@@ -620,7 +620,7 @@ type BigTableIODetailsResponseInput interface {
 	ToBigTableIODetailsResponseOutputWithContext(context.Context) BigTableIODetailsResponseOutput
 }
 
-// Metadata for a BigTable connector used by the job.
+// Metadata for a Cloud BigTable connector used by the job.
 type BigTableIODetailsResponseArgs struct {
 	// InstanceId accessed in the connection.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
@@ -667,7 +667,7 @@ func (i BigTableIODetailsResponseArray) ToBigTableIODetailsResponseArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(BigTableIODetailsResponseArrayOutput)
 }
 
-// Metadata for a BigTable connector used by the job.
+// Metadata for a Cloud BigTable connector used by the job.
 type BigTableIODetailsResponseOutput struct{ *pulumi.OutputState }
 
 func (BigTableIODetailsResponseOutput) ElementType() reflect.Type {
@@ -3412,7 +3412,7 @@ type ExecutionStageSummary struct {
 	Id *string `pulumi:"id"`
 	// Input sources for this stage.
 	InputSource []StageSource `pulumi:"inputSource"`
-	// Type of tranform this stage is executing.
+	// Type of transform this stage is executing.
 	Kind *string `pulumi:"kind"`
 	// Dataflow service generated name for this stage.
 	Name *string `pulumi:"name"`
@@ -3443,7 +3443,7 @@ type ExecutionStageSummaryArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Input sources for this stage.
 	InputSource StageSourceArrayInput `pulumi:"inputSource"`
-	// Type of tranform this stage is executing.
+	// Type of transform this stage is executing.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Dataflow service generated name for this stage.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -3525,7 +3525,7 @@ func (o ExecutionStageSummaryOutput) InputSource() StageSourceArrayOutput {
 	return o.ApplyT(func(v ExecutionStageSummary) []StageSource { return v.InputSource }).(StageSourceArrayOutput)
 }
 
-// Type of tranform this stage is executing.
+// Type of transform this stage is executing.
 func (o ExecutionStageSummaryOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionStageSummary) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -3573,7 +3573,7 @@ type ExecutionStageSummaryResponse struct {
 	ComponentTransform []ComponentTransformResponse `pulumi:"componentTransform"`
 	// Input sources for this stage.
 	InputSource []StageSourceResponse `pulumi:"inputSource"`
-	// Type of tranform this stage is executing.
+	// Type of transform this stage is executing.
 	Kind string `pulumi:"kind"`
 	// Dataflow service generated name for this stage.
 	Name string `pulumi:"name"`
@@ -3602,7 +3602,7 @@ type ExecutionStageSummaryResponseArgs struct {
 	ComponentTransform ComponentTransformResponseArrayInput `pulumi:"componentTransform"`
 	// Input sources for this stage.
 	InputSource StageSourceResponseArrayInput `pulumi:"inputSource"`
-	// Type of tranform this stage is executing.
+	// Type of transform this stage is executing.
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// Dataflow service generated name for this stage.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -3679,7 +3679,7 @@ func (o ExecutionStageSummaryResponseOutput) InputSource() StageSourceResponseAr
 	return o.ApplyT(func(v ExecutionStageSummaryResponse) []StageSourceResponse { return v.InputSource }).(StageSourceResponseArrayOutput)
 }
 
-// Type of tranform this stage is executing.
+// Type of transform this stage is executing.
 func (o ExecutionStageSummaryResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionStageSummaryResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -3921,7 +3921,7 @@ func (o FileIODetailsResponseArrayOutput) Index(i pulumi.IntInput) FileIODetails
 
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
 type JobMetadata struct {
-	// Identification of a BigTable source used in the Dataflow job.
+	// Identification of a Cloud BigTable source used in the Dataflow job.
 	BigTableDetails []BigTableIODetails `pulumi:"bigTableDetails"`
 	// Identification of a BigQuery source used in the Dataflow job.
 	BigqueryDetails []BigQueryIODetails `pulumi:"bigqueryDetails"`
@@ -3950,7 +3950,7 @@ type JobMetadataInput interface {
 
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
 type JobMetadataArgs struct {
-	// Identification of a BigTable source used in the Dataflow job.
+	// Identification of a Cloud BigTable source used in the Dataflow job.
 	BigTableDetails BigTableIODetailsArrayInput `pulumi:"bigTableDetails"`
 	// Identification of a BigQuery source used in the Dataflow job.
 	BigqueryDetails BigQueryIODetailsArrayInput `pulumi:"bigqueryDetails"`
@@ -4044,7 +4044,7 @@ func (o JobMetadataOutput) ToJobMetadataPtrOutputWithContext(ctx context.Context
 	}).(JobMetadataPtrOutput)
 }
 
-// Identification of a BigTable source used in the Dataflow job.
+// Identification of a Cloud BigTable source used in the Dataflow job.
 func (o JobMetadataOutput) BigTableDetails() BigTableIODetailsArrayOutput {
 	return o.ApplyT(func(v JobMetadata) []BigTableIODetails { return v.BigTableDetails }).(BigTableIODetailsArrayOutput)
 }
@@ -4097,7 +4097,7 @@ func (o JobMetadataPtrOutput) Elem() JobMetadataOutput {
 	return o.ApplyT(func(v *JobMetadata) JobMetadata { return *v }).(JobMetadataOutput)
 }
 
-// Identification of a BigTable source used in the Dataflow job.
+// Identification of a Cloud BigTable source used in the Dataflow job.
 func (o JobMetadataPtrOutput) BigTableDetails() BigTableIODetailsArrayOutput {
 	return o.ApplyT(func(v *JobMetadata) []BigTableIODetails {
 		if v == nil {
@@ -4169,7 +4169,7 @@ func (o JobMetadataPtrOutput) SpannerDetails() SpannerIODetailsArrayOutput {
 
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
 type JobMetadataResponse struct {
-	// Identification of a BigTable source used in the Dataflow job.
+	// Identification of a Cloud BigTable source used in the Dataflow job.
 	BigTableDetails []BigTableIODetailsResponse `pulumi:"bigTableDetails"`
 	// Identification of a BigQuery source used in the Dataflow job.
 	BigqueryDetails []BigQueryIODetailsResponse `pulumi:"bigqueryDetails"`
@@ -4198,7 +4198,7 @@ type JobMetadataResponseInput interface {
 
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
 type JobMetadataResponseArgs struct {
-	// Identification of a BigTable source used in the Dataflow job.
+	// Identification of a Cloud BigTable source used in the Dataflow job.
 	BigTableDetails BigTableIODetailsResponseArrayInput `pulumi:"bigTableDetails"`
 	// Identification of a BigQuery source used in the Dataflow job.
 	BigqueryDetails BigQueryIODetailsResponseArrayInput `pulumi:"bigqueryDetails"`
@@ -4292,7 +4292,7 @@ func (o JobMetadataResponseOutput) ToJobMetadataResponsePtrOutputWithContext(ctx
 	}).(JobMetadataResponsePtrOutput)
 }
 
-// Identification of a BigTable source used in the Dataflow job.
+// Identification of a Cloud BigTable source used in the Dataflow job.
 func (o JobMetadataResponseOutput) BigTableDetails() BigTableIODetailsResponseArrayOutput {
 	return o.ApplyT(func(v JobMetadataResponse) []BigTableIODetailsResponse { return v.BigTableDetails }).(BigTableIODetailsResponseArrayOutput)
 }
@@ -4345,7 +4345,7 @@ func (o JobMetadataResponsePtrOutput) Elem() JobMetadataResponseOutput {
 	return o.ApplyT(func(v *JobMetadataResponse) JobMetadataResponse { return *v }).(JobMetadataResponseOutput)
 }
 
-// Identification of a BigTable source used in the Dataflow job.
+// Identification of a Cloud BigTable source used in the Dataflow job.
 func (o JobMetadataResponsePtrOutput) BigTableDetails() BigTableIODetailsResponseArrayOutput {
 	return o.ApplyT(func(v *JobMetadataResponse) []BigTableIODetailsResponse {
 		if v == nil {
@@ -5122,7 +5122,7 @@ func (o PipelineDescriptionResponsePtrOutput) OriginalPipelineTransform() Transf
 	}).(TransformSummaryResponseArrayOutput)
 }
 
-// Metadata for a PubSub connector used by the job.
+// Metadata for a Pub/Sub connector used by the job.
 type PubSubIODetails struct {
 	// Subscription used in the connection.
 	Subscription *string `pulumi:"subscription"`
@@ -5141,7 +5141,7 @@ type PubSubIODetailsInput interface {
 	ToPubSubIODetailsOutputWithContext(context.Context) PubSubIODetailsOutput
 }
 
-// Metadata for a PubSub connector used by the job.
+// Metadata for a Pub/Sub connector used by the job.
 type PubSubIODetailsArgs struct {
 	// Subscription used in the connection.
 	Subscription pulumi.StringPtrInput `pulumi:"subscription"`
@@ -5186,7 +5186,7 @@ func (i PubSubIODetailsArray) ToPubSubIODetailsArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PubSubIODetailsArrayOutput)
 }
 
-// Metadata for a PubSub connector used by the job.
+// Metadata for a Pub/Sub connector used by the job.
 type PubSubIODetailsOutput struct{ *pulumi.OutputState }
 
 func (PubSubIODetailsOutput) ElementType() reflect.Type {
@@ -5231,7 +5231,7 @@ func (o PubSubIODetailsArrayOutput) Index(i pulumi.IntInput) PubSubIODetailsOutp
 	}).(PubSubIODetailsOutput)
 }
 
-// Metadata for a PubSub connector used by the job.
+// Metadata for a Pub/Sub connector used by the job.
 type PubSubIODetailsResponse struct {
 	// Subscription used in the connection.
 	Subscription string `pulumi:"subscription"`
@@ -5250,7 +5250,7 @@ type PubSubIODetailsResponseInput interface {
 	ToPubSubIODetailsResponseOutputWithContext(context.Context) PubSubIODetailsResponseOutput
 }
 
-// Metadata for a PubSub connector used by the job.
+// Metadata for a Pub/Sub connector used by the job.
 type PubSubIODetailsResponseArgs struct {
 	// Subscription used in the connection.
 	Subscription pulumi.StringInput `pulumi:"subscription"`
@@ -5295,7 +5295,7 @@ func (i PubSubIODetailsResponseArray) ToPubSubIODetailsResponseArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(PubSubIODetailsResponseArrayOutput)
 }
 
-// Metadata for a PubSub connector used by the job.
+// Metadata for a Pub/Sub connector used by the job.
 type PubSubIODetailsResponseOutput struct{ *pulumi.OutputState }
 
 func (PubSubIODetailsResponseOutput) ElementType() reflect.Type {

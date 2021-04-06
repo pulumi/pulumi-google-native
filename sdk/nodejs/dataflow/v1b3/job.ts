@@ -112,7 +112,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly steps!: pulumi.Output<outputs.dataflow.v1b3.StepResponse[]>;
     /**
-     * The GCS location where the steps are stored.
+     * The Cloud Storage location where the steps are stored.
      */
     public readonly stepsLocation!: pulumi.Output<string>;
     /**
@@ -291,7 +291,7 @@ export interface JobArgs {
      */
     readonly steps?: pulumi.Input<pulumi.Input<inputs.dataflow.v1b3.Step>[]>;
     /**
-     * The GCS location where the steps are stored.
+     * The Cloud Storage location where the steps are stored.
      */
     readonly stepsLocation?: pulumi.Input<string>;
     /**

@@ -58,7 +58,7 @@ namespace Pulumi.GoogleCloud.Dataflow.V1b3.Inputs
         }
 
         /// <summary>
-        /// Type of tranform this stage is executing.
+        /// Type of transform this stage is executing.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

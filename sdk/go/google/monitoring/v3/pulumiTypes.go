@@ -12295,7 +12295,7 @@ type TimeSeriesType struct {
 	MetricKind *string `pulumi:"metricKind"`
 	// The data points of this time series. When listing time series, points are returned in reverse time order.When creating a time series, this field must contain exactly one point and the point's type must be the same as the value type of the associated metric. If the associated metric's descriptor must be auto-created, then the value type of the descriptor is determined by the point's type, which must be BOOL, INT64, DOUBLE, or DISTRIBUTION.
 	Points []Point `pulumi:"points"`
-	// The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data.
+	// The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data. For more information, see Monitored resources for custom metrics (https://cloud.google.com/monitoring/custom-metrics/creating-metrics#custom-metric-resources).
 	Resource *MonitoredResource `pulumi:"resource"`
 	// The units in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of the stored metric values.
 	Unit *string `pulumi:"unit"`
@@ -12324,7 +12324,7 @@ type TimeSeriesTypeArgs struct {
 	MetricKind pulumi.StringPtrInput `pulumi:"metricKind"`
 	// The data points of this time series. When listing time series, points are returned in reverse time order.When creating a time series, this field must contain exactly one point and the point's type must be the same as the value type of the associated metric. If the associated metric's descriptor must be auto-created, then the value type of the descriptor is determined by the point's type, which must be BOOL, INT64, DOUBLE, or DISTRIBUTION.
 	Points PointArrayInput `pulumi:"points"`
-	// The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data.
+	// The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data. For more information, see Monitored resources for custom metrics (https://cloud.google.com/monitoring/custom-metrics/creating-metrics#custom-metric-resources).
 	Resource MonitoredResourcePtrInput `pulumi:"resource"`
 	// The units in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the representation of the stored metric values.
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
@@ -12404,7 +12404,7 @@ func (o TimeSeriesTypeOutput) Points() PointArrayOutput {
 	return o.ApplyT(func(v TimeSeriesType) []Point { return v.Points }).(PointArrayOutput)
 }
 
-// The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data.
+// The associated monitored resource. Custom metrics can use only certain monitored resource types in their time series data. For more information, see Monitored resources for custom metrics (https://cloud.google.com/monitoring/custom-metrics/creating-metrics#custom-metric-resources).
 func (o TimeSeriesTypeOutput) Resource() MonitoredResourcePtrOutput {
 	return o.ApplyT(func(v TimeSeriesType) *MonitoredResource { return v.Resource }).(MonitoredResourcePtrOutput)
 }

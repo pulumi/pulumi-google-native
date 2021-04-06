@@ -22,6 +22,12 @@ namespace Pulumi.GoogleCloud.Tpu.V1
         public Output<string> AcceleratorType { get; private set; } = null!;
 
         /// <summary>
+        /// The API version that created this Node.
+        /// </summary>
+        [Output("apiVersion")]
+        public Output<string> ApiVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
         /// </summary>
         [Output("cidrBlock")]
