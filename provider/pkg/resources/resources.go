@@ -13,6 +13,8 @@ type CloudAPIResource struct {
 	CreatePath       string                      `json:"createPath"`
 	CreateParams     []string                    `json:"createParams"`
 	CreateProperties map[string]CloudAPIProperty `json:"createProperties,omitempty"`
+	UpdateVerb       string                      `json:"updateVerb,omitempty"`
+	UpdateProperties map[string]CloudAPIProperty `json:"updateProperties,omitempty"`
 	IdPath           string                      `json:"idPath,omitempty"`
 	IdParams         []string                    `json:"idParams,omitempty"`
 	NoGet            bool                        `json:"noGet,omitempty"`

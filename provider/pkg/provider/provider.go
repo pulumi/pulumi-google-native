@@ -82,7 +82,9 @@ func (k *googleCloudProvider) Configure(ctx context.Context,
 
 	k.setLoggingContext(ctx)
 
-	return &rpc.ConfigureResponse{}, nil
+	return &rpc.ConfigureResponse{
+		AcceptSecrets: true,
+	}, nil
 }
 
 // Invoke dynamically executes a built-in function in the provider.
@@ -142,9 +144,48 @@ func (k *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	label := fmt.Sprintf("%s.Diff(%s)", k.name, urn)
 	glog.V(9).Infof("%s executing", label)
 
-	return &rpc.DiffResponse{
-		Changes: rpc.DiffResponse_DIFF_UNKNOWN,
-	}, nil
+	resourceKey := string(urn.Type())
+	res, ok := k.resourceMap.Resources[resourceKey]
+	if !ok {
+		return nil, errors.Errorf("resource '%s' not found", resourceKey)
+	}
+
+	oldState, err := plugin.UnmarshalProperties(req.GetOlds(), plugin.MarshalOptions{
+		Label:        fmt.Sprintf("%s.oldState", label),
+		KeepUnknowns: true,
+		KeepSecrets:  true,
+	})
+	if err != nil {
+		return nil, errors.Wrapf(err, "diff failed because malformed resource inputs")
+	}
+
+	// Extract old inputs from the `__inputs` field of the old state.
+	oldInputs := parseCheckpointObject(oldState)
+
+	newInputs, err := plugin.UnmarshalProperties(req.GetNews(), plugin.MarshalOptions{
+		Label:        fmt.Sprintf("%s.newInputs", label),
+		KeepUnknowns: true,
+		KeepSecrets:  true,
+	})
+	if err != nil {
+		return nil, errors.Wrapf(err, "diff failed because malformed resource inputs")
+	}
+
+	diff := oldInputs.Diff(newInputs)
+	if diff == nil {
+		return &rpc.DiffResponse{Changes: rpc.DiffResponse_DIFF_NONE}, nil
+	}
+
+	var replaces []string
+	for name := range res.CreateProperties {
+		if _, ok := diff.Updates[resource.PropertyKey(name)]; ok {
+			if _, has := res.UpdateProperties[name]; !has {
+				replaces = append(replaces, name)
+			}
+		}
+	}
+
+	return &rpc.DiffResponse{Changes: rpc.DiffResponse_DIFF_UNKNOWN, Replaces: replaces}, nil
 }
 
 // Create allocates a new instance of the provided resource and returns its unique ID afterwards.
@@ -253,15 +294,15 @@ func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		}
 	}
 
-	// Serialize and return RPC outputs
-	outputs, err := plugin.MarshalProperties(
-		resource.NewPropertyMapFromMap(resp),
-		plugin.MarshalOptions{Label: fmt.Sprintf("%s.response", label), SkipNulls: true},
+	// Store both outputs and inputs into the state.
+	checkpoint, err := plugin.MarshalProperties(
+		checkpointObject(inputs, resp),
+		plugin.MarshalOptions{Label: fmt.Sprintf("%s.checkpoint", label), KeepSecrets: true, SkipNulls: true},
 	)
 
 	return &rpc.CreateResponse{
 		Id:         id,
-		Properties: outputs,
+		Properties: checkpoint,
 	}, nil
 }
 
@@ -354,6 +395,17 @@ func (k *googleCloudProvider) Read(ctx context.Context, req *rpc.ReadRequest) (*
 
 	uri := fmt.Sprintf("%s%s", res.BaseUrl, id)
 
+	// Retrieve the old state.
+	oldState, err := plugin.UnmarshalProperties(req.GetProperties(), plugin.MarshalOptions{
+		Label: fmt.Sprintf("%s.olds", label), KeepUnknowns: true, SkipNulls: true, KeepSecrets: true,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	// Extract old inputs from the `__inputs` field of the old state.
+	inputs := parseCheckpointObject(oldState)
+
 	resp, err := sendRequestWithTimeout(ctx, "GET", uri, nil, 0)
 	if err != nil {
 		if reqErr, ok := err.(*googleapi.Error); ok && reqErr.Code == http.StatusNotFound {
@@ -363,10 +415,10 @@ func (k *googleCloudProvider) Read(ctx context.Context, req *rpc.ReadRequest) (*
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
 
-	// Serialize and return RPC outputs.
+	// Store both outputs and inputs into the state checkpoint.
 	checkpoint, err := plugin.MarshalProperties(
-		resource.NewPropertyMapFromMap(resp),
-		plugin.MarshalOptions{Label: fmt.Sprintf("%s.checkpoint", label), SkipNulls: true},
+		checkpointObject(inputs, resp),
+		plugin.MarshalOptions{Label: fmt.Sprintf("%s.checkpoint", label), KeepSecrets: true, SkipNulls: true},
 	)
 	if err != nil {
 		return nil, err
@@ -376,8 +428,70 @@ func (k *googleCloudProvider) Read(ctx context.Context, req *rpc.ReadRequest) (*
 }
 
 // Update updates an existing resource with new values.
-func (k *googleCloudProvider) Update(_ context.Context, _ *rpc.UpdateRequest) (*rpc.UpdateResponse, error) {
-	panic("Update not implemented")
+func (k *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest) (*rpc.UpdateResponse, error) {
+	urn := resource.URN(req.GetUrn())
+	label := fmt.Sprintf("%s.Update(%s)", k.name, urn)
+	glog.V(9).Infof("%s executing", label)
+
+	// Deserialize RPC inputs
+	inputs, err := plugin.UnmarshalProperties(req.GetNews(), plugin.MarshalOptions{
+		Label: fmt.Sprintf("%s.properties", label), SkipNulls: true,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	resourceKey := string(urn.Type())
+	res, ok := k.resourceMap.Resources[resourceKey]
+	if !ok {
+		return nil, errors.Errorf("resource '%s' not found", resourceKey)
+	}
+
+	inputsMap := inputs.Mappable()
+	body := map[string]interface{}{}
+	for name, value := range res.UpdateProperties {
+		parent := body
+		if value.Container != "" {
+			if v, has := body[value.Container].(map[string]interface{}); has {
+				parent = v
+			} else {
+				parent = map[string]interface{}{}
+				body[value.Container] = parent
+			}
+		}
+		parent[name] = inputsMap[name]
+	}
+
+	uri := res.BaseUrl + req.Id
+	op, err := sendRequestWithTimeout(ctx, res.UpdateVerb, uri, body, 0)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
+	}
+
+	resp, err := k.waitForResourceOpCompletion(ctx, res.BaseUrl, op)
+	if err != nil {
+		return nil, errors.Wrapf(err, "waiting for completion")
+	}
+
+	// Read the inputs to persist them into state.
+	newInputs, err := plugin.UnmarshalProperties(req.GetNews(), plugin.MarshalOptions{
+		Label:        fmt.Sprintf("%s.newInputs", label),
+		KeepUnknowns: true,
+		KeepSecrets:  true,
+	})
+	if err != nil {
+		return nil, errors.Wrapf(err, "diff failed because malformed resource inputs")
+	}
+
+	// Store both outputs and inputs into the state and return RPC checkpoint.
+	outputs, err := plugin.MarshalProperties(
+		checkpointObject(newInputs, resp),
+		plugin.MarshalOptions{Label: fmt.Sprintf("%s.response", label), KeepSecrets: true, SkipNulls: true},
+	)
+
+	return &rpc.UpdateResponse{
+		Properties: outputs,
+	}, nil
 }
 
 // Delete tears down an existing resource with the given ID. If it fails, the resource is assumed
@@ -451,4 +565,20 @@ func (k *googleCloudProvider) getConfig(configName, envName string) string {
 	}
 
 	return os.Getenv(envName)
+}
+
+// checkpointObject puts inputs in the `__inputs` field of the state.
+func checkpointObject(inputs resource.PropertyMap, outputs map[string]interface{}) resource.PropertyMap {
+	object := resource.NewPropertyMapFromMap(outputs)
+	object["__inputs"] = resource.MakeSecret(resource.NewObjectProperty(inputs))
+	return object
+}
+
+// parseCheckpointObject returns inputs that are saved in the `__inputs` field of the state.
+func parseCheckpointObject(obj resource.PropertyMap) resource.PropertyMap {
+	if inputs, ok := obj["__inputs"]; ok {
+		return inputs.SecretValue().Element.ObjectValue()
+	}
+
+	return nil
 }

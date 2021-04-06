@@ -684,6 +684,61 @@ func (o DateResponseOutput) Year() pulumi.IntOutput {
 	return o.ApplyT(func(v DateResponse) int { return v.Year }).(pulumi.IntOutput)
 }
 
+// Shared request debug options for all cloudsearch RPC methods.
+type DebugOptions struct {
+	// If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
+	EnableDebugging *bool `pulumi:"enableDebugging"`
+}
+
+// DebugOptionsInput is an input type that accepts DebugOptionsArgs and DebugOptionsOutput values.
+// You can construct a concrete instance of `DebugOptionsInput` via:
+//
+//          DebugOptionsArgs{...}
+type DebugOptionsInput interface {
+	pulumi.Input
+
+	ToDebugOptionsOutput() DebugOptionsOutput
+	ToDebugOptionsOutputWithContext(context.Context) DebugOptionsOutput
+}
+
+// Shared request debug options for all cloudsearch RPC methods.
+type DebugOptionsArgs struct {
+	// If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
+	EnableDebugging pulumi.BoolPtrInput `pulumi:"enableDebugging"`
+}
+
+func (DebugOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DebugOptions)(nil)).Elem()
+}
+
+func (i DebugOptionsArgs) ToDebugOptionsOutput() DebugOptionsOutput {
+	return i.ToDebugOptionsOutputWithContext(context.Background())
+}
+
+func (i DebugOptionsArgs) ToDebugOptionsOutputWithContext(ctx context.Context) DebugOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DebugOptionsOutput)
+}
+
+// Shared request debug options for all cloudsearch RPC methods.
+type DebugOptionsOutput struct{ *pulumi.OutputState }
+
+func (DebugOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DebugOptions)(nil)).Elem()
+}
+
+func (o DebugOptionsOutput) ToDebugOptionsOutput() DebugOptionsOutput {
+	return o
+}
+
+func (o DebugOptionsOutput) ToDebugOptionsOutputWithContext(ctx context.Context) DebugOptionsOutput {
+	return o
+}
+
+// If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
+func (o DebugOptionsOutput) EnableDebugging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DebugOptions) *bool { return v.EnableDebugging }).(pulumi.BoolPtrOutput)
+}
+
 // Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
 type FacetOptions struct {
 	// Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is 100.
@@ -3651,6 +3706,7 @@ func init() {
 	pulumi.RegisterOutputType(DateOutput{})
 	pulumi.RegisterOutputType(DatePtrOutput{})
 	pulumi.RegisterOutputType(DateResponseOutput{})
+	pulumi.RegisterOutputType(DebugOptionsOutput{})
 	pulumi.RegisterOutputType(FacetOptionsOutput{})
 	pulumi.RegisterOutputType(FacetOptionsArrayOutput{})
 	pulumi.RegisterOutputType(FacetOptionsResponseOutput{})

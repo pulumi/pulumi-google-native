@@ -83,7 +83,7 @@ func (CustomClassState) ElementType() reflect.Type {
 }
 
 type customClassArgs struct {
-	// The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+	// If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
 	CustomClassId   *string `pulumi:"customClassId"`
 	CustomClassesId string  `pulumi:"customClassesId"`
 	// A collection of class items.
@@ -96,7 +96,7 @@ type customClassArgs struct {
 
 // The set of arguments for constructing a CustomClass resource.
 type CustomClassArgs struct {
-	// The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+	// If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
 	CustomClassId   pulumi.StringPtrInput
 	CustomClassesId pulumi.StringInput
 	// A collection of class items.
