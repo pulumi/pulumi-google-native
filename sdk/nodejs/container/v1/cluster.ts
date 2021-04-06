@@ -72,10 +72,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly currentMasterVersion!: pulumi.Output<string>;
     /**
-     * [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
-     */
-    public readonly currentNodeCount!: pulumi.Output<number>;
-    /**
      * [Output only] Deprecated, use [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
      */
     public readonly currentNodeVersion!: pulumi.Output<string>;
@@ -220,10 +216,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
-     */
-    public readonly statusMessage!: pulumi.Output<string>;
-    /**
      * The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected.
      */
     public readonly subnetwork!: pulumi.Output<string>;
@@ -274,7 +266,6 @@ export class Cluster extends pulumi.CustomResource {
             inputs["conditions"] = args ? args.conditions : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["currentMasterVersion"] = args ? args.currentMasterVersion : undefined;
-            inputs["currentNodeCount"] = args ? args.currentNodeCount : undefined;
             inputs["currentNodeVersion"] = args ? args.currentNodeVersion : undefined;
             inputs["databaseEncryption"] = args ? args.databaseEncryption : undefined;
             inputs["defaultMaxPodsConstraint"] = args ? args.defaultMaxPodsConstraint : undefined;
@@ -314,7 +305,6 @@ export class Cluster extends pulumi.CustomResource {
             inputs["servicesIpv4Cidr"] = args ? args.servicesIpv4Cidr : undefined;
             inputs["shieldedNodes"] = args ? args.shieldedNodes : undefined;
             inputs["status"] = args ? args.status : undefined;
-            inputs["statusMessage"] = args ? args.statusMessage : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["tpuIpv4CidrBlock"] = args ? args.tpuIpv4CidrBlock : undefined;
             inputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
@@ -330,7 +320,6 @@ export class Cluster extends pulumi.CustomResource {
             inputs["conditions"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["currentMasterVersion"] = undefined /*out*/;
-            inputs["currentNodeCount"] = undefined /*out*/;
             inputs["currentNodeVersion"] = undefined /*out*/;
             inputs["databaseEncryption"] = undefined /*out*/;
             inputs["defaultMaxPodsConstraint"] = undefined /*out*/;
@@ -367,7 +356,6 @@ export class Cluster extends pulumi.CustomResource {
             inputs["servicesIpv4Cidr"] = undefined /*out*/;
             inputs["shieldedNodes"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
             inputs["subnetwork"] = undefined /*out*/;
             inputs["tpuIpv4CidrBlock"] = undefined /*out*/;
             inputs["verticalPodAutoscaling"] = undefined /*out*/;
@@ -422,10 +410,6 @@ export interface ClusterArgs {
      * [Output only] The current software version of the master endpoint.
      */
     readonly currentMasterVersion?: pulumi.Input<string>;
-    /**
-     * [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
-     */
-    readonly currentNodeCount?: pulumi.Input<number>;
     /**
      * [Output only] Deprecated, use [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
      */
@@ -576,10 +560,6 @@ export interface ClusterArgs {
      * [Output only] The current status of this cluster.
      */
     readonly status?: pulumi.Input<string>;
-    /**
-     * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
-     */
-    readonly statusMessage?: pulumi.Input<string>;
     /**
      * The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected.
      */

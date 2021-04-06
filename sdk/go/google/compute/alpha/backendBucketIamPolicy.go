@@ -139,9 +139,11 @@ func (BackendBucketIamPolicyState) ElementType() reflect.Type {
 type backendBucketIamPolicyArgs struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs []AuditConfig `pulumi:"auditConfigs"`
-	// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.
+	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
 	Bindings []Binding `pulumi:"bindings"`
-	// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag.
+	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
+	//
+	// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
 	Etag     *string `pulumi:"etag"`
 	IamOwned *bool   `pulumi:"iamOwned"`
 	Project  string  `pulumi:"project"`
@@ -168,9 +170,11 @@ type backendBucketIamPolicyArgs struct {
 type BackendBucketIamPolicyArgs struct {
 	// Specifies cloud audit logging configuration for this policy.
 	AuditConfigs AuditConfigArrayInput
-	// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings.
+	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
 	Bindings BindingArrayInput
-	// Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag.
+	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
+	//
+	// **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
 	Etag     pulumi.StringPtrInput
 	IamOwned pulumi.BoolPtrInput
 	Project  pulumi.StringInput

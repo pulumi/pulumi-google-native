@@ -22,12 +22,6 @@ namespace Pulumi.GoogleCloud.Container.V1.Inputs
         public Input<string>? CanonicalCode { get; set; }
 
         /// <summary>
-        /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-        /// </summary>
-        [Input("code")]
-        public Input<string>? Code { get; set; }
-
-        /// <summary>
         /// Human-friendly representation of the condition
         /// </summary>
         [Input("message")]

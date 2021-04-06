@@ -104,10 +104,6 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly privateInstance!: pulumi.Output<boolean>;
     /**
-     * Deprecated. Use tenant_project_id instead to extract the tenant project ID.
-     */
-    public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
-    /**
      * Endpoint on which the Data Fusion UI is accessible.
      */
     public /*out*/ readonly serviceEndpoint!: pulumi.Output<string>;
@@ -183,7 +179,6 @@ export class Instance extends pulumi.CustomResource {
             inputs["gcsBucket"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["p4ServiceAccount"] = undefined /*out*/;
-            inputs["serviceAccount"] = undefined /*out*/;
             inputs["serviceEndpoint"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["stateMessage"] = undefined /*out*/;
@@ -207,7 +202,6 @@ export class Instance extends pulumi.CustomResource {
             inputs["options"] = undefined /*out*/;
             inputs["p4ServiceAccount"] = undefined /*out*/;
             inputs["privateInstance"] = undefined /*out*/;
-            inputs["serviceAccount"] = undefined /*out*/;
             inputs["serviceEndpoint"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["stateMessage"] = undefined /*out*/;

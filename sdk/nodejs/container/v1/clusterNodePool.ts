@@ -84,10 +84,6 @@ export class ClusterNodePool extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-     */
-    public readonly statusMessage!: pulumi.Output<string>;
-    /**
      * Upgrade settings control disruption and speed of the upgrade.
      */
     public readonly upgradeSettings!: pulumi.Output<outputs.container.v1.UpgradeSettingsResponse>;
@@ -136,7 +132,6 @@ export class ClusterNodePool extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["status"] = args ? args.status : undefined;
-            inputs["statusMessage"] = args ? args.statusMessage : undefined;
             inputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
             inputs["version"] = args ? args.version : undefined;
         } else {
@@ -152,7 +147,6 @@ export class ClusterNodePool extends pulumi.CustomResource {
             inputs["podIpv4CidrSize"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
             inputs["upgradeSettings"] = undefined /*out*/;
             inputs["version"] = undefined /*out*/;
         }
@@ -223,10 +217,6 @@ export interface ClusterNodePoolArgs {
      * [Output only] The status of the nodes in this pool instance.
      */
     readonly status?: pulumi.Input<string>;
-    /**
-     * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-     */
-    readonly statusMessage?: pulumi.Input<string>;
     /**
      * Upgrade settings control disruption and speed of the upgrade.
      */

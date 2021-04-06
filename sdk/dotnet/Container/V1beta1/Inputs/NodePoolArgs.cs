@@ -112,12 +112,6 @@ namespace Pulumi.GoogleCloud.Container.V1beta1.Inputs
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-        /// </summary>
-        [Input("statusMessage")]
-        public Input<string>? StatusMessage { get; set; }
-
-        /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.
         /// </summary>
         [Input("upgradeSettings")]

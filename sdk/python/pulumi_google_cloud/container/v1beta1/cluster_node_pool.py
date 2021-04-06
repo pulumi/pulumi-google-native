@@ -34,7 +34,6 @@ class ClusterNodePool(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 status_message: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -47,7 +46,6 @@ class ClusterNodePool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
-        :param pulumi.Input[str] cluster_id: Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]] conditions: Which conditions caused the current node pool state.
         :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] config: The node configuration of the pool.
         :param pulumi.Input[int] initial_node_count: The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
@@ -59,13 +57,10 @@ class ClusterNodePool(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input[str] parent: The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         :param pulumi.Input[int] pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
-        :param pulumi.Input[str] project_id: Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
         :param pulumi.Input[str] self_link: [Output only] Server-defined URL for the resource.
         :param pulumi.Input[str] status: [Output only] The status of the nodes in this pool instance.
-        :param pulumi.Input[str] status_message: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
         :param pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
-        :param pulumi.Input[str] zone: Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -107,7 +102,6 @@ class ClusterNodePool(pulumi.CustomResource):
             __props__['project_id'] = project_id
             __props__['self_link'] = self_link
             __props__['status'] = status
-            __props__['status_message'] = status_message
             __props__['upgrade_settings'] = upgrade_settings
             __props__['version'] = version
             if zone is None and not opts.urn:
@@ -148,7 +142,6 @@ class ClusterNodePool(pulumi.CustomResource):
         __props__["pod_ipv4_cidr_size"] = None
         __props__["self_link"] = None
         __props__["status"] = None
-        __props__["status_message"] = None
         __props__["upgrade_settings"] = None
         __props__["version"] = None
         return ClusterNodePool(resource_name, opts=opts, __props__=__props__)
@@ -256,14 +249,6 @@ class ClusterNodePool(pulumi.CustomResource):
         [Output only] The status of the nodes in this pool instance.
         """
         return pulumi.get(self, "status")
-
-    @property
-    @pulumi.getter(name="statusMessage")
-    def status_message(self) -> pulumi.Output[str]:
-        """
-        [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-        """
-        return pulumi.get(self, "status_message")
 
     @property
     @pulumi.getter(name="upgradeSettings")

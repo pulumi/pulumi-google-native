@@ -15,8 +15,6 @@ import (
 type License struct {
 	pulumi.CustomResourceState
 
-	// [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
-	ChargesUseFee pulumi.BoolOutput `pulumi:"chargesUseFee"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
@@ -71,8 +69,6 @@ func GetLicense(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering License resources.
 type licenseState struct {
-	// [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
-	ChargesUseFee *bool `pulumi:"chargesUseFee"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
@@ -93,8 +89,6 @@ type licenseState struct {
 }
 
 type LicenseState struct {
-	// [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
-	ChargesUseFee pulumi.BoolPtrInput
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional textual description of the resource; provided by the client when the resource is created.
@@ -119,8 +113,6 @@ func (LicenseState) ElementType() reflect.Type {
 }
 
 type licenseArgs struct {
-	// [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
-	ChargesUseFee *bool `pulumi:"chargesUseFee"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
@@ -146,8 +138,6 @@ type licenseArgs struct {
 
 // The set of arguments for constructing a License resource.
 type LicenseArgs struct {
-	// [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
-	ChargesUseFee pulumi.BoolPtrInput
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional textual description of the resource; provided by the client when the resource is created.

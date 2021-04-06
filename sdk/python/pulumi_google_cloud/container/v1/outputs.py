@@ -1881,7 +1881,6 @@ class NodePoolResponse(dict):
                  pod_ipv4_cidr_size: int,
                  self_link: str,
                  status: str,
-                 status_message: str,
                  upgrade_settings: 'outputs.UpgradeSettingsResponse',
                  version: str):
         """
@@ -1898,7 +1897,6 @@ class NodePoolResponse(dict):
         :param int pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
         :param str self_link: [Output only] Server-defined URL for the resource.
         :param str status: [Output only] The status of the nodes in this pool instance.
-        :param str status_message: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
         :param 'UpgradeSettingsResponseArgs' upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param str version: The version of the Kubernetes of this node.
         """
@@ -1914,7 +1912,6 @@ class NodePoolResponse(dict):
         pulumi.set(__self__, "pod_ipv4_cidr_size", pod_ipv4_cidr_size)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "status_message", status_message)
         pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         pulumi.set(__self__, "version", version)
 
@@ -2013,14 +2010,6 @@ class NodePoolResponse(dict):
         [Output only] The status of the nodes in this pool instance.
         """
         return pulumi.get(self, "status")
-
-    @property
-    @pulumi.getter(name="statusMessage")
-    def status_message(self) -> str:
-        """
-        [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-        """
-        return pulumi.get(self, "status_message")
 
     @property
     @pulumi.getter(name="upgradeSettings")
@@ -2561,16 +2550,13 @@ class StatusConditionResponse(dict):
     """
     def __init__(__self__, *,
                  canonical_code: str,
-                 code: str,
                  message: str):
         """
         StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
         :param str canonical_code: Canonical code of the condition.
-        :param str code: Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
         :param str message: Human-friendly representation of the condition
         """
         pulumi.set(__self__, "canonical_code", canonical_code)
-        pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "message", message)
 
     @property
@@ -2580,14 +2566,6 @@ class StatusConditionResponse(dict):
         Canonical code of the condition.
         """
         return pulumi.get(self, "canonical_code")
-
-    @property
-    @pulumi.getter
-    def code(self) -> str:
-        """
-        Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-        """
-        return pulumi.get(self, "code")
 
     @property
     @pulumi.getter

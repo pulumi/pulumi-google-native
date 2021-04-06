@@ -360,7 +360,7 @@ func (g *packageGenerator) genProperties(typeSchema *discovery.JsonSchema, flatt
 		properties:    map[string]resources.CloudAPIProperty{},
 	}
 	for name, value := range typeSchema.Properties {
-		if strings.HasPrefix(value.Description, "Deprecated.") {
+		if strings.Contains(value.Description, "Deprecated.") {
 			continue
 		}
 		if !isOutput && value.ReadOnly {

@@ -41,8 +41,6 @@ type ClusterNodePool struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsResponseOutput `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -116,8 +114,6 @@ type clusterNodePoolState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
 	Status *string `pulumi:"status"`
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-	StatusMessage *string `pulumi:"statusMessage"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings *UpgradeSettingsResponse `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -151,8 +147,6 @@ type ClusterNodePoolState struct {
 	SelfLink pulumi.StringPtrInput
 	// [Output only] The status of the nodes in this pool instance.
 	Status pulumi.StringPtrInput
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-	StatusMessage pulumi.StringPtrInput
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsResponsePtrInput
 	// The version of the Kubernetes of this node.
@@ -166,8 +160,7 @@ func (ClusterNodePoolState) ElementType() reflect.Type {
 type clusterNodePoolArgs struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
-	// Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
-	ClusterId string `pulumi:"clusterId"`
+	ClusterId   string               `pulumi:"clusterId"`
 	// Which conditions caused the current node pool state.
 	Conditions []StatusCondition `pulumi:"conditions"`
 	// The node configuration of the pool.
@@ -190,29 +183,24 @@ type clusterNodePoolArgs struct {
 	// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent *string `pulumi:"parent"`
 	// [Output only] The pod CIDR block size per node in this node pool.
-	PodIpv4CidrSize *int `pulumi:"podIpv4CidrSize"`
-	// Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
-	ProjectId string `pulumi:"projectId"`
+	PodIpv4CidrSize *int   `pulumi:"podIpv4CidrSize"`
+	ProjectId       string `pulumi:"projectId"`
 	// [Output only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
 	Status *string `pulumi:"status"`
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-	StatusMessage *string `pulumi:"statusMessage"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings *UpgradeSettings `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
 	Version *string `pulumi:"version"`
-	// Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
-	Zone string `pulumi:"zone"`
+	Zone    string  `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a ClusterNodePool resource.
 type ClusterNodePoolArgs struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling NodePoolAutoscalingPtrInput
-	// Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
-	ClusterId pulumi.StringInput
+	ClusterId   pulumi.StringInput
 	// Which conditions caused the current node pool state.
 	Conditions StatusConditionArrayInput
 	// The node configuration of the pool.
@@ -236,20 +224,16 @@ type ClusterNodePoolArgs struct {
 	Parent pulumi.StringPtrInput
 	// [Output only] The pod CIDR block size per node in this node pool.
 	PodIpv4CidrSize pulumi.IntPtrInput
-	// Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
-	ProjectId pulumi.StringInput
+	ProjectId       pulumi.StringInput
 	// [Output only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output only] The status of the nodes in this pool instance.
 	Status pulumi.StringPtrInput
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-	StatusMessage pulumi.StringPtrInput
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsPtrInput
 	// The version of the Kubernetes of this node.
 	Version pulumi.StringPtrInput
-	// Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
-	Zone pulumi.StringInput
+	Zone    pulumi.StringInput
 }
 
 func (ClusterNodePoolArgs) ElementType() reflect.Type {

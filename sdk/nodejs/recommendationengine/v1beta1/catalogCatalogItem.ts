@@ -52,10 +52,6 @@ export class CatalogCatalogItem extends pulumi.CustomResource {
      */
     public readonly itemGroupId!: pulumi.Output<string>;
     /**
-     * Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
-     */
-    public readonly languageCode!: pulumi.Output<string>;
-    /**
      * Optional. Metadata specific to retail products.
      */
     public readonly productMetadata!: pulumi.Output<outputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse>;
@@ -98,7 +94,6 @@ export class CatalogCatalogItem extends pulumi.CustomResource {
             inputs["id"] = args ? args.id : undefined;
             inputs["itemAttributes"] = args ? args.itemAttributes : undefined;
             inputs["itemGroupId"] = args ? args.itemGroupId : undefined;
-            inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["productMetadata"] = args ? args.productMetadata : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
@@ -109,7 +104,6 @@ export class CatalogCatalogItem extends pulumi.CustomResource {
             inputs["description"] = undefined /*out*/;
             inputs["itemAttributes"] = undefined /*out*/;
             inputs["itemGroupId"] = undefined /*out*/;
-            inputs["languageCode"] = undefined /*out*/;
             inputs["productMetadata"] = undefined /*out*/;
             inputs["tags"] = undefined /*out*/;
             inputs["title"] = undefined /*out*/;
@@ -147,10 +141,6 @@ export interface CatalogCatalogItemArgs {
      * Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
      */
     readonly itemGroupId?: pulumi.Input<string>;
-    /**
-     * Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
-     */
-    readonly languageCode?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * Optional. Metadata specific to retail products.

@@ -2482,7 +2482,6 @@ class NodePoolArgs:
                  pod_ipv4_cidr_size: Optional[pulumi.Input[int]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 status_message: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input['UpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -2500,7 +2499,6 @@ class NodePoolArgs:
         :param pulumi.Input[int] pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
         :param pulumi.Input[str] self_link: [Output only] Server-defined URL for the resource.
         :param pulumi.Input[str] status: [Output only] The status of the nodes in this pool instance.
-        :param pulumi.Input[str] status_message: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
         :param pulumi.Input['UpgradeSettingsArgs'] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
@@ -2530,8 +2528,6 @@ class NodePoolArgs:
             pulumi.set(__self__, "self_link", self_link)
         if status is not None:
             pulumi.set(__self__, "status", status)
-        if status_message is not None:
-            pulumi.set(__self__, "status_message", status_message)
         if upgrade_settings is not None:
             pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
@@ -2692,18 +2688,6 @@ class NodePoolArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter(name="statusMessage")
-    def status_message(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-        """
-        return pulumi.get(self, "status_message")
-
-    @status_message.setter
-    def status_message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status_message", value)
 
     @property
     @pulumi.getter(name="upgradeSettings")
@@ -3430,18 +3414,14 @@ class ShieldedNodesArgs:
 class StatusConditionArgs:
     def __init__(__self__, *,
                  canonical_code: Optional[pulumi.Input[str]] = None,
-                 code: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
         StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
         :param pulumi.Input[str] canonical_code: Canonical code of the condition.
-        :param pulumi.Input[str] code: Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
         :param pulumi.Input[str] message: Human-friendly representation of the condition
         """
         if canonical_code is not None:
             pulumi.set(__self__, "canonical_code", canonical_code)
-        if code is not None:
-            pulumi.set(__self__, "code", code)
         if message is not None:
             pulumi.set(__self__, "message", message)
 
@@ -3456,18 +3436,6 @@ class StatusConditionArgs:
     @canonical_code.setter
     def canonical_code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "canonical_code", value)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[str]]:
-        """
-        Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-        """
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "code", value)
 
     @property
     @pulumi.getter

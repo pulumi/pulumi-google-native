@@ -237,12 +237,6 @@ namespace Pulumi.GoogleCloud.Appengine.V1
         [Output("vpcAccessConnector")]
         public Output<Outputs.VpcAccessConnectorResponse> VpcAccessConnector { get; private set; } = null!;
 
-        /// <summary>
-        /// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
-        /// </summary>
-        [Output("zones")]
-        public Output<ImmutableArray<string>> Zones { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a AppServiceVersion resource with the given unique name, arguments, and options.
@@ -566,18 +560,6 @@ namespace Pulumi.GoogleCloud.Appengine.V1
         /// </summary>
         [Input("vpcAccessConnector")]
         public Input<Inputs.VpcAccessConnectorArgs>? VpcAccessConnector { get; set; }
-
-        [Input("zones")]
-        private InputList<string>? _zones;
-
-        /// <summary>
-        /// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
-        /// </summary>
-        public InputList<string> Zones
-        {
-            get => _zones ?? (_zones = new InputList<string>());
-            set => _zones = value;
-        }
 
         public AppServiceVersionArgs()
         {

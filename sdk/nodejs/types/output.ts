@@ -447,10 +447,6 @@ export namespace accesscontextmanager {
              */
             restrictedServices: string[];
             /**
-             * Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
-             */
-            unrestrictedServices: string[];
-            /**
              * Beta. Configuration for APIs allowed within Perimeter.
              */
             vpcAccessibleServices: outputs.accesscontextmanager.v1beta.VpcAccessibleServicesResponse;
@@ -24083,10 +24079,6 @@ export namespace container {
              */
             status: string;
             /**
-             * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-             */
-            statusMessage: string;
-            /**
              * Upgrade settings control disruption and speed of the upgrade.
              */
             upgradeSettings: outputs.container.v1.UpgradeSettingsResponse;
@@ -24302,10 +24294,6 @@ export namespace container {
              * Canonical code of the condition.
              */
             canonicalCode: string;
-            /**
-             * Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-             */
-            code: string;
             /**
              * Human-friendly representation of the condition
              */
@@ -25218,10 +25206,6 @@ export namespace container {
              */
             status: string;
             /**
-             * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-             */
-            statusMessage: string;
-            /**
              * Upgrade settings control disruption and speed of the upgrade.
              */
             upgradeSettings: outputs.container.v1beta1.UpgradeSettingsResponse;
@@ -25451,10 +25435,6 @@ export namespace container {
              * Canonical code of the condition.
              */
             canonicalCode: string;
-            /**
-             * Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-             */
-            code: string;
             /**
              * Human-friendly representation of the condition
              */

@@ -425,14 +425,12 @@ class ServicePerimeterConfigArgs:
                  access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  restricted_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 unrestricted_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vpc_accessible_services: Optional[pulumi.Input['VpcAccessibleServicesArgs']] = None):
         """
         `ServicePerimeterConfig` specifies a set of Google Cloud resources that describe specific Service Perimeter configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] access_levels: A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of Google Cloud resources that are inside of the service perimeter. Currently only projects are allowed. Format: `projects/{project_number}`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_services: Google Cloud services that are subject to the Service Perimeter restrictions. Must contain a list of services. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] unrestricted_services: Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
         :param pulumi.Input['VpcAccessibleServicesArgs'] vpc_accessible_services: Beta. Configuration for APIs allowed within Perimeter.
         """
         if access_levels is not None:
@@ -441,8 +439,6 @@ class ServicePerimeterConfigArgs:
             pulumi.set(__self__, "resources", resources)
         if restricted_services is not None:
             pulumi.set(__self__, "restricted_services", restricted_services)
-        if unrestricted_services is not None:
-            pulumi.set(__self__, "unrestricted_services", unrestricted_services)
         if vpc_accessible_services is not None:
             pulumi.set(__self__, "vpc_accessible_services", vpc_accessible_services)
 
@@ -481,18 +477,6 @@ class ServicePerimeterConfigArgs:
     @restricted_services.setter
     def restricted_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "restricted_services", value)
-
-    @property
-    @pulumi.getter(name="unrestrictedServices")
-    def unrestricted_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
-        """
-        return pulumi.get(self, "unrestricted_services")
-
-    @unrestricted_services.setter
-    def unrestricted_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "unrestricted_services", value)
 
     @property
     @pulumi.getter(name="vpcAccessibleServices")

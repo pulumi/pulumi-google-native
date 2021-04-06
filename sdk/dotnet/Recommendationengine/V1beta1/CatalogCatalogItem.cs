@@ -40,12 +40,6 @@ namespace Pulumi.GoogleCloud.Recommendationengine.V1beta1
         public Output<string> ItemGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
-        /// </summary>
-        [Output("languageCode")]
-        public Output<string> LanguageCode { get; private set; } = null!;
-
-        /// <summary>
         /// Optional. Metadata specific to retail products.
         /// </summary>
         [Output("productMetadata")]
@@ -149,12 +143,6 @@ namespace Pulumi.GoogleCloud.Recommendationengine.V1beta1
         /// </summary>
         [Input("itemGroupId")]
         public Input<string>? ItemGroupId { get; set; }
-
-        /// <summary>
-        /// Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
-        /// </summary>
-        [Input("languageCode")]
-        public Input<string>? LanguageCode { get; set; }
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;

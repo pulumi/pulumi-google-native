@@ -94,12 +94,6 @@ namespace Pulumi.GoogleCloud.Container.V1beta1
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-        /// </summary>
-        [Output("statusMessage")]
-        public Output<string> StatusMessage { get; private set; } = null!;
-
-        /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.
         /// </summary>
         [Output("upgradeSettings")]
@@ -162,9 +156,6 @@ namespace Pulumi.GoogleCloud.Container.V1beta1
         [Input("autoscaling")]
         public Input<Inputs.NodePoolAutoscalingArgs>? Autoscaling { get; set; }
 
-        /// <summary>
-        /// Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
-        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
@@ -255,9 +246,6 @@ namespace Pulumi.GoogleCloud.Container.V1beta1
         [Input("podIpv4CidrSize")]
         public Input<int>? PodIpv4CidrSize { get; set; }
 
-        /// <summary>
-        /// Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
-        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
@@ -274,12 +262,6 @@ namespace Pulumi.GoogleCloud.Container.V1beta1
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-        /// </summary>
-        [Input("statusMessage")]
-        public Input<string>? StatusMessage { get; set; }
-
-        /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.
         /// </summary>
         [Input("upgradeSettings")]
@@ -291,9 +273,6 @@ namespace Pulumi.GoogleCloud.Container.V1beta1
         [Input("version")]
         public Input<string>? Version { get; set; }
 
-        /// <summary>
-        /// Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
-        /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
 

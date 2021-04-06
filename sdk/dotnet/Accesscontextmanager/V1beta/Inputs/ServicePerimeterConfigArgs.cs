@@ -51,18 +51,6 @@ namespace Pulumi.GoogleCloud.Accesscontextmanager.V1beta.Inputs
             set => _restrictedServices = value;
         }
 
-        [Input("unrestrictedServices")]
-        private InputList<string>? _unrestrictedServices;
-
-        /// <summary>
-        /// Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
-        /// </summary>
-        public InputList<string> UnrestrictedServices
-        {
-            get => _unrestrictedServices ?? (_unrestrictedServices = new InputList<string>());
-            set => _unrestrictedServices = value;
-        }
-
         /// <summary>
         /// Beta. Configuration for APIs allowed within Perimeter.
         /// </summary>

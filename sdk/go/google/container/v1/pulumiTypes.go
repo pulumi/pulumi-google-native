@@ -12404,8 +12404,6 @@ type NodePool struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
 	Status *string `pulumi:"status"`
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-	StatusMessage *string `pulumi:"statusMessage"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings *UpgradeSettings `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -12449,8 +12447,6 @@ type NodePoolArgs struct {
 	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-	StatusMessage pulumi.StringPtrInput `pulumi:"statusMessage"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsPtrInput `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -12567,11 +12563,6 @@ func (o NodePoolOutput) SelfLink() pulumi.StringPtrOutput {
 // [Output only] The status of the nodes in this pool instance.
 func (o NodePoolOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePool) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-func (o NodePoolOutput) StatusMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodePool) *string { return v.StatusMessage }).(pulumi.StringPtrOutput)
 }
 
 // Upgrade settings control disruption and speed of the upgrade.
@@ -13012,8 +13003,6 @@ type NodePoolResponse struct {
 	SelfLink string `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
 	Status string `pulumi:"status"`
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-	StatusMessage string `pulumi:"statusMessage"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsResponse `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -13057,8 +13046,6 @@ type NodePoolResponseArgs struct {
 	SelfLink pulumi.StringInput `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
 	Status pulumi.StringInput `pulumi:"status"`
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-	StatusMessage pulumi.StringInput `pulumi:"statusMessage"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsResponseInput `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -13175,11 +13162,6 @@ func (o NodePoolResponseOutput) SelfLink() pulumi.StringOutput {
 // [Output only] The status of the nodes in this pool instance.
 func (o NodePoolResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolResponse) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-func (o NodePoolResponseOutput) StatusMessage() pulumi.StringOutput {
-	return o.ApplyT(func(v NodePoolResponse) string { return v.StatusMessage }).(pulumi.StringOutput)
 }
 
 // Upgrade settings control disruption and speed of the upgrade.
@@ -17138,8 +17120,6 @@ func (o ShieldedNodesResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
 type StatusCondition struct {
 	// Canonical code of the condition.
 	CanonicalCode *string `pulumi:"canonicalCode"`
-	// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-	Code *string `pulumi:"code"`
 	// Human-friendly representation of the condition
 	Message *string `pulumi:"message"`
 }
@@ -17159,8 +17139,6 @@ type StatusConditionInput interface {
 type StatusConditionArgs struct {
 	// Canonical code of the condition.
 	CanonicalCode pulumi.StringPtrInput `pulumi:"canonicalCode"`
-	// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-	Code pulumi.StringPtrInput `pulumi:"code"`
 	// Human-friendly representation of the condition
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
@@ -17222,11 +17200,6 @@ func (o StatusConditionOutput) CanonicalCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StatusCondition) *string { return v.CanonicalCode }).(pulumi.StringPtrOutput)
 }
 
-// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-func (o StatusConditionOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StatusCondition) *string { return v.Code }).(pulumi.StringPtrOutput)
-}
-
 // Human-friendly representation of the condition
 func (o StatusConditionOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StatusCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
@@ -17256,8 +17229,6 @@ func (o StatusConditionArrayOutput) Index(i pulumi.IntInput) StatusConditionOutp
 type StatusConditionResponse struct {
 	// Canonical code of the condition.
 	CanonicalCode string `pulumi:"canonicalCode"`
-	// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-	Code string `pulumi:"code"`
 	// Human-friendly representation of the condition
 	Message string `pulumi:"message"`
 }
@@ -17277,8 +17248,6 @@ type StatusConditionResponseInput interface {
 type StatusConditionResponseArgs struct {
 	// Canonical code of the condition.
 	CanonicalCode pulumi.StringInput `pulumi:"canonicalCode"`
-	// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-	Code pulumi.StringInput `pulumi:"code"`
 	// Human-friendly representation of the condition
 	Message pulumi.StringInput `pulumi:"message"`
 }
@@ -17338,11 +17307,6 @@ func (o StatusConditionResponseOutput) ToStatusConditionResponseOutputWithContex
 // Canonical code of the condition.
 func (o StatusConditionResponseOutput) CanonicalCode() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusConditionResponse) string { return v.CanonicalCode }).(pulumi.StringOutput)
-}
-
-// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-func (o StatusConditionResponseOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func(v StatusConditionResponse) string { return v.Code }).(pulumi.StringOutput)
 }
 
 // Human-friendly representation of the condition

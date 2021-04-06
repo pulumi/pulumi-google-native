@@ -82,12 +82,6 @@ namespace Pulumi.GoogleCloud.Container.V1beta1
         public Output<string> CurrentMasterVersion { get; private set; } = null!;
 
         /// <summary>
-        /// [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
-        /// </summary>
-        [Output("currentNodeCount")]
-        public Output<int> CurrentNodeCount { get; private set; } = null!;
-
-        /// <summary>
         /// [Output only] Deprecated, use [NodePool.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
         /// </summary>
         [Output("currentNodeVersion")]
@@ -328,12 +322,6 @@ namespace Pulumi.GoogleCloud.Container.V1beta1
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
-        /// </summary>
-        [Output("statusMessage")]
-        public Output<string> StatusMessage { get; private set; } = null!;
-
-        /// <summary>
         /// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
         /// </summary>
         [Output("subnetwork")]
@@ -488,12 +476,6 @@ namespace Pulumi.GoogleCloud.Container.V1beta1
         /// </summary>
         [Input("currentMasterVersion")]
         public Input<string>? CurrentMasterVersion { get; set; }
-
-        /// <summary>
-        /// [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
-        /// </summary>
-        [Input("currentNodeCount")]
-        public Input<int>? CurrentNodeCount { get; set; }
 
         /// <summary>
         /// [Output only] Deprecated, use [NodePool.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
@@ -711,9 +693,6 @@ namespace Pulumi.GoogleCloud.Container.V1beta1
         [Input("privateClusterConfig")]
         public Input<Inputs.PrivateClusterConfigArgs>? PrivateClusterConfig { get; set; }
 
-        /// <summary>
-        /// Required. Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
-        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
@@ -766,12 +745,6 @@ namespace Pulumi.GoogleCloud.Container.V1beta1
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
-        /// </summary>
-        [Input("statusMessage")]
-        public Input<string>? StatusMessage { get; set; }
-
-        /// <summary>
         /// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
         /// </summary>
         [Input("subnetwork")]
@@ -802,7 +775,7 @@ namespace Pulumi.GoogleCloud.Container.V1beta1
         public Input<Inputs.WorkloadIdentityConfigArgs>? WorkloadIdentityConfig { get; set; }
 
         /// <summary>
-        /// Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+        /// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;

@@ -1829,8 +1829,6 @@ type ServicePerimeterConfig struct {
 	Resources []string `pulumi:"resources"`
 	// Google Cloud services that are subject to the Service Perimeter restrictions. Must contain a list of services. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions.
 	RestrictedServices []string `pulumi:"restrictedServices"`
-	// Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
-	UnrestrictedServices []string `pulumi:"unrestrictedServices"`
 	// Beta. Configuration for APIs allowed within Perimeter.
 	VpcAccessibleServices *VpcAccessibleServices `pulumi:"vpcAccessibleServices"`
 }
@@ -1854,8 +1852,6 @@ type ServicePerimeterConfigArgs struct {
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 	// Google Cloud services that are subject to the Service Perimeter restrictions. Must contain a list of services. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions.
 	RestrictedServices pulumi.StringArrayInput `pulumi:"restrictedServices"`
-	// Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
-	UnrestrictedServices pulumi.StringArrayInput `pulumi:"unrestrictedServices"`
 	// Beta. Configuration for APIs allowed within Perimeter.
 	VpcAccessibleServices VpcAccessibleServicesPtrInput `pulumi:"vpcAccessibleServices"`
 }
@@ -1953,11 +1949,6 @@ func (o ServicePerimeterConfigOutput) RestrictedServices() pulumi.StringArrayOut
 	return o.ApplyT(func(v ServicePerimeterConfig) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
 }
 
-// Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
-func (o ServicePerimeterConfigOutput) UnrestrictedServices() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServicePerimeterConfig) []string { return v.UnrestrictedServices }).(pulumi.StringArrayOutput)
-}
-
 // Beta. Configuration for APIs allowed within Perimeter.
 func (o ServicePerimeterConfigOutput) VpcAccessibleServices() VpcAccessibleServicesPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterConfig) *VpcAccessibleServices { return v.VpcAccessibleServices }).(VpcAccessibleServicesPtrOutput)
@@ -2011,16 +2002,6 @@ func (o ServicePerimeterConfigPtrOutput) RestrictedServices() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
-// Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
-func (o ServicePerimeterConfigPtrOutput) UnrestrictedServices() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ServicePerimeterConfig) []string {
-		if v == nil {
-			return nil
-		}
-		return v.UnrestrictedServices
-	}).(pulumi.StringArrayOutput)
-}
-
 // Beta. Configuration for APIs allowed within Perimeter.
 func (o ServicePerimeterConfigPtrOutput) VpcAccessibleServices() VpcAccessibleServicesPtrOutput {
 	return o.ApplyT(func(v *ServicePerimeterConfig) *VpcAccessibleServices {
@@ -2039,8 +2020,6 @@ type ServicePerimeterConfigResponse struct {
 	Resources []string `pulumi:"resources"`
 	// Google Cloud services that are subject to the Service Perimeter restrictions. Must contain a list of services. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions.
 	RestrictedServices []string `pulumi:"restrictedServices"`
-	// Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
-	UnrestrictedServices []string `pulumi:"unrestrictedServices"`
 	// Beta. Configuration for APIs allowed within Perimeter.
 	VpcAccessibleServices VpcAccessibleServicesResponse `pulumi:"vpcAccessibleServices"`
 }
@@ -2064,8 +2043,6 @@ type ServicePerimeterConfigResponseArgs struct {
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 	// Google Cloud services that are subject to the Service Perimeter restrictions. Must contain a list of services. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions.
 	RestrictedServices pulumi.StringArrayInput `pulumi:"restrictedServices"`
-	// Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
-	UnrestrictedServices pulumi.StringArrayInput `pulumi:"unrestrictedServices"`
 	// Beta. Configuration for APIs allowed within Perimeter.
 	VpcAccessibleServices VpcAccessibleServicesResponseInput `pulumi:"vpcAccessibleServices"`
 }
@@ -2163,11 +2140,6 @@ func (o ServicePerimeterConfigResponseOutput) RestrictedServices() pulumi.String
 	return o.ApplyT(func(v ServicePerimeterConfigResponse) []string { return v.RestrictedServices }).(pulumi.StringArrayOutput)
 }
 
-// Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
-func (o ServicePerimeterConfigResponseOutput) UnrestrictedServices() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ServicePerimeterConfigResponse) []string { return v.UnrestrictedServices }).(pulumi.StringArrayOutput)
-}
-
 // Beta. Configuration for APIs allowed within Perimeter.
 func (o ServicePerimeterConfigResponseOutput) VpcAccessibleServices() VpcAccessibleServicesResponseOutput {
 	return o.ApplyT(func(v ServicePerimeterConfigResponse) VpcAccessibleServicesResponse { return v.VpcAccessibleServices }).(VpcAccessibleServicesResponseOutput)
@@ -2218,16 +2190,6 @@ func (o ServicePerimeterConfigResponsePtrOutput) RestrictedServices() pulumi.Str
 			return nil
 		}
 		return v.RestrictedServices
-	}).(pulumi.StringArrayOutput)
-}
-
-// Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
-func (o ServicePerimeterConfigResponsePtrOutput) UnrestrictedServices() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ServicePerimeterConfigResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.UnrestrictedServices
 	}).(pulumi.StringArrayOutput)
 }
 

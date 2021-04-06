@@ -18,10 +18,6 @@ namespace Pulumi.GoogleCloud.Container.V1beta1.Outputs
         /// </summary>
         public readonly string CanonicalCode;
         /// <summary>
-        /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-        /// </summary>
-        public readonly string Code;
-        /// <summary>
         /// Human-friendly representation of the condition
         /// </summary>
         public readonly string Message;
@@ -30,12 +26,9 @@ namespace Pulumi.GoogleCloud.Container.V1beta1.Outputs
         private StatusConditionResponse(
             string canonicalCode,
 
-            string code,
-
             string message)
         {
             CanonicalCode = canonicalCode;
-            Code = code;
             Message = message;
         }
     }

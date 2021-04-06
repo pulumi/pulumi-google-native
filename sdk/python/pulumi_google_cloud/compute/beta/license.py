@@ -17,7 +17,6 @@ class License(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 charges_use_fee: Optional[pulumi.Input[bool]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -37,7 +36,6 @@ class License(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] charges_use_fee: [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the client when the resource is created.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -64,7 +62,6 @@ class License(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['charges_use_fee'] = charges_use_fee
             __props__['creation_timestamp'] = creation_timestamp
             __props__['description'] = description
             __props__['id'] = id
@@ -102,7 +99,6 @@ class License(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["charges_use_fee"] = None
         __props__["creation_timestamp"] = None
         __props__["description"] = None
         __props__["kind"] = None
@@ -112,14 +108,6 @@ class License(pulumi.CustomResource):
         __props__["self_link"] = None
         __props__["transferable"] = None
         return License(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="chargesUseFee")
-    def charges_use_fee(self) -> pulumi.Output[bool]:
-        """
-        [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
-        """
-        return pulumi.get(self, "charges_use_fee")
 
     @property
     @pulumi.getter(name="creationTimestamp")

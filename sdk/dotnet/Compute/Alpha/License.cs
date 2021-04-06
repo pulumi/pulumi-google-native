@@ -16,12 +16,6 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
     public partial class License : Pulumi.CustomResource
     {
         /// <summary>
-        /// [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
-        /// </summary>
-        [Output("chargesUseFee")]
-        public Output<bool> ChargesUseFee { get; private set; } = null!;
-
-        /// <summary>
         /// [Output Only] Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -117,12 +111,6 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
 
     public sealed class LicenseArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
-        /// </summary>
-        [Input("chargesUseFee")]
-        public Input<bool>? ChargesUseFee { get; set; }
-
         /// <summary>
         /// [Output Only] Creation timestamp in RFC3339 text format.
         /// </summary>

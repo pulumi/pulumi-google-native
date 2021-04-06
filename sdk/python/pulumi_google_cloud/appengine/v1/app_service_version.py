@@ -58,7 +58,6 @@ class AppServiceVersion(pulumi.CustomResource):
                  versions_id: Optional[pulumi.Input[str]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
                  vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -105,7 +104,6 @@ class AppServiceVersion(pulumi.CustomResource):
         :param pulumi.Input[str] version_url: Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
         :param pulumi.Input[bool] vm: Whether to deploy this version in a container on a virtual machine.
         :param pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']] vpc_access_connector: Enables VPC connectivity for standard apps.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -171,7 +169,6 @@ class AppServiceVersion(pulumi.CustomResource):
             __props__['versions_id'] = versions_id
             __props__['vm'] = vm
             __props__['vpc_access_connector'] = vpc_access_connector
-            __props__['zones'] = zones
         super(AppServiceVersion, __self__).__init__(
             'google-cloud:appengine/v1:AppServiceVersion',
             resource_name,
@@ -231,7 +228,6 @@ class AppServiceVersion(pulumi.CustomResource):
         __props__["version_url"] = None
         __props__["vm"] = None
         __props__["vpc_access_connector"] = None
-        __props__["zones"] = None
         return AppServiceVersion(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -529,14 +525,6 @@ class AppServiceVersion(pulumi.CustomResource):
         Enables VPC connectivity for standard apps.
         """
         return pulumi.get(self, "vpc_access_connector")
-
-    @property
-    @pulumi.getter
-    def zones(self) -> pulumi.Output[Sequence[str]]:
-        """
-        The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
-        """
-        return pulumi.get(self, "zones")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

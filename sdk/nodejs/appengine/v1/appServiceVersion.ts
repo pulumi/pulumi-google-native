@@ -183,10 +183,6 @@ export class AppServiceVersion extends pulumi.CustomResource {
      * Enables VPC connectivity for standard apps.
      */
     public readonly vpcAccessConnector!: pulumi.Output<outputs.appengine.v1.VpcAccessConnectorResponse>;
-    /**
-     * The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
-     */
-    public readonly zones!: pulumi.Output<string[]>;
 
     /**
      * Create a AppServiceVersion resource with the given unique name, arguments, and options.
@@ -249,7 +245,6 @@ export class AppServiceVersion extends pulumi.CustomResource {
             inputs["versionsId"] = args ? args.versionsId : undefined;
             inputs["vm"] = args ? args.vm : undefined;
             inputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
-            inputs["zones"] = args ? args.zones : undefined;
         } else {
             inputs["apiConfig"] = undefined /*out*/;
             inputs["automaticScaling"] = undefined /*out*/;
@@ -288,7 +283,6 @@ export class AppServiceVersion extends pulumi.CustomResource {
             inputs["versionUrl"] = undefined /*out*/;
             inputs["vm"] = undefined /*out*/;
             inputs["vpcAccessConnector"] = undefined /*out*/;
-            inputs["zones"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -456,8 +450,4 @@ export interface AppServiceVersionArgs {
      * Enables VPC connectivity for standard apps.
      */
     readonly vpcAccessConnector?: pulumi.Input<inputs.appengine.v1.VpcAccessConnector>;
-    /**
-     * The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
-     */
-    readonly zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

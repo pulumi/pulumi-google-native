@@ -88,10 +88,6 @@ export class ClusterNodePool extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-     */
-    public readonly statusMessage!: pulumi.Output<string>;
-    /**
      * Upgrade settings control disruption and speed of the upgrade.
      */
     public readonly upgradeSettings!: pulumi.Output<outputs.container.v1beta1.UpgradeSettingsResponse>;
@@ -140,7 +136,6 @@ export class ClusterNodePool extends pulumi.CustomResource {
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["status"] = args ? args.status : undefined;
-            inputs["statusMessage"] = args ? args.statusMessage : undefined;
             inputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["zone"] = args ? args.zone : undefined;
@@ -158,7 +153,6 @@ export class ClusterNodePool extends pulumi.CustomResource {
             inputs["podIpv4CidrSize"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
-            inputs["statusMessage"] = undefined /*out*/;
             inputs["upgradeSettings"] = undefined /*out*/;
             inputs["version"] = undefined /*out*/;
         }
@@ -177,9 +171,6 @@ export interface ClusterNodePoolArgs {
      * Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
      */
     readonly autoscaling?: pulumi.Input<inputs.container.v1beta1.NodePoolAutoscaling>;
-    /**
-     * Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
-     */
     readonly clusterId: pulumi.Input<string>;
     /**
      * Which conditions caused the current node pool state.
@@ -226,9 +217,6 @@ export interface ClusterNodePoolArgs {
      * [Output only] The pod CIDR block size per node in this node pool.
      */
     readonly podIpv4CidrSize?: pulumi.Input<number>;
-    /**
-     * Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
-     */
     readonly projectId: pulumi.Input<string>;
     /**
      * [Output only] Server-defined URL for the resource.
@@ -239,10 +227,6 @@ export interface ClusterNodePoolArgs {
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-     */
-    readonly statusMessage?: pulumi.Input<string>;
-    /**
      * Upgrade settings control disruption and speed of the upgrade.
      */
     readonly upgradeSettings?: pulumi.Input<inputs.container.v1beta1.UpgradeSettings>;
@@ -250,8 +234,5 @@ export interface ClusterNodePoolArgs {
      * The version of the Kubernetes of this node.
      */
     readonly version?: pulumi.Input<string>;
-    /**
-     * Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
-     */
     readonly zone: pulumi.Input<string>;
 }

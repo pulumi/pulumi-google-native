@@ -91,8 +91,6 @@ type AppServiceVersion struct {
 	Vm pulumi.BoolOutput `pulumi:"vm"`
 	// Enables VPC connectivity for standard apps.
 	VpcAccessConnector VpcAccessConnectorResponseOutput `pulumi:"vpcAccessConnector"`
-	// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
-	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
 // NewAppServiceVersion registers a new resource with the given unique name, arguments, and options.
@@ -209,8 +207,6 @@ type appServiceVersionState struct {
 	Vm *bool `pulumi:"vm"`
 	// Enables VPC connectivity for standard apps.
 	VpcAccessConnector *VpcAccessConnectorResponse `pulumi:"vpcAccessConnector"`
-	// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
-	Zones []string `pulumi:"zones"`
 }
 
 type AppServiceVersionState struct {
@@ -290,8 +286,6 @@ type AppServiceVersionState struct {
 	Vm pulumi.BoolPtrInput
 	// Enables VPC connectivity for standard apps.
 	VpcAccessConnector VpcAccessConnectorResponsePtrInput
-	// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
-	Zones pulumi.StringArrayInput
 }
 
 func (AppServiceVersionState) ElementType() reflect.Type {
@@ -380,8 +374,6 @@ type appServiceVersionArgs struct {
 	Vm *bool `pulumi:"vm"`
 	// Enables VPC connectivity for standard apps.
 	VpcAccessConnector *VpcAccessConnector `pulumi:"vpcAccessConnector"`
-	// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
-	Zones []string `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a AppServiceVersion resource.
@@ -467,8 +459,6 @@ type AppServiceVersionArgs struct {
 	Vm pulumi.BoolPtrInput
 	// Enables VPC connectivity for standard apps.
 	VpcAccessConnector VpcAccessConnectorPtrInput
-	// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
-	Zones pulumi.StringArrayInput
 }
 
 func (AppServiceVersionArgs) ElementType() reflect.Type {

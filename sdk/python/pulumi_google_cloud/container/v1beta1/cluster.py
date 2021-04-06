@@ -29,7 +29,6 @@ class Cluster(pulumi.CustomResource):
                  confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  current_master_version: Optional[pulumi.Input[str]] = None,
-                 current_node_count: Optional[pulumi.Input[int]] = None,
                  current_node_version: Optional[pulumi.Input[str]] = None,
                  database_encryption: Optional[pulumi.Input[pulumi.InputType['DatabaseEncryptionArgs']]] = None,
                  default_max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']]] = None,
@@ -72,7 +71,6 @@ class Cluster(pulumi.CustomResource):
                  services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  shielded_nodes: Optional[pulumi.Input[pulumi.InputType['ShieldedNodesArgs']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 status_message: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input[pulumi.InputType['TpuConfigArgs']]] = None,
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
@@ -98,7 +96,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']] confidential_nodes: Configuration of Confidential Nodes
         :param pulumi.Input[str] create_time: [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         :param pulumi.Input[str] current_master_version: [Output only] The current software version of the master endpoint.
-        :param pulumi.Input[int] current_node_count: [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
         :param pulumi.Input[str] current_node_version: [Output only] Deprecated, use [NodePool.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
         :param pulumi.Input[pulumi.InputType['DatabaseEncryptionArgs']] database_encryption: Configuration of etcd encryption.
         :param pulumi.Input[pulumi.InputType['MaxPodsConstraintArgs']] default_max_pods_constraint: The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
@@ -133,7 +130,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PodSecurityPolicyConfigArgs']] pod_security_policy_config: Configuration for the PodSecurityPolicy feature.
         :param pulumi.Input[bool] private_cluster: If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
         :param pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']] private_cluster_config: Configuration for private cluster.
-        :param pulumi.Input[str] project_id: Required. Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
         :param pulumi.Input[pulumi.InputType['ReleaseChannelArgs']] release_channel: Release channel configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
         :param pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
@@ -141,13 +137,12 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] services_ipv4_cidr: [Output only] The IP address range of the Kubernetes services in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last `/16` from the container CIDR.
         :param pulumi.Input[pulumi.InputType['ShieldedNodesArgs']] shielded_nodes: Shielded Nodes configuration.
         :param pulumi.Input[str] status: [Output only] The current status of this cluster.
-        :param pulumi.Input[str] status_message: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
         :param pulumi.Input[str] subnetwork: The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
         :param pulumi.Input[pulumi.InputType['TpuConfigArgs']] tpu_config: Configuration for Cloud TPU support;
         :param pulumi.Input[str] tpu_ipv4_cidr_block: [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
         :param pulumi.Input[pulumi.InputType['VerticalPodAutoscalingArgs']] vertical_pod_autoscaling: Cluster-level Vertical Pod Autoscaling configuration.
         :param pulumi.Input[pulumi.InputType['WorkloadIdentityConfigArgs']] workload_identity_config: Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
-        :param pulumi.Input[str] zone: Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+        :param pulumi.Input[str] zone: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -180,7 +175,6 @@ class Cluster(pulumi.CustomResource):
             __props__['confidential_nodes'] = confidential_nodes
             __props__['create_time'] = create_time
             __props__['current_master_version'] = current_master_version
-            __props__['current_node_count'] = current_node_count
             __props__['current_node_version'] = current_node_version
             __props__['database_encryption'] = database_encryption
             __props__['default_max_pods_constraint'] = default_max_pods_constraint
@@ -225,7 +219,6 @@ class Cluster(pulumi.CustomResource):
             __props__['services_ipv4_cidr'] = services_ipv4_cidr
             __props__['shielded_nodes'] = shielded_nodes
             __props__['status'] = status
-            __props__['status_message'] = status_message
             __props__['subnetwork'] = subnetwork
             __props__['tpu_config'] = tpu_config
             __props__['tpu_ipv4_cidr_block'] = tpu_ipv4_cidr_block
@@ -267,7 +260,6 @@ class Cluster(pulumi.CustomResource):
         __props__["confidential_nodes"] = None
         __props__["create_time"] = None
         __props__["current_master_version"] = None
-        __props__["current_node_count"] = None
         __props__["current_node_version"] = None
         __props__["database_encryption"] = None
         __props__["default_max_pods_constraint"] = None
@@ -308,7 +300,6 @@ class Cluster(pulumi.CustomResource):
         __props__["services_ipv4_cidr"] = None
         __props__["shielded_nodes"] = None
         __props__["status"] = None
-        __props__["status_message"] = None
         __props__["subnetwork"] = None
         __props__["tpu_config"] = None
         __props__["tpu_ipv4_cidr_block"] = None
@@ -404,14 +395,6 @@ class Cluster(pulumi.CustomResource):
         [Output only] The current software version of the master endpoint.
         """
         return pulumi.get(self, "current_master_version")
-
-    @property
-    @pulumi.getter(name="currentNodeCount")
-    def current_node_count(self) -> pulumi.Output[int]:
-        """
-        [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
-        """
-        return pulumi.get(self, "current_node_count")
 
     @property
     @pulumi.getter(name="currentNodeVersion")
@@ -732,14 +715,6 @@ class Cluster(pulumi.CustomResource):
         [Output only] The current status of this cluster.
         """
         return pulumi.get(self, "status")
-
-    @property
-    @pulumi.getter(name="statusMessage")
-    def status_message(self) -> pulumi.Output[str]:
-        """
-        [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
-        """
-        return pulumi.get(self, "status_message")
 
     @property
     @pulumi.getter

@@ -88,12 +88,6 @@ namespace Pulumi.GoogleCloud.Container.V1
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-        /// </summary>
-        [Output("statusMessage")]
-        public Output<string> StatusMessage { get; private set; } = null!;
-
-        /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.
         /// </summary>
         [Output("upgradeSettings")]
@@ -257,12 +251,6 @@ namespace Pulumi.GoogleCloud.Container.V1
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
-
-        /// <summary>
-        /// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-        /// </summary>
-        [Input("statusMessage")]
-        public Input<string>? StatusMessage { get; set; }
 
         /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.

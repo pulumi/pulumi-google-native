@@ -37,8 +37,6 @@ type Cluster struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// [Output only] The current software version of the master endpoint.
 	CurrentMasterVersion pulumi.StringOutput `pulumi:"currentMasterVersion"`
-	// [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
-	CurrentNodeCount pulumi.IntOutput `pulumi:"currentNodeCount"`
 	// [Output only] Deprecated, use [NodePool.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
 	CurrentNodeVersion pulumi.StringOutput `pulumi:"currentNodeVersion"`
 	// Configuration of etcd encryption.
@@ -119,8 +117,6 @@ type Cluster struct {
 	ShieldedNodes ShieldedNodesResponseOutput `pulumi:"shieldedNodes"`
 	// [Output only] The current status of this cluster.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
-	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
 	// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
 	// Configuration for Cloud TPU support;
@@ -195,8 +191,6 @@ type clusterState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// [Output only] The current software version of the master endpoint.
 	CurrentMasterVersion *string `pulumi:"currentMasterVersion"`
-	// [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
-	CurrentNodeCount *int `pulumi:"currentNodeCount"`
 	// [Output only] Deprecated, use [NodePool.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
 	CurrentNodeVersion *string `pulumi:"currentNodeVersion"`
 	// Configuration of etcd encryption.
@@ -277,8 +271,6 @@ type clusterState struct {
 	ShieldedNodes *ShieldedNodesResponse `pulumi:"shieldedNodes"`
 	// [Output only] The current status of this cluster.
 	Status *string `pulumi:"status"`
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
-	StatusMessage *string `pulumi:"statusMessage"`
 	// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// Configuration for Cloud TPU support;
@@ -316,8 +308,6 @@ type ClusterState struct {
 	CreateTime pulumi.StringPtrInput
 	// [Output only] The current software version of the master endpoint.
 	CurrentMasterVersion pulumi.StringPtrInput
-	// [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
-	CurrentNodeCount pulumi.IntPtrInput
 	// [Output only] Deprecated, use [NodePool.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
 	CurrentNodeVersion pulumi.StringPtrInput
 	// Configuration of etcd encryption.
@@ -398,8 +388,6 @@ type ClusterState struct {
 	ShieldedNodes ShieldedNodesResponsePtrInput
 	// [Output only] The current status of this cluster.
 	Status pulumi.StringPtrInput
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
-	StatusMessage pulumi.StringPtrInput
 	// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
 	Subnetwork pulumi.StringPtrInput
 	// Configuration for Cloud TPU support;
@@ -442,8 +430,6 @@ type clusterArgs struct {
 	CreateTime *string `pulumi:"createTime"`
 	// [Output only] The current software version of the master endpoint.
 	CurrentMasterVersion *string `pulumi:"currentMasterVersion"`
-	// [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
-	CurrentNodeCount *int `pulumi:"currentNodeCount"`
 	// [Output only] Deprecated, use [NodePool.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
 	CurrentNodeVersion *string `pulumi:"currentNodeVersion"`
 	// Configuration of etcd encryption.
@@ -512,8 +498,7 @@ type clusterArgs struct {
 	PrivateCluster *bool `pulumi:"privateCluster"`
 	// Configuration for private cluster.
 	PrivateClusterConfig *PrivateClusterConfig `pulumi:"privateClusterConfig"`
-	// Required. Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
-	ProjectId string `pulumi:"projectId"`
+	ProjectId            string                `pulumi:"projectId"`
 	// Release channel configuration.
 	ReleaseChannel *ReleaseChannel `pulumi:"releaseChannel"`
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
@@ -528,8 +513,6 @@ type clusterArgs struct {
 	ShieldedNodes *ShieldedNodes `pulumi:"shieldedNodes"`
 	// [Output only] The current status of this cluster.
 	Status *string `pulumi:"status"`
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
-	StatusMessage *string `pulumi:"statusMessage"`
 	// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// Configuration for Cloud TPU support;
@@ -540,7 +523,7 @@ type clusterArgs struct {
 	VerticalPodAutoscaling *VerticalPodAutoscaling `pulumi:"verticalPodAutoscaling"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig *WorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
-	// Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
 	Zone string `pulumi:"zone"`
 }
 
@@ -569,8 +552,6 @@ type ClusterArgs struct {
 	CreateTime pulumi.StringPtrInput
 	// [Output only] The current software version of the master endpoint.
 	CurrentMasterVersion pulumi.StringPtrInput
-	// [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
-	CurrentNodeCount pulumi.IntPtrInput
 	// [Output only] Deprecated, use [NodePool.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
 	CurrentNodeVersion pulumi.StringPtrInput
 	// Configuration of etcd encryption.
@@ -639,8 +620,7 @@ type ClusterArgs struct {
 	PrivateCluster pulumi.BoolPtrInput
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigPtrInput
-	// Required. Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
-	ProjectId pulumi.StringInput
+	ProjectId            pulumi.StringInput
 	// Release channel configuration.
 	ReleaseChannel ReleaseChannelPtrInput
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
@@ -655,8 +635,6 @@ type ClusterArgs struct {
 	ShieldedNodes ShieldedNodesPtrInput
 	// [Output only] The current status of this cluster.
 	Status pulumi.StringPtrInput
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
-	StatusMessage pulumi.StringPtrInput
 	// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
 	Subnetwork pulumi.StringPtrInput
 	// Configuration for Cloud TPU support;
@@ -667,7 +645,7 @@ type ClusterArgs struct {
 	VerticalPodAutoscaling VerticalPodAutoscalingPtrInput
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig WorkloadIdentityConfigPtrInput
-	// Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
 	Zone pulumi.StringInput
 }
 

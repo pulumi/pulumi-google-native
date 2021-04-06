@@ -39,8 +39,6 @@ type ClusterNodePool struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsResponseOutput `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -112,8 +110,6 @@ type clusterNodePoolState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
 	Status *string `pulumi:"status"`
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-	StatusMessage *string `pulumi:"statusMessage"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings *UpgradeSettingsResponse `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -145,8 +141,6 @@ type ClusterNodePoolState struct {
 	SelfLink pulumi.StringPtrInput
 	// [Output only] The status of the nodes in this pool instance.
 	Status pulumi.StringPtrInput
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-	StatusMessage pulumi.StringPtrInput
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsResponsePtrInput
 	// The version of the Kubernetes of this node.
@@ -188,8 +182,6 @@ type clusterNodePoolArgs struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
 	Status *string `pulumi:"status"`
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-	StatusMessage *string `pulumi:"statusMessage"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings *UpgradeSettings `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -228,8 +220,6 @@ type ClusterNodePoolArgs struct {
 	SelfLink pulumi.StringPtrInput
 	// [Output only] The status of the nodes in this pool instance.
 	Status pulumi.StringPtrInput
-	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-	StatusMessage pulumi.StringPtrInput
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsPtrInput
 	// The version of the Kubernetes of this node.

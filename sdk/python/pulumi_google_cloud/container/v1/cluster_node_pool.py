@@ -34,7 +34,6 @@ class ClusterNodePool(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 status_message: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -58,7 +57,6 @@ class ClusterNodePool(pulumi.CustomResource):
         :param pulumi.Input[int] pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
         :param pulumi.Input[str] self_link: [Output only] Server-defined URL for the resource.
         :param pulumi.Input[str] status: [Output only] The status of the nodes in this pool instance.
-        :param pulumi.Input[str] status_message: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
         :param pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         """
@@ -104,7 +102,6 @@ class ClusterNodePool(pulumi.CustomResource):
             __props__['projects_id'] = projects_id
             __props__['self_link'] = self_link
             __props__['status'] = status
-            __props__['status_message'] = status_message
             __props__['upgrade_settings'] = upgrade_settings
             __props__['version'] = version
         super(ClusterNodePool, __self__).__init__(
@@ -141,7 +138,6 @@ class ClusterNodePool(pulumi.CustomResource):
         __props__["pod_ipv4_cidr_size"] = None
         __props__["self_link"] = None
         __props__["status"] = None
-        __props__["status_message"] = None
         __props__["upgrade_settings"] = None
         __props__["version"] = None
         return ClusterNodePool(resource_name, opts=opts, __props__=__props__)
@@ -241,14 +237,6 @@ class ClusterNodePool(pulumi.CustomResource):
         [Output only] The status of the nodes in this pool instance.
         """
         return pulumi.get(self, "status")
-
-    @property
-    @pulumi.getter(name="statusMessage")
-    def status_message(self) -> pulumi.Output[str]:
-        """
-        [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-        """
-        return pulumi.get(self, "status_message")
 
     @property
     @pulumi.getter(name="upgradeSettings")

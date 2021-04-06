@@ -448,10 +448,6 @@ export namespace accesscontextmanager {
              */
             restrictedServices?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
-             */
-            unrestrictedServices?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
              * Beta. Configuration for APIs allowed within Perimeter.
              */
             vpcAccessibleServices?: pulumi.Input<inputs.accesscontextmanager.v1beta.VpcAccessibleServices>;
@@ -23415,10 +23411,6 @@ export namespace container {
              */
             status?: pulumi.Input<string>;
             /**
-             * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-             */
-            statusMessage?: pulumi.Input<string>;
-            /**
              * Upgrade settings control disruption and speed of the upgrade.
              */
             upgradeSettings?: pulumi.Input<inputs.container.v1.UpgradeSettings>;
@@ -23656,10 +23648,6 @@ export namespace container {
              * Canonical code of the condition.
              */
             canonicalCode?: pulumi.Input<string>;
-            /**
-             * Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-             */
-            code?: pulumi.Input<string>;
             /**
              * Human-friendly representation of the condition
              */
@@ -24551,10 +24539,6 @@ export namespace container {
              */
             status?: pulumi.Input<string>;
             /**
-             * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
-             */
-            statusMessage?: pulumi.Input<string>;
-            /**
              * Upgrade settings control disruption and speed of the upgrade.
              */
             upgradeSettings?: pulumi.Input<inputs.container.v1beta1.UpgradeSettings>;
@@ -24806,10 +24790,6 @@ export namespace container {
              * Canonical code of the condition.
              */
             canonicalCode?: pulumi.Input<string>;
-            /**
-             * Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
-             */
-            code?: pulumi.Input<string>;
             /**
              * Human-friendly representation of the condition
              */
