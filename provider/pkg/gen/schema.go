@@ -171,18 +171,24 @@ func (g *packageGenerator) findResources(parent string, resources map[string]dis
 	for _, name := range names {
 		res := resources[name]
 		name = ToUpperCamel(inflector.Singularize(name))
-		var createMethod, getMethod, deleteMethod *discovery.RestMethod
+		var createMethod, getMethod, updateMethod, deleteMethod *discovery.RestMethod
 		for methodName, value := range res.Methods {
 			restMethod := value
 			switch methodName {
 			case "create", "insert":
 				createMethod = &restMethod
+			case "update", "replaceService"/*special case for Cloud Run*/:
+				updateMethod = &restMethod
+			case "patch":
+				if updateMethod == nil {
+					updateMethod = &restMethod
+				}
 			case "get":
 				getMethod = &restMethod
 			case "setIamPolicy":
 				typeName := fmt.Sprintf("%s%sIamPolicy", parent, name)
 				if getIamPolicy, has := res.Methods["getIamPolicy"]; has {
-					err := g.genResource(typeName, &restMethod, &getIamPolicy, nil)
+					err := g.genResource(typeName, &restMethod, &getIamPolicy, &restMethod, nil)
 					if err != nil {
 						return err
 					}
@@ -194,7 +200,7 @@ func (g *packageGenerator) findResources(parent string, resources map[string]dis
 
 		if createMethod != nil {
 			typeName := fmt.Sprintf("%s%s", parent, name)
-			err := g.genResource(typeName, createMethod, getMethod, deleteMethod)
+			err := g.genResource(typeName, createMethod, getMethod, updateMethod, deleteMethod)
 			if err != nil {
 				return err
 			}
@@ -217,7 +223,7 @@ func (g *packageGenerator) findResources(parent string, resources map[string]dis
 
 var pathRegex = regexp.MustCompile(`{([A-Za-z0-9]*)}`)
 
-func (g *packageGenerator) genResource(typeName string, createMethod, getMethod, deleteMethod *discovery.RestMethod) error {
+func (g *packageGenerator) genResource(typeName string, createMethod, getMethod, updateMethod, deleteMethod *discovery.RestMethod) error {
 	resourceTok := fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, typeName)
 
 	inputProperties := map[string]schema.PropertySpec{}
@@ -314,6 +320,35 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 			requiredInputProperties.Add(name)
 		}
 		resourceMeta.CreateProperties = bodyBag.properties
+
+		if updateMethod != nil {
+			resourceMeta.UpdateVerb = updateMethod.HttpMethod
+			var updateFlatten string
+			updateRequest := g.rest.Schemas[updateMethod.Request.Ref]
+			if getMethod != nil && updateMethod.Request.Ref != getMethod.Response.Ref {
+				for name, v := range updateRequest.Properties {
+					if v.Ref == getMethod.Response.Ref {
+						updateFlatten = name
+					}
+				}
+			}
+			resourceMeta.UpdateProperties = map[string]resources.CloudAPIProperty{}
+			updateBag, err := g.genProperties(&updateRequest, updateFlatten, false)
+			if err != nil {
+				return err
+			}
+
+			for name, value := range updateBag.properties {
+				if _, has := bodyBag.properties[name]; has {
+					resourceMeta.UpdateProperties[name] = value
+				} else {
+					// TODO: do we need to handle masks?
+					if !strings.HasSuffix(name, "Mask") {
+						fmt.Printf("%s: %s.%s\n", resourceTok, updateMethod.Request.Ref, name)
+					}
+				}
+			}
+		}
 	}
 
 	properties := map[string]schema.PropertySpec{}

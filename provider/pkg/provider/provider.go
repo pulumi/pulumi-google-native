@@ -376,8 +376,61 @@ func (k *googleCloudProvider) Read(ctx context.Context, req *rpc.ReadRequest) (*
 }
 
 // Update updates an existing resource with new values.
-func (k *googleCloudProvider) Update(_ context.Context, _ *rpc.UpdateRequest) (*rpc.UpdateResponse, error) {
-	panic("Update not implemented")
+func (k *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest) (*rpc.UpdateResponse, error) {
+	urn := resource.URN(req.GetUrn())
+	label := fmt.Sprintf("%s.Update(%s)", k.name, urn)
+	glog.V(9).Infof("%s executing", label)
+
+	// Deserialize RPC inputs
+	inputs, err := plugin.UnmarshalProperties(req.GetNews(), plugin.MarshalOptions{
+		Label: fmt.Sprintf("%s.properties", label), SkipNulls: true,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	resourceKey := string(urn.Type())
+	res, ok := k.resourceMap.Resources[resourceKey]
+	if !ok {
+		return nil, errors.Errorf("resource '%s' not found", resourceKey)
+	}
+
+	inputsMap := inputs.Mappable()
+	body := map[string]interface{}{}
+	for name, value := range res.UpdateProperties {
+		parent := body
+		if value.Container != "" {
+			if v, has := body[value.Container].(map[string]interface{}); has {
+				parent = v
+			} else {
+				parent = map[string]interface{}{}
+				body[value.Container] = parent
+			}
+		}
+		parent[name] = inputsMap[name]
+	}
+
+	uri := res.BaseUrl + req.Id
+	op, err := sendRequestWithTimeout(ctx, res.UpdateVerb, uri, body, 0)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
+	}
+
+	resp, err := k.waitForResourceOpCompletion(ctx, res.BaseUrl, op)
+	if err != nil {
+		return nil, errors.Wrapf(err, "waiting for completion")
+	}
+
+
+	// Serialize and return RPC outputs
+	outputs, err := plugin.MarshalProperties(
+		resource.NewPropertyMapFromMap(resp),
+		plugin.MarshalOptions{Label: fmt.Sprintf("%s.response", label), SkipNulls: true},
+	)
+
+	return &rpc.UpdateResponse{
+		Properties: outputs,
+	}, nil
 }
 
 // Delete tears down an existing resource with the given ID. If it fails, the resource is assumed

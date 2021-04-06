@@ -4314,6 +4314,313 @@ func (o ClusterTelemetryResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// ClusterUpdate describes an update to the cluster. Exactly one update can be applied to a cluster with each request, so at most one field can be provided.
+type ClusterUpdate struct {
+	// Configurations for the various addons available to run in the cluster.
+	DesiredAddonsConfig *AddonsConfig `pulumi:"desiredAddonsConfig"`
+	// The desired configuration options for the Binary Authorization feature.
+	DesiredBinaryAuthorization *BinaryAuthorization `pulumi:"desiredBinaryAuthorization"`
+	// Cluster-level autoscaling configuration.
+	DesiredClusterAutoscaling *ClusterAutoscaling `pulumi:"desiredClusterAutoscaling"`
+	// The desired telemetry integration for the cluster.
+	DesiredClusterTelemetry *ClusterTelemetry `pulumi:"desiredClusterTelemetry"`
+	// Configuration of etcd encryption.
+	DesiredDatabaseEncryption *DatabaseEncryption `pulumi:"desiredDatabaseEncryption"`
+	// The desired datapath provider for the cluster.
+	DesiredDatapathProvider *string `pulumi:"desiredDatapathProvider"`
+	// The desired status of whether to disable default sNAT for this cluster.
+	DesiredDefaultSnatStatus *DefaultSnatStatus `pulumi:"desiredDefaultSnatStatus"`
+	// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
+	DesiredImageType *string `pulumi:"desiredImageType"`
+	// The desired config of Intra-node visibility.
+	DesiredIntraNodeVisibilityConfig *IntraNodeVisibilityConfig `pulumi:"desiredIntraNodeVisibilityConfig"`
+	// The desired L4 Internal Load Balancer Subsetting configuration.
+	DesiredL4ilbSubsettingConfig *ILBSubsettingConfig `pulumi:"desiredL4ilbSubsettingConfig"`
+	// The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This list must always include the cluster's primary zone. Warning: changing cluster locations will update the locations of all node pools and will result in nodes being added and/or removed.
+	DesiredLocations []string `pulumi:"desiredLocations"`
+	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
+	DesiredLoggingService *string `pulumi:"desiredLoggingService"`
+	// Configuration for master components.
+	DesiredMaster *Master `pulumi:"desiredMaster"`
+	// The desired configuration options for master authorized networks feature.
+	DesiredMasterAuthorizedNetworksConfig *MasterAuthorizedNetworksConfig `pulumi:"desiredMasterAuthorizedNetworksConfig"`
+	// The Kubernetes version to change the master to. The only valid value is the latest supported version. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the default Kubernetes version
+	DesiredMasterVersion *string `pulumi:"desiredMasterVersion"`
+	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
+	DesiredMonitoringService *string `pulumi:"desiredMonitoringService"`
+	// Autoscaler configuration for the node pool specified in desired_node_pool_id. If there is only one pool in the cluster and desired_node_pool_id is not provided then the change applies to that single node pool.
+	DesiredNodePoolAutoscaling *NodePoolAutoscaling `pulumi:"desiredNodePoolAutoscaling"`
+	// The node pool to be upgraded. This field is mandatory if "desired_node_version", "desired_image_family", "desired_node_pool_autoscaling", or "desired_workload_metadata_config" is specified and there is more than one node pool on the cluster.
+	DesiredNodePoolId *string `pulumi:"desiredNodePoolId"`
+	// The Kubernetes version to change the nodes to (typically an upgrade). Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the Kubernetes master version
+	DesiredNodeVersion *string `pulumi:"desiredNodeVersion"`
+	// The desired notification configuration.
+	DesiredNotificationConfig *NotificationConfig `pulumi:"desiredNotificationConfig"`
+	// The desired configuration options for the PodSecurityPolicy feature.
+	DesiredPodSecurityPolicyConfig *PodSecurityPolicyConfig `pulumi:"desiredPodSecurityPolicyConfig"`
+	// The desired private cluster configuration.
+	DesiredPrivateClusterConfig *PrivateClusterConfig `pulumi:"desiredPrivateClusterConfig"`
+	// The desired state of IPv6 connectivity to Google Services.
+	DesiredPrivateIpv6GoogleAccess *string `pulumi:"desiredPrivateIpv6GoogleAccess"`
+	// The desired release channel configuration.
+	DesiredReleaseChannel *ReleaseChannel `pulumi:"desiredReleaseChannel"`
+	// The desired configuration for exporting resource usage.
+	DesiredResourceUsageExportConfig *ResourceUsageExportConfig `pulumi:"desiredResourceUsageExportConfig"`
+	// Configuration for Shielded Nodes.
+	DesiredShieldedNodes *ShieldedNodes `pulumi:"desiredShieldedNodes"`
+	// The desired Cloud TPU configuration.
+	DesiredTpuConfig *TpuConfig `pulumi:"desiredTpuConfig"`
+	// Cluster-level Vertical Pod Autoscaling configuration.
+	DesiredVerticalPodAutoscaling *VerticalPodAutoscaling `pulumi:"desiredVerticalPodAutoscaling"`
+	// Configuration for Workload Identity.
+	DesiredWorkloadIdentityConfig *WorkloadIdentityConfig `pulumi:"desiredWorkloadIdentityConfig"`
+}
+
+// ClusterUpdateInput is an input type that accepts ClusterUpdateArgs and ClusterUpdateOutput values.
+// You can construct a concrete instance of `ClusterUpdateInput` via:
+//
+//          ClusterUpdateArgs{...}
+type ClusterUpdateInput interface {
+	pulumi.Input
+
+	ToClusterUpdateOutput() ClusterUpdateOutput
+	ToClusterUpdateOutputWithContext(context.Context) ClusterUpdateOutput
+}
+
+// ClusterUpdate describes an update to the cluster. Exactly one update can be applied to a cluster with each request, so at most one field can be provided.
+type ClusterUpdateArgs struct {
+	// Configurations for the various addons available to run in the cluster.
+	DesiredAddonsConfig AddonsConfigPtrInput `pulumi:"desiredAddonsConfig"`
+	// The desired configuration options for the Binary Authorization feature.
+	DesiredBinaryAuthorization BinaryAuthorizationPtrInput `pulumi:"desiredBinaryAuthorization"`
+	// Cluster-level autoscaling configuration.
+	DesiredClusterAutoscaling ClusterAutoscalingPtrInput `pulumi:"desiredClusterAutoscaling"`
+	// The desired telemetry integration for the cluster.
+	DesiredClusterTelemetry ClusterTelemetryPtrInput `pulumi:"desiredClusterTelemetry"`
+	// Configuration of etcd encryption.
+	DesiredDatabaseEncryption DatabaseEncryptionPtrInput `pulumi:"desiredDatabaseEncryption"`
+	// The desired datapath provider for the cluster.
+	DesiredDatapathProvider pulumi.StringPtrInput `pulumi:"desiredDatapathProvider"`
+	// The desired status of whether to disable default sNAT for this cluster.
+	DesiredDefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"desiredDefaultSnatStatus"`
+	// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
+	DesiredImageType pulumi.StringPtrInput `pulumi:"desiredImageType"`
+	// The desired config of Intra-node visibility.
+	DesiredIntraNodeVisibilityConfig IntraNodeVisibilityConfigPtrInput `pulumi:"desiredIntraNodeVisibilityConfig"`
+	// The desired L4 Internal Load Balancer Subsetting configuration.
+	DesiredL4ilbSubsettingConfig ILBSubsettingConfigPtrInput `pulumi:"desiredL4ilbSubsettingConfig"`
+	// The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This list must always include the cluster's primary zone. Warning: changing cluster locations will update the locations of all node pools and will result in nodes being added and/or removed.
+	DesiredLocations pulumi.StringArrayInput `pulumi:"desiredLocations"`
+	// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
+	DesiredLoggingService pulumi.StringPtrInput `pulumi:"desiredLoggingService"`
+	// Configuration for master components.
+	DesiredMaster MasterPtrInput `pulumi:"desiredMaster"`
+	// The desired configuration options for master authorized networks feature.
+	DesiredMasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfigPtrInput `pulumi:"desiredMasterAuthorizedNetworksConfig"`
+	// The Kubernetes version to change the master to. The only valid value is the latest supported version. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the default Kubernetes version
+	DesiredMasterVersion pulumi.StringPtrInput `pulumi:"desiredMasterVersion"`
+	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
+	DesiredMonitoringService pulumi.StringPtrInput `pulumi:"desiredMonitoringService"`
+	// Autoscaler configuration for the node pool specified in desired_node_pool_id. If there is only one pool in the cluster and desired_node_pool_id is not provided then the change applies to that single node pool.
+	DesiredNodePoolAutoscaling NodePoolAutoscalingPtrInput `pulumi:"desiredNodePoolAutoscaling"`
+	// The node pool to be upgraded. This field is mandatory if "desired_node_version", "desired_image_family", "desired_node_pool_autoscaling", or "desired_workload_metadata_config" is specified and there is more than one node pool on the cluster.
+	DesiredNodePoolId pulumi.StringPtrInput `pulumi:"desiredNodePoolId"`
+	// The Kubernetes version to change the nodes to (typically an upgrade). Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the Kubernetes master version
+	DesiredNodeVersion pulumi.StringPtrInput `pulumi:"desiredNodeVersion"`
+	// The desired notification configuration.
+	DesiredNotificationConfig NotificationConfigPtrInput `pulumi:"desiredNotificationConfig"`
+	// The desired configuration options for the PodSecurityPolicy feature.
+	DesiredPodSecurityPolicyConfig PodSecurityPolicyConfigPtrInput `pulumi:"desiredPodSecurityPolicyConfig"`
+	// The desired private cluster configuration.
+	DesiredPrivateClusterConfig PrivateClusterConfigPtrInput `pulumi:"desiredPrivateClusterConfig"`
+	// The desired state of IPv6 connectivity to Google Services.
+	DesiredPrivateIpv6GoogleAccess pulumi.StringPtrInput `pulumi:"desiredPrivateIpv6GoogleAccess"`
+	// The desired release channel configuration.
+	DesiredReleaseChannel ReleaseChannelPtrInput `pulumi:"desiredReleaseChannel"`
+	// The desired configuration for exporting resource usage.
+	DesiredResourceUsageExportConfig ResourceUsageExportConfigPtrInput `pulumi:"desiredResourceUsageExportConfig"`
+	// Configuration for Shielded Nodes.
+	DesiredShieldedNodes ShieldedNodesPtrInput `pulumi:"desiredShieldedNodes"`
+	// The desired Cloud TPU configuration.
+	DesiredTpuConfig TpuConfigPtrInput `pulumi:"desiredTpuConfig"`
+	// Cluster-level Vertical Pod Autoscaling configuration.
+	DesiredVerticalPodAutoscaling VerticalPodAutoscalingPtrInput `pulumi:"desiredVerticalPodAutoscaling"`
+	// Configuration for Workload Identity.
+	DesiredWorkloadIdentityConfig WorkloadIdentityConfigPtrInput `pulumi:"desiredWorkloadIdentityConfig"`
+}
+
+func (ClusterUpdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUpdate)(nil)).Elem()
+}
+
+func (i ClusterUpdateArgs) ToClusterUpdateOutput() ClusterUpdateOutput {
+	return i.ToClusterUpdateOutputWithContext(context.Background())
+}
+
+func (i ClusterUpdateArgs) ToClusterUpdateOutputWithContext(ctx context.Context) ClusterUpdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterUpdateOutput)
+}
+
+// ClusterUpdate describes an update to the cluster. Exactly one update can be applied to a cluster with each request, so at most one field can be provided.
+type ClusterUpdateOutput struct{ *pulumi.OutputState }
+
+func (ClusterUpdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUpdate)(nil)).Elem()
+}
+
+func (o ClusterUpdateOutput) ToClusterUpdateOutput() ClusterUpdateOutput {
+	return o
+}
+
+func (o ClusterUpdateOutput) ToClusterUpdateOutputWithContext(ctx context.Context) ClusterUpdateOutput {
+	return o
+}
+
+// Configurations for the various addons available to run in the cluster.
+func (o ClusterUpdateOutput) DesiredAddonsConfig() AddonsConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *AddonsConfig { return v.DesiredAddonsConfig }).(AddonsConfigPtrOutput)
+}
+
+// The desired configuration options for the Binary Authorization feature.
+func (o ClusterUpdateOutput) DesiredBinaryAuthorization() BinaryAuthorizationPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *BinaryAuthorization { return v.DesiredBinaryAuthorization }).(BinaryAuthorizationPtrOutput)
+}
+
+// Cluster-level autoscaling configuration.
+func (o ClusterUpdateOutput) DesiredClusterAutoscaling() ClusterAutoscalingPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *ClusterAutoscaling { return v.DesiredClusterAutoscaling }).(ClusterAutoscalingPtrOutput)
+}
+
+// The desired telemetry integration for the cluster.
+func (o ClusterUpdateOutput) DesiredClusterTelemetry() ClusterTelemetryPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *ClusterTelemetry { return v.DesiredClusterTelemetry }).(ClusterTelemetryPtrOutput)
+}
+
+// Configuration of etcd encryption.
+func (o ClusterUpdateOutput) DesiredDatabaseEncryption() DatabaseEncryptionPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *DatabaseEncryption { return v.DesiredDatabaseEncryption }).(DatabaseEncryptionPtrOutput)
+}
+
+// The desired datapath provider for the cluster.
+func (o ClusterUpdateOutput) DesiredDatapathProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *string { return v.DesiredDatapathProvider }).(pulumi.StringPtrOutput)
+}
+
+// The desired status of whether to disable default sNAT for this cluster.
+func (o ClusterUpdateOutput) DesiredDefaultSnatStatus() DefaultSnatStatusPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *DefaultSnatStatus { return v.DesiredDefaultSnatStatus }).(DefaultSnatStatusPtrOutput)
+}
+
+// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
+func (o ClusterUpdateOutput) DesiredImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *string { return v.DesiredImageType }).(pulumi.StringPtrOutput)
+}
+
+// The desired config of Intra-node visibility.
+func (o ClusterUpdateOutput) DesiredIntraNodeVisibilityConfig() IntraNodeVisibilityConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *IntraNodeVisibilityConfig { return v.DesiredIntraNodeVisibilityConfig }).(IntraNodeVisibilityConfigPtrOutput)
+}
+
+// The desired L4 Internal Load Balancer Subsetting configuration.
+func (o ClusterUpdateOutput) DesiredL4ilbSubsettingConfig() ILBSubsettingConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *ILBSubsettingConfig { return v.DesiredL4ilbSubsettingConfig }).(ILBSubsettingConfigPtrOutput)
+}
+
+// The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This list must always include the cluster's primary zone. Warning: changing cluster locations will update the locations of all node pools and will result in nodes being added and/or removed.
+func (o ClusterUpdateOutput) DesiredLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterUpdate) []string { return v.DesiredLocations }).(pulumi.StringArrayOutput)
+}
+
+// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
+func (o ClusterUpdateOutput) DesiredLoggingService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *string { return v.DesiredLoggingService }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for master components.
+func (o ClusterUpdateOutput) DesiredMaster() MasterPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *Master { return v.DesiredMaster }).(MasterPtrOutput)
+}
+
+// The desired configuration options for master authorized networks feature.
+func (o ClusterUpdateOutput) DesiredMasterAuthorizedNetworksConfig() MasterAuthorizedNetworksConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *MasterAuthorizedNetworksConfig { return v.DesiredMasterAuthorizedNetworksConfig }).(MasterAuthorizedNetworksConfigPtrOutput)
+}
+
+// The Kubernetes version to change the master to. The only valid value is the latest supported version. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the default Kubernetes version
+func (o ClusterUpdateOutput) DesiredMasterVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *string { return v.DesiredMasterVersion }).(pulumi.StringPtrOutput)
+}
+
+// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
+func (o ClusterUpdateOutput) DesiredMonitoringService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *string { return v.DesiredMonitoringService }).(pulumi.StringPtrOutput)
+}
+
+// Autoscaler configuration for the node pool specified in desired_node_pool_id. If there is only one pool in the cluster and desired_node_pool_id is not provided then the change applies to that single node pool.
+func (o ClusterUpdateOutput) DesiredNodePoolAutoscaling() NodePoolAutoscalingPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *NodePoolAutoscaling { return v.DesiredNodePoolAutoscaling }).(NodePoolAutoscalingPtrOutput)
+}
+
+// The node pool to be upgraded. This field is mandatory if "desired_node_version", "desired_image_family", "desired_node_pool_autoscaling", or "desired_workload_metadata_config" is specified and there is more than one node pool on the cluster.
+func (o ClusterUpdateOutput) DesiredNodePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *string { return v.DesiredNodePoolId }).(pulumi.StringPtrOutput)
+}
+
+// The Kubernetes version to change the nodes to (typically an upgrade). Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the Kubernetes master version
+func (o ClusterUpdateOutput) DesiredNodeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *string { return v.DesiredNodeVersion }).(pulumi.StringPtrOutput)
+}
+
+// The desired notification configuration.
+func (o ClusterUpdateOutput) DesiredNotificationConfig() NotificationConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *NotificationConfig { return v.DesiredNotificationConfig }).(NotificationConfigPtrOutput)
+}
+
+// The desired configuration options for the PodSecurityPolicy feature.
+func (o ClusterUpdateOutput) DesiredPodSecurityPolicyConfig() PodSecurityPolicyConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *PodSecurityPolicyConfig { return v.DesiredPodSecurityPolicyConfig }).(PodSecurityPolicyConfigPtrOutput)
+}
+
+// The desired private cluster configuration.
+func (o ClusterUpdateOutput) DesiredPrivateClusterConfig() PrivateClusterConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *PrivateClusterConfig { return v.DesiredPrivateClusterConfig }).(PrivateClusterConfigPtrOutput)
+}
+
+// The desired state of IPv6 connectivity to Google Services.
+func (o ClusterUpdateOutput) DesiredPrivateIpv6GoogleAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *string { return v.DesiredPrivateIpv6GoogleAccess }).(pulumi.StringPtrOutput)
+}
+
+// The desired release channel configuration.
+func (o ClusterUpdateOutput) DesiredReleaseChannel() ReleaseChannelPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *ReleaseChannel { return v.DesiredReleaseChannel }).(ReleaseChannelPtrOutput)
+}
+
+// The desired configuration for exporting resource usage.
+func (o ClusterUpdateOutput) DesiredResourceUsageExportConfig() ResourceUsageExportConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *ResourceUsageExportConfig { return v.DesiredResourceUsageExportConfig }).(ResourceUsageExportConfigPtrOutput)
+}
+
+// Configuration for Shielded Nodes.
+func (o ClusterUpdateOutput) DesiredShieldedNodes() ShieldedNodesPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *ShieldedNodes { return v.DesiredShieldedNodes }).(ShieldedNodesPtrOutput)
+}
+
+// The desired Cloud TPU configuration.
+func (o ClusterUpdateOutput) DesiredTpuConfig() TpuConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *TpuConfig { return v.DesiredTpuConfig }).(TpuConfigPtrOutput)
+}
+
+// Cluster-level Vertical Pod Autoscaling configuration.
+func (o ClusterUpdateOutput) DesiredVerticalPodAutoscaling() VerticalPodAutoscalingPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *VerticalPodAutoscaling { return v.DesiredVerticalPodAutoscaling }).(VerticalPodAutoscalingPtrOutput)
+}
+
+// Configuration for Workload Identity.
+func (o ClusterUpdateOutput) DesiredWorkloadIdentityConfig() WorkloadIdentityConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *WorkloadIdentityConfig { return v.DesiredWorkloadIdentityConfig }).(WorkloadIdentityConfigPtrOutput)
+}
+
 // ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
 type ConfidentialNodes struct {
 	// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
@@ -7338,6 +7645,140 @@ func (o HttpLoadBalancingResponsePtrOutput) Disabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer subsetting on this cluster.
+type ILBSubsettingConfig struct {
+	// Enables l4 ILB subsetting for this cluster
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ILBSubsettingConfigInput is an input type that accepts ILBSubsettingConfigArgs and ILBSubsettingConfigOutput values.
+// You can construct a concrete instance of `ILBSubsettingConfigInput` via:
+//
+//          ILBSubsettingConfigArgs{...}
+type ILBSubsettingConfigInput interface {
+	pulumi.Input
+
+	ToILBSubsettingConfigOutput() ILBSubsettingConfigOutput
+	ToILBSubsettingConfigOutputWithContext(context.Context) ILBSubsettingConfigOutput
+}
+
+// ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer subsetting on this cluster.
+type ILBSubsettingConfigArgs struct {
+	// Enables l4 ILB subsetting for this cluster
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ILBSubsettingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ILBSubsettingConfig)(nil)).Elem()
+}
+
+func (i ILBSubsettingConfigArgs) ToILBSubsettingConfigOutput() ILBSubsettingConfigOutput {
+	return i.ToILBSubsettingConfigOutputWithContext(context.Background())
+}
+
+func (i ILBSubsettingConfigArgs) ToILBSubsettingConfigOutputWithContext(ctx context.Context) ILBSubsettingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ILBSubsettingConfigOutput)
+}
+
+func (i ILBSubsettingConfigArgs) ToILBSubsettingConfigPtrOutput() ILBSubsettingConfigPtrOutput {
+	return i.ToILBSubsettingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ILBSubsettingConfigArgs) ToILBSubsettingConfigPtrOutputWithContext(ctx context.Context) ILBSubsettingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ILBSubsettingConfigOutput).ToILBSubsettingConfigPtrOutputWithContext(ctx)
+}
+
+// ILBSubsettingConfigPtrInput is an input type that accepts ILBSubsettingConfigArgs, ILBSubsettingConfigPtr and ILBSubsettingConfigPtrOutput values.
+// You can construct a concrete instance of `ILBSubsettingConfigPtrInput` via:
+//
+//          ILBSubsettingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ILBSubsettingConfigPtrInput interface {
+	pulumi.Input
+
+	ToILBSubsettingConfigPtrOutput() ILBSubsettingConfigPtrOutput
+	ToILBSubsettingConfigPtrOutputWithContext(context.Context) ILBSubsettingConfigPtrOutput
+}
+
+type ilbsubsettingConfigPtrType ILBSubsettingConfigArgs
+
+func ILBSubsettingConfigPtr(v *ILBSubsettingConfigArgs) ILBSubsettingConfigPtrInput {
+	return (*ilbsubsettingConfigPtrType)(v)
+}
+
+func (*ilbsubsettingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ILBSubsettingConfig)(nil)).Elem()
+}
+
+func (i *ilbsubsettingConfigPtrType) ToILBSubsettingConfigPtrOutput() ILBSubsettingConfigPtrOutput {
+	return i.ToILBSubsettingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ilbsubsettingConfigPtrType) ToILBSubsettingConfigPtrOutputWithContext(ctx context.Context) ILBSubsettingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ILBSubsettingConfigPtrOutput)
+}
+
+// ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer subsetting on this cluster.
+type ILBSubsettingConfigOutput struct{ *pulumi.OutputState }
+
+func (ILBSubsettingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ILBSubsettingConfig)(nil)).Elem()
+}
+
+func (o ILBSubsettingConfigOutput) ToILBSubsettingConfigOutput() ILBSubsettingConfigOutput {
+	return o
+}
+
+func (o ILBSubsettingConfigOutput) ToILBSubsettingConfigOutputWithContext(ctx context.Context) ILBSubsettingConfigOutput {
+	return o
+}
+
+func (o ILBSubsettingConfigOutput) ToILBSubsettingConfigPtrOutput() ILBSubsettingConfigPtrOutput {
+	return o.ToILBSubsettingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ILBSubsettingConfigOutput) ToILBSubsettingConfigPtrOutputWithContext(ctx context.Context) ILBSubsettingConfigPtrOutput {
+	return o.ApplyT(func(v ILBSubsettingConfig) *ILBSubsettingConfig {
+		return &v
+	}).(ILBSubsettingConfigPtrOutput)
+}
+
+// Enables l4 ILB subsetting for this cluster
+func (o ILBSubsettingConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ILBSubsettingConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ILBSubsettingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ILBSubsettingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ILBSubsettingConfig)(nil)).Elem()
+}
+
+func (o ILBSubsettingConfigPtrOutput) ToILBSubsettingConfigPtrOutput() ILBSubsettingConfigPtrOutput {
+	return o
+}
+
+func (o ILBSubsettingConfigPtrOutput) ToILBSubsettingConfigPtrOutputWithContext(ctx context.Context) ILBSubsettingConfigPtrOutput {
+	return o
+}
+
+func (o ILBSubsettingConfigPtrOutput) Elem() ILBSubsettingConfigOutput {
+	return o.ApplyT(func(v *ILBSubsettingConfig) ILBSubsettingConfig { return *v }).(ILBSubsettingConfigOutput)
+}
+
+// Enables l4 ILB subsetting for this cluster
+func (o ILBSubsettingConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ILBSubsettingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Configuration for controlling how IPs are allocated in the cluster.
 type IPAllocationPolicy struct {
 	// If true, allow allocation of cluster CIDR ranges that overlap with certain kinds of network routes. By default we do not allow cluster CIDR ranges to intersect with any user declared routes. With allow_route_overlap == true, we allow overlapping with CIDR ranges that are larger than the cluster CIDR range. If this field is set to true, then cluster and services CIDRs must be fully-specified (e.g. `10.96.0.0/14`, but not `/14`), which means: 1) When `use_ip_aliases` is true, `cluster_ipv4_cidr_block` and `services_ipv4_cidr_block` must be fully-specified. 2) When `use_ip_aliases` is false, `cluster.cluster_ipv4_cidr` muse be fully-specified.
@@ -8097,6 +8538,140 @@ func (o IPAllocationPolicyResponsePtrOutput) UseRoutes() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return &v.UseRoutes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// IntraNodeVisibilityConfig contains the desired config of the intra-node visibility on this cluster.
+type IntraNodeVisibilityConfig struct {
+	// Enables intra node visibility for this cluster.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// IntraNodeVisibilityConfigInput is an input type that accepts IntraNodeVisibilityConfigArgs and IntraNodeVisibilityConfigOutput values.
+// You can construct a concrete instance of `IntraNodeVisibilityConfigInput` via:
+//
+//          IntraNodeVisibilityConfigArgs{...}
+type IntraNodeVisibilityConfigInput interface {
+	pulumi.Input
+
+	ToIntraNodeVisibilityConfigOutput() IntraNodeVisibilityConfigOutput
+	ToIntraNodeVisibilityConfigOutputWithContext(context.Context) IntraNodeVisibilityConfigOutput
+}
+
+// IntraNodeVisibilityConfig contains the desired config of the intra-node visibility on this cluster.
+type IntraNodeVisibilityConfigArgs struct {
+	// Enables intra node visibility for this cluster.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (IntraNodeVisibilityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntraNodeVisibilityConfig)(nil)).Elem()
+}
+
+func (i IntraNodeVisibilityConfigArgs) ToIntraNodeVisibilityConfigOutput() IntraNodeVisibilityConfigOutput {
+	return i.ToIntraNodeVisibilityConfigOutputWithContext(context.Background())
+}
+
+func (i IntraNodeVisibilityConfigArgs) ToIntraNodeVisibilityConfigOutputWithContext(ctx context.Context) IntraNodeVisibilityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntraNodeVisibilityConfigOutput)
+}
+
+func (i IntraNodeVisibilityConfigArgs) ToIntraNodeVisibilityConfigPtrOutput() IntraNodeVisibilityConfigPtrOutput {
+	return i.ToIntraNodeVisibilityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IntraNodeVisibilityConfigArgs) ToIntraNodeVisibilityConfigPtrOutputWithContext(ctx context.Context) IntraNodeVisibilityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntraNodeVisibilityConfigOutput).ToIntraNodeVisibilityConfigPtrOutputWithContext(ctx)
+}
+
+// IntraNodeVisibilityConfigPtrInput is an input type that accepts IntraNodeVisibilityConfigArgs, IntraNodeVisibilityConfigPtr and IntraNodeVisibilityConfigPtrOutput values.
+// You can construct a concrete instance of `IntraNodeVisibilityConfigPtrInput` via:
+//
+//          IntraNodeVisibilityConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type IntraNodeVisibilityConfigPtrInput interface {
+	pulumi.Input
+
+	ToIntraNodeVisibilityConfigPtrOutput() IntraNodeVisibilityConfigPtrOutput
+	ToIntraNodeVisibilityConfigPtrOutputWithContext(context.Context) IntraNodeVisibilityConfigPtrOutput
+}
+
+type intraNodeVisibilityConfigPtrType IntraNodeVisibilityConfigArgs
+
+func IntraNodeVisibilityConfigPtr(v *IntraNodeVisibilityConfigArgs) IntraNodeVisibilityConfigPtrInput {
+	return (*intraNodeVisibilityConfigPtrType)(v)
+}
+
+func (*intraNodeVisibilityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntraNodeVisibilityConfig)(nil)).Elem()
+}
+
+func (i *intraNodeVisibilityConfigPtrType) ToIntraNodeVisibilityConfigPtrOutput() IntraNodeVisibilityConfigPtrOutput {
+	return i.ToIntraNodeVisibilityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *intraNodeVisibilityConfigPtrType) ToIntraNodeVisibilityConfigPtrOutputWithContext(ctx context.Context) IntraNodeVisibilityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntraNodeVisibilityConfigPtrOutput)
+}
+
+// IntraNodeVisibilityConfig contains the desired config of the intra-node visibility on this cluster.
+type IntraNodeVisibilityConfigOutput struct{ *pulumi.OutputState }
+
+func (IntraNodeVisibilityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntraNodeVisibilityConfig)(nil)).Elem()
+}
+
+func (o IntraNodeVisibilityConfigOutput) ToIntraNodeVisibilityConfigOutput() IntraNodeVisibilityConfigOutput {
+	return o
+}
+
+func (o IntraNodeVisibilityConfigOutput) ToIntraNodeVisibilityConfigOutputWithContext(ctx context.Context) IntraNodeVisibilityConfigOutput {
+	return o
+}
+
+func (o IntraNodeVisibilityConfigOutput) ToIntraNodeVisibilityConfigPtrOutput() IntraNodeVisibilityConfigPtrOutput {
+	return o.ToIntraNodeVisibilityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IntraNodeVisibilityConfigOutput) ToIntraNodeVisibilityConfigPtrOutputWithContext(ctx context.Context) IntraNodeVisibilityConfigPtrOutput {
+	return o.ApplyT(func(v IntraNodeVisibilityConfig) *IntraNodeVisibilityConfig {
+		return &v
+	}).(IntraNodeVisibilityConfigPtrOutput)
+}
+
+// Enables intra node visibility for this cluster.
+func (o IntraNodeVisibilityConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IntraNodeVisibilityConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type IntraNodeVisibilityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IntraNodeVisibilityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntraNodeVisibilityConfig)(nil)).Elem()
+}
+
+func (o IntraNodeVisibilityConfigPtrOutput) ToIntraNodeVisibilityConfigPtrOutput() IntraNodeVisibilityConfigPtrOutput {
+	return o
+}
+
+func (o IntraNodeVisibilityConfigPtrOutput) ToIntraNodeVisibilityConfigPtrOutputWithContext(ctx context.Context) IntraNodeVisibilityConfigPtrOutput {
+	return o
+}
+
+func (o IntraNodeVisibilityConfigPtrOutput) Elem() IntraNodeVisibilityConfigOutput {
+	return o.ApplyT(func(v *IntraNodeVisibilityConfig) IntraNodeVisibilityConfig { return *v }).(IntraNodeVisibilityConfigOutput)
+}
+
+// Enables intra node visibility for this cluster.
+func (o IntraNodeVisibilityConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IntraNodeVisibilityConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -12452,6 +13027,61 @@ func (o NetworkPolicyResponsePtrOutput) Provider() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Collection of Compute Engine network tags that can be applied to a node's underyling VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
+type NetworkTags struct {
+	// List of network tags.
+	Tags []string `pulumi:"tags"`
+}
+
+// NetworkTagsInput is an input type that accepts NetworkTagsArgs and NetworkTagsOutput values.
+// You can construct a concrete instance of `NetworkTagsInput` via:
+//
+//          NetworkTagsArgs{...}
+type NetworkTagsInput interface {
+	pulumi.Input
+
+	ToNetworkTagsOutput() NetworkTagsOutput
+	ToNetworkTagsOutputWithContext(context.Context) NetworkTagsOutput
+}
+
+// Collection of Compute Engine network tags that can be applied to a node's underyling VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
+type NetworkTagsArgs struct {
+	// List of network tags.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (NetworkTagsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTags)(nil)).Elem()
+}
+
+func (i NetworkTagsArgs) ToNetworkTagsOutput() NetworkTagsOutput {
+	return i.ToNetworkTagsOutputWithContext(context.Background())
+}
+
+func (i NetworkTagsArgs) ToNetworkTagsOutputWithContext(ctx context.Context) NetworkTagsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkTagsOutput)
+}
+
+// Collection of Compute Engine network tags that can be applied to a node's underyling VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
+type NetworkTagsOutput struct{ *pulumi.OutputState }
+
+func (NetworkTagsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTags)(nil)).Elem()
+}
+
+func (o NetworkTagsOutput) ToNetworkTagsOutput() NetworkTagsOutput {
+	return o
+}
+
+func (o NetworkTagsOutput) ToNetworkTagsOutputWithContext(ctx context.Context) NetworkTagsOutput {
+	return o
+}
+
+// List of network tags.
+func (o NetworkTagsOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkTags) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
 // Parameters that describe the nodes in a cluster.
 type NodeConfig struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
@@ -13898,6 +14528,61 @@ func (o NodeKubeletConfigResponsePtrOutput) CpuManagerPolicy() pulumi.StringPtrO
 		}
 		return &v.CpuManagerPolicy
 	}).(pulumi.StringPtrOutput)
+}
+
+// Collection of node-level [Kubernetes labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels).
+type NodeLabels struct {
+	// Map of node label keys and node label values.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// NodeLabelsInput is an input type that accepts NodeLabelsArgs and NodeLabelsOutput values.
+// You can construct a concrete instance of `NodeLabelsInput` via:
+//
+//          NodeLabelsArgs{...}
+type NodeLabelsInput interface {
+	pulumi.Input
+
+	ToNodeLabelsOutput() NodeLabelsOutput
+	ToNodeLabelsOutputWithContext(context.Context) NodeLabelsOutput
+}
+
+// Collection of node-level [Kubernetes labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels).
+type NodeLabelsArgs struct {
+	// Map of node label keys and node label values.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (NodeLabelsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeLabels)(nil)).Elem()
+}
+
+func (i NodeLabelsArgs) ToNodeLabelsOutput() NodeLabelsOutput {
+	return i.ToNodeLabelsOutputWithContext(context.Background())
+}
+
+func (i NodeLabelsArgs) ToNodeLabelsOutputWithContext(ctx context.Context) NodeLabelsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeLabelsOutput)
+}
+
+// Collection of node-level [Kubernetes labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels).
+type NodeLabelsOutput struct{ *pulumi.OutputState }
+
+func (NodeLabelsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeLabels)(nil)).Elem()
+}
+
+func (o NodeLabelsOutput) ToNodeLabelsOutput() NodeLabelsOutput {
+	return o
+}
+
+func (o NodeLabelsOutput) ToNodeLabelsOutputWithContext(ctx context.Context) NodeLabelsOutput {
+	return o
+}
+
+// Map of node label keys and node label values.
+func (o NodeLabelsOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodeLabels) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // NodeManagement defines the set of node management services turned on for the node pool.
@@ -15656,6 +16341,61 @@ func (o NodeTaintResponseArrayOutput) Index(i pulumi.IntInput) NodeTaintResponse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeTaintResponse {
 		return vs[0].([]NodeTaintResponse)[vs[1].(int)]
 	}).(NodeTaintResponseOutput)
+}
+
+// Collection of Kubernetes [node taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration).
+type NodeTaints struct {
+	// List of node taints.
+	Taints []NodeTaint `pulumi:"taints"`
+}
+
+// NodeTaintsInput is an input type that accepts NodeTaintsArgs and NodeTaintsOutput values.
+// You can construct a concrete instance of `NodeTaintsInput` via:
+//
+//          NodeTaintsArgs{...}
+type NodeTaintsInput interface {
+	pulumi.Input
+
+	ToNodeTaintsOutput() NodeTaintsOutput
+	ToNodeTaintsOutputWithContext(context.Context) NodeTaintsOutput
+}
+
+// Collection of Kubernetes [node taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration).
+type NodeTaintsArgs struct {
+	// List of node taints.
+	Taints NodeTaintArrayInput `pulumi:"taints"`
+}
+
+func (NodeTaintsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeTaints)(nil)).Elem()
+}
+
+func (i NodeTaintsArgs) ToNodeTaintsOutput() NodeTaintsOutput {
+	return i.ToNodeTaintsOutputWithContext(context.Background())
+}
+
+func (i NodeTaintsArgs) ToNodeTaintsOutputWithContext(ctx context.Context) NodeTaintsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTaintsOutput)
+}
+
+// Collection of Kubernetes [node taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration).
+type NodeTaintsOutput struct{ *pulumi.OutputState }
+
+func (NodeTaintsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeTaints)(nil)).Elem()
+}
+
+func (o NodeTaintsOutput) ToNodeTaintsOutput() NodeTaintsOutput {
+	return o
+}
+
+func (o NodeTaintsOutput) ToNodeTaintsOutputWithContext(ctx context.Context) NodeTaintsOutput {
+	return o
+}
+
+// List of node taints.
+func (o NodeTaintsOutput) Taints() NodeTaintArrayOutput {
+	return o.ApplyT(func(v NodeTaints) []NodeTaint { return v.Taints }).(NodeTaintArrayOutput)
 }
 
 // NotificationConfig is the configuration of notifications.
@@ -21795,6 +22535,7 @@ func init() {
 	pulumi.RegisterOutputType(ClusterTelemetryPtrOutput{})
 	pulumi.RegisterOutputType(ClusterTelemetryResponseOutput{})
 	pulumi.RegisterOutputType(ClusterTelemetryResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClusterUpdateOutput{})
 	pulumi.RegisterOutputType(ConfidentialNodesOutput{})
 	pulumi.RegisterOutputType(ConfidentialNodesPtrOutput{})
 	pulumi.RegisterOutputType(ConfidentialNodesResponseOutput{})
@@ -21839,10 +22580,14 @@ func init() {
 	pulumi.RegisterOutputType(HttpLoadBalancingPtrOutput{})
 	pulumi.RegisterOutputType(HttpLoadBalancingResponseOutput{})
 	pulumi.RegisterOutputType(HttpLoadBalancingResponsePtrOutput{})
+	pulumi.RegisterOutputType(ILBSubsettingConfigOutput{})
+	pulumi.RegisterOutputType(ILBSubsettingConfigPtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyResponseOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(IntraNodeVisibilityConfigOutput{})
+	pulumi.RegisterOutputType(IntraNodeVisibilityConfigPtrOutput{})
 	pulumi.RegisterOutputType(IstioConfigOutput{})
 	pulumi.RegisterOutputType(IstioConfigPtrOutput{})
 	pulumi.RegisterOutputType(IstioConfigResponseOutput{})
@@ -21899,6 +22644,7 @@ func init() {
 	pulumi.RegisterOutputType(NetworkPolicyConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyResponseOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(NetworkTagsOutput{})
 	pulumi.RegisterOutputType(NodeConfigOutput{})
 	pulumi.RegisterOutputType(NodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigResponseOutput{})
@@ -21907,6 +22653,7 @@ func init() {
 	pulumi.RegisterOutputType(NodeKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeKubeletConfigResponseOutput{})
 	pulumi.RegisterOutputType(NodeKubeletConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(NodeLabelsOutput{})
 	pulumi.RegisterOutputType(NodeManagementOutput{})
 	pulumi.RegisterOutputType(NodeManagementPtrOutput{})
 	pulumi.RegisterOutputType(NodeManagementResponseOutput{})
@@ -21927,6 +22674,7 @@ func init() {
 	pulumi.RegisterOutputType(NodeTaintArrayOutput{})
 	pulumi.RegisterOutputType(NodeTaintResponseOutput{})
 	pulumi.RegisterOutputType(NodeTaintResponseArrayOutput{})
+	pulumi.RegisterOutputType(NodeTaintsOutput{})
 	pulumi.RegisterOutputType(NotificationConfigOutput{})
 	pulumi.RegisterOutputType(NotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(NotificationConfigResponseOutput{})
