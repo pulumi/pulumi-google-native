@@ -5,16 +5,15 @@ PACKDIR         := sdk
 PROJECT         := github.com/pulumi/pulumi-gcp-native
 PROVIDER        := pulumi-resource-${PACK}
 CODEGEN         := pulumi-gen-${PACK}
-VERSION         := 0.0.1
+VERSION         := $(shell pulumictl get version)
 
-PROVIDER_PKGS    := $(shell cd ./provider && go list ./...)
+PROVIDER_PKGS   := $(shell cd ./provider && go list ./...)
 WORKING_DIR     := $(shell pwd)
 
 VERSION_FLAGS   := -ldflags "-X github.com/pulumi/pulumi-${PACK}/provider/pkg/version.Version=${VERSION}"
 
 ensure::
-	@echo "GO111MODULE=on go mod tidy"; cd provider; GO111MODULE=on go mod tidy
-	@echo "GO111MODULE=on go mod download"; cd provider; GO111MODULE=on go mod download
+	@echo "go mod download"; cd provider; go mod download
 
 local_generate::
 	$(WORKING_DIR)/bin/$(CODEGEN) schema,nodejs,dotnet,python,go ${VERSION}
@@ -43,7 +42,7 @@ discovery::codegen
 generate_nodejs::
 	$(WORKING_DIR)/bin/$(CODEGEN) nodejs ${VERSION}
 
-build_nodejs:: VERSION := 0.0.1
+build_nodejs:: VERSION := $(shell pulumictl get version --language javascript)
 build_nodejs::
 	cd ${PACKDIR}/nodejs/ && \
 		yarn install && \
@@ -55,7 +54,7 @@ build_nodejs::
 generate_python::
 	$(WORKING_DIR)/bin/$(CODEGEN) python ${VERSION}
 
-build_python:: VERSION := 0.0.1
+build_python:: VERSION := $(shell pulumictl get version --language python)
 build_python::
 	cd sdk/python/ && \
         cp ../../README.md . && \
@@ -68,7 +67,7 @@ build_python::
 generate_dotnet::
 	$(WORKING_DIR)/bin/$(CODEGEN) dotnet ${VERSION}
 
-build_dotnet:: DOTNET_VERSION := 0.0.1
+build_dotnet:: DOTNET_VERSION := $(shell pulumictl get version --language dotnet)
 build_dotnet::
 	cd ${PACKDIR}/dotnet/ && \
 		echo "${PACK}\n${DOTNET_VERSION}" >version.txt && \
@@ -103,5 +102,8 @@ test::
 build:: init_submodules clean codegen local_generate provider build_sdks install_sdks
 build_sdks: build_nodejs build_dotnet build_python build_go
 install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk
+
+# Required for the codegen action that runs in pulumi/pulumi
+only_build:: build
 
 .PHONY: init_submodules update_submodules ensure generate_schema generate build_provider build
