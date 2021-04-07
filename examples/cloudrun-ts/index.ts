@@ -4,7 +4,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as gcp from "@pulumi/gcp-native";
 import * as random from "@pulumi/random"
 
-const project = "pulumi-development";
+const project = "pulumi-ci-gcp-provider";
 const region = "us-central1";
 
 const randomString = new random.RandomString("service-name", {
