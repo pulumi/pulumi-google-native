@@ -1,11 +1,13 @@
+// Copyright 2016-2021, Pulumi Corporation.
+
 import * as pulumi from "@pulumi/pulumi";
-import * as cloud from "@pulumi/google-cloud";
+import * as gcp from "@pulumi/gcp-native";
 
 const project = "pulumi-development";
 const region = "us-central1";
 
 const runName = "run-native";
-const service = new cloud.run.v1.Service("service", {
+const service = new gcp.run.v1.Service("service", {
     projectsId: project,
     locationsId: region,
     servicesId: runName,
@@ -23,7 +25,7 @@ const service = new cloud.run.v1.Service("service", {
     },
 });
 
-const iamHello = new cloud.run.v1.ServiceIamPolicy("allow-all", {
+const iamHello = new gcp.run.v1.ServiceIamPolicy("allow-all", {
     projectsId: project,
     locationsId: region,
     servicesId: service.metadata.name,
@@ -34,14 +36,14 @@ const iamHello = new cloud.run.v1.ServiceIamPolicy("allow-all", {
 });
 
 const bucketName = "bucket-nextgen";
-const bucket = new cloud.storage.v1.Bucket("bucket", {
+const bucket = new gcp.storage.v1.Bucket("bucket", {
     project: project,
     bucket: bucketName,
     name: bucketName,
 });
 
 const archiveName = "zip2";
-const bucketObject = new cloud.storage.v1.BucketObject(archiveName, {
+const bucketObject = new gcp.storage.v1.BucketObject(archiveName, {
     object: archiveName,
     name: archiveName,
     bucket: bucket.name,
@@ -51,7 +53,7 @@ const bucketObject = new cloud.storage.v1.BucketObject(archiveName, {
 });
 
 const functionName = "python-func";
-const functionPython = new cloud.cloudfunctions.v1.Function(functionName, {
+const functionPython = new gcp.cloudfunctions.v1.Function(functionName, {
     projectsId: project,
     locationsId: region,
     functionsId: functionName,
@@ -65,7 +67,7 @@ const functionPython = new cloud.cloudfunctions.v1.Function(functionName, {
     ingressSettings: "ALLOW_ALL",
 });
 
-const pyInvoker = new cloud.cloudfunctions.v1.FunctionIamPolicy("py-invoker", {
+const pyInvoker = new gcp.cloudfunctions.v1.FunctionIamPolicy("py-invoker", {
     projectsId: project,
     locationsId: region,
     functionsId: functionName,
@@ -80,7 +82,7 @@ const pyInvoker = new cloud.cloudfunctions.v1.FunctionIamPolicy("py-invoker", {
 export const functionUrl = functionPython.httpsTrigger.url;
 
 const clusterName = "gke-native";
-const cluster = new cloud.container.v1.Cluster("cluster", {
+const cluster = new gcp.container.v1.Cluster("cluster", {
     projectsId: project,
     locationsId: region,
     clustersId: clusterName,
@@ -106,7 +108,7 @@ const cluster = new cloud.container.v1.Cluster("cluster", {
 });
 
 const nodePoolName = "extra-node-pool";
-const pool = new cloud.container.v1.ClusterNodePool(nodePoolName, {
+const pool = new gcp.container.v1.ClusterNodePool(nodePoolName, {
     projectsId: project,
     locationsId: region,
     clustersId: cluster.name,

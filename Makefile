@@ -1,8 +1,8 @@
-PROJECT_NAME := Pulumi Google Cloud NextGen Resource Provider
+PROJECT_NAME := Pulumi Native Google Cloud Resource Provider
 
-PACK            := google-cloud
+PACK            := gcp-native
 PACKDIR         := sdk
-PROJECT         := github.com/pulumi/pulumi-google-cloud
+PROJECT         := github.com/pulumi/pulumi-gcp-native
 PROVIDER        := pulumi-resource-${PACK}
 CODEGEN         := pulumi-gen-${PACK}
 VERSION         := 0.0.1
@@ -10,7 +10,7 @@ VERSION         := 0.0.1
 PROVIDER_PKGS    := $(shell cd ./provider && go list ./...)
 WORKING_DIR     := $(shell pwd)
 
-VERSION_FLAGS   := -ldflags "-X github.com/pulumi/pulumi-google-cloud/provider/pkg/version.Version=${VERSION}"
+VERSION_FLAGS   := -ldflags "-X github.com/pulumi/pulumi-${PACK}/provider/pkg/version.Version=${VERSION}"
 
 ensure::
 	@echo "GO111MODULE=on go mod tidy"; cd provider; GO111MODULE=on go mod tidy
@@ -71,7 +71,7 @@ generate_dotnet::
 build_dotnet:: DOTNET_VERSION := 0.0.1
 build_dotnet::
 	cd ${PACKDIR}/dotnet/ && \
-		echo "google-cloud\n${DOTNET_VERSION}" >version.txt && \
+		echo "${PACK}\n${DOTNET_VERSION}" >version.txt && \
 		dotnet build /p:Version=${DOTNET_VERSION}
 
 generate_go::
@@ -83,7 +83,7 @@ clean::
 	rm -rf sdk/nodejs && mkdir sdk/nodejs && touch sdk/nodejs/go.mod
 	rm -rf sdk/python && mkdir sdk/python && touch sdk/python/go.mod && cp README.md sdk/python
 	rm -rf sdk/dotnet && mkdir sdk/dotnet && touch sdk/dotnet/go.mod
-	rm -rf sdk/go/azure
+	rm -rf sdk/go/gcp
 	rm -rf sdk/schema
 
 install_dotnet_sdk::
