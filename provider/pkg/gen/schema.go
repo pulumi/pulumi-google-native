@@ -9,9 +9,9 @@ import (
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-gcp-native/provider/pkg/discovery"
 	"github.com/pulumi/pulumi-gcp-native/provider/pkg/resources"
-	"github.com/pulumi/pulumi/pkg/v2/codegen"
-	"github.com/pulumi/pulumi/pkg/v2/codegen/schema"
-	"github.com/pulumi/pulumi/sdk/v2/go/common/util/contract"
+	"github.com/pulumi/pulumi/pkg/v3/codegen"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"io/ioutil"
 	"os"
 	"path"
@@ -97,7 +97,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	})
 	pkg.Language["nodejs"] = rawMessage(map[string]interface{}{
 		"dependencies": map[string]string{
-			"@pulumi/pulumi": "^2.0.0",
+			"@pulumi/pulumi": "^3.0.0-alpha.0",
 		},
 		"readme": `TODO`,
 	})
@@ -105,7 +105,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	pkg.Language["python"] = rawMessage(map[string]interface{}{
 		"moduleNameOverrides": pythonModuleNames,
 		"requires": map[string]string{
-			"pulumi": ">=2.11.2,<3.0.0",
+			"pulumi": ">=3.0.0a1,<4.0.0",
 		},
 		"usesIOClasses": true,
 		"readme":        `TODO`,
@@ -113,7 +113,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 
 	pkg.Language["csharp"] = rawMessage(map[string]interface{}{
 		"packageReferences": map[string]string{
-			"Pulumi":                       "2.*",
+			"Pulumi":                       "3.*-*",
 			"System.Collections.Immutable": "1.6.0",
 		},
 		"namespaces": csharpNamespaces,
