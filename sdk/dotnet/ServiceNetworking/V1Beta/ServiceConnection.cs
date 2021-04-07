@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ServiceNetworking.V1Beta
+namespace Pulumi.GcpNative.ServiceNetworking.V1Beta
 {
     /// <summary>
     /// Creates a private connection that establishes a VPC Network Peering connection to a VPC network in the service producer's organization. The administrator of the service consumer's VPC network invokes this method. The administrator must assign one or more allocated IP ranges for provisioning subnetworks in the service producer's VPC network. This connection is used for all supported services in the service producer's organization, so it only needs to be invoked once. The response from the `get` operation will be of type `Connection` if the operation successfully completes.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:servicenetworking/v1beta:ServiceConnection")]
+    [GcpNativeResourceType("gcp-native:servicenetworking/v1beta:ServiceConnection")]
     public partial class ServiceConnection : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.ServiceNetworking.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceConnection(string name, ServiceConnectionArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:servicenetworking/v1beta:ServiceConnection", name, args ?? new ServiceConnectionArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:servicenetworking/v1beta:ServiceConnection", name, args ?? new ServiceConnectionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceConnection(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:servicenetworking/v1beta:ServiceConnection", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:servicenetworking/v1beta:ServiceConnection", name, null, MakeResourceOptions(options, id))
         {
         }
 

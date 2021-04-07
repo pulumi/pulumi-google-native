@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DeploymentManager.Alpha.Inputs
+namespace Pulumi.GcpNative.DeploymentManager.Alpha.Inputs
 {
 
     public sealed class TargetConfigurationArgs : Pulumi.ResourceArgs

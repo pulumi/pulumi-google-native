@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Pubsub.V1Beta2
+namespace Pulumi.GcpNative.Pubsub.V1Beta2
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:pubsub/v1beta2:TopicIamPolicy")]
+    [GcpNativeResourceType("gcp-native:pubsub/v1beta2:TopicIamPolicy")]
     public partial class TopicIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.Pubsub.V1Beta2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TopicIamPolicy(string name, TopicIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:pubsub/v1beta2:TopicIamPolicy", name, args ?? new TopicIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:pubsub/v1beta2:TopicIamPolicy", name, args ?? new TopicIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TopicIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:pubsub/v1beta2:TopicIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:pubsub/v1beta2:TopicIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

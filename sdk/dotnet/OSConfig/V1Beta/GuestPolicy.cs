@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.OSConfig.V1Beta
+namespace Pulumi.GcpNative.OSConfig.V1Beta
 {
     /// <summary>
     /// Create an OS Config guest policy.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:osconfig/v1beta:GuestPolicy")]
+    [GcpNativeResourceType("gcp-native:osconfig/v1beta:GuestPolicy")]
     public partial class GuestPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GoogleCloud.OSConfig.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GuestPolicy(string name, GuestPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:osconfig/v1beta:GuestPolicy", name, args ?? new GuestPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:osconfig/v1beta:GuestPolicy", name, args ?? new GuestPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private GuestPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:osconfig/v1beta:GuestPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:osconfig/v1beta:GuestPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

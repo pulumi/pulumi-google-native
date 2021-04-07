@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudChannel.V1.Outputs
+namespace Pulumi.GcpNative.CloudChannel.V1.Outputs
 {
 
     [OutputType]

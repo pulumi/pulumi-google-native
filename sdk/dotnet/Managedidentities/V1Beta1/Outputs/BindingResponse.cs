@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Managedidentities.V1Beta1.Outputs
+namespace Pulumi.GcpNative.Managedidentities.V1Beta1.Outputs
 {
 
     [OutputType]

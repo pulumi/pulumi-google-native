@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.AppEngine.V1Beta
+namespace Pulumi.GcpNative.AppEngine.V1Beta
 {
     /// <summary>
     /// Deploys code and resource files to a new version.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:appengine/v1beta:AppServiceVersion")]
+    [GcpNativeResourceType("gcp-native:appengine/v1beta:AppServiceVersion")]
     public partial class AppServiceVersion : Pulumi.CustomResource
     {
         /// <summary>
@@ -252,12 +252,12 @@ namespace Pulumi.GoogleCloud.AppEngine.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AppServiceVersion(string name, AppServiceVersionArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:appengine/v1beta:AppServiceVersion", name, args ?? new AppServiceVersionArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:appengine/v1beta:AppServiceVersion", name, args ?? new AppServiceVersionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AppServiceVersion(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:appengine/v1beta:AppServiceVersion", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:appengine/v1beta:AppServiceVersion", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Alpha
+namespace Pulumi.GcpNative.Compute.Alpha
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/alpha:NodeTemplateIamPolicy")]
+    [GcpNativeResourceType("gcp-native:compute/alpha:NodeTemplateIamPolicy")]
     public partial class NodeTemplateIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,12 +71,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NodeTemplateIamPolicy(string name, NodeTemplateIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:NodeTemplateIamPolicy", name, args ?? new NodeTemplateIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/alpha:NodeTemplateIamPolicy", name, args ?? new NodeTemplateIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private NodeTemplateIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:NodeTemplateIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/alpha:NodeTemplateIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Datamigration.V1Beta1
+namespace Pulumi.GcpNative.Datamigration.V1Beta1
 {
     /// <summary>
     /// Creates a new connection profile in a given project and location.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:datamigration/v1beta1:ConnectionProfile")]
+    [GcpNativeResourceType("gcp-native:datamigration/v1beta1:ConnectionProfile")]
     public partial class ConnectionProfile : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GoogleCloud.Datamigration.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ConnectionProfile(string name, ConnectionProfileArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:datamigration/v1beta1:ConnectionProfile", name, args ?? new ConnectionProfileArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:datamigration/v1beta1:ConnectionProfile", name, args ?? new ConnectionProfileArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ConnectionProfile(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:datamigration/v1beta1:ConnectionProfile", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:datamigration/v1beta1:ConnectionProfile", name, null, MakeResourceOptions(options, id))
         {
         }
 

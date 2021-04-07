@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Storage.V1
+namespace Pulumi.GcpNative.Storage.V1
 {
     /// <summary>
     /// Creates a new bucket.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:storage/v1:Bucket")]
+    [GcpNativeResourceType("gcp-native:storage/v1:Bucket")]
     public partial class Bucket : Pulumi.CustomResource
     {
         /// <summary>
@@ -186,12 +186,12 @@ namespace Pulumi.GoogleCloud.Storage.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Bucket(string name, BucketArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:storage/v1:Bucket", name, args ?? new BucketArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:storage/v1:Bucket", name, args ?? new BucketArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Bucket(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:storage/v1:Bucket", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:storage/v1:Bucket", name, null, MakeResourceOptions(options, id))
         {
         }
 

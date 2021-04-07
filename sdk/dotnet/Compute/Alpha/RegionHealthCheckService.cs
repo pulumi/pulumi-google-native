@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Alpha
+namespace Pulumi.GcpNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a regional HealthCheckService resource in the specified project and region using the data included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/alpha:RegionHealthCheckService")]
+    [GcpNativeResourceType("gcp-native:compute/alpha:RegionHealthCheckService")]
     public partial class RegionHealthCheckService : Pulumi.CustomResource
     {
         /// <summary>
@@ -108,12 +108,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionHealthCheckService(string name, RegionHealthCheckServiceArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:RegionHealthCheckService", name, args ?? new RegionHealthCheckServiceArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/alpha:RegionHealthCheckService", name, args ?? new RegionHealthCheckServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegionHealthCheckService(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:RegionHealthCheckService", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/alpha:RegionHealthCheckService", name, null, MakeResourceOptions(options, id))
         {
         }
 

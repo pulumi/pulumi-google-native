@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.APIGateway.V1
+namespace Pulumi.GcpNative.APIGateway.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:apigateway/v1:ApiConfigIamPolicy")]
+    [GcpNativeResourceType("gcp-native:apigateway/v1:ApiConfigIamPolicy")]
     public partial class ApiConfigIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.APIGateway.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ApiConfigIamPolicy(string name, ApiConfigIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:apigateway/v1:ApiConfigIamPolicy", name, args ?? new ApiConfigIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:apigateway/v1:ApiConfigIamPolicy", name, args ?? new ApiConfigIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ApiConfigIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:apigateway/v1:ApiConfigIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:apigateway/v1:ApiConfigIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

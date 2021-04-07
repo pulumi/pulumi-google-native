@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.BigtableAdmin.V2
+namespace Pulumi.GcpNative.BigtableAdmin.V2
 {
     /// <summary>
     /// Creates a new table in the specified instance. The table can be created with a full set of initial column families, specified in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:bigtableadmin/v2:InstanceTable")]
+    [GcpNativeResourceType("gcp-native:bigtableadmin/v2:InstanceTable")]
     public partial class InstanceTable : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.BigtableAdmin.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceTable(string name, InstanceTableArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:bigtableadmin/v2:InstanceTable", name, args ?? new InstanceTableArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:bigtableadmin/v2:InstanceTable", name, args ?? new InstanceTableArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceTable(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:bigtableadmin/v2:InstanceTable", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:bigtableadmin/v2:InstanceTable", name, null, MakeResourceOptions(options, id))
         {
         }
 

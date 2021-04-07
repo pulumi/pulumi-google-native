@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Apigee.V1
+namespace Pulumi.GcpNative.Apigee.V1
 {
     /// <summary>
     /// Creates a NAT address. The address is created in the RESERVED state and a static external IP address will be provisioned. At this time, the instance will not use this IP address for Internet egress traffic. The address can be activated for use once any required firewall IP whitelisting has been completed. **Note:** Not supported for Apigee hybrid.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:apigee/v1:OrganizationInstanceNatAddress")]
+    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationInstanceNatAddress")]
     public partial class OrganizationInstanceNatAddress : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationInstanceNatAddress(string name, OrganizationInstanceNatAddressArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationInstanceNatAddress", name, args ?? new OrganizationInstanceNatAddressArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:apigee/v1:OrganizationInstanceNatAddress", name, args ?? new OrganizationInstanceNatAddressArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationInstanceNatAddress(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationInstanceNatAddress", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:apigee/v1:OrganizationInstanceNatAddress", name, null, MakeResourceOptions(options, id))
         {
         }
 

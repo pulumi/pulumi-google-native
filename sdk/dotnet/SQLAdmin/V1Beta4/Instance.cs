@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.SQLAdmin.V1Beta4
+namespace Pulumi.GcpNative.SQLAdmin.V1Beta4
 {
     /// <summary>
     /// Creates a new Cloud SQL instance.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:sqladmin/v1beta4:Instance")]
+    [GcpNativeResourceType("gcp-native:sqladmin/v1beta4:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
@@ -210,12 +210,12 @@ namespace Pulumi.GoogleCloud.SQLAdmin.V1Beta4
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:sqladmin/v1beta4:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:sqladmin/v1beta4:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Instance(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:sqladmin/v1beta4:Instance", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:sqladmin/v1beta4:Instance", name, null, MakeResourceOptions(options, id))
         {
         }
 

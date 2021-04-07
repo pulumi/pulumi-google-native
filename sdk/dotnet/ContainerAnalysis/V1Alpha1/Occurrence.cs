@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ContainerAnalysis.V1Alpha1
+namespace Pulumi.GcpNative.ContainerAnalysis.V1Alpha1
 {
     /// <summary>
     /// Creates a new `Occurrence`. Use this method to create `Occurrences` for a resource.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:containeranalysis/v1alpha1:Occurrence")]
+    [GcpNativeResourceType("gcp-native:containeranalysis/v1alpha1:Occurrence")]
     public partial class Occurrence : Pulumi.CustomResource
     {
         /// <summary>
@@ -120,12 +120,12 @@ namespace Pulumi.GoogleCloud.ContainerAnalysis.V1Alpha1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Occurrence(string name, OccurrenceArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:containeranalysis/v1alpha1:Occurrence", name, args ?? new OccurrenceArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:containeranalysis/v1alpha1:Occurrence", name, args ?? new OccurrenceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Occurrence(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:containeranalysis/v1alpha1:Occurrence", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:containeranalysis/v1alpha1:Occurrence", name, null, MakeResourceOptions(options, id))
         {
         }
 

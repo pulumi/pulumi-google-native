@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Privateca.V1Beta1
+namespace Pulumi.GcpNative.Privateca.V1Beta1
 {
     /// <summary>
     /// Create a new Certificate in a given Project, Location from a particular CertificateAuthority.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:privateca/v1beta1:CertificateAuthorityCertificate")]
+    [GcpNativeResourceType("gcp-native:privateca/v1beta1:CertificateAuthorityCertificate")]
     public partial class CertificateAuthorityCertificate : Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +90,12 @@ namespace Pulumi.GoogleCloud.Privateca.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CertificateAuthorityCertificate(string name, CertificateAuthorityCertificateArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:privateca/v1beta1:CertificateAuthorityCertificate", name, args ?? new CertificateAuthorityCertificateArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:privateca/v1beta1:CertificateAuthorityCertificate", name, args ?? new CertificateAuthorityCertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private CertificateAuthorityCertificate(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:privateca/v1beta1:CertificateAuthorityCertificate", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:privateca/v1beta1:CertificateAuthorityCertificate", name, null, MakeResourceOptions(options, id))
         {
         }
 

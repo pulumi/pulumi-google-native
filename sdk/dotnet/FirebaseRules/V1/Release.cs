@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.FirebaseRules.V1
+namespace Pulumi.GcpNative.FirebaseRules.V1
 {
     /// <summary>
     /// Create a `Release`. Release names should reflect the developer's deployment practices. For example, the release name may include the environment name, application name, application version, or any other name meaningful to the developer. Once a `Release` refers to a `Ruleset`, the rules can be enforced by Firebase Rules-enabled services. More than one `Release` may be 'live' concurrently. Consider the following three `Release` names for `projects/foo` and the `Ruleset` to which they refer. Release Name | Ruleset Name --------------------------------|------------- projects/foo/releases/prod | projects/foo/rulesets/uuid123 projects/foo/releases/prod/beta | projects/foo/rulesets/uuid123 projects/foo/releases/prod/v23 | projects/foo/rulesets/uuid456 The table reflects the `Ruleset` rollout in progress. The `prod` and `prod/beta` releases refer to the same `Ruleset`. However, `prod/v23` refers to a new `Ruleset`. The `Ruleset` reference for a `Release` may be updated using the UpdateRelease method.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:firebaserules/v1:Release")]
+    [GcpNativeResourceType("gcp-native:firebaserules/v1:Release")]
     public partial class Release : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.FirebaseRules.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Release(string name, ReleaseArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:firebaserules/v1:Release", name, args ?? new ReleaseArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:firebaserules/v1:Release", name, args ?? new ReleaseArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Release(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:firebaserules/v1:Release", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:firebaserules/v1:Release", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Creates a new reservation. For more information, read Reserving zonal resources.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:Reservation")]
+    [GcpNativeResourceType("gcp-native:compute/beta:Reservation")]
     public partial class Reservation : Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +90,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Reservation(string name, ReservationArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:Reservation", name, args ?? new ReservationArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:Reservation", name, args ?? new ReservationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Reservation(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:Reservation", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:Reservation", name, null, MakeResourceOptions(options, id))
         {
         }
 

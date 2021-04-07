@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Datamigration.V1
+namespace Pulumi.GcpNative.Datamigration.V1
 {
     /// <summary>
     /// Creates a new migration job in a given project and location.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:datamigration/v1:MigrationJob")]
+    [GcpNativeResourceType("gcp-native:datamigration/v1:MigrationJob")]
     public partial class MigrationJob : Pulumi.CustomResource
     {
         /// <summary>
@@ -138,12 +138,12 @@ namespace Pulumi.GoogleCloud.Datamigration.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public MigrationJob(string name, MigrationJobArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:datamigration/v1:MigrationJob", name, args ?? new MigrationJobArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:datamigration/v1:MigrationJob", name, args ?? new MigrationJobArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private MigrationJob(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:datamigration/v1:MigrationJob", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:datamigration/v1:MigrationJob", name, null, MakeResourceOptions(options, id))
         {
         }
 

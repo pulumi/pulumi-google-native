@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Container.V1
+namespace Pulumi.GcpNative.Container.V1
 {
     /// <summary>
     /// Creates a cluster, consisting of the specified number and type of Google Compute Engine instances. By default, the cluster is created in the project's [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). One firewall is added for the cluster. After cluster creation, the Kubelet creates routes for each node to allow the containers on that node to communicate with all other instances in the cluster. Finally, an entry is added to the project's global metadata indicating which CIDR range the cluster is using.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:container/v1:Cluster")]
+    [GcpNativeResourceType("gcp-native:container/v1:Cluster")]
     public partial class Cluster : Pulumi.CustomResource
     {
         /// <summary>
@@ -324,12 +324,12 @@ namespace Pulumi.GoogleCloud.Container.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Cluster(string name, ClusterArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:container/v1:Cluster", name, args ?? new ClusterArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:container/v1:Cluster", name, args ?? new ClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Cluster(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:container/v1:Cluster", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:container/v1:Cluster", name, null, MakeResourceOptions(options, id))
         {
         }
 

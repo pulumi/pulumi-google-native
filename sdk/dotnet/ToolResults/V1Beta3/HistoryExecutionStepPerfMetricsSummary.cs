@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ToolResults.V1Beta3
+namespace Pulumi.GcpNative.ToolResults.V1Beta3
 {
     /// <summary>
     /// Creates a PerfMetricsSummary resource. Returns the existing one if it has already been created. May return any of the following error code(s): - NOT_FOUND - The containing Step does not exist
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:toolresults/v1beta3:HistoryExecutionStepPerfMetricsSummary")]
+    [GcpNativeResourceType("gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfMetricsSummary")]
     public partial class HistoryExecutionStepPerfMetricsSummary : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.ToolResults.V1Beta3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public HistoryExecutionStepPerfMetricsSummary(string name, HistoryExecutionStepPerfMetricsSummaryArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:toolresults/v1beta3:HistoryExecutionStepPerfMetricsSummary", name, args ?? new HistoryExecutionStepPerfMetricsSummaryArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfMetricsSummary", name, args ?? new HistoryExecutionStepPerfMetricsSummaryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private HistoryExecutionStepPerfMetricsSummary(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:toolresults/v1beta3:HistoryExecutionStepPerfMetricsSummary", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfMetricsSummary", name, null, MakeResourceOptions(options, id))
         {
         }
 

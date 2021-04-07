@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ArtifactRegistry.V1Beta1
+namespace Pulumi.GcpNative.ArtifactRegistry.V1Beta1
 {
     /// <summary>
     /// Updates the IAM policy for a given resource.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:artifactregistry/v1beta1:RepositoryIamPolicy")]
+    [GcpNativeResourceType("gcp-native:artifactregistry/v1beta1:RepositoryIamPolicy")]
     public partial class RepositoryIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.ArtifactRegistry.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RepositoryIamPolicy(string name, RepositoryIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:artifactregistry/v1beta1:RepositoryIamPolicy", name, args ?? new RepositoryIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:artifactregistry/v1beta1:RepositoryIamPolicy", name, args ?? new RepositoryIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RepositoryIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:artifactregistry/v1beta1:RepositoryIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:artifactregistry/v1beta1:RepositoryIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

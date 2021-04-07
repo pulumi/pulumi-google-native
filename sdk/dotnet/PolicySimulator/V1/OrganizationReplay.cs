@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.PolicySimulator.V1
+namespace Pulumi.GcpNative.PolicySimulator.V1
 {
     /// <summary>
     /// Creates and starts a Replay using the given ReplayConfig.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:policysimulator/v1:OrganizationReplay")]
+    [GcpNativeResourceType("gcp-native:policysimulator/v1:OrganizationReplay")]
     public partial class OrganizationReplay : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.PolicySimulator.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationReplay(string name, OrganizationReplayArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:policysimulator/v1:OrganizationReplay", name, args ?? new OrganizationReplayArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:policysimulator/v1:OrganizationReplay", name, args ?? new OrganizationReplayArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationReplay(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:policysimulator/v1:OrganizationReplay", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:policysimulator/v1:OrganizationReplay", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ToolResults.V1Beta3
+namespace Pulumi.GcpNative.ToolResults.V1Beta3
 {
     /// <summary>
     /// Creates a Step. The returned Step will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the step is too large (more than 10Mib) - NOT_FOUND - if the containing Execution does not exist
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:toolresults/v1beta3:HistoryExecutionStep")]
+    [GcpNativeResourceType("gcp-native:toolresults/v1beta3:HistoryExecutionStep")]
     public partial class HistoryExecutionStep : Pulumi.CustomResource
     {
         /// <summary>
@@ -114,12 +114,12 @@ namespace Pulumi.GoogleCloud.ToolResults.V1Beta3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public HistoryExecutionStep(string name, HistoryExecutionStepArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:toolresults/v1beta3:HistoryExecutionStep", name, args ?? new HistoryExecutionStepArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:toolresults/v1beta3:HistoryExecutionStep", name, args ?? new HistoryExecutionStepArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private HistoryExecutionStep(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:toolresults/v1beta3:HistoryExecutionStep", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:toolresults/v1beta3:HistoryExecutionStep", name, null, MakeResourceOptions(options, id))
         {
         }
 

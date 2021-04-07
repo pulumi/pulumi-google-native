@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta.Inputs
+namespace Pulumi.GcpNative.Compute.Beta.Inputs
 {
 
     public sealed class PacketMirroringFilterArgs : Pulumi.ResourceArgs

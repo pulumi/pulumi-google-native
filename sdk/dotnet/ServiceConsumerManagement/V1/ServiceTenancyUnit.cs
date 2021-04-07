@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ServiceConsumerManagement.V1
+namespace Pulumi.GcpNative.ServiceConsumerManagement.V1
 {
     /// <summary>
     /// Creates a tenancy unit with no tenant resources. If tenancy unit already exists, it will be returned, however, in this case, returned TenancyUnit does not have tenant_resources field set and ListTenancyUnits has to be used to get a complete TenancyUnit with all fields populated.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:serviceconsumermanagement/v1:ServiceTenancyUnit")]
+    [GcpNativeResourceType("gcp-native:serviceconsumermanagement/v1:ServiceTenancyUnit")]
     public partial class ServiceTenancyUnit : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.ServiceConsumerManagement.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceTenancyUnit(string name, ServiceTenancyUnitArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:serviceconsumermanagement/v1:ServiceTenancyUnit", name, args ?? new ServiceTenancyUnitArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:serviceconsumermanagement/v1:ServiceTenancyUnit", name, args ?? new ServiceTenancyUnitArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceTenancyUnit(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:serviceconsumermanagement/v1:ServiceTenancyUnit", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:serviceconsumermanagement/v1:ServiceTenancyUnit", name, null, MakeResourceOptions(options, id))
         {
         }
 

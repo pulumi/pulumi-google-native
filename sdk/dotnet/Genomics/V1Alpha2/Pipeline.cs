@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Genomics.V1Alpha2
+namespace Pulumi.GcpNative.Genomics.V1Alpha2
 {
     /// <summary>
     /// Creates a pipeline that can be run later. Create takes a Pipeline that has all fields other than `pipelineId` populated, and then returns the same pipeline with `pipelineId` populated. This id can be used to run the pipeline. Caller must have WRITE permission to the project.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:genomics/v1alpha2:Pipeline")]
+    [GcpNativeResourceType("gcp-native:genomics/v1alpha2:Pipeline")]
     public partial class Pipeline : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.Genomics.V1Alpha2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Pipeline(string name, PipelineArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:genomics/v1alpha2:Pipeline", name, args ?? new PipelineArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:genomics/v1alpha2:Pipeline", name, args ?? new PipelineArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Pipeline(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:genomics/v1alpha2:Pipeline", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:genomics/v1alpha2:Pipeline", name, null, MakeResourceOptions(options, id))
         {
         }
 

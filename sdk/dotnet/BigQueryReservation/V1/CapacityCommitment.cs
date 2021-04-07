@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.BigQueryReservation.V1
+namespace Pulumi.GcpNative.BigQueryReservation.V1
 {
     /// <summary>
     /// Creates a new capacity commitment resource.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:bigqueryreservation/v1:CapacityCommitment")]
+    [GcpNativeResourceType("gcp-native:bigqueryreservation/v1:CapacityCommitment")]
     public partial class CapacityCommitment : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.BigQueryReservation.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CapacityCommitment(string name, CapacityCommitmentArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:bigqueryreservation/v1:CapacityCommitment", name, args ?? new CapacityCommitmentArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:bigqueryreservation/v1:CapacityCommitment", name, args ?? new CapacityCommitmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private CapacityCommitment(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:bigqueryreservation/v1:CapacityCommitment", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:bigqueryreservation/v1:CapacityCommitment", name, null, MakeResourceOptions(options, id))
         {
         }
 

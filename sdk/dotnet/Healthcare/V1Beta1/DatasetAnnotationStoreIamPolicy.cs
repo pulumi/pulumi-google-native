@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Healthcare.V1Beta1
+namespace Pulumi.GcpNative.Healthcare.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:healthcare/v1beta1:DatasetAnnotationStoreIamPolicy")]
+    [GcpNativeResourceType("gcp-native:healthcare/v1beta1:DatasetAnnotationStoreIamPolicy")]
     public partial class DatasetAnnotationStoreIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.Healthcare.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatasetAnnotationStoreIamPolicy(string name, DatasetAnnotationStoreIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:healthcare/v1beta1:DatasetAnnotationStoreIamPolicy", name, args ?? new DatasetAnnotationStoreIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:healthcare/v1beta1:DatasetAnnotationStoreIamPolicy", name, args ?? new DatasetAnnotationStoreIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatasetAnnotationStoreIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:healthcare/v1beta1:DatasetAnnotationStoreIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:healthcare/v1beta1:DatasetAnnotationStoreIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

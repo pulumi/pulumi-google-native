@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.BigQuery.V2.Inputs
+namespace Pulumi.GcpNative.BigQuery.V2.Inputs
 {
 
     public sealed class ScriptStatisticsArgs : Pulumi.ResourceArgs

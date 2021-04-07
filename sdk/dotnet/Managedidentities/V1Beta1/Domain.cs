@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Managedidentities.V1Beta1
+namespace Pulumi.GcpNative.Managedidentities.V1Beta1
 {
     /// <summary>
     /// Creates a Microsoft AD domain.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:managedidentities/v1beta1:Domain")]
+    [GcpNativeResourceType("gcp-native:managedidentities/v1beta1:Domain")]
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>
@@ -102,12 +102,12 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Domain(string name, DomainArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:managedidentities/v1beta1:Domain", name, args ?? new DomainArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:managedidentities/v1beta1:Domain", name, args ?? new DomainArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Domain(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:managedidentities/v1beta1:Domain", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:managedidentities/v1beta1:Domain", name, null, MakeResourceOptions(options, id))
         {
         }
 

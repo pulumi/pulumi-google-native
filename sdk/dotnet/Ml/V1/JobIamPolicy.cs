@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Ml.V1
+namespace Pulumi.GcpNative.Ml.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:ml/v1:JobIamPolicy")]
+    [GcpNativeResourceType("gcp-native:ml/v1:JobIamPolicy")]
     public partial class JobIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.Ml.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public JobIamPolicy(string name, JobIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:ml/v1:JobIamPolicy", name, args ?? new JobIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:ml/v1:JobIamPolicy", name, args ?? new JobIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private JobIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:ml/v1:JobIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:ml/v1:JobIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

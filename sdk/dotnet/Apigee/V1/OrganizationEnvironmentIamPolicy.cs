@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Apigee.V1
+namespace Pulumi.GcpNative.Apigee.V1
 {
     /// <summary>
     /// Sets the IAM policy on an environment, if the policy already exists it will be replaced. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.setIamPolicy` permission to call this API.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:apigee/v1:OrganizationEnvironmentIamPolicy")]
+    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationEnvironmentIamPolicy")]
     public partial class OrganizationEnvironmentIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationEnvironmentIamPolicy(string name, OrganizationEnvironmentIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationEnvironmentIamPolicy", name, args ?? new OrganizationEnvironmentIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:apigee/v1:OrganizationEnvironmentIamPolicy", name, args ?? new OrganizationEnvironmentIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationEnvironmentIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationEnvironmentIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:apigee/v1:OrganizationEnvironmentIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

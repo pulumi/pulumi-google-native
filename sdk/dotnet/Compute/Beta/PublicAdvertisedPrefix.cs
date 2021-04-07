@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Creates a PublicAdvertisedPrefix in the specified project using the parameters that are included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:PublicAdvertisedPrefix")]
+    [GcpNativeResourceType("gcp-native:compute/beta:PublicAdvertisedPrefix")]
     public partial class PublicAdvertisedPrefix : Pulumi.CustomResource
     {
         /// <summary>
@@ -92,12 +92,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public PublicAdvertisedPrefix(string name, PublicAdvertisedPrefixArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:PublicAdvertisedPrefix", name, args ?? new PublicAdvertisedPrefixArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:PublicAdvertisedPrefix", name, args ?? new PublicAdvertisedPrefixArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private PublicAdvertisedPrefix(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:PublicAdvertisedPrefix", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:PublicAdvertisedPrefix", name, null, MakeResourceOptions(options, id))
         {
         }
 

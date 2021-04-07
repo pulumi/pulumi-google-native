@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.WebRisk.V1
+namespace Pulumi.GcpNative.WebRisk.V1
 {
     /// <summary>
     /// Creates a Submission of a URI suspected of containing phishing content to be reviewed. If the result verifies the existence of malicious phishing content, the site will be added to the [Google's Social Engineering lists](https://support.google.com/webmasters/answer/6350487/) in order to protect users that could get exposed to this threat in the future. Only allowlisted projects can use this method during Early Access. Please reach out to Sales or your customer engineer to obtain access.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:webrisk/v1:Submission")]
+    [GcpNativeResourceType("gcp-native:webrisk/v1:Submission")]
     public partial class Submission : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.WebRisk.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Submission(string name, SubmissionArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:webrisk/v1:Submission", name, args ?? new SubmissionArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:webrisk/v1:Submission", name, args ?? new SubmissionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Submission(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:webrisk/v1:Submission", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:webrisk/v1:Submission", name, null, MakeResourceOptions(options, id))
         {
         }
 

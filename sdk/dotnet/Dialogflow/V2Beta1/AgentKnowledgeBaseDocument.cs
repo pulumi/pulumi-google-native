@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Dialogflow.V2Beta1
+namespace Pulumi.GcpNative.Dialogflow.V2Beta1
 {
     /// <summary>
     /// Creates a new document. Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use `projects.knowledgeBases.documents`.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dialogflow/v2beta1:AgentKnowledgeBaseDocument")]
+    [GcpNativeResourceType("gcp-native:dialogflow/v2beta1:AgentKnowledgeBaseDocument")]
     public partial class AgentKnowledgeBaseDocument : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentKnowledgeBaseDocument(string name, AgentKnowledgeBaseDocumentArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v2beta1:AgentKnowledgeBaseDocument", name, args ?? new AgentKnowledgeBaseDocumentArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dialogflow/v2beta1:AgentKnowledgeBaseDocument", name, args ?? new AgentKnowledgeBaseDocumentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentKnowledgeBaseDocument(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v2beta1:AgentKnowledgeBaseDocument", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dialogflow/v2beta1:AgentKnowledgeBaseDocument", name, null, MakeResourceOptions(options, id))
         {
         }
 

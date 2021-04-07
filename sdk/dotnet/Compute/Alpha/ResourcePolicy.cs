@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Alpha
+namespace Pulumi.GcpNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a new resource policy.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/alpha:ResourcePolicy")]
+    [GcpNativeResourceType("gcp-native:compute/alpha:ResourcePolicy")]
     public partial class ResourcePolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -96,12 +96,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ResourcePolicy(string name, ResourcePolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:ResourcePolicy", name, args ?? new ResourcePolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/alpha:ResourcePolicy", name, args ?? new ResourcePolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ResourcePolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:ResourcePolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/alpha:ResourcePolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Creates a BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:BackendService")]
+    [GcpNativeResourceType("gcp-native:compute/beta:BackendService")]
     public partial class BackendService : Pulumi.CustomResource
     {
         /// <summary>
@@ -279,12 +279,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BackendService(string name, BackendServiceArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:BackendService", name, args ?? new BackendServiceArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:BackendService", name, args ?? new BackendServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private BackendService(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:BackendService", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:BackendService", name, null, MakeResourceOptions(options, id))
         {
         }
 

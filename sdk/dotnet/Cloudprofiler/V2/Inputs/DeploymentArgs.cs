@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Cloudprofiler.V2.Inputs
+namespace Pulumi.GcpNative.Cloudprofiler.V2.Inputs
 {
 
     /// <summary>

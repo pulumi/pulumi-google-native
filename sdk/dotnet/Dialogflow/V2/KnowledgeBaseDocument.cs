@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Dialogflow.V2
+namespace Pulumi.GcpNative.Dialogflow.V2
 {
     /// <summary>
     /// Creates a new document. Operation
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dialogflow/v2:KnowledgeBaseDocument")]
+    [GcpNativeResourceType("gcp-native:dialogflow/v2:KnowledgeBaseDocument")]
     public partial class KnowledgeBaseDocument : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public KnowledgeBaseDocument(string name, KnowledgeBaseDocumentArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v2:KnowledgeBaseDocument", name, args ?? new KnowledgeBaseDocumentArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dialogflow/v2:KnowledgeBaseDocument", name, args ?? new KnowledgeBaseDocumentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private KnowledgeBaseDocument(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v2:KnowledgeBaseDocument", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dialogflow/v2:KnowledgeBaseDocument", name, null, MakeResourceOptions(options, id))
         {
         }
 

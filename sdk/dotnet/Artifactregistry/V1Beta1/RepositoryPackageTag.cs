@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ArtifactRegistry.V1Beta1
+namespace Pulumi.GcpNative.ArtifactRegistry.V1Beta1
 {
     /// <summary>
     /// Creates a tag.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:artifactregistry/v1beta1:RepositoryPackageTag")]
+    [GcpNativeResourceType("gcp-native:artifactregistry/v1beta1:RepositoryPackageTag")]
     public partial class RepositoryPackageTag : Pulumi.CustomResource
     {
         /// <summary>
@@ -36,12 +36,12 @@ namespace Pulumi.GoogleCloud.ArtifactRegistry.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RepositoryPackageTag(string name, RepositoryPackageTagArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:artifactregistry/v1beta1:RepositoryPackageTag", name, args ?? new RepositoryPackageTagArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:artifactregistry/v1beta1:RepositoryPackageTag", name, args ?? new RepositoryPackageTagArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RepositoryPackageTag(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:artifactregistry/v1beta1:RepositoryPackageTag", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:artifactregistry/v1beta1:RepositoryPackageTag", name, null, MakeResourceOptions(options, id))
         {
         }
 

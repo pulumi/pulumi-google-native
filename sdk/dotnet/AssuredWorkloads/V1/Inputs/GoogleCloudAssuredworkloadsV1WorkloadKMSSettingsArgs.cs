@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.AssuredWorkloads.V1.Inputs
+namespace Pulumi.GcpNative.AssuredWorkloads.V1.Inputs
 {
 
     /// <summary>

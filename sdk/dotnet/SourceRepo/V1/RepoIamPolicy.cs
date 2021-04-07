@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.SourceRepo.V1
+namespace Pulumi.GcpNative.SourceRepo.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:sourcerepo/v1:RepoIamPolicy")]
+    [GcpNativeResourceType("gcp-native:sourcerepo/v1:RepoIamPolicy")]
     public partial class RepoIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.SourceRepo.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RepoIamPolicy(string name, RepoIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:sourcerepo/v1:RepoIamPolicy", name, args ?? new RepoIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:sourcerepo/v1:RepoIamPolicy", name, args ?? new RepoIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RepoIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:sourcerepo/v1:RepoIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:sourcerepo/v1:RepoIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

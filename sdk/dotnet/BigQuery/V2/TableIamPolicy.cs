@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.BigQuery.V2
+namespace Pulumi.GcpNative.BigQuery.V2
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:bigquery/v2:TableIamPolicy")]
+    [GcpNativeResourceType("gcp-native:bigquery/v2:TableIamPolicy")]
     public partial class TableIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.BigQuery.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TableIamPolicy(string name, TableIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:bigquery/v2:TableIamPolicy", name, args ?? new TableIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:bigquery/v2:TableIamPolicy", name, args ?? new TableIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TableIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:bigquery/v2:TableIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:bigquery/v2:TableIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

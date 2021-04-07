@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Creates a TargetTcpProxy resource in the specified project using the data included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:TargetTcpProxy")]
+    [GcpNativeResourceType("gcp-native:compute/beta:TargetTcpProxy")]
     public partial class TargetTcpProxy : Pulumi.CustomResource
     {
         /// <summary>
@@ -76,12 +76,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TargetTcpProxy(string name, TargetTcpProxyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:TargetTcpProxy", name, args ?? new TargetTcpProxyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:TargetTcpProxy", name, args ?? new TargetTcpProxyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TargetTcpProxy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:TargetTcpProxy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:TargetTcpProxy", name, null, MakeResourceOptions(options, id))
         {
         }
 

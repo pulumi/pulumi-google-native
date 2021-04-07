@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Dialogflow.V3
+namespace Pulumi.GcpNative.Dialogflow.V3
 {
     /// <summary>
     /// Creates a session entity type.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dialogflow/v3:AgentEnvironmentSessionEntityType")]
+    [GcpNativeResourceType("gcp-native:dialogflow/v3:AgentEnvironmentSessionEntityType")]
     public partial class AgentEnvironmentSessionEntityType : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentEnvironmentSessionEntityType(string name, AgentEnvironmentSessionEntityTypeArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v3:AgentEnvironmentSessionEntityType", name, args ?? new AgentEnvironmentSessionEntityTypeArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dialogflow/v3:AgentEnvironmentSessionEntityType", name, args ?? new AgentEnvironmentSessionEntityTypeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentEnvironmentSessionEntityType(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v3:AgentEnvironmentSessionEntityType", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dialogflow/v3:AgentEnvironmentSessionEntityType", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudScheduler.V1Beta1.Outputs
+namespace Pulumi.GcpNative.CloudScheduler.V1Beta1.Outputs
 {
 
     [OutputType]

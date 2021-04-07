@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.V1
+namespace Pulumi.GcpNative.Compute.V1
 {
     /// <summary>
     /// Creates a subnetwork in the specified project using the data included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/v1:Subnetwork")]
+    [GcpNativeResourceType("gcp-native:compute/v1:Subnetwork")]
     public partial class Subnetwork : Pulumi.CustomResource
     {
         /// <summary>
@@ -142,12 +142,12 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Subnetwork(string name, SubnetworkArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:Subnetwork", name, args ?? new SubnetworkArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/v1:Subnetwork", name, args ?? new SubnetworkArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Subnetwork(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:Subnetwork", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/v1:Subnetwork", name, null, MakeResourceOptions(options, id))
         {
         }
 

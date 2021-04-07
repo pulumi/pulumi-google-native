@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Alpha
+namespace Pulumi.GcpNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a global PublicDelegatedPrefix in the specified project using the parameters that are included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/alpha:GlobalPublicDelegatedPrefix")]
+    [GcpNativeResourceType("gcp-native:compute/alpha:GlobalPublicDelegatedPrefix")]
     public partial class GlobalPublicDelegatedPrefix : Pulumi.CustomResource
     {
         /// <summary>
@@ -104,12 +104,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GlobalPublicDelegatedPrefix(string name, GlobalPublicDelegatedPrefixArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:GlobalPublicDelegatedPrefix", name, args ?? new GlobalPublicDelegatedPrefixArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/alpha:GlobalPublicDelegatedPrefix", name, args ?? new GlobalPublicDelegatedPrefixArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private GlobalPublicDelegatedPrefix(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:GlobalPublicDelegatedPrefix", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/alpha:GlobalPublicDelegatedPrefix", name, null, MakeResourceOptions(options, id))
         {
         }
 

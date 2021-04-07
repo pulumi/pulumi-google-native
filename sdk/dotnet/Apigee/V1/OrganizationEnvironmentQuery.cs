@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Apigee.V1
+namespace Pulumi.GcpNative.Apigee.V1
 {
     /// <summary>
     /// Submit a query to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:apigee/v1:OrganizationEnvironmentQuery")]
+    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationEnvironmentQuery")]
     public partial class OrganizationEnvironmentQuery : Pulumi.CustomResource
     {
         /// <summary>
@@ -102,12 +102,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationEnvironmentQuery(string name, OrganizationEnvironmentQueryArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationEnvironmentQuery", name, args ?? new OrganizationEnvironmentQueryArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:apigee/v1:OrganizationEnvironmentQuery", name, args ?? new OrganizationEnvironmentQueryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationEnvironmentQuery(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationEnvironmentQuery", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:apigee/v1:OrganizationEnvironmentQuery", name, null, MakeResourceOptions(options, id))
         {
         }
 

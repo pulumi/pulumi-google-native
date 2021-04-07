@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.BigtableAdmin.V2.Outputs
+namespace Pulumi.GcpNative.BigtableAdmin.V2.Outputs
 {
 
     [OutputType]

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Ml.V1
+namespace Pulumi.GcpNative.Ml.V1
 {
     /// <summary>
     /// Creates a new version of a model from a trained TensorFlow model. If the version created in the cloud by this call is the first deployed version of the specified model, it will be made the default version of the model. When you add a version to a model that already has one or more versions, the default version does not automatically change. If you want a new version to be the default, you must call projects.models.versions.setDefault.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:ml/v1:ModelVersion")]
+    [GcpNativeResourceType("gcp-native:ml/v1:ModelVersion")]
     public partial class ModelVersion : Pulumi.CustomResource
     {
         /// <summary>
@@ -180,12 +180,12 @@ namespace Pulumi.GoogleCloud.Ml.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ModelVersion(string name, ModelVersionArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:ml/v1:ModelVersion", name, args ?? new ModelVersionArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:ml/v1:ModelVersion", name, args ?? new ModelVersionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ModelVersion(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:ml/v1:ModelVersion", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:ml/v1:ModelVersion", name, null, MakeResourceOptions(options, id))
         {
         }
 

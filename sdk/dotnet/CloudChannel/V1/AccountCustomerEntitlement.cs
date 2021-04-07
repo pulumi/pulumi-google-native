@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudChannel.V1
+namespace Pulumi.GcpNative.CloudChannel.V1
 {
     /// <summary>
     /// Creates an entitlement for a customer. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * There is already a customer entitlement for a SKU from the same product family. * INVALID_VALUE: Make sure the OfferId is valid. If it is, contact Google Channel support for further troubleshooting. * NOT_FOUND: The customer or offer resource was not found. * ALREADY_EXISTS: * The SKU was already purchased for the customer. * The customer's primary email already exists. Retry after changing the customer's primary contact email. * CONDITION_NOT_MET or FAILED_PRECONDITION: * The domain required for purchasing a SKU has not been verified. * A pre-requisite SKU required to purchase an Add-On SKU is missing. For example, Google Workspace Business Starter is required to purchase Vault or Drive. * (Developer accounts only) Reseller and resold domain must meet the following naming requirements: * Domain names must start with goog-test. * Domain names must include the reseller domain. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudchannel/v1:AccountCustomerEntitlement")]
+    [GcpNativeResourceType("gcp-native:cloudchannel/v1:AccountCustomerEntitlement")]
     public partial class AccountCustomerEntitlement : Pulumi.CustomResource
     {
         /// <summary>
@@ -96,12 +96,12 @@ namespace Pulumi.GoogleCloud.CloudChannel.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccountCustomerEntitlement(string name, AccountCustomerEntitlementArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudchannel/v1:AccountCustomerEntitlement", name, args ?? new AccountCustomerEntitlementArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudchannel/v1:AccountCustomerEntitlement", name, args ?? new AccountCustomerEntitlementArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AccountCustomerEntitlement(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudchannel/v1:AccountCustomerEntitlement", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudchannel/v1:AccountCustomerEntitlement", name, null, MakeResourceOptions(options, id))
         {
         }
 

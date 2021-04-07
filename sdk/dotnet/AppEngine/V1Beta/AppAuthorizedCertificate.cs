@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.AppEngine.V1Beta
+namespace Pulumi.GcpNative.AppEngine.V1Beta
 {
     /// <summary>
     /// Uploads the specified SSL certificate.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:appengine/v1beta:AppAuthorizedCertificate")]
+    [GcpNativeResourceType("gcp-native:appengine/v1beta:AppAuthorizedCertificate")]
     public partial class AppAuthorizedCertificate : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.AppEngine.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AppAuthorizedCertificate(string name, AppAuthorizedCertificateArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:appengine/v1beta:AppAuthorizedCertificate", name, args ?? new AppAuthorizedCertificateArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:appengine/v1beta:AppAuthorizedCertificate", name, args ?? new AppAuthorizedCertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AppAuthorizedCertificate(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:appengine/v1beta:AppAuthorizedCertificate", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:appengine/v1beta:AppAuthorizedCertificate", name, null, MakeResourceOptions(options, id))
         {
         }
 

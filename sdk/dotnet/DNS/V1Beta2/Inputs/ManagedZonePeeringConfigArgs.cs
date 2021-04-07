@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DNS.V1Beta2.Inputs
+namespace Pulumi.GcpNative.DNS.V1Beta2.Inputs
 {
 
     public sealed class ManagedZonePeeringConfigArgs : Pulumi.ResourceArgs

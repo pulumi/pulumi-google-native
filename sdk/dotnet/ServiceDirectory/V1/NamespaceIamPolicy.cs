@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ServiceDirectory.V1
+namespace Pulumi.GcpNative.ServiceDirectory.V1
 {
     /// <summary>
     /// Sets the IAM Policy for a resource (namespace or service only).
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:servicedirectory/v1:NamespaceIamPolicy")]
+    [GcpNativeResourceType("gcp-native:servicedirectory/v1:NamespaceIamPolicy")]
     public partial class NamespaceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.ServiceDirectory.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NamespaceIamPolicy(string name, NamespaceIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:servicedirectory/v1:NamespaceIamPolicy", name, args ?? new NamespaceIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:servicedirectory/v1:NamespaceIamPolicy", name, args ?? new NamespaceIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private NamespaceIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:servicedirectory/v1:NamespaceIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:servicedirectory/v1:NamespaceIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DLP.V2
+namespace Pulumi.GcpNative.DLP.V2
 {
     /// <summary>
     /// Creates a new job to inspect storage or calculate risk metrics. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dlp/v2:DlpJob")]
+    [GcpNativeResourceType("gcp-native:dlp/v2:DlpJob")]
     public partial class DlpJob : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GoogleCloud.DLP.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DlpJob(string name, DlpJobArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dlp/v2:DlpJob", name, args ?? new DlpJobArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dlp/v2:DlpJob", name, args ?? new DlpJobArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DlpJob(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dlp/v2:DlpJob", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dlp/v2:DlpJob", name, null, MakeResourceOptions(options, id))
         {
         }
 

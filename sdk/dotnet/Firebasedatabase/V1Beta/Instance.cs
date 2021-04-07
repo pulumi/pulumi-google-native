@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Firebasedatabase.V1Beta
+namespace Pulumi.GcpNative.Firebasedatabase.V1Beta
 {
     /// <summary>
     /// Requests that a new DatabaseInstance be created. The state of a successfully created DatabaseInstance is ACTIVE. Only available for projects on the Blaze plan. Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo. Note that it might take a few minutes for billing enablement state to propagate to Firebase systems.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:firebasedatabase/v1beta:Instance")]
+    [GcpNativeResourceType("gcp-native:firebasedatabase/v1beta:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.Firebasedatabase.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:firebasedatabase/v1beta:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:firebasedatabase/v1beta:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Instance(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:firebasedatabase/v1beta:Instance", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:firebasedatabase/v1beta:Instance", name, null, MakeResourceOptions(options, id))
         {
         }
 

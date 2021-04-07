@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.GKEHub.V1Beta
+namespace Pulumi.GcpNative.GKEHub.V1Beta
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:gkehub/v1beta:FeatureIamPolicy")]
+    [GcpNativeResourceType("gcp-native:gkehub/v1beta:FeatureIamPolicy")]
     public partial class FeatureIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.GKEHub.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FeatureIamPolicy(string name, FeatureIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:gkehub/v1beta:FeatureIamPolicy", name, args ?? new FeatureIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:gkehub/v1beta:FeatureIamPolicy", name, args ?? new FeatureIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private FeatureIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:gkehub/v1beta:FeatureIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:gkehub/v1beta:FeatureIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ToolResults.V1Beta3.Inputs
+namespace Pulumi.GcpNative.ToolResults.V1Beta3.Inputs
 {
 
     public sealed class AppStartTimeArgs : Pulumi.ResourceArgs

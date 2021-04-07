@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudBilling.V1
+namespace Pulumi.GcpNative.CloudBilling.V1
 {
     /// <summary>
     /// Sets the access control policy for a billing account. Replaces any existing policy. The caller must have the `billing.accounts.setIamPolicy` permission on the account, which is often given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudbilling/v1:BillingAccountIamPolicy")]
+    [GcpNativeResourceType("gcp-native:cloudbilling/v1:BillingAccountIamPolicy")]
     public partial class BillingAccountIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.CloudBilling.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BillingAccountIamPolicy(string name, BillingAccountIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudbilling/v1:BillingAccountIamPolicy", name, args ?? new BillingAccountIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudbilling/v1:BillingAccountIamPolicy", name, args ?? new BillingAccountIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private BillingAccountIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudbilling/v1:BillingAccountIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudbilling/v1:BillingAccountIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

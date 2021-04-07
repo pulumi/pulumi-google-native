@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Jobs.V4
+namespace Pulumi.GcpNative.Jobs.V4
 {
     /// <summary>
     /// Report events issued when end user interacts with customer's application that uses Cloud Talent Solution. You may inspect the created events in [self service tools](https://console.cloud.google.com/talent-solution/overview). [Learn more](https://cloud.google.com/talent-solution/docs/management-tools) about self service tools.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:jobs/v4:TenantClientEvent")]
+    [GcpNativeResourceType("gcp-native:jobs/v4:TenantClientEvent")]
     public partial class TenantClientEvent : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.Jobs.V4
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TenantClientEvent(string name, TenantClientEventArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:jobs/v4:TenantClientEvent", name, args ?? new TenantClientEventArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:jobs/v4:TenantClientEvent", name, args ?? new TenantClientEventArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TenantClientEvent(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:jobs/v4:TenantClientEvent", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:jobs/v4:TenantClientEvent", name, null, MakeResourceOptions(options, id))
         {
         }
 

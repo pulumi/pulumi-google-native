@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.GameServices.V1
+namespace Pulumi.GcpNative.GameServices.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:gameservices/v1:GameServerDeploymentIamPolicy")]
+    [GcpNativeResourceType("gcp-native:gameservices/v1:GameServerDeploymentIamPolicy")]
     public partial class GameServerDeploymentIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -57,12 +57,12 @@ namespace Pulumi.GoogleCloud.GameServices.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GameServerDeploymentIamPolicy(string name, GameServerDeploymentIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:gameservices/v1:GameServerDeploymentIamPolicy", name, args ?? new GameServerDeploymentIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:gameservices/v1:GameServerDeploymentIamPolicy", name, args ?? new GameServerDeploymentIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private GameServerDeploymentIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:gameservices/v1:GameServerDeploymentIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:gameservices/v1:GameServerDeploymentIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

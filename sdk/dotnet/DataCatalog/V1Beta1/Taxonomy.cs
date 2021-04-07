@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DataCatalog.V1Beta1
+namespace Pulumi.GcpNative.DataCatalog.V1Beta1
 {
     /// <summary>
     /// Creates a taxonomy in the specified project.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:datacatalog/v1beta1:Taxonomy")]
+    [GcpNativeResourceType("gcp-native:datacatalog/v1beta1:Taxonomy")]
     public partial class Taxonomy : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GoogleCloud.DataCatalog.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Taxonomy(string name, TaxonomyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:datacatalog/v1beta1:Taxonomy", name, args ?? new TaxonomyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:datacatalog/v1beta1:Taxonomy", name, args ?? new TaxonomyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Taxonomy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:datacatalog/v1beta1:Taxonomy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:datacatalog/v1beta1:Taxonomy", name, null, MakeResourceOptions(options, id))
         {
         }
 

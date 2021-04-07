@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DLP.V2
+namespace Pulumi.GcpNative.DLP.V2
 {
     /// <summary>
     /// Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dlp/v2:InspectTemplate")]
+    [GcpNativeResourceType("gcp-native:dlp/v2:InspectTemplate")]
     public partial class InspectTemplate : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GoogleCloud.DLP.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InspectTemplate(string name, InspectTemplateArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dlp/v2:InspectTemplate", name, args ?? new InspectTemplateArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dlp/v2:InspectTemplate", name, args ?? new InspectTemplateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InspectTemplate(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dlp/v2:InspectTemplate", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dlp/v2:InspectTemplate", name, null, MakeResourceOptions(options, id))
         {
         }
 

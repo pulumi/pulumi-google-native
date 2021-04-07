@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.SQLAdmin.V1Beta4.Inputs
+namespace Pulumi.GcpNative.SQLAdmin.V1Beta4.Inputs
 {
 
     /// <summary>

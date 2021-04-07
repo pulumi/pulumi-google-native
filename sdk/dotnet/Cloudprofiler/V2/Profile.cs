@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Cloudprofiler.V2
+namespace Pulumi.GcpNative.Cloudprofiler.V2
 {
     /// <summary>
     /// CreateProfile creates a new profile resource in the online mode. The server ensures that the new profiles are created at a constant rate per deployment, so the creation request may hang for some time until the next profile session is available. The request may fail with ABORTED error if the creation is not available within ~1m, the response will indicate the duration of the backoff the client should take before attempting creating a profile again. The backoff duration is returned in google.rpc.RetryInfo extension on the response status. To a gRPC client, the extension will be return as a binary-serialized proto in the trailing metadata item named "google.rpc.retryinfo-bin".
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudprofiler/v2:Profile")]
+    [GcpNativeResourceType("gcp-native:cloudprofiler/v2:Profile")]
     public partial class Profile : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.Cloudprofiler.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Profile(string name, ProfileArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudprofiler/v2:Profile", name, args ?? new ProfileArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudprofiler/v2:Profile", name, args ?? new ProfileArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Profile(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudprofiler/v2:Profile", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudprofiler/v2:Profile", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudResourceManager.V3
+namespace Pulumi.GcpNative.CloudResourceManager.V3
 {
     /// <summary>
     /// Sets the access control policy on a TagValue, replacing any existing policy. The `resource` field should be the TagValue's resource name. For example: `tagValues/1234`. The caller must have `resourcemanager.tagValues.setIamPolicy` permission on the identified tagValue.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudresourcemanager/v3:TagValueIamPolicy")]
+    [GcpNativeResourceType("gcp-native:cloudresourcemanager/v3:TagValueIamPolicy")]
     public partial class TagValueIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.CloudResourceManager.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TagValueIamPolicy(string name, TagValueIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudresourcemanager/v3:TagValueIamPolicy", name, args ?? new TagValueIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudresourcemanager/v3:TagValueIamPolicy", name, args ?? new TagValueIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TagValueIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudresourcemanager/v3:TagValueIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudresourcemanager/v3:TagValueIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

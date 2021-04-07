@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.WorkflowExecutions.V1Beta
+namespace Pulumi.GcpNative.WorkflowExecutions.V1Beta
 {
     /// <summary>
     /// Creates a new execution using the latest revision of the given workflow.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:workflowexecutions/v1beta:WorkflowExecution")]
+    [GcpNativeResourceType("gcp-native:workflowexecutions/v1beta:WorkflowExecution")]
     public partial class WorkflowExecution : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.WorkflowExecutions.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WorkflowExecution(string name, WorkflowExecutionArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:workflowexecutions/v1beta:WorkflowExecution", name, args ?? new WorkflowExecutionArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:workflowexecutions/v1beta:WorkflowExecution", name, args ?? new WorkflowExecutionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private WorkflowExecution(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:workflowexecutions/v1beta:WorkflowExecution", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:workflowexecutions/v1beta:WorkflowExecution", name, null, MakeResourceOptions(options, id))
         {
         }
 

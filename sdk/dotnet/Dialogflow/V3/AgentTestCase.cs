@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Dialogflow.V3
+namespace Pulumi.GcpNative.Dialogflow.V3
 {
     /// <summary>
     /// Creates a test case for the given agent.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dialogflow/v3:AgentTestCase")]
+    [GcpNativeResourceType("gcp-native:dialogflow/v3:AgentTestCase")]
     public partial class AgentTestCase : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentTestCase(string name, AgentTestCaseArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v3:AgentTestCase", name, args ?? new AgentTestCaseArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dialogflow/v3:AgentTestCase", name, args ?? new AgentTestCaseArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentTestCase(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v3:AgentTestCase", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dialogflow/v3:AgentTestCase", name, null, MakeResourceOptions(options, id))
         {
         }
 

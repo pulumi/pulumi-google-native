@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Pubsub.V1
+namespace Pulumi.GcpNative.Pubsub.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:pubsub/v1:SchemaIamPolicy")]
+    [GcpNativeResourceType("gcp-native:pubsub/v1:SchemaIamPolicy")]
     public partial class SchemaIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.Pubsub.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SchemaIamPolicy(string name, SchemaIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:pubsub/v1:SchemaIamPolicy", name, args ?? new SchemaIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:pubsub/v1:SchemaIamPolicy", name, args ?? new SchemaIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private SchemaIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:pubsub/v1:SchemaIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:pubsub/v1:SchemaIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

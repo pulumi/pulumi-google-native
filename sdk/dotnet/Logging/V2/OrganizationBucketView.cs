@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Logging.V2
+namespace Pulumi.GcpNative.Logging.V2
 {
     /// <summary>
     /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:logging/v2:OrganizationBucketView")]
+    [GcpNativeResourceType("gcp-native:logging/v2:OrganizationBucketView")]
     public partial class OrganizationBucketView : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.Logging.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationBucketView(string name, OrganizationBucketViewArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:logging/v2:OrganizationBucketView", name, args ?? new OrganizationBucketViewArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:logging/v2:OrganizationBucketView", name, args ?? new OrganizationBucketViewArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationBucketView(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:logging/v2:OrganizationBucketView", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:logging/v2:OrganizationBucketView", name, null, MakeResourceOptions(options, id))
         {
         }
 

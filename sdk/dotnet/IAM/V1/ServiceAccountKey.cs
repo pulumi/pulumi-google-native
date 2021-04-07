@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.IAM.V1
+namespace Pulumi.GcpNative.IAM.V1
 {
     /// <summary>
     /// Creates a ServiceAccountKey.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:iam/v1:ServiceAccountKey")]
+    [GcpNativeResourceType("gcp-native:iam/v1:ServiceAccountKey")]
     public partial class ServiceAccountKey : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GoogleCloud.IAM.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceAccountKey(string name, ServiceAccountKeyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:iam/v1:ServiceAccountKey", name, args ?? new ServiceAccountKeyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:iam/v1:ServiceAccountKey", name, args ?? new ServiceAccountKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceAccountKey(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:iam/v1:ServiceAccountKey", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:iam/v1:ServiceAccountKey", name, null, MakeResourceOptions(options, id))
         {
         }
 

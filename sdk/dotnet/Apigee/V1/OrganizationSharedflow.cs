@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Apigee.V1
+namespace Pulumi.GcpNative.Apigee.V1
 {
     /// <summary>
     /// Uploads a ZIP-formatted shared flow configuration bundle to an organization. If the shared flow already exists, this creates a new revision of it. If the shared flow does not exist, this creates it. Once imported, the shared flow revision must be deployed before it can be accessed at runtime. The size limit of a shared flow bundle is 15 MB.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:apigee/v1:OrganizationSharedflow")]
+    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationSharedflow")]
     public partial class OrganizationSharedflow : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationSharedflow(string name, OrganizationSharedflowArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationSharedflow", name, args ?? new OrganizationSharedflowArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:apigee/v1:OrganizationSharedflow", name, args ?? new OrganizationSharedflowArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationSharedflow(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationSharedflow", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:apigee/v1:OrganizationSharedflow", name, null, MakeResourceOptions(options, id))
         {
         }
 

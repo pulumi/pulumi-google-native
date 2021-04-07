@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.SecretManager.V1Beta1
+namespace Pulumi.GcpNative.SecretManager.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:secretmanager/v1beta1:SecretIamPolicy")]
+    [GcpNativeResourceType("gcp-native:secretmanager/v1beta1:SecretIamPolicy")]
     public partial class SecretIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.SecretManager.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SecretIamPolicy(string name, SecretIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:secretmanager/v1beta1:SecretIamPolicy", name, args ?? new SecretIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:secretmanager/v1beta1:SecretIamPolicy", name, args ?? new SecretIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private SecretIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:secretmanager/v1beta1:SecretIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:secretmanager/v1beta1:SecretIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

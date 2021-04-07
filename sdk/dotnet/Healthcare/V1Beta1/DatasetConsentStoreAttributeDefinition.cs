@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Healthcare.V1Beta1
+namespace Pulumi.GcpNative.Healthcare.V1Beta1
 {
     /// <summary>
     /// Creates a new Attribute definition in the parent consent store.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:healthcare/v1beta1:DatasetConsentStoreAttributeDefinition")]
+    [GcpNativeResourceType("gcp-native:healthcare/v1beta1:DatasetConsentStoreAttributeDefinition")]
     public partial class DatasetConsentStoreAttributeDefinition : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GoogleCloud.Healthcare.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatasetConsentStoreAttributeDefinition(string name, DatasetConsentStoreAttributeDefinitionArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:healthcare/v1beta1:DatasetConsentStoreAttributeDefinition", name, args ?? new DatasetConsentStoreAttributeDefinitionArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:healthcare/v1beta1:DatasetConsentStoreAttributeDefinition", name, args ?? new DatasetConsentStoreAttributeDefinitionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatasetConsentStoreAttributeDefinition(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:healthcare/v1beta1:DatasetConsentStoreAttributeDefinition", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:healthcare/v1beta1:DatasetConsentStoreAttributeDefinition", name, null, MakeResourceOptions(options, id))
         {
         }
 

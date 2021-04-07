@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.RuntimeConfig.V1Beta1
+namespace Pulumi.GcpNative.RuntimeConfig.V1Beta1
 {
     /// <summary>
     /// Creates a Waiter resource. This operation returns a long-running Operation resource which can be polled for completion. However, a waiter with the given name will exist (and can be retrieved) prior to the operation completing. If the operation fails, the failed Waiter resource will still exist and must be deleted prior to subsequent creation attempts.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:runtimeconfig/v1beta1:ConfigWaiter")]
+    [GcpNativeResourceType("gcp-native:runtimeconfig/v1beta1:ConfigWaiter")]
     public partial class ConfigWaiter : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GoogleCloud.RuntimeConfig.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ConfigWaiter(string name, ConfigWaiterArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:runtimeconfig/v1beta1:ConfigWaiter", name, args ?? new ConfigWaiterArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:runtimeconfig/v1beta1:ConfigWaiter", name, args ?? new ConfigWaiterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ConfigWaiter(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:runtimeconfig/v1beta1:ConfigWaiter", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:runtimeconfig/v1beta1:ConfigWaiter", name, null, MakeResourceOptions(options, id))
         {
         }
 

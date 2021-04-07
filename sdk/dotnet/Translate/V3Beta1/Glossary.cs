@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Translate.V3Beta1
+namespace Pulumi.GcpNative.Translate.V3Beta1
 {
     /// <summary>
     /// Creates a glossary and returns the long-running operation. Returns NOT_FOUND, if the project doesn't exist.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:translate/v3beta1:Glossary")]
+    [GcpNativeResourceType("gcp-native:translate/v3beta1:Glossary")]
     public partial class Glossary : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GoogleCloud.Translate.V3Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Glossary(string name, GlossaryArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:translate/v3beta1:Glossary", name, args ?? new GlossaryArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:translate/v3beta1:Glossary", name, args ?? new GlossaryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Glossary(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:translate/v3beta1:Glossary", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:translate/v3beta1:Glossary", name, null, MakeResourceOptions(options, id))
         {
         }
 

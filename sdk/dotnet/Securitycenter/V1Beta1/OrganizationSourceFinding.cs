@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Securitycenter.V1Beta1
+namespace Pulumi.GcpNative.Securitycenter.V1Beta1
 {
     /// <summary>
     /// Creates a finding. The corresponding source must exist for finding creation to succeed.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:securitycenter/v1beta1:OrganizationSourceFinding")]
+    [GcpNativeResourceType("gcp-native:securitycenter/v1beta1:OrganizationSourceFinding")]
     public partial class OrganizationSourceFinding : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.Securitycenter.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationSourceFinding(string name, OrganizationSourceFindingArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:securitycenter/v1beta1:OrganizationSourceFinding", name, args ?? new OrganizationSourceFindingArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:securitycenter/v1beta1:OrganizationSourceFinding", name, args ?? new OrganizationSourceFindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationSourceFinding(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:securitycenter/v1beta1:OrganizationSourceFinding", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:securitycenter/v1beta1:OrganizationSourceFinding", name, null, MakeResourceOptions(options, id))
         {
         }
 

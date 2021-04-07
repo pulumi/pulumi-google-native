@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Monitoring.V3
+namespace Pulumi.GcpNative.Monitoring.V3
 {
     /// <summary>
     /// Stackdriver Monitoring Agent only: Creates a new time series.This method is only for use by the Stackdriver Monitoring Agent. Use projects.timeSeries.create instead.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:monitoring/v3:CollectdTimeSeries")]
+    [GcpNativeResourceType("gcp-native:monitoring/v3:CollectdTimeSeries")]
     public partial class CollectdTimeSeries : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CollectdTimeSeries(string name, CollectdTimeSeriesArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:monitoring/v3:CollectdTimeSeries", name, args ?? new CollectdTimeSeriesArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:monitoring/v3:CollectdTimeSeries", name, args ?? new CollectdTimeSeriesArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private CollectdTimeSeries(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:monitoring/v3:CollectdTimeSeries", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:monitoring/v3:CollectdTimeSeries", name, null, MakeResourceOptions(options, id))
         {
         }
 

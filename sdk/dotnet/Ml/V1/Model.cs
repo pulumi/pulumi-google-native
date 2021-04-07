@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Ml.V1
+namespace Pulumi.GcpNative.Ml.V1
 {
     /// <summary>
     /// Creates a model which will later contain one or more versions. You must add at least one version before you can request predictions from the model. Add versions by calling projects.models.versions.create.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:ml/v1:Model")]
+    [GcpNativeResourceType("gcp-native:ml/v1:Model")]
     public partial class Model : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.Ml.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Model(string name, ModelArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:ml/v1:Model", name, args ?? new ModelArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:ml/v1:Model", name, args ?? new ModelArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Model(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:ml/v1:Model", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:ml/v1:Model", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Securitycenter.V1Beta1
+namespace Pulumi.GcpNative.Securitycenter.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on the specified Source.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:securitycenter/v1beta1:OrganizationSourceIamPolicy")]
+    [GcpNativeResourceType("gcp-native:securitycenter/v1beta1:OrganizationSourceIamPolicy")]
     public partial class OrganizationSourceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.Securitycenter.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationSourceIamPolicy(string name, OrganizationSourceIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:securitycenter/v1beta1:OrganizationSourceIamPolicy", name, args ?? new OrganizationSourceIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:securitycenter/v1beta1:OrganizationSourceIamPolicy", name, args ?? new OrganizationSourceIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationSourceIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:securitycenter/v1beta1:OrganizationSourceIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:securitycenter/v1beta1:OrganizationSourceIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

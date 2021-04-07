@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.WebSecurityScanner.V1
+namespace Pulumi.GcpNative.WebSecurityScanner.V1
 {
     /// <summary>
     /// Creates a new ScanConfig.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:websecurityscanner/v1:ScanConfig")]
+    [GcpNativeResourceType("gcp-native:websecurityscanner/v1:ScanConfig")]
     public partial class ScanConfig : Pulumi.CustomResource
     {
         /// <summary>
@@ -96,12 +96,12 @@ namespace Pulumi.GoogleCloud.WebSecurityScanner.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ScanConfig(string name, ScanConfigArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:websecurityscanner/v1:ScanConfig", name, args ?? new ScanConfigArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:websecurityscanner/v1:ScanConfig", name, args ?? new ScanConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ScanConfig(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:websecurityscanner/v1:ScanConfig", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:websecurityscanner/v1:ScanConfig", name, null, MakeResourceOptions(options, id))
         {
         }
 

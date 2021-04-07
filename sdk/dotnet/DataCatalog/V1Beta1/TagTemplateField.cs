@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DataCatalog.V1Beta1
+namespace Pulumi.GcpNative.DataCatalog.V1Beta1
 {
     /// <summary>
     /// Creates a field in a tag template. The user should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:datacatalog/v1beta1:TagTemplateField")]
+    [GcpNativeResourceType("gcp-native:datacatalog/v1beta1:TagTemplateField")]
     public partial class TagTemplateField : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.DataCatalog.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TagTemplateField(string name, TagTemplateFieldArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:datacatalog/v1beta1:TagTemplateField", name, args ?? new TagTemplateFieldArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:datacatalog/v1beta1:TagTemplateField", name, args ?? new TagTemplateFieldArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TagTemplateField(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:datacatalog/v1beta1:TagTemplateField", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:datacatalog/v1beta1:TagTemplateField", name, null, MakeResourceOptions(options, id))
         {
         }
 

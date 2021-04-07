@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Healthcare.V1Beta1
+namespace Pulumi.GcpNative.Healthcare.V1Beta1
 {
     /// <summary>
     /// Creates a new Annotation record. It is valid to create Annotation objects for the same source more than once since a unique ID is assigned to each record by this service.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:healthcare/v1beta1:DatasetAnnotationStoreAnnotation")]
+    [GcpNativeResourceType("gcp-native:healthcare/v1beta1:DatasetAnnotationStoreAnnotation")]
     public partial class DatasetAnnotationStoreAnnotation : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GoogleCloud.Healthcare.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatasetAnnotationStoreAnnotation(string name, DatasetAnnotationStoreAnnotationArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:healthcare/v1beta1:DatasetAnnotationStoreAnnotation", name, args ?? new DatasetAnnotationStoreAnnotationArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:healthcare/v1beta1:DatasetAnnotationStoreAnnotation", name, args ?? new DatasetAnnotationStoreAnnotationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatasetAnnotationStoreAnnotation(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:healthcare/v1beta1:DatasetAnnotationStoreAnnotation", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:healthcare/v1beta1:DatasetAnnotationStoreAnnotation", name, null, MakeResourceOptions(options, id))
         {
         }
 

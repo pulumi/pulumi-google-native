@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Monitoring.V3
+namespace Pulumi.GcpNative.Monitoring.V3
 {
     /// <summary>
     /// Creates or adds data to one or more time series. The response is empty if all time series in the request were written. If any time series could not be written, a corresponding failure message is included in the error response.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:monitoring/v3:TimeSeries")]
+    [GcpNativeResourceType("gcp-native:monitoring/v3:TimeSeries")]
     public partial class TimeSeries : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TimeSeries(string name, TimeSeriesArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:monitoring/v3:TimeSeries", name, args ?? new TimeSeriesArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:monitoring/v3:TimeSeries", name, args ?? new TimeSeriesArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TimeSeries(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:monitoring/v3:TimeSeries", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:monitoring/v3:TimeSeries", name, null, MakeResourceOptions(options, id))
         {
         }
 

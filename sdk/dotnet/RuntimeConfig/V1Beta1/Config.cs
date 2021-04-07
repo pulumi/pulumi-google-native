@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.RuntimeConfig.V1Beta1
+namespace Pulumi.GcpNative.RuntimeConfig.V1Beta1
 {
     /// <summary>
     /// Creates a new RuntimeConfig resource. The configuration name must be unique within project.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:runtimeconfig/v1beta1:Config")]
+    [GcpNativeResourceType("gcp-native:runtimeconfig/v1beta1:Config")]
     public partial class Config : Pulumi.CustomResource
     {
         /// <summary>
@@ -36,12 +36,12 @@ namespace Pulumi.GoogleCloud.RuntimeConfig.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Config(string name, ConfigArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:runtimeconfig/v1beta1:Config", name, args ?? new ConfigArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:runtimeconfig/v1beta1:Config", name, args ?? new ConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Config(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:runtimeconfig/v1beta1:Config", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:runtimeconfig/v1beta1:Config", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Creates a machine image in the specified project using the data that is included in the request. If you are creating a new machine image to update an existing instance, your new machine image should use the same network or, if applicable, the same subnetwork as the original instance.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:MachineImage")]
+    [GcpNativeResourceType("gcp-native:compute/beta:MachineImage")]
     public partial class MachineImage : Pulumi.CustomResource
     {
         /// <summary>
@@ -116,12 +116,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public MachineImage(string name, MachineImageArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:MachineImage", name, args ?? new MachineImageArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:MachineImage", name, args ?? new MachineImageArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private MachineImage(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:MachineImage", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:MachineImage", name, null, MakeResourceOptions(options, id))
         {
         }
 

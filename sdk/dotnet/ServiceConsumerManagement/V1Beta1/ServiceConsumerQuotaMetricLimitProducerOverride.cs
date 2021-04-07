@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ServiceConsumerManagement.V1Beta1
+namespace Pulumi.GcpNative.ServiceConsumerManagement.V1Beta1
 {
     /// <summary>
     /// Creates a producer override. A producer override is applied by the owner or administrator of a service to increase or decrease the amount of quota a consumer of the service is allowed to use. To create multiple overrides at once, use ImportProducerOverrides instead. If an override with the specified dimensions already exists, this call will fail. To overwrite an existing override if one is already present ("upsert" semantics), use ImportProducerOverrides instead.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:serviceconsumermanagement/v1beta1:ServiceConsumerQuotaMetricLimitProducerOverride")]
+    [GcpNativeResourceType("gcp-native:serviceconsumermanagement/v1beta1:ServiceConsumerQuotaMetricLimitProducerOverride")]
     public partial class ServiceConsumerQuotaMetricLimitProducerOverride : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.ServiceConsumerManagement.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceConsumerQuotaMetricLimitProducerOverride(string name, ServiceConsumerQuotaMetricLimitProducerOverrideArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:serviceconsumermanagement/v1beta1:ServiceConsumerQuotaMetricLimitProducerOverride", name, args ?? new ServiceConsumerQuotaMetricLimitProducerOverrideArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:serviceconsumermanagement/v1beta1:ServiceConsumerQuotaMetricLimitProducerOverride", name, args ?? new ServiceConsumerQuotaMetricLimitProducerOverrideArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceConsumerQuotaMetricLimitProducerOverride(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:serviceconsumermanagement/v1beta1:ServiceConsumerQuotaMetricLimitProducerOverride", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:serviceconsumermanagement/v1beta1:ServiceConsumerQuotaMetricLimitProducerOverride", name, null, MakeResourceOptions(options, id))
         {
         }
 

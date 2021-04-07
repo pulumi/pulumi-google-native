@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudFunctions.V1
+namespace Pulumi.GcpNative.CloudFunctions.V1
 {
     /// <summary>
     /// Creates a new function. If a function with the given name already exists in the specified project, the long running operation will return `ALREADY_EXISTS` error.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudfunctions/v1:Function")]
+    [GcpNativeResourceType("gcp-native:cloudfunctions/v1:Function")]
     public partial class Function : Pulumi.CustomResource
     {
         /// <summary>
@@ -180,12 +180,12 @@ namespace Pulumi.GoogleCloud.CloudFunctions.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Function(string name, FunctionArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudfunctions/v1:Function", name, args ?? new FunctionArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudfunctions/v1:Function", name, args ?? new FunctionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Function(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudfunctions/v1:Function", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudfunctions/v1:Function", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Notebooks.V1
+namespace Pulumi.GcpNative.Notebooks.V1
 {
     /// <summary>
     /// Creates a new Runtime in a given project and location.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:notebooks/v1:Runtime")]
+    [GcpNativeResourceType("gcp-native:notebooks/v1:Runtime")]
     public partial class Runtime : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Runtime(string name, RuntimeArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:notebooks/v1:Runtime", name, args ?? new RuntimeArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:notebooks/v1:Runtime", name, args ?? new RuntimeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Runtime(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:notebooks/v1:Runtime", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:notebooks/v1:Runtime", name, null, MakeResourceOptions(options, id))
         {
         }
 

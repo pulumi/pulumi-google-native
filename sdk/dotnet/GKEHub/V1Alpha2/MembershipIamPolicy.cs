@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.GKEHub.V1Alpha2
+namespace Pulumi.GcpNative.GKEHub.V1Alpha2
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:gkehub/v1alpha2:MembershipIamPolicy")]
+    [GcpNativeResourceType("gcp-native:gkehub/v1alpha2:MembershipIamPolicy")]
     public partial class MembershipIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.GKEHub.V1Alpha2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public MembershipIamPolicy(string name, MembershipIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:gkehub/v1alpha2:MembershipIamPolicy", name, args ?? new MembershipIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:gkehub/v1alpha2:MembershipIamPolicy", name, args ?? new MembershipIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private MembershipIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:gkehub/v1alpha2:MembershipIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:gkehub/v1alpha2:MembershipIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

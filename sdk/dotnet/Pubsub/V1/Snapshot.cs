@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Pubsub.V1
+namespace Pulumi.GcpNative.Pubsub.V1
 {
     /// <summary>
     /// Creates a snapshot from the requested subscription. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. If the snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting snapshot would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name is not provided in the request, the server will assign a random name for this snapshot on the same project as the subscription, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the returned Snapshot object. Note that for REST API requests, you must specify a name in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:pubsub/v1:Snapshot")]
+    [GcpNativeResourceType("gcp-native:pubsub/v1:Snapshot")]
     public partial class Snapshot : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.Pubsub.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Snapshot(string name, SnapshotArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:pubsub/v1:Snapshot", name, args ?? new SnapshotArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:pubsub/v1:Snapshot", name, args ?? new SnapshotArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Snapshot(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:pubsub/v1:Snapshot", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:pubsub/v1:Snapshot", name, null, MakeResourceOptions(options, id))
         {
         }
 

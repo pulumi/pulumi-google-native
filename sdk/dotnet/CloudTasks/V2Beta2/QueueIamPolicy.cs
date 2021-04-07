@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudTasks.V2Beta2
+namespace Pulumi.GcpNative.CloudTasks.V2Beta2
 {
     /// <summary>
     /// Sets the access control policy for a Queue. Replaces any existing policy. Note: The Cloud Console does not check queue-level IAM permissions yet. Project-level permissions are required to use the Cloud Console. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission on the specified resource parent: * `cloudtasks.queues.setIamPolicy`
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudtasks/v2beta2:QueueIamPolicy")]
+    [GcpNativeResourceType("gcp-native:cloudtasks/v2beta2:QueueIamPolicy")]
     public partial class QueueIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.CloudTasks.V2Beta2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public QueueIamPolicy(string name, QueueIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudtasks/v2beta2:QueueIamPolicy", name, args ?? new QueueIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudtasks/v2beta2:QueueIamPolicy", name, args ?? new QueueIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private QueueIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudtasks/v2beta2:QueueIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudtasks/v2beta2:QueueIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

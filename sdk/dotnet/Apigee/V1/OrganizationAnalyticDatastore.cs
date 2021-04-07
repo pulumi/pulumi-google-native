@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Apigee.V1
+namespace Pulumi.GcpNative.Apigee.V1
 {
     /// <summary>
     /// Create a Datastore for an org
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:apigee/v1:OrganizationAnalyticDatastore")]
+    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationAnalyticDatastore")]
     public partial class OrganizationAnalyticDatastore : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationAnalyticDatastore(string name, OrganizationAnalyticDatastoreArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationAnalyticDatastore", name, args ?? new OrganizationAnalyticDatastoreArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:apigee/v1:OrganizationAnalyticDatastore", name, args ?? new OrganizationAnalyticDatastoreArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationAnalyticDatastore(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationAnalyticDatastore", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:apigee/v1:OrganizationAnalyticDatastore", name, null, MakeResourceOptions(options, id))
         {
         }
 

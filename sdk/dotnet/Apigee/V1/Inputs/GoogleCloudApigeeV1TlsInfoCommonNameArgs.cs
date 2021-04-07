@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Apigee.V1.Inputs
+namespace Pulumi.GcpNative.Apigee.V1.Inputs
 {
 
     public sealed class GoogleCloudApigeeV1TlsInfoCommonNameArgs : Pulumi.ResourceArgs

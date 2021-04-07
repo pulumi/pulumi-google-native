@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Logging.V2
+namespace Pulumi.GcpNative.Logging.V2
 {
     /// <summary>
     /// Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:logging/v2:FolderExclusion")]
+    [GcpNativeResourceType("gcp-native:logging/v2:FolderExclusion")]
     public partial class FolderExclusion : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GoogleCloud.Logging.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FolderExclusion(string name, FolderExclusionArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:logging/v2:FolderExclusion", name, args ?? new FolderExclusionArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:logging/v2:FolderExclusion", name, args ?? new FolderExclusionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private FolderExclusion(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:logging/v2:FolderExclusion", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:logging/v2:FolderExclusion", name, null, MakeResourceOptions(options, id))
         {
         }
 

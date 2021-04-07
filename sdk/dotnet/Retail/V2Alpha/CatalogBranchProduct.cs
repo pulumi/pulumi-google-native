@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Retail.V2Alpha
+namespace Pulumi.GcpNative.Retail.V2Alpha
 {
     /// <summary>
     /// Creates a Product.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:retail/v2alpha:CatalogBranchProduct")]
+    [GcpNativeResourceType("gcp-native:retail/v2alpha:CatalogBranchProduct")]
     public partial class CatalogBranchProduct : Pulumi.CustomResource
     {
         /// <summary>
@@ -108,12 +108,12 @@ namespace Pulumi.GoogleCloud.Retail.V2Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CatalogBranchProduct(string name, CatalogBranchProductArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:retail/v2alpha:CatalogBranchProduct", name, args ?? new CatalogBranchProductArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:retail/v2alpha:CatalogBranchProduct", name, args ?? new CatalogBranchProductArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private CatalogBranchProduct(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:retail/v2alpha:CatalogBranchProduct", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:retail/v2alpha:CatalogBranchProduct", name, null, MakeResourceOptions(options, id))
         {
         }
 

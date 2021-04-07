@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Container.V1
+namespace Pulumi.GcpNative.Container.V1
 {
     /// <summary>
     /// Creates a node pool for a cluster.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:container/v1:ClusterNodePool")]
+    [GcpNativeResourceType("gcp-native:container/v1:ClusterNodePool")]
     public partial class ClusterNodePool : Pulumi.CustomResource
     {
         /// <summary>
@@ -108,12 +108,12 @@ namespace Pulumi.GoogleCloud.Container.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ClusterNodePool(string name, ClusterNodePoolArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:container/v1:ClusterNodePool", name, args ?? new ClusterNodePoolArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:container/v1:ClusterNodePool", name, args ?? new ClusterNodePoolArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ClusterNodePool(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:container/v1:ClusterNodePool", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:container/v1:ClusterNodePool", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.BigQueryConnection.V1Beta1
+namespace Pulumi.GcpNative.BigQueryConnection.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:bigqueryconnection/v1beta1:ConnectionIamPolicy")]
+    [GcpNativeResourceType("gcp-native:bigqueryconnection/v1beta1:ConnectionIamPolicy")]
     public partial class ConnectionIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.BigQueryConnection.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ConnectionIamPolicy(string name, ConnectionIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:bigqueryconnection/v1beta1:ConnectionIamPolicy", name, args ?? new ConnectionIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:bigqueryconnection/v1beta1:ConnectionIamPolicy", name, args ?? new ConnectionIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ConnectionIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:bigqueryconnection/v1beta1:ConnectionIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:bigqueryconnection/v1beta1:ConnectionIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

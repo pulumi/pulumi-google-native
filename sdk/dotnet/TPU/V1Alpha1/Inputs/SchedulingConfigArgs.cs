@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.TPU.V1Alpha1.Inputs
+namespace Pulumi.GcpNative.TPU.V1Alpha1.Inputs
 {
 
     /// <summary>

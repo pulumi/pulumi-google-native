@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Iap.V1
+namespace Pulumi.GcpNative.Iap.V1
 {
     /// <summary>
     /// Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any existing policy. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:iap/v1:V1IamPolicy")]
+    [GcpNativeResourceType("gcp-native:iap/v1:V1IamPolicy")]
     public partial class V1IamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.Iap.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public V1IamPolicy(string name, V1IamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:iap/v1:V1IamPolicy", name, args ?? new V1IamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:iap/v1:V1IamPolicy", name, args ?? new V1IamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private V1IamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:iap/v1:V1IamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:iap/v1:V1IamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

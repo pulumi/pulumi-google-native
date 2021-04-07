@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.AccessContextManager.V1Beta
+namespace Pulumi.GcpNative.AccessContextManager.V1Beta
 {
     /// <summary>
     /// Create a Service Perimeter. The longrunning operation from this RPC will have a successful status once the Service Perimeter has propagated to long-lasting storage. Service Perimeters containing errors will result in an error response for the first error encountered.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:accesscontextmanager/v1beta:AccessPolicyServicePerimeter")]
+    [GcpNativeResourceType("gcp-native:accesscontextmanager/v1beta:AccessPolicyServicePerimeter")]
     public partial class AccessPolicyServicePerimeter : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.AccessContextManager.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccessPolicyServicePerimeter(string name, AccessPolicyServicePerimeterArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:accesscontextmanager/v1beta:AccessPolicyServicePerimeter", name, args ?? new AccessPolicyServicePerimeterArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:accesscontextmanager/v1beta:AccessPolicyServicePerimeter", name, args ?? new AccessPolicyServicePerimeterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AccessPolicyServicePerimeter(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:accesscontextmanager/v1beta:AccessPolicyServicePerimeter", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:accesscontextmanager/v1beta:AccessPolicyServicePerimeter", name, null, MakeResourceOptions(options, id))
         {
         }
 

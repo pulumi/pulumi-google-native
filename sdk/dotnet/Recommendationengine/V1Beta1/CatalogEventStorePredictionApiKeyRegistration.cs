@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Recommendationengine.V1Beta1
+namespace Pulumi.GcpNative.Recommendationengine.V1Beta1
 {
     /// <summary>
     /// Register an API key for use with predict method.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration")]
+    [GcpNativeResourceType("gcp-native:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration")]
     public partial class CatalogEventStorePredictionApiKeyRegistration : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.Recommendationengine.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CatalogEventStorePredictionApiKeyRegistration(string name, CatalogEventStorePredictionApiKeyRegistrationArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration", name, args ?? new CatalogEventStorePredictionApiKeyRegistrationArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration", name, args ?? new CatalogEventStorePredictionApiKeyRegistrationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private CatalogEventStorePredictionApiKeyRegistration(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration", name, null, MakeResourceOptions(options, id))
         {
         }
 

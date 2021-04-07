@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DataCatalog.V1Beta1.Inputs
+namespace Pulumi.GcpNative.DataCatalog.V1Beta1.Inputs
 {
 
     public sealed class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs : Pulumi.ResourceArgs

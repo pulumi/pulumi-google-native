@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Managedidentities.V1Alpha1
+namespace Pulumi.GcpNative.Managedidentities.V1Alpha1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:managedidentities/v1alpha1:PeeringIamPolicy")]
+    [GcpNativeResourceType("gcp-native:managedidentities/v1alpha1:PeeringIamPolicy")]
     public partial class PeeringIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.Managedidentities.V1Alpha1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public PeeringIamPolicy(string name, PeeringIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:managedidentities/v1alpha1:PeeringIamPolicy", name, args ?? new PeeringIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:managedidentities/v1alpha1:PeeringIamPolicy", name, args ?? new PeeringIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private PeeringIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:managedidentities/v1alpha1:PeeringIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:managedidentities/v1alpha1:PeeringIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

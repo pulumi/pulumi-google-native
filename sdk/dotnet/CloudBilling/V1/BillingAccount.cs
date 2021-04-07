@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudBilling.V1
+namespace Pulumi.GcpNative.CloudBilling.V1
 {
     /// <summary>
     /// This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned as a reseller account.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudbilling/v1:BillingAccount")]
+    [GcpNativeResourceType("gcp-native:cloudbilling/v1:BillingAccount")]
     public partial class BillingAccount : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.CloudBilling.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BillingAccount(string name, BillingAccountArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudbilling/v1:BillingAccount", name, args ?? new BillingAccountArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudbilling/v1:BillingAccount", name, args ?? new BillingAccountArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private BillingAccount(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudbilling/v1:BillingAccount", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudbilling/v1:BillingAccount", name, null, MakeResourceOptions(options, id))
         {
         }
 

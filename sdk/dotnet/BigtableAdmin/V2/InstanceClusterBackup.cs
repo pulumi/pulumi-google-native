@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.BigtableAdmin.V2
+namespace Pulumi.GcpNative.BigtableAdmin.V2
 {
     /// <summary>
     /// Starts creating a new Cloud Bigtable Backup. The returned backup long-running operation can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:bigtableadmin/v2:InstanceClusterBackup")]
+    [GcpNativeResourceType("gcp-native:bigtableadmin/v2:InstanceClusterBackup")]
     public partial class InstanceClusterBackup : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.BigtableAdmin.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceClusterBackup(string name, InstanceClusterBackupArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:bigtableadmin/v2:InstanceClusterBackup", name, args ?? new InstanceClusterBackupArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:bigtableadmin/v2:InstanceClusterBackup", name, args ?? new InstanceClusterBackupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceClusterBackup(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:bigtableadmin/v2:InstanceClusterBackup", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:bigtableadmin/v2:InstanceClusterBackup", name, null, MakeResourceOptions(options, id))
         {
         }
 

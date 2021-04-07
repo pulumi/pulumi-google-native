@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Alpha.Inputs
+namespace Pulumi.GcpNative.Compute.Alpha.Inputs
 {
 
     public sealed class SecurityPolicyRuleMatcherConfigDestinationPortArgs : Pulumi.ResourceArgs

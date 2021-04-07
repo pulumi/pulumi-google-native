@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.SQLAdmin.V1Beta4
+namespace Pulumi.GcpNative.SQLAdmin.V1Beta4
 {
     /// <summary>
     /// Creates an SSL certificate and returns it along with the private key and server certificate authority. The new certificate will not be usable until the instance is restarted.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:sqladmin/v1beta4:SslCert")]
+    [GcpNativeResourceType("gcp-native:sqladmin/v1beta4:SslCert")]
     public partial class SslCert : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GoogleCloud.SQLAdmin.V1Beta4
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SslCert(string name, SslCertArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:sqladmin/v1beta4:SslCert", name, args ?? new SslCertArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:sqladmin/v1beta4:SslCert", name, args ?? new SslCertArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private SslCert(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:sqladmin/v1beta4:SslCert", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:sqladmin/v1beta4:SslCert", name, null, MakeResourceOptions(options, id))
         {
         }
 

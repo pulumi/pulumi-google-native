@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ServiceNetworking.V1
+namespace Pulumi.GcpNative.ServiceNetworking.V1
 {
     /// <summary>
     /// Creates a peered DNS domain which sends requests for records in given namespace originating in the service producer VPC network to the consumer VPC network to be resolved.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:servicenetworking/v1:ServiceNetworkPeeredDnsDomain")]
+    [GcpNativeResourceType("gcp-native:servicenetworking/v1:ServiceNetworkPeeredDnsDomain")]
     public partial class ServiceNetworkPeeredDnsDomain : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.ServiceNetworking.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceNetworkPeeredDnsDomain(string name, ServiceNetworkPeeredDnsDomainArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:servicenetworking/v1:ServiceNetworkPeeredDnsDomain", name, args ?? new ServiceNetworkPeeredDnsDomainArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:servicenetworking/v1:ServiceNetworkPeeredDnsDomain", name, args ?? new ServiceNetworkPeeredDnsDomainArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceNetworkPeeredDnsDomain(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:servicenetworking/v1:ServiceNetworkPeeredDnsDomain", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:servicenetworking/v1:ServiceNetworkPeeredDnsDomain", name, null, MakeResourceOptions(options, id))
         {
         }
 

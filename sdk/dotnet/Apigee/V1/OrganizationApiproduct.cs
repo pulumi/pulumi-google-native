@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Apigee.V1
+namespace Pulumi.GcpNative.Apigee.V1
 {
     /// <summary>
     /// Creates an API product in an organization. You create API products after you have proxied backend services using API proxies. An API product is a collection of API resources combined with quota settings and metadata that you can use to deliver customized and productized API bundles to your developer community. This metadata can include: - Scope - Environments - API proxies - Extensible profile API products enable you repackage APIs on-the-fly, without having to do any additional coding or configuration. Apigee recommends that you start with a simple API product including only required elements. You then provision credentials to apps to enable them to start testing your APIs. After you have authentication and authorization working against a simple API product, you can iterate to create finer grained API products, defining different sets of API resources for each API product. **WARNING:** - If you don't specify an API proxy in the request body, *any* app associated with the product can make calls to *any* API in your entire organization. - If you don't specify an environment in the request body, the product allows access to all environments. For more information, see What is an API product?
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:apigee/v1:OrganizationApiproduct")]
+    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationApiproduct")]
     public partial class OrganizationApiproduct : Pulumi.CustomResource
     {
         [Output("apiResources")]
@@ -117,12 +117,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationApiproduct(string name, OrganizationApiproductArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationApiproduct", name, args ?? new OrganizationApiproductArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:apigee/v1:OrganizationApiproduct", name, args ?? new OrganizationApiproductArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationApiproduct(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationApiproduct", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:apigee/v1:OrganizationApiproduct", name, null, MakeResourceOptions(options, id))
         {
         }
 

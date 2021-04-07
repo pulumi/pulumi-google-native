@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudResourceManager.V1
+namespace Pulumi.GcpNative.CloudResourceManager.V1
 {
     /// <summary>
     /// Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method will require permission on the `parent` resource. For example, applying to `projects/1234` requires permission `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which may be applied.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudresourcemanager/v1:Lien")]
+    [GcpNativeResourceType("gcp-native:cloudresourcemanager/v1:Lien")]
     public partial class Lien : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GoogleCloud.CloudResourceManager.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Lien(string name, LienArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudresourcemanager/v1:Lien", name, args ?? new LienArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudresourcemanager/v1:Lien", name, args ?? new LienArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Lien(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudresourcemanager/v1:Lien", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudresourcemanager/v1:Lien", name, null, MakeResourceOptions(options, id))
         {
         }
 

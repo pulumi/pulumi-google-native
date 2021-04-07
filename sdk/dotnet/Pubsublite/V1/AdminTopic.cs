@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Pubsublite.V1
+namespace Pulumi.GcpNative.Pubsublite.V1
 {
     /// <summary>
     /// Creates a new topic.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:pubsublite/v1:AdminTopic")]
+    [GcpNativeResourceType("gcp-native:pubsublite/v1:AdminTopic")]
     public partial class AdminTopic : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.Pubsublite.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AdminTopic(string name, AdminTopicArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:pubsublite/v1:AdminTopic", name, args ?? new AdminTopicArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:pubsublite/v1:AdminTopic", name, args ?? new AdminTopicArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AdminTopic(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:pubsublite/v1:AdminTopic", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:pubsublite/v1:AdminTopic", name, null, MakeResourceOptions(options, id))
         {
         }
 

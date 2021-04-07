@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Redis.V1Beta1
+namespace Pulumi.GcpNative.Redis.V1Beta1
 {
     /// <summary>
     /// Creates a Redis instance based on the specified tier and memory size. By default, the instance is accessible from the project's [default network](https://cloud.google.com/vpc/docs/vpc). The creation is executed asynchronously and callers may check the returned operation to track its progress. Once the operation is completed the Redis instance will be fully functional. Completed longrunning.Operation will contain the new instance object in the response field. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:redis/v1beta1:Instance")]
+    [GcpNativeResourceType("gcp-native:redis/v1beta1:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
@@ -156,12 +156,12 @@ namespace Pulumi.GoogleCloud.Redis.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:redis/v1beta1:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:redis/v1beta1:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Instance(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:redis/v1beta1:Instance", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:redis/v1beta1:Instance", name, null, MakeResourceOptions(options, id))
         {
         }
 

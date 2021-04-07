@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.GKEHub.V1
+namespace Pulumi.GcpNative.GKEHub.V1
 {
     /// <summary>
     /// Adds a new Membership.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:gkehub/v1:Membership")]
+    [GcpNativeResourceType("gcp-native:gkehub/v1:Membership")]
     public partial class Membership : Pulumi.CustomResource
     {
         /// <summary>
@@ -96,12 +96,12 @@ namespace Pulumi.GoogleCloud.GKEHub.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Membership(string name, MembershipArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:gkehub/v1:Membership", name, args ?? new MembershipArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:gkehub/v1:Membership", name, args ?? new MembershipArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Membership(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:gkehub/v1:Membership", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:gkehub/v1:Membership", name, null, MakeResourceOptions(options, id))
         {
         }
 

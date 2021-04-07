@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Logging.V2
+namespace Pulumi.GcpNative.Logging.V2
 {
     /// <summary>
     /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:logging/v2:FolderBucketView")]
+    [GcpNativeResourceType("gcp-native:logging/v2:FolderBucketView")]
     public partial class FolderBucketView : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.Logging.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FolderBucketView(string name, FolderBucketViewArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:logging/v2:FolderBucketView", name, args ?? new FolderBucketViewArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:logging/v2:FolderBucketView", name, args ?? new FolderBucketViewArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private FolderBucketView(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:logging/v2:FolderBucketView", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:logging/v2:FolderBucketView", name, null, MakeResourceOptions(options, id))
         {
         }
 

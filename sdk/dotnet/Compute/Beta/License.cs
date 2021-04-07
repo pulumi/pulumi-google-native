@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Create a License resource in the specified project.  Caution This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:License")]
+    [GcpNativeResourceType("gcp-native:compute/beta:License")]
     public partial class License : Pulumi.CustomResource
     {
         /// <summary>
@@ -69,12 +69,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public License(string name, LicenseArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:License", name, args ?? new LicenseArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:License", name, args ?? new LicenseArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private License(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:License", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:License", name, null, MakeResourceOptions(options, id))
         {
         }
 

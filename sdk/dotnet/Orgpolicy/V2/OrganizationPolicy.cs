@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Orgpolicy.V2
+namespace Pulumi.GcpNative.Orgpolicy.V2
 {
     /// <summary>
     /// Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Cloud resource.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:orgpolicy/v2:OrganizationPolicy")]
+    [GcpNativeResourceType("gcp-native:orgpolicy/v2:OrganizationPolicy")]
     public partial class OrganizationPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -36,12 +36,12 @@ namespace Pulumi.GoogleCloud.Orgpolicy.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationPolicy(string name, OrganizationPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:orgpolicy/v2:OrganizationPolicy", name, args ?? new OrganizationPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:orgpolicy/v2:OrganizationPolicy", name, args ?? new OrganizationPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:orgpolicy/v2:OrganizationPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:orgpolicy/v2:OrganizationPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

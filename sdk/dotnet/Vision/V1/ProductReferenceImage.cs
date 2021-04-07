@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Vision.V1
+namespace Pulumi.GcpNative.Vision.V1
 {
     /// <summary>
     /// Creates and returns a new ReferenceImage resource. The `bounding_poly` field is optional. If `bounding_poly` is not specified, the system will try to detect regions of interest in the image that are compatible with the product_category on the parent product. If it is specified, detection is ALWAYS skipped. The system converts polygons into non-rotated rectangles. Note that the pipeline will resize the image if the image resolution is too large to process (above 50MP). Possible errors: * Returns INVALID_ARGUMENT if the image_uri is missing or longer than 4096 characters. * Returns INVALID_ARGUMENT if the product does not exist. * Returns INVALID_ARGUMENT if bounding_poly is not provided, and nothing compatible with the parent product's product_category is detected. * Returns INVALID_ARGUMENT if bounding_poly contains more than 10 polygons.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:vision/v1:ProductReferenceImage")]
+    [GcpNativeResourceType("gcp-native:vision/v1:ProductReferenceImage")]
     public partial class ProductReferenceImage : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.Vision.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProductReferenceImage(string name, ProductReferenceImageArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:vision/v1:ProductReferenceImage", name, args ?? new ProductReferenceImageArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:vision/v1:ProductReferenceImage", name, args ?? new ProductReferenceImageArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ProductReferenceImage(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:vision/v1:ProductReferenceImage", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:vision/v1:ProductReferenceImage", name, null, MakeResourceOptions(options, id))
         {
         }
 
