@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.FirebaseHosting.V1Beta1
+namespace Pulumi.GcpNative.FirebaseHosting.V1Beta1
 {
     /// <summary>
     /// Creates a new release, which makes the content of the specified version actively display on the appropriate URL(s).
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:firebasehosting/v1beta1:SiteChannelRelease")]
+    [GcpNativeResourceType("gcp-native:firebasehosting/v1beta1:SiteChannelRelease")]
     public partial class SiteChannelRelease : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.FirebaseHosting.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SiteChannelRelease(string name, SiteChannelReleaseArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:firebasehosting/v1beta1:SiteChannelRelease", name, args ?? new SiteChannelReleaseArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:firebasehosting/v1beta1:SiteChannelRelease", name, args ?? new SiteChannelReleaseArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private SiteChannelRelease(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:firebasehosting/v1beta1:SiteChannelRelease", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:firebasehosting/v1beta1:SiteChannelRelease", name, null, MakeResourceOptions(options, id))
         {
         }
 

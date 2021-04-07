@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Firestore.V1
+namespace Pulumi.GcpNative.Firestore.V1
 {
     /// <summary>
     /// Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:firestore/v1:DatabaseCollectionGroupIndex")]
+    [GcpNativeResourceType("gcp-native:firestore/v1:DatabaseCollectionGroupIndex")]
     public partial class DatabaseCollectionGroupIndex : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.Firestore.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseCollectionGroupIndex(string name, DatabaseCollectionGroupIndexArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:firestore/v1:DatabaseCollectionGroupIndex", name, args ?? new DatabaseCollectionGroupIndexArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:firestore/v1:DatabaseCollectionGroupIndex", name, args ?? new DatabaseCollectionGroupIndexArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatabaseCollectionGroupIndex(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:firestore/v1:DatabaseCollectionGroupIndex", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:firestore/v1:DatabaseCollectionGroupIndex", name, null, MakeResourceOptions(options, id))
         {
         }
 

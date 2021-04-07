@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:DiskIamPolicy")]
+    [GcpNativeResourceType("gcp-native:compute/beta:DiskIamPolicy")]
     public partial class DiskIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,12 +71,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DiskIamPolicy(string name, DiskIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:DiskIamPolicy", name, args ?? new DiskIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:DiskIamPolicy", name, args ?? new DiskIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DiskIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:DiskIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:DiskIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

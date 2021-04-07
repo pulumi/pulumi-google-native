@@ -22,7 +22,7 @@ export class Domain extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:managedidentities/v1alpha1:Domain';
+    public static readonly __pulumiType = 'gcp-native:managedidentities/v1alpha1:Domain';
 
     /**
      * Returns true if the given object is an instance of Domain.  This is designed to work even

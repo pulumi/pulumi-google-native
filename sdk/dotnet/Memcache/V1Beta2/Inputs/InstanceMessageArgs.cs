@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Memcache.V1Beta2.Inputs
+namespace Pulumi.GcpNative.Memcache.V1Beta2.Inputs
 {
 
     public sealed class InstanceMessageArgs : Pulumi.ResourceArgs

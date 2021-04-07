@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Alpha
+namespace Pulumi.GcpNative.Compute.Alpha
 {
     /// <summary>
     /// Creates an autoscaler in the specified project using the data included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/alpha:RegionAutoscaler")]
+    [GcpNativeResourceType("gcp-native:compute/alpha:RegionAutoscaler")]
     public partial class RegionAutoscaler : Pulumi.CustomResource
     {
         /// <summary>
@@ -114,12 +114,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionAutoscaler(string name, RegionAutoscalerArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:RegionAutoscaler", name, args ?? new RegionAutoscalerArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/alpha:RegionAutoscaler", name, args ?? new RegionAutoscalerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegionAutoscaler(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:RegionAutoscaler", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/alpha:RegionAutoscaler", name, null, MakeResourceOptions(options, id))
         {
         }
 

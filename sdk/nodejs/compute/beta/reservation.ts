@@ -22,7 +22,7 @@ export class Reservation extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/beta:Reservation';
+    public static readonly __pulumiType = 'gcp-native:compute/beta:Reservation';
 
     /**
      * Returns true if the given object is an instance of Reservation.  This is designed to work even

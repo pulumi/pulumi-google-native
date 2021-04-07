@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:pubsub/v1beta1a:Subscription":
+            case "gcp-native:pubsub/v1beta1a:Subscription":
                 return new Subscription(name, <any>undefined, { urn })
-            case "google-cloud:pubsub/v1beta1a:Topic":
+            case "gcp-native:pubsub/v1beta1a:Topic":
                 return new Topic(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "pubsub/v1beta1a", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "pubsub/v1beta1a", _module)

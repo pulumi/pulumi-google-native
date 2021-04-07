@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Creates a network endpoint group in the specified project using the parameters that are included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:GlobalNetworkEndpointGroup")]
+    [GcpNativeResourceType("gcp-native:compute/beta:GlobalNetworkEndpointGroup")]
     public partial class GlobalNetworkEndpointGroup : Pulumi.CustomResource
     {
         /// <summary>
@@ -126,12 +126,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GlobalNetworkEndpointGroup(string name, GlobalNetworkEndpointGroupArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:GlobalNetworkEndpointGroup", name, args ?? new GlobalNetworkEndpointGroupArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:GlobalNetworkEndpointGroup", name, args ?? new GlobalNetworkEndpointGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private GlobalNetworkEndpointGroup(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:GlobalNetworkEndpointGroup", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:GlobalNetworkEndpointGroup", name, null, MakeResourceOptions(options, id))
         {
         }
 

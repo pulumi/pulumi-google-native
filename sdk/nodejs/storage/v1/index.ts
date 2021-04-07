@@ -30,27 +30,27 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:storage/v1:Bucket":
+            case "gcp-native:storage/v1:Bucket":
                 return new Bucket(name, <any>undefined, { urn })
-            case "google-cloud:storage/v1:BucketAccessControl":
+            case "gcp-native:storage/v1:BucketAccessControl":
                 return new BucketAccessControl(name, <any>undefined, { urn })
-            case "google-cloud:storage/v1:BucketIamPolicy":
+            case "gcp-native:storage/v1:BucketIamPolicy":
                 return new BucketIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:storage/v1:BucketObject":
+            case "gcp-native:storage/v1:BucketObject":
                 return new BucketObject(name, <any>undefined, { urn })
-            case "google-cloud:storage/v1:DefaultObjectAccessControl":
+            case "gcp-native:storage/v1:DefaultObjectAccessControl":
                 return new DefaultObjectAccessControl(name, <any>undefined, { urn })
-            case "google-cloud:storage/v1:HmacKey":
+            case "gcp-native:storage/v1:HmacKey":
                 return new HmacKey(name, <any>undefined, { urn })
-            case "google-cloud:storage/v1:Notification":
+            case "gcp-native:storage/v1:Notification":
                 return new Notification(name, <any>undefined, { urn })
-            case "google-cloud:storage/v1:ObjectAccessControl":
+            case "gcp-native:storage/v1:ObjectAccessControl":
                 return new ObjectAccessControl(name, <any>undefined, { urn })
-            case "google-cloud:storage/v1:ObjectIamPolicy":
+            case "gcp-native:storage/v1:ObjectIamPolicy":
                 return new ObjectIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "storage/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "storage/v1", _module)

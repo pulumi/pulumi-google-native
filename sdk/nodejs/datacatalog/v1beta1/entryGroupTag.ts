@@ -21,7 +21,7 @@ export class EntryGroupTag extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:datacatalog/v1beta1:EntryGroupTag';
+    public static readonly __pulumiType = 'gcp-native:datacatalog/v1beta1:EntryGroupTag';
 
     /**
      * Returns true if the given object is an instance of EntryGroupTag.  This is designed to work even

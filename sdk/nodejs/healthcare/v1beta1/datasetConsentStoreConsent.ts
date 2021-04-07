@@ -22,7 +22,7 @@ export class DatasetConsentStoreConsent extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:healthcare/v1beta1:DatasetConsentStoreConsent';
+    public static readonly __pulumiType = 'gcp-native:healthcare/v1beta1:DatasetConsentStoreConsent';
 
     /**
      * Returns true if the given object is an instance of DatasetConsentStoreConsent.  This is designed to work even

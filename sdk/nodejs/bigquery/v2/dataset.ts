@@ -22,7 +22,7 @@ export class Dataset extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:bigquery/v2:Dataset';
+    public static readonly __pulumiType = 'gcp-native:bigquery/v2:Dataset';
 
     /**
      * Returns true if the given object is an instance of Dataset.  This is designed to work even

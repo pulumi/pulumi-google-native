@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Firebase.V1Beta1
+namespace Pulumi.GcpNative.Firebase.V1Beta1
 {
     /// <summary>
     /// Adds a ShaCertificate to the specified AndroidApp.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:firebase/v1beta1:AndroidAppSha")]
+    [GcpNativeResourceType("gcp-native:firebase/v1beta1:AndroidAppSha")]
     public partial class AndroidAppSha : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.Firebase.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AndroidAppSha(string name, AndroidAppShaArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:firebase/v1beta1:AndroidAppSha", name, args ?? new AndroidAppShaArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:firebase/v1beta1:AndroidAppSha", name, args ?? new AndroidAppShaArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AndroidAppSha(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:firebase/v1beta1:AndroidAppSha", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:firebase/v1beta1:AndroidAppSha", name, null, MakeResourceOptions(options, id))
         {
         }
 

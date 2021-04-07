@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DataLabeling.V1Beta1
+namespace Pulumi.GcpNative.DataLabeling.V1Beta1
 {
     /// <summary>
     /// Creates dataset. If success return a Dataset resource.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:datalabeling/v1beta1:Dataset")]
+    [GcpNativeResourceType("gcp-native:datalabeling/v1beta1:Dataset")]
     public partial class Dataset : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.DataLabeling.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Dataset(string name, DatasetArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:datalabeling/v1beta1:Dataset", name, args ?? new DatasetArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:datalabeling/v1beta1:Dataset", name, args ?? new DatasetArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Dataset(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:datalabeling/v1beta1:Dataset", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:datalabeling/v1beta1:Dataset", name, null, MakeResourceOptions(options, id))
         {
         }
 

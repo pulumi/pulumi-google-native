@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ServiceUsage.V1Beta1
+namespace Pulumi.GcpNative.ServiceUsage.V1Beta1
 {
     /// <summary>
     /// Creates an admin override. An admin override is applied by an administrator of a parent folder or parent organization of the consumer receiving the override. An admin override is intended to limit the amount of quota the consumer can use out of the total quota pool allocated to all children of the folder or organization.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitAdminOverride")]
+    [GcpNativeResourceType("gcp-native:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitAdminOverride")]
     public partial class ServiceConsumerQuotaMetricLimitAdminOverride : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.ServiceUsage.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceConsumerQuotaMetricLimitAdminOverride(string name, ServiceConsumerQuotaMetricLimitAdminOverrideArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitAdminOverride", name, args ?? new ServiceConsumerQuotaMetricLimitAdminOverrideArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitAdminOverride", name, args ?? new ServiceConsumerQuotaMetricLimitAdminOverrideArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceConsumerQuotaMetricLimitAdminOverride(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitAdminOverride", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitAdminOverride", name, null, MakeResourceOptions(options, id))
         {
         }
 

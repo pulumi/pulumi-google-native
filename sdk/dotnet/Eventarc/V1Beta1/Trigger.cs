@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Eventarc.V1Beta1
+namespace Pulumi.GcpNative.Eventarc.V1Beta1
 {
     /// <summary>
     /// Create a new trigger in a particular project and location.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:eventarc/v1beta1:Trigger")]
+    [GcpNativeResourceType("gcp-native:eventarc/v1beta1:Trigger")]
     public partial class Trigger : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GoogleCloud.Eventarc.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Trigger(string name, TriggerArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:eventarc/v1beta1:Trigger", name, args ?? new TriggerArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:eventarc/v1beta1:Trigger", name, args ?? new TriggerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Trigger(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:eventarc/v1beta1:Trigger", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:eventarc/v1beta1:Trigger", name, null, MakeResourceOptions(options, id))
         {
         }
 

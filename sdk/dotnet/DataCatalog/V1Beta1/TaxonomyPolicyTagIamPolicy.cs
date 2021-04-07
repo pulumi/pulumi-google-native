@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DataCatalog.V1Beta1
+namespace Pulumi.GcpNative.DataCatalog.V1Beta1
 {
     /// <summary>
     /// Sets the IAM policy for a taxonomy or a policy tag.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy")]
+    [GcpNativeResourceType("gcp-native:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy")]
     public partial class TaxonomyPolicyTagIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.DataCatalog.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TaxonomyPolicyTagIamPolicy(string name, TaxonomyPolicyTagIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy", name, args ?? new TaxonomyPolicyTagIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy", name, args ?? new TaxonomyPolicyTagIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TaxonomyPolicyTagIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

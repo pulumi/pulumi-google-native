@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.FirebaseRules.V1
+namespace Pulumi.GcpNative.FirebaseRules.V1
 {
     /// <summary>
     /// Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing syntactic or semantics errors will result in an error response indicating the first error encountered. For a detailed view of `Source` issues, use TestRuleset.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:firebaserules/v1:Ruleset")]
+    [GcpNativeResourceType("gcp-native:firebaserules/v1:Ruleset")]
     public partial class Ruleset : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.FirebaseRules.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Ruleset(string name, RulesetArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:firebaserules/v1:Ruleset", name, args ?? new RulesetArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:firebaserules/v1:Ruleset", name, args ?? new RulesetArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Ruleset(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:firebaserules/v1:Ruleset", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:firebaserules/v1:Ruleset", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -22,7 +22,7 @@ export class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/v1:GlobalPublicDelegatedPrefix';
+    public static readonly __pulumiType = 'gcp-native:compute/v1:GlobalPublicDelegatedPrefix';
 
     /**
      * Returns true if the given object is an instance of GlobalPublicDelegatedPrefix.  This is designed to work even

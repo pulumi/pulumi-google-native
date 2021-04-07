@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:cloudprofiler/v2:Profile":
+            case "gcp-native:cloudprofiler/v2:Profile":
                 return new Profile(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "cloudprofiler/v2", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "cloudprofiler/v2", _module)

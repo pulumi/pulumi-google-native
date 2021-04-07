@@ -22,7 +22,7 @@ export class Network extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/beta:Network';
+    public static readonly __pulumiType = 'gcp-native:compute/beta:Network';
 
     /**
      * Returns true if the given object is an instance of Network.  This is designed to work even

@@ -22,7 +22,7 @@ export class AgentEnvironment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:dialogflow/v3:AgentEnvironment';
+    public static readonly __pulumiType = 'gcp-native:dialogflow/v3:AgentEnvironment';
 
     /**
      * Returns true if the given object is an instance of AgentEnvironment.  This is designed to work even

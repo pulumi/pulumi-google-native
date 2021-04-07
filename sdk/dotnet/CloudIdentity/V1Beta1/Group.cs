@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudIdentity.V1Beta1
+namespace Pulumi.GcpNative.CloudIdentity.V1Beta1
 {
     /// <summary>
     /// Creates a `Group`.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudidentity/v1beta1:Group")]
+    [GcpNativeResourceType("gcp-native:cloudidentity/v1beta1:Group")]
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GoogleCloud.CloudIdentity.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Group(string name, GroupArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudidentity/v1beta1:Group", name, args ?? new GroupArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudidentity/v1beta1:Group", name, args ?? new GroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Group(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudidentity/v1beta1:Group", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudidentity/v1beta1:Group", name, null, MakeResourceOptions(options, id))
         {
         }
 

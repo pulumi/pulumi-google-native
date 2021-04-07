@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Metastore.V1Alpha
+namespace Pulumi.GcpNative.Metastore.V1Alpha
 {
     /// <summary>
     /// Creates a new Backup in a given project and location.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:metastore/v1alpha:ServiceBackup")]
+    [GcpNativeResourceType("gcp-native:metastore/v1alpha:ServiceBackup")]
     public partial class ServiceBackup : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GoogleCloud.Metastore.V1Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceBackup(string name, ServiceBackupArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:metastore/v1alpha:ServiceBackup", name, args ?? new ServiceBackupArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:metastore/v1alpha:ServiceBackup", name, args ?? new ServiceBackupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceBackup(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:metastore/v1alpha:ServiceBackup", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:metastore/v1alpha:ServiceBackup", name, null, MakeResourceOptions(options, id))
         {
         }
 

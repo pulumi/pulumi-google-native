@@ -22,7 +22,7 @@ export class Topic extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:pubsub/v1:Topic';
+    public static readonly __pulumiType = 'gcp-native:pubsub/v1:Topic';
 
     /**
      * Returns true if the given object is an instance of Topic.  This is designed to work even

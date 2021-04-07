@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Creates a TargetInstance resource in the specified project and zone using the data included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:TargetInstance")]
+    [GcpNativeResourceType("gcp-native:compute/beta:TargetInstance")]
     public partial class TargetInstance : Pulumi.CustomResource
     {
         /// <summary>
@@ -81,12 +81,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TargetInstance(string name, TargetInstanceArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:TargetInstance", name, args ?? new TargetInstanceArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:TargetInstance", name, args ?? new TargetInstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TargetInstance(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:TargetInstance", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:TargetInstance", name, null, MakeResourceOptions(options, id))
         {
         }
 

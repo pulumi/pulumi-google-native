@@ -18,15 +18,15 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:binaryauthorization/v1:Attestor":
+            case "gcp-native:binaryauthorization/v1:Attestor":
                 return new Attestor(name, <any>undefined, { urn })
-            case "google-cloud:binaryauthorization/v1:AttestorIamPolicy":
+            case "gcp-native:binaryauthorization/v1:AttestorIamPolicy":
                 return new AttestorIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:binaryauthorization/v1:PolicyIamPolicy":
+            case "gcp-native:binaryauthorization/v1:PolicyIamPolicy":
                 return new PolicyIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "binaryauthorization/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "binaryauthorization/v1", _module)

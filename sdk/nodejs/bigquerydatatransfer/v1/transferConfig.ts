@@ -22,7 +22,7 @@ export class TransferConfig extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:bigquerydatatransfer/v1:TransferConfig';
+    public static readonly __pulumiType = 'gcp-native:bigquerydatatransfer/v1:TransferConfig';
 
     /**
      * Returns true if the given object is an instance of TransferConfig.  This is designed to work even

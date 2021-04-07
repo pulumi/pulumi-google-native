@@ -22,7 +22,7 @@ export class RegionAutoscalingPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:dataproc/v1beta2:RegionAutoscalingPolicy';
+    public static readonly __pulumiType = 'gcp-native:dataproc/v1beta2:RegionAutoscalingPolicy';
 
     /**
      * Returns true if the given object is an instance of RegionAutoscalingPolicy.  This is designed to work even

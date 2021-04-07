@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.WebSecurityScanner.V1Beta.Inputs
+namespace Pulumi.GcpNative.WebSecurityScanner.V1Beta.Inputs
 {
 
     /// <summary>

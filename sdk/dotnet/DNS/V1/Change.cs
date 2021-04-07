@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DNS.V1
+namespace Pulumi.GcpNative.DNS.V1
 {
     /// <summary>
     /// Atomically updates the ResourceRecordSet collection.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dns/v1:Change")]
+    [GcpNativeResourceType("gcp-native:dns/v1:Change")]
     public partial class Change : Pulumi.CustomResource
     {
         /// <summary>
@@ -57,12 +57,12 @@ namespace Pulumi.GoogleCloud.DNS.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Change(string name, ChangeArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dns/v1:Change", name, args ?? new ChangeArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dns/v1:Change", name, args ?? new ChangeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Change(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dns/v1:Change", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dns/v1:Change", name, null, MakeResourceOptions(options, id))
         {
         }
 

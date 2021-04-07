@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DeploymentManager.V2
+namespace Pulumi.GcpNative.DeploymentManager.V2
 {
     /// <summary>
     /// Creates a deployment and all of the resources described by the deployment manifest.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:deploymentmanager/v2:Deployment")]
+    [GcpNativeResourceType("gcp-native:deploymentmanager/v2:Deployment")]
     public partial class Deployment : Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +90,12 @@ namespace Pulumi.GoogleCloud.DeploymentManager.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Deployment(string name, DeploymentArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:deploymentmanager/v2:Deployment", name, args ?? new DeploymentArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:deploymentmanager/v2:Deployment", name, args ?? new DeploymentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Deployment(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:deploymentmanager/v2:Deployment", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:deploymentmanager/v2:Deployment", name, null, MakeResourceOptions(options, id))
         {
         }
 

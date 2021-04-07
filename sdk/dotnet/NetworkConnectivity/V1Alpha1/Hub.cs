@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.NetworkConnectivity.V1Alpha1
+namespace Pulumi.GcpNative.NetworkConnectivity.V1Alpha1
 {
     /// <summary>
     /// Creates a new Hub in a given project and location.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:networkconnectivity/v1alpha1:Hub")]
+    [GcpNativeResourceType("gcp-native:networkconnectivity/v1alpha1:Hub")]
     public partial class Hub : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.NetworkConnectivity.V1Alpha1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Hub(string name, HubArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:networkconnectivity/v1alpha1:Hub", name, args ?? new HubArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:networkconnectivity/v1alpha1:Hub", name, args ?? new HubArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Hub(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:networkconnectivity/v1alpha1:Hub", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:networkconnectivity/v1alpha1:Hub", name, null, MakeResourceOptions(options, id))
         {
         }
 

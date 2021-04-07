@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DeploymentManager.V2Beta
+namespace Pulumi.GcpNative.DeploymentManager.V2Beta
 {
     /// <summary>
     /// Creates a composite type.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:deploymentmanager/v2beta:CompositeType")]
+    [GcpNativeResourceType("gcp-native:deploymentmanager/v2beta:CompositeType")]
     public partial class CompositeType : Pulumi.CustomResource
     {
         /// <summary>
@@ -69,12 +69,12 @@ namespace Pulumi.GoogleCloud.DeploymentManager.V2Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CompositeType(string name, CompositeTypeArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:deploymentmanager/v2beta:CompositeType", name, args ?? new CompositeTypeArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:deploymentmanager/v2beta:CompositeType", name, args ?? new CompositeTypeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private CompositeType(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:deploymentmanager/v2beta:CompositeType", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:deploymentmanager/v2beta:CompositeType", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -1,3 +1,3 @@
-# Next Generation Google Cloud Pulumi Provider (preview)
+# Native Google Cloud Pulumi Provider (preview)
 
-The Next Generation Google Cloud Provider for Pulumi lets you use Google Cloud resources in your cloud programs.
+The native Google Cloud Provider for Pulumi lets you use Google Cloud resources in your cloud programs.

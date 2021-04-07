@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Alpha
+namespace Pulumi.GcpNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a VPN gateway in the specified project and region using the data included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/alpha:VpnGateway")]
+    [GcpNativeResourceType("gcp-native:compute/alpha:VpnGateway")]
     public partial class VpnGateway : Pulumi.CustomResource
     {
         /// <summary>
@@ -86,12 +86,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public VpnGateway(string name, VpnGatewayArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:VpnGateway", name, args ?? new VpnGatewayArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/alpha:VpnGateway", name, args ?? new VpnGatewayArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private VpnGateway(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:VpnGateway", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/alpha:VpnGateway", name, null, MakeResourceOptions(options, id))
         {
         }
 

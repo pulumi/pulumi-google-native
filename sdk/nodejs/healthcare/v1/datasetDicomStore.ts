@@ -22,7 +22,7 @@ export class DatasetDicomStore extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:healthcare/v1:DatasetDicomStore';
+    public static readonly __pulumiType = 'gcp-native:healthcare/v1:DatasetDicomStore';
 
     /**
      * Returns true if the given object is an instance of DatasetDicomStore.  This is designed to work even

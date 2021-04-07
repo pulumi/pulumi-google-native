@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.GKEHub.V1Alpha
+namespace Pulumi.GcpNative.GKEHub.V1Alpha
 {
     /// <summary>
     /// Adds a new Feature.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:gkehub/v1alpha:Feature")]
+    [GcpNativeResourceType("gcp-native:gkehub/v1alpha:Feature")]
     public partial class Feature : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GoogleCloud.GKEHub.V1Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Feature(string name, FeatureArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:gkehub/v1alpha:Feature", name, args ?? new FeatureArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:gkehub/v1alpha:Feature", name, args ?? new FeatureArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Feature(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:gkehub/v1alpha:Feature", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:gkehub/v1alpha:Feature", name, null, MakeResourceOptions(options, id))
         {
         }
 

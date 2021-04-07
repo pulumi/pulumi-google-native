@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudBuild.V1Alpha1
+namespace Pulumi.GcpNative.CloudBuild.V1Alpha1
 {
     /// <summary>
     /// Creates a `WorkerPool` to run the builds, and returns the new worker pool.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudbuild/v1alpha1:WorkerPool")]
+    [GcpNativeResourceType("gcp-native:cloudbuild/v1alpha1:WorkerPool")]
     public partial class WorkerPool : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GoogleCloud.CloudBuild.V1Alpha1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WorkerPool(string name, WorkerPoolArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudbuild/v1alpha1:WorkerPool", name, args ?? new WorkerPoolArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudbuild/v1alpha1:WorkerPool", name, args ?? new WorkerPoolArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private WorkerPool(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudbuild/v1alpha1:WorkerPool", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudbuild/v1alpha1:WorkerPool", name, null, MakeResourceOptions(options, id))
         {
         }
 

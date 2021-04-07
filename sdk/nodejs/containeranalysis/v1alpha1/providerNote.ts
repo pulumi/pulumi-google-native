@@ -22,7 +22,7 @@ export class ProviderNote extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:containeranalysis/v1alpha1:ProviderNote';
+    public static readonly __pulumiType = 'gcp-native:containeranalysis/v1alpha1:ProviderNote';
 
     /**
      * Returns true if the given object is an instance of ProviderNote.  This is designed to work even

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Alpha
+namespace Pulumi.GcpNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a UrlMap resource in the specified project using the data included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/alpha:UrlMap")]
+    [GcpNativeResourceType("gcp-native:compute/alpha:UrlMap")]
     public partial class UrlMap : Pulumi.CustomResource
     {
         /// <summary>
@@ -121,12 +121,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public UrlMap(string name, UrlMapArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:UrlMap", name, args ?? new UrlMapArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/alpha:UrlMap", name, args ?? new UrlMapArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private UrlMap(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:UrlMap", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/alpha:UrlMap", name, null, MakeResourceOptions(options, id))
         {
         }
 

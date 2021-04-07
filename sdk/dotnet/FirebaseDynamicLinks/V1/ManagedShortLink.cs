@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.FirebaseDynamicLinks.V1
+namespace Pulumi.GcpNative.FirebaseDynamicLinks.V1
 {
     /// <summary>
     /// Creates a managed short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. This differs from CreateShortDynamicLink in the following ways: - The request will also contain a name for the link (non unique name for the front end). - The response must be authenticated with an auth token (generated with the admin service account). - The link will appear in the FDL list of links in the console front end. The Dynamic Link domain in the request must be owned by requester's Firebase project.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:firebasedynamiclinks/v1:ManagedShortLink")]
+    [GcpNativeResourceType("gcp-native:firebasedynamiclinks/v1:ManagedShortLink")]
     public partial class ManagedShortLink : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.FirebaseDynamicLinks.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ManagedShortLink(string name, ManagedShortLinkArgs? args = null, CustomResourceOptions? options = null)
-            : base("google-cloud:firebasedynamiclinks/v1:ManagedShortLink", name, args ?? new ManagedShortLinkArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:firebasedynamiclinks/v1:ManagedShortLink", name, args ?? new ManagedShortLinkArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ManagedShortLink(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:firebasedynamiclinks/v1:ManagedShortLink", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:firebasedynamiclinks/v1:ManagedShortLink", name, null, MakeResourceOptions(options, id))
         {
         }
 

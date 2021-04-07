@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.BinaryAuthorization.V1
+namespace Pulumi.GcpNative.BinaryAuthorization.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:binaryauthorization/v1:AttestorIamPolicy")]
+    [GcpNativeResourceType("gcp-native:binaryauthorization/v1:AttestorIamPolicy")]
     public partial class AttestorIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.BinaryAuthorization.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AttestorIamPolicy(string name, AttestorIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:binaryauthorization/v1:AttestorIamPolicy", name, args ?? new AttestorIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:binaryauthorization/v1:AttestorIamPolicy", name, args ?? new AttestorIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AttestorIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:binaryauthorization/v1:AttestorIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:binaryauthorization/v1:AttestorIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudIdentity.V1Beta1
+namespace Pulumi.GcpNative.CloudIdentity.V1Beta1
 {
     /// <summary>
     /// Creates a `Membership`.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudidentity/v1beta1:GroupMembership")]
+    [GcpNativeResourceType("gcp-native:cloudidentity/v1beta1:GroupMembership")]
     public partial class GroupMembership : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GoogleCloud.CloudIdentity.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GroupMembership(string name, GroupMembershipArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudidentity/v1beta1:GroupMembership", name, args ?? new GroupMembershipArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudidentity/v1beta1:GroupMembership", name, args ?? new GroupMembershipArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private GroupMembership(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudidentity/v1beta1:GroupMembership", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudidentity/v1beta1:GroupMembership", name, null, MakeResourceOptions(options, id))
         {
         }
 

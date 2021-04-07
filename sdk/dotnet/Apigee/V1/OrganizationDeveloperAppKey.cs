@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Apigee.V1
+namespace Pulumi.GcpNative.Apigee.V1
 {
     /// <summary>
     /// Creates a custom consumer key and secret for a developer app. This is particularly useful if you want to migrate existing consumer keys and secrets to Apigee hybrid from another system. Consumer keys and secrets can contain letters, numbers, underscores, and hyphens. No other special characters are allowed. To avoid service disruptions, a consumer key and secret should not exceed 2 KBs each. **Note**: When creating the consumer key and secret, an association to API products will not be made. Therefore, you should not specify the associated API products in your request. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created. If a consumer key and secret already exist, you can keep them or delete them using the DeleteDeveloperAppKey API.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:apigee/v1:OrganizationDeveloperAppKey")]
+    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationDeveloperAppKey")]
     public partial class OrganizationDeveloperAppKey : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationDeveloperAppKey(string name, OrganizationDeveloperAppKeyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationDeveloperAppKey", name, args ?? new OrganizationDeveloperAppKeyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:apigee/v1:OrganizationDeveloperAppKey", name, args ?? new OrganizationDeveloperAppKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationDeveloperAppKey(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationDeveloperAppKey", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:apigee/v1:OrganizationDeveloperAppKey", name, null, MakeResourceOptions(options, id))
         {
         }
 

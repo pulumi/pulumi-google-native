@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Dialogflow.V2
+namespace Pulumi.GcpNative.Dialogflow.V2
 {
     /// <summary>
     /// Creates a context. If the specified context already exists, overrides the context.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dialogflow/v2:AgentEnvironmentUserSessionContext")]
+    [GcpNativeResourceType("gcp-native:dialogflow/v2:AgentEnvironmentUserSessionContext")]
     public partial class AgentEnvironmentUserSessionContext : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentEnvironmentUserSessionContext(string name, AgentEnvironmentUserSessionContextArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v2:AgentEnvironmentUserSessionContext", name, args ?? new AgentEnvironmentUserSessionContextArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dialogflow/v2:AgentEnvironmentUserSessionContext", name, args ?? new AgentEnvironmentUserSessionContextArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentEnvironmentUserSessionContext(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v2:AgentEnvironmentUserSessionContext", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dialogflow/v2:AgentEnvironmentUserSessionContext", name, null, MakeResourceOptions(options, id))
         {
         }
 

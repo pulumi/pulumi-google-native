@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ContainerAnalysis.V1Alpha1
+namespace Pulumi.GcpNative.ContainerAnalysis.V1Alpha1
 {
     /// <summary>
     /// Creates a new `Operation`.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:containeranalysis/v1alpha1:Operation")]
+    [GcpNativeResourceType("gcp-native:containeranalysis/v1alpha1:Operation")]
     public partial class Operation : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.ContainerAnalysis.V1Alpha1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Operation(string name, OperationArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:containeranalysis/v1alpha1:Operation", name, args ?? new OperationArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:containeranalysis/v1alpha1:Operation", name, args ?? new OperationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Operation(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:containeranalysis/v1alpha1:Operation", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:containeranalysis/v1alpha1:Operation", name, null, MakeResourceOptions(options, id))
         {
         }
 

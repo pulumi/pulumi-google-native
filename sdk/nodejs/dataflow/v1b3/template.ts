@@ -22,7 +22,7 @@ export class Template extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:dataflow/v1b3:Template';
+    public static readonly __pulumiType = 'gcp-native:dataflow/v1b3:Template';
 
     /**
      * Returns true if the given object is an instance of Template.  This is designed to work even

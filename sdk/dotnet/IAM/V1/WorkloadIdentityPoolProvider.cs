@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.IAM.V1
+namespace Pulumi.GcpNative.IAM.V1
 {
     /// <summary>
     /// Creates a new WorkloadIdentityPoolProvider in a WorkloadIdentityPool. You cannot reuse the name of a deleted provider until 30 days after deletion.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:iam/v1:WorkloadIdentityPoolProvider")]
+    [GcpNativeResourceType("gcp-native:iam/v1:WorkloadIdentityPoolProvider")]
     public partial class WorkloadIdentityPoolProvider : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GoogleCloud.IAM.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WorkloadIdentityPoolProvider(string name, WorkloadIdentityPoolProviderArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:iam/v1:WorkloadIdentityPoolProvider", name, args ?? new WorkloadIdentityPoolProviderArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:iam/v1:WorkloadIdentityPoolProvider", name, args ?? new WorkloadIdentityPoolProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private WorkloadIdentityPoolProvider(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:iam/v1:WorkloadIdentityPoolProvider", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:iam/v1:WorkloadIdentityPoolProvider", name, null, MakeResourceOptions(options, id))
         {
         }
 

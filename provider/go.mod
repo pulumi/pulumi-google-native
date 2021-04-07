@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-google-cloud/provider
+module github.com/pulumi/pulumi-gcp-native/provider
 
 go 1.16
 

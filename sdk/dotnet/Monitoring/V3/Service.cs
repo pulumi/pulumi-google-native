@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Monitoring.V3
+namespace Pulumi.GcpNative.Monitoring.V3
 {
     /// <summary>
     /// Create a Service.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:monitoring/v3:Service")]
+    [GcpNativeResourceType("gcp-native:monitoring/v3:Service")]
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Service(string name, ServiceArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:monitoring/v3:Service", name, args ?? new ServiceArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:monitoring/v3:Service", name, args ?? new ServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Service(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:monitoring/v3:Service", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:monitoring/v3:Service", name, null, MakeResourceOptions(options, id))
         {
         }
 

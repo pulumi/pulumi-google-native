@@ -78,75 +78,75 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:apigee/v1:Organization":
+            case "gcp-native:apigee/v1:Organization":
                 return new Organization(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationAnalyticDatastore":
+            case "gcp-native:apigee/v1:OrganizationAnalyticDatastore":
                 return new OrganizationAnalyticDatastore(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationApi":
+            case "gcp-native:apigee/v1:OrganizationApi":
                 return new OrganizationApi(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationApiKeyvaluemap":
+            case "gcp-native:apigee/v1:OrganizationApiKeyvaluemap":
                 return new OrganizationApiKeyvaluemap(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationApiproduct":
+            case "gcp-native:apigee/v1:OrganizationApiproduct":
                 return new OrganizationApiproduct(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationDatacollector":
+            case "gcp-native:apigee/v1:OrganizationDatacollector":
                 return new OrganizationDatacollector(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationDeveloper":
+            case "gcp-native:apigee/v1:OrganizationDeveloper":
                 return new OrganizationDeveloper(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationDeveloperApp":
+            case "gcp-native:apigee/v1:OrganizationDeveloperApp":
                 return new OrganizationDeveloperApp(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationDeveloperAppKey":
+            case "gcp-native:apigee/v1:OrganizationDeveloperAppKey":
                 return new OrganizationDeveloperAppKey(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationDeveloperAppKeyCreate":
+            case "gcp-native:apigee/v1:OrganizationDeveloperAppKeyCreate":
                 return new OrganizationDeveloperAppKeyCreate(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationEnvgroup":
+            case "gcp-native:apigee/v1:OrganizationEnvgroup":
                 return new OrganizationEnvgroup(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationEnvgroupAttachment":
+            case "gcp-native:apigee/v1:OrganizationEnvgroupAttachment":
                 return new OrganizationEnvgroupAttachment(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationEnvironment":
+            case "gcp-native:apigee/v1:OrganizationEnvironment":
                 return new OrganizationEnvironment(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationEnvironmentAnalyticExport":
+            case "gcp-native:apigee/v1:OrganizationEnvironmentAnalyticExport":
                 return new OrganizationEnvironmentAnalyticExport(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession":
+            case "gcp-native:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession":
                 return new OrganizationEnvironmentApiRevisionDebugsession(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationEnvironmentIamPolicy":
+            case "gcp-native:apigee/v1:OrganizationEnvironmentIamPolicy":
                 return new OrganizationEnvironmentIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationEnvironmentKeystore":
+            case "gcp-native:apigee/v1:OrganizationEnvironmentKeystore":
                 return new OrganizationEnvironmentKeystore(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationEnvironmentKeystoreAlias":
+            case "gcp-native:apigee/v1:OrganizationEnvironmentKeystoreAlias":
                 return new OrganizationEnvironmentKeystoreAlias(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationEnvironmentKeyvaluemap":
+            case "gcp-native:apigee/v1:OrganizationEnvironmentKeyvaluemap":
                 return new OrganizationEnvironmentKeyvaluemap(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationEnvironmentQuery":
+            case "gcp-native:apigee/v1:OrganizationEnvironmentQuery":
                 return new OrganizationEnvironmentQuery(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationEnvironmentReference":
+            case "gcp-native:apigee/v1:OrganizationEnvironmentReference":
                 return new OrganizationEnvironmentReference(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationEnvironmentResourcefile":
+            case "gcp-native:apigee/v1:OrganizationEnvironmentResourcefile":
                 return new OrganizationEnvironmentResourcefile(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationEnvironmentTargetserver":
+            case "gcp-native:apigee/v1:OrganizationEnvironmentTargetserver":
                 return new OrganizationEnvironmentTargetserver(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationEnvironmentTraceConfigOverride":
+            case "gcp-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride":
                 return new OrganizationEnvironmentTraceConfigOverride(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationHostQuery":
+            case "gcp-native:apigee/v1:OrganizationHostQuery":
                 return new OrganizationHostQuery(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationInstance":
+            case "gcp-native:apigee/v1:OrganizationInstance":
                 return new OrganizationInstance(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationInstanceAttachment":
+            case "gcp-native:apigee/v1:OrganizationInstanceAttachment":
                 return new OrganizationInstanceAttachment(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationInstanceCanaryevaluation":
+            case "gcp-native:apigee/v1:OrganizationInstanceCanaryevaluation":
                 return new OrganizationInstanceCanaryevaluation(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationInstanceNatAddress":
+            case "gcp-native:apigee/v1:OrganizationInstanceNatAddress":
                 return new OrganizationInstanceNatAddress(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationKeyvaluemap":
+            case "gcp-native:apigee/v1:OrganizationKeyvaluemap":
                 return new OrganizationKeyvaluemap(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationReport":
+            case "gcp-native:apigee/v1:OrganizationReport":
                 return new OrganizationReport(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationSharedflow":
+            case "gcp-native:apigee/v1:OrganizationSharedflow":
                 return new OrganizationSharedflow(name, <any>undefined, { urn })
-            case "google-cloud:apigee/v1:OrganizationSiteApicategory":
+            case "gcp-native:apigee/v1:OrganizationSiteApicategory":
                 return new OrganizationSiteApicategory(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "apigee/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "apigee/v1", _module)

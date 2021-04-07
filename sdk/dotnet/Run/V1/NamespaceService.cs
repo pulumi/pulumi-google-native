@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Run.V1
+namespace Pulumi.GcpNative.Run.V1
 {
     /// <summary>
     /// Create a service.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:run/v1:NamespaceService")]
+    [GcpNativeResourceType("gcp-native:run/v1:NamespaceService")]
     public partial class NamespaceService : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.Run.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NamespaceService(string name, NamespaceServiceArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:run/v1:NamespaceService", name, args ?? new NamespaceServiceArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:run/v1:NamespaceService", name, args ?? new NamespaceServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private NamespaceService(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:run/v1:NamespaceService", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:run/v1:NamespaceService", name, null, MakeResourceOptions(options, id))
         {
         }
 

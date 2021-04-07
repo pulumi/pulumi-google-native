@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Alpha
+namespace Pulumi.GcpNative.Compute.Alpha
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/alpha:MachineImageIamPolicy")]
+    [GcpNativeResourceType("gcp-native:compute/alpha:MachineImageIamPolicy")]
     public partial class MachineImageIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,12 +71,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public MachineImageIamPolicy(string name, MachineImageIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:MachineImageIamPolicy", name, args ?? new MachineImageIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/alpha:MachineImageIamPolicy", name, args ?? new MachineImageIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private MachineImageIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:MachineImageIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/alpha:MachineImageIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

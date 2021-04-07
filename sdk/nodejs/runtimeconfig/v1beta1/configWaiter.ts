@@ -22,7 +22,7 @@ export class ConfigWaiter extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:runtimeconfig/v1beta1:ConfigWaiter';
+    public static readonly __pulumiType = 'gcp-native:runtimeconfig/v1beta1:ConfigWaiter';
 
     /**
      * Returns true if the given object is an instance of ConfigWaiter.  This is designed to work even

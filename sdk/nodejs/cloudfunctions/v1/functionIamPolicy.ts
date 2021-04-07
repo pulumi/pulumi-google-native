@@ -22,7 +22,7 @@ export class FunctionIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:cloudfunctions/v1:FunctionIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:cloudfunctions/v1:FunctionIamPolicy';
 
     /**
      * Returns true if the given object is an instance of FunctionIamPolicy.  This is designed to work even

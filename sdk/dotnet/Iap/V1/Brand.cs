@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Iap.V1
+namespace Pulumi.GcpNative.Iap.V1
 {
     /// <summary>
     /// Constructs a new OAuth brand for the project if one does not exist. The created brand is "internal only", meaning that OAuth clients created under it only accept requests from users who belong to the same G Suite organization as the project. The brand is created in an un-reviewed status. NOTE: The "internal only" status can be manually changed in the Google Cloud console. Requires that a brand does not already exist for the project, and that the specified support email is owned by the caller.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:iap/v1:Brand")]
+    [GcpNativeResourceType("gcp-native:iap/v1:Brand")]
     public partial class Brand : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.Iap.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Brand(string name, BrandArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:iap/v1:Brand", name, args ?? new BrandArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:iap/v1:Brand", name, args ?? new BrandArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Brand(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:iap/v1:Brand", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:iap/v1:Brand", name, null, MakeResourceOptions(options, id))
         {
         }
 

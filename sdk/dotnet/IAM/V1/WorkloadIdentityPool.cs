@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.IAM.V1
+namespace Pulumi.GcpNative.IAM.V1
 {
     /// <summary>
     /// Creates a new WorkloadIdentityPool. You cannot reuse the name of a deleted pool until 30 days after deletion.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:iam/v1:WorkloadIdentityPool")]
+    [GcpNativeResourceType("gcp-native:iam/v1:WorkloadIdentityPool")]
     public partial class WorkloadIdentityPool : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.IAM.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WorkloadIdentityPool(string name, WorkloadIdentityPoolArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:iam/v1:WorkloadIdentityPool", name, args ?? new WorkloadIdentityPoolArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:iam/v1:WorkloadIdentityPool", name, args ?? new WorkloadIdentityPoolArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private WorkloadIdentityPool(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:iam/v1:WorkloadIdentityPool", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:iam/v1:WorkloadIdentityPool", name, null, MakeResourceOptions(options, id))
         {
         }
 

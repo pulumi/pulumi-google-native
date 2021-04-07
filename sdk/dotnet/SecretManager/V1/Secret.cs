@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.SecretManager.V1
+namespace Pulumi.GcpNative.SecretManager.V1
 {
     /// <summary>
     /// Creates a new Secret containing no SecretVersions.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:secretmanager/v1:Secret")]
+    [GcpNativeResourceType("gcp-native:secretmanager/v1:Secret")]
     public partial class Secret : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.SecretManager.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Secret(string name, SecretArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:secretmanager/v1:Secret", name, args ?? new SecretArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:secretmanager/v1:Secret", name, args ?? new SecretArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Secret(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:secretmanager/v1:Secret", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:secretmanager/v1:Secret", name, null, MakeResourceOptions(options, id))
         {
         }
 

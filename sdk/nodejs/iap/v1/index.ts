@@ -18,15 +18,15 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:iap/v1:Brand":
+            case "gcp-native:iap/v1:Brand":
                 return new Brand(name, <any>undefined, { urn })
-            case "google-cloud:iap/v1:BrandIdentityAwareProxyClient":
+            case "gcp-native:iap/v1:BrandIdentityAwareProxyClient":
                 return new BrandIdentityAwareProxyClient(name, <any>undefined, { urn })
-            case "google-cloud:iap/v1:V1IamPolicy":
+            case "gcp-native:iap/v1:V1IamPolicy":
                 return new V1IamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "iap/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "iap/v1", _module)

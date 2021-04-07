@@ -22,7 +22,7 @@ export class FolderPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:orgpolicy/v2:FolderPolicy';
+    public static readonly __pulumiType = 'gcp-native:orgpolicy/v2:FolderPolicy';
 
     /**
      * Returns true if the given object is an instance of FolderPolicy.  This is designed to work even

@@ -22,7 +22,7 @@ export class OrganizationStoredInfoType extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:dlp/v2:OrganizationStoredInfoType';
+    public static readonly __pulumiType = 'gcp-native:dlp/v2:OrganizationStoredInfoType';
 
     /**
      * Returns true if the given object is an instance of OrganizationStoredInfoType.  This is designed to work even

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Logging.V2
+namespace Pulumi.GcpNative.Logging.V2
 {
     /// <summary>
     /// Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:logging/v2:OrganizationExclusion")]
+    [GcpNativeResourceType("gcp-native:logging/v2:OrganizationExclusion")]
     public partial class OrganizationExclusion : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GoogleCloud.Logging.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationExclusion(string name, OrganizationExclusionArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:logging/v2:OrganizationExclusion", name, args ?? new OrganizationExclusionArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:logging/v2:OrganizationExclusion", name, args ?? new OrganizationExclusionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationExclusion(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:logging/v2:OrganizationExclusion", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:logging/v2:OrganizationExclusion", name, null, MakeResourceOptions(options, id))
         {
         }
 

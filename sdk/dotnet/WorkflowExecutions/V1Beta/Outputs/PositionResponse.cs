@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.WorkflowExecutions.V1Beta.Outputs
+namespace Pulumi.GcpNative.WorkflowExecutions.V1Beta.Outputs
 {
 
     [OutputType]

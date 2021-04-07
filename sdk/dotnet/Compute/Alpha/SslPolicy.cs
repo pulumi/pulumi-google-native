@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Alpha
+namespace Pulumi.GcpNative.Compute.Alpha
 {
     /// <summary>
     /// Returns the specified SSL policy resource. Gets a list of available SSL policies by making a list() request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/alpha:SslPolicy")]
+    [GcpNativeResourceType("gcp-native:compute/alpha:SslPolicy")]
     public partial class SslPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -105,12 +105,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SslPolicy(string name, SslPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:SslPolicy", name, args ?? new SslPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/alpha:SslPolicy", name, args ?? new SslPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private SslPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:SslPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/alpha:SslPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

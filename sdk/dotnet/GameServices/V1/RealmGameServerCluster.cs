@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.GameServices.V1
+namespace Pulumi.GcpNative.GameServices.V1
 {
     /// <summary>
     /// Creates a new game server cluster in a given project and location.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:gameservices/v1:RealmGameServerCluster")]
+    [GcpNativeResourceType("gcp-native:gameservices/v1:RealmGameServerCluster")]
     public partial class RealmGameServerCluster : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GoogleCloud.GameServices.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RealmGameServerCluster(string name, RealmGameServerClusterArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:gameservices/v1:RealmGameServerCluster", name, args ?? new RealmGameServerClusterArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:gameservices/v1:RealmGameServerCluster", name, args ?? new RealmGameServerClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RealmGameServerCluster(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:gameservices/v1:RealmGameServerCluster", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:gameservices/v1:RealmGameServerCluster", name, null, MakeResourceOptions(options, id))
         {
         }
 

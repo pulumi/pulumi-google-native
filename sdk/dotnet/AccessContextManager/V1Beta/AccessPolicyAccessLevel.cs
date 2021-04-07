@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.AccessContextManager.V1Beta
+namespace Pulumi.GcpNative.AccessContextManager.V1Beta
 {
     /// <summary>
     /// Create an Access Level. The longrunning operation from this RPC will have a successful status once the Access Level has propagated to long-lasting storage. Access Levels containing errors will result in an error response for the first error encountered.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:accesscontextmanager/v1beta:AccessPolicyAccessLevel")]
+    [GcpNativeResourceType("gcp-native:accesscontextmanager/v1beta:AccessPolicyAccessLevel")]
     public partial class AccessPolicyAccessLevel : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.AccessContextManager.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccessPolicyAccessLevel(string name, AccessPolicyAccessLevelArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:accesscontextmanager/v1beta:AccessPolicyAccessLevel", name, args ?? new AccessPolicyAccessLevelArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:accesscontextmanager/v1beta:AccessPolicyAccessLevel", name, args ?? new AccessPolicyAccessLevelArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AccessPolicyAccessLevel(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:accesscontextmanager/v1beta:AccessPolicyAccessLevel", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:accesscontextmanager/v1beta:AccessPolicyAccessLevel", name, null, MakeResourceOptions(options, id))
         {
         }
 

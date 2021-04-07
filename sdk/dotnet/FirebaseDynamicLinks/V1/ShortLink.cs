@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.FirebaseDynamicLinks.V1
+namespace Pulumi.GcpNative.FirebaseDynamicLinks.V1
 {
     /// <summary>
     /// Creates a short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. Repeated calls with the same long Dynamic Link or Dynamic Link information will produce the same short Dynamic Link. The Dynamic Link domain in the request must be owned by requester's Firebase project.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:firebasedynamiclinks/v1:ShortLink")]
+    [GcpNativeResourceType("gcp-native:firebasedynamiclinks/v1:ShortLink")]
     public partial class ShortLink : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.FirebaseDynamicLinks.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ShortLink(string name, ShortLinkArgs? args = null, CustomResourceOptions? options = null)
-            : base("google-cloud:firebasedynamiclinks/v1:ShortLink", name, args ?? new ShortLinkArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:firebasedynamiclinks/v1:ShortLink", name, args ?? new ShortLinkArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ShortLink(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:firebasedynamiclinks/v1:ShortLink", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:firebasedynamiclinks/v1:ShortLink", name, null, MakeResourceOptions(options, id))
         {
         }
 

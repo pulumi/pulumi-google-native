@@ -21,7 +21,7 @@ export class ManagedZoneRrset extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:dns/v1:ManagedZoneRrset';
+    public static readonly __pulumiType = 'gcp-native:dns/v1:ManagedZoneRrset';
 
     /**
      * Returns true if the given object is an instance of ManagedZoneRrset.  This is designed to work even

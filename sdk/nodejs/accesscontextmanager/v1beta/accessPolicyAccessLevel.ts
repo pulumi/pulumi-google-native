@@ -22,7 +22,7 @@ export class AccessPolicyAccessLevel extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:accesscontextmanager/v1beta:AccessPolicyAccessLevel';
+    public static readonly __pulumiType = 'gcp-native:accesscontextmanager/v1beta:AccessPolicyAccessLevel';
 
     /**
      * Returns true if the given object is an instance of AccessPolicyAccessLevel.  This is designed to work even

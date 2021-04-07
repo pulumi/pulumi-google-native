@@ -22,7 +22,7 @@ export class CatalogBranchProduct extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:retail/v2beta:CatalogBranchProduct';
+    public static readonly __pulumiType = 'gcp-native:retail/v2beta:CatalogBranchProduct';
 
     /**
      * Returns true if the given object is an instance of CatalogBranchProduct.  This is designed to work even

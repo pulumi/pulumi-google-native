@@ -22,7 +22,7 @@ export class RegionDisk extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/v1:RegionDisk';
+    public static readonly __pulumiType = 'gcp-native:compute/v1:RegionDisk';
 
     /**
      * Returns true if the given object is an instance of RegionDisk.  This is designed to work even

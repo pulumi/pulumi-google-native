@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Creates a HttpHealthCheck resource in the specified project using the data included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:HttpHealthCheck")]
+    [GcpNativeResourceType("gcp-native:compute/beta:HttpHealthCheck")]
     public partial class HttpHealthCheck : Pulumi.CustomResource
     {
         /// <summary>
@@ -96,12 +96,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public HttpHealthCheck(string name, HttpHealthCheckArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:HttpHealthCheck", name, args ?? new HttpHealthCheckArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:HttpHealthCheck", name, args ?? new HttpHealthCheckArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private HttpHealthCheck(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:HttpHealthCheck", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:HttpHealthCheck", name, null, MakeResourceOptions(options, id))
         {
         }
 

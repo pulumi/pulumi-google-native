@@ -22,7 +22,7 @@ export class Job extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:jobs/v3:Job';
+    public static readonly __pulumiType = 'gcp-native:jobs/v3:Job';
 
     /**
      * Returns true if the given object is an instance of Job.  This is designed to work even

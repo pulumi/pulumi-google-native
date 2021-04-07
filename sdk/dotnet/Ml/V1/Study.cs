@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Ml.V1
+namespace Pulumi.GcpNative.Ml.V1
 {
     /// <summary>
     /// Creates a study.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:ml/v1:Study")]
+    [GcpNativeResourceType("gcp-native:ml/v1:Study")]
     public partial class Study : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.Ml.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Study(string name, StudyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:ml/v1:Study", name, args ?? new StudyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:ml/v1:Study", name, args ?? new StudyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Study(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:ml/v1:Study", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:ml/v1:Study", name, null, MakeResourceOptions(options, id))
         {
         }
 

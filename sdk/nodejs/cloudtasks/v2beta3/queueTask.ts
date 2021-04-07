@@ -22,7 +22,7 @@ export class QueueTask extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:cloudtasks/v2beta3:QueueTask';
+    public static readonly __pulumiType = 'gcp-native:cloudtasks/v2beta3:QueueTask';
 
     /**
      * Returns true if the given object is an instance of QueueTask.  This is designed to work even

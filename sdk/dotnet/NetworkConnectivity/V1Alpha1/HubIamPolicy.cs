@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.NetworkConnectivity.V1Alpha1
+namespace Pulumi.GcpNative.NetworkConnectivity.V1Alpha1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:networkconnectivity/v1alpha1:HubIamPolicy")]
+    [GcpNativeResourceType("gcp-native:networkconnectivity/v1alpha1:HubIamPolicy")]
     public partial class HubIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.NetworkConnectivity.V1Alpha1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public HubIamPolicy(string name, HubIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:networkconnectivity/v1alpha1:HubIamPolicy", name, args ?? new HubIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:networkconnectivity/v1alpha1:HubIamPolicy", name, args ?? new HubIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private HubIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:networkconnectivity/v1alpha1:HubIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:networkconnectivity/v1alpha1:HubIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

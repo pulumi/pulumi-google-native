@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Notebooks.V1
+namespace Pulumi.GcpNative.Notebooks.V1
 {
     /// <summary>
     /// Creates a new Scheduled Notebook in a given project and location.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:notebooks/v1:Execution")]
+    [GcpNativeResourceType("gcp-native:notebooks/v1:Execution")]
     public partial class Execution : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.Notebooks.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Execution(string name, ExecutionArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:notebooks/v1:Execution", name, args ?? new ExecutionArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:notebooks/v1:Execution", name, args ?? new ExecutionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Execution(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:notebooks/v1:Execution", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:notebooks/v1:Execution", name, null, MakeResourceOptions(options, id))
         {
         }
 

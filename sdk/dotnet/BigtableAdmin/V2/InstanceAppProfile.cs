@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.BigtableAdmin.V2
+namespace Pulumi.GcpNative.BigtableAdmin.V2
 {
     /// <summary>
     /// Creates an app profile within an instance.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:bigtableadmin/v2:InstanceAppProfile")]
+    [GcpNativeResourceType("gcp-native:bigtableadmin/v2:InstanceAppProfile")]
     public partial class InstanceAppProfile : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.BigtableAdmin.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceAppProfile(string name, InstanceAppProfileArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:bigtableadmin/v2:InstanceAppProfile", name, args ?? new InstanceAppProfileArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:bigtableadmin/v2:InstanceAppProfile", name, args ?? new InstanceAppProfileArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceAppProfile(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:bigtableadmin/v2:InstanceAppProfile", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:bigtableadmin/v2:InstanceAppProfile", name, null, MakeResourceOptions(options, id))
         {
         }
 

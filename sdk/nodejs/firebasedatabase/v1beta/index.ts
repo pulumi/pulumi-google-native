@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:firebasedatabase/v1beta:Instance":
+            case "gcp-native:firebasedatabase/v1beta:Instance":
                 return new Instance(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "firebasedatabase/v1beta", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "firebasedatabase/v1beta", _module)

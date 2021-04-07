@@ -22,7 +22,7 @@ export class Router extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/alpha:Router';
+    public static readonly __pulumiType = 'gcp-native:compute/alpha:Router';
 
     /**
      * Returns true if the given object is an instance of Router.  This is designed to work even

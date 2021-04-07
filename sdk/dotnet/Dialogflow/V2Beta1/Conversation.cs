@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Dialogflow.V2Beta1
+namespace Pulumi.GcpNative.Dialogflow.V2Beta1
 {
     /// <summary>
     /// Creates a new conversation. Conversations are auto-completed after 24 hours. Conversation Lifecycle: There are two stages during a conversation: Automated Agent Stage and Assist Stage. For Automated Agent Stage, there will be a dialogflow agent responding to user queries. For Assist Stage, there's no dialogflow agent responding to user queries. But we will provide suggestions which are generated from conversation. If Conversation.conversation_profile is configured for a dialogflow agent, conversation will start from `Automated Agent Stage`, otherwise, it will start from `Assist Stage`. And during `Automated Agent Stage`, once an Intent with Intent.live_agent_handoff is triggered, conversation will transfer to Assist Stage.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dialogflow/v2beta1:Conversation")]
+    [GcpNativeResourceType("gcp-native:dialogflow/v2beta1:Conversation")]
     public partial class Conversation : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Conversation(string name, ConversationArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v2beta1:Conversation", name, args ?? new ConversationArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dialogflow/v2beta1:Conversation", name, args ?? new ConversationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Conversation(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v2beta1:Conversation", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dialogflow/v2beta1:Conversation", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -21,7 +21,7 @@ export class Brand extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:iap/v1:Brand';
+    public static readonly __pulumiType = 'gcp-native:iap/v1:Brand';
 
     /**
      * Returns true if the given object is an instance of Brand.  This is designed to work even

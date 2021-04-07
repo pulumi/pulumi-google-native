@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Testing.V1
+namespace Pulumi.GcpNative.Testing.V1
 {
     /// <summary>
     /// Creates and runs a matrix of tests according to the given specifications. Unsupported environments will be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000 devices in parallel. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix tries to use too many simultaneous devices.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:testing/v1:TestMatrix")]
+    [GcpNativeResourceType("gcp-native:testing/v1:TestMatrix")]
     public partial class TestMatrix : Pulumi.CustomResource
     {
         /// <summary>
@@ -102,12 +102,12 @@ namespace Pulumi.GoogleCloud.Testing.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TestMatrix(string name, TestMatrixArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:testing/v1:TestMatrix", name, args ?? new TestMatrixArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:testing/v1:TestMatrix", name, args ?? new TestMatrixArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TestMatrix(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:testing/v1:TestMatrix", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:testing/v1:TestMatrix", name, null, MakeResourceOptions(options, id))
         {
         }
 

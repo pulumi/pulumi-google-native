@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.BigtableAdmin.V2
+namespace Pulumi.GcpNative.BigtableAdmin.V2
 {
     /// <summary>
     /// Creates a cluster within an instance.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:bigtableadmin/v2:InstanceCluster")]
+    [GcpNativeResourceType("gcp-native:bigtableadmin/v2:InstanceCluster")]
     public partial class InstanceCluster : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GoogleCloud.BigtableAdmin.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceCluster(string name, InstanceClusterArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:bigtableadmin/v2:InstanceCluster", name, args ?? new InstanceClusterArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:bigtableadmin/v2:InstanceCluster", name, args ?? new InstanceClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceCluster(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:bigtableadmin/v2:InstanceCluster", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:bigtableadmin/v2:InstanceCluster", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Cloudkms.V1
+namespace Pulumi.GcpNative.Cloudkms.V1
 {
     /// <summary>
     /// Create a new KeyRing in a given Project and Location.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudkms/v1:KeyRing")]
+    [GcpNativeResourceType("gcp-native:cloudkms/v1:KeyRing")]
     public partial class KeyRing : Pulumi.CustomResource
     {
         /// <summary>
@@ -36,12 +36,12 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public KeyRing(string name, KeyRingArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudkms/v1:KeyRing", name, args ?? new KeyRingArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudkms/v1:KeyRing", name, args ?? new KeyRingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private KeyRing(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudkms/v1:KeyRing", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudkms/v1:KeyRing", name, null, MakeResourceOptions(options, id))
         {
         }
 

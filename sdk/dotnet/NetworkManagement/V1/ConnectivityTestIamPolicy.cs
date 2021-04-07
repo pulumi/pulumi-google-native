@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.NetworkManagement.V1
+namespace Pulumi.GcpNative.NetworkManagement.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:networkmanagement/v1:ConnectivityTestIamPolicy")]
+    [GcpNativeResourceType("gcp-native:networkmanagement/v1:ConnectivityTestIamPolicy")]
     public partial class ConnectivityTestIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.NetworkManagement.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ConnectivityTestIamPolicy(string name, ConnectivityTestIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:networkmanagement/v1:ConnectivityTestIamPolicy", name, args ?? new ConnectivityTestIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:networkmanagement/v1:ConnectivityTestIamPolicy", name, args ?? new ConnectivityTestIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ConnectivityTestIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:networkmanagement/v1:ConnectivityTestIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:networkmanagement/v1:ConnectivityTestIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

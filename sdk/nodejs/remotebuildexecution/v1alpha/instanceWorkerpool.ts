@@ -22,7 +22,7 @@ export class InstanceWorkerpool extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:remotebuildexecution/v1alpha:InstanceWorkerpool';
+    public static readonly __pulumiType = 'gcp-native:remotebuildexecution/v1alpha:InstanceWorkerpool';
 
     /**
      * Returns true if the given object is an instance of InstanceWorkerpool.  This is designed to work even

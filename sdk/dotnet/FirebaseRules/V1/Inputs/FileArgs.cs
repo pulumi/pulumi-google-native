@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.FirebaseRules.V1.Inputs
+namespace Pulumi.GcpNative.FirebaseRules.V1.Inputs
 {
 
     /// <summary>

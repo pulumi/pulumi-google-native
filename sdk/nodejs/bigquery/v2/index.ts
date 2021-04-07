@@ -24,21 +24,21 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:bigquery/v2:Dataset":
+            case "gcp-native:bigquery/v2:Dataset":
                 return new Dataset(name, <any>undefined, { urn })
-            case "google-cloud:bigquery/v2:Job":
+            case "gcp-native:bigquery/v2:Job":
                 return new Job(name, <any>undefined, { urn })
-            case "google-cloud:bigquery/v2:Routine":
+            case "gcp-native:bigquery/v2:Routine":
                 return new Routine(name, <any>undefined, { urn })
-            case "google-cloud:bigquery/v2:RowAccessPolicyIamPolicy":
+            case "gcp-native:bigquery/v2:RowAccessPolicyIamPolicy":
                 return new RowAccessPolicyIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:bigquery/v2:Table":
+            case "gcp-native:bigquery/v2:Table":
                 return new Table(name, <any>undefined, { urn })
-            case "google-cloud:bigquery/v2:TableIamPolicy":
+            case "gcp-native:bigquery/v2:TableIamPolicy":
                 return new TableIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "bigquery/v2", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "bigquery/v2", _module)

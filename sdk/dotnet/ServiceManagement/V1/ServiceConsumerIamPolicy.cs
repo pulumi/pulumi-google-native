@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ServiceManagement.V1
+namespace Pulumi.GcpNative.ServiceManagement.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:servicemanagement/v1:ServiceConsumerIamPolicy")]
+    [GcpNativeResourceType("gcp-native:servicemanagement/v1:ServiceConsumerIamPolicy")]
     public partial class ServiceConsumerIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.ServiceManagement.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceConsumerIamPolicy(string name, ServiceConsumerIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:servicemanagement/v1:ServiceConsumerIamPolicy", name, args ?? new ServiceConsumerIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:servicemanagement/v1:ServiceConsumerIamPolicy", name, args ?? new ServiceConsumerIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceConsumerIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:servicemanagement/v1:ServiceConsumerIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:servicemanagement/v1:ServiceConsumerIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -22,7 +22,7 @@ export class CatalogEventStorePredictionApiKeyRegistration extends pulumi.Custom
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration';
+    public static readonly __pulumiType = 'gcp-native:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration';
 
     /**
      * Returns true if the given object is an instance of CatalogEventStorePredictionApiKeyRegistration.  This is designed to work even

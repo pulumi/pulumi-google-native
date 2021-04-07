@@ -21,7 +21,7 @@ export class TagValue extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:cloudresourcemanager/v3:TagValue';
+    public static readonly __pulumiType = 'gcp-native:cloudresourcemanager/v3:TagValue';
 
     /**
      * Returns true if the given object is an instance of TagValue.  This is designed to work even

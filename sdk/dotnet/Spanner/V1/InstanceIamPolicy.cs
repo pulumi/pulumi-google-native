@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Spanner.V1
+namespace Pulumi.GcpNative.Spanner.V1
 {
     /// <summary>
     /// Sets the access control policy on an instance resource. Replaces any existing policy. Authorization requires `spanner.instances.setIamPolicy` on resource.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:spanner/v1:InstanceIamPolicy")]
+    [GcpNativeResourceType("gcp-native:spanner/v1:InstanceIamPolicy")]
     public partial class InstanceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.Spanner.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceIamPolicy(string name, InstanceIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:spanner/v1:InstanceIamPolicy", name, args ?? new InstanceIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:spanner/v1:InstanceIamPolicy", name, args ?? new InstanceIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:spanner/v1:InstanceIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:spanner/v1:InstanceIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

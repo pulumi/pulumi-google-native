@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Creates a ForwardingRule resource in the specified project and region using the data included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:ForwardingRule")]
+    [GcpNativeResourceType("gcp-native:compute/beta:ForwardingRule")]
     public partial class ForwardingRule : Pulumi.CustomResource
     {
         /// <summary>
@@ -274,12 +274,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ForwardingRule(string name, ForwardingRuleArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:ForwardingRule", name, args ?? new ForwardingRuleArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:ForwardingRule", name, args ?? new ForwardingRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ForwardingRule(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:ForwardingRule", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:ForwardingRule", name, null, MakeResourceOptions(options, id))
         {
         }
 

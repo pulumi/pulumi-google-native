@@ -21,7 +21,7 @@ export class Api extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:apigateway/v1:Api';
+    public static readonly __pulumiType = 'gcp-native:apigateway/v1:Api';
 
     /**
      * Returns true if the given object is an instance of Api.  This is designed to work even

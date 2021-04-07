@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Pubsub.V1
+namespace Pulumi.GcpNative.Pubsub.V1
 {
     /// <summary>
     /// Creates the given topic with the given name. See the [resource name rules] (https://cloud.google.com/pubsub/docs/admin#resource_names).
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:pubsub/v1:Topic")]
+    [GcpNativeResourceType("gcp-native:pubsub/v1:Topic")]
     public partial class Topic : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GoogleCloud.Pubsub.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Topic(string name, TopicArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:pubsub/v1:Topic", name, args ?? new TopicArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:pubsub/v1:Topic", name, args ?? new TopicArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Topic(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:pubsub/v1:Topic", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:pubsub/v1:Topic", name, null, MakeResourceOptions(options, id))
         {
         }
 

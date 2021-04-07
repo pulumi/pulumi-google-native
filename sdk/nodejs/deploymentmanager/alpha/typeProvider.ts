@@ -22,7 +22,7 @@ export class TypeProvider extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:deploymentmanager/alpha:TypeProvider';
+    public static readonly __pulumiType = 'gcp-native:deploymentmanager/alpha:TypeProvider';
 
     /**
      * Returns true if the given object is an instance of TypeProvider.  This is designed to work even

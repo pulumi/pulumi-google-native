@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Dialogflow.V3Beta1
+namespace Pulumi.GcpNative.Dialogflow.V3Beta1
 {
     /// <summary>
     /// Creates a webhook in the specified agent.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dialogflow/v3beta1:AgentWebhook")]
+    [GcpNativeResourceType("gcp-native:dialogflow/v3beta1:AgentWebhook")]
     public partial class AgentWebhook : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentWebhook(string name, AgentWebhookArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v3beta1:AgentWebhook", name, args ?? new AgentWebhookArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dialogflow/v3beta1:AgentWebhook", name, args ?? new AgentWebhookArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentWebhook(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v3beta1:AgentWebhook", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dialogflow/v3beta1:AgentWebhook", name, null, MakeResourceOptions(options, id))
         {
         }
 

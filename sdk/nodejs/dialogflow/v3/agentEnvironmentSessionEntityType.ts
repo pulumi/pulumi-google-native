@@ -22,7 +22,7 @@ export class AgentEnvironmentSessionEntityType extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:dialogflow/v3:AgentEnvironmentSessionEntityType';
+    public static readonly __pulumiType = 'gcp-native:dialogflow/v3:AgentEnvironmentSessionEntityType';
 
     /**
      * Returns true if the given object is an instance of AgentEnvironmentSessionEntityType.  This is designed to work even

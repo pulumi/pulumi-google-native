@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.V1
+namespace Pulumi.GcpNative.Compute.V1
 {
     /// <summary>
     /// Create a NotificationEndpoint in the specified project in the given region using the parameters that are included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/v1:RegionNotificationEndpoint")]
+    [GcpNativeResourceType("gcp-native:compute/v1:RegionNotificationEndpoint")]
     public partial class RegionNotificationEndpoint : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionNotificationEndpoint(string name, RegionNotificationEndpointArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:RegionNotificationEndpoint", name, args ?? new RegionNotificationEndpointArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/v1:RegionNotificationEndpoint", name, args ?? new RegionNotificationEndpointArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegionNotificationEndpoint(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:RegionNotificationEndpoint", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/v1:RegionNotificationEndpoint", name, null, MakeResourceOptions(options, id))
         {
         }
 

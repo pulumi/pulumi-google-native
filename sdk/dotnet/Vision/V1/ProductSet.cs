@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Vision.V1
+namespace Pulumi.GcpNative.Vision.V1
 {
     /// <summary>
     /// Creates and returns a new ProductSet resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing, or is longer than 4096 characters.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:vision/v1:ProductSet")]
+    [GcpNativeResourceType("gcp-native:vision/v1:ProductSet")]
     public partial class ProductSet : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.Vision.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProductSet(string name, ProductSetArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:vision/v1:ProductSet", name, args ?? new ProductSetArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:vision/v1:ProductSet", name, args ?? new ProductSetArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ProductSet(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:vision/v1:ProductSet", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:vision/v1:ProductSet", name, null, MakeResourceOptions(options, id))
         {
         }
 

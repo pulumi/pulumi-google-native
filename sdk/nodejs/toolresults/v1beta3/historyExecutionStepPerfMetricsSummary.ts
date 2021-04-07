@@ -22,7 +22,7 @@ export class HistoryExecutionStepPerfMetricsSummary extends pulumi.CustomResourc
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:toolresults/v1beta3:HistoryExecutionStepPerfMetricsSummary';
+    public static readonly __pulumiType = 'gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfMetricsSummary';
 
     /**
      * Returns true if the given object is an instance of HistoryExecutionStepPerfMetricsSummary.  This is designed to work even

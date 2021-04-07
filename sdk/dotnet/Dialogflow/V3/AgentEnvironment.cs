@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Dialogflow.V3
+namespace Pulumi.GcpNative.Dialogflow.V3
 {
     /// <summary>
     /// Creates an Environment in the specified Agent.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dialogflow/v3:AgentEnvironment")]
+    [GcpNativeResourceType("gcp-native:dialogflow/v3:AgentEnvironment")]
     public partial class AgentEnvironment : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentEnvironment(string name, AgentEnvironmentArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v3:AgentEnvironment", name, args ?? new AgentEnvironmentArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dialogflow/v3:AgentEnvironment", name, args ?? new AgentEnvironmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentEnvironment(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v3:AgentEnvironment", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dialogflow/v3:AgentEnvironment", name, null, MakeResourceOptions(options, id))
         {
         }
 

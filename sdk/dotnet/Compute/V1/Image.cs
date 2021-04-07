@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.V1
+namespace Pulumi.GcpNative.Compute.V1
 {
     /// <summary>
     /// Creates an image in the specified project using the data included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/v1:Image")]
+    [GcpNativeResourceType("gcp-native:compute/v1:Image")]
     public partial class Image : Pulumi.CustomResource
     {
         /// <summary>
@@ -228,12 +228,12 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Image(string name, ImageArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:Image", name, args ?? new ImageArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/v1:Image", name, args ?? new ImageArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Image(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:Image", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/v1:Image", name, null, MakeResourceOptions(options, id))
         {
         }
 

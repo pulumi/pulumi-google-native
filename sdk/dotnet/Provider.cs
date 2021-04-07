@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud
+namespace Pulumi.GcpNative
 {
     /// <summary>
     /// The provider type for the Google Cloud package.
     /// </summary>
-    [GoogleCloudResourceType("pulumi:providers:google-cloud")]
+    [GcpNativeResourceType("pulumi:providers:gcp-native")]
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
@@ -23,7 +23,7 @@ namespace Pulumi.GoogleCloud
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
-            : base("google-cloud", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
 

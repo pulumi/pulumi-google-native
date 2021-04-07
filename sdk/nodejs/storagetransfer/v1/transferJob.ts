@@ -22,7 +22,7 @@ export class TransferJob extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:storagetransfer/v1:TransferJob';
+    public static readonly __pulumiType = 'gcp-native:storagetransfer/v1:TransferJob';
 
     /**
      * Returns true if the given object is an instance of TransferJob.  This is designed to work even

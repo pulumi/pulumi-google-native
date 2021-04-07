@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DLP.V2
+namespace Pulumi.GcpNative.DLP.V2
 {
     /// <summary>
     /// Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dlp/v2:StoredInfoType")]
+    [GcpNativeResourceType("gcp-native:dlp/v2:StoredInfoType")]
     public partial class StoredInfoType : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.DLP.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public StoredInfoType(string name, StoredInfoTypeArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dlp/v2:StoredInfoType", name, args ?? new StoredInfoTypeArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dlp/v2:StoredInfoType", name, args ?? new StoredInfoTypeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private StoredInfoType(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dlp/v2:StoredInfoType", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dlp/v2:StoredInfoType", name, null, MakeResourceOptions(options, id))
         {
         }
 

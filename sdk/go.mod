@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-google-cloud/sdk
+module github.com/pulumi/pulumi-gcp-native/sdk
 
 go 1.15
 

@@ -22,7 +22,7 @@ export class FeatureIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:gkehub/v1alpha:FeatureIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:gkehub/v1alpha:FeatureIamPolicy';
 
     /**
      * Returns true if the given object is an instance of FeatureIamPolicy.  This is designed to work even

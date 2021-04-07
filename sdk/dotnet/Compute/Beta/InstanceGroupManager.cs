@@ -7,14 +7,14 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
     /// 
     /// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:InstanceGroupManager")]
+    [GcpNativeResourceType("gcp-native:compute/beta:InstanceGroupManager")]
     public partial class InstanceGroupManager : Pulumi.CustomResource
     {
         /// <summary>
@@ -168,12 +168,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceGroupManager(string name, InstanceGroupManagerArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:InstanceGroupManager", name, args ?? new InstanceGroupManagerArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:InstanceGroupManager", name, args ?? new InstanceGroupManagerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceGroupManager(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:InstanceGroupManager", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:InstanceGroupManager", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -21,7 +21,7 @@ export class DatasetConsentStoreAttributeDefinition extends pulumi.CustomResourc
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:healthcare/v1:DatasetConsentStoreAttributeDefinition';
+    public static readonly __pulumiType = 'gcp-native:healthcare/v1:DatasetConsentStoreAttributeDefinition';
 
     /**
      * Returns true if the given object is an instance of DatasetConsentStoreAttributeDefinition.  This is designed to work even

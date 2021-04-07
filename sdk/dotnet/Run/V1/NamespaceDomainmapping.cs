@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Run.V1
+namespace Pulumi.GcpNative.Run.V1
 {
     /// <summary>
     /// Create a new domain mapping.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:run/v1:NamespaceDomainmapping")]
+    [GcpNativeResourceType("gcp-native:run/v1:NamespaceDomainmapping")]
     public partial class NamespaceDomainmapping : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.Run.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NamespaceDomainmapping(string name, NamespaceDomainmappingArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:run/v1:NamespaceDomainmapping", name, args ?? new NamespaceDomainmappingArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:run/v1:NamespaceDomainmapping", name, args ?? new NamespaceDomainmappingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private NamespaceDomainmapping(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:run/v1:NamespaceDomainmapping", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:run/v1:NamespaceDomainmapping", name, null, MakeResourceOptions(options, id))
         {
         }
 

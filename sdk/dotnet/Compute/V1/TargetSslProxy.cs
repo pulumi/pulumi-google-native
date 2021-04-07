@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.V1
+namespace Pulumi.GcpNative.Compute.V1
 {
     /// <summary>
     /// Creates a TargetSslProxy resource in the specified project using the data included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/v1:TargetSslProxy")]
+    [GcpNativeResourceType("gcp-native:compute/v1:TargetSslProxy")]
     public partial class TargetSslProxy : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TargetSslProxy(string name, TargetSslProxyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:TargetSslProxy", name, args ?? new TargetSslProxyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/v1:TargetSslProxy", name, args ?? new TargetSslProxyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TargetSslProxy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:TargetSslProxy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/v1:TargetSslProxy", name, null, MakeResourceOptions(options, id))
         {
         }
 

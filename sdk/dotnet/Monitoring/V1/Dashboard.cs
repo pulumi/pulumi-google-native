@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Monitoring.V1
+namespace Pulumi.GcpNative.Monitoring.V1
 {
     /// <summary>
     /// Creates a new custom dashboard. For examples on how you can use this API to create dashboards, see Managing dashboards by API. This method requires the monitoring.dashboards.create permission on the specified project. For more information about permissions, see Cloud Identity and Access Management.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:monitoring/v1:Dashboard")]
+    [GcpNativeResourceType("gcp-native:monitoring/v1:Dashboard")]
     public partial class Dashboard : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GoogleCloud.Monitoring.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Dashboard(string name, DashboardArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:monitoring/v1:Dashboard", name, args ?? new DashboardArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:monitoring/v1:Dashboard", name, args ?? new DashboardArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Dashboard(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:monitoring/v1:Dashboard", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:monitoring/v1:Dashboard", name, null, MakeResourceOptions(options, id))
         {
         }
 

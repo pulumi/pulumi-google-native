@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudResourceManager.V1Beta1
+namespace Pulumi.GcpNative.CloudResourceManager.V1Beta1
 {
     /// <summary>
     /// Creates a Project resource. Initially, the Project resource is owned by its creator exclusively. The creator can later grant permission to others to read or update the Project. Several APIs are activated automatically for the Project, including Google Cloud Storage. The parent is identified by a specified ResourceId, which must include both an ID and a type, such as project, folder, or organization. This method does not associate the new project with a billing account. You can set or update the billing account associated with a project using the [`projects.updateBillingInfo`] (/billing/reference/rest/v1/projects/updateBillingInfo) method.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudresourcemanager/v1beta1:Project")]
+    [GcpNativeResourceType("gcp-native:cloudresourcemanager/v1beta1:Project")]
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GoogleCloud.CloudResourceManager.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Project(string name, ProjectArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudresourcemanager/v1beta1:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudresourcemanager/v1beta1:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Project(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudresourcemanager/v1beta1:Project", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudresourcemanager/v1beta1:Project", name, null, MakeResourceOptions(options, id))
         {
         }
 

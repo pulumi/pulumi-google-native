@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.AppEngine.V1Beta
+namespace Pulumi.GcpNative.AppEngine.V1Beta
 {
     /// <summary>
     /// Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:appengine/v1beta:AppDomainMapping")]
+    [GcpNativeResourceType("gcp-native:appengine/v1beta:AppDomainMapping")]
     public partial class AppDomainMapping : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.AppEngine.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AppDomainMapping(string name, AppDomainMappingArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:appengine/v1beta:AppDomainMapping", name, args ?? new AppDomainMappingArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:appengine/v1beta:AppDomainMapping", name, args ?? new AppDomainMappingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AppDomainMapping(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:appengine/v1beta:AppDomainMapping", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:appengine/v1beta:AppDomainMapping", name, null, MakeResourceOptions(options, id))
         {
         }
 

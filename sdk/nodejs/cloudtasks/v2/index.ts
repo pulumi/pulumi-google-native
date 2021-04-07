@@ -18,15 +18,15 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:cloudtasks/v2:Queue":
+            case "gcp-native:cloudtasks/v2:Queue":
                 return new Queue(name, <any>undefined, { urn })
-            case "google-cloud:cloudtasks/v2:QueueIamPolicy":
+            case "gcp-native:cloudtasks/v2:QueueIamPolicy":
                 return new QueueIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:cloudtasks/v2:QueueTask":
+            case "gcp-native:cloudtasks/v2:QueueTask":
                 return new QueueTask(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "cloudtasks/v2", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "cloudtasks/v2", _module)

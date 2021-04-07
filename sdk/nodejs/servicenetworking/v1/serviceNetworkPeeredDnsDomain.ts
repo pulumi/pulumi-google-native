@@ -21,7 +21,7 @@ export class ServiceNetworkPeeredDnsDomain extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:servicenetworking/v1:ServiceNetworkPeeredDnsDomain';
+    public static readonly __pulumiType = 'gcp-native:servicenetworking/v1:ServiceNetworkPeeredDnsDomain';
 
     /**
      * Returns true if the given object is an instance of ServiceNetworkPeeredDnsDomain.  This is designed to work even

@@ -22,19 +22,19 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:datalabeling/v1beta1:AnnotationSpecSet":
+            case "gcp-native:datalabeling/v1beta1:AnnotationSpecSet":
                 return new AnnotationSpecSet(name, <any>undefined, { urn })
-            case "google-cloud:datalabeling/v1beta1:Dataset":
+            case "gcp-native:datalabeling/v1beta1:Dataset":
                 return new Dataset(name, <any>undefined, { urn })
-            case "google-cloud:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage":
+            case "gcp-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage":
                 return new DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(name, <any>undefined, { urn })
-            case "google-cloud:datalabeling/v1beta1:EvaluationJob":
+            case "gcp-native:datalabeling/v1beta1:EvaluationJob":
                 return new EvaluationJob(name, <any>undefined, { urn })
-            case "google-cloud:datalabeling/v1beta1:Instruction":
+            case "gcp-native:datalabeling/v1beta1:Instruction":
                 return new Instruction(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "datalabeling/v1beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "datalabeling/v1beta1", _module)

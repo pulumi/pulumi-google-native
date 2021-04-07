@@ -21,7 +21,7 @@ export class ObjectIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:storage/v1:ObjectIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:storage/v1:ObjectIamPolicy';
 
     /**
      * Returns true if the given object is an instance of ObjectIamPolicy.  This is designed to work even

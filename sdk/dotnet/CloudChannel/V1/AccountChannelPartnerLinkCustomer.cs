@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudChannel.V1
+namespace Pulumi.GcpNative.CloudChannel.V1
 {
     /// <summary>
     /// Creates a new Customer resource under the reseller or distributor account. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return value: The newly created Customer resource.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudchannel/v1:AccountChannelPartnerLinkCustomer")]
+    [GcpNativeResourceType("gcp-native:cloudchannel/v1:AccountChannelPartnerLinkCustomer")]
     public partial class AccountChannelPartnerLinkCustomer : Pulumi.CustomResource
     {
         /// <summary>
@@ -96,12 +96,12 @@ namespace Pulumi.GoogleCloud.CloudChannel.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccountChannelPartnerLinkCustomer(string name, AccountChannelPartnerLinkCustomerArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudchannel/v1:AccountChannelPartnerLinkCustomer", name, args ?? new AccountChannelPartnerLinkCustomerArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudchannel/v1:AccountChannelPartnerLinkCustomer", name, args ?? new AccountChannelPartnerLinkCustomerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AccountChannelPartnerLinkCustomer(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudchannel/v1:AccountChannelPartnerLinkCustomer", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudchannel/v1:AccountChannelPartnerLinkCustomer", name, null, MakeResourceOptions(options, id))
         {
         }
 

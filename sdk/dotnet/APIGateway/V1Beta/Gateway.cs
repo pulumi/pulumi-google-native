@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.APIGateway.V1Beta
+namespace Pulumi.GcpNative.APIGateway.V1Beta
 {
     /// <summary>
     /// Creates a new Gateway in a given project and location.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:apigateway/v1beta:Gateway")]
+    [GcpNativeResourceType("gcp-native:apigateway/v1beta:Gateway")]
     public partial class Gateway : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.APIGateway.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Gateway(string name, GatewayArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:apigateway/v1beta:Gateway", name, args ?? new GatewayArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:apigateway/v1beta:Gateway", name, args ?? new GatewayArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Gateway(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:apigateway/v1beta:Gateway", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:apigateway/v1beta:Gateway", name, null, MakeResourceOptions(options, id))
         {
         }
 

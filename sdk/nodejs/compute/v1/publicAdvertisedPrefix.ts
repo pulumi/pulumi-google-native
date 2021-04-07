@@ -22,7 +22,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/v1:PublicAdvertisedPrefix';
+    public static readonly __pulumiType = 'gcp-native:compute/v1:PublicAdvertisedPrefix';
 
     /**
      * Returns true if the given object is an instance of PublicAdvertisedPrefix.  This is designed to work even

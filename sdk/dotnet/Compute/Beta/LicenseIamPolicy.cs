@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.  Caution This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:LicenseIamPolicy")]
+    [GcpNativeResourceType("gcp-native:compute/beta:LicenseIamPolicy")]
     public partial class LicenseIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,12 +71,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public LicenseIamPolicy(string name, LicenseIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:LicenseIamPolicy", name, args ?? new LicenseIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:LicenseIamPolicy", name, args ?? new LicenseIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private LicenseIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:LicenseIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:LicenseIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -24,21 +24,21 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:dns/v1beta2:Change":
+            case "gcp-native:dns/v1beta2:Change":
                 return new Change(name, <any>undefined, { urn })
-            case "google-cloud:dns/v1beta2:ManagedZone":
+            case "gcp-native:dns/v1beta2:ManagedZone":
                 return new ManagedZone(name, <any>undefined, { urn })
-            case "google-cloud:dns/v1beta2:ManagedZoneRrset":
+            case "gcp-native:dns/v1beta2:ManagedZoneRrset":
                 return new ManagedZoneRrset(name, <any>undefined, { urn })
-            case "google-cloud:dns/v1beta2:Policy":
+            case "gcp-native:dns/v1beta2:Policy":
                 return new Policy(name, <any>undefined, { urn })
-            case "google-cloud:dns/v1beta2:ResponsePolicy":
+            case "gcp-native:dns/v1beta2:ResponsePolicy":
                 return new ResponsePolicy(name, <any>undefined, { urn })
-            case "google-cloud:dns/v1beta2:ResponsePolicyRule":
+            case "gcp-native:dns/v1beta2:ResponsePolicyRule":
                 return new ResponsePolicyRule(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "dns/v1beta2", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "dns/v1beta2", _module)

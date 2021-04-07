@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  */
 export class Provider extends pulumi.ProviderResource {
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud';
+    public static readonly __pulumiType = 'gcp-native';
 
     /**
      * Returns true if the given object is an instance of Provider.  This is designed to work even

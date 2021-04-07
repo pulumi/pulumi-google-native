@@ -22,7 +22,7 @@ export class ClientEvent extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:jobs/v3:ClientEvent';
+    public static readonly __pulumiType = 'gcp-native:jobs/v3:ClientEvent';
 
     /**
      * Returns true if the given object is an instance of ClientEvent.  This is designed to work even

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.V1
+namespace Pulumi.GcpNative.Compute.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/v1:SubnetworkIamPolicy")]
+    [GcpNativeResourceType("gcp-native:compute/v1:SubnetworkIamPolicy")]
     public partial class SubnetworkIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,12 +71,12 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SubnetworkIamPolicy(string name, SubnetworkIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:SubnetworkIamPolicy", name, args ?? new SubnetworkIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/v1:SubnetworkIamPolicy", name, args ?? new SubnetworkIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private SubnetworkIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:SubnetworkIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/v1:SubnetworkIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

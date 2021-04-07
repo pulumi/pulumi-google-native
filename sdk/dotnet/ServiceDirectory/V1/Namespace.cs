@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ServiceDirectory.V1
+namespace Pulumi.GcpNative.ServiceDirectory.V1
 {
     /// <summary>
     /// Creates a namespace, and returns the new namespace.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:servicedirectory/v1:Namespace")]
+    [GcpNativeResourceType("gcp-native:servicedirectory/v1:Namespace")]
     public partial class Namespace : Pulumi.CustomResource
     {
         /// <summary>
@@ -36,12 +36,12 @@ namespace Pulumi.GoogleCloud.ServiceDirectory.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Namespace(string name, NamespaceArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:servicedirectory/v1:Namespace", name, args ?? new NamespaceArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:servicedirectory/v1:Namespace", name, args ?? new NamespaceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Namespace(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:servicedirectory/v1:Namespace", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:servicedirectory/v1:Namespace", name, null, MakeResourceOptions(options, id))
         {
         }
 

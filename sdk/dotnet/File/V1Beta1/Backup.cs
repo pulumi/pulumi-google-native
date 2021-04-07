@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.File.V1Beta1
+namespace Pulumi.GcpNative.File.V1Beta1
 {
     /// <summary>
     /// Creates a backup.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:file/v1beta1:Backup")]
+    [GcpNativeResourceType("gcp-native:file/v1beta1:Backup")]
     public partial class Backup : Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +90,12 @@ namespace Pulumi.GoogleCloud.File.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Backup(string name, BackupArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:file/v1beta1:Backup", name, args ?? new BackupArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:file/v1beta1:Backup", name, args ?? new BackupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Backup(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:file/v1beta1:Backup", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:file/v1beta1:Backup", name, null, MakeResourceOptions(options, id))
         {
         }
 

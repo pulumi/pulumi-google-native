@@ -22,7 +22,7 @@ export class AppDomainMapping extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:appengine/v1:AppDomainMapping';
+    public static readonly __pulumiType = 'gcp-native:appengine/v1:AppDomainMapping';
 
     /**
      * Returns true if the given object is an instance of AppDomainMapping.  This is designed to work even

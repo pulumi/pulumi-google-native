@@ -21,7 +21,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/v1:RegionTargetHttpsProxy';
+    public static readonly __pulumiType = 'gcp-native:compute/v1:RegionTargetHttpsProxy';
 
     /**
      * Returns true if the given object is an instance of RegionTargetHttpsProxy.  This is designed to work even

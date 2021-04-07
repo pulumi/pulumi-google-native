@@ -22,7 +22,7 @@ export class InternalRangeIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:networkconnectivity/v1alpha1:InternalRangeIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy';
 
     /**
      * Returns true if the given object is an instance of InternalRangeIamPolicy.  This is designed to work even

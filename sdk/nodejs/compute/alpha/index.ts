@@ -208,205 +208,205 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:compute/alpha:Address":
+            case "gcp-native:compute/alpha:Address":
                 return new Address(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:Autoscaler":
+            case "gcp-native:compute/alpha:Autoscaler":
                 return new Autoscaler(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:BackendBucket":
+            case "gcp-native:compute/alpha:BackendBucket":
                 return new BackendBucket(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:BackendBucketIamPolicy":
+            case "gcp-native:compute/alpha:BackendBucketIamPolicy":
                 return new BackendBucketIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:BackendService":
+            case "gcp-native:compute/alpha:BackendService":
                 return new BackendService(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:Disk":
+            case "gcp-native:compute/alpha:Disk":
                 return new Disk(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:DiskIamPolicy":
+            case "gcp-native:compute/alpha:DiskIamPolicy":
                 return new DiskIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:ExternalVpnGateway":
+            case "gcp-native:compute/alpha:ExternalVpnGateway":
                 return new ExternalVpnGateway(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:Firewall":
+            case "gcp-native:compute/alpha:Firewall":
                 return new Firewall(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:FirewallPolicy":
+            case "gcp-native:compute/alpha:FirewallPolicy":
                 return new FirewallPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:FirewallPolicyIamPolicy":
+            case "gcp-native:compute/alpha:FirewallPolicyIamPolicy":
                 return new FirewallPolicyIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:ForwardingRule":
+            case "gcp-native:compute/alpha:ForwardingRule":
                 return new ForwardingRule(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:GlobalAddress":
+            case "gcp-native:compute/alpha:GlobalAddress":
                 return new GlobalAddress(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:GlobalForwardingRule":
+            case "gcp-native:compute/alpha:GlobalForwardingRule":
                 return new GlobalForwardingRule(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:GlobalNetworkEndpointGroup":
+            case "gcp-native:compute/alpha:GlobalNetworkEndpointGroup":
                 return new GlobalNetworkEndpointGroup(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:GlobalPublicDelegatedPrefix":
+            case "gcp-native:compute/alpha:GlobalPublicDelegatedPrefix":
                 return new GlobalPublicDelegatedPrefix(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:HealthCheck":
+            case "gcp-native:compute/alpha:HealthCheck":
                 return new HealthCheck(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:HttpHealthCheck":
+            case "gcp-native:compute/alpha:HttpHealthCheck":
                 return new HttpHealthCheck(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:HttpsHealthCheck":
+            case "gcp-native:compute/alpha:HttpsHealthCheck":
                 return new HttpsHealthCheck(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:Image":
+            case "gcp-native:compute/alpha:Image":
                 return new Image(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:ImageIamPolicy":
+            case "gcp-native:compute/alpha:ImageIamPolicy":
                 return new ImageIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:Instance":
+            case "gcp-native:compute/alpha:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:InstanceGroup":
+            case "gcp-native:compute/alpha:InstanceGroup":
                 return new InstanceGroup(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:InstanceGroupManager":
+            case "gcp-native:compute/alpha:InstanceGroupManager":
                 return new InstanceGroupManager(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:InstanceIamPolicy":
+            case "gcp-native:compute/alpha:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:InstanceTemplate":
+            case "gcp-native:compute/alpha:InstanceTemplate":
                 return new InstanceTemplate(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:InstanceTemplateIamPolicy":
+            case "gcp-native:compute/alpha:InstanceTemplateIamPolicy":
                 return new InstanceTemplateIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:Interconnect":
+            case "gcp-native:compute/alpha:Interconnect":
                 return new Interconnect(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:InterconnectAttachment":
+            case "gcp-native:compute/alpha:InterconnectAttachment":
                 return new InterconnectAttachment(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:InterconnectAttachmentIamPolicy":
+            case "gcp-native:compute/alpha:InterconnectAttachmentIamPolicy":
                 return new InterconnectAttachmentIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:InterconnectIamPolicy":
+            case "gcp-native:compute/alpha:InterconnectIamPolicy":
                 return new InterconnectIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:License":
+            case "gcp-native:compute/alpha:License":
                 return new License(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:LicenseCodeIamPolicy":
+            case "gcp-native:compute/alpha:LicenseCodeIamPolicy":
                 return new LicenseCodeIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:LicenseIamPolicy":
+            case "gcp-native:compute/alpha:LicenseIamPolicy":
                 return new LicenseIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:MachineImage":
+            case "gcp-native:compute/alpha:MachineImage":
                 return new MachineImage(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:MachineImageIamPolicy":
+            case "gcp-native:compute/alpha:MachineImageIamPolicy":
                 return new MachineImageIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:Network":
+            case "gcp-native:compute/alpha:Network":
                 return new Network(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:NetworkEndpointGroup":
+            case "gcp-native:compute/alpha:NetworkEndpointGroup":
                 return new NetworkEndpointGroup(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:NetworkFirewallPolicy":
+            case "gcp-native:compute/alpha:NetworkFirewallPolicy":
                 return new NetworkFirewallPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:NetworkFirewallPolicyIamPolicy":
+            case "gcp-native:compute/alpha:NetworkFirewallPolicyIamPolicy":
                 return new NetworkFirewallPolicyIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:NodeGroup":
+            case "gcp-native:compute/alpha:NodeGroup":
                 return new NodeGroup(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:NodeGroupIamPolicy":
+            case "gcp-native:compute/alpha:NodeGroupIamPolicy":
                 return new NodeGroupIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:NodeTemplate":
+            case "gcp-native:compute/alpha:NodeTemplate":
                 return new NodeTemplate(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:NodeTemplateIamPolicy":
+            case "gcp-native:compute/alpha:NodeTemplateIamPolicy":
                 return new NodeTemplateIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:OrganizationSecurityPolicy":
+            case "gcp-native:compute/alpha:OrganizationSecurityPolicy":
                 return new OrganizationSecurityPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:PacketMirroring":
+            case "gcp-native:compute/alpha:PacketMirroring":
                 return new PacketMirroring(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:PublicAdvertisedPrefix":
+            case "gcp-native:compute/alpha:PublicAdvertisedPrefix":
                 return new PublicAdvertisedPrefix(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:PublicDelegatedPrefix":
+            case "gcp-native:compute/alpha:PublicDelegatedPrefix":
                 return new PublicDelegatedPrefix(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionAutoscaler":
+            case "gcp-native:compute/alpha:RegionAutoscaler":
                 return new RegionAutoscaler(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionBackendService":
+            case "gcp-native:compute/alpha:RegionBackendService":
                 return new RegionBackendService(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionCommitment":
+            case "gcp-native:compute/alpha:RegionCommitment":
                 return new RegionCommitment(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionDisk":
+            case "gcp-native:compute/alpha:RegionDisk":
                 return new RegionDisk(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionDiskIamPolicy":
+            case "gcp-native:compute/alpha:RegionDiskIamPolicy":
                 return new RegionDiskIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionHealthCheck":
+            case "gcp-native:compute/alpha:RegionHealthCheck":
                 return new RegionHealthCheck(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionHealthCheckService":
+            case "gcp-native:compute/alpha:RegionHealthCheckService":
                 return new RegionHealthCheckService(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionInPlaceSnapshot":
+            case "gcp-native:compute/alpha:RegionInPlaceSnapshot":
                 return new RegionInPlaceSnapshot(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionInPlaceSnapshotIamPolicy":
+            case "gcp-native:compute/alpha:RegionInPlaceSnapshotIamPolicy":
                 return new RegionInPlaceSnapshotIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionInstanceGroupManager":
+            case "gcp-native:compute/alpha:RegionInstanceGroupManager":
                 return new RegionInstanceGroupManager(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionInstantSnapshot":
+            case "gcp-native:compute/alpha:RegionInstantSnapshot":
                 return new RegionInstantSnapshot(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionInstantSnapshotIamPolicy":
+            case "gcp-native:compute/alpha:RegionInstantSnapshotIamPolicy":
                 return new RegionInstantSnapshotIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionNetworkEndpointGroup":
+            case "gcp-native:compute/alpha:RegionNetworkEndpointGroup":
                 return new RegionNetworkEndpointGroup(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionNetworkFirewallPolicy":
+            case "gcp-native:compute/alpha:RegionNetworkFirewallPolicy":
                 return new RegionNetworkFirewallPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionNetworkFirewallPolicyIamPolicy":
+            case "gcp-native:compute/alpha:RegionNetworkFirewallPolicyIamPolicy":
                 return new RegionNetworkFirewallPolicyIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionNotificationEndpoint":
+            case "gcp-native:compute/alpha:RegionNotificationEndpoint":
                 return new RegionNotificationEndpoint(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionSslCertificate":
+            case "gcp-native:compute/alpha:RegionSslCertificate":
                 return new RegionSslCertificate(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionTargetHttpProxy":
+            case "gcp-native:compute/alpha:RegionTargetHttpProxy":
                 return new RegionTargetHttpProxy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionTargetHttpsProxy":
+            case "gcp-native:compute/alpha:RegionTargetHttpsProxy":
                 return new RegionTargetHttpsProxy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:RegionUrlMap":
+            case "gcp-native:compute/alpha:RegionUrlMap":
                 return new RegionUrlMap(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:Reservation":
+            case "gcp-native:compute/alpha:Reservation":
                 return new Reservation(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:ReservationIamPolicy":
+            case "gcp-native:compute/alpha:ReservationIamPolicy":
                 return new ReservationIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:ResourcePolicy":
+            case "gcp-native:compute/alpha:ResourcePolicy":
                 return new ResourcePolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:ResourcePolicyIamPolicy":
+            case "gcp-native:compute/alpha:ResourcePolicyIamPolicy":
                 return new ResourcePolicyIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:Route":
+            case "gcp-native:compute/alpha:Route":
                 return new Route(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:Router":
+            case "gcp-native:compute/alpha:Router":
                 return new Router(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:SecurityPolicy":
+            case "gcp-native:compute/alpha:SecurityPolicy":
                 return new SecurityPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:ServiceAttachment":
+            case "gcp-native:compute/alpha:ServiceAttachment":
                 return new ServiceAttachment(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:ServiceAttachmentIamPolicy":
+            case "gcp-native:compute/alpha:ServiceAttachmentIamPolicy":
                 return new ServiceAttachmentIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:Snapshot":
+            case "gcp-native:compute/alpha:Snapshot":
                 return new Snapshot(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:SnapshotIamPolicy":
+            case "gcp-native:compute/alpha:SnapshotIamPolicy":
                 return new SnapshotIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:SslCertificate":
+            case "gcp-native:compute/alpha:SslCertificate":
                 return new SslCertificate(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:SslPolicy":
+            case "gcp-native:compute/alpha:SslPolicy":
                 return new SslPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:Subnetwork":
+            case "gcp-native:compute/alpha:Subnetwork":
                 return new Subnetwork(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:SubnetworkIamPolicy":
+            case "gcp-native:compute/alpha:SubnetworkIamPolicy":
                 return new SubnetworkIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:TargetGrpcProxy":
+            case "gcp-native:compute/alpha:TargetGrpcProxy":
                 return new TargetGrpcProxy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:TargetHttpProxy":
+            case "gcp-native:compute/alpha:TargetHttpProxy":
                 return new TargetHttpProxy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:TargetHttpsProxy":
+            case "gcp-native:compute/alpha:TargetHttpsProxy":
                 return new TargetHttpsProxy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:TargetInstance":
+            case "gcp-native:compute/alpha:TargetInstance":
                 return new TargetInstance(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:TargetPool":
+            case "gcp-native:compute/alpha:TargetPool":
                 return new TargetPool(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:TargetSslProxy":
+            case "gcp-native:compute/alpha:TargetSslProxy":
                 return new TargetSslProxy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:TargetTcpProxy":
+            case "gcp-native:compute/alpha:TargetTcpProxy":
                 return new TargetTcpProxy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:TargetVpnGateway":
+            case "gcp-native:compute/alpha:TargetVpnGateway":
                 return new TargetVpnGateway(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:UrlMap":
+            case "gcp-native:compute/alpha:UrlMap":
                 return new UrlMap(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:VpnGateway":
+            case "gcp-native:compute/alpha:VpnGateway":
                 return new VpnGateway(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:VpnTunnel":
+            case "gcp-native:compute/alpha:VpnTunnel":
                 return new VpnTunnel(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:ZoneInPlaceSnapshot":
+            case "gcp-native:compute/alpha:ZoneInPlaceSnapshot":
                 return new ZoneInPlaceSnapshot(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:ZoneInPlaceSnapshotIamPolicy":
+            case "gcp-native:compute/alpha:ZoneInPlaceSnapshotIamPolicy":
                 return new ZoneInPlaceSnapshotIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:ZoneInstantSnapshot":
+            case "gcp-native:compute/alpha:ZoneInstantSnapshot":
                 return new ZoneInstantSnapshot(name, <any>undefined, { urn })
-            case "google-cloud:compute/alpha:ZoneInstantSnapshotIamPolicy":
+            case "gcp-native:compute/alpha:ZoneInstantSnapshotIamPolicy":
                 return new ZoneInstantSnapshotIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "compute/alpha", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "compute/alpha", _module)

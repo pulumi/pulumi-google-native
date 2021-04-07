@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Healthcare.V1Beta1
+namespace Pulumi.GcpNative.Healthcare.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:healthcare/v1beta1:DatasetFhirStoreIamPolicy")]
+    [GcpNativeResourceType("gcp-native:healthcare/v1beta1:DatasetFhirStoreIamPolicy")]
     public partial class DatasetFhirStoreIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.Healthcare.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatasetFhirStoreIamPolicy(string name, DatasetFhirStoreIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:healthcare/v1beta1:DatasetFhirStoreIamPolicy", name, args ?? new DatasetFhirStoreIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:healthcare/v1beta1:DatasetFhirStoreIamPolicy", name, args ?? new DatasetFhirStoreIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatasetFhirStoreIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:healthcare/v1beta1:DatasetFhirStoreIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:healthcare/v1beta1:DatasetFhirStoreIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

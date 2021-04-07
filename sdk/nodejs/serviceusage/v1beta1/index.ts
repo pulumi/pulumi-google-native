@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitAdminOverride":
+            case "gcp-native:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitAdminOverride":
                 return new ServiceConsumerQuotaMetricLimitAdminOverride(name, <any>undefined, { urn })
-            case "google-cloud:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitConsumerOverride":
+            case "gcp-native:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitConsumerOverride":
                 return new ServiceConsumerQuotaMetricLimitConsumerOverride(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "serviceusage/v1beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "serviceusage/v1beta1", _module)

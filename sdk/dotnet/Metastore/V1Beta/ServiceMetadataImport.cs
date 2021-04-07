@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Metastore.V1Beta
+namespace Pulumi.GcpNative.Metastore.V1Beta
 {
     /// <summary>
     /// Creates a new MetadataImport in a given project and location.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:metastore/v1beta:ServiceMetadataImport")]
+    [GcpNativeResourceType("gcp-native:metastore/v1beta:ServiceMetadataImport")]
     public partial class ServiceMetadataImport : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GoogleCloud.Metastore.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceMetadataImport(string name, ServiceMetadataImportArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:metastore/v1beta:ServiceMetadataImport", name, args ?? new ServiceMetadataImportArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:metastore/v1beta:ServiceMetadataImport", name, args ?? new ServiceMetadataImportArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceMetadataImport(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:metastore/v1beta:ServiceMetadataImport", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:metastore/v1beta:ServiceMetadataImport", name, null, MakeResourceOptions(options, id))
         {
         }
 

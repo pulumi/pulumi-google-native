@@ -20,17 +20,17 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:jobs/v4:Tenant":
+            case "gcp-native:jobs/v4:Tenant":
                 return new Tenant(name, <any>undefined, { urn })
-            case "google-cloud:jobs/v4:TenantClientEvent":
+            case "gcp-native:jobs/v4:TenantClientEvent":
                 return new TenantClientEvent(name, <any>undefined, { urn })
-            case "google-cloud:jobs/v4:TenantCompany":
+            case "gcp-native:jobs/v4:TenantCompany":
                 return new TenantCompany(name, <any>undefined, { urn })
-            case "google-cloud:jobs/v4:TenantJob":
+            case "gcp-native:jobs/v4:TenantJob":
                 return new TenantJob(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "jobs/v4", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "jobs/v4", _module)

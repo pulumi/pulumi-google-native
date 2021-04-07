@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.FirebaseDynamicLinks.V1.Inputs
+namespace Pulumi.GcpNative.FirebaseDynamicLinks.V1.Inputs
 {
 
     /// <summary>

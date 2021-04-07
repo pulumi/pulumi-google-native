@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Creates an autoscaler in the specified project using the data included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:Autoscaler")]
+    [GcpNativeResourceType("gcp-native:compute/beta:Autoscaler")]
     public partial class Autoscaler : Pulumi.CustomResource
     {
         /// <summary>
@@ -108,12 +108,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Autoscaler(string name, AutoscalerArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:Autoscaler", name, args ?? new AutoscalerArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:Autoscaler", name, args ?? new AutoscalerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Autoscaler(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:Autoscaler", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:Autoscaler", name, null, MakeResourceOptions(options, id))
         {
         }
 

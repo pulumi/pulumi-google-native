@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Apigee.V1
+namespace Pulumi.GcpNative.Apigee.V1
 {
     /// <summary>
     /// Creates a new environment group.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:apigee/v1:OrganizationEnvgroup")]
+    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationEnvgroup")]
     public partial class OrganizationEnvgroup : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationEnvgroup(string name, OrganizationEnvgroupArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationEnvgroup", name, args ?? new OrganizationEnvgroupArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:apigee/v1:OrganizationEnvgroup", name, args ?? new OrganizationEnvgroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationEnvgroup(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationEnvgroup", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:apigee/v1:OrganizationEnvgroup", name, null, MakeResourceOptions(options, id))
         {
         }
 

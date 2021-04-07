@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Spanner.V1
+namespace Pulumi.GcpNative.Spanner.V1
 {
     /// <summary>
     /// Sets the access control policy on a database or backup resource. Replaces any existing policy. Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.setIamPolicy` permission on resource.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:spanner/v1:InstanceBackupIamPolicy")]
+    [GcpNativeResourceType("gcp-native:spanner/v1:InstanceBackupIamPolicy")]
     public partial class InstanceBackupIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.Spanner.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceBackupIamPolicy(string name, InstanceBackupIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:spanner/v1:InstanceBackupIamPolicy", name, args ?? new InstanceBackupIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:spanner/v1:InstanceBackupIamPolicy", name, args ?? new InstanceBackupIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceBackupIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:spanner/v1:InstanceBackupIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:spanner/v1:InstanceBackupIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

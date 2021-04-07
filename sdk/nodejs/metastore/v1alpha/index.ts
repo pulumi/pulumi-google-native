@@ -20,17 +20,17 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:metastore/v1alpha:Service":
+            case "gcp-native:metastore/v1alpha:Service":
                 return new Service(name, <any>undefined, { urn })
-            case "google-cloud:metastore/v1alpha:ServiceBackup":
+            case "gcp-native:metastore/v1alpha:ServiceBackup":
                 return new ServiceBackup(name, <any>undefined, { urn })
-            case "google-cloud:metastore/v1alpha:ServiceIamPolicy":
+            case "gcp-native:metastore/v1alpha:ServiceIamPolicy":
                 return new ServiceIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:metastore/v1alpha:ServiceMetadataImport":
+            case "gcp-native:metastore/v1alpha:ServiceMetadataImport":
                 return new ServiceMetadataImport(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "metastore/v1alpha", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "metastore/v1alpha", _module)

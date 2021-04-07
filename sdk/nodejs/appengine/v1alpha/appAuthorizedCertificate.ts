@@ -22,7 +22,7 @@ export class AppAuthorizedCertificate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:appengine/v1alpha:AppAuthorizedCertificate';
+    public static readonly __pulumiType = 'gcp-native:appengine/v1alpha:AppAuthorizedCertificate';
 
     /**
      * Returns true if the given object is an instance of AppAuthorizedCertificate.  This is designed to work even

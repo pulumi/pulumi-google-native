@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Spanner.V1
+namespace Pulumi.GcpNative.Spanner.V1
 {
     /// <summary>
     /// Creates a new Cloud Spanner database and starts to prepare it for serving. The returned long-running operation will have a name of the format `/operations/` and can be used to track preparation of the database. The metadata field type is CreateDatabaseMetadata. The response field type is Database, if successful.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:spanner/v1:InstanceDatabase")]
+    [GcpNativeResourceType("gcp-native:spanner/v1:InstanceDatabase")]
     public partial class InstanceDatabase : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.Spanner.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceDatabase(string name, InstanceDatabaseArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:spanner/v1:InstanceDatabase", name, args ?? new InstanceDatabaseArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:spanner/v1:InstanceDatabase", name, args ?? new InstanceDatabaseArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceDatabase(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:spanner/v1:InstanceDatabase", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:spanner/v1:InstanceDatabase", name, null, MakeResourceOptions(options, id))
         {
         }
 

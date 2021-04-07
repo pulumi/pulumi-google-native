@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.StorageTransfer.V1
+namespace Pulumi.GcpNative.StorageTransfer.V1
 {
     /// <summary>
     /// Creates a transfer job that runs periodically.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:storagetransfer/v1:TransferJob")]
+    [GcpNativeResourceType("gcp-native:storagetransfer/v1:TransferJob")]
     public partial class TransferJob : Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +90,12 @@ namespace Pulumi.GoogleCloud.StorageTransfer.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TransferJob(string name, TransferJobArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:storagetransfer/v1:TransferJob", name, args ?? new TransferJobArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:storagetransfer/v1:TransferJob", name, args ?? new TransferJobArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TransferJob(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:storagetransfer/v1:TransferJob", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:storagetransfer/v1:TransferJob", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -34,31 +34,31 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:cloudresourcemanager/v3:Folder":
+            case "gcp-native:cloudresourcemanager/v3:Folder":
                 return new Folder(name, <any>undefined, { urn })
-            case "google-cloud:cloudresourcemanager/v3:FolderIamPolicy":
+            case "gcp-native:cloudresourcemanager/v3:FolderIamPolicy":
                 return new FolderIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:cloudresourcemanager/v3:Lien":
+            case "gcp-native:cloudresourcemanager/v3:Lien":
                 return new Lien(name, <any>undefined, { urn })
-            case "google-cloud:cloudresourcemanager/v3:OrganizationIamPolicy":
+            case "gcp-native:cloudresourcemanager/v3:OrganizationIamPolicy":
                 return new OrganizationIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:cloudresourcemanager/v3:Project":
+            case "gcp-native:cloudresourcemanager/v3:Project":
                 return new Project(name, <any>undefined, { urn })
-            case "google-cloud:cloudresourcemanager/v3:ProjectIamPolicy":
+            case "gcp-native:cloudresourcemanager/v3:ProjectIamPolicy":
                 return new ProjectIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:cloudresourcemanager/v3:TagBinding":
+            case "gcp-native:cloudresourcemanager/v3:TagBinding":
                 return new TagBinding(name, <any>undefined, { urn })
-            case "google-cloud:cloudresourcemanager/v3:TagKey":
+            case "gcp-native:cloudresourcemanager/v3:TagKey":
                 return new TagKey(name, <any>undefined, { urn })
-            case "google-cloud:cloudresourcemanager/v3:TagKeyIamPolicy":
+            case "gcp-native:cloudresourcemanager/v3:TagKeyIamPolicy":
                 return new TagKeyIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:cloudresourcemanager/v3:TagValue":
+            case "gcp-native:cloudresourcemanager/v3:TagValue":
                 return new TagValue(name, <any>undefined, { urn })
-            case "google-cloud:cloudresourcemanager/v3:TagValueIamPolicy":
+            case "gcp-native:cloudresourcemanager/v3:TagValueIamPolicy":
                 return new TagValueIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "cloudresourcemanager/v3", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "cloudresourcemanager/v3", _module)

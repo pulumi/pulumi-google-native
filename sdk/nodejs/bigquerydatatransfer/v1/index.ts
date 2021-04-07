@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:bigquerydatatransfer/v1:TransferConfig":
+            case "gcp-native:bigquerydatatransfer/v1:TransferConfig":
                 return new TransferConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "bigquerydatatransfer/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "bigquerydatatransfer/v1", _module)

@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:domains/v1alpha2:RegistrationIamPolicy":
+            case "gcp-native:domains/v1alpha2:RegistrationIamPolicy":
                 return new RegistrationIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "domains/v1alpha2", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "domains/v1alpha2", _module)

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Apigee.V1
+namespace Pulumi.GcpNative.Apigee.V1
 {
     /// <summary>
     /// Creates a new category on the portal.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:apigee/v1:OrganizationSiteApicategory")]
+    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationSiteApicategory")]
     public partial class OrganizationSiteApicategory : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationSiteApicategory(string name, OrganizationSiteApicategoryArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationSiteApicategory", name, args ?? new OrganizationSiteApicategoryArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:apigee/v1:OrganizationSiteApicategory", name, args ?? new OrganizationSiteApicategoryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationSiteApicategory(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationSiteApicategory", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:apigee/v1:OrganizationSiteApicategory", name, null, MakeResourceOptions(options, id))
         {
         }
 

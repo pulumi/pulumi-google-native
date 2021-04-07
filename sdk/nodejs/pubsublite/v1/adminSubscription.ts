@@ -22,7 +22,7 @@ export class AdminSubscription extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:pubsublite/v1:AdminSubscription';
+    public static readonly __pulumiType = 'gcp-native:pubsublite/v1:AdminSubscription';
 
     /**
      * Returns true if the given object is an instance of AdminSubscription.  This is designed to work even

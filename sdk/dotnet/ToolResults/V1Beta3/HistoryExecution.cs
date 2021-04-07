@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ToolResults.V1Beta3
+namespace Pulumi.GcpNative.ToolResults.V1Beta3
 {
     /// <summary>
     /// Creates an Execution. The returned Execution will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing History does not exist
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:toolresults/v1beta3:HistoryExecution")]
+    [GcpNativeResourceType("gcp-native:toolresults/v1beta3:HistoryExecution")]
     public partial class HistoryExecution : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.ToolResults.V1Beta3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public HistoryExecution(string name, HistoryExecutionArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:toolresults/v1beta3:HistoryExecution", name, args ?? new HistoryExecutionArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:toolresults/v1beta3:HistoryExecution", name, args ?? new HistoryExecutionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private HistoryExecution(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:toolresults/v1beta3:HistoryExecution", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:toolresults/v1beta3:HistoryExecution", name, null, MakeResourceOptions(options, id))
         {
         }
 

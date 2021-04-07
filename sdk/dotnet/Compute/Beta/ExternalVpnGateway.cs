@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Creates a ExternalVpnGateway in the specified project using the data included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:ExternalVpnGateway")]
+    [GcpNativeResourceType("gcp-native:compute/beta:ExternalVpnGateway")]
     public partial class ExternalVpnGateway : Pulumi.CustomResource
     {
         /// <summary>
@@ -80,12 +80,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ExternalVpnGateway(string name, ExternalVpnGatewayArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:ExternalVpnGateway", name, args ?? new ExternalVpnGatewayArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:ExternalVpnGateway", name, args ?? new ExternalVpnGatewayArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ExternalVpnGateway(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:ExternalVpnGateway", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:ExternalVpnGateway", name, null, MakeResourceOptions(options, id))
         {
         }
 

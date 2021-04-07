@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.AccessContextManager.V1Beta
+namespace Pulumi.GcpNative.AccessContextManager.V1Beta
 {
     /// <summary>
     /// Create an `AccessPolicy`. Fails if this organization already has a `AccessPolicy`. The longrunning Operation will have a successful status once the `AccessPolicy` has propagated to long-lasting storage. Syntactic and basic semantic errors will be returned in `metadata` as a BadRequest proto.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:accesscontextmanager/v1beta:AccessPolicy")]
+    [GcpNativeResourceType("gcp-native:accesscontextmanager/v1beta:AccessPolicy")]
     public partial class AccessPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.AccessContextManager.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccessPolicy(string name, AccessPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:accesscontextmanager/v1beta:AccessPolicy", name, args ?? new AccessPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:accesscontextmanager/v1beta:AccessPolicy", name, args ?? new AccessPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AccessPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:accesscontextmanager/v1beta:AccessPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:accesscontextmanager/v1beta:AccessPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

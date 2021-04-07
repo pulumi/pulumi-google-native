@@ -22,7 +22,7 @@ export class PacketMirroring extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/alpha:PacketMirroring';
+    public static readonly __pulumiType = 'gcp-native:compute/alpha:PacketMirroring';
 
     /**
      * Returns true if the given object is an instance of PacketMirroring.  This is designed to work even

@@ -21,7 +21,7 @@ export class OrganizationSourceFinding extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:securitycenter/v1:OrganizationSourceFinding';
+    public static readonly __pulumiType = 'gcp-native:securitycenter/v1:OrganizationSourceFinding';
 
     /**
      * Returns true if the given object is an instance of OrganizationSourceFinding.  This is designed to work even

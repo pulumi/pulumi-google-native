@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Alpha
+namespace Pulumi.GcpNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a TargetGrpcProxy in the specified project in the given scope using the parameters that are included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/alpha:TargetGrpcProxy")]
+    [GcpNativeResourceType("gcp-native:compute/alpha:TargetGrpcProxy")]
     public partial class TargetGrpcProxy : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TargetGrpcProxy(string name, TargetGrpcProxyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:TargetGrpcProxy", name, args ?? new TargetGrpcProxyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/alpha:TargetGrpcProxy", name, args ?? new TargetGrpcProxyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TargetGrpcProxy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:TargetGrpcProxy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/alpha:TargetGrpcProxy", name, null, MakeResourceOptions(options, id))
         {
         }
 

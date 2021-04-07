@@ -24,21 +24,21 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:notebooks/v1:Environment":
+            case "gcp-native:notebooks/v1:Environment":
                 return new Environment(name, <any>undefined, { urn })
-            case "google-cloud:notebooks/v1:Execution":
+            case "gcp-native:notebooks/v1:Execution":
                 return new Execution(name, <any>undefined, { urn })
-            case "google-cloud:notebooks/v1:Instance":
+            case "gcp-native:notebooks/v1:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "google-cloud:notebooks/v1:InstanceIamPolicy":
+            case "gcp-native:notebooks/v1:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:notebooks/v1:Runtime":
+            case "gcp-native:notebooks/v1:Runtime":
                 return new Runtime(name, <any>undefined, { urn })
-            case "google-cloud:notebooks/v1:Schedule":
+            case "gcp-native:notebooks/v1:Schedule":
                 return new Schedule(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "notebooks/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "notebooks/v1", _module)

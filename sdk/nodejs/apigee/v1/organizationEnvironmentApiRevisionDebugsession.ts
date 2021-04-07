@@ -21,7 +21,7 @@ export class OrganizationEnvironmentApiRevisionDebugsession extends pulumi.Custo
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession';
+    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession';
 
     /**
      * Returns true if the given object is an instance of OrganizationEnvironmentApiRevisionDebugsession.  This is designed to work even

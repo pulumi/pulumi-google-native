@@ -22,7 +22,7 @@ export class InstanceCluster extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:bigtableadmin/v2:InstanceCluster';
+    public static readonly __pulumiType = 'gcp-native:bigtableadmin/v2:InstanceCluster';
 
     /**
      * Returns true if the given object is an instance of InstanceCluster.  This is designed to work even

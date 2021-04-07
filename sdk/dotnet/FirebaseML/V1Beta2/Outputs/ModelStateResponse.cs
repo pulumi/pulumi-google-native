@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.FirebaseML.V1Beta2.Outputs
+namespace Pulumi.GcpNative.FirebaseML.V1Beta2.Outputs
 {
 
     [OutputType]

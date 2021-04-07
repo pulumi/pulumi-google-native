@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Logging.V2
+namespace Pulumi.GcpNative.Logging.V2
 {
     /// <summary>
     /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:logging/v2:BillingAccountBucketView")]
+    [GcpNativeResourceType("gcp-native:logging/v2:BillingAccountBucketView")]
     public partial class BillingAccountBucketView : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.Logging.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BillingAccountBucketView(string name, BillingAccountBucketViewArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:logging/v2:BillingAccountBucketView", name, args ?? new BillingAccountBucketViewArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:logging/v2:BillingAccountBucketView", name, args ?? new BillingAccountBucketViewArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private BillingAccountBucketView(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:logging/v2:BillingAccountBucketView", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:logging/v2:BillingAccountBucketView", name, null, MakeResourceOptions(options, id))
         {
         }
 

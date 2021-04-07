@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ServiceDirectory.V1
+namespace Pulumi.GcpNative.ServiceDirectory.V1
 {
     /// <summary>
     /// Creates an endpoint, and returns the new endpoint.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:servicedirectory/v1:NamespaceServiceEndpoint")]
+    [GcpNativeResourceType("gcp-native:servicedirectory/v1:NamespaceServiceEndpoint")]
     public partial class NamespaceServiceEndpoint : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.ServiceDirectory.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NamespaceServiceEndpoint(string name, NamespaceServiceEndpointArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:servicedirectory/v1:NamespaceServiceEndpoint", name, args ?? new NamespaceServiceEndpointArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:servicedirectory/v1:NamespaceServiceEndpoint", name, args ?? new NamespaceServiceEndpointArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private NamespaceServiceEndpoint(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:servicedirectory/v1:NamespaceServiceEndpoint", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:servicedirectory/v1:NamespaceServiceEndpoint", name, null, MakeResourceOptions(options, id))
         {
         }
 

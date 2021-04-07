@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudBuild.V1
+namespace Pulumi.GcpNative.CloudBuild.V1
 {
     /// <summary>
     /// Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`).
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudbuild/v1:Build")]
+    [GcpNativeResourceType("gcp-native:cloudbuild/v1:Build")]
     public partial class Build : Pulumi.CustomResource
     {
         /// <summary>
@@ -174,12 +174,12 @@ namespace Pulumi.GoogleCloud.CloudBuild.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Build(string name, BuildArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudbuild/v1:Build", name, args ?? new BuildArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudbuild/v1:Build", name, args ?? new BuildArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Build(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudbuild/v1:Build", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudbuild/v1:Build", name, null, MakeResourceOptions(options, id))
         {
         }
 

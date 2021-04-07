@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Apigee.V1
+namespace Pulumi.GcpNative.Apigee.V1
 {
     /// <summary>
     /// Creates an app associated with a developer. This API associates the developer app with the specified API product and auto-generates an API key for the app to use in calls to API proxies inside that API product. The `name` is the unique ID of the app that you can use in API calls. The `DisplayName` (set as an attribute) appears in the UI. If you don't set the `DisplayName` attribute, the `name` appears in the UI.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:apigee/v1:OrganizationDeveloperApp")]
+    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationDeveloperApp")]
     public partial class OrganizationDeveloperApp : Pulumi.CustomResource
     {
         /// <summary>
@@ -102,12 +102,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationDeveloperApp(string name, OrganizationDeveloperAppArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationDeveloperApp", name, args ?? new OrganizationDeveloperAppArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:apigee/v1:OrganizationDeveloperApp", name, args ?? new OrganizationDeveloperAppArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationDeveloperApp(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationDeveloperApp", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:apigee/v1:OrganizationDeveloperApp", name, null, MakeResourceOptions(options, id))
         {
         }
 

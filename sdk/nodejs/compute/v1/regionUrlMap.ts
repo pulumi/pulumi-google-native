@@ -22,7 +22,7 @@ export class RegionUrlMap extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/v1:RegionUrlMap';
+    public static readonly __pulumiType = 'gcp-native:compute/v1:RegionUrlMap';
 
     /**
      * Returns true if the given object is an instance of RegionUrlMap.  This is designed to work even

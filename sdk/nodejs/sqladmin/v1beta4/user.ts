@@ -22,7 +22,7 @@ export class User extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:sqladmin/v1beta4:User';
+    public static readonly __pulumiType = 'gcp-native:sqladmin/v1beta4:User';
 
     /**
      * Returns true if the given object is an instance of User.  This is designed to work even

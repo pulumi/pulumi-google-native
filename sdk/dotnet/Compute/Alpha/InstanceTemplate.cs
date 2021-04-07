@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Alpha
+namespace Pulumi.GcpNative.Compute.Alpha
 {
     /// <summary>
     /// Creates an instance template in the specified project using the data that is included in the request. If you are creating a new template to update an existing instance group, your new instance template must use the same network or, if applicable, the same subnetwork as the original template.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/alpha:InstanceTemplate")]
+    [GcpNativeResourceType("gcp-native:compute/alpha:InstanceTemplate")]
     public partial class InstanceTemplate : Pulumi.CustomResource
     {
         /// <summary>
@@ -80,12 +80,12 @@ namespace Pulumi.GoogleCloud.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceTemplate(string name, InstanceTemplateArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:InstanceTemplate", name, args ?? new InstanceTemplateArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/alpha:InstanceTemplate", name, args ?? new InstanceTemplateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceTemplate(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/alpha:InstanceTemplate", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/alpha:InstanceTemplate", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DataCatalog.V1Beta1
+namespace Pulumi.GcpNative.DataCatalog.V1Beta1
 {
     /// <summary>
     /// Creates a tag on an Entry. Note: The project identified by the `parent` parameter for the [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.entries.tags/create#path-parameters) and the [tag template](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.tagTemplates/create#path-parameters) used to create the tag must be from the same organization.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:datacatalog/v1beta1:EntryGroupEntryTag")]
+    [GcpNativeResourceType("gcp-native:datacatalog/v1beta1:EntryGroupEntryTag")]
     public partial class EntryGroupEntryTag : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.DataCatalog.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public EntryGroupEntryTag(string name, EntryGroupEntryTagArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:datacatalog/v1beta1:EntryGroupEntryTag", name, args ?? new EntryGroupEntryTagArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:datacatalog/v1beta1:EntryGroupEntryTag", name, args ?? new EntryGroupEntryTagArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private EntryGroupEntryTag(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:datacatalog/v1beta1:EntryGroupEntryTag", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:datacatalog/v1beta1:EntryGroupEntryTag", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -18,15 +18,15 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:vision/v1:Product":
+            case "gcp-native:vision/v1:Product":
                 return new Product(name, <any>undefined, { urn })
-            case "google-cloud:vision/v1:ProductReferenceImage":
+            case "gcp-native:vision/v1:ProductReferenceImage":
                 return new ProductReferenceImage(name, <any>undefined, { urn })
-            case "google-cloud:vision/v1:ProductSet":
+            case "gcp-native:vision/v1:ProductSet":
                 return new ProductSet(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "vision/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "vision/v1", _module)

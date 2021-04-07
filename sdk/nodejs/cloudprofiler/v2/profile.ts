@@ -22,7 +22,7 @@ export class Profile extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:cloudprofiler/v2:Profile';
+    public static readonly __pulumiType = 'gcp-native:cloudprofiler/v2:Profile';
 
     /**
      * Returns true if the given object is an instance of Profile.  This is designed to work even

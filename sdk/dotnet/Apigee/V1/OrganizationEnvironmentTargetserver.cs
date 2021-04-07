@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Apigee.V1
+namespace Pulumi.GcpNative.Apigee.V1
 {
     /// <summary>
     /// Creates a TargetServer in the specified environment.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:apigee/v1:OrganizationEnvironmentTargetserver")]
+    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationEnvironmentTargetserver")]
     public partial class OrganizationEnvironmentTargetserver : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationEnvironmentTargetserver(string name, OrganizationEnvironmentTargetserverArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationEnvironmentTargetserver", name, args ?? new OrganizationEnvironmentTargetserverArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:apigee/v1:OrganizationEnvironmentTargetserver", name, args ?? new OrganizationEnvironmentTargetserverArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationEnvironmentTargetserver(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationEnvironmentTargetserver", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:apigee/v1:OrganizationEnvironmentTargetserver", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -22,7 +22,7 @@ export class DatasetIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:healthcare/v1:DatasetIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:healthcare/v1:DatasetIamPolicy';
 
     /**
      * Returns true if the given object is an instance of DatasetIamPolicy.  This is designed to work even

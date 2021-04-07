@@ -22,7 +22,7 @@ export class BackendBucketIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/alpha:BackendBucketIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:compute/alpha:BackendBucketIamPolicy';
 
     /**
      * Returns true if the given object is an instance of BackendBucketIamPolicy.  This is designed to work even

@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:memcache/v1beta2:Instance":
+            case "gcp-native:memcache/v1beta2:Instance":
                 return new Instance(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "memcache/v1beta2", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "memcache/v1beta2", _module)

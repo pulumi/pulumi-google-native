@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Monitoring.V3
+namespace Pulumi.GcpNative.Monitoring.V3
 {
     /// <summary>
     /// Creates a new metric descriptor. User-created metric descriptors define custom metrics (https://cloud.google.com/monitoring/custom-metrics).
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:monitoring/v3:MetricDescriptor")]
+    [GcpNativeResourceType("gcp-native:monitoring/v3:MetricDescriptor")]
     public partial class MetricDescriptor : Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +90,12 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public MetricDescriptor(string name, MetricDescriptorArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:monitoring/v3:MetricDescriptor", name, args ?? new MetricDescriptorArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:monitoring/v3:MetricDescriptor", name, args ?? new MetricDescriptorArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private MetricDescriptor(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:monitoring/v3:MetricDescriptor", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:monitoring/v3:MetricDescriptor", name, null, MakeResourceOptions(options, id))
         {
         }
 

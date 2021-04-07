@@ -1,1 +1,1 @@
-A Next Generation Pulumi package for creating and managing Google Cloud resources.
+A native Pulumi package for creating and managing Google Cloud resources.

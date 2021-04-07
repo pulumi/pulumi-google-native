@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Storage.V1
+namespace Pulumi.GcpNative.Storage.V1
 {
     /// <summary>
     /// Creates a new default object ACL entry on the specified bucket.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:storage/v1:DefaultObjectAccessControl")]
+    [GcpNativeResourceType("gcp-native:storage/v1:DefaultObjectAccessControl")]
     public partial class DefaultObjectAccessControl : Pulumi.CustomResource
     {
         /// <summary>
@@ -107,12 +107,12 @@ namespace Pulumi.GoogleCloud.Storage.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DefaultObjectAccessControl(string name, DefaultObjectAccessControlArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:storage/v1:DefaultObjectAccessControl", name, args ?? new DefaultObjectAccessControlArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:storage/v1:DefaultObjectAccessControl", name, args ?? new DefaultObjectAccessControlArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DefaultObjectAccessControl(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:storage/v1:DefaultObjectAccessControl", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:storage/v1:DefaultObjectAccessControl", name, null, MakeResourceOptions(options, id))
         {
         }
 

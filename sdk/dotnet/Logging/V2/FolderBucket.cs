@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Logging.V2
+namespace Pulumi.GcpNative.Logging.V2
 {
     /// <summary>
     /// Creates a bucket that can be used to store log entries. Once a bucket has been created, the region cannot be changed.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:logging/v2:FolderBucket")]
+    [GcpNativeResourceType("gcp-native:logging/v2:FolderBucket")]
     public partial class FolderBucket : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GoogleCloud.Logging.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FolderBucket(string name, FolderBucketArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:logging/v2:FolderBucket", name, args ?? new FolderBucketArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:logging/v2:FolderBucket", name, args ?? new FolderBucketArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private FolderBucket(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:logging/v2:FolderBucket", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:logging/v2:FolderBucket", name, null, MakeResourceOptions(options, id))
         {
         }
 

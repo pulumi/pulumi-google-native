@@ -21,7 +21,7 @@ export class ServiceConsumerQuotaMetricLimitProducerOverride extends pulumi.Cust
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:serviceconsumermanagement/v1beta1:ServiceConsumerQuotaMetricLimitProducerOverride';
+    public static readonly __pulumiType = 'gcp-native:serviceconsumermanagement/v1beta1:ServiceConsumerQuotaMetricLimitProducerOverride';
 
     /**
      * Returns true if the given object is an instance of ServiceConsumerQuotaMetricLimitProducerOverride.  This is designed to work even

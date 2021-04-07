@@ -22,7 +22,7 @@ export class AgentWebhook extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:dialogflow/v3beta1:AgentWebhook';
+    public static readonly __pulumiType = 'gcp-native:dialogflow/v3beta1:AgentWebhook';
 
     /**
      * Returns true if the given object is an instance of AgentWebhook.  This is designed to work even

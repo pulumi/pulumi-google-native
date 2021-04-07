@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.BigQueryConnection.V1Beta1
+namespace Pulumi.GcpNative.BigQueryConnection.V1Beta1
 {
     /// <summary>
     /// Creates a new connection.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:bigqueryconnection/v1beta1:Connection")]
+    [GcpNativeResourceType("gcp-native:bigqueryconnection/v1beta1:Connection")]
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GoogleCloud.BigQueryConnection.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Connection(string name, ConnectionArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:bigqueryconnection/v1beta1:Connection", name, args ?? new ConnectionArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:bigqueryconnection/v1beta1:Connection", name, args ?? new ConnectionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Connection(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:bigqueryconnection/v1beta1:Connection", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:bigqueryconnection/v1beta1:Connection", name, null, MakeResourceOptions(options, id))
         {
         }
 

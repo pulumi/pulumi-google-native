@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Transcoder.V1Beta1
+namespace Pulumi.GcpNative.Transcoder.V1Beta1
 {
     /// <summary>
     /// Creates a job template in the specified region.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:transcoder/v1beta1:JobTemplate")]
+    [GcpNativeResourceType("gcp-native:transcoder/v1beta1:JobTemplate")]
     public partial class JobTemplate : Pulumi.CustomResource
     {
         /// <summary>
@@ -36,12 +36,12 @@ namespace Pulumi.GoogleCloud.Transcoder.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public JobTemplate(string name, JobTemplateArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:transcoder/v1beta1:JobTemplate", name, args ?? new JobTemplateArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:transcoder/v1beta1:JobTemplate", name, args ?? new JobTemplateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private JobTemplate(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:transcoder/v1beta1:JobTemplate", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:transcoder/v1beta1:JobTemplate", name, null, MakeResourceOptions(options, id))
         {
         }
 

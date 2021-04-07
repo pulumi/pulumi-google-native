@@ -22,7 +22,7 @@ export class ShortLink extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:firebasedynamiclinks/v1:ShortLink';
+    public static readonly __pulumiType = 'gcp-native:firebasedynamiclinks/v1:ShortLink';
 
     /**
      * Returns true if the given object is an instance of ShortLink.  This is designed to work even

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudResourceManager.V3
+namespace Pulumi.GcpNative.CloudResourceManager.V3
 {
     /// <summary>
     /// Creates a TagBinding between a TagValue and a cloud resource (currently project, folder, or organization).
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudresourcemanager/v3:TagBinding")]
+    [GcpNativeResourceType("gcp-native:cloudresourcemanager/v3:TagBinding")]
     public partial class TagBinding : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.CloudResourceManager.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TagBinding(string name, TagBindingArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudresourcemanager/v3:TagBinding", name, args ?? new TagBindingArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudresourcemanager/v3:TagBinding", name, args ?? new TagBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TagBinding(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudresourcemanager/v3:TagBinding", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudresourcemanager/v3:TagBinding", name, null, MakeResourceOptions(options, id))
         {
         }
 

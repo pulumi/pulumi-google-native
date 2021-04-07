@@ -12,15 +12,15 @@ class InstallPluginCommand(install):
     def run(self):
         install.run(self)
         try:
-            check_call(['pulumi', 'plugin', 'install', 'resource', 'google-cloud', '${PLUGIN_VERSION}'])
+            check_call(['pulumi', 'plugin', 'install', 'resource', 'gcp-native', '${PLUGIN_VERSION}'])
         except OSError as error:
             if error.errno == errno.ENOENT:
                 print("""
-                There was an error installing the google-cloud resource provider plugin.
+                There was an error installing the gcp-native resource provider plugin.
                 It looks like `pulumi` is not installed on your system.
                 Please visit https://pulumi.com/ to install the Pulumi CLI.
                 You may try manually installing the plugin by running
-                `pulumi plugin install resource google-cloud ${PLUGIN_VERSION}`
+                `pulumi plugin install resource gcp-native ${PLUGIN_VERSION}`
                 """)
             else:
                 raise
@@ -31,9 +31,9 @@ def readme():
         return f.read()
 
 
-setup(name='pulumi_google_cloud',
+setup(name='pulumi_gcp_native',
       version='${VERSION}',
-      description="A Next Generation Pulumi package for creating and managing Google Cloud resources.",
+      description="A native Pulumi package for creating and managing Google Cloud resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
       cmdclass={
@@ -42,12 +42,12 @@ setup(name='pulumi_google_cloud',
       keywords='pulumi google cloud',
       url='https://pulumi.com',
       project_urls={
-          'Repository': 'https://github.com/pulumi/pulumi-google-cloud'
+          'Repository': 'https://github.com/pulumi/pulumi-gcp-native'
       },
       license='Apache-2.0',
       packages=find_packages(),
       package_data={
-          'pulumi_google_cloud': [
+          'pulumi_gcp_native': [
               'py.typed',
           ]
       },

@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:workflows/v1beta:Workflow":
+            case "gcp-native:workflows/v1beta:Workflow":
                 return new Workflow(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "workflows/v1beta", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "workflows/v1beta", _module)

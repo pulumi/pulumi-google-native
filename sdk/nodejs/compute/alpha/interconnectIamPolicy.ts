@@ -22,7 +22,7 @@ export class InterconnectIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/alpha:InterconnectIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:compute/alpha:InterconnectIamPolicy';
 
     /**
      * Returns true if the given object is an instance of InterconnectIamPolicy.  This is designed to work even

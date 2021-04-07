@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudIoT.V1
+namespace Pulumi.GcpNative.CloudIoT.V1
 {
     /// <summary>
     /// Creates a device registry that contains devices.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudiot/v1:Registry")]
+    [GcpNativeResourceType("gcp-native:cloudiot/v1:Registry")]
     public partial class Registry : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GoogleCloud.CloudIoT.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Registry(string name, RegistryArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudiot/v1:Registry", name, args ?? new RegistryArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudiot/v1:Registry", name, args ?? new RegistryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Registry(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudiot/v1:Registry", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudiot/v1:Registry", name, null, MakeResourceOptions(options, id))
         {
         }
 

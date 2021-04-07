@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Composer.V1
+namespace Pulumi.GcpNative.Composer.V1
 {
     /// <summary>
     /// Create a new environment.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:composer/v1:Environment")]
+    [GcpNativeResourceType("gcp-native:composer/v1:Environment")]
     public partial class Environment : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GoogleCloud.Composer.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Environment(string name, EnvironmentArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:composer/v1:Environment", name, args ?? new EnvironmentArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:composer/v1:Environment", name, args ?? new EnvironmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Environment(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:composer/v1:Environment", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:composer/v1:Environment", name, null, MakeResourceOptions(options, id))
         {
         }
 

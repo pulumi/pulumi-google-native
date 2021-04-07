@@ -22,7 +22,7 @@ export class ServiceBackup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:metastore/v1beta:ServiceBackup';
+    public static readonly __pulumiType = 'gcp-native:metastore/v1beta:ServiceBackup';
 
     /**
      * Returns true if the given object is an instance of ServiceBackup.  This is designed to work even

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DNS.V1Beta2
+namespace Pulumi.GcpNative.DNS.V1Beta2
 {
     /// <summary>
     /// Creates a new Response Policy Rule.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dns/v1beta2:ResponsePolicyRule")]
+    [GcpNativeResourceType("gcp-native:dns/v1beta2:ResponsePolicyRule")]
     public partial class ResponsePolicyRule : Pulumi.CustomResource
     {
         /// <summary>
@@ -51,12 +51,12 @@ namespace Pulumi.GoogleCloud.DNS.V1Beta2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ResponsePolicyRule(string name, ResponsePolicyRuleArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dns/v1beta2:ResponsePolicyRule", name, args ?? new ResponsePolicyRuleArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dns/v1beta2:ResponsePolicyRule", name, args ?? new ResponsePolicyRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ResponsePolicyRule(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dns/v1beta2:ResponsePolicyRule", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dns/v1beta2:ResponsePolicyRule", name, null, MakeResourceOptions(options, id))
         {
         }
 

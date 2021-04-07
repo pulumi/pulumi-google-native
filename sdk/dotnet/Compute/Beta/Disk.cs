@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.Beta
+namespace Pulumi.GcpNative.Compute.Beta
 {
     /// <summary>
     /// Creates a persistent disk in the specified project using the data in the request. You can create a disk from a source (sourceImage, sourceSnapshot, or sourceDisk) or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/beta:Disk")]
+    [GcpNativeResourceType("gcp-native:compute/beta:Disk")]
     public partial class Disk : Pulumi.CustomResource
     {
         /// <summary>
@@ -297,12 +297,12 @@ namespace Pulumi.GoogleCloud.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Disk(string name, DiskArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:Disk", name, args ?? new DiskArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/beta:Disk", name, args ?? new DiskArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Disk(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/beta:Disk", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/beta:Disk", name, null, MakeResourceOptions(options, id))
         {
         }
 

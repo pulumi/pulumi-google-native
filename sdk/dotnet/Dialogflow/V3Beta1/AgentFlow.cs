@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Dialogflow.V3Beta1
+namespace Pulumi.GcpNative.Dialogflow.V3Beta1
 {
     /// <summary>
     /// Creates a flow in the specified agent.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dialogflow/v3beta1:AgentFlow")]
+    [GcpNativeResourceType("gcp-native:dialogflow/v3beta1:AgentFlow")]
     public partial class AgentFlow : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentFlow(string name, AgentFlowArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v3beta1:AgentFlow", name, args ?? new AgentFlowArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dialogflow/v3beta1:AgentFlow", name, args ?? new AgentFlowArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentFlow(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v3beta1:AgentFlow", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dialogflow/v3beta1:AgentFlow", name, null, MakeResourceOptions(options, id))
         {
         }
 

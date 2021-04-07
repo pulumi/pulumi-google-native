@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Apigee.V1
+namespace Pulumi.GcpNative.Apigee.V1
 {
     /// <summary>
     /// Submit a data export job to be processed in the background. If the request is successful, the API returns a 201 status, a URI that can be used to retrieve the status of the export job, and the `state` value of "enqueued".
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:apigee/v1:OrganizationEnvironmentAnalyticExport")]
+    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationEnvironmentAnalyticExport")]
     public partial class OrganizationEnvironmentAnalyticExport : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationEnvironmentAnalyticExport(string name, OrganizationEnvironmentAnalyticExportArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationEnvironmentAnalyticExport", name, args ?? new OrganizationEnvironmentAnalyticExportArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:apigee/v1:OrganizationEnvironmentAnalyticExport", name, args ?? new OrganizationEnvironmentAnalyticExportArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationEnvironmentAnalyticExport(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationEnvironmentAnalyticExport", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:apigee/v1:OrganizationEnvironmentAnalyticExport", name, null, MakeResourceOptions(options, id))
         {
         }
 

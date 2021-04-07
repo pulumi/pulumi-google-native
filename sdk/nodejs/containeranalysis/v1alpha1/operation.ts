@@ -22,7 +22,7 @@ export class Operation extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:containeranalysis/v1alpha1:Operation';
+    public static readonly __pulumiType = 'gcp-native:containeranalysis/v1alpha1:Operation';
 
     /**
      * Returns true if the given object is an instance of Operation.  This is designed to work even

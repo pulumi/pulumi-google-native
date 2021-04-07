@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Iap.V1Beta1.Inputs
+namespace Pulumi.GcpNative.Iap.V1Beta1.Inputs
 {
 
     /// <summary>

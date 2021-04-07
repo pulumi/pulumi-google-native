@@ -21,7 +21,7 @@ export class Snapshot extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:pubsub/v1:Snapshot';
+    public static readonly __pulumiType = 'gcp-native:pubsub/v1:Snapshot';
 
     /**
      * Returns true if the given object is an instance of Snapshot.  This is designed to work even

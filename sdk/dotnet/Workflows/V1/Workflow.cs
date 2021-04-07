@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Workflows.V1
+namespace Pulumi.GcpNative.Workflows.V1
 {
     /// <summary>
     /// Creates a new workflow. If a workflow with the specified name already exists in the specified project and location, the long running operation will return ALREADY_EXISTS error.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:workflows/v1:Workflow")]
+    [GcpNativeResourceType("gcp-native:workflows/v1:Workflow")]
     public partial class Workflow : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GoogleCloud.Workflows.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Workflow(string name, WorkflowArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:workflows/v1:Workflow", name, args ?? new WorkflowArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:workflows/v1:Workflow", name, args ?? new WorkflowArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Workflow(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:workflows/v1:Workflow", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:workflows/v1:Workflow", name, null, MakeResourceOptions(options, id))
         {
         }
 

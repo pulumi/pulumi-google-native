@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.RemoteBuildExecution.V1Alpha
+namespace Pulumi.GcpNative.RemoteBuildExecution.V1Alpha
 {
     /// <summary>
     /// Creates a new worker pool with a specified size and configuration. Returns a long running operation which contains a worker pool on completion. While the long running operation is in progress, any call to `GetWorkerPool` returns a worker pool in state `CREATING`.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:remotebuildexecution/v1alpha:InstanceWorkerpool")]
+    [GcpNativeResourceType("gcp-native:remotebuildexecution/v1alpha:InstanceWorkerpool")]
     public partial class InstanceWorkerpool : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GoogleCloud.RemoteBuildExecution.V1Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceWorkerpool(string name, InstanceWorkerpoolArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:remotebuildexecution/v1alpha:InstanceWorkerpool", name, args ?? new InstanceWorkerpoolArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:remotebuildexecution/v1alpha:InstanceWorkerpool", name, args ?? new InstanceWorkerpoolArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceWorkerpool(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:remotebuildexecution/v1alpha:InstanceWorkerpool", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:remotebuildexecution/v1alpha:InstanceWorkerpool", name, null, MakeResourceOptions(options, id))
         {
         }
 

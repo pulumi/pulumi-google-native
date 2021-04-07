@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Privateca.V1Beta1
+namespace Pulumi.GcpNative.Privateca.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamPolicy")]
+    [GcpNativeResourceType("gcp-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamPolicy")]
     public partial class CertificateAuthorityCertificateRevocationListIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.Privateca.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CertificateAuthorityCertificateRevocationListIamPolicy(string name, CertificateAuthorityCertificateRevocationListIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamPolicy", name, args ?? new CertificateAuthorityCertificateRevocationListIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamPolicy", name, args ?? new CertificateAuthorityCertificateRevocationListIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private CertificateAuthorityCertificateRevocationListIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

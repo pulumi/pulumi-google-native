@@ -18,15 +18,15 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:datafusion/v1beta1:Instance":
+            case "gcp-native:datafusion/v1beta1:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "google-cloud:datafusion/v1beta1:InstanceIamPolicy":
+            case "gcp-native:datafusion/v1beta1:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:datafusion/v1beta1:InstanceNamespaceIamPolicy":
+            case "gcp-native:datafusion/v1beta1:InstanceNamespaceIamPolicy":
                 return new InstanceNamespaceIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "datafusion/v1beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "datafusion/v1beta1", _module)

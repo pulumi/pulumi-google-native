@@ -18,15 +18,15 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:policysimulator/v1beta1:FolderReplay":
+            case "gcp-native:policysimulator/v1beta1:FolderReplay":
                 return new FolderReplay(name, <any>undefined, { urn })
-            case "google-cloud:policysimulator/v1beta1:OrganizationReplay":
+            case "gcp-native:policysimulator/v1beta1:OrganizationReplay":
                 return new OrganizationReplay(name, <any>undefined, { urn })
-            case "google-cloud:policysimulator/v1beta1:Replay":
+            case "gcp-native:policysimulator/v1beta1:Replay":
                 return new Replay(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "policysimulator/v1beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "policysimulator/v1beta1", _module)

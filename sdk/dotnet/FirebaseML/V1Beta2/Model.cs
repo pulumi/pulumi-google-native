@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.FirebaseML.V1Beta2
+namespace Pulumi.GcpNative.FirebaseML.V1Beta2
 {
     /// <summary>
     /// Creates a model in Firebase ML. The longrunning operation will eventually return a Model
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:firebaseml/v1beta2:Model")]
+    [GcpNativeResourceType("gcp-native:firebaseml/v1beta2:Model")]
     public partial class Model : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GoogleCloud.FirebaseML.V1Beta2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Model(string name, ModelArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:firebaseml/v1beta2:Model", name, args ?? new ModelArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:firebaseml/v1beta2:Model", name, args ?? new ModelArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Model(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:firebaseml/v1beta2:Model", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:firebaseml/v1beta2:Model", name, null, MakeResourceOptions(options, id))
         {
         }
 

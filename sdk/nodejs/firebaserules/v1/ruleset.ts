@@ -22,7 +22,7 @@ export class Ruleset extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:firebaserules/v1:Ruleset';
+    public static readonly __pulumiType = 'gcp-native:firebaserules/v1:Ruleset';
 
     /**
      * Returns true if the given object is an instance of Ruleset.  This is designed to work even

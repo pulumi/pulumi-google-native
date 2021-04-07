@@ -22,19 +22,19 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:toolresults/v1beta3:History":
+            case "gcp-native:toolresults/v1beta3:History":
                 return new History(name, <any>undefined, { urn })
-            case "google-cloud:toolresults/v1beta3:HistoryExecution":
+            case "gcp-native:toolresults/v1beta3:HistoryExecution":
                 return new HistoryExecution(name, <any>undefined, { urn })
-            case "google-cloud:toolresults/v1beta3:HistoryExecutionStep":
+            case "gcp-native:toolresults/v1beta3:HistoryExecutionStep":
                 return new HistoryExecutionStep(name, <any>undefined, { urn })
-            case "google-cloud:toolresults/v1beta3:HistoryExecutionStepPerfMetricsSummary":
+            case "gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfMetricsSummary":
                 return new HistoryExecutionStepPerfMetricsSummary(name, <any>undefined, { urn })
-            case "google-cloud:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries":
+            case "gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries":
                 return new HistoryExecutionStepPerfSampleSeries(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "toolresults/v1beta3", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "toolresults/v1beta3", _module)

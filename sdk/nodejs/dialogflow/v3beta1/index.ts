@@ -40,37 +40,37 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:dialogflow/v3beta1:Agent":
+            case "gcp-native:dialogflow/v3beta1:Agent":
                 return new Agent(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3beta1:AgentEntityType":
+            case "gcp-native:dialogflow/v3beta1:AgentEntityType":
                 return new AgentEntityType(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3beta1:AgentEnvironment":
+            case "gcp-native:dialogflow/v3beta1:AgentEnvironment":
                 return new AgentEnvironment(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3beta1:AgentEnvironmentExperiment":
+            case "gcp-native:dialogflow/v3beta1:AgentEnvironmentExperiment":
                 return new AgentEnvironmentExperiment(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3beta1:AgentEnvironmentSessionEntityType":
+            case "gcp-native:dialogflow/v3beta1:AgentEnvironmentSessionEntityType":
                 return new AgentEnvironmentSessionEntityType(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3beta1:AgentFlow":
+            case "gcp-native:dialogflow/v3beta1:AgentFlow":
                 return new AgentFlow(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3beta1:AgentFlowPage":
+            case "gcp-native:dialogflow/v3beta1:AgentFlowPage":
                 return new AgentFlowPage(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3beta1:AgentFlowTransitionRouteGroup":
+            case "gcp-native:dialogflow/v3beta1:AgentFlowTransitionRouteGroup":
                 return new AgentFlowTransitionRouteGroup(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3beta1:AgentFlowVersion":
+            case "gcp-native:dialogflow/v3beta1:AgentFlowVersion":
                 return new AgentFlowVersion(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3beta1:AgentIntent":
+            case "gcp-native:dialogflow/v3beta1:AgentIntent":
                 return new AgentIntent(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3beta1:AgentSessionEntityType":
+            case "gcp-native:dialogflow/v3beta1:AgentSessionEntityType":
                 return new AgentSessionEntityType(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3beta1:AgentTestCase":
+            case "gcp-native:dialogflow/v3beta1:AgentTestCase":
                 return new AgentTestCase(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3beta1:AgentWebhook":
+            case "gcp-native:dialogflow/v3beta1:AgentWebhook":
                 return new AgentWebhook(name, <any>undefined, { urn })
-            case "google-cloud:dialogflow/v3beta1:SecuritySetting":
+            case "gcp-native:dialogflow/v3beta1:SecuritySetting":
                 return new SecuritySetting(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "dialogflow/v3beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "dialogflow/v3beta1", _module)

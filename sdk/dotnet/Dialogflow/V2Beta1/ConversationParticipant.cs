@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Dialogflow.V2Beta1
+namespace Pulumi.GcpNative.Dialogflow.V2Beta1
 {
     /// <summary>
     /// Creates a new participant in a conversation.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dialogflow/v2beta1:ConversationParticipant")]
+    [GcpNativeResourceType("gcp-native:dialogflow/v2beta1:ConversationParticipant")]
     public partial class ConversationParticipant : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V2Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ConversationParticipant(string name, ConversationParticipantArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v2beta1:ConversationParticipant", name, args ?? new ConversationParticipantArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dialogflow/v2beta1:ConversationParticipant", name, args ?? new ConversationParticipantArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ConversationParticipant(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v2beta1:ConversationParticipant", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dialogflow/v2beta1:ConversationParticipant", name, null, MakeResourceOptions(options, id))
         {
         }
 

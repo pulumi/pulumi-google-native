@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:recommendationengine/v1beta1:CatalogCatalogItem":
+            case "gcp-native:recommendationengine/v1beta1:CatalogCatalogItem":
                 return new CatalogCatalogItem(name, <any>undefined, { urn })
-            case "google-cloud:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration":
+            case "gcp-native:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration":
                 return new CatalogEventStorePredictionApiKeyRegistration(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "recommendationengine/v1beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "recommendationengine/v1beta1", _module)

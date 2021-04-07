@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Storage.V1
+namespace Pulumi.GcpNative.Storage.V1
 {
     /// <summary>
     /// Creates a new HMAC key for the specified service account.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:storage/v1:HmacKey")]
+    [GcpNativeResourceType("gcp-native:storage/v1:HmacKey")]
     public partial class HmacKey : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GoogleCloud.Storage.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public HmacKey(string name, HmacKeyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:storage/v1:HmacKey", name, args ?? new HmacKeyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:storage/v1:HmacKey", name, args ?? new HmacKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private HmacKey(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:storage/v1:HmacKey", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:storage/v1:HmacKey", name, null, MakeResourceOptions(options, id))
         {
         }
 

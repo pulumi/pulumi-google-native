@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Pubsub.V1Beta2
+namespace Pulumi.GcpNative.Pubsub.V1Beta2
 {
     /// <summary>
     /// Creates a subscription to a given topic. If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic. Note that for REST API requests, you must specify a name.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:pubsub/v1beta2:Subscription")]
+    [GcpNativeResourceType("gcp-native:pubsub/v1beta2:Subscription")]
     public partial class Subscription : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GoogleCloud.Pubsub.V1Beta2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Subscription(string name, SubscriptionArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:pubsub/v1beta2:Subscription", name, args ?? new SubscriptionArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:pubsub/v1beta2:Subscription", name, args ?? new SubscriptionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Subscription(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:pubsub/v1beta2:Subscription", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:pubsub/v1beta2:Subscription", name, null, MakeResourceOptions(options, id))
         {
         }
 

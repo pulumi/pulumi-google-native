@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Cloudkms.V1
+namespace Pulumi.GcpNative.Cloudkms.V1
 {
     /// <summary>
     /// Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudkms/v1:KeyRingCryptoKey")]
+    [GcpNativeResourceType("gcp-native:cloudkms/v1:KeyRingCryptoKey")]
     public partial class KeyRingCryptoKey : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.Cloudkms.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public KeyRingCryptoKey(string name, KeyRingCryptoKeyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudkms/v1:KeyRingCryptoKey", name, args ?? new KeyRingCryptoKeyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudkms/v1:KeyRingCryptoKey", name, args ?? new KeyRingCryptoKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private KeyRingCryptoKey(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudkms/v1:KeyRingCryptoKey", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudkms/v1:KeyRingCryptoKey", name, null, MakeResourceOptions(options, id))
         {
         }
 

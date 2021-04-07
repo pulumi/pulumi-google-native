@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Billingbudgets.V1Beta1
+namespace Pulumi.GcpNative.Billingbudgets.V1Beta1
 {
     /// <summary>
     /// Creates a new budget. See Quotas and limits for more information on the limits of the number of budgets you can create.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:billingbudgets/v1beta1:BillingAccountBudget")]
+    [GcpNativeResourceType("gcp-native:billingbudgets/v1beta1:BillingAccountBudget")]
     public partial class BillingAccountBudget : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GoogleCloud.Billingbudgets.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BillingAccountBudget(string name, BillingAccountBudgetArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:billingbudgets/v1beta1:BillingAccountBudget", name, args ?? new BillingAccountBudgetArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:billingbudgets/v1beta1:BillingAccountBudget", name, args ?? new BillingAccountBudgetArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private BillingAccountBudget(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:billingbudgets/v1beta1:BillingAccountBudget", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:billingbudgets/v1beta1:BillingAccountBudget", name, null, MakeResourceOptions(options, id))
         {
         }
 

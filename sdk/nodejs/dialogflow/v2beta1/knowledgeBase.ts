@@ -21,7 +21,7 @@ export class KnowledgeBase extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:dialogflow/v2beta1:KnowledgeBase';
+    public static readonly __pulumiType = 'gcp-native:dialogflow/v2beta1:KnowledgeBase';
 
     /**
      * Returns true if the given object is an instance of KnowledgeBase.  This is designed to work even

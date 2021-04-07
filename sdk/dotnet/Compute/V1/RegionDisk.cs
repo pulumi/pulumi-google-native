@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.V1
+namespace Pulumi.GcpNative.Compute.V1
 {
     /// <summary>
     /// Creates a persistent regional disk in the specified project using the data included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/v1:RegionDisk")]
+    [GcpNativeResourceType("gcp-native:compute/v1:RegionDisk")]
     public partial class RegionDisk : Pulumi.CustomResource
     {
         /// <summary>
@@ -273,12 +273,12 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionDisk(string name, RegionDiskArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:RegionDisk", name, args ?? new RegionDiskArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/v1:RegionDisk", name, args ?? new RegionDiskArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegionDisk(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:RegionDisk", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/v1:RegionDisk", name, null, MakeResourceOptions(options, id))
         {
         }
 

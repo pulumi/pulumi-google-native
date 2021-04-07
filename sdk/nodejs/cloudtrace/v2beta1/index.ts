@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:cloudtrace/v2beta1:TraceSink":
+            case "gcp-native:cloudtrace/v2beta1:TraceSink":
                 return new TraceSink(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "cloudtrace/v2beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "cloudtrace/v2beta1", _module)

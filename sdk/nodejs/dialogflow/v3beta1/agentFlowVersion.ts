@@ -22,7 +22,7 @@ export class AgentFlowVersion extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:dialogflow/v3beta1:AgentFlowVersion';
+    public static readonly __pulumiType = 'gcp-native:dialogflow/v3beta1:AgentFlowVersion';
 
     /**
      * Returns true if the given object is an instance of AgentFlowVersion.  This is designed to work even

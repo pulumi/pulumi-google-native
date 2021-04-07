@@ -7,14 +7,14 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.V1
+namespace Pulumi.GcpNative.Compute.V1
 {
     /// <summary>
     /// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
     /// 
     /// A regional managed instance group can contain up to 2000 instances.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/v1:RegionInstanceGroupManager")]
+    [GcpNativeResourceType("gcp-native:compute/v1:RegionInstanceGroupManager")]
     public partial class RegionInstanceGroupManager : Pulumi.CustomResource
     {
         /// <summary>
@@ -156,12 +156,12 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionInstanceGroupManager(string name, RegionInstanceGroupManagerArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:RegionInstanceGroupManager", name, args ?? new RegionInstanceGroupManagerArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/v1:RegionInstanceGroupManager", name, args ?? new RegionInstanceGroupManagerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegionInstanceGroupManager(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:RegionInstanceGroupManager", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/v1:RegionInstanceGroupManager", name, null, MakeResourceOptions(options, id))
         {
         }
 

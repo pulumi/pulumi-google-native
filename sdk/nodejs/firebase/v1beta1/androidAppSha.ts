@@ -21,7 +21,7 @@ export class AndroidAppSha extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:firebase/v1beta1:AndroidAppSha';
+    public static readonly __pulumiType = 'gcp-native:firebase/v1beta1:AndroidAppSha';
 
     /**
      * Returns true if the given object is an instance of AndroidAppSha.  This is designed to work even

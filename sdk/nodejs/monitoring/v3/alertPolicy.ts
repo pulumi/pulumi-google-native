@@ -22,7 +22,7 @@ export class AlertPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:monitoring/v3:AlertPolicy';
+    public static readonly __pulumiType = 'gcp-native:monitoring/v3:AlertPolicy';
 
     /**
      * Returns true if the given object is an instance of AlertPolicy.  This is designed to work even

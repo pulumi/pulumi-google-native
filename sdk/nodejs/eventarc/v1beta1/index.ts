@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:eventarc/v1beta1:Trigger":
+            case "gcp-native:eventarc/v1beta1:Trigger":
                 return new Trigger(name, <any>undefined, { urn })
-            case "google-cloud:eventarc/v1beta1:TriggerIamPolicy":
+            case "gcp-native:eventarc/v1beta1:TriggerIamPolicy":
                 return new TriggerIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "eventarc/v1beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "eventarc/v1beta1", _module)

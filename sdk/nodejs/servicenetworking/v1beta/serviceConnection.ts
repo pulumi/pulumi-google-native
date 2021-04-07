@@ -21,7 +21,7 @@ export class ServiceConnection extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:servicenetworking/v1beta:ServiceConnection';
+    public static readonly __pulumiType = 'gcp-native:servicenetworking/v1beta:ServiceConnection';
 
     /**
      * Returns true if the given object is an instance of ServiceConnection.  This is designed to work even

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Monitoring.V3
+namespace Pulumi.GcpNative.Monitoring.V3
 {
     /// <summary>
     /// Creates a new group.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:monitoring/v3:Group")]
+    [GcpNativeResourceType("gcp-native:monitoring/v3:Group")]
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.Monitoring.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Group(string name, GroupArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:monitoring/v3:Group", name, args ?? new GroupArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:monitoring/v3:Group", name, args ?? new GroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Group(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:monitoring/v3:Group", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:monitoring/v3:Group", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudResourceManager.V3
+namespace Pulumi.GcpNative.CloudResourceManager.V3
 {
     /// <summary>
     /// Creates a folder in the resource hierarchy. Returns an `Operation` which can be used to track the progress of the folder creation workflow. Upon success, the `Operation.response` field will be populated with the created Folder. In order to succeed, the addition of this new folder must not violate the folder naming, height, or fanout constraints. + The folder's `display_name` must be distinct from all other folders that share its parent. + The addition of the folder must not cause the active folder hierarchy to exceed a height of 10. Note, the full active + deleted folder hierarchy is allowed to reach a height of 20; this provides additional headroom when moving folders that contain deleted folders. + The addition of the folder must not cause the total number of folders under its parent to exceed 300. If the operation fails due to a folder constraint violation, some errors may be returned by the `CreateFolder` request, with status code `FAILED_PRECONDITION` and an error description. Other folder constraint violations will be communicated in the `Operation`, with the specific `PreconditionFailure` returned in the details list in the `Operation.error` field. The caller must have `resourcemanager.folders.create` permission on the identified parent.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudresourcemanager/v3:Folder")]
+    [GcpNativeResourceType("gcp-native:cloudresourcemanager/v3:Folder")]
     public partial class Folder : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GoogleCloud.CloudResourceManager.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Folder(string name, FolderArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudresourcemanager/v3:Folder", name, args ?? new FolderArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudresourcemanager/v3:Folder", name, args ?? new FolderArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Folder(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudresourcemanager/v3:Folder", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudresourcemanager/v3:Folder", name, null, MakeResourceOptions(options, id))
         {
         }
 

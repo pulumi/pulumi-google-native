@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.CloudAsset.V1
+namespace Pulumi.GcpNative.CloudAsset.V1
 {
     /// <summary>
     /// Creates a feed in a parent project/folder/organization to listen to its asset updates.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:cloudasset/v1:Feed")]
+    [GcpNativeResourceType("gcp-native:cloudasset/v1:Feed")]
     public partial class Feed : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GoogleCloud.CloudAsset.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Feed(string name, FeedArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudasset/v1:Feed", name, args ?? new FeedArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:cloudasset/v1:Feed", name, args ?? new FeedArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Feed(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:cloudasset/v1:Feed", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:cloudasset/v1:Feed", name, null, MakeResourceOptions(options, id))
         {
         }
 

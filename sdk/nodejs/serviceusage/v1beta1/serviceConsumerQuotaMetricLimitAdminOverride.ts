@@ -21,7 +21,7 @@ export class ServiceConsumerQuotaMetricLimitAdminOverride extends pulumi.CustomR
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitAdminOverride';
+    public static readonly __pulumiType = 'gcp-native:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitAdminOverride';
 
     /**
      * Returns true if the given object is an instance of ServiceConsumerQuotaMetricLimitAdminOverride.  This is designed to work even

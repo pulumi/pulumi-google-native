@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Apigee.V1
+namespace Pulumi.GcpNative.Apigee.V1
 {
     /// <summary>
     /// Creates a key value map in an api proxy.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:apigee/v1:OrganizationApiKeyvaluemap")]
+    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationApiKeyvaluemap")]
     public partial class OrganizationApiKeyvaluemap : Pulumi.CustomResource
     {
         /// <summary>
@@ -23,12 +23,12 @@ namespace Pulumi.GoogleCloud.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationApiKeyvaluemap(string name, OrganizationApiKeyvaluemapArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationApiKeyvaluemap", name, args ?? new OrganizationApiKeyvaluemapArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:apigee/v1:OrganizationApiKeyvaluemap", name, args ?? new OrganizationApiKeyvaluemapArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationApiKeyvaluemap(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:apigee/v1:OrganizationApiKeyvaluemap", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:apigee/v1:OrganizationApiKeyvaluemap", name, null, MakeResourceOptions(options, id))
         {
         }
 

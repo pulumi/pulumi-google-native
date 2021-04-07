@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Logging.V2
+namespace Pulumi.GcpNative.Logging.V2
 {
     /// <summary>
     /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:logging/v2:Sink")]
+    [GcpNativeResourceType("gcp-native:logging/v2:Sink")]
     public partial class Sink : Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +90,12 @@ namespace Pulumi.GoogleCloud.Logging.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Sink(string name, SinkArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:logging/v2:Sink", name, args ?? new SinkArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:logging/v2:Sink", name, args ?? new SinkArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Sink(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:logging/v2:Sink", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:logging/v2:Sink", name, null, MakeResourceOptions(options, id))
         {
         }
 

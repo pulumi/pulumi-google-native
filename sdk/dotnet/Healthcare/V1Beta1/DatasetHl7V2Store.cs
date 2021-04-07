@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Healthcare.V1Beta1
+namespace Pulumi.GcpNative.Healthcare.V1Beta1
 {
     /// <summary>
     /// Creates a new HL7v2 store within the parent dataset.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:healthcare/v1beta1:DatasetHl7V2Store")]
+    [GcpNativeResourceType("gcp-native:healthcare/v1beta1:DatasetHl7V2Store")]
     public partial class DatasetHl7V2Store : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GoogleCloud.Healthcare.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatasetHl7V2Store(string name, DatasetHl7V2StoreArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:healthcare/v1beta1:DatasetHl7V2Store", name, args ?? new DatasetHl7V2StoreArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:healthcare/v1beta1:DatasetHl7V2Store", name, args ?? new DatasetHl7V2StoreArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatasetHl7V2Store(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:healthcare/v1beta1:DatasetHl7V2Store", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:healthcare/v1beta1:DatasetHl7V2Store", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Dialogflow.V3
+namespace Pulumi.GcpNative.Dialogflow.V3
 {
     /// <summary>
     /// Creates an TransitionRouteGroup in the specified flow.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dialogflow/v3:AgentFlowTransitionRouteGroup")]
+    [GcpNativeResourceType("gcp-native:dialogflow/v3:AgentFlowTransitionRouteGroup")]
     public partial class AgentFlowTransitionRouteGroup : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.Dialogflow.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentFlowTransitionRouteGroup(string name, AgentFlowTransitionRouteGroupArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v3:AgentFlowTransitionRouteGroup", name, args ?? new AgentFlowTransitionRouteGroupArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dialogflow/v3:AgentFlowTransitionRouteGroup", name, args ?? new AgentFlowTransitionRouteGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentFlowTransitionRouteGroup(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dialogflow/v3:AgentFlowTransitionRouteGroup", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dialogflow/v3:AgentFlowTransitionRouteGroup", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Dataproc.V1Beta2
+namespace Pulumi.GcpNative.Dataproc.V1Beta2
 {
     /// <summary>
     /// Creates new workflow template.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dataproc/v1beta2:WorkflowTemplate")]
+    [GcpNativeResourceType("gcp-native:dataproc/v1beta2:WorkflowTemplate")]
     public partial class WorkflowTemplate : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GoogleCloud.Dataproc.V1Beta2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WorkflowTemplate(string name, WorkflowTemplateArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dataproc/v1beta2:WorkflowTemplate", name, args ?? new WorkflowTemplateArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dataproc/v1beta2:WorkflowTemplate", name, args ?? new WorkflowTemplateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private WorkflowTemplate(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dataproc/v1beta2:WorkflowTemplate", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dataproc/v1beta2:WorkflowTemplate", name, null, MakeResourceOptions(options, id))
         {
         }
 

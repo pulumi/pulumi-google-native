@@ -21,7 +21,7 @@ export class Folder extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:cloudresourcemanager/v2:Folder';
+    public static readonly __pulumiType = 'gcp-native:cloudresourcemanager/v2:Folder';
 
     /**
      * Returns true if the given object is an instance of Folder.  This is designed to work even

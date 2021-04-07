@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.ServiceManagement.V1
+namespace Pulumi.GcpNative.ServiceManagement.V1
 {
     /// <summary>
     /// Creates a new service configuration (version) for a managed service. This method only stores the service configuration. To roll out the service configuration to backend systems please call CreateServiceRollout. Only the 100 most recent service configurations and ones referenced by existing rollouts are kept for each service. The rest will be deleted eventually.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:servicemanagement/v1:ServiceConfig")]
+    [GcpNativeResourceType("gcp-native:servicemanagement/v1:ServiceConfig")]
     public partial class ServiceConfig : Pulumi.CustomResource
     {
         /// <summary>
@@ -180,12 +180,12 @@ namespace Pulumi.GoogleCloud.ServiceManagement.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceConfig(string name, ServiceConfigArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:servicemanagement/v1:ServiceConfig", name, args ?? new ServiceConfigArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:servicemanagement/v1:ServiceConfig", name, args ?? new ServiceConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceConfig(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:servicemanagement/v1:ServiceConfig", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:servicemanagement/v1:ServiceConfig", name, null, MakeResourceOptions(options, id))
         {
         }
 

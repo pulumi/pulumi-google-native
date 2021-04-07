@@ -22,7 +22,7 @@ export class InstanceTemplateIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/v1:InstanceTemplateIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:compute/v1:InstanceTemplateIamPolicy';
 
     /**
      * Returns true if the given object is an instance of InstanceTemplateIamPolicy.  This is designed to work even

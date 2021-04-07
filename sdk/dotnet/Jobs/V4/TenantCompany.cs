@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Jobs.V4
+namespace Pulumi.GcpNative.Jobs.V4
 {
     /// <summary>
     /// Creates a new company entity.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:jobs/v4:TenantCompany")]
+    [GcpNativeResourceType("gcp-native:jobs/v4:TenantCompany")]
     public partial class TenantCompany : Pulumi.CustomResource
     {
         /// <summary>
@@ -102,12 +102,12 @@ namespace Pulumi.GoogleCloud.Jobs.V4
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TenantCompany(string name, TenantCompanyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:jobs/v4:TenantCompany", name, args ?? new TenantCompanyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:jobs/v4:TenantCompany", name, args ?? new TenantCompanyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TenantCompany(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:jobs/v4:TenantCompany", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:jobs/v4:TenantCompany", name, null, MakeResourceOptions(options, id))
         {
         }
 

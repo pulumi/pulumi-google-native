@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:osconfig/v1beta:GuestPolicy":
+            case "gcp-native:osconfig/v1beta:GuestPolicy":
                 return new GuestPolicy(name, <any>undefined, { urn })
-            case "google-cloud:osconfig/v1beta:PatchDeployment":
+            case "gcp-native:osconfig/v1beta:PatchDeployment":
                 return new PatchDeployment(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "osconfig/v1beta", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "osconfig/v1beta", _module)

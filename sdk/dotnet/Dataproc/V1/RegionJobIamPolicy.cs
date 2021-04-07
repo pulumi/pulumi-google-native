@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Dataproc.V1
+namespace Pulumi.GcpNative.Dataproc.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dataproc/v1:RegionJobIamPolicy")]
+    [GcpNativeResourceType("gcp-native:dataproc/v1:RegionJobIamPolicy")]
     public partial class RegionJobIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GoogleCloud.Dataproc.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionJobIamPolicy(string name, RegionJobIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dataproc/v1:RegionJobIamPolicy", name, args ?? new RegionJobIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dataproc/v1:RegionJobIamPolicy", name, args ?? new RegionJobIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegionJobIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dataproc/v1:RegionJobIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dataproc/v1:RegionJobIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

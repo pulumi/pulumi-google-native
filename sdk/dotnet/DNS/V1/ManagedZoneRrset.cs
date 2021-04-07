@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.DNS.V1
+namespace Pulumi.GcpNative.DNS.V1
 {
     /// <summary>
     /// Creates a new ResourceRecordSet.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:dns/v1:ManagedZoneRrset")]
+    [GcpNativeResourceType("gcp-native:dns/v1:ManagedZoneRrset")]
     public partial class ManagedZoneRrset : Pulumi.CustomResource
     {
         [Output("kind")]
@@ -57,12 +57,12 @@ namespace Pulumi.GoogleCloud.DNS.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ManagedZoneRrset(string name, ManagedZoneRrsetArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:dns/v1:ManagedZoneRrset", name, args ?? new ManagedZoneRrsetArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:dns/v1:ManagedZoneRrset", name, args ?? new ManagedZoneRrsetArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ManagedZoneRrset(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:dns/v1:ManagedZoneRrset", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:dns/v1:ManagedZoneRrset", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -1,16 +1,4 @@
-// Copyright 2016-2020, Pulumi Corporation.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+// Copyright 2016-2021, Pulumi Corporation.
 
 package gen
 
@@ -19,8 +7,8 @@ import (
 	"fmt"
 	"github.com/gedex/inflector"
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi-google-cloud/provider/pkg/discovery"
-	"github.com/pulumi/pulumi-google-cloud/provider/pkg/resources"
+	"github.com/pulumi/pulumi-gcp-native/provider/pkg/discovery"
+	"github.com/pulumi/pulumi-gcp-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi/pkg/v2/codegen"
 	"github.com/pulumi/pulumi/pkg/v2/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/util/contract"
@@ -34,17 +22,17 @@ import (
 )
 
 // Note - this needs to be kept in sync with the layout in the SDK package
-const goBasePath = "github.com/pulumi/pulumi-google-cloud/sdk/go/google-cloud"
+const goBasePath = "github.com/pulumi/pulumi-gcp-native/sdk/go/gcp"
 
 // PulumiSchema will generate a Pulumi schema for the given Google Cloud discovery documents.
 func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	pkg := schema.PackageSpec{
-		Name:        "google-cloud",
-		Description: "A Next Generation Pulumi package for creating and managing Google Cloud resources.",
+		Name:        "gcp-native",
+		Description: "A native Pulumi package for creating and managing Google Cloud resources.",
 		License:     "Apache-2.0",
 		Keywords:    []string{"pulumi", "google cloud"},
 		Homepage:    "https://pulumi.com",
-		Repository:  "https://github.com/pulumi/pulumi-google-cloud",
+		Repository:  "https://github.com/pulumi/pulumi-gcp-native",
 		Config:      schema.ConfigSpec{},
 		Provider: schema.ResourceSpec{
 			ObjectTypeSpec: schema.ObjectTypeSpec{
@@ -63,7 +51,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	}
 
 	csharpNamespaces := map[string]string{
-		"google-cloud": "GoogleCloud",
+		"gcp-native": "GcpNative",
 	}
 	pythonModuleNames := map[string]string{}
 	golangImportAliases := map[string]string{}
@@ -377,8 +365,8 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 		g.escapeCSharpNames(typeName, properties)
 	}
 
-	if resourceTok == "google-cloud:storage/v1:Object" {
-		resourceTok = "google-cloud:storage/v1:BucketObject"
+	if resourceTok == "gcp-native:storage/v1:Object" {
+		resourceTok = "gcp-native:storage/v1:BucketObject"
 		inputProperties["source"] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{
 				Ref: "pulumi.json#/Asset",

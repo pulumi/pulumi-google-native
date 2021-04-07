@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Compute.V1
+namespace Pulumi.GcpNative.Compute.V1
 {
     /// <summary>
     /// Creates an address resource in the specified project by using the data included in the request.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:compute/v1:Address")]
+    [GcpNativeResourceType("gcp-native:compute/v1:Address")]
     public partial class Address : Pulumi.CustomResource
     {
         /// <summary>
@@ -127,12 +127,12 @@ namespace Pulumi.GoogleCloud.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Address(string name, AddressArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:Address", name, args ?? new AddressArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:compute/v1:Address", name, args ?? new AddressArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Address(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:compute/v1:Address", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:compute/v1:Address", name, null, MakeResourceOptions(options, id))
         {
         }
 

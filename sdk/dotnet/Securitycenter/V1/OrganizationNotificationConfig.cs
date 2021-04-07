@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleCloud.Securitycenter.V1
+namespace Pulumi.GcpNative.Securitycenter.V1
 {
     /// <summary>
     /// Creates a notification config.
     /// </summary>
-    [GoogleCloudResourceType("google-cloud:securitycenter/v1:OrganizationNotificationConfig")]
+    [GcpNativeResourceType("gcp-native:securitycenter/v1:OrganizationNotificationConfig")]
     public partial class OrganizationNotificationConfig : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GoogleCloud.Securitycenter.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationNotificationConfig(string name, OrganizationNotificationConfigArgs args, CustomResourceOptions? options = null)
-            : base("google-cloud:securitycenter/v1:OrganizationNotificationConfig", name, args ?? new OrganizationNotificationConfigArgs(), MakeResourceOptions(options, ""))
+            : base("gcp-native:securitycenter/v1:OrganizationNotificationConfig", name, args ?? new OrganizationNotificationConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationNotificationConfig(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("google-cloud:securitycenter/v1:OrganizationNotificationConfig", name, null, MakeResourceOptions(options, id))
+            : base("gcp-native:securitycenter/v1:OrganizationNotificationConfig", name, null, MakeResourceOptions(options, id))
         {
         }
 

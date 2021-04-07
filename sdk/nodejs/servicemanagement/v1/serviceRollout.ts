@@ -22,7 +22,7 @@ export class ServiceRollout extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:servicemanagement/v1:ServiceRollout';
+    public static readonly __pulumiType = 'gcp-native:servicemanagement/v1:ServiceRollout';
 
     /**
      * Returns true if the given object is an instance of ServiceRollout.  This is designed to work even

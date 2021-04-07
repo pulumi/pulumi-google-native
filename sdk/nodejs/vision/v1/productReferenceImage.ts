@@ -22,7 +22,7 @@ export class ProductReferenceImage extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:vision/v1:ProductReferenceImage';
+    public static readonly __pulumiType = 'gcp-native:vision/v1:ProductReferenceImage';
 
     /**
      * Returns true if the given object is an instance of ProductReferenceImage.  This is designed to work even
