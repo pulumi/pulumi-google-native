@@ -5,7 +5,9 @@ name: pull-request
       - master
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  GO111MODULE: "on"
+  GOOGLE_PROJECT: pulumi-ci-gcp-provider
+  GOOGLE_REGION: us-central1
+  GOOGLE_ZONE: us-central1-a
   PROVIDER: gcp-native
   PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
   PULUMI_API: https://api.pulumi-staging.io
@@ -195,6 +197,13 @@ jobs:
           pip3 install pipenv
       - name: Install dependencies
         run: make install_${{ matrix.language}}_sdk
+      - name: Configure GCP credentials
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          export_default_credentials: true
+          project_id: ${{ env.GOOGLE_PROJECT }}
+          service_account_email: ${{ secrets.GCP_SA_EMAIL }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
       - name: Run tests
         run: cd examples && go test -v -test.short -count=1 -cover -timeout 2h -tags=${{ matrix.language
           }} -parallel 4 .
