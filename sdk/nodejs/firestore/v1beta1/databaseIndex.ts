@@ -22,7 +22,7 @@ export class DatabaseIndex extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:firestore/v1beta1:DatabaseIndex';
+    public static readonly __pulumiType = 'gcp-native:firestore/v1beta1:DatabaseIndex';
 
     /**
      * Returns true if the given object is an instance of DatabaseIndex.  This is designed to work even

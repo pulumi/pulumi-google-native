@@ -20,17 +20,17 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:dns/v1:Change":
+            case "gcp-native:dns/v1:Change":
                 return new Change(name, <any>undefined, { urn })
-            case "google-cloud:dns/v1:ManagedZone":
+            case "gcp-native:dns/v1:ManagedZone":
                 return new ManagedZone(name, <any>undefined, { urn })
-            case "google-cloud:dns/v1:ManagedZoneRrset":
+            case "gcp-native:dns/v1:ManagedZoneRrset":
                 return new ManagedZoneRrset(name, <any>undefined, { urn })
-            case "google-cloud:dns/v1:Policy":
+            case "gcp-native:dns/v1:Policy":
                 return new Policy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "dns/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "dns/v1", _module)

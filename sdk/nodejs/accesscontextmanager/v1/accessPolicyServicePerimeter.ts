@@ -22,7 +22,7 @@ export class AccessPolicyServicePerimeter extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:accesscontextmanager/v1:AccessPolicyServicePerimeter';
+    public static readonly __pulumiType = 'gcp-native:accesscontextmanager/v1:AccessPolicyServicePerimeter';
 
     /**
      * Returns true if the given object is an instance of AccessPolicyServicePerimeter.  This is designed to work even

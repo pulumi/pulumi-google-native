@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:firestore/v1:DatabaseCollectionGroupIndex":
+            case "gcp-native:firestore/v1:DatabaseCollectionGroupIndex":
                 return new DatabaseCollectionGroupIndex(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "firestore/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "firestore/v1", _module)

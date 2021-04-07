@@ -22,7 +22,7 @@ export class NamespaceDomainmapping extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:run/v1:NamespaceDomainmapping';
+    public static readonly __pulumiType = 'gcp-native:run/v1:NamespaceDomainmapping';
 
     /**
      * Returns true if the given object is an instance of NamespaceDomainmapping.  This is designed to work even

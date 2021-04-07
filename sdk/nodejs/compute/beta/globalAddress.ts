@@ -21,7 +21,7 @@ export class GlobalAddress extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/beta:GlobalAddress';
+    public static readonly __pulumiType = 'gcp-native:compute/beta:GlobalAddress';
 
     /**
      * Returns true if the given object is an instance of GlobalAddress.  This is designed to work even

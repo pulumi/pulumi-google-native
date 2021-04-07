@@ -22,7 +22,7 @@ export class OrganizationInspectTemplate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:dlp/v2:OrganizationInspectTemplate';
+    public static readonly __pulumiType = 'gcp-native:dlp/v2:OrganizationInspectTemplate';
 
     /**
      * Returns true if the given object is an instance of OrganizationInspectTemplate.  This is designed to work even

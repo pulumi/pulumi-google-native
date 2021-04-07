@@ -22,7 +22,7 @@ export class Autoscaler extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/alpha:Autoscaler';
+    public static readonly __pulumiType = 'gcp-native:compute/alpha:Autoscaler';
 
     /**
      * Returns true if the given object is an instance of Autoscaler.  This is designed to work even

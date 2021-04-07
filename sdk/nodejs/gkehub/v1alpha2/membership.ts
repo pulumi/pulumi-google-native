@@ -22,7 +22,7 @@ export class Membership extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:gkehub/v1alpha2:Membership';
+    public static readonly __pulumiType = 'gcp-native:gkehub/v1alpha2:Membership';
 
     /**
      * Returns true if the given object is an instance of Membership.  This is designed to work even

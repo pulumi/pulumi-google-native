@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:container/v1:Cluster":
+            case "gcp-native:container/v1:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
-            case "google-cloud:container/v1:ClusterNodePool":
+            case "gcp-native:container/v1:ClusterNodePool":
                 return new ClusterNodePool(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "container/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "container/v1", _module)

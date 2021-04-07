@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:retail/v2alpha:CatalogBranchProduct":
+            case "gcp-native:retail/v2alpha:CatalogBranchProduct":
                 return new CatalogBranchProduct(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "retail/v2alpha", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "retail/v2alpha", _module)

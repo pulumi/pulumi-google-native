@@ -21,7 +21,7 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/alpha:TargetGrpcProxy';
+    public static readonly __pulumiType = 'gcp-native:compute/alpha:TargetGrpcProxy';
 
     /**
      * Returns true if the given object is an instance of TargetGrpcProxy.  This is designed to work even

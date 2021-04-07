@@ -22,7 +22,7 @@ export class ServiceConfig extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:servicemanagement/v1:ServiceConfig';
+    public static readonly __pulumiType = 'gcp-native:servicemanagement/v1:ServiceConfig';
 
     /**
      * Returns true if the given object is an instance of ServiceConfig.  This is designed to work even

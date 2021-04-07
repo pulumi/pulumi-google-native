@@ -22,19 +22,19 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:appengine/v1:App":
+            case "gcp-native:appengine/v1:App":
                 return new App(name, <any>undefined, { urn })
-            case "google-cloud:appengine/v1:AppAuthorizedCertificate":
+            case "gcp-native:appengine/v1:AppAuthorizedCertificate":
                 return new AppAuthorizedCertificate(name, <any>undefined, { urn })
-            case "google-cloud:appengine/v1:AppDomainMapping":
+            case "gcp-native:appengine/v1:AppDomainMapping":
                 return new AppDomainMapping(name, <any>undefined, { urn })
-            case "google-cloud:appengine/v1:AppFirewallIngressRule":
+            case "gcp-native:appengine/v1:AppFirewallIngressRule":
                 return new AppFirewallIngressRule(name, <any>undefined, { urn })
-            case "google-cloud:appengine/v1:AppServiceVersion":
+            case "gcp-native:appengine/v1:AppServiceVersion":
                 return new AppServiceVersion(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "appengine/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "appengine/v1", _module)

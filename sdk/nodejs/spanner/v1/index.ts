@@ -26,23 +26,23 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:spanner/v1:Instance":
+            case "gcp-native:spanner/v1:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "google-cloud:spanner/v1:InstanceBackup":
+            case "gcp-native:spanner/v1:InstanceBackup":
                 return new InstanceBackup(name, <any>undefined, { urn })
-            case "google-cloud:spanner/v1:InstanceBackupIamPolicy":
+            case "gcp-native:spanner/v1:InstanceBackupIamPolicy":
                 return new InstanceBackupIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:spanner/v1:InstanceDatabase":
+            case "gcp-native:spanner/v1:InstanceDatabase":
                 return new InstanceDatabase(name, <any>undefined, { urn })
-            case "google-cloud:spanner/v1:InstanceDatabaseIamPolicy":
+            case "gcp-native:spanner/v1:InstanceDatabaseIamPolicy":
                 return new InstanceDatabaseIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:spanner/v1:InstanceDatabaseSession":
+            case "gcp-native:spanner/v1:InstanceDatabaseSession":
                 return new InstanceDatabaseSession(name, <any>undefined, { urn })
-            case "google-cloud:spanner/v1:InstanceIamPolicy":
+            case "gcp-native:spanner/v1:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "spanner/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "spanner/v1", _module)

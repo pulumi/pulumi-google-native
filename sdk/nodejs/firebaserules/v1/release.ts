@@ -21,7 +21,7 @@ export class Release extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:firebaserules/v1:Release';
+    public static readonly __pulumiType = 'gcp-native:firebaserules/v1:Release';
 
     /**
      * Returns true if the given object is an instance of Release.  This is designed to work even

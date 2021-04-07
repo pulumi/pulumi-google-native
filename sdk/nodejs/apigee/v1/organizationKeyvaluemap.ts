@@ -21,7 +21,7 @@ export class OrganizationKeyvaluemap extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:apigee/v1:OrganizationKeyvaluemap';
+    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationKeyvaluemap';
 
     /**
      * Returns true if the given object is an instance of OrganizationKeyvaluemap.  This is designed to work even

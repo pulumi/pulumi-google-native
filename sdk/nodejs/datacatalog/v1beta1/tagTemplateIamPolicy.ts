@@ -22,7 +22,7 @@ export class TagTemplateIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:datacatalog/v1beta1:TagTemplateIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:datacatalog/v1beta1:TagTemplateIamPolicy';
 
     /**
      * Returns true if the given object is an instance of TagTemplateIamPolicy.  This is designed to work even

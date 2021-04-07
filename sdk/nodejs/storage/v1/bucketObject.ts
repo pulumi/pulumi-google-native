@@ -22,7 +22,7 @@ export class BucketObject extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:storage/v1:BucketObject';
+    public static readonly __pulumiType = 'gcp-native:storage/v1:BucketObject';
 
     /**
      * Returns true if the given object is an instance of BucketObject.  This is designed to work even

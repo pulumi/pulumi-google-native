@@ -22,7 +22,7 @@ export class HistoryExecution extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:toolresults/v1beta3:HistoryExecution';
+    public static readonly __pulumiType = 'gcp-native:toolresults/v1beta3:HistoryExecution';
 
     /**
      * Returns true if the given object is an instance of HistoryExecution.  This is designed to work even

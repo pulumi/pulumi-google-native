@@ -22,7 +22,7 @@ export class OrganizationEnvironmentTraceConfigOverride extends pulumi.CustomRes
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:apigee/v1:OrganizationEnvironmentTraceConfigOverride';
+    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride';
 
     /**
      * Returns true if the given object is an instance of OrganizationEnvironmentTraceConfigOverride.  This is designed to work even

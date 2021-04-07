@@ -22,7 +22,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:dataproc/v1beta2:WorkflowTemplate';
+    public static readonly __pulumiType = 'gcp-native:dataproc/v1beta2:WorkflowTemplate';
 
     /**
      * Returns true if the given object is an instance of WorkflowTemplate.  This is designed to work even

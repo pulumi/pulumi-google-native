@@ -30,27 +30,27 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:monitoring/v3:AlertPolicy":
+            case "gcp-native:monitoring/v3:AlertPolicy":
                 return new AlertPolicy(name, <any>undefined, { urn })
-            case "google-cloud:monitoring/v3:CollectdTimeSeries":
+            case "gcp-native:monitoring/v3:CollectdTimeSeries":
                 return new CollectdTimeSeries(name, <any>undefined, { urn })
-            case "google-cloud:monitoring/v3:Group":
+            case "gcp-native:monitoring/v3:Group":
                 return new Group(name, <any>undefined, { urn })
-            case "google-cloud:monitoring/v3:MetricDescriptor":
+            case "gcp-native:monitoring/v3:MetricDescriptor":
                 return new MetricDescriptor(name, <any>undefined, { urn })
-            case "google-cloud:monitoring/v3:NotificationChannel":
+            case "gcp-native:monitoring/v3:NotificationChannel":
                 return new NotificationChannel(name, <any>undefined, { urn })
-            case "google-cloud:monitoring/v3:Service":
+            case "gcp-native:monitoring/v3:Service":
                 return new Service(name, <any>undefined, { urn })
-            case "google-cloud:monitoring/v3:ServiceServiceLevelObjective":
+            case "gcp-native:monitoring/v3:ServiceServiceLevelObjective":
                 return new ServiceServiceLevelObjective(name, <any>undefined, { urn })
-            case "google-cloud:monitoring/v3:TimeSeries":
+            case "gcp-native:monitoring/v3:TimeSeries":
                 return new TimeSeries(name, <any>undefined, { urn })
-            case "google-cloud:monitoring/v3:UptimeCheckConfig":
+            case "gcp-native:monitoring/v3:UptimeCheckConfig":
                 return new UptimeCheckConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "monitoring/v3", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "monitoring/v3", _module)

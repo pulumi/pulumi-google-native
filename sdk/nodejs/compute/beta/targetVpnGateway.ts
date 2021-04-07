@@ -21,7 +21,7 @@ export class TargetVpnGateway extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/beta:TargetVpnGateway';
+    public static readonly __pulumiType = 'gcp-native:compute/beta:TargetVpnGateway';
 
     /**
      * Returns true if the given object is an instance of TargetVpnGateway.  This is designed to work even

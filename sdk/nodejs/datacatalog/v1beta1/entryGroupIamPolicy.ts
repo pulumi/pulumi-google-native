@@ -22,7 +22,7 @@ export class EntryGroupIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:datacatalog/v1beta1:EntryGroupIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:datacatalog/v1beta1:EntryGroupIamPolicy';
 
     /**
      * Returns true if the given object is an instance of EntryGroupIamPolicy.  This is designed to work even

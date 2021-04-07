@@ -22,7 +22,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:datamigration/v1:ConnectionProfile';
+    public static readonly __pulumiType = 'gcp-native:datamigration/v1:ConnectionProfile';
 
     /**
      * Returns true if the given object is an instance of ConnectionProfile.  This is designed to work even

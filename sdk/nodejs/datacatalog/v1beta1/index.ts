@@ -36,33 +36,33 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:datacatalog/v1beta1:EntryGroup":
+            case "gcp-native:datacatalog/v1beta1:EntryGroup":
                 return new EntryGroup(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:EntryGroupEntry":
+            case "gcp-native:datacatalog/v1beta1:EntryGroupEntry":
                 return new EntryGroupEntry(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:EntryGroupEntryTag":
+            case "gcp-native:datacatalog/v1beta1:EntryGroupEntryTag":
                 return new EntryGroupEntryTag(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:EntryGroupIamPolicy":
+            case "gcp-native:datacatalog/v1beta1:EntryGroupIamPolicy":
                 return new EntryGroupIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:EntryGroupTag":
+            case "gcp-native:datacatalog/v1beta1:EntryGroupTag":
                 return new EntryGroupTag(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:TagTemplate":
+            case "gcp-native:datacatalog/v1beta1:TagTemplate":
                 return new TagTemplate(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:TagTemplateField":
+            case "gcp-native:datacatalog/v1beta1:TagTemplateField":
                 return new TagTemplateField(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:TagTemplateIamPolicy":
+            case "gcp-native:datacatalog/v1beta1:TagTemplateIamPolicy":
                 return new TagTemplateIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:Taxonomy":
+            case "gcp-native:datacatalog/v1beta1:Taxonomy":
                 return new Taxonomy(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:TaxonomyIamPolicy":
+            case "gcp-native:datacatalog/v1beta1:TaxonomyIamPolicy":
                 return new TaxonomyIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:TaxonomyPolicyTag":
+            case "gcp-native:datacatalog/v1beta1:TaxonomyPolicyTag":
                 return new TaxonomyPolicyTag(name, <any>undefined, { urn })
-            case "google-cloud:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy":
+            case "gcp-native:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy":
                 return new TaxonomyPolicyTagIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "datacatalog/v1beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "datacatalog/v1beta1", _module)

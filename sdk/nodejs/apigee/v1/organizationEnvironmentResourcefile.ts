@@ -21,7 +21,7 @@ export class OrganizationEnvironmentResourcefile extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:apigee/v1:OrganizationEnvironmentResourcefile';
+    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationEnvironmentResourcefile';
 
     /**
      * Returns true if the given object is an instance of OrganizationEnvironmentResourcefile.  This is designed to work even

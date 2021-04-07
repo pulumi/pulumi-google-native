@@ -21,7 +21,7 @@ export class TargetInstance extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/v1:TargetInstance';
+    public static readonly __pulumiType = 'gcp-native:compute/v1:TargetInstance';
 
     /**
      * Returns true if the given object is an instance of TargetInstance.  This is designed to work even

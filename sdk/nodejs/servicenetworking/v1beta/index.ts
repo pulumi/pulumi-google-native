@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:servicenetworking/v1beta:ServiceConnection":
+            case "gcp-native:servicenetworking/v1beta:ServiceConnection":
                 return new ServiceConnection(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "servicenetworking/v1beta", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "servicenetworking/v1beta", _module)

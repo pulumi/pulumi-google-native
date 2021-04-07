@@ -22,7 +22,7 @@ export class InstanceTableIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:bigtableadmin/v2:InstanceTableIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:bigtableadmin/v2:InstanceTableIamPolicy';
 
     /**
      * Returns true if the given object is an instance of InstanceTableIamPolicy.  This is designed to work even

@@ -18,15 +18,15 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:securitycenter/v1beta1:OrganizationSource":
+            case "gcp-native:securitycenter/v1beta1:OrganizationSource":
                 return new OrganizationSource(name, <any>undefined, { urn })
-            case "google-cloud:securitycenter/v1beta1:OrganizationSourceFinding":
+            case "gcp-native:securitycenter/v1beta1:OrganizationSourceFinding":
                 return new OrganizationSourceFinding(name, <any>undefined, { urn })
-            case "google-cloud:securitycenter/v1beta1:OrganizationSourceIamPolicy":
+            case "gcp-native:securitycenter/v1beta1:OrganizationSourceIamPolicy":
                 return new OrganizationSourceIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "securitycenter/v1beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "securitycenter/v1beta1", _module)

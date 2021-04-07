@@ -22,19 +22,19 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:servicedirectory/v1beta1:Namespace":
+            case "gcp-native:servicedirectory/v1beta1:Namespace":
                 return new Namespace(name, <any>undefined, { urn })
-            case "google-cloud:servicedirectory/v1beta1:NamespaceIamPolicy":
+            case "gcp-native:servicedirectory/v1beta1:NamespaceIamPolicy":
                 return new NamespaceIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:servicedirectory/v1beta1:NamespaceService":
+            case "gcp-native:servicedirectory/v1beta1:NamespaceService":
                 return new NamespaceService(name, <any>undefined, { urn })
-            case "google-cloud:servicedirectory/v1beta1:NamespaceServiceEndpoint":
+            case "gcp-native:servicedirectory/v1beta1:NamespaceServiceEndpoint":
                 return new NamespaceServiceEndpoint(name, <any>undefined, { urn })
-            case "google-cloud:servicedirectory/v1beta1:NamespaceServiceIamPolicy":
+            case "gcp-native:servicedirectory/v1beta1:NamespaceServiceIamPolicy":
                 return new NamespaceServiceIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "servicedirectory/v1beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "servicedirectory/v1beta1", _module)

@@ -24,21 +24,21 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:firebasehosting/v1beta1:Site":
+            case "gcp-native:firebasehosting/v1beta1:Site":
                 return new Site(name, <any>undefined, { urn })
-            case "google-cloud:firebasehosting/v1beta1:SiteChannel":
+            case "gcp-native:firebasehosting/v1beta1:SiteChannel":
                 return new SiteChannel(name, <any>undefined, { urn })
-            case "google-cloud:firebasehosting/v1beta1:SiteChannelRelease":
+            case "gcp-native:firebasehosting/v1beta1:SiteChannelRelease":
                 return new SiteChannelRelease(name, <any>undefined, { urn })
-            case "google-cloud:firebasehosting/v1beta1:SiteDomain":
+            case "gcp-native:firebasehosting/v1beta1:SiteDomain":
                 return new SiteDomain(name, <any>undefined, { urn })
-            case "google-cloud:firebasehosting/v1beta1:SiteRelease":
+            case "gcp-native:firebasehosting/v1beta1:SiteRelease":
                 return new SiteRelease(name, <any>undefined, { urn })
-            case "google-cloud:firebasehosting/v1beta1:SiteVersion":
+            case "gcp-native:firebasehosting/v1beta1:SiteVersion":
                 return new SiteVersion(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "firebasehosting/v1beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "firebasehosting/v1beta1", _module)

@@ -20,17 +20,17 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:firebase/v1beta1:AndroidApp":
+            case "gcp-native:firebase/v1beta1:AndroidApp":
                 return new AndroidApp(name, <any>undefined, { urn })
-            case "google-cloud:firebase/v1beta1:AndroidAppSha":
+            case "gcp-native:firebase/v1beta1:AndroidAppSha":
                 return new AndroidAppSha(name, <any>undefined, { urn })
-            case "google-cloud:firebase/v1beta1:IosApp":
+            case "gcp-native:firebase/v1beta1:IosApp":
                 return new IosApp(name, <any>undefined, { urn })
-            case "google-cloud:firebase/v1beta1:WebApp":
+            case "gcp-native:firebase/v1beta1:WebApp":
                 return new WebApp(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "firebase/v1beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "firebase/v1beta1", _module)

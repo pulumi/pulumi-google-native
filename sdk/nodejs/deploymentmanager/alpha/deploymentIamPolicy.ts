@@ -22,7 +22,7 @@ export class DeploymentIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:deploymentmanager/alpha:DeploymentIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:deploymentmanager/alpha:DeploymentIamPolicy';
 
     /**
      * Returns true if the given object is an instance of DeploymentIamPolicy.  This is designed to work even

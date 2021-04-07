@@ -22,7 +22,7 @@ export class HubIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:networkconnectivity/v1alpha1:HubIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:networkconnectivity/v1alpha1:HubIamPolicy';
 
     /**
      * Returns true if the given object is an instance of HubIamPolicy.  This is designed to work even

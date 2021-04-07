@@ -22,7 +22,7 @@ export class ResponsePolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:dns/v1beta2:ResponsePolicy';
+    public static readonly __pulumiType = 'gcp-native:dns/v1beta2:ResponsePolicy';
 
     /**
      * Returns true if the given object is an instance of ResponsePolicy.  This is designed to work even

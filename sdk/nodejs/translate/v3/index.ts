@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:translate/v3:Glossary":
+            case "gcp-native:translate/v3:Glossary":
                 return new Glossary(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "translate/v3", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "translate/v3", _module)

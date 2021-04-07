@@ -22,7 +22,7 @@ export class ServiceMetadataImport extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:metastore/v1beta:ServiceMetadataImport';
+    public static readonly __pulumiType = 'gcp-native:metastore/v1beta:ServiceMetadataImport';
 
     /**
      * Returns true if the given object is an instance of ServiceMetadataImport.  This is designed to work even

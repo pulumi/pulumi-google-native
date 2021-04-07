@@ -22,7 +22,7 @@ export class Group extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:cloudidentity/v1:Group';
+    public static readonly __pulumiType = 'gcp-native:cloudidentity/v1:Group';
 
     /**
      * Returns true if the given object is an instance of Group.  This is designed to work even

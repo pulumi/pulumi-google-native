@@ -22,7 +22,7 @@ export class SubscriptionIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:pubsub/v1:SubscriptionIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:pubsub/v1:SubscriptionIamPolicy';
 
     /**
      * Returns true if the given object is an instance of SubscriptionIamPolicy.  This is designed to work even

@@ -21,7 +21,7 @@ export class TagBinding extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:cloudresourcemanager/v3:TagBinding';
+    public static readonly __pulumiType = 'gcp-native:cloudresourcemanager/v3:TagBinding';
 
     /**
      * Returns true if the given object is an instance of TagBinding.  This is designed to work even

@@ -22,7 +22,7 @@ export class Connector extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:vpcaccess/v1:Connector';
+    public static readonly __pulumiType = 'gcp-native:vpcaccess/v1:Connector';
 
     /**
      * Returns true if the given object is an instance of Connector.  This is designed to work even

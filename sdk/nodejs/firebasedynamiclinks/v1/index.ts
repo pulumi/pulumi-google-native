@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:firebasedynamiclinks/v1:ManagedShortLink":
+            case "gcp-native:firebasedynamiclinks/v1:ManagedShortLink":
                 return new ManagedShortLink(name, <any>undefined, { urn })
-            case "google-cloud:firebasedynamiclinks/v1:ShortLink":
+            case "gcp-native:firebasedynamiclinks/v1:ShortLink":
                 return new ShortLink(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "firebasedynamiclinks/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "firebasedynamiclinks/v1", _module)

@@ -22,7 +22,7 @@ export class RegionCluster extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:dataproc/v1:RegionCluster';
+    public static readonly __pulumiType = 'gcp-native:dataproc/v1:RegionCluster';
 
     /**
      * Returns true if the given object is an instance of RegionCluster.  This is designed to work even

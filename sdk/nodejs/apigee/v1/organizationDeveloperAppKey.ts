@@ -22,7 +22,7 @@ export class OrganizationDeveloperAppKey extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:apigee/v1:OrganizationDeveloperAppKey';
+    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationDeveloperAppKey';
 
     /**
      * Returns true if the given object is an instance of OrganizationDeveloperAppKey.  This is designed to work even

@@ -22,7 +22,7 @@ export class SubnetworkIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/v1:SubnetworkIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:compute/v1:SubnetworkIamPolicy';
 
     /**
      * Returns true if the given object is an instance of SubnetworkIamPolicy.  This is designed to work even

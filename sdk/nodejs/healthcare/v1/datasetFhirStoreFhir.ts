@@ -21,7 +21,7 @@ export class DatasetFhirStoreFhir extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:healthcare/v1:DatasetFhirStoreFhir';
+    public static readonly __pulumiType = 'gcp-native:healthcare/v1:DatasetFhirStoreFhir';
 
     /**
      * Returns true if the given object is an instance of DatasetFhirStoreFhir.  This is designed to work even

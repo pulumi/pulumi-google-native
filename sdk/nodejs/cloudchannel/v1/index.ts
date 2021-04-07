@@ -20,17 +20,17 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:cloudchannel/v1:AccountChannelPartnerLink":
+            case "gcp-native:cloudchannel/v1:AccountChannelPartnerLink":
                 return new AccountChannelPartnerLink(name, <any>undefined, { urn })
-            case "google-cloud:cloudchannel/v1:AccountChannelPartnerLinkCustomer":
+            case "gcp-native:cloudchannel/v1:AccountChannelPartnerLinkCustomer":
                 return new AccountChannelPartnerLinkCustomer(name, <any>undefined, { urn })
-            case "google-cloud:cloudchannel/v1:AccountCustomer":
+            case "gcp-native:cloudchannel/v1:AccountCustomer":
                 return new AccountCustomer(name, <any>undefined, { urn })
-            case "google-cloud:cloudchannel/v1:AccountCustomerEntitlement":
+            case "gcp-native:cloudchannel/v1:AccountCustomerEntitlement":
                 return new AccountCustomerEntitlement(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "cloudchannel/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "cloudchannel/v1", _module)

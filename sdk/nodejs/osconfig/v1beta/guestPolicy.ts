@@ -22,7 +22,7 @@ export class GuestPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:osconfig/v1beta:GuestPolicy';
+    public static readonly __pulumiType = 'gcp-native:osconfig/v1beta:GuestPolicy';
 
     /**
      * Returns true if the given object is an instance of GuestPolicy.  This is designed to work even

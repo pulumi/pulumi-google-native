@@ -26,23 +26,23 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:containeranalysis/v1alpha1:Note":
+            case "gcp-native:containeranalysis/v1alpha1:Note":
                 return new Note(name, <any>undefined, { urn })
-            case "google-cloud:containeranalysis/v1alpha1:NoteIamPolicy":
+            case "gcp-native:containeranalysis/v1alpha1:NoteIamPolicy":
                 return new NoteIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:containeranalysis/v1alpha1:Occurrence":
+            case "gcp-native:containeranalysis/v1alpha1:Occurrence":
                 return new Occurrence(name, <any>undefined, { urn })
-            case "google-cloud:containeranalysis/v1alpha1:OccurrenceIamPolicy":
+            case "gcp-native:containeranalysis/v1alpha1:OccurrenceIamPolicy":
                 return new OccurrenceIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:containeranalysis/v1alpha1:Operation":
+            case "gcp-native:containeranalysis/v1alpha1:Operation":
                 return new Operation(name, <any>undefined, { urn })
-            case "google-cloud:containeranalysis/v1alpha1:ProviderNote":
+            case "gcp-native:containeranalysis/v1alpha1:ProviderNote":
                 return new ProviderNote(name, <any>undefined, { urn })
-            case "google-cloud:containeranalysis/v1alpha1:ProviderNoteIamPolicy":
+            case "gcp-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy":
                 return new ProviderNoteIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "containeranalysis/v1alpha1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "containeranalysis/v1alpha1", _module)

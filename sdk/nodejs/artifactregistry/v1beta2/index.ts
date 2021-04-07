@@ -18,15 +18,15 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:artifactregistry/v1beta2:Repository":
+            case "gcp-native:artifactregistry/v1beta2:Repository":
                 return new Repository(name, <any>undefined, { urn })
-            case "google-cloud:artifactregistry/v1beta2:RepositoryIamPolicy":
+            case "gcp-native:artifactregistry/v1beta2:RepositoryIamPolicy":
                 return new RepositoryIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:artifactregistry/v1beta2:RepositoryPackageTag":
+            case "gcp-native:artifactregistry/v1beta2:RepositoryPackageTag":
                 return new RepositoryPackageTag(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "artifactregistry/v1beta2", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "artifactregistry/v1beta2", _module)

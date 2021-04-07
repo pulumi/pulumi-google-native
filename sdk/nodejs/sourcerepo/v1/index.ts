@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:sourcerepo/v1:Repo":
+            case "gcp-native:sourcerepo/v1:Repo":
                 return new Repo(name, <any>undefined, { urn })
-            case "google-cloud:sourcerepo/v1:RepoIamPolicy":
+            case "gcp-native:sourcerepo/v1:RepoIamPolicy":
                 return new RepoIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "sourcerepo/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "sourcerepo/v1", _module)

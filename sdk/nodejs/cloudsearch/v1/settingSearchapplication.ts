@@ -22,7 +22,7 @@ export class SettingSearchapplication extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:cloudsearch/v1:SettingSearchapplication';
+    public static readonly __pulumiType = 'gcp-native:cloudsearch/v1:SettingSearchapplication';
 
     /**
      * Returns true if the given object is an instance of SettingSearchapplication.  This is designed to work even

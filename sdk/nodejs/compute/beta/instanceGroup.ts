@@ -22,7 +22,7 @@ export class InstanceGroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/beta:InstanceGroup';
+    public static readonly __pulumiType = 'gcp-native:compute/beta:InstanceGroup';
 
     /**
      * Returns true if the given object is an instance of InstanceGroup.  This is designed to work even

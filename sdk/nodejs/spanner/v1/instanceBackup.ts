@@ -22,7 +22,7 @@ export class InstanceBackup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:spanner/v1:InstanceBackup';
+    public static readonly __pulumiType = 'gcp-native:spanner/v1:InstanceBackup';
 
     /**
      * Returns true if the given object is an instance of InstanceBackup.  This is designed to work even

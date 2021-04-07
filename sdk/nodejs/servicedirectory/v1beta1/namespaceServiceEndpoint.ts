@@ -21,7 +21,7 @@ export class NamespaceServiceEndpoint extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:servicedirectory/v1beta1:NamespaceServiceEndpoint';
+    public static readonly __pulumiType = 'gcp-native:servicedirectory/v1beta1:NamespaceServiceEndpoint';
 
     /**
      * Returns true if the given object is an instance of NamespaceServiceEndpoint.  This is designed to work even

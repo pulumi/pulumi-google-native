@@ -22,7 +22,7 @@ export class NodeTemplate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/alpha:NodeTemplate';
+    public static readonly __pulumiType = 'gcp-native:compute/alpha:NodeTemplate';
 
     /**
      * Returns true if the given object is an instance of NodeTemplate.  This is designed to work even

@@ -22,7 +22,7 @@ export class ManagedShortLink extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:firebasedynamiclinks/v1:ManagedShortLink';
+    public static readonly __pulumiType = 'gcp-native:firebasedynamiclinks/v1:ManagedShortLink';
 
     /**
      * Returns true if the given object is an instance of ManagedShortLink.  This is designed to work even

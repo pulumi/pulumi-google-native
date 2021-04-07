@@ -22,7 +22,7 @@ export class HealthCheck extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/v1:HealthCheck';
+    public static readonly __pulumiType = 'gcp-native:compute/v1:HealthCheck';
 
     /**
      * Returns true if the given object is an instance of HealthCheck.  This is designed to work even

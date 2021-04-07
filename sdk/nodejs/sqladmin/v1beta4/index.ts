@@ -22,19 +22,19 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:sqladmin/v1beta4:BackupRun":
+            case "gcp-native:sqladmin/v1beta4:BackupRun":
                 return new BackupRun(name, <any>undefined, { urn })
-            case "google-cloud:sqladmin/v1beta4:Database":
+            case "gcp-native:sqladmin/v1beta4:Database":
                 return new Database(name, <any>undefined, { urn })
-            case "google-cloud:sqladmin/v1beta4:Instance":
+            case "gcp-native:sqladmin/v1beta4:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "google-cloud:sqladmin/v1beta4:SslCert":
+            case "gcp-native:sqladmin/v1beta4:SslCert":
                 return new SslCert(name, <any>undefined, { urn })
-            case "google-cloud:sqladmin/v1beta4:User":
+            case "gcp-native:sqladmin/v1beta4:User":
                 return new User(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "sqladmin/v1beta4", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "sqladmin/v1beta4", _module)

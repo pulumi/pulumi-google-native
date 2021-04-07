@@ -22,7 +22,7 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:datalabeling/v1beta1:AnnotationSpecSet';
+    public static readonly __pulumiType = 'gcp-native:datalabeling/v1beta1:AnnotationSpecSet';
 
     /**
      * Returns true if the given object is an instance of AnnotationSpecSet.  This is designed to work even

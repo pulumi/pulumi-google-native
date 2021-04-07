@@ -22,7 +22,7 @@ export class License extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/alpha:License';
+    public static readonly __pulumiType = 'gcp-native:compute/alpha:License';
 
     /**
      * Returns true if the given object is an instance of License.  This is designed to work even

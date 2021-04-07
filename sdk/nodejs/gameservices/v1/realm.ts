@@ -21,7 +21,7 @@ export class Realm extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:gameservices/v1:Realm';
+    public static readonly __pulumiType = 'gcp-native:gameservices/v1:Realm';
 
     /**
      * Returns true if the given object is an instance of Realm.  This is designed to work even

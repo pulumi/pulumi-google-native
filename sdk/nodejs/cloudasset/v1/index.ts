@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:cloudasset/v1:Feed":
+            case "gcp-native:cloudasset/v1:Feed":
                 return new Feed(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "cloudasset/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "cloudasset/v1", _module)

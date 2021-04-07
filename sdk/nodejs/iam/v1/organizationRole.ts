@@ -21,7 +21,7 @@ export class OrganizationRole extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:iam/v1:OrganizationRole';
+    public static readonly __pulumiType = 'gcp-native:iam/v1:OrganizationRole';
 
     /**
      * Returns true if the given object is an instance of OrganizationRole.  This is designed to work even

@@ -22,7 +22,7 @@ export class SiteChannel extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:firebasehosting/v1beta1:SiteChannel';
+    public static readonly __pulumiType = 'gcp-native:firebasehosting/v1beta1:SiteChannel';
 
     /**
      * Returns true if the given object is an instance of SiteChannel.  This is designed to work even

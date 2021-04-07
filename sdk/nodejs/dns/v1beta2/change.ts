@@ -22,7 +22,7 @@ export class Change extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:dns/v1beta2:Change';
+    public static readonly __pulumiType = 'gcp-native:dns/v1beta2:Change';
 
     /**
      * Returns true if the given object is an instance of Change.  This is designed to work even

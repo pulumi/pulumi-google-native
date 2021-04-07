@@ -21,7 +21,7 @@ export class Submission extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:webrisk/v1:Submission';
+    public static readonly __pulumiType = 'gcp-native:webrisk/v1:Submission';
 
     /**
      * Returns true if the given object is an instance of Submission.  This is designed to work even

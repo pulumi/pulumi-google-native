@@ -21,7 +21,7 @@ export class Reservation extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:bigqueryreservation/v1:Reservation';
+    public static readonly __pulumiType = 'gcp-native:bigqueryreservation/v1:Reservation';
 
     /**
      * Returns true if the given object is an instance of Reservation.  This is designed to work even

@@ -21,7 +21,7 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:iam/v1:WorkloadIdentityPool';
+    public static readonly __pulumiType = 'gcp-native:iam/v1:WorkloadIdentityPool';
 
     /**
      * Returns true if the given object is an instance of WorkloadIdentityPool.  This is designed to work even

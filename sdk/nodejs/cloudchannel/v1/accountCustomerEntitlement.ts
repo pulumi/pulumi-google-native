@@ -22,7 +22,7 @@ export class AccountCustomerEntitlement extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:cloudchannel/v1:AccountCustomerEntitlement';
+    public static readonly __pulumiType = 'gcp-native:cloudchannel/v1:AccountCustomerEntitlement';
 
     /**
      * Returns true if the given object is an instance of AccountCustomerEntitlement.  This is designed to work even

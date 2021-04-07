@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:serviceconsumermanagement/v1:ServiceTenancyUnit":
+            case "gcp-native:serviceconsumermanagement/v1:ServiceTenancyUnit":
                 return new ServiceTenancyUnit(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "serviceconsumermanagement/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "serviceconsumermanagement/v1", _module)

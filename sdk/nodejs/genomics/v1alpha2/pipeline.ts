@@ -22,7 +22,7 @@ export class Pipeline extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:genomics/v1alpha2:Pipeline';
+    public static readonly __pulumiType = 'gcp-native:genomics/v1alpha2:Pipeline';
 
     /**
      * Returns true if the given object is an instance of Pipeline.  This is designed to work even

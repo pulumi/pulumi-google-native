@@ -24,21 +24,21 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:apigateway/v1beta:Api":
+            case "gcp-native:apigateway/v1beta:Api":
                 return new Api(name, <any>undefined, { urn })
-            case "google-cloud:apigateway/v1beta:ApiConfig":
+            case "gcp-native:apigateway/v1beta:ApiConfig":
                 return new ApiConfig(name, <any>undefined, { urn })
-            case "google-cloud:apigateway/v1beta:ApiConfigIamPolicy":
+            case "gcp-native:apigateway/v1beta:ApiConfigIamPolicy":
                 return new ApiConfigIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:apigateway/v1beta:ApiIamPolicy":
+            case "gcp-native:apigateway/v1beta:ApiIamPolicy":
                 return new ApiIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:apigateway/v1beta:Gateway":
+            case "gcp-native:apigateway/v1beta:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
-            case "google-cloud:apigateway/v1beta:GatewayIamPolicy":
+            case "gcp-native:apigateway/v1beta:GatewayIamPolicy":
                 return new GatewayIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "apigateway/v1beta", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "apigateway/v1beta", _module)

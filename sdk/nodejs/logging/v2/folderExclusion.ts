@@ -21,7 +21,7 @@ export class FolderExclusion extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:logging/v2:FolderExclusion';
+    public static readonly __pulumiType = 'gcp-native:logging/v2:FolderExclusion';
 
     /**
      * Returns true if the given object is an instance of FolderExclusion.  This is designed to work even

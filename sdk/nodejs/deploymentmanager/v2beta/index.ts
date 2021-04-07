@@ -20,17 +20,17 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:deploymentmanager/v2beta:CompositeType":
+            case "gcp-native:deploymentmanager/v2beta:CompositeType":
                 return new CompositeType(name, <any>undefined, { urn })
-            case "google-cloud:deploymentmanager/v2beta:Deployment":
+            case "gcp-native:deploymentmanager/v2beta:Deployment":
                 return new Deployment(name, <any>undefined, { urn })
-            case "google-cloud:deploymentmanager/v2beta:DeploymentIamPolicy":
+            case "gcp-native:deploymentmanager/v2beta:DeploymentIamPolicy":
                 return new DeploymentIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:deploymentmanager/v2beta:TypeProvider":
+            case "gcp-native:deploymentmanager/v2beta:TypeProvider":
                 return new TypeProvider(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "deploymentmanager/v2beta", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "deploymentmanager/v2beta", _module)

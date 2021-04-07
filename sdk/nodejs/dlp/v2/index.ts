@@ -30,27 +30,27 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:dlp/v2:DeidentifyTemplate":
+            case "gcp-native:dlp/v2:DeidentifyTemplate":
                 return new DeidentifyTemplate(name, <any>undefined, { urn })
-            case "google-cloud:dlp/v2:DlpJob":
+            case "gcp-native:dlp/v2:DlpJob":
                 return new DlpJob(name, <any>undefined, { urn })
-            case "google-cloud:dlp/v2:InspectTemplate":
+            case "gcp-native:dlp/v2:InspectTemplate":
                 return new InspectTemplate(name, <any>undefined, { urn })
-            case "google-cloud:dlp/v2:JobTrigger":
+            case "gcp-native:dlp/v2:JobTrigger":
                 return new JobTrigger(name, <any>undefined, { urn })
-            case "google-cloud:dlp/v2:OrganizationDeidentifyTemplate":
+            case "gcp-native:dlp/v2:OrganizationDeidentifyTemplate":
                 return new OrganizationDeidentifyTemplate(name, <any>undefined, { urn })
-            case "google-cloud:dlp/v2:OrganizationInspectTemplate":
+            case "gcp-native:dlp/v2:OrganizationInspectTemplate":
                 return new OrganizationInspectTemplate(name, <any>undefined, { urn })
-            case "google-cloud:dlp/v2:OrganizationJobTrigger":
+            case "gcp-native:dlp/v2:OrganizationJobTrigger":
                 return new OrganizationJobTrigger(name, <any>undefined, { urn })
-            case "google-cloud:dlp/v2:OrganizationStoredInfoType":
+            case "gcp-native:dlp/v2:OrganizationStoredInfoType":
                 return new OrganizationStoredInfoType(name, <any>undefined, { urn })
-            case "google-cloud:dlp/v2:StoredInfoType":
+            case "gcp-native:dlp/v2:StoredInfoType":
                 return new StoredInfoType(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "dlp/v2", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "dlp/v2", _module)

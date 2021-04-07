@@ -21,7 +21,7 @@ export class BucketView extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:logging/v2:BucketView';
+    public static readonly __pulumiType = 'gcp-native:logging/v2:BucketView';
 
     /**
      * Returns true if the given object is an instance of BucketView.  This is designed to work even

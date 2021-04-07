@@ -22,7 +22,7 @@ export class Database extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:sqladmin/v1beta4:Database';
+    public static readonly __pulumiType = 'gcp-native:sqladmin/v1beta4:Database';
 
     /**
      * Returns true if the given object is an instance of Database.  This is designed to work even

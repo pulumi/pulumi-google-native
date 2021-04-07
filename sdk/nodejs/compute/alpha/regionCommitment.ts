@@ -22,7 +22,7 @@ export class RegionCommitment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/alpha:RegionCommitment';
+    public static readonly __pulumiType = 'gcp-native:compute/alpha:RegionCommitment';
 
     /**
      * Returns true if the given object is an instance of RegionCommitment.  This is designed to work even

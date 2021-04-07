@@ -22,7 +22,7 @@ export class InstanceDatabase extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:spanner/v1:InstanceDatabase';
+    public static readonly __pulumiType = 'gcp-native:spanner/v1:InstanceDatabase';
 
     /**
      * Returns true if the given object is an instance of InstanceDatabase.  This is designed to work even

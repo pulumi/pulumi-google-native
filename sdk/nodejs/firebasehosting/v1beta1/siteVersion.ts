@@ -22,7 +22,7 @@ export class SiteVersion extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:firebasehosting/v1beta1:SiteVersion';
+    public static readonly __pulumiType = 'gcp-native:firebasehosting/v1beta1:SiteVersion';
 
     /**
      * Returns true if the given object is an instance of SiteVersion.  This is designed to work even

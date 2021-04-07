@@ -22,7 +22,7 @@ export class ClusterNodePool extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:container/v1beta1:ClusterNodePool';
+    public static readonly __pulumiType = 'gcp-native:container/v1beta1:ClusterNodePool';
 
     /**
      * Returns true if the given object is an instance of ClusterNodePool.  This is designed to work even

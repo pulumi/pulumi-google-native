@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:datastore/v1:Index":
+            case "gcp-native:datastore/v1:Index":
                 return new Index(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "datastore/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "datastore/v1", _module)

@@ -22,7 +22,7 @@ export class InstanceAppProfile extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:bigtableadmin/v2:InstanceAppProfile';
+    public static readonly __pulumiType = 'gcp-native:bigtableadmin/v2:InstanceAppProfile';
 
     /**
      * Returns true if the given object is an instance of InstanceAppProfile.  This is designed to work even

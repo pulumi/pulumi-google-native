@@ -22,7 +22,7 @@ export class Trigger extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:cloudbuild/v1:Trigger';
+    public static readonly __pulumiType = 'gcp-native:cloudbuild/v1:Trigger';
 
     /**
      * Returns true if the given object is an instance of Trigger.  This is designed to work even

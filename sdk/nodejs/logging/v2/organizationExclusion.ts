@@ -21,7 +21,7 @@ export class OrganizationExclusion extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:logging/v2:OrganizationExclusion';
+    public static readonly __pulumiType = 'gcp-native:logging/v2:OrganizationExclusion';
 
     /**
      * Returns true if the given object is an instance of OrganizationExclusion.  This is designed to work even

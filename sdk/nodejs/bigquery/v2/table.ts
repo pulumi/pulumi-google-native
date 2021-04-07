@@ -22,7 +22,7 @@ export class Table extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:bigquery/v2:Table';
+    public static readonly __pulumiType = 'gcp-native:bigquery/v2:Table';
 
     /**
      * Returns true if the given object is an instance of Table.  This is designed to work even

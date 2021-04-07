@@ -22,7 +22,7 @@ export class KeyRingCryptoKey extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:cloudkms/v1:KeyRingCryptoKey';
+    public static readonly __pulumiType = 'gcp-native:cloudkms/v1:KeyRingCryptoKey';
 
     /**
      * Returns true if the given object is an instance of KeyRingCryptoKey.  This is designed to work even

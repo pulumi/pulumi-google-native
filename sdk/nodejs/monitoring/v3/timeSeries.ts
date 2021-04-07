@@ -22,7 +22,7 @@ export class TimeSeries extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:monitoring/v3:TimeSeries';
+    public static readonly __pulumiType = 'gcp-native:monitoring/v3:TimeSeries';
 
     /**
      * Returns true if the given object is an instance of TimeSeries.  This is designed to work even

@@ -22,7 +22,7 @@ export class DiskIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/alpha:DiskIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:compute/alpha:DiskIamPolicy';
 
     /**
      * Returns true if the given object is an instance of DiskIamPolicy.  This is designed to work even

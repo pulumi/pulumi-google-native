@@ -22,7 +22,7 @@ export class ForwardingRule extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/alpha:ForwardingRule';
+    public static readonly __pulumiType = 'gcp-native:compute/alpha:ForwardingRule';
 
     /**
      * Returns true if the given object is an instance of ForwardingRule.  This is designed to work even

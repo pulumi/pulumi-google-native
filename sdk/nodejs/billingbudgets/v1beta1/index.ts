@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:billingbudgets/v1beta1:BillingAccountBudget":
+            case "gcp-native:billingbudgets/v1beta1:BillingAccountBudget":
                 return new BillingAccountBudget(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "billingbudgets/v1beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "billingbudgets/v1beta1", _module)

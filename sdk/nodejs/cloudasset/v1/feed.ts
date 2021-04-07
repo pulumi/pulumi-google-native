@@ -22,7 +22,7 @@ export class Feed extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:cloudasset/v1:Feed';
+    public static readonly __pulumiType = 'gcp-native:cloudasset/v1:Feed';
 
     /**
      * Returns true if the given object is an instance of Feed.  This is designed to work even

@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:cloudfunctions/v1:Function":
+            case "gcp-native:cloudfunctions/v1:Function":
                 return new Function(name, <any>undefined, { urn })
-            case "google-cloud:cloudfunctions/v1:FunctionIamPolicy":
+            case "gcp-native:cloudfunctions/v1:FunctionIamPolicy":
                 return new FunctionIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "cloudfunctions/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "cloudfunctions/v1", _module)

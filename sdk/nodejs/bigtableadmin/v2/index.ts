@@ -28,25 +28,25 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:bigtableadmin/v2:Instance":
+            case "gcp-native:bigtableadmin/v2:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "google-cloud:bigtableadmin/v2:InstanceAppProfile":
+            case "gcp-native:bigtableadmin/v2:InstanceAppProfile":
                 return new InstanceAppProfile(name, <any>undefined, { urn })
-            case "google-cloud:bigtableadmin/v2:InstanceCluster":
+            case "gcp-native:bigtableadmin/v2:InstanceCluster":
                 return new InstanceCluster(name, <any>undefined, { urn })
-            case "google-cloud:bigtableadmin/v2:InstanceClusterBackup":
+            case "gcp-native:bigtableadmin/v2:InstanceClusterBackup":
                 return new InstanceClusterBackup(name, <any>undefined, { urn })
-            case "google-cloud:bigtableadmin/v2:InstanceClusterBackupIamPolicy":
+            case "gcp-native:bigtableadmin/v2:InstanceClusterBackupIamPolicy":
                 return new InstanceClusterBackupIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:bigtableadmin/v2:InstanceIamPolicy":
+            case "gcp-native:bigtableadmin/v2:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:bigtableadmin/v2:InstanceTable":
+            case "gcp-native:bigtableadmin/v2:InstanceTable":
                 return new InstanceTable(name, <any>undefined, { urn })
-            case "google-cloud:bigtableadmin/v2:InstanceTableIamPolicy":
+            case "gcp-native:bigtableadmin/v2:InstanceTableIamPolicy":
                 return new InstanceTableIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "bigtableadmin/v2", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "bigtableadmin/v2", _module)

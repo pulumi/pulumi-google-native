@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:pubsublite/v1:AdminSubscription":
+            case "gcp-native:pubsublite/v1:AdminSubscription":
                 return new AdminSubscription(name, <any>undefined, { urn })
-            case "google-cloud:pubsublite/v1:AdminTopic":
+            case "gcp-native:pubsublite/v1:AdminTopic":
                 return new AdminTopic(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "pubsublite/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "pubsublite/v1", _module)

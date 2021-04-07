@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:testing/v1:TestMatrix":
+            case "gcp-native:testing/v1:TestMatrix":
                 return new TestMatrix(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "testing/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "testing/v1", _module)

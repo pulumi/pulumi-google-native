@@ -18,15 +18,15 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:bigqueryreservation/v1:CapacityCommitment":
+            case "gcp-native:bigqueryreservation/v1:CapacityCommitment":
                 return new CapacityCommitment(name, <any>undefined, { urn })
-            case "google-cloud:bigqueryreservation/v1:Reservation":
+            case "gcp-native:bigqueryreservation/v1:Reservation":
                 return new Reservation(name, <any>undefined, { urn })
-            case "google-cloud:bigqueryreservation/v1:ReservationAssignment":
+            case "gcp-native:bigqueryreservation/v1:ReservationAssignment":
                 return new ReservationAssignment(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "bigqueryreservation/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "bigqueryreservation/v1", _module)

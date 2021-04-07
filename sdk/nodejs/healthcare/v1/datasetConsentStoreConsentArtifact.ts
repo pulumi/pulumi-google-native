@@ -22,7 +22,7 @@ export class DatasetConsentStoreConsentArtifact extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:healthcare/v1:DatasetConsentStoreConsentArtifact';
+    public static readonly __pulumiType = 'gcp-native:healthcare/v1:DatasetConsentStoreConsentArtifact';
 
     /**
      * Returns true if the given object is an instance of DatasetConsentStoreConsentArtifact.  This is designed to work even

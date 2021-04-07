@@ -22,7 +22,7 @@ export class AutoscalingPolicyIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:dataproc/v1:AutoscalingPolicyIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:dataproc/v1:AutoscalingPolicyIamPolicy';
 
     /**
      * Returns true if the given object is an instance of AutoscalingPolicyIamPolicy.  This is designed to work even

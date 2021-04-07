@@ -26,23 +26,23 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:ml/v1:Job":
+            case "gcp-native:ml/v1:Job":
                 return new Job(name, <any>undefined, { urn })
-            case "google-cloud:ml/v1:JobIamPolicy":
+            case "gcp-native:ml/v1:JobIamPolicy":
                 return new JobIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:ml/v1:Model":
+            case "gcp-native:ml/v1:Model":
                 return new Model(name, <any>undefined, { urn })
-            case "google-cloud:ml/v1:ModelIamPolicy":
+            case "gcp-native:ml/v1:ModelIamPolicy":
                 return new ModelIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:ml/v1:ModelVersion":
+            case "gcp-native:ml/v1:ModelVersion":
                 return new ModelVersion(name, <any>undefined, { urn })
-            case "google-cloud:ml/v1:Study":
+            case "gcp-native:ml/v1:Study":
                 return new Study(name, <any>undefined, { urn })
-            case "google-cloud:ml/v1:StudyTrial":
+            case "gcp-native:ml/v1:StudyTrial":
                 return new StudyTrial(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "ml/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "ml/v1", _module)

@@ -21,7 +21,7 @@ export class OrganizationBucket extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:logging/v2:OrganizationBucket';
+    public static readonly __pulumiType = 'gcp-native:logging/v2:OrganizationBucket';
 
     /**
      * Returns true if the given object is an instance of OrganizationBucket.  This is designed to work even

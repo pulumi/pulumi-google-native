@@ -22,7 +22,7 @@ export class RegionInstantSnapshotIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:compute/alpha:RegionInstantSnapshotIamPolicy';
+    public static readonly __pulumiType = 'gcp-native:compute/alpha:RegionInstantSnapshotIamPolicy';
 
     /**
      * Returns true if the given object is an instance of RegionInstantSnapshotIamPolicy.  This is designed to work even

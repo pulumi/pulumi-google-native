@@ -21,7 +21,7 @@ export class ServiceTenancyUnit extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:serviceconsumermanagement/v1:ServiceTenancyUnit';
+    public static readonly __pulumiType = 'gcp-native:serviceconsumermanagement/v1:ServiceTenancyUnit';
 
     /**
      * Returns true if the given object is an instance of ServiceTenancyUnit.  This is designed to work even

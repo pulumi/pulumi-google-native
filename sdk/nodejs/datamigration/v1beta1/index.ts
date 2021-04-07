@@ -20,17 +20,17 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:datamigration/v1beta1:ConnectionProfile":
+            case "gcp-native:datamigration/v1beta1:ConnectionProfile":
                 return new ConnectionProfile(name, <any>undefined, { urn })
-            case "google-cloud:datamigration/v1beta1:ConnectionProfileIamPolicy":
+            case "gcp-native:datamigration/v1beta1:ConnectionProfileIamPolicy":
                 return new ConnectionProfileIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:datamigration/v1beta1:MigrationJob":
+            case "gcp-native:datamigration/v1beta1:MigrationJob":
                 return new MigrationJob(name, <any>undefined, { urn })
-            case "google-cloud:datamigration/v1beta1:MigrationJobIamPolicy":
+            case "gcp-native:datamigration/v1beta1:MigrationJobIamPolicy":
                 return new MigrationJobIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "datamigration/v1beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "datamigration/v1beta1", _module)

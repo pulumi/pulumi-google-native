@@ -22,19 +22,19 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:servicemanagement/v1:Service":
+            case "gcp-native:servicemanagement/v1:Service":
                 return new Service(name, <any>undefined, { urn })
-            case "google-cloud:servicemanagement/v1:ServiceConfig":
+            case "gcp-native:servicemanagement/v1:ServiceConfig":
                 return new ServiceConfig(name, <any>undefined, { urn })
-            case "google-cloud:servicemanagement/v1:ServiceConsumerIamPolicy":
+            case "gcp-native:servicemanagement/v1:ServiceConsumerIamPolicy":
                 return new ServiceConsumerIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:servicemanagement/v1:ServiceIamPolicy":
+            case "gcp-native:servicemanagement/v1:ServiceIamPolicy":
                 return new ServiceIamPolicy(name, <any>undefined, { urn })
-            case "google-cloud:servicemanagement/v1:ServiceRollout":
+            case "gcp-native:servicemanagement/v1:ServiceRollout":
                 return new ServiceRollout(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "servicemanagement/v1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "servicemanagement/v1", _module)

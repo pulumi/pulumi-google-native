@@ -22,7 +22,7 @@ export class OrganizationSink extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'google-cloud:logging/v2:OrganizationSink';
+    public static readonly __pulumiType = 'gcp-native:logging/v2:OrganizationSink';
 
     /**
      * Returns true if the given object is an instance of OrganizationSink.  This is designed to work even

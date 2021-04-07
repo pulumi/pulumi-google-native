@@ -18,15 +18,15 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-cloud:orgpolicy/v2:FolderPolicy":
+            case "gcp-native:orgpolicy/v2:FolderPolicy":
                 return new FolderPolicy(name, <any>undefined, { urn })
-            case "google-cloud:orgpolicy/v2:OrganizationPolicy":
+            case "gcp-native:orgpolicy/v2:OrganizationPolicy":
                 return new OrganizationPolicy(name, <any>undefined, { urn })
-            case "google-cloud:orgpolicy/v2:Policy":
+            case "gcp-native:orgpolicy/v2:Policy":
                 return new Policy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("google-cloud", "orgpolicy/v2", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "orgpolicy/v2", _module)
