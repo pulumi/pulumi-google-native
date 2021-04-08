@@ -73,6 +73,10 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 			return nil, nil, err
 		}
 
+		if document.Name == "" {
+			continue
+		}
+
 		module := fmt.Sprintf("%s/%s", document.Name, document.Version)
 		gen := packageGenerator{
 			pkg:          &pkg,
@@ -81,7 +85,8 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 			mod:          module,
 			visitedTypes: codegen.NewStringSet(),
 		}
-		csharpNamespaces[module] = csharpNamespace(document)
+		csharpNamespaces[document.Name] = csharpNamespace(document)
+		csharpNamespaces[module] = csharpVersionedNamespace(document)
 		pythonModuleNames[module] = module
 		golangImportAliases[filepath.Join(goBasePath, module)] = document.Name
 
@@ -131,6 +136,10 @@ func csharpNamespace(document *discovery.RestDescription) string {
 	if idx >= 0 {
 		moduleName = title[idx:idx+len(document.Name)]
 	}
+	return moduleName
+}
+func csharpVersionedNamespace(document *discovery.RestDescription) string {
+	moduleName := csharpNamespace(document)
 	version := versionReplacer.Replace(document.Version)
 	return fmt.Sprintf("%s.%s", moduleName, version)
 }
