@@ -5,12 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./account";
 export * from "./accountChannelPartnerLink";
 export * from "./accountChannelPartnerLinkCustomer";
 export * from "./accountCustomer";
 export * from "./accountCustomerEntitlement";
 
 // Import resources to register:
+import { Account } from "./account";
 import { AccountChannelPartnerLink } from "./accountChannelPartnerLink";
 import { AccountChannelPartnerLinkCustomer } from "./accountChannelPartnerLinkCustomer";
 import { AccountCustomer } from "./accountCustomer";
@@ -20,6 +22,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp-native:cloudchannel/v1:Account":
+                return new Account(name, <any>undefined, { urn })
             case "gcp-native:cloudchannel/v1:AccountChannelPartnerLink":
                 return new AccountChannelPartnerLink(name, <any>undefined, { urn })
             case "gcp-native:cloudchannel/v1:AccountChannelPartnerLinkCustomer":

@@ -11,6 +11,7 @@ export * from "./regionAutoscalingPolicy";
 export * from "./regionAutoscalingPolicyIamPolicy";
 export * from "./regionCluster";
 export * from "./regionClusterIamPolicy";
+export * from "./regionJob";
 export * from "./regionJobIamPolicy";
 export * from "./regionOperationIamPolicy";
 export * from "./regionWorkflowTemplate";
@@ -25,6 +26,7 @@ import { RegionAutoscalingPolicy } from "./regionAutoscalingPolicy";
 import { RegionAutoscalingPolicyIamPolicy } from "./regionAutoscalingPolicyIamPolicy";
 import { RegionCluster } from "./regionCluster";
 import { RegionClusterIamPolicy } from "./regionClusterIamPolicy";
+import { RegionJob } from "./regionJob";
 import { RegionJobIamPolicy } from "./regionJobIamPolicy";
 import { RegionOperationIamPolicy } from "./regionOperationIamPolicy";
 import { RegionWorkflowTemplate } from "./regionWorkflowTemplate";
@@ -48,6 +50,8 @@ const _module = {
                 return new RegionCluster(name, <any>undefined, { urn })
             case "gcp-native:dataproc/v1:RegionClusterIamPolicy":
                 return new RegionClusterIamPolicy(name, <any>undefined, { urn })
+            case "gcp-native:dataproc/v1:RegionJob":
+                return new RegionJob(name, <any>undefined, { urn })
             case "gcp-native:dataproc/v1:RegionJobIamPolicy":
                 return new RegionJobIamPolicy(name, <any>undefined, { urn })
             case "gcp-native:dataproc/v1:RegionOperationIamPolicy":

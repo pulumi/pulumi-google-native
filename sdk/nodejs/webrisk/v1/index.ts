@@ -6,9 +6,11 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./submission";
+export * from "./uri";
 
 // Import resources to register:
 import { Submission } from "./submission";
+import { Uri } from "./uri";
 
 const _module = {
     version: utilities.getVersion(),
@@ -16,6 +18,8 @@ const _module = {
         switch (type) {
             case "gcp-native:webrisk/v1:Submission":
                 return new Submission(name, <any>undefined, { urn })
+            case "gcp-native:webrisk/v1:Uri":
+                return new Uri(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

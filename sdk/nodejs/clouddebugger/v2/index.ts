@@ -5,24 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./registration";
-export * from "./registrationIamPolicy";
+export * from "./controllerDebuggee";
 
 // Import resources to register:
-import { Registration } from "./registration";
-import { RegistrationIamPolicy } from "./registrationIamPolicy";
+import { ControllerDebuggee } from "./controllerDebuggee";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:domains/v1beta1:Registration":
-                return new Registration(name, <any>undefined, { urn })
-            case "gcp-native:domains/v1beta1:RegistrationIamPolicy":
-                return new RegistrationIamPolicy(name, <any>undefined, { urn })
+            case "gcp-native:clouddebugger/v2:ControllerDebuggee":
+                return new ControllerDebuggee(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "domains/v1beta1", _module)
+pulumi.runtime.registerResourceModule("gcp-native", "clouddebugger/v2", _module)
